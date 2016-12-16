@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-1-4-derivative-fxn">
+<title>The derivative function</title>
+
+<introduction>
+<objectives>
+  <ul>
+    <li><p>How does the limit definition of the derivative of a function <m>f</m> lead to an entirely new (but related) function <m>f'</m>?</p></li>
+    <li><p>What is the difference between writing <m>f'(a)</m> and <m>f'(x)</m>?</p></li>
+    <li><p>How is the graph of the derivative function <m>f'(x)</m> connected to the graph of <m>f(x)</m>?</p></li>
+    <li><p>What are some examples of functions <m>f</m> for which <m>f'</m> is not defined at one or more points?</p></li>
+  </ul>
+</objectives>
+<p>
+Given a function <m>y = f(x)</m>, we now know that if we are interested in the instantaneous rate of change of the function at <m>x = a</m>, or equivalently the slope of the tangent line to <m>y = f(x)</m> at <m>x = a</m>, we can compute the value <m>f'(a)</m>. In all of our examples to date, we have arbitrarily identified a particular value of <m>a</m> as our point of interest: <m>a = 1</m>, <m>a = 3</m>, etc. But it is not hard to imagine that we will often be interested in the derivative value for more than just one <m>a</m>-value, and possibly for many of them. In this section, we explore how we can move from computing simply <m>f'(1)</m> or <m>f'(3)</m> to working more generally with <m>f'(a)</m>, and indeed <m>f'(x)</m>. Said differently, we will work toward understanding how the so-called process of <q>taking the derivative</q> generates a new function that is derived from the original function <m>y = f(x)</m>. The following preview activity starts us down this path.
+</p>
+
+    <xi:include href="./previews/PA-1-4.xml" />
+
+</introduction>
+
+<subsection>
+<title>How the derivative is itself a function</title>
+<p>
+In your work in <xref ref="PA-1-4">Preview Activity</xref> with <m>f(x) = 4x - x^2</m>, you may have found several patterns. One comes from observing that <m>f'(0) = 4</m>, <m>f'(1) = 2</m>, <m>f'(2) = 0</m>, and <m>f'(3) = -2</m>. That sequence of values leads us naturally to conjecture that <m>f'(4) = -4</m> and <m>f'(5) = -6.</m> Even more than these individual numbers, if we consider the role of <m>0</m>, <m>1</m>, <m>2</m>, and <m>3</m> in the process of computing the value of the derivative through the limit definition, we observe that the particular number has very little effect on our work. To see this more clearly, we compute <m>f'(a)</m>, where <m>a</m> represents a number to be named later. Following the now standard process of using the limit definition of the derivative,
+<md>
+  <mrow>  f'(a) =\mathstrut \amp  \lim_{h \to 0} \frac{f(a + h) - f(a)}{h}</mrow>
+  <mrow>  =\mathstrut \amp  \lim_{h \to 0} \frac{4(a + h) - (a + h)^2 - (4a-a^2)}{h}</mrow>
+  <mrow>  =\mathstrut \amp  \lim_{h \to 0} \frac{4a + 4h - a^2 - 2ha - h^2 - 4a+a^2}{h}</mrow>
+  <mrow>  =\mathstrut \amp  \lim_{h \to 0} \frac{4h - 2ha - h^2}{h}</mrow>
+  <mrow>  =\mathstrut \amp  \lim_{h \to 0} \frac{h(4 - 2a - h)}{h}</mrow>
+  <mrow>  =\mathstrut \amp  \lim_{h \to 0} (4 - 2a - h).</mrow>
+</md>
+</p>
+
+<p>
+Here we observe that neither <m>4</m> nor <m>2a</m> depend on the value of <m>h</m>, so as <m>h \to 0</m>, <m>(4 - 2a - h) \to (4 - 2a)</m>. Thus, <m>f'(a) = 4 - 2a</m>.
+</p>
+
+<p>
+This observation is consistent with the specific values we found above: e.g., <m>f'(3) = 4 - 2(3) = -2</m>. And indeed, our work with <m>a</m> confirms that while the particular value of <m>a</m> at which we evaluate the derivative affects the value of the derivative, that value has almost no bearing on the process of computing the derivative. We note further that the letter being used is immaterial: whether we call it <m>a</m>, <m>x</m>, or anything else, the derivative at a given value is simply given by <q>4 minus 2 times the value.</q> We choose to use <m>x</m> for consistency with the original function given by <m>y = f(x)</m>, as well as for the purpose of graphing the derivative function, and thus we have found that for the function <m>f(x) = 4x - x^2</m>, it follows that <m>f'(x) = 4 - 2x.</m>
+</p>
+
+<p>
+Because the value of the derivative function is so closely linked to the graphical behavior of the original function, it makes sense to look at both of these functions plotted on the same domain.
+</p>
+<figure xml:id="F-1-4-ffprime" >
+<caption>The graphs of <m>f(x) = 4x - x^2</m> (at left) and <m>f'(x) = 4 - 2x</m> (at right).  Slopes on the graph of <m>f</m> correspond to heights on the graph of <m>f'</m>.</caption>
+<image width="100%" source="images/1_4_ffprimeplot" />
+</figure>
+<p>
+In <xref ref="F-1-4-ffprime">Figure</xref>, on the left we show a plot of <m>f(x) = 4x - x^2</m> together with a selection of tangent lines at the points we've considered above. On the right, we show a plot of <m>f'(x) = 4 - 2x</m> with emphasis on the heights of the derivative graph at the same selection of points. Notice the connection between colors in the left and right graph: the green tangent line on the original graph is tied to the green point on the right graph in the following way: <em>the slope of the tangent line</em> at a point on the lefthand graph is the same as the <em>height</em> at the corresponding point on the righthand graph. That is, at each respective value of <m>x</m>, the slope of the tangent line to the original function at that <m>x</m>-value is the same as the height of the derivative function at that <m>x</m>-value. Do note, however, that the units on the vertical axes are different: in the left graph, the vertical units are simply the output units of <m>f</m>. On the righthand graph of <m>y = f'(x)</m>, the units on the vertical axis are units of <m>f</m> per unit of <m>x</m>.
+</p>
+
+<p>
+Of course, this relationship between the graph of a function <m>y = f(x)</m> and its derivative is a dynamic one. An excellent way to explore how the graph of <m>f(x)</m> generates the graph of <m>f'(x)</m> is through a java applet. See, for instance, the applets at <url href="http://gvsu.edu/s/5C"><c>http://gvsu.edu/s/5C</c></url> or <url href="http://gvsu.edu/s/5D"><c>http://gvsu.edu/s/5D</c></url>, via the sites of Austin and Renault<fn>David Austin, <url href="http://gvsu.edu/s/5r"><c>http://gvsu.edu/s/5r</c></url>; Marc Renault, <url href="http://gvsu.edu/s/5p"> <c>http://gvsu.edu/s/5p</c></url>.</fn>.
+</p>
+
+<p>
+In <xref ref="sec-1-3-derivative-pt">Section</xref> when we first defined the derivative, we wrote the definition in terms of a value <m>a</m> to find <m>f'(a)</m>. As we have seen above, the letter <m>a</m> is merely a placeholder, and it often makes more sense to use <m>x</m> instead. For the record, here we restate the definition of the derivative<index><main>derivative</main><sub>definition</sub></index>.
+</p>
+<definition xml:id="D-derivative-defn-x">
+<statement>
+<p>
+Let <m>f</m> be a function and <m>x</m> a value in the function's domain. We define the <term>derivative of <m>f</m> with respect to <m>x</m> at the value <m>x</m></term>, denoted <m>f'(x)</m>, by the formula
+<m>f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h},</m>
+provided this limit exists.
+</p>
+</statement>
+</definition>
+<p>
+We now may take two different perspectives on thinking about the derivative function: given a graph of <m>y = f(x)</m>, how does this graph lead to the graph of the derivative function <m>y = f'(x)</m>? and given a formula for <m>y = f(x)</m>, how does the limit definition of the derivative generate a formula for <m>y = f'(x)</m>? Both of these issues are explored in the following activities.
+</p>
+
+   <xi:include href="./activities/act-1-4-1.xml" /> 
+
+<p>
+For a dynamic investigation that allows you to experiment with graphing <m>f'</m> when given the graph of <m>f</m>, see <url href="http://gvsu.edu/s/8y"><c>http://gvsu.edu/s/8y</c></url>.<fn>Marc Renault, Calculus Applets Using Geogebra.</fn>
+</p>
+
+<p>
+Now, recall the opening example of this section: we began with the function <m>y = f(x) = 4x - x^2</m> and used the limit definition of the derivative to show that <m>f'(a) = 4 - 2a</m>, or equivalently that <m>f'(x) = 4 - 2x</m>. We subsequently graphed the functions <m>f</m> and <m>f'</m> as shown in <xref ref="F-1-4-ffprime">Figure</xref>. Following <xref ref="act-1-4-1">Activity</xref>, we now understand that we could have constructed a fairly accurate graph of <m>f'(x)</m> <em>without</em> knowing a formula for either <m>f</m> or <m>f'</m>. At the same time, it is ideal to know a formula for the derivative function whenever it is possible to find one.
+</p>
+
+<p>
+In the next activity, we further explore the more algebraic approach to finding <m>f'(x)</m>: given a formula for <m>y = f(x)</m>, the limit definition of the derivative will be used to develop a formula for <m>f'(x)</m>.
+</p>
+
+  <xi:include href="./activities/act-1-4-2.xml" />
+
+</subsection>
+  
+<subsection>
+<title>Summary</title>
+  <ul>
+    <li><p>The limit definition of the derivative, <m>f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}</m>, produces a value for each <m>x</m> at which the derivative is defined, and this leads to a new function whose formula is <m>y = f'(x)</m>.  Hence we talk both about a given function <m>f</m> and its derivative <m>f'</m>.  It is especially important to note that taking the derivative is a process that starts with a given function (<m>f</m>) and produces a new, related function (<m>f'</m>).</p></li>
+    <li><p>There is essentially no difference between writing <m>f'(a)</m> (as we did regularly in <xref ref="sec-1-3-derivative-pt">Section</xref>) and writing <m>f'(x)</m>.  In either case, the variable is just a placeholder that is used to define the rule for the derivative function.</p></li>
+    <li><p>Given the graph of a function <m>y = f(x)</m>, we can sketch an approximate graph of its derivative <m>y = f'(x)</m> by observing that <em>heights</em> on the derivative's graph correspond to <em>slopes</em> on the original function's graph.</p></li>
+    <li><p>In <xref ref="act-1-4-1">Activity</xref>, we encountered some functions that had sharp corners on their graphs, such as the shifted absolute value function.  At such points, the derivative fails to exist, and we say that <m>f</m> is not differentiable there.  For now, it suffices to understand this as a consequence of the jump that must occur in the derivative function at a sharp corner on the graph of the original function.</p></li>
+  </ul>
+</subsection>
+
+  <xi:include href="./exercises/ez-1-4.xml" />
+
+</section>
