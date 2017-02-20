@@ -1,0 +1,399 @@
+
+<section xml:id="S_2.1.ElemRules">
+  <title>Elementary derivative rules</title>
+  <introduction>
+    <objectives>
+      <ul>
+        <li><p>What are alternate notations for the derivative?</p></li>
+
+        <li><p>How can we sometimes use the algebraic structure of a function <m>f(x)</m> to easily compute a formula for <m>f'(x)</m>?</p></li>
+
+        <li><p>What is the derivative of a power function of the form <m>f(x) = x^n</m>?  What is the derivative of an exponential function of form <m>f(x) = a^x</m>?</p></li>
+
+        <li><p>If we know the derivative of <m>y = f(x)</m>, how is the derivative of <m>y = k f(x)</m> computed, where <m>k</m> is a constant?</p></li>
+
+        <li><p>If we know the derivatives of <m>y = f(x)</m> and <m>y = g(x)</m>, how is the derivative of <m>y = f(x) + g(x)</m> computed?</p></li>
+      </ul>
+    </objectives>
+    <p>In <xref ref="C_1">Chapter</xref>, we developed the concept of the derivative of a function. We now know that the derivative <m>f'</m> of a function <m>f</m> measures the instantaneous rate of change of <m>f</m> with respect to <m>x</m> as well as the slope of the tangent line to <m>y=f(x)</m> at any given value of <m>x</m>. To date, we have focused primarily on interpreting the derivative graphically or, in the context of functions in a physical setting, as a meaningful rate of change. To actually calculate the value of the derivative at a specific point, we have typically relied on the limit definition of the derivative.</p>
+
+    <p>In this present chapter, we will investigate how the limit definition of the derivative,
+      <me>
+        f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h},
+      </me>
+      leads to interesting patterns and rules that enable us to quickly find a formula for <m>f'(x)</m> based on the formula for <m>f(x)</m> <em>without</em> using the limit definition directly. For example, we already know that if <m>f(x) = x</m>, then it follows that <m>f'(x) = 1</m>. While we could use the limit definition of the derivative to confirm this, we know it to be true because <m>f(x)</m> is a linear function with slope 1 at every value of <m>x</m>. One of our goals is to be able to take standard functions, say ones such as <m>g(x) = 4x^7 - \sin(x) + 3e^x</m>, and, based on the algebraic form of the function, be able to apply shortcuts to almost immediately determine the formula for <m>g'(x)</m>.</p>
+
+    <exploration xml:id="PA_2.1">
+      <p>Functions of the form <m>f(x) = x^n</m>, where <m>n = 1, 2, 3, \ldots</m>, are often called <term>power functions</term>. The first two questions below revisit work we did earlier in <xref ref="C_1">Chapter</xref>, and the following questions extend those ideas to higher powers of <m>x</m>.
+
+      <ol>
+        <li><p>Use the limit definition of the derivative to find <m>f'(x)</m> for <m>f(x) = x^2</m>.</p></li>
+
+        <li><p>Use the limit definition of the derivative to find <m>f'(x)</m> for <m>f(x) = x^3</m>.</p></li>
+
+        <li><p>Use the limit definition of the derivative to find <m>f'(x)</m> for <m>f(x) = x^4</m>.  (Hint: <m>(a+b)^4 = a^4 + 4a^3b + 6a^2b^2 + 4ab^3 + b^4</m>.  Apply this rule to <m>(x+h)^4</m> within the limit definition.)</p></li>
+
+        <li><p>Based on your work in (a), (b), and (c), what do you conjecture is the derivative of <m>f(x) = x^5</m>?  Of <m>f(x) = x^{13}</m>?</p></li>
+
+        <li><p>Conjecture a formula for the derivative of <m>f(x) = x^n</m> that holds for any positive integer <m>n</m>.  That is, given <m>f(x) = x^n</m> where <m>n</m> is a positive integer, what do you think is the formula for <m>f'(x)</m>?</p></li>
+      </ol>
+      </p>
+    </exploration>
+  </introduction>
+
+  <subsection>
+    <title>Some Key Notation</title>
+    <p>In addition to our usual <m>f'</m> notation for the derivative, there are other ways to symbolically denote the derivative of a function, as well as the instruction to take the derivative. We know that if we have a function, say <m>f(x) = x^2</m>, that we can denote its derivative by <m>f'(x)</m>, and we write <m>f'(x) = 2x</m>. Equivalently, if we are thinking more about the relationship between <m>y</m> and <m>x</m>, we sometimes denote the derivative of <m>y</m> with respect to <m>x</m> with the symbol
+      <me>
+        \frac{dy}{dx}
+      </me>
+      which we read <q>dee-y dee-x.</q> This notation comes from the fact that the derivative is related to the slope of a line, and slope is measured by <m>\frac{\triangle y}{\triangle x}</m>. Note that while we read <m>\frac{\triangle y}{\triangle x}</m> as <q>change in <m>y</m> over change in <m>x</m>,</q> for the derivative symbol <m>\frac{dy}{dx}</m>, we view this is a single symbol, not a quotient of two quantities<fn>That is, we do <em>not</em> say <q>dee-y over dee-x.</q></fn>. For example, if <m>y = x^2</m>, we'll write that the derivative is <m>\frac{dy}{dx} = 2x.</m></p>
+
+    <p>Furthermore, we use a variant of <m>\frac{dy}{dx}</m> notation to convey the instruction to take the derivative of a certain quantity with respect to a given variable. In particular, if we write
+      <me>
+        \frac{d}{dx}\left[ \Box \right]
+      </me>
+      this means <q>take the derivative of the quantity in <m>\Box</m> with respect to <m>x</m>.</q> To continue our example above with the squaring function, here we may write <m>\frac{d}{dx}[x^2] = 2x.</m></p>
+
+    <p>It is important to note that the independent variable can be different from <m>x</m>. If we have <m>f(z) = z^2</m>, we then write <m>f'(z) = 2z</m>. Similarly, if <m>y = t^2</m>, we can say <m>\frac{dy}{dt} = 2t</m>. And changing the variable and derivative notation once more, it is also true that <m>\frac{d}{dq}[q^2] = 2q</m>. This notation may also be applied to second derivatives: <m>f''(z) =  \frac{d}{dz}\left[\frac{df}{dz}\right] = \frac{d^2 f}{dz^2}</m>.</p>
+
+    <p>In what follows, we'll be working to widely expand our repertoire of functions for which we can quickly compute the corresponding derivative formula</p>
+  </subsection>
+
+  <subsection>
+    <title>Constant, Power, and Exponential Functions</title>
+    <p>So far, we know the derivative formula for two important classes of functions: constant functions and power functions. For the first kind, observe that if <m>f(x) = c</m> is a constant function, then its graph is a horizontal line with slope zero at every point. Thus, <m>\frac{d}{dx}[c] = 0</m>. We summarize this with the following rule.</p>
+
+    <p><em>Constant Functions:</em><index><main>derivative</main><sub>constant function</sub></index> For any real number <m>c</m>, if <m>f(x) = c</m>, then <m>f'(x) = 0</m>.</p>
+
+    <p>Thus, if <m>f(x) = 7</m>, then <m>f'(x) = 0</m>. Similarly, <m>\frac{d}{dx} [\sqrt{3}] = 0.</m></p>
+
+    <p>For power functions, from your work in <xref ref="PA_2.1">Preview Activity</xref>, you have conjectured that for any positive integer <m>n</m>, if <m>f(x) = x^n</m>, then <m>f'(x) = nx^{n-1}</m>. Not only can this rule be formally proved to hold for any positive integer <m>n</m>, but also for any nonzero real number (positive or negative).</p>
+
+    <p><em>Power Functions:</em><index><main>derivative</main><sub>power function</sub></index> For any nonzero real number, if <m>f(x) = x^n</m>, then <m>f'(x) = nx^{n-1}</m>.</p>
+
+    <p>This rule for power functions allows us to find derivatives such as the following: if <m>g(z) = z^{-3}</m>, then <m>g'(z) = -3z^{-4}</m>. Similarly, if <m>h(t) = t^{7/5}</m>, then <m>\frac{dh}{dt} = \frac{7}{5}t^{2/5}</m>; likewise, <m>\frac{d}{dq} [q^{\pi}] = \pi q^{\pi - 1}</m>.</p>
+
+    <p>As we next turn to thinking about derivatives of combinations of basic functions, it will be instructive to have one more type of basic function whose derivative formula we know. For now, we simply state this rule without explanation or justification; we will explore why this rule is true in one of the exercises at the end of this section, plus we will encounter graphical reasoning for why the rule is plausible in <xref ref="PA_2.2">Preview Activity</xref>.</p>
+
+    <p><em>Exponential Functions:</em><index><main>derivative</main><sub>exponential function</sub></index> For any positive real number <m>a</m>, if <m>f(x) = a^x</m>, then <m>f'(x) = a^x \ln(a)</m>.</p>
+
+    <p>For instance, this rule tells us that if <m>f(x) = 2^x</m>, then <m>f'(x) = 2^x \ln(2)</m>. Similarly, for <m>p(t) = 10^t</m>, <m>p'(t) = 10^t \ln(10)</m>. It is especially important to note that when <m>a = e</m>, where <m>e</m> is the base of the natural logarithm function, we have that
+      <me>
+        \frac{d}{dx} [e^x] = e^x \ln(e) = e^x
+      </me>
+      since <m>\ln(e) = 1</m>. This is an extremely important property of the function <m>e^x</m>: its derivative function is itself!</p>
+
+    <p>Finally, note carefully the distinction between power functions and exponential functions: in power functions, the variable is in the base, as in <m>x^2</m>, while in exponential functions, the variable is in the power, as in <m>2^x</m>. As we can see from the rules, this makes a big difference in the form of the derivative.</p>
+
+    <p>The following activity will check your understanding of the derivatives of the three basic types of functions noted above.</p>
+
+    <activity xml:id="A_2.1.1">
+      <p>Use the three rules above to determine the derivative of each of the following functions. For each, state your answer using full and proper notation, labeling the derivative with its name. For example, if you are given a function <m>h(z)</m>, you should write <q><m>h'(z) =</m></q> or <q><m>\frac{dh}{dz} =</m></q> as part of your response.
+
+      <ol>
+        <li><p><m>f(t) = \pi</m></p></li>
+
+        <li><p><m>g(z) = 7^z</m></p></li>
+
+        <li><p><m>h(w) = w^{3/4}</m></p></li>
+
+        <li><p><m>p(x) = 3^{1/2}</m></p></li>
+
+        <li><p><m>r(t) = (\sqrt{2})^t</m></p></li>
+
+        <li><p><m>\frac{d}{dq}[q^{-1}]</m></p></li>
+
+        <li><p><m>m(t) = \frac{1}{t^3}</m></p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Is <m>\pi</m> a variable or a constant?</p></li>
+
+          <li><p>Is <m>g</m> a power or exponential function?</p></li>
+
+          <li><p>Is <m>h</m> a power or exponential function?</p></li>
+
+          <li><p>Is <m>3^{1/2}</m> a constant or a variable?</p></li>
+
+          <li><p><m>\sqrt{2}</m> is a constant</p></li>
+
+          <li><p>Remember the notation here means <q>take the derivative with respect to <m>q</m> of <m>q^{-1}</m>.</q></p></li>
+
+          <li><p>Rewrite the fraction using a negative exponent.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p><m>f(t) = \pi</m> is constant, so <m>f'(t) = 0</m>.</p></li>
+
+          <li><p><m>g(z) = 7^z</m> is an exponential function, so <m>g'(z) = 7^z \ln(7)</m>.</p></li>
+
+          <li><p><m>h(w) = w^{3/4}</m> is a power function, thus <m>h'(w) = \frac{3}{4} w^{-1/4}</m>.</p></li>
+
+          <li><p><m>p(x) = 3^{1/2}</m> is constant, and therefore <m>\frac{dp}{dx} = 0</m>.</p></li>
+
+          <li><p><m>r(t) = (\sqrt{2})^t</m> is exponential (since <m>\sqrt{2}</m> is a constant), and so we have <m>r'(t) = (\sqrt{2})^t \ln (\sqrt{2})</m>.</p></li>
+
+          <li><p><m>\frac{d}{dq}[q^{-1}] = -q^{-2}</m>, by the rule for power functions.</p></li>
+
+          <li><p><m>m(t) = \frac{1}{t^3} = t^{-3}</m>, so <m>\frac{dm}{dt} = -3t^{-4} = -\frac{3}{t^4}</m>.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Constant Multiples and Sums of Functions</title>
+    <p>Of course, most of the functions we encounter in mathematics are more complicated than being simply constant, a power of a variable, or a base raised to a variable power. In this section and several following, we will learn how to quickly compute the derivative of a function constructed as an algebraic combination of basic functions. For instance, we'd like to be able to understand how to take the derivative of a polynomial function such as <m>p(t) = 3t^5 - 7t^4 + t^2 - 9</m>, which is a function made up of constant multiples and sums of powers of <m>t</m>. To that end, we develop two new rules: the Constant Multiple Rule and the Sum Rule.</p>
+
+    <p>Say we have a function <m>y = f(x)</m> whose derivative formula is known. How is the derivative of <m>y = kf(x)</m> related to the derivative of the original function? Recall that when we multiply a function by a constant <m>k</m>, we vertically stretch the graph by a factor of <m>|k|</m> (and reflect the graph across <m>y = 0</m> if <m>k \lt  0</m>). This vertical stretch affects the slope of the graph, making the slope of the function <m>y = kf(x)</m> be <m>k</m> times as steep as the slope of <m>y = f(x)</m>. In terms of the derivative, this is essentially saying that when we multiply a function by a factor of <m>k</m>, we change the value of its derivative by a factor of <m>k</m> as well. Thus<fn>The Constant Multiple Rule can be formally proved as a consequence of properties of limits, using the limit definition of the derivative.</fn>, the Constant Multiple Rule holds:</p>
+
+    <p><em>The Constant Multiple Rule:</em><index><main>constant multiple rule</main></index> For any real number <m>k</m>, if <m>f(x)</m> is a differentiable function with derivative <m>f'(x)</m>, then <m>\frac{d}{dx}[k f(x)] = k f'(x)</m>.</p>
+
+    <p>In words, this rule says that <q>the derivative of a constant times a function is the constant times the derivative of the function.</q> For example, if <m>g(t) = 3 \cdot 5^t</m>, we have <m>g'(t) = 3 \cdot 5^t \ln(5)</m>. Similarly, <m>\frac{d}{dz} [5z^{-2}] = 5 (-2z^{-3})</m>.</p>
+
+    <p>Next we examine what happens when we take a sum of two functions. If we have <m>y = f(x)</m> and <m>y = g(x)</m>, we can compute a new function <m>y = (f+g)(x)</m> by adding the outputs of the two functions: <m>(f+g)(x) = f(x) + g(x)</m>. Not only does this result in the value of the new function being the sum of the values of the two known functions, but also the slope of the new function is the sum of the slopes of the known functions. Therefore<fn>Like the Constant Multiple Rule, the Sum Rule can be formally proved as a consequence of properties of limits, using the limit definition of the derivative.</fn>, we arrive at the following Sum Rule for derivatives:</p>
+
+    <p><em>The Sum Rule:</em><index><main>sum rule</main></index> If <m>f(x)</m> and <m>g(x)</m> are differentiable functions with derivatives <m>f'(x)</m> and <m>g'(x)</m> respectively, then <m>\frac{d}{dx}[f(x) + g(x)] = f'(x) + g'(x)</m>.</p>
+
+    <p>In words, the Sum Rule tells us that <q>the derivative of a sum is the sum of the derivatives.</q> It also tells us that any time we take a sum of two differentiable functions, the result must also be differentiable. Furthermore, because we can view the difference function <m>y = (f-g)(x) = f(x) - g(x)</m> as <m>y = f(x) + (-1 \cdot g(x))</m>, the Sum Rule and Constant Multiple Rules together tell us that <m>\frac{d}{dx}[f(x) + (-1 \cdot g(x))] = f'(x) - g'(x)</m>, or that <q>the derivative of a difference is the difference of the derivatives.</q> Hence we can now compute derivatives of sums and differences of elementary functions. For instance, <m>\frac{d}{dw} (2^w + w^2) = 2^w \ln(2) + 2w</m>, and if <m>h(q) = 3q^6 - 4q^{-3}</m>, then <m>h'(q) = 3 (6q^5) - 4(-3q^{-4}) = 18q^5 + 12q^{-4}</m>.</p>
+
+    <activity xml:id="A_2.1.2">
+      <p>Use only the rules for constant, power, and exponential functions, together with the Constant Multiple and Sum Rules, to compute the derivative of each function below with respect to the given independent variable. Note well that we do not yet know any rules for how to differentiate the product or quotient of functions. This means that you may have to do some algebra first on the functions below before you can actually use existing rules to compute the desired derivative formula. In each case, label the derivative you calculate with its name using proper notation such as <m>f'(x)</m>, <m>h'(z)</m>, <m>dr/dt</m>, etc.
+
+      <ol>
+        <li><p><m>f(x) = x^{5/3} - x^4 + 2^x</m></p></li>
+
+        <li><p><m>g(x) = 14e^x + 3x^5 - x</m></p></li>
+
+        <li><p><m>h(z) = \sqrt{z} + \frac{1}{z^4} + 5^z</m></p></li>
+
+        <li><p><m>r(t) = \sqrt{53} \, t^7 - \pi e^t + e^4</m></p></li>
+
+        <li><p><m>s(y) = (y^2 + 1)(y^2 - 1)</m></p></li>
+
+        <li><p><m>q(x) = \frac{x^3 - x + 2}{x}</m></p></li>
+
+        <li><p><m>p(a) = 3a^4 - 2a^3 + 7a^2 - a + 12</m></p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Use the sum rule.</p></li>
+
+          <li><p>Use the sum rule together with the constant multiple rule.</p></li>
+
+          <li><p>How can you rewrite <m>\sqrt{z}</m> using exponents?</p></li>
+
+          <li><p>Is <m>e^4</m> a constant or variable?</p></li>
+
+          <li><p>Expand the product before attempting to find the derivative.</p></li>
+
+          <li><p>Rewrite the single fraction as a sum of three fractions, and simplify.</p></li>
+
+          <li><p>Note that <q><m>a</m></q> is the independent variable.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p><m>f(x) = x^{5/3} - x^4 + 2^x</m>, so by the sum rule, <m>f'(x) = \frac{5}{3}x^{2/3} - 4 x^3 + 2^x \ln(2).</m></p></li>
+
+          <li><p><m>g(x) = 14e^x + 3x^5 - x</m>, so by the sum and constant multiple rules, <m>g'(x) = 14e^x + 3 \cdot 5x^4 - 1</m>.</p></li>
+
+          <li><p><m>h(z) = \sqrt{z} + \frac{1}{z^4} + 5^z = z^{1/2} + z^{-4} + 5^z</m>, thus <m>h'(z) = \frac{1}{2}z^{-1/2} - 4z^{-5} + 5^z \ln(5)</m>.</p></li>
+
+          <li><p>Since <m>r(t) = \sqrt{53} \, t^7 - \pi e^t + e^4</m> and <m>\sqrt{53}</m>, <m>\pi</m>, and <m>e^4</m> are all constants, it follows from the sum and constant multiple rules, as well as the derivative of a constant rule, that <m>\frac{dr}{dt} = \sqrt{53} \cdot 7 t^6 - \pi e^t</m>.  (Note particularly that <m>\frac{d}{dt}[e^4] = 0</m> since <m>e^4</m> is constant.</p></li>
+
+          <li><p><m>s(y) = (y^2 + 1)(y^2 - 1)= y^4 - 1</m>, thus <m>\frac{ds}{dy} = 4y^3</m>.</p></li>
+
+          <li><p><m>q(x) = \frac{x^3 - x + 2}{x} = \frac{x^3}{x} - \frac{x}{x} + \frac{2}{x} = x^2 - 1 + 2x^{-1}</m>.  Now it follows that <m>q'(x) = 2x - 2x^{-2}</m>.</p></li>
+
+          <li><p><m>p(a) = 3a^4 - 2a^3 + 7a^2 - a + 12</m>, so <m>p'(a) = 12a^3 - 6 a^2 + 14a - 1.</m></p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <p>In the same way that we have shortcut rules to help us find derivatives, we introduce some language that is simpler and shorter. Often, rather than say <q>take the derivative of <m>f</m>,</q> we'll instead say simply <q>differentiate <m>f</m>.</q> This phrasing is tied to the notion of having a derivative to begin with: if the derivative exists at a point, we say <q><m>f</m> is differentiable,</q> which is tied to the fact that <m>f</m> can be differentiated.</p>
+
+    <p>As we work more and more with the algebraic structure of functions, it is important to strive to develop a big picture view of what we are doing. Here, we can note several general observations based on the rules we have so far. One is that the derivative of any polynomial function will be another polynomial function, and that the degree of the derivative is one less than the degree of the original function. For instance, if <m>p(t) = 7t^5 - 4t^3 + 8t</m>, <m>p</m> is a degree 5 polynomial, and its derivative, <m>p'(t) = 35t^4 - 12t^2 + 8</m>, is a degree 4 polynomial. Additionally, the derivative of any exponential function is another exponential function: for example, if <m>g(z) = 7 \cdot 2^z</m>, then <m>g'(z) = 7 \cdot 2^z \ln(2)</m>, which is also exponential.</p>
+
+    <p>Furthermore, while our current emphasis is on learning shortcut rules for finding derivatives without directly using the limit definition, we should be certain not to lose sight of the fact that all of the meaning of the derivative still holds that we developed in <xref ref="C_1">Chapter</xref>. That is, anytime we compute a derivative, that derivative measures the instantaneous rate of change of the original function, as well as the slope of the tangent line at any selected point on the curve. The following activity asks you to combine the just-developed derivative rules with some key perspectives that we studied in <xref ref="C_1">Chapter</xref>.</p>
+
+    <activity xml:id="A_2.1.3">
+      <p>Each of the following questions asks you to use derivatives to answer key questions about functions. Be sure to think carefully about each question and to use proper notation in your responses.</p>
+
+      <ol>
+      <li><p>Find the slope of the tangent line to <m>h(z) = \sqrt{z} + \frac{1}{z}</m> at the point where <m>z = 4</m>.</p></li>
+
+      <li><p>A population of cells is growing in such a way that its total number in millions is given by the function <m>P(t) = 2(1.37)^t + 32</m>, where <m>t</m> is measured in days.</p>
+
+      <ol>
+        <li>
+          <title>i.</title>
+          <p>Determine the instantaneous rate at which the population is growing on day 4, and include units on your answer.</p></li>
+
+        <li>
+          <title>ii.</title>
+          <p>Is the population growing at an increasing rate or growing at a decreasing rate on day 4?  Explain.</p></li>
+      </ol>
+      </li>
+
+      <li><p>Find an equation for the tangent line to the curve <m>p(a) = 3a^4 - 2a^3 + 7a^2 - a + 12</m> at the point where <m>a=-1</m>.</p></li>
+
+      <li><p>What is the difference between being asked to find the <em>slope</em> of the tangent line (asked in (a)) and the <em>equation</em> of the tangent line (asked in (c))?</p></li>
+      </ol>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>How would <m>h'(z)</m> help you answer the question?</p></li>
+
+          <li><p>Think about finding both <m>P'(t)</m> and <m>P''(t)</m>.</p></li>
+
+          <li><p>What two important pieces of information do you need to know to determine the equation of a line?</p></li>
+
+          <li><p>What information do you find in both (a) and (c)?</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Note that since <m>h(z) = z^{1/2} + z^{-1}</m>, we have <m>h'(z) = \frac{1}{2}z^{-1/2} - z^{-2}</m>.  Thus, <m>h'(4) = \frac{1}{2(4)^{1/2}} - \frac{1}{4^2} = \frac{1}{4} - \frac{1}{16} = \frac{3}{16}.</m>  Thus, the slope of the tangent line to <m>h(z)</m> at the point where <m>z = 4</m> is <m>\frac{3}{16}</m>.</p></li>
+
+          <li><p>For (i.), note that <m>P'(t) = 2(1.37)^t \ln(1.37)</m>, and therefore <m>P'(4) =  2(1.37)^4 \ln(1.37) \approx 2.218</m> million cells per day.  For (ii.), we can compute <m>P''(t)</m> and find that <m>P''(t) = 2(1.37)^t \ln(1.37) \ln(1.37)</m> and therefore find that <m>P''(4) \approx  0.69825</m>.  Since <m>P''(4)</m> is positive, this tells us that the instantaneous rate of change <m>P'(t)</m> is increasing at <m>t = 4</m>, and thus the population is growing at an increasing rate.</p></li>
+
+          <li><p>Given <m>p(a) = 3a^4 - 2a^3 + 7a^2 - a + 12</m>, first observe that <m>p(-1) = 3 + 2 + 7 + 1 + 12 = 25</m>, so the tangent line will pass through <m>(-1,25)</m>.  Further, since <m>p'(a) = 12a^3 - 6a^2 + 14a - 1</m>, we have <m>p'(-1) = -12 - 6 - 14 - 1 = -33</m>, which is the slope of the tangent line.  The equation of the tangent line is therefore <m>y - 25 = -33(a+1)</m>.</p></li>
+
+          <li><p>The biggest difference is that (a) asks for the <em>slope</em> of the tangent line, while (c) asks for the <em>equation</em> of the tangent line.  The latter requires the slope of the tangent line, but the slope and equation are two different entities.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <p>\begin{authornote}
+      This is an author note.
+      \end{authornote}</p>
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+    <ul>
+      <li><p>Given a differentiable function <m>y = f(x)</m>, we can express the derivative of <m>f</m> in several different notations:  <m>f'(x)</m>, <m>\frac{df}{dx}</m>, <m>\frac{dy}{dx}</m>, and <m>\frac{d}{dx}[f(x)]</m>.</p></li>
+
+      <li><p>The limit definition of the derivative leads to patterns among certain families of functions that enable us to compute derivative formulas without resorting directly to the limit definition.  For example, if <m>f</m> is a power function of the form <m>f(x) = x^n</m>, then <m>f'(x) = nx^{n-1}</m> for any real number <m>n</m> other than 0.  This is called the Rule for Power Functions.</p></li>
+
+      <li><p>We have stated a rule for derivatives of exponential functions in the same spirit as the rule for power functions:  for any positive real number <m>a</m>, if <m>f(x) = a^x</m>, then <m>f'(x) = a^x \ln(a)</m>.</p></li>
+
+      <li><p>If we are given a constant multiple of a function whose derivative we know, or a sum of functions whose derivatives we know, the Constant Multiple and Sum Rules make it straightforward to compute the derivative of the overall function.  More formally, if <m>f(x)</m> and <m>g(x)</m> are differentiable with derivatives <m>f'(x)</m> and <m>g'(x)</m> and <m>a</m> and <m>b</m> are constants, then
+          <me>
+            \frac{d}{dx} \left[af(x) + bg(x)\right] = af'(x) + bg'(x).
+          </me>
+        </p></li>
+    </ul>
+    <exercises>
+      <exercise>
+        <statement>
+          <p>Let <m>f</m> and <m>g</m> be differentiable functions for which the following information is known: <m>f(2) = 5</m>, <m>g(2) = -3</m>, <m>f'(2) = -1/2</m>, <m>g'(2) = 2</m>.
+
+          <ol>
+            <li><p>Let <m>h</m> be the new function defined by the rule <m>h(x) = 3f(x) - 4g(x)</m>.  Determine <m>h(2)</m> and <m>h'(2)</m>.</p></li>
+
+            <li><p>Find an equation for the tangent line to <m>y = h(x)</m> at the point <m>(2,h(2))</m>.</p></li>
+
+            <li><p>Let <m>p</m> be the function defined by the rule <m>p(x) = -2f(x) + \frac{1}{2}g(x)</m>.  Is <m>p</m> increasing, decreasing, or neither at <m>a = 2</m>?  Why?</p></li>
+
+            <li><p>Estimate the value of <m>p(2.03)</m> by using the local linearization of <m>p</m> at the point <m>(2,p(2))</m>.</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Let functions <m>p</m> and <m>q</m> be the piecewise linear functions given by their respective graphs in <xref ref="F_2.1.Ez3">Figure</xref>. Use the graphs to answer the following questions.</p>
+
+          <figure xml:id="F_2.1.Ez3" >
+            <caption>The graphs of <m>p</m> (in blue) and <m>q</m> (in green).</caption>
+            <image width="73%" source="images/2_1_Ez3" />
+          </figure>
+
+          <ol>
+            <li><p>At what values of <m>x</m> is <m>p</m> not differentiable?  At what values of <m>x</m> is <m>q</m> not differentiable? Why?</p></li>
+
+            <li><p>Let <m>r(x) = p(x) + 2q(x)</m>.  At what values of <m>x</m> is <m>r</m> not differentiable? Why?</p></li>
+
+            <li><p>Determine <m>r'(-2)</m> and <m>r'(0)</m>.</p></li>
+
+            <li><p>Find an equation for the tangent line to <m>y = r(x)</m> at the point <m>(2,r(2))</m>.</p></li>
+          </ol>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Consider the functions <m>r(t) = t^t</m> and <m>s(t) = \arccos(t)</m>, for which you are given the facts that <m>r'(t) = t^t(\ln(t) + 1)</m> and <m>s'(t) = -\frac{1}{\sqrt{1-t^2}}</m>. Do not be concerned with where these derivative formulas come from. We restrict our interest in both functions to the domain <m>0 \lt  t \lt  1</m>.
+
+          <ol>
+            <li><p>Let <m>w(t) = 3t^t - 2\arccos(t)</m>.  Determine <m>w'(t)</m>.</p></li>
+
+            <li><p>Find an equation for the tangent line to <m>y = w(t)</m> at the point <m>(\frac{1}{2}, w(\frac{1}{2}))</m>.</p></li>
+
+            <li><p>Let <m>v(t) = t^t + \arccos(t)</m>.  Is <m>v</m> increasing or decreasing at the instant <m>t = \frac{1}{2}</m>?  Why?</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Let <m>f(x) = a^x</m>. The goal of this problem is to explore how the value of <m>a</m> affects the derivative of <m>f(x)</m>, without assuming we know the rule for <m>\frac{d}{dx}[a^x]</m> that we have stated and used in earlier work in this section.
+
+          <ol>
+            <li><p>Use the limit definition of the derivative to show that
+                <me>
+                  f'(x) = \lim_{h \to 0} \frac{a^x \cdot a^h - a^x}{h}.
+                </me>
+              </p></li>
+
+            <li><p>Explain why it is also true that
+                <me>
+                  f'(x) = a^x \cdot \lim_{h \to 0} \frac{a^h - 1}{h}.
+                </me>
+              </p></li>
+
+            <li><p>Use computing technology and small values of <m>h</m> to estimate the value of
+                <me>
+                  L = \lim_{h \to 0} \frac{a^h - 1}{h}
+                </me>
+                when <m>a = 2</m>.  Do likewise when <m>a = 3</m>.</p></li>
+
+            <li><p>Note that it would be ideal if the value of the limit <m>L</m> was <m>1</m>, for then <m>f</m> would be a particularly special function:  its derivative would be simply <m>a^x</m>, which would mean that its derivative is itself.  By experimenting with different values of <m>a</m> between <m>2</m> and <m>3</m>, try to find a value for <m>a</m> for which
+                <me>
+                  L = \lim_{h \to 0} \frac{a^h - 1}{h} = 1.
+                </me>
+              </p></li>
+
+            <li><p>Compute <m>\ln(2)</m> and <m>\ln(3)</m>.  What does your work in (b) and (c) suggest is true about <m>\frac{d}{dx}[2^x]</m> and <m>\frac{d}{dx}[3^x]</m>?</p></li>
+
+            <li><p>How do your investigations in (d) lead to a particularly important fact about the function 
+                <m>f(x) = e^x</m>?</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+    </exercises>
+  </subsection>
+</section>

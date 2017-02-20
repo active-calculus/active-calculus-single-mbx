@@ -1,0 +1,479 @@
+
+<section xml:id="S_6.3.Mass">
+  <title>Density, Mass, and Center of Mass</title>
+  <introduction>
+    <objectives>
+      <ul>
+        <li><p>How are mass, density, and volume related?</p></li>
+
+        <li><p>How is the mass of an object with varying density computed?</p></li>
+
+        <li><p>What is the center of mass of an object, and how are definite integrals used to compute it?</p></li>
+      </ul>
+    </objectives>
+    <p>We have seen in several different circumstances how studying the units on the integrand and variable of integration enables us to better understand the meaning of a definite integral. For instance, if <m>v(t)</m> is the velocity of an object moving along an axis, measured in feet per second, while <m>t</m> measures time in seconds, then both the definite integral and its Riemann sum approximation,
+      <me>
+        \int_a^b v(t) \, dt \approx \sum_{i=1}^n v(t_i) \triangle t,
+      </me>
+      have their overall units given by the product of the units of <m>v(t)</m> and <m>t</m>:</p>
+
+    (feet/sec)<m>\cdot</m>(sec) = feet.
+
+    <p>Thus, <m>\int_a^b v(t) \, dt</m> measures the total change in position (in feet) of the moving object.</p>
+
+    <p>This type of unit analysis will be particularly helpful to us in what follows. To begin, in the following preview activity we consider two different definite integrals where the integrand is a function that measures how a particular quantity is distributed over a region and think about how the units on the integrand and the variable of integration indicate the meaning of the integral.</p>
+
+    <exploration xml:id="PA_6.3">
+      <p>In each of the following scenarios, we consider the distribution of a quantity along an axis.
+
+      <ol>
+        <li><p>Suppose that the function <m>c(x) = 200 + 100 e^{-0.1x}</m> models the density of traffic on a straight road, measured in cars per mile, where <m>x</m> is number of miles east of a major interchange, and consider the definite integral <m>\int_0^2 (200 + 100 e^{-0.1x}) \, dx</m>.
+
+        <ul>
+          <li>
+            <title>i.</title>
+            <p>What are the units on the product <m>c(x) \cdot \triangle x</m>?</p></li>
+
+          <li>
+            <title>ii.</title>
+            <p>What are the units on the definite integral and its Riemann sum approximation given by
+              <me>
+                \int_0^2 c(x) \, dx \approx \sum_{i=1}^n c(x_i) \triangle x?
+              </me>
+            </p></li>
+
+          <li>
+            <title>iii.</title>
+            <p>Evaluate the definite integral <m>\int_0^2 c(x) \, dx = \int_0^2 (200 + 100 e^{-0.1x}) \, dx</m> and write one sentence to explain the meaning of the value you find.</p></li>
+        </ul>
+        </p></li>
+
+        <li><p>On a 6 foot long shelf filled with books, the function <m>B</m> models the distribution of the weight of the books, measured in pounds per inch, where <m>x</m> is the number of inches from the left end of the bookshelf.  Let <m>B(x)</m> be given by the rule <m>B(x) = 0.5 + \frac{1}{(x+1)^2}</m>.
+
+        <ul>
+          <li>
+            <title>i.</title>
+            <p>What are the units on the product <m>B(x) \cdot \triangle x</m>?</p></li>
+
+          <li>
+            <title>ii.</title>
+            <p>What are the units on the definite integral and its Riemann sum approximation given by
+              <me>
+                \int_{12}^{36} B(x) \, dx \approx \sum_{i=1}^n B(x_i) \triangle x?
+              </me>
+            </p></li>
+
+          <li>
+            <title>iii.</title>
+            <p>Evaluate the definite integral <m>\int_{0}^{72} B(x) \, dx = \int_0^{72} (0.5 + \frac{1}{(x+1)^2}) \, dx</m> and write one sentence to explain the meaning of the value you find.</p></li>
+        </ul>
+        </p></li>
+      </ol>
+      </p>
+    </exploration>
+  </introduction>
+
+  <subsection>
+    <title>Density</title>
+    <p><index><main>density</main></index></p>
+
+    <p>The <em>mass</em> <index><main>mass</main></index> of a quantity, typically measured in metric units such as grams or kilograms, is a measure of the amount of a quantity. In a corresponding way, the <em>density</em> of an object measures the distribution of mass per unit volume. For instance, if a brick has mass 3 kg and volume 0.002 m<m>^3</m>, then the density of the brick is
+      <me>
+        \frac{3 \mbox{kg} }{0.002 \mbox{m} ^3} = 1500 \frac{\mbox{kg} }{\mbox{m} ^3}.
+      </me>
+    </p>
+
+    <p>As another example, the mass density of water is 1000 kg/m<m>^3</m>. Each of these relationships demonstrate the following general principle.</p>
+
+    <p>For an object of constant density <m>d</m>, with mass <m>m</m> and volume <m>V</m>,
+      <me>
+        d = \frac{m}{V}, \ \mbox{or}  \ m = d \cdot V.
+      </me>
+    </p>
+
+    <p>But what happens when the density is not constant?</p>
+
+    <p>If we consider the formula <m>m = d \cdot V</m>, it is reminiscent of two other equations that we have used frequently in recent work: for a body moving in a fixed direction, distance = rate <m>\cdot</m> time, and, for a rectangle, its area is given by <m>A = l \cdot w</m>. These formulas hold when the principal quantities involved, such as the rate the body moves and the height of the rectangle, are <em>constant</em>. When these quantities are not constant, we have turned to the definite integral for assistance. The main idea in each situation is that by working with small slices of the quantity that is varying, we can use a definite integral to add up the values of small pieces on which the quantity of interest (such as the velocity of a moving object) are approximately constant.</p>
+
+    <p>For example, in the setting where we have a nonnegative velocity function that is not constant, over a short time interval <m>\triangle t</m> we know that the distance traveled is approximately <m>v(t) \triangle t</m>, since <m>v(t)</m> is almost constant on a small interval, and for a constant rate, distance = rate <m>\cdot</m> time. Similarly, if we are thinking about the area under a nonnegative function <m>f</m> whose value is changing, on a short interval <m>\triangle x</m> the area under the curve is approximately the area of the rectangle whose height is <m>f(x)</m> and whose width is <m>\triangle x</m>: <m>f(x) \triangle x</m>. Both of these principles are represented visually in <xref ref="F_6.3.VelArea">Figure</xref>.</p>
+
+    <figure xml:id="F_6.3.VelArea" >
+      <caption>At left, estimating a small amount of distance traveled, <m>v(t) \triangle t</m>, and at right, a small amount of area under the curve, <m>f(x) \triangle x</m>.</caption>
+      <image width="73%" source="images/6_3_VelArea" />
+    </figure>
+
+    <p>In a similar way, if we consider the setting where the density of some quantity is not constant, the definite integral enables us to still compute the overall mass of the quantity. Throughout, we will focus on problems where the density varies in only one dimension, say along a single axis, and think about how mass is distributed relative to location along the axis.</p>
+
+    <p>Let's consider a thin bar of length <m>b</m> that is situated so its left end is at the origin, where <m>x = 0</m>, and assume that the bar has constant cross-sectional area of 1 cm<m>^2</m>. We let the function <m>\rho(x)</m> represent the mass density function of the bar, measured in grams per cubic centimeter. That is, given a location <m>x</m>, <m>\rho(x)</m> tells us approximately how much mass will be found in a one-centimeter wide slice of the bar at <m>x</m>.</p>
+
+    <figure xml:id="F_6.3.Bar" >
+      <caption>A thin bar of constant cross-sectional area 1 cm<m>^2</m> with density function <m>\rho(x)</m> g/cm<m>^3</m>.</caption>
+      <image width="73%" source="images/6_3_Bar" />
+    </figure>
+
+    <p>If we now consider a thin slice of the bar of width <m>\triangle x</m>, as pictured in <xref ref="F_6.3.Bar">Figure</xref>, the volume of such a slice is the cross-sectional area times <m>\triangle x</m>. Since the cross-sections each have constant area 1 cm<m>^2</m>, it follows that the volume of the slice is <m>1 \triangle x</m> cm<m>^3</m>. Moreover, since mass is the product of density and volume (when density is constant), we see that the mass of this given slice is approximately
+      <me>
+        \mbox{mass} _{\mbox{slice} } \approx \rho(x) \ \frac{\mbox{g} }{\mbox{cm} ^3} \cdot 1 \triangle x \ \mbox{cm} ^3 = \rho(x) \cdot \triangle x \ \mbox{g} .
+      </me>
+    </p>
+
+    <p>Hence, for the corresponding Riemann sum (and thus for the integral that it approximates),
+      <me>
+        \sum_{i=1}^n \rho(x_i) \triangle x \approx \int_0^b \rho(x) \, dx,
+      </me>
+      we see that these quantities measure the mass of the bar between <m>0</m> and <m>b</m>. (The Riemann sum is an approximation, while the integral will be the exact mass.)</p>
+
+    <p>At this point, we note that we will be focused primarily on situations where mass is distributed relative to horizontal location, <m>x</m>, for objects whose cross-sectional area is constant. In that setting, it makes sense to think of the density function <m>\rho(x)</m> with units <q>mass per unit length,</q> such as g/cm. Thus, when we compute <m>\rho(x) \cdot \triangle x</m> on a small slice <m>\triangle x</m>, the resulting units are g/cm <m>\cdot</m> cm = g, which thus measures the mass of the slice. The general principle follows.</p>
+
+    <p>For an object of constant cross-sectional area whose mass is distributed along a single axis according to the function <m>\rho(x)</m> (whose units are units of mass per unit of length), the total mass, <m>M</m> of the object between <m>x = a</m> and <m>x = b</m> is given by
+      <me>
+        M = \int_a^b \rho(x) \, dx.
+      </me>
+    </p>
+
+    <activity xml:id="A_6.3.1">
+      <p>Consider the following situations in which mass is distributed in a non-constant manner.
+
+      <ol>
+        <li><p>Suppose that a thin rod with constant cross-sectional area of 1 cm<m>^2</m> has its mass distributed according to the density function <m>\rho(x) = 2e^{-0.2x}</m>, where <m>x</m> is the distance in cm from the left end of the rod, and the units on <m>\rho(x)</m> are g/cm.  If the rod is 10 cm long, determine the exact mass of the rod.</p></li>
+
+        <li><p>Consider the cone that has a base of radius 4 m and a height of 5 m.  Picture the cone lying horizontally with the center of its base at the origin and think of the cone as a solid of revolution.
+
+        <ul>
+          <li>
+            <title>i.</title>
+            <p>Write and evaluate a definite integral whose value is the volume of the cone.</p></li>
+
+          <li>
+            <title>ii.</title>
+            <p>Next, suppose that the cone has uniform density of 800 kg/m<m>^3</m>.  What is the mass of the solid cone?</p></li>
+
+          <li>
+            <title>iii.</title>
+            <p>Now suppose that the cone's density is not uniform, but rather that the cone is most dense at its base.  In particular, assume that the density of the cone is uniform across cross sections parallel to its base, but that in each such cross section that is a distance <m>x</m> units from the origin, the density of the cross section is given by the function <m>\rho(x) = 400 + \frac{200}{1+x^2}</m>, measured in kg/m<m>^3</m>.  Determine and evaluate a definite integral whose value is the mass of this cone of non-uniform density.  Do so by first thinking about the mass of a given slice of the cone <m>x</m> units away from the base; remember that in such a slice, the density will be <em>essentially constant</em>.</p></li>
+        </ul>
+        </p></li>
+
+        <li><p>Let a thin rod of constant cross-sectional area 1 cm<m>^2</m> and length 12 cm have its mass be distributed according to the density function <m>\rho(x) = \frac{1}{25}(x-15)^2</m>, measured in g/cm.  Find the exact location <m>z</m> at which to cut the bar so that the two pieces will each have identical mass.</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Small hints for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Solutions for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Weighted Averages</title>
+    <table xml:id="T_6.3.grades" >
+      <caption>A college student's semester grades.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>class</cell>
+          <cell>grade</cell>
+          <cell>grade points</cell>
+          <cell>credits</cell>
+        </row>
+        <row bottom="medium">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell  >chemistry</cell>
+          <cell>B+</cell>
+          <cell>3.3</cell>
+          <cell>5</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>calculus</cell>
+          <cell>A-</cell>
+          <cell>3.7</cell>
+          <cell>4</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>history</cell>
+          <cell>B-</cell>
+          <cell>2.7</cell>
+          <cell>3</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>psychology</cell>
+          <cell>B-</cell>
+          <cell>2.7</cell>
+          <cell>3</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <p>The concept of an average is a natural one, and one that we have used repeatedly as part of our understanding of the meaning of the definite integral. If we have <m>n</m> values <m>a_1</m>, <m>a_2</m>, <m>\ldots</m>, <m>a_n</m>, we know that their average is given by
+      <me>
+        \frac{a_1 + a_2 + \cdots + a_n}{n},
+      </me>
+      and for a quantity being measured by a function <m>f</m> on an interval <m>[a,b]</m>, the average value of the quantity on <m>[a,b]</m> is
+      <me>
+        \frac{1}{b-a} \int_a^b f(x) \, dx.
+      </me>
+    </p>
+
+    <p>As we continue to think about problems involving the distribution of mass, it is natural to consider the idea of a <em>weighted</em> average, <index><main>weighted average</main></index> where certain quantities involved are counted more in the average.</p>
+
+    <p>A common use of weighted averages is in the computation of a student's GPA, where grades are weighted according to credit hours. Let's consider the scenario in <xref ref="T_6.3.grades">Table</xref>.</p>
+
+    <p>If all of the classes were of the same weight (i.e., the same number of credits), the student's GPA would simply be calculated by taking the average
+      <me>
+        \frac{3.3 + 3.7 + 2.7 + 2.7}{4} = 3.1.
+      </me>
+    </p>
+
+    <p>But since the chemistry and calculus courses have higher weights (of 5 and 4 credits respectively), we actually compute the GPA according to the weighted average
+      <me>
+        \frac{3.3 \cdot 5 + 3.7 \cdot 4 + 2.7 \cdot 3 + 2.7 \cdot 3}{5 + 4 + 3 + 3} = 3.1\overline{6}.
+      </me>
+    </p>
+
+    <p>The weighted average reflects the fact that chemistry and calculus, as courses with higher credits, have a greater impact on the students' grade point average. Note particularly that in the weighted average, each grade gets multiplied by its weight, and we divide by the sum of the weights.</p>
+
+    <p>In the following activity, we explore further how weighted averages can be used to find the balancing point of a physical system.</p>
+
+    <activity xml:id="A_6.3.2">
+      <p>For quantities of equal weight, such as two children on a teeter-totter, the balancing point is found by taking the average of their locations. When the weights of the quantities differ, we use a weighted average of their respective locations to find the balancing point.
+
+      <ol>
+        <li><p>Suppose that a shelf is 6 feet long, with its left end situated at <m>x = 0</m>.  If one book of weight 1 lb is placed at <m>x_1 = 0</m>, and another book of weight 1 lb is placed at <m>x_2 = 6</m>, what is the location of <m>\overline{x}</m>, the point at which the shelf would (theoretically) balance on a fulcrum?</p></li>
+
+        <li><p>Now, say that we place four books on the shelf, each weighing 1 lb:  at <m>x_1 = 0</m>, at <m>x_2 = 2</m>, at <m>x_3 = 4</m>, and at <m>x_4 = 6</m>.  Find <m>\overline{x}</m>, the balancing point of the shelf.</p></li>
+
+        <li><p>How does <m>\overline{x}</m> change if we change the location of the third book?  Say the locations of the 1-lb books are  <m>x_1 = 0</m>, <m>x_2 = 2</m>, <m>x_3 = 3</m>, and <m>x_4 = 6</m>.</p></li>
+
+        <li><p>Next, suppose that we place four books on the shelf, but of varying weights:  at <m>x_1 = 0</m> a 2-lb book, at <m>x_2 = 2</m> a 3-lb book, and <m>x_3 = 4</m> a 1-lb book, and at <m>x_4 = 6</m> a 1-lb book.  Use a weighted average of the locations to find <m>\overline{x}</m>, the balancing point of the shelf.  How does the balancing point in this scenario compare to that found in (b)?</p></li>
+
+        <li><p>What happens if we change the location of one of the books?  Say that we keep everything the same in (d), except that <m>x_3 = 5</m>.  How does <m>\overline{x}</m> change?</p></li>
+
+        <li><p>What happens if we change the weight of one of the books?  Say that we keep everything the same in (d), except that the book at <m>x_3 = 4</m> now weighs 2 lbs.  How does <m>\overline{x}</m> change?</p></li>
+
+        <li><p>Experiment with a couple of different scenarios of your choosing where you move the location of one of the books to the left, or you decrease the weight of one of the books.</p></li>
+
+        <li><p>Write a couple of sentences to explain how adjusting the location of one of the books or the weight of one of the books affects the location of the balancing point of the shelf.  Think carefully here about how your changes should be considered relative to the location of the balancing point <m>\overline{x}</m> of the current scenario.</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Small hints for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Solutions for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Center of Mass</title>
+    <p>In <xref ref="A_6.3.2">Activity</xref>, we saw that the balancing point of a system of point-masses<fn>In the activity, we actually used <em>weight</em> rather than <em>mass</em>.  Since weight is computed by the gravitational constant times mass, the computations for the balancing point result in the same location regardless of whether we use weight or mass, since the gravitational constant is present in both the numerator and denominator of the weighted average.</fn> (such as books on a shelf) is found by taking a weighted average of their respective locations. In the activity, we were computing the <em>center of mass</em> of a system of masses distributed along an axis, which is the balancing point of the axis on which the masses rest.</p>
+
+    <p>For a collection of <m>n</m> masses <m>m_1</m>, <m>\ldots</m>, <m>m_n</m> that are distributed along a single axis at the locations <m>x_1</m>, <m>\ldots</m>, <m>x_n</m>, the <em>center of mass</em> is given by
+      <me>
+        \overline{x} = \frac{x_1 m_1  + x_2 m_2 + \cdots x_n m_n}{m_1 + m_2 + \cdots + m_n}.
+      </me>
+    </p>
+
+    <p>What if we instead consider a thin bar over which density is distributed continuously? If the density is constant, it is obvious that the balancing point of the bar is its midpoint. But if density is not constant, we must compute a weighted average. Let's say that the function <m>\rho(x)</m> tells us the density distribution along the bar, measured in g/cm. If we slice the bar into small sections, this enables us to think of the bar as holding a collection of adjacent point-masses. For a slice of thickness <m>\triangle x</m> at location <m>x_i</m>, note that the mass of the slice, <m>m_i</m>, satisfies <m>m_i \approx \rho(x_i) \triangle x</m>.</p>
+
+    <p>Taking <m>n</m> slices of the bar, we can approximate its center of mass by
+      <me>
+        \overline{x} \approx \frac{x_1 \cdot \rho(x_1) \triangle x + x_2 \cdot \rho(x_2) \triangle x  + \cdots + x_n \cdot \rho(x_n) \triangle x }{\rho(x_1) \triangle x + \rho(x_2) \triangle x + \cdots + \rho(x_n) \triangle x}.
+      </me>
+    </p>
+
+    <p>Rewriting the sums in sigma notation, it follows that
+      <men xml:id="E_CtrOfM" >
+        \overline{x} \approx \frac{\sum_{i = 1}^{n} x_i \cdot \rho(x_i) \triangle x}{\sum_{i = 1}^{n} \rho(x_i) \triangle x}.
+      </men>
+    </p>
+
+    <p>Moreover, it is apparent that the greater the number of slices, the more accurate our estimate of the balancing point will be, and that the sums in Equation<nbsp /><xref ref="E_CtrOfM" /> can be viewed as Riemann sums. Hence, in the limit as <m>n \to \infty</m>, we find that the center of mass is given by the quotient of two integrals.</p>
+
+    <p>For a thin rod of density <m>\rho(x)</m> distributed along an axis from <m>x = a</m> to <m>x = b</m>, the center of mass of the rod is given by
+      <me>
+        \overline{x} = \frac{\int_a^b x \rho(x) \, dx}{\int_a^b \rho(x) \, dx}.
+      </me>
+    </p>
+
+    <p>Note particularly that the denominator of <m>\overline{x}</m> is the mass of the bar, and that this quotient of integrals is simply the continuous version of the weighted average of locations, <m>x</m>, along the bar.</p>
+
+    <activity xml:id="A_6.3.3">
+      <p>Consider a thin bar of length 20 cm whose density is distributed according to the function <m>\rho(x) = 4 + 0.1x</m>, where <m>x = 0</m> represents the left end of the bar. Assume that <m>\rho</m> is measured in g/cm and <m>x</m> is measured in cm.
+
+      <ol>
+        <li><p>Find the total mass, <m>M</m>, of the bar.</p></li>
+
+        <li><p>Without doing any calculations, do you expect the center of mass of the bar to be equal to 10, less than 10, or greater than 10?  Why?</p></li>
+
+        <li><p>Compute <m>\overline{x}</m>, the exact center of mass of the bar.</p></li>
+
+        <li><p>What is the average density of the bar?</p></li>
+
+        <li><p>Now consider a different density function, given by <m>p(x) = 4e^{0.020732x}</m>, also for a bar of length 20 cm whose left end is at <m>x = 0</m>.  Plot both <m>\rho(x)</m> and <m>p(x)</m> on the same axes.  Without doing any calculations, which bar do you expect to have the greater center of mass?  Why?</p></li>
+
+        <li><p>Compute the exact center of mass of the bar described in (e) whose density function is <m>p(x) = 4e^{0.020732x}</m>.  Check the result against the prediction you made in (e).</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Small hints for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Solutions for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+    <ul>
+      <li><p>For an object of constant density <m>D</m>, with volume <m>V</m> and mass <m>m</m>, we know that <m>m = D \cdot V.</m></p></li>
+
+      <li><p>If an object with constant cross-sectional area (such as a thin bar) has its density distributed along an axis according to the function <m>\rho(x)</m>, then we can find the mass of the object between <m>x = a</m> and <m>x = b</m> by
+          <me>
+            m = \int_a^b \rho(x) \, dx.
+          </me>
+        </p></li>
+
+      <li><p>For a system of point-masses distributed along an axis, say <m>m_1, \ldots, m_n</m> at locations <m>x_1, \ldots, x_n</m>, the center of mass, <m>\overline{x}</m>, is given by the weighted average
+          <me>
+            \overline{x} = \frac{\sum_{i=1}^n x_i m_i}{\sum_{i=1}^n m_i}.
+          </me>
+          If instead we have mass continuously distributed along an axis, such as by a density function <m>\rho(x)</m> for a thin bar of constant cross-sectional area, the center of mass of the portion of the bar between <m>x = a</m> and <m>x = b</m> is given by
+          <me>
+            \overline{x} = \frac{\int_a^b x \rho(x) \, dx}{\int_a^b \rho(x) \, dx}.
+          </me>
+          In each situation, <m>\overline{x}</m> represents the balancing point of the system of masses or of the portion of the bar.</p></li>
+    </ul>
+    <exercises>
+      <exercise>
+        <statement>
+          <p>Let a thin rod of length <m>a</m> have density distribution function <m>\rho(x) = 10e^{-0.1x}</m>, where <m>x</m> is measured in cm and <m>\rho</m> in grams per centimeter.
+
+          <ol>
+            <li><p>If the mass of the rod is 30 g, what is the value of <m>a</m>?</p></li>
+
+            <li><p>For the 30g rod, will the center of mass lie at its midpoint, to the left of the midpoint, or to the right of the midpoint?  Why?</p></li>
+
+            <li><p>For the 30g rod, find the center of mass, and compare your prediction in (b).</p></li>
+
+            <li><p>At what value of <m>x</m> should the 30g rod be cut in order to form two pieces of equal mass?</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Consider two thin bars of constant cross-sectional area, each of length 10 cm, with respective mass density functions <m>\rho(x) = \frac{1}{1+x^2}</m> and <m>p(x) = e^{-0.1x}</m>.</p>
+
+          <ol>
+          <li><p>Find the mass of each bar.</p></li>
+
+          <li><p>Find the center of mass of each bar.</p></li>
+
+          <li><p>Now consider a new 10 cm bar whose mass density function is <m>f(x) = \rho(x) + p(x)</m>.</p>
+
+          <ol>
+            <li>
+              <title>i.</title>
+              <p>Explain how you can easily find the mass of this new bar with little to no additional work.</p></li>
+
+            <li>
+              <title>ii.</title>
+              <p>Similarly, compute <m>\int_0^{10} xf(x) \, dx</m> as simply as possible, in light of earlier computations.</p></li>
+
+            <li>
+              <title>iii.</title>
+              <p>True or false:  the center of mass of this new bar is the average of the centers of mass of the two earlier bars.  Write at least one sentence to say why your conclusion makes sense.</p></li>
+          </ol>
+          </li>
+          </ol>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Consider the curve given by <m>y = f(x) = 2xe^{-1.25x} + (30-x) e^{-0.25(30-x)}</m>.
+
+          <ol>
+            <li><p>Plot this curve in the window <m>x = 0 \ldots 30</m>, <m>y = 0 \ldots 3</m> (with constrained scaling so the units on the <m>x</m> and <m>y</m> axis are equal), and use it to generate a solid of revolution about the <m>x</m>-axis.  Explain why this curve could generate a reasonable model of a baseball bat.</p></li>
+
+            <li><p>Let <m>x</m> and <m>y</m> be measured in inches.  Find the total volume of the baseball bat generated by revolving the given curve about the <m>x</m>-axis.  Include units on your answer</p></li>
+
+            <li><p>Suppose that the baseball bat has constant weight density, and that the weight density is 0.6 ounces per cubic inch.  Find the total weight of the bat whose volume you found in (b).</p></li>
+
+            <li><p>Because the baseball bat does not have constant cross-sectional area, we see that the amount of weight concentrated at a location <m>x</m> along the bat is determined by the volume of a slice at location <m>x</m>.  Explain why we can think about the function <m>\rho(x) = 0.6 \pi f(x)^2</m> (where <m>f</m> is the function given at the start of the problem) as being the weight density function for how the weight of the baseball bat is distributed from <m>x = 0</m> to <m>x = 30</m>.</p></li>
+
+            <li><p>Compute the center of mass of the baseball bat.</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+    </exercises>
+  </subsection>
+</section>

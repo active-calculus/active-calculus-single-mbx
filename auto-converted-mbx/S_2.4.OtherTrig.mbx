@@ -1,0 +1,344 @@
+
+<section xml:id="S_2.4.OtherTrig">
+  <title>Derivatives of other trigonometric functions</title>
+  <introduction>
+    <objectives>
+      <ul>
+        <li><p>What are the derivatives of the tangent, cotangent, secant, and cosecant functions?</p></li>
+
+        <li><p>How do the derivatives of <m>\tan(x)</m>, <m>\cot(x)</m>, <m>\sec(x)</m>, and <m>\csc(x)</m> combine with other derivative rules we have developed to expand the library of functions we can quickly differentiate?</p></li>
+      </ul>
+    </objectives>
+    <p>One of the powerful themes in trigonometry <index><main>trigonometry</main></index> is that the entire subject emanates from a very simple idea: locating a point on the unit circle.</p>
+
+    <figure xml:id="F_2.4.UnitCircle" >
+      <caption>The unit circle and the definition of the sine and cosine functions.</caption>
+      <image width="73%" source="images/2_4_UnitCircle" />
+    </figure>
+
+    <p>Because each angle <m>\theta</m> corresponds to one and only one point <m>(x,y)</m> on the unit circle, the <m>x</m>- and <m>y</m>-coordinates of this point are each functions of <m>\theta</m>. Indeed, this is the very definition of <m>\cos(\theta)</m> and <m>\sin(\theta)</m>: <m>\cos(\theta)</m> is the <m>x</m>-coordinate of the point on the unit circle corresponding to the angle <m>\theta</m>, and <m>\sin(\theta)</m> is the <m>y</m>-coordinate. From this simple definition, all of trigonometry is founded. For instance, the fundamental trigonometric identity<index><main>trigonometry</main><sub>fundamental trigonometric identity</sub></index>,
+      <me>
+        \sin^2(\theta) + \cos^2(\theta) = 1,
+      </me>
+      is a restatement of the Pythagorean Theorem, applied to the right triangle shown in <xref ref="F_2.4.UnitCircle">Figure</xref>.</p>
+
+    <p>We recall as well that there are four other trigonometric functions, each defined in terms of the sine and/or cosine functions. These six trigonometric functions together offer us a wide range of flexibility in problems involving right triangles. The tangent function <index><main>tangent</main></index> is defined by <m>\tan(\theta) = \frac{\sin(\theta)}{\cos(\theta)}</m>, while the cotangent function is its reciprocal: <m>\cot(\theta) = \frac{\cos(\theta)}{\sin(\theta)}</m>. The secant function is the reciprocal of the cosine function, <m>\sec(\theta) = \frac{1}{\cos(\theta)}</m>, and the cosecant function is the reciprocal of the sine function, <m>\csc(\theta) = \frac{1}{\sin(\theta)}</m>.</p>
+
+    <p>Because we know the derivatives of the sine and cosine function, and the other four trigonometric functions are defined in terms of these familiar functions, we can now develop shortcut differentiation rules for the tangent, cotangent, secant, and cosecant functions. In this section's preview activity, we work through the steps to find the derivative of <m>y = \tan(x)</m>.</p>
+
+    <exploration xml:id="PA_2.4">
+      <p>Consider the function <m>f(x) = \tan(x)</m>, and remember that</p>
+
+      <p><m>\tan(x) = \frac{\sin(x)}{\cos(x)}</m>.
+
+      <ol>
+        <li><p>What is the domain of <m>f</m>?</p></li>
+
+        <li><p>Use the quotient rule to show that one expression for <m>f'(x)</m> is
+            <me>
+              f'(x) = \frac{\cos(x)\cos(x) + \sin(x)\sin(x)}{\cos^2(x)}.
+            </me>
+          </p></li>
+
+        <li><p>What is the Fundamental Trigonometric Identity?  How can this identity be used to find a simpler form for <m>f'(x)</m>?</p></li>
+
+        <li><p>Recall that <m>\sec(x) = \frac{1}{\cos(x)}</m>.  How can we express <m>f'(x)</m> in terms of the secant function?</p></li>
+
+        <li><p>For what values of <m>x</m> is <m>f'(x)</m> defined?  How does this set compare to the domain of <m>f</m>?</p></li>
+      </ol>
+      </p>
+    </exploration>
+  </introduction>
+
+  <subsection>
+    <title>Derivatives of the cotangent, secant, and cosecant functions</title>
+    <p><index><main>cotangent</main></index> <index><main>secant</main></index> <index><main>cosecant</main></index></p>
+
+    <p>In <xref ref="PA_2.4">Preview Activity</xref>, we found that the derivative of the tangent function can be expressed in several ways, but most simply in terms of the secant function. Next, we develop the derivative of the cotangent function.</p>
+
+    <p>Let <m>g(x) = \cot(x)</m>. To find <m>g'(x)</m>, we observe that <m>g(x) = \frac{\cos(x)}{\sin(x)}</m> and apply the quotient rule. Hence
+      <md>
+        <mrow>g'(x) =\mathstrut \amp  \frac{\sin(x)(-\sin(x)) - \cos(x) \cos(x)}{\sin^2(x)}</mrow>
+        <mrow>=\mathstrut \amp  -\frac{\sin^2(x) + \cos^2(x)}{\sin^2(x)}</mrow>
+      </md>
+    </p>
+
+    <p>By the Fundamental Trigonometric Identity, we see that <m>g'(x) = -\frac{1}{\sin^2(x)}</m>; recalling that <m>\csc(x) = \frac{1}{\sin(x)}</m>, it follows that we can most simply express <m>g'</m> by the rule
+      <me>
+        g'(x) = -\csc^2(x).
+      </me>
+    </p>
+
+    <p>Note that neither <m>g</m> nor <m>g'</m> is defined when <m>\sin(x) = 0</m>, which occurs at every integer multiple of <m>\pi</m>. Hence we have the following rule.</p>
+
+    <p><em>Cotangent Function:</em> <index><main>derivative</main><sub>cotangent</sub></index> For all real numbers <m>x</m> such that <m>x \ne k\pi</m>, where <m>k = 0, \pm 1, \pm 2, \ldots</m>,
+      <me>
+        \frac{d}{dx} [\cot(x)] = -\csc^2(x).
+      </me>
+    </p>
+
+    <p>Observe that the shortcut rule for the cotangent function is very similar to the rule we discovered in <xref ref="PA_2.4">Preview Activity</xref> for the tangent function.</p>
+
+    <p><em>Tangent Function:</em> <index><main>derivative</main><sub>tangent</sub></index> For all real numbers <m>x</m> such that <m>x \ne \frac{(2k+1)\pi}{2}</m>, where <m>k = \pm 1, \pm 2, \ldots</m>,
+      <me>
+        \frac{d}{dx} [\tan(x)] = \sec^2(x).
+      </me>
+    </p>
+
+    <p>In the next two activities, we develop the rules for differentiating the secant and cosecant functions.</p>
+
+    <activity xml:id="A_2.4.1">
+      <p>Let <m>h(x) = \sec(x)</m> and recall that <m>\sec(x) = \frac{1}{\cos(x)}</m>.
+
+      <ol>
+        <li><p>What is the domain of <m>h</m>?</p></li>
+
+        <li><p>Use the quotient rule to develop a formula for <m>h'(x)</m> that is expressed completely in terms of <m>\sin(x)</m> and <m>\cos(x)</m>.</p></li>
+
+        <li><p>How can you use other relationships among trigonometric functions to write <m>h'(x)</m> only in terms of <m>\tan(x)</m> and <m>\sec(x)</m>?</p></li>
+
+        <li><p>What is the domain of <m>h'</m>?  How does this compare to the domain of <m>h</m>?</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>For what values of <m>x</m> is <m>\cos(x) = 0</m>?</p></li>
+
+          <li><p>Don't forget that <m>\frac{d}{dx}[1] = 0</m>.</p></li>
+
+          <li><p>Consider rewriting <m>\frac{\sin(x)}{\cos^2(x)}</m> as <m>\frac{1}{\cos(x)} \cdot \frac{\sin(x)}{\cos(x)}</m>.</p></li>
+
+          <li><p>Observe that <m>\cos(x)</m> is still present in the denominator of <m>h'(x)</m>.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p><m>h(x) = \sec(x)</m> is defined for all <m>x</m> for which <m>\cos(x) \ne 0</m>.  Hence the domain of <m>h</m> is all real numbers <m>x</m> such that <m>x \ne \frac{k\pi}{2}</m>, where <m>k = \pm 1, \pm 2, \ldots</m>.</p></li>
+
+          <li><p>By the quotient rule,
+              <me>
+                h'(x) = \frac{0 - 1  (-\sin(x))}{\cos^2(x)} = \frac{\sin(x)}{\cos^2(x)}.
+              </me>
+            </p></li>
+
+          <li><p>Observe that <m>h'(x) = \frac{\sin(x)}{\cos^2(x)} = \frac{1}{\cos(x)} \cdot \frac{\sin(x)}{\cos(x)},</m> so
+              <me>
+                h'(x) = \sec(x) \tan(x).
+              </me>
+            </p></li>
+
+          <li><p>The derivative <m>h'(x)</m> is, like <m>h(x)</m>, defined for all values of <m>x</m> for which <m>\cos(x) \ne 0</m>.  Therefore, <m>h</m> and <m>h'</m> have the same domain:  all real numbers <m>x</m> such that <m>x \ne \frac{k\pi}{2}</m>, where <m>k = \pm 1, \pm 2, \ldots</m>.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <activity xml:id="A_2.4.2">
+      <p>Let <m>p(x) = \csc(x)</m> and recall that <m>\csc(x) = \frac{1}{\sin(x)}</m>.
+
+      <ol>
+        <li><p>What is the domain of <m>p</m>?</p></li>
+
+        <li><p>Use the quotient rule to develop a formula for <m>p'(x)</m> that is expressed completely in terms of <m>\sin(x)</m> and <m>\cos(x)</m>.</p></li>
+
+        <li><p>How can you use other relationships among trigonometric functions to write <m>p'(x)</m> only in terms of <m>\cot(x)</m> and <m>\csc(x)</m>?</p></li>
+
+        <li><p>What is the domain of <m>p'</m>?  How does this compare to the domain of <m>p</m>?</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>For what values of <m>x</m> is <m>\sin(x) = 0</m>?</p></li>
+
+          <li><p>Don't forget that <m>\frac{d}{dx}[1] = 0</m>.</p></li>
+
+          <li><p>Consider rewriting <m>\frac{\cos(x)}{\sin^2(x)}</m> as <m>\frac{1}{\sin(x)} \cdot \frac{\cos(x)}{\sin(x)}</m>.</p></li>
+
+          <li><p>Observe that <m>\sin(x)</m> is still present in the denominator of <m>h'(x)</m>.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p><m>p(x) = \csc(x)</m> is defined for all <m>x</m> for which <m>\sin(x) \ne 0</m>.  Hence the domain of <m>h</m> is all real numbers <m>x</m> such that <m>x k\pi</m>, where <m>k = 0, \pm 1, \pm 2, \ldots</m>.</p></li>
+
+          <li><p>By the quotient rule,
+              <me>
+                h'(x) = \frac{0 - 1 \cdot (\cos(x))}{\sin^2(x)} = -\frac{\cos(x)}{\sin^2(x)}.
+              </me>
+            </p></li>
+
+          <li><p>Observe that <m>h'(x) = -\frac{\cos(x)}{\sin^2(x)} = -\frac{1}{\sin(x)} \cdot \frac{\cos(x)}{\sin(x)},</m> so
+              <me>
+                h'(x) = -\csc(x) \cot(x).
+              </me>
+            </p></li>
+
+          <li><p>The derivative <m>p'(x)</m> is, like <m>p(x)</m>, defined for all values of <m>x</m> for which <m>\sin(x) \ne 0</m>.  Therefore, <m>p</m> and <m>p'</m> have the same domain:  all real numbers <m>x</m> such that <m>x \ne k\pi</m>, where <m>k = 0, \pm 1, \pm 2, \ldots</m>.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <p>The quotient rule has thus enabled us to determine the derivatives of the tangent, cotangent, secant, and cosecant functions, expanding our overall library of basic functions we can differentiate. Moreover, we observe that just as the derivative of any polynomial function is a polynomial, and the derivative of any exponential function is another exponential function, so it is that the derivative of any basic trigonometric function is another function that consists of basic trigonometric functions. This makes sense because all trigonometric functions are periodic, and hence their derivatives will be periodic, too.</p>
+
+    <p>As has been and will continue to be the case throughout our work in <xref ref="C_2">Chapter</xref>, the derivative retains all of its fundamental meaning as an instantaneous rate of change and as the slope of the tangent line to the function under consideration. Our present work primarily expands the list of functions for which we can quickly determine a formula for the derivative. Moreover, with the addition of <m>\tan(x)</m>, <m>\cot(x)</m>, <m>\sec(x)</m>, and <m>\csc(x)</m> to our library of basic functions, there are many more functions we can differentiate through the sum, constant multiple, product, and quotient rules.</p>
+
+    <activity xml:id="A_2.4.3">
+      <p>Answer each of the following questions. Where a derivative is requested, be sure to label the derivative function with its name using proper notation.
+
+      <ol>
+        <li><p>Let <m>f(x) = 5 \sec(x) - 2\csc(x)</m>.  Find the slope of the tangent line to <m>f</m> at the point where <m>x =\frac{\pi}{3}</m>.</p></li>
+
+        <li><p>Let <m>p(z) = z^2\sec(z) - z\cot(z)</m>.  Find the instantaneous rate of change of <m>p</m> at the point where <m>z = \frac{\pi}{4}</m>.</p></li>
+
+        <li><p>Let <m>h(t) = \displaystyle \frac{\tan (t)}{t^2+1} - 2e^t \cos(t)</m>.  Find <m>h'(t)</m>.</p></li>
+
+        <li><p>Let <m>g(r) = \displaystyle \frac{r \sec(r) }{5^r}</m>.  Find <m>g'(r)</m>.</p></li>
+
+        <li><p>When a mass hangs from a spring and is set in motion, the object's position oscillates in a way that the size of the oscillations decrease.  This is usually called a <em>damped oscillation</em>.  Suppose that for a particular object, its displacement from equilibrium (where the object sits at rest) is modeled by the function
+            <me>
+              s(t) = \frac{15 \sin(t)}{e^t}.
+            </me>
+            Assume that <m>s</m> is measured in inches and <m>t</m> in seconds.  Sketch a graph of this function for <m>t \ge 0</m> to see how it represents the situation described.  Then compute <m>ds/dt</m>, state the units on this function, and explain what it tells you about the object's motion.  Finally, compute and interpret <m>s'(2)</m>.</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>What rule(s) can help you determine <m>f'(x)</m>?</p></li>
+
+          <li><p>Note that <m>p</m> is a sum of two functions.  What rule is needed to differentiate each term in the sum?</p></li>
+
+          <li><p>Observe that <m>h</m> is a sum of two functions; the first term in the sum is a quotient, while the second is a product.</p></li>
+
+          <li><p>What is the overall structure of <m>g</m>?  What is the algebraic structure of the numerator of <m>g</m>?</p></li>
+
+          <li><p>Keep in mind that the derivative of position tells us the instantaneous velocity.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Using the sum and constant multiple rules along with the formulas for the derivatives of <m>\sec(x)</m> and <m>\csc(x)</m>, we find that
+              <me>
+                f'(x) = 5 \sec(x)\tan(x) + 2\csc(x)\cot(x).
+              </me>
+              Therefore, the slope of the tangent line to <m>f</m> at the point where <m>x =\frac{\pi}{3}</m> is given by <m>m = f'(\frac{\pi}{3}) =  5 \sec(\frac{\pi}{3})\tan(\frac{\pi}{3}) + 2\csc(\frac{\pi}{3})\cot(\frac{\pi}{3}) = 5 \cdot 2 \cdot \sqrt{3} + 2 \cdot \frac{2}{\sqrt{3}} \cdot \frac{1}{\sqrt{3}} = 10\sqrt{3} + \frac{4}{3}.</m></p></li>
+
+          <li><p>By the sum rule and two applications of the product rule, we have
+              <md>
+                <mrow>p'(z) =\mathstrut \amp  \frac{d}{dz}[z^2\sec(z)] - \frac{d}{dz}[z\cot(z)]</mrow>
+                <mrow>=\mathstrut \amp  [z^2 \sec(z) \tan(z) + \sec(z) \cdot 2z] - [z(-\csc^2(z)) + \cot(z) \cdot 1]</mrow>
+                <mrow>=\mathstrut \amp  z^2 \sec(z) \tan(z) + 2z\sec(z) + z\csc^2(z) - \cot(z).</mrow>
+              </md>
+              Thus, the instantaneous rate of change of <m>p</m> at the point where <m>z = \frac{\pi}{4}</m> is
+              <md>
+                <mrow>p'(\frac{\pi}{4}) =\mathstrut \amp  (\frac{\pi}{4})^2 \sec(\frac{\pi}{4}) \tan(\frac{\pi}{4}) + 2\frac{\pi}{4}\sec(\frac{\pi}{4}) + \frac{\pi}{4}\csc^2(\frac{\pi}{4}) - \cot(\frac{\pi}{4})</mrow>
+                <mrow>=\mathstrut \amp  \frac{\pi^2}{16} \sqrt{2} + 2\frac{\pi}{4}\sqrt{2} + \frac{\pi}{4}2 - 1</mrow>
+                <mrow>=\mathstrut \amp  \frac{\pi^2}{16} \sqrt{2} + \frac{\sqrt{2}\pi}{2} + \frac{\pi}{2} - 1</mrow>
+              </md>
+            </p></li>
+
+          <li><p>Using the sum and constant multiple rules, followed by the quotient rule on the first term and the product rule on the second, we find that
+              <md>
+                <mrow>h'(t) =\mathstrut \amp  \frac{d}{dt}\left[ \frac{\tan (t)}{t^2+1} \right] - 2\frac{d}{dt}\left[e^t \cos(t)\right]</mrow>
+                <mrow>=\mathstrut \amp  \frac{(t^2+1) \sec^2(t) - \tan(t) (2t)}{(t^2 + 1)^2} - 2(e^t(-\sin(t)) + \cos(t)e^t)</mrow>
+                <mrow>=\mathstrut \amp  \frac{(t^2+1) \sec^2(t) - 2t \tan(t)}{(t^2 + 1)^2} + 2e^t \sin(t) - 2 e^t\cos(t)</mrow>
+              </md>
+            </p></li>
+
+          <li><p>Note that <m>g</m> is fundamentally a quotient, so we need to use the quotient rule.  But the numerator of <m>g</m> is a product, so the product rule will be required to compute the derivative of the top function.  Executing the quotient rule and proceeding, we find that
+              <md>
+                <mrow>g'(r) =\mathstrut \amp  \frac{5^r \frac{d}{dr}[r \sec(r)] - r\sec(r) \cdot 5^r \ln(5) }{(5^r)^2}</mrow>
+                <mrow>=\mathstrut \amp  \frac{5^r [r \sec(r) \tan(r) + \sec(r) \cdot 1] - r\sec(r) \cdot 5^r \ln(5) }{(5^r)^2}</mrow>
+                <mrow>=\mathstrut \amp  \frac{r \sec(r) \tan(r) + \sec(r) - r 5^r \sec(r)}{5^r}</mrow>
+              </md>
+            </p></li>
+
+          <li><p>By the quotient rule,
+              <me>
+                \frac{ds}{dt} = \frac{e^t \cdot 15 \cos(t) - 15\sin(t) \cdot e^t}{(e^t)^2} = \frac{15\cos(t) - 15\sin(t)}{e^t}.
+              </me>
+              The function <m>\frac{ds}{dt} = s'(t)</m> measures the instantaneous vertical velocity of the mass that is attached to the spring.  In particular, <m>s'(2) = \frac{15\cos(2) - 15\sin(2)}{e^2} \approx -2.69</m> inches per second, which tells us at the instant <m>t = 2</m>, the mass is moving downward at an instantaneous rate of 2.69 inches per second.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+    <ul>
+      <li><p>The derivatives of the other four trigonometric functions are
+          <me>
+            \frac{d}{dx}[\tan(x)] = \sec^2(x), \ \ \frac{d}{dx}[\cot(x)] = -\csc^2(x),
+          </me>
+          <me>
+            \frac{d}{dx}[\sec(x)] = \sec(x)\tan(x), \ \mbox{and}  \ \frac{d}{dx}[\csc(x)] = -\csc(x)\cot(x).
+          </me>
+          Each derivative exists and is defined on the same domain as the original function.  For example, both the tangent function and its derivative are defined for all real numbers <m>x</m> such that <m>x \ne \frac{k\pi}{2}</m>, where <m>k = \pm 1, \pm 2, \ldots</m>.</p></li>
+
+      <li><p>The above four rules for the derivatives of the tangent, cotangent, secant, and cosecant can be used along with the rules for power functions, exponential functions, and the sine and cosine, as well as the sum, constant multiple, product, and quotient rules, to quickly differentiate a wide range of different functions.</p></li>
+    </ul>
+    <exercises>
+      <exercise>
+        <statement>
+          <p>An object moving vertically has its height at time <m>t</m> (measured in feet, with time in seconds) given by the function <m>h(t) = 3 + \frac{2\cos(t)}{1.2^t}</m>.
+
+          <ol>
+            <li><p>What is the object's instantaneous velocity when <m>t =2</m>?</p></li>
+
+            <li><p>What is the object's acceleration at the instant <m>t = 2</m>?</p></li>
+
+            <li><p>Describe in everyday language the behavior of the object at the instant <m>t = 2</m>.</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Let <m>f(x) = \sin(x) \cot(x)</m>.
+
+          <ol>
+            <li><p>Use the product rule to find <m>f'(x)</m>.</p></li>
+
+            <li><p>True or false: for all real numbers <m>x</m>, <m>f(x) = \cos(x)</m>.</p></li>
+
+            <li><p>Explain why the function that you found in (a) is almost the opposite of the sine function, but not quite.  (Hint: convert all of the trigonometric functions in (a) to sines and cosines, and work to simplify.  Think carefully about the domain of <m>f</m> and the domain of <m>f'</m>.)</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Let <m>p(z)</m> be given by the rule
+          <me>
+            p(z) = \frac{z\tan(z)}{z^2\sec(z) + 1} + 3 e^z + 1.
+          </me>
+
+          <ol>
+            <li><p>Determine <m>p'(z)</m>.</p></li>
+
+            <li><p>Find an equation for the tangent line to <m>p</m> at the point where <m>z = 0</m>.</p></li>
+
+            <li><p>At <m>z = 0</m>, is <m>p</m> increasing, decreasing, or neither?  Why?</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+    </exercises>
+  </subsection>
+</section>

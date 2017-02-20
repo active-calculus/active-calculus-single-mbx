@@ -1,0 +1,579 @@
+
+<section xml:id="S_7.1.DEIntro">
+  <title>An Introduction to Differential Equations</title>
+  <introduction>
+    <objectives>
+      <ul>
+        <li><p>What is a differential equation and what
+              kinds of information can it tell us?</p></li>
+
+        <li><p>How do differential equations arise in the world around us?</p></li>
+
+        <li><p>What do we mean by a solution to a differential equation?</p></li>
+      </ul>
+    </objectives>
+    <p>In previous chapters, we have seen that a function's derivative tells
+      us the rate at which the function is changing. More recently,
+      the Fundamental Theorem of Calculus helped us to determine
+      the total change of a function over an interval
+      when we know the function's rate
+      of change. For instance, an object's velocity tells us the rate of
+      change of that object's position. By integrating the velocity over a
+      time interval, we may determine by how much the position changes over
+      that time interval. In particular, if we know where the object is at the beginning
+      of that interval, then we have enough information to accurately
+      predict where it will be at the end of the interval.</p>
+
+    <p>In this chapter, we will introduce the concept of <em>differential equations</em> and explore
+      this idea in more depth. Simply said, a differential equation is an equation that provides a
+      description of a function's derivative, which means that it tells us
+      the function's rate of change. Using this information, we would like
+      to learn as much as possible about the function itself. For instance,
+      we would ideally like to have an algebraic description of the
+      function. As we'll see, this may be too much to ask in some
+      situations, but we will still be able to make accurate approximations.</p>
+
+    <exploration xml:id="PA_7.1">
+      <p>The position of a moving object is given by the
+      function <m>s(t)</m>, where <m>s</m> is measured in feet and <m>t</m> in seconds. We
+      determine that the velocity is <m>v(t) = 4t + 1</m> feet per second.
+
+      <ol>
+        <li><p>How much does the position change over the time interval
+              <m>[0,4]</m>?</p></li>
+
+        <li><p>Does this give you enough information to determine <m>s(4)</m>, the
+              position at time <m>t=4</m>?  If so, what is <m>s(4)</m>?  If not, what
+              additional information would you need to know to determine <m>s(4)</m>?</p></li>
+
+        <li><p>Suppose you are told that the object's initial position <m>s(0) =
+              7</m>.  Determine <m>s(2)</m>, the object's position 2 seconds later.</p></li>
+
+        <li><p>If you are told instead that the object's initial position is
+              <m>s(0) = 3</m>, what is <m>s(2)</m>?</p></li>
+
+        <li><p>If we only know the velocity <m>v(t)=4t+1</m>, is it possible that the
+              object's position at all times is <m>s(t) = 2t^2 + t - 4</m>?  Explain how
+              you know.</p></li>
+
+        <li><p>Are there other possibilities for <m>s(t)</m>?  If so, what are they?</p></li>
+
+        <li><p>If, in addition to knowing the velocity function is <m>v(t) = 4t+1</m>, we know the initial position <m>s(0)</m>, how many possibilities
+              are there for <m>s(t)</m>?</p></li>
+      </ol>
+      </p>
+    </exploration>
+  </introduction>
+
+  <subsection>
+    <title>What is a differential equation?</title>
+    <p><index><main>differential equation</main></index></p>
+
+    <p>A differential equation is an equation that describes the derivative,
+      or derivatives, of a function that is unknown to us.
+      For instance, the equation
+      <me>
+        \frac{dy}{dx} = x\sin x
+      </me>
+      is a differential equation since it describes the derivative of a
+      function <m>y(x)</m> that is unknown to us.</p>
+
+    <p>As many important examples of differential equations involve quantities
+      that change in time, the independent variable in our discussion will
+      frequently be time
+      <m>t</m>.
+      For instance, in the preview activity, we considered the
+      differential equation
+      <me>
+        \frac{ds}{dt} = 4t + 1.
+      </me>
+    </p>
+
+    <p>Knowing the velocity and the starting position of the object, we were
+      able to find the position at any later time.</p>
+
+    <p>Because differential equations describe the derivative of a function,
+      they give us information about how that function changes. Our goal
+      will be to take this information and use it to predict the value of
+      the function in the future; in this way, differential equations
+      provide us with something like a crystal ball.</p>
+
+    <p>Differential equations arise frequently in our every day world. For
+      instance, you may hear a bank advertising:</p>
+
+    <blockquote>
+    <em>Your money will grow at a 3<percent /> annual interest rate with us.
+    </em>
+    </blockquote>
+
+    <p>This innocuous statement is really a differential equation. Let's
+      translate: <m>A(t)</m> will be amount of money you have in your account at
+      time <m>t</m>. On one hand, the rate at which your money grows is the
+      derivative <m>dA/dt</m>. On the other hand, we are told that this rate is
+      <m>0.03 A</m>. This leads to the differential equation
+      <me>
+        \frac{dA}{dt} = 0.03 A.
+      </me>
+    </p>
+
+    <p>This differential equation has a slightly different feel than the
+      previous equation <m>\frac{ds}{dt} = 4t+1</m>. In the
+      earlier example, the rate of change depends only on the independent
+      variable <m>t</m>, and we may find <m>s(t)</m> by integrating the velocity <m>4t+1</m>.
+      In the banking example, however, the rate of change depends
+      on the dependent variable <m>A</m>, so we'll need some new techniques in order to
+      find <m>A(t)</m>.</p>
+
+    <activity xml:id="A_7.1.1">
+      <p>Express the following statements as
+      differential equations. In each case, you will need to introduce notation
+      to describe the important quantities in the statement so be sure to
+      clearly state what your notation means.
+
+      <ol>
+        <li><p>The population of a town grows continuously at an annual rate of
+                      1.25<percent />.</p></li>
+
+        <li><p>A radioactive sample loses
+                      5.6<percent /> of its mass every day.</p></li>
+
+        <li><p>You have a bank account that continuously earns 4<percent /> interest every
+                      year.  At the same time, you withdraw money continually from
+                      the account at the rate of <dollar />1000 per year.</p></li>
+
+        <li><p>A cup of hot chocolate is sitting in a 70<m>^\circ</m> room.
+                      The temperature of the hot chocolate cools continuously by 10<percent /> of
+                      the difference between the hot chocolate's temperature and
+                      the room temperature every minute.</p></li>
+
+        <li><p>A can of cold soda is sitting in a 70<m>^\circ</m> room.
+                      The temperature of the soda warms continuously at the rate of 10<percent /> of
+                      the difference between the soda's temperature and
+                      the room's temperature every minute.</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Small hints for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Solutions for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Differential equations in the world around us</title>
+    <p>As we have noted, differential equations give a natural way to
+      describe phenomena we see in the real world. For instance, physical
+      principles are frequently expressed as a description of how a quantity
+      changes. A good example is Newton's Second Law, an important physcial
+      principle that says:</p>
+
+    <blockquote>
+    <em>The product of an object's
+        mass and acceleration equals the force applied to it.
+    </em>
+    </blockquote>
+
+    <p>For instance, when gravity acts on an object near the earth's surface,
+      it exerts a force equal to <m>mg</m>, the mass of the object times the
+      gravitational constant <m>g</m>. We therefore have
+      <md>
+        <mrow>ma =\mathstrut \amp  mg, \ \mbox{or}</mrow>
+        <mrow>\frac{dv}{dt} =\mathstrut \amp  g,</mrow>
+      </md>
+      where <m>v</m> is the velocity of the object, and <m>g = 9.8</m> meters per
+      second squared. Notice that this physical principle does not tell us
+      what the object's
+      velocity is, but rather how the object's velocity changes.</p>
+
+    <activity xml:id="A_7.1.2">
+      <p>Shown below are two graphs depicting
+        the velocity of falling objects. On the left is the velocity of a
+        skydiver, while on the right is the velocity of a meteorite entering
+        the Earth's atmosphere.</p>
+      <tabular>
+        <row>
+          <cell><image width="73%" source="images/7_1_activity_0" /></cell>
+          <cell><image width="73%" source="images/7_1_activity_1" /></cell>
+        </row>
+        <row>
+          <cell>Skydiver's velocity</cell>
+          <cell>Meteorite's velocity</cell>
+        </row>
+      </tabular>
+
+      <ol>
+        <li><p>Begin with the skydiver's velocity and use the given graph to measure the rate
+                      of change <m>dv/dt</m> when the velocity is <m>v=0.5, 1.0, 1.5,
+                      2.0</m>, and <m>2.5</m>.  Plot your values on the graph below.  You
+                      will want to think carefully about this:  you are plotting
+                      the derivative <m>dv/dt</m> as a function of <em>velocity</em>.
+            <image width="73%" source="images/7_1_dataplot" />
+          </p></li>
+
+        <li><p>Now do the same thing with the meteorite's velocity:
+                      use the given graph to measure the rate of change <m>dv/dt</m> when the velocity is
+                      <m>v=3.5,4.0,4.5</m>, and <m>5.0</m>.  Plot your values on the graph
+                      above.</p></li>
+
+        <li><p>You should find that all your points lie on a line.
+                      Write the equation of this line being careful to use proper
+                      notation for the quantities on the horizontal and vertical
+                      axes.</p></li>
+
+        <li><p>The relationship you just found is a differential
+                      equation.  Write a complete sentence that explains its
+                      meaning.</p></li>
+
+        <li><p>By looking at the differential equation, determine the
+                      values of the velocity for which the velocity 
+                      increases.</p></li>
+
+        <li><p>By looking at the differential equation, determine the
+                      values of the velocity for which the velocity 
+                      decreases.</p></li>
+
+        <li><p>By looking at the differential equation, determine the
+                      values of the velocity for which the velocity 
+                      remains constant.</p></li>
+      </ol>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Small hints for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Solutions for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <p>The point of this activity is to demonstrate how differential
+      equations model processes in the real world. In this example, two
+      factors are influencing the velocities: gravity and wind resistance.
+      The differential equation describes how these factors influence the
+      rate of change of the objects' velocities.</p>
+  </subsection>
+
+  <subsection>
+    <title>Solving a differential equation</title>
+    <p><index><main>differential equation</main><sub>solution</sub></index></p>
+
+    <p>We have said that a differential equation is an equation that
+      describes the derivative,
+      or derivatives, of a function that is unknown to us. By a <em>solution</em> to a differential equation, we mean simply a function that
+      satisies this description.</p>
+
+    <p>For instance, the first differential equation we looked at is
+      <me>
+        \frac{ds}{dt} = 4t+1,
+      </me>
+      which describes an unknown function <m>s(t)</m>. We may check that <m>s(t) =
+      2t^2+t</m> is a solution because it satisfies this description. Notice
+      that <m>s(t) = 2t^2+t+4</m> is also a solution.</p>
+
+    <p>If we have a candidate for a solution, it is straightforward to
+      check whether it is a solution or not. Before we demonstrate,
+      however, let's consider the same issue in a simpler context.
+      Suppose we are given the equation
+      <m>2x^2 - 2x = 2x+6</m> and asked whether <m>x=3</m> is a solution. To answer
+      this question, we could rewrite the variable <m>x</m> in the equation with
+      the symbol <m>\Box</m>:
+      <me>
+        2\Box^2 - 2\Box = 2\Box + 6.
+      </me>
+    </p>
+
+    <p>To determine whether <m>x=3</m> is a solution, we can investigate the value of each side of the equation separately when the value <m>3</m> is placed in <m>\Box</m> and see if indeed the two resulting values are equal. Doing so, we observe that
+      <me>
+        2\Box^2 - 2\Box = 2\cdot3^2 - 2\cdot3 = 12,
+      </me>
+      and
+      <me>
+        2\Box + 6 = 2\cdot3 + 6 = 12.
+      </me>
+    </p>
+
+    <p>Therefore, <m>x=3</m> is indeed a solution.</p>
+
+    <p>We will do the same thing with differential equations. Consider
+      the differential equation
+      <md>
+        <mrow>\frac{dv}{dt} =\mathstrut \amp  1.5 - 0.5v, \ \mbox{or}</mrow>
+        <mrow>\frac{d\Box}{dt} =\mathstrut \amp  1.5 - 0.5\Box.</mrow>
+      </md>
+    </p>
+
+    <p>Let's ask whether <m>v(t) = 3 - 2e^{-0.5t}</m> is a solution<fn>At this time,
+      don't worry about why we chose this function;  we will learn
+      techniques for finding solutions to differential equations soon enough.  </fn>.
+      Using this formula for <m>v</m>, observe first that
+      <me>
+        \frac{dv}{dt} =  \frac{d\Box}{dt}  = \frac{d}{dt}[3 - 2e^{-0.5t}] = -2e^{-0.5t} \cdot (-0.5) = e^{-0.5t}
+      </me>
+      and
+      <me>
+        1.5 - 0.5v = 1.5 - 0.5\Box= 1.5 - 0.5(3 - 2e^{-0.5t}) = 1.5 - 1.5 + e^{-0.5t} = e^{-0.5t}.
+      </me>
+    </p>
+
+    <p>Since <m>\frac{dv}{dt}</m> and <m>1.5 - 0.5v</m> agree for all values of <m>t</m> when <m>v = 3-2e^{-0.5t}</m>, we have indeed
+      found a solution to the differential equation.</p>
+
+    <activity xml:id="A_7.1.3">
+      <p>Consider the differential equation
+        <me>
+          \frac{dv}{dt} = 1.5 - 0.5v.
+        </me>
+      </p>
+
+      <p>Which of the following functions are solutions of this differential equation?
+
+      <ol>
+        <li><p><m>v(t) = 1.5t - 0.25t^2</m>.</p></li>
+
+        <li><p><m>v(t) = 3 + 2e^{-0.5t}</m>.</p></li>
+
+        <li><p><m>v(t) = 3</m>.</p></li>
+
+        <li><p><m>v(t) = 3 + Ce^{-0.5t}</m> where <m>C</m> is any constant.</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Small hints for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Solutions for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <p>This activity shows us something interesting. Notice that the
+      differential equation has infinitely many solutions, which are
+      parametrized by the constant <m>C</m> in <m>v(t) = 3+Ce^{-0.5t}</m>. In <xref ref="F_7.1.family">Figure</xref>, we see the graphs of these solutions for a few values of <m>C</m>,
+      as labeled.</p>
+
+    <figure xml:id="F_7.1.family" >
+      <caption>The family of solutions to the differential equation <m>\frac{dv}{dt} = 1.5 - 0.5v</m>.</caption>
+      <image width="73%" source="images/7_1_family" />
+    </figure>
+
+    <p>Notice that the value of <m>C</m> is connected to the initial value of the
+      velocity <m>v(0)</m>, since <m>v(0) = 3+C</m>. In other words, while the
+      differential equation describes how the velocity changes as a function of the velocity itself, this is not enough information to determine the velocity
+      uniquely: we also need to know the initial velocity. For this
+      reason, differential equations will typically have infinitely many
+      solutions, one corresponding to each initial value. We have seen this phenomenon before, such as when given the velocity of a moving object
+      <m>v(t)</m>, we were not able to uniquely determine the object's position
+      unless we also know its initial position.</p>
+
+    <p>If we are given a differential equation and an initial value for the
+      unknown function, we say that we have an <em>initial value problem.</em>
+      For instance,
+      <me>
+        \frac{dv}{dt} = 1.5-0.5v, \ v(0) = 0.5
+      </me>
+      is an initial value problem. In this situation, we know the value of
+      <m>v</m> at one time and we know how <m>v</m> is changing. Consequently, there should
+      be exactly one function <m>v</m> that satisfies the initial value problem.</p>
+
+    <p>This demonstrates the following important general property of initial value problems.</p>
+
+    <p>Initial value problems that are <q>well behaved</q> have exactly one
+      solution, which exists in some interval around the initial point.</p>
+
+    <p>We won't worry about what <q>well behaved</q> means<mdash />it is a technical
+      condition that will be satisfied by all the differential equations we
+      consider.</p>
+
+    <p>To close this section, we note that differential equations may be
+      classified based on certain characteristics they may possess. Indeed,
+      you may see many different types of differential equations in a
+      later course in differential equations. For now, we would like to
+      introduce a few terms that are used to describe differential
+      equations.</p>
+
+    <p>A <em>first-order</em> differential equation<index><main>differential equation</main><sub>first order</sub></index> is one in which only the
+      first derivative of the function occurs. For this reason,
+      <me>
+        \frac{dv}{dt} = 1.5-0.5v
+      </me>
+      is a first-order equation while
+      <me>
+        \frac{d^2 y}{dt^2} = -10y
+      </me>
+      is a second-order equation.</p>
+
+    <p>A differential equation is <em>autonomous</em><index><main>autonomous</main></index> <index><main>differential equation</main><sub>autonomous</sub></index> if the independent
+      variable does not appear in the description of the derivative.
+      For instance,
+      <me>
+        \frac{dv}{dt} = 1.5-0.5v
+      </me>
+      is autonomous because the description of the derivative <m>dv/dt</m> does
+      not depend on time.
+      The equation
+      <me>
+        \frac{dy}{dt} = 1.5t - 0.5y,
+      </me>
+      however, is not autonomous.</p>
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+    <ul>
+      <li><p>A differential equation is simply an equation that describes the
+            derivative(s) of an unknown function.</p></li>
+
+      <li><p>Physical principles, as well as some everyday situations, often
+            describe how a quantity changes, which 
+            lead to differential equations.</p></li>
+
+      <li><p>A solution to a differential equation is a function whose
+            derivatives satisfy the equation's description.  Differential
+            equations typically have infinitely many solutions, 
+            parametrized by the initial values.</p></li>
+    </ul>
+    <exercises>
+      <exercise>
+        <statement>
+          <p>Suppose that <m>T(t)</m> represents the temperature of a cup of
+          coffee set out in a room, where <m>T</m> is expressed in degrees
+          Fahrenheit and <m>t</m> in minutes. A physical principle known as Newton's Law of Cooling<index><main>Newton's Law of Cooling</main></index> tells us that
+          <me>
+            \frac{dT}{dt}= -\frac1{15}T+5.
+          </me>
+
+          <ol>
+            <li><p>Supposes that <m>T(0)=105</m>.  What does the differential
+                    equation give us for the value of <m>\frac{dT}{dt}\vert_{T=105}</m>?  Explain in a
+                    complete sentence the meaning of these two facts.</p></li>
+
+            <li><p>Is <m>T</m> increasing or decreasing at <m>t=0</m>?</p></li>
+
+            <li><p>What is the approximate temperature at <m>t=1</m>?</p></li>
+
+            <li><p>On the graph below, make a plot of <m>dT/dt</m> as a function of <m>T</m>.
+                <image width="73%" source="images/7_1_exercise_1" />
+              </p></li>
+
+            <li><p>For which values of <m>T</m> does <m>T</m> increase?  For
+                        which values of <m>T</m> does <m>T</m> decrease?</p></li>
+
+            <li><p>What do you think is the temperature of the room?
+                        Explain your thinking.</p></li>
+
+            <li><p>Verify that <m>T(t) = 75 + 30e^{-t/15}</m> is the
+                        solution to the differential equation with initial value <m>T(0)
+                        = 105</m>.  What happens to this solution after a long time?</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Suppose that the population of a particular species is
+            described by the function <m>P(t)</m>, where <m>P</m> is expressed in
+            millions. Suppose further that the population's rate of change is
+            governed by the differential equation
+            <me>
+              \frac{dP}{dt} = f(P)
+            </me>
+            where <m>f(P)</m> is the function graphed below.</p>
+          <image width="73%" source="images/7_1_threshold" />
+
+          <ol>
+            <li><p>For which values of the population <m>P</m> does the population
+                      increase?</p></li>
+
+            <li><p>For which values of the population <m>P</m> does the population
+                      decrease?</p></li>
+
+            <li><p>If <m>P(0) = 3</m>, how will the population change in time?</p></li>
+
+            <li><p>If the initial population satisfies <m>0\lt P(0)\lt 1</m>, what will
+                      happen to the population after a very long time?</p></li>
+
+            <li><p>If the initial population satisfies <m>1\lt P(0)\lt 3</m>, what will
+                      happen to the population after a very long time?</p></li>
+
+            <li><p>If the initial population satisfies <m>3\lt P(0)</m>, what will
+                      happen to the population after a very long time?</p></li>
+
+            <li><p>This model for a population's growth is sometimes called
+                      <q>growth with a threshold.</q>  Explain why this is an appropriate
+                      name.</p></li>
+          </ol>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>In this problem, we test further what it means for a function to be a solution to a given differential equation.
+
+          <ol>
+            <li><p>Consider the differential equation
+            <me>
+              \frac{dy}{dt} = y - t.
+            </me>
+            Determine whether the following functions are solutions to the given differential equation.
+
+            <ul>
+              <li>
+                <title>(i)</title>
+                <p><m>y(t) = t + 1 + 2e^t</m></p></li>
+
+              <li>
+                <title>(ii)</title>
+                <p><m>y(t) = t + 1</m></p></li>
+
+              <li>
+                <title>(iii)</title>
+                <p><m>y(t) = t + 2</m></p></li>
+            </ul>
+            </p></li>
+
+            <li><p>When you weigh bananas in a scale at the grocery store, the
+                      height <m>h</m> of the bananas is described by the differential
+                      equation
+                <me>
+                  \frac{d^2h}{dt^2} = -kh
+                </me>
+                where <m>k</m> is the <em>spring constant</em>, a constant that depends
+                      on the properties of the spring in the scale.  After you put the
+                      bananas in the scale, you (cleverly) observe that the height of the bananas
+                      is given by <m>h(t) = 4\sin(3t)</m>.  What is the value of the spring
+                      constant?</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+    </exercises>
+  </subsection>
+</section>

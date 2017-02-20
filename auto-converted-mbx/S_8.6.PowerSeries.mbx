@@ -1,0 +1,925 @@
+
+<section xml:id="S_8.6.PowerSeries">
+  <title>Power Series</title>
+  <introduction>
+    <objectives>
+      <ul>
+        <li><p>What is a power series?</p></li>
+
+        <li><p>What are some important uses of power series?</p></li>
+
+        <li><p>What is the connection between power series and Taylor series?</p></li>
+      </ul>
+    </objectives>
+    <p>We have noted at several points in our work with Taylor polynomials and Taylor series that polynomial functions are the simplest possible functions in mathematics, in part because they essentially only require addition and multiplication to evaluate. Moreover, from the point of view of calculus, polynomials are especially nice: we can easily differentiate or integrate any polynomial. In light of our work in <xref ref="S_8.5.Taylor">Section</xref>, we now know that several important non-polynomials have polynomial-like expansions. For example, for any real number <m>x</m>,
+      <me>
+        e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots + \frac{x^n}{n!} + \cdots.
+      </me>
+    </p>
+
+    <p>As we continue our study of infinite series, there are two settings where other series like the one for <m>e^x</m> arise: one is where we are simply given an expression like
+      <me>
+        1 + 2x + 3x^2 + 4x^3 + \cdots
+      </me>
+      and we seek the values of <m>x</m> for which the expression makes sense, while another is where we are trying to find an unknown function <m>f</m>, and we think about the possibility that the function has expression
+      <me>
+        f(x) = a_0 + a_1 x + a_2 x^2 + \cdots + a_k x^k + \cdots,
+      </me>
+      and we try to determine the values of the constants <m>a_0</m>, <m>a_1</m>, <m>\ldots</m>. The latter situation is explored in <xref ref="PA_8.6">Preview Activity</xref>.</p>
+
+    <exploration xml:id="PA_8.6">
+      <p>In <xref ref="C_7">Chapter</xref>, we learned some of the many important applications of differential equations, and learned some approaches to solve or analyze them. Here, we consider an important approach that will allow us to solve a wider variety of differential equations.</p>
+
+      <p>Let's consider the familiar differential equation from exponential population growth given by
+        <men xml:id="eq_PA8.6_Resistance_ode" >
+          y' = ky,
+        </men>
+        where <m>k</m> is the constant of proportionality. While we can solve this differential equation using methods we have already learned, we take a different approach now that can be applied to a much larger set of differential equations. For the rest of this activity, let's assume that <m>k=1</m>. We will use our knowledge of Taylor series to find a solution to the differential equation <xref ref="eq_PA8.6_Resistance_ode" />.</p>
+
+      <p>To do so, we assume that we have a solution <m>y=f(x)</m> and that <m>f(x)</m> has a Taylor series that can be written in the form
+      <me>
+        y = f(x) = \sum_{k=0}^{\infty} a_kx^k,
+      </me>
+      where the coefficients <m>a_k</m> are undetermined. Our task is to find the coefficients.
+
+      <ol>
+        <li><p>Assume that we can differentiate a power series term by term.  By taking the derivative of <m>f(x)</m> with respect to <m>x</m> and substituting the result into the differential equation <xref ref="eq_PA8.6_Resistance_ode" />, show that the equation
+          <me>
+            \sum_{k=1}^{\infty} ka_kx^{k-1} = \sum_{k=0}^{\infty} a_kx^{k}
+          </me>
+          must be satisfied in order for <m>f(x) = \sum_{k=0}^{\infty} a_kx^k</m> to be a solution of the DE.
+          <solution>
+            <p>Differentiation term by term gives
+              <me>
+                y' = \sum_{k=1}^{\infty} ka_kx_{k-1}.
+              </me>
+            </p>
+
+            <p>We then substitute this series into the differential equation <xref ref="eq_PA8.6_Resistance_ode" /> to obtain the equation</p>
+          </solution>
+          </p></li>
+
+        <li><p>Two series are equal if and only if they have the same coefficients on like power terms. Use this fact to find a relationship between <m>a_1</m> and <m>a_0</m>.
+          <solution>
+            <p>When we write the first few terms of the series on either side of our differential equation we obtain
+              <me>
+                a_1 + (2)a_2x + (3)a_3x^2 + (4)a_4x^3 + \cdots + (k+1)a_{k+1}x^{k} + \cdots = a_0 + a_1x + a_2x^2 + \cdots + a_kx^k + \cdots.
+              </me>
+            </p>
+
+            <p>Equating the constant terms gives us <m>a_1 = a_0</m>.</p>
+          </solution>
+          </p></li>
+
+        <li><p>Now write <m>a_2</m> in terms of <m>a_1</m>. Then write <m>a_2</m> in terms of <m>a_0</m>.
+          <solution>
+            <p>Equating the degree 1 terms gives us <m>2a_2 = a_1</m> or <m>a_2 = \frac{a_1}{2}</m>. Since <m>a_1 = a_0</m>, we have <m>a_2 = \frac{a_0}{2}</m>.</p>
+          </solution>
+          </p></li>
+
+        <li><p>Write <m>a_3</m> in terms of <m>a_2</m>. Then write <m>a_3</m> in terms of <m>a_0</m>.
+          <solution>
+            <p>Equating the degree 2 terms gives us <m>3a_3 = a_2</m> or <m>a_3 = \frac{a_2}{3}</m>. Since <m>a_2 = \frac{a_0}{2}</m>, we have <m>a_3 = \frac{a_0}{3!}</m>.</p>
+          </solution>
+          </p></li>
+
+        <li><p>Write <m>a_4</m> in terms of <m>a_3</m>. Then write <m>a_4</m> in terms of <m>a_0</m>.
+          <solution>
+            <p>Equating the degree 3 terms gives us <m>4a_4 = a_3</m> or <m>a_4 = \frac{a_3}{4}</m>. Since <m>a_3 = \frac{a_0}{3!}</m>, we have <m>a_4 = \frac{a_0}{4!}</m>.</p>
+          </solution>
+          </p></li>
+
+        <li><p>Observe that there is a pattern in (b)-(e). Find a general formula for <m>a_k</m> in terms of <m>a_0</m>.
+          <solution>
+            <p>Equating the degree <m>k-1</m> terms gives us <m>ka_k = a_{k-1}</m> or <m>a_k = \frac{a_{k-1}}{k}</m>. It appears that <m>a_{k-1} = \frac{a_0}{(k-1)!}</m>, so we have
+              <me>
+                a_k = \frac{a_0}{k!}.
+              </me>
+            </p>
+          </solution>
+          </p></li>
+
+        <li><p>Write the series expansion for <m>y</m> using only the unknown coefficient <m>a_0</m>. From this, determine what familiar functions satisfy the differential equation <xref ref="eq_PA8.6_Resistance_ode" />. (<em>Hint</em>: Compare to a familiar Taylor series.)
+          <solution>
+            <p>Since <m>a_k = \frac{a_0}{k!}</m> we have
+              <me>
+                y = a_0 \sum_{k=0}^{\infty} \frac{x^k}{k!}.
+              </me>
+            </p>
+
+            <p>So the functions that satisfy the differential equation <xref ref="eq_PA8.6_Resistance_ode" /> are the exponential functions of the form <m>y = a_0e^x</m>.</p>
+          </solution>
+          </p></li>
+      </ol>
+      </p>
+    </exploration>
+  </introduction>
+
+  <subsection>
+    <title>Power Series</title>
+    <p><index><main>power series</main></index></p>
+
+    <p>As <xref ref="PA_8.6">Preview Activity</xref> shows, it can be useful to treat an unknown function as if it has a Taylor series, and then determine the coefficients from other information. In other words, we define a function as an infinite series of powers of <m>x</m> and then determine the coefficients based on something besides a formula for the function. This method of using series illustrated in <xref ref="PA_8.6">Preview Activity</xref> to solve differential equations is a powerful and important one that allows us to approximate solutions to many different types of differential equations even if we cannot explicitly solve them. This approach is different from defining a Taylor series based on a given function, and these functions we define with arbitrary coefficients are given a special name.</p>
+
+    <definition>
+      <statement>
+        <p>A <term>power series</term> centered at <m>x = a</m> is a function of the form
+          <men xml:id="eq_8.6_power_series" >
+            \sum_{k=0}^{\infty} c_k(x-a)^k
+          </men>
+          where <m>\{c_k\}</m> is a sequence of real numbers and <m>x</m> is an independent variable.</p>
+      </statement>
+    </definition>
+
+    <p>We can substitute different values for <m>x</m> and test whether the resulting series converges or diverges. Thus, a power series defines a function <m>f</m> whose domain is the set of <m>x</m> values for which the power series converges. We therefore write
+      <me>
+        f(x) = \sum_{k=0}^{\infty} c_k(x-a)^k.
+      </me>
+    </p>
+
+    <p>It turns out that<fn>See <xref ref="ex_8.5.2">Exercise</xref> in this section.</fn>, on its interval of convergence, a power series is the Taylor series of the function that is the sum of the power series, so all of the techniques we developed in the previous section can be applied to power series as well.</p>
+
+    <example xml:id="Ex_8.6.1">
+      <statement>
+        <p>Consider the power series defined by
+          <me>
+            f(x) = \sum_{k=0}^{\infty} \frac{x^k}{2^k}.
+          </me>
+        </p>
+
+        <p>What are <m>f(1)</m> and <m>f\left(\frac{3}{2}\right)</m>? Find a general formula for <m>f(x)</m> and determine the values for which this power series converges.</p>
+      </statement>
+    </example>
+
+    <p>If we evaluate <m>f</m> at <m>x=1</m> we obtain the series
+      <me>
+        \sum_{k=0}^{\infty} \frac{1}{2^k}
+      </me>
+      which is a geometric series with ratio <m>\frac{1}{2}</m>. So we can sum this series and find that
+      <me>
+        f(1) = \frac{1}{1-\frac{1}{2}} = 2.
+      </me>
+    </p>
+
+    <p>Similarly,
+      <me>
+        f(3/2) = \sum_{k=0}^{\infty} \left(\frac{3}{4}\right)^k = \frac{1}{1-\frac{3}{4}} = 4.
+      </me>
+    </p>
+
+    <p>In general, <m>f(x)</m> is a geometric series with ratio <m>\frac{x}{2}</m> and
+      <me>
+        f(x) = \sum_{k=0}^{\infty} \left(\frac{x}{2}\right)^k = \frac{1}{1-\frac{x}{2}} = \frac{2}{2-x}
+      </me>
+      provided that <m>-1 \lt  \frac{x}{2} \lt  1</m> (so that the ratio is less than 1 in absolute value). Thus, the power series that defines <m>f</m> converges for <m>-2 \lt  x \lt  2</m>.</p>
+
+    <p>As with Taylor series, we define the interval of convergence of a power series <xref ref="eq_8.6_power_series" /> to be the set of values of <m>x</m> for which the series converges. In the same way as we did with Taylor series, we typically use the Ratio Test to find the values of <m>x</m> for which the power series converges absolutely, and then check the endpoints separately if the radius of convergence is finite.</p>
+
+    <example xml:id="Ex_8.6.2">
+      <statement>
+        <p>Let <m>f(x) = \sum_{k=1}^{\infty} \frac{x^k}{k^2}</m>. Determine the interval of convergence of this power series.</p>
+      </statement>
+    </example>
+
+    <p>First we will draw graphs of some of the partial sums of this power series to get an idea of the interval of convergence. Let
+      <me>
+        S_n(x) = \sum_{k=1}^{n} \frac{x^k}{k^2}
+      </me>
+      for each <m>n \geq 1</m>. <xref ref="F_8.6.Power_Series">Figure</xref> shows plots of <m>S_{10}(x)</m> (in red), <m>S_{25}(x)</m> (in blue), and <m>S_{50}(x)</m> (in green).</p>
+
+    <figure xml:id="F_8.6.Power_Series" >
+      <caption>Graphs of partial sums of the power series <m>\sum_{k=1}^{\infty} \frac{x^k}{k^2}</m></caption>
+      <image width="73%" source="images/8_6_Power_Series" />
+    </figure>
+
+    <p>The behavior of <m>S_{50}</m> particularly highlights that it appears to be converging to a particular curve on the interval <m>(-1,1)</m>, while growing without bound outside of that interval. This suggests that the interval of convergence might be <m>-1 \lt  x \lt  1</m>. To more fully understand this power series, we apply the Ratio Test to determine the values of <m>x</m> for which the power series converges absolutely. For the given series, we have
+      <me>
+        a_k = \frac{x^k}{k^2},
+      </me>
+      so
+      <md>
+        <mrow>\lim_{k \to \infty} \frac{\left| a_{k+1} \right|}{ \left| a_k \right|} \amp = \lim_{k \to \infty} \frac{ \frac{|x|^{k+1}}{(k+1)^2} }{ \frac{| x|^{k}}{k^2} }</mrow>
+        <mrow>\amp = \lim_{k \to \infty} |x| \left(\frac{k}{k+1}\right)^2</mrow>
+        <mrow>\amp = |x| \lim_{k \to \infty}  \left(\frac{k}{k+1}\right)^2</mrow>
+        <mrow>\amp = |x|.</mrow>
+      </md>
+    </p>
+
+    <p>Therefore, the Ratio Test tells us that the given power series <m>f(x)</m> converges absolutely when <m>| x | \lt  1</m> and diverges when <m>| x | > 1</m>. Since the Ratio Test is inconclusive when <m>|x| = 1</m>, we need to check <m>x = 1</m> and <m>x = -1</m> individually.</p>
+
+    <p>When <m>x = 1</m>, observe that
+      <me>
+        f(1) = \sum_{k=1}^{\infty} \frac{1}{k^2}.
+      </me>
+    </p>
+
+    <p>This is a <m>p</m>-series with <m>p > 1</m>, which we know converges. When <m>x = -1</m>, we have
+      <me>
+        f(-1) = \sum_{k=1}^{\infty} \frac{(-1)^k}{k^2}.
+      </me>
+    </p>
+
+    <p>This is an alternating series, and since the sequence <m>\left\{ \frac{1}{n^2} \right\}</m> decreases to 0, the power series converges when <m>x=-1</m> by the Alternating Series Test. Thus, the interval of convergence of this power series is <m>-1 \le x \le 1</m>.</p>
+
+    <activity xml:id="x8.6.Act1">
+      <p>Determine the interval of convergence of each power series.
+
+      <ol>
+        <li><p><m>\sum_{k=1}^{\infty} \frac{(x-1)^k}{3k}</m></p></li>
+
+        <li><p><m>\sum_{k=1}^{\infty} kx^k</m></p></li>
+
+        <li><p><m>\sum_{k=1}^{\infty} \frac{k^2(x+1)^k}{4^k}</m></p></li>
+
+        <li><p><m>\sum_{k=1}^{\infty} \frac{x^k}{(2k)!}</m></p></li>
+
+        <li><p><m>\sum_{k=1}^{\infty} k!x^k</m></p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Small hints for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>We use the Ratio Test with <m>a_k = \frac{|x-1|^k}{3k}</m>:
+          <md>
+            <mrow>\lim_{k \to \infty} \frac{ \frac{|x-1|^{k+1}}{3(k+1)} }{ \frac{|x-1|^k}{3k} } \amp = \lim_{k \to \infty} \frac{3k|x-1|^{k+1}}{3(k+1)|x-1|^{k}}</mrow>
+            <mrow>\amp = |x-1| \lim_{k \to \infty} \frac{k}{k+1}</mrow>
+            <mrow>\amp = |x-1|.</mrow>
+          </md>
+          So the power series <m>\sum_{k=1}^{\infty} \frac{(x-1)^k}{3k}</m> converges absolutely when <m>|x-1| \lt  1</m> or when <m>0 \lt  x \lt  2</m> and diverges outside this interval. To completely determine the interval of convergence, we need to check what happens at the endpoints of this interval.
+
+          <ul>
+            <li><p>When <m>x=0</m> our power series is <m>\sum_{k=1}^{\infty} \frac{(-1)^k}{3k}</m> which is just a scalar multiple of the alternating harmonic series and so converges.</p></li>
+
+            <li><p>When <m>x=2</m> our power series is <m>\sum_{k=1}^{\infty} \frac{1}{3k}</m> which is just a scalar multiple of the harmonic series and so diverges.</p></li>
+          </ul>
+          </p>
+
+          Therefore, the interval of convergence of the power series <m>\sum_{k=1}^{\infty} \frac{(x-1)^k}{3k}</m> is <m>[0,2)</m>.</li>
+
+          <li><p>We use the Ratio Test with <m>a_k = k|x|^k</m>:
+          <md>
+            <mrow>\lim_{k \to \infty} \frac{ (k+1)|x|^{k+1} }{ k|x|^k } \amp = |x|\lim_{k \to \infty} \frac{k+1}{k}</mrow>
+            <mrow>\amp = |x|.</mrow>
+          </md>
+          So the power series <m>\sum_{k=1}^{\infty} kx^k</m> converges absolutely when <m>|x| \lt  1</m> or when <m>-1 \lt  x \lt  1</m> and diverges outside this interval. To completely determine the interval of convergence, we need to check what happens at the endpoints of this interval.
+
+          <ul>
+            <li><p>When <m>x=-1</m> our power series is <m>\sum_{k=1}^{\infty} (-1)^k k</m>. Since <m>k \to \infty</m> as <m>k \to infty</m>, this series diverges by the Divergence Test.</p></li>
+
+            <li><p>When <m>x=1</m> our power series is <m>\sum_{k=1}^{\infty} k</m> which again diverges by the Divergence Test.</p></li>
+          </ul>
+          </p>
+
+          Therefore, the interval of convergence of the power series <m>\sum_{k=1}^{\infty} kx^k</m> is <m>(-1,1)</m>.</li>
+
+          <li><p>We use the Ratio Test with <m>a_k = \frac{k^2|x+1|^k}{4^k}</m>:
+          <md>
+            <mrow>\lim_{k \to \infty} \frac{ \frac{(k+1)^2|x+1|^{k+1}}{4^{k+1}} }{ \frac{k^2|x+1|^k}{4^k} } \amp = \lim_{k \to \infty} \frac{4^k(k+1)^2|x+1|^{k+1}}{4^{k+1}k^2|x+1|^k}</mrow>
+            <mrow>\amp = \frac{1}{4}|x+1| \lim_{k \to \infty} \left(\frac{k+1}{k}\right)^2</mrow>
+            <mrow>\amp = \frac{1}{4}|x+1|.</mrow>
+          </md>
+          So the power series <m>\sum_{k=1}^{\infty} \frac{k^2(x+1)^k}{4^k}</m> converges absolutely when <m>\frac{1}{4}|x+1| \lt  1</m> or when <m>-5 \lt  x \lt  3</m> and diverges outside this interval. To completely determine the interval of convergence, we need to check what happens at the endpoints of this interval.
+
+          <ul>
+            <li><p>When <m>x=-5</m> our power series is <m>\sum_{k=1}^{\infty} (-1)^k k^2</m>. Since <m>k^2 \to \infty</m> as <m>k \to \infty</m>, this series diverges by the Divergence Test.</p></li>
+
+            <li><p>When <m>x=3</m> our power series is <m>\sum_{k=1}^{\infty} k^2</m>, which again diverges by the Divergence Test.</p></li>
+          </ul>
+          </p>
+
+          Therefore, the interval of convergence of the power series <m>\sum_{k=1}^{\infty} \frac{k^2(x+1)^k}{4^k}</m> is <m>(-5,3)</m>.</li>
+
+          <li><p>We use the Ratio Test with <m>a_k = \frac{|x|^k}{(2k)!}</m>:
+              <md>
+                <mrow>\lim_{k \to \infty} \frac{ \frac{|x|^{k+1}}{(2(k+1))!} }{ \frac{|x|^k}{(2k)!} } \amp = \lim_{k \to \infty} |x|\frac{(2k)!}{(2(k+1))!}</mrow>
+                <mrow>\amp = |x| \lim_{k \to \infty} \frac{1}{(2k+2)(2k+1)}</mrow>
+                <mrow>\amp = 0.</mrow>
+              </md>
+              So the power series <m>\sum_{k=1}^{\infty} \frac{x^k}{(2k)!}</m> converges absolutely on the interval <m>(-\infty, \infty)</m>.</p></li>
+
+          <li><p>We use the Ratio Test with <m>a_k = k!|x|^k</m>:
+              <md>
+                <mrow>\lim_{k \to \infty} \frac{ (k+1)!|x|^{k+1} }{ k!|x|^k} \amp = \lim_{k \to \infty} |x|(k+1)</mrow>
+                <mrow>\amp = \infty</mrow>
+              </md>
+              unless <m>x=0</m>. So the interval of convergence of the power series <m>\sum_{k=1}^{\infty} \frac{x^k}{k!}</m> is <m>\{0\}</m>.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Manipulating Power Series</title>
+    <p>Recall that we know several power series expressions for important functions such as <m>\sin(x)</m> and <m>e^x</m>. Often, we can take a known power series expression for such a function and use that series expansion to find a power series for a different, but related, function. The next activity demonstrates one way to do this.</p>
+
+    <activity xml:id="x8.6.Act2">
+      <p>Our goal in this activity is to find a power series expansion for <m>f(x) = \frac{1}{1+x^2}</m> centered at <m>x=0</m>.</p>
+
+      <p>While we could use the methods of <xref ref="S_8.5.Taylor">Section</xref> and differentiate <m>f(x) = \frac{1}{1+x^2}</m> several times to look for patterns and find the Taylor series for <m>f(x)</m>, we seek an alternate approach because of how complicated the derivatives of <m>f(x)</m> quickly become.
+
+      <ol>
+        <li><p>What is the Taylor series expansion for <m>g(x) = \frac{1}{1-x}</m>? What is the interval of convergence of this series?</p></li>
+
+        <li><p>How is <m>g(-x^2)</m> related to <m>f(x)</m>? Explain, and hence substitute <m>-x^2</m> for <m>x</m> in the power series expansion for <m>g(x)</m>. Given the relationship between <m>g(-x^2)</m> and <m>f(x)</m>, how is the resulting series related to <m>f(x)</m>?</p></li>
+
+        <li><p>For which values of <m>x</m> will this power series expansion for <m>f(x)</m> be valid? Why?</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Small hints for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Recall that
+              <me>
+                g(x) = \frac{1}{1-x} = \sum_{k=0}^{\infty} x^k
+              </me>
+              for <m>-1 \lt  x \lt  1</m>.</p></li>
+
+          <li><p>Substituting <m>-x^2</m> for <m>x</m> in the power series expansion for <m>g(x)</m> gives
+              <md>
+                <mrow>f(x^2) \amp = g(-x^2)</mrow>
+                <mrow>\amp = \frac{1}{1-(-x^2)}</mrow>
+                <mrow>\amp = \sum_{k=0}^{\infty} \left(-x^2\right)^k</mrow>
+                <mrow>\amp = \sum_{k=0}^{\infty} (-1)^k x^{2k}.</mrow>
+              </md>
+              ]</p></li>
+
+          <li><p>This power series expansion for <m>f(x)</m> will be valid as long as <m>-1 \lt  (-x)^2 \lt  1</m> or for <m>-1 \lt  x \lt  1</m>.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <p>In a previous section we determined several important Maclaurin series and their intervals of convergence. Here, we list these key functions and remind ourselves of their corresponding expansions.</p>
+    <tabular>
+      <row>
+        <cell><m>\sin(x)</m> =\mathstrut</cell>
+        <cell><m>\sum_{k=0}^{\infty} \frac{(-1)^k x^{2k+1}}{(2k+1)!}</m></cell>
+        <cell><nbsp />\mbox{for}  <nbsp /></cell>
+        <cell><m>-\infty \lt  x \lt  \infty</m></cell>
+      </row>
+      <row>
+        <cell><m>\cos(x)</m> =\mathstrut</cell>
+        <cell><m>\sum_{k=0}^{\infty} \frac{(-1)^k x^{2k}}{(2k)!}</m></cell>
+        <cell><nbsp />\mbox{for}  <nbsp /></cell>
+        <cell><m>-\infty \lt  x \lt  \infty</m></cell>
+      </row>
+      <row>
+        <cell><m>e^x</m> =\mathstrut</cell>
+        <cell><m>\sum_{k=0}^{\infty} \frac{x^{k}}{k!}</m></cell>
+        <cell><nbsp />\mbox{for}  <nbsp /></cell>
+        <cell><m>-\infty \lt  x \lt  \infty</m></cell>
+      </row>
+      <row>
+        <cell><m>\frac{1}{1-x}</m> =\mathstrut</cell>
+        <cell><m>\sum_{k=0}^{\infty} x^k</m></cell>
+        <cell><nbsp />\mbox{for}  <nbsp /></cell>
+        <cell><m>-1 \lt  x \lt  1</m></cell>
+      </row>
+    </tabular>
+    <p>As we saw in <xref ref="x8.6.Act2">Activity</xref>, we can use these known series to find other power series expansions for related functions such as <m>\sin(x^2)</m>, <m>e^{5x^3}</m>, and <m>\cos(x^5)</m>. Another important way that we can manipulate power series is illustrated in the next activity.</p>
+
+    <activity xml:id="x8.6.Act3">
+      <p>Let <m>f</m> be the function given by the power series expansion
+      <me>
+        f(x) = \sum_{k=0}^{\infty} (-1)^k \frac{x^{2k}}{(2k)!}.
+      </me>
+
+      <ol>
+        <li><p>Assume that we can differentiate a power series term by term, just like we can differentiate a (finite) polynomial. Use the fact that
+            <me>
+              f(x) = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots + (-1)^k \frac{x^{2k}}{(2k)!} + \cdots
+            </me>
+            to find a power series expansion for <m>f'(x)</m>.</p></li>
+
+        <li><p>Observe that <m>f(x)</m> and <m>f'(x)</m> have familiar Taylor series.  What familiar functions are these? What known relationship does our work demonstrate?</p></li>
+
+        <li><p>What is the series expansion for <m>f''(x)</m>?  What familiar function is <m>f''(x)</m>?</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Small hints for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Note that
+              <me>
+                f'(x) = - 2x + \frac{x^3}{3!} - \frac{x^5}{5!} + \cdots + (-1)^k \frac{x^{k-1}}{(k-1)!} + \cdots .
+              </me>
+            </p></li>
+
+          <li><p>We recognize <m>f(x)</m> as <m>\cos(x)</m> and <m>f'(x)</m> as <m>-\sin(x)</m>. this gives the known differentiation formula
+              <me>
+                \frac{d}{dx} \cos(x) = -\sin(x).
+              </me>
+            </p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <p>It turns out that our work in <xref ref="x8.6.Act2">Activity</xref> holds more generally. The corresponding theorem, which we will not prove, states that we can differentiate a power series for a function <m>f</m> term by term and obtain the series expansion for <m>f'</m>, and similarly we can integrate a series expansion for a function <m>f</m> term by term and obtain the series expansion for <m>\int f(x) \ dx</m>. For both, the radius of convergence of the resulting series is the same as the original, though it is possible that the convergence status of the resulting series may differ at the endpoints. The formal statement of the Power Series Differentiation and Integration Theorem follows.</p>
+
+    <p><em>Power Series Differentiation and Integration Theorem.</em> Suppose <m>f(x)</m> has a power series expansion
+      <me>
+        f(x) = \sum_{k=0}^{\infty} c_kx^k
+      </me>
+      so that the series converges absolutely to <m>f(x)</m> on the interval <m>-r \lt  x \lt  r</m>. Then, the power series <m>\sum_{k=1}^{\infty} kc_kx^{k-1}</m> obtained by differentiating the power series for <m>f(x)</m> term by term converges absolutely to <m>f'(x)</m> on the interval <m>-r \lt  x \lt  r</m>. That is,
+      <me>
+        f'(x) = \sum_{k=1}^{\infty} kc_kx^{k-1}, \ \mbox{for}  \ |x| \lt  r.
+      </me>
+    </p>
+
+    <p>Similarly, the power series <m>\sum_{k=0}^{\infty} c_k\frac{x^{k+1}}{k+1}</m> obtained by integrating the power series for <m>f(x)</m> term by term converges absolutely on the interval <m>-r \lt  x \lt  r</m>, and
+      <me>
+        \int f(x) \ dx = \sum_{k=0}^{\infty} c_k\frac{x^{k+1}}{k+1} + C, \ \mbox{for}  \ |x| \lt  r.
+      </me>
+    </p>
+
+    <p>This theorem validates the steps we took in <xref ref="x8.6.Act3">Activity</xref>. It is important to note that this result about differentiating and integrating power series tells us that we can differentiate and integrate term by term on the interior of the interval of convergence, but it does not tell us what happens at the endpoints of this interval. We always need to check what happens at the endpoints separately. More importantly, we can use use the approach of differentiating or integrating a series term by term to find new series.</p>
+
+    <example xml:id="Ex_8.6.3">
+      <statement>
+        <p>Find a series expansion centered at <m>x = 0</m> for <m>\arctan(x)</m>, as well as its interval of convergence.</p>
+      </statement>
+    </example>
+
+    <p>While we could differentiate <m>\arctan(x)</m> repeatedly and look for patterns in the derivative values at <m>x = 0</m> in an attempt to find the Maclaurin series for <m>\arctan(x)</m> from the definition, it turns out to be far easier to use a known series in an insightful way. In <xref ref="x8.6.Act2">Activity</xref>, we found that
+      <me>
+        \frac{1}{1+x^2} = \sum_{k=0}^{\infty} (-1)^k x^{2k}
+      </me>
+      for <m>-1 \lt  x \lt  1</m>. Recall that
+      <me>
+        \frac{d}{dx} \left[ \arctan(x) \right] = \frac{1}{1+x^2},
+      </me>
+      and therefore
+      <me>
+        \int \frac{1}{1+x^2} \ dx = \arctan(x) + C.
+      </me>
+    </p>
+
+    <p>It follows that we can integrate the series for <m>\frac{1}{1+x^2}</m> term by term to obtain the power series expansion for <m>\arctan(x)</m>. Doing so, we find that
+      <md>
+        <mrow>\arctan(x) \amp = \int \left( \sum_{k=0}^{\infty} (-1)^kx^{2k} \right) \ dx</mrow>
+        <mrow>\amp = \sum_{k=0}^{\infty} \left( \int (-1)^k x^{2k} \ dx \right)</mrow>
+        <mrow>\amp = \left( \sum_{k=0}^{\infty} (-1)^k\frac{x^{2k+1}}{2k+1} \right) + C.</mrow>
+      </md>
+    </p>
+
+    <p>The Power Series Differentiation and Integration Theorem tells us that this equality is valid for at least <m>-1 \lt  x \lt  1</m>.</p>
+
+    <p>To find the value of the constant <m>C</m>, we can use the fact that <m>\arctan(0) = 0</m>. So
+      <me>
+        0 = \arctan(0) = \left( \sum_{k=0}^{\infty} (-1)^k\frac{0^{2k+1}}{2k+1} \right) + C = C,
+      </me>
+      and we must have <m>C = 0</m>. Therefore,
+      <men xml:id="E_arctanseries" >
+        \arctan(x) = \sum_{k=0}^{\infty} (-1)^k\frac{x^{2k+1}}{2k+1}
+      </men>
+      for at least <m>-1 \lt  x \lt  1</m>.</p>
+
+    <p>It is a straightforward exercise to check that the power series
+      <me>
+        \sum_{k=0}^{\infty} (-1)^k\frac{x^{2k+1}}{2k+1}
+      </me>
+      converges both when <m>x = -1</m> and when <m>x = 1</m>; in each case, we have an alternating series with terms <m>\frac{1}{2k+1}</m> that decrease to 0, and thus the interval of convergence for the series expansion for <m>\arctan(x)</m> in Equation<nbsp /><xref ref="E_arctanseries" /> is <m>-1 \le x \le 1.</m></p>
+
+    <activity xml:id="x8.6.Act4">
+      <p>Find a power series expansion for <m>\ln(1+x)</m> centered at <m>x=0</m> and determine its interval of convergence. (<em>Hint</em>: Use the Taylor series expansion for <m>\frac{1}{1+x}</m> centered at <m>x=0</m>.)</p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Small hints for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>Using the Taylor series
+          <me>
+            \frac{1}{1-x} = \sum_{k=0}^{\infty} x^k
+          </me>
+          for <m>-1 \lt  x \lt  1</m> we have that
+          <me>
+            \frac{1}{1+x} = \sum_{k=0}^{\infty} (-1)^k x^k.
+          </me>
+        </p>
+
+        <p>Integrating the left and right sides of this last equation gives us
+          <me>
+            \ln(1+x) = \sum_{k=0}^{\infty} (-1)^k \frac{x^{k+1}}{k+1} + C
+          </me>
+          for <m>-1 \lt  x \lt  1</m>. Since <m>\ln(1) = 0</m> we have that
+          <me>
+            0 = \sum_{k=0}^{\infty} (-1)^k \frac{0^{k+1}}{k+1} + C
+          </me>
+          and so <m>C = 0</m>. We conclude that
+          <me>
+            \ln(1+x) = \sum_{k=0}^{\infty} (-1)^k \frac{x^{k+1}}{k+1}.
+          </me>
+          for <m>-1 \lt  x \lt  1</m>.</p>
+      </solution>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+    <ul>
+      <li><p>A power series is a series of the form
+          <me>
+            \sum_{k=0}^{\infty} a_kx^k.
+          </me>
+        </p></li>
+
+      <li><p>We can often assume a solution to a given problem can be written as a power series, then use the information in the problem to determine the coefficients in the power series. This method allows us to approximate solutions to certain problems using partial sums of the power series; that is, we can find approximate solutions that are polynomials.</p></li>
+
+      <li><p>The connection between power series and Taylor series is that they are essentially the same thing: on its interval of convergence a power series is the Taylor series of its sum.</p></li>
+    </ul>
+    <exercises>
+      <exercise>
+        <statement>
+          <p>We can use power series to approximate definite integrals to which known techniques of integration do not apply. We will illustrate this in this exercise with the definite integral <m>\int_0^1 \sin(x^2) \ ds</m>.
+
+          <ol>
+            <li><p>Use the Taylor series for <m>\sin(x)</m> to find the Taylor series for <m>\sin(x^2)</m>. What is the interval of convergence for the Taylor series for <m>\sin(x^2)</m>? Explain.</p></li>
+
+            <li><p>Integrate the Taylor series for <m>\sin(x^2)</m> term by term to obtain a power series expansion for <m>\int \sin(x^2) \ dx</m>.</p></li>
+
+            <li><p>Use the result from part (b) to explain how to evaluate <m>\int_0^1 \sin(x^2) \ dx</m>. Determine the number of terms you will need to approximate <m>\int_0^1 \sin(x^2) \ dx</m> to 3 decimal places.</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise xml:id="ex_8.5.2">
+        <statement>
+          <p>There is an important connection between power series and Taylor series. Suppose <m>f</m> is defined by a power series centered at 0 so that
+          <me>
+            f(x) = \sum_{k=0}^{\infty} a_kx^k.
+          </me>
+
+          <ol>
+            <li><p>Determine the first 4 derivatives of <m>f</m> evaluated at 0 in terms of the coefficients <m>a_k</m>.</p></li>
+
+            <li><p>Show that <m>f^{(n)}(0) = n!a_n</m> for each positive integer <m>n</m>.
+              <solution>
+              <p>Then
+                <md>
+                  <mrow>f'(x) \amp = \sum_{k=1}^{\infty} ka_kx^{k-1}</mrow>
+                  <mrow>f''(x) \amp = \sum_{k=2}^{\infty} k(k-1)a_kx^{k-2}</mrow>
+                  <mrow>f^{(3)}(x) \amp = \sum_{k=3}^{\infty} k(k-1)(k-2)a_kx^{k-3}</mrow>
+                  <mrow>\vdots \amp  \ \qquad \vdots</mrow>
+                  <mrow>f^{(n)}(x) \amp = \sum_{k=n}^{\infty} k(k-1)(k-2) \cdots (k-n+1) a_kx^{k-n}</mrow>
+                  <mrow>\vdots \amp  \ \qquad \vdots</mrow>
+                </md>
+              </p>
+
+              <p>So
+                <md>
+                  <mrow>f(0) \amp = a_0</mrow>
+                  <mrow>f'(0) \amp = a_1</mrow>
+                  <mrow>f''(0) \amp = 2!a_2</mrow>
+                  <mrow>f^{(3)}(0) \amp = 3!a_3</mrow>
+                  <mrow>\vdots \amp  \ \qquad \vdots</mrow>
+                  <mrow>f^{(k)}(0) \amp = k!a_k</mrow>
+                  <mrow>\vdots \amp  \ \qquad \vdots</mrow>
+                </md>
+                and
+                <me>
+                  a_k = \frac{f^{(k)}(0)}{k!}
+                </me>
+                for each <m>k \geq 0</m>. But these are just the coefficients of the Taylor series expansion of <m>f</m>, which leads us to the following observation.</p>
+              </solution>
+              </p></li>
+
+            <li><p>Explain how the result of (b) tells us the following:</p></li>
+          </ol>
+          </p>
+
+          <p>\text{ 
+            On its interval of convergence, a power series is the Taylor series of its sum.
+             }</p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>In this exercise we will begin with a strange power series and then find its sum. The Fibonacci sequence <m>\{f_n\}</m> is a famous sequence whose first few terms are
+            <me>
+              f_0 = 0, f_1 = 1, f_2 = 1, f_3 = 2, f_4 = 3, f_5 = 5, f_6 = 8, f_7 = 13, \cdots,
+            </me>
+            where each term in the sequence after the first two is the sum of the preceding two terms. That is, <m>f_0 = 0</m>, <m>f_1 = 1</m> and for <m>n \geq 2</m> we have
+            <me>
+              f_n = f_{n-1} + f_{n-2}.
+            </me>
+          </p>
+
+          <p>Now consider the power series
+            <me>
+              F(x) = \sum_{k=0}^{\infty} f_kx^k.
+            </me>
+          </p>
+
+          <p>We will determine the sum of this power series in this exercise.
+
+          <ol>
+            <li><p>Explain why each of the following is true.
+
+            <ul>
+              <li>
+                <title>(i)</title>
+                <p><m>xF(x) = \sum_{k=1}^{\infty} f_{k-1}x^k</m></p></li>
+
+              <li>
+                <title>(ii)</title>
+                <p><m>x^2F(x) = \sum_{k=2}^{\infty} f_{k-2}x^k</m></p></li>
+            </ul>
+            </p></li>
+
+            <li><p>Show that
+                <me>
+                  F(x) - xF(x) - x^2F(x) = x.
+                </me>
+              </p></li>
+
+            <li><p>Now use the equation
+                <me>
+                  F(x) - xF(x) - x^2F(x) = x
+                </me>
+                to find a simple form for <m>F(x)</m> that doesn't involve a sum.</p></li>
+
+            <li><p>Use a computer algebra system or some other method to calculate the first 8 derivatives of <m>\frac{x}{1-x-x^2}</m> evaluated at 0. Why shouldn't the results surprise you?</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+      <statement>
+        <p>Airy's equation<fn>The general differential equations of the form <m>y'' \pm k^2xy = 0</m> is called Airy's equation. These equations arise in many problems, such as the study of diffraction of light, diffraction of radio waves around an object, aerodynamics, and the buckling of a uniform column under its own weight.</fn>
+          <men xml:id="eq_PA8.6_Airy_equation" >
+            y'' + xy = 0,
+          </men>
+          can be used to model an undamped vibrating spring with spring constant <m>x</m> (note that <m>y</m> is an unknown function of <m>x</m>). So the solution to this differential equation will tell us the behavior of a spring-mass system as the spring ages (like an automobile shock absorber). Assume that a solution <m>y=f(x)</m> has a Taylor series that can be written in the form
+          <me>
+            y = \sum_{k=0}^{\infty} a_kx^k,
+          </me>
+          where the coefficients are undetermined. Our job is to find the coefficients.</p>
+        <exercise>
+          <p>Differentiate the series for <m>y</m> term by term to find the series for <m>y'</m>. Then repeat to find the series for <m>y''</m>.</p>
+        </statement>
+        <solution>
+          <p>Now
+            <md>
+              <mrow>y' \amp = \sum_{k=1}^{\infty} ka_kx^{k-1}</mrow>
+              <mrow>y'' \amp = \sum_{k=2}^{\infty} (k-1)na_kx^{k-2}.</mrow>
+            </md>
+          </p>
+        </solution>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Substitute your results from part (a) into the Airy equation and show that we can write Equation <xref ref="eq_PA8.6_Airy_equation" /> in the form
+            <men xml:id="eq_PA8.6_Airy_1" >
+              \sum_{k=2}^{\infty} (k-1)ka_kx^{k-2} + \sum_{k=0}^{\infty} a_kx^{k+1} = 0.
+            </men>
+          </p>
+        </statement>
+        <solution>
+          <p>We substitute our series from (a) into the Airy equation to obtain the equation
+            <me>
+              \sum_{k=2}^{\infty} (k-1)ka_kx^{k-2} + x\sum_{k=0}^{\infty} a_kx^{k} = 0.
+            </me>
+          </p>
+
+          <p>Distributing the <m>x</m> in the second term on the left yields the equation in <xref ref="eq_PA8.6_Airy_1" />.</p>
+        </solution>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>At this point, it would be convenient if we could combine the series on the left in <xref ref="eq_PA8.6_Airy_1" />, but one written with terms of the form <m>x^{k-2}</m> and the other with terms in the form <m>x^{k+1}</m>. Explain why
+            <men xml:id="eq_PA8.6_Airy_sum_1" >
+              \sum_{k=2}^{\infty} (k-1)ka_kx^{k-2} = \sum_{k=0}^{\infty} (k+1)(k+2)a_{k+2}x^{k}.
+            </men>
+          </p>
+        </statement>
+        <solution>
+          <p>Note that
+            <md>
+              <mrow>\sum_{k=2}^{\infty} (k-1)ka_kx_{k-2} \amp = (1)(2)a_2 + (2)(3)a_3x + (3)(4)a_4x^2 + (4)(5)a_5x^3 + \cdots + (k-1)(k)a_{k+2}x^{k-2} + \cdots</mrow>
+              <mrow>\amp = (0+1)(0+2)x^0 + (1+1)(1+2)x^1 + (2+1)(2+2)x^2 + \cdots + (k+1)(k+2)x^k + \cdots.</mrow>
+            </md>
+          </p>
+
+          <p>In other words, we can re-index this series by increasing every <m>k</m> by 2, or replacing <m>k-2</m> with <m>k</m>, <m>k-1</m> with <m>k+1</m> and <m>k</m> with <m>k+2</m>. This gives us equation <xref ref="eq_PA8.6_Airy_sum_1" />.</p>
+        </solution>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Now show that
+            <men xml:id="eq_PA8.6_Airy_sum_2" >
+              \sum_{k=0}^{\infty} a_kx^{k+1} = \sum_{k=1}^{\infty} a_{k-1}x^k.
+            </men>
+          </p>
+        </statement>
+        <solution>
+          <p>As we did in the previous part,
+            <md>
+              <mrow>\sum_{k=0}^{\infty} a_kx_{k+1} \amp = a_0x + a_1x^2 + a_2x^3 +  \cdots + a_kx^{k+1} + \cdots</mrow>
+              <mrow>\amp = a_0x + a_1x^2 + a_2x^3 +  \cdots + a_{k-1}x^{k} + \cdots</mrow>
+              <mrow>\amp = \sum_{k=1}^{\infty} a_{k-1}x^k.</mrow>
+            </md>
+          </p>
+        </solution>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>We can now substitute <xref ref="eq_PA8.6_Airy_sum_1" /> and <xref ref="eq_PA8.6_Airy_sum_2" /> into <xref ref="eq_PA8.6_Airy_1" /> to obtain
+            <men xml:id="eq_PA8.6_Airy_2" >
+              \sum_{n=0}^{\infty} (n+1)(n+2)a_{n+2}x^{n} + \sum_{n=1}^{\infty} a_{n-1}x^{n} = 0.
+            </men>
+          </p>
+
+          <p>Combine the like powers of <m>x</m> in the two series to show that our solution must satisfy
+            <men xml:id="eq_PA8.6_Airy_sum_3" >
+              2a_2 + \sum_{k=1}^{\infty} \left[(k+1)(k+2)a_{k+2}+a_{k-1} \right] x^{k} = 0.
+            </men>
+          </p>
+        </statement>
+        <solution>
+          <p>Notice that we have like powers of <m>x</m> in our two series, so we can combine them and obtain
+            <md>
+              <mrow>0 \amp = \sum_{k=0}^{\infty} (k+1)(k+2)a_{k+2}x^{k} + \sum_{k=1}^{\infty} a_{k-1}x^{k}</mrow>
+              <mrow>\amp = \left[(1)(2)a_2 + \sum_{k=1}^{\infty} (k+1)(k+2)a_{k+2}x^{k} \right] + \sum_{k=1}^{\infty} a_{k-1}x^{k}</mrow>
+              <mrow>\amp = 2a_2 + \sum_{k=1}^{\infty} \left[(k+1)(k+2)a_{k+2}+a_{k-1} \right] x^{k}.</mrow>
+            </md>
+          </p>
+        </solution>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Use equation <xref ref="eq_PA8.6_Airy_sum_3" /> to show the following:
+
+          <ul>
+            <li>
+              <title>(i)</title>
+              <p><m>a_{3k+2} = 0</m> for every positive integer <m>k</m>,</p></li>
+
+            <li>
+              <title>(ii)</title>
+              <p><m>a_{3k} = \frac{1}{(2)(3)(5)(6) \cdots (3k-1)(3k)} a_0 \text{ for }  k \geq 1</m>,</p></li>
+
+            <li>
+              <title>(iii)</title>
+              <p><m>a_{3k+1} = \frac{1}{(3)(4)(6)(7) \cdots (3k)(3k+1)} a_1 \text{ for }  k \geq 1</m>.</p></li>
+          </ul>
+          </p>
+        </statement>
+        <solution>
+          <p>Equation <xref ref="eq_PA8.6_Airy_sum_3" /> implies that
+            <me>
+              a_2 = 0 \ \text{ and }  \ (k+1)(k+2)a_{k+2}+a_{k-2} = 0 \text{ for all }  k \geq 1.
+            </me>
+          </p>
+
+          <p>Solving for <m>a_{k+2}</m> in the second equation shows that
+            <md>
+              <mrow>a_2 \amp = 0</mrow>
+              <mrow>a_{k+2} \amp = -\frac{1}{(k+1)(k+2)}a_{k-1} \text{ for }   k \geq 1.</mrow>
+            </md>
+          </p>
+
+          <p>These last equations are called <em>recurrence relations</em> and allow us to write every coefficient of <m>y</m> in terms of <m>a_0</m> and <m>a_1</m>. For example, <m>k=1</m> shows that <m>a_3 = \frac{1}{(2)(3)} a_0 = \frac{1}{6}a_0</m>. We can continue in this way to obtain the first 10 coefficients in terms of <m>a_0</m> and <m>a_1</m>:
+            <md>
+              <mrow>a_3 \amp = \frac{1}{(2)(3)}a_0</mrow>
+              <mrow>a_4 \amp = \frac{1}{(3)(4)}a_1</mrow>
+              <mrow>a_5 \amp = \frac{1}{(4)(5)} a_2 = 0</mrow>
+              <mrow>a_6 \amp = \frac{1}{(5)(6)} a_3 = \frac{1}{(5)(6)} \left(\frac{1}{(2)(3)} a_0 \right) = \frac{1}{(2)(3)(5)(6)} a_0</mrow>
+              <mrow>a_7 \amp = \frac{1}{(6)(7)} a_4 = \frac{1}{(6)(7)} \left(\frac{1}{(3)(4)} a_1 \right) = \frac{1}{(3)(4)(6)(7)} a_1</mrow>
+              <mrow>a_8 \amp = \frac{1}{(7)(8)} a_5 = 0</mrow>
+              <mrow>a_9 \amp = \frac{1}{(8)(9)} a_6 = \frac{1}{(8)(9)} \left(\frac{1}{(2)(3)(5)(6)} a_0 \right) = \frac{1}{(2)(3)(5)(6)(8)(9)} a_0</mrow>
+              <mrow>a_{10} \amp = \frac{1}{(9)(10)} a_7 = \frac{1}{(9)(10)} \left(\frac{1}{(3)(4)(6)(7)} a_1 \right) = \frac{1}{(3)(4)(6)(7)(9)(10)} a_1.</mrow>
+            </md>
+          </p>
+
+          <p>It may not be obvious, but there is a pattern.
+
+          <ul>
+            <li><p>All of the terms involving <m>a_2</m> are 0. These terms are <m>a_2</m>, <m>a_5</m>, <m>a_8</m>, etc. The subscripts of these terms are all of the form <m>3k+2</m>. So <m>a_{3k+2} = 0</m> for every positive integer <m>k</m>.</p></li>
+
+            <li><p>The terms that involve <m>a_0</m> have the form <m>a_3</m>, <m>a_6</m>, <m>a_{9}</m>, etc. and are all of the form <m>a_{3k}</m> for positive integers <m>k</m>. The pattern in the denominators of the coefficient for <m>a_{3k}</m> is <m>(2)(3)(5)(6) \cdots (3k-1)(3k)</m>. So
+                <me>
+                  a_{3k} = \frac{1}{(2)(3)(5)(6) \cdots (3k-1)(3k)} a_0 \text{ for }  k \geq 1.
+                </me>
+              </p></li>
+
+            <li><p>The terms that involve <m>a_1</m> have the form <m>a_4</m>, <m>a_7</m>, <m>a_{10}</m>, etc. and are all of the form <m>a_{3k+1}</m> for positive integers <m>k</m>. The pattern in the denominators of the coefficient for <m>a_{3k+1}</m> is <m>(3)(4)(6)(7) \cdots (3k)(3k+1)</m>. So
+                <me>
+                  a_{3k+1} = \frac{1}{(3)(4)(6)(7) \cdots (3k)(3k+1)} a_1 \text{ for }  k \geq 1.
+                </me>
+              </p></li>
+          </ul>
+          </p>
+        </solution>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Use the previous part to conclude that the general solution to the Airy equation <xref ref="eq_PA8.6_Airy_equation" /> is
+            <md>
+              <mrow>y =\mathstrut \amp  a_0\left( 1+\sum_{k=1}^{\infty} \frac{x^{3k}}{(2)(3)(5)(6) \cdots (3k-1)(3k)} \right)</mrow>
+              <mrow>\amp  \ \amp  \  + a_1 \left( x + \sum_{k=1}^{\infty} \frac{x^{3k+1}}{(3)(4)(6)(7) \cdots (3k)(3k+1)} \right).</mrow>
+            </md>
+          </p>
+
+          <p>Any values for <m>a_0</m> and <m>a_1</m> then determine a specific solution that we can approximate as closely as we like using this series solution.</p>
+        </statement>
+        <solution>
+          <p>We can write our solution <m>y</m> in three pieces as
+            <me>
+              y = \sum_{k = 0}^{\infty} a_kx^k = \sum_{k=0}^{\infty} a_{3k}x^{3k} + \sum_{k=0}^{\infty} a_{3k+1}x^{3k+1} + \sum_{k=0}^{\infty} a_{3k+2}x^{3k+2}
+            </me>
+            and so our results from the previous part of this exercise show that
+            <me>
+              y = a_0\left( 1+\sum_{k=1}^{\infty} \frac{x^{3k}}{(2)(3)(5)(6) \cdots (3k-1)(3k)} \right) + a_1 \left( x + \sum_{k=1}^{\infty} \frac{x^{3k+1}}{(3)(4)(6)(7) \cdots (3k)(3k+1)} \right).
+            </me>
+          </p>
+        </solution>
+        <solution>
+          <p>\end{exercise} \begin{exercise} A more complicated differential equation is one that governs the motion of a pendulum. Mechanics tells us that the motion of a pendulum of length <m>L</m> with mass <m>m</m> is governed by the differential equation
+            <me>
+              mL \frac{d^2 \theta}{d t^2} = -mg \sin(\theta)
+            </me>
+            where <m>t</m> is time and <m>\theta</m> is the angle the pendulum makes with its vertical axis.</p>
+
+          <p>We do not have the machinery to solve this differential equation exactly, but we can approximate a solution as closely as we like by assuming that a solution <m>\theta</m> has a Taylor series expansion about the origin. In other words, assume that
+            <me>
+              \theta = \sum_{n=0}^{\infty} a_nt_n,
+            </me>
+            where the coefficients are undetermined. Then
+            <md>
+              <mrow>\theta \amp = \sum_{n=0}^{\infty} a_nt_n</mrow>
+              <mrow>\frac{d \theta}{dt} \amp = \sum_{n=1}^{\infty} na_nt_{n-1}</mrow>
+              <mrow>\frac{d^2 \theta}{dt^2} \amp = \sum_{n=2}^{\infty} (n-1)na_nt_{n-2}</mrow>
+              <mrow>\frac{d^3 \theta}{dt^3} \amp = \sum_{n=3}^{\infty} (n-2)(n-1)na_nt_{n-3}</mrow>
+              <mrow>\vdots \amp = \vdots</mrow>
+            </md>
+            from the series expansion and
+            <md>
+              <mrow>\frac{d^2 \theta}{dt^2} \amp = -\frac{g}{L} \sin\left(\theta\right)</mrow>
+              <mrow>\frac{d^3 \theta}{dt^3} \amp = -\frac{g}{L}\left[\cos(\theta)\frac{d \theta}{dt}\right]</mrow>
+              <mrow>\frac{d^4 \theta}{dt^4} \amp = -\frac{g}{L}\left[-\sin(\theta)\left(\frac{d \theta}{dt}\right)^2 + \cos(theta)\frac{d^2 \theta}{dt^2} \right]</mrow>
+              <mrow>\vdots \amp = \vdots</mrow>
+            </md>
+          </p>
+
+          <p>If we seek a solution with initial conditions <m>\theta(0) = \frac{\pi}{6}</m> and <m>\frac{d \theta}{dt}(0) = 0</m>, then we have
+            <md>
+              <mrow>\theta(0) \amp = a_0 = \frac{\pi}{6}</mrow>
+              <mrow>\frac{d \theta}{dt}(0) \amp = a_1 = 0</mrow>
+              <mrow>\frac{d^2 \theta}{dt^2}(0) \amp = 2a_2 = -\frac{g}{L} \sin\left(\frac{\pi}{6}\right) = -\frac{g}{2L}</mrow>
+              <mrow>\frac{d^3 \theta}{dt^3}(0) \amp = 6a_3 = -\frac{g}{L}\cos(\theta(0))\frac{d \theta}{dt}(0) = 0</mrow>
+              <mrow>\frac{d^4 \theta}{dt^4}(0) \amp = 24a_4 = -\frac{g}{L}\left[-\sin\left(\frac{\pi}{6}\right)\left(\frac{d \theta}{dt}(0)\right)^2 + \cos\left(\frac{\pi}{6}\right)\frac{d^2 \theta}{dt^2}(0) \right] = -\frac{g}{L}\left[\frac{\sqrt{3}}{2}\left(-\frac{g}{2L}\right)\right]</mrow>
+              <mrow>\vdots \amp = \vdots</mrow>
+            </md>
+          </p>
+
+          <p>This gives us
+            <me>
+              a_0 = \frac{\pi}{6}, \ \ a_1 = 0, \ \ a_2 = -\frac{g}{4L}, \ \ a_3 = 0, \ \ a_4 = \frac{\sqrt{3} g^2}{96L^2}
+            </me>
+            and an approximation of <m>\theta</m> as
+            <me>
+              \theta \approx \frac{\pi}{6} - \frac{g}{4L}t^2 + \frac{\sqrt{3}g^2}{96L^2} t^4.
+            </me>
+          </p>
+
+          <p>We could keep going to determine more and more terms in this Taylor series for <m>\theta</m>, but the point is that we can use series like this one to approximate functions. The difference between this type of problem and our use of Taylor series is that to determine the terms in a Taylor series, we need to know the function from which we derive the series. In this differential equation example, we didn't know the function <m>\theta</m>, be we could calculate terms in a series expansion for <m>\theta</m> because we had enough information about <m>\theta</m>.</p>
+        </solution>
+      </exercise>
+      </exercise>
+    </exercises>
+    <p>\appendix</p>
+  </subsection>
+</section>

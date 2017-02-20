@@ -1,0 +1,425 @@
+
+<section xml:id="S_3.1.Tests">
+  <title>Using derivatives to identify extreme values</title>
+  <introduction>
+    <objectives>
+      <ul>
+        <li><p>What are the critical numbers of a function <m>f</m> and how are they connected to identifying the most extreme values the function achieves?</p></li>
+
+        <li><p>How does the first derivative of a function reveal important information about the behavior of the function, including the function's extreme values?</p></li>
+
+        <li><p>How can the second derivative of a function be used to help identify extreme values of the function?</p></li>
+      </ul>
+    </objectives>
+    <p>In many different settings, we are interested in knowing where a function achieves its least and greatest values. These can be important in applications <mdash /> say to identify a point at which maximum profit or minimum cost occurs <mdash /> or in theory to understand how to characterize the behavior of a function or a family of related functions. Consider the simple and familiar example of a parabolic function such as <m>s(t) = -16t^2 + 32t + 48</m> (shown at left in <xref ref="F_3.1.Intro">Figure</xref>) that represents the height of an object tossed vertically: its maximum value occurs at the vertex of the parabola and represents the highest value that the object reaches. Moreover, this maximum value identifies an especially important point on the graph, the point at which the curve changes from increasing to decreasing.</p>
+
+    <figure xml:id="F_3.1.Intro" >
+      <caption>At left, <m>s(t) = -16t^2 + 24t + 32</m> whose vertex is <m>(\frac{3}{4}, 41)</m>; at right, a function <m>g</m> that demonstrates several high and low points.</caption>
+      <image width="73%" source="images/3_1_Intro" />
+    </figure>
+
+    <p>More generally, for any function we consider, we can investigate where its lowest and highest points occur in comparison to points nearby or to all possible points on the graph. Given a function <m>f</m>, we say that <m>f(c)</m> is a <em>global</em> or <em>absolute maximum</em> <index><main>maximum</main><sub>global</sub></index> <index><main>maximum</main><sub>absolute</sub></index> provided that <m>f(c) \ge f(x)</m> for all <m>x</m> in the domain of <m>f</m>, and similarly call <m>f(c)</m> a <em>global</em> <index><main>minimum</main><sub>global</sub></index> or <em>absolute minimum</em> <index><main>minimum</main><sub>absolute</sub></index> whenever <m>f(c) \le f(x)</m> for all <m>x</m> in the domain of <m>f</m>. For instance, for the function <m>g</m> given at right in <xref ref="F_3.1.Intro">Figure</xref>, <m>g</m> has a global maximum of <m>g(c)</m>, but <m>g</m> does not appear to have a global minimum, as the graph of <m>g</m> seems to decrease without bound. We note that the point <m>(c,g(c))</m> marks a fundamental change in the behavior of <m>g</m>, where <m>g</m> changes from increasing to decreasing; similar things happen at both <m>(a,g(a))</m> and <m>(b,g(b))</m>, although these points are not global mins or maxes.</p>
+
+    <p>For any function <m>f</m>, we say that <m>f(c)</m> is a <em>local maximum</em> <index><main>maximum</main><sub>local</sub></index> or <em>relative maximum</em> <index><main>maximum</main><sub>relative</sub></index> provided that <m>f(c) \ge f(x)</m> for all <m>x</m> near <m>c</m>, while <m>f(c)</m> is called a <em>local</em> <index><main>minimum</main><sub>local</sub></index> or <em>relative minimum</em> <index><main>minimum</main><sub>relative</sub></index> whenever <m>f(c) \le f(x)</m> for all <m>x</m> near <m>c</m>. Any maximum or minimum may be called an <em>extreme value</em> <index><main>extreme value</main></index> of <m>f</m>. For example, in <xref ref="F_3.1.Intro">Figure</xref>, <m>g</m> has a relative minimum of <m>g(b)</m> at the point <m>(b,g(b))</m> and a relative maximum of <m>g(a)</m> at <m>(a,g(a))</m>. We have already identified the global maximum of <m>g</m> as <m>g(c)</m>; this global maximum can also be considered a relative maximum.</p>
+
+    <p>We would like to use fundamental calculus ideas to help us identify and classify key function behavior, including the location of relative extremes. Of course, if we are given a graph of a function, it is often straightforward to locate these important behaviors visually. We investigate this situation in the following preview activity.</p>
+
+    <exploration xml:id="PA_3.1">
+      <p>Consider the function <m>h</m> given by the graph in <xref ref="F_3.1.PA1">Figure</xref>. Use the graph to answer each of the following questions.</p>
+
+      <figure xml:id="F_3.1.PA1" >
+        <caption>The graph of a function <m>h</m> on the interval <m>[-3,3]</m>.</caption>
+        <image width="73%" source="images/3_1_PA1" />
+      </figure>
+
+      <ol>
+        <li><p>Identify all of the values of <m>c</m> for which <m>h(c)</m> is a local maximum of <m>h</m>.</p></li>
+
+        <li><p>Identify all of the values of <m>c</m> for which <m>h(c)</m> is a local minimum of <m>h</m>.</p></li>
+
+        <li><p>Does <m>h</m> have a global maximum on the interval <m>[3,3]</m>?  If so, what is the value of this global maximum?</p></li>
+
+        <li><p>Does <m>h</m> have a global minimum on the interval <m>[3,3]</m>?  If so, what is its value?</p></li>
+
+        <li><p>Identify all values of <m>c</m> for which <m>h'(c) = 0</m>.</p></li>
+
+        <li><p>Identify all values of <m>c</m> for which <m>h'(c)</m> does not exist.</p></li>
+
+        <li><p>True or false: every relative maximum and minimum of <m>h</m> occurs at a point where <m>h'(c)</m> is either zero or does not exist.</p></li>
+
+        <li><p>True or false: at every point where <m>h'(c)</m> is zero or does not exist, <m>h</m> has a relative maximum or minimum.</p></li>
+      </ol>
+    </exploration>
+  </introduction>
+
+  <subsection>
+    <title>Critical numbers and the first derivative test</title>
+    <p>If a function has a relative extreme value at a point <m>(c,f(c))</m>, the function must change its behavior at <m>c</m> regarding whether it is increasing or decreasing before or after the point.</p>
+
+    <figure xml:id="F_3.1.extremes" >
+      <caption>From left to right, a function with a relative maximum where its derivative is zero; a function with a relative maximum where its derivative is undefined; a function with neither a maximum nor a minimum at a point where its derivative is zero; a function with a relative minimum where its derivative is zero; and a function with a relative minimum where its derivative is undefined.</caption>
+      <image width="73%" source="images/3_1_extremes" />
+    </figure>
+
+    <p>For example, if a continuous function has a relative maximum at <m>c</m>, such as those pictured in the two leftmost functions in <xref ref="F_3.1.extremes">Figure</xref>, then it is both necessary and sufficient that the function change from being increasing just before <m>c</m> to decreasing just after <m>c</m>. In the same way, a continuous function has a relative minimum at <m>c</m> if and only if the function changes from decreasing to increasing at <m>c</m>. See, for instance, the two functions pictured at right in <xref ref="F_3.1.extremes">Figure</xref>. There are only two possible ways for these changes in behavior to occur: either <m>f'(c) = 0</m> or <m>f'(c)</m> is undefined.</p>
+
+    <p>Because these values of <m>c</m> are so important, we call them <em>critical numbers</em>. More specifically, we say that a function <m>f</m> has a <em>critical number</em> <index><main>critical number</main></index> at <m>x = c</m> provided that <m>c</m> is in the domain of <m>f</m>, and <m>f'(c) = 0</m> or <m>f'(c)</m> is undefined. Critical numbers provide us with the only possible locations where the function <m>f</m> may have relative extremes. Note that not every critical number produces a maximum or minimum; in the middle graph of <xref ref="F_3.1.extremes">Figure</xref>, the function pictured there has a horizontal tangent line at the noted point, but the function is increasing before and increasing after, so the critical number does not yield a location where the function is greater than every value nearby, nor less than every value nearby.</p>
+
+    <p>We also sometimes use the terminology that, when <m>c</m> is a critical number, that <m>(c,f(c))</m> is a <em>critical point</em> <index><main>critical point</main></index> of the function, or that <m>f(c)</m> is a <em>critical value</em> <index><main>critical value</main></index>.</p>
+
+    <p>The <em>first derivative test</em> <index><main>first derivative test</main></index> summarizes how sign changes in the first derivative indicate the presence of a local maximum or minimum for a given function.</p>
+
+    <p><em>First Derivative Test:</em><index><main>first derivative test</main></index> If <m>p</m> is a critical number of a continuous function <m>f</m> that is differentiable near <m>p</m> (except possibly at <m>x = p</m>), then <m>f</m> has a relative maximum at <m>p</m> if and only if <m>f'</m> changes sign from positive to negative at <m>p</m>, and <m>f</m> has a relative minimum at <m>p</m> if and only if <m>f'</m> changes sign from negative to positive at <m>p</m>.</p>
+
+    <p>We consider an example to show one way the first derivative test can be used to identify the relative extreme values of a function.</p>
+
+    <example xml:id="Ex_f_from_f_">
+      <statement>
+        <p>Let <m>f</m> be a function whose derivative is given by the formula <m>f'(x) = e^{-2x}(3-x)(x+1)^2</m>. Determine all critical numbers of <m>f</m> and decide whether a relative maximum, relative minimum, or neither occurs at each.</p>
+      </statement>
+    </example>
+
+    <p>Since we already have <m>f'(x)</m> written in factored form, it is straightforward to find the critical numbers of <m>f</m>. Since <m>f'(x)</m> is defined for all values of <m>x</m>, we need only determine where <m>f'(x) = 0</m>. From the equation
+      <me>
+        e^{-2x}(3-x)(x+1)^2 = 0
+      </me>
+      and the zero product property, it follows that <m>x = 3</m> and <m>x = -1</m> are critical numbers of <m>f</m>. (Note particularly that there is no value of <m>x</m> that makes <m>e^{-2x} = 0</m>.)</p>
+
+    <p>Next, to apply the first derivative test, we'd like to know the sign of <m>f'(x)</m> at inputs near the critical numbers. Because the critical numbers are the only locations at which <m>f'</m> can change sign, it follows that the sign of the derivative is the same on each of the intervals created by the critical numbers: for instance, the sign of <m>f'</m> must be the same for every <m>x \lt  -1</m>. We create a first derivative sign chart to summarize the sign of <m>f'</m> on the relevant intervals along with the corresponding behavior of <m>f</m>.</p>
+
+    <figure xml:id="F_3.1.signchart" >
+      <caption>The first derivative sign chart for a function <m>f</m> whose derivative is given by the formula <m>f'(x) = e^{-2x}(3-x)(x+1)^2</m>.</caption>
+      <image width="73%" source="images/3_1_signchart" />
+    </figure>
+
+    <p>The first derivative sign chart in <xref ref="F_3.1.signchart">Figure</xref> comes from thinking about the sign of each of the terms in the factored form of <m>f'(x)</m> at one selected point in the interval under consideration. For instance, for <m>x \lt  -1</m>, we could consider <m>x = -2</m> and determine the sign of <m>e^{-2x}</m>, <m>(3-x)</m>, and <m>(x+1)^2</m> at the value <m>x = -2</m>. We note that both <m>e^{-2x}</m> and <m>(x+1)^2</m> are positive regardless of the value of <m>x</m>, while <m>(3-x)</m> is also positive at <m>x = -2</m>. Hence, each of the three terms in <m>f'</m> is positive, which we indicate by writing <q><m>+++</m>.</q> Taking the product of three positive terms obviously results in a value that is positive, which we denote by the <q><m>+</m></q> in the interval to the left of <m>x = -1</m> indicating the overall sign of <m>f'</m>. And, since <m>f'</m> is positive on that interval, we further know that <m>f</m> is increasing, which we summarize by writing <q>INC</q> to represent the corresponding behavior of <m>f</m>. In a similar way, we find that <m>f'</m> is positive and <m>f</m> is increasing on <m>-1 \lt  x \lt  3</m>, and <m>f'</m> is negative and <m>f</m> is decreasing for <m>x > 3</m>.</p>
+
+    <p>Now, by the first derivative test, to find relative extremes of <m>f</m> we look for critical numbers at which <m>f'</m> changes sign. In this example, <m>f'</m> only changes sign at <m>x = 3</m>, where <m>f'</m> changes from positive to negative, and thus <m>f</m> has a relative maximum at <m>x = 3</m>. While <m>f</m> has a critical number at <m>x = -1</m>, since <m>f</m> is increasing both before and after <m>x = -1</m>, <m>f</m> has neither a minimum nor a maximum at <m>x = -1</m>.</p>
+
+    <activity xml:id="A_3.1.1">
+      <p>Suppose that <m>g(x)</m> is a function continuous for every value of <m>x \ne 2</m> whose first derivative is <m>g'(x) = \frac{(x+4)(x-1)^2}{x-2}</m>. Further, assume that it is known that <m>g</m> has a vertical asymptote at <m>x = 2</m>.
+
+      <ol>
+        <li><p>Determine all critical numbers of <m>g</m>.</p></li>
+
+        <li><p>By developing a carefully labeled first derivative sign chart, decide whether <m>g</m> has  as a local maximum, local minimum, or neither at each critical number.</p></li>
+
+        <li><p>Does <m>g</m> have a global maximum? global minimum? Justify your claims.</p></li>
+
+        <li><p>What is the value of <m>\lim_{x \to \infty} g'(x)</m>?  What does the value of this limit tell you about the long-term behavior of <m>g</m>?</p></li>
+
+        <li><p>Sketch a possible graph of <m>y = g(x)</m>.</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>For which <m>x</m> is <m>g'(x) = 0</m>?</p></li>
+
+          <li><p>Note that <m>(x-1)^2</m> is positive for all <m>x \ne 1</m>.</p></li>
+
+          <li><p>Use your first derivative sign chart from (b).</p></li>
+
+          <li><p>Try expanding the numerator before evaluating the limit.</p></li>
+
+          <li><p>Think carefully about the information from the sign chart found in (b).</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Since <m>g'(x) = \frac{(x+4)(x-1)^2}{x-2}</m>, we see that <m>g'(x) = 0</m> implies that <m>x = -4</m> or <m>x = 1</m>.  While <m>x = 2</m> makes <m>g'</m> undefined, we are told that <m>g</m> has a vertical asymptote at <m>x = 2</m>, so <m>x = 2</m> is not in the domain of <m>g</m>, and hence is technically not a critical value of <m>g</m>.  Nonetheless, we place <m>x = 2</m> on our first derivative sign chart since the vertical asymptote is a location at which <m>g'</m> may change sign.</p></li>
+
+          <li><p>The first derivative sign chart shows that <m>g'(x) > 0</m> for <m>x \lt  -4</m>, <m>g'(x) \lt  0</m> for <m>-4 \lt  x \lt  1</m>, <m>g'(x) \lt  0</m> for <m>1 \lt  x \lt  2</m>, and <m>g'(x) > 0</m> for <m>x > 2</m>.  By the first derivative test, <m>g</m> has a local maximum at <m>x = -4</m> and neither a max nor min at <m>x = 1</m>.  As these are the only two critical values, these are the only two locations for possible extremes.  (Note: although <m>g</m> changes from decreasing to increasing at <m>x = 2</m>, this is due to a vertical asymptote, and <m>g</m> does not have a minimum there.)</p></li>
+
+          <li><p>Because <m>g</m> is decreasing as <m>x \to 2^-</m> (where <m>g</m> has a vertical asymptote), <m>g</m> does not have a global minimum.  For <m>x > 2</m>, <m>g</m> is always increasing, which suggests that <m>g</m> does not have a global maximum (though we do not know for sure that <m>g</m> increases without bound).</p></li>
+
+          <li><p>We observe that
+              <md>
+                <mrow>\lim_{x \to \infty} g'(x) =\mathstrut \amp  \lim_{x \to \infty} \frac{(x+4)(x-1)^2}{x-2}</mrow>
+                <mrow>=\mathstrut \amp  \lim_{x \to \infty} \frac{x^3 + 2x^2 - 7x + 4}{x-2} \cdot \frac{\frac{1}{x}}{\frac{1}{x}}</mrow>
+                <mrow>=\mathstrut \amp  \lim_{x \to \infty} \frac{x^2 + 2x - 7 + \frac{4}{x}}{1 - \frac{2}{x}}</mrow>
+                <mrow>=\mathstrut \amp  \infty</mrow>
+              </md>
+              Since <m>g'(x) \to \infty</m> as <m>x \to \infty</m>, this tells us that <m>g</m> increases without bound as <m>x \to \infty</m>.</p></li>
+
+          <li><p>From all of our work above, we know that <m>g</m> has a local maximum at <m>x = -4</m>, a horizontal tangent line with neither a max nor min at <m>x = 1</m>, and a vertical asymptote at <m>x = 2</m>, plus <m>g</m> and <m>g'</m> both increase without bound as <m>x \to \infty</m>.  Thus, a possible graph of <m>g</m> is the following.
+              <image width="73%" source="images/3_1_Act1Soln" />
+            </p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>The second derivative test</title>
+    <p>Recall that the second derivative of a function tells us several important things about the behavior of the function itself. For instance, if <m>f''</m> is positive on an interval, then we know that <m>f'</m> is increasing on that interval and, consequently, that <m>f</m> is concave up, which also tells us that throughout the interval the tangent line to <m>y = f(x)</m> lies below the curve at every point. In this situation where we know that <m>f'(p) = 0</m>, it turns out that the sign of the second derivative determines whether <m>f</m> has a local minimum or local maximum at the critical number <m>p</m>.</p>
+
+    <figure xml:id="F_3.1.2Dtest" >
+      <caption>Four possible graphs of a function <m>f</m> with a horizontal tangent line at a critical point.</caption>
+      <image width="73%" source="images/3_1_2Dtest" />
+    </figure>
+
+    <p>In <xref ref="F_3.1.2Dtest">Figure</xref>, we see the four possibilities for a function <m>f</m> that has a critical number <m>p</m> at which <m>f'(p) = 0</m>, provided <m>f''(p)</m> is not zero on an interval including <m>p</m> (except possibly at <m>p</m>). On either side of the critical number, <m>f''</m> can be either positive or negative, and hence <m>f</m> can be either concave up or concave down. In the first two graphs, <m>f</m> does not change concavity at <m>p</m>, and in those situations, <m>f</m> has either a local minimum or local maximum. In particular, if <m>f'(p) = 0</m> and <m>f''(p) \lt  0</m>, then we know <m>f</m> is concave down at <m>p</m> with a horizontal tangent line, and this guarantees <m>f</m> has a local maximum there. This fact, along with the corresponding statement for when <m>f''(p)</m> is positive, is stated in the <em>second derivative test</em>.</p>
+
+    <p><em>Second Derivative Test:</em><index><main>second derivative test</main></index> If <m>p</m> is a critical number of a continuous function <m>f</m> such that <m>f'(p) = 0</m> and <m>f''(p) \ne 0</m>, then <m>f</m> has a relative maximum at <m>p</m> if and only if <m>f''(p) \lt  0</m>, and <m>f</m> has a relative minimum at <m>p</m> if and only if <m>f''(p) > 0</m>.</p>
+
+    <p>In the event that <m>f''(p) = 0</m>, the second derivative test is inconclusive. That is, the test doesn't provide us any information. This is because if <m>f''(p) = 0</m>, it is possible that <m>f</m> has a local minimum, local maximum, or neither.<fn>Consider the functions <m>f(x) = x^4</m>, <m>g(x) = -x^4</m>, and <m>h(x) = x^3</m> at the critical point <m>p = 0</m>.</fn></p>
+
+    <p>Just as a first derivative sign chart reveals all of the increasing and decreasing behavior of a function, we can construct a second derivative sign chart that demonstrates all of the important information involving concavity.</p>
+
+    <example xml:id="Ex_3.2">
+      <statement>
+        <p>Let <m>f(x)</m> be a function whose first derivative is <m>f'(x) = 3x^4 - 9x^2</m>. Construct both first and second derivative sign charts for <m>f</m>, fully discuss where <m>f</m> is increasing and decreasing and concave up and concave down, identify all relative extreme values, and sketch a possible graph of <m>f</m>.</p>
+      </statement>
+    </example>
+
+    <p>Since we know <m>f'(x) = 3x^4 - 9x^2</m>, we can find the critical numbers of <m>f</m> by solving <m>3x^4 - 9x^2 = 0</m>. Factoring, we observe that
+      <me>
+        0 = 3x^2(x^2 - 3) = 3x^2(x+\sqrt{3})(x-\sqrt{3}),
+      </me>
+      so that <m>x = 0, \pm\sqrt{3}</m> are the three critical numbers of <m>f</m>. It then follows that the first derivative sign chart for <m>f</m> is given in <xref ref="F_3.1.signchart2">Figure</xref>.</p>
+
+    <figure xml:id="F_3.1.signchart2" >
+      <caption>The first derivative sign chart for <m>f</m> when <m>f'(x) = 3x^4 - 9x^2 = 3x^2(x^2-3)</m>.</caption>
+      <image width="73%" source="images/3_1_signchart2" />
+    </figure>
+
+    <p>Thus, <m>f</m> is increasing on the intervals <m>(-\infty, -\sqrt{3})</m> and <m>(\sqrt{3}, \infty)</m>, while <m>f</m> is decreasing on <m>(-\sqrt{3},0)</m> and <m>(0, \sqrt{3})</m>. Note particularly that by the first derivative test, this information tells us that <m>f</m> has a local maximum at <m>x = -\sqrt{3}</m> and a local minimum at <m>x = \sqrt{3}</m>. While <m>f</m> also has a critical number at <m>x = 0</m>, neither a maximum nor minimum occurs there since <m>f'</m> does not change sign at <m>x = 0</m>.</p>
+
+    <p>Next, we move on to investigate concavity. Differentiating <m>f'(x) = 3x^4 - 9x^2</m>, we see that <m>f''(x) = 12x^3 - 18x</m>. Since we are interested in knowing the intervals on which <m>f''</m> is positive and negative, we first find where <m>f''(x) = 0</m>. Observe that
+      <me>
+        0 = 12x^3 - 18x = 12x\left(x^2 - \frac{3}{2}\right) = 12x\left(x+\sqrt{\frac{3}{2}}\right)\left(x-\sqrt{\frac{3}{2}}\right),
+      </me>
+      which implies that <m>x = 0, \pm\sqrt{\frac{3}{2}}</m>. Building a sign chart for <m>f''</m> in the exact same way we do for <m>f'</m>, we see the result shown in <xref ref="F_3.1.signchart3">Figure</xref>.</p>
+
+    <figure xml:id="F_3.1.signchart3" >
+      <caption>The second derivative sign chart for <m>f</m> when <m>f''(x) = 12x^3-18x = 12x^2\left(x^2-\sqrt{\frac{3}{2}}\right)</m>.</caption>
+      <image width="73%" source="images/3_1_signchart3" />
+    </figure>
+
+    <p>Therefore, <m>f</m> is concave down on the intervals <m>(-\infty, -\sqrt{\frac{3}{2}})</m> and <m>(0, \sqrt{\frac{3}{2}})</m>, and concave up on <m>(-\sqrt{\frac{3}{2}},0)</m> and <m>(\sqrt{\frac{3}{2}}, \infty)</m>.</p>
+
+    <p>Putting all of the above information together, we now see a complete and accurate possible graph of <m>f</m> in <xref ref="F_3.1.Ex2">Figure</xref>.</p>
+
+    <figure xml:id="F_3.1.Ex2" >
+      <caption>A possible graph of the function <m>f</m> in <xref ref="Ex_3.2">Example</xref>.</caption>
+      <image width="73%" source="images/3_1_Ex2" />
+    </figure>
+
+    <p>The point <m>A = (-\sqrt{3}, f(-\sqrt{3}))</m> is a local maximum, as <m>f</m> is increasing prior to <m>A</m> and decreasing after; similarly, the point <m>E = (\sqrt{3}, f(\sqrt{3})</m> is a local minimum. Note, too, that <m>f</m> is concave down at <m>A</m> and concave up at <m>B</m>, which is consistent both with our second derivative sign chart and the second derivative test. At points <m>B</m> and <m>D</m>, concavity changes, as we saw in the results of the second derivative sign chart in <xref ref="F_3.1.signchart3">Figure</xref>. Finally, at point <m>C</m>, <m>f</m> has a critical point with a horizontal tangent line, but neither a maximum nor a minimum occurs there since <m>f</m> is decreasing both before and after <m>C</m>. It is also the case that concavity changes at <m>C</m>.</p>
+
+    <p>While we completely understand where <m>f</m> is increasing and decreasing, where <m>f</m> is concave up and concave down, and where <m>f</m> has relative extremes, we do not know any specific information about the <m>y</m>-coordinates of points on the curve. For instance, while we know that <m>f</m> has a local maximum at <m>x = -\sqrt{3}</m>, we don't know the value of that maximum because we do not know <m>f(-\sqrt{3})</m>. Any vertical translation of our sketch of <m>f</m> in <xref ref="F_3.1.Ex2">Figure</xref> would satisfy the given criteria for <m>f</m>.</p>
+
+    <p>Points <m>B</m>, <m>C</m>, and <m>D</m> in <xref ref="F_3.1.Ex2">Figure</xref> are locations at which the concavity of <m>f</m> changes. We give a special name to any such point: if <m>p</m> is a value in the domain of a continuous function <m>f</m> at which <m>f</m> changes concavity, then we say that <m>(p,f(p))</m> is an <em>inflection point</em> <index><main>inflection point</main></index> of <m>f</m>. Just as we look for locations where <m>f</m> changes from increasing to decreasing at points where <m>f'(p) = 0</m> or <m>f'(p)</m> is undefined, so too we find where <m>f''(p) = 0</m> or <m>f''(p)</m> is undefined to see if there are points of inflection at these locations.</p>
+
+    <p>It is important at this point in our study to remind ourselves of the big picture that derivatives help to paint: the sign of the first derivative <m>f'</m> tells us <em>whether</em> the function <m>f</m> is increasing or decreasing, while the sign of the second derivative <m>f''</m> tells us <em>how</em> the function <m>f</m> is increasing or decreasing.</p>
+
+    <activity xml:id="A_3.1.2">
+      <p>Suppose that <m>g</m> is a function whose second derivative, <m>g''</m>, is given by the following graph.</p>
+
+      <figure xml:id="F_3.1.Act2" >
+        <caption>The graph of <m>y = g''(x)</m>.</caption>
+        <image width="73%" source="images/3_1_Act2" />
+      </figure>
+
+      <ol>
+        <li><p>Find all points of inflection of <m>g</m>.</p></li>
+
+        <li><p>Fully describe the concavity of <m>g</m> by making an appropriate sign chart.</p></li>
+
+        <li><p>Suppose you are given that <m>g'(-1.67857351) = 0</m>.  Is there is a local maximum, local minimum, or neither (for the function <m>g</m>) at this critical point of <m>g</m>, or is it impossible to say?  Why?</p></li>
+
+        <li><p>Assuming that <m>g''(x)</m> is a polynomial (and that all important behavior of <m>g''</m> is seen in the graph above, what degree polynomial do you think <m>g(x)</m> is?  Why?</p></li>
+      </ol>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>What must be true of <m>g''(x)</m> at a point of inflection?</p></li>
+
+          <li><p>Use the given graph to decide where <m>g''</m> is positive and negative.</p></li>
+
+          <li><p>What does the second derivative test say?</p></li>
+
+          <li><p>Can you guess a formula for <m>g''(x)</m> based on its graph?</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Based on the given graph of <m>g''</m>, the only point at which <m>g''</m> changes sign is <m>x = -1</m>, and hence this is an inflection point of <m>g</m>.</p></li>
+
+          <li><p>Note that <m>g''(x) > 0</m> for <m>x \lt  -1</m>, <m>g''(x) \lt  0</m> for <m>-1 \lt  x \lt  2</m>, and <m>g''(x) \lt  0</m> for <m>x > 2</m>.  This tells us that <m>g</m> is concave up for <m>x \lt  -1</m>, concave down for <m>-1 \lt  x \lt  2</m>, and concave down for <m>x > 2</m>.</p></li>
+
+          <li><p>Given that <m>g'(-1.67857351) = 0</m>, we know that <m>g</m> has a horizontal tangent line at this critical value.  In addition, from the given graph of <m>g''</m>, we see that <m>g''( -1.67857351) > 0</m> and observe that <m>g</m> is concave up at <m>x</m>-values near <m>-1.67857351</m>.  By the second derivative test, <m>g</m> has a local minimum at <m>x = -1.67857351</m>.</p></li>
+
+          <li><p>From the given graph, since <m>g''</m> has a simple zero at <m>x = -1</m> and a repeated zero at <m>x = 2</m>, it appears that <m>g''</m> is a degree 3 polynomial.  If so, then <m>g'</m> is a degree 4 polynomial, and <m>g</m> is a degree 5 polynomial.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <p>As we will see in more detail in the following section, derivatives also help us to understand families of functions that differ only by changing one or more parameters. For instance, we might be interested in understanding the behavior of all functions of the form <m>f(x) = a(x-h)^2 + k</m> where <m>a</m>, <m>h</m>, and <m>k</m> are numbers that may vary. In the following activity, we investigate a particular example where the value of a single parameter has considerable impact on how the graph appears.</p>
+
+    <activity xml:id="A_3.1.3">
+      <p>Consider the family of functions given by <m>h(x) = x^2 + \cos(kx)</m>, where <m>k</m> is an arbitrary positive real number.
+
+      <ol>
+        <li><p>Use a graphing utility to sketch the graph of <m>h</m> for several different <m>k</m>-values, including <m>k = 1,3,5,10</m>.  Plot <m>h(x) = x^2 + \cos(3x)</m> on the axes provided below.
+
+            <figure xml:id="F_3.1.Act3" >
+              <caption>Axes for plotting <m>y = h(x)</m>.</caption>
+              <image width="73%" source="images/3_1_Act3" />
+            </figure>
+
+            What is the smallest value of <m>k</m> at which you think you can see (just by looking at the graph) at least one inflection point on the graph of <m>h</m>?</p></li>
+
+        <li><p>Explain why the graph of <m>h</m> has no inflection points if <m>k \le \sqrt{2}</m>, but infinitely many inflection points if <m>k > \sqrt{2}</m>.</p></li>
+
+        <li><p>Explain why, no matter the value of <m>k</m>, <m>h</m> can only have finitely many critical numbers.</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Be sure to try some values between 1.5 and 2.</p></li>
+
+          <li><p>Treat <m>k</m> as an arbitrary constant in computing <m>h'(x)</m> and <m>h''(x)</m>.</p></li>
+
+          <li><p>What is the largest value of <m>k\sin(kx)</m>?  How many times can <m>y = k\sin(kx)</m> intersect the line <m>y = 2x</m>?</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>In the graph below,
+              <image width="73%" source="images/3_1_Act3Soln" />
+              <m>h(x) = x^2 + \cos(3x)</m> is given in dark blue, while <m>h(x) = x^2 + \cos(1.6x)</m> is shown in light blue.  Close inspection of the light blue graph reveals some subtle changes in concavity around <m>x \approx \pm 0.5</m>.  For values smaller than <m>1.6</m>, it is very hard to visually detect any inflection points in <m>h(x)</m>.</p></li>
+
+          <li><p>Treating <m>k</m> as an arbitrary constant, we first observe that <m>h'(x) = 2x - k\sin(kx)</m>. Again treating <m>k</m> as a constant and differentiating, we find
+              <me>
+                h''(x) = 2 - k^2\cos(kx).
+              </me>
+              We seek the values of <m>x</m> for which <m>h''(x) = 0</m> at which <m>h''</m> changes sign.  Setting <m>h''(x) = 0</m> and rearranging the resulting equation, we now seek <m>x</m> such that
+              <me>
+                k^2 \cos(kx) = 2,
+              </me>
+              or
+              <me>
+                \cos(kx) = \frac{2}{k^2}.
+              </me>
+              Now, remember that <m>k</m> is an arbitrary positive constant and recall that <m>-1 \le \cos(\theta) \le 1</m> for all input values <m>\theta</m>.  If <m>\frac{2}{k^2} > 1</m>, then the equation <m>\cos(kx) = \frac{2}{k^2}</m> has no solution.  Hence, whenever <m>k^2 \lt  2</m>, or <m>k \lt  \sqrt{2} \approx 1.414</m>, it follows that the equation <m>\cos(kx) = \frac{2}{k^2}</m> has no solutions <m>x</m>, which means that <m>h''(x)</m> is never zero (indeed, for these <m>k</m>-values, <m>h''(x)</m> is always positive so that <m>h</m> is always concave up).
+		
+              On the other hand, if <m>k \ge \sqrt{2}</m>, then <m>\frac{2}{k^2} \le 1</m>, which guarantees that <m>\cos(kx) = \frac{2}{k^2}</m> has infinitely many solutions, due to the periodicity of the cosine function.  At each such point, <m>h''(x) = 2 - k^2 \cos(kx)</m> changes sign, and therefore <m>h</m> has infinitely many inflection points whenever <m>k \ge \sqrt{2}</m>.</p></li>
+
+          <li><p>To see why <m>h</m> can only have a finite number of critical values regardless of the value of <m>k</m>, consider the equation
+              <me>
+                0 = h'(x) = 2x - k\sin(kx),
+              </me>
+              which implies that <m>2x = k\sin(kx)</m>.  Since <m>-1 \le \sin(kx) \le 1</m>, we know that <m>-k \le k\sin(kx) \le k</m>.  Once <m>|x|</m> is sufficiently large, we are guaranteed that <m>|2x| > k</m>, which means that for large <m>x</m>, <m>2x</m> and <m>k\sin(kx)</m> cannot intersect.   Moreover, for relatively small values of <m>x</m>, the functions <m>2x</m> and <m>k\sin(kx)</m> can only intersect finitely many times since <m>k\sin(kx)</m> oscillates a finite number of times.  This is why <m>h</m> can only have a finite number of critical values, regardless of the value of <m>k</m>.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+    <ul>
+      <li><p>The critical numbers of a continuous function <m>f</m> are the values of <m>p</m> for which <m>f'(p) = 0</m> or <m>f'(p)</m> does not exist.  These values are important because they identify horizontal tangent lines or corner points on the graph, which are the only possible locations at which a local maximum or local minimum can occur.</p></li>
+
+      <li><p>Given a differentiable function <m>f</m>, whenever <m>f'</m> is positive, <m>f</m> is increasing; whenever <m>f'</m> is negative, <m>f</m> is decreasing.  The first derivative test tells us that at any point where <m>f</m> changes from increasing to decreasing, <m>f</m> has a local maximum, while conversely at any point where <m>f</m> changes from decreasing to increasing <m>f</m> has a local minimum.</p></li>
+
+      <li><p>Given a twice differentiable function <m>f</m>, if we have a horizontal tangent line at <m>x = p</m> and <m>f''(p)</m> is nonzero, then the fact that <m>f''</m> tells us the concavity of <m>f</m> will determine whether <m>f</m> has a maximum or minimum at <m>x = p</m>.  In particular, if <m>f'(p) = 0</m> and <m>f''(p) \lt  0</m>, then <m>f</m> is concave down at <m>p</m> and <m>f</m> has a local maximum there, while if <m>f'(p) = 0</m> and <m>f''(p) > 0</m>, then <m>f</m> has a local minimum at <m>p</m>.  If <m>f'(p) = 0</m> and <m>f''(p) = 0</m>, then the second derivative does not tell us whether <m>f</m> has a local extreme at <m>p</m> or not.</p></li>
+    </ul>
+    <exercises>
+      <exercise>
+        <statement>
+          <p>This problem concerns a function about which the following information is known:
+
+          <ul>
+            <li><p><m>f</m> is a differentiable function defined at every real number <m>x</m></p></li>
+
+            <li><p><m>f(0) = -1/2</m></p></li>
+
+            <li><p><m>y = f'(x)</m> has its graph given at center in <xref ref="F_3.1.Ez1">Figure</xref></p></li>
+          </ul>
+          </p>
+
+          <figure xml:id="F_3.1.Ez1" >
+            <caption>At center, a graph of <m>y = f'(x)</m>; at left, axes for plotting <m>y = f(x)</m>; at right, axes for plotting <m>y = f''(x)</m>.</caption>
+            <image width="73%" source="images/3_1_Ez1" />
+          </figure>
+
+          <ol>
+            <li><p>Construct a first derivative sign chart for <m>f</m>.  Clearly identify all critical numbers of <m>f</m>, where <m>f</m> is increasing and decreasing, and where <m>f</m> has local extrema.</p></li>
+
+            <li><p>On the right-hand axes, sketch an approximate graph of <m>y = f''(x)</m>.</p></li>
+
+            <li><p>Construct a second derivative sign chart for <m>f</m>.  Clearly identify where <m>f</m> is concave up and concave down, as well as all inflection points.</p></li>
+
+            <li><p>On the left-hand axes, sketch a possible graph of <m>y = f(x)</m>.</p></li>
+          </ol>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Suppose that <m>g</m> is a differentiable function and <m>g'(2) = 0</m>. In addition, suppose that on <m>1 \lt  x\lt  2</m> and <m>2 \lt  x \lt  3</m> it is known that <m>g'(x)</m> is positive.
+
+          <ol>
+            <li><p>Does <m>g</m> have a local maximum, local minimum, or neither at <m>x = 2</m>?  Why?</p></li>
+
+            <li><p>Suppose that <m>g''(x)</m> exists for every <m>x</m> such that <m>1 \lt  x \lt  3</m>.  Reasoning graphically, describe the behavior of <m>g''(x)</m> for <m>x</m>-values near <m>2</m>.</p></li>
+
+            <li><p>Besides being a critical number of <m>g</m>, what is special about the value <m>x = 2</m> in terms of the behavior of the graph of <m>g</m>?</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Suppose that <m>h</m> is a differentiable function whose first derivative is given by the graph in <xref ref="F_3.1.Ez3">Figure</xref>.</p>
+
+          <figure xml:id="F_3.1.Ez3" >
+            <caption>The graph of <m>y = h'(x)</m>.</caption>
+            <image width="73%" source="images/3_1_Ez3" />
+          </figure>
+
+          <ol>
+            <li><p>How many real number solutions can the equation <m>h(x) = 0</m> have?  Why?</p></li>
+
+            <li><p>If <m>h(x) = 0</m> has two distinct real solutions, what can you say about the signs of the two solutions?  Why?</p></li>
+
+            <li><p>Assume that <m>\lim_{x \to \infty} h'(x) = 3</m>, as appears to be indicated in <xref ref="F_3.1.Ez3">Figure</xref>.  How will the graph of <m>y = h(x)</m> appear as <m>x \to \infty</m>?  Why?</p></li>
+
+            <li><p>Describe the concavity of <m>y = h(x)</m> as fully as you can from the provided information.</p></li>
+          </ol>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Let <m>p</m> be a function whose second derivative is <m>p''(x) = (x+1)(x-2)e^{-x}</m>.
+
+          <ol>
+            <li><p>Construct a second derivative sign chart for <m>p</m> and determine all inflection points of <m>p</m>.</p></li>
+
+            <li><p>Suppose you also know that <m>x = \frac{\sqrt{5}-1}{2}</m> is a critical number of <m>p</m>.  Does <m>p</m> have a local minimum, local maximum, or neither at <m>x = \frac{\sqrt{5}-1}{2}</m>?  Why?</p></li>
+
+            <li><p>If the point <m>(2, \frac{12}{e^2})</m> lies on the graph of <m>y = p(x)</m> and <m>p'(2) = -\frac{5}{e^2}</m>, find the equation of the tangent line to <m>y = p(x)</m> at the point where <m>x = 2</m>.  Does the tangent line lie above the curve, below the curve, or neither at this value?  Why?</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+    </exercises>
+  </subsection>
+</section>

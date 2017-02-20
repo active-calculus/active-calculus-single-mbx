@@ -1,0 +1,490 @@
+
+<section xml:id="S_8.1.Sequences">
+  <title>Sequences</title>
+  <introduction>
+    <objectives>
+      <ul>
+        <li><p>What is a sequence?</p></li>
+
+        <li><p>What does it mean for a sequence to converge?</p></li>
+
+        <li><p>What does it mean for a sequence to diverge?</p></li>
+      </ul>
+    </objectives>
+    <p>We encounter sequences every day. Your monthly rent payments, the annual interest you earn on investments, a list of your car's miles per gallon every time you fill up; all are examples of sequences. Other sequences with which you may be familiar include the Fibonacci sequence<index><main>Fibonacci sequence</main></index>
+      <me>
+        1, 1, 2, 3, 5, 8, \ldots
+      </me>
+      in which each entry is the sum of the two preceding entries and the triangular numbers<index><main>triangular numbers</main></index>
+      <me>
+        1, 3, 6, 10, 15, 21, 28, 36, 45, 55, \ldots
+      </me>
+      which are numbers that correspond to the number of vertices seen in the triangles in <xref ref="F_8.1.Triangular_numbers">Figure</xref>.</p>
+
+    <figure xml:id="F_8.1.Triangular_numbers" >
+      <caption>Triangular numbers</caption>
+      <image width="73%" source="images/8_1_Triangular_Numbers" />
+    </figure>
+
+    <p>Sequences of integers are of such interest to mathematicians and others that they have a journal<fn><em>The Journal of Integer Sequences</em> at \url{http://www.cs.uwaterloo.ca/journals/JIS/}</fn> devoted to them and an on-line encyclopedia<fn>The On-Line Encyclopedia of Integer Sequences at \url{http://oeis.org/}</fn> that catalogs a huge number of integer sequences and their connections. Sequences are also used in digital recordings and digital images.</p>
+
+    <p>To this point, most of our studies in calculus have dealt with continuous information (e.g., continuous functions). The major difference we will see now is that sequences model <em>discrete</em> instead of continuous information. We will study ways to represent and work with discrete information in this chapter as we investigate <em>sequences</em> and <em>series</em>, and ultimately see key connections between the discrete and continuous.</p>
+
+    <exploration xml:id="PA_8.1">
+      <p>Suppose you receive <m>\dollar5000</m> through an inheritance. You decide to invest this money into a fund that pays <m>8\%</m> annually, compounded monthly. That means that each month your investment earns <m>\frac{0.08}{12} \cdot P</m> additional dollars, where <m>P</m> is your principal balance at the start of the month. So in the first month your investment earns
+      <me>
+        5000 \left(\frac{0.08}{12}\right)
+      </me>
+      or <m>\dollar33.33</m>. If you reinvest this money, you will then have <m>\dollar5033.33</m> in your account at the end of the first month. From this point on, assume that you reinvest all of the interest you earn.
+
+      <ol>
+        <li><p>How much interest will you earn in the second month? How much money will you have in your account at the end of the second month?</p></li>
+
+        <li><p>Complete <xref ref="T_PA_8.1.Interest">Table</xref> to determine the interest earned and total amount of money in this investment each month for one year.
+
+            <table xml:id="T_PA_8.1.Interest" >
+              <caption>Interest</caption>
+              <tabular>
+                <row bottom="minor">
+                  <cell></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell>Month</cell>
+                  <cell>Interest earned</cell>
+                  <cell>Total amount of money in the account</cell>
+                </row>
+                <row bottom="minor">
+                  <cell></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell>0</cell>
+                  <cell><m>\dollar0</m></cell>
+                  <cell><m>\dollar5000.00</m></cell>
+                </row>
+                <row bottom="minor">
+                  <cell></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell>1</cell>
+                  <cell><m>\dollar33.33</m></cell>
+                  <cell><m>\dollar5033.33</m></cell>
+                </row>
+                <row bottom="minor">
+                  <cell></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell>2</cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row bottom="minor">
+                  <cell></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell>3</cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row bottom="minor">
+                  <cell></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell>4</cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row bottom="minor">
+                  <cell></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell>5</cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row bottom="minor">
+                  <cell></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell>6</cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row bottom="minor">
+                  <cell></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell>7</cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row bottom="minor">
+                  <cell></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell>8</cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row bottom="minor">
+                  <cell></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell>9</cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row bottom="minor">
+                  <cell></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell>10</cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row bottom="minor">
+                  <cell></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell>11</cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row bottom="minor">
+                  <cell></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell>12</cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row bottom="minor">
+                  <cell></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+              </tabular>
+            </table>
+
+          </p></li>
+
+        <li><p>As we will see later, the amount of money <m>P_n</m> in the account after month <m>n</m> is given by
+            <me>
+              P_n = 5000\left(1+\frac{0.08}{12}\right)^{n}.
+            </me>
+            Use this formula to check your calculations in <xref ref="T_PA_8.1.Interest">Table</xref>. Then find the amount of money in the account after 5 years.</p></li>
+
+        <li><p>How many years will it be before the account has doubled in value to <dollar />10000?</p></li>
+      </ol>
+      </p>
+    </exploration>
+  </introduction>
+
+  <subsection>
+    <title>Sequences</title>
+    <p><index><main>sequence</main></index></p>
+
+    <p>As our discussion in the introduction and <xref ref="PA_8.1">Preview Activity</xref> illustrate, many discrete phenomena can be represented as lists of numbers (like the amount of money in an account over a period of months). We call these any such list a <em>sequence</em>. In other words, a sequence is nothing more than list of terms in some order. To be able to refer to a sequence in a general sense, we often list the entries of the sequence with subscripts,
+      <me>
+        s_1, s_2, \ldots, s_n \ldots,
+      </me>
+      where the subscript denotes the position of the entry in the sequence. More formally,</p>
+
+    <definition xml:id="D_8.1.sequence">
+      <statement>
+        <p>A sequence is a list of terms <m>s_1, s_2, s_3, \ldots</m> in a specified order.</p>
+      </statement>
+    </definition>
+
+    <p>As an alternative to <xref ref="D_8.1.sequence">Definition</xref>, we can also consider a sequence to be a function <m>f</m> whose domain is the set of positive integers. In this context, the sequence <m>s_1</m>, <m>s_2</m>, <m>s_3</m>, <m>\ldots</m> would correspond to the function <m>f</m> satisfying <m>f(n) = s_n</m> for each positive integer <m>n</m>. This alternative view will be be useful in many situations.</p>
+
+    <p>We will often write the sequence
+      <me>
+        s_1, s_2, s_3, \ldots
+      </me>
+      using the shorthand notation <m>\{s_n\}</m>. The value <m>s_n</m> (alternatively <m>s(n)</m>) is called the <m>n</m>th <em>term</em><index><main>sequence</main><sub>term</sub></index> in the sequence. If the terms are all 0 after some fixed value of <m>n</m>, we say the sequence is finite. Otherwise the sequence is infinite. We will work with both finite and infinite sequences, but focus more on the infinite sequences. With infinite sequences, we are often interested in their end behavior and the idea of <em>convergent</em> sequences.</p>
+
+    <activity xml:id="x8.1.Act1">
+      <ol>
+        <li><p>Let <m>s_n</m> be the <m>n</m>th term in the sequence <m>1, 2, 3, \ldots</m>. 
+
+        Find a formula for <m>s_n</m> and use appropriate technological tools to draw a graph of entries in this sequence by plotting points of the form <m>(n,s_n)</m> for some values of <m>n</m>. Most graphing calculators can plot sequences; directions follow for the TI-84.
+
+        <ul>
+          <li><p>In the MODE menu, highlight SEQ in the FUNC line and press ENTER.</p></li>
+
+          <li><p>In the Y= menu, you will now see lines to enter sequences. Enter a value for <m>n</m>Min (where the sequence starts), a function for <m>u(n)</m> (the <m>n</m>th term in the sequence), and the value of <m>u_{n\text{ Min } }</m>.</p></li>
+
+          <li><p>Set your window coordinates (this involves choosing limits for <m>n</m> as well as the window coordinates XMin, XMax, YMin, and YMax.</p></li>
+
+          <li><p>The GRAPH key will draw a plot of your  sequence.</p></li>
+        </ul>
+        </p>
+
+        Using your knowledge of limits of continuous functions as <m>x \to \infty</m>, decide if this sequence <m>\{s_n\}</m> has a limit as <m>n \to \infty</m>. Explain your reasoning.</li>
+
+        <li><p>Let <m>s_n</m> be the <m>n</m>th term in the sequence <m>1, \frac{1}{2}, \frac{1}{3}, \ldots</m>. Find a formula for <m>s_n</m>. Draw a graph of some points in this sequence. Using your knowledge of limits of continuous functions as <m>x \to \infty</m>, decide if this sequence <m>\{s_n\}</m> has a limit as <m>n \to \infty</m>. Explain your reasoning.</p></li>
+
+        <li><p>Let <m>s_n</m> be the <m>n</m>th term in the sequence <m>2, \frac{3}{2}, \frac{4}{3}, \frac{5}{4}, \ldots</m>. Find a formula for <m>s_n</m>. Using your knowledge of limits of continuous functions as <m>x \to \infty</m>, decide if this sequence <m>\{s_n\}</m> has a limit as <m>n \to \infty</m>. Explain your reasoning.</p></li>
+      </ol>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Small hints for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>By observation we see that a formula for <m>s_n</m> is <m>s_n = n</m>. A plot of the first 50 points in the sequence is shown here.
+              We recalling that a function <m>f</m> has a limit <m>L</m> at infinity if we can make the values of <m>f(x)</m> as large as we want by choosing <m>x</m> as large as we need. Since we can make the values of <m>n</m> in our sequence as large as we want by choosing <m>n</m> to be as large as we need, we suspect that this sequence does not have a limit as <m>n</m> goes to infinity.</p></li>
+
+          <li><p>By observation we see that a formula for <m>s_n</m> is <m>s_n = \frac{1}{n}</m>. A plot of the first 50 points in the sequence is shown here.
+              Since we can make the values of <m>\frac{1}{n}</m> in our sequence as close to 0 as we want by choosing <m>n</m> to be as large as we need, we suspect that this sequence has a limit of 0 as <m>n</m> goes to infinity.</p></li>
+
+          <li><p>Since the numerator is always 1 more than the denominator, a formula for <m>s_n</m> is <m>s_n = \frac{n+1}{n}</m>. A plot of the first 50 points in the sequence is shown here.
+              Since we can make the values of <m>\frac{n+1}{n}</m> in our sequence as close to 1 as we want by choosing <m>n</m> to be as large as we need, we suspect that this sequence has a limit of 1 as <m>n</m> goes to infinity.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <p>Next we formalize the ideas from <xref ref="x8.1.Act1">Activity</xref>.</p>
+
+    <activity xml:id="x8.1.Act2">
+      <ol>
+        <li><p>Recall our earlier work with limits involving infinity in <xref ref="S_2.8.LHR">Section</xref>.  State clearly what it means for a continuous function <m>f</m> to have a limit <m>L</m> as <m>x \to \infty</m>.</p></li>
+
+        <li><p>Given that an infinite sequence of real numbers is a function from the integers to the real numbers, apply the idea from part (a) to explain what you think it means for a sequence <m>\{s_n\}</m> to have a limit as <m>n \to \infty</m>.</p></li>
+
+        <li><p>Based on your response to (b), decide if the sequence <m>\left\{ \frac{1+n}{2+n}\right\}</m> has a limit as <m>n \to \infty</m>. If so, what is the limit? If not, why not?</p></li>
+      </ol>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Small hints for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>A continuous function <m>f</m> has a limit <m>L</m> as the independent variable <m>x</m> goes to infinity if we can make the values of <m>f(x)</m> as close to <m>L</m> as we want by choosing <m>x</m> as large as we need.</p></li>
+
+          <li><p>We expect that a sequence <m>\{s_n\}</m> will have a limit <m>L</m> as <m>n</m> goes to infinity if we can make the entries <m>s_n</m> in the sequence as close to <m>L</m> as we want by choosing <m>n</m> as large as we need.</p></li>
+
+          <li><p>As <m>n</m> gets large, the constant terms become infinitesimally small compared to <m>n</m> and so <m>\frac{1+n}{2+n}</m> looks like <m>\frac{n}{n}</m> or 1 for large <m>n</m>. So the sequence <m>\left\{ \frac{1+n}{2+n}\right\}</m> has a limit of 1 at infinity.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <p>In <xref ref="x8.1.Act1">Activities</xref> and <xref ref="x8.1.Act2"></xref> we investigated the notion of a sequence <m>\{s_n\}</m> having a limit as <m>n</m> goes to infinity. If a sequence <m>\{s_n\}</m> has a limit as <m>n</m> goes to infinity, we say that the sequence <em>converges</em><index><main>converge</main><sub>sequence</sub></index> or is a <em>convergent sequence</em><index><main>convergent sequence</main></index>. If the limit of a convergent sequence is the number <m>L</m>, we use the same notation as we did for continuous functions and write
+      <me>
+        \lim_{n \to \infty} s_n = L.
+      </me>
+    </p>
+
+    <p>If a sequence <m>\{s_n\}</m> does not converge then we say that the sequence <m>\{s_n\}</m> <em>diverges</em><index><main>diverge</main><sub>sequence</sub></index>. Convergence of sequences is a major idea in this section and we describe it more formally as follows.</p>
+
+    <p>A sequence <m>\{s_n\}</m> of real numbers converges to a number <m>L</m> if we can make all values of <m>s_k</m> for <m>k \ge n</m> as close to <m>L</m> as we want by choosing <m>n</m> to be sufficiently large.</p>
+
+    <p>Remember, the idea of sequence having a limit as <m>n \to \infty</m> is the same as the idea of a continuous function having a limit as <m>x \to \infty</m>. The only new wrinkle here is that our sequences are discrete instead of continuous.</p>
+
+    <p>We conclude this section with a few more examples in the following activity.</p>
+
+    <activity xml:id="x8.1.Act3">
+      <p>Use graphical and/or algebraic methods to determine whether each of the following sequences converges or diverges.
+
+      <ol>
+        <li><p><m>\left\{\frac{1+2n}{3n-2}\right\}</m></p></li>
+
+        <li><p><m>\left\{\frac{5+3^n}{10+2^n}\right\}</m></p></li>
+
+        <li><p><m>\left\{\frac{10^n}{n!}\right\}</m> (where <m>!</m> is the <em>factorial</em> symbol and <m>n! = n(n-1)(n-2) \cdots (2)(1)</m> for any positive integer <m>n</m> (as convention we define <m>0!</m> to be 1)).</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Small hints for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>A plot of the first 50 terms of the sequence <m>\left\{\frac{1+2n}{3n-2}\right\}</m> is shown here.
+              <image width="73%" source="images/8_2_Sequence_a" />
+              The plot implies that the sequence has a limit between 0.5 and 1. For large <m>n</m> the <m>2n</m> term dominates the numerator and the <m>3n</m> term the denominator. So <m>\frac{1+2n}{3n-2}</m> looks like <m>\frac{2n}{3n} = \frac{2}{3}</m> when <m>n</m> is big. So the sequence <m>\left\{\frac{1+2n}{3n-2}\right\}</m> converges to <m>\frac{2}{3}</m>.</p></li>
+
+          <li><p>A plot of the first 50 terms of the sequence <m>\left\{\frac{5+3^n}{10+2^n}\right\}</m> is shown here.
+              <image width="73%" source="images/8_2_Sequence_b" />
+              The plot implies that the sequence does not have a limit as <m>n</m> goes to infinity. For large <m>n</m> the <m>3^n</m> term dominates the numerator and the <m>2^n</m> term the denominator. So <m>\frac{5+3^n}{10+2^n}</m> looks like <m>\frac{3^n}{2^n} = \left(\frac{3}{2}\right)^n</m> when <m>n</m> is big. Since <m>\frac{3}{2} > 1</m>, the sequence <m>\left\{\frac{5+3^n}{10+2^n}\right\}</m> diverges to infinity.</p></li>
+
+          <li><p>A plot of the first 50 terms of the sequence <m>\left\{\frac{10^n}{n!}\right\}</m> is shown here.
+              <image width="73%" source="images/8_2_Sequence_b" />
+              Initially, it looks as though the terms increase without bound, but beginning at about <m>n=10</m> the factorial in the denominator dominates the numerator. Notice that
+              <me>
+                \frac{10^n}{n!} = \frac{10 \times 10 \times 10 \times \cdots \times 10}{1 \times 2 \times 3 \times \cdots n}
+              </me>
+              When <m>n > 20</m>, we have that <m>\frac{10}{n} \lt  \frac{1}{2}</m> and
+              <md>
+                <mrow>\frac{10^n}{n!} \amp = \left(\frac{10 \times 10 \times 10 \times \cdots \times 10}{1 \times 2 \times 3 \times \cdots 20}\right) \left(\frac{10 \times 10 \times 10 \times \cdots \times 10}{21 \times 22 \times 23 \times \cdots n}\right)</mrow>
+                <mrow>\amp = \left(\frac{10^{20}}{20!}\right) \left(\frac{10}{21}\right) \left(\frac{10}{22}\right) \cdots \left(\frac{10}{n}\right)</mrow>
+                <mrow>\amp \lt  \left(\frac{10^{20}}{20!}\right) \left(\frac{1}{2}\right)^{n-20}.</mrow>
+              </md>
+              Since <m>\frac{1}{2}\lt 1</m>, the term <m>\left(\frac{1}{2}\right)^{n-20}</m> goes to 0 as <m>n</m> goes to infinity. The fact that <m>\frac{10^{20}}{20!}</m> is a constant means that <m>\frac{10^n}{n!} \to 0</m> as <m>n \to \infty</m>.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+    <ul>
+      <li><p>A sequence is a list of objects in a specified order. We will typically work with sequences of real numbers and can also think of a sequence as a function from the positive integers to the set of real numbers.</p></li>
+
+      <li><p>A sequence <m>\{s_n\}</m> of real numbers converges to a number <m>L</m> if we can make every value of  <m>s_k</m> for <m>k \ge n</m> as close as we want to <m>L</m> by choosing <m>n</m> sufficiently large.</p></li>
+
+      <li><p>A sequence diverges if it does not converge.</p></li>
+    </ul>
+    <exercises>
+      <exercise>
+        <statement>
+          <p>Finding limits of convergent sequences can be a challenge. However, there is a useful tool we can adapt from our study of limits of continuous functions at infinity to use to find limits of sequences. We illustrate in this exercise with the example of the sequence
+          <me>
+            \frac{\ln(n)}{n}.
+          </me>
+
+          <ol>
+            <li><p>Calculate the first 10 terms of this sequence. Based on these calculations, do you think the sequence converges or diverges? Why?</p></li>
+
+            <li><p>For this sequence, there is a corresponding continuous function <m>f</m> defined by
+                <me>
+                  f(x) = \frac{\ln(x)}{x}.
+                </me>
+                Draw the graph of <m>f(x)</m> on the interval <m>[0,10]</m> and then plot the entries of the sequence on the graph. What conclusion do you think we can draw about the sequence <m>\left\{\frac{\ln(n)}{n}\right\}</m> if <m>\lim_{x \to \infty} f(x) = L</m>? Explain.</p></li>
+
+            <li><p>Note that <m>f(x)</m> has the indeterminate form <m>\frac{\infty}{\infty}</m> as <m>x</m> goes to infinity. What idea from differential calculus can we use to calculate <m>\lim_{x \to \infty} f(x)</m>? Use this method to find <m>\lim_{x \to \infty} f(x)</m>. What, then, is <m>\lim_{n \to \infty} \frac{\ln(n)}{n}</m>?</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>We return to the example begun in <xref ref="PA_8.1">Preview Activity</xref> to see how to derive the formula for the amount of money in an account at a given time. We do this in a general setting. Suppose you invest <m>P</m> dollars (called the <em>principal</em>) in an account paying <m>r\%</m> interest compounded monthly. In the first month you will receive <m>\frac{r}{12}</m> (here <m>r</m> is in decimal form; e.g., if we have <m>8\%</m> interest, we write <m>\frac{0.08}{12}</m>) of the principal <m>P</m> in interest, so you earn
+          <me>
+            P\left(\frac{r}{12}\right)
+          </me>
+          dollars in interest. Assume that you reinvest all interest. Then at the end of the first month your account will contain the original principal <m>P</m> plus the interest, or a total of
+          <me>
+            P_1 = P + P\left(\frac{r}{12}\right) = P\left( 1 + \frac{r}{12}\right)
+          </me>
+          dollars.
+
+          <ol>
+            <li><p>Given that your principal is now <m>P_1</m> dollars, how much interest will you earn in the second month? If <m>P_2</m> is the total amount of money in your account at the end of the second month, explain why
+                <me>
+                  P_2 = P_1\left( 1 + \frac{r}{12}\right) = P\left( 1 + \frac{r}{12}\right)^2.
+                </me>
+              </p></li>
+
+            <li><p>Find a formula for <m>P_3</m>, the total amount of money in the account at the end of the third month in terms of the original investment <m>P</m>.</p></li>
+
+            <li><p>There is a pattern to these calculations. Let <m>P_n</m> the total amount of money in the account at the end of the third month in terms of the original investment <m>P</m>. Find a formula for <m>P_n</m>.</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Sequences have many applications in mathematics and the sciences. In a recent paper<fn>Hui H, Farilla L, Merkel P, Perfetti R. The short half-life of glucagon-like peptide-1 in plasma does not reflect its long-lasting beneficial effects, <em>Eur J Endocrinol</em> 2002 Jun;146(6):863-9.</fn> the authors write</p>
+
+          <blockquote>
+          The incretin hormone glucagon-like peptide-1 (GLP-1) is capable of ameliorating glucose-dependent insulin secretion in subjects with diabetes. However, its very short half-life (1.5-5 min) in plasma represents a major limitation for its use in the clinical setting.
+          </blockquote>
+
+          <p>The half-life of GLP-1 is the time it takes for half of the hormone to decay in its medium. For this exercise, assume the half-life of GLP-1 is 5 minutes. So if <m>A</m> is the amount of GLP-1 in plasma at some time <m>t</m>, then only <m>\frac{A}{2}</m> of the hormone will be present after <m>t+5</m> minutes. Suppose <m>A_0 = 100</m> grams of the hormone are initially present in plasma.
+
+          <ol>
+            <li><p>Let <m>A_1</m> be the amount of GLP-1 present after 5 minutes. Find the value of <m>A_1</m>.</p></li>
+
+            <li><p>Let <m>A_2</m> be the amount of GLP-1 present after 10 minutes. Find the value of <m>A_2</m>.</p></li>
+
+            <li><p>Let <m>A_3</m> be the amount of GLP-1 present after 15 minutes. Find the value of <m>A_3</m>.</p></li>
+
+            <li><p>Let <m>A_4</m> be the amount of GLP-1 present after 20 minutes. Find the value of <m>A_4</m>.</p></li>
+
+            <li><p>Let <m>A_n</m> be the amount of GLP-1 present after <m>5n</m> minutes. Find a formula for <m>A_n</m>.</p></li>
+
+            <li><p>Does the sequence <m>\{A_n\}</m> converge or diverge? If the sequence converges, find its limit and explain why this value makes sense in the context of this problem.</p></li>
+
+            <li><p>Determine the number of minutes it takes until the amount of GLP-1 in plasma is 1 gram.</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Continuous data is the basis for analog information, like music stored on old cassette tapes or vinyl records. A digital signal like on a CD or MP3 file is obtained by sampling an analog signal at some regular time interval and storing that information. For example, the sampling rate of a compact disk is 44,100 samples per second. So a digital recording is only an approximation of the actual analog information. Digital information can be manipulated in many useful ways that allow for, among other things, noisy signals to be cleaned up and large collections of information to be compressed and stored in much smaller space. While we won't investigate these techniques in this chapter, this exercise is intended to give an idea of the importance of discrete (digital) techniques.</p>
+
+          <p>Let <m>f</m> be the continuous function defined by <m>f(x) = \sin(4x)</m> on the interval <m>[0,10]</m>. A graph of <m>f</m> is shown in <xref ref="F_8.1.PA1">Figure</xref>.</p>
+
+          <figure xml:id="F_8.1.PA1" >
+            <caption>The graph of <m>f(x) = \sin(4x)</m> on the interval <m>[0,10]</m></caption>
+            <image width="73%" source="images/8_1_Exercise_1" />
+          </figure>
+
+          <p>We approximate <m>f</m> by <em>sampling</em>, that is by partitioning the interval <m>[0,10]</m> into uniform subintervals and recording the values of <m>f</m> at the endpoints.
+
+          <ol>
+            <li><p>Ineffective sampling can lead to several problems in reproducing the original signal. As an example, partition the interval <m>[0,10]</m> into 8 equal length subintervals and create a list of points (the <em>sample</em>) using the endpoints of each subinterval. Plot your sample on graph of <m>f</m> in Figure <xref ref="F_8.1.PA1">Figure</xref>. What can you say about the period of your sample as compared to the period of the original function?</p></li>
+
+            <li><p>The sampling rate is the number of samples of a signal taken per second. As part (a) illustrates, sampling at too small a rate can cause serious problems with reproducing the original signal (this problem of inefficient sampling leading to an inaccurate approximation is called <em>aliasing</em>). There is an elegant  theorem called the Nyquist-Shannon Sampling Theorem that says that human perception is limited, which allows that replacement of a continuous signal with a digital one without any perceived loss of information. This theorem also provides the <em>lowest</em> rate at which a signal can be sampled (called the Nyquist rate) without such a loss of information. The theorem states that we should sample at double the maximum desired frequency so that every cycle of the original signal will be sampled at at least two points.
+
+                        Recall that the frequency of a sinusoidal function is the reciprocal of the period. Identify the frequency of the function <m>f</m> and determine the number of partitions of the interval <m>[0,10]</m> that give us the Nyquist rate.</p></li>
+
+            <li><p>Humans cannot typically pick up signals above 20 kHz. Explain why, then, that information on a compact disk is sampled at 44,100 Hz.</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+    </exercises>
+  </subsection>
+</section>

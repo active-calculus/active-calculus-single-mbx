@@ -1,0 +1,556 @@
+
+<section xml:id="S_4.2.Riemann">
+  <title>Riemann Sums</title>
+  <introduction>
+    <objectives>
+      <ul>
+        <li><p>How can we use a Riemann sum to estimate the area between a given curve and the horizontal axis over a particular interval?</p></li>
+
+        <li><p>What are the differences among left, right, middle, and random Riemann sums?</p></li>
+
+        <li><p>How can we write Riemann sums in an abbreviated form??</p></li>
+      </ul>
+    </objectives>
+    <p>In <xref ref="S_4.1.VelocityDistance">Section</xref>, we learned that if we have a moving object with velocity function <m>v</m>, whenever <m>v(t)</m> is positive, the area between <m>y = v(t)</m> and the <m>t</m>-axis over a given time interval tells us the distance traveled by the object over that time period; in addition, if <m>v(t)</m> is sometimes negative and we view the area of any region below the <m>t</m>-axis as having an associated negative sign, then the sum of these signed areas over a given interval tells us the moving object's change in position over the time interval.</p>
+
+    <figure xml:id="F_4.2.Intro" >
+      <caption>A velocity function that is sometimes negative.</caption>
+      <image width="73%" source="images/4_2_Intro" />
+    </figure>
+
+    <p>For instance, for the velocity function given in <xref ref="F_4.2.Intro">Figure</xref>, if the areas of shaded regions are <m>A_1</m>, <m>A_2</m>, and <m>A_3</m> as labeled, then the total distance <m>D</m> traveled by the moving object on <m>[a,b]</m> is
+      <me>
+        D = A_1 + A_2 + A_3,
+      </me>
+      while the total change in the object's position on <m>[a,b]</m> is
+      <me>
+        s(b) - s(a) = A_1 - A_2 + A_3.
+      </me>
+    </p>
+
+    <p>Because the motion is in the negative direction on the interval where <m>v(t) \lt  0</m>, we subtract <m>A_2</m> when determining the object's total change in position.</p>
+
+    <p>Of course, finding <m>D</m> and <m>s(b)-s(a)</m> for the situation given in <xref ref="F_4.2.Intro">Figure</xref> presumes that we can actually find the areas represented by <m>A_1</m>, <m>A_2</m>, and <m>A_3</m>. In most of our work in <xref ref="S_4.1.VelocityDistance">Section</xref>, such as in <xref ref="A_4.1.2">Activities</xref> and <xref ref="A_4.1.3"></xref>, we worked with velocity functions that were either constant or linear, so that by finding the areas of rectangles and triangles, we could find the area bounded by the velocity function and the horizontal axis exactly. But when the curve that bounds a region is not one for which we have a known formula for area, we are unable to find this area exactly. Indeed, this is one of our biggest goals in <xref ref="C_4">Chapter</xref>: to learn how to find the exact area bounded between a curve and the horizontal axis for as many different types of functions as possible.</p>
+
+    <p>To begin, we expand on the ideas in <xref ref="A_4.1.1">Activity</xref>, where we encountered a nonlinear velocity function and approximated the area under the curve using four and eight rectangles, respectively. In the following preview activity, we focus on three different options for deciding how to find the heights of the rectangles we will use.</p>
+
+    <exploration xml:id="PA_4.2">
+      <p>A person walking along a straight path has her velocity in miles per hour at time <m>t</m> given by the function <m>v(t) = 0.25t^3-1.5t^2+3t+0.25</m>, for times in the interval <m>0 \le t \le 2</m>. The graph of this function is also given in each of the three diagrams in <xref ref="F_4.2.PA1">Figure</xref>.</p>
+
+      <figure xml:id="F_4.2.PA1" >
+        <caption>Three approaches to estimating the area under <m>y = v(t)</m> on the interval <m>[0,2]</m>.</caption>
+        <image width="73%" source="images/4_2_PA1" />
+      </figure>
+
+      <p>Note that in each diagram, we use four rectangles to estimate the area under <m>y = v(t)</m> on the interval <m>[0,2]</m>, but the method by which the four rectangles' respective heights are decided varies among the three individual graphs.
+
+      <ol>
+        <li><p>How are the heights of rectangles in the left-most diagram being chosen?  Explain, and hence determine the value of
+            <me>
+              S = A_1 + A_2 + A_3 + A_4
+            </me>
+            by evaluating the function <m>y = v(t)</m> at appropriately chosen values and observing the width of each rectangle.  Note, for example, that
+            <me>
+              A_3 = v(1) \cdot \frac{1}{2} = 2 \cdot \frac{1}{2} = 1.
+            </me>
+          </p></li>
+
+        <li><p>Explain how the heights of rectangles are being chosen in the middle diagram and find the value of
+            <me>
+              T = B_1 + B_2 + B_3 + B_4.
+            </me>
+          </p></li>
+
+        <li><p>Likewise, determine the pattern of how heights of rectangles are chosen in the right-most diagram and determine
+            <me>
+              U = C_1 + C_2 + C_3 + C_4.
+            </me>
+          </p></li>
+
+        <li><p>Of the estimates <m>S</m>, <m>T</m>, and <m>U</m>, which do you think is the best approximation of <m>D</m>, the total distance the person traveled on <m>[0,2]</m>?  Why?</p></li>
+      </ol>
+      </p>
+    </exploration>
+  </introduction>
+
+  <subsection>
+    <title>Sigma Notation</title>
+    <p>It is apparent from several different problems we have considered that sums of areas of rectangles is one of the main ways to approximate the area under a curve over a given interval. Intuitively, we expect that using a larger number of thinner rectangles will provide a way to improve the estimates we are computing. As such, we anticipate dealing with sums with a large number of terms. To do so, we introduce the use of so-called <em>sigma notation</em><index><main>sigma notation</main></index>, named for the Greek letter <m>\Sigma</m>, which is the capital letter <m>S</m> in the Greek alphabet.</p>
+
+    <p>For example, say we are interested in the sum
+      <me>
+        1 + 2 + 3 + \cdots + 100,
+      </me>
+      which is the sum of the first 100 natural numbers. Sigma notation provides a shorthand notation that recognizes the general pattern in the terms of the sum. It is equivalent to write
+      <me>
+        \sum_{k=1}^{100} k =  1 + 2 + 3 + \cdots + 100.
+      </me>
+    </p>
+
+    <p>We read the symbol <m>\sum_{k=1}^{100} k</m> as <q>the sum from <m>k</m> equals 1 to 100 of <m>k</m>.</q> The variable <m>k</m> is usually called the index of summation, and the letter that is used for this variable is immaterial. Each sum in sigma notation involves a function of the index; for example,
+      <me>
+        \sum_{k=1}^{10} (k^2 + 2k) =  (1^2 + 2\cdot 1) + (2^2 + 2\cdot 2) + (3^2 + 2\cdot 3) + \cdots + (10^2 + 2\cdot 10),
+      </me>
+      and more generally,
+      <me>
+        \sum_{k=1}^n f(k) = f(1) + f(2) + \cdots + f(n).
+      </me>
+    </p>
+
+    <p>Sigma notation allows us the flexibility to easily vary the function being used to track the pattern in the sum, as well as to adjust the number of terms in the sum simply by changing the value of <m>n</m>. We test our understanding of this new notation in the following activity.</p>
+
+    <activity xml:id="A_4.2.1">
+      <p>For each sum written in sigma notation, write the sum long-hand and evaluate the sum to find its value. For each sum written in expanded form, write the sum in sigma notation.
+
+      <ol>
+        <li><p><m>\sum_{k=1}^{5} (k^2 + 2)</m></p></li>
+
+        <li><p><m>\sum_{i=3}^{6} (2i-1)</m></p></li>
+
+        <li><p><m>3 + 7 + 11 + 15 +  \cdots + 27</m></p></li>
+
+        <li><p><m>4 + 8 + 16 + 32 + \cdots + 256</m></p></li>
+
+        <li><p><m>\sum_{i=1}^{6} \frac{1}{2^i}</m></p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Observe that when <m>k = 1</m>, <m>k^2 + 2 = 1^2 + 2 = 3</m>.  This is the first term in the sum.</p></li>
+
+          <li><p>Note that this sum starts at <m>i = 3</m>.</p></li>
+
+          <li><p>Since the terms in the sum increase by 4, try a function <m>f(k)</m> that somehow involves <m>4k</m>.</p></li>
+
+          <li><p>What pattern do you observe in the terms of the sum?</p></li>
+
+          <li><p>Write every term in the sum as a fraction with denominator <m>2^6 = 64</m>.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>
+              <md>
+                <mrow>\sum_{k=1}^{5} (k^2 + 2) =\mathstrut \amp  (1^2 + 2) + (2^2 + 2) + (3^2 + 2) + (4^2 + 2) + (5^2 + 2)</mrow>
+                <mrow>=\mathstrut \amp  3 + 6 + 11 + 17 + 27</mrow>
+                <mrow>=\mathstrut \amp  64</mrow>
+              </md>
+            </p></li>
+
+          <li><p>
+              <md>
+                <mrow>\sum_{i=3}^{6} (2i-1) =\mathstrut \amp  (2 \cdot 3 - 1) + (2 \cdot 4- 1) + (2 \cdot 5 - 1) + (2 \cdot 6 - 1)</mrow>
+                <mrow>=\mathstrut \amp  5 + 7 + 9 + 11</mrow>
+                <mrow>=\mathstrut \amp  32</mrow>
+              </md>
+            </p></li>
+
+          <li><p>Observe that each term in the sum
+              <me>
+                3 + 7 + 11 + 15 +  \cdots + 27
+              </me>
+              differs from the previous term by 4.  If we view <m>4</m> as <m>4 = 4 \cdot 1 - 1</m> and <m>7</m> as <m>7 = 4 \cdot 2 - 1</m>, we see that the pattern may be represented through the function <m>f(k) = 4k-1</m>, so that
+              <me>
+                3 + 7 + 11 + 15 +  \cdots + 27 = \sum_{k=1}^{7} 4k-1.
+              </me>
+              We note that <m>k=7</m> is the end value of the index since <m>4 \cdot 7  = 28</m>.</p></li>
+
+          <li><p>The sum <m>4 + 8 + 16 + 32 + \cdots + 256</m> is a sum of powers of <m>2</m>, which we can express in sigma notation as
+              <me>
+                4 + 8 + 16 + 32 + \cdots + 256 = \sum{i=2}^{8} 2^i.
+              </me>
+            </p></li>
+
+          <li><p>
+              <md>
+                <mrow>\sum_{i=1}^{6} \frac{1}{2^i} =\mathstrut \amp  \frac{1}{2} + \frac{1}{2^2} + \cdots + \frac{1}{2^6}</mrow>
+                <mrow>=\mathstrut \amp  \frac{32}{64} + \frac{16}{64} + \frac{8}{64} + \frac{4}{64} + \frac{2}{64} + \frac{1}{64}</mrow>
+                <mrow>=\mathstrut \amp  \frac{63}{64}.</mrow>
+              </md>
+            </p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Riemann Sums</title>
+    <p>When a moving body has a positive velocity function <m>y = v(t)</m> on a given interval <m>[a,b]</m>, we know that the area under the curve over the interval is the total distance the body travels on <m>[a,b]</m>. While this is the fundamental motivating force behind our interest in the area bounded by a function, we are also interested more generally in being able to find the exact area bounded by <m>y = f(x)</m> on an interval <m>[a,b]</m>, regardless of the meaning or context of the function <m>f</m>. For now, we continue to focus on determining an accurate estimate of this area through the use of a sum of the areas of rectangles, doing so in the setting where <m>f(x) \ge 0</m> on <m>[a,b]</m>. Throughout, unless otherwise indicated, we also assume that <m>f</m> is continuous on <m>[a,b]</m>.</p>
+
+    <p>The first choice we make in any such approximation is the number of rectangles.</p>
+
+    <figure xml:id="F_4.2.Interval" >
+      <caption>Subdividing the interval <m>[a,b]</m> into <m>n</m> subintervals of equal length <m>\triangle x</m>.</caption>
+      <image width="73%" source="images/4_2_Interval" />
+    </figure>
+
+    <p>If we say that the total number of rectangles is <m>n</m>, and we desire <m>n</m> rectangles of equal width to subdivide the interval <m>[a,b]</m>, then each rectangle must have width <m>\triangle x = \frac{b-a}{n}</m>. We observe further that <m>x_1 = x_0 + \triangle x</m>, <m>x_2 = x_0 + 2 \triangle x</m>, and thus in general <m>x_{i} = a + i\triangle x,</m> as pictured in <xref ref="F_4.2.Interval">Figure</xref>.</p>
+
+    <p>We use each subinterval <m>[x_i, x_{i+1}]</m> as the base of a rectangle, and next must choose how to decide the height of the rectangle that will be used to approximate the area under <m>y = f(x)</m> on the subinterval. There are three standard choices: use the left endpoint of each subinterval, the right endpoint of each subinterval, or the midpoint of each. These are precisely the options encountered in <xref ref="PA_4.2">Preview Activity</xref> and seen in <xref ref="F_4.2.PA1">Figure</xref>. We next explore how these choices can be reflected in sigma notation.</p>
+
+    <p>If we now consider an arbitrary positive function <m>f</m> on <m>[a,b]</m> with the interval subdivided as shown in <xref ref="F_4.2.Interval">Figure</xref>, and choose to use left endpoints, then on each interval of the form <m>[x_{i}, x_{i+1}]</m>, the area of the rectangle formed is given by
+      <me>
+        A_{i+1} = f(x_i) \cdot \triangle x,
+      </me>
+      as seen in <xref ref="F_4.2.LeftSum">Figure</xref>.</p>
+
+    <figure xml:id="F_4.2.LeftSum" >
+      <caption>Subdividing the interval <m>[a,b]</m> into <m>n</m> subintervals of equal length <m>\triangle x</m> and approximating the area under <m>y = f(x)</m> over <m>[a,b]</m> using left rectangles.</caption>
+      <image width="73%" source="images/4_2_LeftSum" />
+    </figure>
+
+    <p>If we let <m>L_n</m> denote the sum of the areas of rectangles whose heights are given by the function value at each respective left endpoint, then we see that
+      <md>
+        <mrow>L_n =\mathstrut \amp  A_1 + A_2 + \cdots + A_{i+1} + \cdots + A_n</mrow>
+        <mrow>=\mathstrut \amp  f(x_0) \cdot \triangle x + f(x_1) \cdot \triangle x + \cdots + f(x_i) \cdot \triangle x + \cdots + f(x_{n-1}) \cdot \triangle x.</mrow>
+      </md>
+    </p>
+
+    <p>In the more compact sigma notation, we have
+      <me>
+        L_n = \sum_{i = 0}^{n-1} f(x_i) \triangle x.
+      </me>
+    </p>
+
+    <p>Note particularly that since the index of summation begins at <m>0</m> and ends at <m>n-1</m>, there are indeed <m>n</m> terms in this sum. We call <m>L_n</m> the <em>left Riemann sum</em> <index><main>Riemann sum</main></index> <index><main>Riemann sum</main><sub>left</sub></index> for the function <m>f</m> on the interval <m>[a,b]</m>.</p>
+
+    <p>There are now two fundamental issues to explore: the number of rectangles we choose to use and the selection of the pattern by which we identify the height of each rectangle. It is best to explore these choices dynamically, and the applet<fn>Marc Renault, Geogebra Calculus Applets.</fn> found at <url href="http://gvsu.edu/s/a9"><c>http://gvsu.edu/s/a9</c></url> is a particularly useful one. There we see</p>
+
+    <figure xml:id="F_4.2.RenaultAppletRS" >
+      <caption>A snapshot of the applet found at <url href="http://gvsu.edu/s/a9"><c>http://gvsu.edu/s/a9</c></url>.</caption>
+      <image width="73%" source="images/4_2_RenaultAppletRS" />
+    </figure>
+
+    <p>the image shown in <xref ref="F_4.2.RenaultAppletRS">Figure</xref>, but with the opportunity to adjust the slider bars for the left endpoint and the number of subintervals. By moving the sliders, we can see how the heights of the rectangles change as we consider left endpoints, midpoints, and right endpoints, as well as the impact that a larger number of narrower rectangles has on the approximation of the exact area bounded by the function and the horizontal axis.</p>
+
+    <p>To see how the Riemann sums for right endpoints and midpoints are constructed, we consider <xref ref="F_4.2.RightMidSum">Figure</xref>.</p>
+
+    <figure xml:id="F_4.2.RightMidSum" >
+      <caption>Riemann sums using right endpoints and midpoints.</caption>
+      <image width="73%" source="images/4_2_RightMidSum" />
+    </figure>
+
+    <p>For the sum with right endpoints, we see that the area of the rectangle on an arbitrary interval <m>[x_i, x_{i+1}]</m> is given by <m>B_{i+1} = f(x_{i+1}) \cdot \triangle x,</m>
+      so that the sum of all such areas of rectangles is given by
+      <md>
+        <mrow>R_n =\mathstrut \amp  B_1 + B_2 + \cdots + B_{i+1} + \cdots + B_n</mrow>
+        <mrow>=\mathstrut \amp  f(x_1) \cdot \triangle x + f(x_2) \cdot \triangle x + \cdots + f(x_{i+1}) \cdot \triangle x + \cdots + f(x_{n}) \cdot \triangle x</mrow>
+        <mrow>=\mathstrut \amp  \sum_{i=1}^{n} f(x_i) \triangle x.</mrow>
+      </md>
+    </p>
+
+    <p>We call <m>R_n</m> the <em>right Riemann sum</em> <index><main>Riemann sum</main><sub>right</sub></index> for the function <m>f</m> on the interval <m>[a,b]</m>. For the sum that uses midpoints, we introduce the notation
+      <me>
+        \overline{x}_{i+1} = \frac{x_{i} + x_{i+1}}{2}
+      </me>
+      so that <m>\overline{x}_{i+1}</m> is the midpoint of the interval <m>[x_i, x_{i+1}]</m>. For instance, for the rectangle with area <m>C_1</m> in <xref ref="F_4.2.RightMidSum">Figure</xref>, we now have
+      <me>
+        C_1 = f(\overline{x}_1) \cdot \triangle x.
+      </me>
+    </p>
+
+    <p>Hence, the sum of all the areas of rectangles that use midpoints is
+      <md>
+        <mrow>M_n =\mathstrut \amp  C_1 + C_2 + \cdots + C_{i+1} + \cdots + C_n</mrow>
+        <mrow>=\mathstrut \amp  f(\overline{x_1}) \cdot \triangle x + f(\overline{x_2}) \cdot \triangle x + \cdots + f(\overline{x}_{i+1}) \cdot \triangle x + \cdots + f(\overline{x}_{n}) \cdot \triangle x</mrow>
+        <mrow>=\mathstrut \amp  \sum_{i=1}^{n} f(\overline{x}_i) \triangle x,</mrow>
+      </md>
+      and we say that <m>M_n</m> is the <em>middle Riemann sum</em> <index><main>Riemann sum</main><sub>middle</sub></index> for <m>f</m> on <m>[a,b]</m>.</p>
+
+    <p>When <m>f(x) \ge 0</m> on <m>[a,b]</m>, each of the Riemann sums <m>L_n</m>, <m>R_n</m>, and <m>M_n</m> provides an estimate of the area under the curve <m>y = f(x)</m> over the interval <m>[a,b]</m>; momentarily, we will discuss the meaning of Riemann sums in the setting when <m>f</m> is sometimes negative. We also recall that in the context of a nonnegative velocity function <m>y = v(t)</m>, the corresponding Riemann sums are approximating the distance traveled on <m>[a,b]</m> by the moving object with velocity function <m>v</m>.</p>
+
+    <p>There is a more general way to think of Riemann sums, and that is to not restrict the choice of where the function is evaluated to determine the respective rectangle heights. That is, rather than saying we'll always choose left endpoints, or always choose midpoints, we simply say that a point <m>x_{i+1}^*</m> will be selected at random in the interval <m>[x_i, x_{i+1}]</m> (so that <m>x_i \le x_{i+1}^* \le x_{i+1}</m>), which makes the Riemann sum given by
+      <me>
+        f(x_1^*) \cdot \triangle x + f(x_2^*) \cdot \triangle x + \cdots + f(x_{i+1}^*) \cdot \triangle x + \cdots + f(x_n^*) \cdot \triangle x = \sum_{i=1}^{n} f(x_i^*) \triangle x.
+      </me>
+    </p>
+
+    <p>At <url href="http://gvsu.edu/s/a9"><c>http://gvsu.edu/s/a9</c></url>, the applet noted earlier and referenced in <xref ref="F_4.2.RenaultAppletRS">Figure</xref>, by unchecking the <q>relative</q> box at the top left, and instead checking <q>random,</q> we can easily explore the effect of using random point locations in subintervals on a given Riemann sum. In computational practice, we most often use <m>L_n</m>, <m>R_n</m>, or <m>M_n</m>, while the random Riemann sum is useful in theoretical discussions. In the following activity, we investigate several different Riemann sums for a particular velocity function.</p>
+
+    <activity xml:id="A_4.2.2">
+      <p>Suppose that an object moving along a straight line path has its velocity in feet per second at time <m>t</m> in seconds given by <m>v(t) = \frac{2}{9}(t-3)^2 + 2</m>.
+
+      <ol>
+        <li><p>Carefully sketch the region whose exact area will tell you the value of the distance the object traveled on the time interval <m>2 \le t \le 5</m>.</p></li>
+
+        <li><p>Estimate the distance traveled on <m>[2,5]</m> by computing <m>L_4</m>, <m>R_4</m>, and <m>M_4</m>.</p></li>
+
+        <li><p>Does averaging <m>L_4</m> and <m>R_4</m> result in the same value as <m>M_4</m>?  If not, what do you think the average of <m>L_4</m> and <m>R_4</m> measures?</p></li>
+
+        <li><p>For this question, think about an arbitrary function <m>f</m>, rather than the particular function <m>v</m> given above.  If <m>f</m> is positive and increasing on <m>[a,b]</m>, will <m>L_n</m> over-estimate or under-estimate the exact area under <m>f</m> on <m>[a,b]</m>?  Will <m>R_n</m> over- or under-estimate the exact area under <m>f</m> on <m>[a,b]</m>? Explain.</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Note that <m>y = v(t)</m> is a parabola with vertex <m>(3,2)</m>.</p></li>
+
+          <li><p>Recall the formulas for <m>L_n</m>, <m>R_n</m>, and <m>M_n</m>.</p></li>
+
+          <li><p>Think about what the average of <m>L_1</m> and <m>R_1</m> measures.</p></li>
+
+          <li><p>Consider carefully the role of endpoints in generating <m>L_n</m> and <m>R_n</m>.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>The region whose exact area tells us the value of the distance the object traveled on the time interval <m>2 \le t \le 5</m> is shown below.
+              <image width="73%" source="images/4_2_Act2Soln" />
+            </p></li>
+
+          <li><p><m>L_4 = \frac{311}{48} \approx 6.47917</m>, 
+	        <m>R_4 = \frac{335}{48} \approx 6.97917</m>, and 
+	        <m>M_4 = \frac{637}{96} \approx 6.63542</m>.</p></li>
+
+          <li><p>The average of <m>L_4</m> and <m>R_4</m> is
+              <me>
+                \frac{L_4 + M_4}{2} = \frac{311+335}{96} = \frac{646}{96} \ne \frac{637}{96} = M_4.
+              </me>
+              This average actually measures what would result from using four trapezoids, rather than rectangles, to estimate the area on each subinterval.  One reason this is so is because the area of a trapezoid is the average of the bases times the width, and the <q>bases</q> are given by the function values at the left and right endpoints.</p></li>
+
+          <li><p>If <m>f</m> is positive and increasing on <m>[a,b]</m>, <m>L_n</m> will under-estimate the exact area under <m>f</m> on <m>[a,b]</m>.  Because <m>f</m> is increasing, its value at the left endpoint of any subinterval will be lower than every other function value in the interval, and thus the rectangle with that height lies exclusively below the curve.  In a similar way, <m>R_n</m> over-estimates the exact area under <m>f</m> on <m>[a,b]</m>.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>When the function is sometimes negative</title>
+    <p>For a Riemann sum such as
+      <me>
+        L_n = \sum_{i=0}^{n-1} f(x_i) \triangle x,
+      </me>
+      we can of course compute the sum even when <m>f</m> takes on negative values. We know that when <m>f</m> is positive on <m>[a,b]</m>, the corresponding left Riemann sum <m>L_n</m> estimates the area bounded by <m>f</m> and the horizontal axis over the interval.</p>
+
+    <figure xml:id="F_4.2.NegF" >
+      <caption>At left and center, two left Riemann sums for a function <m>f</m> that is sometimes negative; at right, the areas bounded by <m>f</m> on the interval <m>[a,d]</m>.</caption>
+      <image width="73%" source="images/4_2_NegF" />
+    </figure>
+
+    <p>For a function such as the one pictured in <xref ref="F_4.2.NegF">Figure</xref>, where in the first figure a left Riemann sum is being taken with 12 subintervals over <m>[a,d]</m>, we observe that the function is negative on the interval <m>b \le x \le c</m>, and so for the four left endpoints that fall in <m>[b,c]</m>, the terms <m>f(x_i) \triangle x</m> have negative function values. This means that those four terms in the Riemann sum produce an estimate of the <em>opposite</em> of the area bounded by <m>y = f(x)</m> and the <m>x</m>-axis on <m>[b,c]</m>.</p>
+
+    <p>In <xref ref="F_4.2.NegF">Figure</xref>, we also see evidence that by increasing the number of rectangles used in a Riemann sum, it appears that the approximation of the area (or the opposite of the area) bounded by a curve appears to improve. For instance, in the middle graph, we use 24 left rectangles, and from the shaded areas, it appears that we have decreased the error from the approximation that uses 12. When we proceed to <xref ref="S_4.3.DefiniteIntegral">Section</xref>, we will discuss the natural idea of letting the number of rectangles in the sum increase without bound.</p>
+
+    <p>For now, it is most important for us to observe that, in general, any Riemann sum of a continuous function <m>f</m> on an interval <m>[a,b]</m> approximates the difference between the area that lies above the horizontal axis on <m>[a,b]</m> and under <m>f</m> and the area that lies below the horizontal axis on <m>[a,b]</m> and above <m>f</m>. In the notation of <xref ref="F_4.2.NegF">Figure</xref>, we may say that
+      <me>
+        L_{24} \approx A_1 - A_2 + A_3,
+      </me>
+      where <m>L_{24}</m> is the left Riemann sum using 24 subintervals shown in the middle graph, and <m>A_1</m> and <m>A_3</m> are the areas of the regions where <m>f</m> is positive on the interval of interest, while <m>A_2</m> is the area of the region where <m>f</m> is negative. We will also call the quantity <m>A_1 - A_2 + A_3</m> the <em>net signed area</em> <index><main>net signed area</main></index> bounded by <m>f</m> over the interval <m>[a,d]</m>, where by the phrase <q>signed area</q> we indicate that we are attaching a minus sign to the areas of regions that fall below the horizontal axis.</p>
+
+    <p>Finally, we recall from the introduction to this present section that in the context where the function <m>f</m> represents the velocity of a moving object, the total sum of the areas bounded by the curve tells us the total distance traveled over the relevant time interval, while the total net signed area bounded by the curve computes the object's change in position on the interval.</p>
+
+    <activity xml:id="A_4.2.3">
+      <p>Suppose that an object moving along a straight line path has its velocity <m>v</m> (in feet per second) at time <m>t</m> (in seconds) given by
+      <me>
+        v(t) = \frac{1}{2}t^2 - 3t + \frac{7}{2}.
+      </me>
+
+      <ol>
+        <li><p>Compute <m>M_5</m>, the middle Riemann sum, for <m>v</m> on the time interval <m>[1,5]</m>.  Be sure to clearly identify the value of <m>\triangle t</m> as well as the locations of <m>t_0</m>, <m>t_1</m>, <m>\cdots</m>, <m>t_5</m>.  In addition, provide a careful sketch of the function and the corresponding rectangles that are being used in the sum.</p></li>
+
+        <li><p>Building on your work in (a), estimate the total change in position of the object on the interval <m>[1,5]</m>.</p></li>
+
+        <li><p>Building on your work in (a) and (b), estimate the total distance traveled by the object on <m>[1,5]</m>.</p></li>
+
+        <li><p>Use appropriate computing technology<fn>For instance, consider the applet at <url href="http://gvsu.edu/s/a9"><c>http://gvsu.edu/s/a9</c></url> and change the function and adjust the locations of the blue points that represent the interval endpoints <m>a</m> and <m>b</m>.</fn> to compute <m>M_{10}</m> and <m>M_{20}</m>.  What exact value do you think the middle sum eventually approaches as <m>n</m> increases without bound?  What does that number represent in the physical context of the overall problem?</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Note that <m>\triangle t = \frac{5-1}{5}</m>.</p></li>
+
+          <li><p>Change in position is tied to the net signed area bounded by the velocity function.</p></li>
+
+          <li><p>Think about how total distance is different from change in position when the velocity is sometimes negative.</p></li>
+
+          <li><p>Besides the noted applet, computer algebra systems such as <em>Maple</em> and <em>Mathematica</em> offer this utility.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>For this Riemann sum with five subintervals, <m>\triangle t = \frac{5-1}{5} = \frac{4}{5}</m>, so <m>t_0 = 1</m>, <m>t_1 = 1.8</m>, <m>t_2 = 2.6</m>, <m>t_3 = 3.4</m>, <m>t_4 = 4.2</m> and <m>t_5 = 4</m>.  It follows that
+              <md>
+                <mrow>M_5 =\mathstrut \amp  v(1.4) \triangle t + v(2.2) \triangle t + v(3.0) \triangle t + v(3.8) \triangle t + v(4.6)</mrow>
+                <mrow>=\mathstrut \amp  \frac{7}{25} \cdot \frac{4}{5} - \frac{17}{25} \cdot \frac{4}{5} - 1 \cdot \frac{4}{5} - \frac{17}{25} \cdot \frac{4}{5} +  \frac{7}{25} \cdot \frac{4}{5}</mrow>
+                <mrow>=\mathstrut \amp  -\frac{36}{25} = -1.44</mrow>
+              </md>
+              A sketch is shown below.
+              <image width="73%" source="images/4_2_Act3Soln" />
+            </p></li>
+
+          <li><p>Since the net signed area bounded by <m>v</m> on <m>[1,5]</m> represents the total change in position of the object on the interval <m>[1,5]</m>, it follows that <m>M_5</m> estimates the total change in position.  Hence, the change in position is approximately <m>-1.44</m> feet.</p></li>
+
+          <li><p>To estimate the total distance traveled by the object on <m>[1,5]</m>, we have to calculate the total area between the curve and the <m>t</m>-axis.  Thus,
+              <me>
+                D \approx \frac{7}{25} \cdot \frac{4}{5} + \frac{17}{25} \cdot \frac{4}{5} + 1 \cdot \frac{4}{5} + \frac{17}{25} \cdot \frac{4}{5} +  \frac{7}{25} \cdot \frac{4}{5} = \frac{292}{125} \approx 2.336.
+              </me>
+            </p></li>
+
+          <li><p>Using appropriate technology, <m>M_{10} = -1.36</m> and <m>M_{20} = -1.34</m>.  Further calculations suggest that <m>M_n \to -\frac{4}{3} = -1.\overline{33}</m> as <m>n \to \infty</m>, and this number represents the object's total change in position on <m>[1,5]</m>.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+    <ul>
+      <li><p>A Riemann sum is simply a sum of products of the form <m>f(x_i^*) \triangle x</m> that estimates the area between a positive function and the horizontal axis over a given interval.  If the function is sometimes negative on the interval, the Riemann sum estimates the difference between the areas that lie above the horizontal axis and those that lie below the axis.</p></li>
+
+      <li><p>The three most common types of Riemann sums are left, right, and middle sums, plus we can also work with a more general, random Riemann sum.  The only difference among these sums is the location of the point at which the function is evaluated to determine the height of the rectangle whose area is being computed in the sum.  For a left Riemann sum, we evaluate the function at the left endpoint of each subinterval, while for right and middle sums, we use right endpoints and midpoints, respectively.</p></li>
+
+      <li><p>The left, right, and middle Riemann sums are denoted <m>L_n</m>, <m>R_n</m>, and <m>M_n</m>, with formulas
+          <me>
+            L_n = f(x_0) \triangle x + f(x_1) \triangle x + \cdots + f(x_{n-1}) \triangle x = \sum_{i = 0}^{n-1} f(x_i) \triangle x,
+          </me>
+          <me>
+            R_n = f(x_1) \triangle x + f(x_2) \triangle x + \cdots + f(x_{n}) \triangle x = \sum_{i = 1}^{n} f(x_i) \triangle x,
+          </me>
+          <me>
+            M_n = f(\overline{x}_1) \triangle x + f(\overline{x}_2) \triangle x + \cdots + f(\overline{x}_{n}) \triangle x = \sum_{i = 1}^{n} f(\overline{x}_i) \triangle x,
+          </me>
+          where <m>x_0 = a</m>, <m>x_i = a + i\triangle x</m>, and <m>x_n = b</m>, using <m>\triangle x = \frac{b-a}{n}</m>.  For the midpoint sum, <m>\overline{x}_{i} = (x_{i-1} + x_i)/2</m>.</p></li>
+    </ul>
+    <exercises>
+      <exercise>
+        <statement>
+          <p>Consider the function <m>f(x) = 3x + 4</m>.
+
+          <ol>
+            <li><p>Compute <m>M_4</m> for <m>y=f(x)</m> on the interval <m>[2,5]</m>.  Be sure to clearly identify the value of <m>\triangle x</m>, as well as the locations of <m>x_0, x_1, \ldots, x_4</m>.  Include a careful sketch of the function and the corresponding rectangles being used in the sum.</p></li>
+
+            <li><p>Use a familiar geometric formula to determine the exact value of the area of the region bounded by <m>y = f(x)</m> and the <m>x</m>-axis on <m>[2,5]</m>.</p></li>
+
+            <li><p>Explain why the values you computed in (a) and (b) turn out to be the same.  Will this be true if we use a number different than <m>n = 4</m> and compute <m>M_n</m>?  Will <m>L_4</m> or <m>R_4</m> have the same value as the exact area of the region found in (b)?</p></li>
+
+            <li><p>Describe the collection of functions <m>g</m> for which it will always be the case that <m>M_n</m>, regardless of the value of <m>n</m>, gives the exact net signed area bounded between the function <m>g</m> and the <m>x</m>-axis on the interval <m>[a,b]</m>.</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Let <m>S</m> be the sum given by
+          <me>
+            S = ((1.4)^2 + 1) \cdot 0.4 + ((1.8)^2 + 1) \cdot 0.4 + ((2.2)^2 + 1) \cdot 0.4 + ((2.6)^2 + 1) \cdot 0.4 +((3.0)^2 + 1) \cdot 0.4.
+          </me>
+
+          <ol>
+            <li><p>Assume that <m>S</m> is a right Riemann sum.  For what function <m>f</m> and what interval <m>[a,b]</m> is <m>S</m> an approximation of the area under <m>f</m> and above the <m>x</m>-axis on <m>[a,b]</m>?  Why?</p></li>
+
+            <li><p>How does your answer to (a) change if <m>S</m> is a left Riemann sum?  a middle Riemann sum?</p></li>
+
+            <li><p>Suppose that <m>S</m> really is a right Riemann sum.  What is geometric quantity does <m>S</m> approximate?</p></li>
+
+            <li><p>Use sigma notation to write a new sum <m>R</m> that is the right Riemann sum for the same function, but that uses twice as many subintervals as <m>S</m>.</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>A car traveling along a straight road is braking and its velocity is measured at several different points in time, as given in the following table.</p>
+          <tabular>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>seconds, <m>t</m></cell>
+              <cell>0</cell>
+              <cell>0.3</cell>
+              <cell>0.6</cell>
+              <cell>0.9</cell>
+              <cell>1.2</cell>
+              <cell>1.5</cell>
+              <cell>1.8</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>Velocity in ft/sec, <m>v(t)</m></cell>
+              <cell>100</cell>
+              <cell>88</cell>
+              <cell>74</cell>
+              <cell>59</cell>
+              <cell>40</cell>
+              <cell>19</cell>
+              <cell>0</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+          </tabular>
+
+          <ol>
+            <li><p>Plot the given data on a set of axes with time on the horizontal axis and the velocity on the vertical axis.</p></li>
+
+            <li><p>Estimate the total distance traveled during the car the time brakes using a middle Riemann sum with 3 subintervals.</p></li>
+
+            <li><p>Estimate the total distance traveled on <m>[0,1.8]</m> by computing <m>L_6</m>, <m>R_6</m>, and <m>\frac{1}{2}(L_6 + R_6)</m>.</p></li>
+
+            <li><p>Assuming that <m>v(t)</m> is always decreasing on <m>[0,1.8]</m>, what is the maximum possible distance the car traveled before it stopped?  Why?</p></li>
+          </ol>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>The rate at which pollution escapes a scrubbing process at a manufacturing plant increases over time as filters and other technologies become less effective. For this particular example, assume that the rate of pollution (in tons per week) is given by the function <m>r</m> that is pictured in <xref ref="F_4.2.Ez4">Figure</xref>.</p>
+
+          <figure xml:id="F_4.2.Ez4" >
+            <caption>The rate, <m>r(t)</m>, of pollution in tons per week.</caption>
+            <image width="73%" source="images/4_2_Ez4" />
+          </figure>
+
+          <ol>
+            <li><p>Use the graph to estimate the value of <m>M_4</m> on the interval <m>[0,4]</m>.</p></li>
+
+            <li><p>What is the meaning of <m>M_4</m> in terms of the pollution discharged by the plant?</p></li>
+
+            <li><p>Suppose that <m>r(t) = 0.5 e^{0.5t}</m>.  Use this formula for <m>r</m> to compute <m>L_5</m> on <m>[0,4]</m>.</p></li>
+
+            <li><p>Determine an upper bound on the total amount of pollution that can escape the plant during the pictured four week time period that is accurate within an error of at most one ton of pollution.</p></li>
+          </ol>
+        </statement>
+      </exercise>
+    </exercises>
+  </subsection>
+</section>

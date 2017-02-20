@@ -1,0 +1,484 @@
+
+<section xml:id="S_7.4.Separable">
+  <title>Separable differential equations</title>
+  <introduction>
+    <objectives>
+      <ul>
+        <li><p>What is a separable differential equation?</p></li>
+
+        <li><p>How can we find solutions to a separable differential equation?</p></li>
+
+        <li><p>Are some of the differential equations that arise in applications separable?</p></li>
+      </ul>
+    </objectives>
+    <p>In <xref ref="S_7.2.Qualitative">Sections</xref> and <xref ref="S_7.3.Euler"></xref>, we have seen several ways to approximate the solution to
+      an initial value problem. Given the frequency with which differential equations arise in the world around us, we would like to have some techniques
+      for finding explicit algebraic solutions of certain initial value
+      problems. In this section, we focus on a particular class of differential
+      equations (called <em>separable</em>) and develop a method for finding
+      algebraic formulas for solutions to these equations.</p>
+
+    <p>A <em>separable differential equation</em><index><main>separable</main></index> is a differential equation whose algebraic structure permits the variables present to be separated in a particular way. For instance, consider the equation
+      <me>
+        \frac{dy}{dt} = ty.
+      </me>
+    </p>
+
+    <p>We would like to separate the variables <m>t</m> and <m>y</m> so that all
+      occurrences of <m>t</m> appear on the right-hand side, and all occurrences
+      of <m>y</m> appears on the left and multiply <m>dy/dt</m>. We may do this in the preceding differential equation by dividing both sides by
+      <m>y</m>:
+      <me>
+        \frac1y\frac{dy}{dt} = t.
+      </me>
+    </p>
+
+    <p>Note particularly that when we attempt to separate the variables in a differential equation, we require that the left-hand side be a product in which the derivative <m>dy/dt</m> is one term.</p>
+
+    <p>Not every differential equation is separable. For example, if we consider the
+      equation
+      <me>
+        \frac{dy}{dt} = t-y,
+      </me>
+      it may seem natural to separate it by writing
+      <me>
+        y + \frac{dy}{dt} = t.
+      </me>
+    </p>
+
+    <p>As we will see, this will not be helpful since the left-hand side is
+      not a product of a function of <m>y</m> with <m>\frac{dy}{dt}</m>.</p>
+
+    <exploration xml:id="PA_7.4">
+      <p>In this preview activity, we explore whether certain differential equations are separable or not, and then revisit some key ideas from earlier work in integral calculus.</p>
+
+      <ol>
+      <li><p>Which of the following differential equations are separable?  If the equation is separable, write the equation in the revised form <m>g(y) \frac{dy}{dt} = h(t)</m>.</p>
+
+      <ol>
+        <li><p><m>\displaystyle \frac{dy}{dt} = -3y</m>.</p></li>
+
+        <li><p><m>\displaystyle \frac{dy}{dt} = ty - y</m>.</p></li>
+
+        <li><p><m>\displaystyle \frac{dy}{dt} = t + 1</m>.</p></li>
+
+        <li><p><m>\displaystyle \frac{dy}{dt} = t^2 - y^2</m>.</p></li>
+      </ol>
+      </li>
+
+      <li><p>Explain why any autonomous differential equation is guaranteed to be separable.</p></li>
+
+      <li><p>Why do we include the term <q><m>+C</m></q> in the expression
+          <me>
+            \int x~dx =
+              \frac{x^2}{2} + C?
+          </me>
+        </p></li>
+
+      <li><p>Suppose we know that a certain function <m>f</m> satisfies the equation
+          <me>
+            \int f'(x)~dx = \int x~dx.
+          </me>
+          What can you conclude about <m>f</m>?</p></li>
+      </ol>
+    </exploration>
+  </introduction>
+
+  <subsection>
+    <title>Solving separable differential equations</title>
+    <p><index><main>separable</main></index></p>
+
+    <p>Before we discuss a general approach to solving a separable differential equation, it is instructive to consider an example.</p>
+
+    <example xml:id="Ex_7.4.1">
+      <statement>
+        <p>Find all functions <m>y</m> that are solutions to the differential equation
+          <me>
+            \frac{dy}{dt}= \frac{t}{y^2}.
+          </me>
+        </p>
+      </statement>
+    </example>
+
+    <p>We begin by separating the variables and writing
+      <me>
+        y^2\frac{dy}{dt} = t.
+      </me>
+    </p>
+
+    <p>Integrating both sides of the equation with respect to the independent
+      variable <m>t</m> shows that
+      <me>
+        \int y^2\frac{dy}{dt}~dt = \int t~dt.
+      </me>
+    </p>
+
+    <p>Next, we notice that the left-hand side allows us to change
+      the variable of antidifferentiation<fn>This is why we required that the left-hand side be written as a
+          product in which <m>dy/dt</m> is one of the terms.</fn> from <m>t</m> to <m>y</m>. In
+      particular,
+      <m>dy = \frac{dy}{dt}~dt</m>, so we now have
+      <me>
+        \int y^2 ~dy = \int t~dt.
+      </me>
+    </p>
+
+    <p>This most recent equation says that two families of antiderivatives are
+      equal to one another. Therefore, when we find representative
+      antiderivatives of both sides, we know they must differ by
+      arbitrary constant <m>C</m>. Antidifferentiating and including the integration constant <m>C</m> on the right, we find that
+      <me>
+        \frac{y^3}{3} = \frac{t^2}{2} + C.
+      </me>
+    </p>
+
+    <p>Again, note that it is not necessary to include an arbitrary constant on both sides
+      of the equation; we know that <m>y^3/3</m> and <m>t^2/2</m> are in the same
+      family of antiderivatives and must therefore differ by a single
+      constant.</p>
+
+    <p>Finally, we may now solve the last equation above for <m>y</m> as a function of <m>t</m>, which gives
+      <me>
+        y(t) = \sqrt[3]{\frac 32 \, t^2 + 3C}.
+      </me>
+    </p>
+
+    <p>Of course, the term <m>3C</m> on the right-hand side represents
+      3 times an unknown constant. It is, therefore, still an unknown
+      constant, which we will rewrite as <m>C</m>. We thus conclude that the funtion
+      <me>
+        y(t) = \sqrt[3]{\frac 32 \, t^2 + C}
+      </me>
+      is a solution to the original differential equation for any value of <m>C</m>.</p>
+
+    <p>Notice that because this solution depends on the arbitrary constant <m>C</m>, we have found an infinite family of
+      solutions. This makes sense because we expect to find a unique solution that corresponds to any given
+      initial value.</p>
+
+    <p>For example, if we want to solve the initial value problem
+      <me>
+        \frac{dy}{dt} = \frac{t}{y^2}, \
+          y(0) = 2,
+      </me>
+      we know that the solution has the form <m>y(t) = \sqrt[3]{\frac32\,
+        t^2 + C}</m> for some constant <m>C</m>. We therefore must find the appropriate
+      value for <m>C</m> that gives the initial value <m>y(0)=2</m>. Hence,
+      <me>
+        2 = y(0) = \sqrt[3]{\frac 32 \, 0^2 + C} = \sqrt[3]{C},
+      </me>
+      which shows that <m>C = 2^3 = 8</m>. The solution to the initial value problem is then
+      <me>
+        y(t) = \sqrt[3]{\frac32\, t^2+8}.
+      </me>
+    </p>
+
+    <p>The strategy of <xref ref="Ex_7.4.1">Example</xref> may be applied to any differential equation of the form <m>\frac{dy}{dt} = g(y) \cdot h(t)</m>, and any differential equation of this form is said to be <em>separable</em>. We work to solve a separable differential equation by writing
+      <me>
+        \frac{1}{g(y)} \frac{dy}{dt} = h(t),
+      </me>
+      and then integrating both sides with respect to <m>t</m>. After integrating, we strive to solve algebraically for <m>y</m> in order to write <m>y</m> as a function of <m>t</m>.</p>
+
+    <p>We consider one more example before doing further exploration in some activities.</p>
+
+    <example xml:id="Ex_7.4.2">
+      <statement>
+        <p>Solve the differential equation
+          <me>
+            \frac{dy}{dt} =3y.
+          </me>
+        </p>
+      </statement>
+    </example>
+
+    <p>Following the same strategy as in <xref ref="Ex_7.4.1">Example</xref>, we have
+      <me>
+        \frac 1y \frac{dy}{dt} = 3.
+      </me>
+    </p>
+
+    <p>Integrating both sides with respect to <m>t</m>,
+      <me>
+        \int \frac 1y\frac{dy}{dt}~dt = \int 3~dt,
+      </me>
+      and thus
+      <me>
+        \int \frac 1y~dy =  \int 3~dt.
+      </me>
+    </p>
+
+    <p>Antidifferentiating and including the integration constant, we find that
+      <me>
+        \ln|y| = 3t + C.
+      </me>
+    </p>
+
+    <p>Finally, we need to solve for <m>y</m>. Here, one point deserves careful
+      attention. By the definition of the natural logarithm function, it follows that
+      <me>
+        |y| = e^{3t+C} = e^{3t}e^C.
+      </me>
+    </p>
+
+    <p>Since <m>C</m> is an unknown constant, <m>e^C</m> is as well, though we do know
+      that it is positive (because <m>e^x</m> is positive for any <m>x</m>).
+      When we remove the absolute value in order to solve for <m>y</m>, however, this constant may be either positive or
+      negative. We
+      will denote this updated constant (that accounts for a possible <m>+</m> or <m>-</m>) by <m>C</m> to obtain
+      <me>
+        y(t) = Ce^{3t}.
+      </me>
+    </p>
+
+    <p>There is one more slightly technical point to make. Notice that <m>y=0</m>
+      is an equilibrium solution to this differential equation. In solving
+      the equation above, we begin by dividing both sides by <m>y</m>, which
+      is not allowed if <m>y=0</m>. To be perfectly careful, therefore, we will typically
+      consider the equilibrium solutions separably. In this case, notice that the final
+      form of our solution captures the equilibrium solution by allowing
+      <m>C=0</m>.</p>
+
+    <activity xml:id="A_7.4.1">
+      <p>Suppose that the population of a town is growing continuously at an annual rate of 3<percent /> per year.
+
+      <ol>
+        <li><p>Let <m>P(t)</m> be the population of the town in year <m>t</m>.  Write a
+              differential equation that describes the annual growth rate.</p></li>
+
+        <li><p>Find the solutions of this differential equation.</p></li>
+
+        <li><p>If you know that the town's population in year 0 is 10,000, find
+              the population <m>P(t)</m>.</p></li>
+
+        <li><p>How long does it take for the population to double?  This time
+              is called the <em>doubling time</em>.</p></li>
+
+        <li><p>Working more generally, find the doubling time if the annual
+              growth rate is <m>k</m> times the population.</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Small hints for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Solutions for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <activity xml:id="A_7.4.2">
+      <p>Suppose that a cup of coffee is initially at a temperature of
+      105<m>^\circ</m> F and is placed in a 75<m>^\circ</m> F room. Newton's law of
+      cooling says that
+      <me>
+        \frac{dT}{dt} = -k(T-75),
+      </me>
+      where <m>k</m> is a constant of proportionality.
+
+      <ol>
+        <li><p>Suppose you measure that the coffee is cooling at one degree per
+              minute at the time the coffee is brought into the room.  Use the
+              differential equation to determine the value of the constant <m>k</m>.</p></li>
+
+        <li><p>Find all the solutions of this differential equation.</p></li>
+
+        <li><p>What happens to all the solutions as <m>t\to\infty</m>?  Explain how
+              this agrees with your intuition.</p></li>
+
+        <li><p>What is the temperature of the cup of coffee after 20 minutes?</p></li>
+
+        <li><p>How long does it take for the coffee to cool to 80<m>^\circ</m>?</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Small hints for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Solutions for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <activity xml:id="A_7.4.3">
+      <p>Solve each of the following differential equations or initial value problems.
+
+      <ol>
+        <li><p><m>\frac{dy}{dt} - (2-t) y = 2-t</m></p></li>
+
+        <li><p><m>\frac{1}{t}\frac{dy}{dt} = e^{t^2-2y}</m></p></li>
+
+        <li><p><m>y' = 2y+2</m>,  <nbsp /><m>y(0)=2</m></p></li>
+
+        <li><p><m>y' = 2y^2</m>,  <nbsp /><m>y(-1) = 2</m></p></li>
+
+        <li><p><m>\frac{dy}{dt} = \frac{-2ty}{t^2 + 1}</m>,  <nbsp /> <m>y(0) = 4</m></p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Small hints for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Solutions for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+    <ul>
+      <li><p>A separable differential equation is one that may be rewritten
+            with all occurrences of the dependent variable multiplying the
+            derivative and all occurrences of the independent variable on the
+            other side of the equation.</p></li>
+
+      <li><p>We may find the solutions to certain separable differential equations
+            by separating variables, integrating with respect to <m>t</m>, and ultimately solving the resulting algebraic equation for <m>y</m>.</p></li>
+
+      <li><p>This technique allows us to solve many important differential
+            equations that arise in the world around us.  For instance, questions of
+            growth and decay and Newton's Law of Cooling give rise to separable
+            differential equations.  Later, we will learn in <xref ref="S_7.6.Logistic">Section</xref> that the important logistic differential equation is also separable.</p></li>
+    </ul>
+    <exercises>
+      <exercise>
+        <statement>
+          <p>The mass of a radioactive sample decays at a rate that is
+          proportional to its mass.
+
+          <ol>
+            <li><p>Express this fact as a differential equation for the mass
+                    <m>M(t)</m> using <m>k</m> for the constant of proportionality.</p></li>
+
+            <li><p>If the initial mass is <m>M_0</m>, find an expression for the
+                      mass <m>M(t)</m>.</p></li>
+
+            <li><p>The <em>half-life</em> of the sample is the amount of time
+                      required for half of the mass to decay.  Knowing that the
+                      half-life of Carbon-14 is 5730 years, find the value of <m>k</m> for
+                      a sample of Carbon-14.</p></li>
+
+            <li><p>How long does it take for a sample of Carbon-14 to be
+                      reduced to one-quarter its original mass?</p></li>
+
+            <li><p>Carbon-14 naturally occurs in our environment; any
+                      living organism takes in Carbon-14 when it eats and breathes.  Upon
+                      dying, however, the organism no longer takes in Carbon-14. 
+      
+                      Suppose that you find remnants of a pre-historic firepit.  By
+                      analyzing the charred wood in the pit, you determine that the
+                      amount of Carbon-14 is only 30<percent /> of the amount in living trees.
+                      Estimate the age of the firepit.<fn>This approach is the basic idea behind radiocarbon dating.</fn></p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Consider the initial value problem
+          <me>
+            \frac{dy}{dt} = -\frac ty, \ y(0) = 8
+          </me>
+
+          <ol>
+            <li><p>Find the solution of the initial value problem and sketch its
+                      graph.</p></li>
+
+            <li><p>For what values of <m>t</m> is the solution defined?</p></li>
+
+            <li><p>What is the value of <m>y</m> at the last time that the
+                      solution is defined?</p></li>
+
+            <li><p>By looking at the differential equation, explain why we
+                      should not expect to find solutions with the value of <m>y</m> you noted in (c).</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Suppose that a cylindrical water tank with a hole in the
+          bottom is filled with water. The water, of course, will leak out
+          and the height of the water will decrease. Let <m>h(t)</m> denote the
+          height of the water. A physical principle called <em>Torricelli's
+          Law</em> implies that the height decreases at a rate proportional to
+          the square root of the height.
+
+          <ol>
+            <li><p>Express this fact using <m>k</m> as the constant of
+                      proportionality.</p></li>
+
+            <li><p>Suppose you have two tanks, one with <m>k=-1</m> and another with
+                      <m>k=-10</m>.  What physical differences would you expect to find?</p></li>
+
+            <li><p>Suppose you have a tank for which the height decreases at 20
+                      inches per minute when the water is filled to a depth of 100
+                      inches.  Find the value of <m>k</m>.</p></li>
+
+            <li><p>Solve the initial value problem for the tank in part (c), and graph the solution you determine.</p></li>
+
+            <li><p>How long does it take for the water to run out of the tank?</p></li>
+
+            <li><p>Is the solution that you found valid for all time <m>t</m>?  If
+                      so, explain how you know this.  If not, explain why not.</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>The <em>Gompertz equation</em> is a model that is used to
+          describe the growth of certain populations. Suppose that <m>P(t)</m>
+          is the population of some organism and that
+          <me>
+            \frac{dP}{dt} = -P\ln\left(\frac P3\right) = -P(\ln P - \ln 3).
+          </me>
+
+          <ol>
+            <li><p>Sketch a slope field for <m>P(t)</m> over the range <m>0\leq P\leq
+                      6</m>.</p></li>
+
+            <li><p>Identify any equilibrium solutions and determine whether
+                      they are stable or unstable.</p></li>
+
+            <li><p>Find the population <m>P(t)</m> assuming that <m>P(0) = 1</m> and sketch
+                      its graph.  What happens to <m>P(t)</m> after a very long time?</p></li>
+
+            <li><p>Find the population <m>P(t)</m> assuming that <m>P(0) = 6</m> and sketch
+                      its graph.  What happens to <m>P(t)</m> after a very long time?</p></li>
+
+            <li><p>Verify that the long-term behavior of your solutions agrees
+                      with what you predicted by looking at the slope field.</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+    </exercises>
+  </subsection>
+</section>

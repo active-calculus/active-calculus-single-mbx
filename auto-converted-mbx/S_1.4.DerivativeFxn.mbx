@@ -1,0 +1,276 @@
+
+<section xml:id="S_1.4.DerivativeFxn">
+  <title>The derivative function</title>
+  <introduction>
+    <objectives>
+      <ul>
+        <li><p>How does the limit definition of the derivative of a function <m>f</m> lead to an entirely new (but related) function <m>f'</m>?</p></li>
+
+        <li><p>What is the difference between writing <m>f'(a)</m> and <m>f'(x)</m>?</p></li>
+
+        <li><p>How is the graph of the derivative function <m>f'(x)</m> connected to the graph of <m>f(x)</m>?</p></li>
+
+        <li><p>What are some examples of functions <m>f</m> for which <m>f'</m> is not defined at one or more points?</p></li>
+      </ul>
+    </objectives>
+    <p>Given a function <m>y = f(x)</m>, we now know that if we are interested in the instantaneous rate of change of the function at <m>x = a</m>, or equivalently the slope of the tangent line to <m>y = f(x)</m> at <m>x = a</m>, we can compute the value <m>f'(a)</m>. In all of our examples to date, we have arbitrarily identified a particular value of <m>a</m> as our point of interest: <m>a = 1</m>, <m>a = 3</m>, etc. But it is not hard to imagine that we will often be interested in the derivative value for more than just one <m>a</m>-value, and possibly for many of them. In this section, we explore how we can move from computing simply <m>f'(1)</m> or <m>f'(3)</m> to working more generally with <m>f'(a)</m>, and indeed <m>f'(x)</m>. Said differently, we will work toward understanding how the so-called process of <q>taking the derivative</q> generates a new function that is derived from the original function <m>y = f(x)</m>. The following preview activity starts us down this path.</p>
+
+    <exploration xml:id="PA_1.4">
+      <p>Consider the function <m>f(x) = 4x - x^2</m>.
+
+      <ol>
+        <li><p>Use the limit definition to compute the following derivative values:  <m>f'(0)</m>, <m>f'(1)</m>, <m>f'(2)</m>, and <m>f'(3)</m>.</p></li>
+
+        <li><p>Observe that the work to find <m>f'(a)</m> is the same, regardless of the value of <m>a</m>.  Based on your work in (a), what do you conjecture is the value of <m>f'(4)</m>?  How about <m>f'(5)</m>?  (Note: you should <em>not</em> use the limit definition of the derivative to find either value.)</p></li>
+
+        <li><p>Conjecture a formula for <m>f'(a)</m> that depends only on the value <m>a</m>.  That is, in the same way that we have a formula for <m>f(x)</m> (recall <m>f(x) = 4x - x^2</m>), see if you can use your work above to guess a formula for <m>f'(a)</m> in terms of <m>a</m>.</p></li>
+      </ol>
+      </p>
+    </exploration>
+  </introduction>
+
+  <subsection>
+    <title>How the derivative is itself a function</title>
+    <p>In your work in <xref ref="PA_1.4">Preview Activity</xref> with <m>f(x) = 4x - x^2</m>, you may have found several patterns. One comes from observing that <m>f'(0) = 4</m>, <m>f'(1) = 2</m>, <m>f'(2) = 0</m>, and <m>f'(3) = -2</m>. That sequence of values leads us naturally to conjecture that <m>f'(4) = -4</m> and <m>f'(5) = -6.</m> Even more than these individual numbers, if we consider the role of <m>0</m>, <m>1</m>, <m>2</m>, and <m>3</m> in the process of computing the value of the derivative through the limit definition, we observe that the particular number has very little effect on our work. To see this more clearly, we compute <m>f'(a)</m>, where <m>a</m> represents a number to be named later. Following the now standard process of using the limit definition of the derivative,
+      <md>
+        <mrow>f'(a) =\mathstrut \amp  \lim_{h \to 0} \frac{f(a + h) - f(a)}{h}</mrow>
+        <mrow>=\mathstrut \amp  \lim_{h \to 0} \frac{4(a + h) - (a + h)^2 - (4a-a^2)}{h}</mrow>
+        <mrow>=\mathstrut \amp  \lim_{h \to 0} \frac{4a + 4h - a^2 - 2ha - h^2 - 4a+a^2}{h}</mrow>
+        <mrow>=\mathstrut \amp  \lim_{h \to 0} \frac{4h - 2ha - h^2}{h}</mrow>
+        <mrow>=\mathstrut \amp  \lim_{h \to 0} \frac{h(4 - 2a - h)}{h}</mrow>
+        <mrow>=\mathstrut \amp  \lim_{h \to 0} (4 - 2a - h).</mrow>
+      </md>
+    </p>
+
+    <p>Here we observe that neither <m>4</m> nor <m>2a</m> depend on the value of <m>h</m>, so as <m>h \to 0</m>, <m>(4 - 2a - h) \to (4 - 2a)</m>. Thus, <m>f'(a) = 4 - 2a</m>.</p>
+
+    <p>This observation is consistent with the specific values we found above: e.g., <m>f'(3) = 4 - 2(3) = -2</m>. And indeed, our work with <m>a</m> confirms that while the particular value of <m>a</m> at which we evaluate the derivative affects the value of the derivative, that value has almost no bearing on the process of computing the derivative. We note further that the letter being used is immaterial: whether we call it <m>a</m>, <m>x</m>, or anything else, the derivative at a given value is simply given by <q>4 minus 2 times the value.</q> We choose to use <m>x</m> for consistency with the original function given by <m>y = f(x)</m>, as well as for the purpose of graphing the derivative function, and thus we have found that for the function <m>f(x) = 4x - x^2</m>, it follows that <m>f'(x) = 4 - 2x.</m></p>
+
+    <p>Because the value of the derivative function is so closely linked to the graphical behavior of the original function, it makes sense to look at both of these functions plotted on the same domain.</p>
+
+    <figure xml:id="F_1.4.ffprime" >
+      <caption>The graphs of <m>f(x) = 4x - x^2</m> (at left) and <m>f'(x) = 4 - 2x</m> (at right).  Slopes on the graph of <m>f</m> correspond to heights on the graph of <m>f'</m>.</caption>
+      <image width="73%" source="images/1_4_ffprimeplot" />
+    </figure>
+
+    <p>In <xref ref="F_1.4.ffprime">Figure</xref>, on the left we show a plot of <m>f(x) = 4x - x^2</m> together with a selection of tangent lines at the points we've considered above. On the right, we show a plot of <m>f'(x) = 4 - 2x</m> with emphasis on the heights of the derivative graph at the same selection of points. Notice the connection between colors in the left and right graph: the green tangent line on the original graph is tied to the green point on the right graph in the following way: <em>the slope of the tangent line</em> at a point on the lefthand graph is the same as the <em>height</em> at the corresponding point on the righthand graph. That is, at each respective value of <m>x</m>, the slope of the tangent line to the original function at that <m>x</m>-value is the same as the height of the derivative function at that <m>x</m>-value. Do note, however, that the units on the vertical axes are different: in the left graph, the vertical units are simply the output units of <m>f</m>. On the righthand graph of <m>y = f'(x)</m>, the units on the vertical axis are units of <m>f</m> per unit of <m>x</m>.</p>
+
+    <p>Of course, this relationship between the graph of a function <m>y = f(x)</m> and its derivative is a dynamic one. An excellent way to explore how the graph of <m>f(x)</m> generates the graph of <m>f'(x)</m> is through a java applet. See, for instance, the applets at <url href="http://gvsu.edu/s/5C"><c>http://gvsu.edu/s/5C</c></url> or <url href="http://gvsu.edu/s/5D"><c>http://gvsu.edu/s/5D</c></url>, via the sites of Austin and Renault<fn>David Austin, <url href="http://gvsu.edu/s/5r"><c>http://gvsu.edu/s/5r</c></url>; Marc Renault, <url href="http://gvsu.edu/s/5p"><c>http://gvsu.edu/s/5p</c></url>.</fn>.</p>
+
+    <p>In <xref ref="S_1.3.DerivativePt">Section</xref> when we first defined the derivative, we wrote the definition in terms of a value <m>a</m> to find <m>f'(a)</m>. As we have seen above, the letter <m>a</m> is merely a placeholder, and it often makes more sense to use <m>x</m> instead. For the record, here we restate the definition of the derivative<index><main>derivative</main><sub>definition</sub></index>.</p>
+
+    <definition xml:id="D_derivativedefnx">
+      <statement>
+        <p>Let <m>f</m> be a function and <m>x</m> a value in the function's domain. We define the <term>derivative of <m>f</m> with respect to <m>x</m> at the value <m>x</m></term>, denoted <m>f'(x)</m>, by the formula
+          <m>f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h},</m>
+          provided this limit exists.</p>
+      </statement>
+    </definition>
+
+    <p>We now may take two different perspectives on thinking about the derivative function: given a graph of <m>y = f(x)</m>, how does this graph lead to the graph of the derivative function <m>y = f'(x)</m>? and given a formula for <m>y = f(x)</m>, how does the limit definition of the derivative generate a formula for <m>y = f'(x)</m>? Both of these issues are explored in the following activities.</p>
+
+    <activity xml:id="A_1.4.1">
+      <p>For each given graph of <m>y = f(x)</m>, sketch an approximate graph of its derivative function, <m>y = f'(x)</m>, on the axes immediately below. The scale of the grid for the graph of <m>f</m> is <m>1 \times 1</m>; assume the horizontal scale of the grid for the graph of <m>f'</m> is identical to that for <m>f</m>. If necessary, adjust and label the vertical scale on the axes for <m>f'</m>.</p>
+      <image width="73%" source="images/1_4_Act1a" />
+      <image width="73%" source="images/1_4_Act1b" />
+      <image width="73%" source="images/1_4_Act1c" />
+      <image width="73%" source="images/1_4_Act1d" />
+      <p>When you are finished with all 8 graphs, write several sentences that describe your overall process for sketching the graph of the derivative function, given the graph the original function. What are the values of the derivative function that you tend to identify first? What do you do thereafter? How do key traits of the graph of the derivative function exemplify properties of the graph of the original function?</p>
+      <hint>
+        <p>Points where the slope of the tangent line is equal to zero are particularly important. Try finding these points first in your effort to plot <m>y = f'(x)</m> and plotting those zero values on the axes where you'll graph <m>y = f'(x)</m>.</p>
+      </hint>
+      <solution>
+        <image width="73%" source="images/1_4_Act1aSoln" />
+        <fillin />
+        <image width="73%" source="images/1_4_Act1bSoln" />
+        <image width="73%" source="images/1_4_Act1cSoln" />
+        <fillin />
+        <image width="73%" source="images/1_4_Act1dSoln" />
+      </solution>
+    </activity>
+
+    <p>For a dynamic investigation that allows you to experiment with graphing <m>f'</m> when given the graph of <m>f</m>, see <url href="http://gvsu.edu/s/8y"><c>http://gvsu.edu/s/8y</c></url>.<fn>Marc Renault, Calculus Applets Using Geogebra.</fn></p>
+
+    <p>Now, recall the opening example of this section: we began with the function <m>y = f(x) = 4x - x^2</m> and used the limit definition of the derivative to show that <m>f'(a) = 4 - 2a</m>, or equivalently that <m>f'(x) = 4 - 2x</m>. We subsequently graphed the functions <m>f</m> and <m>f'</m> as shown in <xref ref="F_1.4.ffprime">Figure</xref>. Following <xref ref="A_1.4.1">Activity</xref>, we now understand that we could have constructed a fairly accurate graph of <m>f'(x)</m> <em>without</em> knowing a formula for either <m>f</m> or <m>f'</m>. At the same time, it is ideal to know a formula for the derivative function whenever it is possible to find one.</p>
+
+    <p>In the next activity, we further explore the more algebraic approach to finding <m>f'(x)</m>: given a formula for <m>y = f(x)</m>, the limit definition of the derivative will be used to develop a formula for <m>f'(x)</m>.</p>
+
+    <activity xml:id="A_1.4.2">
+      <p>For each of the listed functions, determine a formula for the derivative function. For the first two, determine the formula for the derivative by thinking about the nature of the given function and its slope at various points; do not use the limit definition. For the latter four, use the limit definition. Pay careful attention to the function names and independent variables. It is important to be comfortable with using letters other than <m>f</m> and <m>x</m>. For example, given a function <m>p(z)</m>, we call its derivative <m>p'(z)</m>.
+
+      <ol>
+        <li><p><m>f(x) = 1</m></p></li>
+
+        <li><p><m>g(t) = t</m></p></li>
+
+        <li><p><m>p(z) = z^2</m></p></li>
+
+        <li><p><m>q(s) = s^3</m></p></li>
+
+        <li><p><m>F(t) = \frac{1}{t}</m></p></li>
+
+        <li><p><m>G(y) = \sqrt{y}</m></p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>What is the slope of the function at every point?</p></li>
+
+          <li><p>What is the slope of the function at every point?</p></li>
+
+          <li><p><m>p(z+h) = (z+h)^2</m></p></li>
+
+          <li><p><m>q(s+h) = (s+h)^3</m></p></li>
+
+          <li><p><m>F(t+h) = \frac{1}{t+h}</m></p></li>
+
+          <li><p><m>G(y+h) = \sqrt{y+h}</m></p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p><m>f'(x) = 0</m> because the slope of the tangent line to the horizontal line given by <m>f(x) = 1</m> is zero at every value of <m>x</m>.</p></li>
+
+          <li><p><m>g'(t) = 1</m> because the slope of the tangent line to the line given by <m>g(t) = t</m> is 1 at every value of <m>t</m>.</p></li>
+
+          <li><p>
+              <md>
+                <mrow>p'(z) =\mathstrut \amp  \lim_{h \to 0} \frac{p(z+h) - p(z)}{h}</mrow>
+                <mrow>=\mathstrut \amp  \lim_{h \to 0} \frac{(z+h)^2 - z^2}{h}</mrow>
+                <mrow>=\mathstrut \amp  \lim_{h \to 0} \frac{z^2 + 2zh + h^2 - z^2}{h}</mrow>
+                <mrow>=\mathstrut \amp  \lim_{h \to 0} \frac{2zh + h^2}{h}</mrow>
+                <mrow>=\mathstrut \amp  \lim_{h \to 0} 2z + h</mrow>
+                <mrow>=\mathstrut \amp  2z</mrow>
+              </md>
+            </p></li>
+
+          <li><p>
+              <md>
+                <mrow>q'(s) =\mathstrut \amp  \lim_{h \to 0} \frac{q(s+h) - q(s)}{h}</mrow>
+                <mrow>=\mathstrut \amp  \lim_{h \to 0} \frac{(s+h)^3 - s^3}{h}</mrow>
+                <mrow>=\mathstrut \amp  \lim_{h \to 0} \frac{s^3 + 3s^2h + 3sh^2 + h^3 - s^3}{h}</mrow>
+                <mrow>=\mathstrut \amp  \lim_{h \to 0} \frac{3s^2h + 3sh^2 + h^2}{h}</mrow>
+                <mrow>=\mathstrut \amp  \lim_{h \to 0} 3s^2 + 3sh + h</mrow>
+                <mrow>=\mathstrut \amp  3s^2</mrow>
+              </md>
+            </p></li>
+
+          <li><p>
+              <md>
+                <mrow>F'(t) =\mathstrut \amp  \lim_{h \to 0} \frac{F(t+h) - F(s)}{h}</mrow>
+                <mrow>=\mathstrut \amp  \lim_{h \to 0} \frac{\frac{1}{t+h} - \frac{1}{t}}{h}</mrow>
+                <mrow>=\mathstrut \amp  \lim_{h \to 0} \frac{\frac{t - (t+h)}{t(t+h)}}{h}</mrow>
+                <mrow>=\mathstrut \amp  \lim_{h \to 0} \frac{-h}{ht(t+h)}</mrow>
+                <mrow>=\mathstrut \amp  \lim_{h \to 0} \frac{-1}{t(t+h)}</mrow>
+                <mrow>=\mathstrut \amp  \frac{-1}{t^2}</mrow>
+              </md>
+            </p></li>
+
+          <li><p>
+              <md>
+                <mrow>G'(y) =\mathstrut \amp  \lim_{h \to 0} \frac{G(y+h) - G(y)}{h}</mrow>
+                <mrow>=\mathstrut \amp  \lim_{h \to 0} \frac{\sqrt{y+h}-\sqrt{y}}{h}</mrow>
+                <mrow>=\mathstrut \amp  \lim_{h \to 0} \frac{\sqrt{y+h}-\sqrt{y}}{h} \cdot \frac{\sqrt{y+h} + \sqrt{y}}{\sqrt{y+h} + \sqrt{y}}</mrow>
+                <mrow>=\mathstrut \amp  \lim_{h \to 0} \frac{(y+h)-y}{h(\sqrt{y+h} + \sqrt{y})}</mrow>
+                <mrow>=\mathstrut \amp  \lim_{h \to 0} \frac{h}{h(\sqrt{y+h} + \sqrt{y})}</mrow>
+                <mrow>=\mathstrut \amp  \lim_{h \to 0} \frac{1}{\sqrt{y+h} + \sqrt{y}}</mrow>
+                <mrow>=\mathstrut \amp  \frac{1}{2\sqrt{y}}</mrow>
+              </md>
+            </p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <p>\begin{authornote}
+      This is an author note.
+      \end{authornote}</p>
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+    <ul>
+      <li><p>The limit definition of the derivative, <m>f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}</m>, produces a value for each <m>x</m> at which the derivative is defined, and this leads to a new function whose formula is <m>y = f'(x)</m>.  Hence we talk both about a given function <m>f</m> and its derivative <m>f'</m>.  It is especially important to note that taking the derivative is a process that starts with a given function (<m>f</m>) and produces a new, related function (<m>f'</m>).</p></li>
+
+      <li><p>There is essentially no difference between writing <m>f'(a)</m> (as we did regularly in <xref ref="S_1.3.DerivativePt">Section</xref>) and writing <m>f'(x)</m>.  In either case, the variable is just a placeholder that is used to define the rule for the derivative function.</p></li>
+
+      <li><p>Given the graph of a function <m>y = f(x)</m>, we can sketch an approximate graph of its derivative <m>y = f'(x)</m> by observing that <em>heights</em> on the derivative's graph correspond to <em>slopes</em> on the original function's graph.</p></li>
+
+      <li><p>In <xref ref="A_1.4.1">Activity</xref>, we encountered some functions that had sharp corners on their graphs, such as the shifted absolute value function.  At such points, the derivative fails to exist, and we say that <m>f</m> is not differentiable there.  For now, it suffices to understand this as a consequence of the jump that must occur in the derivative function at a sharp corner on the graph of the original function.</p></li>
+    </ul>
+    <exercises>
+      <exercise>
+        <statement>
+          <p>Let <m>f</m> be a function with the following properties: <m>f</m> is differentiable at every value of <m>x</m> (that is, <m>f</m> has a derivative at every point), <m>f(-2) = 1</m>, and <m>f'(-2) = -2</m>, <m>f'(-1) = -1</m>, <m>f'(0) = 0</m>, <m>f'(1) = 1</m>, and <m>f'(2) = 2</m>.
+
+          <ol>
+            <li><p>On the axes provided at left in <xref ref="F_1.4.Ez1">Figure</xref>, sketch a possible graph of <m>y = f(x)</m>.  Explain why your graph meets the stated criteria.</p></li>
+
+            <li><p>On the axes at right in <xref ref="F_1.4.Ez1">Figure</xref>, sketch a possible graph of <m>y = f'(x)</m>.  What type of curve does the provided data suggest for the graph of <m>y = f'(x)</m>?</p></li>
+
+            <li><p>Conjecture a formula for the function <m>y = f(x)</m>.  Use the limit definition of the derivative to determine the corresponding formula for <m>y = f'(x)</m>.  Discuss both graphical and algebraic evidence for whether or not your conjecture is correct.</p></li>
+          </ol>
+          </p>
+
+          <figure xml:id="F_1.4.Ez1" >
+            <caption>Axes for plotting <m>y = f(x)</m> in (a) and <m>y = f'(x)</m> in (b).</caption>
+            <image width="73%" source="images/1_2_Ez3" />
+          </figure>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Consider the function <m>g(x) = x^2 - x + 3</m>.
+
+          <ol>
+            <li><p>Use the limit definition of the derivative to determine a formula for <m>g'(x)</m>.</p></li>
+
+            <li><p>Use a graphing utility to plot both <m>y = g(x)</m> and your result for <m>y = g'(x)</m>; does your formula for <m>g'(x)</m> generate the graph you expected?</p></li>
+
+            <li><p>Use the limit definition of the derivative to find a formula for <m>p'(x)</m> where <m>p(x) = 5x^2 - 4x + 12.</m></p></li>
+
+            <li><p>Compare and contrast the formulas for <m>g'(x)</m> and <m>p'(x)</m> you have found.  How do the constants 5, 4, 12, and 3 affect the results?</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Let <m>g</m> be a continuous function (that is, one with no jumps or holes in the graph) and suppose that a graph of <m>y= g'(x)</m> is given by the graph on the right in <xref ref="F_1.4.Ez2">Figure</xref>.</p>
+
+          <figure xml:id="F_1.4.Ez2" >
+            <caption>Axes for plotting <m>y = g(x)</m> and, at right, the graph of <m>y = g'(x)</m>.</caption>
+            <image width="73%" source="images/1_4_Ez2" />
+          </figure>
+
+          <ol>
+            <li><p>Observe that for every value of <m>x</m> that satisfies <m>0 \lt  x \lt  2</m>, the value of <m>g'(x)</m> is constant.  What does this tell you about the behavior of the graph of <m>y = g(x)</m> on this interval?</p></li>
+
+            <li><p>On what intervals other than <m>0 \lt  x \lt  2</m> do you expect <m>y = g(x)</m> to be a linear function?  Why?</p></li>
+
+            <li><p>At which values of <m>x</m> is <m>g'(x)</m> not defined?  What behavior does this lead you to expect to see in the graph of <m>y=g(x)</m>?</p></li>
+
+            <li><p>Suppose that <m>g(0) = 1</m>.  On the axes provided at left in  <xref ref="F_1.4.Ez2">Figure</xref>, sketch an accurate graph of <m>y = g(x)</m>.</p></li>
+          </ol>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>For each graph that provides an original function <m>y = f(x)</m> in <xref ref="F_1.4.Ez3a">Figure</xref> (on the following page), your task is to sketch an approximate graph of its derivative function, <m>y = f'(x)</m>, on the axes immediately below. View the scale of the grid for the graph of <m>f</m> as being <m>1 \times 1</m>, and assume the horizontal scale of the grid for the graph of <m>f'</m> is identical to that for <m>f</m>. If you need to adjust the vertical scale on the axes for the graph of <m>f'</m>, you should label that accordingly.</p>
+
+          <figure xml:id="F_1.4.Ez3a" >
+            <caption>Graphs of <m>y = f(x)</m> and grids for plotting the corresponding graph of <m>y = f'(x)</m>.</caption>
+            <image width="73%" source="images/1_4_Ez3a" />
+            <fillin />
+            <image width="73%" source="images/1_4_Ez3b" />
+          </figure>
+        </statement>
+      </exercise>
+    </exercises>
+  </subsection>
+</section>

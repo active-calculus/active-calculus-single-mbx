@@ -1,0 +1,378 @@
+
+<section xml:id="S_1.8.TanLineApprox">
+  <title>The Tangent Line Approximation</title>
+  <introduction>
+    <objectives>
+      <ul>
+        <li><p>What is the formula for the general tangent line approximation to a differentiable function <m>y = f(x)</m> at the point <m>(a,f(a))</m>?</p></li>
+
+        <li><p>What is the principle of local linearity and what is the local linearization of a differentiable function <m>f</m> at a point <m>(a,f(a))</m>?</p></li>
+
+        <li><p>How does knowing just the tangent line approximation tell us information about the behavior of the original function itself near the point of approximation?  How does knowing the second derivative's value at this point provide us additional knowledge of the original function's behavior?</p></li>
+      </ul>
+    </objectives>
+    <p>Among all functions, linear functions are simplest. One of the powerful consequences of a function <m>y = f(x)</m> being differentiable at a point <m>(a,f(a))</m> is that, up close, the function <m>y = f(x)</m> is locally linear and looks like its tangent line at that point. In certain circumstances, this allows us to approximate the original function <m>f</m> with a simpler function <m>L</m> that is linear: this can be advantageous when we have limited information about <m>f</m> or when <m>f</m> is computationally or algebraically complicated. We will explore all of these situations in what follows.</p>
+
+    <p>It is essential to recall that when <m>f</m> is differentiable at <m>x = a</m>, the value of <m>f'(a)</m> provides the slope of the tangent line to <m>y = f(x)</m> at the point <m>(a,f(a))</m>. By knowing both a point on the line and the slope of the line we are thus able to find the equation of the tangent line. <xref ref="PA_1.8">Preview Activity</xref> will refresh these concepts through a key example and set the stage for further study.</p>
+
+    <exploration xml:id="PA_1.8">
+      <p>Consider the function <m>y = g(x) = -x^2+3x+2</m>.</p>
+
+      <figure xml:id="F_1.8.PA1" >
+        <caption>Axes for plotting <m>y = g(x)</m> and its tangent line to the point <m>(2,g(2))</m>.</caption>
+        <image width="73%" source="images/1_8_PA1" />
+      </figure>
+
+      <ol>
+        <li><p>Use the limit definition of the derivative to compute a formula for <m>y = g'(x)</m>.</p></li>
+
+        <li><p>Determine the slope of the tangent line to <m>y = g(x)</m> at the value <m>x = 2</m>.</p></li>
+
+        <li><p>Compute <m>g(2)</m>.</p></li>
+
+        <li><p>Find an equation for the tangent line to <m>y = g(x)</m> at the point <m>(2,g(2))</m>.  Write your result in point-slope form<fn>Recall that a line with slope <m>m</m> that passes through <m>(x_0,y_0)</m> has equation <m>y - y_0 = m(x - x_0)</m>, and this is the <em>point-slope form</em> of the equation.</fn>.</p></li>
+
+        <li><p>On the axes provided in <xref ref="F_1.8.PA1">Figure</xref>, sketch an accurate, labeled graph of <m>y = g(x)</m> along with its tangent line at the point <m>(2,g(2))</m>.</p></li>
+      </ol>
+    </exploration>
+  </introduction>
+
+  <subsection>
+    <title>The tangent line</title>
+    <p><index><main>tangent line</main><sub>equation</sub></index></p>
+
+    <p>Given a function <m>f</m> that is differentiable at <m>x = a</m>, we know that we can determine the slope of the tangent line to <m>y = f(x)</m> at <m>(a,f(a))</m> by computing <m>f'(a)</m>. The resulting tangent line through <m>(a,f(a))</m> with slope <m>m = f'(a)</m> has its equation in point-slope form given by
+      <me>
+        y - f(a) = f'(a)(x-a),
+      </me>
+      which we can also express as <m>y = f'(a)(x-a) + f(a)</m>. Note well: there is a major difference between <m>f(a)</m> and <m>f(x)</m> in this context. The former is a constant that results from using the given fixed value of <m>a</m>, while the latter is the general expression for the rule that defines the function. The same is true for <m>f'(a)</m> and <m>f'(x)</m>: we must carefully distinguish between these expressions. Each time we find the tangent line, we need to evaluate the function and its derivative at a fixed <m>a</m>-value.</p>
+
+    <figure xml:id="F_1.8.TanLine" >
+      <caption>A function <m>y = f(x)</m> and its tangent line at the point <m>(a,f(a))</m>: at left, from a distance, and at right, up close.  At right, we label the tangent line function by <m>y = L(x)</m> and observe that for <m>x</m> near <m>a</m>, <m>f(x) \approx L(x)</m>.</caption>
+      <image width="73%" source="images/1_8_TanLine" />
+    </figure>
+
+    <p>In <xref ref="F_1.8.TanLine">Figure</xref>, we see a labeled plot of the graph of a function <m>f</m> and its tangent line at the point <m>(a,f(a))</m>. Notice how when we zoom in we see the local linearity of <m>f</m> more clearly highlighted as the function and its tangent line are nearly indistinguishable up close. This can also be seen dynamically in the java applet at <url href="http://gvsu.edu/s/6J"><c>http://gvsu.edu/s/6J</c></url>.</p>
+  </subsection>
+
+  <subsection>
+    <title>The local linearization</title>
+    <p><index><main>local linearization</main></index></p>
+
+    <p>A slight change in perspective and notation will enable us to be more precise in discussing how the tangent line to <m>y = f(x)</m> at <m>(a,f(a))</m> approximates <m>f</m> near <m>x = a</m>. Taking the equation for the tangent line and solving for <m>y</m>, we observe that the tangent line is given by
+      <me>
+        y = f'(a)(x-a) + f(a)
+      </me>
+      and moreover that this line is itself a function of <m>x</m>. Replacing the variable <m>y</m> with the expression <m>L(x)</m>, we call
+      <me>
+        L(x) = f'(a)(x-a) + f(a)
+      </me>
+      the <em>local linearization of <m>f</m></em> at the point <m>(a,f(a))</m>. In this notation, it is particularly important to observe that <m>L(x)</m> is nothing more than a new name for the tangent line, and that for <m>x</m> close to <m>a</m>, we have that <m>f(x) \approx L(x)</m>.</p>
+
+    <p>Say, for example, that we know that a function <m>y = f(x)</m> has its tangent line approximation given by <m>L(x) = 3 - 2(x-1)</m> at the point <m>(1,3)</m>, but we do not know anything else about the function <m>f</m>. If we are interested in estimating a value of <m>f(x)</m> for <m>x</m> near 1, such as <m>f(1.2)</m>, we can use the fact that <m>f(1.2) \approx L(1.2)</m> and hence
+      <me>
+        f(1.2) \approx L(1.2) = 3 - 2(1.2-1) = 3 - 2(0.2) = 2.6.
+      </me>
+    </p>
+
+    <p>Again, much of the new perspective here is only in notation since <m>y = L(x)</m> is simply a new name for the tangent line function. In light of this new notation and our observations above, we note that since <m>L(x) = f(a) + f'(a)(x-a)</m> and <m>L(x) \approx f(x)</m> for <m>x</m> near <m>a</m>, it also follows that we can write
+      <me>
+        f(x) \approx f(a) + f'(a)(x-a) \ \mbox{for}  \  x \ \mbox{near}  \ a.
+      </me>
+    </p>
+
+    <p>The next activity explores some additional important properties of the local linearization <m>y = L(x)</m> to a function <m>f</m> at given <m>a</m>-value.</p>
+
+    <activity xml:id="A_1.8.1">
+      <p>Suppose it is known that for a given differentiable function <m>y = g(x)</m>, its local linearization at the point where <m>a = -1</m> is given by <m>L(x) = -2 + 3(x+1)</m>.
+
+      <ol>
+        <li><p>Compute the values of <m>L(-1)</m> and <m>L'(-1)</m>.</p></li>
+
+        <li><p>What must be the values of <m>g(-1)</m> and <m>g'(-1)</m>?  Why?</p></li>
+
+        <li><p>Do you expect the value of <m>g(-1.03)</m> to be greater than or less than the value of <m>g(-1)</m>?  Why?</p></li>
+
+        <li><p>Use the local linearization to estimate the value of <m>g(-1.03)</m>.</p></li>
+
+        <li><p>Suppose that you also know that <m>g''(-1) = 2.</m>  What does this tell you about the graph of <m>y = g(x)</m> at <m>a = -1</m>?</p></li>
+
+        <li><p>For <m>x</m> near <m>-1</m>, sketch the graph of the local linearization <m>y = L(x)</m> as well as a possible graph of <m>y = g(x)</m> on the axes provided in <xref ref="F_1.8.Act1">Figure</xref>.</p></li>
+      </ol>
+      </p>
+
+      <figure xml:id="F_1.8.Act1" >
+        <caption>Axes for plotting <m>y = L(x)</m> and <m>y = g(x)</m>.</caption>
+        <image width="73%" source="images/1_8_Act1" />
+      </figure>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Follow the rule for <m>L</m>.</p></li>
+
+          <li><p>Recall that the form of the local linearization is <m>L(x) = g(a) + g'(a)(x-a)</m>.</p></li>
+
+          <li><p>Is the function <m>g</m> increasing or decreasing at <m>a = -1</m>?</p></li>
+
+          <li><p>Remember that <m>g(-1.03) \approx L(-1.03)</m>.</p></li>
+
+          <li><p>What does the second derivative tell you about the shape of a curve?</p></li>
+
+          <li><p>Use your work above.</p></li>
+        </ol>
+        </p>
+      </hint>
+    </activity>
+
+    <p>As we saw in the example provided by <xref ref="A_1.8.1">Activity</xref>, the local linearization <m>y = L(x)</m> is a linear function that shares two important values with the function <m>y = f(x)</m> that it is derived from. In particular, observe that since <m>L(x) = f(a) + f'(a)(x-a)</m>, it follows that <m>L(a) = f(a)</m>. In addition, since <m>L</m> is a linear function, its derivative is its slope. Hence, <m>L'(x) = f'(a)</m> for every value of <m>x</m>, and specifically <m>L'(a) = f'(a)</m>. Therefore, we see that <m>L</m> is a linear function that has both the same value and the same slope as the function <m>f</m> at the point <m>(a,f(a))</m>.</p>
+
+    <p>In situations where we know the linear approximation <m>y = L(x)</m>, we therefore know the original function's value and slope at the point of tangency. What remains unknown, however, is the shape of the function <m>f</m> at the point of tangency. There are essentially four possibilities, as enumerated in <xref ref="F_1.8.Options">Figure</xref>.</p>
+
+    <figure xml:id="F_1.8.Options" >
+      <caption>Four possible graphs for a nonlinear differentiable function and how it can be situated relative to its tangent line at a point.</caption>
+      <image width="73%" source="images/1_8_Options" />
+    </figure>
+
+    <p>These stem from the fact that there are three options for the value of the second derivative: either <m>f''(a) \lt 0</m>, <m>f''(a) = 0</m>, or <m>f''(a) > 0</m>. If <m>f''(a) > 0</m>, then we know the graph of <m>f</m> is concave up, and we see the first possibility on the left, where the tangent line lies entirely below the curve. If <m>f''(a) \lt  0</m>, then we find ourselves in the second situation (from left) where <m>f</m> is concave down and the tangent line lies above the curve. In the situation where <m>f''(a) = 0</m> and <m>f''</m> changes sign at <m>x = a</m>, the concavity of the graph will change, and we will see either the third or fourth option<fn>It is possible to have <m>f''(a) = 0</m> and have <m>f''</m> not change sign at <m>x = a</m>, in which case the graph will look like one of the first two options.</fn>. A fifth option (that is not very interesting) can occur, which is where the function <m>f</m> is linear, and so <m>f(x) = L(x)</m> for all values of <m>x</m>.</p>
+
+    <p>The plots in <xref ref="F_1.8.Options">Figure</xref> highlight yet another important thing that we can learn from the concavity of the graph near the point of tangency: whether the tangent line lies above or below the curve itself. This is key because it tells us whether or not the tangent line approximation's values will be too large or too small in comparison to the true value of <m>f</m>. For instance, in the first situation in the leftmost plot in <xref ref="F_1.8.Options">Figure</xref> where <m>f''(a) > 0</m>, since the tangent line falls below the curve, we know that <m>L(x) \le f(x)</m> for all values of <m>x</m> near <m>a</m>.</p>
+
+    <p>We explore these ideas further in the following activity.</p>
+
+    <activity xml:id="A_1.8.2">
+      <p>This activity concerns a function <m>f(x)</m> about which the following information is known:
+
+      <ul>
+        <li><p><m>f</m> is a differentiable function defined at every real number <m>x</m></p></li>
+
+        <li><p><m>f(2) = -1</m></p></li>
+
+        <li><p><m>y = f'(x)</m> has its graph given in <xref ref="F_1.8.Act2">Figure</xref></p></li>
+      </ul>
+      </p>
+
+      <figure xml:id="F_1.8.Act2" >
+        <caption>At center, a graph of <m>y = f'(x)</m>; at left, axes for plotting <m>y = f(x)</m>; at right, axes for plotting <m>y = f''(x)</m>.</caption>
+        <image width="73%" source="images/1_8_Act2" />
+      </figure>
+
+      <p>Your task is to determine as much information as possible about <m>f</m> (especially near the value <m>a = 2</m>) by responding to the questions below.
+
+      <ol>
+        <li><p>Find a formula for the tangent line approximation, <m>L(x)</m>, to <m>f</m> at the point <m>(2,-1)</m>.</p></li>
+
+        <li><p>Use the tangent line approximation to estimate the value of <m>f(2.07)</m>.  Show your work carefully and clearly.</p></li>
+
+        <li><p>Sketch a graph of <m>y = f''(x)</m> on the righthand grid in <xref ref="F_1.8.Act2">Figure</xref>; label it appropriately.</p></li>
+
+        <li><p>Is the slope of the tangent line to <m>y = f(x)</m> increasing, decreasing, or neither when <m>x = 2</m>?  Explain.</p></li>
+
+        <li><p>Sketch a possible graph of <m>y = f(x)</m> near <m>x = 2</m> on the lefthand grid in <xref ref="F_1.8.Act2">Figure</xref>.  Include a sketch of <m>y=L(x)</m> (found in part (a)).  Explain how you know the graph of <m>y = f(x)</m> looks like you have drawn it.</p></li>
+
+        <li><p>Does your estimate in (b) over- or under-estimate the true value of <m>f(2.07)</m>?  Why?</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Find the value of <m>f'(2)</m> from the given graph of <m>f</m>.</p></li>
+
+          <li><p>Remember that <m>f(2.07) \approx L(2.07)</m>.</p></li>
+
+          <li><p>The graph of <m>y = f''(x)</m> is the derivative of the graph of <m>y = f'(x)</m>.</p></li>
+
+          <li><p>Is <m>f'</m> increasing, decreasing, or neither when <m>x = 2</m>?</p></li>
+
+          <li><p>Draw <m>y = L(x)</m> first.  Then think about options for <m>f</m> relative to the graph of <m>L</m>.</p></li>
+
+          <li><p>Does the tangent line lie above or below the graph of <m>y = f(x)</m> at <m>(2,3)</m>?</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <ol>
+          <li><p>Since <m>f(2) = -1</m> and <m>f'(2) = 2</m>, we have <m>L(x) = -1 + 2(x-2)</m>.</p></li>
+
+          <li><p>Using our work in (a), <m>f(2.07) \approx L(2.07) = -1 + 2(2.07-2) = -1 + 2\cdot 0.07 = -0.86</m>.</p></li>
+
+          <li><p>See the plot below.</p></li>
+
+          <li><p>Is the slope of the tangent line to <m>y = f(x)</m> is increasing for <m>x \lt  2</m> because <m>y = f'(x)</m> is an increasing function on this interval.  Similarly, for <m>x > 2</m>, the slope of the tangent line to <m>y = f(x)</m> is decreasing.  Right at <m>x = 2</m>, the slope of the tangent line to <m>y = f(x)</m> is neither increasing nor decreasing.</p></li>
+
+          <li><p>See the plot below.  Note that <m>y = f(x)</m> is concave up for <m>x \lt  2</m> since <m>f'</m> is increasing on that interval, and <m>y = f(x)</m> is concave down for <m>x > 2</m> since <m>f'</m> is decreasing there.  Hence <m>y = f(x)</m> changes from concave up to concave down right at <m>x = 2</m>, which is also the point near 2 where the graph of <m>y = f(x)</m> is steepest.</p></li>
+
+          <li><p>Because the tangent line to <m>y = f(x)</m> lies above the graph  of <m>f</m> to the right of <m>x = 2</m>, our estimate of <m>f(2.07)</m> is too large <mdash /> the local linearization overshoots the true value of <m>f</m> at this point.</p></li>
+        </ol>
+        <image width="73%" source="images/1_8_Act2" />
+      </solution>
+    </activity>
+
+    <p>The idea that a differentiable function looks linear and can be well-approximated by a linear function is an important one that finds wide application in calculus. For example, by approximating a function with its local linearization, it is possible to develop an effective algorithm to estimate the zeroes of a function. Local linearity also helps us to make further sense of certain challenging limits. For instance, we have seen that a limit such as
+      <me>
+        \lim_{x \to 0} \frac{\sin(x)}{x}
+      </me>
+      is indeterminate because both its numerator and denominator tend to 0. While there is no algebra that we can do to simplify <m>\frac{\sin(x)}{x}</m>, it is straightforward to show that the linearization of <m>f(x) = \sin(x)</m> at the point <m>(0,0)</m> is given by <m>L(x) = x</m>. Hence, for values of <m>x</m> near 0, <m>\sin(x) \approx x</m>. As such, for values of <m>x</m> near 0,
+      <me>
+        \frac{\sin(x)}{x} \approx \frac{x}{x} = 1,
+      </me>
+      which makes plausible the fact that
+      <me>
+        \lim_{x \to 0} \frac{\sin(x)}{x} = 1.
+      </me>
+    </p>
+
+    <p>These ideas and other applications of local linearity will be explored later on in our work.</p>
+
+    <p>\begin{authornote}
+      This is an author note.
+      \end{authornote}</p>
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+    <ul>
+      <li><p>The tangent line to a differentiable function <m>y = f(x)</m> at the point <m>(a,f(a))</m> is given in point-slope form by the equation
+          <me>
+            y - f(a) = f'(a)(x-a).
+          </me>
+        </p></li>
+
+      <li><p>The principle of local linearity tells us that if we zoom in on a point where a function <m>y = f(x)</m> is differentiable, the function should become indistinguishable from its tangent line.  That is, a differentiable function looks linear when viewed up close.  We rename the tangent line to be the function <m>y = L(x)</m> where <m>L(x) = f(a) + f'(a)(x-a)</m> and note that <m>f(x) \approx L(x)</m> for all <m>x</m> near <m>x = a</m>.</p></li>
+
+      <li><p>If we know the tangent line approximation <m>L(x) = f(a) + f'(a)(x-a)</m>, then because <m>L(a) = f(a)</m> and <m>L'(a) = f'(a)</m>, we also know both the value and the derivative of the function <m>y = f(x)</m> at the point where <m>x = a</m>.  In other words, the linear approximation tells us the height and slope of the original function.  If, in addition, we know the value of <m>f''(a)</m>, we then know whether the tangent line lies above or below the graph of <m>y = f(x)</m> depending on the concavity of <m>f</m>.</p></li>
+    </ul>
+    <exercises>
+      <exercise>
+        <statement>
+          <p>A certain function <m>y=p(x)</m> has its local linearization at <m>a = 3</m> given by <m>L(x) = -2x + 5</m>.
+
+          <ol>
+            <li><p>What are the values of <m>p(3)</m> and <m>p'(3)</m>?  Why?</p></li>
+
+            <li><p>Estimate the value of <m>p(2.79)</m>.</p></li>
+
+            <li><p>Suppose that <m>p''(3) = 0</m> and you know that <m>p''(x) \lt  0</m> for <m>x \lt  3</m>.  Is your estimate in (b) too large or too small?</p></li>
+
+            <li><p>Suppose that <m>p''(x) > 0</m> for <m>x > 3</m>.  Use this fact and the additional information above to sketch an accurate graph of <m>y = p(x)</m> near <m>x = 3</m>.  Include a sketch of <m>y = L(x)</m> in your work.</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>A potato is placed in an oven, and the potato's temperature <m>F</m> (in degrees Fahrenheit) at various points in time is taken and recorded in the following table. Time <m>t</m> is measured in minutes.</p>
+          <tabular>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell><m>t</m></cell>
+              <cell><m>F(t)</m></cell>
+            </row>
+            <row bottom="medium">
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell  >0</cell>
+              <cell>70</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>15</cell>
+              <cell>180.5</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>30</cell>
+              <cell>251</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>45</cell>
+              <cell>296</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>60</cell>
+              <cell>324.5</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>75</cell>
+              <cell>342.8</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>90</cell>
+              <cell>354.5</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+            </row>
+          </tabular>
+
+          <ol>
+            <li><p>Use a central difference to estimate <m>F'(60)</m>.  Use this estimate as needed in subsequent questions.</p></li>
+
+            <li><p>Find the local linearization <m>y = L(t)</m> to the function <m>y = F(t)</m> at the point where <m>a = 60</m>.</p></li>
+
+            <li><p>Determine an estimate for <m>F(63)</m> by employing the local linearization.</p></li>
+
+            <li><p>Do you think your estimate in (c) is too large or too small?  Why?</p></li>
+          </ol>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>An object moving along a straight line path has a differentiable position function <m>y = s(t)</m>; <m>s(t)</m> measures the object's position relative to the origin at time <m>t</m>. It is known that at time <m>t = 9</m> seconds, the object's position is <m>s(9) = 4</m> feet (i.e., 4 feet to the right of the origin). Furthermore, the object's instantaneous velocity at <m>t = 9</m> is <m>-1.2</m> feet per second, and its acceleration at the same instant is <m>0.08</m> feet per second per second.
+
+          <ol>
+            <li><p>Use local linearity to estimate the position of the object at <m>t = 9.34</m>.</p></li>
+
+            <li><p>Is your estimate likely too large or too small?  Why?</p></li>
+
+            <li><p>In everyday language, describe the behavior of the moving object at <m>t = 9</m>.  Is it moving toward the origin or away from it? Is its velocity increasing or decreasing?</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>For a certain function <m>f</m>, its derivative is known to be <m>f'(x) = (x-1)e^{-x^2}</m>. Note that you do not know a formula for <m>y = f(x)</m>.
+
+          <ol>
+            <li><p>At what <m>x</m>-value(s) is <m>f'(x) = 0</m>?  Justify your answer algebraically, but include a graph of <m>f'</m> to support your conclusion.</p></li>
+
+            <li><p>Reasoning graphically, for what intervals of <m>x</m>-values is <m>f''(x) > 0</m>?  What does this tell you about the  behavior of the original function <m>f</m>?  Explain.</p></li>
+
+            <li><p>Assuming that <m>f(2) = -3</m>, estimate the value of <m>f(1.88)</m> by finding and using the tangent line approximation to <m>f</m> at <m>x=2</m>.  Is your estimate larger or smaller than the true value of <m>f(1.88)</m>?  Justify your answer.</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+    </exercises>
+  </subsection>
+</section>

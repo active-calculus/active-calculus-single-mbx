@@ -1,0 +1,944 @@
+
+<section xml:id="S_7.3.Euler">
+  <title>Euler's method</title>
+  <introduction>
+    <objectives>
+      <ul>
+        <li><p>What is Euler's method and how can we use it to approximate the
+              solution to an initial value problem?</p></li>
+
+        <li><p>How accurate is Euler's method?</p></li>
+      </ul>
+    </objectives>
+    <p>In <xref ref="S_7.2.Qualitative">Section</xref>, we saw how a slope field can be used to sketch
+      solutions to a differential equation. In particular, the slope field
+      is a plot of a large collection of tangent lines to a large number of solutions of the
+      differential equation, and we sketch a single solution by simply following
+      these tangent lines. With a little more thought, we may use this same
+      idea to numerically approximate the solutions of a differential equation.</p>
+
+    <exploration xml:id="PA_7.3">
+      <p>Consider the initial value problem
+      <me>
+        \frac{dy}{dt} = \frac12 (y + 1), \ y(0) = 0.
+      </me>
+
+      <ol>
+        <li><p>Use the differential equation to find the slope of the tangent
+              line to the solution <m>y(t)</m> at <m>t=0</m>.  Then use the given initial value to
+              find the equation of the tangent line at <m>t=0</m>.</p></li>
+
+        <li><p>Sketch the tangent line on the axes below on the interval <m>0\leq
+              t\leq 2</m> and use it to approximate <m>y(2)</m>,
+              the value of the solution at <m>t=2</m>.
+            <image width="73%" source="images/7_3_PA" />
+          </p></li>
+
+        <li><p>Assuming that your approximation for <m>y(2)</m> is the actual value
+              of <m>y(2)</m>, use the differential equation to find the slope of the
+              tangent line to <m>y(t)</m> at <m>t=2</m>.  Then, write the equation of the
+              tangent line at <m>t=2</m>.</p></li>
+
+        <li><p>Add a sketch of this tangent line to your plot on the axes above on the interval <m>2\leq
+              t\leq 4</m>; use this new tangent line to approximate <m>y(4)</m>,
+              the value of the solution at <m>t=4</m>.</p></li>
+
+        <li><p>Repeat the same step to find an approximation for <m>y(6)</m>.</p></li>
+      </ol>
+      </p>
+    </exploration>
+  </introduction>
+
+  <subsection>
+    <title>Euler's Method</title>
+    <p><index><main>Euler's Method</main></index></p>
+
+    <p><xref ref="PA_7.3">Preview Activity</xref> demonstrates the essence of an algorithm, which is known as
+      Euler's Method, that generates a numerical approximation to the solution
+      of an initial value problem.<fn><q>Euler</q> is pronounced
+        <q>Oy-ler.</q>  Among other things, Euler is the mathematician credited with the famous number <m>e</m>; if you incorrectly pronounce his name <q>You-ler,</q> you fail to appreciate his genius and legacy.</fn> In this algorithm, we
+      will approximate the solution by taking horizontal steps of a fixed
+      size that we denote by <m>\Delta t</m>.</p>
+
+    <p>Before explaining the algorithm in detail, let's remember how we
+      compute the slope of a line: the slope is the ratio of the vertical
+      change to the horizontal change, as shown in the following figure.</p>
+    <image width="73%" source="images/7_3_slope" />
+    <p>In other words, <m>m = \frac{\Delta y}{\Delta t}</m>. Said differently, the
+      vertical change is the product of the slope and the horizontal change:
+      <me>
+        \Delta y = m\Delta t.
+      </me>
+    </p>
+
+    <p>Suppose that we would like to solve the initial value problem
+      <me>
+        \frac{dy}{dt} = t - y, \ y(0) = 1.
+      </me>
+    </p>
+
+    <p>While there is an algorithm by which we can find an algebraic formula for the solution to this initial value problem, and we can check that this solution is <m>y(t) = t -1 + 2e^{-t}</m>, we are instead interested in generating an approximate solution by creating a sequence
+      of points <m>(t_i, y_i)</m>, where <m>y_i\approx y(t_i)</m>. For this first example, we choose <m>\Delta t = 0.2</m>.</p>
+
+    <sidebyside>
+      {3.6in}
+      Since we know that <m>y(0) = 1</m>, we will take the initial point to be
+      <m>(t_0,y_0) = (0,1)</m> and move horizontally by <m>\Delta t = 0.2</m> to the
+      point <m>(t_1,y_1)</m>.  Therefore, <m>t_1=t_0+\Delta t = 0.2</m>. 
+      The differential equation tells us that the slope of the 
+      tangent line at this point is
+      <me>
+        m=\frac{dy}{dt}\bigg\vert_{(0,1)} = 0-1 = -1.
+      </me>
+      Therefore, if we move along the tangent line by taking a horizontal
+      step of size <m>\Delta t=0.2</m>, we must also move vertically by
+      <me>
+        \Delta y = m\Delta t = -1\cdot 0.2 = -0.2.
+      </me>
+      We then have the
+      approximation <m>y(0.2) \approx y_1= y_0 + \Delta y = 1 - 0.2 = 0.8.</m>  At this point, we have executed one step of Euler's method.
+      {2in}
+      <image width="73%" source="images/7_3_euler_points_1" />
+      {3.6in}
+      Now we repeat this process:  at <m>(t_1,y_1) = (0.2,0.8)</m>, the
+      differential equation tells us that the slope is
+      <me>
+        m=\frac{dy}{dt}\bigg\vert_{(0.2,0.8)} = 0.2-0.8 = -0.6.
+      </me>
+      If we move horizontally by <m>\Delta t</m> to <m>t_2=t_1+\Delta = 0.4</m>, we must move
+      vertically by
+      <me>
+        \Delta y = -0.6\cdot0.2 = -0.12.
+      </me>
+      We consequently arrive at <m>y_2=y_1+\Delta y = 0.8-0.12 = 0.68</m>, which
+      gives <m>y(0.2)\approx 0.68</m>.  Now we have completed the second step of Euler's method.
+      {2in}
+      <image width="73%" source="images/7_3_euler_points_2" />
+    </sidebyside>
+    <p>If we continue in this way, we may generate the points <m>(t_i, y_i)</m>
+      shown at left in <xref ref="F_7.3.EulerPts">Figure</xref>. In situations where we are able to find a formula for the actual solution <m>y(t)</m>, we can graph <m>y(t)</m> to compare it to the points generated by Euler's method, as shown at right in <xref ref="F_7.3.EulerPts">Figure</xref>.</p>
+
+    <figure xml:id="F_7.3.EulerPts" >
+      <caption>At left, the points and piecewise linear approximate solution generated by Euler's method; at right, the approximate solution compared to the exact solution (shown in blue).</caption>
+      <image width="73%" source="images/7_3_euler_points_6" />
+      <image width="73%" source="images/7_3_euler" />
+    </figure>
+
+    <p>Because we need to generate a large number of points <m>(t_i,y_i)</m>, it is convenient to organize the implementation of Euler's method in a
+      table as shown. We begin with the given initial data.</p>
+    <tabular>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell><m>t_i</m></cell>
+        <cell><m>y_i</m></cell>
+        <cell><m>dy/dt</m></cell>
+        <cell><m>\Delta y</m></cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>0.0000</cell>
+        <cell>1.0000</cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+    </tabular>
+    <p>From here, we compute the slope of the tangent line <m>m=dy/dt</m> using
+      the formula for <m>dy/dt</m> from the differential
+      equation, and then we find <m>\Delta y</m>, the change in <m>y</m>, using the rule <m>\Delta y = m\Delta t</m>.</p>
+    <tabular>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell><m>t_i</m></cell>
+        <cell><m>y_i</m></cell>
+        <cell><m>dy/dt</m></cell>
+        <cell><m>\Delta y</m></cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>0.0000</cell>
+        <cell>1.0000</cell>
+        <cell>-1.0000</cell>
+        <cell>-0.2000</cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+    </tabular>
+    <p>Next, we increase <m>t_i</m> by <m>\Delta t</m> and <m>y_i</m> by <m>\Delta y</m> to get</p>
+    <tabular>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell><m>t_i</m></cell>
+        <cell><m>y_i</m></cell>
+        <cell><m>dy/dt</m></cell>
+        <cell><m>\Delta y</m></cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>0.0000</cell>
+        <cell>1.0000</cell>
+        <cell>-1.0000</cell>
+        <cell>-0.2000</cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>0.2000</cell>
+        <cell>0.8000</cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+    </tabular>
+    <p>and then we simply continue the process for however many steps we decide, eventually generating a table like the one that follows.</p>
+    <tabular>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell><m>t_i</m></cell>
+        <cell><m>y_i</m></cell>
+        <cell><m>dy/dt</m></cell>
+        <cell><m>\Delta y</m></cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>0.0000</cell>
+        <cell>1.0000</cell>
+        <cell>-1.0000</cell>
+        <cell>-0.2000</cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>0.2000</cell>
+        <cell>0.8000</cell>
+        <cell>-0.6000</cell>
+        <cell>-0.1200</cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>0.4000</cell>
+        <cell>0.6800</cell>
+        <cell>-0.2800</cell>
+        <cell>-0.0560</cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>0.6000</cell>
+        <cell>0.6240</cell>
+        <cell>-0.0240</cell>
+        <cell>-0.0048</cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>0.8000</cell>
+        <cell>0.6192</cell>
+        <cell>0.1808</cell>
+        <cell>0.0362</cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>1.0000</cell>
+        <cell>0.6554</cell>
+        <cell>0.3446</cell>
+        <cell>0.0689</cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>1.2000</cell>
+        <cell>0.7243</cell>
+        <cell>0.4757</cell>
+        <cell>0.0951</cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+    </tabular>
+
+    <activity xml:id="A_7.3.1">
+      <p>Consider the initial value problem
+      <me>
+        \frac{dy}{dt} = 2t-1, \ y(0) = 0
+      </me>
+
+      <ol>
+        <li><p>Use Euler's method with <m>\Delta t = 0.2</m> to approximate the solution
+            at <m>t_i = 0.2, 0.4, 0.6, 0.8</m>, and <m>1.0</m>.   Record your work in the following table, and sketch the points <m>(t_i,
+            y_i)</m> on the following axes provided.
+            <tabular>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>\vphantom{{M}}<m>t_i</m></cell>
+                <cell><m>y_i</m></cell>
+                <cell><m>dy/dt</m></cell>
+                <cell><m>\Delta y</m></cell>
+              </row>
+              <row bottom="medium">
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell  >\vphantom{{M}}0.0000</cell>
+                <cell>0.0000</cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>\vphantom{{M}}0.2000</cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>\vphantom{{M}}0.4000</cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>\vphantom{{M}}0.6000</cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>\vphantom{{M}}0.8000</cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>\vphantom{{M}}1.0000</cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+            </tabular>
+            <image width="73%" source="images/7_3_euler_empty" />
+          </p></li>
+
+        <li><p>Find the exact solution to the original initial value problem
+              and use this function to find the error in your approximation at each one of the points
+              <m>t_i</m>.</p></li>
+
+        <li><p>Explain why the value <m>y_5</m> generated by Euler's method for this initial value problem
+              produces the same value as a left Riemann sum for the definite integral <m>\int_0^1
+              (2t-1)~dt</m>.</p></li>
+
+        <li><p>How would your computations differ if the initial value was <m>y(0) =
+              1</m>?  What does this mean about different solutions to this
+              differential equation?</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Small hints for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Solutions for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <activity xml:id="A_7.3.2">
+      <p>Consider the differential equation
+      <m>\frac{dy}{dt} = 6y-y^2</m>.
+
+      <ol>
+        <li><p>Sketch the slope field for this differential equation on the axes provided at left below.
+            <image width="73%" source="images/7_3_slopefield" />
+            <image width="73%" source="images/7_3_euler_empty_2" />
+          </p></li>
+
+        <li><p>Identify any equilibrium solutions and determine whether they
+              are stable or unstable.</p></li>
+
+        <li><p>What is the long-term behavior of the solution that satisfies the initial
+              value <m>y(0) = 1</m>?</p></li>
+
+        <li><p>Using the initial value <m>y(0) = 1</m>, use Euler's method with
+              <m>\Delta t = 0.2</m> to approximate the solution at <m>t_i = 0.2, 0.4,
+              0.6, 0.8</m>, and <m>1.0</m>.  Sketch the points <m>(t_i, y_i)</m> on the axes provided at right in (a).  (Note the different horizontal scale on the two sets of axes.)
+            <tabular>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell><m>t_i</m></cell>
+                <cell><m>y_i</m></cell>
+                <cell><m>dy/dt</m></cell>
+                <cell><m>\Delta y</m></cell>
+              </row>
+              <row bottom="medium">
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell  >\vphantom{{M}}0.0</cell>
+                <cell>1.0000</cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>\vphantom{{M}}0.2</cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>\vphantom{{M}}0.4</cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>\vphantom{{M}}0.6</cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>\vphantom{{M}}0.8</cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>\vphantom{{M}}1.0</cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+                <cell></cell>
+              </row>
+            </tabular>
+          </p></li>
+
+        <li><p>What happens if we apply Euler's method to approximate the
+              solution with <m>y(0) = 6</m>?</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Small hints for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Solutions for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>The error in Euler's method</title>
+    <p><index><main>Euler's Method</main><sub>error</sub></index></p>
+
+    <p>Since we are approximating the solutions to an initial value problem
+      using tangent lines, we should expect that the error in the
+      approximation will be less when the step size is smaller.
+      To explore this observation quantitatively, let's consider the initial value problem
+      <me>
+        \frac{dy}{dt} = y, \ y(0) = 1
+      </me>
+      whose solution we can easily find.</p>
+
+    <p>Consider the question posed by this initial value problem: <q>what function do we know that is the same as its own
+      derivative and has value 1 when <m>t=0</m>?</q> It is not hard to see that the
+      solution is <m>y(t) = e^t</m>. We now apply Euler's method
+      to approximate <m>y(1) = e</m> using several values of <m>\Delta t</m>. These
+      approximations will be denoted by <m>E_{\Delta t}</m>, and these estimates provide us a way to see how accurate Euler's Method is.</p>
+
+    <p>To begin, we apply Euler's method with a step size of <m>\Delta t =
+      0.2</m>. In that case, we find that <m>y(1) \approx E_{0.2} = 2.4883</m>. The
+      error is therefore <m>y(1) - E_{0.2} = e - 2.4883 \approx 0.2300</m>.</p>
+
+    <p>Repeatedly halving <m>\Delta t</m> gives the following
+      results, expressed in both tabular and graphical form.</p>
+
+    <sidebyside>
+      {2.0in}
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><m>\Delta t</m></cell>
+          <cell><m>E_{\Delta t}</m></cell>
+          <cell>Error</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>0.200</cell>
+          <cell>2.4883</cell>
+          <cell>0.2300</cell>
+        </row>
+        <row>
+          <cell>0.100</cell>
+          <cell>2.5937</cell>
+          <cell>0.1245</cell>
+        </row>
+        <row>
+          <cell>0.050</cell>
+          <cell>2.6533</cell>
+          <cell>0.0650</cell>
+        </row>
+        <row>
+          <cell>0.025</cell>
+          <cell>2.6851</cell>
+          <cell>0.0332</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+      {2.0in}
+      <image width="73%" source="images/7_3_error" />
+    </sidebyside>
+    <p>Notice, both numerically and graphically, that the error is roughly halved when <m>\Delta t</m> is halved.
+      This example illustrates the following general principle.</p>
+
+    <p>If Euler's method is to approximate the solution to an initial
+      value problem at a point <m>\overline{t}</m>, then the error is
+      proportional to <m>\Delta t</m>. That is,
+      <me>
+        y(\overline{t}) - E_{\Delta t} \approx K\Delta t
+      </me>
+      for some constant of proportionality <m>K</m>.</p>
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+    <ul>
+      <li><p>Euler's method is an algorithm for approximating the solution to
+            an initial value problem by following the tangent lines while we
+            take horizontal steps across the <m>t</m>-axis.</p></li>
+
+      <li><p>If we wish to approximate <m>y(\overline{t})</m> for some fixed
+            <m>\overline{t}</m> by taking horizontal steps of size <m>\Delta t</m>, then the
+            error in our approximation is proportional to <m>\Delta t</m>.</p></li>
+    </ul>
+    <exercises>
+      <exercise>
+        <statement>
+          <p>Newton's Law of Cooling says that the rate at which an
+          object, such as a cup of coffee, cools is proportional to the
+          difference in the object's temperature and room temperature. If
+          <m>T(t)</m> is the object's temperature and <m>T_r</m> is room temperature,
+          this law is expressed at
+          <me>
+            \frac{dT}{dt} = -k(T-T_r),
+          </me>
+          where <m>k</m> is a constant of proportionality. In this problem,
+          temperature is
+          measured in degrees Fahrenheit and time in minutes.
+
+          <ol>
+            <li><p>Two calculus students, Alice and Bob, enter a 70<m>^\circ</m>
+                    classroom at the same time.  Each has a cup of coffee that is
+                    100<m>^\circ</m>.  The differential equation for Alice has a constant
+                    of proportionality <m>k=0.5</m>, while the constant of proportionality
+                    for Bob is <m>k=0.1</m>.
+
+                    What is the initial rate of change for Alice's coffee? 
+                    What is the initial rate of change for Bob's coffee?</p></li>
+
+            <li><p>What feature of Alice's and Bob's cups of coffee could explain
+                    this difference?</p></li>
+
+            <li><p>As the heating unit turns on and off in the room, the
+                    temperature in the room is
+                <me>
+                  T_r=70+10\sin t.
+                </me>
+                Implement Euler's
+                    method with a step size of <m>\Delta t = 0.1</m> to approximate the
+                    temperature of Alice's coffee over the time interval <m>0\leq t\leq
+                    50</m>.  This will most easily be performed using a spreadsheet such
+                    as <em>Excel</em>.  Graph the temperature of her coffee and room
+                    temperature over this interval.</p></li>
+
+            <li><p>In the same way, implement Euler's method to approximate the
+                    temperature of Bob's
+                    coffee over the same time interval.  Graph the temperature of his
+                    coffee and room temperature over the interval.</p></li>
+
+            <li><p>Explain the similarities and differences that you see in the
+                    behavior of Alice's and Bob's cups of coffee.</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>We have seen that the error in approximating the solution to
+            an initial value problem is proportional to <m>\Delta t</m>. That is,
+            if <m>E_{\Delta t}</m> is the Euler's method approximation to the
+            solution to an initial value problem at <m>\overline{t}</m>, then
+            <me>
+              y(\overline{t})-E_{\Delta t} \approx K\Delta t
+            </me>
+            for some constant of proportionality <m>K</m>.</p>
+
+          <p>In this problem, we will see how to use this fact to improve our
+          estimates, using an idea called <em>accelerated convergence</em>.
+
+          <ol>
+            <li><p>We will create a new approximation by assuming the error is
+                    <em>exactly</em> proportional to <m>\Delta t</m>, according to the formula
+                <me>
+                  y(\overline{t})-E_{\Delta t} =K\Delta t.
+                </me>
+                Using our earlier results from the initial value problem <m>dy/dt = y</m> and
+                    <m>y(0)=1</m> with <m>\Delta t = 0.2</m> and <m>\Delta t = 0.1</m>, we have
+                <md>
+                  <mrow>y(1) - 2.4883 =\mathstrut \amp  0.2K</mrow>
+                  <mrow>y(1) - 2.5937 =\mathstrut \amp  0.1K.</mrow>
+                </md>
+                This is a system of two linear equations in the unknowns <m>y(1)</m>
+                    and <m>K</m>.  Solve this system to find a new approximation for
+                    <m>y(1)</m>.  (You may remember that the exact value is <m>y(1) = e =
+                    2.71828\ldots.</m>)</p></li>
+
+            <li><p>Use the other data, <m>E_{0.05} = 2.6533</m> and <m>E_{0.025} = 2.6851</m>
+                    to do similar work as in (a) to obtain another approximation.  Which gives the better
+                    approximation?  Why do you think this is?</p></li>
+
+            <li><p>Let's now study the initial value problem
+                <me>
+                  \frac{dy}{dt} = t-y, \ y(0) = 0.
+                </me>
+                Approximate <m>y(0.3)</m> by applying Euler's method to find
+                    approximations <m>E_{0.1}</m> and <m>E_{0.05}</m>.  Now use the idea of
+                    accelerated convergence to obtain a better approximation.  (For the sake of comparison, you want to  note that the actual value is <m>y(0.3) =
+                    0.0408</m>.)</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>In this problem, we'll modify Euler's method to obtain better
+            approximations to solutions of initial value problems. This
+            method is called the <em>Improved Euler's method.</em></p>
+
+          <p>In Euler's method, we walk across an interval of width <m>\Delta t</m>
+            using the slope obtained from the differential equation at the
+            left endpoint of the interval. Of course, the slope of the
+            solution will most likely change over this interval. We can
+            improve our approximation by trying to incorporate the change in
+            the slope over the interval.</p>
+
+          <p>Let's again consider the initial value problem <m>dy/dt = y</m> and
+            <m>y(0) = 1</m>, which we will approximate using steps of width <m>\Delta
+                t = 0.2</m>. Our first interval is therefore <m>0\leq t \leq 0.2</m>. At
+            <m>t=0</m>, the differential equation tells us that the slope is 1, and
+            the approximation we obtain from Euler's method is that
+            <m>y(0.2)\approx y_1= 1+ 1(0.2)= 1.2</m>.</p>
+
+          <p>This gives us some idea for how the slope has changed over the
+            interval <m>0\leq t\leq 0.2</m>. We know the slope at <m>t=0</m> is 1,
+            while the slope at <m>t=0.2</m> is 1.2, trusting in the Euler's method
+            approximation. We will therefore refine our estimate of the
+            initial slope to be the average of these two slopes; that is, we
+            will estimate the slope to be <m>(1+1.2)/2 = 1.1</m>. This gives the
+            new approximation <m>y(1) = y_1 = 1 + 1.1(0.2) = 1.22</m>.</p>
+
+          <p>The first few steps look like this:</p>
+          <tabular>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell><m>t_i</m></cell>
+              <cell><m>y_i</m></cell>
+              <cell>Slope at <m>(t_{i+1},y_{i+1})</m></cell>
+              <cell>Average slope</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>0.0</cell>
+              <cell>1.0000</cell>
+              <cell>1.2000</cell>
+              <cell>1.1000</cell>
+            </row>
+            <row>
+              <cell>0.2</cell>
+              <cell>1.2200</cell>
+              <cell>1.4640</cell>
+              <cell>1.3420</cell>
+            </row>
+            <row>
+              <cell>0.4</cell>
+              <cell>1.4884</cell>
+              <cell>1.7861</cell>
+              <cell>1.6372</cell>
+            </row>
+            <row>
+              <cell>\vdots</cell>
+              <cell>\vdots</cell>
+              <cell>\vdots</cell>
+              <cell>\vdots</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+          </tabular>
+
+          <ol>
+            <li><p>Continue with this method to obtain an approximation for <m>y(1) =
+                    e</m>.</p></li>
+
+            <li><p>Repeat this method with <m>\Delta t = 0.1</m> to obtain a better
+                    approximation for <m>y(1)</m>.</p></li>
+
+            <li><p>We saw that the error in Euler's method is proportional to
+                    <m>\Delta t</m>.  Using your results from parts (a) and (b), what power
+                    of <m>\Delta t</m> appears to be proportional to the error in the
+                    Improved Euler's Method?</p></li>
+          </ol>
+        </statement>
+      </exercise>
+    </exercises>
+  </subsection>
+</section>

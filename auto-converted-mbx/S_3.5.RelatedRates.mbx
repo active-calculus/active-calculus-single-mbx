@@ -1,0 +1,486 @@
+
+<section xml:id="S_3.5.RelatedRates">
+  <title>Related Rates</title>
+  <introduction>
+    <objectives>
+      <ul>
+        <li><p>If two quantities that are related, such as the radius and volume of a spherical balloon, are both changing as implicit functions of time, how are their rates of change related?  That is, how does the relationship between the values of the quantities affect the relationship between their respective derivatives with respect to time?</p></li>
+      </ul>
+    </objectives>
+    <p>In most of our applications of the derivative so far, we have worked in settings where one quantity (often called <m>y</m>) depends explicitly on another (say <m>x</m>), and in some way we have been interested in the instantaneous rate at which <m>y</m> changes with respect to <m>x</m>, leading us to compute <m>\frac{dy}{dx}</m>. These settings emphasize how the derivative enables us to quantify how the quantity <m>y</m> is changing as <m>x</m> changes at a given <m>x</m>-value.</p>
+
+    <p>We are next going to consider situations where multiple quantities are related to one another and changing, but where each quantity can be considered an implicit function of the variable <m>t</m>, which represents time. Through knowing how the quantities are related, we will be interested in determining how their respective rates of change with respect to time are related. For example, suppose that air is being pumped into a spherical balloon in such a way that its volume increases at a constant rate of 20 cubic inches per second. It makes sense that since the balloon's volume and radius are related, by knowing how fast the volume is changing, we ought to be able to relate this rate to how fast the radius is changing. More specifically, can we find how fast the radius of the balloon is increasing at the moment the balloon's diameter is 12 inches?</p>
+
+    <p>The following preview activity leads you through the steps to answer this question.</p>
+
+    <exploration xml:id="PA_3.5">
+      <p>A spherical balloon is being inflated at a constant rate of 20 cubic inches per second. How fast is the radius of the balloon changing at the instant the balloon's diameter is 12 inches? Is the radius changing more rapidly when <m>d = 12</m> or when <m>d = 16</m>? Why?
+
+      <ol>
+        <li><p>Draw several spheres with different radii, and observe that as volume changes, the radius, diameter, and surface area of the balloon also change.</p></li>
+
+        <li><p>Recall that the volume of a sphere of radius <m>r</m> is <m>V = \frac{4}{3} \pi r^3</m>.  Note well that in the setting of this problem, <em>both</em> <m>V</m> and <m>r</m> are changing as time <m>t</m> changes, and thus both <m>V</m> and <m>r</m> may be viewed as implicit functions of <m>t</m>, with respective derivatives <m>\frac{dV}{dt}</m> and <m>\frac{dr}{dt}</m>.  
+	
+	Differentiate both sides of the equation <m>V = \frac{4}{3} \pi r^3</m> with respect to <m>t</m> (using the chain rule on the right) to find a formula for <m>\frac{dV}{dt}</m> that depends on both <m>r</m> and <m>\frac{dr}{dt}</m>.</p></li>
+
+        <li><p>At this point in the problem, by differentiating we have <q>related the rates</q> of change of <m>V</m> and <m>r</m>.  Recall that we are given in the problem that the balloon is being inflated at a constant <em>rate</em> of 20 cubic inches per second.  Is this rate the value of <m>\frac{dr}{dt}</m> or <m>\frac{dV}{dt}</m>?  Why?</p></li>
+
+        <li><p>From part (c), we know the value of <m>\frac{dV}{dt}</m> at every value of <m>t</m>.  Next, observe that when the diameter of the balloon is 12, we know the value of the radius.  In the equation <m>\frac{dV}{dt} = 4\pi r^2 \frac{dr}{dt}</m>, substitute these values for the relevant quantities and solve for the remaining unknown quantity, which is <m>\frac{dr}{dt}</m>.  How fast is the radius changing at the instant <m>d = 12</m>?</p></li>
+
+        <li><p>How is the situation different when <m>d = 16</m>?  When is the radius changing more rapidly, when <m>d = 12</m> or when <m>d = 16</m>?</p></li>
+      </ol>
+      </p>
+    </exploration>
+  </introduction>
+
+  <subsection>
+    <title>Related Rates Problems</title>
+    <p>In problems where two or more quantities can be related to one another, and all of the variables involved can be viewed as implicit functions of time, <m>t</m>, we are often interested in how the rates of change of the individual quantities with respect to time are themselves related; we call these <em>related rates</em> problems.<index><main>related rates</main></index> Often these problems involve identifying one or more key underlying geometric relationships to relate the variables involved. Once we have an equation establishing the fundamental relationship among variables, we differentiate implicitly with respect to time to find connections among the rates of change.</p>
+
+    <p>For example, consider the situation where sand is being dumped by a conveyor belt on a pile so that the sand forms a right circular cone, as pictured in <xref ref="F_3.5.ConeEx">Figure</xref>.</p>
+
+    <figure xml:id="F_3.5.ConeEx" >
+      <caption>A conical pile of sand.</caption>
+      <image width="73%" source="images/3_5_ConeEx" />
+    </figure>
+
+    <p>As sand falls from the conveyor belt onto the top of the pile, obviously several features of the sand pile will change: the volume of the pile will grow, the height will increase, and the radius will get bigger, too. All of these quantities are related to one another, and the rate at which each is changing is related to the rate at which sand falls from the conveyor.</p>
+
+    <p>The first key steps in any related rates problem involve identifying which variables are changing and how they are related. In the current problem involving a conical pile of sand, we observe that the radius and height of the pile are related to the volume of the pile by the standard equation for the volume of a cone,
+      <me>
+        V = \frac{1}{3} \pi r^2 h.
+      </me>
+    </p>
+
+    <p>Viewing each of <m>V</m>, <m>r</m>, and <m>h</m> as functions of <m>t</m>, we can differentiate implicitly to determine an equation that relates their respective rates of change. Taking the derivative of each side of the equation with respect to <m>t</m>,
+      <me>
+        \frac{d}{dt}[V] = \frac{d}{dt}\left[\frac{1}{3} \pi r^2 h\right].
+      </me>
+    </p>
+
+    <p>On the left, <m>\frac{d}{dt}[V]</m> is simply <m>\frac{dV}{dt}</m>. On the right, the situation is more complicated, as both <m>r</m> and <m>h</m> are implicit functions of <m>t</m>, hence we have to use the product and chain rules. Doing so, we find that
+      <md>
+        <mrow>\frac{dV}{dt} =\mathstrut \amp  \frac{d}{dt}\left[\frac{1}{3} \pi r^2 h\right]</mrow>
+        <mrow>=\mathstrut \amp  \frac{1}{3} \pi r^2 \frac{d}{dt}[h] + \frac{1}{3} \pi h \frac{d}{dt}[r^2]</mrow>
+        <mrow>=\mathstrut \amp  \frac{1}{3} \pi r^2 \frac{dh}{dt} + \frac{1}{3} \pi h 2r \frac{dr}{dt}</mrow>
+      </md>
+    </p>
+
+    <p>Note particularly how we are using ideas from <xref ref="S_2.7.Implicit">Section</xref> on implicit differentiation. There we found that when <m>y</m> is an implicit function of <m>x</m>, <m>\frac{d}{dx}[y^2] = 2y \frac{dy}{dx}</m>. The exact same thing is occurring here when we compute <m>\frac{d}{dt}[r^2] = 2r \frac{dr}{dt}</m>.</p>
+
+    <p>With our arrival at the equation
+      <me>
+        \frac{dV}{dt} = \frac{1}{3} \pi r^2 \frac{dh}{dt} + \frac{2}{3} \pi rh \frac{dr}{dt},
+      </me>
+      we have now related the rates of change of <m>V</m>, <m>h</m>, and <m>r</m>. If we are given sufficient information, we may then find the value of one or more of these rates of change at one or more points in time. Say, for instance, that we know the following: (a) sand falls from the conveyor in such a way that the height of the pile is always half the radius, and (b) sand falls from the conveyor belt at a constant rate of 10 cubic feet per minute. With this information given, we can answer questions such as: how fast is the height of the sandpile changing at the moment the radius is 4 feet?</p>
+
+    <p>The information that the height is always half the radius tells us that for all values of <m>t</m>, <m>h = \frac{1}{2}r</m>. Differentiating with respect to <m>t</m>, it follows that <m>\frac{dh}{dt} = \frac{1}{2} \frac{dr}{dt}</m>. These relationships enable us to relate <m>\frac{dV}{dt}</m> exclusively to just one of <m>r</m> or <m>h</m>. Substituting the expressions involving <m>r</m> and <m>\frac{dr}{dt}</m> for <m>h</m> and <m>\frac{dh}{dt}</m>, we now have that
+      <men xml:id="E_ConeRR" >
+        \frac{dV}{dt} = \frac{1}{3} \pi r^2 \cdot \frac{1}{2} \frac{dr}{dt} + \frac{2}{3} \pi r \cdot \frac{1}{2}r \cdot \frac{dr}{dt}.
+      </men>
+    </p>
+
+    <p>Since sand falls from the conveyor at the constant rate of 10 cubic feet per minute, this tells us the value of <m>\frac{dV}{dt}</m>, the rate at which the volume of the sand pile changes. In particular, <m>\frac{dV}{dt} = 10</m> ft<m>^3</m>/min. Furthermore, since we are interested in how fast the height of the pile is changing at the instant <m>r = 4</m>, we use the value <m>r = 4</m> along with <m>\frac{dV}{dt} = 10</m> in Equation<nbsp /><xref ref="E_ConeRR" />, and hence find that
+      <me>
+        10 = \frac{1}{3} \pi 4^2 \cdot \frac{1}{2}  \left. \frac{dr}{dt} \right|_{r=4} + \frac{2}{3} \pi 4 \cdot \frac{1}{2}4 \cdot \left. \frac{dr}{dt} \right|_{r=4} = \frac{8}{3}\pi \left. \frac{dr}{dt} \right|_{r=4} + \frac{16}{3} \pi \left. \frac{dr}{dt} \right|_{r=4}.
+      </me>
+    </p>
+
+    <p>With only the value of <m>\left. \frac{dr}{dt} \right|_{r=4}</m> remaining unknown, we solve for <m>\left. \frac{dr}{dt} \right|_{r=4}</m> and find that <m>10 = 8 \pi \left. \frac{dr}{dt} \right|_{r=4}</m>, so that
+      <me>
+        \left. \frac{dr}{dt} \right|_{r=4} = \frac{10}{8\pi} \approx 0.39789
+      </me>
+      feet per second. Because we were interested in how fast the height of the pile was changing at this instant, we want to know <m>\frac{dh}{dt}</m> when <m>r = 4</m>. Since <m>\frac{dh}{dt} = \frac{1}{2} \frac{dr}{dt}</m> for all values of <m>t</m>, it follows
+      <me>
+        \left. \frac{dh}{dt} \right|_{r=4} = \frac{5}{8\pi} \approx 0.19894 \ \mbox{ft/min} .
+      </me>
+    </p>
+
+    <p>Note particularly how we distinguish between the notations <m>\frac{dr}{dt}</m> and <m>\left. \frac{dr}{dt} \right|_{r=4}</m>. The former represents the rate of change of <m>r</m> with respect to <m>t</m> at an arbitrary value of <m>t</m>, while the latter is the rate of change of <m>r</m> with respect to <m>t</m> at a particular moment, in fact the moment <m>r = 4</m>. While we don't know the exact value of <m>t</m>, because information is provided about the value of <m>r</m>, it is important to distinguish that we are using this more specific data.</p>
+
+    <p>The relationship between <m>h</m> and <m>r</m>, with <m>h = \frac{1}{2}r</m> for all values of <m>t</m>, enables us to transition easily between questions involving <m>r</m> and <m>h</m>. Indeed, had we known this information at the problem's outset, we could have immediately simplified our work. Using <m>h = \frac{1}{2}r</m>, it follows that since <m>V = \frac{1}{3} \pi r^2 h</m>, we can write <m>V</m> solely in terms of <m>r</m> to have
+      <me>
+        V = \frac{1}{3} \pi r^2 \left(\frac{1}{2}h\right) = \frac{1}{6} \pi r^3.
+      </me>
+    </p>
+
+    <p>From this last equation, differentiating with respect to <m>t</m> implies
+      <me>
+        \frac{dV}{dt} = \frac{1}{2} \pi r^2 \frac{dr}{dt},
+      </me>
+      from which the same conclusions made earlier about <m>\frac{dr}{dt}</m> and <m>\frac{dh}{dt}</m> can be made.</p>
+
+    <p>Our work with the sandpile problem above is similar in many ways to our approach in <xref ref="PA_3.5">Preview Activity</xref>, and these steps are typical of most related rates problems. In certain ways, they also resemble work we do in applied optimization problems, and here we summarize the main approach for consideration in subsequent problems.
+
+    <ul>
+      <li><p>Identify the quantities in the problem that are changing and choose clearly defined variable names for them.  Draw one or more figures that clearly represent the situation.</p></li>
+
+      <li><p>Determine all rates of change that are known or given and identify the rate(s) of change to be found.</p></li>
+
+      <li><p>Find an equation that relates the variables whose rates of change are known to those variables whose rates of change are to be found.</p></li>
+
+      <li><p>Differentiate implicitly with respect to <m>t</m> to relate the rates of change of the involved quantities.</p></li>
+
+      <li><p>Evaluate the derivatives and variables at the information relevant to the instant at which a certain rate of change is sought.  Use proper notation to identify when a derivative is being evaluated at a particular instant, such as <m>\left. \frac{dr}{dt} \right|_{r=4}</m>.</p></li>
+    </ul>
+    </p>
+
+    <p>In the first step of identifying changing quantities and drawing a picture, it is important to think about the dynamic ways in which the involved quantities change. Sometimes a sequence of pictures can be helpful; for some already-drawn pictures that can be easily modified as applets built in Geogebra, see the following links<fn>We again refer to the work of Prof.<nbsp />Marc Renault of Shippensburg University, found at <url href="http://gvsu.edu/s/5p"><c>http://gvsu.edu/s/5p</c></url>.</fn> which represent
+
+    <ul>
+      <li><p>how a circular oil slick's area grows as its radius increases <url href="http://gvsu.edu/s/9n"><c>http://gvsu.edu/s/9n</c></url>;</p></li>
+
+      <li><p>how the location of the base of a ladder and its height along a wall change as the ladder slides <url href="http://gvsu.edu/s/9o"><c>http://gvsu.edu/s/9o</c></url>;</p></li>
+
+      <li><p>how the water level changes in a conical tank as it fills with water at a constant rate 
+
+	<url href="http://gvsu.edu/s/9p"><c>http://gvsu.edu/s/9p</c></url> (compare the problem in <xref ref="A_3.5.1">Activity</xref>);</p></li>
+
+      <li><p>how a skateboarder's shadow changes as he moves past a lamppost 
+
+	 <url href="http://gvsu.edu/s/9q"><c>http://gvsu.edu/s/9q</c></url>.</p></li>
+    </ul>
+    </p>
+
+    <p>Drawing well-labeled diagrams and envisioning how different parts of the figure change is a key part of understanding related rates problems and being successful at solving them.</p>
+
+    <activity xml:id="A_3.5.1">
+      <p>A water tank has the shape of an inverted circular cone (point down) with a base of radius 6 feet and a depth of 8 feet. Suppose that water is being pumped into the tank at a constant instantaneous rate of 4 cubic feet per minute.
+
+      <ol>
+        <li><p>Draw a picture of the conical tank, including a sketch of the water level at a point in time when the tank is not yet full.  Introduce variables that measure the radius of the water's surface and the water's depth in the tank, and label them on your figure.</p></li>
+
+        <li><p>Say that <m>r</m> is the radius and <m>h</m> the depth of the water at a given time, <m>t</m>.  What equation relates the radius and height of the water, and why?</p></li>
+
+        <li><p>Determine an equation that relates the volume of water in the tank at time <m>t</m> to the depth <m>h</m> of the water at that time.</p></li>
+
+        <li><p>Through differentiation, find an equation that relates the instantaneous rate of change of water volume with respect to time to the instantaneous rate of change of water depth at time <m>t</m>.</p></li>
+
+        <li><p>Find the instantaneous rate at which the water level is rising when the water in the tank is 3 feet deep.</p></li>
+
+        <li><p>When is the water rising most rapidly:  at <m>h = 3</m>, <m>h = 4</m>, or <m>h = 5</m>?</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li>
+            <title>(b)</title>
+            <p>Think about similar triangles.</p></li>
+
+          <li>
+            <title>(c)</title>
+            <p>Recall that the volume of a cone is <m>V = \frac{1}{3} \pi r^2 h</m>.</p></li>
+
+          <li>
+            <title>(d)</title>
+            <p>Remember to differentiate implicitly with respect to <m>t</m>.</p></li>
+
+          <li>
+            <title>(e)</title>
+            <p>Use <m>h = 3</m> and the fact that the value of <m>\frac{dV}{dt}</m> is given.</p></li>
+
+          <li>
+            <title>(f)</title>
+            <p>Consider <url href="http://gvsu.edu/s/9p"><c>http://gvsu.edu/s/9p</c></url>.  Why does this phenomenon occur?</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Letting <m>r</m> represent the water's radius at time <m>t</m> and <m>h</m> the water's depth, we see the following situation:
+              <image width="73%" source="images/3_5_Act1Soln" />
+            </p></li>
+
+          <li><p>Observe that the right triangle with legs of length <m>h</m> and <m>r</m> is similar to the right triangle with legs of length <m>8</m> and <m>6</m>, respectively, based on how the water assumes the shape of the tank, and thus <m>\frac{r}{h} = \frac{6}{8}</m>, so that <m>r = \frac{3}{4}h</m>.</p></li>
+
+          <li><p>Since the water in the tank always takes the shape of a circular cone, the volume of water in the tank at time <m>t</m> is given by <m>V = \frac{1}{3}\pi r^2 h</m>.  Because we have established that <m>r = \frac{3}{4}h</m>, it follows that
+              <me>
+                V = \frac{1}{3}\pi \left( \frac{3}{4}h \right)^2 h = \frac{3}{16} \pi h^3.
+              </me>
+            </p></li>
+
+          <li><p>Differentiating with respect to <m>t</m>, we now find
+              <me>
+                \frac{dV}{dt} = \frac{9}{16} \pi h^2 \frac{dh}{dt},
+              </me>
+              which relates the rates of change of <m>V</m> and <m>h</m>.</p></li>
+
+          <li><p>It is given in the problem setting that water is entering the tank at a rate of 4 cubic feet per minute, hence <m>\frac{dV}{dt} = 4</m>, and we are interested in the rate of change of the water's depth when <m>h = 3</m>.  Substituting these values into the equation that relates <m>\frac{dV}{dt}</m> and <m>\frac{dh}{dt}</m>, we find that
+              <me>
+                4 =  \frac{9}{16} \pi 3^2 \left. \frac{dh}{dt} \right|_{h=3},
+              </me>
+              so that <m>\left. \frac{dh}{dt} \right|_{h=3} = \frac{64}{81\pi} \approx 0.2515</m> feet per minute.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <p>Recognizing familiar geometric configurations is one way that we relate the changing quantities in a given problem. For instance, while the problem in <xref ref="A_3.5.1">Activity</xref> is centered on a conical tank, one of the most important observations is that there are two key right triangles present. In another setting, a right triangle might be indicative of an opportunity to take advantage of the Pythagorean Theorem to relate the legs of the triangle. But in the conical tank, the fact that the water at any time fills a portion of the tank in such a way that the ratio of radius to depth is constant turns out to be the most important relationship with which to work. That enables us to write <m>r</m> in terms of <m>h</m> and reduce the overall problem to one that involves only one variable, where the volume of water depends simply on <m>h</m>, and hence to subsequently relate <m>\frac{dV}{dt}</m> and <m>\frac{dh}{dt}</m>. In other situations where a changing angle is involved, a right triangle may offer the opportunity to find relationships among various parts of the triangle using trigonometric functions.</p>
+
+    <activity xml:id="A_3.5.2">
+      <p>A television camera is positioned 4000 feet from the base of a rocket launching pad. The angle of elevation of the camera has to change at the correct rate in order to keep the rocket in sight. In addition, the auto-focus of the camera has to take into account the increasing distance between the camera and the rocket. We assume that the rocket rises vertically. (A similar problem is discussed and pictured dynamically at <url href="http://gvsu.edu/s/9t"><c>http://gvsu.edu/s/9t</c></url>. Exploring the applet at the link will be helpful to you in answering the questions that follow.)
+
+      <ol>
+        <li><p>Draw a figure that summarizes the given situation.  What parts of the picture are changing?  What parts are constant?  Introduce appropriate variables to represent the quantities that are changing.</p></li>
+
+        <li><p>Find an equation that relates the camera's angle of elevation to the height of the rocket, and then find an equation that relates the instantaneous rate of change of the camera's elevation angle to the instantaneous rate of change of the rocket's height (where all rates of change are with respect to time).</p></li>
+
+        <li><p>Find an equation that relates the distance from the camera to the rocket to the rocket's height, as well as an equation that relates the instantaneous rate of change of distance from the camera to the rocket to the instantaneous rate of change of the rocket's height (where all rates of change are with respect to time).</p></li>
+
+        <li><p>Suppose that the rocket's speed is 600 ft/sec at the instant it has risen 3000 feet.  How fast is the distance from the television camera to the rocket changing at that moment?  If the camera is following the rocket, how fast is the camera's angle of elevation changing at that same moment?</p></li>
+
+        <li><p>If from an elevation of 3000 feet onward the rocket continues to rise at 600 feet/sec, will the rate of change of distance with respect to time be greater when the elevation is 4000 feet than it was at 3000 feet, or less?  Why?</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Let <m>\theta</m> represent the camera angle and note that one leg of the right triangle is constant.  Which two are changing?</p></li>
+
+          <li><p>Think trigonometrically.</p></li>
+
+          <li><p>Think like Pythagoras.</p></li>
+
+          <li><p>Use the facts that <m>h = 3000</m> and <m>\frac{dh}{dt} = 600</m> in your preceding work.</p></li>
+
+          <li><p>You can answer this question intuitively or by changing the value of <m>h</m> in your work in (d).</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Letting <m>\theta</m> be the camera's elevation angle, <m>h</m> the rocket's height, and <m>z</m> the distance from the camera to the rocket, we have the following situation at a given point in time:
+              <image width="73%" source="images/3_5_Act2Soln" />
+            </p></li>
+
+          <li><p>To relate <m>\theta</m> and <m>h</m>, observe that the tangent function is a good choice, since <m>\tan(\theta) = \frac{h}{4000}</m>, so that
+              <me>
+                h = 4000 \tan(\theta).
+              </me>
+              Differentiating implicitly with respect to <m>t</m>, we find that
+              <me>
+                \frac{dh}{dt} = 4000 \sec^2 (\theta) \frac{d\theta}{dt}.
+              </me>
+            </p></li>
+
+          <li><p>To relate <m>z</m> and <m>h</m>, the Pythagorean Theorem is natural to consider.  By this famous result,
+              <me>
+                h^2 + 4000^2 = z^2.
+              </me>
+              Differentiating both sides implicitly with respect to <m>t</m>, it follows
+              <me>
+                2h \frac{dh}{dt} = 2z \frac{dz}{dt},
+              </me>
+              and thus <m>h \frac{dh}{dt} = z \frac{dz}{dt}.</m></p></li>
+
+          <li><p>Using the given fact that the rocket's speed is 600 ft/sec at the instant it has risen 3000 feet, we know that <m>\left. \frac{dh}{dt} \right|_{h=3000} = 600</m>.  Note further in the triangle that when <m>h = 3000</m>, it follows <m>z = 5000</m>, since the base leg of the triangle is constant at 4000, by using the Pythagorean Theorem.  Substituting this information from the instant <m>h = 3000</m> into the equation that relates the rates of change of <m>z</m> and <m>h</m> found in (c), we find that
+              <me>
+                2 \cdot 3000 \cdot 600 = 2 \cdot 5000 \cdot \left. \frac{dz}{dt} \right|_{h=3000}.
+              </me>
+              Solving for <m>\left. \frac{dz}{dt} \right|_{h=3000}</m> we have
+              <me>
+                \left. \frac{dz}{dt} \right|_{h=3000} = \frac{1800}{5} = 360 \ \mbox{feet/sec} .
+              </me>
+              To answer the question about how fast the camera angle is changing, we use the same information but now in the equation we found in (b) that relates the rates of change of <m>\theta</m> and <m>h</m>:
+              <me>
+                \frac{dh}{dt} = 4000 \sec^2 (\theta) \frac{d\theta}{dt}.
+              </me>
+              Observe that when <m>h = 3000</m>, in the 3000-4000-5000 right triangle, it follows that <m>\cos(\theta) = \frac{4}{5}</m>, so <m>\sec(\theta) = \frac{5}{4}</m>.  Thus, using the instantaneous information,
+              <me>
+                600 = 4000 \cdot \frac{25}{16} \left. \frac{d\theta}{dt} \right|_{h=3000},
+              </me>
+              and thus
+              <me>
+                \left. \frac{d\theta}{dt} \right|_{h=3000} = \frac{6 \cdot 16}{40 \cdot 25} = \frac{12}{125},
+              </me>
+              which is measured in radians per second.</p></li>
+
+          <li><p>Recalling that <m>2h \frac{dh}{dt} = 2z \frac{dz}{dt}</m>, it follows that
+              <me>
+                \frac{dz}{dt} = \frac{h}{z} \frac{dh}{dt}.
+              </me>
+              Using this equation when <m>h = 3000</m> and <m>\frac{dh}{dt} = 600</m> led us to conclude that <m>\left. \frac{dz}{dt} \right|_{h=3000} = \frac{3}{5} \cdot 600 = 360 \ \mbox{feet/sec}</m>.  If we instead use <m>h = 4000</m>, it follows that <m>z = 4000\sqrt{2}</m>, so that
+              <me>
+                \left. \frac{dz}{dt} \right|_{h=4000} = \frac{4}{4\sqrt{2}} \cdot 600 \approx 424.26 \ \mbox{feet/sec} .
+              </me>
+              Indeed, <m>\frac{dz}{dt}</m> is an increasing function of <m>h</m>, provided that <m>\frac{dh}{dt}</m> is constant, because we can write <m>h^2 + 4000^2 = z^2</m>, so <m>z = \sqrt{h^2 + 4000^2}</m>, making
+              <me>
+                \frac{dz}{dt} = \frac{h}{\sqrt{h^2 + 4000^2}} \frac{dh}{dt} = \frac{h}{\sqrt{h^2 + 4000^2}} 600.
+              </me>
+              It is straightforward to verify that <m>\frac{h}{\sqrt{h^2 + 4000^2}}</m> is an increasing function of <m>h</m>.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <p>In addition to being able to find instantaneous rates of change at particular points in time, we are often able to make more general observations about how particular rates themselves will change over time. For instance, when a conical tank (point down) is filling with water at a constant rate, we naturally intuit that the depth of the water should increase more slowly over time. Note how carefully we need to speak: we mean to say that while the depth, <m>h</m>, of the water is increasing, its rate of change <m>\frac{dh}{dt}</m> is decreasing (both as a function of <m>t</m> and as a function of <m>h</m>). These observations may often be made by taking the general equation that relates the various rates and solving for one of them, and doing this without substituting any particular values for known variables or rates. For instance, in the conical tank problem in <xref ref="A_3.5.1">Activity</xref>, we established that
+      <me>
+        \frac{dV}{dt} = \frac{1}{16} \pi h^2 \frac{dh}{dt},
+      </me>
+      and hence
+      <me>
+        \frac{dh}{dt} = \frac{16}{\pi h^2} \frac{dV}{dt}.
+      </me>
+    </p>
+
+    <p>Provided that <m>\frac{dV}{dt}</m> is constant, it is immediately apparent that as <m>h</m> gets larger, <m>\frac{dh}{dt}</m> will get smaller, while always remaining positive. Hence, the depth of the water is increasing at a decreasing rate.</p>
+
+    <activity xml:id="A_3.5.3">
+      <p>As pictured in the applet at<nbsp /><url href="http://gvsu.edu/s/9q"><c>http://gvsu.edu/s/9q</c></url>, a skateboarder who is 6 feet tall rides under a 15 foot tall lamppost at a constant rate of 3 feet per second. We are interested in understanding how fast his shadow is changing at various points in time.
+
+      <ol>
+        <li><p>Draw an appropriate right triangle that represents a snapshot in time of the skateboarder, lamppost, and his shadow.  Let <m>x</m> denote the horizontal distance from the base of the lamppost to the skateboarder and <m>s</m> represent the length of his shadow.  Label these quantities, as well as the skateboarder's height and the lamppost's height on the diagram.</p></li>
+
+        <li><p>Observe that the skateboarder and the lamppost represent parallel line segments in the diagram, and thus similar triangles are present.  Use similar triangles to establish an equation that relates <m>x</m> and <m>s</m>.</p></li>
+
+        <li><p>Use your work in (b) to find an equation that relates <m>\frac{dx}{dt}</m> and <m>\frac{ds}{dt}</m>.</p></li>
+
+        <li><p>At what rate is the length of the skateboarder's shadow increasing at the instant the skateboarder is 8 feet from the lamppost?</p></li>
+
+        <li><p>As the skateboarder's distance from the lamppost increases, is his shadow's length increasing at an increasing rate, increasing at a decreasing rate, or increasing at a constant rate?</p></li>
+
+        <li><p>Which is moving more rapidly:  the skateboarder or the tip of his shadow?  Explain, and justify your answer.</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Note that the lengths of the legs of the right triangle will be <m>15</m> for the vertical one and <m>x + s</m> for the horizontal one.</p></li>
+
+          <li><p>The small triangle formed by the skateboarder and his shadow, with legs <m>6</m> and <m>s</m> is similar to the large triangle that has the lamppost as one of its legs.</p></li>
+
+          <li><p>Simplify the equation in (b) as much as possible before differentiating implicitly with respect to <m>t</m>.</p></li>
+
+          <li><p>Find <m>\left. \frac{ds}{dt} \right|_{x=8}</m>.</p></li>
+
+          <li><p>Does the equation that relates <m>\frac{dx}{dt}</m> and <m>\frac{ds}{dt}</m> involve <m>x</m>?  Is <m>\frac{dx}{dt}</m> changing or constant?</p></li>
+
+          <li><p>Let <m>y</m> represent the location of the tip of the shadow, so that <m>y = x + s</m>.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>The given information leads us to construct the following diagram:
+              <image width="73%" source="images/3_5_Act3Soln" />
+            </p></li>
+
+          <li><p>The small triangle formed by the skateboarder and his shadow, with legs of length <m>6</m> and <m>s</m> is similar to the large triangle that has the lamppost as one of its legs (length 15) and horizontal leg of length <m>x + s</m>.  Because the ratios of the lengths of the legs of these two triangles is equal, we have
+              <me>
+                \frac{s}{6} = \frac{s+x}{15}.
+              </me>
+              Simplifying, we have <m>15s = 6s + 6x</m>, so that <m>9s = 2x</m>, or most simply, <m>3s = 2x</m>.</p></li>
+
+          <li><p>Differentiating with respect to <m>t</m>, it is immediate that <m>3 \frac{ds}{dt} = 2\frac{dx}{dt}</m>.</p></li>
+
+          <li><p>Since <m>\frac{ds}{dt} = \frac{2}{3} \frac{dx}{dt}</m>, and <m>\frac{dx}{dt} = 3</m>, it follows <m>\frac{ds}{dt} = 2</m> for every value of <m>t</m> (and <m>x</m>).  Thus, <m>\left. \frac{ds}{dt} \right|_{x=8} = 2</m> feet per second.</p></li>
+
+          <li><p>Because <m>\frac{ds}{dt}</m> is constant, the shadow's length is increasing at a constant rate (irrespective of the distance from the skateboarder to the lamppost).</p></li>
+
+          <li><p>Let <m>y</m> represent the location of the tip of the shadow, so that <m>y = x + s</m>.  Observe that we can now compute <m>\frac{dy}{dt}</m> in terms of <m>\frac{dx}{dt}</m> and <m>\frac{ds}{dt}</m>, with <m>\frac{dy}{dt} = \frac{dx}{dt} + \frac{ds}{dt} = 3 + 2 = 5</m> feet/sec, and hence the tip of the shadow is moving more rapidly than the skateboarder himself.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <p>As we progress further into related rates problems, less direction will be provided. In the first three activities of this section, we have been provided with guided instruction to build a solution in a step by step way. For the closing activity and the following exercises, most of the detailed work is left to the reader.</p>
+
+    <activity xml:id="A_3.5.4">
+      <p>A baseball diamond is <m>90'</m> square. A batter hits a ball along the third base line and runs to first base. At what rate is the distance between the ball and first base changing when the ball is halfway to third base, if at that instant the ball is traveling 100 feet/sec? At what rate is the distance between the ball and the runner changing at the same instant, if at the same instant the runner is 1/8 of the way to first base running at 30 feet/sec?</p>
+      <hint>
+        <p>Let <m>x</m> denote the position of the ball along the third base line at time <m>t</m>, and <m>z</m> the distance from the ball to first base. Note that the basepaths meet at 90 degree angles.</p>
+      </hint>
+      <solution>
+        <p>We let <m>x</m> denote the position of the ball at time <m>t</m> and <m>z</m> the distance from the ball to first base, as pictured below.</p>
+        <image width="73%" source="images/3_5_Act4Soln1" />
+        <p>By the Pythagorean Theorem, we know that <m>x^2 + 90^2 = z^2</m>; differentiating with respect to <m>t</m>, we have
+          <me>
+            2x\frac{dx}{dt} = 2z\frac{dz}{dt}.
+          </me>
+        </p>
+
+        <p>At the instant the ball is halfway to third base, we know <m>x = 45</m> and <m>\left. \frac{dx}{dt} \right|_{x = 45} = 100</m>. Moreover, by Pythagoras, <m>z^2 = 90^2 + 45^2</m>, so <m>z = 45\sqrt{5}</m>. Thus,
+          <me>
+            2 \cdot 45 \cdot 100 = 2 \cdot 45 \sqrt{5} \cdot \left. \frac{dz}{dt} \right|_{x = 45},
+          </me>
+          so
+          <me>
+            \left. \frac{dz}{dt} \right|_{x = 45} = \frac{100}{\sqrt{5}} \approx 44.7214 \ \mbox{feet/sec} .
+          </me>
+        </p>
+
+        <p>For the second question, we still let <m>x</m> represent the ball's position at time <m>t</m>, but now we introduce <m>r</m> as the runner's position at time <m>t</m> and let <m>s</m> be the distance between the runner and the ball. In this setting, as seen in the diagram below,</p>
+        <image width="73%" source="images/3_5_Act4Soln2" />
+        <p><m>x</m>, <m>r</m>, and <m>s</m> form the sides of a right triangle, so that
+          <me>
+            x^2 + r^2 = s^2,
+          </me>
+          by the Pythagorean Theorem. Differentiating each side with respect to <m>t</m>, it follows that the three rates of change are related by the equation
+          <me>
+            2x \frac{dx}{dt} + 2r \frac{dr}{dt} = 2s \frac{ds}{dt}.
+          </me>
+        </p>
+
+        <p>We are given that at the instant <m>x = 45</m>, <m>r = \frac{90}{8}</m>, so by Pythagoras, <m>s = \frac{45}{4}\sqrt{17}</m>. In addition, at this same instant we know that <m>\left. \frac{dx}{dt} \right|_{x = 45} = 100</m> and <m>\left. \frac{dr}{dt} \right|_{x = 45} = 30</m>. Applying this information,
+          <me>
+            2 \cdot 45 \cdot 100 + 2 \cdot \frac{45}{4} \cdot 30 = 2 \cdot \frac{45}{4}\sqrt{17} \cdot \left. \frac{ds}{dt} \right|_{x = 45}
+          </me>
+          and therefore
+          <me>
+            \left. \frac{ds}{dt} \right|_{x = 45} = \frac{430}{\sqrt{17}} \approx 104.2903 \ \mbox{feet/sec} .
+          </me>
+        </p>
+      </solution>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+    <ul>
+      <li><p>When two or more related quantities are changing as implicit functions of time, their rates of change can be related by implicitly differentiating the equation that relates the quantities themselves.  For instance, if the sides of a right triangle are all changing as functions of time, say having lengths <m>x</m>, <m>y</m>, and <m>z</m>, then these quantities are related by the Pythagorean Theorem: <m>x^2 + y^2 = z^2</m>.  It follows by implicitly differentiating with respect to <m>t</m> that their rates are related by the equation
+          <me>
+            2x \frac{dx}{dt} + 2y\frac{dy}{dt} = 2z \frac{dz}{dt},
+          </me>
+          so that if we know the values of <m>x</m>, <m>y</m>, and <m>z</m> at a particular time, as well as two of the three rates, we can deduce the value of the third.</p></li>
+    </ul>
+    <exercises>
+      <exercise>
+        <statement>
+          <p>A sailboat is sitting at rest near its dock. A rope attached to the bow of the boat is drawn in over a pulley that stands on a post on the end of the dock that is 5 feet higher than the bow. If the rope is being pulled in at a rate of 2 feet per second, how fast is the boat approaching the dock when the length of rope from bow to pulley is 13 feet?</p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>A swimming pool is 60 feet long and 25 feet wide. Its depth varies uniformly from 3 feet at the shallow end to 15 feet at the deep end, as shown in the <xref ref="F_3.5.Ez3">Figure</xref>.</p>
+
+          <figure xml:id="F_3.5.Ez3" >
+            <caption>The swimming pool described in Exercise 2.</caption>
+            <image width="73%" source="images/3_5_Ez3" />
+          </figure>
+
+          <p>Suppose the pool has been emptied and is now being filled with water at a rate of 800 cubic feet per minute. At what rate is the depth of water (measured at the deepest point of the pool) increasing when it is 5 feet deep at that end? Over time, describe how the depth of the water will increase: at an increasing rate, at a decreasing rate, or at a constant rate. Explain.</p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>A baseball diamond is a square with sides 90 feet long. Suppose a baseball player is advancing from second to third base at the rate of 24 feet per second, and an umpire is standing on home plate. Let <m>\theta</m> be the angle between the third baseline and the line of sight from the umpire to the runner. How fast is <m>\theta</m> changing when the runner is 30 feet from third base?</p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Sand is being dumped off a conveyor belt onto a pile in such a way that the pile forms in the shape of a cone whose radius is always equal to its height. Assuming that the sand is being dumped at a rate of 10 cubic feet per minute, how fast is the height of the pile changing when there are 1000 cubic feet on the pile?</p>
+        </statement>
+      </exercise>
+    </exercises>
+  </subsection>
+</section>

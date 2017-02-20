@@ -1,0 +1,550 @@
+
+<section xml:id="S_7.6.Logistic">
+  <title>Population Growth and the Logistic Equation</title>
+  <introduction>
+    <objectives>
+      <ul>
+        <li><p>How can we use differential equations to realistically model the growth of a
+              population?</p></li>
+
+        <li><p>How can we assess the accuracy of our models?</p></li>
+      </ul>
+    </objectives>
+    <p>The growth of the earth's population is one of the pressing issues of
+      our time. Will the population continue to grow? Or will it perhaps
+      level off at some point, and if so, when? In this section, we
+      will look at two ways in which we may use differential equations to
+      help us address questions such as these.</p>
+
+    <p>Before we begin, let's consider again two important differential
+      equations that we have seen in earlier work this chapter.</p>
+
+    <exploration xml:id="PA_7.6">
+      <p>Recall that one model for population growth states that a population grows at a rate proportional to its size.
+
+      <ol>
+        <li><p>We begin with the differential equation
+            <me>
+              \frac{dP}{dt} = \frac12 P.
+            </me>
+            Sketch a slope field below as well as a few typical solutions on the axes provided.
+            <image width="73%" source="images/7_6_preview" />
+          </p></li>
+
+        <li><p>Find all equilibrium solutions of the equation <m>\frac{dP}{dt} = \frac12 P</m> and classify them as stable or
+              unstable.</p></li>
+
+        <li><p>If <m>P(0)</m> is positive, describe the long-term behavior of the
+              solution to <m>\frac{dP}{dt} = \frac12 P</m>.</p></li>
+
+        <li><p>Let's now consider a modified differential equation given by
+            <me>
+              \frac{dP}{dt} = \frac 12 P(3-P).
+            </me>
+            As before, sketch a slope field as well as a few typical solutions on the following axes provided.
+            <image width="73%" source="images/7_6_preview" />
+          </p></li>
+
+        <li><p>Find any equilibrium solutions and classify them as stable or
+              unstable.</p></li>
+
+        <li><p>If <m>P(0)</m> is positive, describe the long-term behavior of the
+              solution.</p></li>
+      </ol>
+      </p>
+    </exploration>
+  </introduction>
+
+  <subsection>
+    <title>The earth's population</title>
+    <p>We will now begin studying the earth's population. To get started,
+      here are some data for the earth's population in recent years that we
+      will use in our investigations.</p>
+    <tabular>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>Year</cell>
+        <cell>Population (in billions)</cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>1998</cell>
+        <cell>5.932</cell>
+      </row>
+      <row>
+        <cell>1999</cell>
+        <cell>6.008</cell>
+      </row>
+      <row>
+        <cell>2000</cell>
+        <cell>6.084</cell>
+      </row>
+      <row>
+        <cell>2001</cell>
+        <cell>6.159</cell>
+      </row>
+      <row>
+        <cell>2002</cell>
+        <cell>6.234</cell>
+      </row>
+      <row>
+        <cell>2005</cell>
+        <cell>6.456</cell>
+      </row>
+      <row>
+        <cell>2006</cell>
+        <cell>6.531</cell>
+      </row>
+      <row>
+        <cell>2007</cell>
+        <cell>6.606</cell>
+      </row>
+      <row>
+        <cell>2008</cell>
+        <cell>6.681</cell>
+      </row>
+      <row>
+        <cell>2009</cell>
+        <cell>6.756</cell>
+      </row>
+      <row>
+        <cell>2010</cell>
+        <cell>6.831</cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+      </row>
+    </tabular>
+
+    <activity xml:id="A_7.6.1">
+      <p>Our first model will be based on the following assumption:</p>
+
+      <blockquote>
+      <em>The rate of change of the population is proportional to the
+            population.  
+          </em>
+      </blockquote>
+
+      <p>On the face of it, this seems pretty reasonable. When there is a
+        relatively small number of people, there will be fewer births and
+        deaths so the rate of change will be small. When there is a larger
+        number of people, there will be more births and deaths so we expect
+        a larger rate of change.</p>
+
+      <p>If <m>P(t)</m> is the population <m>t</m> years after the year 2000, we may
+      express this assumption as
+      <me>
+        \frac{dP}{dt} = kP
+      </me>
+      where <m>k</m> is a constant of proportionality.
+
+      <ol>
+        <li><p>Use the data in the table to estimate the derivative <m>P'(0)</m>
+              using a central difference.  Assume that <m>t=0</m> corresponds to the
+              year 2000.</p></li>
+
+        <li><p>What is the population <m>P(0)</m>?</p></li>
+
+        <li><p>Use these two facts to estimate the constant of proportionality
+              <m>k</m> in the differential equation.</p></li>
+
+        <li><p>Now that we know the value of <m>k</m>, we have the initial
+              value problem
+            <me>
+              \frac{dP}{dt} = kP, \ P(0) = 6.084.
+            </me>
+            Find the solution to this initial value problem.</p></li>
+
+        <li><p>What does your solution predict for the population in the year
+              2010?  Is this close to the actual population given in the table?</p></li>
+
+        <li><p>When does your solution predict that the population will reach
+              12 billion?</p></li>
+
+        <li><p>What does your solution predict for the population in the year
+              2500?</p></li>
+
+        <li><p>Do you think this is a reasonable model for the earth's
+              population?  Why or why not?  Explain your thinking using a couple
+              of complete sentences.</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Small hints for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Solutions for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <p>Our work in <xref ref="A_7.6.1">Activity</xref> shows that that the exponential model is fairly accurate for years
+      relatively close to 2000. However, if we go too far into the
+      future, the model predicts increasingly large rates of change, which
+      causes the population to grow arbitrarily large. This does not make
+      much sense since it is unrealistic to expect that the earth would be able to support
+      such a large population.</p>
+
+    <p>The constant <m>k</m> in the differential equation has an important
+      interpretation. Let's rewrite the differential equation <m>\frac{dP}{dt} = kP</m> by solving for <m>k</m>, so that we have
+      <me>
+        k = \frac{dP/dt}{P}.
+      </me>
+    </p>
+
+    <p>Viewed in this light, <m>k</m> is the ratio of the rate of change to the
+      population; in other words, it is the contribution to the rate of change
+      from a single person. We call this the <em>per capita
+      growth rate</em><index><main>per capita growth rate</main></index>.</p>
+
+    <p>In the exponential model we introduced in <xref ref="A_7.6.1">Activity</xref>, the per capita growth rate is
+      constant. In particular, we are assuming that when the population is
+      large, the per capita growth rate is the same as when the population
+      is small. It is natural to think that the per capita growth rate should
+      decrease when the population becomes large, since there will not be
+      enough resources to support so many people. In other words, we expect that a more realistic model would hold if we assume
+      that the per capita growth rate depends on the population <m>P</m>.</p>
+
+    <p>In the previous activity, we computed the per capita growth rate in a
+      single year by computing <m>k</m>, the quotient of <m>\frac{dP}{dt}</m> and <m>P</m> (which we did for <m>t = 0</m>). If we return data and compute the per capita
+      growth rate over a range of years, we generate the data shown in <xref ref="F_7.6.census">Figure</xref>, which shows how the per capita growth rate is a function of the population, <m>P</m>.</p>
+
+    <figure xml:id="F_7.6.census" >
+      <caption>A plot of per capita growth rate vs.<nbsp />population <m>P</m>.</caption>
+      <image width="73%" source="images/7_6_census" />
+    </figure>
+
+    <p>From the data, we see that the per capita growth rate appears to decrease as
+      the population increases. In fact, the points seem to lie very close
+      to a line, which is shown at two different scales in <xref ref="F_7.6.census1">Figure</xref>.</p>
+
+    <figure xml:id="F_7.6.census1" >
+      <caption>The line that approximates per capita growth as a function of population, <m>P</m>.</caption>
+      <image width="73%" source="images/7_6_census_1" />
+      <image width="73%" source="images/7_6_census_2" />
+    </figure>
+
+    <p>Looking at this line carefully, we can find its equation to be
+      <me>
+        \frac{dP/dt}{P} = 0.025 - 0.002P.
+      </me>
+    </p>
+
+    <p>If we multiply both sides by <m>P</m>, we arrive at the differential
+      equation
+      <me>
+        \frac{dP}{dt} = P(0.025 - 0.002P).
+      </me>
+    </p>
+
+    <p>Graphing the dependence of <m>dP/dt</m> on the population <m>P</m>, we see that this differential equation demonstrates a quadratic relationship between <m>\frac{dP}{dt}</m> and <m>P</m>, as shown in <xref ref="F_7.6.logistic">Figure</xref>.</p>
+
+    <figure xml:id="F_7.6.logistic" >
+      <caption>A plot of <m>\frac{dP}{dt}</m> vs.<nbsp /><m>P</m> for the differential equation <m>\frac{dP}{dt} = P(0.025 - 0.002P)</m>.</caption>
+      <image width="73%" source="images/7_6_logistic_de" />
+    </figure>
+
+    <p>The equation <m>\frac{dP}{dt} = P(0.025 - 0.002P)</m> is an example of the <em>logistic equation</em>,
+      and is the second model for population growth that we will consider. We
+      have reason to believe that it will be more realistic since the per
+      capita growth rate is a decreasing function of the population.</p>
+
+    <p>Indeed, the graph in <xref ref="F_7.6.logistic">Figure</xref> shows that there are two equilibrium
+      solutions, <m>P=0</m>, which is unstable, and <m>P=12.5</m>, which is a stable
+      equilibrium. The graph shows that any solution with <m>P(0) >0</m> will
+      eventually stabilize around 12.5. In other words, our model predicts
+      the world's population will eventually stabilize around 12.5
+      billion.</p>
+
+    <p>A prediction for the long-term behavior of the population is a
+      valuable conclusion to draw from our differential equation. We would,
+      however, like to answer some quantitative questions. For instance,
+      how long will it take to reach a population of 10 billion? To determine this,
+      we need to find an explicit solution of the equation.</p>
+  </subsection>
+
+  <subsection>
+    <title>Solving the logistic differential equation</title>
+    <p><index><main>logistic</main></index></p>
+
+    <p>Since we would like to apply the logistic model in more general situations, we state the logistic equation<index><main>logistic equation</main></index> in its more general form,
+      <men xml:id="E_7.6.logistic" >
+        \frac{dP}{dt} = kP(N-P).
+      </men>
+    </p>
+
+    <p>The equilibrium solutions here are when <m>P=0</m> and <m>1-\frac PN = 0</m>,
+      which shows that <m>P=N</m>. The equilibrium at <m>P=N</m> is called the <em>carrying capacity</em><index><main>carrying capacity</main></index> of the population for it represents the stable
+      population that can be sustained by the environment.</p>
+
+    <p>We now solve the logistic equation<nbsp /><xref ref="E_7.6.logistic" />. The equation is separable, so we separate the variables
+      <me>
+        \frac{1}{P(N-P)}\frac{dP}{dt} = k,
+      </me>
+      and integrate to find that
+      <me>
+        \int \frac{1}{P(N-P)}~dP = \int k~dt.
+      </me>
+    </p>
+
+    <p>To find the antiderivative on the left, we use the partial fraction decomposition
+      <me>
+        \frac{1}{P(N-P)} = \frac 1N\left[\frac 1P + \frac 1{N-P}\right].
+      </me>
+    </p>
+
+    <p>Now we are ready to integrate, with
+      <me>
+        \int \frac 1N\left[\frac 1P + \frac 1{N-P}\right] ~dP  =  \int k~dt.
+      </me>
+    </p>
+
+    <p>On the left, observe that <m>N</m> is constant, so we can remove the factor of <m>\frac{1}{N}</m> and antidifferentiate to find that
+      <me>
+        \frac 1N (\ln|P| - \ln|N-P|)  =  kt + C.
+      </me>
+    </p>
+
+    <p>Multiplying both sides of this last equation by <m>N</m> and using an important rule of logarithms, we next find that
+      <me>
+        \ln\left|\frac{P}{N-P}\right| = kNt + C.
+      </me>
+    </p>
+
+    <p>From the definition of the logarithm, replacing <m>e^C</m> with <m>C</m>, and letting <m>C</m> absorb the absolute value signs, we now know that
+      <me>
+        \frac{P}{N-P} =  Ce^{kNt}.
+      </me>
+    </p>
+
+    <p>At this point, all that remains is to determine <m>C</m> and solve algebraically for <m>P</m>.</p>
+
+    <p>If the initial population is <m>P(0) = P_0</m>, then it follows that <m>C = \frac{P_0}{N-P_0}</m>, so
+      <me>
+        \frac{P}{N-P} = \frac{P_0}{N-P_0}e^{kNt}.
+      </me>
+    </p>
+
+    <p>We will solve this most recent equation for <m>P</m> by multiplying both sides by
+      <m>(N-P)(N-P_0)</m> to obtain
+      <md>
+        <mrow>P(N-P_0) =\mathstrut \amp  P_0(N-P)e^{kNt}</mrow>
+        <mrow>=\mathstrut \amp  P_0Ne^{kNt} - P_0Pe^{kNt}.</mrow>
+      </md>
+    </p>
+
+    <p>Swapping the left and right sides, expanding, and factoring, it follows that
+      <md>
+        <mrow>P_0Ne^{kNt} =\mathstrut \amp  P(N-P_0) + P_0 Pe^{kNt}</mrow>
+        <mrow>=\mathstrut \amp  P(N-P_0 + P_0e^{kNt}).</mrow>
+      </md>
+    </p>
+
+    <p>Dividing to solve for <m>P</m>, we see that
+      <me>
+        P = \frac{P_0Ne^{kNt}}{N-P_0 + P_0e^{kNt}}.
+      </me>
+    </p>
+
+    <p>Finally, we choose to multiply the numerator and denominator by <m>\frac{1}{P_0}e^{-kNt}</m>
+      to obtain
+      <me>
+        P(t) = \frac{N}{\left(\frac{N-P_0}{P_0}\right) e^{-kNt} + 1}.
+      </me>
+    </p>
+
+    <p>While that was a lot of algebra, notice the result: we have
+      found an explicit solution to the initial value problem
+      <me>
+        \frac{dP}{dt} = kP(N-P), \ P(0) = P_0,
+      </me>
+      and that solution<index><main>logistic equation</main><sub>solution</sub></index> is
+      <men xml:id="E_7.6.logistic_solution" >
+        P(t) = \frac{N}{\left(\frac{N-P_0}{P_0}\right) e^{-kNt} + 1}.
+      </men>
+    </p>
+
+    <p>For the logistic equation describing the earth's population that we worked with earlier in this section, we have
+      <me>
+        k=0.002,  N= 12.5,  \mbox{and}   P_0 = 6.084.
+      </me>
+    </p>
+
+    <p>This gives the solution
+      <me>
+        P(t) = \frac{12.5}{1.0546e^{-0.025t} + 1},
+      </me>
+      whose graph is shown in <xref ref="F_7.6.logistic_sol">Figure</xref></p>
+
+    <figure xml:id="F_7.6.logistic_sol" >
+      <caption>The solution to the logistic equation modeling the earth's population.</caption>
+      <image width="73%" source="images/7_6_logistic_sol" />
+    </figure>
+
+    <p>Notice that the graph shows the population leveling off at 12.5 billion, as
+      we expected, and that the population will be around 10 billion in the
+      year 2050. These results, which we have found using a relatively simple
+      mathematical model, agree fairly well with predictions made using a
+      much more sophisticated model developed by the United Nations.</p>
+
+    <p>The logistic equation is useful in other situations, too, as it is good for modeling any situation in which limited growth is possible. For instance, it could model the spread of a flu virus through a population contained on a cruise ship, the rate at which a rumor spreads within a small town, or the behavior of an animal population on an island. Again, it is important to realize that through our work in this section, we have completely solved the logistic equation, regardless of the values of the constants <m>N</m>, <m>k</m>, and <m>P_0</m>. Anytime we encounter a logistic equation, we can apply the formula we found in Equation<nbsp /><xref ref="E_7.6.logistic_solution" />.</p>
+
+    <activity xml:id="A_7.6.2">
+      <p>Consider the logistic equation
+        <me>
+          \frac{dP}{dt} = kP(N-P)
+        </me>
+        with the graph of <m>\frac{dP}{dt}</m> vs.<nbsp /><m>P</m> shown below.</p>
+      <image width="73%" source="images/7_6_activity_2" />
+
+      <ol>
+        <li><p>At what value of <m>P</m> is the rate of change greatest?</p></li>
+
+        <li><p>Consider the model for the earth's population that we created.
+              At what value of <m>P</m> is the rate of change greatest?  How does that
+              compare to the population in recent years?</p></li>
+
+        <li><p>According to the model we developed, what will the population be
+              in the year 2100?</p></li>
+
+        <li><p>According to the model we developed, when will the population
+              reach 9 billion?</p></li>
+
+        <li><p>Now consider the general solution to the general logistic initial value problem that
+              we found, given by
+            <me>
+              P(t) = \frac{N}{\left(\frac{N-P_0}{P_0}\right)e^{-kNt} + 1}.
+            </me>
+            Verify algebraically that <m>P(0) = P_0</m> and that <m>\lim_{t\to\infty} P(t) = N</m>.</p></li>
+      </ol>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Small hints for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Solutions for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+    <ul>
+      <li><p>If we assume that the rate of growth of a population is
+            proportional to the population, we are led to a model in which the
+            population grows without bound and at a  rate that grows without bound.</p></li>
+
+      <li><p>By assuming that the per capita growth rate decreases as the
+            population grows, we are led to the logistic model of population
+            growth, which predicts that the population will eventually
+            stabilize at the carrying capacity.</p></li>
+    </ul>
+    <exercises>
+      <exercise>
+        <statement>
+          <p>The logistic equation may be used to model how a rumor spreads
+          through a group of people. Suppose that <m>p(t)</m> is the fraction of
+          people that have heard the rumor on day <m>t</m>. The equation
+          <me>
+            \frac{dp}{dt} = 0.2p(1-p)
+          </me>
+          describes how <m>p</m> changes. Suppose initially that one-tenth of
+          the people have heard the rumor; that is, <m>p(0) = 0.1</m>.
+
+          <ol>
+            <li><p>What happens to <m>p(t)</m> after a very long time?</p></li>
+
+            <li><p>Determine a formula for the function <m>p(t)</m>.</p></li>
+
+            <li><p>At what time is <m>p</m> changing most rapidly?</p></li>
+
+            <li><p>How long does it take before 80<percent /> of the people have heard
+                      the rumor?</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Suppose that <m>b(t)</m> measures the number of bacteria living in
+          a colony in a Petri dish, where <m>b</m> is measured in thousands and
+          <m>t</m> is measured in days. One day, you measure that there are
+          6,000 bacteria and the per capita growth rate is 3. A few days
+          later, you measure that there are 9,000 bacteria and the per
+          capita growth rate is 2.
+
+          <ol>
+            <li><p>Assume that the per capita growth rate 
+                    <m>\frac{db/dt}{b}</m> is a linear function of <m>b</m>.  Use the
+                    measurements to find this function and write a logistic equation
+                    to describe <m>\frac{db}{dt}</m>.</p></li>
+
+            <li><p>What is the carrying capacity for the bacteria?</p></li>
+
+            <li><p>At what population is the number of bacteria increasing most
+                    rapidly?</p></li>
+
+            <li><p>If there are initially 1,000 bacteria, how long will it take
+                    to reach 80<percent /> of the carrying capacity?</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Suppose that the population of a species of fish is controlled by
+          the logistic equation
+          <me>
+            \frac{dP}{dt} = 0.1P(10 - P),
+          </me>
+          where <m>P</m> is measured in thousands of fish and <m>t</m> is measured in
+          years.
+
+          <ol>
+            <li><p>What is the carrying capacity of this population?</p></li>
+
+            <li><p>Suppose that a long time has passed and that the fish
+                      population is stable at the carrying capacity.  At this time,
+                      humans begin harvesting 20<percent /> of the fish every year.  Modify the
+                      differential equation by adding a term to incorporate the
+                      harvesting of fish.</p></li>
+
+            <li><p>What is the new carrying capacity?</p></li>
+
+            <li><p>What will the fish population be one year after the
+                      harvesting begins?</p></li>
+
+            <li><p>How long will it take for the population to be within 10<percent />
+                      of the carrying capacity?</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+    </exercises>
+  </subsection>
+</section>

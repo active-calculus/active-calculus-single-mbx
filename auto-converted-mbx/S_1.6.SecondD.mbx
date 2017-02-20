@@ -1,0 +1,627 @@
+
+<section xml:id="S_1.6.SecondD">
+  <title>The second derivative</title>
+  <introduction>
+    <objectives>
+      <ul>
+        <li><p>How does the derivative of a function tell us whether the function is increasing or decreasing at a point or on an interval?</p></li>
+
+        <li><p>What can we learn by taking the derivative of the derivative (to achieve the <em>second</em> derivative) of a function <m>f</m>?</p></li>
+
+        <li><p>What does it mean to say that a function is concave up or concave down?  How are these characteristics connected to certain properties of the derivative of the function?</p></li>
+
+        <li><p>What are the units of the second derivative?  How do they help us understand the rate of change of the rate of change?</p></li>
+      </ul>
+    </objectives>
+    <p>Given a differentiable function <m>y= f(x)</m>, we know that its derivative, <m>y = f'(x)</m>, is a related function whose output at a value <m>x=a</m> tells us the slope of the tangent line to <m>y = f(x)</m> at the point <m>(a,f(a))</m>. That is, heights on the derivative graph tell us the values of slopes on the original function's graph. Therefore, the derivative tells us important information about the function <m>f</m>.</p>
+
+    <figure xml:id="F_1.6.Intro" >
+      <caption>Two tangent lines on a graph demonstrate how the slope of the tangent line tells us whether the function is rising or falling, as well as whether it is doing so rapidly or slowly.</caption>
+      <image width="73%" source="images/1_6_Intro" />
+    </figure>
+
+    <p>At any point where <m>f'(x)</m> is positive, it means that the slope of the tangent line to <m>f</m> is positive, and therefore the function <m>f</m> is increasing (or rising) <index><main>increasing</main></index> at that point. Similarly, if <m>f'(a)</m> is negative, we know that the graph of <m>f</m> is decreasing <index><main>decreasing</main></index> (or falling) at that point.</p>
+
+    <p>In the next part of our study, we work to understand not only <em>whether</em> the function <m>f</m> is increasing or decreasing at a point or on an interval, but also <em>how</em> the function <m>f</m> is increasing or decreasing. Comparing the two tangent lines shown in <xref ref="F_1.6.Intro">Figure</xref>, we see that at point <m>A</m>, the value of <m>f'(x)</m> is positive and relatively close to zero, which coincides with the graph rising slowly. By contrast, at point <m>B</m>, the derivative is negative and relatively large in absolute value, which is tied to the fact that <m>f</m> is decreasing rapidly at <m>B</m>. It also makes sense to not only ask whether the value of the derivative function is positive or negative and whether the derivative is large or small, but also to ask <q>how is the derivative changing?</q></p>
+
+    <p>We also now know that the derivative, <m>y = f'(x)</m>, is itself a function. This means that we can consider taking its derivative <mdash /> the derivative of the derivative <mdash /> and therefore ask questions like <q>what does the derivative of the derivative tell us about how the original function behaves?</q> As we have done regularly in our work to date, we start with an investigation of a familiar problem in the context of a moving object.</p>
+
+    <exploration xml:id="PA_1.6">
+      <p>The position of a car driving along a straight road at time <m>t</m> in minutes is given by the function <m>y = s(t)</m> that is pictured in <xref ref="F_1.6.PA1">Figure</xref>. The car's position function has units measured in thousands of feet. For instance, the point <m>(2,4)</m> on the graph indicates that after 2 minutes, the car has traveled 4000 feet.</p>
+
+      <figure xml:id="F_1.6.PA1" >
+        <caption>The graph of <m>y = s(t)</m>, the position of the car (measured in thousands of feet from its starting location) at time <m>t</m> in minutes.</caption>
+        <image width="73%" source="images/1_6_PA1" />
+      </figure>
+
+      <ol>
+        <li><p>In everyday language, describe the behavior of the car over the provided time interval.  In particular, you should carefully discuss what is happening on each of the time intervals <m>[0,1]</m>, <m>[1,2]</m>, <m>[2,3]</m>, <m>[3,4]</m>, and <m>[4,5]</m>, plus provide commentary overall on what the car is doing on the interval <m>[0,12]</m>.</p></li>
+
+        <li><p>On the lefthand axes provided in <xref ref="F_1.6.PA1b">Figure</xref>, sketch a careful, accurate graph of <m>y = s'(t)</m>.</p></li>
+
+        <li><p>What is the meaning of the function <m>y = s'(t)</m> in the context of the given problem?  What can we say about the car's behavior when <m>s'(t)</m> is positive?  when <m>s'(t)</m> is zero?  when <m>s'(t)</m> is negative?</p></li>
+
+        <li><p>Rename the function you graphed in (b) to be called <m>y = v(t)</m>.  Describe the behavior of <m>v</m> in words, using phrases like <q><m>v</m> is increasing on the interval <m>\ldots</m></q> and <q><m>v</m> is constant on the interval <m>\ldots</m>.</q></p></li>
+
+        <li><p>Sketch a graph of the function <m>y = v'(t)</m> on the righthand axes provide in <xref ref="F_1.6.PA1b">Figure</xref>.  Write at least one sentence to explain how the behavior of <m>v'(t)</m> is connected to the graph of <m>y=v(t)</m>.</p></li>
+      </ol>
+
+      <figure xml:id="F_1.6.PA1b" >
+        <caption>Axes for plotting <m>y = v(t) = s'(t)</m> and <m>y = v'(t)</m>.</caption>
+        <image width="73%" source="images/1_6_PA1b" />
+      </figure>
+
+    </exploration>
+  </introduction>
+
+  <subsection>
+    <title>Increasing, decreasing, or neither</title>
+    <p>When we look at the graph of a function, there are features that strike us naturally, and common language can be used to name these features. In many different settings so far, we have intuitively used the words <em>increasing</em> and <em>decreasing</em> to describe a function's graph. Here we connect these terms more formally to a function's behavior on an interval of input values.</p>
+
+    <definition>
+      <statement>
+        <p>Given a function <m>f(x)</m> defined on the interval <m>(a,b)</m>, we say that <term><m>f</m> is increasing on <m>(a,b)</m></term> provided that for all <m>x</m>, <m>y</m> in the interval <m>(a,b)</m>, if <m>x \lt  y</m>, then <m>f(x) \lt  f(y)</m>. Similarly, we say that <term><m>f</m> is decreasing on <m>(a,b)</m></term> provided that for all <m>x</m>, <m>y</m> in the interval <m>(a,b)</m>, if <m>x \lt  y</m>, then <m>f(x) > f(y)</m>.</p>
+      </statement>
+    </definition>
+
+    <p>Simply put, an increasing function is one that is rising as we move from left to right along the graph, and a decreasing function is one that falls as the value of the input increases. For a function that has a derivative, we can use the sign of the derivative to determine whether or not the function is increasing or decreasing.</p>
+
+    <p>Let <m>f</m> be a function that is differentiable on an interval <m>(a,b)</m>. We say that <m>f</m> is increasing on <m>(a,b)</m> if and only if <m>f'(x) > 0</m> for every <m>x</m> such that <m>a \lt  x \lt  b</m>; similarly, <m>f</m> is decreasing on <m>(a,b)</m> if and only if <m>f'(x) \lt  0</m>. If <m>f'(a) = 0</m>, then we say <m>f</m> is neither increasing nor decreasing at <m>x = a</m>.</p>
+
+    <figure xml:id="F_1.6.Intro2" >
+      <caption>A function that is decreasing on the intervals <m>-3 \lt  x \lt  -2</m> and <m>0 \lt  x  \lt  2</m> and increasing on <m>-2 \lt  x \lt  0</m> and <m>2 \lt  x \lt  3</m>.</caption>
+      <image width="73%" source="images/1_6_Intro2" />
+    </figure>
+
+    <p>For example, the function pictured in <xref ref="F_1.6.Intro2">Figure</xref> is increasing on the entire interval <m>-2 \lt  x \lt  0</m>. Note that at both <m>x = \pm 2</m> and <m>x = 0</m>, we say that <m>f</m> is neither increasing nor decreasing, because <m>f'(x) = 0</m> at these values.</p>
+  </subsection>
+
+  <subsection>
+    <title>The Second Derivative</title>
+    <p><index><main>second derivative</main></index></p>
+
+    <p>For any function, we are now accustomed to investigating its behavior by thinking about its derivative. Given a function <m>f</m>, its derivative is a new function, one that is given by the rule
+      <me>
+        f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}.
+      </me>
+    </p>
+
+    <p>Because <m>f'</m> is itself a function, it is perfectly feasible for us to consider the derivative of the derivative, which is the new function <m>y = [f'(x)]'</m>. We call this resulting function <em>the second derivative</em><index><main>second derivative</main></index> of <m>y = f(x)</m>, and denote the second derivative by <m>y = f''(x)</m>.
+      Due to the presence of multiple possible derivatives, we will sometimes call <m>f'</m> <q>the first derivative</q> of <m>f</m>, rather than simply <q>the derivative</q> of <m>f</m>. Formally, the second derivative is defined by the limit definition of the derivative of the first derivative:
+      <me>
+        f''(x) = \lim_{h \to 0} \frac{f'(x+h)-f'(x)}{h}.
+      </me>
+    </p>
+
+    <p>We note that all of the established meaning of the derivative function still holds, so when we compute <m>y = f''(x)</m>, this new function measures slopes of tangent lines to the curve <m>y = f'(x)</m>, as well as the instantaneous rate of change of <m>y = f'(x)</m>. In other words, just as the first derivative measures the rate at which the original function changes, the second derivative measures the rate at which the first derivative changes. This means that the second derivative tracks the instantaneous rate of change of the instantaneous rate of change of <m>f</m>. That is, the second derivative will help us to understand how the rate of change of the original function is itself changing.</p>
+  </subsection>
+
+  <subsection>
+    <title>Concavity</title>
+    <p>In addition to asking <em>whether</em> a function is increasing or decreasing, it is also natural to inquire <em>how</em> a function is increasing or decreasing. To begin, there are three basic behaviors that an increasing function can demonstrate on an interval, as pictured in <xref ref="F_1.6.3optsi">Figure</xref>: the function can increase more and more rapidly, increase at the same rate, or increase in a way that is slowing down. Fundamentally, we are beginning to think about how a particular curve bends, with the natural comparison being made to lines, which don't bend at all. More than this, we want to understand how the bend in a function's graph is tied to behavior characterized by the first derivative of the function.</p>
+
+    <figure xml:id="F_1.6.3optsi" >
+      <caption>Three functions that are all increasing, but doing so at an increasing rate, at a constant rate, and at a decreasing rate, respectively.</caption>
+      <image width="73%" source="images/1_6_3optsi" />
+    </figure>
+
+    <p>For the leftmost curve in <xref ref="F_1.6.3optsi">Figure</xref>, picture a sequence of tangent lines to the curve. As we move from left to right, the slopes of those tangent lines will increase. Therefore, the rate of change of the pictured function is increasing, and this explains why we say this function is <em>increasing at an increasing rate</em>. For the rightmost graph in <xref ref="F_1.6.3optsi">Figure</xref>, observe that as <m>x</m> increases, the function increases but the slope of the tangent line decreases, hence this function is <em>increasing at a decreasing rate</em>.</p>
+
+    <p>Of course, similar options hold for how a function can decrease. Here we must be extra careful with our language, since decreasing functions involve negative slopes, and negative numbers present an interesting situation in the tension between common language and mathematical language. For example, it can be tempting to say that <q><m>-100</m> is bigger than <m>-2</m>.</q> But we must remember that when we say one number is greater than another, this describes how the numbers lie on a number line: <m>x \lt  y</m> provided that <m>x</m> lies to the left of <m>y</m>. So of course, <m>-100</m> is less than <m>-2</m>. Informally, it might be helpful to say that <q><m>-100</m> is more negative than <m>-2</m>.</q> This leads us to note particularly that when a function's values are negative, and those values subsequently get more negative, the function must be decreasing.</p>
+
+    <p>Now consider the three graphs shown in <xref ref="F_1.6.3optsd">Figure</xref>. Clearly the middle graph demonstrates the behavior of a function decreasing at a constant rate. If we think about a sequence of tangent lines to the first curve that progress from left to right, we see that the slopes of these lines get less and less negative as we move from left to right. That means that the values of the first derivative, while all negative, are increasing, and thus we say that the leftmost curve is <em>decreasing at an increasing rate</em>.</p>
+
+    <figure xml:id="F_1.6.3optsd" >
+      <caption>From left to right, three functions that are all decreasing, but doing so in different ways.</caption>
+      <image width="73%" source="images/1_6_3optsd" />
+    </figure>
+
+    <p>This leaves only the rightmost curve in <xref ref="F_1.6.3optsd">Figure</xref> to consider. For that function, the slope of the tangent line is negative throughout the pictured interval, but as we move from left to right, the slopes get more and more negative. Hence the slope of the curve is decreasing, and we say that the function is <em>decreasing at a decreasing rate</em>.</p>
+
+    <p>This leads us to introduce the notion of <em>concavity</em> <index><main>concavity</main></index> which provides simpler language to describe some of these behaviors. Informally, when a curve opens up on a given interval, like the upright parabola <m>y = x^2</m> or the exponential growth function <m>y = e^x</m>, we say that the curve is <em>concave up</em> on that interval. Likewise, when a curve opens down, such as the parabola <m>y = -x^2</m> or the opposite of the exponential function <m>y = -e^{x}</m>, we say that the function is <em>concave down</em>. This behavior is linked to both the first and second derivatives of the function.</p>
+
+    <p>In <xref ref="F_1.6.concavity">Figure</xref>, we see two functions along with a sequence of tangent lines to each. On the lefthand plot where the function is concave up, observe that the tangent lines to the curve always lie below the curve itself and that, as we move from left to right, the slope of the tangent line is increasing. Said differently, the function <m>f</m> is concave up on the interval shown because its derivative, <m>f'</m>, is increasing on that interval. Similarly, on the righthand plot in <xref ref="F_1.6.concavity">Figure</xref>, where the function shown is concave down, there we see that the tangent lines alway lie above the curve and that the value of the slope of the tangent line is decreasing as we move from left to right. Hence, what makes <m>f</m> concave down on the interval is the fact that its derivative, <m>f'</m>, is decreasing.</p>
+
+    <figure xml:id="F_1.6.concavity" >
+      <caption>At left, a function that is concave up; at right, one that is concave down.</caption>
+      <image width="73%" source="images/1_6_concavity" />
+    </figure>
+
+    <p>We state these most recent observations formally as the definitions of the terms <em>concave up</em> and <em>concave down</em>.</p>
+
+    <definition>
+      <statement>
+        <p>Let <m>f</m> be a differentiable function on an interval <m>(a,b)</m>. Then <m>f</m> is <term>concave up</term> <index><main>concave up</main></index> on <m>(a,b)</m> if and only if <m>f'</m> is increasing on <m>(a,b)</m>; <m>f</m> is <term>concave down</term> <index><main>concave down</main></index> on <m>(a,b)</m> if and only if <m>f'</m> is decreasing on <m>(a,b)</m>.</p>
+      </statement>
+    </definition>
+
+    <p>The following activities lead us to further explore how the first and second derivatives of a function determine the behavior and shape of its graph. We begin by revisiting <xref ref="PA_1.6">Preview Activity</xref>.</p>
+
+    <activity xml:id="A_1.6.1">
+      <p>The position of a car driving along a straight road at time <m>t</m> in minutes is given by the function <m>y = s(t)</m> that is pictured in <xref ref="F_1.6.A1">Figure</xref>. The car's position function has units measured in thousands of feet. Remember that you worked with this function and sketched graphs of <m>y = v(t) = s'(t)</m> and <m>y = v'(t)</m> in <xref ref="PA_1.6">Preview Activity</xref>.</p>
+
+      <figure xml:id="F_1.6.A1" >
+        <caption>The graph of <m>y = s(t)</m>, the position of the car (measured in thousands of feet from its starting location) at time <m>t</m> in minutes.</caption>
+        <image width="73%" source="images/1_6_PA1" />
+      </figure>
+
+      <ol>
+        <li><p>On what intervals is the position function <m>y = s(t)</m> increasing? decreasing?  Why?</p></li>
+
+        <li><p>On which intervals is the velocity function <m>y = v(t) = s'(t)</m> increasing? decreasing? neither?  Why?</p></li>
+
+        <li><p><em>Acceleration</em> <index><main>acceleration</main></index> is defined to be the instantaneous rate of change of velocity, as the acceleration of an object measures the rate at which the velocity of the object is changing.  Say that the car's acceleration function is named <m>a(t)</m>.  How is <m>a(t)</m> computed from <m>v(t)</m>?  How is <m>a(t)</m> computed from <m>s(t)</m>?  Explain.</p></li>
+
+        <li><p>What can you say about <m>s''</m> whenever <m>s'</m> is increasing?  Why?</p></li>
+
+        <li><p>Using only the words <em>increasing</em>, <em>decreasing</em>, <em>constant</em>, <em>concave up</em>, <em>concave down</em>, and <em>linear</em>, complete the following sentences.  For the position function <m>s</m> with velocity <m>v</m> and acceleration <m>a</m>,
+
+        <ul>
+          <li><p>on an interval where <m>v</m> is positive, <m>s</m> is <fillin />.</p></li>
+
+          <li><p>on an interval where <m>v</m> is negative, <m>s</m> is <fillin />.</p></li>
+
+          <li><p>on an interval where <m>v</m> is zero, <m>s</m> is <fillin />.</p></li>
+
+          <li><p>on an interval where <m>a</m> is positive, <m>v</m> is <fillin />.</p></li>
+
+          <li><p>on an interval where <m>a</m> is negative, <m>v</m> is <fillin />.</p></li>
+
+          <li><p>on an interval where <m>a</m> is zero, <m>v</m> is <fillin />.</p></li>
+
+          <li><p>on an interval where <m>a</m> is positive, <m>s</m> is <fillin />.</p></li>
+
+          <li><p>on an interval where <m>a</m> is negative, <m>s</m> is <fillin />.</p></li>
+
+          <li><p>on an interval where <m>a</m> is zero, <m>s</m> is <fillin />.</p></li>
+        </ul>
+        </p></li>
+      </ol>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Remember that a function is increasing on an interval if and only if its first derivative is positive on the interval.</p></li>
+
+          <li><p>See (a).</p></li>
+
+          <li><p>Remember that the first derivative of a function measures its instantaneous rate of change.</p></li>
+
+          <li><p>Think about how <m>s''(t) = [s'(t)]'</m>.</p></li>
+
+          <li><p>Be very careful with your letters:  <m>s</m>, <m>v</m>, and <m>a</m>.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>The position function <m>y = s(t)</m> increasing on the intervals <m>0\lt t\lt 2</m>, <m>3\lt t\lt 5</m>, <m>7\lt t\lt 9</m>, and <m>10\lt t\lt 12</m>, because at every point in such intervals, <m>s'(t)</m> is positive.  For the provided function, <m>s(t)</m> is never decreasing because its derivative is never negative.</p></li>
+
+          <li><p>The velocity function <m>y = v(t)</m> appears to be increasing on the intervals <m>0\lt t\lt 1</m>, <m>3\lt t\lt 4</m>, <m>7\lt t\lt 8</m>, and <m>10\lt t\lt 11</m> because the curve <m>y = s(t)</m> is concave up which corresponds to an increasing first derivative <m>y =s'(t)</m>.  Similarly, <m>y = v(t)</m> appears to be decreasing on the intervals <m>1\lt t\lt 2</m>, <m>4\lt t\lt 5</m>, <m>8\lt t\lt 9</m>, and <m>11\lt t\lt 12</m> because the curve <m>y = s(t)</m> is concave down which corresponds to a decreasing first derivative <m>y =s'(t)</m>.  On the intervals <m>2\lt t\lt 3</m>, <m>5\lt t\lt 7</m>, and <m>9\lt t\lt 10</m>, the curve <m>y = s(t)</m> is constant, and thus linear, so neither concave up nor concave down.</p></li>
+
+          <li><p>Since <m>a(t)</m> is the instantaneous rate of change of <m>v(t)</m>, <m>a(t) = v'(t)</m>.  And because <m>v(t) = s'(t)</m>, it follows that <m>a(t) = v'(t) = [s'(t)]' = s''(t)</m>, so acceleration is the second derivative of position.</p></li>
+
+          <li><p>Because <m>s''(t)</m> is the first derivative of <m>s'(t)</m>, when <m>s'(t)</m> is increasing, <m>s''(t)</m> must be positive.</p></li>
+
+          <li><p>For the position function <m>s(t)</m> with velocity <m>v(t)</m> and acceleration <m>a(t)</m>,
+
+          <ul>
+            <li><p>on an interval where <m>v(t)</m> is positive, <m>s(t)</m> is <em>increasing</em>.</p></li>
+
+            <li><p>on an interval where <m>v(t)</m> is negative, <m>s(t)</m> is <em>decreasing</em>.</p></li>
+
+            <li><p>on an interval where <m>v(t)</m> is zero, <m>s(t)</m> is <em>constant</em>.</p></li>
+
+            <li><p>on an interval where <m>a(t)</m> is positive, <m>v(t)</m> is <em>increasing</em>.</p></li>
+
+            <li><p>on an interval where <m>a(t)</m> is negative, <m>v(t)</m> is <em>decreasing</em>.</p></li>
+
+            <li><p>on an interval where <m>a(t)</m> is zero, <m>v(t)</m> is <em>constant</em>.</p></li>
+
+            <li><p>on an interval where <m>a(t)</m> is positive, <m>s(t)</m> is <em>concave up</em>.</p></li>
+
+            <li><p>on an interval where <m>a(t)</m> is negative, <m>s(t)</m> is <em>concave down</em>.</p></li>
+
+            <li><p>on an interval where <m>a(t)</m> is zero, <m>s(t)</m> is <em>linear</em>.</p></li>
+          </ul>
+          </p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <p>The context of position, velocity, and acceleration is an excellent one in which to understand how a function, its first derivative, and its second derivative are related to one another. In <xref ref="A_1.6.1">Activity</xref>, we can replace <m>s</m>, <m>v</m>, and <m>a</m> with an arbitrary function <m>f</m> and its derivatives <m>f'</m> and <m>f''</m>, and essentially all the same observations hold. In particular, note that <m>f'</m> is increasing if and only if <m>f</m> is concave up, and similarly <m>f'</m> is increasing if and only if <m>f''</m> is positive. Likewise, <m>f'</m> is decreasing if and only if <m>f</m> is concave down, and <m>f'</m> is decreasing if and only if <m>f''</m> is negative.</p>
+
+    <activity xml:id="A_1.6.3">
+      <p>A potato is placed in an oven, and the potato's temperature <m>F</m> (in degrees Fahrenheit) at various points in time is taken and recorded in the following table. Time <m>t</m> is measured in minutes. In <xref ref="A_1.5.1">Activity</xref>, we computed approximations to <m>F'(30)</m> and <m>F'(60)</m> using central differences. Those values and more are provided in the second table below, along with several others computed in the same way.</p>
+      <tabular>
+      <row>
+      <cell><tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><m>t</m></cell>
+          <cell><m>F(t)</m></cell>
+        </row>
+        <row bottom="medium">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell  >0</cell>
+          <cell>70</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>15</cell>
+          <cell>180.5</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>30</cell>
+          <cell>251</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>45</cell>
+          <cell>296</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>60</cell>
+          <cell>324.5</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>75</cell>
+          <cell>342.8</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>90</cell>
+          <cell>354.5</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular></cell>
+      <cell><tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><m>t</m></cell>
+          <cell><m>F'(t)</m></cell>
+        </row>
+        <row bottom="medium">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell  >0</cell>
+          <cell>NA</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>15</cell>
+          <cell>6.03</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>30</cell>
+          <cell>3.85</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>45</cell>
+          <cell>2.45</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>60</cell>
+          <cell>1.56</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>75</cell>
+          <cell>1.00</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>90</cell>
+          <cell>NA</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular></cell>
+      </row>
+      </tabular>
+
+      <ol>
+        <li><p>What are the units on the values of <m>F'(t)</m>?</p></li>
+
+        <li><p>Use a central difference to estimate the value of <m>F''(30)</m>.</p></li>
+
+        <li><p>What is the meaning of the value of <m>F''(30)</m> that you have computed in (b) in terms of the potato's temperature?  Write several careful sentences that discuss, with appropriate units, the values of <m>F(30)</m>, <m>F'(30)</m>, and <m>F''(30)</m>, and explain the overall behavior of the potato's temperature at this point in time.</p></li>
+
+        <li><p>Overall, is the potato's temperature increasing at an increasing rate, increasing at a constant rate, or increasing at a decreasing rate?  Why?</p></li>
+      </ol>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Remember that the derivative's units are <q>units of output per unit of input.</q></p></li>
+
+          <li><p>To estimate <m>g'(a)</m>, we can use
+              <me>
+                g'(a) \approx \frac{g(a+h)-g(a-h)}{2h}
+              </me>
+              for an appropriate choice of <m>h</m>.</p></li>
+
+          <li><p>For each of the values <m>F'(30)</m> and <m>F''(30)</m>, think about what they tell you about expected upcoming behavior in <m>F(t)</m> and <m>F'(t)</m>, respectively.</p></li>
+
+          <li><p>Think concavity.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p><m>F'(t)</m> has units measured in degrees Fahrenheit per minute.</p></li>
+
+          <li><p>Using a central difference,
+              <me>
+                F''(30) \approx \frac{F'(45)-F'(15)}{30} = \frac{2.45-6.03}{30} \approx -0.119.
+              </me>
+            </p></li>
+
+          <li><p>The value <m>F''(30) \approx -0.119</m>, which is measured in degrees per minute per minute tells us, along with the other data, that at the moment <m>t = 30</m>, the temperature of the potato is 251 degrees, that its temperature is rising at a rate of 3.85 degrees per minute, and that the rate at which the temperature is rising is <em>falling</em> at a rate of -0.119 degrees per minute per minute.  That is, while the temperature is rising, it is rising at a slower and slower rate.  At <m>t = 31</m>, we'd expect that the rate of increase of the potato's temperature would have dropped to about 3.73 degrees per minute.</p></li>
+
+          <li><p>The potato's temperature increasing at a decreasing rate because the values of the first derivative of <m>F</m> are falling.  Equivalently, this is because the value of <m>F''(t)</m> is negative throughout the given time interval.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <activity xml:id="A_1.6.2">
+      <p>This activity builds on our experience and understanding of how to sketch the graph of <m>f'</m> given the graph of <m>f</m>.</p>
+
+      <figure xml:id="F_1.6.A2" >
+        <caption>Two given functions <m>f</m>, with axes provided for plotting <m>f'</m> and <m>f''</m> below.</caption>
+        <image width="73%" source="images/1_6_Act2" />
+      </figure>
+
+      <p>In <xref ref="F_1.6.A2">Figure</xref>, given the respective graphs of two different functions <m>f</m>, sketch the corresponding graph of <m>f'</m> on the first axes below, and then sketch <m>f''</m> on the second set of axes. In addition, for each, write several careful sentences in the spirit of those in <xref ref="A_1.6.1">Activity</xref> that connect the behaviors of <m>f</m>, <m>f'</m>, and <m>f''</m>. For instance, write something such as</p>
+
+      <blockquote>
+
+      <p><m>f'</m> is <fillin /> on the interval <fillin />, which is connected to the fact that <m>f</m> is <fillin /> on the same interval <fillin />, and <m>f''</m> is <fillin /> on the interval as well</p>
+
+      </blockquote>
+
+      <p>but of course with the blanks filled in. Throughout, view the scale of the grid for the graph of <m>f</m> as being <m>1 \times 1</m>, and assume the horizontal scale of the grid for the graph of <m>f'</m> is identical to that for <m>f</m>. If you need to adjust the vertical scale on the axes for the graph of <m>f'</m> or <m>f''</m>, you should label that accordingly.</p>
+      <hint>
+        <p>Remember that to plot <m>y = f'(x)</m>, it is helpful to first identify where <m>f'(x) = 0.</m></p>
+      </hint>
+      <solution>
+        <p>The graphs of <m>f'</m> and <m>f''</m> are plotted in Figure<nbsp />***.</p>
+      </solution>
+    </activity>
+
+    <p>\begin{authornote}
+      This is an author note.
+      \end{authornote}</p>
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+    <ul>
+      <li><p>A differentiable function <m>f</m> is increasing at a point or on an interval whenever its first derivative is positive, and decreasing whenever its first derivative is negative.</p></li>
+
+      <li><p>By taking the derivative of the derivative of a function <m>f</m>, we arrive at the second derivative, <m>f''</m>.  The second derivative measures the instantaneous rate of change of the first derivative, and thus the sign of the second derivative tells us whether or not the slope of the tangent line to <m>f</m> is increasing or decreasing.</p></li>
+
+      <li><p>A differentiable function is concave up whenever its first derivative is increasing (or equivalently whenever its second derivative is positive), and concave down whenever its first derivative is decreasing (or equivalently whenever its second derivative is negative).  Examples of functions that are everywhere concave up are <m>y = x^2</m> and <m>y = e^x</m>; examples of functions that are everywhere concave down are <m>y = -x^2</m> and <m>y = -e^x</m>.</p></li>
+
+      <li><p>The units on the second derivative are <q>units of output per unit of input per unit of input.</q>  They tell us how the value of the derivative function is changing in response to changes in the input.  In other words, the second derivative tells us the rate of change of the rate of change of the original function.</p></li>
+    </ul>
+    <exercises>
+      <exercise>
+        <statement>
+          <p>Suppose that <m>y = f(x)</m> is a differentiable function for which the following information is known: <m>f(2) = -3</m>, <m>f'(2) = 1.5</m>, <m>f''(2) = -0.25</m>.
+
+          <ol>
+            <li><p>Is <m>f</m> increasing or decreasing at <m>x = 2</m>?  Is <m>f</m> concave up or concave down at <m>x = 2</m>?</p></li>
+
+            <li><p>Do you expect <m>f(2.1)</m> to be greater than <m>-3</m>, equal to <m>-3</m>, or less than <m>-3</m>?  Why?</p></li>
+
+            <li><p>Do you expect <m>f'(2.1)</m> to be greater than <m>1.5</m>, equal to <m>1.5</m>, or less than <m>1.5</m>?  Why?</p></li>
+
+            <li><p>Sketch a graph of <m>y = f(x)</m> near <m>(2,f(2))</m> and include a graph of the tangent line.</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>For a certain function <m>y = g(x)</m>, its derivative is given by the function pictured in <xref ref="F_1.6.Ez2">Figure</xref>.</p>
+
+          <figure xml:id="F_1.6.Ez2" >
+            <caption>The graph of <m>y = g'(x)</m>.</caption>
+            <image width="73%" source="images/1_6_Ez2" />
+          </figure>
+
+          <ol>
+            <li><p>What is the approximate slope of the tangent line to <m>y = g(x)</m> at the point <m>(2,g(2))</m>?</p></li>
+
+            <li><p>How many real number solutions can there be to the equation <m>g(x) = 0</m>?  Justify your conclusion fully and carefully by explaining what you know about how the graph of <m>g</m> must behave based on the given graph of <m>g'</m>.</p></li>
+
+            <li><p>On the interval <m>-3 \lt  x \lt  3</m>, how many times does the concavity of <m>g</m> change?  Why?</p></li>
+
+            <li><p>Use the provided graph to estimate the value of <m>g''(2)</m>.</p></li>
+          </ol>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>A bungee jumper's height <m>h</m> (in feet ) at time <m>t</m> (in seconds) is given in part by the data in the following table:</p>
+          <tabular>
+            <row>
+              <cell><m>t</m></cell>
+              <cell>0.0</cell>
+              <cell>0.5</cell>
+              <cell>1.0</cell>
+              <cell>1.5</cell>
+              <cell>2.0</cell>
+              <cell>2.5</cell>
+              <cell>3.0</cell>
+              <cell>3.5</cell>
+              <cell>4.0</cell>
+              <cell>4.5</cell>
+              <cell>5.0</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell><m>h(t)</m></cell>
+              <cell>200</cell>
+              <cell>184.2</cell>
+              <cell>159.9</cell>
+              <cell>131.9</cell>
+              <cell>104.7</cell>
+              <cell>81.8</cell>
+              <cell>65.5</cell>
+              <cell>56.8</cell>
+              <cell>55.5</cell>
+              <cell>60.4</cell>
+              <cell>69.8</cell>
+            </row>
+          </tabular>
+          <tabular>
+            <row>
+              <cell><m>t</m></cell>
+              <cell>5.5</cell>
+              <cell>6.0</cell>
+              <cell>6.5</cell>
+              <cell>7.0</cell>
+              <cell>7.5</cell>
+              <cell>8.0</cell>
+              <cell>8.5</cell>
+              <cell>9.0</cell>
+              <cell>9.5</cell>
+              <cell>10.0</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell><m>h(t)</m></cell>
+              <cell>81.6</cell>
+              <cell>93.7</cell>
+              <cell>104.4</cell>
+              <cell>112.6</cell>
+              <cell>117.7</cell>
+              <cell>119.4</cell>
+              <cell>118.2</cell>
+              <cell>114.8</cell>
+              <cell>110.0</cell>
+              <cell>104.7</cell>
+            </row>
+          </tabular>
+
+          <ol>
+            <li><p>Use the given data to estimate <m>h'(4.5)</m>, <m>h'(5)</m>, and <m>h'(5.5)</m>.  At which of these times is the bungee jumper rising most rapidly?</p></li>
+
+            <li><p>Use the given data and your work in (a) to estimate <m>h''(5)</m>.</p></li>
+
+            <li><p>What physical property of the bungee jumper does the value of <m>h''(5)</m> measure?  What are its units?</p></li>
+
+            <li><p>Based on the data, on what approximate time intervals is the function <m>y = h(t)</m> concave down?  What is happening to the velocity of the bungee jumper on these time intervals?</p></li>
+          </ol>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>For each prompt that follows, sketch a possible graph of a function on the interval <m>-3 \lt  x \lt  3</m> that satisfies the stated properties.
+
+          <ol>
+            <li><p><m>y = f(x)</m> such that <m>f</m> is increasing on <m>-3 \lt  x \lt  3</m>, <m>f</m> is concave up on <m>-3 \lt  x \lt  0</m>, and <m>f</m> is concave down on <m>0 \lt  x \lt  3</m>.</p></li>
+
+            <li><p><m>y = g(x)</m> such that <m>g</m> is increasing on <m>-3 \lt  x \lt  3</m>, <m>g</m> is concave down on <m>-3 \lt  x \lt  0</m>, and <m>g</m> is concave up on <m>0 \lt  x \lt  3</m>.</p></li>
+
+            <li><p><m>y = h(x)</m> such that <m>h</m> is decreasing on <m>-3 \lt  x \lt  3</m>, <m>h</m> is concave up on <m>-3 \lt  x \lt  -1</m>, neither concave up nor concave down on <m>-1 \lt  x \lt  1</m>, and <m>h</m> is concave down on <m>1 \lt  x \lt  3</m>.</p></li>
+
+            <li><p><m>y = p(x)</m> such that <m>p</m> is decreasing and concave down on <m>-3 \lt  x \lt  0</m> and <m>p</m> is increasing and concave down on <m>0 \lt  x \lt  3</m>.</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+    </exercises>
+  </subsection>
+</section>
