@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<exercises xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="ez-7-3">
+
+
+  <exercise xml:id="ez-7-3-WW1">
+    <webwork source="Library/Michigan/Chap11Sec3/Q01.pg" />
+  </exercise> 
+
+  <exercise xml:id="ez-7-3-WW2">
+    <webwork source="Library/Michigan/Chap11Sec3/Q03.pg" />
+  </exercise> 
+
+  <exercise xml:id="ez-7-3-WW3">
+    <webwork source="Library/Michigan/Chap11Sec3/Q09.pg" />
+  </exercise> 
+
+
+      <exercise>
+        <statement>
+          <p>Newton's Law of Cooling says that the rate at which an
+          object, such as a cup of coffee, cools is proportional to the
+          difference in the object's temperature and room temperature. If
+          <m>T(t)</m> is the object's temperature and <m>T_r</m> is room temperature,
+          this law is expressed at
+          <me>
+            \frac{dT}{dt} = -k(T-T_r),
+          </me>
+          where <m>k</m> is a constant of proportionality. In this problem,
+          temperature is
+          measured in degrees Fahrenheit and time in minutes.
+
+          <ol>
+            <li><p>Two calculus students, Alice and Bob, enter a 70<m>^\circ</m>
+                    classroom at the same time.  Each has a cup of coffee that is
+                    100<m>^\circ</m>.  The differential equation for Alice has a constant
+                    of proportionality <m>k=0.5</m>, while the constant of proportionality
+                    for Bob is <m>k=0.1</m>.
+
+                    What is the initial rate of change for Alice's coffee? 
+                    What is the initial rate of change for Bob's coffee?</p></li>
+
+            <li><p>What feature of Alice's and Bob's cups of coffee could explain
+                    this difference?</p></li>
+
+            <li><p>As the heating unit turns on and off in the room, the
+                    temperature in the room is
+                <me>
+                  T_r=70+10\sin t.
+                </me>
+                Implement Euler's
+                    method with a step size of <m>\Delta t = 0.1</m> to approximate the
+                    temperature of Alice's coffee over the time interval <m>0\leq t\leq
+                    50</m>.  This will most easily be performed using a spreadsheet such
+                    as <em>Excel</em>.  Graph the temperature of her coffee and room
+                    temperature over this interval.</p></li>
+
+            <li><p>In the same way, implement Euler's method to approximate the
+                    temperature of Bob's
+                    coffee over the same time interval.  Graph the temperature of his
+                    coffee and room temperature over the interval.</p></li>
+
+            <li><p>Explain the similarities and differences that you see in the
+                    behavior of Alice's and Bob's cups of coffee.</p></li>
+          </ol>
+          </p>
+        </statement>
+  <answer>
+    <p>Exercise Answer</p>
+  </answer>
+  <solution>
+    <p>Exercise Solution</p>
+  </solution>  
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>We have seen that the error in approximating the solution to
+            an initial value problem is proportional to <m>\Delta t</m>. That is,
+            if <m>E_{\Delta t}</m> is the Euler's method approximation to the
+            solution to an initial value problem at <m>\overline{t}</m>, then
+            <me>
+              y(\overline{t})-E_{\Delta t} \approx K\Delta t
+            </me>
+            for some constant of proportionality <m>K</m>.</p>
+
+          <p>In this problem, we will see how to use this fact to improve our
+          estimates, using an idea called <em>accelerated convergence</em>.
+
+          <ol>
+            <li><p>We will create a new approximation by assuming the error is
+                    <em>exactly</em> proportional to <m>\Delta t</m>, according to the formula
+                <me>
+                  y(\overline{t})-E_{\Delta t} =K\Delta t.
+                </me>
+                Using our earlier results from the initial value problem <m>dy/dt = y</m> and
+                    <m>y(0)=1</m> with <m>\Delta t = 0.2</m> and <m>\Delta t = 0.1</m>, we have
+                <md>
+                  <mrow>y(1) - 2.4883 =\mathstrut \amp  0.2K</mrow>
+                  <mrow>y(1) - 2.5937 =\mathstrut \amp  0.1K.</mrow>
+                </md>
+                This is a system of two linear equations in the unknowns <m>y(1)</m>
+                    and <m>K</m>.  Solve this system to find a new approximation for
+                    <m>y(1)</m>.  (You may remember that the exact value is <m>y(1) = e =
+                    2.71828\ldots.</m>)</p></li>
+
+            <li><p>Use the other data, <m>E_{0.05} = 2.6533</m> and <m>E_{0.025} = 2.6851</m>
+                    to do similar work as in (a) to obtain another approximation.  Which gives the better
+                    approximation?  Why do you think this is?</p></li>
+
+            <li><p>Let's now study the initial value problem
+                <me>
+                  \frac{dy}{dt} = t-y, \ y(0) = 0.
+                </me>
+                Approximate <m>y(0.3)</m> by applying Euler's method to find
+                    approximations <m>E_{0.1}</m> and <m>E_{0.05}</m>.  Now use the idea of
+                    accelerated convergence to obtain a better approximation.  (For the sake of comparison, you want to  note that the actual value is <m>y(0.3) =
+                    0.0408</m>.)</p></li>
+          </ol>
+          </p>
+        </statement>
+  <answer>
+    <p>Exercise Answer</p>
+  </answer>
+  <solution>
+    <p>Exercise Solution</p>
+  </solution>          
+      </exercise>
+
+      <exercise>
+        <statement>
+          <p>In this problem, we'll modify Euler's method to obtain better
+            approximations to solutions of initial value problems. This
+            method is called the <em>Improved Euler's method.</em></p>
+
+          <p>In Euler's method, we walk across an interval of width <m>\Delta t</m>
+            using the slope obtained from the differential equation at the
+            left endpoint of the interval. Of course, the slope of the
+            solution will most likely change over this interval. We can
+            improve our approximation by trying to incorporate the change in
+            the slope over the interval.</p>
+
+          <p>Let's again consider the initial value problem <m>dy/dt = y</m> and
+            <m>y(0) = 1</m>, which we will approximate using steps of width <m>\Delta
+                t = 0.2</m>. Our first interval is therefore <m>0\leq t \leq 0.2</m>. At
+            <m>t=0</m>, the differential equation tells us that the slope is 1, and
+            the approximation we obtain from Euler's method is that
+            <m>y(0.2)\approx y_1= 1+ 1(0.2)= 1.2</m>.</p>
+
+          <p>This gives us some idea for how the slope has changed over the
+            interval <m>0\leq t\leq 0.2</m>. We know the slope at <m>t=0</m> is 1,
+            while the slope at <m>t=0.2</m> is 1.2, trusting in the Euler's method
+            approximation. We will therefore refine our estimate of the
+            initial slope to be the average of these two slopes; that is, we
+            will estimate the slope to be <m>(1+1.2)/2 = 1.1</m>. This gives the
+            new approximation <m>y(1) = y_1 = 1 + 1.1(0.2) = 1.22</m>.</p>
+
+          <p>The first few steps look like what is found in <href ref="T-7-3-ez-3">Table</href>.</p>
+          <table href="T-7-3-ez-3">
+            <caption>The first several steps of the improved Euler's method</caption>
+          <tabular>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell><m>t_i</m></cell>
+              <cell><m>y_i</m></cell>
+              <cell>Slope at <m>(t_{i+1},y_{i+1})</m></cell>
+              <cell>Average slope</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>0.0</cell>
+              <cell>1.0000</cell>
+              <cell>1.2000</cell>
+              <cell>1.1000</cell>
+            </row>
+            <row>
+              <cell>0.2</cell>
+              <cell>1.2200</cell>
+              <cell>1.4640</cell>
+              <cell>1.3420</cell>
+            </row>
+            <row>
+              <cell>0.4</cell>
+              <cell>1.4884</cell>
+              <cell>1.7861</cell>
+              <cell>1.6372</cell>
+            </row>
+            <row>
+              <cell><m>\vdots</m></cell>
+              <cell><m>\vdots</m></cell>
+              <cell><m>\vdots</m></cell>
+              <cell><m>\vdots</m></cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+          </tabular>
+        </table>
+
+          <ol>
+            <li><p>Continue with this method to obtain an approximation for <m>y(1) =
+                    e</m>.</p></li>
+
+            <li><p>Repeat this method with <m>\Delta t = 0.1</m> to obtain a better
+                    approximation for <m>y(1)</m>.</p></li>
+
+            <li><p>We saw that the error in Euler's method is proportional to
+                    <m>\Delta t</m>.  Using your results from parts (a) and (b), what power
+                    of <m>\Delta t</m> appears to be proportional to the error in the
+                    Improved Euler's Method?</p></li>
+          </ol>
+        </statement>
+
+  <answer>
+    <p>Exercise Answer</p>
+  </answer>
+  <solution>
+    <p>Exercise Solution</p>
+  </solution>  
+
+      </exercise>
+
+</exercises>
+

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-3-3-optimization">
+
+<title>Global Optimization</title>
+
+<introduction>
+	<objectives>
+		<ul>
+		<li><p>What are the differences between finding relative extreme values and global extreme values of a function?</p></li>
+		<li><p>How is the process of finding the global maximum or minimum of a function over the function's entire domain different from determining the global maximum or minimum on a restricted domain?</p></li>
+		<li><p>For a function that is guaranteed to have both a global maximum and global minimum on a closed, bounded interval, what are the possible points at which these extreme values occur?</p></li>
+		</ul>
+	</objectives>
+<p>
+We have seen that we can use the first derivative of a function to determine where the function is increasing or decreasing, and the second derivative to know where the function is concave up or concave down. Each of these approaches provides us with key information that helps us determine the overall shape and behavior of the graph, as well as whether the function has a relative minimum or relative maximum at a given critical number. Remember that the difference between a relative maximum and a global maximum is that there is a relative maximum of <m>f</m> at <m>x = p</m> if <m>f(p) \ge f(x)</m> for all <m>x</m> near <m>p</m>, while there is a global maximum at <m>p</m> if <m>f(p) \ge f(x)</m> for all <m>x</m> in the domain of <m>f</m>.
+</p>
+<figure xml:id="F-3-3-Intro" >
+	<caption>A function <m>f</m> with a global maximum, but no global minimum.</caption>
+	<image width="50%" source="images/3_3_Intro" />
+</figure>
+<p>
+For instance, in <xref ref="F-3-3-Intro">Figure</xref>, we see a function <m>f</m> that has a global maximum at <m>x = c</m> and a relative maximum at <m>x = a</m>, since <m>f(c)</m> is greater than <m>f(x)</m> for every value of <m>x</m>, while <m>f(a)</m> is only greater than the value of <m>f(x)</m> for <m>x</m> near <m>a</m>. Since the function appears to decrease without bound, <m>f</m> has no global minimum, though clearly <m>f</m> has a relative minimum at <m>x = b</m>.
+</p>
+
+<p>
+Our emphasis in this section is on finding the global extreme values of a function (if they exist). In so doing, we will either be interested in the behavior of the function over its entire domain or on some restricted portion. The former situation is familiar and similar to work that we did in the two preceding sections of the text. We explore this through a particular example in the following preview activity.
+</p>
+
+	<xi:include href="./previews/PA-3-3.xml" />
+
+</introduction>
+
+<subsection>
+<title>Global Optimization</title>
+<p>
+For the functions in <xref ref="F-3-3-Intro">Figure</xref> and <xref ref="PA-3-3">Preview Activity</xref>, we were interested in finding the global minimum and global maximum on the entire domain, which turned out to be <m>(-\infty, \infty)</m> for each. At other times, our perspective on a function might be more focused due to some restriction on its domain. For example, rather than considering <m>f(x) = 2 + \frac{3}{1+(x+1)^2}</m> for every value of <m>x</m>, perhaps instead we are only interested in those <m>x</m> for which <m>0 \le x \le 4</m>, and we would like to know which values of <m>x</m> in the interval <m>[0,4]</m> produce the largest possible and smallest possible values of <m>f</m>. We are accustomed to critical numbers playing a key role in determining the location of extreme values of a function; now, by restricting the domain to an interval, it makes sense that the endpoints of the interval will also be important to consider, as we see in the following activity. When limiting ourselves to a particular interval, we will often refer to the <em>absolute</em> maximum or minimum value, rather than the <em>global</em> maximum or minimum.
+</p>
+
+	<xi:include href="./activities/act-3-3-1.xml" /> 
+
+<p>
+In <xref ref="act-3-3-1">Activity</xref>, we saw how the absolute maximum and absolute minimum of a function on a closed, bounded interval <m>[a,b]</m>, depend not only on the critical numbers of the function, but also on the selected values of <m>a</m> and <m>b</m>. These observations demonstrate several important facts that hold much more generally. First, we state an important result called the Extreme Value Theorem.
+</p>
+
+<aside xml:id="extreme-value-theorem">
+	<title>The Extreme Value Theorem<index><main>extreme value theorem</main></index></title>
+	<p>If <m>f</m> is a continuous function on a closed interval <m>[a,b]</m>, then <m>f</m> attains both an absolute minimum and absolute maximum on <m>[a,b]</m>. That is, for some value <m>x_m</m> such that <m>a \le x_m \le b</m>, it follows that <m>f(x_m) \le f(x)</m> for all <m>x</m> in <m>[a,b]</m>. Similarly, there is a value <m>x_M</m> in <m>[a,b]</m> such that <m>f(x_M) \ge f(x)</m> for all <m>x</m> in <m>[a,b]</m>. Letting <m>m = f(x_m)</m> and <m>M = f(x_M)</m>, it follows that <m>m \le f(x) \le M</m> for all <m>x</m> in <m>[a,b]</m>.</p>
+</aside>
+
+<p>
+The Extreme Value Theorem tells us that provided a function is continuous, on any closed interval <m>[a,b]</m> the function has to achieve both an absolute minimum and an absolute maximum. Note, however, that this result does not tell us where these extreme values occur, but rather only that they must exist. As seen in the examples of <xref ref="act-3-3-1">Activity</xref>, it is apparent that the only possible locations for relative extremes are either the endpoints of the interval or at a critical number (the latter being where a relative minimum or maximum could occur, which is a potential location for an absolute extreme). 
+</p>
+<note>
+<p>
+Thus, we have the following approach to finding the absolute maximum and minimum of a continuous function <m>f</m> on the interval <m>[a,b]</m>:
+	<ul>
+		<li><p>find all critical numbers of <m>f</m> that lie in the interval;</p></li>
+		<li><p>evaluate the function <m>f</m> at each critical number in the interval and at each endpoint of the interval;</p></li>
+		<li><p>from among the noted function values, the smallest is the absolute minimum of <m>f</m> on the interval, while the largest is the absolute maximum.</p></li>
+	</ul>
+</p>
+</note>
+
+	<xi:include href="./activities/act-3-3-2.xml" />
+
+<p>
+One of the big lessons in finding absolute extreme values is the realization that the interval we choose has nearly the same impact on the problem as the function under consideration. Consider, for instance, the function pictured in <xref ref="F-3-3-Interval">Figure</xref>.
+</p>
+<figure xml:id="F-3-3-Interval" >
+	<caption>A function <m>g</m> considered on three different intervals.</caption>
+	<image width="100%" source="images/3_3_Interval" />
+</figure>
+<p>
+In sequence, from left to right, as we see the interval under consideration change from <m>[-2,3]</m> to <m>[-2,2]</m> to <m>[-2,1]</m>, we move from having two critical numbers in the interval with the absolute minimum at one critical number and the absolute maximum at the right endpoint, to still having both critical numbers in the interval but then with the absolute minimum and maximum at the two critical numbers, to finally having just one critical number in the interval with the absolute maximum at one critical number and the absolute minimum at one endpoint. It is particularly essential to always remember to only consider the critical numbers that lie within the interval.
+</p>
+</subsection>
+  
+<subsection>
+<title>Moving towards applications</title>
+<p>
+In <xref ref="sec-3-4-applied-opt">Section</xref>, we will focus almost exclusively on applied optimization problems: problems where we seek to find the absolute maximum or minimum value of a function that represents some physical situation. We conclude this current section with an example of one such problem because it highlights the role that a closed, bounded domain can play in finding absolute extrema. In addition, these problems often involve considerable preliminary work to develop the function which is to be optimized, and this example demonstrates that process.
+</p>
+
+<example xml:id="Ex-3-3-1">
+<statement>
+<p>
+A 20 cm piece of wire is cut into two pieces. One piece is used to form a square and the other an equilateral triangle. How should the wire be cut to maximize the total area enclosed by the square and triangle? to minimize the area?
+</p>
+</statement>
+<solution>
+
+<p>
+We begin by constructing a picture that exemplifies the given situation. The primary variable in the problem is where we decide to cut the wire. We thus label that point <m>x</m>, and note that the remaining portion of the wire then has length <m>20-x</m>
+</p>
+<figure xml:id="F-3-3-Ex1" >
+	<caption>A 20 cm piece of wire cut into two pieces, one of which forms an equilateral triangle, the other which yields a square.</caption>
+	<image width="100%" source="images/3_3_Ex1" />
+</figure>
+<p>
+As shown in <xref ref="F-3-3-Ex1">Figure</xref>, we see that the <m>x</m> cm of the wire that are used to form the equilateral triangle result in a triangle with three sides of length <m>\frac{x}{3}</m>. For the remaining <m>20-x</m> cm of wire, the square that results will have each side of length <m>\frac{20-x}{4}</m>.
+</p>
+
+<p>
+At this point, we note that there are obvious restrictions on <m>x</m>: in particular, <m>0 \le x \le 20</m>. In the extreme cases, all of the wire is being used to make just one figure. For instance, if <m>x = 0</m>, then all 20 cm of wire are used to make a square that is <m>5 \times 5</m>.
+</p>
+
+<p>
+Now, our overall goal is to find the absolute minimum and absolute maximum areas that can be enclosed. We note that the area of the triangle is <m>A_{\triangle} = \frac{1}{2} bh = \frac{1}{2} \cdot \frac{x}{3} \cdot \frac{x\sqrt{3}}{6}</m>, since the height of an equilateral triangle is <m>\sqrt{3}</m> times half the length of the base. Further, the area of the square is <m>A_{\Box} = s^2 = \left( \frac{20-x}{4} \right)^2</m>. Therefore, the total area function is
+<me>
+  A(x) = \frac{\sqrt{3}x^2}{36} + \left( \frac{20-x}{4} \right)^2.
+</me>
+</p>
+
+<p>
+Again, note that we are only considering this function on the restricted domain <m>[0,20]</m> and we seek its absolute minimum and absolute maximum.
+</p>
+
+<p>
+Differentiating <m>A(x)</m>, we have
+<me>
+  A'(x) = \frac{\sqrt{3}x}{18} + 2\left( \frac{20-x}{4} \right)\left( -\frac{1}{4} \right) = \frac{\sqrt{3}}{18} x + \frac{1}{8}x - \frac{5}{2}.
+</me>
+</p>
+
+<p>
+Setting <m>A'(x) = 0</m>, it follows that <m>x = \frac{180}{4\sqrt{3}+9} \approx 11.3007</m> is the only critical number of <m>A</m>, and we note that this lies within the interval <m>[0,20]</m>.
+</p>
+
+<p>
+Evaluating <m>A</m> at the critical number and endpoints, we see that
+<ul>
+<li><p><m>A\left(\frac{180}{4\sqrt{3}+9}\right) = \frac{\sqrt{3}(\frac{180}{4\sqrt{3}+9})^2}{4} + \left( \frac{20-\frac{180}{4\sqrt{3}+9}}{4} \right)^2 \approx 10.8741</m></p></li>
+<li><p><m>A(0) = 25</m></p></li>
+<li><p><m>A(20) = \frac{\sqrt{3}}{36}(400) = \frac{100}{9} \sqrt{3} \approx 19.2450</m></p></li>
+</ul>
+</p>
+
+<p>
+Thus, the absolute minimum occurs when <m>x \approx 11.3007</m> and results in the minimum area of approximately <m>10.8741</m> square centimeters, while the absolute maximum occurs when we invest all of the wire in the square (and none in the triangle), resulting in 25 square centimeters of area. These results are confirmed by a plot of <m>y = A(x)</m> on the interval <m>[0,20]</m>, as shown in <xref ref="F-3-3-Ex1Plot">Figure</xref>.
+</p>
+<figure xml:id="F-3-3-Ex1Plot" >
+	<caption>A plot of the area function from <xref ref="Ex-3-3-1">Example</xref>.</caption>
+	<image width="50%" source="images/3_3_Ex1Plot" />
+</figure>
+</solution>
+</example>
+
+	<xi:include href="./activities/act-3-3-3.xml" />
+
+<p>
+The approaches shown in <xref ref="Ex-3-3-1">Example</xref> and experienced in <xref ref="act-3-3-3">Activity</xref> include standard steps that we undertake in almost every applied optimization problem: we draw a picture to demonstrate the situation, introduce one or more variables to represent quantities that are changing, work to find a function that models the quantity to be optimized, and then decide an appropriate domain for that function. Once that work is done, we are in the familiar situation of finding the absolute minimum and maximum of a function over a particular domain, at which time we apply the calculus ideas that we have been studying to this point in <xref ref="C-3">Chapter</xref>.
+</p>
+</subsection>
+
+<subsection>
+<title>Summary</title>
+	<ul>
+		<li><p>To find relative extreme values of a function, we normally use a first derivative sign chart and classify all of the function's critical numbers.  If instead we are interested in absolute extreme values, we first decide whether we are considering the entire domain of the function or a particular interval.</p></li>
+		<li><p>In the case of finding global extremes over the function's entire domain, we again use a first or second derivative sign chart in an effort to make overall conclusions about whether or not the function can have a absolute maximum or minimum.
+		If we are working to find absolute extremes on a restricted interval, then we first identify all critical numbers of the function that lie in the interval.</p></li>
+		<li><p>For a continuous function on a closed, bounded interval, the only possible points at which absolute extreme values occur are the critical numbers and the endpoints.  Thus, to find said absolute extremes, we simply evaluate the function at each endpoint and each critical number in the interval, and then we compare the results to decide which is largest (the absolute maximum) and which is smallest (the absolute minimum).</p></li>
+	</ul>
+
+</subsection>
+
+	<xi:include href="./exercises/ez-3-3.xml" /> 
+
+</section>

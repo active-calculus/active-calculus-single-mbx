@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-7-3-euler">
+  <title>Euler's method</title>
+  <introduction>
+    <objectives>
+      <ul>
+        <li><p>What is Euler's method and how can we use it to approximate the
+              solution to an initial value problem?</p></li>
+
+        <li><p>How accurate is Euler's method?</p></li>
+      </ul>
+    </objectives>
+    <p>In <xref ref="sec-7-2-qualitative">Section</xref>, we saw how a slope field can be used to sketch
+      solutions to a differential equation. In particular, the slope field
+      is a plot of a large collection of tangent lines to a large number of solutions of the
+      differential equation, and we sketch a single solution by simply following
+      these tangent lines. With a little more thought, we may use this same
+      idea to numerically approximate the solutions of a differential equation.</p>
+
+  	<xi:include href="./previews/PA-7-3.xml" />
+
+  </introduction>
+
+
+  <subsection>
+    <title>Euler's Method</title>
+    <p><index><main>Euler's Method</main></index></p>
+
+    <p><xref ref="PA-7-3">Preview Activity</xref> demonstrates the essence of an algorithm known as
+      Euler's<fn><q>Euler</q> is pronounced
+        <q>Oy-ler.</q>  Among other things, Euler is the mathematician credited with the famous number <m>e</m>; if you incorrectly pronounce his name <q>You-ler,</q> you fail to appreciate his genius and legacy.</fn> Method that generates a numerical approximation to the solution
+      of an initial value problem. In this algorithm, we
+      will approximate the solution by taking horizontal steps of a fixed
+      size that we denote by <m>\Delta t</m>.</p>
+
+    <p>Before explaining the algorithm in detail, let's remember how we
+      compute the slope of a line: the slope is the ratio of the vertical
+      change to the horizontal change, as shown in <xref ref="F-7-3-slope">Figure</xref>.
+
+<figure xml:id="F-7-3-slope">
+	<caption>Grid for plotting the tangent line.</caption>
+	<image width="50%" source="images/7_3_slope" />
+</figure> 
+
+  </p>
+      
+    <p>In other words, <m>m = \frac{\Delta y}{\Delta t}</m>. From another perspective, the
+      vertical change is the product of the slope and the horizontal change, or
+      <me>
+        \Delta y = m\Delta t.
+      </me>
+    </p>
+
+    <p>Now, suppose that we would like to solve the initial value problem
+      <me>
+        \frac{dy}{dt} = t - y, \ y(0) = 1.
+      </me>
+    </p>
+
+    <p>While there is an algorithm by which we can find an algebraic formula for the solution to this initial value problem, and we can check that this solution is <m>y(t) = t -1 + 2e^{-t}</m>, we are instead interested in generating an approximate solution by creating a sequence
+      of points <m>(t_i, y_i)</m>, where <m>y_i\approx y(t_i)</m>. For this first example, we choose <m>\Delta t = 0.2</m>.</p>
+
+    <p>
+      Since we know that <m>y(0) = 1</m>, we will take the initial point to be
+      <m>(t_0,y_0) = (0,1)</m> and move horizontally by <m>\Delta t = 0.2</m> to the
+      point <m>(t_1,y_1)</m>.  Therefore, <m>t_1=t_0+\Delta t = 0.2</m>. 
+      The differential equation tells us that the slope of the 
+      tangent line at this point is
+      <me>
+        m=\frac{dy}{dt}\bigg\vert_{(0,1)} = 0-1 = -1.
+      </me>
+      Therefore, if we move along the tangent line by taking a horizontal
+      step of size <m>\Delta t=0.2</m>, we must also move vertically by
+      <me>
+        \Delta y = m\Delta t = -1\cdot 0.2 = -0.2.
+      </me>
+      We then have the
+      approximation <m>y(0.2) \approx y_1= y_0 + \Delta y = 1 - 0.2 = 0.8.</m>  At this point, we have executed one step of Euler's method, as seen graphically in <xref ref="F-7-3-euler-points-1">Figure</xref>.
+	      <figure xml:id="F-7-3-euler-points-1">
+			<caption>One step of Euler's method.</caption>
+			<image width="50%" source="images/7_3_euler_points_1" />
+		  </figure> 
+      Now we repeat this process:  at <m>(t_1,y_1) = (0.2,0.8)</m>, the
+      differential equation tells us that the slope is
+      <me>
+        m=\frac{dy}{dt}\bigg\vert_{(0.2,0.8)} = 0.2-0.8 = -0.6.
+      </me>
+      If we move horizontally by <m>\Delta t</m> to <m>t_2=t_1+\Delta = 0.4</m>, we must move
+      vertically by
+      <me>
+        \Delta y = -0.6\cdot0.2 = -0.12.
+      </me>
+      We consequently arrive at <m>y_2=y_1+\Delta y = 0.8-0.12 = 0.68</m>, which
+      gives <m>y(0.2)\approx 0.68</m>.  Now we have completed the second step of Euler's method, as shown in <xref ref="F-7-3-euler-points-2">Figure</xref>.
+	      <figure xml:id="F-7-3-euler-points-2">
+			<caption>Two steps of Euler's method.</caption>
+			<image width="50%" source="images/7_3_euler_points_2" />
+		  </figure>
+	</p>
+
+    <p>If we continue in this way, we may generate the points <m>(t_i, y_i)</m>
+      shown in <xref ref="F-7-3-Euler-Pts-a">Figure</xref>. In situations where we are able to find a formula for the actual solution <m>y(t)</m>, we can graph <m>y(t)</m> to compare it to the points generated by Euler's method, as shown in <xref ref="F-7-3-Euler-Pts-b">Figure</xref>.</p>
+
+<sidebyside xml:id="F-7-3-Euler-Pts">
+	<figure width="50%" xml:id="F-7-3-Euler-Pts-a">
+        	<caption>The points and piecewise linear approximate solution generated by Euler's method.</caption>
+               <image source="images/7_3_euler_points_6"></image>
+        </figure>
+        <figure width="50%" xml:id="F-7-3-Euler-Pts-b">
+               <caption>The approximate solution compared to the exact solution (shown in blue).</caption>
+               <image source="images/7_3_euler"></image>
+        </figure>
+</sidebyside>
+
+    <p>Because we need to generate a large number of points <m>(t_i,y_i)</m>, it is convenient to organize the implementation of Euler's method in a
+      table as shown. We begin with the given initial data.</p>
+    <table>  
+    <tabular>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell><m>t_i</m></cell>
+        <cell><m>y_i</m></cell>
+        <cell><m>dy/dt</m></cell>
+        <cell><m>\Delta y</m></cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>0.0000</cell>
+        <cell>1.0000</cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+    </tabular>
+	</table>
+    <p>From here, we compute the slope of the tangent line <m>m=dy/dt</m> using
+      the formula for <m>dy/dt</m> from the differential
+      equation, and then we find <m>\Delta y</m>, the change in <m>y</m>, using the rule <m>\Delta y = m\Delta t</m>.</p>
+    <table>  
+    <tabular>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell><m>t_i</m></cell>
+        <cell><m>y_i</m></cell>
+        <cell><m>dy/dt</m></cell>
+        <cell><m>\Delta y</m></cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>0.0000</cell>
+        <cell>1.0000</cell>
+        <cell>-1.0000</cell>
+        <cell>-0.2000</cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+    </tabular>
+</table>
+    <p>Next, we increase <m>t_i</m> by <m>\Delta t</m> and <m>y_i</m> by <m>\Delta y</m> to get</p>
+    <table>
+    <tabular>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell><m>t_i</m></cell>
+        <cell><m>y_i</m></cell>
+        <cell><m>dy/dt</m></cell>
+        <cell><m>\Delta y</m></cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>0.0000</cell>
+        <cell>1.0000</cell>
+        <cell>-1.0000</cell>
+        <cell>-0.2000</cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>0.2000</cell>
+        <cell>0.8000</cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+    </tabular>
+</table>
+    <p>and then we simply continue the process for however many steps we decide, eventually generating a table like <xref ref="T-7-3-Example">Table</xref>.</p>
+<table xml:id="T-7-3-Example"> 
+<caption>Euler's method for 6 steps with <m>\Delta t = 0.2</m>.</caption>   
+    <tabular>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell><m>t_i</m></cell>
+        <cell><m>y_i</m></cell>
+        <cell><m>dy/dt</m></cell>
+        <cell><m>\Delta y</m></cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>0.0000</cell>
+        <cell>1.0000</cell>
+        <cell>-1.0000</cell>
+        <cell>-0.2000</cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>0.2000</cell>
+        <cell>0.8000</cell>
+        <cell>-0.6000</cell>
+        <cell>-0.1200</cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>0.4000</cell>
+        <cell>0.6800</cell>
+        <cell>-0.2800</cell>
+        <cell>-0.0560</cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>0.6000</cell>
+        <cell>0.6240</cell>
+        <cell>-0.0240</cell>
+        <cell>-0.0048</cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>0.8000</cell>
+        <cell>0.6192</cell>
+        <cell>0.1808</cell>
+        <cell>0.0362</cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>1.0000</cell>
+        <cell>0.6554</cell>
+        <cell>0.3446</cell>
+        <cell>0.0689</cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>1.2000</cell>
+        <cell>0.7243</cell>
+        <cell>0.4757</cell>
+        <cell>0.0951</cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+    </tabular>
+</table>
+
+	<xi:include href="./activities/act-7-3-1.xml" />
+
+	<xi:include href="./activities/act-7-3-2.xml" />
+
+</subsection>
+
+  <subsection>
+    <title>The error in Euler's method</title>
+    <p><index><main>Euler's Method</main><sub>error</sub></index></p>
+
+    <p>Since we are approximating the solutions to an initial value problem
+      using tangent lines, we should expect that the error in the
+      approximation will be less when the step size is smaller.
+      To explore this observation quantitatively, let's consider the initial value problem
+      <me>
+        \frac{dy}{dt} = y, \ y(0) = 1
+      </me>
+      whose solution we can easily find.</p>
+
+    <p>Consider the question posed by this initial value problem: <q>what function do we know that is the same as its own
+      derivative and has value 1 when <m>t=0</m>?</q> It is not hard to see that the
+      solution is <m>y(t) = e^t</m>. We now apply Euler's method
+      to approximate <m>y(1) = e</m> using several values of <m>\Delta t</m>. These
+      approximations will be denoted by <m>E_{\Delta t}</m>, and these estimates provide us a way to see how accurate Euler's Method is.</p>
+
+    <p>To begin, we apply Euler's method with a step size of <m>\Delta t =
+      0.2</m>. In that case, we find that <m>y(1) \approx E_{0.2} = 2.4883</m>. The
+      error is therefore <me>y(1) - E_{0.2} = e - 2.4883 \approx 0.2300.</me></p>
+
+    <p>Repeatedly halving <m>\Delta t</m> gives the following
+      results, expressed in both tabular and graphical form.</p>
+
+    <sidebyside>
+      <table>
+      	<caption> Errors that correspond to different <m>\Delta t</m> values. </caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><m>\Delta t</m></cell>
+          <cell><m>E_{\Delta t}</m></cell>
+          <cell>Error</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>0.200</cell>
+          <cell>2.4883</cell>
+          <cell>0.2300</cell>
+        </row>
+        <row>
+          <cell>0.100</cell>
+          <cell>2.5937</cell>
+          <cell>0.1245</cell>
+        </row>
+        <row>
+          <cell>0.050</cell>
+          <cell>2.6533</cell>
+          <cell>0.0650</cell>
+        </row>
+        <row>
+          <cell>0.025</cell>
+          <cell>2.6851</cell>
+          <cell>0.0332</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+      </table>
+    <figure>
+   	  <caption>A plot of the error as a function of <m>\Delta t.</m></caption>
+      <image width="73%" source="images/7_3_error" />
+  	</figure>
+    </sidebyside>
+    <p>Notice, both numerically and graphically, that the error is roughly halved when <m>\Delta t</m> is halved.
+      This example illustrates the following general principle.</p>
+
+    <p>If Euler's method is to approximate the solution to an initial
+      value problem at a point <m>\overline{t}</m>, then the error is
+      proportional to <m>\Delta t</m>. That is,
+      <me>
+        y(\overline{t}) - E_{\Delta t} \approx K\Delta t
+      </me>
+      for some constant of proportionality <m>K</m>.</p>
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+    <ul>
+      <li><p>Euler's method is an algorithm for approximating the solution to
+            an initial value problem by following the tangent lines while we
+            take horizontal steps across the <m>t</m>-axis.</p></li>
+
+      <li><p>If we wish to approximate <m>y(\overline{t})</m> for some fixed
+            <m>\overline{t}</m> by taking horizontal steps of size <m>\Delta t</m>, then the
+            error in our approximation is proportional to <m>\Delta t</m>.</p></li>
+    </ul>
+
+  </subsection>
+
+	<xi:include href="./exercises/ez-7-3.xml" /> 
+
+</section>
