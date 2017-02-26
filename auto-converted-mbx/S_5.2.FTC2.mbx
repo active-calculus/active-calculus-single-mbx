@@ -1,0 +1,503 @@
+
+<section xml:id="S_5.2.FTC2">
+  <title>The Second Fundamental Theorem of Calculus</title>
+  <introduction>
+    <objectives>
+      <ul>
+        <li><p>How does the integral function <m>A(x) = \int_1^x f(t) \, dt</m> define an antiderivative of <m>f</m>?</p></li>
+
+        <li><p>What is the statement of the Second Fundamental Theorem of Calculus?</p></li>
+
+        <li><p>How do the First and Second Fundamental Theorems of Calculus enable us to formally see how differentiation and integration are almost inverse processes?</p></li>
+      </ul>
+    </objectives>
+    <p>In <xref ref="S_4.4.FTC">Section</xref>, we learned the Fundamental Theorem of Calculus (FTC), which from here forward will be referred to as the <em>First</em> Fundamental Theorem of Calculus<index><main>Fundamental Theorem of Calculus</main><sub>First</sub></index>, as in this section we develop a corresponding result that follows it. In particular, recall that the First FTC tells us that if <m>f</m> is a continuous function on <m>[a,b]</m> and <m>F</m> is any antiderivative of <m>f</m> (that is, <m>F' = f</m>), then
+      <me>
+        \int_a^b f(x) \, dx = F(b) - F(a).
+      </me>
+    </p>
+
+    <p>We have typically used this result in two settings: (1) where <m>f</m> is a function whose graph we know and for which we can compute the exact area bounded by <m>f</m> on a certain interval <m>[a,b]</m>, we can compute the change in an antiderivative <m>F</m> over the interval; and (2) where <m>f</m> is a function for which it is easy to determine an algebraic formula for an antiderivative, we may evaluate the integral exactly and hence determine the net-signed area bounded by the function on the interval. For the former, see <xref ref="PA_5.1">Preview Activity</xref> or <xref ref="A_5.1.1">Activity</xref>. For the latter, we can easily evaluate exactly integrals such as
+      <me>
+        \int_1^4 x^2 \, dx,
+      </me>
+      since we know that the function <m>F(x) = \frac{1}{3}x^3</m> is an antiderivative of <m>f(x) = x^2</m>. Thus,
+      <md>
+        <mrow>\int_1^4 x^2 \, dx =\mathstrut \amp  \frac{1}{3}x^3 \bigg\vert_1^4</mrow>
+        <mrow>=\mathstrut \amp  \frac{1}{3}(4)^3 - \frac{1}{3}(1)^3</mrow>
+        <mrow>=\mathstrut \amp  21.</mrow>
+      </md>
+    </p>
+
+    <p>Here we see that the First FTC can be viewed from at least two perspectives: first, as a tool to find the difference <m>F(b) - F(a)</m> for an antiderivative <m>F</m> of the integrand <m>f</m>. In this situation, we need to be able to determine the value of the integral <m>\int_a^b f(x) \, dx</m> exactly, perhaps through known geometric formulas for area. It is possible that we may not have a formula for <m>F</m> itself. From a second perspective, the First FTC provides a way to find the exact value of a definite integral, and hence a certain net-signed area exactly, by finding an antiderivative of the integrand and evaluating its total change over the interval. In this latter case, we need to know a formula for the antiderivative <m>F</m>, as this enables us to compute net-signed areas exactly through definite integrals, as demonstrated in <xref ref="F_5.2.Intro">Figure</xref>.</p>
+
+    <figure xml:id="F_5.2.Intro" >
+      <caption>At left, the graph of <m>f(x) = x^2</m> on the interval <m>[1,4]</m> and the area it bounds.  At right, the antiderivative function <m>F(x) = \frac{1}{3}x^3</m>, whose total change on <m>[1,4]</m> is the value of the definite integral at left.</caption>
+      <image width="73%" source="images/5_2_Intro" />
+    </figure>
+
+    <p>We recall further that the value of a definite integral may have additional meaning depending on context: change in position when the integrand is a velocity function, total pollutant leaked from a tank when the integrand is the rate at which pollution is leaking, or other total changes that correspond to a given rate function that is the integrand. In addition, the value of the definite integral is always connected to the average value of a continuous function on a given interval: <m>f_{\mbox{\tiny{AVG}} [a,b]} = \frac{1}{b-a} \int_a^b f(x) \, dx</m>.</p>
+
+    <p>Next, remember that in the last part of <xref ref="S_5.1.AntiDGraphs">Section</xref>, we studied integral functions of the form <m>A(x) = \int_c^x f(t) \, dt</m>. <xref ref="F_5.1.IntFxn">Figure</xref> is a particularly important image to keep in mind as we work with integral functions, and the corresponding java applet at <url href="http://gvsu.edu/s/cz"><c>http://gvsu.edu/s/cz</c></url> is likewise foundational to our understanding of the function <m>A</m>. In what follows, we use the First FTC to gain additional understanding of the function <m>A(x) = \int_c^x f(t) \, dt</m>, where the integrand <m>f</m> is given (either through a graph or a formula), and <m>c</m> is a constant. In particular, we investigate further the special nature of the relationship between the functions <m>A</m> and <m>f</m>.</p>
+
+    <exploration xml:id="PA_5.2">
+      <p>Consider the function <m>A</m> defined by the rule
+      <me>
+        A(x) = \int_1^x f(t) \, dt,
+      </me>
+      where <m>f(t) = 4-2t</m>.
+
+      <ol>
+        <li><p>Compute <m>A(1)</m> and <m>A(2)</m> exactly.</p></li>
+
+        <li><p>Use the First Fundamental Theorem of Calculus to find an equivalent formula for <m>A(x)</m> that does not involve integrals.  That is, use the first FTC to evaluate <m>\int_1^x (4-2t) \, dt</m>.</p></li>
+
+        <li><p>Observe that <m>f</m> is a linear function; what kind of function is <m>A</m>?</p></li>
+
+        <li><p>Using the formula you found in (b) that does not involve integrals, compute <m>A'(x)</m>.</p></li>
+
+        <li><p>While we have defined <m>f</m> by the rule <m>f(t) = 4-2t</m>, it is equivalent to say that <m>f</m> is given by the rule <m>f(x) = 4 - 2x</m>.  What do you observe about the relationship between <m>A</m> and <m>f</m>?</p></li>
+      </ol>
+      </p>
+    </exploration>
+  </introduction>
+
+  <subsection>
+    <title>The Second Fundamental Theorem of Calculus</title>
+    <p><index><main>Fundamental Theorem of Calculus</main><sub>Second</sub></index></p>
+
+    <p>The result of <xref ref="PA_5.2">Preview Activity</xref> is not particular to the function <m>f(t) = 4-2t</m>, nor to the choice of <q><m>1</m></q> as the lower bound in the integral that defines the function <m>A</m>. For instance, if we let <m>f(t) = \cos(t) - t</m> and set <m>A(x) = \int_2^x f(t) \, dt</m>, then we can determine a formula for <m>A</m> without integrals by the First FTC. Specifically,
+      <md>
+        <mrow>A(x) =\mathstrut \amp  \int_2^x (\cos(t) - t) \, dt</mrow>
+        <mrow>=\mathstrut \amp  \sin(t) - \frac{1}{2}t^2 \bigg\vert_2^x</mrow>
+        <mrow>=\mathstrut \amp  \sin(x) -  \frac{1}{2}x^2 - \left(\sin(2) - 2 \right).</mrow>
+      </md>
+    </p>
+
+    <p>Differentiating <m>A(x)</m>, since <m>(\sin(2) - 2)</m> is constant, it follows that
+      <me>
+        A'(x) = \cos(x) - x,
+      </me>
+      and thus we see that <m>A'(x) = f(x)</m>. This tells us that for this particular choice of <m>f</m>, <m>A</m> is an antiderivative of <m>f</m>. More specifically, since <m>A(2) = \int_2^2 f(t) \, dt = 0</m>, <m>A</m> is the only antiderivative of <m>f</m> for which <m>A(2) = 0</m>.</p>
+
+    <p>In general, if <m>f</m> is any continuous function, and we define the function <m>A</m> by the rule
+      <me>
+        A(x) = \int_c^x f(t) \, dt,
+      </me>
+      where <m>c</m> is an arbitrary constant, then we can show that <m>A</m> is an antiderivative of <m>f</m>. To see why, let's demonstrate that <m>A'(x) = f(x)</m> by using the limit definition of the derivative. Doing so, we observe that
+      <md>
+        <mrow>A'(x) \amp = \lim_{h \to 0} \frac{A(x+h) - A(x)}{h}</mrow>
+        <mrow>\amp = \lim_{h \to 0} \frac{\int_c^{x+h} f(t) \, dt - \int_c^x f(t) \, dt}{h}</mrow>
+        <mrow>\amp = \lim_{h \to 0} \frac{\int_x^{x+h} f(t) \, dt}{h},</mrow>
+      </md>
+      where Equation<nbsp /><xref ref="E_FTC2limdef" /> in the preceding chain follows from the fact that <m>\int_c^x f(t) \,dt + \int_x^{x+h} f(t) \, dt = \int_c^{x+h} f(t) \, dt</m>. Now, observe that for small values of <m>h</m>,
+      <me>
+        \int_x^{x+h} f(t) \, dt \approx f(x) \cdot h,
+      </me>
+      by a simple left-hand approximation of the integral. Thus, as we take the limit in Equation<nbsp /><xref ref="E_FTC2limdef" />, it follows that
+      <me>
+        A'(x) =  \lim_{h \to 0} \frac{\int_x^{x+h} f(t) \, dt}{h} = \lim_{h \to 0} \frac{f(x) \cdot h}{h} = f(x).
+      </me>
+    </p>
+
+    <p>Hence, <m>A</m> is indeed an antiderivative of <m>f</m>. In addition, <m>A(c) = \int_c^c f(t) \, dt = 0.</m> The preceding argument demonstrates the truth of the Second Fundamental Theorem of Calculus, which we state as follows.</p>
+
+    <p><em>Theorem.</em> (Second FTC) If <m>f</m> is a continuous function and <m>c</m> is any constant, then <m>f</m> has a unique antiderivative <m>A</m> that satisfies <m>A(c) = 0</m>, and that antiderivative is given by the rule <m>A(x) = \int_c^x f(t) \, dt</m>.</p>
+
+    <activity xml:id="A_5.2.1">
+      <p>Suppose that <m>f</m> is the function given in <xref ref="F_5.2.Act1">Figure</xref> and that <m>f</m> is a piecewise function whose parts are either portions of lines or portions of circles, as pictured.</p>
+
+      <figure xml:id="F_5.2.Act1" >
+        <caption>At left, the graph of <m>y = f(x)</m>.  At right, axes for sketching <m>y = A(x)</m>.</caption>
+        <image width="73%" source="images/5_2_Act1" />
+      </figure>
+
+      <p>In addition, let <m>A</m> be the function defined by the rule <m>A(x) = \int_2^x f(t) \, dt</m>.
+
+      <ol>
+        <li><p>What does the Second FTC tell us about the relationship between <m>A</m> and <m>f</m>?</p></li>
+
+        <li><p>Compute <m>A(1)</m> and <m>A(3)</m> exactly.</p></li>
+
+        <li><p>Sketch a precise graph of <m>y = A(x)</m> on the axes at right that accurately reflects where <m>A</m> is increasing and decreasing, where <m>A</m> is concave up and concave down, and the exact values of <m>A</m> at <m>x = 0, 1, \ldots, 7</m>.</p></li>
+
+        <li><p>How is <m>A</m> similar to, but different from, the function <m>F</m> that you found in <xref ref="A_5.1.1">Activity</xref>?</p></li>
+
+        <li><p>With as little additional work as possible, sketch precise graphs of the functions <m>B(x) = \int_3^x f(t) \, dt</m> and <m>C(x) = \int_1^x f(t) \, dt</m>.  Justify your results with at least one sentence of explanation.</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>If you don't recall it, review the statement of the Second FTC above.</p></li>
+
+          <li><p>Note that <m>A(1)= \int_2^1 f(t) \, dt</m>.</p></li>
+
+          <li><p>Don't miss our key conclusion from (a).</p></li>
+
+          <li><p>Compare the values of <m>A(1)</m> and <m>F(1)</m>.</p></li>
+
+          <li><p>What does the Second FTC tell us about the relationship between <m>B</m> and <m>f</m>?</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>By the Second FTC, <m>A'(x) = f(x)</m>.</p></li>
+
+          <li><p>Since <m>A(1)= \int_2^1 f(t) \, dt = -\int_1^2 f(t) \, dt</m>, it follows <m>A(1) = -\frac{\pi}{4}</m>.</p></li>
+
+          <li><p>Note that <m>A</m> is increasing wherever <m>f</m> is positive, and <m>A</m> is CCU wherever <m>f</m> is increasing.  Similar conclusions follow for <m>A</m> being decreasing and/or concave down.  Moreover, <m>A(2) = 0</m>, <m>A(3) = -0.5</m>, <m>A(4) = -1.5</m>, <m>A(5) = -2</m>, <m>A(6) = -2 + \frac{\pi}{4}</m>, and <m>A(7) = -2 + \frac{\pi}{2}</m>.</p></li>
+
+          <li><p>In our current example, <m>A</m> is an antiderivative of <m>f</m> that satisfies <m>A(0) = -\frac{1}{2} - \frac{\pi}{4}</m>.  Our earlier work with <m>F</m> showed that <m>F</m> is an antiderivative of <m>F</m> that satisfied <m>F(0) = -1</m>.  Since <m>F</m> and <m>A</m> are both antiderivatives of <m>f</m>, they differ by a constant, and that constant is <m>-1 - (-\frac{1}{2} - \frac{\pi}{4}) = \frac{\pi}{4} - \frac{1}{2}</m>.</p></li>
+
+          <li><p>The Second FTC tells us that <m>B' = f</m> and <m>C' = f</m>.  Thus, <m>B</m> and <m>C</m> are each antiderivatives of <m>f</m>, have the same shape as <m>A</m> and <m>F</m>, and each differ from <m>A</m> by just a constant.  Observing that <m>B(3) = 0</m> and <m>C(1) = 0</m> enables us to easily sketch these shifted versions of <m>A</m>.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Understanding Integral Functions</title>
+    <p>The Second FTC provides us with a means to construct an antiderivative of any continuous function. In particular, if we are given a continuous function <m>g</m> and wish to find an antiderivative of <m>G</m>, we can now say that
+      <me>
+        G(x) = \int_c^x g(t) \, dt
+      </me>
+      provides the rule for such an antiderivative, and moreover that <m>G(c) = 0</m>. Note especially that we know that <m>G'(x) = g(x)</m>. We sometimes want to write this relationship between <m>G</m> and <m>g</m> from a different notational perspective. In particular, observe that
+      <men xml:id="E_diffint" >
+        \frac{d}{dx} \left[ \int_c^x g(t) \, dt \right] = g(x).
+      </men>
+    </p>
+
+    <p>This result can be particularly useful when we're given an integral function such as <m>G</m> and wish to understand properties of its graph by recognizing that <m>G'(x) = g(x)</m>, while not necessarily being able to exactly evaluate the definite integral <m>\int_c^x g(t) \, dt</m>. To see how this is the case, we consider the following example.</p>
+
+    <example>
+      <statement>
+        <p>Investigate the behavior of the integral function
+          <me>
+            E(x) = \int_0^x e^{-t^2} \, dt.
+          </me>
+        </p>
+      </statement>
+    </example>
+
+    <p><m>E</m> is closely related to the well known <em>error function</em><index><main>error functin</main></index><fn>The error function is defined by the rule <m>\mbox{erf} (x) = \frac{2}{\sqrt{\pi}} \int_0^x e^{-t^2} \,dt</m> and has the key property that <m>0 \le \mbox{erf} (x) \lt  1</m> for all <m>x \ge 0</m> and moreover that <m>\lim_{x \to \infty} \mbox{erf} (x) = 1</m>.</fn>, a function that is particularly important in probability and statistics. It turns out that the function <m>e^{-t^2}</m> does not have an elementary antiderivative that we can express without integrals. That is, whereas a function such as <m>f(t) = 4-2t</m> has elementary antiderivative <m>F(t) = 4t - t^2</m>, we are unable to find a simple formula for an antiderivative of <m>e^{-t^2}</m> that does not involve a definite integral. We will learn more about finding (complicated) algebraic formulas for antiderivatives without definite integrals in the chapter on infinite series.</p>
+
+    <p>Returning our attention to the function <m>E</m>, while we cannot evaluate <m>E</m> exactly for any value other than <m>x = 0</m>,
+      we still can gain a tremendous amount of information about the function <m>E</m>. To begin, applying the rule in Equation<nbsp /><xref ref="E_diffint" /> to <m>E</m>, it follows that
+      <me>
+        E'(x) = \frac{d}{dx} \left[ \int_0^x e^{-t^2} \, dt \right] = e^{-x^2},
+      </me>
+      so we know a formula for the derivative of <m>E</m>. Moreover, we know that <m>E(0) = 0</m>. This information is precisely the type we were given in problems such as the one in <xref ref="A_3.1.1">Activity</xref> and others in <xref ref="S_3.1.Tests">Section</xref>, where we were given information about the derivative of a function, but lacked a formula for the function itself.</p>
+
+    <p>Here, using the first and second derivatives of <m>E</m>, along with the fact that <m>E(0) = 0</m>, we can determine more information about the behavior of <m>E</m>. First, with <m>E'(x) = e^{-x^2}</m>, we note that for all real numbers <m>x</m>, <m>e^{-x^2} > 0</m>, and thus <m>E'(x) > 0</m> for all <m>x</m>. Thus <m>E</m> is an always increasing function. Further, we note that as <m>x \to \infty</m>, <m>E'(x) = e^{-x^2} \to 0</m>, hence the slope of the function <m>E</m> tends to zero as <m>x \to \infty</m> (and similarly as <m>x \to -\infty</m>). Indeed, it turns out (due to some more sophisticated analysis) that <m>E</m> has horizontal asymptotes as <m>x</m> increases or decreases without bound.</p>
+
+    <p>In addition, we can observe that <m>E''(x) = -2xe^{-x^2}</m>, and that <m>E''(0) = 0</m>, while <m>E''(x) \lt  0</m> for <m>x > 0</m> and <m>E''(x) > 0</m> for <m>x \lt  0</m>. This information tells us that <m>E</m> is concave up for <m>x\lt 0</m> and concave down for <m>x > 0</m> with a point of inflection at <m>x = 0</m>.</p>
+
+    <p>The only thing we lack at this point is a sense of how big <m>E</m> can get as <m>x</m> increases. If we use a midpoint Riemann sum with 10 subintervals to estimate <m>E(2)</m>, we see that <m>E(2) \approx 0.8822</m>; a similar calculation to estimate <m>E(3)</m> shows little change (<m>E(3) \approx 0.8862</m>), so it appears that as <m>x</m> increases without bound, <m>E</m> approaches a value just larger than <m>0.886</m>, which aligns with the fact that <m>E</m> has horizontal asymptotes. Putting all of this information together (and using the symmetry of <m>f(t) = e^{-t^2}</m>), we see the results shown in <xref ref="F_5.2.erf">Figure</xref>.</p>
+
+    <figure xml:id="F_5.2.erf" >
+      <caption>At left, the graph of <m>f(t) = e^{-t^2}</m>.  At right, the integral function <m>E(x) = \int_0^x e^{-t^2} \ dt</m>, which is the unique antiderivative of <m>f</m> that satisfies <m>E(0) = 0</m>.</caption>
+      <image width="73%" source="images/5_2_erf" />
+    </figure>
+
+    <p>Again, <m>E</m> is the antiderivative of <m>f(t) = e^{-t^2}</m> that satisfies <m>E(0) = 0</m>. Moreover, the values on the graph of <m>y = E(x)</m> represent the net-signed area of the region bounded by <m>f(t) = e^{-t^2}</m> from 0 up to <m>x</m>. We see that the value of <m>E</m> increases rapidly near zero but then levels off as <m>x</m> increases since there is less and less additional accumulated area bounded by <m>f(t) = e^{-t^2}</m> as <m>x</m> increases.</p>
+
+    <activity xml:id="A_5.2.2">
+      <p>Suppose that <m>f(t) = \frac{t}{1+t^2}</m> and <m>F(x) = \int_0^x f(t) \, dt</m>.</p>
+
+      <figure xml:id="F_5.2.Act2" >
+        <caption>Axes for plotting <m>f</m> and <m>F</m>.</caption>
+        <image width="73%" source="images/5_2_Act2" />
+      </figure>
+
+      <ol>
+        <li><p>On the axes at left in <xref ref="F_5.2.Act2">Figure</xref>, plot a graph of <m>f(t) = \frac{t}{1+t^2}</m> on the interval <m>-10 \le t \le 10</m>.  Clearly label the vertical axes with appropriate scale.</p></li>
+
+        <li><p>What is the key relationship between <m>F</m> and <m>f</m>, according to the Second FTC?</p></li>
+
+        <li><p>Use the first derivative test to determine the intervals on which <m>F</m> is increasing and decreasing.</p></li>
+
+        <li><p>Use the second derivative test to determine the intervals on which <m>F</m> is concave up and concave down.  Note that <m>f'(t)</m> can be simplified to be written in the form <m>f'(t) = \frac{1-t^2}{(1+t^2)^2}.</m></p></li>
+
+        <li><p>Using technology appropriately, estimate the values of <m>F(5)</m> and <m>F(10)</m> through appropriate Riemann sums.</p></li>
+
+        <li><p>Sketch an accurate graph of <m>y = F(x)</m> on the righthand axes provided, and clearly label the vertical axes with appropriate scale.</p></li>
+      </ol>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Use computing technology appropriately to generate the desired graph.</p></li>
+
+          <li><p>Again, recall the statement of the Second FTC.</p></li>
+
+          <li><p>Where is <m>F'</m> positive?  <m>F'</m> negative?</p></li>
+
+          <li><p>Note that <m>F'' = f'</m>.</p></li>
+
+          <li><p>Remember that <m>F(5) = \int_0^5 \frac{t}{1+t^2} \, dt</m>.</p></li>
+
+          <li><p>Don't forget that <m>F(0) = 0</m>.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <ol>
+          <li><p>See the plot at below left.</p></li>
+
+          <li><p><m>F' = f</m>, by the Second FTC.</p></li>
+
+          <li><p><m>F</m> is increasing wherever <m>F'=f</m> is positive, so for all <m>x > 0</m>.  Similarly, <m>F</m> is decreasing for <m>x \lt  0</m></p></li>
+
+          <li><p><m>F</m> is CCU wherever <m>F' = f</m> is increasing or wherever <m>F'' = f'</m> is positive.  It is straightforward to show that <m>f''</m> is positive for <m>-1 \lt  x \lt  1</m> and negative otherwise, thus <m>F</m> is CCU on <m>-1 \lt  x \lt  1</m> and CCD for <m>x \lt  -1</m> and <m>x > 1</m>.</p></li>
+
+          <li><p><m>F(5) = \int_0^5 \frac{t}{1+t^2} \, dt \approx 2.35973</m>, using a midpoint Riemann sum with 10 subintervals.  Similarly, <m>F(10) = \int_0^{10} \frac{t}{1+t^2} \, dt \approx 2.35973</m>.</p></li>
+
+          <li><p>Recalling that <m>F(0) = 0</m> and using the values and information we've found in (b)-(e), we arrive at the graph at below right.</p></li>
+        </ol>
+        <image width="73%" source="images/5_2_Act2_soln" />
+      </solution>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Differentiating an Integral Function</title>
+    <p>We have seen that the Second FTC enables us to construct an antiderivative <m>F</m> of any continuous function <m>f</m> by defining <m>F</m> by the corresponding integral function <m>F(x) = \int_c^x f(t) \, dt</m>. Said differently, if we have a function of the form <m>F(x) = \int_c^x f(t) \, dt</m>, then we know that <m>F'(x) = \frac{d}{dx} \left[\int_c^x f(t) \, dt \right] = f(x)</m>. This shows that integral functions, while perhaps having the most complicated formulas of any functions we have encountered, are nonetheless particularly simple to differentiate. For instance, if
+      <me>
+        F(x) = \int_{\pi}^x \sin(t^2) \, dt,
+      </me>
+      then by the Second FTC, we know immediately that
+      <me>
+        F'(x) = \sin(x^2).
+      </me>
+    </p>
+
+    <p>Stating this result more generally for an arbitrary function <m>f</m>, we know by the Second FTC that
+      <me>
+        \frac{d}{dx} \left[ \int_a^x f(t) \, dt \right] = f(x).
+      </me>
+    </p>
+
+    <p>In words, the last equation essentially says that <q>the derivative of the integral function whose integrand is <m>f</m>, is <m>f</m>.</q> In this sense, we see that if we first integrate the function <m>f</m> from <m>t = a</m> to <m>t = x</m>, and then differentiate with respect to <m>x</m>, these two processes <q>undo</q> one another.</p>
+
+    <p>Taking a different approach, say we begin with a function <m>f(t)</m> and differentiate with respect to <m>t</m>. What happens if we follow this by integrating the result from <m>t = a</m> to <m>t = x</m>? That is, what can we say about the quantity
+      <me>
+        \int_a^x \frac{d}{dt} \left[ f(t) \right] \, dt?
+      </me>
+    </p>
+
+    <p>Here, we use the First FTC and note that <m>f(t)</m> is an antiderivative of <m>\frac{d}{dt} \left[ f(t) \right].</m> Applying this result and evaluating the antiderivative function, we see that
+      <md>
+        <mrow>\int_a^x \frac{d}{dt} \left[ f(t) \right] \, dt =\mathstrut \amp  f(t) \bigg\vert_a^x</mrow>
+        <mrow>=\mathstrut \amp  f(x) - f(a).</mrow>
+      </md>
+    </p>
+
+    <p>Thus, we see that if we apply the processes of first differentiating <m>f</m> and then integrating the result from <m>a</m> to <m>x</m>, we return to the function <m>f</m>, minus the constant value <m>f(a)</m>. So in this situation, the two processes almost undo one another, up to the constant <m>f(a)</m>.</p>
+
+    <p>The observations made in the preceding two paragraphs demonstrate that differentiating and integrating (where we integrate from a constant up to a variable) are almost inverse processes. In one sense, this should not be surprising: integrating involves antidifferentiating, which reverses the process of differentiating. On the other hand, we see that there is some subtlety involved, as integrating the derivative of a function does not quite produce the function itself. This is connected to a key fact we observed in <xref ref="S_5.1.AntiDGraphs">Section</xref>, which is that any function has an entire family of antiderivatives, and any two of those antiderivatives differ only by a constant.</p>
+
+    <activity xml:id="A_5.2.3">
+      <p>Evaluate each of the following derivatives and definite integrals. Clearly cite whether you use the First or Second FTC in so doing.
+
+      <ol>
+        <li><p><m>\frac{d}{dx} \left[ \int_4^x e^{t^2} \, dt \right]</m></p></li>
+
+        <li><p><m>\int_{-2}^x \frac{d}{dt} \left[ \frac{t^4}{1+t^4} \right] \, dt</m></p></li>
+
+        <li><p><m>\frac{d}{dx} \left[ \int_{x}^1 \cos(t^3) \, dt \right]</m></p></li>
+
+        <li><p><m>\int_{3}^x \frac{d}{dt} \left[ \ln(1+t^2) \right] \, dt</m></p></li>
+
+        <li><p><m>\frac{d}{dx} \left[ \int_4^{x^3} \sin(t^2) \, dt \right]</m> 
+             (Hint: Let <m>F(x) = \int_4^x \sin(t^2) \, dt</m> and observe that this problem is asking you to evaluate <m>\frac{d}{dx} \left[F(x^3)] \right]</m>.</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>For</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Using</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+    <ul>
+      <li><p>For a continuous function <m>f</m>, the integral function <m>A(x) = \int_1^x f(t) \, dt</m> defines an antiderivative of <m>f</m>.</p></li>
+
+      <li><p>The Second Fundamental Theorem of Calculus is the formal, more general statement of the preceding fact:  if <m>f</m> is a continuous function and <m>c</m> is any constant, then <m>A(x) = \int_c^x f(t) \, dt</m> is the unique antiderivative of <m>f</m> that satisfies <m>A(c) = 0</m>.</p></li>
+
+      <li><p>Together, the First and Second FTC enable us to formally see how differentiation and integration are almost inverse processes through the observations that
+          <me>
+            \int_c^x \frac{d}{dt} \left[ f(t) \right] \, dt = f(x) - f(c)
+          </me>
+          and
+          <me>
+            \frac{d}{dx} \left[ \int_c^x f(t) \, dt \right] = f(x).
+          </me>
+        </p></li>
+    </ul>
+    <exercises>
+      <exercise>
+        <statement>
+          <p>Let <m>g</m> be the function pictured at left in <xref ref="F_5.2.Ez1">Figure</xref>, and let <m>F</m> be defined by <m>F(x) = \int_{2}^x g(t) \, dt.</m> Assume that the shaded areas have values <m>A_1 = 4.29</m>, <m>A_2 = 12.75</m>, <m>A_3 = 0.36</m>, and <m>A_4 = 1.79</m>. Assume further that the portion of <m>A_2</m> that lies between <m>x = 0.5</m> and <m>x = 2</m> is <m>6.06</m>.</p>
+
+          <p>Sketch a carefully labeled graph of <m>F</m> on the axes provided, and include a written analysis of how you know where <m>F</m> is zero, increasing, decreasing, CCU, and CCD.</p>
+
+          <figure xml:id="F_5.2.Ez1" >
+            <caption>At left, the graph of <m>g</m>.  At right, axes for plotting <m>F</m>.</caption>
+            <image width="73%" source="images/5_2_Ez1" />
+          </figure>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>The tide removes sand from the beach at a small ocean park at a rate modeled by the function
+            <me>
+              R(t) = 2 + 5\sin \left( \frac{4\pi t}{25} \right)
+            </me>
+          </p>
+
+          <p>A pumping station adds sand to the beach at rate modeled by the function
+            <me>
+              S(t) = \frac{15t}{1+3t}
+            </me>
+          </p>
+
+          <p>Both <m>R(t)</m> and <m>S(t)</m> are measured in cubic yards of sand per hour, <m>t</m> is measured in hours, and the valid times are <m>0 \le t \le 6</m>. At time <m>t = 0</m>, the beach holds 2500 cubic yards of sand.
+
+          <ol>
+            <li><p>What definite integral measures how much sand the tide will remove during the time period <m>0 \le t \le 6</m>?  Why?</p></li>
+
+            <li><p>Write an expression for <m>Y(x)</m>, the total number of cubic yards of sand on the beach at time <m>x</m>.  Carefully explain your thinking and reasoning.</p></li>
+
+            <li><p>At what instantaneous rate is the total number of cubic yards of sand on the beach at time <m>t = 4</m> changing?</p></li>
+
+            <li><p>Over the time interval <m>0 \le t \le 6</m>, at what time <m>t</m> is the amount of sand on the beach least?  What is this minimum value?  Explain and justify your answers fully.</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>When an aircraft attempts to climb as rapidly as
+            possible, its climb rate (in feet per minute) decreases as altitude
+            increases, because the air is less dense at higher altitudes.
+            Given below is a table showing performance data for a certain
+            single engine aircraft, giving its climb rate at various altitudes, where <m>c(h)</m> denotes the climb rate of the airplane at an altitude <m>h</m>.
+            \begingroup</p>
+          <tabular>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell><m>h</m> (feet)</cell>
+              <cell>0</cell>
+              <cell>1000</cell>
+              <cell>2000</cell>
+              <cell>3000</cell>
+              <cell>4000</cell>
+              <cell>5000</cell>
+              <cell>6000</cell>
+              <cell>7000</cell>
+              <cell>8000</cell>
+              <cell>9000</cell>
+              <cell>10,000</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell><m>c</m> (ft/min)</cell>
+              <cell>925</cell>
+              <cell>875</cell>
+              <cell>830</cell>
+              <cell>780</cell>
+              <cell>730</cell>
+              <cell>685</cell>
+              <cell>635</cell>
+              <cell>585</cell>
+              <cell>535</cell>
+              <cell>490</cell>
+              <cell>440</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+          </tabular>
+          <p>\endgroup</p>
+
+          <p>Let a new function <m>m</m>, that also depends on <m>h</m>, (say <m>y = m(h)</m>) measure
+          the number of minutes required for a plane at altitude <m>h</m> to climb the
+          next foot of altitude.
+
+          <ol>
+            <li><p>Determine a similar table of values for <m>m(h)</m> and explain how it is related to the table above.  Be sure to discuss the units on <m>m</m>.</p></li>
+
+            <li><p>Give a careful interpretation of a function whose derivative
+                is <m>m(h)</m>.  Describe what the input is and what the output is.  Also,
+                explain in plain English what the function tells us.</p></li>
+
+            <li><p>Determine a definite integral whose value tells us exactly the number of minutes required for the airplane to ascend to
+                10,000 feet of altitude.  Clearly explain why the value of this integral has the required meaning.</p></li>
+
+            <li><p>Determine a formula for a function <m>M(h)</m> whose value tells us the exact number of minutes required for the airplane to ascend to <m>h</m> feet of altitude.</p></li>
+
+            <li><p>Estimate the values of <m>M(6000)</m> and <m>M(10000)</m> as accurately as you can.  Include units on your results.</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+    </exercises>
+  </subsection>
+</section>

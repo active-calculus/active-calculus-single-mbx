@@ -1,0 +1,479 @@
+
+<section xml:id="S_7.5.Modeling">
+  <title>Modeling with differential equations</title>
+  <introduction>
+    <objectives>
+      <ul>
+        <li><p>How can we use differential equations to describe 
+              phenomena in the world around us?</p></li>
+
+        <li><p>How can we use differential equations to better understand these
+              phenomena?</p></li>
+      </ul>
+    </objectives>
+    <p>In our work to date, we have seen several ways that
+      differential equations arise in the natural world, from the growth of
+      a population to the temperature of a cup of coffee. In this section,
+      we will look more closely at how differential equations give us a
+      natural way to describe various phenoma. As we'll see, the key is to
+      focus on understanding the different factors that cause a quantity to
+      change.</p>
+
+    <exploration xml:id="PA_7.5">
+      <p>Any time that the rate of change of a quantity is related to the amount of a quantity, a differential equation naturally arises. In the following two problems, we see two such scenarios; for each, we want to develop a differential equation whose solution is the quantity of interest.
+
+      <ol>
+        <li><p>Suppose you have a bank account in which money grows at an
+          annual rate of 3<percent />.
+
+        <ul>
+          <li>
+            <title>(i)</title>
+            <p>If you have <dollar />10,000 in the account, at what rate is your
+                    money growing?</p></li>
+
+          <li>
+            <title>(ii)</title>
+            <p>Suppose that you are also withdrawing money from the account
+                    at <dollar />1,000 per year.  What is the rate of change in the amount
+                    of money in the account?  What are the units on this rate of change?</p></li>
+        </ul>
+        </p></li>
+
+        <li><p>Suppose that a water tank holds 100 gallons and that a salty
+          solution, which contains 20 grams of salt in every gallon, enters the
+          tank at 2 gallons per minute.
+
+        <ul>
+          <li>
+            <title>(i)</title>
+            <p>How much salt enters the tank each minute?</p></li>
+
+          <li>
+            <title>(ii)</title>
+            <p>Suppose that initially there are 300 grams of salt in the tank.  How
+                    much salt is in each gallon at this point in time?</p></li>
+
+          <li>
+            <title>(iii)</title>
+            <p>Finally, suppose that evenly mixed solution is pumped out of the tank at the
+                    rate of 2 gallons per minute.  How much salt leaves the tank
+                    each minute?</p></li>
+
+          <li>
+            <title>(iv)</title>
+            <p>What is the total rate of change in the amount of salt in
+                    the tank?</p></li>
+        </ul>
+        </p></li>
+      </ol>
+      </p>
+    </exploration>
+  </introduction>
+
+  <subsection>
+    <title>Developing a differential equation</title>
+    <p><xref ref="PA_7.5">Preview activity</xref> demonstrates the kind of thinking we will be
+      doing in this section. In each of the two examples we considered, there is a
+      quantity, such as the amount of money in the bank account or the
+      amount of salt in the tank, that is changing due to several factors.
+      The governing differential equation results from the total rate of change being the difference between the rate of
+      increase and the rate of decrease.</p>
+
+    <example xml:id="Ex_7.5.1">
+      <statement>
+        <p>In the Great Lakes region, rivers flowing into the lakes carry a great
+          deal of pollution in the form of small pieces of plastic averaging 1
+          millimeter in diameter. In order to understand how the amount of
+          plastic in Lake Michigan is changing, construct a model for how this type pollution has built up in the lake.</p>
+      </statement>
+    </example>
+
+    <p>First, some basic facts about Lake Michigan.
+
+    <ul>
+      <li><p>The volume of the lake is
+              <m>5\cdot10^{12}</m> cubic meters.</p></li>
+
+      <li><p>Water flows into the lake at a rate of
+              <m>5\cdot10^{10}</m> cubic meters per year.  It flows out of the lake
+              at the same rate.</p></li>
+
+      <li><p>Each cubic meter flowing
+              into the lake contains roughly <m>3\cdot10^{-8}</m> cubic meters of
+              plastic pollution.</p></li>
+    </ul>
+    </p>
+
+    <p>Let's denote the amount of pollution in the lake by <m>P(t)</m>, where <m>P</m>
+      is measured in cubic meters of plastic and <m>t</m> in years. Our goal
+      is to describe the rate of change of this function; in other
+      words, we want to develop a differential equation describing <m>P(t)</m>.</p>
+
+    <p>First, we will measure how <m>P(t)</m> increases due to pollution flowing
+      into the lake. We know that <m>5\cdot10^{10}</m> cubic meters of water
+      enters the lake every year and each cubic meter of water contains
+      <m>3\cdot10^{-8}</m> cubic meters of pollution. Therefore, pollution
+      enters the lake at the rate of
+      <me>
+        \left(5\cdot 10^{10} \frac{m^3 \mbox{\ water} }{\mbox{year} }\right) \cdot \left(3\cdot10^{-8} \frac{m^3 \mbox{\ plastic} }{m^3 \mbox{\ water} } \right) = 1.5\cdot 10^3
+        \mbox{cubic m of plastic per year} .
+      </me>
+    </p>
+
+    <p>Second, we will measure how <m>P(t)</m> decreases due to pollution flowing
+      out of the lake. If the total amount of pollution is <m>P</m> cubic
+      meters and the volume of Lake Michigan is <m>5\cdot 10^{12}</m> cubic
+      meters, then the concentration of plastic pollution in Lake Michigan is
+      <me>
+        \frac{P}{5\cdot10^{12}}  \mbox{cubic meters of plastic per cubic meter of water} .
+      </me>
+    </p>
+
+    <p>Since <m>5\cdot10^{10}</m> cubic meters of water flow out each year<fn>and we assume that each cubic meter of water that flows out carries with it the plastic pollution it contains</fn>, then
+      the plastic pollution leaves the lake at the rate of
+      <me>
+        \left(\frac{P}{5\cdot10^{12}} \frac{m^3 \mbox{\ plastic} }{m^3 \mbox{\ water} } \right) \cdot \left(5\cdot10^{10} \frac{m^3 \mbox{\ water} }{\mbox{year} } \right)=\frac{P}{100} 
+         \mbox{cubic meters of plastic
+          per year} .
+      </me>
+    </p>
+
+    <p>The total rate of change of <m>P</m> is thus the difference between the rate at which
+      pollution enters the lake minus the rate at which pollution leaves the
+      lake; that is,
+      <md>
+        <mrow>\frac{dP}{dt} =\mathstrut \amp  1.5\cdot10^{3}-\frac{P}{100}</mrow>
+        <mrow>=\mathstrut \amp  \frac{1}{100}(1.5\cdot10^{5} - P).</mrow>
+      </md>
+    </p>
+
+    <p>We have now found a differential equation that describes the rate
+      at which the amount of pollution is changing. To better understand the
+      behavior of <m>P(t)</m>, we now apply some
+      of the techniques we have recently developed.</p>
+
+    <p>Since this is an autonomous differential equation, we can sketch
+      <m>dP/dt</m> as a function of <m>P</m> and then construct a slope field, as shown in <xref ref="F_7.5.Ex1">Figure</xref>.</p>
+
+    <figure xml:id="F_7.5.Ex1" >
+      <caption>Plots of <m>\frac{dP}{dt}</m> vs. <m>P</m> and the slope field for the differential equation <m>\frac{dP}{dt} = \frac{1}{100}(1.5\cdot10^{5} - P)</m>.</caption>
+      <image width="73%" source="images/7_5_lake_michigan" />
+      <image width="73%" source="images/7_5_slope_field" />
+    </figure>
+
+    <p>These plots both show that <m>P=1.5\cdot10^5</m> is a stable equilibrium. Therefore,
+      we should expect that the amount of pollution in Lake Michigan will
+      stabilize near <m>1.5\cdot10^5</m> cubic meters of pollution.</p>
+
+    <p>Next, assuming that there is initially no pollution in the lake, we will
+      solve the initial value problem
+      <me>
+        \frac{dP}{dt} = \frac{1}{100}(1.5\cdot10^{5} - P), \ P(0) = 0.
+      </me>
+    </p>
+
+    <p>Separating variables, we find that
+      <me>
+        \frac1{1.5\cdot10^5-P} \frac{dP}{dt} = \frac1{100}.
+      </me>
+    </p>
+
+    <p>Integrating with respect to <m>t</m>, we have
+      <me>
+        \int \frac1{1.5\cdot10^5-P} \frac{dP}{dt}~dt = \int \frac1{100}~dt,
+      </me>
+      and thus changing variables on the left and antidifferentiating on both sides, we find that
+      <md>
+        <mrow>\int \frac{dP}{1.5\cdot10^5-P} =\mathstrut \amp  \int \frac1{100}~dt</mrow>
+        <mrow>-\ln|1.5\cdot10^5 - P| =\mathstrut \amp  \frac1{100}t + C</mrow>
+      </md>
+    </p>
+
+    <p>Finally, multiplying both sides by <m>-1</m> and using the definition of the logarithm, we find that
+      <men xml:id="E_7.5.Ex1C" >
+        1.5\cdot10^5 - P = C e^{-t/100}.
+      </men>
+    </p>
+
+    <p>This is a good time to determine the constant <m>C</m>. Since <m>P =
+      0</m> when <m>t=0</m>, we have
+      <me>
+        1.5\cdot 10^5 - 0 = Ce^0 = C.
+      </me>
+    </p>
+
+    <p>In other words, <m>C=1.5\cdot10^5</m>.</p>
+
+    <p>Using this value of <m>C</m> in Equation<nbsp /><xref ref="E_7.5.Ex1C" /> and solving for <m>P</m>, we arrive at the solution
+      <me>
+        P(t) = 1.5\cdot10^5(1-e^{-t/100}).
+      </me>
+    </p>
+
+    <p>Superimposing the graph of <m>P</m> on the slope field we saw in <xref ref="F_7.5.Ex1">Figure</xref>, we see, as shown in <xref ref="F_7.5.Ex1a">Figure</xref></p>
+
+    <figure xml:id="F_7.5.Ex1a" >
+      <caption>The solution <m>P(t)</m> and the slope field for the differential equation <m>\frac{dP}{dt} = \frac{1}{100}(1.5\cdot10^{5} - P)</m>.</caption>
+      <image width="73%" source="images/7_5_solution" />
+    </figure>
+
+    <p>We see that, as expected, the amount of plastic pollution stabilizes around
+      <m>1.5\cdot10^5</m> cubic meters.</p>
+
+    <p>There are many important lessons to learn from <xref ref="Ex_7.5.1">Example</xref>. Foremost is how we can develop a differential equation by thinking about the <q>total rate = rate in - rate out</q> model. In addition, we note how we can bring together all of our available understanding (plotting <m>\frac{dP}{dt}</m> vs. <m>P</m>, creating a slope field, solving the differential equation) to see how the differential equation describes the behavior of a changing quantity.</p>
+
+    <p>Of course, we can also explore what happens when certain aspects of the problem change. For instance, let's suppose we are at a time when the plastic pollution entering Lake Michigan has
+      stabilized at <m>1.5\cdot10^5</m> cubic meters, and that new legislation is
+      passed to prevent this type of pollution entering the lake. So, there is no longer any inflow of plastic pollution to the lake. How does the amount of plastic pollution in Lake Michigan now change? For example, how long does it take for the amount of plastic pollution in the lake to halve?</p>
+
+    <p>Restarting the problem at time <m>t=0</m>, we now have the modified initial value problem
+      <me>
+        \frac{dP}{dt} = -\frac{1}{100}P, \ P(0) = 1.5\cdot10^5.
+      </me>
+    </p>
+
+    <p>It is a straightforward and familiar exercise to find that the solution to this equation is <m>P(t) = 1.5\cdot10^5
+      e^{-t/100}</m>. The time that it takes for half of the pollution to flow
+      out of the lake is given by <m>T</m> where <m>P(T) = 0.75\cdot10^5</m>. Thus, we must solve the equation
+      <me>
+        0.75\cdot10^5 = 1.5\cdot10^5e^{-T/100},
+      </me>
+      or
+      <me>
+        \frac12 = e^{-T/100}.
+      </me>
+    </p>
+
+    <p>It follows that
+      <me>
+        T = -100\,\ln\left(\frac12\right) \approx 69.3 \mbox{years.}
+      </me>
+    </p>
+
+    <p>In the upcoming activities, we explore some other natural settings in which differential equation model changing quantities.</p>
+
+    <activity xml:id="A_7.4.finance">
+      <p>Suppose you have a bank account that grows by 5<percent /> every year. Let <m>A(t)</m> be the amount of money in the account in year <m>t</m>.
+
+      <ol>
+        <li><p>What is the rate of change of <m>A</m> with respect to <m>t</m>?</p></li>
+
+        <li><p>Suppose that you are also withdrawing <dollar />10,000 per year.  Write
+              a differential equation that expresses the total rate of change of
+              <m>A</m>.</p></li>
+
+        <li><p>Sketch a slope field for this differential equation, find any
+              equilibrium solutions, and identify them as either stable or
+              unstable.  Write a sentence or two that describes the significance
+              of the stability of the equilibrium solution.</p></li>
+
+        <li><p>Suppose that you initially deposit <dollar />100,000 into the account.  How
+              long does it take for you to deplete the account?</p></li>
+
+        <li><p>What is the smallest amount of money you would need to have in
+              the account to guarantee that you never deplete the money in the
+              account?</p></li>
+
+        <li><p>If your initial deposit is <dollar />300,000, how much could you
+              withdraw every year without depleting the account?</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Small hints for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Solutions for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <activity xml:id="A_7.5.iv">
+      <p>A dose of morphine is
+      absorbed from the bloodstream of a patient at a rate
+      proportional to the amount in the bloodstream.
+
+      <ol>
+        <li><p>Write a differential equation for <m>M(t)</m>, the amount of
+                      morphine in the patient's bloodstream, using <m>k</m> as the
+                      constant proportionality.</p></li>
+
+        <li><p>Assuming that the initial dose of morphine is <m>M_0</m>,
+                      solve the initial value problem to find <m>M(t)</m>.  Use the
+                      fact that the half-life for the absorption of morphine is
+                      two hours to find the constant <m>k</m>.</p></li>
+
+        <li><p>Suppose that a patient is given morphine intraveneously
+                      at the rate of 3 milligrams per hour.  Write a differential
+                      equation that combines the intraveneous administration of
+                      morphine with the body's natural absorption.</p></li>
+
+        <li><p>Find any equilibrium solutions and determine their
+                      stability.</p></li>
+
+        <li><p>Assuming that there is initially no morphine in the
+                      patient's bloodstream, solve the initial value problem to
+                      determine <m>M(t)</m>.  What happens to <m>M(t)</m> after a very long time?</p></li>
+
+        <li><p>To what rate should a doctor reduce the
+                      intraveneous rate so that there is eventually 7 milligrams
+                      of morphine in the patient's bloodstream?</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Small hints for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Solutions for each of the prompts above.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+    <ul>
+      <li><p>Differential equations arise in a situation when we understand
+            how various factors cause a quantity to change.</p></li>
+
+      <li><p>We may use the tools we have developed so far<mdash />slope
+            fields, Euler's methods, and our method for solving separable
+            equations<mdash />to understand a quantity described by a differential
+            equation.</p></li>
+    </ul>
+    <exercises>
+      <exercise>
+        <statement>
+          <p>Congratulations, you just won the lottery! In one option
+          presented to you, you will be paid one million dollars a year for
+          the next 25 years. You can deposit this money in an account that
+          will earn 5<percent /> each year.
+
+          <ol>
+            <li><p>Set up a differential equation that describes the rate of
+                    change in the amount of money in the account.  Two factors cause
+                    the amount to grow<mdash />first, you are depositing one millon dollars
+                    per year and second, you are earning 5<percent /> interest.</p></li>
+
+            <li><p>If there is no amount of money in the account when you open
+                    it, how much money will you have in the account after 25 years?</p></li>
+
+            <li><p>The second option presented to you is to take a lump sum of 10
+                    million dollars, which you will deposit into a similar account.  How
+                    much money will you have in that account after 25 years?</p></li>
+
+            <li><p>Do you prefer the first or second option?  Explain your thinking.</p></li>
+
+            <li><p>At what time does the amount of money in the account under the
+                    first option overtake the amount of money in the account under the
+                    second option?</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>When a skydiver jumps from a plane, gravity causes
+          her downward velocity to increase at the rate of <m>g\approx 9.8</m>
+          meters per second squared. At the same time, wind resistance
+          causes her velocity to decrease at a rate proportional to the
+          velocity.
+
+          <ol>
+            <li><p>Using <m>k</m> to represent the constant of proportionality,
+                      write a differential equation that describes the rate of change
+                      of the skydiver's velocity.</p></li>
+
+            <li><p>Find any equilibrium solutions and decide whether they are
+                        stable or unstable.  Your result should depend on <m>k</m>.</p></li>
+
+            <li><p>Suppose that the initial velocity is zero.  Find the
+                        velocity <m>v(t)</m>.</p></li>
+
+            <li><p>A typical terminal velocity for a skydiver falling face
+                        down is 54 meters per second.  What is the value of <m>k</m> for
+                        this skydiver?</p></li>
+
+            <li><p>How long does it take to reach 50<percent /> of the terminal
+                        velocity?</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>During the first few years of life, the rate at which a baby
+          gains weight is proportional to the reciprocal of its weight.
+
+          <ol>
+            <li><p>Express this fact as a differential equation.</p></li>
+
+            <li><p>Suppose that a baby weighs 8 pounds at birth and 9 pounds
+                        one month later.  How much will he weigh at one year?</p></li>
+
+            <li><p>Do you think this is a realistic model for a long time?</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Suppose that you have a water tank that holds 100 gallons of water.
+            A briny solution, which contains 20 grams of salt per gallon, enters
+            the tank at the rate of 3 gallons per minute.</p>
+
+          <p>At the same time, the solution is well mixed, and water is pumped
+          out of the tank at the rate of 3 gallons per minute.
+
+          <ol>
+            <li><p>Since 3 gallons enters the tank every minute and 3 gallons
+                  leaves every minute, what can you conclude about the volume of water
+                  in the tank.</p></li>
+
+            <li><p>How many grams of salt enters the tank every minute?</p></li>
+
+            <li><p>Suppose that <m>S(t)</m> denotes the number of grams of salt in the
+                  tank in minute <m>t</m>.  How many grams are there in each gallon in
+                  minute <m>t</m>?</p></li>
+
+            <li><p>Since water leaves the tank at 3 gallons per minute, how many
+                  grams of salt leave the tank each minute?</p></li>
+
+            <li><p>Write a differential equation that expresses the total rate of
+                  change of <m>S</m>.</p></li>
+
+            <li><p>Identify any equilibrium solutions and determine whether they
+                  are stable or unstable.</p></li>
+
+            <li><p>Suppose that there is initially no salt in the tank.  Find the
+                  amount of salt <m>S(t)</m> in minute <m>t</m>.</p></li>
+
+            <li><p>What happens to <m>S(t)</m> after a very long time?  Explain how you
+                  could have predicted this only knowing how much salt there is in
+                  each gallon of the
+                  briny solution that enters the tank.</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+    </exercises>
+  </subsection>
+</section>

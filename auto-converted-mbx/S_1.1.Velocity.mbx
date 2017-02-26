@@ -1,0 +1,311 @@
+
+<section xml:id="S_1.1.Velocity">
+  <title>How do we measure velocity?</title>
+  <introduction>
+    <objectives>
+      <ul>
+        <li><p>How is the average velocity of a moving object connected to the values of its position function?</p></li>
+
+        <li><p>How do we interpret the average velocity of an object geometrically with regard to the graph of its position function?</p></li>
+
+        <li><p>How is the notion of instantaneous velocity connected to average velocity?</p></li>
+      </ul>
+    </objectives>
+    <p>Calculus can be viewed broadly as the study of change. A natural and important question to ask about any changing quantity is <q>how fast is the quantity changing?</q> It turns out that in order to make the answer to this question precise, substantial mathematics is required.</p>
+
+    <p>We begin with a familiar problem: a ball being tossed straight up in the air from an initial height. From this elementary scenario, we will ask questions about how the ball is moving. These questions will lead us to begin investigating ideas that will be central throughout our study of differential calculus and that have wide-ranging consequences. In a great deal of our thinking about calculus, we will be well-served by remembering this first example and asking ourselves how the various (sometimes abstract) ideas we are considering are related to the simple act of tossing a ball straight up in the air.</p>
+
+    <exploration xml:id="PA_1.1">
+      <p>Suppose that the height <m>s</m> of a ball (in feet) at time <m>t</m> (in seconds) is given by the formula <m>s(t) = 64 - 16(t-1)^2</m>.
+
+      <ol>
+        <li><p>Construct an accurate graph of <m>y = s(t)</m> on the time interval <m>0 \le t \le 3</m>.  Label at least six distinct points on the graph, including the three points that correspond to when the ball was released, when the ball reaches its highest point, and when the ball lands.</p></li>
+
+        <li><p>In everyday language, describe the behavior of the ball on the time interval <m>0 \lt  t \lt  1</m> and on time interval <m>1 \lt  t \lt  3</m>.  What occurs at the instant <m>t = 1</m>?</p></li>
+
+        <li><p>Consider the expression
+            <me>
+              AV_{[0.5,1]} = \frac{s(1) - s(0.5)}{1-0.5}.
+            </me>
+            Compute the value of <m>AV_{[0.5,1]}</m>.  What does this value measure geometrically?  What does this value measure physically?  In particular, what are the units on <m>AV_{[0.5,1]}</m>?</p></li>
+      </ol>
+      </p>
+    </exploration>
+  </introduction>
+
+  <subsection>
+    <title>Position and average velocity</title>
+    <p>Any moving object has a <em>position</em><index><main>position</main></index> that can be considered a function of <em>time</em>. When this motion is along a straight line, the position is given by a single variable, and we usually let this position be denoted by <m>s(t)</m>, which reflects the fact that position is a function of time. For example, we might view <m>s(t)</m> as telling the mile marker of a car traveling on a straight highway at time <m>t</m> in hours; similarly, the function <m>s</m> described in <xref ref="PA_1.1">Preview Activity</xref> is a position function, where position is measured vertically relative to the ground.</p>
+
+    <p>Not only does such a moving object have a position associated with its motion, but on any time interval, the object has an <em>average velocity</em><index><main>average velocity</main></index>. Think, for example, about driving from one location to another: the vehicle travels some number of miles over a certain time interval (measured in hours), from which we can compute the vehicle's average velocity. In this situation, average velocity is the number of miles traveled divided by the time elapsed, which of course is given in <em>miles per hour</em>. Similarly, the calculation of <m>AV_{[0.5,1]}</m> in <xref ref="PA_1.1">Preview Activity</xref> found the average velocity of the ball on the time interval <m>[0.5,1]</m>, measured in feet per second.</p>
+
+    <p>In general, we make the following definition: for an object moving in a straight line whose position at time <m>t</m> is given by the function <m>s(t)</m>, the <em>average velocity<index><main>average velocity</main></index> of the object on the interval from <m>t = a</m> to <m>t = b</m></em>, denoted <m>AV_{[a,b]}</m>, is given by the formula
+      <me>
+        AV_{[a,b]} = \frac{s(b)-s(a)}{b-a}.
+      </me>
+    </p>
+
+    <p>Note well: the units on <m>AV_{[a,b]}</m> are
+      <q>units of <m>s</m> per unit of <m>t</m>,</q> such as <q>miles per hour</q> or <q>feet per second.</q></p>
+
+    <activity xml:id="A_1.1.1">
+      <p>The following questions concern the position function given by <m>s(t) = 64 - 16(t-1)^2</m>, which is the same function considered in <xref ref="PA_1.1">Preview Activity</xref>.
+
+      <ol>
+        <li><p>Compute the average velocity of the ball on each of the following time intervals: <m>[0.4,0.8]</m>, <m>[0.7,0.8]</m>, <m>[0.79, 0.8]</m>, <m>[0.799,0.8]</m>, <m>[0.8,1.2]</m>, <m>[0.8,0.9]</m>, <m>[0.8,0.81]</m>, <m>[0.8,0.801]</m>.  Include units for each value.</p></li>
+
+        <li><p>On the provided graph in <xref ref="F_1.1.Act1">Figure</xref>, sketch the line that passes through the points <m>A=(0.4, s(0.4))</m> and <m>B=(0.8, s(0.8))</m>.  What is the meaning of the slope of this line?  In light of this meaning, what is a geometric way to interpret each of the values computed in the preceding question?</p></li>
+
+        <li><p>Use a graphing utility to plot the graph of <m>s(t) = 64 - 16(t-1)^2</m> on an interval containing the value <m>t = 0.8</m>.  Then, zoom in repeatedly on the point <m>(0.8, s(0.8))</m>.  What do you observe about how the graph appears as you view it more and more closely?</p></li>
+
+        <li><p>What do you conjecture is the velocity of the ball at the instant <m>t = 0.8</m>?  Why?</p></li>
+      </ol>
+      </p>
+
+      <figure xml:id="F_1.1.Act1" >
+        <caption>A partial plot of <m>s(t) = 64 - 16(t-1)^2</m>.</caption>
+        <image width="73%" source="images/1_1_Act1" />
+      </figure>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>On <m>[0.4,0.8]</m>, the average velocity is <m>AV_{[0.4,0.8]} = \frac{s(0.8)-s(0.4)}{0.8-0.4}</m> ft/sec.</p></li>
+
+          <li><p>Remember that the slope of a line can be found by taking <q>rise over run.</q>  In this context, the slope is found by computing <q>change in <m>s</m> over change in <m>t</m>.</q></p></li>
+
+          <li><p>While the curve <m>s(t)</m> is a parabola, how does it look up close on a very small interval?</p></li>
+
+          <li><p><q>Instantaneous</q> velocity can be approximated by average velocity on a very small interval.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>On <m>[0.4,0.8]</m>, the average velocity is <m>AV_{[0.4,0.8]} = \frac{s(0.8)-s(0.4)}{0.8-0.4} = \frac{63.36-58.24}{0.4} = 12.8</m> ft/sec.  On <m>[0.7,0.8]</m>, the average velocity is 8 ft/sec.  The other average velocities are, respectively (in the order of the intervals listed in the activity), 6.56, 6.416, 0, 4.8, 6.24, 6.384, all measured in feet per second.</p></li>
+
+          <li><p>The slope of the line between <m>A(0.4, s(0.4))</m> and <m>B(0.8, s(0.8))</m> is <m>\frac{s(0.8)-s(0.4)}{0.8-0.4} = 12.8</m>.  This is precisely the average velocity of the ball between <m>t = 0.4</m> and <m>t = 0.8</m>, and indeed each of the average velocities computed in (a) can be viewed as the slope of the line joining the points <m>(a,s(a))</m> and <m>(b,s(b))</m>.
+              <image width="73%" source="images/1_1_Act1Soln" />
+            </p></li>
+
+          <li><p>As we zoom in on the curve <m>s(t) = 64 - 16(t-1)^2</m> at the point <m>(0.5, 60)</m>, the graph begins to look like a straight line.  Indeed, it appears to look like a straight line with slope about 6.4.</p></li>
+
+          <li><p>Observe that the average velocity of the ball on the intervals <m>[0.799,0.8]</m> and <m>[0.8,0.801]</m> is 6.416 and 6.384 feet/sec respectively.  Hence it appears that the ball's velocity at the instant <m>t = 0.8</m> should be about 6.4 feet per second.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Instantaneous Velocity</title>
+    <p>Whether driving a car, riding a bike, or throwing a ball, we have an intuitive sense that any moving object has a velocity at any given moment <mdash /> a number that measures how fast the object is moving <em>right now</em>. For instance, a car's speedometer tells the driver what appears to be the car's velocity at any given instant. In fact, the posted velocity on a speedometer is really an average velocity that is computed over a very small time interval (by computing how many revolutions the tires have undergone to compute distance traveled), since velocity fundamentally comes from considering a change in position divided by a change in time. But if we let the time interval over which average velocity is computed become shorter and shorter, then we can progress from average velocity to <em>instantaneous</em> velocity.</p>
+
+    <p>Informally, we define the <em>instantaneous velocity</em><index><main>instantaneous velocity</main></index> of a moving object at time <m>t = a</m> to be the value that the average velocity approaches as we take smaller and smaller intervals of time containing <m>t = a</m> to compute the average velocity. We will develop a more formal definition of this momentarily, one that will end up being the foundation of much of our work in first semester calculus. For now, it is fine to think of instantaneous velocity this way: take average velocities on smaller and smaller time intervals, and if those average velocities approach a single number, then that number will be the instantaneous velocity at that point.</p>
+
+    <activity xml:id="A_1.1.2">
+      <p>Each of the following questions concern <m>s(t) = 64 - 16(t-1)^2</m>, the position function from <xref ref="PA_1.1">Preview Activity</xref>.
+
+      <ol>
+        <li><p>Compute the average velocity of the ball on the time interval <m>[1.5,2]</m>.  What is different between this value and the average velocity on the interval <m>[0,0.5]</m>?</p></li>
+
+        <li><p>Use appropriate computing technology to estimate the instantaneous velocity of the ball at <m>t = 1.5</m>.  Likewise, estimate the instantaneous velocity of the ball at <m>t = 2</m>.  Which value is greater?</p></li>
+
+        <li><p>How is the sign of the instantaneous velocity of the ball related to its behavior at a given point in time?  That is, what does positive instantaneous velocity tell you the ball is doing?  Negative instantaneous velocity?</p></li>
+
+        <li><p>Without doing any computations, what do you expect to be the instantaneous velocity of the ball at <m>t = 1</m>?  Why?</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Remember to use the formula for average velocity from above:  <m>AV_{[a,b]} = \frac{s(b)-s(a)}{b-a}</m>.  Think carefully about whether certain quantities are positive or negative.</p></li>
+
+          <li><p>To estimate the instantaneous velocity at <m>t = 1.5</m>, consider average velocities on the intervals <m>[1.499,1.5]</m> and <m>[1.5,1.501]</m>.</p></li>
+
+          <li><p>Think about whether the ball is rising or falling.</p></li>
+
+          <li><p>What is the average velocity of the ball on small intervals that contain <m>t = 0</m>?</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p><m>AV_{[1.5,2]} = \frac{s(2)-s(1.5)}{2-1.5} = -24</m> ft/sec.  We note that this average velocity is negative, and in fact is the opposite of the average velocity of 24 ft/sec on the interval <m>[0,0.5]</m>.</p></li>
+
+          <li><p>Since <m>AV_{[1.499,1.5]} = -15.984</m> and <m>AV_{[1.5, 1.501]} = -16.016</m>, it appears that the instantaneous velocity of the ball at <m>t = 1.5</m> is approximately <m>-16</m> ft/sec.  Similar computations show that at <m>t = 2</m>, it appears the instantaneous velocity is about <m>-32</m> ft/sec.  Note that <m>-16>-32</m>, so the instantaneous velocity at <m>t = 1.5</m> is greater because it is <q>less negative.</q> Asking which number is <q>greater</q> is different from asking which number is <q>more negative.</q></p></li>
+
+          <li><p>When the ball is rising, its instantaneous velocity is positive, while when the ball is falling, its instantaneous velocity is negative.</p></li>
+
+          <li><p>Note that <m>(1,s(1))</m> is the vertex of the parabola given by <m>s(t)</m>.  At this point, the ball is neither rising nor falling.  On intervals of the form <m>[a,1]</m>, where <m>a \lt  1</m>, the average velocity of the ball is positive; on intervals of form <m>[1,b]</m>, where <m>b > 1</m>, the average velocity is positive.  Hence we expect the instantaneous velocity of the ball at the moment <m>t = 1</m> to be zero.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <p>At this point we have started to see a close connection between average velocity and instantaneous velocity, as well as how each is connected not only to the physical behavior of the moving object but also to the geometric behavior of the graph of the position function. In order to make the link between average and instantaneous velocity more formal, we will introduce the notion of <em>limit</em> in <xref ref="S_1.2.Limits">Section</xref>. As a preview of that concept, we look at a way to consider the limiting value of average velocity through the introduction of a parameter. Note that if we desire to know the instantaneous velocity at <m>t = a</m> of a moving object with position function <m>s</m>, we are interested in computing average velocities on the interval <m>[a,b]</m> for smaller and smaller intervals. One way to visualize this is to think of the value <m>b</m> as being <m>b = a + h</m>, where <m>h</m> is a small number that is allowed to vary. Thus, we observe that the average velocity of the object on the interval <m>[a,a+h]</m> is
+      <me>
+        AV_{[a,a+h]} = \frac{s(a+h)-s(a)}{h},
+      </me>
+      with the denominator being simply <m>h</m> because <m>(a+h) - a = h</m>. Initially, it is fine to think of <m>h</m> being a small positive real number; but it is important to note that we allow <m>h</m> to be a small negative number, too, as this enables us to investigate the average velocity of the moving object on intervals prior to <m>t = a</m>, as well as following <m>t = a</m>. When <m>h \lt  0</m>, <m>AV_{[a,a+h]}</m> measures the average velocity on the interval <m>[a+h,a]</m>.</p>
+
+    <p>To attempt to find the instantaneous velocity at <m>t = a</m>, we investigate what happens as the value of <m>h</m> approaches zero. We consider this further in the following example.</p>
+
+    <example>
+      <statement>
+        <p>For a falling ball whose position function is given by <m>s(t) = 16 - 16t^2</m> (where <m>s</m> is measured in feet and <m>t</m> in seconds), find an expression for the average velocity of the ball on a time interval of the form <m>[0.5, 0.5+h]</m> where <m>-0.5 \lt  h \lt  0.5</m> and <m>h \ne 0</m>. Use this expression to compute the average velocity on <m>[0.5,0.75]</m> and <m>[0.4,0.5]</m>, as well as to make a conjecture about the instantaneous velocity at <m>t = 0.5</m>.</p>
+      </statement>
+    </example>
+
+    <p>We make the assumptions that <m>-0.5 \lt  h \lt  0.5</m> and <m>h \ne 0</m> because <m>h</m> cannot be zero (otherwise there is no interval on which to compute average velocity) and because the function only makes sense on the time interval <m>0 \le t \le 1</m>, as this is the duration of time during which the ball is falling. Observe that we want to compute and simplify
+      <me>
+        AV_{[0.5, 0.5+h]} = \frac{s(0.5+h) - s(0.5)}{(0.5+h) - 0.5}.
+      </me>
+    </p>
+
+    <p>The most unusual part of this computation is finding <m>s(0.5+h)</m>. To do so, we follow the rule that defines the function <m>s</m>. In particular, since <m>s(t) = 16-16t^2</m>, we see that
+      <md>
+        <mrow>s(0.5+h) =\mathstrut \amp  16 - 16(0.5 + h)^2</mrow>
+        <mrow>=\mathstrut \amp  16 - 16(0.25 + h + h^2)</mrow>
+        <mrow>=\mathstrut \amp  16 - 4 - 16h - 16h^2</mrow>
+        <mrow>=\mathstrut \amp  12 - 16h - 16h^2.</mrow>
+      </md>
+    </p>
+
+    <p>Now, returning to our computation of the average velocity, we find that
+      <md>
+        <mrow>AV_{[0.5, 0.5+h]} =\mathstrut \amp  \frac{s(0.5+h) - s(0.5)}{(0.5+h) - 0.5}</mrow>
+        <mrow>=\mathstrut \amp  \frac{(12 - 16h - 16h^2) - (16 - 16(0.5)^2)}{0.5 + h - 0.5}</mrow>
+        <mrow>=\mathstrut \amp  \frac{12 - 16h - 16h^2 - 12}{h}</mrow>
+        <mrow>=\mathstrut \amp  \frac{-16h - 16h^2}{h}.</mrow>
+      </md>
+    </p>
+
+    <p>At this point, we note two things: first, the expression for average velocity clearly depends on <m>h</m>, which it must, since as <m>h</m> changes the average velocity will change. Further, we note that since <m>h</m> can never equal zero, we may further simplify the most recent expression. Removing the common factor of <m>h</m> from the numerator and denominator, it follows that
+      <me>
+        AV_{[0.5, 0.5+h]} = -16 - 16h.
+      </me>
+    </p>
+
+    <p>Now, for any small positive or negative value of <m>h</m>, we can compute the average velocity. For instance, to obtain the average velocity on <m>[0.5,0.75]</m>, we let <m>h = 0.25</m>, and the average velocity is <m>-16 - 16(0.25) = -20</m> ft/sec. To get the average velocity on <m>[0.4, 0.5]</m>, we let <m>h = -0.1</m>, which tells us the average velocity is <m>-16 - 16(-0.1) = -14.4</m> ft/sec. Moreover, we can even explore what happens to <m>AV_{[0.5, 0.5+h]}</m> as <m>h</m> gets closer and closer to zero. As <m>h</m> approaches zero, <m>-16h</m> will also approach zero, and thus it appears that the instantaneous velocity of the ball at <m>t = 0.5</m> should be <m>-16</m> ft/sec.</p>
+
+    <activity xml:id="A_1.1.3">
+      <p>For the function given by <m>s(t) = 64 - 16(t-1)^2</m> from <xref ref="PA_1.1">Preview Activity</xref>, find the most simplified expression you can for the average velocity of the ball on the interval <m>[2, 2+h]</m>. Use your result to compute the average velocity on <m>[1.5,2]</m> and to estimate the instantaneous velocity at <m>t = 2</m>. Finally, compare your earlier work in <xref ref="A_1.1.1">Activity</xref>.</p>
+      <hint>
+        <p>Note that <m>s(2+h) = 64 - 16(2+h-1)^2 = 64 - 16(1+h)^2 = 64 - (16 + 32h + 16h^2) = 48 - 32h - 16h^2</m>.</p>
+      </hint>
+      <solution>
+        <p>Observe first that <m>s(2+h) = 64 - 16(2+h-1)^2 = 64 - 16(1+h)^2 = 64 - (16 + 32h + 16h^2) = 48 - 32h - 16h^2</m>. Next, recall that <m>AV_{[2, 2+h]} = \frac{s(2+h) - s(2)}{h}</m>, so
+          <me>
+            AV_{[2, 2+h]} = \frac{s(2+h) - s(2)}{h} = \frac{(48 - 32h - 16h^2)-48}{h} = \frac{-32h - 16h^2}{h}.
+          </me>
+        </p>
+
+        <p>Now, since we assume <m>h \ne 0</m>, we can simplify further to find that <m>AV_{[2, 2+h]} = -32 - 16h</m>. Setting <m>h = -0.5</m>, it follows <m>AV_{[1.5,2]} = -32 + 16(0.5) = -24</m> ft/sec, and letting <m>h</m> approach zero, we see that <m>-32 - 16h</m> will approach <m>-32</m>, so the instantaneous velocity at <m>t = 2</m> appears to be <m>-32</m> feet/sec. Both results match our earlier work in <xref ref="A_1.1.1">Activity</xref>.</p>
+      </solution>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+    <ul>
+      <li><p>The average velocity on <m>[a,b]</m> can be viewed geometrically as the slope of the line between the points <m>(a,s(a))</m> and <m>(b,s(b))</m> on the graph of <m>y = s(t)</m>, as shown in <xref ref="F_1.1.Summary">Figure</xref>.
+
+          <figure xml:id="F_1.1.Summary" >
+            <caption>The graph of position function <m>s</m> together with the line through <m>(a,s(a))</m> and <m>(b,s(b))</m> whose slope is <m>m = \frac{s(b)-s(a)}{b-a}</m>.  The line's slope is the average rate of change of <m>s</m> on the interval <m>[a,b]</m>.</caption>
+            <image width="73%" source="images/1_1_Summary" />
+          </figure>
+
+        </p></li>
+
+      <li><p>Given a moving object whose position at time <m>t</m> is given by a function <m>s</m>, the average velocity of the object on the time interval <m>[a,b]</m> is given by <m>AV_{[a,b]} = \frac{s(b) - s(a)}{b-a}</m>.  Viewing the interval <m>[a,b]</m> as having the form <m>[a,a+h]</m>, we equivalently compute average velocity by the formula <m>AV_{[a,a+h]} = \frac{s(a+h) - s(a)}{h}</m>.</p></li>
+
+      <li><p>The instantaneous velocity of a moving object at a fixed time is estimated by considering average velocities on shorter and shorter time intervals that contain the instant of interest.</p></li>
+    </ul>
+    <exercises>
+      <exercise xml:id="Ez_1.1.1">
+        <statement>
+          <p>A bungee jumper dives from a tower at time <m>t=0</m>. Her height <m>h</m> (measured in feet) at time <m>t</m> (in seconds) is given by the graph in <xref ref="F_1.1.Ez1">Figure</xref>.</p>
+
+          <figure xml:id="F_1.1.Ez1" >
+            <caption>A bungee jumper's height function.</caption>
+            <image width="73%" source="images/1_1_Ez1" />
+          </figure>
+
+          <p>In this problem, you may base your answers on estimates from the graph or use the fact that the jumper's height function is given by <m>s(t) = 100\cos(0.75t) \cdot e^{-0.2t}+100</m>.
+
+          <ol>
+            <li><p>What is the change in vertical position of the bungee jumper between <m>t=0</m> and <m>t=15</m>?</p></li>
+
+            <li><p>Estimate the jumper's average velocity on each of the following time intervals:  <m>[0,15]</m>, <m>[0,2]</m>, <m>[1,6]</m>, and <m>[8,10]</m>.  Include units on your answers.</p></li>
+
+            <li><p>On what time interval(s) do you think the bungee jumper achieves her greatest average velocity?  Why?</p></li>
+
+            <li><p>Estimate the jumper's instantaneous velocity at <m>t=5</m>.  Show your work and explain your reasoning, and include units on your answer.</p></li>
+
+            <li><p>Among the average and instantaneous velocities you computed in earlier questions, which are positive and which are negative?  What does negative velocity indicate?</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>A diver leaps from a 3 meter springboard. His feet leave the board at time <m>t=0</m>, he reaches his maximum height of 4.5 m at <m>t = 1.1</m> seconds, and enters the water at <m>t = 2.45</m>. Once in the water, the diver coasts to the bottom of the pool (depth 3.5 m), touches bottom at <m>t=7</m>, rests for one second, and then pushes off the bottom. From there he coasts to the surface, and takes his first breath at <m>t=13</m>.
+
+          <ol>
+            <li><p>Let <m>s(t)</m> denote the function that gives the height of the diver's feet (in meters) above the water at time <m>t</m>.  (Note that the <q>height</q> of the bottom of the pool is <m>-3.5</m> meters.)  Sketch a carefully labeled graph of <m>s(t)</m> on the provided axes in <xref ref="F_1.1.Ez2">Figure</xref>.  Include scale and units on the vertical axis.  Be as detailed as possible.
+
+                <figure xml:id="F_1.1.Ez2" >
+                  <caption>Axes for plotting <m>s(t)</m> in part (a) and <m>v(t)</m> in part (c) of the diver problem.</caption>
+                  <image width="73%" source="images/1_1_Ez2a" />
+                  <nbsp />
+                  <image width="73%" source="images/1_1_Ez2b" />
+                </figure>
+
+              </p></li>
+
+            <li><p>Based on your graph in (a), what is the average velocity of the diver between <m>t = 2.45</m> and <m>t=7</m>?  Is his average velocity the same on every time interval within <m>[2.45,7]</m>?</p></li>
+
+            <li><p>Let the function <m>v(t)</m> represent the <em>instantaneous vertical velocity</em> of the diver at time <m>t</m> (i.e.<nbsp />the speed at which the height function <m>s(t)</m> is changing; note that velocity in the upward direction is positive, while the velocity of a falling object is negative).  Based on your understanding of the diver's behavior, as well as your graph of the position function, sketch a carefully labeled graph of <m>v(t)</m> on the axes provided  in <xref ref="F_1.1.Ez2">Figure</xref>.  Include scale and units on the vertical axis.  Write several sentences that explain how you constructed your graph, discussing when you expect <m>v(t)</m> to be zero, positive, negative, relatively large, and relatively small.</p></li>
+
+            <li><p>Is there a connection between the two graphs that you can describe?  What can you say about the velocity graph when the height function is increasing?  decreasing?  Make as many observations as you can.</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>According to the U.S. census, the population of the city of Grand Rapids, MI, was 181,843 in 1980; 189,126 in 1990; and 197,800 in 2000.
+
+          <ol>
+            <li><p>Between 1980 and 2000, by how many people did the population of Grand Rapids grow?</p></li>
+
+            <li><p>In an average year between 1980 and 2000, by how many people did the population of Grand Rapids grow?</p></li>
+
+            <li><p>Just like we can find the average velocity of a moving body by computing change in position over change in time, we can compute the average rate of change of any function <m>f</m>.  In particular, the <em>average rate of change</em> of a function <m>f</m> over an interval <m>[a,b]</m> is the quotient
+                <me>
+                  \frac{f(b)-f(a)}{b-a}.
+                </me>
+                What does the quantity <m>\frac{f(b)-f(a)}{b-a}</m> measure on the graph of <m>y = f(x)</m> over the interval <m>[a,b]</m>?</p></li>
+
+            <li><p>Let <m>P(t)</m> represent the population of Grand Rapids at time <m>t</m>, where <m>t</m> is measured in years from January 1, 1980.  What is the average rate of change of <m>P</m> on the interval <m>t = 0</m> to <m>t = 20</m>?  What are the units on this quantity?</p></li>
+
+            <li><p>If we assume the population of Grand Rapids is growing at a rate of approximately 4<percent /> per decade,  we can model the population function with the formula
+                <me>
+                  P(t) = 181843 (1.04)^{t/10}.
+                </me>
+                Use this formula to compute the average rate of change of the population on the intervals <m>[5,10]</m>, <m>[5,9]</m>, <m>[5,8]</m>, <m>[5,7]</m>, and <m>[5,6]</m>.</p></li>
+
+            <li><p>How fast do you think the population of Grand Rapids was changing on January 1, 1985?  Said differently, at what rate do you think people were being added to the population of Grand Rapids as of January 1, 1985?  How many additional people should the city have expected in the following year?  Why?</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+    </exercises>
+  </subsection>
+</section>

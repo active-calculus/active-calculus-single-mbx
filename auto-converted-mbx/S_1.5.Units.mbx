@@ -1,0 +1,426 @@
+
+<section xml:id="S_1.5.Units">
+  <title>Interpreting, estimating, and using the derivative</title>
+  <introduction>
+    <objectives>
+      <ul>
+        <li><p>In contexts other than the position of a moving object, what does the derivative of a function measure?</p></li>
+
+        <li><p>What are the units on the derivative function <m>f'</m>, and how are they related to the units of the original function <m>f</m>?</p></li>
+
+        <li><p>What is a central difference, and how can one be used to estimate the value of the derivative at a point from given function data?</p></li>
+
+        <li><p>Given the value of the derivative of a function at a point, what can we infer about how the value of the function changes nearby?</p></li>
+      </ul>
+    </objectives>
+    <p>An interesting and powerful feature of mathematics is that it can often be thought of both in abstract terms and in applied ones. For instance, calculus can be developed almost entirely as an abstract collection of ideas that focus on properties of arbitrary functions. At the same time, calculus can also be very directly connected to our experience of physical reality by considering functions that represent meaningful processes. We have already seen that for a position function <m>y = s(t)</m>, say for a ball being tossed straight up in the air, the ball's velocity at time <m>t</m> is given by <m>v(t) = s'(t)</m>, the derivative of the position function. Further, recall that if <m>s(t)</m> is measured in feet at time <m>t</m>, the units on <m>v(t) = s'(t)</m> are feet per second.</p>
+
+    <p>In what follows in this section, we investigate several different functions, each with specific physical meaning, and think about how the units on the independent variable, dependent variable, and the derivative function add to our understanding. To start, we consider the familiar problem of a position function of a moving object.</p>
+
+    <exploration xml:id="PA_1.5">
+      <p>One of the longest stretches of straight (and flat) road in North America can be found on the Great Plains in the state of North Dakota on state highway 46, which lies just south of the interstate highway I-94 and runs through the town of Gackle. A car leaves town (at time <m>t = 0</m>) and heads east on highway 46; its position in miles from Gackle at time <m>t</m> in minutes is given by the graph of the function in <xref ref="F_1.5.PA1">Figure</xref>. Three important points are labeled on the graph; where the curve looks linear, assume that it is indeed a straight line.</p>
+
+      <figure xml:id="F_1.5.PA1" >
+        <caption>The graph of <m>y = s(t)</m>, the position of the car along highway 46, which tells its distance in miles from Gackle, ND, at time <m>t</m> in minutes.</caption>
+        <image width="73%" source="images/1_5_PA1" />
+      </figure>
+
+      <ol>
+        <li><p>In everyday language, describe the behavior of the car over the provided time interval.  In particular, discuss what is happening on the time intervals <m>[57,68]</m> and <m>[68,104]</m>.</p></li>
+
+        <li><p>Find the slope of the line between the points <m>(57,63.8)</m> and <m>(104,106.8)</m>.  What are the units on this slope?  What does the slope represent?</p></li>
+
+        <li><p>Find the average rate of change of the car's position on the interval <m>[68,104]</m>.  Include units on your answer.</p></li>
+
+        <li><p>Estimate the instantaneous rate of change of the car's position at the moment <m>t = 80</m>.  Write a sentence to explain your reasoning and the meaning of this value.</p></li>
+      </ol>
+    </exploration>
+  </introduction>
+
+  <subsection>
+    <title>Units of the derivative function</title>
+    <p>As we now know, the derivative of the function <m>f</m> at a fixed value <m>x</m> is given by
+      <me>
+        f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h},
+      </me>
+      and this value has several different interpretations. If we set <m>x = a</m>, one meaning of <m>f'(a)</m> is the slope of the tangent line at the point <m>(a,f(a))</m>.</p>
+
+    <p>In alternate notation, we also sometimes equivalently write <m>\frac{df}{dx}</m> or <m>\frac{dy}{dx}</m> instead of <m>f'(x)</m>, and these notations helps us to further see the units (and thus the meaning) of the derivative as it is viewed as <em>the instantaneous rate of change of <m>f</m> with respect to <m>x</m></em><index><main>instantaneous rate of change</main></index>. Note that the units on the slope of the secant line, <m>\frac{f(x+h)-f(x)}{h}</m>, are <q>units of <m>f</m> per unit of <m>x</m>.</q> Thus, when we take the limit to get <m>f'(x)</m>, we get these same units on the derivative <m>f'(x)</m>: units of <m>f</m> per unit of <m>x</m>. Regardless of the function <m>f</m> under consideration (and regardless of the variables being used), it is helpful to remember that the units on the derivative function are <q>units of output per unit of input,</q> in terms of the input and output of the original function.</p>
+
+    <p>For example, say that we have a function <m>y = P(t)</m>, where <m>P</m> measures the population of a city (in thousands) at the start of year <m>t</m> (where <m>t = 0</m> corresponds to 2010 AD), and we are told that <m>P'(2) = 21.37</m>. What is the meaning of this value? Well, since <m>P</m> is measured in thousands and <m>t</m> is measured in years, we can say that the instantaneous rate of change of the city's population with respect to time at the start of 2012 is 21.37 thousand people per year. We therefore expect that in the coming year, about 21,370 people will be added to the city's population.</p>
+  </subsection>
+
+  <subsection>
+    <title>Toward more accurate derivative estimates</title>
+    <p>It is also helpful to recall, as we first experienced in <xref ref="S_1.3.DerivativePt">Section</xref>, that when we want to estimate the value of <m>f'(x)</m> at a given <m>x</m>, we can use the <em>difference quotient</em> <index><main>difference quotient</main></index> <m>\frac{f(x+h)-f(x)}{h}</m> with a relatively small value of <m>h</m>. In doing so, we should use both positive and negative values of <m>h</m> in order to make sure we account for the behavior of the function on both sides of the point of interest. To that end, we consider the following brief example to demonstrate the notion of a <em>central difference</em> and its role in estimating derivatives.</p>
+
+    <example xml:id="Ex_1.5.1">
+      <statement>
+        <p>Suppose that <m>y = f(x)</m> is a function for which three values are known: <m>f(1) = 2.5</m>, <m>f(2) = 3.25</m>, and <m>f(3) = 3.625</m>. Estimate <m>f'(2)</m>.</p>
+      </statement>
+    </example>
+
+    <p>We know that <m>f'(2) = \lim_{h \to 0} \frac{f(2+h) - f(2)}{h}</m>. But since we don't have a graph for <m>y = f(x)</m> nor a formula for the function, we can neither sketch a tangent line nor evaluate the limit exactly. We can't even use smaller and smaller values of <m>h</m> to estimate the limit. Instead, we have just two choices: using <m>h = -1</m> or <m>h = 1</m>, depending on which point we pair with <m>(2,3.25)</m>.</p>
+
+    <p>So, one estimate is
+      <me>
+        f'(2) \approx \frac{f(1)-f(2)}{1-2} = \frac{2.5-3.25}{-1} = 0.75.
+      </me>
+    </p>
+
+    <p>The other is
+      <me>
+        f'(2) \approx \frac{f(3)-f(2)}{3-2} = \frac{3.625-3.25}{1} = 0.375.
+      </me>
+    </p>
+
+    <p>Since the first approximation looks only backward from the point <m>(2,3.25)</m> and the second approximation looks only forward from <m>(2,3.25)</m>, it makes sense to average these two values in order to account for behavior on both sides of the point of interest. Doing so, we find that
+      <me>
+        f'(2) \approx \frac{0.75 + 0.375}{2} = 0.5625.
+      </me>
+    </p>
+
+    <p>The intuitive approach to average the two estimates found in <xref ref="Ex_1.5.1">Example</xref> is in fact the best possible estimate to <m>f'(2)</m> when we have just two function values for <m>f</m> on opposite sides of the point of interest.</p>
+
+    <figure xml:id="F_1.5.Ex1" >
+      <caption>At left, the graph of <m>y = f(x)</m> along with the secant line through <m>(1,2.5)</m> and <m>(2,3.25)</m>, the secant line through <m>(2, 3.25)</m> and <m>(3,3.625)</m>, as well as the tangent line.  At right, the same graph along with the secant line through <m>(1,2.5)</m> and <m>(3,3.625)</m>, plus the tangent line.</caption>
+      <image width="73%" source="images/1_5_Ex1" />
+    </figure>
+
+    <p>To see why, we think about the diagram in <xref ref="F_1.5.Ex1">Figure</xref>, which shows
+      a possible function <m>y = f(x)</m> that satisfies the data given in <xref ref="Ex_1.5.1">Example</xref>. On the left, we see the two secant lines with slopes that come from computing the <em>backward difference</em> <index><main>backward difference</main></index> <m>\frac{f(1)-f(2)}{1-2} = 0.75</m> and from the <em>forward difference</em> <index><main>forward difference</main></index> <m>\frac{f(3)-f(2)}{3-2} = 0.375.</m> Note how the first such line's slope over-estimates the slope of the tangent line at <m>(2,f(2))</m>, while the second line's slope underestimates <m>f'(2)</m>. On the right, however, we see the secant line whose slope is given by the <em>central difference</em> <index><main>central difference</main></index>
+      <me>
+        \frac{f(3)-f(1)}{3-1} = \frac{3.625-2.5}{2} = \frac{1.125}{2} = 0.5625.
+      </me>
+    </p>
+
+    <p>Note that this central difference has the exact same value as the average of the forward difference and backward difference (and it is straightforward to explain why this always holds), and moreover that the central difference yields a very good approximation to the derivative's value, in part because the secant line that uses both a point before and after the point of tangency yields a line that is closer to being parallel to the tangent line.</p>
+
+    <p>In general, the central difference approximation to the value of the first derivative is given by
+      <me>
+        f'(a) \approx \frac{f(a+h) - f(a-h)}{2h},
+      </me>
+      and this quantity measures the slope of the secant line to <m>y = f(x)</m> through the points <m>(a-h, f(a-h))</m> and <m>(a+h, f(a+h))</m>. Anytime we have symmetric data surrounding a point at which we desire to estimate the derivative, the central difference is an ideal choice for so doing.</p>
+
+    <p>The following activities will further explore the meaning of the derivative in several different contexts while also viewing the derivative from graphical, numerical, and algebraic perspectives.</p>
+
+    <activity xml:id="A_1.5.1">
+      <p>A potato is placed in an oven, and the potato's temperature <m>F</m> (in degrees Fahrenheit) at various points in time is taken and recorded in the following table. Time <m>t</m> is measured in minutes.</p>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><m>t</m></cell>
+          <cell><m>F(t)</m></cell>
+        </row>
+        <row bottom="medium">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell  >0</cell>
+          <cell>70</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>15</cell>
+          <cell>180.5</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>30</cell>
+          <cell>251</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>45</cell>
+          <cell>296</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>60</cell>
+          <cell>324.5</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>75</cell>
+          <cell>342.8</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>90</cell>
+          <cell>354.5</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+
+      <ol>
+        <li><p>Use a central difference to estimate the instantaneous rate of change of the temperature of the potato at <m>t= 30</m>. Include units on your answer.</p></li>
+
+        <li><p>Use a central difference to estimate the instantaneous rate of change of the temperature of the potato at <m>t= 60</m>. Include units on your answer.</p></li>
+
+        <li><p>Without doing any calculation, which do you expect to be greater: <m>F'(75)</m> or <m>F'(90)</m>?  Why?</p></li>
+
+        <li><p>Suppose it is given that <m>F(64) = 330.28</m> and <m>F'(64) = 1.341</m>.  What are the units on these two quantities?  What do you expect the temperature of the potato to be when <m>t = 65</m>?  when <m>t = 66</m>?  Why?</p></li>
+
+        <li><p>Write a couple of careful sentences that describe the behavior of the temperature of the potato on the time interval <m>[0,90]</m>, as well as the behavior of the instantaneous rate of change of the temperature of the potato on the same time interval.</p></li>
+      </ol>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Think about quantities such as <m>\frac{F(45)-F(30)}{45-30}</m>.</p></li>
+
+          <li><p>See the note in (a).</p></li>
+
+          <li><p>Is <m>F</m> changing faster at <m>t = 75</m> or at <m>t = 90</m>?</p></li>
+
+          <li><p>Remember that the units on <m>F'</m> will be <q>degrees Fahrenheit per minute.</q></p></li>
+
+          <li><p>Be careful to distinguish between the temperature, <m>F</m>, and the rate of change of temperature, <m>F'</m>, in your commentary.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Using the central difference, we find that
+              <me>
+                F'(30) \approx \frac{F(45)-F(15)}{45-15} = \frac{296-180.5}{30} = 3.85
+              </me>
+              degrees per minute.</p></li>
+
+          <li><p>Using the central difference, we find that
+              <me>
+                F'(60) \approx \frac{F(75)-F(45)}{45-15} = \frac{342.8-296}{30} = 1.56
+              </me>
+              degrees per minute.</p></li>
+
+          <li><p>Over each subsequent time interval, we see that the amount of increase in the potato's temperature gets less and less, thus we expect the value of <m>F'(t)</m> to get smaller and smaller as time goes on.  We therefore expect <m>F'(75) > F'(90)</m>.</p></li>
+
+          <li><p>The value <m>F(64) = 330.28</m> is the temperature of the potato in degrees Fahrenheit at time 64, while <m>F'(64) = 1.341</m> measures the instantaneous rate of change of the potato's temperature with respect to time at the instant <m>t = 64</m>, and its units are degrees per minute.  Because at time <m>t = 64</m> the potato's temperature is increasing at 1.341 degrees per minute, we expect that at <m>t = 65</m>, the temperature will be about 1.341 degrees greater than at <m>t = 64</m>, or in other words <m>F(65) \approx 330.28 + 1.341 = 331.621</m>.  Similarly, at <m>t = 66</m>, two minutes have elapsed from <m>t = 64</m>, so we expect an increase of <m>2 \dot 1.341</m> degrees:  <m>F(66) \approx 330.28 + 2 \cdot 1.341 = 332.962</m>.</p></li>
+
+          <li><p>Throughout the time interval <m>[0,90]</m>, the temperature <m>F</m> of the potato is increasing.  But as time goes on, the rate at which the temperature is rising appears to be decreasing.  That is, while the values of <m>F</m> continue to get larger as time progresses, the values of <m>F'</m> are getting smaller (while still remaining positive). We thus might say that <q>the temperature of the potato is increasing, but at a decreasing rate.</q></p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <activity xml:id="A_1.5.2">
+      <p>A company manufactures rope, and the total cost of producing <m>r</m> feet of rope is <m>C(r)</m> dollars.
+
+      <ol>
+        <li><p>What does it mean to say that <m>C(2000) = 800</m>?</p></li>
+
+        <li><p>What are the units of <m>C'(r)</m>?</p></li>
+
+        <li><p>Suppose that <m>C(2000) = 800</m> and <m>C'(2000) = 0.35</m>.  Estimate <m>C(2100)</m>, and justify your estimate by writing at least one sentence that explains your thinking.</p></li>
+
+        <li><p>Which of the following statements do you think is true, and why?
+
+        <ul>
+          <li><p><m>C'(2000) \lt  C'(3000)</m></p></li>
+
+          <li><p><m>C'(2000) = C'(3000)</m></p></li>
+
+          <li><p><m>C'(2000) > C'(3000)</m></p></li>
+        </ul>
+        </p></li>
+
+        <li><p>Suppose someone claims that <m>C'(5000) = -0.1</m>.  What would the practical meaning of this derivative value tell you about the approximate cost of the next foot of rope?  Is this possible?  Why or why not?</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>The cost of producing 2000 feet of rope is <m>\ldots</m></p></li>
+
+          <li><p>Remember that the units on any derivative are <q>units of output per unit of input.</q></p></li>
+
+          <li><p>How much do you expect <m>C</m> to increase for each additional foot away from 2000?  By how many feet will the input increase to get to 2100?</p></li>
+
+          <li><p>In manufacturing processes, there is often a decrease in cost per unit as the number of units increases.</p></li>
+
+          <li><p>Is it possible for the total cost function to be decreasing at some point?</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p><m>C(2000) = 800</m> means that it costs <dollar />800 to make 2000 feet of rope.</p></li>
+
+          <li><p>The units of <m>C'(r)</m> are <q>dollars per foot.</q></p></li>
+
+          <li><p>If <m>C(2000) = 800</m> and <m>C'(2000) = 0.35</m>, then we know once 2000 feet of rope are produced, the total cost function is increasing at <dollar />0.35 per additional foot of rope.  Then, if we manufacture an additional 100 feet of rope, the additional total cost will be approximately
+              <me>
+                100 \ \mbox{feet}  \cdot 0.35 \ \frac{\mbox{dollars} }{\mbox{foot} } = 35 \ \mbox{dollars} .
+              </me>
+              Therefore, we find that <m>C(2100) \approx C(2000) + 35 = 835,</m> or that the cost to make 2100 feet of rope is about <dollar />835.</p></li>
+
+          <li><p>Either <m>C'(2000) = C'(3000)</m> or <m>C'(2000) > C'(3000)</m>, since we expect the cost per foot of additional rope to either stay constant or to get smaller as the production volume increases.  Said differently, the instantaneous rate of change of the total cost function should either be constant or decrease due to economy of scale.</p></li>
+
+          <li><p>It is impossible to have <m>C'(5000) = -0.1</m> and indeed to have any negative derivative value for the total cost function.  The total cost function <m>C(r)</m> can never decrease, because it doesn't make sense for the total cost of producing 5001 feet of rope to be less than the total cost of producing 5000 feet of rope.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <activity xml:id="A_1.5.3">
+      <p>Researchers at a major car company have found a function that relates gasoline consumption to speed for a particular model of car. In particular, they have determined that the consumption <m>C</m>, in {liters per kilometer}, at a given speed <m>s</m>, is given by a function <m>C = f(s)</m>, where <m>s</m> is the car's speed in <em>kilometers per hour</em>.
+
+      <ol>
+        <li><p>Data provided by the car company tells us that <m>f(80) = 0.015</m>, <m>f(90) = 0.02</m>, and <m>f(100) = 0.027</m>.  Use this information to estimate the instantaneous rate of change of fuel consumption with respect to speed at <m>s = 90</m>.  Be as accurate as possible, use proper notation, and include units on your answer.</p></li>
+
+        <li><p>By writing a complete sentence, interpret the meaning (in the context of fuel consumption) of <q><m>f(80) = 0.015</m>.</q></p></li>
+
+        <li><p>Write at least one complete sentence that interprets the meaning of the value of <m>f'(90)</m> that you estimated in (a).</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Try a central difference.</p></li>
+
+          <li><p>What is happening when the car is traveling at 80 km/hr?</p></li>
+
+          <li><p>Remember that units on the derivative are <q>units of output per unit of input.</q></p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Using a central difference, we have
+              <me>
+                f'(90) = \frac{f(100) - f(80}{100-80} = \frac{0.027 - 0.015}{20} = \frac{0.012}{20} = 0.0006
+              </me>
+              which tells us that <m>f'(90) = 0.0006</m> liters per kilometer per kilometer per hour.</p></li>
+
+          <li><p>When the car is traveling at 80 kilometers per hour, it is using fuel at a rate of 0.015 liters per kilometer.  That is, at the given speed, for each additional kilometer the car travels, it uses an additional 0.015 liters of fuel.</p></li>
+
+          <li><p>To say that <m>f'(90) = 0.0006</m> liters per kilometer per kilometer per hour means that when the car is traveling at 90 kilometers per hour, its rate of fuel consumption per kilometer is increasing at a rate of 0.0006 liters per kilometer per kilometer per hour.  If we increase our speed from 90 to 91 km/hr, we would expect our rate of fuel consumption to rise by 0.0006 liters for each additional kilometer driven.</p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <p>In <xref ref="S_1.4.DerivativeFxn">Section</xref>, we learned how use to the graph of a given function <m>f</m> to plot the graph of its derivative, <m>f'</m>. It is important to remember that when we do so, not only does the scale on the vertical axis often have to change to accurately represent <m>f'</m>, but the units on that axis also differ. For example, suppose that <m>P(t) = 400-330e^{-0.03t}</m> tells us the temperature in degrees Fahrenheit of a potato in an oven at time <m>t</m> in minutes. In <xref ref="F_1.5.PPprime">Figure</xref>, we sketch the graph of <m>P</m> on the left and the graph of <m>P'</m> on the right.</p>
+
+    <figure xml:id="F_1.5.PPprime" >
+      <caption>Plot of <m>P(t) = 400-330e^{-0.03t}</m> at left, and its derivative <m>P'(t)</m> at right.</caption>
+      <image width="73%" source="images/1_5_PPprimeplot" />
+    </figure>
+
+    <p>Note how not only are the vertical scales different in size, but different in units, as the units of <m>P</m> are <m>^{\circ}</m>F, while those of <m>P'</m> are <m>^{\circ}</m>F/min. In all cases where we work with functions that have an applied context, it is helpful and instructive to think carefully about units involved and how they further inform the meaning of our computations.</p>
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+    <ul>
+      <li><p>Regardless of the context of a given function <m>y=f(x)</m>, the derivative always measures the instantaneous rate of change of the output variable with respect to the input variable.</p></li>
+
+      <li><p>The units on the derivative function <m>y = f'(x)</m> are units of <m>f</m> per unit of <m>x</m>.  Again, this measures how fast the output of the function <m>f</m> changes when the input of the function changes.</p></li>
+
+      <li><p>The central difference approximation to the value of the first derivative is given by
+          <me>
+            f'(a) \approx \frac{f(a+h) - f(a-h)}{2h},
+          </me>
+          and this quantity measures the slope of the secant line to <m>y = f(x)</m> through the points <m>(a-h, f(a-h))</m> and <m>(a+h, f(a+h))</m>.  The central difference generates a good approximation of the derivative's value any time we have symmetric data surrounding a point of interest.</p></li>
+
+      <li><p>Knowing the derivative and function values at a single point enables us to estimate other function values nearby.  If, for example, we know that <m>f'(7) = 2</m>, then we know that at <m>x = 7</m>, the function <m>f</m> is increasing at an instantaneous rate of 2 units of output for every one unit of input.  Thus, we expect <m>f(8)</m> to be approximately 2 units greater than <m>f(7)</m>.  The value is approximate because we don't know that the rate of change stays the same as <m>x</m> changes.</p></li>
+    </ul>
+    <exercises>
+      <exercise>
+        <statement>
+          <p>A cup of coffee has its temperature <m>F</m> (in degrees Fahrenheit) at time <m>t</m> given by the function <m>F(t) = 75 + 110 e^{-0.05t}</m>, where time is measured in minutes.
+
+          <ol>
+            <li><p>Use a central difference with <m>h = 0.01</m> to estimate the value of <m>F'(10)</m>.</p></li>
+
+            <li><p>What are the units on the value of <m>F'(10)</m> that you computed in (a)?  What is the practical meaning of the value of <m>F'(10)</m>?</p></li>
+
+            <li><p>Which do you expect to be greater: <m>F'(10)</m> or <m>F'(20)</m>?  Why?</p></li>
+
+            <li><p>Write a sentence that describes the behavior of the function <m>y = F'(t)</m> on the time interval <m>0 \le t \le 30</m>.  How do you think its graph will look?  Why?</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>The temperature change <m>T</m> (in Fahrenheit degrees), in a patient, that is generated by a dose <m>q</m> (in milliliters), of a drug, is given by the function <m>T = f(q)</m>.
+
+          <ol>
+            <li><p>What does it mean to say <m>f(50) = 0.75</m>?  Write a complete sentence to explain, using correct units.</p></li>
+
+            <li><p>A person's sensitivity, <m>s</m>, to the drug is defined by the function <m>s(q) = f'(q)</m>.  What are the units of sensitivity?</p></li>
+
+            <li><p>Suppose that <m>f'(50) = -0.02</m>.  Write a complete sentence to explain the meaning of this value.  Include in your response the information given in (a).</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>The velocity of a ball that has been tossed vertically in the air is given by <m>v(t) = 16 - 32t</m>, where <m>v</m> is measured in feet per second, and <m>t</m> is measured in seconds. The ball is in the air from <m>t = 0</m> until <m>t = 2</m>.
+
+          <ol>
+            <li><p>When is the ball's velocity greatest?</p></li>
+
+            <li><p>Determine the value of <m>v'(1)</m>.  Justify your thinking.</p></li>
+
+            <li><p>What are the units on the value of <m>v'(1)</m>?  What does this value and the corresponding units tell you about the behavior of the ball at time <m>t = 1</m>?</p></li>
+
+            <li><p>What is the physical meaning of the function <m>v'(t)</m>?</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>The value, <m>V</m>, of a particular automobile (in dollars) depends on the number of miles, <m>m</m>, the car has been driven, according to the function <m>V = h(m)</m>.
+
+          <ol>
+            <li><p>Suppose that <m>h(40000) = 15500</m> and <m>h(55000) = 13200</m>.  What is the average rate of change of <m>h</m> on the interval <m>[40000,55000]</m>, and what are the units on this value?</p></li>
+
+            <li><p>In addition to the information given in (a), say that <m>h(70000) = 11100</m>.  Determine the best possible estimate of <m>h'(55000)</m> and write one sentence to explain the meaning of your result, including units on your answer.</p></li>
+
+            <li><p>Which value do you expect to be greater: <m>h'(30000)</m> or <m>h'(80000)</m>?  Why?</p></li>
+
+            <li><p>Write a sentence to describe the long-term behavior of the function <m>V = h(m)</m>, plus another sentence to describe the long-term behavior of <m>h'(m)</m>.  Provide your discussion in practical terms regarding the value of the car and the rate at which that value is changing.</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+    </exercises>
+  </subsection>
+</section>

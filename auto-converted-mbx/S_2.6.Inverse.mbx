@@ -1,0 +1,516 @@
+
+<section xml:id="S_2.6.Inverse">
+  <title>Derivatives of Inverse Functions</title>
+  <introduction>
+    <objectives>
+      <ul>
+        <li><p>What is the derivative of the natural logarithm function?</p></li>
+
+        <li><p>What are the derivatives of the inverse trigonometric functions <m>\arcsin(x)</m> and <m>\arctan(x)</m>?</p></li>
+
+        <li><p>If <m>g</m> is the inverse of a differentiable function <m>f</m>, how is <m>g'</m> computed in terms of <m>f</m>, <m>f'</m>, and <m>g</m>?</p></li>
+      </ul>
+    </objectives>
+    <p>Much of mathematics centers on the notion of function. Indeed, throughout our study of calculus, we are investigating the behavior of functions, often doing so with particular emphasis on how fast the output of the function changes in response to changes in the input. Because each function represents a process, a natural question to ask is whether or not the particular process can be reversed. That is, if we know the output that results from the function, can we determine the input that led to it? Connected to this question, we now also ask: if we know how fast a particular process is changing, can we determine how fast the inverse process is changing?</p>
+
+    <p>As we have noted, one of the most important functions in all of mathematics is the natural exponential function <m>f(x) = e^x</m>. Because the natural logarithm, <m>g(x) = \ln(x)</m>, is the inverse of the natural exponential function, the natural logarithm is similarly important. One of our goals in this section is to learn how to differentiate the logarithm function, and thus expand our library of basic functions with known derivative formulas. First, we investigate a more familiar setting to refresh some of the basic concepts surrounding functions and their inverses.</p>
+
+    <exploration xml:id="PA_2.6">
+      <p>The equation <m>y = \frac{5}{9}(x-32)</m> relates a temperature given in <m>x</m> degrees Fahrenheit to the corresponding temperature <m>y</m> measured in degrees Celcius.
+
+      <ol>
+        <li><p>Solve the equation <m>y = \frac{5}{9}(x-32)</m> for <m>x</m> to write <m>x</m> (Fahrenheit temperature) in terms of <m>y</m> (Celcius temperature).</p></li>
+
+        <li><p>Let <m>C(x) = \frac{5}{9}(x-32)</m> be the function that takes a Fahrenheit temperature as input and produces the Celcius temperature as output.  In addition,  let <m>F(y)</m> be the function that converts a temperature given in <m>y</m> degrees Celcius to the temperature <m>F(y)</m> measured in degrees Fahrenheit.  Use your work in (a) to write a formula for <m>F(y)</m>.</p></li>
+
+        <li><p>Next consider the new function defined by <m>p(x) = F(C(x))</m>.  Use the formulas for <m>F</m> and <m>C</m> to determine an expression for <m>p(x)</m> and simplify this expression as much as possible.  What do you observe?</p></li>
+
+        <li><p>Now, let <m>r(y) = C(F(y))</m>.  Use the formulas for <m>F</m> and <m>C</m> to determine an expression for <m>r(y)</m> and simplify this expression as much as possible.  What do you observe?</p></li>
+
+        <li><p>What is the value of <m>C'(x)</m>?  of <m>F'(y)</m>?  How do these values appear to be related?</p></li>
+      </ol>
+      </p>
+    </exploration>
+  </introduction>
+
+  <subsection>
+    <title>Basic facts about inverse functions</title>
+    <p>A function <index><main>function</main></index> <m>f : A \to B</m> is a rule that associates each element in the set <m>A</m> to one and only one element in the set <m>B</m>. We call <m>A</m> the <em>domain</em> <index><main>domain</main></index> of <m>f</m> and <m>B</m> the <em>codomain</em> <index><main>codomain</main></index>of <m>f</m>. If there exists a function <m>g : B \to A</m> such that <m>g(f(a)) = a</m> for every possible choice of <m>a</m> in the set <m>A</m> and <m>f(g(b)) = b</m> for every <m>b</m> in the set <m>B</m>, then we say that <m>g</m> is the <em>inverse</em> of <m>f</m>. We often use the notation <m>f^{-1}</m> (read <q><m>f</m>-inverse</q>) to denote the inverse of <m>f</m>. Perhaps the most essential thing to observe about the inverse function is that it undoes the work of <m>f</m>. Indeed, if <m>y = f(x)</m>, then
+      <me>
+        f^{-1}(y) = f^{-1}(f(x)) = x,
+      </me>
+      and this leads us to another key observation: writing <m>y = f(x)</m> and <m>x = f^{-1}(y)</m> say the exact same thing. The only difference between the two equations is one of perspective <mdash /> one is solved for <m>x</m>, while the other is solved for <m>y</m>.</p>
+
+    <p>Here we briefly remind ourselves of some key facts about inverse functions. For a function <m>f : A \to B</m>,
+
+    <ul>
+      <li><p><m>f</m> has an inverse if and only if <m>f</m> is one-to-one<fn>A function <m>f</m> is <em>one-to-one</em> <index><main>one-to-one</main></index> provided that no two distinct inputs lead to the same output.</fn> and onto<fn>A function <m>f</m> is <em>onto</em> <index><main>onto</main></index> provided that every possible element of the codomain can be realized as an output of the function for some choice of input from the domain.</fn>;</p></li>
+
+      <li><p>provided <m>f^{-1}</m> exists, the domain of <m>f^{-1}</m> is the codomain of <m>f</m>, and the codomain of <m>f^{-1}</m> is the domain of <m>f</m>;</p></li>
+
+      <li><p><m>f^{-1}(f(x)) = x</m> for every <m>x</m> in the domain of <m>f</m> and <m>f(f^{-1}(y)) = y</m> for every <m>y</m> in the codomain of <m>f</m>;</p></li>
+
+      <li><p><m>y = f(x)</m> if and only if <m>x = f^{-1}(y)</m>.</p></li>
+    </ul>
+    </p>
+
+    <p>The last stated fact reveals a special relationship between the graphs of <m>f</m> and <m>f^{-1}</m>. In particular, if we consider <m>y = f(x)</m> and a point <m>(x,y)</m> that lies on the graph of <m>f</m>, then it is also true that <m>x = f^{-1}(y)</m>, which means that the point <m>(y,x)</m> lies on the graph of <m>f^{-1}</m>. This shows us that the graphs of <m>f</m> and <m>f^{-1}</m> are the reflections of one another across the line <m>y = x</m>, since reflecting across <m>y = x</m> is precisely the geometric action that swaps the coordinates in an ordered pair. In <xref ref="F_2.6.InversePlot">Figure</xref>, we see this exemplified for the function <m>y = f(x) = 2^x</m> and its inverse, with the points <m>(-1,\frac{1}{2})</m> and <m>(\frac{1}{2},-1)</m> highlighting the reflection of the curves across <m>y = x</m>.</p>
+
+    <figure xml:id="F_2.6.InversePlot" >
+      <caption>A graph of a function <m>y = f(x)</m> along with its inverse, <m>y = f^{-1}(x)</m>.</caption>
+      <image width="73%" source="images/2_6_InversePlot" />
+    </figure>
+
+    <p>To close our review of important facts about inverses, we recall that the natural exponential function <m>y = f(x) = e^x</m> has an inverse function, and its inverse is the natural logarithm, <m>x = f^{-1}(y) = \ln(y)</m>. Indeed, writing <m>y = e^x</m> is interchangeable with <m>x = \ln(y)</m>, plus
+      <m>\ln(e^x) = x</m> for every real number <m>x</m> and <m>e^{\ln(y)} = y</m> for every positive real number <m>y.</m></p>
+  </subsection>
+
+  <subsection>
+    <title>The derivative of the natural logarithm function</title>
+    <p>In what follows, we determine a formula for the derivative of <m>g(x) = \ln(x)</m>. To do so, we take advantage of the fact that we know the derivative of the natural exponential function, which is the inverse of <m>g</m>. In particular, we know that writing <m>g(x) = \ln(x)</m> is equivalent to writing <m>e^{g(x)} = x</m>. Now we differentiate both sides of this most recent equation. In particular, we observe that
+      <me>
+        \frac{d}{dx}\left[e^{g(x)}\right] = \frac{d}{dx}[x].
+      </me>
+    </p>
+
+    <p>The righthand side is simply <m>1</m>; applying the chain rule to the left side, we find that
+      <me>
+        e^{g(x)} g'(x) = 1.
+      </me>
+    </p>
+
+    <p>Since our goal is to determine <m>g'(x)</m>, we solve for <m>g'(x)</m>, so
+      <me>
+        g'(x) = \frac{1}{e^{g(x)}}.
+      </me>
+    </p>
+
+    <p>Finally, we recall that since <m>g(x) = \ln(x)</m>, <m>e^{g(x)} = e^{\ln(x)} = x</m>, and thus
+      <me>
+        g'(x) = \frac{1}{x}.
+      </me>
+    </p>
+
+    <p><em>Natural Logarithm:</em> <index><main>derivative</main><sub>logarithm</sub></index> For all positive real numbers <m>x</m>, <m>\frac{d}{dx}[\ln(x)] = \frac{1}{x}.</m></p>
+
+    <p>This rule for the natural logarithm function now joins our list of other basic derivative rules that we have already established. There are two particularly interesting things to note about the fact that <m>\frac{d}{dx}[\ln(x)] = \frac{1}{x}</m>. One is that this rule is restricted to only apply to positive values of <m>x</m>, as these are the only values for which the original function is defined. The other is that for the first time in our work, differentiating a basic function of a particular type has led to a function of a very different nature: the derivative of the natural logarithm is not another logarithm, nor even an exponential function, but rather a rational one.</p>
+
+    <p>Derivatives of logarithms may now be computed in concert with all of the rules known to date. For instance, if <m>f(t) = \ln(t^2 + 1)</m>, then by the chain rule, <m>f'(t) = \frac{1}{t^2 + 1} \cdot 2t</m>.</p>
+
+    <activity xml:id="A_2.6.1">
+      <p>For each function given below, find its derivative.
+
+      <ol>
+        <li><p><m>h(x) = x^2\ln(x)</m></p></li>
+
+        <li><p><m>p(t) = \frac{\ln(t)}{e^t + 1}</m></p></li>
+
+        <li><p><m>s(y) = \ln(\cos(y) + 2)</m></p></li>
+
+        <li><p><m>z(x) = \tan(\ln(x))</m></p></li>
+
+        <li><p><m>m(z) = \ln(\ln(z))</m></p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Is <m>h</m> a product, quotient, or composition of basic functions?</p></li>
+
+          <li><p>Is <m>p</m> a product, quotient, or composition of basic functions?</p></li>
+
+          <li><p>Is <m>s</m> a product, quotient, or composition of basic functions?</p></li>
+
+          <li><p>Is <m>z</m> a product, quotient, or composition of basic functions?</p></li>
+
+          <li><p>Is <m>m</m> a product, quotient, or composition of basic functions?</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>By the product rule,
+              <me>
+                h'(x) = x^2\cdot \frac{1}{x} + \ln(x) \cdot 2x = x + 2x\ln(x).
+              </me>
+            </p></li>
+
+          <li><p>By the quotient rule,
+              <me>
+                p'(t) = \frac{(e^t + 1) \frac{1}{t} - \ln(t) \cdot e^t}{(e^t + 1)^2}.
+              </me>
+            </p></li>
+
+          <li><p>The chain rule tells us that
+              <me>
+                s'(y) = \frac{1}{\cos(y) + 2)} \cdot (-\sin(y)).
+              </me>
+            </p></li>
+
+          <li><p>Again using the chain rule,
+              <me>
+                z'(x) = \sec^2(\ln(x)) \cdot \frac{1}{x}.
+              </me>
+            </p></li>
+
+          <li><p>Noting that <m>m</m> is composite with the natural logarithm function serving as both the inner and outer function, we find that
+              <me>
+                m'(z) = \frac{1}{\ln(z)} \cdot \frac{1}{z}.
+              </me>
+            </p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <p>In addition to the important rule we have derived for the derivative of the natural log functions, there are additional interesting connections to note between the graphs of <m>f(x) = e^x</m> and <m>f^{-1}(x) = \ln(x)</m>.</p>
+
+    <figure xml:id="F_2.6.LogExp" >
+      <caption>A graph of the function <m>y = e^x</m> along with its inverse, <m>y = \ln(x)</m>, where both functions are viewed using the input variable <m>x</m>.</caption>
+      <image width="73%" source="images/2_6_LogExp" />
+    </figure>
+
+    <p>In <xref ref="F_2.6.LogExp">Figure</xref>, we are reminded that since the natural exponential function has the property that its derivative is itself, the slope of the tangent to <m>y = e^x</m> is equal to the height of the curve at that point. For instance, at the point <m>A = (\ln(0.5), 0.5)</m>, the slope of the tangent line is <m>m_A = 0.5</m>, and at <m>B = (\ln(5), 5)</m>, the tangent line's slope is <m>m_B = 5</m>. At the corresponding points <m>A'</m> and <m>B'</m> on the graph of the natural logarithm function (which come from reflecting across the line <m>y = x</m>), we know that the slope of the tangent line is the reciprocal of the <m>x</m>-coordinate of the point (since <m>\frac{d}{dx}[\ln(x)] = \frac{1}{x}</m>). Thus, with <m>A' = (0.5, \ln(0.5))</m>, we have <m>m_{A'} = \frac{1}{0.5} = 2</m>, and at <m>B' = (5, \ln(5))</m>, <m>m_{B'} = \frac{1}{5}</m>.</p>
+
+    <p>In particular, we observe that <m>m_{A'} = \frac{1}{m_A}</m> and <m>m_{B'} = \frac{1}{m_B}</m>. This is not a coincidence, but in fact holds for any curve <m>y = f(x)</m> and its inverse, provided the inverse exists. One rationale for why this is the case is due to the reflection across <m>y = x</m>: in so doing, we essentially change the roles of <m>x</m> and <m>y</m>, thus reversing the rise and run, which leads to the slope of the inverse function at the reflected point being the reciprocal of the slope of the original function. At the close of this section, we will also look at how the chain rule provides us with an algebraic formulation of this general phenomenon.</p>
+  </subsection>
+
+  <subsection>
+    <title>Inverse trigonometric functions and their derivatives</title>
+    <p>Trigonometric functions are periodic, so they fail to be one-to-one, and thus do not have inverses. However, if we restrict the domain of each trigonometric function, we can force the function to be one-to-one. For instance, consider the sine function on the domain <m>[-\frac{\pi}{2}, \frac{\pi}{2}]</m>.</p>
+
+    <figure xml:id="F_2.6.arcsine" >
+      <caption>A graph of <m>f(x) = \sin(x)</m> (in blue), restricted to the domain <m>[-\frac{\pi}{2}, \frac{\pi}{2}]</m>, along with its inverse, <m>f^{-1}(x) = \arcsin(x)</m> (in magenta).</caption>
+      <image width="73%" source="images/2_6_arcsine" />
+    </figure>
+
+    <p>Because no output of the sine function is repeated on this interval, the function is one-to-one and thus has an inverse. In particular, if we view <m>f(x) = \sin(x)</m> as having domain <m>[-\frac{\pi}{2}, \frac{\pi}{2}]</m> and codomain <m>[-1,1]</m>, then there exists an inverse function <m>f^{-1}</m> such that
+      <me>
+        f^{-1} : [-1,1] \to [-\frac{\pi}{2}, \frac{\pi}{2}].
+      </me>
+    </p>
+
+    <p>We call <m>f^{-1}</m> the <em>arcsine</em> <index><main>arcsine</main></index> (or inverse sine) function and write <m>f^{-1}(y) = \arcsin(y).</m> It is especially important to remember that writing
+      <me>
+        y = \sin(x) \ \ \mbox{and}  \ \ x = \arcsin(y)
+      </me>
+      say the exact same thing. We often read <q>the arcsine of <m>y</m></q> as <q>the angle whose sine is <m>y</m>.</q> For example, we say that <m>\frac{\pi}{6}</m> is the angle whose sine is <m>\frac{1}{2}</m>, which can be written more concisely as <m>\arcsin(\frac{1}{2}) = \frac{\pi}{6}</m>, which is equivalent to writing <m>\sin(\frac{\pi}{6}) = \frac{1}{2}.</m></p>
+
+    <p>Next, we determine the derivative of the arcsine function. Letting <m>h(x) = \arcsin(x)</m>, our goal is to find <m>h'(x)</m>. Since <m>h(x)</m> is the angle whose sine is <m>x</m>, it is equivalent to write
+      <me>
+        \sin(h(x)) = x.
+      </me>
+    </p>
+
+    <p>Differentiating both sides of the previous equation, we have
+      <me>
+        \frac{d}{dx}[\sin(h(x))] = \frac{d}{dx}[x],
+      </me>
+      and by the fact that the righthand side is simply <m>1</m> and by the chain rule applied to the left side,
+      <me>
+        \cos(h(x)) h'(x) = 1.
+      </me>
+    </p>
+
+    <p>Solving for <m>h'(x)</m>, it follows that
+      <me>
+        h'(x) = \frac{1}{\cos(h(x))}.
+      </me>
+    </p>
+
+    <p>Finally, we recall that <m>h(x) = \arcsin(x)</m>, so the denominator of <m>h'(x)</m> is the function <m>\cos(\arcsin(x))</m>, or in other words, <q>the cosine of the angle whose sine is <m>x</m>.</q> A bit of right triangle trigonometry allows us to simplify this expression considerably.</p>
+
+    <figure xml:id="F_2.6.cosarcsin" >
+      <caption>The right triangle that corresponds to the angle <m>\theta = \arcsin(x)</m>.</caption>
+      <image width="73%" source="images/2_6_cosarcsin" />
+    </figure>
+
+    <p>Let's say that <m>\theta = \arcsin(x)</m>, so that <m>\theta</m> is the angle whose sine is <m>x</m>. From this, it follows that we can picture <m>\theta</m> as an angle in a right triangle with hypotenuse <m>1</m> and a vertical leg of length <m>x</m>, as shown in <xref ref="F_2.6.cosarcsin">Figure</xref>. The horizontal leg must be <m>\sqrt{1-x^2}</m>, by the Pythagorean Theorem. Now, note particularly that <m>\theta = \arcsin(x)</m> since <m>\sin(\theta) = x</m>, and recall that we want to know a different expression for <m>\cos(\arcsin(x))</m>. From the figure, <m>\cos(\arcsin(x)) = \cos(\theta) = \sqrt{1-x^2}.</m></p>
+
+    <p>Thus, returning to our earlier work where we established that if <m>h(x) = \arcsin(x)</m>, then <m>h'(x) = \frac{1}{\cos(\arcsin(x))}</m>, we have now shown that
+      <me>
+        h'(x) = \frac{1}{\sqrt{1-x^2}}.
+      </me>
+    </p>
+
+    <p><em>Inverse sine:</em> <index><main>derivative</main><sub>arcsine</sub></index> For all real numbers <m>x</m> such that <m>-1 \lt  x \lt  1</m>, <m>\frac{d}{dx}[\arcsin(x)] = \frac{1}{\sqrt{1-x^2}}.</m></p>
+
+    <activity xml:id="A_2.6.2">
+      <p>The following prompts in this activity will lead you to develop the derivative of the inverse tangent function.
+
+      <ol>
+        <li><p>Let <m>r(x) = \arctan(x)</m>.  Use the relationship between the arctangent and tangent functions to rewrite this equation using only the tangent function.</p></li>
+
+        <li><p>Differentiate both sides of the equation you found in (a).  Solve the resulting equation for <m>r'(x)</m>, writing <m>r'(x)</m> as simply as possible in terms of a trigonometric function evaluated at <m>r(x)</m>.</p></li>
+
+        <li><p>Recall that <m>r(x) = \arctan(x)</m>.  Update your expression for <m>r'(x)</m> so that it only involves trigonometric functions and the independent variable <m>x</m>.</p></li>
+
+        <li><p>Introduce a right triangle with angle <m>\theta</m> so that <m>\theta = \arctan(x)</m>.  What are the three sides of the triangle?</p></li>
+
+        <li><p>In terms of only <m>x</m> and <m>1</m>, what is the value of <m>\cos(\arctan(x))</m>?</p></li>
+
+        <li><p>Use the results of your work above to find an expression involving only <m>1</m> and <m>x</m> for <m>r'(x)</m>.</p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Recall that for any function and its inverse, writing <m>y = f^{-1}(x)</m> is equivalent to writing <m>f(y) = x</m>.</p></li>
+
+          <li><p>Apply the chain rule to differentiate <m>\tan(r(x))</m>.</p></li>
+
+          <li><p>This question is only asking you to substitute the expression for <m>r(x)</m> into what you found in (b).</p></li>
+
+          <li><p>Let the vertical leg of the triangle be <m>x</m>.  What must the horizontal leg be?</p></li>
+
+          <li><p>Recall that the cosine of an angle is the length of the adjacent leg over the length of they hypotenuse.</p></li>
+
+          <li><p>Note that <m>\cos^2(\alpha) = (\cos(\alpha))^2.</m></p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>Since <m>r(x) = \arctan(x)</m>, it is equivalent to write <m>\tan(r(x)) = x</m>.</p></li>
+
+          <li><p>Differentiating, we have <m>\frac{d}{dx}[\tan(r(x))] = \frac{d}{dx}[x]</m>, so
+              <me>
+                \sec^2(r(x)) r'(x) = 1,
+              </me>
+              and thus
+              <me>
+                r'(x) = \frac{1}{\sec^2(r(x))} = \cos^2(r(x)),
+              </me>
+              since <m>\frac{1}{\sec(\alpha)} = \cos(\alpha).</m></p></li>
+
+          <li><p>Since <m>r(x) = \arctan(x)</m>, we now have that <m>r'(x) = \cos^2(\arctan(x)).</m></p></li>
+
+          <li><p>Letting <m>\theta = \arctan(x)</m>, it follows that we can view <m>\theta</m> as an angle in a right triangle with legs <m>1</m> and <m>x</m> (so that <m>\tan(\theta) = \frac{x}{1}</m>, and thus by the Pythagorean Theorem, the triangle's hypotenuse is <m>\sqrt{1+x^2}</m>, as shown below.
+              <image width="73%" source="images/2_6_cosarctan" />
+            </p></li>
+
+          <li><p>To evaluate <m>\cos(\arctan(x))</m>, we use the right triangle developed in (d) and observe that
+              <me>
+                \cos(\arctan(x)) = \frac{1}{\sqrt{1+x^2}}.
+              </me>
+            </p></li>
+
+          <li><p>Finally, we recall that we know <m>r'(x) = \cos^2(\arctan(x)) = \left( \cos(\arctan(x)) \right)^2</m>.  Having established that <m>\cos(\arctan(x)) = \frac{1}{\sqrt{1+x^2}}</m>, we now have that
+              <me>
+                r'(x) = \frac{1}{1+x^2}.
+              </me>
+            </p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+
+    <p>While derivatives for other inverse trigonometric functions can be established similarly, we primarily limit ourselves to the arcsine and arctangent functions. With these rules added to our library of derivatives of basic functions, we can differentiate even more functions using derivative shortcuts. In <xref ref="A_2.6.3">Activity</xref>, we see each of these rules at work.</p>
+
+    <activity xml:id="A_2.6.3">
+      <p>Determine the derivative of each of the following functions.
+
+      <ol>
+        <li><p><m>\displaystyle f(x) = x^3 \arctan(x) + e^x \ln(x)</m></p></li>
+
+        <li><p><m>\displaystyle p(t) = 2^{t\arcsin(t)}</m></p></li>
+
+        <li><p><m>\displaystyle h(z) = (\arcsin(5z) + \arctan(4-z))^{27}</m></p></li>
+
+        <li><p><m>\displaystyle s(y) = \cot(\arctan(y))</m></p></li>
+
+        <li><p><m>\displaystyle m(v) = \ln(\sin^2(v)+1)</m></p></li>
+
+        <li><p><m>\displaystyle g(w) = \arctan\left( \frac{\ln(w)}{1+w^2} \right)</m></p></li>
+      </ol>
+      </p>
+      <hint>
+        <p>
+
+        <ol>
+          <li><p>Use the sum rule followed by the product rule on each term in the sum.</p></li>
+
+          <li><p>Use the chain rule first.  What rule is needed to differentiate <m>t\arcsin(t)</m>?</p></li>
+
+          <li><p>Note that the chain rule is needed to differentiate <m>\arcsin(5z)</m>.</p></li>
+
+          <li><p>You can use right triangle trigonometry to simplify the function first.</p></li>
+
+          <li><p>Use the chain rule twice.</p></li>
+
+          <li><p>Think about the overall structure of this function.</p></li>
+        </ol>
+        </p>
+      </hint>
+      <solution>
+        <p>
+
+        <ol>
+          <li><p>By the sum rule followed by two applications of the product rule,
+              <md>
+                <mrow>f'(x) =\mathstrut \amp  \frac{d}{dx}[x^3 \arctan(x)] + \frac{d}{dx}[e^x \ln(x)]</mrow>
+                <mrow>=\mathstrut \amp  \left[x^3 \cdot \frac{1}{1+x^2} + \arctan(x) \cdot 3x^2 \right] + \left[e^x \cdot \frac{1}{x} + \ln(x) \cdot e^x\right]</mrow>
+              </md>
+            </p></li>
+
+          <li><p>Using the chain rule followed by the product rule,
+              <md>
+                <mrow>p'(t) =\mathstrut \amp  2^{t\arcsin(t)} \ln(2) \frac{d}{dt}[t\arcsin(t)]</mrow>
+                <mrow>=\mathstrut \amp  2^{t\arcsin(t)} \ln(2) [t \cdot \frac{1}{\sqrt{1-t^2}} + \arcsin(t) \cdot 1]</mrow>
+              </md>
+            </p></li>
+
+          <li><p>Applying the chain rule twice,
+              <md>
+                <mrow>h'(z) =\mathstrut \amp  27(\arcsin(5z) + \arctan(4-z))^{26} \frac{d}{dz}[\arcsin(5z) + \arctan(4-z)]</mrow>
+                <mrow>=\mathstrut \amp  27(\arcsin(5z) + \arctan(4-z))^{26} \left[\frac{1}{1-(5z)^2} \cdot \frac{d}{dz}[5z] + \frac{1}{1+(4-z)^2} \cdot \frac{d}{dz}[4-z] \right]</mrow>
+                <mrow>=\mathstrut \amp  27(\arcsin(5z) + \arctan(4-z))^{26} \left[\frac{1}{1-(5z)^2} \cdot 5 + \frac{1}{1+(4-z)^2} \cdot (-1) \right]</mrow>
+              </md>
+            </p></li>
+
+          <li><p>Using right triangle trigonometry, it is straightforward to show that <m>\cot(\arctan(y)) = \frac{1}{y}</m>.  As such, <m>s'(y) = -\frac{1}{y^2}.</m></p></li>
+
+          <li><p>By two applications of the chain rule (noting particularly that <m>\sin^2(v) = (\sin(v))^2</m>, we have
+              <md>
+                <mrow>m'(v) =\mathstrut \amp  \frac{1}{\sin^2(v)+1} \cdot \frac{d}{dv} \left[ \sin^2(v) + 1 \right]</mrow>
+                <mrow>=\mathstrut \amp  \frac{1}{\sin^2(v)+1} \cdot \left[ 2\sin(v)\cos(v) \right]</mrow>
+              </md>
+            </p></li>
+
+          <li><p>By the chain rule followed by the quotient rule,
+              <md>
+                <mrow>g'(w) =\mathstrut \amp  \frac{1}{1+ \left( \frac{\ln(w)}{1+w^2} \right)^2} \cdot \frac{d}{dw} \left[ \frac{\ln(w)}{1+w^2} \right]</mrow>
+                <mrow>=\mathstrut \amp  \frac{1}{1+ \left( \frac{\ln(w)}{1+w^2} \right)^2} \cdot \left[ \frac{(1+w^2) \frac{1}{w} - \ln(w) \cdot 2w}{(1+w^2)^2} \right]</mrow>
+              </md>
+            </p></li>
+        </ol>
+        </p>
+      </solution>
+    </activity>
+  </subsection>
+
+  <subsection>
+    <title>The link between the derivative of a function and the derivative of its inverse</title>
+    <p>In <xref ref="F_2.6.LogExp">Figure</xref>, we saw an interesting relationship between the slopes of tangent lines to the natural exponential and natural logarithm functions at points that corresponded to reflection across the line <m>y = x</m>. In particular, we observed that for a point such as <m>(\ln(2), 2)</m> on the graph of <m>f(x) = e^x</m>, the slope of the tangent line at this point is <m>f'(\ln(2)) = 2</m>, while at the corresponding point <m>(2, \ln(2))</m> on the graph of <m>f^{-1}(x) = \ln(x)</m>, the slope of the tangent line at this point is <m>(f^{-1})'(2) = \frac{1}{2}</m>, which is the reciprocal of <m>f'(\ln(2))</m>.</p>
+
+    <p>That the two corresponding tangent lines having slopes that are reciprocals of one another is not a coincidence. If we consider the general setting of a differentiable function <m>f</m> with differentiable inverse <m>g</m> such that <m>y = f(x)</m> if and only if <m>x = g(y)</m>, then we know that <m>f(g(x)) = x</m> for every <m>x</m> in the domain of <m>f^{-1}</m>. Differentiating both sides of this equation with respect to <m>x</m>, we have
+      <me>
+        \frac{d}{dx} [f(g(x))] = \frac{d}{dx} [x],
+      </me>
+      and by the chain rule,
+      <me>
+        f'(g(x)) g'(x) = 1.
+      </me>
+    </p>
+
+    <p>Solving for <m>g'(x)</m>, we have <m>g'(x) = \frac{1}{f'(g(x))}.</m> Here we see that the slope of the tangent line to the inverse function <m>g</m> at the point <m>(x,g(x))</m> is precisely the reciprocal of the slope of the tangent line to the original function <m>f</m> at the point <m>(g(x),f(g(x))) = (g(x),x)</m>.</p>
+
+    <figure xml:id="F_2.6.GenInv" >
+      <caption>A graph of function <m>y = f(x)</m> along with its inverse, <m>y = g(x) = f^{-1}(x)</m>.  Observe that the slopes of the two tangent lines are reciprocals of one another.</caption>
+      <image width="73%" source="images/2_6_GenInv" />
+    </figure>
+
+    <p>To see this more clearly, consider the graph of the function <m>y = f(x)</m> shown in <xref ref="F_2.6.GenInv">Figure</xref>, along with its inverse <m>y = g(x)</m>. Given a point <m>(a,b)</m> that lies on the graph of <m>f</m>, we know that <m>(b,a)</m> lies on the graph of <m>g</m>; said differently, <m>f(a) = b</m> and <m>g(b) = a</m>. Now, applying the rule that <m>g'(x) = 1/f'(g(x))</m> to the value <m>x = b</m>, we have
+      <me>
+        g'(b) = \frac{1}{f'(g(b))} = \frac{1}{f'(a)},
+      </me>
+      which is precisely what we see in the figure: the slope of the tangent line to <m>g</m> at <m>(b,a)</m> is the reciprocal of the slope of the tangent line to <m>f</m> at <m>(a,b)</m>, since these two lines are reflections of one another across the line <m>y = x</m>.</p>
+
+    <p><em>Derivative of an inverse function:</em> Suppose that <m>f</m> is a differentiable function with inverse <m>g</m> and that <m>(a,b)</m> is a point that lies on the graph of <m>f</m> at which <m>f'(a) \ne 0</m>. Then
+      <me>
+        g'(b) = \frac{1}{f'(a)}.
+      </me>
+    </p>
+
+    <p>More generally, for any <m>x</m> in the domain of <m>g'</m>, we have <m>g'(x) = 1/f'(g(x)).</m></p>
+
+    <p>The rules we derived for <m>\ln(x)</m>, <m>\arcsin(x)</m>, and <m>\arctan(x)</m> are all just specific examples of this general property of the derivative of an inverse function. For example, with <m>g(x) = \ln(x)</m> and <m>f(x) = e^x</m>, it follows that
+      <me>
+        g'(x) = \frac{1}{f'(g(x))} = \frac{1}{e^{\ln(x)}} = \frac{1}{x}.
+      </me>
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+    <ul>
+      <li><p>For all positive real numbers <m>x</m>, <m>\frac{d}{dx}[\ln(x)] = \frac{1}{x}</m>.</p></li>
+
+      <li><p>For all real numbers <m>x</m> such that <m>-1 \le x \le 1</m>, <m>\frac{d}{dx}[\arcsin(x)] = \frac{1}{\sqrt{1-x^2}}</m>.  In addition, for all real numbers <m>x</m>, <m>\frac{d}{dx}[\arctan(x)] = \frac{1}{1+x^2}</m>.</p></li>
+
+      <li><p>If <m>g</m> is the inverse of a differentiable function <m>f</m>, then for any point <m>x</m> in the domain of <m>g'</m>, 
+           <m>g'(x) = \frac{1}{f'(g(x))}.</m></p></li>
+    </ul>
+    <exercises>
+      <exercise>
+        <statement>
+          <p>Determine the derivative of each of the following functions. Use proper notation and clearly identify the derivative rules you use.
+
+          <ol>
+            <li><p><m>f(x) = \ln(2\arctan(x) + 3\arcsin(x) + 5)</m></p></li>
+
+            <li><p><m>r(z) = \arctan(\ln(\arcsin(z)))</m></p></li>
+
+            <li><p><m>q(t) = \arctan^2(3t) \arcsin^4(7t)</m></p></li>
+
+            <li><p><m>g(v) =  \ln\left( \frac{\arctan(v)}{\arcsin(v) + v^2} \right)</m></p></li>
+          </ol>
+          </p>
+
+          <figure xml:id="F_2.6.Ez4" >
+            <caption>A function <m>y = f(x)</m> for use in Exercise<nbsp />2.</caption>
+            <image width="73%" source="images/2_6_Ez4" />
+          </figure>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Consider the graph of <m>y = f(x)</m> provided in <xref ref="F_2.6.Ez4">Figure</xref> and use it to answer the following questions.
+
+          <ol>
+            <li><p>Use the provided graph to estimate the value of <m>f'(1)</m>.</p></li>
+
+            <li><p>Sketch an approximate graph of <m>y = f^{-1}(x)</m>.  Label at least three distinct points on the graph that correspond to three points on the graph of <m>f</m>.</p></li>
+
+            <li><p>Based on your work in (a), what is the value of <m>(f^{-1})'(-1)</m>?  Why?</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Let <m>f(x) = \frac{1}{4}x^3 + 4.</m>
+
+          <ol>
+            <li><p>Sketch a graph of <m>y = f(x)</m> and explain why <m>f</m> is an invertible function.</p></li>
+
+            <li><p>Let <m>g</m> be the inverse of <m>f</m> and determine a formula for <m>g</m>.</p></li>
+
+            <li><p>Compute <m>f'(x)</m>, <m>g'(x)</m>, <m>f'(2)</m>, and <m>g'(6)</m>.  What is the special relationship between <m>f'(2)</m> and <m>g'(6)</m>?  Why?</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+      <exercise>
+        <statement>
+          <p>Let <m>h(x) = x + \sin(x)</m>.
+
+          <ol>
+            <li><p>Sketch a graph of <m>y = h(x)</m> and explain why <m>h</m> must be invertible.</p></li>
+
+            <li><p>Explain why it does not appear to be algebraically possible to determine a formula for <m>h^{-1}</m>.</p></li>
+
+            <li><p>Observe that the point <m>(\frac{\pi}{2}, \frac{\pi}{2} + 1)</m> lies on the graph of <m>y = h(x)</m>.  Determine the value of <m>(h^{-1})'(\frac{\pi}{2} + 1)</m>.</p></li>
+          </ol>
+          </p>
+        </statement>
+      </exercise>
+    </exercises>
+  </subsection>
+</section>
