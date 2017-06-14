@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-6-5-improper">
+<title></title>
+
+  <title>Improper Integrals</title>
+  <introduction>
+    <objectives>
+      <ul>
+        <li><p>What are improper integrals and why are they important?</p></li>
+
+        <li><p>What does it mean to say that an improper integral converges or diverges?</p></li>
+
+        <li><p>What are some typical improper integrals that we can classify as convergent or divergent?</p></li>
+      </ul>
+    </objectives>
+    <p>Another important application of the definite integral
+      regards how the likelihood of certain events can be measured. For example, consider a company that manufactures incandescent light bulbs, and suppose that based on a large volume of test results, they have determined that the fraction of light bulbs that fail between times <m>t = a</m> and <m>t = b</m> of use (where <m>t</m> is measured in months) is given by
+      <me>
+        \int_a^b 0.3 e^{-0.3t} \, dt.
+      </me>
+    </p>
+
+    <p>For example, the fraction of light bulbs that fail during their third month of use is given by
+      <md>
+        <mrow>\int_2^3 0.3e^{-0.3t} \, dt &amp; = -e^{-0.3t} \bigg \vert_2^3</mrow>
+        <mrow> 							  &amp; = -e^{-0.9} + e^{-0.6}</mrow>
+        <mrow> 							  &amp; \approx  0.1422.</mrow>
+      </md>
+    </p>
+
+    <p>Thus about 14.22<percent /> of all lightbulbs fail between <m>t = 2</m> and <m>t = 3</m>.
+      Clearly we could adjust the limits of integration to measure the fraction of light bulbs that fail during any time period of interest.</p>
+
+	<xi:include href="./previews/PA-6-5.xml" />
+
+  </introduction>  
+
+
+  <subsection>
+    <title>Improper Integrals Involving Unbounded Intervals</title>
+    <p><index><main>improper integral</main></index></p>
+
+    <p>In light of our example with light bulbs that fail, as well as with the problem involving customer wait time in <xref ref="PA-6-5">Preview Activity</xref>, we see that it is natural to consider questions where we desire to integrate over an interval whose upper limit grows without bound. For example, if we are interested in the fraction of light bulbs that fail within the first <m>b</m> months of use, we know that the expression
+      <me>
+        \int_0^b 0.3e^{-0.3t} \, dt
+      </me>
+      measures this value. To think about the fraction of light bulbs that fail <em>eventually</em>, we understand that we wish to find
+      <me>
+        \lim_{b \to \infty} \int_0^b 0.3e^{-0.3t} \, dt,
+      </me>
+      for which we will also use the notation
+      <men xml:id="E-ImpInt1" >
+        \int_0^\infty 0.3e^{-0.3t} \, dt.
+      </men>
+    </p>
+
+    <p>Note particularly that we are studying the area of an unbounded region, as pictured in <xref ref="F-6-5-InfReg">Figure</xref>.</p>
+
+    <figure xml:id="F-6-5-InfReg" >
+      <caption>At left, the area bounded by <m>p(t) = 0.3e^{-0.3t}</m> on the finite interval <m>[0,b]</m>; at right, the result of letting <m>b \to \infty</m>.  By <q><m>\cdots</m></q> in the righthand figure, we mean that the region extends to the right without bound.</caption>
+      <image width="100%" source="images/6_5_InfReg" />
+    </figure>
+
+    <p>Anytime we are interested in an integral for which the interval of integration is unbounded (that is, one for which at least one of the limits of integration involves <m>\infty</m>), we say that the integral is <em>improper</em><index><main>improper integral</main><sub>unbounded region of integration</sub></index>. For instance, the integrals
+      <me>
+        \int_1^{\infty} \frac{1}{x^2} \, dx, \ \ \int_{-\infty}^0 \frac{1}{1+x^2} \, dx, \ \ \mbox{and}  \int_{-\infty}^{\infty} e^{-x^2} \, dx
+      </me>
+      are all improper due to having limits of integration that involve <m>\infty</m>. We investigate the value of any such integral be replacing the improper integral with a limit of proper integrals; for an improper integral such as <m>\int_0^\infty f(x) \, dx</m>, we write
+      <me>
+        \int_0^\infty f(x) \, dx = \lim_{b \to \infty} \int_0^b f(x) \,dx.
+      </me>
+    </p>
+
+    <p>We can then attempt to evaluate <m>\int_0^b f(x) \,dx</m> using the First FTC, after which we can evaluate the limit. An immediate and important question arises: is it even possible for the area of such an unbounded region to be finite? The following activity explores this issue and others in more detail.</p>
+
+	<xi:include href="./activities/act-6-5-1.xml" />
+
+  </subsection>
+
+
+  <subsection>
+    <title>Convergence and Divergence</title>
+    <p>Our work so far has suggested that when we consider a nonnegative function <m>f</m> on an interval <m>[1,\infty]</m>, such as <m>f(x) = \frac{1}{x}</m> or <m>f(x) = \frac{1}{x^{3/2}}</m>, there are at least two possibilities for the value of <m>\lim_{b \to \infty} \int_1^b f(x) \, dx</m>: the limit is finite or infinite. With these possibilities in mind, we introduce the following terminology.</p>
+
+	<aside>
+    <p>If <m>f(x)</m> is nonnegative for <m>x \ge a</m>, then we say that the improper integral <m>\int_a^{\infty} f(x) \, dx</m>
+      <em>converges</em><index><main>improper integral</main><sub>converges</sub></index> provided that
+      <me>
+        \lim_{b \to \infty} \int_a^{b} f(x) \, dx
+      </me>
+      exists and is finite. Otherwise, we say that <m>\int_a^{\infty} f(x) \, dx</m> <em>diverges</em><index><main>improper integral</main><sub>diverges</sub></index>.</p>
+	</aside>
+
+    <p>We normally restrict our interest to improper integrals for which the integrand is nonnegative. Further, we note that our primary interest is in functions <m>f</m> for which <m>\lim_{x \to \infty} f(x) = 0</m>, for if the function <m>f</m> does not approach <m>0</m> as <m>x \to \infty</m>, then it is impossible for <m>\int_a^{\infty} f(x) \, dx</m> to converge.</p>
+
+	<xi:include href="./activities/act-6-5-2.xml" /> 
+
+  </subsection>
+
+<!-- <xi:include href="./activities/act-1-1-1.xml" /> -->
+<!-- <xi:include href="./exercises/ez-1-1.xml" /> -->
+
+
+
+</section>

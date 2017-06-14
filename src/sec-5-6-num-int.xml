@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-5-6-num-int">
+  <title>Numerical Integration</title>
+  <introduction>
+    <objectives>
+      <ul>
+        <li><p>How do we accurately evaluate a definite integral such as <m>\int_0^1 e^{-x^2} \, dx</m> when we cannot use the First Fundamental Theorem of Calculus because the integrand lacks an elementary algebraic antiderivative?  Are there ways to generate accurate estimates without using extremely large values of <m>n</m> in Riemann sums?</p></li>
+
+        <li><p>What is the Trapezoid Rule, and how is it related to left, right, and middle Riemann sums?</p></li>
+
+        <li><p>How are the errors in the Trapezoid Rule and Midpoint Rule related, and how can they be used to develop an even more accurate rule?</p></li>
+      </ul>
+    </objectives>
+    <p>When we were first exploring the problem of finding the net-signed area bounded by a curve, we developed the concept of a Riemann sum as a helpful estimation tool and a key step in the definition of the definite integral. In particular, as we found in <xref ref="sec-4-2-Riemann">Section</xref>, recall that the left, right, and middle Riemann sums of a function <m>f</m> on an interval <m>[a,b]</m> are denoted <m>L_n</m>, <m>R_n</m>, and <m>M_n</m>, with formulas
+      <men xml:id="E-Left" >
+        L_n = f(x_0) \triangle x + f(x_1) \triangle x + \cdots + f(x_{n-1}) \triangle x = \sum_{i = 0}^{n-1} f(x_i) \triangle x,
+      </men>
+      <men xml:id="E-Right" >
+        R_n = f(x_1) \triangle x + f(x_2) \triangle x + \cdots + f(x_{n}) \triangle x = \sum_{i = 1}^{n} f(x_i) \triangle x,
+      </men>
+      <men xml:id="E-Mid" >
+        M_n = f(\overline{x}_1) \triangle x + f(\overline{x}_2) \triangle x + \cdots + f(\overline{x}_{n}) \triangle x = \sum_{i = 1}^{n} f(\overline{x}_i) \triangle x,
+      </men>
+      where <m>x_0 = a</m>, <m>x_i = a + i\triangle x</m>, <m>x_n = b</m>, and <m>\triangle x = \frac{b-a}{n}</m>. For the middle sum, note that <m>\overline{x}_{i} = (x_{i-1} + x_i)/2</m>.</p>
+
+    <p>Further, recall that a Riemann sum is essentially a sum of (possibly signed) areas of rectangles, and that the value of <m>n</m> determines the number of rectangles, while our choice of left endpoints, right endpoints, or midpoints determines how we use the given function to find the heights of the respective rectangles we choose to use. Visually, we can see the similarities and differences among these three options in <xref ref="F-5-6-LRMsum">Figure</xref>, where we consider the function <m>f(x) = \frac{1}{20}(x-4)^3 + 7</m> on the interval <m>[1,8]</m>, and use 5 rectangles for each of the Riemann sums.</p>
+
+    <figure xml:id="F-5-6-LRMsum" >
+      <caption>Left, right, and middle Riemann sums for <m>y = f(x)</m> on <m>[1,8]</m> with 5 subintervals.</caption>
+      <image width="100%" source="images/5_6_LRMsum" />
+    </figure>
+
+    <p>While it is a good exercise to compute a few Riemann sums by hand, just to ensure that we understand how they work and how varying the function, the number of subintervals, and the choice of endpoints or midpoints affects the result, it is of course the case that using computing technology is the best way to determine <m>L_n</m>, <m>R_n</m>, and <m>M_n</m> going forward. Any computer algebra system will offer this capability; as we saw in <xref ref="PA-4-3">Preview Activity</xref>, a straightforward option that happens to also be freely available online is the applet<fn>Marc Renault, Shippensburg University</fn> at <url href="http://gvsu.edu/s/a9"><c>http://gvsu.edu/s/a9</c></url>.</p>
+
+    <p>Note that we can adjust the formula for <m>f(x)</m>, the window of <m>x</m>- and <m>y</m>-values of interest, the number of subintervals, and the method. See <xref ref="PA-4-3">Preview Activity</xref> for any needed reminders on how the applet works.</p>
+
+    <p>In what follows in this section we explore several different alternatives, including left, right, and middle Riemann sums, for estimating definite integrals. One of our main goals in the upcoming section is to develop formulas that enable us to estimate definite integrals accurately without having to use exceptionally large numbers of rectangles.</p>
+
+	<xi:include href="./previews/PA-5-6.xml" />
+
+  </introduction>
+
+  <subsection>
+    <title>The Trapezoid Rule</title>
+    <p><index><main>trapezoid rule</main></index></p>
+
+    <p>Throughout our work to date with developing and estimating definite integrals, we have used the simplest possible quadrilaterals (that is, rectangles) to subdivide regions with complicated shapes. It is natural, however, to wonder if other familiar shapes might serve us even better. In particular, our goal is to be able to accurately estimate <m>\int_a^b f(x) \, dx</m> without having to use extremely large values of <m>n</m> in Riemann sums.</p>
+
+    <p>To this end, we consider an alternative to <m>L_n</m>, <m>R_n</m>, and <m>M_n</m>, know as the <em>Trapezoid Rule</em>. The fundamental idea is simple: rather than using a rectangle to estimate the (signed) area bounded by <m>y = f(x)</m> on a small interval, we use a trapezoid. For example, in <xref ref="F-5-6-TRAP">Figure</xref>, we estimate the area under the pictured curve using three subintervals and the trapezoids that result from connecting the corresponding points on the curve with straight lines.</p>
+
+    <figure xml:id="F-5-6-TRAP" >
+      <caption>Estimating <m>\int_a^b f(x) \  dx</m> using three subintervals and trapezoids, rather than rectangles, where <m>a = x_0</m> and <m>b = x_3</m>.</caption>
+      <image width="73%" source="images/5_6_TRAP" />
+    </figure>
+
+    <p>The biggest difference between the Trapezoid Rule and a left, right, or middle Riemann sum is that on each subinterval, the Trapezoid Rule uses two function values, rather than one, to estimate the (signed) area bounded by the curve. For instance, to compute <m>D_1</m>, the area of the trapezoid generated by the curve <m>y = f(x)</m> in <xref ref="F-5-6-TRAP">Figure</xref> on <m>[x_0, x_1]</m>, we observe that the left base of this trapezoid has length <m>f(x_0)</m>, while the right base has length <m>f(x_1)</m>. In addition, the height of this trapezoid is <m>x_1 - x_0 = \triangle x = \frac{b-a}{3}</m>. Since the area of a trapezoid is the average of the bases times the height, we have
+      <me>
+        D_1 = \frac{1}{2}(f(x_0) + f(x_1)) \cdot \triangle x.
+      </me>
+    </p>
+
+    <p>Using similar computations for <m>D_2</m> and <m>D_3</m>, we find that <m>T_3</m>, the trapezoidal approximation to <m>\int_a^b f(x) \, dx</m> is given by
+      <md>
+        <mrow>T_3 =\mathstrut \amp  D_1 + D_2 + D_3</mrow>
+        <mrow>=\mathstrut \amp  \frac{1}{2}(f(x_0) + f(x_1)) \cdot \triangle x + \frac{1}{2}(f(x_1) + f(x_2)) \cdot \triangle x + \frac{1}{2}(f(x_2) + f(x_3)) \cdot \triangle x.</mrow>
+      </md>
+    </p>
+
+    <p>Because both left and right endpoints are being used, we recognize within the trapezoidal approximation the use of both left and right Riemann sums. In particular, rearranging the expression for <m>T_3</m> by removing factors of <m>\frac{1}{2}</m> and <m>\triangle x </m>, grouping the left endpoint evaluations of <m>f</m>, and grouping the right endpoint evaluations of <m>f</m>, we see that
+      <men xml:id="E-Trap3" >
+        T_3 =  \frac{1}{2} \left[ (f(x_0) + f(x_1) + f(x_2)) \right] \triangle x   + (f(x_1)  + \frac{1}{2} \left[ f(x_2) + f(x_3) )  \right] \triangle x .
+      </men>
+    </p>
+
+    <p>
+      At this point, we observe that two familiar sums have arisen. Since the left Riemann sum <m>L_3</m> is <m>L_3 = f(x_0) \triangle x + f(x_1) \triangle x + f(x_2) \triangle x</m>, and the right Riemann sum is <m>R_3 = f(x_1) \triangle x + f(x_2) \triangle x + f(x_3) \triangle x</m>, substituting <m>L_3</m> and <m>R_3</m> for the corresponding expressions in <xref ref="E-Trap3">Equation</xref>, it follows that <m>T_3 = \frac{1}{2} \left[ L_3 + R_3 \right].</m>
+      We have thus seen the main ideas behind a very important result: using trapezoids to estimate the (signed) area bounded by a curve is the same as averaging the estimates generated by using left and right endpoints.</p>
+
+	<aside>
+	<title>The Trapezoid Rule</title>
+    <p>The trapezoidal approximation, <m>T_n</m>, of the definite integral <m>\int_a^b f(x) \, dx</m> using <m>n</m> subintervals is given by the rule
+      <md>
+        <mrow>T_n =\mathstrut \amp  \left[\frac{1}{2}(f(x_0) + f(x_1)) + \frac{1}{2}(f(x_1) + f(x_2))  + \cdots + \frac{1}{2}(f(x_{n-1}) + f(x_n)) \right] \triangle x.</mrow>
+        <mrow>=\mathstrut \amp  \sum_{i=0}^{n-1} \frac{1}{2}(f(x_i) + f(x_{i+1}))  \triangle x.</mrow>
+      </md>
+    </p>
+    </aside>
+
+    <p>
+      Moreover,
+      <m>T_n = \frac{1}{2} \left[ L_n + R_n \right].</m></p>
+
+	<xi:include href="./activities/act-5-6-1.xml" />
+
+  </subsection>  
+
+  <subsection>
+    <title>Comparing the Midpoint and Trapezoid Rules</title>
+    <p>We know from the definition of the definite integral of a continuous function <m>f</m>, that if we let <m>n</m> be large enough, we can make the value of any of the approximations <m>L_n</m>, <m>R_n</m>, and <m>M_n</m> as close as we'd like (in theory) to the exact value of <m>\int_a^b f(x) \, dx</m>. Thus, it may be natural to wonder why we ever use any rule other than <m>L_n</m> or <m>R_n</m> (with a sufficiently large <m>n</m> value) to estimate a definite integral. One of the primary reasons is that as <m>n \to \infty</m>, <m>\triangle x = \frac{b-a}{n} \to 0</m>, and thus in a Riemann sum calculation with a large <m>n</m> value, we end up multiplying by a number that is very close to zero. Doing so often generates roundoff error, as representing numbers close to zero accurately is a persistent challenge for computers.</p>
+
+    <p>Hence, we are exploring ways by which we can estimate definite integrals to high levels of precision, but without having to use extremely large values of <m>n</m>. Paying close attention to patterns in errors, such as those observed in <xref ref="act-5-6-1">Activity</xref>, is one way to begin to see some alternate approaches.</p>
+
+    <p>To begin, we make a comparison of the errors in the Midpoint and Trapezoid rules from two different perspectives. First, consider a function of consistent concavity on a given interval, and picture approximating the area bounded on that interval by both the Midpoint and Trapezoid rules using a single subinterval.</p>
+
+    <figure xml:id="F-5-6-MidVTrap" >
+      <caption>Estimating <m>\int_a^b f(x) \  dx</m> using a single subinterval: at left, the trapezoid rule; in the middle, the midpoint rule; at right, a modified way to think about the midpoint rule.</caption>
+      <image width="100%" source="images/5_6_MidVTrap" />
+    </figure>
+
+    <p>As seen in <xref ref="F-5-6-MidVTrap">Figure</xref>, it is evident that whenever the function is concave up on an interval, the Trapezoid Rule with one subinterval, <m>T_1</m>, will overestimate the exact value of the definite integral on that interval. Moreover, from a careful analysis of the line that bounds the top of the rectangle for the Midpoint Rule (shown in magenta), we see that if we rotate this line segment until it is tangent to the curve at the point on the curve used in the Midpoint Rule (as shown at right in <xref ref="F-5-6-MidVTrap">Figure</xref>), the resulting trapezoid has the same area as <m>M_1</m>, and this value is less than the exact value of the definite integral. Hence, when the function is concave up on the interval, <m>M_1</m> underestimates the integral's true value.</p>
+
+    <p>These observations extend easily to the situation where the function's concavity remains consistent but we use higher values of <m>n</m> in the Midpoint and Trapezoid Rules. Hence, whenever <m>f</m> is concave up on <m>[a,b]</m>, <m>T_n</m> will overestimate the value of <m>\int_a^b f(x) \, dx</m>, while <m>M_n</m> will underestimate <m>\int_a^b f(x) \, dx</m>. The reverse observations are true in the situation where <m>f</m> is concave down.</p>
+
+    <p>Next, we compare the size of the errors between <m>M_n</m> and <m>T_n</m>. Again, we focus on <m>M_1</m> and <m>T_1</m> on an interval where the concavity of <m>f</m> is consistent. In <xref ref="F-5-6-MidTrapError">Figure</xref>, where the error of the Trapezoid Rule is shaded in red, while the error of the Midpoint Rule is shaded lighter red,</p>
+
+    <figure xml:id="F-5-6-MidTrapError" >
+      <caption>Comparing the error in estimating <m>\int_a^b f(x) \  dx</m> using a single subinterval: in red, the error from the Trapezoid rule; in light red, the error from the Midpoint rule.</caption>
+      <image width="50%" source="images/5_6_MidTrapError" />
+    </figure>
+
+    <p>it is visually apparent that the error in the Trapezoid Rule is more significant. To see how much more significant, let's consider two examples and some particular computations.</p>
+
+    <p>If we let <m>f(x) = 1-x^2</m> and consider <m>\int_0^1 f(x) \,dx</m>, we know by the First FTC that the exact value of the integral is
+      <me>
+        \int_0^1 (1-x^2) \, dx = x - \frac{x^3}{3} \bigg\vert_0^1 = \frac{2}{3}.
+      </me>
+    </p>
+
+    <p>Using appropriate technology to compute <m>M_4</m>, <m>M_8</m>, <m>T_4</m>, and <m>T_8</m>, as well as the corresponding errors <m>E_{M,4}</m>, <m>E_{M,8}</m>, <m>E_{T,4}</m>, and <m>E_{T,8}</m>, as we did in <xref ref="act-5-6-1">Activity</xref>, we find the results summarized in <xref ref="T-5-6-Ex2">Table</xref>. Note that in the table, we also include the approximations and their errors for the example <m>\int_1^2 \frac{1}{x^2} \, dx</m> from <xref ref="act-5-6-1">Activity</xref>.</p>
+
+    <table xml:id="T-5-6-Ex2" >
+      <caption>Calculations of <m>T_4</m>, <m>M_4</m>, <m>T_8</m>, and <m>M_8</m>, along with corresponding errors, for the definite integrals <m>\int_0^1 (1-x^2) \  dx</m> and <m>\int_1^2 \frac{1}{x^2} \  dx</m>.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Rule</cell>
+          <cell><m>\int_0^1 (1-x^2) \,dx = 0.\overline{6}</m></cell>
+          <cell>error</cell>
+          <cell><m>\int_1^2 \frac{1}{x^2} \, dx = 0.5</m></cell>
+          <cell>error</cell>
+        </row>
+        <row bottom="medium">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><m>T_4</m></cell>
+          <cell>0.65625</cell>
+          <cell>-0.0104166667</cell>
+          <cell>0.5089937642</cell>
+          <cell>0.0089937642</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><m>M_4</m></cell>
+          <cell>0.671875</cell>
+          <cell><nbsp />0.0052083333</cell>
+          <cell>0.4955479365</cell>
+          <cell>-0.0044520635</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><m>T_8</m></cell>
+          <cell>0.6640625</cell>
+          <cell>-0.0026041667</cell>
+          <cell>0.5022708502</cell>
+          <cell>0.0022708502</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><m>M_8</m></cell>
+          <cell>0.66796875</cell>
+          <cell><nbsp />0.0013020833</cell>
+          <cell>0.4988674899</cell>
+          <cell>-0.0011325101</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <p>Recall that for a given function <m>f</m> and interval <m>[a,b]</m>, <m>E_{T,4} = \int_a^b f(x) \,dx - T_4</m> calculates the difference between the exact value of the definite integral and the approximation generated by the Trapezoid Rule with <m>n = 4</m>. If we look at not only <m>E_{T,4}</m>, but also the other errors generated by using <m>T_n</m> and <m>M_n</m> with <m>n = 4</m> and <m>n = 8</m> in the two examples noted in <xref ref="T-5-6-Ex2">Table</xref>, we see an evident pattern. Not only is the sign of the error (which measures whether the rule generates an over- or under-estimate) tied to the rule used and the function's concavity, but the magnitude of the errors generated by <m>T_n</m> and <m>M_n</m> seems closely connected. In particular, the errors generated by the Midpoint Rule seem to be about half the size of those generated by the Trapezoid Rule.</p>
+
+    <p>That is, we can observe in both examples that <m>E_{M,4} \approx -\frac{1}{2} E_{T,4}</m> and <m>E_{M,8} \approx -\frac{1}{2}E_{T,8}</m>, which demonstrates a property of the Midpoint and Trapezoid Rules that turns out to hold in general: for a function of consistent concavity, the error in the Midpoint Rule has the opposite sign and approximately half the magnitude of the error of the Trapezoid Rule. Said symbolically,
+      <me>
+        E_{M,n} \approx -\frac{1}{2} E_{T,n}.
+      </me>
+    </p>
+
+    <p>This important relationship suggests a way to combine the Midpoint and Trapezoid Rules to create an even more accurate approximation to a definite integral.</p>
+  </subsection>
+
+  <subsection>
+    <title>Simpson's Rule</title>
+    <p><index><main>Simpson's rule</main></index></p>
+
+    <p>When we first developed the Trapezoid Rule, we observed that it can equivalently be viewed as resulting from the average of the Left and Right Riemann sums:
+      <me>
+        T_n = \frac{1}{2}(L_n + R_n).
+      </me>
+    </p>
+
+    <p>Whenever a function is always increasing or always decreasing on the interval <m>[a,b]</m>, one of <m>L_n</m> and <m>R_n</m> will over-estimate the true value of <m>\int_a^b f(x) \, dx</m>, while the other will under-estimate the integral. Said differently, the errors found in <m>L_n</m> and <m>R_n</m> will have opposite signs; thus, averaging <m>L_n</m> and <m>R_n</m> eliminates a considerable amount of the error present in the respective approximations. In a similar way, it makes sense to think about averaging <m>M_n</m> and <m>T_n</m> in order to generate a still more accurate approximation.</p>
+
+    <p>At the same time, we've just observed that <m>M_n</m> is typically about twice as accurate as <m>T_n</m>. Thus, we instead choose to use the weighted average <index><main>weighted average</main></index>
+      <men xml:id="E-Simpson" >
+        S_{2n} = \frac{2M_n + T_n}{3}.
+      </men>
+    </p>
+
+    <p>The rule for <m>S_{2n}</m> giving by <xref ref="E-Simpson">Equation</xref> is usually known as <em>Simpson's Rule</em>.<fn>Thomas Simpson was an 18th century mathematician; his idea was to extend the Trapezoid rule, but rather than using straight lines to build trapezoids, to use quadratic functions to build regions whose area was bounded by parabolas (whose areas he could find exactly). Simpson's Rule is often developed from the more sophisticated perspective of using interpolation by quadratic functions.</fn> Note that we use <q><m>S_{2n}</m></q> rather that <q><m>S_n</m></q> since the <m>n</m> points the Midpoint Rule uses are different from the <m>n</m> points the Trapezoid Rule uses, and thus Simpson's Rule is using <m>2n</m> points at which to evaluate the function. We build upon the results in <xref ref="T-5-6-Ex2">Table</xref> to see the approximations generated by Simpson's Rule. In particular, in <xref ref="T-5-6-Ex3">Table</xref>, we include all of the results in <xref ref="T-5-6-Ex2">Table</xref>, but include additional results for <m>S_8 = \frac{2M_4 + T_4}{3}</m> and <m>S_{16} = \frac{2M_8 + T_8}{3}</m>.</p>
+
+    <table xml:id="T-5-6-Ex3" >
+      <caption><xref ref="T-5-6-Ex2">Table</xref> updated to include <m>S_8</m>, <m>S_{16}</m>, and the corresponding errors.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Rule</cell>
+          <cell><m>\int_0^1 (1-x^2) \,dx = 0.\overline{6}</m></cell>
+          <cell>error</cell>
+          <cell><m>\int_1^2 \frac{1}{x^2} \, dx = 0.5</m></cell>
+          <cell>error</cell>
+        </row>
+        <row bottom="medium">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><m>T_4</m></cell>
+          <cell>0.65625</cell>
+          <cell>-0.0104166667</cell>
+          <cell>0.5089937642</cell>
+          <cell>0.0089937642</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><m>M_4</m></cell>
+          <cell>0.671875</cell>
+          <cell>0.0052083333</cell>
+          <cell>0.4955479365</cell>
+          <cell>-0.0044520635</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><m>S_8</m></cell>
+          <cell>0.6666666667</cell>
+          <cell>0</cell>
+          <cell>0.5000298792</cell>
+          <cell>0.0000298792</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><m>T_8</m></cell>
+          <cell>0.6640625</cell>
+          <cell>-0.0026041667</cell>
+          <cell>0.5022708502</cell>
+          <cell>0.0022708502</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><m>M_8</m></cell>
+          <cell>0.66796875</cell>
+          <cell><nbsp />0.0013020833</cell>
+          <cell>0.4988674899</cell>
+          <cell>-0.0011325101</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><m>S_{16}</m></cell>
+          <cell>0.6666666667</cell>
+          <cell>0</cell>
+          <cell>0.5000019434</cell>
+          <cell>0.0000019434</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <p>The results seen in <xref ref="T-5-6-Ex3">Table</xref> are striking. If we consider the <m>S_{16}</m> approximation of <m>\int_1^2 \frac{1}{x^2} \, dx</m>, the error is only <m>E_{S,16} = 0.0000019434</m>. By contrast, <m>L_8 = 0.5491458502</m>, so the error of that estimate is <m>E_{L,8} = -0.0491458502</m>. Moreover, we observe that generating the approximations for Simpson's Rule is almost no additional work: once we have <m>L_n</m>, <m>R_n</m>, and <m>M_n</m> for a given value of <m>n</m>, it is a simple exercise to generate <m>T_n</m>, and from there to calculate <m>S_{2n}</m>. Finally, note that the error in the Simpson's Rule approximations of <m>\int_0^1 (1-x^2) \, dx</m> is zero!<fn>Similar to how the Midpoint and Trapezoid approximations are exact for linear functions, Simpson's Rule approximations are exact for quadratic and cubic functions.  See additional discussion on this issue later in the section and in the exercises.</fn></p>
+
+    <p>These rules are not only useful for approximating definite integrals such as <m>\int_0^1 e^{-x^2} \, dx</m>, for which we cannot find an elementary antiderivative of <m>e^{-x^2}</m>, but also for approximating definite integrals in the setting where we are given a function through a table of data.</p>
+
+	<xi:include href="./activities/act-5-6-2.xml" />
+
+  </subsection>
+
+  <subsection>
+    <title>Overall observations regarding <m>L_n</m>, <m>R_n</m>, <m>T_n</m>, <m>M_n</m>, and <m>S_{2n}</m>.</title>
+    <p>As we conclude our discussion of numerical approximation of definite integrals, it is important to summarize general trends in how the various rules over- or under-estimate the true value of a definite integral, and by how much. To revisit some past observations and see some new ones, we consider the following activity.</p>
+
+	<xi:include href="./activities/act-5-6-3.xml" />
+
+    <p>The results seen in the examples in <xref ref="act-5-6-3">Activity</xref> generalize nicely. For instance, for any function <m>f</m> that is decreasing on <m>[a,b]</m>, <m>L_n</m> will over-estimate the exact value of <m>\int_a^b f(x) \,dx</m>, and for any function <m>f</m> that is concave down on <m>[a,b]</m>, <m>M_n</m> will over-estimate the exact value of the integral. An excellent exercise is to write a collection of scenarios of possible function behavior, and then categorize whether each of <m>L_n</m>, <m>R_n</m>, <m>T_n</m>, and <m>M_n</m> is an over- or under-estimate.</p>
+
+    <p>Finally, we make two important notes about Simpson's Rule. When T.<nbsp />Simpson first developed this rule, his idea was to replace the function <m>f</m> on a given interval with a quadratic function that shared three values with the function <m>f</m>. In so doing, he guaranteed that this new approximation rule would be exact for the definite integral of any quadratic polynomial. In one of the pleasant surprises of numerical analysis, it turns out that even though it was designed to be exact for quadratic polynomials, Simpson's Rule is exact for any cubic polynomial: that is, if we are interested in an integral such as <m>\int_2^5 (5x^3 - 2x^2 + 7x - 4)\, dx</m>, <m>S_{2n}</m> will always be exact, regardless of the value of <m>n</m>. This is just one more piece of evidence that shows how effective Simpson's Rule is as an approximation tool for estimating definite integrals.<fn>One reason that Simpson's Rule is so effective is that <m>S_{2n}</m> benefits from using <m>2n+1</m> points of data.  Because it combines <m>M_n</m>, which uses <m>n</m> midpoints, and <m>T_n</m>, which uses the <m>n+1</m> endpoints of the chosen subintervals, <m>S_{2n}</m> takes advantage of the maximum amount of information we have when we know function values at the endpoints and midpoints of <m>n</m> subintervals.</fn></p>
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+    <ul>
+      <li><p>For a definite integral such as <m>\int_0^1 e^{-x^2} \, dx</m> when we cannot use the First Fundamental Theorem of Calculus because the integrand lacks an elementary algebraic antiderivative, we can estimate the integral's value by using a sequence of Riemann sum approximations.  Typically, we start by computing <m>L_n</m>, <m>R_n</m>, and <m>M_n</m> for one or more chosen values of <m>n</m>.</p></li>
+
+      <li><p>The Trapezoid Rule, which estimates <m>\int_a^b f(x) \, dx</m> by using trapezoids, rather than rectangles, can also be viewed as the average of Left and Right Riemann sums.  That is, <m>T_n = \frac{1}{2}(L_n + R_n)</m>.</p></li>
+
+      <li><p>The Midpoint Rule is typically twice as accurate as the Trapezoid Rule, and the signs of the respective errors of these rules are opposites.  Hence, by taking the weighted average <m>S_n = \frac{2M_n + T_n}{3}</m>, we can build a much more accurate approximation to <m>\int_a^b f(x) \, dx</m> by using approximations we have already computed.  The rule for <m>S_n</m> is known as Simpson's Rule, which can also be developed by approximating a given continuous function with pieces of quadratic polynomials.</p></li>
+    </ul>
+  </subsection>  
+
+	<xi:include href="./exercises/ez-5-6.xml" />
+
+</section>
