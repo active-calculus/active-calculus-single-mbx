@@ -97,9 +97,83 @@
 
   </subsection>
 
-<!-- <xi:include href="./activities/act-1-1-1.xml" /> -->
-<!-- <xi:include href="./exercises/ez-1-1.xml" /> -->
 
+  <subsection>
+    <title>Improper Integrals Involving Unbounded Integrands</title>
+    <p>It is also possible for an integral to be improper due to the integrand being unbounded on the interval of integration. For example, if we consider
+      <me>
+        \int_0^1 \frac{1}{\sqrt{x}} \, dx,
+      </me>
+      we see that because <m>f(x) = \frac{1}{\sqrt{x}}</m> has a vertical asymptote at <m>x = 0</m>, <m>f</m> is not continuous on <m>[0,1]</m>, and the integral is attempting to represent the area of the unbounded region shown at right in <xref ref="F-6-5-InfIntegrand">Figure</xref>.</p>
 
+    <figure xml:id="F-6-5-InfIntegrand" >
+      <caption>At left, the area bounded by <m>f(x) = \frac{1}{\sqrt{x}}</m> on the finite interval <m>[a,1]</m>; at right, the result of letting <m>a \to 0^+</m>, where we see that the shaded region will extend vertically without bound.</caption>
+      <image width="100%" source="images/6_5_InfIntegrand" />
+    </figure>
+
+    <p>Just as we did with improper integrals involving infinite limits, we address the problem of the integrand being unbounded<index><main>improper integral</main><sub>unbounded integrand</sub></index> by replacing such an improper integral with a limit of proper integrals. For example, to evaluate <m>\int_0^1 \frac{1}{\sqrt{x}} \, dx</m>, we replace <m>0</m> with <m>a</m> and let <m>a</m> approach 0 from the right. Thus,
+      <me>
+        \int_0^1 \frac{1}{\sqrt{x}} \, dx = \lim_{a \to 0^+} \int_a^1 \frac{1}{\sqrt{x}} \, dx,
+      </me>
+      and then we evaluate the proper integral <m>\int_a^1 \frac{1}{\sqrt{x}} \, dx</m>, followed by taking the limit. In the same way as with improper integrals involving unbounded regions, we will say that the improper integral converges provided that this limit exists, and diverges otherwise. In the present example, we observe that
+      <md>
+        <mrow>\int_0^1 \frac{1}{\sqrt{x}} \, dx &amp; =  \lim_{a \to 0^+} \int_a^1 \frac{1}{\sqrt{x}} \, dx</mrow>
+        <mrow> &amp; = \lim_{a \to 0^+} 2\sqrt{x} \big\vert_a^1</mrow>
+        <mrow> &amp; = \lim_{a \to 0^+} 2\sqrt{1} - 2\sqrt{a}</mrow>
+        <mrow> &amp; = 2,</mrow>
+      </md>
+      and therefore the improper integral <m>\int_0^1 \frac{1}{\sqrt{x}} \, dx</m> converges (to the value 2).</p>
+
+    <p>We have to be particularly careful with unbounded integrands, for they may arise in ways that may not initially be obvious. Consider, for instance, the integral
+      <me>
+        \int_1^3 \frac{1}{(x-2)^2} \, dx.
+      </me>
+    </p>
+
+    <p>At first glance we might think that we can simply apply the Fundamental Theorem of Calculus by antidifferentiating <m>\frac{1}{(x-2)^2}</m> to get <m>-\frac{1}{x-2}</m> and then evaluate from <m>1</m> to <m>3</m>. Were we to do so, we would be erroneously applying the FTC because <m>f(x) = \frac{1}{(x-2)^2}</m> fails to be continuous throughout the interval, as seen in <xref ref="F-6-5-InfIntegrand2">Figure</xref>.</p>
+
+    <figure xml:id="F-6-5-InfIntegrand2" >
+      <caption>The function <m>f(x) = \frac{1}{(x-2)^2}</m> on an interval including <m>x = 2</m>.</caption>
+      <image width="50%" source="images/6_5_InfIntegrand2" />
+    </figure>
+
+    <p>Such an incorrect application of the FTC leads to an impossible result (<m>-2</m>), which would itself suggest that something we did must be wrong. Indeed, we must address the vertical asymptote in <m>f(x) = \frac{1}{(x-2)^2}</m> at <m>x = 2</m> by writing
+      <me>
+        \int_1^3 \frac{1}{(x-2)^2} \, dx = \lim_{a \to 2^-} \int_1^a \frac{1}{(x-2)^2} \, dx + \lim_{b \to 2^+} \int_b^3 \frac{1}{(x-2)^2} \, dx
+      </me>
+      and then evaluate two separate limits of proper integrals. For instance, doing so for the integral with <m>a</m> approaching <m>2</m> from the left, we find
+      <md>
+        <mrow>\int_1^2 \frac{1}{(x-2)^2} \, dx &amp; = \lim_{a \to 2^-} \int_1^a \frac{1}{(x-2)^2} \, dx</mrow>
+        <mrow> &amp; = \lim_{a \to 2^-} -\frac{1}{(x-2)} \bigg\vert_1^a</mrow>
+        <mrow> &amp; = \lim_{a \to 2^-} -\frac{1}{(a-2)} + \frac{1}{1-2}</mrow>
+        <mrow> &amp; =\infty,</mrow>
+      </md>
+      since <m>\frac{1}{a-2} \to -\infty</m> as <m>a</m> approaches 2 from the left. Thus, the improper integral <m>\int_1^2 \frac{1}{(x-2)^2} \, dx</m> diverges; similar work shows that <m>\int_2^3 \frac{1}{(x-2)^2} \, dx</m> also diverges. From either of these two results, we can conclude that that the original integral, <m>\int_1^3 \frac{1}{(x-2)^2} \, dx</m> diverges, too.</p>
+
+	<xi:include href="./activities/act-6-5-3.xml" />
+
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+    <ul>
+      <li><p>An integral <m>\int_a^b f(x) \, dx</m> can be improper if at least one of <m>a</m> or <m>b</m> is <m>\pm \infty</m>, making the interval unbounded, or if <m>f</m> has a vertical asymptote at <m>x = c</m> for some value of <m>c</m> that satisfies <m>a \le c \le b</m>.  One reason that improper integrals are important is that certain probabilities can be represented by integrals that involve infinite limits.</p></li>
+
+      <li><p>When we encounter an improper integral, we work to understand it by replacing the improper integral with a limit of proper integrals.  For instance, we write
+          <me>
+            \int_a^\infty f(x) \, dx = \lim_{b \to \infty} \int_a^b f(x) \, dx,
+          </me>
+          and then work to determine whether the limit exists and is finite.  For any improper integral, if the resulting limit of proper integrals exists and is finite, we say the improper integral converges.  Otherwise, the improper integral diverges.</p></li>
+
+      <li><p>An important class of improper integrals is given by
+          <me>
+            \int_1^{\infty} \frac{1}{x^p} \, dx
+          </me>
+          where <m>p</m> is a positive real number.  We can show that this improper integral converges whenever <m>p \gt 1</m>, and diverges whenever <m>0 \lt  p \le 1</m>.  A related class of improper integrals is <m>\int_0^1 \frac{1}{x^p} \, dx</m>, which converges for <m>0 \lt  p \lt  1</m>, and diverges for <m>p \ge 1</m>.</p></li>
+    </ul>
+
+  </subsection>
+
+  <xi:include href="./exercises/ez-6-5.xml"/>
 
 </section>
