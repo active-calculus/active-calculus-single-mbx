@@ -2,20 +2,20 @@
 <section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-3-1-tests">
 <title>Using derivatives to identify extreme values</title>
 
-<introduction>
 <objectives>
-	<ul>
-		<li><p>What are the critical numbers of a function <m>f</m> and how are they connected to identifying the most extreme values the function achieves?</p></li>
-		<li><p>How does the first derivative of a function reveal important information about the behavior of the function, including the function's extreme values?</p></li>
-		<li><p>How can the second derivative of a function be used to help identify extreme values of the function?</p></li>
-	</ul>
+    <ul>
+        <li><p>What are the critical numbers of a function <m>f</m> and how are they connected to identifying the most extreme values the function achieves?</p></li>
+        <li><p>How does the first derivative of a function reveal important information about the behavior of the function, including the function's extreme values?</p></li>
+        <li><p>How can the second derivative of a function be used to help identify extreme values of the function?</p></li>
+    </ul>
 </objectives>
+<introduction>
 <p>
 In many different settings, we are interested in knowing where a function achieves its least and greatest values. These can be important in applications <mdash /> say to identify a point at which maximum profit or minimum cost occurs <mdash /> or in theory to understand how to characterize the behavior of a function or a family of related functions. Consider the simple and familiar example of a parabolic function such as <m>s(t) = -16t^2 + 32t + 48</m> (shown at left in <xref ref="F-3-1-Intro">Figure</xref>) that represents the height of an object tossed vertically: its maximum value occurs at the vertex of the parabola and represents the highest value that the object reaches. Moreover, this maximum value identifies an especially important point on the graph, the point at which the curve changes from increasing to decreasing.
 </p>
 <figure xml:id="F-3-1-Intro" >
-	<caption>At left, <m>s(t) = -16t^2 + 24t + 32</m> whose vertex is <m>(\frac{3}{4}, 41)</m>; at right, a function <m>g</m> that demonstrates several high and low points.</caption>
-	<image width="100%" source="images/3_1_Intro" />
+    <caption>At left, <m>s(t) = -16t^2 + 24t + 32</m> whose vertex is <m>(\frac{3}{4}, 41)</m>; at right, a function <m>g</m> that demonstrates several high and low points.</caption>
+    <image width="100%" source="images/3_1_Intro" />
 </figure>
 <p>
 More generally, for any function we consider, we can investigate where its lowest and highest points occur in comparison to points nearby or to all possible points on the graph. Given a function <m>f</m>, we say that <m>f(c)</m> is a <em>global</em> or <em>absolute maximum</em> <index><main>maximum</main><sub>global</sub></index> <index><main>maximum</main><sub>absolute</sub></index> provided that <m>f(c) \ge f(x)</m> for all <m>x</m> in the domain of <m>f</m>, and similarly call <m>f(c)</m> a <em>global</em> <index><main>minimum</main><sub>global</sub></index> or <em>absolute minimum</em> <index><main>minimum</main><sub>absolute</sub></index> whenever <m>f(c) \le f(x)</m> for all <m>x</m> in the domain of <m>f</m>. For instance, for the function <m>g</m> given at right in <xref ref="F-3-1-Intro">Figure</xref>, <m>g</m> has a global maximum of <m>g(c)</m>, but <m>g</m> does not appear to have a global minimum, as the graph of <m>g</m> seems to decrease without bound. We note that the point <m>(c,g(c))</m> marks a fundamental change in the behavior of <m>g</m>, where <m>g</m> changes from increasing to decreasing; similar things happen at both <m>(a,g(a))</m> and <m>(b,g(b))</m>, although these points are not global mins or maxes.
@@ -29,7 +29,7 @@ For any function <m>f</m>, we say that <m>f(c)</m> is a <em>local maximum</em> <
 We would like to use fundamental calculus ideas to help us identify and classify key function behavior, including the location of relative extremes. Of course, if we are given a graph of a function, it is often straightforward to locate these important behaviors visually. We investigate this situation in the following preview activity.
 </p>
 
-	<xi:include href="./previews/PA-3-1.xml" />
+    <xi:include href="./previews/PA-3-1.xml" />
 
 </introduction>
 
@@ -39,8 +39,8 @@ We would like to use fundamental calculus ideas to help us identify and classify
 If a function has a relative extreme value at a point <m>(c,f(c))</m>, the function must change its behavior at <m>c</m> regarding whether it is increasing or decreasing before or after the point.
 </p>
 <figure xml:id="F-3-1-extremes" >
-	<caption>From left to right, a function with a relative maximum where its derivative is zero; a function with a relative maximum where its derivative is undefined; a function with neither a maximum nor a minimum at a point where its derivative is zero; a function with a relative minimum where its derivative is zero; and a function with a relative minimum where its derivative is undefined.</caption>
-	<image width="100%" source="images/3_1_extremes" />
+    <caption>From left to right, a function with a relative maximum where its derivative is zero; a function with a relative maximum where its derivative is undefined; a function with neither a maximum nor a minimum at a point where its derivative is zero; a function with a relative minimum where its derivative is zero; and a function with a relative minimum where its derivative is undefined.</caption>
+    <image width="100%" source="images/3_1_extremes" />
 </figure>
 <p>
 For example, if a continuous function has a relative maximum at <m>c</m>, such as those pictured in the two leftmost functions in <xref ref="F-3-1-extremes">Figure</xref>, then it is both necessary and sufficient that the function change from being increasing just before <m>c</m> to decreasing just after <m>c</m>. In the same way, a continuous function has a relative minimum at <m>c</m> if and only if the function changes from decreasing to increasing at <m>c</m>. See, for instance, the two functions pictured at right in <xref ref="F-3-1-extremes">Figure</xref>. There are only two possible ways for these changes in behavior to occur: either <m>f'(c) = 0</m> or <m>f'(c)</m> is undefined.
@@ -59,9 +59,9 @@ The <em>first derivative test</em> <index><main>first derivative test</main></in
 </p>
 
 <aside xml:id="First-D-Test">
-	<title>First Derivative Test<index><main>first derivative test</main></index></title>
-	<p>If <m>p</m> is a critical number of a continuous function <m>f</m> that is differentiable near <m>p</m> (except possibly at <m>x = p</m>), then <m>f</m> has a relative maximum at <m>p</m> if and only if <m>f'</m> changes sign from positive to negative at <m>p</m>, and <m>f</m> has a relative minimum at <m>p</m> if and only if <m>f'</m> changes sign from negative to positive at <m>p</m>.</p>
-</aside>	
+    <title>First Derivative Test</title>
+    <p><index><main>first derivative test</main></index>If <m>p</m> is a critical number of a continuous function <m>f</m> that is differentiable near <m>p</m> (except possibly at <m>x = p</m>), then <m>f</m> has a relative maximum at <m>p</m> if and only if <m>f'</m> changes sign from positive to negative at <m>p</m>, and <m>f</m> has a relative minimum at <m>p</m> if and only if <m>f'</m> changes sign from negative to positive at <m>p</m>.</p>
+</aside>
 
 
 <p>
@@ -101,9 +101,9 @@ Now, by the first derivative test, to find relative extremes of <m>f</m> we look
 </solution>
 </example>
 
-	<xi:include href="./activities/act-3-1-1.xml" />
+    <xi:include href="./activities/act-3-1-1.xml" />
 
-</subsection>  
+</subsection>
 
 <subsection>
 <title>The second derivative test</title>
@@ -120,8 +120,8 @@ In <xref ref="F-3-1-2Dtest">Figure</xref>, we see the four possibilities for a f
 
 
 <aside xml:id="Second-D-Test">
-	<title>Second Derivative Test<index><main>second derivative test</main></index></title>
-	<p>If <m>p</m> is a critical number of a continuous function <m>f</m> such that <m>f'(p) = 0</m> and <m>f''(p) \ne 0</m>, then <m>f</m> has a relative maximum at <m>p</m> if and only if <m>f''(p) \lt  0</m>, and <m>f</m> has a relative minimum at <m>p</m> if and only if <m>f''(p) \gt 0</m>.</p>
+    <title>Second Derivative Test</title>
+    <p><index><main>second derivative test</main></index>If <m>p</m> is a critical number of a continuous function <m>f</m> such that <m>f'(p) = 0</m> and <m>f''(p) \ne 0</m>, then <m>f</m> has a relative maximum at <m>p</m> if and only if <m>f''(p) \lt  0</m>, and <m>f</m> has a relative minimum at <m>p</m> if and only if <m>f''(p) \gt 0</m>.</p>
 </aside>
 
 <p>
@@ -162,8 +162,8 @@ Next, we move on to investigate concavity. Differentiating <m>f'(x) = 3x^4 - 9x^
 which implies that <m>x = 0, \pm\sqrt{\frac{3}{2}}</m>. Building a sign chart for <m>f''</m> in the exact same way we do for <m>f'</m>, we see the result shown in <xref ref="F-3-1-signchart3">Figure</xref>.
 </p>
 <figure xml:id="F-3-1-signchart3" >
-	<caption>The second derivative sign chart for <m>f</m> when <m>f''(x) = 12x^3-18x = 12x^2\left(x^2-\sqrt{\frac{3}{2}}\right)</m>.</caption>
-	<image width="100%" source="images/3_1_signchart3" />
+    <caption>The second derivative sign chart for <m>f</m> when <m>f''(x) = 12x^3-18x = 12x^2\left(x^2-\sqrt{\frac{3}{2}}\right)</m>.</caption>
+    <image width="100%" source="images/3_1_signchart3" />
 </figure>
 <p>
 Therefore, <m>f</m> is concave down on the intervals <m>(-\infty, -\sqrt{\frac{3}{2}})</m> and <m>(0, \sqrt{\frac{3}{2}})</m>, and concave up on <m>(-\sqrt{\frac{3}{2}},0)</m> and <m>(\sqrt{\frac{3}{2}}, \infty)</m>.
@@ -173,8 +173,8 @@ Therefore, <m>f</m> is concave down on the intervals <m>(-\infty, -\sqrt{\frac{3
 Putting all of the above information together, we now see a complete and accurate possible graph of <m>f</m> in <xref ref="F-3-1-Ex2">Figure</xref>.
 </p>
 <figure xml:id="F-3-1-Ex2" >
-	<caption>A possible graph of the function <m>f</m> in <xref ref="Ex-3-2">Example</xref>.</caption>
-	<image width="50%" source="images/3_1_Ex2" />
+    <caption>A possible graph of the function <m>f</m> in <xref ref="Ex-3-2">Example</xref>.</caption>
+    <image width="50%" source="images/3_1_Ex2" />
 </figure>
 <p>
 The point <m>A = (-\sqrt{3}, f(-\sqrt{3}))</m> is a local maximum, as <m>f</m> is increasing prior to <m>A</m> and decreasing after; similarly, the point <m>E = (\sqrt{3}, f(\sqrt{3})</m> is a local minimum. Note, too, that <m>f</m> is concave down at <m>A</m> and concave up at <m>B</m>, which is consistent both with our second derivative sign chart and the second derivative test. At points <m>B</m> and <m>D</m>, concavity changes, as we saw in the results of the second derivative sign chart in <xref ref="F-3-1-signchart3">Figure</xref>. Finally, at point <m>C</m>, <m>f</m> has a critical point with a horizontal tangent line, but neither a maximum nor a minimum occurs there since <m>f</m> is decreasing both before and after <m>C</m>. It is also the case that concavity changes at <m>C</m>.
@@ -194,13 +194,13 @@ Points <m>B</m>, <m>C</m>, and <m>D</m> in <xref ref="F-3-1-Ex2">Figure</xref> a
 It is important at this point in our study to remind ourselves of the big picture that derivatives help to paint: the sign of the first derivative <m>f'</m> tells us <em>whether</em> the function <m>f</m> is increasing or decreasing, while the sign of the second derivative <m>f''</m> tells us <em>how</em> the function <m>f</m> is increasing or decreasing.
 </p>
 
-	<xi:include href="./activities/act-3-1-2.xml" />
+    <xi:include href="./activities/act-3-1-2.xml" />
 
 <p>
 As we will see in more detail in the following section, derivatives also help us to understand families of functions that differ only by changing one or more parameters. For instance, we might be interested in understanding the behavior of all functions of the form <m>f(x) = a(x-h)^2 + k</m> where <m>a</m>, <m>h</m>, and <m>k</m> are numbers that may vary. In the following activity, we investigate a particular example where the value of a single parameter has considerable impact on how the graph appears.
 </p>
 
-	<xi:include href="./activities/act-3-1-3.xml" />
+    <xi:include href="./activities/act-3-1-3.xml" />
 
 
 </subsection>
@@ -208,14 +208,14 @@ As we will see in more detail in the following section, derivatives also help us
 
 <subsection>
 <title>Summary</title>
-	<ul>
-		<li><p>The critical numbers of a continuous function <m>f</m> are the values of <m>p</m> for which <m>f'(p) = 0</m> or <m>f'(p)</m> does not exist.  These values are important because they identify horizontal tangent lines or corner points on the graph, which are the only possible locations at which a local maximum or local minimum can occur.</p></li>
-		<li><p>Given a differentiable function <m>f</m>, whenever <m>f'</m> is positive, <m>f</m> is increasing; whenever <m>f'</m> is negative, <m>f</m> is decreasing.  The first derivative test tells us that at any point where <m>f</m> changes from increasing to decreasing, <m>f</m> has a local maximum, while conversely at any point where <m>f</m> changes from decreasing to increasing <m>f</m> has a local minimum.</p></li>
-		<li><p>Given a twice differentiable function <m>f</m>, if we have a horizontal tangent line at <m>x = p</m> and <m>f''(p)</m> is nonzero, then the fact that <m>f''</m> tells us the concavity of <m>f</m> will determine whether <m>f</m> has a maximum or minimum at <m>x = p</m>.  In particular, if <m>f'(p) = 0</m> and <m>f''(p) \lt  0</m>, then <m>f</m> is concave down at <m>p</m> and <m>f</m> has a local maximum there, while if <m>f'(p) = 0</m> and <m>f''(p) \gt 0</m>, then <m>f</m> has a local minimum at <m>p</m>.  If <m>f'(p) = 0</m> and <m>f''(p) = 0</m>, then the second derivative does not tell us whether <m>f</m> has a local extreme at <m>p</m> or not.</p></li>
-	</ul>
+    <p><ul>
+        <li><p>The critical numbers of a continuous function <m>f</m> are the values of <m>p</m> for which <m>f'(p) = 0</m> or <m>f'(p)</m> does not exist.  These values are important because they identify horizontal tangent lines or corner points on the graph, which are the only possible locations at which a local maximum or local minimum can occur.</p></li>
+        <li><p>Given a differentiable function <m>f</m>, whenever <m>f'</m> is positive, <m>f</m> is increasing; whenever <m>f'</m> is negative, <m>f</m> is decreasing.  The first derivative test tells us that at any point where <m>f</m> changes from increasing to decreasing, <m>f</m> has a local maximum, while conversely at any point where <m>f</m> changes from decreasing to increasing <m>f</m> has a local minimum.</p></li>
+        <li><p>Given a twice differentiable function <m>f</m>, if we have a horizontal tangent line at <m>x = p</m> and <m>f''(p)</m> is nonzero, then the fact that <m>f''</m> tells us the concavity of <m>f</m> will determine whether <m>f</m> has a maximum or minimum at <m>x = p</m>.  In particular, if <m>f'(p) = 0</m> and <m>f''(p) \lt  0</m>, then <m>f</m> is concave down at <m>p</m> and <m>f</m> has a local maximum there, while if <m>f'(p) = 0</m> and <m>f''(p) \gt 0</m>, then <m>f</m> has a local minimum at <m>p</m>.  If <m>f'(p) = 0</m> and <m>f''(p) = 0</m>, then the second derivative does not tell us whether <m>f</m> has a local extreme at <m>p</m> or not.</p></li>
+    </ul></p>
 
 </subsection>
 
-	<xi:include href="./exercises/ez-3-1.xml" /> 
+    <xi:include href="./exercises/ez-3-1.xml" />
 
 </section>

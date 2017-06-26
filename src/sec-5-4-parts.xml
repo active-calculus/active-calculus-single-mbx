@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-5-4-parts">
   <title>Integration by Parts</title>
-  <introduction>
     <objectives>
       <ul>
         <li><p>How do we evaluate indefinite integrals that involve products of basic functions such as <m>\int x \sin(x) \, dx</m> and <m>\int x e^x \, dx</m>?</p></li>
@@ -11,6 +10,7 @@
         <li><p>How does the algebraic structure of functions guide us in identifying <m>u</m> and <m>dv</m> in using integration by parts?</p></li>
       </ul>
     </objectives>
+  <introduction>
     <p>In <xref ref="sec-5-3-substitution">Section</xref>, we learned the technique of <m>u</m>-substitution for evaluating indefinite integrals that involve certain composite functions. For example, the indefinite integral <m>\int x^3 \sin(x^4) \, dx</m> is perfectly suited to <m>u</m>-substitution, since not only is there a composite function present, but also the inner function's derivative (up to a constant) is multiplying the composite function. Through <m>u</m>-substitution, we learned a general situation where recognizing the algebraic structure of a function can enable us to find its antiderivative.</p>
 
     <p>It is natural to ask similar questions to those we considered in <xref ref="sec-5-3-substitution">Section</xref> about functions with a different elementary algebraic structure: those that are the product of basic functions. For instance, suppose we are interested in evaluating the indefinite integral
@@ -23,7 +23,7 @@
 
     <p>To that end, in <xref ref="PA-5-4">Preview Activity</xref> we refresh our understanding of the Product Rule and then investigate some indefinite integrals that involve products of basic functions.</p>
 
-	<xi:include href="./previews/PA-5-4.xml" />
+    <xi:include href="./previews/PA-5-4.xml" />
 
   </introduction>
 
@@ -55,13 +55,12 @@
       </men>
     </p>
 
-    <p>Often we express Equation<nbsp /><xref ref="E-IBP1" /> in terms of the variables <m>u</m> and <m>v</m>, where <m>u = f(x)</m> and <m>v = g(x)</m>. Note that in differential notation, <m>du = f'(x) \, dx</m> and <m>dv = g'(x) \, dx</m>, and thus we can state the rule for Integration by Parts in its most common form as follows.
-    <aside>
-      <me>
+    <p>Often we express Equation<nbsp /><xref ref="E-IBP1" /> in terms of the variables <m>u</m> and <m>v</m>, where <m>u = f(x)</m> and <m>v = g(x)</m>. Note that in differential notation, <m>du = f'(x) \, dx</m> and <m>dv = g'(x) \, dx</m>, and thus we can state the rule for Integration by Parts in its most common form as follows.</p>
+    <assemblage>
+      <p><me>
         \int u \, dv  = uv -  \int v \, du.
-      </me>
-    </aside>
-    </p>
+      </me></p>
+    </assemblage>
 
     <p>To apply Integration by Parts, we look for a product of basic functions that we can identify as <m>u</m> and <m>dv</m>. If we can antidifferentiate <m>dv</m> to find <m>v</m>, and evaluating <m>\int v \, du</m> is not more difficult than evaluating <m>\int u \, dv</m>, then this substitution usually proves to be fruitful. To demonstrate, we consider the following example.</p>
 
@@ -74,14 +73,10 @@
           using Integration by Parts.</p>
       </statement>
 
-	  <solution>
+      <solution>
     <p>Whenever we are trying to integrate a product of basic functions through Integration by Parts, we are presented with a choice for <m>u</m> and <m>dv</m>. In the current problem, we can either let <m>u = x</m> and <m>dv = \cos(x) \, dx</m>, or let <m>u = \cos(x)</m> and <m>dv = x \, dx</m>. While there is not a universal rule for how to choose <m>u</m> and <m>dv</m>, a good guideline is this: do so in a way that <m>\int v \, du</m> is at least as simple as the original problem <m>\int u \, dv</m>.</p>
 
-    <p>In this setting, this leads us to choose<fn>Observe that if we considered the alternate choice, and let <m>u = \cos(x)</m> and <m>dv = x \, dx</m>, then <m>du = -\sin(x) \, dx</m> and <m>v = \frac{1}{2}x^2</m>, from which we would write
-      <me>
-        \int x\cos(x) \, dx = \frac{1}{2}x^2 \cos(x) - \int \frac{1}{2}x^2 (-\sin(x)) \, dx.
-      </me>
-      Thus we have replaced the problem of integrating <m>x \cos(x)</m> with that of integrating <m>\frac{1}{2}x^2 \sin(x)</m>; the latter is clearly more complicated, which shows that this alternate choice is not as helpful as the first choice.</fn> <m>u = x</m> and <m>dv = \cos(x) \, dx</m>, from which it follows that <m>du = 1 \, dx</m> and <m>v = \sin(x)</m>. With this substitution, the rule for Integration by Parts tells us that
+    <p>In this setting, this leads us to choose<fn>Observe that if we considered the alternate choice, and let <m>u = \cos(x)</m> and <m>dv = x \, dx</m>, then <m>du = -\sin(x) \, dx</m> and <m>v = \frac{1}{2}x^2</m>, from which we would write <m>\int x\cos(x) \, dx = \frac{1}{2}x^2 \cos(x) - \int \frac{1}{2}x^2 (-\sin(x)) \, dx</m>. Thus we have replaced the problem of integrating <m>x \cos(x)</m> with that of integrating <m>\frac{1}{2}x^2 \sin(x)</m>; the latter is clearly more complicated, which shows that this alternate choice is not as helpful as the first choice.</fn> <m>u = x</m> and <m>dv = \cos(x) \, dx</m>, from which it follows that <m>du = 1 \, dx</m> and <m>v = \sin(x)</m>. With this substitution, the rule for Integration by Parts tells us that
       <me>
         \int x \cos(x) \, dx = x \sin(x) - \int \sin(x) \cdot 1 \, dx.
       </me>
@@ -98,9 +93,9 @@
 
     <p>There are at least two additional important observations to make from <xref ref="Ex-5-4-IBP">Example</xref>. First, the general technique of Integration by Parts involves trading the problem of integrating the product of two functions for the problem of integrating the product of two related functions. In particular, we convert the problem of evaluating <m>\int u \, dv</m> for that of evaluating <m>\int v \, du</m>. This perspective clearly shapes our choice of <m>u</m> and <m>v</m>. In <xref ref="Ex-5-4-IBP">Example</xref>, the original integral to evaluate was <m>\int x \cos(x) \,dx</m>, and through the substitution provided by Integration by Parts, we were instead able to evaluate <m>\int \sin(x) \cdot 1 \, dx</m>. Note that the original function <m>x</m> was replaced by its derivative, while <m>\cos(x)</m> was replaced by its antiderivative. Second, observe that when we get to the final stage of evaluating the last remaining antiderivative, it is at this step that we include the integration constant, <m>+C</m>.</p>
 
-	<xi:include href="./activities/act-5-4-1.xml" />
+    <xi:include href="./activities/act-5-4-1.xml" />
 
-  </subsection>  
+  </subsection>
 
   <subsection>
     <title>Some Subtleties with Integration by Parts</title>
@@ -126,7 +121,7 @@
 
     <p>The problems briefly introduced here exemplify that we sometimes must think creatively in choosing the variables for substitution in Integration by Parts, as well as that it is entirely possible that we will need to use the technique of substitution for an additional change of variables within the process of integrating by parts.</p>
 
-	<xi:include href="./activities/act-5-4-2.xml" />
+    <xi:include href="./activities/act-5-4-2.xml" />
 
   </subsection>
 
@@ -182,7 +177,7 @@
 
     <p>Note that since we never actually encountered an integral we could evaluate directly, we didn't have the opportunity to add the integration constant <m>C</m> until the final step, at which point we include it as part of the most general antiderivative that we sought from the outset in evaluating an indefinite integral.</p>
 
-	<xi:include href="./activities/act-5-4-3.xml" />
+    <xi:include href="./activities/act-5-4-3.xml" />
 
   </subsection>
 
@@ -226,7 +221,7 @@
 
   <subsection>
     <title>Summary</title>
-    <ul>
+    <p><ul>
       <li><p>Through the method of Integration by Parts, we can evaluate indefinite integrals that involve products of basic functions such as <m>\int x \sin(x) \, dx</m> and <m>\int x \ln(x) \, dx</m> through a substitution that enables us to effectively trade one of the functions in the product for its derivative, and the other for its antiderivative, in an effort to find a different product of functions that is easier to integrate.</p></li>
 
       <li><p>If we are given an integral whose algebraic structure we can identify as a product of basic functions in the form <m>\int f(x) g'(x) \, dx</m>, we can use the substitution <m>u = f(x)</m> and <m>dv = g'(x) \,dx</m> and apply the rule
@@ -236,10 +231,10 @@
           in an effort to evaluate the original integral <m>\int f(x) g'(x) \, dx</m> by instead evaluating <m>\int v \, du = \int f'(x) g(x) \, dx</m>.</p></li>
 
       <li><p>When deciding to integrate by parts, we normally have a product of functions present in the integrand and we have to select both <m>u</m> and <m>dv</m>.  That selection is guided by the overall principal that we desire the new integral <m>\int v \, du</m> to not be any more difficult or complicated than the original integral <m>\int u \, dv</m>.  In addition, it is often helpful to recognize if one of the functions present is much easier to differentiate than antidifferentiate (such as <m>\ln(x)</m>), in which case that function often is best assigned the variable <m>u</m>.  For sure, when choosing <m>dv</m>, the corresponding function must be one that we can antidifferentiate.</p></li>
-    </ul>
+    </ul></p>
 
   </subsection>
-  
- 	<xi:include href="./exercises/ez-5-4.xml" />
+
+     <xi:include href="./exercises/ez-5-4.xml" />
 
 </section>

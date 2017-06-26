@@ -2,7 +2,6 @@
 <section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-4-4-FTC">
 
   <title>The Fundamental Theorem of Calculus</title>
-  <introduction>
     <objectives>
       <ul>
         <li><p>How can we find the exact value of a definite integral without taking the limit of a Riemann sum?</p></li>
@@ -12,6 +11,7 @@
         <li><p>What is the meaning of the definite integral of a rate of change in contexts other than when the rate of change represents velocity?</p></li>
       </ul>
     </objectives>
+  <introduction>
     <p>Much of our work in <xref ref="C-4">Chapter</xref> has been motivated by the velocity-distance problem: if we know the instantaneous velocity function, <m>v(t)</m>, for a moving object on a given time interval <m>[a,b]</m>, can we determine its exact distance traveled on <m>[a,b]</m>? In the vast majority of our discussion in <xref ref="sec-4-1-velocity-distance">Sections</xref>- <xref ref="sec-4-3-definite-integral"></xref>, we have focused on the fact that this distance traveled is connected to the area bounded by <m>y = v(t)</m> and the <m>t</m>-axis on <m>[a,b]</m>. In particular, for any nonnegative velocity function <m>y = v(t)</m> on <m>[a,b]</m>, we know that the exact area bounded by the velocity curve and the <m>t</m>-axis on the interval tells us the total distance traveled, which is also the value of the definite integral <m>\int_a^b v(t) \, dt</m>. In the situation where velocity is sometimes negative, the total area bounded by the velocity function still tells us distance traveled, while the net signed area that the function bounds tells us the object's change in position.</p>
 
     <figure xml:id="F-4-4-Intro" >
@@ -31,7 +31,7 @@
 
     <p>While the areas <m>A_1</m>, <m>A_2</m>, and <m>A_3</m>, which are each given by definite integrals, may be computed through limits of Riemann sums (and in select special circumstances through familiar geometric formulas), in the present section we turn our attention to an alternate approach, similar to the one we encountered in <xref ref="act-4-1-2">Activity</xref>. To explore these ideas further, we consider the following preview activity.</p>
 
-	<xi:include href="./previews/PA-4-4.xml" />
+    <xi:include href="./previews/PA-4-4.xml" />
 
   </introduction>
 
@@ -81,11 +81,11 @@
     </p>
 
     <p>Now, in the general setting of wanting to evaluate the definite integral <m>\int_a^b f(x) \, dx</m> for an arbitrary continuous function <m>f</m>, we could certainly think of <m>f</m> as representing the velocity of some moving object, and <m>x</m> as the variable that represents time. And again, Equations<nbsp /><xref ref="E-FTCVel" /> and<nbsp /><xref ref="E-FTCV" /> hold for any continuous velocity function, even when <m>v</m> is sometimes negative. This leads us to see that Equation<nbsp /><xref ref="E-FTCV" /> tells us something even more important than the change in position of a moving object: it offers a shortcut route to evaluating any definite integral, provided that we can find an antiderivative of the integrand. The Fundamental Theorem of Calculus (FTC) <index><main>FTC</main></index> summarizes these observations.</p>
-	
-	<aside xml:id="FTC">
-		<title>Fundamental Theorem of Calculus<index><main>fundamental theorem of calculus</main></index></title>
-	    <p>If <m>f</m> is a continuous function on <m>[a,b]</m>, and <m>F</m> is any antiderivative of <m>f</m>, then <m>\int_a^b f(x) \, dx = F(b) - F(a).</m></p>
-	</aside>
+
+    <aside xml:id="FTC">
+        <title>Fundamental Theorem of Calculus</title>
+        <p><index><main>fundamental theorem of calculus</main></index>If <m>f</m> is a continuous function on <m>[a,b]</m>, and <m>F</m> is any antiderivative of <m>f</m>, then <m>\int_a^b f(x) \, dx = F(b) - F(a).</m></p>
+    </aside>
 
     <p>A common alternate notation for <m>F(b) - F(a)</m> is
       <me>
@@ -107,10 +107,10 @@
 
     <p>But finding an antiderivative can be far from simple; in fact, often finding a formula for an antiderivative is very hard or even impossible. While we can differentiate just about any function, even some relatively simple ones don't have an elementary antiderivative. A significant portion of integral calculus (which is the main focus of second semester college calculus) is devoted to understanding the problem of finding antiderivatives.</p>
 
-	<xi:include href="./activities/act-4-4-1.xml" />
+    <xi:include href="./activities/act-4-4-1.xml" />
 
   </subsection>
- 
+
   <subsection>
     <title>Basic antiderivatives</title>
     <p>The general problem of finding an antiderivative is difficult. In part, this is due to the fact that we are trying to undo the process of differentiating, and the undoing is much more difficult than the doing. For example, while it is evident that an antiderivative of <m>f(x) = \sin(x)</m> is <m>F(x) = -\cos(x)</m> and that an antiderivative of <m>g(x) = x^2</m> is <m>G(x) = \frac{1}{3} x^3</m>, combinations of <m>f</m> and <m>g</m> can be far more complicated. Consider such functions as
@@ -156,7 +156,7 @@
 
     <p>In the following activity, we work to build a list of basic functions whose antiderivatives we already know.</p>
 
-	<xi:include href="./activities/act-4-4-2.xml" />
+    <xi:include href="./activities/act-4-4-2.xml" />
 
   </subsection>
 
@@ -197,17 +197,17 @@
 
     <p>Of course, this result is not limited to only the setting of position and velocity. Writing the result in terms of a more general function <m>f</m>, we have the Total Change Theorem.</p>
 
-	<aside xml:id="total-change-theorem">
-		<title>Total Change Theorem<index><main>total change theorem</main></index></title>
-	    <p>If <m>f</m> is a continuously differentiable function on <m>[a,b]</m> with derivative <m>f'</m>, then
+    <aside xml:id="total-change-theorem">
+        <title>Total Change Theorem</title>
+        <p><index><main>total change theorem</main></index>If <m>f</m> is a continuously differentiable function on <m>[a,b]</m> with derivative <m>f'</m>, then
       <m>f(b) - f(a) = \int_a^b f'(x) \, dx.</m>
       That is, the definite integral of the derivative of a function on <m>[a,b]</m> is the total change of the function itself on <m>[a,b]</m>.</p>
-    </aside>  
+    </aside>
 
     <p>The Total Change Theorem tells us more about the relationship between the graph of a function and that of its derivative. Recall <xref ref="F-1-4-ffprime">Figure</xref>, which provided one of the first times we saw that heights on the graph of the derivative function come from slopes on the graph of the function itself. That observation occurred in the context where we knew <m>f</m> and were seeking <m>f'</m>; if now instead we think about knowing <m>f'</m> and seeking information about <m>f</m>, we can instead say the following:</p>
 
     <blockquote>
-    <em>differences in heights on <m>f</m> correspond to net signed areas bounded by <m>f'</m>.</em>
+    <p><em>differences in heights on <m>f</m> correspond to net signed areas bounded by <m>f'</m>.</em></p>
     </blockquote>
 
     <figure xml:id="F-4-4-TCT" >
@@ -228,7 +228,7 @@
           <image width="50%" source="images/4_4_TCTEx" />
         </figure>
       </statement>
-	<solution>
+    <solution>
     <p>We know that since <m>r(t) \ge 0</m>, the value of <m>\int_4^{10} r(t) \, dt</m> is the area under the curve on the interval <m>[4,10]</m>. If we think about this area from the perspective of a Riemann sum, the rectangles will have heights measured in gallons per day and widths measured in days, thus the area of each rectangle will have units of
       <me>
         \frac{\mbox{gallons} }{\mbox{day} } \cdot \mbox{days}  = \mbox{gallons} .
@@ -255,15 +255,15 @@
         r_{AVG [4,10]} = \frac{1}{10-4} \int_4^{10} r(t) \, dt \approx \frac{44.282}{6} = 7.380,
       </me>
       which has its units measured in gallons per day.</p>
-	</solution>
-    </example>	
-	<xi:include href="./activities/act-4-4-3.xml" />
+    </solution>
+    </example>
+    <xi:include href="./activities/act-4-4-3.xml" />
 
   </subsection>
 
   <subsection>
     <title>Summary</title>
-    <ul>
+    <p><ul>
       <li><p>We can find the exact value of a definite integral without taking the limit of a Riemann sum or using a familiar area formula by finding the antiderivative of the integrand, and hence applying the Fundamental Theorem of Calculus.</p></li>
 
       <li><p>The Fundamental Theorem of Calculus says that if <m>f</m> is a continuous function on <m>[a,b]</m> and <m>F</m> is an antiderivative of <m>f</m>, then
@@ -277,10 +277,10 @@
             \int_a^b f'(x) \, dx = f(b) - f(a),
           </me>
           for any continuously differentiable function <m>f</m>.   This means that the definite integral of the instantaneous rate of change of a function <m>f</m> on an interval <m>[a,b]</m> is equal to the total change in the function <m>f</m> on <m>[a,b]</m>.</p></li>
-    </ul>
+    </ul></p>
   </subsection>
 
-	<xi:include href="./exercises/ez-4-4.xml" /> 
+    <xi:include href="./exercises/ez-4-4.xml" />
 
 
 

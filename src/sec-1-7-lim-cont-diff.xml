@@ -2,15 +2,15 @@
 <section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-1-7-lim-cont-diff">
 <title>Limits, Continuity, and Differentiability</title>
 
+    <objectives>
+        <ul>
+            <li><p>What does it mean graphically to say that <m>f</m> has limit <m>L</m> as <m>x \to a</m>?  How is this connected to having a left-hand limit at <m>x = a</m> and having a right-hand limit at <m>x = a</m>?</p></li>
+            <li><p>What does it mean to say that a function <m>f</m> is continuous at <m>x = a</m>?  What role do limits play in determining whether or not a function is continuous at a point?</p></li>
+            <li><p>What does it mean graphically to say that a function <m>f</m> is differentiable at <m>x = a</m>?  How is this connected to the function being locally linear?</p></li>
+            <li><p>How are the characteristics of a function having a limit, being continuous, and being differentiable at a given point related to one another?</p></li>
+        </ul>
+    </objectives>
 <introduction>
-	<objectives>
-		<ul>
-			<li><p>What does it mean graphically to say that <m>f</m> has limit <m>L</m> as <m>x \to a</m>?  How is this connected to having a left-hand limit at <m>x = a</m> and having a right-hand limit at <m>x = a</m>?</p></li>
-			<li><p>What does it mean to say that a function <m>f</m> is continuous at <m>x = a</m>?  What role do limits play in determining whether or not a function is continuous at a point?</p></li>
-			<li><p>What does it mean graphically to say that a function <m>f</m> is differentiable at <m>x = a</m>?  How is this connected to the function being locally linear?</p></li>
-			<li><p>How are the characteristics of a function having a limit, being continuous, and being differentiable at a given point related to one another?</p></li>
-		</ul>
-	</objectives>
 <p>
 In <xref ref="sec-1-2-lim">Section</xref>, we learned about how the concept of limits can be used to study the trend of a function near a fixed input value. As we study such trends, we are fundamentally interested in knowing how well-behaved the function is at the given point, say <m>x = a</m>. In this present section, we aim to expand our perspective and develop language and understanding to quantify how the function acts and how its value changes near a particular point. Beyond thinking about whether or not the function has a limit <m>L</m> at <m>x = a</m>, we will also consider the value of the function <m>f(a)</m> and how this value is related to <m>\lim_{x \to a} f(x)</m>, as well as whether or not the function has a derivative <m>f'(a)</m> at the point of interest. Throughout, we will build on and formalize ideas that we have encountered in several settings.
 </p>
@@ -19,7 +19,7 @@ In <xref ref="sec-1-2-lim">Section</xref>, we learned about how the concept of l
 We begin to consider these issues through the following preview activity that asks you to consider the graph of a function with a variety of interesting behaviors.
 </p>
 
-  <xi:include href="./previews/PA-1-7.xml" /> 
+  <xi:include href="./previews/PA-1-7.xml" />
 
 </introduction>
 
@@ -77,7 +77,7 @@ That is, a function has a limit at <m>x = a</m> if and only if both the left- an
 In <xref ref="PA-1-7">Preview Activity</xref>, the function <m>f</m> given in <xref ref="F-1-7-PA1">Figure</xref> only fails to have a limit at two values: at <m>a = -2</m> (where the left- and right-hand limits are 2 and <m>-1</m>, respectively) and at <m>x = 2</m>, where <m>\lim_{x \to 2^+} f(x)</m> does not exist). Note well that even at values like <m>a = -1</m> and <m>a = 0</m> where there are holes in the graph, the limit still exists.
 </p>
 
-  <xi:include href="./activities/act-1-7-1.xml" /> 
+  <xi:include href="./activities/act-1-7-1.xml" />
 
 </subsection>
 
@@ -91,8 +91,8 @@ In <xref ref="PA-1-7">Preview Activity</xref>, the function <m>f</m> given in <x
 Intuitively, a function is continuous if we can draw it without ever lifting our pencil from the page. Alternatively, we might say that the graph of a continuous function has no jumps or holes in it. We first consider three specific situations in <xref ref="F-1-7-Cont">Figure</xref> where all three functions have a limit at <m>a = 1</m>, and then work to make the idea of continuity more precise.
 </p>
 <figure xml:id="F-1-7-Cont" >
-	<caption>Functions <m>f</m>, <m>g</m>, and <m>h</m> that demonstrate subtly different behaviors at <m>a = 1</m>.</caption>
-	<image width="100%" source="images/1_7_Cont" />
+    <caption>Functions <m>f</m>, <m>g</m>, and <m>h</m> that demonstrate subtly different behaviors at <m>a = 1</m>.</caption>
+    <image width="100%" source="images/1_7_Cont" />
 </figure>
 <p>
 Note that <m>f(1)</m> is not defined, which leads to the resulting hole in the graph of <m>f</m> at <m>a = 1</m>. We will naturally say that <m>f</m> is <em>not continuous at <m>a = 1</m></em>. For the next function <m>g</m> in in <xref ref="F-1-7-Cont">Figure</xref>, we observe that while <m>\lim_{x \to 1} g(x) = 3</m>, the value of <m>g(1) = 2</m>, and thus the limit does not equal the function value. Here, too, we will say that <m>g</m> is <em>not continuous</em>, even though the function is defined at <m>a = 1</m>. Finally, the function <m>h</m> appears to be the most well-behaved of all three, since at <m>a = 1</m> its limit and its function value agree. That is,
@@ -112,11 +112,11 @@ More formally, we make the following definition.
 <statement>
 <p>
 A function <m>f</m> is <term>continuous at <m>x = a</m></term> <index><main>continuous at <m>x = a</m></main></index> provided that
-	<ol label="a">
-		<li><p><m>f</m> has a limit as <m>x \to a</m>,</p></li>
-		<li><p><m>f</m> is defined at <m>x = a</m>, and</p></li>
-		<li><p><m>\lim_{x \to a} f(x) = f(a).</m></p></li>
-	</ol>
+    <ol label="a">
+        <li><p><m>f</m> has a limit as <m>x \to a</m>,</p></li>
+        <li><p><m>f</m> is defined at <m>x = a</m>, and</p></li>
+        <li><p><m>\lim_{x \to a} f(x) = f(a).</m></p></li>
+    </ol>
 
 </p>
 </statement>
@@ -136,7 +136,7 @@ For example, consider <m>p(x) = x^2 - 2x + 3</m>. It can be proved that every po
 This route of substituting an input value to evaluate a limit works anytime we know the function being considered is continuous. Besides polynomial functions, all exponential functions and the sine and cosine functions are continuous at every point, as are many other familiar functions and combinations thereof.
 </p>
 
-	<xi:include href="./activities/act-1-7-2.xml" />
+    <xi:include href="./activities/act-1-7-2.xml" />
 
 </subsection>
 
@@ -173,11 +173,11 @@ To make a more general observation, if a function does have a tangent line at a 
 To summarize the preceding discussion of differentiability and continuity, we make several important observations.
 
 <note>
-	<ul>
-		<li><p>If <m>f</m> is differentiable at <m>x = a</m>, then <m>f</m> is continuous at <m>x = a</m>.  Equivalently, if<m>f</m> fails to be continuous at <m>x = a</m>, then <m>f</m> will not be differentiable at <m>x = a</m>.</p></li>
-		<li><p>A function can be continuous at a point, but not be differentiable there.  In particular, a function <m>f</m> is not differentiable at <m>x = a</m> if the graph has a sharp corner (or <em>cusp</em>) <index><main>cusp</main></index> at the point <m>(a,f(a))</m>.</p></li>
-		<li><p>If <m>f</m> is differentiable at <m>x = a</m>, then <m>f</m> is locally linear at <m>x = a</m>.  That is, when a function is differentiable, it looks linear when viewed up close because it resembles its tangent line there.</p></li>
-	</ul>
+    <p><ul>
+        <li><p>If <m>f</m> is differentiable at <m>x = a</m>, then <m>f</m> is continuous at <m>x = a</m>.  Equivalently, if<m>f</m> fails to be continuous at <m>x = a</m>, then <m>f</m> will not be differentiable at <m>x = a</m>.</p></li>
+        <li><p>A function can be continuous at a point, but not be differentiable there.  In particular, a function <m>f</m> is not differentiable at <m>x = a</m> if the graph has a sharp corner (or <em>cusp</em>) <index><main>cusp</main></index> at the point <m>(a,f(a))</m>.</p></li>
+        <li><p>If <m>f</m> is differentiable at <m>x = a</m>, then <m>f</m> is locally linear at <m>x = a</m>.  That is, when a function is differentiable, it looks linear when viewed up close because it resembles its tangent line there.</p></li>
+    </ul></p>
 </note>
 
 </p>
@@ -188,14 +188,14 @@ To summarize the preceding discussion of differentiability and continuity, we ma
 
 <subsection>
 <title>Summary</title>
-	<ul>
-		<li><p>A function <m>f</m> has limit <m>L</m> as <m>x \to a</m> if and only if <m>f</m> has a left-hand limit at <m>x = a</m>, has a right-hand limit at <m>x = a</m>, and the left- and right-hand limits are equal.  Visually, this means that there can be a hole in the graph at <m>x = a</m>, but the function must approach the same single value from either side of <m>x = a</m>.</p></li>
-		<li><p>A function <m>f</m> is continuous at <m>x = a</m> whenever <m>f(a)</m> is defined, <m>f</m> has a limit as <m>x \to a</m>, and the value of the limit and the value of the function agree.  This guarantees that there is not a hole or jump in the graph of <m>f</m> at <m>x = a</m>.</p></li>
-		<li><p>A function <m>f</m> is differentiable at <m>x = a</m> whenever <m>f'(a)</m> exists, which means that <m>f</m> has a tangent line at <m>(a,f(a))</m> and thus <m>f</m> is locally linear at the value <m>x = a</m>.  Informally, this means that the function looks like a line when viewed up close at <m>(a,f(a))</m> and that there is not a corner point or cusp at <m>(a,f(a))</m>.</p></li>
-		<li><p>Of the three conditions discussed in this section (having a limit at <m>x = a</m>, being continuous at <m>x = a</m>, and being differentiable at <m>x = a</m>), the strongest condition is being differentiable, and the next strongest is being continuous.  In particular, if <m>f</m> is differentiable at <m>x = a</m>, then <m>f</m> is also continuous at <m>x = a</m>, and if <m>f</m> is continuous at <m>x = a</m>, then <m>f</m> has a limit at <m>x = a</m>.</p></li>
-	</ul>
+    <p><ul>
+        <li><p>A function <m>f</m> has limit <m>L</m> as <m>x \to a</m> if and only if <m>f</m> has a left-hand limit at <m>x = a</m>, has a right-hand limit at <m>x = a</m>, and the left- and right-hand limits are equal.  Visually, this means that there can be a hole in the graph at <m>x = a</m>, but the function must approach the same single value from either side of <m>x = a</m>.</p></li>
+        <li><p>A function <m>f</m> is continuous at <m>x = a</m> whenever <m>f(a)</m> is defined, <m>f</m> has a limit as <m>x \to a</m>, and the value of the limit and the value of the function agree.  This guarantees that there is not a hole or jump in the graph of <m>f</m> at <m>x = a</m>.</p></li>
+        <li><p>A function <m>f</m> is differentiable at <m>x = a</m> whenever <m>f'(a)</m> exists, which means that <m>f</m> has a tangent line at <m>(a,f(a))</m> and thus <m>f</m> is locally linear at the value <m>x = a</m>.  Informally, this means that the function looks like a line when viewed up close at <m>(a,f(a))</m> and that there is not a corner point or cusp at <m>(a,f(a))</m>.</p></li>
+        <li><p>Of the three conditions discussed in this section (having a limit at <m>x = a</m>, being continuous at <m>x = a</m>, and being differentiable at <m>x = a</m>), the strongest condition is being differentiable, and the next strongest is being continuous.  In particular, if <m>f</m> is differentiable at <m>x = a</m>, then <m>f</m> is also continuous at <m>x = a</m>, and if <m>f</m> is continuous at <m>x = a</m>, then <m>f</m> has a limit at <m>x = a</m>.</p></li>
+    </ul></p>
 </subsection>
 
-	<xi:include href="./exercises/ez-1-7.xml" />	
+    <xi:include href="./exercises/ez-1-7.xml" />
 
 </section>
