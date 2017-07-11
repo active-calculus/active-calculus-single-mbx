@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<activity xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="act-8-5-5">
+
+      <statement>
+        <p>Let <m>P_n(x)</m> be the <m>n</m>th order Taylor polynomial for <m>\sin(x)</m> centered at <m>x=0</m>. Determine how large we need to choose <m>n</m> so that <m>P_n(2)</m> approximates <m>\sin(2)</m> to 20 decimal places.</p>
+      </statement>
+      <hint>
+        <p>Small hints for each of the prompts above.</p>
+      </hint>
+      <solution>
+        <p>In this example, if we can find a value of <m>n</m> so that
+          <me>
+            M\frac{|2-0|^{n+1}}{(n+1)!} \lt  10^{-20}
+          </me>
+          then we will have
+          <me>
+            |P_n(2) - f(2)| \leq M\frac{|2-0|^{n+1}}{(n+1)!} \lt  10^{-20}
+          </me>.
+        </p>
+
+        <p>Again we use <m>f(x) = \sin(x)</m>, <m>c = 2</m>, <m>a=0</m>, and <m>M = 1</m> from the previous example. So we need to find <m>n</m> to make
+          <me>
+            \frac{2^{n+1}}{(n+1)!} \leq 10^{-20}
+          </me>.
+        </p>
+
+        <p>There is no good way to solve equations involving factorials, so we simply use trial and error, evaluating <m>\frac{2^{n+1}}{(n+1)!}</m> at different values of <m>n</m> until we get one we need.</p>
+        <table>
+          <tabular top="minor" bottom="minor">
+            <row>
+              <cell><m>n</m></cell>
+              <cell><m>\frac{2^{n+1}}{(n+1)!}</m></cell>
+            </row>
+            <row>
+              <cell>10</cell>
+              <cell><m>5.130671797 \times 10^{-5}</m></cell>
+            </row>
+            <row>
+              <cell>20</cell>
+              <cell><m>4.104743250 \times 10^{-14}</m></cell>
+            </row>
+            <row>
+              <cell>25</cell>
+              <cell><m>1.664028884 \times 10^{-19}</m></cell>
+            </row>
+            <row>
+              <cell>26</cell>
+              <cell><m>1.232613988 \times 10^{-20}</m></cell>
+            </row>
+            <row>
+              <cell>27</cell>
+              <cell><m>8.804385630 \times 10^{-22}</m></cell>
+            </row>
+          </tabular>
+        </table>
+        <p>So we need to use an <m>n</m> of at least 27 to ensure accuracy to 20 decimal places.</p>
+
+        <p>A computer algebra system gives
+          <md>
+            <mrow>P_{27}(2)\amp \approx 0.9092974268256816953960</mrow>
+            <mrow>\sin(2)\amp \approx 0.9092974268256816953960</mrow>
+          </md>
+        and we can see that these agree to 20 places.</p>
+      </solution>
+    </activity>
