@@ -24,7 +24,7 @@
 
   <subsection>
     <title>Euler's Method</title>
-    <p><index><main>Euler's Method</main></index></p>
+    <p><idx><h>Euler's Method</h></idx></p>
 
     <p><xref ref="PA-7-3">Preview Activity</xref> demonstrates the essence of an algorithm known as
       Euler's<fn><q>Euler</q> is pronounced
@@ -115,37 +115,16 @@
     <p>Because we need to generate a large number of points <m>(t_i,y_i)</m>, it is convenient to organize the implementation of Euler's method in a
       table as shown. We begin with the given initial data.</p>
     <sidebyside>
-    <tabular>
-      <row bottom="minor">
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-      </row>
+    <tabular top="minor" bottom="minor">
       <row>
         <cell><m>t_i</m></cell>
         <cell><m>y_i</m></cell>
         <cell><m>dy/dt</m></cell>
         <cell><m>\Delta y</m></cell>
       </row>
-      <row bottom="minor">
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-      </row>
       <row>
         <cell>0.0000</cell>
         <cell>1.0000</cell>
-        <cell></cell>
-        <cell></cell>
-      </row>
-      <row bottom="minor">
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
         <cell></cell>
         <cell></cell>
       </row>
@@ -155,64 +134,29 @@
       the formula for <m>dy/dt</m> from the differential
       equation, and then we find <m>\Delta y</m>, the change in <m>y</m>, using the rule <m>\Delta y = m\Delta t</m>.</p>
     <sidebyside>
-    <tabular>
-      <row bottom="minor">
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-      </row>
+    <tabular top="minor" bottom="minor">
       <row>
         <cell><m>t_i</m></cell>
         <cell><m>y_i</m></cell>
         <cell><m>dy/dt</m></cell>
         <cell><m>\Delta y</m></cell>
       </row>
-      <row bottom="minor">
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-      </row>
       <row>
         <cell>0.0000</cell>
         <cell>1.0000</cell>
         <cell>-1.0000</cell>
         <cell>-0.2000</cell>
-      </row>
-      <row bottom="minor">
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
       </row>
     </tabular>
 </sidebyside>
     <p>Next, we increase <m>t_i</m> by <m>\Delta t</m> and <m>y_i</m> by <m>\Delta y</m> to get</p>
     <sidebyside>
-    <tabular>
-      <row bottom="minor">
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-      </row>
+    <tabular top="minor" bottom="minor">
       <row>
         <cell><m>t_i</m></cell>
         <cell><m>y_i</m></cell>
         <cell><m>dy/dt</m></cell>
         <cell><m>\Delta y</m></cell>
-      </row>
-      <row bottom="minor">
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
       </row>
       <row>
         <cell>0.0000</cell>
@@ -220,23 +164,9 @@
         <cell>-1.0000</cell>
         <cell>-0.2000</cell>
       </row>
-      <row bottom="minor">
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-      </row>
       <row>
         <cell>0.2000</cell>
         <cell>0.8000</cell>
-        <cell></cell>
-        <cell></cell>
-      </row>
-      <row bottom="minor">
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
         <cell></cell>
         <cell></cell>
       </row>
@@ -245,26 +175,12 @@
     <p>and then we simply continue the process for however many steps we decide, eventually generating a table like <xref ref="T-7-3-Example">Table</xref>.</p>
 <table xml:id="T-7-3-Example">
 <caption>Euler's method for 6 steps with <m>\Delta t = 0.2</m>.</caption>
-    <tabular>
-      <row bottom="minor">
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-      </row>
+    <tabular top="minor" bottom="minor">
       <row>
         <cell><m>t_i</m></cell>
         <cell><m>y_i</m></cell>
         <cell><m>dy/dt</m></cell>
         <cell><m>\Delta y</m></cell>
-      </row>
-      <row bottom="minor">
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
       </row>
       <row>
         <cell>0.0000</cell>
@@ -272,25 +188,11 @@
         <cell>-1.0000</cell>
         <cell>-0.2000</cell>
       </row>
-      <row bottom="minor">
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-      </row>
       <row>
         <cell>0.2000</cell>
         <cell>0.8000</cell>
         <cell>-0.6000</cell>
         <cell>-0.1200</cell>
-      </row>
-      <row bottom="minor">
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
       </row>
       <row>
         <cell>0.4000</cell>
@@ -298,25 +200,11 @@
         <cell>-0.2800</cell>
         <cell>-0.0560</cell>
       </row>
-      <row bottom="minor">
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-      </row>
       <row>
         <cell>0.6000</cell>
         <cell>0.6240</cell>
         <cell>-0.0240</cell>
         <cell>-0.0048</cell>
-      </row>
-      <row bottom="minor">
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
       </row>
       <row>
         <cell>0.8000</cell>
@@ -324,38 +212,17 @@
         <cell>0.1808</cell>
         <cell>0.0362</cell>
       </row>
-      <row bottom="minor">
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-      </row>
       <row>
         <cell>1.0000</cell>
         <cell>0.6554</cell>
         <cell>0.3446</cell>
         <cell>0.0689</cell>
       </row>
-      <row bottom="minor">
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-      </row>
       <row>
         <cell>1.2000</cell>
         <cell>0.7243</cell>
         <cell>0.4757</cell>
         <cell>0.0951</cell>
-      </row>
-      <row bottom="minor">
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
-        <cell></cell>
       </row>
     </tabular>
 </table>
@@ -368,7 +235,7 @@
 
   <subsection>
     <title>The error in Euler's method</title>
-    <p><index><main>Euler's Method</main><sub>error</sub></index></p>
+    <p><idx><h>Euler's Method</h><h>error</h></idx></p>
 
     <p>Since we are approximating the solutions to an initial value problem
       using tangent lines, we should expect that the error in the
@@ -395,21 +262,11 @@
     <sidebyside>
       <table>
           <caption> Errors that correspond to different <m>\Delta t</m> values. </caption>
-      <tabular>
-        <row bottom="minor">
-          <cell></cell>
-          <cell></cell>
-          <cell></cell>
-        </row>
-        <row>
+      <tabular top="minor">
+        <row bottom="minor">>
           <cell><m>\Delta t</m></cell>
           <cell><m>E_{\Delta t}</m></cell>
           <cell>Error</cell>
-        </row>
-        <row bottom="minor">
-          <cell></cell>
-          <cell></cell>
-          <cell></cell>
         </row>
         <row>
           <cell>0.200</cell>
@@ -426,15 +283,10 @@
           <cell>2.6533</cell>
           <cell>0.0650</cell>
         </row>
-        <row>
+        <row bottom="minor">
           <cell>0.025</cell>
           <cell>2.6851</cell>
           <cell>0.0332</cell>
-        </row>
-        <row bottom="minor">
-          <cell></cell>
-          <cell></cell>
-          <cell></cell>
         </row>
       </tabular>
       </table>
