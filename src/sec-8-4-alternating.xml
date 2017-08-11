@@ -33,8 +33,18 @@
   <subsection>
     <title>The Alternating Series Test</title>
 
-    <p><xref ref="PA-8-4">Preview Activity</xref> gives us several approximations to <m>\ln(2)</m>, the linear approximation is 1 and the quadratic approximation is <m>1 - \frac{1}{2} = \frac{1}{2}</m>. If we continue this process we will obtain approximations from cubic, quartic (degree 4), quintic (degree 5), and higher degree polynomials giving us the following approximations to <m>\ln(2)</m>:</p>
-    <sidebyside>
+    <p><xref ref="PA-8-4">Preview Activity</xref> gives us several approximations to <m>\ln(2)</m>, the linear approximation is 1 and the quadratic approximation is <m>1 - \frac{1}{2} = \frac{1}{2}</m>. If we continue this process we will obtain approximations from cubic, quartic (degree 4), quintic (degree 5), and higher degree polynomials giving us the approximations to <m>\ln(2)</m> in <xref ref="T-8-4-ln2">Table</xref>.</p>
+
+    <sidebyside widths="47% 47%" margins="0%" valign="bottom">
+
+    <p>The pattern here shows the fact that the number <m>\ln(2)</m> can be approximated by the partial sums of the infinite series
+      <men xml:id="eq-ln-2" >
+        \sum_{k=1}^{\infty} (-1)^{k+1} \frac{1}{k}
+      </men>
+    where the alternating signs are determined by the factor <m>(-1)^{k+1}</m>.</p>
+
+    <table xml:id="T-8-4-ln2">
+      <caption />
       <tabular>
         <row>
           <cell>linear</cell>
@@ -62,12 +72,9 @@
           <cell><m>0.78\overline{3}</m></cell>
         </row>
       </tabular>
+    </table>
     </sidebyside>
-    <p>The pattern here shows the fact that the number <m>\ln(2)</m> can be approximated by the partial sums of the infinite series
-      <men xml:id="eq-ln-2" >
-        \sum_{k=1}^{\infty} (-1)^{k+1} \frac{1}{k}
-      </men>
-    where the alternating signs are determined by the factor <m>(-1)^{k+1}</m>.</p>
+
 
     <p>Using computational technology, we find that 0.6881721793 is the sum of the first 100 terms in this series. As a comparison, <m>\ln(2) \approx 0.6931471806</m>. This shows that even though the series<nbsp /><xref ref="eq-ln-2" /> converges to <m>\ln(2)</m>, it must do so quite slowly, since the sum of the first 100 terms isn't particularly close to <m>\ln(2)</m>. We will investigate the issue of how quickly an alternating series converges later in this section. Again, note particularly that the series<nbsp /><xref ref="eq-ln-2" /> is different from the series we have consider earlier in that some of the terms are negative. We call such a series an <em>alternating series</em><idx><h>alternating series</h></idx>.</p>
 
@@ -77,7 +84,7 @@
           <me>
             \sum_{k=0}^{\infty} (-1)^k a_k
           </me>,
-        where <m>a_k \geq 0</m> for each <m>k</m>.</p>
+        where <m>a_k \gt 0</m> for each <m>k</m>.</p>
       </statement>
     </definition>
 
@@ -104,53 +111,61 @@
     </p>
 
     <p>Notice that<ul>
-      <li>
+      <!-- Commented out so that in the PDF, an assemblage does not split across pages. -->
+      <!--<li>
         <p><m>S_1 = a_1</m></p>
-      </li>
+      </li>-->
 
       <li>
         <p><m>S_2 = a_1 - a_2</m>, and since <m>a_1 \gt a_2</m> we have
-          <me>
+          <m>
             0 \lt  S_2 \lt  S_1
-          </me>.
+          </m>.
         </p>
       </li>
 
       <li>
         <p><m>S_3 = S_2+a_3</m> and so <m>S_2 \lt  S_3</m>. But <m>a_3 \lt  a_2</m>, so <m>S_3 \lt  S_1</m>. Thus,
-          <me>
+          <m>
             0 \lt  S_2 \lt  S_3 \lt  S_1
-          </me>.
+          </m>.
         </p>
       </li>
 
       <li>
         <p><m>S_4 = S_3-a_4</m> and so <m>S_4 \lt  S_3</m>. But <m>a_4 \lt  a_3</m>, so <m>S_2 \lt  S_4</m>. Thus,
-          <me>
+          <m>
             0 \lt  S_2 \lt  S_4 \lt  S_3 \lt  S_1
-          </me>.
+          </m>.
         </p>
       </li>
 
       <li>
         <p><m>S_5 = S_4+a_5</m> and so <m>S_4 \lt  S_5</m>. But <m>a_5 \lt  a_4</m>, so <m>S_5 \lt  S_3</m>. Thus,
-          <me>
+          <m>
             0 \lt  S_2 \lt  S_4 \lt  S_5 \lt  S_3 \lt  S_1
-          </me>.
+          </m>.
         </p>
       </li>
     </ul></p>
 
-    <p>This pattern continues as illustrated in <xref ref="Fig-8-4-Alternating-Series-Test">Figure</xref> (with <m>n</m> odd) so that each partial sum lies between the previous two partial sums. Note further that the absolute value of the difference between the <m>(n-1)</m>st partial sum <m>S_{n-1}</m> and the <m>n</m>th partial sum <m>S_n</m> is
-      <me>
-        \left| S_n - S_{n-1} \right| = a_n
-      </me>.
+    <sidebyside widths="50% 44%" margins="0%">
+
+    <p>This pattern continues as illustrated in <xref ref="Fig-8-4-Alternating-Series-Test">Figure</xref> (with <m>n</m> odd) so that each partial sum lies between the previous two partial sums.
     </p>
 
     <figure xml:id="Fig-8-4-Alternating-Series-Test" >
       <caption>Partial sums of an alternating series</caption>
-      <image width="50%" source="images/8_4_Alternating_Series_Test" />
+      <image source="images/8_4_Alternating_Series_Test" />
     </figure>
+
+    </sidebyside>
+
+    <p> Note further that the absolute value of the difference between the <m>(n-1)</m>st partial sum <m>S_{n-1}</m> and the <m>n</m>th partial sum <m>S_n</m> is
+      <me>
+        \left\lvert S_n - S_{n-1} \right\rvert = a_n
+      </me>.
+    </p>
 
     <p>Since the sequence <m>\{a_n\}</m> converges to 0, the distance between successive partial sums becomes as close to zero as we'd like, and thus the sequence of partial sums converges (even though we don't know the exact value to which the sequence of partial sums converges).</p>
 
