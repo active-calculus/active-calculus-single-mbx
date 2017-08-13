@@ -27,7 +27,7 @@
   <introduction>
     <p>We have seen in several different circumstances how studying the units on the integrand and variable of integration enables us to better understand the meaning of a definite integral. For instance, if <m>v(t)</m> is the velocity of an object moving along an axis, measured in feet per second, while <m>t</m> measures time in seconds, then both the definite integral and its Riemann sum approximation,
       <me>
-        \int_a^b v(t) \, dt \approx \sum_{i=1}^n v(t_i) \triangle t,
+        \int_a^b v(t) \, dt \approx \sum_{i=1}^n v(t_i) \Delta t,
       </me>
       have their overall units given by the product of the units of <m>v(t)</m> and <m>t</m>:
     <me>\text{(feet/sec)} \cdot \text{(sec)} = \text{feet}.</me>
@@ -63,10 +63,10 @@
 
     <p>If we consider the formula <m>m = d \cdot V</m>, it is reminiscent of two other equations that we have used frequently in recent work: for a body moving in a fixed direction, distance = rate <m>\cdot</m> time, and, for a rectangle, its area is given by <m>A = l \cdot w</m>. These formulas hold when the principal quantities involved, such as the rate the body moves and the height of the rectangle, are <em>constant</em>. When these quantities are not constant, we have turned to the definite integral for assistance. The main idea in each situation is that by working with small slices of the quantity that is varying, we can use a definite integral to add up the values of small pieces on which the quantity of interest (such as the velocity of a moving object) are approximately constant.</p>
 
-    <p>For example, in the setting where we have a nonnegative velocity function that is not constant, over a short time interval <m>\triangle t</m> we know that the distance traveled is approximately <m>v(t) \triangle t</m>, since <m>v(t)</m> is almost constant on a small interval, and for a constant rate, distance = rate <m>\cdot</m> time. Similarly, if we are thinking about the area under a nonnegative function <m>f</m> whose value is changing, on a short interval <m>\triangle x</m> the area under the curve is approximately the area of the rectangle whose height is <m>f(x)</m> and whose width is <m>\triangle x</m>: <m>f(x) \triangle x</m>. Both of these principles are represented visually in <xref ref="F-6-3-VelArea">Figure</xref>.</p>
+    <p>For example, in the setting where we have a nonnegative velocity function that is not constant, over a short time interval <m>\Delta t</m> we know that the distance traveled is approximately <m>v(t) \Delta t</m>, since <m>v(t)</m> is almost constant on a small interval, and for a constant rate, distance = rate <m>\cdot</m> time. Similarly, if we are thinking about the area under a nonnegative function <m>f</m> whose value is changing, on a short interval <m>\Delta x</m> the area under the curve is approximately the area of the rectangle whose height is <m>f(x)</m> and whose width is <m>\Delta x</m>: <m>f(x) \Delta x</m>. Both of these principles are represented visually in <xref ref="F-6-3-VelArea">Figure</xref>.</p>
 
     <figure xml:id="F-6-3-VelArea" >
-      <caption>At left, estimating a small amount of distance traveled, <m>v(t) \triangle t</m>, and at right, a small amount of area under the curve, <m>f(x) \triangle x</m>.</caption>
+      <caption>At left, estimating a small amount of distance traveled, <m>v(t) \Delta t</m>, and at right, a small amount of area under the curve, <m>f(x) \Delta x</m>.</caption>
       <image width="100%" source="images/6_3_VelArea" />
     </figure>
 
@@ -79,19 +79,19 @@
       <image width="100%" source="images/6_3_Bar" />
     </figure>
 
-    <p>If we now consider a thin slice of the bar of width <m>\triangle x</m>, as pictured in <xref ref="F-6-3-Bar">Figure</xref>, the volume of such a slice is the cross-sectional area times <m>\triangle x</m>. Since the cross-sections each have constant area 1 cm<m>^2</m>, it follows that the volume of the slice is <m>1 \triangle x</m> cm<m>^3</m>. Moreover, since mass is the product of density and volume (when density is constant), we see that the mass of this given slice is approximately
+    <p>If we now consider a thin slice of the bar of width <m>\Delta x</m>, as pictured in <xref ref="F-6-3-Bar">Figure</xref>, the volume of such a slice is the cross-sectional area times <m>\Delta x</m>. Since the cross-sections each have constant area 1 cm<m>^2</m>, it follows that the volume of the slice is <m>1 \Delta x</m> cm<m>^3</m>. Moreover, since mass is the product of density and volume (when density is constant), we see that the mass of this given slice is approximately
       <me>
-        \text{mass} _{\text{slice} } \approx \rho(x) \ \frac{\mbox{g} }{\mbox{cm} ^3} \cdot 1 \triangle x \ \mbox{cm} ^3 = \rho(x) \cdot \triangle x \ \mbox{g} .
+        \text{mass} _{\text{slice} } \approx \rho(x) \ \frac{\mbox{g} }{\mbox{cm} ^3} \cdot 1 \Delta x \ \mbox{cm} ^3 = \rho(x) \cdot \Delta x \ \mbox{g} .
       </me>
     </p>
 
     <p>Hence, for the corresponding Riemann sum (and thus for the integral that it approximates),
       <me>
-        \sum_{i=1}^n \rho(x_i) \triangle x \approx \int_0^b \rho(x) \, dx,
+        \sum_{i=1}^n \rho(x_i) \Delta x \approx \int_0^b \rho(x) \, dx,
       </me>
       we see that these quantities measure the mass of the bar between <m>0</m> and <m>b</m>. (The Riemann sum is an approximation, while the integral will be the exact mass.)</p>
 
-    <p>At this point, we note that we will be focused primarily on situations where mass is distributed relative to horizontal location, <m>x</m>, for objects whose cross-sectional area is constant. In that setting, it makes sense to think of the density function <m>\rho(x)</m> with units <q>mass per unit length,</q> such as g/cm. Thus, when we compute <m>\rho(x) \cdot \triangle x</m> on a small slice <m>\triangle x</m>, the resulting units are g/cm <m>\cdot</m> cm = g, which thus measures the mass of the slice. The general principle follows.</p>
+    <p>At this point, we note that we will be focused primarily on situations where mass is distributed relative to horizontal location, <m>x</m>, for objects whose cross-sectional area is constant. In that setting, it makes sense to think of the density function <m>\rho(x)</m> with units <q>mass per unit length,</q> such as g/cm. Thus, when we compute <m>\rho(x) \cdot \Delta x</m> on a small slice <m>\Delta x</m>, the resulting units are g/cm <m>\cdot</m> cm = g, which thus measures the mass of the slice. The general principle follows.</p>
 
     <assemblage>
     <p>For an object of constant cross-sectional area whose mass is distributed along a single axis according to the function <m>\rho(x)</m> (whose units are units of mass per unit of length), the total mass, <m>M</m> of the object between <m>x = a</m> and <m>x = b</m> is given by
@@ -196,15 +196,15 @@
     </p>
     </assemblage>
 
-    <p>What if we instead consider a thin bar over which density is distributed continuously? If the density is constant, it is obvious that the balancing point of the bar is its midpoint. But if density is not constant, we must compute a weighted average. Let's say that the function <m>\rho(x)</m> tells us the density distribution along the bar, measured in g/cm. If we slice the bar into small sections, this enables us to think of the bar as holding a collection of adjacent point-masses. For a slice of thickness <m>\triangle x</m> at location <m>x_i</m>, note that the mass of the slice, <m>m_i</m>, satisfies <m>m_i \approx \rho(x_i) \triangle x</m>.</p>
+    <p>What if we instead consider a thin bar over which density is distributed continuously? If the density is constant, it is obvious that the balancing point of the bar is its midpoint. But if density is not constant, we must compute a weighted average. Let's say that the function <m>\rho(x)</m> tells us the density distribution along the bar, measured in g/cm. If we slice the bar into small sections, this enables us to think of the bar as holding a collection of adjacent point-masses. For a slice of thickness <m>\Delta x</m> at location <m>x_i</m>, note that the mass of the slice, <m>m_i</m>, satisfies <m>m_i \approx \rho(x_i) \Delta x</m>.</p>
 
     <p>Taking <m>n</m> slices of the bar, we can approximate its center of mass by
       <me>
-        \overline{x} \approx \frac{x_1 \cdot \rho(x_1) \triangle x + x_2 \cdot \rho(x_2) \triangle x  + \cdots + x_n \cdot \rho(x_n) \triangle x }{\rho(x_1) \triangle x + \rho(x_2) \triangle x + \cdots + \rho(x_n) \triangle x}.
+        \overline{x} \approx \frac{x_1 \cdot \rho(x_1) \Delta x + x_2 \cdot \rho(x_2) \Delta x  + \cdots + x_n \cdot \rho(x_n) \Delta x }{\rho(x_1) \Delta x + \rho(x_2) \Delta x + \cdots + \rho(x_n) \Delta x}.
       </me>
     Rewriting the sums in sigma notation, it follows that
       <men xml:id="E-CtrOfM" >
-        \overline{x} \approx \frac{\sum_{i = 1}^{n} x_i \cdot \rho(x_i) \triangle x}{\sum_{i = 1}^{n} \rho(x_i) \triangle x}.
+        \overline{x} \approx \frac{\sum_{i = 1}^{n} x_i \cdot \rho(x_i) \Delta x}{\sum_{i = 1}^{n} \rho(x_i) \Delta x}.
       </men>
     </p>
 

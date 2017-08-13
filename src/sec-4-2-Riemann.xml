@@ -91,35 +91,35 @@
     <p>The first choice we make in any such approximation is the number of rectangles.</p>
 
     <figure xml:id="F-4-2-Interval" >
-      <caption>Subdividing the interval <m>[a,b]</m> into <m>n</m> subintervals of equal length <m>\triangle x</m>.</caption>
+      <caption>Subdividing the interval <m>[a,b]</m> into <m>n</m> subintervals of equal length <m>\Delta x</m>.</caption>
       <image width="100%" source="images/4_2_Interval" />
     </figure>
 
-    <p>If we say that the total number of rectangles is <m>n</m>, and we desire <m>n</m> rectangles of equal width to subdivide the interval <m>[a,b]</m>, then each rectangle must have width <m>\triangle x = \frac{b-a}{n}</m>. We observe further that <m>x_1 = x_0 + \triangle x</m>, <m>x_2 = x_0 + 2 \triangle x</m>, and thus in general <m>x_{i} = a + i\triangle x,</m> as pictured in <xref ref="F-4-2-Interval">Figure</xref>.</p>
+    <p>If we say that the total number of rectangles is <m>n</m>, and we desire <m>n</m> rectangles of equal width to subdivide the interval <m>[a,b]</m>, then each rectangle must have width <m>\Delta x = \frac{b-a}{n}</m>. We observe further that <m>x_1 = x_0 + \Delta x</m>, <m>x_2 = x_0 + 2 \Delta x</m>, and thus in general <m>x_{i} = a + i\Delta x,</m> as pictured in <xref ref="F-4-2-Interval">Figure</xref>.</p>
 
     <p>We use each subinterval <m>[x_i, x_{i+1}]</m> as the base of a rectangle, and next must choose how to decide the height of the rectangle that will be used to approximate the area under <m>y = f(x)</m> on the subinterval. There are three standard choices: use the left endpoint of each subinterval, the right endpoint of each subinterval, or the midpoint of each. These are precisely the options encountered in <xref ref="PA-4-2">Preview Activity</xref> and seen in <xref ref="F-4-2-PA1">Figure</xref>. We next explore how these choices can be reflected in sigma notation.</p>
 
     <p>If we now consider an arbitrary positive function <m>f</m> on <m>[a,b]</m> with the interval subdivided as shown in <xref ref="F-4-2-Interval">Figure</xref>, and choose to use left endpoints, then on each interval of the form <m>[x_{i}, x_{i+1}]</m>, the area of the rectangle formed is given by
       <me>
-        A_{i+1} = f(x_i) \cdot \triangle x,
+        A_{i+1} = f(x_i) \cdot \Delta x,
       </me>
       as seen in <xref ref="F-4-2-LeftSum">Figure</xref>.</p>
 
     <figure xml:id="F-4-2-LeftSum" >
-      <caption>Subdividing the interval <m>[a,b]</m> into <m>n</m> subintervals of equal length <m>\triangle x</m> and approximating the area under <m>y = f(x)</m> over <m>[a,b]</m> using left rectangles.</caption>
+      <caption>Subdividing the interval <m>[a,b]</m> into <m>n</m> subintervals of equal length <m>\Delta x</m> and approximating the area under <m>y = f(x)</m> over <m>[a,b]</m> using left rectangles.</caption>
       <image width="73%" source="images/4_2_LeftSum" />
     </figure>
 
     <p>If we let <m>L_n</m> denote the sum of the areas of rectangles whose heights are given by the function value at each respective left endpoint, then we see that
       <md>
         <mrow>L_n =\mathstrut \amp  A_1 + A_2 + \cdots + A_{i+1} + \cdots + A_n</mrow>
-        <mrow>=\mathstrut \amp  f(x_0) \cdot \triangle x + f(x_1) \cdot \triangle x + \cdots + f(x_i) \cdot \triangle x + \cdots + f(x_{n-1}) \cdot \triangle x.</mrow>
+        <mrow>=\mathstrut \amp  f(x_0) \cdot \Delta x + f(x_1) \cdot \Delta x + \cdots + f(x_i) \cdot \Delta x + \cdots + f(x_{n-1}) \cdot \Delta x.</mrow>
       </md>
     </p>
 
     <p>In the more compact sigma notation, we have
       <me>
-        L_n = \sum_{i = 0}^{n-1} f(x_i) \triangle x.
+        L_n = \sum_{i = 0}^{n-1} f(x_i) \Delta x.
       </me>
     </p>
 
@@ -141,12 +141,12 @@
       <image width="100%" source="images/4_2_RightMidSum" />
     </figure>
 
-    <p>For the sum with right endpoints, we see that the area of the rectangle on an arbitrary interval <m>[x_i, x_{i+1}]</m> is given by <m>B_{i+1} = f(x_{i+1}) \cdot \triangle x,</m>
+    <p>For the sum with right endpoints, we see that the area of the rectangle on an arbitrary interval <m>[x_i, x_{i+1}]</m> is given by <m>B_{i+1} = f(x_{i+1}) \cdot \Delta x,</m>
       so that the sum of all such areas of rectangles is given by
       <md>
         <mrow>R_n =\mathstrut \amp  B_1 + B_2 + \cdots + B_{i+1} + \cdots + B_n</mrow>
-        <mrow>=\mathstrut \amp  f(x_1) \cdot \triangle x + f(x_2) \cdot \triangle x + \cdots + f(x_{i+1}) \cdot \triangle x + \cdots + f(x_{n}) \cdot \triangle x</mrow>
-        <mrow>=\mathstrut \amp  \sum_{i=1}^{n} f(x_i) \triangle x.</mrow>
+        <mrow>=\mathstrut \amp  f(x_1) \cdot \Delta x + f(x_2) \cdot \Delta x + \cdots + f(x_{i+1}) \cdot \Delta x + \cdots + f(x_{n}) \cdot \Delta x</mrow>
+        <mrow>=\mathstrut \amp  \sum_{i=1}^{n} f(x_i) \Delta x.</mrow>
       </md>
     </p>
 
@@ -156,15 +156,15 @@
       </me>
       so that <m>\overline{x}_{i+1}</m> is the midpoint of the interval <m>[x_i, x_{i+1}]</m>. For instance, for the rectangle with area <m>C_1</m> in <xref ref="F-4-2-RightMidSum">Figure</xref>, we now have
       <me>
-        C_1 = f(\overline{x}_1) \cdot \triangle x.
+        C_1 = f(\overline{x}_1) \cdot \Delta x.
       </me>
     </p>
 
     <p>Hence, the sum of all the areas of rectangles that use midpoints is
       <md>
         <mrow>M_n =\mathstrut \amp  C_1 + C_2 + \cdots + C_{i+1} + \cdots + C_n</mrow>
-        <mrow>=\mathstrut \amp  f(\overline{x_1}) \cdot \triangle x + f(\overline{x_2}) \cdot \triangle x + \cdots + f(\overline{x}_{i+1}) \cdot \triangle x + \cdots + f(\overline{x}_{n}) \cdot \triangle x</mrow>
-        <mrow>=\mathstrut \amp  \sum_{i=1}^{n} f(\overline{x}_i) \triangle x,</mrow>
+        <mrow>=\mathstrut \amp  f(\overline{x_1}) \cdot \Delta x + f(\overline{x_2}) \cdot \Delta x + \cdots + f(\overline{x}_{i+1}) \cdot \Delta x + \cdots + f(\overline{x}_{n}) \cdot \Delta x</mrow>
+        <mrow>=\mathstrut \amp  \sum_{i=1}^{n} f(\overline{x}_i) \Delta x,</mrow>
       </md>
       and we say that <m>M_n</m> is the <em>middle Riemann sum</em> <idx><h>Riemann sum</h><h>middle</h></idx> for <m>f</m> on <m>[a,b]</m>.</p>
 
@@ -172,7 +172,7 @@
 
     <p>There is a more general way to think of Riemann sums, and that is to not restrict the choice of where the function is evaluated to determine the respective rectangle heights. That is, rather than saying we'll always choose left endpoints, or always choose midpoints, we simply say that a point <m>x_{i+1}^*</m> will be selected at random in the interval <m>[x_i, x_{i+1}]</m> (so that <m>x_i \le x_{i+1}^* \le x_{i+1}</m>), which makes the Riemann sum given by
       <me>
-        f(x_1^*) \cdot \triangle x + f(x_2^*) \cdot \triangle x + \cdots + f(x_{i+1}^*) \cdot \triangle x + \cdots + f(x_n^*) \cdot \triangle x = \sum_{i=1}^{n} f(x_i^*) \triangle x.
+        f(x_1^*) \cdot \Delta x + f(x_2^*) \cdot \Delta x + \cdots + f(x_{i+1}^*) \cdot \Delta x + \cdots + f(x_n^*) \cdot \Delta x = \sum_{i=1}^{n} f(x_i^*) \Delta x.
       </me>
     </p>
 
@@ -186,7 +186,7 @@
     <title>When the function is sometimes negative</title>
     <p>For a Riemann sum such as
       <me>
-        L_n = \sum_{i=0}^{n-1} f(x_i) \triangle x,
+        L_n = \sum_{i=0}^{n-1} f(x_i) \Delta x,
       </me>
       we can of course compute the sum even when <m>f</m> takes on negative values. We know that when <m>f</m> is positive on <m>[a,b]</m>, the corresponding left Riemann sum <m>L_n</m> estimates the area bounded by <m>f</m> and the horizontal axis over the interval.</p>
 
@@ -195,7 +195,7 @@
       <image width="100%" source="images/4_2_NegF" />
     </figure>
 
-    <p>For a function such as the one pictured in <xref ref="F-4-2-NegF">Figure</xref>, where in the first figure a left Riemann sum is being taken with 12 subintervals over <m>[a,d]</m>, we observe that the function is negative on the interval <m>b \le x \le c</m>, and so for the four left endpoints that fall in <m>[b,c]</m>, the terms <m>f(x_i) \triangle x</m> have negative function values. This means that those four terms in the Riemann sum produce an estimate of the <em>opposite</em> of the area bounded by <m>y = f(x)</m> and the <m>x</m>-axis on <m>[b,c]</m>.</p>
+    <p>For a function such as the one pictured in <xref ref="F-4-2-NegF">Figure</xref>, where in the first figure a left Riemann sum is being taken with 12 subintervals over <m>[a,d]</m>, we observe that the function is negative on the interval <m>b \le x \le c</m>, and so for the four left endpoints that fall in <m>[b,c]</m>, the terms <m>f(x_i) \Delta x</m> have negative function values. This means that those four terms in the Riemann sum produce an estimate of the <em>opposite</em> of the area bounded by <m>y = f(x)</m> and the <m>x</m>-axis on <m>[b,c]</m>.</p>
 
     <p>In <xref ref="F-4-2-NegF">Figure</xref>, we also see evidence that by increasing the number of rectangles used in a Riemann sum, it appears that the approximation of the area (or the opposite of the area) bounded by a curve appears to improve. For instance, in the middle graph, we use 24 left rectangles, and from the shaded areas, it appears that we have decreased the error from the approximation that uses 12. When we proceed to <xref ref="sec-4-3-definite-integral">Section</xref>, we will discuss the natural idea of letting the number of rectangles in the sum increase without bound.</p>
 
@@ -214,21 +214,21 @@
   <subsection>
     <title>Summary</title>
     <p><ul>
-      <li><p>A Riemann sum is simply a sum of products of the form <m>f(x_i^*) \triangle x</m> that estimates the area between a positive function and the horizontal axis over a given interval.  If the function is sometimes negative on the interval, the Riemann sum estimates the difference between the areas that lie above the horizontal axis and those that lie below the axis.</p></li>
+      <li><p>A Riemann sum is simply a sum of products of the form <m>f(x_i^*) \Delta x</m> that estimates the area between a positive function and the horizontal axis over a given interval.  If the function is sometimes negative on the interval, the Riemann sum estimates the difference between the areas that lie above the horizontal axis and those that lie below the axis.</p></li>
 
       <li><p>The three most common types of Riemann sums are left, right, and middle sums, plus we can also work with a more general, random Riemann sum.  The only difference among these sums is the location of the point at which the function is evaluated to determine the height of the rectangle whose area is being computed in the sum.  For a left Riemann sum, we evaluate the function at the left endpoint of each subinterval, while for right and middle sums, we use right endpoints and midpoints, respectively.</p></li>
 
       <li><p>The left, right, and middle Riemann sums are denoted <m>L_n</m>, <m>R_n</m>, and <m>M_n</m>, with formulas <md>
           <mrow>
-            L_n = f(x_0) \triangle x + f(x_1) \triangle x + \cdots + f(x_{n-1}) \triangle x \amp= \sum_{i = 0}^{n-1} f(x_i) \triangle x,
+            L_n = f(x_0) \Delta x + f(x_1) \Delta x + \cdots + f(x_{n-1}) \Delta x \amp= \sum_{i = 0}^{n-1} f(x_i) \Delta x,
           </mrow>
           <mrow>
-            R_n = f(x_1) \triangle x + f(x_2) \triangle x + \cdots + f(x_{n}) \triangle x \amp= \sum_{i = 1}^{n} f(x_i) \triangle x,
+            R_n = f(x_1) \Delta x + f(x_2) \Delta x + \cdots + f(x_{n}) \Delta x \amp= \sum_{i = 1}^{n} f(x_i) \Delta x,
           </mrow>
           <mrow>
-            M_n = f(\overline{x}_1) \triangle x + f(\overline{x}_2) \triangle x + \cdots + f(\overline{x}_{n}) \triangle x \amp= \sum_{i = 1}^{n} f(\overline{x}_i) \triangle x,
+            M_n = f(\overline{x}_1) \Delta x + f(\overline{x}_2) \Delta x + \cdots + f(\overline{x}_{n}) \Delta x \amp= \sum_{i = 1}^{n} f(\overline{x}_i) \Delta x,
           </mrow>
-          </md>where <m>x_0 = a</m>, <m>x_i = a + i\triangle x</m>, and <m>x_n = b</m>, using <m>\triangle x = \frac{b-a}{n}</m>.  For the midpoint sum, <m>\overline{x}_{i} = (x_{i-1} + x_i)/2</m>.</p></li>
+          </md>where <m>x_0 = a</m>, <m>x_i = a + i\Delta x</m>, and <m>x_n = b</m>, using <m>\Delta x = \frac{b-a}{n}</m>.  For the midpoint sum, <m>\overline{x}_{i} = (x_{i-1} + x_i)/2</m>.</p></li>
     </ul></p>
 
     </subsection>
