@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2017                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-NC-SA license.  The work   -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike"; no party may sell this work or any of its    -->
+<!-- derivatives for profit.  All trademarks are the registered marks of   -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
 <section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-4-4-FTC">
 
   <title>The Fundamental Theorem of Calculus</title>
@@ -14,11 +28,7 @@
   <introduction>
     <p>Much of our work in <xref ref="C-4">Chapter</xref> has been motivated by the velocity-distance problem: if we know the instantaneous velocity function, <m>v(t)</m>, for a moving object on a given time interval <m>[a,b]</m>, can we determine its exact distance traveled on <m>[a,b]</m>? In the vast majority of our discussion in <xref ref="sec-4-1-velocity-distance">Sections</xref>- <xref ref="sec-4-3-definite-integral"></xref>, we have focused on the fact that this distance traveled is connected to the area bounded by <m>y = v(t)</m> and the <m>t</m>-axis on <m>[a,b]</m>. In particular, for any nonnegative velocity function <m>y = v(t)</m> on <m>[a,b]</m>, we know that the exact area bounded by the velocity curve and the <m>t</m>-axis on the interval tells us the total distance traveled, which is also the value of the definite integral <m>\int_a^b v(t) \, dt</m>. In the situation where velocity is sometimes negative, the total area bounded by the velocity function still tells us distance traveled, while the net signed area that the function bounds tells us the object's change in position.</p>
 
-    <figure xml:id="F-4-4-Intro" >
-      <caption>A velocity function that is sometimes negative.</caption>
-      <image width="50%" source="images/4_2_Intro" />
-    </figure>
-
+    <sidebyside widths="47% 47%" margins="0%">
     <p>Recall, for instance, the introduction to <xref ref="sec-4-2-Riemann">Section</xref>, where we observed that for the velocity function in <xref ref="F-4-4-Intro">Figure</xref>, the total distance <m>D</m> traveled by the moving object on <m>[a,b]</m> is
       <me>
         D = A_1 + A_2 + A_3,
@@ -27,9 +37,15 @@
       <me>
         s(b) - s(a) = A_1 - A_2 + A_3.
       </me>
+      The areas <m>A_1</m>, <m>A_2</m>, and <m>A_3</m>, which are each given by definite integrals, may be computed through limits of Riemann sums (and in select special circumstances through familiar geometric formulas).
     </p>
+    <figure xml:id="F-4-4-Intro" >
+      <caption>A velocity function that is sometimes negative.</caption>
+      <image source="images/4_2_Intro" />
+    </figure>
+    </sidebyside>
 
-    <p>While the areas <m>A_1</m>, <m>A_2</m>, and <m>A_3</m>, which are each given by definite integrals, may be computed through limits of Riemann sums (and in select special circumstances through familiar geometric formulas), in the present section we turn our attention to an alternate approach, similar to the one we encountered in <xref ref="act-4-1-2">Activity</xref>. To explore these ideas further, we consider the following preview activity.</p>
+    <p>In the present section we turn our attention to an alternate approach, similar to the one we encountered in <xref ref="act-4-1-2">Activity</xref>. To explore these ideas further, we consider the following preview activity.</p>
 
     <xi:include href="./previews/PA-4-4.xml" />
 
@@ -39,14 +55,15 @@
     <title>The Fundamental Theorem of Calculus</title>
     <p><idx><h>fundamental theorem of calculus</h></idx></p>
 
-    <p>Consider the setting where we know the position function <m>s(t)</m> of an object moving along an axis, as well as its corresponding velocity function <m>v(t)</m>, and for the moment let us assume that <m>v(t)</m> is positive on <m>[a,b]</m>. Then, as shown in <xref ref="F-4-4-FTCVel">Figure</xref>,</p>
+    <figure xml:id="F-4-4-FTCVel">
+      <caption>Finding distance traveled when we know a velocity function <m>v</m>.</caption>
+      <sidebyside widths="47% 47%" margins="0%">
 
-    <figure xml:id="F-4-4-FTCVel" >
-      <caption>Finding distance traveled when we know an object's velocity function <m>v</m>.</caption>
-      <image width="50%" source="images/4_4_FTCVel" />
+        <p>Consider the setting where we know the position function <m>s(t)</m> of an object moving along an axis, as well as its corresponding velocity function <m>v(t)</m>, and for the moment let us assume that <m>v(t)</m> is positive on <m>[a,b]</m>. Then, as shown in <xref ref="F-4-4-FTCVel">Figure</xref>, we know two different perspectives on the distance, <m>D</m>, the object travels: one is that <m>D = s(b) - s(a)</m>, which is the object's change in position. The other is that the distance traveled is the area under the velocity curve, which is given by the definite integral, so <m>D = \int_a^b v(t) \, dt</m>.</p>
+
+      <image source="images/4_4_FTCVel" />
+      </sidebyside>
     </figure>
-
-    <p>we know two different perspectives on the distance, <m>D</m>, the object travels: one is that <m>D = s(b) - s(a)</m>, which is the object's change in position. The other is that the distance traveled is the area under the velocity curve, which is given by the definite integral, so <m>D = \int_a^b v(t) \, dt</m>.</p>
 
     <p>Of course, since both of these expressions tell us the distance traveled, it follows that they are equal, so
       <men xml:id="E-FTCVel" >
@@ -63,16 +80,18 @@
       where <m>s</m> is an antiderivative of <m>v</m>. We know that the derivative of <m>t^3</m> is <m>3t^2</m> and that the derivative of <m>40t</m> is <m>40</m>, so it follows that if <m>s(t) = t^3 + 40t</m>, then <m>s</m> is a function whose derivative is <m>v(t) = s'(t) = 3t^2 + 40</m>, and thus we have found an antiderivative of <m>v</m>. Therefore,
       <md>
         <mrow>D =\mathstrut \amp  \int_1^5 3t^2 + 40 \, dt  = s(5) - s(1)</mrow>
-        <mrow>=\mathstrut \amp  (5^3 + 40 \cdot 5) - (1^3 + 40\cdot 1) = 284 \ \mbox{feet} .</mrow>
+        <mrow>=\mathstrut \amp  (5^3 + 40 \cdot 5) - (1^3 + 40\cdot 1) = 284 \ \text{feet} .</mrow>
       </md>
     </p>
 
+    <sidebyside widths="47% 47%" margins="0%">
     <p>Note the key lesson of this example: to find the distance traveled, we needed to compute the area under a curve, which is given by the definite integral. But to evaluate the integral, we found an antiderivative, <m>s</m>, of the velocity function, and then computed the total change in <m>s</m> on the interval. In particular, observe that we have found the exact area of the region shown in <xref ref="F-4-4-FTCVel2">Figure</xref>, and done so without a familiar formula (such as those for the area of a triangle or circle) and without directly computing the limit of a Riemann sum.</p>
 
     <figure xml:id="F-4-4-FTCVel2" >
       <caption>The exact area of the region enclosed by <m>v(t) = 3t^2 + 40</m> on <m>[1,5]</m>.</caption>
-      <image width="50%" source="images/4_4_FTCVel2" />
+      <image source="images/4_4_FTCVel2" />
     </figure>
+    </sidebyside>
 
     <p>As we proceed to thinking about contexts other than just velocity and position, it is advantageous to have a shorthand symbol for a function's antiderivative. In the general setting of a continuous function <m>f</m>, we will often denote an antiderivative of <m>f</m> by <m>F</m>, so that the relationship between <m>F</m> and <m>f</m> is that <m>F'(x) = f(x)</m> for all relevant <m>x</m>. Using the notation <m>V</m> in place of <m>s</m> (so that <m>V</m> is an antiderivative of <m>v</m>) in Equation<nbsp /><xref ref="E-FTCVel" />, we find it is equivalent to write that
       <men xml:id="E-FTCV" >
@@ -115,7 +134,7 @@
     <title>Basic antiderivatives</title>
     <p>The general problem of finding an antiderivative is difficult. In part, this is due to the fact that we are trying to undo the process of differentiating, and the undoing is much more difficult than the doing. For example, while it is evident that an antiderivative of <m>f(x) = \sin(x)</m> is <m>F(x) = -\cos(x)</m> and that an antiderivative of <m>g(x) = x^2</m> is <m>G(x) = \frac{1}{3} x^3</m>, combinations of <m>f</m> and <m>g</m> can be far more complicated. Consider such functions as
       <me>
-        5\sin(x) - 4x^2, \ x^2 \sin(x), \ \frac{\sin(x)}{x^2}, \ \mbox{and}  \ \sin(x^2).
+        5\sin(x) - 4x^2, \ x^2 \sin(x), \ \frac{\sin(x)}{x^2}, \ \text{and}  \ \sin(x^2).
       </me>
     </p>
 
@@ -171,9 +190,9 @@
 
       <li><p>For any continuous function <m>f</m>, its definite integral <m>\int_a^b f(x) \, dx</m> represents the total net signed area bounded by <m>y = f(x)</m> and the <m>x</m>-axis on <m>[a,b]</m>, where regions that lie below the <m>x</m>-axis have a minus sign associated with their area.</p></li>
 
-      <li><p>The value of a definite integral is linked to the average value of a function: for a continuous function <m>f</m> on <m>[a,b]</m>, its average value <m>f_{AVG [a,b]}</m> is given by
+      <li><p>The value of a definite integral is linked to the average value of a function: for a continuous function <m>f</m> on <m>[a,b]</m>, its average value <m>f_{\operatorname{AVG} [a,b]}</m> is given by
           <me>
-            f_{AVG [a,b]} = \frac{1}{b-a} \int_a^b f(x) \, dx.
+            f_{\operatorname{AVG} [a,b]} = \frac{1}{b-a} \int_a^b f(x) \, dx.
           </me>
         </p></li>
     </ul>
@@ -212,7 +231,7 @@
 
     <figure xml:id="F-4-4-TCT" >
       <caption>The graphs of <m>f'(x) = 4 - 2x</m> (at left) and an antiderivative <m>f(x) = 4x - x^2</m> at right.  Differences in heights on <m>f</m> correspond to net signed areas bounded by <m>f'</m>.</caption>
-      <image width="100%" source="images/4_4_TCT" />
+      <image width="80%" source="images/4_4_TCT" />
     </figure>
 
     <p>To see why this is so, say we consider the difference <m>f(1) - f(0)</m>. Note that this value is 3, in part because <m>f(1) = 3</m> and <m>f(0) = 0</m>, but also because the net signed area bounded by <m>y = f'(x)</m> on <m>[0,1]</m> is 3. That is, <m>f(1) - f(0) = \int_0^1 f'(x) \, dx</m>. A similar pattern holds throughout, including the fact that since the total net signed area bounded by <m>f'</m> on <m>[0,4]</m> is <m>0</m>, <m>\int_0^4 f'(x) \, dx = 0</m>, so it must be that <m>f(4) - f(0) = 0</m>, so <m>f(4) = f(0)</m>.</p>
@@ -225,13 +244,13 @@
 
         <figure xml:id="F-4-4-TCTEx" >
           <caption>The rate <m>r(t)</m> of pollution leaking from a tank, measured in gallons per day.</caption>
-          <image width="50%" source="images/4_4_TCTEx" />
+          <image width="47%" source="images/4_4_TCTEx" />
         </figure>
       </statement>
     <solution>
     <p>We know that since <m>r(t) \ge 0</m>, the value of <m>\int_4^{10} r(t) \, dt</m> is the area under the curve on the interval <m>[4,10]</m>. If we think about this area from the perspective of a Riemann sum, the rectangles will have heights measured in gallons per day and widths measured in days, thus the area of each rectangle will have units of
       <me>
-        \frac{\mbox{gallons} }{\mbox{day} } \cdot \mbox{days}  = \mbox{gallons} .
+        \frac{\text{gallons} }{\text{day} } \cdot \text{days}  = \text{gallons} .
       </me>
     </p>
 
@@ -252,7 +271,7 @@
 
     <p>To find the average rate at which pollutant leaked from the tank over <m>4 \le t \le 10</m>, we want to compute the average value of <m>r</m> on <m>[4,10]</m>. Thus,
       <me>
-        r_{AVG [4,10]} = \frac{1}{10-4} \int_4^{10} r(t) \, dt \approx \frac{44.282}{6} = 7.380,
+        r_{\operatorname{AVG} [4,10]} = \frac{1}{10-4} \int_4^{10} r(t) \, dt \approx \frac{44.282}{6} = 7.380,
       </me>
       which has its units measured in gallons per day.</p>
     </solution>

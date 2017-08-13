@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2017                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-NC-SA license.  The work   -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike"; no party may sell this work or any of its    -->
+<!-- derivatives for profit.  All trademarks are the registered marks of   -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
 <section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-6-5-improper">
 
   <title>Improper Integrals</title>
@@ -21,9 +35,9 @@
 
     <p>For example, the fraction of light bulbs that fail during their third month of use is given by
       <md>
-        <mrow>\int_2^3 0.3e^{-0.3t} \, dt &amp; = -e^{-0.3t} \bigg \vert_2^3</mrow>
-        <mrow>                               &amp; = -e^{-0.9} + e^{-0.6}</mrow>
-        <mrow>                               &amp; \approx  0.1422.</mrow>
+        <mrow>\int_2^3 0.3e^{-0.3t} \, dt \amp = -e^{-0.3t} \bigg \vert_2^3</mrow>
+        <mrow>                               \amp = -e^{-0.9} + e^{-0.6}</mrow>
+        <mrow>                               \amp \approx  0.1422.</mrow>
       </md>
     </p>
 
@@ -62,7 +76,7 @@
 
     <p>Anytime we are interested in an integral for which the interval of integration is unbounded (that is, one for which at least one of the limits of integration involves <m>\infty</m>), we say that the integral is <em>improper</em><idx><h>improper integral</h><h>unbounded region of integration</h></idx>. For instance, the integrals
       <me>
-        \int_1^{\infty} \frac{1}{x^2} \, dx, \ \ \int_{-\infty}^0 \frac{1}{1+x^2} \, dx, \ \ \mbox{and}  \int_{-\infty}^{\infty} e^{-x^2} \, dx
+        \int_1^{\infty} \frac{1}{x^2} \, dx, \ \ \int_{-\infty}^0 \frac{1}{1+x^2} \, dx, \ \ \text{and}  \int_{-\infty}^{\infty} e^{-x^2} \, dx
       </me>
       are all improper due to having limits of integration that involve <m>\infty</m>. We investigate the value of any such integral by replacing the improper integral with a limit of proper integrals; for an improper integral such as <m>\int_0^\infty f(x) \, dx</m>, we write
       <me>
@@ -116,10 +130,10 @@
       </me>
       and then we evaluate the proper integral <m>\int_a^1 \frac{1}{\sqrt{x}} \, dx</m>, followed by taking the limit. In the same way as with improper integrals involving unbounded regions, we will say that the improper integral converges provided that this limit exists, and diverges otherwise. In the present example, we observe that
       <md>
-        <mrow>\int_0^1 \frac{1}{\sqrt{x}} \, dx &amp; =  \lim_{a \to 0^+} \int_a^1 \frac{1}{\sqrt{x}} \, dx</mrow>
-        <mrow> &amp; = \lim_{a \to 0^+} 2\sqrt{x} \big\vert_a^1</mrow>
-        <mrow> &amp; = \lim_{a \to 0^+} 2\sqrt{1} - 2\sqrt{a}</mrow>
-        <mrow> &amp; = 2,</mrow>
+        <mrow>\int_0^1 \frac{1}{\sqrt{x}} \, dx \amp =  \lim_{a \to 0^+} \int_a^1 \frac{1}{\sqrt{x}} \, dx</mrow>
+        <mrow> \amp = \lim_{a \to 0^+} 2\sqrt{x} \big\vert_a^1</mrow>
+        <mrow> \amp = \lim_{a \to 0^+} 2\sqrt{1} - 2\sqrt{a}</mrow>
+        <mrow> \amp = 2,</mrow>
       </md>
       and therefore the improper integral <m>\int_0^1 \frac{1}{\sqrt{x}} \, dx</m> converges (to the value 2).</p>
 
@@ -129,12 +143,14 @@
       </me>
     </p>
 
-    <p>At first glance we might think that we can simply apply the Fundamental Theorem of Calculus by antidifferentiating <m>\frac{1}{(x-2)^2}</m> to get <m>-\frac{1}{x-2}</m> and then evaluate from <m>1</m> to <m>3</m>. Were we to do so, we would be erroneously applying the FTC because <m>f(x) = \frac{1}{(x-2)^2}</m> fails to be continuous throughout the interval, as seen in <xref ref="F-6-5-InfIntegrand2">Figure</xref>.</p>
+    <sidebyside widths="47% 47%" margins="0%">
+      <p>At first glance we might think that we can simply apply the Fundamental Theorem of Calculus by antidifferentiating <m>\frac{1}{(x-2)^2}</m> to get <m>-\frac{1}{x-2}</m> and then evaluate from <m>1</m> to <m>3</m>. Were we to do so, we would be erroneously applying the FTC because <m>f(x) = \frac{1}{(x-2)^2}</m> fails to be continuous throughout the interval, as seen in <xref ref="F-6-5-InfIntegrand2">Figure</xref>.</p>
 
-    <figure xml:id="F-6-5-InfIntegrand2" >
-      <caption>The function <m>f(x) = \frac{1}{(x-2)^2}</m> on an interval including <m>x = 2</m>.</caption>
-      <image width="50%" source="images/6_5_InfIntegrand2" />
-    </figure>
+      <figure xml:id="F-6-5-InfIntegrand2" >
+        <caption>The function <m>f(x) = \frac{1}{(x-2)^2}</m> on an interval including <m>x = 2</m>.</caption>
+        <image source="images/6_5_InfIntegrand2" />
+      </figure>
+    </sidebyside>
 
     <p>Such an incorrect application of the FTC leads to an impossible result (<m>-2</m>), which would itself suggest that something we did must be wrong. Indeed, we must address the vertical asymptote in <m>f(x) = \frac{1}{(x-2)^2}</m> at <m>x = 2</m> by writing
       <me>
@@ -142,10 +158,10 @@
       </me>
       and then evaluate two separate limits of proper integrals. For instance, doing so for the integral with <m>a</m> approaching <m>2</m> from the left, we find
       <md>
-        <mrow>\int_1^2 \frac{1}{(x-2)^2} \, dx &amp; = \lim_{a \to 2^-} \int_1^a \frac{1}{(x-2)^2} \, dx</mrow>
-        <mrow> &amp; = \lim_{a \to 2^-} -\frac{1}{(x-2)} \bigg\vert_1^a</mrow>
-        <mrow> &amp; = \lim_{a \to 2^-} -\frac{1}{(a-2)} + \frac{1}{1-2}</mrow>
-        <mrow> &amp; =\infty,</mrow>
+        <mrow>\int_1^2 \frac{1}{(x-2)^2} \, dx \amp = \lim_{a \to 2^-} \int_1^a \frac{1}{(x-2)^2} \, dx</mrow>
+        <mrow> \amp = \lim_{a \to 2^-} -\frac{1}{(x-2)} \bigg\vert_1^a</mrow>
+        <mrow> \amp = \lim_{a \to 2^-} -\frac{1}{(a-2)} + \frac{1}{1-2}</mrow>
+        <mrow> \amp =\infty,</mrow>
       </md>
       since <m>\frac{1}{a-2} \to -\infty</m> as <m>a</m> approaches 2 from the left. Thus, the improper integral <m>\int_1^2 \frac{1}{(x-2)^2} \, dx</m> diverges; similar work shows that <m>\int_2^3 \frac{1}{(x-2)^2} \, dx</m> also diverges. From either of these two results, we can conclude that that the original integral, <m>\int_1^3 \frac{1}{(x-2)^2} \, dx</m> diverges, too.</p>
 

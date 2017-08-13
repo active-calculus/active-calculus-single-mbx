@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2017                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-NC-SA license.  The work   -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike"; no party may sell this work or any of its    -->
+<!-- derivatives for profit.  All trademarks are the registered marks of   -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
 <section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-7-5-modeling">
   <title>Modeling with differential equations</title>
     <objectives>
@@ -68,8 +82,8 @@
       <m>3\cdot10^{-8}</m> cubic meters of pollution. Therefore, pollution
       enters the lake at the rate of
       <me>
-        \left(5\cdot 10^{10} \frac{m^3 \mbox{ water} }{\mbox{year} }\right) \left(3\cdot10^{-8} \frac{m^3 \mbox{ plastic} }{m^3 \mbox{ water} } \right) = 1.5\cdot 10^3
-        \mbox{cubic m of plastic per year} .
+        \left(5\cdot 10^{10} \frac{m^3 \text{ water} }{\text{year} }\right) \left(3\cdot10^{-8} \frac{m^3 \text{ plastic} }{m^3 \text{ water} } \right) = 1.5\cdot 10^3
+        \text{cubic m of plastic per year} .
       </me>
     </p>
 
@@ -78,15 +92,15 @@
       meters and the volume of Lake Michigan is <m>5\cdot 10^{12}</m> cubic
       meters, then the concentration of plastic pollution in Lake Michigan is
       <me>
-        \frac{P}{5\cdot10^{12}}  \mbox{cubic m of plastic per cubic m of water} .
+        \frac{P}{5\cdot10^{12}}  \text{cubic m of plastic per cubic m of water} .
       </me>
     </p>
 
     <p>Since <m>5\cdot10^{10}</m> cubic meters of water flow out each year<fn>and we assume that each cubic meter of water that flows out carries with it the plastic pollution it contains</fn>, then
       the plastic pollution leaves the lake at the rate of
       <me>
-        \left(\frac{P}{5\cdot10^{12}} \frac{m^3 \mbox{ plastic} }{m^3 \mbox{ water} } \right) \left(5\cdot10^{10} \frac{m^3 \mbox{ water} }{\mbox{year} } \right)=\frac{P}{100}
-         \mbox{cubic m of plastic per year} .
+        \left(\frac{P}{5\cdot10^{12}} \frac{m^3 \text{ plastic} }{m^3 \text{ water} } \right) \left(5\cdot10^{10} \frac{m^3 \text{ water} }{\text{year} } \right)=\frac{P}{100}
+         \text{cubic m of plastic per year} .
       </me>
     </p>
 
@@ -107,18 +121,18 @@
     <p>Since this is an autonomous differential equation, we can sketch
       <m>dP/dt</m> as a function of <m>P</m> and then construct a slope field, as shown in <xref ref="F-7-5-Ex1-plot">Figure</xref> and <xref ref="F-7-5-Ex1-slope-field">Figure</xref>.</p>
 
-    <sidebyside>
+    <sidebyside widths="47% 47%" margins="0%">
         <figure xml:id="F-7-5-Ex1-plot">
           <caption>
               Plot of <m>\frac{dP}{dt}</m> vs. <m>P</m> for <m>\frac{dP}{dt} = \frac{1}{100}(1.5\cdot10^{5} - P)</m>.
           </caption>
-          <image width="75%" source="images/7_5_lake_michigan" />
+          <image source="images/7_5_lake_michigan" />
         </figure>
         <figure xml:id="F-7-5-Ex1-slope-field">
           <caption>Plot of the slope field for <m>\frac{dP}{dt} = \frac{1}{100}(1.5\cdot10^{5} - P)</m>.
           </caption>
-            <image width="75%" source="images/7_5_slope_field" /> 
-        </figure>             
+            <image source="images/7_5_slope_field" />
+        </figure>
     </sidebyside>
 
     <p>These plots both show that <m>P=1.5\cdot10^5</m> is a stable equilibrium. Therefore,
@@ -164,21 +178,26 @@
 
     <p>In other words, <m>C=1.5\cdot10^5</m>.</p>
 
-    <p>Using this value of <m>C</m> in Equation<nbsp /><xref ref="E-7-5-Ex1C" /> and solving for <m>P</m>, we arrive at the solution
-      <me>
-        P(t) = 1.5\cdot10^5(1-e^{-t/100}).
-      </me>
-    </p>
+    <sidebyside widths="47% 47%" margins="0%">
+      <paragraphs>
+        <p>Using this value of <m>C</m> in Equation<nbsp /><xref ref="E-7-5-Ex1C" /> and solving for <m>P</m>, we arrive at the solution
+          <me>
+            P(t) = 1.5\cdot10^5(1-e^{-t/100}).
+          </me>
+        </p>
 
-    <p>Superimposing the graph of <m>P</m> on the slope field we saw in <xref ref="F-7-5-Ex1-slope-field">Figure</xref>, we see, as shown in <xref ref="F-7-5-Ex1a">Figure</xref></p>
+        <p>Superimposing the graph of <m>P</m> on the slope field we saw in <xref ref="F-7-5-Ex1-slope-field">Figure</xref>, we see, as shown in <xref ref="F-7-5-Ex1a">Figure</xref></p>
 
-    <figure xml:id="F-7-5-Ex1a" >
-      <caption>The solution <m>P(t)</m> and the slope field for the differential equation <m>\frac{dP}{dt} = \frac{1}{100}(1.5\cdot10^{5} - P)</m>.</caption>
-      <image width="50%" source="images/7_5_solution" />
-    </figure>
+      <p>We see that, as expected, the amount of plastic pollution stabilizes around
+        <m>1.5\cdot10^5</m> cubic meters.</p>
+      </paragraphs>
 
-    <p>We see that, as expected, the amount of plastic pollution stabilizes around
-      <m>1.5\cdot10^5</m> cubic meters.</p>
+      <figure xml:id="F-7-5-Ex1a" >
+        <caption>The solution <m>P(t)</m> and the slope field for the differential equation <m>\frac{dP}{dt} = \frac{1}{100}(1.5\cdot10^{5} - P)</m>.</caption>
+        <image source="images/7_5_solution" />
+      </figure>
+    </sidebyside>
+
     </solution>
     </example>
 
@@ -208,7 +227,7 @@
 
     <p>It follows that
       <me>
-        T = -100\,\ln\left(\frac12\right) \approx 69.3 \mbox{years.}
+        T = -100\,\ln\left(\frac12\right) \approx 69.3 \text{years.}
       </me>
     </p>
 

@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2017                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-NC-SA license.  The work   -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike"; no party may sell this work or any of its    -->
+<!-- derivatives for profit.  All trademarks are the registered marks of   -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
 <section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-5-5-other-opt">
   <title>Other Options for Finding Algebraic Antiderivatives</title>
     <objectives>
@@ -61,9 +75,9 @@
       </me>
     </p>
 
-    <p>It turns out that for any rational function <m>R(x) = \frac{P(x)}{Q(x)}</m> where the degree of the polynomial <m>P</m> is less than<fn>If the degree of <m>P</m> is greater than or equal to the degree of <m>Q</m>, long division may be used to write <m>R</m> as the sum of a polynomial plus a rational function where the numerator's degree is less than the denominator's.</fn> the degree of the polynomial <m>Q</m>, the method of partial fractions can be used to rewrite the rational function as a sum of simpler rational functions of one of the following forms:
+    <p>It turns out that for any rational function <m>R(x) = \frac{P(x)}{Q(x)}</m> where the degree of the polynomial <m>P</m> is less than<fn>If the degree of <m>P</m> is greater than or equal to the degree of <m>Q</m>, long division may be used to write <m>R</m> as the sum of a polynomial plus a rational function where the numerator's degree is less than the denominator's.</fn> the degree of the polynomial <m>Q</m>, the method of partial fractions can be used to rewrite the function as a sum of simpler rational functions of one of the following forms:
       <me>
-        \frac{A}{x-c}, \ \ \ \frac{A}{(x-c)^n}, \ \ \ \mbox{or}  \ \ \ \frac{Ax+B}{x^2 + k}
+        \frac{A}{x-c},\ \frac{A}{(x-c)^n},\ \frac{Ax+B}{x^2 + k},\ \text{or }\frac{Ax+B}{\left(x^2 + k\right)^n}
       </me>
       where <m>A</m>, <m>B</m>, and <m>c</m> are real numbers, and <m>k</m> is a positive real number. Because each of these basic forms is one we can antidifferentiate, partial fractions enables us to antidifferentiate any rational function.
       A computer algebra system such as <em>Maple</em>, <em>Mathematica</em>, or <em>WolframAlpha</em> can be used to find the partial fraction decomposition of any rational function. In <em>WolframAlpha</em>, entering</p>
@@ -90,7 +104,7 @@
 
     <p>As seen in the short table of integrals found in <xref ref="integral-table">Appendix</xref>, there are also many forms of integrals that involve <m>\sqrt{a^2 \pm w^2}</m> and <m>\sqrt{w^2 - a^2}.</m> These integral rules can be developed using a technique known as <em>trigonometric substitution</em> that we choose to omit; instead, we will simply accept the results presented in the table. To see how these rules are needed and used, consider the differences among
       <me>
-        \int \frac{1}{\sqrt{1-x^2}} \,dx, \ \ \  \int \frac{x}{\sqrt{1-x^2}} \,dx, \ \ \  \mbox{and}  \ \ \ \int \sqrt{1-x^2} \,dx.
+        \int \frac{1}{\sqrt{1-x^2}} \,dx, \ \ \  \int \frac{x}{\sqrt{1-x^2}} \,dx, \ \ \  \text{and}  \ \ \ \int \sqrt{1-x^2} \,dx.
       </me>
     </p>
 
@@ -147,7 +161,7 @@
 
     <p>to which the program responds with
       <me>
-        \int x^2 \, dx = \frac{x^3}{3} + \mbox{constant} .
+        \int x^2 \, dx = \frac{x^3}{3} + \text{constant} .
       </me>
     </p>
 
@@ -179,13 +193,13 @@
 
     <p>the program responds with
       <me>
-        \int \frac{1}{16-5x^2} \, dx = \frac{\sqrt{5}}{20} \mbox{arctanh} (\frac{\sqrt{5}}{4}x).
+        \int \frac{1}{16-5x^2} \, dx = \frac{\sqrt{5}}{20} \arctanh  (\frac{\sqrt{5}}{4}x).
       </me>
     </p>
 
     <p>While this is correct (save for the missing arbitrary constant, which <em>Maple</em> never reports), the inverse hyperbolic tangent function is not a common nor familiar one; a simpler way to express this function can be found by using the partial fractions method, and happens to be the result reported by <em>WolframAlpha</em>:
       <me>
-        \int \frac{1}{16-5x^2} \, dx = \frac{1}{8\sqrt{5}} \left(\log(4\sqrt{5}+5\sqrt{x}) - \log(4\sqrt{5}-5\sqrt{x})\right) + \mbox{constant} .
+        \int \frac{1}{16-5x^2} \, dx = \frac{1}{8\sqrt{5}} \left(\log(4\sqrt{5}+5\sqrt{x}) - \log(4\sqrt{5}-5\sqrt{x})\right) + \text{constant} .
       </me>
     </p>
 
@@ -201,13 +215,13 @@
 
     <p>results in the output
       <me>
-        \int e^{-x^2} \, dx = \frac{\sqrt{\pi}}{2}\mbox{erf} (x) + \mbox{constant} .
+        \int e^{-x^2} \, dx = \frac{\sqrt{\pi}}{2}\erf  (x) + \text{constant} .
       </me>
     </p>
 
     <p>The function <q>erf<m>(x)</m></q> is the <em>error function</em><idx><h>error function</h></idx>, which is actually defined by an integral:
       <me>
-        \mbox{erf} (x) = \frac{2}{\sqrt{\pi}} \int_0^x e^{-t^2} \, dt.
+        \erf  (x) = \frac{2}{\sqrt{\pi}} \int_0^x e^{-t^2} \, dt.
       </me>
     </p>
 

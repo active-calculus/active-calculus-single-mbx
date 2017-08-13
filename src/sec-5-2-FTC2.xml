@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2017                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-NC-SA license.  The work   -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike"; no party may sell this work or any of its    -->
+<!-- derivatives for profit.  All trademarks are the registered marks of   -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
 <section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-5-2-FTC2">
   <title>The Second Fundamental Theorem of Calculus</title>
     <objectives>
@@ -36,9 +50,9 @@
       <image width="100%" source="images/5_2_Intro" />
     </figure>
 
-    <p>We recall further that the value of a definite integral may have additional meaning depending on context: change in position when the integrand is a velocity function, total pollutant leaked from a tank when the integrand is the rate at which pollution is leaking, or other total changes that correspond to a given rate function that is the integrand. In addition, the value of the definite integral is always connected to the average value of a continuous function on a given interval: <m>f_{AVG [a,b]} = \frac{1}{b-a} \int_a^b f(x) \, dx</m>.</p>
+    <p>We recall further that the value of a definite integral may have additional meaning depending on context: change in position when the integrand is a velocity function, total pollutant leaked from a tank when the integrand is the rate at which pollution is leaking, or other total changes that correspond to a given rate function that is the integrand. In addition, the value of the definite integral is always connected to the average value of a continuous function on a given interval: <m>f_{\operatorname{AVG} [a,b]} = \frac{1}{b-a} \int_a^b f(x) \, dx</m>.</p>
 
-    <p>Next, remember that in the last part of <xref ref="sec-5-1-antid-graphs">Section</xref>, we studied integral functions of the form <m>A(x) = \int_c^x f(t) \, dt</m>. <xref ref="F-5-1-IntFxn">Figure</xref> is a particularly important image to keep in mind as we work with integral functions, and the corresponding java applet at <url href="http://gvsu.edu/s/cz">http://gvsu.edu/s/cz</url> is likewise foundational to our understanding of the function <m>A</m>. In what follows, we use the First FTC to gain additional understanding of the function <m>A(x) = \int_c^x f(t) \, dt</m>, where the integrand <m>f</m> is given (either through a graph or a formula), and <m>c</m> is a constant. In particular, we investigate further the special nature of the relationship between the functions <m>A</m> and <m>f</m>.</p>
+    <p>Next, remember that in the last part of <xref ref="sec-5-1-antid-graphs">Section</xref>, we studied integral functions of the form <m>A(x) = \int_c^x f(t) \, dt</m>. <xref ref="F-5-1-IntFxn">Figure</xref> is a particularly important image to keep in mind as we work with integral functions, and the corresponding java applet at <url href="http://gvsu.edu/s/cz">gvsu.edu/s/cz</url> is likewise foundational to our understanding of the function <m>A</m>. In what follows, we use the First FTC to gain additional understanding of the function <m>A(x) = \int_c^x f(t) \, dt</m>, where the integrand <m>f</m> is given (either through a graph or a formula), and <m>c</m> is a constant. In particular, we investigate further the special nature of the relationship between the functions <m>A</m> and <m>f</m>.</p>
 
     <xi:include href="./previews/PA-5-2.xml" />
 
@@ -67,11 +81,11 @@
         A(x) = \int_c^x f(t) \, dt,
       </me>
       where <m>c</m> is an arbitrary constant, then we can show that <m>A</m> is an antiderivative of <m>f</m>. To see why, let's demonstrate that <m>A'(x) = f(x)</m> by using the limit definition of the derivative. Doing so, we observe that
-      <md>
-        <mrow>A'(x) \amp = \lim_{h \to 0} \frac{A(x+h) - A(x)}{h}</mrow>
-        <mrow>\amp = \lim_{h \to 0} \frac{\int_c^{x+h} f(t) \, dt - \int_c^x f(t) \, dt}{h}</mrow>
+      <mdn>
+        <mrow number="no">A'(x) \amp = \lim_{h \to 0} \frac{A(x+h) - A(x)}{h}</mrow>
+        <mrow number="no">\amp = \lim_{h \to 0} \frac{\int_c^{x+h} f(t) \, dt - \int_c^x f(t) \, dt}{h}</mrow>
         <mrow xml:id="E-FTC2limdef">\amp = \lim_{h \to 0} \frac{\int_x^{x+h} f(t) \, dt}{h},</mrow>
-      </md>
+      </mdn>
       where Equation<nbsp /><xref ref="E-FTC2limdef" /> in the preceding chain follows from the fact that <m>\int_c^x f(t) \,dt + \int_x^{x+h} f(t) \, dt = \int_c^{x+h} f(t) \, dt</m>. Now, observe that for small values of <m>h</m>,
       <me>
         \int_x^{x+h} f(t) \, dt \approx f(x) \cdot h,
@@ -116,7 +130,7 @@
         </p>
       </statement>
     <solution>
-    <p><m>E</m> is closely related to the well known <em>error function</em><idx><h>error functin</h></idx><fn>The error function is defined by the rule <m>\mbox{erf} (x) = \frac{2}{\sqrt{\pi}} \int_0^x e^{-t^2} \,dt</m> and has the key property that <m>0 \le \mbox{erf} (x) \lt  1</m> for all <m>x \ge 0</m> and moreover that <m>\lim_{x \to \infty} \mbox{erf} (x) = 1</m>.</fn>, a function that is particularly important in probability and statistics. It turns out that the function <m>e^{-t^2}</m> does not have an elementary antiderivative that we can express without integrals. That is, whereas a function such as <m>f(t) = 4-2t</m> has elementary antiderivative <m>F(t) = 4t - t^2</m>, we are unable to find a simple formula for an antiderivative of <m>e^{-t^2}</m> that does not involve a definite integral. We will learn more about finding (complicated) algebraic formulas for antiderivatives without definite integrals in the chapter on infinite series.</p>
+    <p><m>E</m> is closely related to the well known <em>error function</em><idx><h>error functin</h></idx><fn>The error function is defined by the rule <m>\erf  (x) = \frac{2}{\sqrt{\pi}} \int_0^x e^{-t^2} \,dt</m> and has the key property that <m>0 \le \erf  (x) \lt  1</m> for all <m>x \ge 0</m> and moreover that <m>\lim_{x \to \infty} \erf  (x) = 1</m>.</fn>, a function that is particularly important in probability and statistics. It turns out that the function <m>e^{-t^2}</m> does not have an elementary antiderivative that we can express without integrals. That is, whereas a function such as <m>f(t) = 4-2t</m> has elementary antiderivative <m>F(t) = 4t - t^2</m>, we are unable to find a simple formula for an antiderivative of <m>e^{-t^2}</m> that does not involve a definite integral. We will learn more about finding (complicated) algebraic formulas for antiderivatives without definite integrals in the chapter on infinite series.</p>
 
     <p>Returning our attention to the function <m>E</m>, while we cannot evaluate <m>E</m> exactly for any value other than <m>x = 0</m>,
       we still can gain a tremendous amount of information about the function <m>E</m>. To begin, applying the rule in Equation<nbsp /><xref ref="E_diffint" /> to <m>E</m>, it follows that
