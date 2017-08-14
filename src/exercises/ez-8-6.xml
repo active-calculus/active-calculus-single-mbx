@@ -38,19 +38,6 @@
     <webwork source="Library/Rochester/setSeries8Power/eva8_6e.pg" />
   </exercise>
 
-  <exercise>
-  <title>Exercise Title</title>
-  <statement>
-    <p>Exercise Statement</p>
-  </statement>
-  <answer>
-    <p>Exercise Answer</p>
-  </answer>
-  <solution>
-    <p>Exercise Solution</p>
-  </solution>
-  </exercise>
-
       <exercise>
         <statement>
           <p>We can use power series to approximate definite integrals to which known techniques of integration do not apply. We will illustrate this in this exercise with the definite integral <m>\int_0^1 \sin(x^2) \,ds</m>.
@@ -199,9 +186,78 @@
               y = \sum_{k=0}^{\infty} a_kx^k
             </me>,
           where the coefficients are undetermined. Our job is to find the coefficients.</p>
-          <p>Differentiate the series for <m>y</m> term by term to find the series for <m>y'</m>. Then repeat to find the series for <m>y''</m>.</p>
+          <ol>
+            <li>
+              <p>Differentiate the series for <m>y</m> term by term to find the series for <m>y'</m>. Then repeat to find the series for <m>y''</m>.</p>
+            </li>
+            <li>
+              <p>Substitute your results from part (a) into the Airy equation and show that we can write Equation <xref ref="eq-PA-8-6-Airy-equation" /> in the form
+            <men xml:id="eq-PA-8-6-Airy-1" >
+              \sum_{k=2}^{\infty} (k-1)ka_kx^{k-2} - \sum_{k=0}^{\infty} a_kx^{k+1} = 0
+            </men>.
+          </p>
+            </li>
+            <li>
+              <p>At this point, it would be convenient if we could combine the series on the left in <xref ref="eq-PA-8-6-Airy-1" />, but one written with terms of the form <m>x^{k-2}</m> and the other with terms in the form <m>x^{k+1}</m>. Explain why
+            <men xml:id="eq-PA-8-6-Airy-sum-1" >
+              \sum_{k=2}^{\infty} (k-1)ka_kx^{k-2} = \sum_{k=0}^{\infty} (k+1)(k+2)a_{k+2}x^{k}
+            </men>.
+          </p>
+            </li>
+            <li>
+              <p>Now show that
+            <men xml:id="eq-PA-8-6-Airy-sum-2" >
+              \sum_{k=0}^{\infty} a_kx^{k+1} = \sum_{k=1}^{\infty} a_{k-1}x^k
+            </men>.
+          </p>
+            </li>
+            <li>
+              <p>We can now substitute <xref ref="eq-PA-8-6-Airy-sum-1" /> and <xref ref="eq-PA-8-6-Airy-sum-2" /> into <xref ref="eq-PA-8-6-Airy-1" /> to obtain
+            <men xml:id="eq-PA-8-6-Airy-2" >
+              \sum_{n=0}^{\infty} (n+1)(n+2)a_{n+2}x^{n} - \sum_{n=1}^{\infty} a_{n-1}x^{n} = 0
+            </men>.
+          </p>
+
+          <p>Combine the like powers of <m>x</m> in the two series to show that our solution must satisfy
+            <men xml:id="eq-PA-8-6-Airy-sum-3" >
+              2a_2 + \sum_{k=1}^{\infty} \left[(k+1)(k+2)a_{k+2}-a_{k-1} \right] x^{k} = 0
+            </men>.
+          </p>
+            </li>
+            <li>
+              <p>Use equation <xref ref="eq-PA-8-6-Airy-sum-3" /> to show the following:</p>
+
+          <p><ol label="i.">
+            <li>
+              <p><m>a_{3k+2} = 0</m> for every positive integer <m>k</m>,</p>
+            </li>
+
+            <li>
+              <p><m>a_{3k} = \frac{1}{(2)(3)(5)(6) \cdots (3k-1)(3k)} a_0 \text{ for }  k \geq 1</m>,</p>
+            </li>
+
+            <li>
+              <p><m>a_{3k+1} = \frac{1}{(3)(4)(6)(7) \cdots (3k)(3k+1)} a_1 \text{ for }  k \geq 1</m>.</p>
+            </li>
+          </ol></p>
+            </li>
+            <li>
+              <p>Use the previous part to conclude that the general solution to the Airy equation <xref ref="eq-PA-8-6-Airy-equation" /> is
+            <md>
+              <mrow>y \amp= a_0\left( 1+\sum_{k=1}^{\infty} \frac{x^{3k}}{(2)(3)(5)(6) \cdots (3k-1)(3k)} \right)</mrow>
+              <mrow>\amp\phantom{={}}+ a_1 \left( x + \sum_{k=1}^{\infty} \frac{x^{3k+1}}{(3)(4)(6)(7) \cdots (3k)(3k+1)} \right)</mrow>
+            </md>.
+          </p>
+
+          <p>Any values for <m>a_0</m> and <m>a_1</m> then determine a specific solution that we can approximate as closely as we like using this series solution.</p>
+            </li>
+          </ol>
+          
         </statement>
-        <solution>
+    </exercise>  
+</exercises>
+      
+<!--        <solution>
           <p>Now
             <md>
               <mrow>y' \amp = \sum_{k=1}^{\infty} ka_kx^{k-1}</mrow>
@@ -212,11 +268,7 @@
       </exercise>
       <exercise>
         <statement>
-          <p>Substitute your results from part (a) into the Airy equation and show that we can write Equation <xref ref="eq-PA-8-6-Airy-equation" /> in the form
-            <men xml:id="eq-PA-8-6-Airy-1" >
-              \sum_{k=2}^{\infty} (k-1)ka_kx^{k-2} - \sum_{k=0}^{\infty} a_kx^{k+1} = 0
-            </men>.
-          </p>
+          
         </statement>
         <solution>
           <p>We substitute our series from (a) into the Airy equation to obtain the equation
@@ -230,11 +282,7 @@
       </exercise>
       <exercise>
         <statement>
-          <p>At this point, it would be convenient if we could combine the series on the left in <xref ref="eq-PA-8-6-Airy-1" />, but one written with terms of the form <m>x^{k-2}</m> and the other with terms in the form <m>x^{k+1}</m>. Explain why
-            <men xml:id="eq-PA-8-6-Airy-sum-1" >
-              \sum_{k=2}^{\infty} (k-1)ka_kx^{k-2} = \sum_{k=0}^{\infty} (k+1)(k+2)a_{k+2}x^{k}
-            </men>.
-          </p>
+          
         </statement>
         <solution>
           <p>Note that
@@ -250,11 +298,7 @@
       </exercise>
       <exercise>
         <statement>
-          <p>Now show that
-            <men xml:id="eq-PA-8-6-Airy-sum-2" >
-              \sum_{k=0}^{\infty} a_kx^{k+1} = \sum_{k=1}^{\infty} a_{k-1}x^k
-            </men>.
-          </p>
+          
         </statement>
         <solution>
           <p>As we did in the previous part,
@@ -268,17 +312,7 @@
       </exercise>
       <exercise>
         <statement>
-          <p>We can now substitute <xref ref="eq-PA-8-6-Airy-sum-1" /> and <xref ref="eq-PA-8-6-Airy-sum-2" /> into <xref ref="eq-PA-8-6-Airy-1" /> to obtain
-            <men xml:id="eq-PA-8-6-Airy-2" >
-              \sum_{n=0}^{\infty} (n+1)(n+2)a_{n+2}x^{n} - \sum_{n=1}^{\infty} a_{n-1}x^{n} = 0
-            </men>.
-          </p>
-
-          <p>Combine the like powers of <m>x</m> in the two series to show that our solution must satisfy
-            <men xml:id="eq-PA-8-6-Airy-sum-3" >
-              2a_2 + \sum_{k=1}^{\infty} \left[(k+1)(k+2)a_{k+2}-a_{k-1} \right] x^{k} = 0
-            </men>.
-          </p>
+          
         </statement>
         <solution>
           <p>Notice that we have like powers of <m>x</m> in our two series, so we can combine them and obtain
@@ -292,21 +326,7 @@
       </exercise>
       <exercise>
         <statement>
-          <p>Use equation <xref ref="eq-PA-8-6-Airy-sum-3" /> to show the following:</p>
-
-          <p><ol label="i.">
-            <li>
-              <p><m>a_{3k+2} = 0</m> for every positive integer <m>k</m>,</p>
-            </li>
-
-            <li>
-              <p><m>a_{3k} = \frac{1}{(2)(3)(5)(6) \cdots (3k-1)(3k)} a_0 \text{ for }  k \geq 1</m>,</p>
-            </li>
-
-            <li>
-              <p><m>a_{3k+1} = \frac{1}{(3)(4)(6)(7) \cdots (3k)(3k+1)} a_1 \text{ for }  k \geq 1</m>.</p>
-            </li>
-          </ol></p>
+          
         </statement>
         <solution>
           <p>Equation <xref ref="eq-PA-8-6-Airy-sum-3" /> implies that <m>a_2 = 0</m> and <m>(k+1)(k+2)a_{k+2}+a_{k-2} = 0</m> for all <m>k \geq 1</m>.</p>
@@ -358,14 +378,7 @@
       </exercise>
       <exercise>
         <statement>
-          <p>Use the previous part to conclude that the general solution to the Airy equation <xref ref="eq-PA-8-6-Airy-equation" /> is
-            <md>
-              <mrow>y \amp= a_0\left( 1+\sum_{k=1}^{\infty} \frac{x^{3k}}{(2)(3)(5)(6) \cdots (3k-1)(3k)} \right)</mrow>
-              <mrow>\amp\phantom{={}}+ a_1 \left( x + \sum_{k=1}^{\infty} \frac{x^{3k+1}}{(3)(4)(6)(7) \cdots (3k)(3k+1)} \right)</mrow>
-            </md>.
-          </p>
-
-          <p>Any values for <m>a_0</m> and <m>a_1</m> then determine a specific solution that we can approximate as closely as we like using this series solution.</p>
+          
         </statement>
         <solution>
           <p>We can write our solution <m>y</m> in three pieces as
@@ -380,6 +393,8 @@
           </p>
         </solution>
       </exercise>
+-->
+      
 <!--Appears to be more exposition or an unfinished exercise. This content is not in the current edition of AC. -->
 <!--        <exercise>
           <statement>
@@ -435,5 +450,5 @@
         </solution>
       </exercise>-->
 
-</exercises>
+
 
