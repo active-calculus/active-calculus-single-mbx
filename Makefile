@@ -69,7 +69,8 @@ DTD   = $(MB)/schema/dtd
 # These paths are subdirectories of
 # the scratch directory
 PGOUT      = $(OUTPUT)/pg
-HTMLOUT    = $(OUTPUT)/html
+# HTMLOUT set in Makefile.paths
+# HTMLOUT    = $(OUTPUT)/html
 PDFOUT     = $(OUTPUT)/pdf
 IMAGESOUT  = $(OUTPUT)/images
 
