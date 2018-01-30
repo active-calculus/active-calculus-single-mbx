@@ -97,6 +97,10 @@ pg:
 #  Output lands in the subdirectory:  $(HTMLOUT)
 html:
 	install -d $(HTMLOUT)
+	install -d $(HTMLOUT)/knowl
+	install -d $(HTMLOUT)/images
+	install -d $(OUTPUT)
+	install -d $(OUTPUT)/images
 	-rm $(HTMLOUT)/*.html
 	-rm $(HTMLOUT)/knowl/*.html
 	cp -a $(IMAGESOUT) $(HTMLOUT)
