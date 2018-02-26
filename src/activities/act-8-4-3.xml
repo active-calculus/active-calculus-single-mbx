@@ -13,31 +13,48 @@
 <!-- derivatives for profit.  All trademarks are the registered marks of   -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
+
 <activity xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="act-8-4-3">
+  <statement>
+    <p>
+      Determine the number of terms it takes to approximate the sum of the convergent alternating series
+      <me>
+        \sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k^4}
+      </me>
+      to within 0.0001.
+    </p>
+  </statement>
+  <hint>
+    <p>
+      Small hints for each of the prompts above.
+    </p>
+  </hint>
+  <solution>
+    <p>
+      First note that the sequence
+      <m>\left\{\frac{1}{k^4}\right\}</m> decreases to 0, so the series
+      <m>\sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k^4}</m> converges by the Alternating Series Test.
+      Let <m>S</m> be the sum <m>\sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k^4}</m> and <m>S_n</m> the <m>n</m>th partial sum of the series.
+      We know that
+      <me>
+        |S - S_n| \lt  a_{n+1} = \frac{1}{(n+1)^4}
+      </me>.
+    </p>
 
-      <statement>
-        <p>Determine the number of terms it takes to approximate the sum of the convergent alternating series
-          <me>
-            \sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k^4}
-          </me>
-        to within 0.0001.</p>
-      </statement>
-      <hint>
-        <p>Small hints for each of the prompts above.</p>
-      </hint>
-      <solution>
-        <p>First note that the sequence <m>\left\{\frac{1}{k^4}\right\}</m> decreases to 0, so the series <m>\sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k^4}</m> converges by the Alternating Series Test. Let <m>S</m> be the sum <m>\sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k^4}</m> and <m>S_n</m> the <m>n</m>th partial sum of the series. We know that
-          <me>
-            |S - S_n| \lt  a_{n+1} = \frac{1}{(n+1)^4}
-          </me>.
-        </p>
+    <p>
+      So we only need to determine the value of <m>n</m> so that
+      <me>
+        \frac{1}{(n+1)^4} \lt  0.0001
+      </me>.
+    </p>
 
-        <p>So we only need to determine the value of <m>n</m> so that
-          <me>
-            \frac{1}{(n+1)^4} \lt  0.0001
-          </me>.
-        </p>
+    <p>
+      This happens when <m>(n+1)^4 \lt 10000</m> or when <m>n+1 \gt 10</m>.
+      So <m>n = 10</m> will do.
+      A computer algebra system gives
+      <m>S_{10} \approx 0.9469925924</m> while <m>\frac{7}{720} \pi^4 \approx 0.9470328299</m>.
+      These do agree to <m>0.0001</m>.
+    </p>
+  </solution>
+</activity>
 
-        <p>This happens when <m>(n+1)^4 \lt  10000</m> or when <m>n+1 \gt 10</m>. So <m>n = 10</m> will do. A computer algebra system gives <m>S_{10} \approx 0.9469925924</m> while <m>\frac{7}{720} \pi^4 \approx 0.9470328299</m>. These do agree to <m>0.0001</m>.</p>
-      </solution>
-    </activity>

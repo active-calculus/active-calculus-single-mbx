@@ -13,209 +13,383 @@
 <!-- derivatives for profit.  All trademarks are the registered marks of   -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
+
 <section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-1-3-derivative-pt">
-<title>The derivative of a function at a point</title>
-<objectives>
-<ul>
-<li><p>How is the average rate of change of a function on a given interval defined, and what does this quantity measure?</p></li>
-<li><p>How is the instantaneous rate of change of a function at a particular point defined?  How is the instantaneous rate of change linked to average rate of change?</p></li>
-<li><p>What is the derivative of a function at a given point?  What does this derivative value measure? How do we interpret the derivative value graphically?</p></li>
-<li><p>How are limits used formally in the computation of derivatives?</p></li>
-</ul>
-</objectives>
-<introduction>
-<p>
-An idea that sits at the foundations of calculus is the <em>instantaneous rate of change</em> of a function. This rate of change is always considered with respect to change in the input variable, often at a particular fixed input value. This is a generalization of the notion of instantaneous velocity and essentially allows us to consider the question <q>how do we measure how fast a particular function is changing at a given point?</q> When the original function represents the position of a moving object, this instantaneous rate of change is precisely velocity, and might be measured in units such as feet per second. But in other contexts, instantaneous rate of change could measure the number of cells added to a bacteria culture per day, the number of additional gallons of gasoline consumed by going one mile per additional mile per hour in a car's velocity, or the number of dollars added to a mortgage payment for each percentage increase in interest rate. Regardless of the presence of a physical or practical interpretation of a function, the instantaneous rate of change may also be interpreted geometrically in connection to the function's graph, and this connection is also foundational to many of the main ideas in calculus.
-</p>
+  <title>The derivative of a function at a point</title>
+  <objectives>
+    <ul>
+      <li>
+        <p>
+          How is the average rate of change of a function on a given interval defined,
+          and what does this quantity measure?
+        </p>
+      </li>
 
-<p>
-In what follows, we will introduce terminology and notation that makes it easier to talk about the instantaneous rate of change of a function at a point. In addition, just as instantaneous velocity is defined in terms of average velocity, the more general instantaneous rate of change will be connected to the more general average rate of change. Recall that for a moving object with position function <m>s</m>, its average velocity on the time interval <m>t = a</m> to <m>t = a+h</m> is given by the quotient
-<me>
-  AV_{[a,a+h]} = \frac{s(a+h)-s(a)}{h}.
-</me>
-</p>
+      <li>
+        <p>
+          How is the instantaneous rate of change of a function at a particular point defined?
+          How is the instantaneous rate of change linked to average rate of change?
+        </p>
+      </li>
 
-<p>
-In a similar way, we make the following definition for an arbitrary function <m>y = f(x).</m>
-</p>
-<definition>
-<statement>
-<p>
-For a function <m>f</m>, the <term>average rate of change</term><idx><h>average rate of change</h></idx> of <m>f</m> on the interval <m>[a,a+h]</m> is given by the value
-<me>
-  AV_{[a,a+h]} = \frac{f(a+h)-f(a)}{h}.
-</me>
-</p>
-</statement>
-</definition>
-<p>
-Equivalently, if we want to consider the average rate of change of <m>f</m> on <m>[a,b]</m>, we compute
-<me>
-  AV_{[a,b]} = \frac{f(b)-f(a)}{b-a}.
-</me>
-</p>
+      <li>
+        <p>
+          What is the derivative of a function at a given point?
+          What does this derivative value measure?
+          How do we interpret the derivative value graphically?
+        </p>
+      </li>
 
-<p>
-It is essential to understand how the average rate of change of <m>f</m> on an interval is connected to its graph.
-</p>
+      <li>
+        <p>
+          How are limits used formally in the computation of derivatives?
+        </p>
+      </li>
+    </ul>
+  </objectives>
+  <introduction>
+    <p>
+      An idea that sits at the foundations of calculus is the
+      <em>instantaneous rate of change</em> of a function.
+      This rate of change is always considered with respect to change in the input variable,
+      often at a particular fixed input value.
+      This is a generalization of the notion of instantaneous velocity and essentially allows us to consider the question
+      <q>how do we measure how fast a particular function is changing at a given point?</q>
+      When the original function represents the position of a moving object,
+      this instantaneous rate of change is precisely velocity,
+      and might be measured in units such as feet per second.
+      But in other contexts,
+      instantaneous rate of change could measure the number of cells added to a bacteria culture per day,
+      the number of additional gallons of gasoline consumed by going one mile per additional mile per hour in a car's velocity,
+      or the number of dollars added to a mortgage payment for each percentage increase in interest rate.
+      Regardless of the presence of a physical or practical interpretation of a function,
+      the instantaneous rate of change may also be interpreted geometrically in connection to the function's graph,
+      and this connection is also foundational to many of the main ideas in calculus.
+    </p>
+
+    <p>
+      In what follows,
+      we will introduce terminology and notation that makes it easier to talk about the instantaneous rate of change of a function at a point.
+      In addition, just as instantaneous velocity is defined in terms of average velocity,
+      the more general instantaneous rate of change will be connected to the more general average rate of change.
+      Recall that for a moving object with position function <m>s</m>,
+      its average velocity on the time interval <m>t = a</m> to <m>t = a+h</m> is given by the quotient
+      <me>
+        AV_{[a,a+h]} = \frac{s(a+h)-s(a)}{h}
+      </me>.
+    </p>
+
+    <p>
+      In a similar way,
+      we make the following definition for an arbitrary function <m>y = f(x)</m>.
+    </p>
+
+    <definition>
+      <statement>
+        <p>
+          For a function <m>f</m>, the <term>average rate of change</term>
+              <idx><h>average rate of change</h></idx>
+          of <m>f</m> on the interval <m>[a,a+h]</m> is given by the value
+          <me>
+            AV_{[a,a+h]} = \frac{f(a+h)-f(a)}{h}
+          </me>.
+        </p>
+      </statement>
+    </definition>
+
+    <p>
+      Equivalently,
+      if we want to consider the average rate of change of <m>f</m> on <m>[a,b]</m>,
+      we compute
+      <me>
+        AV_{[a,b]} = \frac{f(b)-f(a)}{b-a}
+      </me>.
+    </p>
+
+    <p>
+      It is essential to understand how the average rate of change of <m>f</m> on an interval is connected to its graph.
+    </p>
 
     <xi:include href="./previews/PA-1-3.xml" />
+  </introduction>
 
-</introduction>
-
-<subsection>
-<title>The Derivative of a Function at a Point</title>
-
-<p>
-Just as we defined instantaneous velocity in terms of average velocity, we now define the instantaneous rate of change of a function at a point in terms of the average rate of change of the function <m>f</m> over related intervals. In addition, we give a special name to <q>the instantaneous rate of change of <m>f</m> at <m>a</m>,</q><idx><h>instantaneous rate of change</h></idx> calling this quantity <q>the <em>derivative</em> of <m>f</m> at <m>a</m>,</q> with this value being represented by the shorthand notation <m>f'(a)</m>. Specifically, we make the following definition.
-</p>
-
-<definition xml:id="def-derivative">
-  <statement>
-<p>
-Let <m>f</m> be a function and <m>x = a</m> a value in the function's domain. We define the <term>derivative of <m>f</m> with respect to <m>x</m> evaluated at <m>x = a</m></term><idx><h>derivative</h><h>definition</h></idx>, denoted <m>f'(a)</m>, by the formula
-<me>
-  f'(a) = \lim_{h \to 0} \frac{f(a+h)-f(a)}{h},
-</me>
-provided this limit exists.
-</p>
-</statement>
-</definition>
-
-<p>
-Aloud, we read the symbol <m>f'(a)</m> as either <q><m>f</m>-prime at <m>a</m></q> or <q>the derivative of <m>f</m> evaluated at <m>x = a</m>.</q> Much of the next several chapters will be devoted to understanding, computing, applying, and interpreting derivatives. For now, we observe the following important things.
-</p>
-<note>
-  <p><ul>
-    <li>The derivative of <m>f</m> at the value <m>x = a</m> is defined as the limit of the average rate of change of <m>f</m> on the interval <m>[a,a+h]</m> as <m>h \to 0</m>.  It is possible for this limit not to exist, so not every function has a derivative at every point.</li>
-    <li>We say that a function that has a derivative at <m>x = a</m> is <em>differentiable</em><idx><h>differentiable</h></idx> at <m>x = a</m>.</li>
-    <li>The derivative is a generalization of the instantaneous velocity of a position function:  when <m>y = s(t)</m> is a position function of a moving body, <m>s'(a)</m> tells us the instantaneous velocity of the body at time <m>t=a</m>.</li>
-    <li>Because the units on <m>\frac{f(a+h)-f(a)}{h}</m> are <q>units of <m>f</m> per unit of <m>x</m>,</q> the derivative has these very same units.  For instance, if <m>s</m> measures position in feet and <m>t</m> measures time in seconds, the units on <m>s'(a)</m> are feet per second.</li>
-    <li>Because the quantity <m>\frac{f(a+h)-f(a)}{h}</m> represents the slope of the line through <m>(a,f(a))</m> and <m>(a+h, f(a+h))</m>, when we compute the derivative we are taking the limit of a collection of slopes of lines, and thus the derivative itself represents the slope of a particularly important line.</li>
-  </ul></p>
-</note>
-<p>
-While all of the above ideas are important and we will add depth and perspective to them through additional time and study, for now it is most essential to recognize how the derivative of a function at a given value represents the slope of a certain line. Thus, we expand upon the last bullet item above.
-</p>
-
-<p>
-As we move from an average rate of change to an instantaneous one, we can think of one point as <q>sliding towards</q> another. In particular, provided the function has a derivative at <m>(a,f(a))</m>, the point <m>(a+h,f(a+h))</m> will approach <m>(a,f(a))</m> as <m>h \to 0</m>. Because this process of taking a limit is a dynamic one, it can be helpful to use computing technology to visualize what the limit is accomplishing. While there are many different options, one of the best is a java applet in which the user is able to control the point that is moving.  For a helpful collection of examples, consider the <url href="http://gvsu.edu/s/5r">work of David Austin</url> of Grand Valley State University, and <url href="http://gvsu.edu/s/5s">this particularly relevant example</url>.  For applets that have been built in Geogebra<fn>You can even consider building your own examples; the fantastic program Geogebra is available for <url href="http://geogebra.org">free download</url> and is easy to learn and use.</fn>, see <url href="http://gvsu.edu/s/5p">Marc Renault's library</url> via Shippensburg University, with <url href="http://gvsu.edu/s/5q">this example</url> being especially fitting for our work in this section.</p>
-
-<p>
-In <xref ref="F-1-3-SecToTanSeq">Figure</xref>, we provide a sequence of figures with several different lines through the points <m>(a, f(a))</m> and <m>(a+h,f(a+h))</m> that are generated by different values of <m>h</m>. These lines (shown in the first three figures in magenta), are often called <em>secant lines</em> <idx><h>secant line</h></idx> to the curve <m>y = f(x)</m>. A secant line to a curve is simply a line that passes through two points that lie on the curve. For each such line, the slope of the secant line is <m>m = \frac{f(a+h) - f(a)}{h}</m>, where the value of <m>h</m> depends on the location of the point we choose. We can see in the diagram how, as <m>h \to 0</m>, the secant lines start to approach a single line that passes through the point <m>(a,f(a))</m>. In the situation where the limit of the slopes of the secant lines exists, we say that the resulting value is the slope of the <em>tangent line</em> to the curve. This tangent line<idx><h>tangent line</h></idx> (shown in the right-most figure in green) to the graph of <m>y = f(x)</m> at the point <m>(a,f(a))</m> is the line through <m>(a,f(a))</m> whose slope is <m>m = f'(a)</m>.
-</p>
-  <figure xml:id="F-1-3-SecToTanSeq" >
-<caption>A sequence of secant lines approaching the tangent line to <m>f</m> at <m>(a,f(a))</m>.</caption>
-<image width="100%" source="images/1_3_SecToTanSeq" /> </figure>
-
-<p>
-As we will see in subsequent study, the existence of the tangent line at <m>x = a</m> is connected to whether or not the function <m>f</m> looks like a straight line when viewed up close at <m>(a,f(a))</m>, which can also be seen in <xref ref="F-1-3-SecToTan">Figure</xref>, where we combine the four graphs in <xref ref="F-1-3-SecToTanSeq">Figure</xref> into the single one on the left, and then we zoom in on the box centered at <m>(a,f(a))</m>, with that view expanded on the right (with two of the secant lines omitted). Note how the tangent line sits relative to the curve <m>y = f(x)</m> at <m>(a,f(a))</m> and how closely it resembles the curve near <m>x = a</m>.
-</p>
-  <figure xml:id="F-1-3-SecToTan" >
-<caption>A sequence of secant lines approaching the tangent line to <m>f</m> at <m>(a,f(a))</m>.  At right, we zoom in on the point <m>(a,f(a))</m>.  The slope of the tangent line (in green) to <m>f</m> at <m>(a,f(a))</m> is given by <m>f'(a)</m>.</caption>
-<image width="60%" source="images/1_3_SecToTan" /> </figure>
-
-
-<note> <p> The instantaneous rate of change of <m>f</m> with respect to <m>x</m> at <m>x = a</m>, <m>f'(a)</m>, also measures the slope of the tangent line to the curve <m>y = f(x)</m> at <m>(a,f(a))</m>. </p>
-</note>
-
-<p>The following example demonstrates several key ideas involving the derivative of a function.</p>
-
-<example>
-  <title> Using the limit definition of the derivative
-  </title>
-  <statement>
-<p>
-For the function given by <m>f(x) = x - x^2</m>, use the limit definition of the derivative to compute <m>f'(2)</m>. In addition, discuss the meaning of this value and draw a labeled graph that supports your explanation.
-</p>
- </statement>
- <solution>
+  <subsection>
+    <title>The Derivative of a Function at a Point</title>
     <p>
-    From the limit definition, we know that
+      Just as we defined instantaneous velocity in terms of average velocity,
+      we now define the instantaneous rate of change of a function at a point in terms of the average rate of change of the function <m>f</m> over related intervals.
+      In addition, we give a special name to
+      <q>the instantaneous rate of change of <m>f</m> at <m>a</m>,</q>
+          <idx><h>instantaneous rate of change</h></idx>
+      calling this quantity <q>the <em>derivative</em> of <m>f</m> at <m>a</m>,</q>
+      with this value being represented by the shorthand notation <m>f'(a)</m>.
+      Specifically, we make the following definition.
+    </p>
 
-    <me>
-    f'(2) = \lim_{h \to 0} \frac{f(2+h)-f(2)}{h}.
-    </me>
+    <definition xml:id="def-derivative">
+      <statement>
+        <p>
+          Let <m>f</m> be a function and <m>x = a</m> a value in the function's domain.
+          We define the <term>derivative of <m>f</m> with respect to <m>x</m> evaluated at <m>x = a</m></term>,
+              <idx><h>derivative</h><h>definition</h></idx>
+          denoted <m>f'(a)</m>, by the formula
+          <me>
+            f'(a) = \lim_{h \to 0} \frac{f(a+h)-f(a)}{h}
+          </me>,
+          provided this limit exists.
+        </p>
+      </statement>
+    </definition>
+
+    <p>
+      Aloud, we read the symbol <m>f'(a)</m> as either
+      <q><m>f</m>-prime at <m>a</m></q>
+      or <q>the derivative of <m>f</m> evaluated at <m>x = a</m>.</q>
+      Much of the next several chapters will be devoted to understanding,
+      computing,
+      applying, and interpreting derivatives.
+      For now, we observe the following important things.
+    </p>
+
+    <note>
+      <p>
+        <ul>
+          <li>The derivative of <m>f</m> at the value <m>x = a</m> is defined as the limit of the average rate of change of <m>f</m> on the interval <m>[a,a+h]</m> as <m>h \to 0</m>.
+        It is possible for this limit not to exist,
+        so not every function has a derivative at every point.</li>
+
+          <li>We say that a function that has a derivative at <m>x = a</m> is <em>differentiable</em>
+            <idx><h>differentiable</h></idx>
+        at <m>x = a</m>.</li>
+
+          <li>The derivative is a generalization of the instantaneous velocity of a position function:
+        when <m>y = s(t)</m> is a position function of a moving body,
+        <m>s'(a)</m> tells us the instantaneous velocity of the body at time <m>t=a</m>.</li>
+
+          <li>Because the units on <m>\frac{f(a+h)-f(a)}{h}</m> are
+        <q>units of <m>f</m> per unit of <m>x</m>,</q>
+        the derivative has these very same units.
+        For instance,
+        if <m>s</m> measures position in feet and <m>t</m> measures time in seconds,
+        the units on <m>s'(a)</m> are feet per second.</li>
+
+          <li>Because the quantity
+        <m>\frac{f(a+h)-f(a)}{h}</m> represents the slope of the line through
+        <m>(a,f(a))</m> and <m>(a+h, f(a+h))</m>,
+        when we compute the derivative we are taking the limit of a collection of slopes of lines,
+        and thus the derivative itself represents the slope of a particularly important line.</li>
+        </ul>
+      </p>
+    </note>
+
+    <p>
+      While all of the above ideas are important and we will add depth and perspective to them through additional time and study,
+      for now it is most essential to recognize how the derivative of a function at a given value represents the slope of a certain line.
+      Thus, we expand upon the last bullet item above.
     </p>
 
     <p>
-    Now we use the rule for <m>f</m>, and observe that <m>f(2) = 2 - 2^2 = -2</m> and <m>f(2+h) = (2+h) - (2+h)^2.</m> Substituting these values into the limit definition, we have that
-
-    <me>
-    f'(2) = \lim_{h \to 0} \frac{(2+h) - (2+h)^2 -  (-2)}{h}.
-    </me>
+      As we move from an average rate of change to an instantaneous one,
+      we can think of one point as <q>sliding towards</q> another.
+      In particular,
+      provided the function has a derivative at <m>(a,f(a))</m>,
+      the point <m>(a+h,f(a+h))</m> will approach <m>(a,f(a))</m> as <m>h \to 0</m>.
+      Because this process of taking a limit is a dynamic one,
+      it can be helpful to use computing technology to visualize what the limit is accomplishing.
+      While there are many different options,
+      one of the best is a java applet in which the user is able to control the point that is moving.
+      For a helpful collection of examples,
+      consider the <url href="http://gvsu.edu/s/5r">work of David Austin</url> of Grand Valley State University,
+      and <url href="http://gvsu.edu/s/5s">this particularly relevant example</url>.
+      For applets that have been built in Geogebra<fn>You can even consider building your own examples;
+      the fantastic program Geogebra is available for <url href="http://geogebra.org">free download</url> and is easy to learn and use.</fn>,
+      see <url href="http://gvsu.edu/s/5p">Marc Renault's library</url> via Shippensburg University,
+      with <url href="http://gvsu.edu/s/5q">this example</url> being especially fitting for our work in this section.
     </p>
 
     <p>
-    With <m>h</m> in the denominator and our desire to let <m>h \to 0</m>, we have to wait to take the limit (that is, we wait to actually let <m>h</m> approach 0). Thus, we do additional algebra. Expanding and distributing in the numerator,
-
-    <me>
-    f'(2) = \lim_{h \to 0} \frac{2+h - 4 - 4h - h^2 + 2}{h}.
-    </me>
+      In <xref ref="F-1-3-SecToTanSeq">Figure</xref>,
+      we provide a sequence of figures with several different lines through the points <m>(a, f(a))</m> and
+      <m>(a+h,f(a+h))</m> that are generated by different values of <m>h</m>.
+      These lines
+      (shown in the first three figures in magenta),
+      are often called <em>secant lines</em>
+          <idx><h>secant line</h></idx>
+      to the curve <m>y = f(x)</m>.
+      A secant line to a curve is simply a line that passes through two points that lie on the curve.
+      For each such line,
+      the slope of the secant line is <m>m = \frac{f(a+h) - f(a)}{h}</m>,
+      where the value of <m>h</m> depends on the location of the point we choose.
+      We can see in the diagram how, as <m>h \to 0</m>,
+      the secant lines start to approach a single line that passes through the point <m>(a,f(a))</m>.
+      In the situation where the limit of the slopes of the secant lines exists,
+      we say that the resulting value is the slope of the
+      <em>tangent line</em> to the curve.
+      This tangent line
+          <idx><h>tangent line</h></idx>
+      (shown in the right-most figure in green) to the graph of
+      <m>y = f(x)</m> at the point <m>(a,f(a))</m> is the line through
+      <m>(a,f(a))</m> whose slope is <m>m = f'(a)</m>.
     </p>
+
+    <figure xml:id="F-1-3-SecToTanSeq">
+      <caption>A sequence of secant lines approaching the tangent line to <m>f</m> at <m>(a,f(a))</m>.</caption>
+      <image width="100%" source="images/1_3_SecToTanSeq" />
+    </figure>
 
     <p>
-    Combining like terms, we have
-
-    <me>
-    f'(2) = \lim_{h \to 0} \frac{ -3h - h^2}{h}.
-    </me>
+      As we will see in subsequent study,
+      the existence of the tangent line at <m>x = a</m> is connected to whether or not the function <m>f</m> looks like a straight line when viewed up close at <m>(a,f(a))</m>,
+      which can also be seen in <xref ref="F-1-3-SecToTan">Figure</xref>,
+      where we combine the four graphs in <xref ref="F-1-3-SecToTanSeq">Figure</xref>
+      into the single one on the left,
+      and then we zoom in on the box centered at <m>(a,f(a))</m>,
+      with that view expanded on the right (with two of the secant lines omitted).
+      Note how the tangent line sits relative to the curve <m>y = f(x)</m> at
+      <m>(a,f(a))</m> and how closely it resembles the curve near <m>x = a</m>.
     </p>
+
+    <figure xml:id="F-1-3-SecToTan">
+      <caption>A sequence of secant lines approaching the tangent line to <m>f</m> at <m>(a,f(a))</m>.  At right, we zoom in on the point <m>(a,f(a))</m>.  The slope of the tangent line (in green) to <m>f</m> at <m>(a,f(a))</m> is given by <m>f'(a)</m>.</caption>
+      <image width="60%" source="images/1_3_SecToTan" />
+    </figure>
+
+    <note>
+      <p>
+        The instantaneous rate of change of <m>f</m> with respect to <m>x</m> at <m>x = a</m>,
+        <m>f'(a)</m>,
+        also measures the slope of the tangent line to the curve <m>y = f(x)</m> at <m>(a,f(a))</m>.
+      </p>
+    </note>
 
     <p>
-    Next, we observe that there is a common factor of <m>h</m> in both the numerator and denominator, which allows us to simplify and find that
-
-    <me>
-    f'(2) = \lim_{h \to 0} (-3-h).
-    </me>
+      The following example demonstrates several key ideas involving the derivative of a function.
     </p>
+
+    <example>
+      <title>Using the limit definition of the derivative</title>
+      <statement>
+        <p>
+          For the function given by <m>f(x) = x - x^2</m>,
+          use the limit definition of the derivative to compute <m>f'(2)</m>.
+          In addition,
+          discuss the meaning of this value and draw a labeled graph that supports your explanation.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          From the limit definition, we know that
+          <me>
+            f'(2) = \lim_{h \to 0} \frac{f(2+h)-f(2)}{h}
+          </me>.
+        </p>
+
+        <p>
+          Now we use the rule for <m>f</m>,
+          and observe that <m>f(2) = 2 - 2^2 = -2</m> and <m>f(2+h) = (2+h) - (2+h)^2</m>.
+          Substituting these values into the limit definition, we have that
+          <me>
+            f'(2) = \lim_{h \to 0} \frac{(2+h) - (2+h)^2 -  (-2)}{h}
+          </me>.
+        </p>
+
+        <p>
+          With <m>h</m> in the denominator and our desire to let <m>h \to 0</m>,
+          we have to wait to take the limit (that is,
+          we wait to actually let <m>h</m> approach 0).
+          Thus, we do additional algebra.
+          Expanding and distributing in the numerator,
+          <me>
+            f'(2) = \lim_{h \to 0} \frac{2+h - 4 - 4h - h^2 + 2}{h}
+          </me>.
+        </p>
+
+        <p>
+          Combining like terms, we have
+          <me>
+            f'(2) = \lim_{h \to 0} \frac{ -3h - h^2}{h}
+          </me>.
+        </p>
+
+        <p>
+          Next, we observe that there is a common factor of <m>h</m> in both the numerator and denominator,
+          which allows us to simplify and find that
+          <me>
+            f'(2) = \lim_{h \to 0} (-3-h)
+          </me>.
+        </p>
+
+        <p>
+          Finally, we are able to take the limit as <m>h \to 0</m>,
+          and thus conclude that <m>f'(2) = -3</m>.
+        </p>
+
+        <sidebyside widths="59% 35%">
+          <p>
+            Now, we know that <m>f'(2)</m> represents the slope of the tangent line to the curve
+            <m>y = x - x^2</m> at the point <m>(2,-2)</m>;
+            <m>f'(2)</m> is also the instantaneous rate of change of <m>f</m> at the point <m>(2,-2)</m>.
+            Graphing both the function and the line through <m>(2,-2)</m> with slope <m>m = f'(2) = -3</m>,
+            we indeed see that by calculating the derivative,
+            we have found the slope of the tangent line at this point,
+            as shown in <xref ref="F-1-3-Ex1">Figure</xref>.
+          </p>
+
+          <figure xml:id="F-1-3-Ex1">
+            <caption>The tangent line to <m>y = x - x^2</m> at the point <m>(2,-2)</m>.</caption>
+            <image source="images/1_3_Ex1" />
+          </figure>
+        </sidebyside>
+      </solution>
+    </example>
 
     <p>
-    Finally, we are able to take the limit as <m>h \to 0</m>, and thus conclude that <m>f'(2) = -3</m>.
+      The following activities will help you explore a variety of key ideas related to derivatives.
     </p>
 
-    <sidebyside widths="59% 35%">
+    <xi:include href="./activities/act-1-3-1.xml" />
+
+     <xi:include href="./activities/act-1-3-2.xml" />
+
+     <xi:include href="./activities/act-1-3-3.xml" />
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
     <p>
-    Now, we know that <m>f'(2)</m> represents the slope of the tangent line to the curve <m>y = x - x^2</m> at the point <m>(2,-2)</m>; <m>f'(2)</m> is also the instantaneous rate of change of <m>f</m> at the point <m>(2,-2)</m>. Graphing both the function and the line through <m>(2,-2)</m> with slope <m>m = f'(2) = -3</m>, we indeed see that by calculating the derivative, we have found the slope of the tangent line at this point, as shown in <xref ref="F-1-3-Ex1">Figure</xref>.
+      <ul>
+        <li>The average rate of change of a function <m>f</m> on the interval <m>[a,b]</m> is <m>\frac{f(b)-f(a)}{b-a}</m>.
+      The units on the average rate of change are units of <m>f</m> per unit of <m>x</m>,
+      and the numerical value of the average rate of change represents the slope of the secant line between the points <m>(a,f(a))</m> and
+      <m>(b,f(b))</m> on the graph of <m>y = f(x)</m>.
+      If we view the interval as being <m>[a,a+h]</m> instead of <m>[a,b]</m>,
+      the meaning is still the same,
+      but the average rate of change is now computed by <m>\frac{f(a+h)-f(a)}{h}</m>.</li>
+
+        <li>The instantaneous rate of change with respect to <m>x</m> of a function <m>f</m> at a value <m>x = a</m> is denoted <m>f'(a)</m>
+      (read <q>the derivative of <m>f</m> evaluated at <m>a</m></q>
+      or <q><m>f</m>-prime at <m>a</m></q>)
+      and is defined by the formula
+          <me>
+            f'(a) = \lim_{h \to 0} \frac{f(a+h)-f(a)}{h}
+          </me>,
+          provided the limit exists.
+      Note particularly that the instantaneous rate of change at <m>x = a</m> is the limit of the average rate of change on <m>[a,a+h]</m> as <m>h \to 0</m>.</li>
+
+        <li>Provided the derivative <m>f'(a)</m> exists,
+      its value tells us the instantaneous rate of change of <m>f</m> with respect to <m>x</m> at <m>x = a</m>,
+      which geometrically is the slope of the tangent line to the curve
+      <m>y = f(x)</m> at the point <m>(a,f(a))</m>.
+      We even say that <m>f'(a)</m> is the
+      <q>slope of the curve</q>
+      at the point <m>(a,f(a))</m>.</li>
+
+        <li>Limits are the link between average rate of change and instantaneous rate of change:
+      they allow us to move from the rate of change over an interval to the rate of change at a single point.</li>
+      </ul>
     </p>
-    <figure xml:id="F-1-3-Ex1" >
-    <caption>The tangent line to <m>y = x - x^2</m> at the point <m>(2,-2)</m>.</caption>
-    <image source="images/1_3_Ex1" /> </figure>
-    </sidebyside>
+  </subsection>
 
-  </solution>
-</example>
-
-<p>
-The following activities will help you explore a variety of key ideas related to derivatives.
-</p>
-
- <xi:include href="./activities/act-1-3-1.xml" />
-
- <xi:include href="./activities/act-1-3-2.xml" />
-
- <xi:include href="./activities/act-1-3-3.xml" />
-
-</subsection>
-
-<subsection>
-  <title>Summary</title>
-  <p><ul>
-    <li>The average rate of change of a function <m>f</m> on the interval <m>[a,b]</m> is <m>\frac{f(b)-f(a)}{b-a}</m>. The units on the average rate of change are units of <m>f</m> per unit of <m>x</m>, and the numerical value of the average rate of change represents the slope of the secant line between the points <m>(a,f(a))</m> and <m>(b,f(b))</m> on the graph of <m>y = f(x)</m>. If we view the interval as being <m>[a,a+h]</m> instead of <m>[a,b]</m>, the meaning is still the same, but the average rate of change is now computed by <m>\frac{f(a+h)-f(a)}{h}</m>.</li>
-
-    <li>The instantaneous rate of change with respect to <m>x</m> of a function <m>f</m> at a value <m>x = a</m> is denoted <m>f'(a)</m> (read <q>the derivative of <m>f</m> evaluated at <m>a</m></q> or <q><m>f</m>-prime at <m>a</m></q>) and is defined by the formula
-    <me>
-    f'(a) = \lim_{h \to 0} \frac{f(a+h)-f(a)}{h},
-    </me>
-    provided the limit exists. Note particularly that the instantaneous rate of change at <m>x = a</m> is the limit of the average rate of change on <m>[a,a+h]</m> as <m>h \to 0</m>.</li>
-
-    <li>Provided the derivative <m>f'(a)</m> exists, its value tells us the instantaneous rate of change of <m>f</m> with respect to <m>x</m> at <m>x = a</m>, which geometrically is the slope of the tangent line to the curve <m>y = f(x)</m> at the point <m>(a,f(a))</m>. We even say that <m>f'(a)</m> is the <q>slope of the curve</q> at the point <m>(a,f(a))</m>.</li>
-
-    <li>Limits are the link between average rate of change and instantaneous rate of change: they allow us to move from the rate of change over an interval to the rate of change at a single point.
-    </li>
-  </ul></p>
-</subsection>
-
- <xi:include href="./exercises/ez-1-3.xml" />
-
+  <xi:include href="./exercises/ez-1-3.xml" />
 </section>
+
