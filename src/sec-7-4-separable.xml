@@ -13,281 +13,338 @@
 <!-- derivatives for profit.  All trademarks are the registered marks of   -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
+
 <section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-7-4-separable">
-
-<title>Separable differential equations</title>
-
-
-<objectives>
+  <title>Separable differential equations</title>
+  <objectives>
     <ul>
-        <li><p>What is a separable differential equation?</p></li>
-        <li><p>How can we find solutions to a separable differential equation?</p></li>
-        <li><p>Are some of the differential equations that arise in applications separable?</p></li>
+      <li>
+        <p>
+          What is a separable differential equation?
+        </p>
+      </li>
+
+      <li>
+        <p>
+          How can we find solutions to a separable differential equation?
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Are some of the differential equations that arise in applications separable?
+        </p>
+      </li>
     </ul>
-</objectives>
-<introduction>
-<p>
-In <xref ref="sec-7-2-qualitative">Sections</xref> and <xref ref="sec-7-3-euler"></xref>, we have seen several ways to approximate the solution to
-an initial value problem. Given the frequency with which differential equations arise in the world around us, we would like to have some techniques
-for finding explicit algebraic solutions of certain initial value
-problems. In this section, we focus on a particular class of differential
-equations (called <em>separable</em>) and develop a method for finding
-algebraic formulas for solutions to these equations.
-</p>
-
-<p>
-A <em>separable differential equation</em><idx><h>separable</h></idx> is a differential equation whose algebraic structure permits the variables present to be separated in a particular way. For instance, consider the equation
-<me>
-  \frac{dy}{dt} = ty.
-</me>
-</p>
-
-<p>
-We would like to separate the variables <m>t</m> and <m>y</m> so that all
-occurrences of <m>t</m> appear on the right-hand side, and all occurrences
-of <m>y</m> appears on the left and multiply <m>dy/dt</m>. We may do this in the preceding differential equation by dividing both sides by
-<m>y</m>:
-<me>
-  \frac1y\frac{dy}{dt} = t.
-</me>
-</p>
-
-<p>
-Note particularly that when we attempt to separate the variables in a differential equation, we require that the left-hand side be a product in which the derivative <m>dy/dt</m> is one term.
-</p>
-
-<p>
-Not every differential equation is separable. For example, if we consider the
-equation
-<me>
-  \frac{dy}{dt} = t-y,
-</me>
-it may seem natural to separate it by writing
-<me>
-  y + \frac{dy}{dt} = t.
-</me>
-</p>
-
-<p>
-As we will see, this will not be helpful since the left-hand side is
-not a product of a function of <m>y</m> with <m>\frac{dy}{dt}</m>.
-</p>
-
-<xi:include href="./previews/PA-7-4.xml" />
-
-</introduction>
-
-<subsection>
-<title>Solving separable differential equations</title>
-<p>
-<idx><h>separable</h></idx>
-</p>
-
-<p>
-Before we discuss a general approach to solving a separable differential equation, it is instructive to consider an example.
-</p>
-
-<example xml:id="Ex-7-4-1">
-<statement>
-<p>
-Find all functions <m>y</m> that are solutions to the differential equation
-<me>
-  \frac{dy}{dt}= \frac{t}{y^2}.
-</me>
-</p>
-</statement>
-<solution>
+  </objectives>
+  <introduction>
     <p>
-We begin by separating the variables and writing
-<me>
-  y^2\frac{dy}{dt} = t.
-</me>
-</p>
+      In <xref ref="sec-7-2-qualitative">Sections</xref>
+      and <xref ref="sec-7-3-euler"></xref>,
+      we have seen several ways to approximate the solution to an initial value problem.
+      Given the frequency with which differential equations arise in the world around us,
+      we would like to have some techniques for finding explicit algebraic solutions of certain initial value problems.
+      In this section,
+      we focus on a particular class of differential equations
+      (called <em>separable</em>)
+      and develop a method for finding algebraic formulas for solutions to these equations.
+    </p>
 
-<p>
-Integrating both sides of the equation with respect to the independent
-variable <m>t</m> shows that
-<me>
-  \int y^2\frac{dy}{dt}~dt = \int t~dt.
-</me>
-</p>
-
-<p>
-Next, we notice that the left-hand side allows us to change
-the variable of antidifferentiation<fn>This is why we required that the left-hand side be written as a
-    product in which <m>dy/dt</m> is one of the terms.</fn> from <m>t</m> to <m>y</m>. In
-particular,
-<m>dy = \frac{dy}{dt}~dt</m>, so we now have
-<me>
-  \int y^2 ~dy = \int t~dt.
-</me>
-</p>
-
-<p>
-This most recent equation says that two families of antiderivatives are
-equal to one another. Therefore, when we find representative
-antiderivatives of both sides, we know they must differ by
-arbitrary constant <m>C</m>. Antidifferentiating and including the integration constant <m>C</m> on the right, we find that
-<me>
-  \frac{y^3}{3} = \frac{t^2}{2} + C.
-</me>
-</p>
-
-<p>
-Again, note that it is not necessary to include an arbitrary constant on both sides
-of the equation; we know that <m>y^3/3</m> and <m>t^2/2</m> are in the same
-family of antiderivatives and must therefore differ by a single
-constant.
-</p>
-
-<p>
-Finally, we may now solve the last equation above for <m>y</m> as a function of <m>t</m>, which gives
-<me>
-  y(t) = \sqrt[3]{\frac 32 \, t^2 + 3C}.
-</me>
-</p>
-
-<p>
-Of course, the term <m>3C</m> on the right-hand side represents
-3 times an unknown constant. It is, therefore, still an unknown
-constant, which we will rewrite as <m>C</m>. We thus conclude that the funtion
-<me>
-  y(t) = \sqrt[3]{\frac 32 \, t^2 + C}
-</me>
-is a solution to the original differential equation for any value of <m>C</m>.
-</p>
-
-<p>
-Notice that because this solution depends on the arbitrary constant <m>C</m>, we have found an infinite family of
-solutions. This makes sense because we expect to find a unique solution that corresponds to any given
-initial value.
-</p>
-
-<p>
-For example, if we want to solve the initial value problem
-<me>
-  \frac{dy}{dt} = \frac{t}{y^2}, \
-  y(0) = 2,
-</me>
-we know that the solution has the form <m>y(t) = \sqrt[3]{\frac32\,
-  t^2 + C}</m> for some constant <m>C</m>. We therefore must find the appropriate
-value for <m>C</m> that gives the initial value <m>y(0)=2</m>. Hence,
-<me>
-  2 = y(0) = \sqrt[3]{\frac 32 \, 0^2 + C} = \sqrt[3]{C},
-</me>
-which shows that <m>C = 2^3 = 8</m>. The solution to the initial value problem is then
-<me>
-  y(t) = \sqrt[3]{\frac32\, t^2+8}.
-</me>
-</p>
-</solution>
-</example>
-
-
-
-<p>
-The strategy of <xref ref="Ex-7-4-1">Example</xref> may be applied to any differential equation of the form <m>\frac{dy}{dt} = g(y) \cdot h(t)</m>, and any differential equation of this form is said to be <em>separable</em>. We work to solve a separable differential equation by writing
-<me>
-  \frac{1}{g(y)} \frac{dy}{dt} = h(t),
-</me>
-and then integrating both sides with respect to <m>t</m>. After integrating, we strive to solve algebraically for <m>y</m> in order to write <m>y</m> as a function of <m>t</m>.
-</p>
-
-<p>
-We consider one more example before doing further exploration in some activities.
-</p>
-
-<example xml:id="Ex-7-4-2">
-<statement>
-<p>
-Solve the differential equation
-<me>
-  \frac{dy}{dt} =3y.
-</me>
-</p>
-</statement>
-<solution>
     <p>
-Following the same strategy as in <xref ref="Ex-7-4-1">Example</xref>, we have
-<me>
-  \frac 1y \frac{dy}{dt} = 3.
-</me>
-</p>
+      A <em>separable differential equation</em>
+          <idx><h>separable</h></idx>
+      is a differential equation whose algebraic structure permits the variables present to be separated in a particular way.
+      For instance, consider the equation
+      <me>
+        \frac{dy}{dt} = ty
+      </me>.
+    </p>
 
-<p>
-Integrating both sides with respect to <m>t</m>,
-<me>
-  \int \frac 1y\frac{dy}{dt}~dt = \int 3~dt,
-</me>
-and thus
-<me>
-  \int \frac 1y~dy =  \int 3~dt.
-</me>
-</p>
+    <p>
+      We would like to separate the variables <m>t</m> and <m>y</m> so that all
+      occurrences of <m>t</m> appear on the right-hand side,
+      and all occurrences
+      of <m>y</m> appears on the left and multiply <m>dy/dt</m>.
+      We may do this in the preceding differential equation by dividing both sides by
+      <m>y</m>:
+      <me>
+        \frac1y\frac{dy}{dt} = t
+      </me>.
+    </p>
 
-<p>
-Antidifferentiating and including the integration constant, we find that
-<me>
-  \ln|y| = 3t + C.
-</me>
-</p>
+    <p>
+      Note particularly that when we attempt to separate the variables in a differential equation,
+      we require that the left-hand side be a product in which the derivative <m>dy/dt</m> is one term.
+    </p>
 
-<p>
-Finally, we need to solve for <m>y</m>. Here, one point deserves careful
-attention. By the definition of the natural logarithm function, it follows that
-<me>
-  |y| = e^{3t+C} = e^{3t}e^C.
-</me>
-</p>
+    <p>
+      Not every differential equation is separable.
+      For example, if we consider the
+      equation
+      <me>
+        \frac{dy}{dt} = t-y
+      </me>,
+      it may seem natural to separate it by writing
+      <me>
+        y + \frac{dy}{dt} = t
+      </me>.
+    </p>
 
-<p>
-Since <m>C</m> is an unknown constant, <m>e^C</m> is as well, though we do know
-that it is positive (because <m>e^x</m> is positive for any <m>x</m>).
-When we remove the absolute value in order to solve for <m>y</m>, however, this constant may be either positive or
-negative. We
-will denote this updated constant (that accounts for a possible <m>+</m> or <m>-</m>) by <m>C</m> to obtain
-<me>
-  y(t) = Ce^{3t}.
-</me>
-</p>
-</solution>
-</example>
+    <p>
+      As we will see,
+      this will not be helpful since the left-hand side is not a product of a function of <m>y</m> with <m>\frac{dy}{dt}</m>.
+    </p>
 
-<p>
-There is one more slightly technical point to make. Notice that <m>y=0</m>
-is an equilibrium solution to this differential equation. In solving
-the equation above, we begin by dividing both sides by <m>y</m>, which
-is not allowed if <m>y=0</m>. To be perfectly careful, therefore, we will typically
-consider the equilibrium solutions separately. In this case, notice that the final
-form of our solution captures the equilibrium solution by allowing
-<m>C=0</m>.
-</p>
+    <xi:include href="./previews/PA-7-4.xml" />
+  </introduction>
+
+  <subsection>
+    <title>Solving separable differential equations</title>
+    <p>
+          <idx><h>separable</h></idx>
+    </p>
+
+    <p>
+      Before we discuss a general approach to solving a separable differential equation,
+      it is instructive to consider an example.
+    </p>
+
+    <example xml:id="Ex-7-4-1">
+      <statement>
+        <p>
+          Find all functions <m>y</m> that are solutions to the differential equation
+          <me>
+            \frac{dy}{dt}= \frac{t}{y^2}
+          </me>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We begin by separating the variables and writing
+          <me>
+            y^2\frac{dy}{dt} = t
+          </me>.
+        </p>
+
+        <p>
+          Integrating both sides of the equation with respect to the independent
+          variable <m>t</m> shows that
+          <me>
+            \int y^2\frac{dy}{dt}~dt = \int t~dt
+          </me>.
+        </p>
+
+        <p>
+          Next, we notice that the left-hand side allows us to change
+          the variable of antidifferentiation<fn>This is why we required that the left-hand side be written as a
+              product in which <m>dy/dt</m> is one of the terms.</fn>from <m>t</m> to <m>y</m>.
+          In
+          particular,
+          <m>dy = \frac{dy}{dt}~dt</m>, so we now have
+          <me>
+            \int y^2 ~dy = \int t~dt
+          </me>.
+        </p>
+
+        <p>
+          This most recent equation says that two families of antiderivatives are
+          equal to one another.
+          Therefore, when we find representative
+          antiderivatives of both sides,
+          we know they must differ by
+          arbitrary constant <m>C</m>.
+          Antidifferentiating and including the integration constant <m>C</m> on the right,
+          we find that
+          <me>
+            \frac{y^3}{3} = \frac{t^2}{2} + C
+          </me>.
+        </p>
+
+        <p>
+          Again, note that it is not necessary to include an arbitrary constant on both sides of the equation;
+          we know that <m>y^3/3</m> and <m>t^2/2</m> are in the same family of antiderivatives and must therefore differ by a single constant.
+        </p>
+
+        <p>
+          Finally, we may now solve the last equation above for <m>y</m> as a function of <m>t</m>,
+          which gives
+          <me>
+            y(t) = \sqrt[3]{\frac 32 \, t^2 + 3C}
+          </me>.
+        </p>
+
+        <p>
+          Of course, the term <m>3C</m> on the right-hand side represents
+          3 times an unknown constant.
+          It is, therefore, still an unknown
+          constant, which we will rewrite as <m>C</m>.
+          We thus conclude that the funtion
+          <me>
+            y(t) = \sqrt[3]{\frac 32 \, t^2 + C}
+          </me>
+          is a solution to the original differential equation for any value of <m>C</m>.
+        </p>
+
+        <p>
+          Notice that because this solution depends on the arbitrary constant <m>C</m>,
+          we have found an infinite family of solutions.
+          This makes sense because we expect to find a unique solution that corresponds to any given initial value.
+        </p>
+
+        <p>
+          For example, if we want to solve the initial value problem
+          <me>
+            \frac{dy}{dt} = \frac{t}{y^2}, \
+              y(0) = 2
+          </me>,
+          we know that the solution has the form
+          <m>y(t) = \sqrt[3]{\frac32\,
+            t^2 + C}</m> for some constant <m>C</m>.
+          We therefore must find the appropriate
+          value for <m>C</m> that gives the initial value <m>y(0)=2</m>.
+          Hence,
+          <me>
+            2 = y(0) = \sqrt[3]{\frac 32 \, 0^2 + C} = \sqrt[3]{C}
+          </me>,
+          which shows that <m>C = 2^3 = 8</m>.
+          The solution to the initial value problem is then
+          <me>
+            y(t) = \sqrt[3]{\frac32\, t^2+8}
+          </me>.
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      The strategy of <xref ref="Ex-7-4-1">Example</xref>
+      may be applied to any differential equation of the form <m>\frac{dy}{dt} = g(y) \cdot h(t)</m>,
+      and any differential equation of this form is said to be <em>separable</em>.
+      We work to solve a separable differential equation by writing
+      <me>
+        \frac{1}{g(y)} \frac{dy}{dt} = h(t)
+      </me>,
+      and then integrating both sides with respect to <m>t</m>.
+      After integrating,
+      we strive to solve algebraically for <m>y</m> in order to write <m>y</m> as a function of <m>t</m>.
+    </p>
+
+    <p>
+      We consider one more example before doing further exploration in some activities.
+    </p>
+
+    <example xml:id="Ex-7-4-2">
+      <statement>
+        <p>
+          Solve the differential equation
+          <me>
+            \frac{dy}{dt} =3y
+          </me>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Following the same strategy as in <xref ref="Ex-7-4-1">Example</xref>, we have
+          <me>
+            \frac 1y \frac{dy}{dt} = 3
+          </me>.
+        </p>
+
+        <p>
+          Integrating both sides with respect to <m>t</m>,
+          <me>
+            \int \frac 1y\frac{dy}{dt}~dt = \int 3~dt
+          </me>,
+          and thus
+          <me>
+            \int \frac 1y~dy =  \int 3~dt
+          </me>.
+        </p>
+
+        <p>
+          Antidifferentiating and including the integration constant,
+          we find that
+          <me>
+            \ln|y| = 3t + C
+          </me>.
+        </p>
+
+        <p>
+          Finally, we need to solve for <m>y</m>.
+          Here, one point deserves careful
+          attention.
+          By the definition of the natural logarithm function, it follows that
+          <me>
+            |y| = e^{3t+C} = e^{3t}e^C
+          </me>.
+        </p>
+
+        <p>
+          Since <m>C</m> is an unknown constant,
+          <m>e^C</m> is as well, though we do know
+          that it is positive (because <m>e^x</m> is positive for any <m>x</m>).
+          When we remove the absolute value in order to solve for <m>y</m>, however,
+          this constant may be either positive or
+          negative.
+          We
+          will denote this updated constant
+          (that accounts for a possible <m>+</m> or <m>-</m>)
+          by <m>C</m> to obtain
+          <me>
+            y(t) = Ce^{3t}
+          </me>.
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      There is one more slightly technical point to make.
+      Notice that <m>y=0</m> is an equilibrium solution to this differential equation.
+      In solving the equation above,
+      we begin by dividing both sides by <m>y</m>,
+      which is not allowed if <m>y=0</m>.
+      To be perfectly careful, therefore,
+      we will typically consider the equilibrium solutions separately.
+      In this case,
+      notice that the final form of our solution captures the equilibrium solution by allowing <m>C=0</m>.
+    </p>
 
     <xi:include href="./activities/act-7-4-1.xml" />
-    <xi:include href="./activities/act-7-4-2.xml" />
-    <xi:include href="./activities/act-7-4-3.xml" />
+        <xi:include href="./activities/act-7-4-2.xml" />
+        <xi:include href="./activities/act-7-4-3.xml" />
+  </subsection>
 
-</subsection>
+  <subsection>
+    <title>Summary</title>
+    <p>
+      <ul>
+        <li>
+          <p>
+            A separable differential equation is one that may be rewritten with all occurrences of the dependent variable multiplying the derivative and all occurrences of the independent variable on the other side of the equation.
+          </p>
+        </li>
 
-<subsection>
-<title>Summary</title>
-    <p><ul>
-        <li><p>A separable differential equation is one that may be rewritten
-          with all occurrences of the dependent variable multiplying the
-          derivative and all occurrences of the independent variable on the
-          other side of the equation.</p></li>
-        <li><p>We may find the solutions to certain separable differential equations
-          by separating variables, integrating with respect to <m>t</m>, and ultimately solving the resulting algebraic equation for <m>y</m>.</p></li>
-        <li><p>This technique allows us to solve many important differential
-          equations that arise in the world around us.  For instance, questions of
-          growth and decay and Newton's Law of Cooling give rise to separable
-          differential equations.  Later, we will learn in <xref ref="sec-7-6-logistic">Section</xref> that the important logistic differential equation is also separable.</p></li>
-    </ul></p>
-</subsection>
+        <li>
+          <p>
+            We may find the solutions to certain separable differential equations by separating variables,
+            integrating with respect to <m>t</m>,
+            and ultimately solving the resulting algebraic equation for <m>y</m>.
+          </p>
+        </li>
 
+        <li>
+          <p>
+            This technique allows us to solve many important differential equations that arise in the world around us.
+            For instance,
+            questions of growth and decay and Newton's Law of Cooling give rise to separable differential equations.
+            Later,
+      we will learn in <xref ref="sec-7-6-logistic">Section</xref>
+            that the important logistic differential equation is also separable.
+          </p>
+        </li>
+      </ul>
+    </p>
+  </subsection>
 
-    <xi:include href="./exercises/ez-7-4.xml" />
-
-
-
+  <xi:include href="./exercises/ez-7-4.xml" />
 </section>
+

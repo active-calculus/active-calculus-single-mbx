@@ -14,249 +14,350 @@
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
 <exercises xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="ez-8-4">
-
   <exercise xml:id="ez-8-4-WW1">
     <title>Testing convergence for an alternating series</title>
     <webwork source="Library/Michigan/Chap9Sec4/Q57.pg" />
   </exercise>
-
-<!-- Uses EV2 and incompatible with PTX -->
-<!--   <exercise xml:id="ez-8-4-WW2">
+  <!-- Uses EV2 and incompatible with PTX -->
+  <!--
+  <exercise xml:id="ez-8-4-WW2">
     <webwork source="Library/Rochester/setSeries3Convergent/ur_sr_3_1.pg" />
-  </exercise> -->
-
+  </exercise>
+  -->
   <exercise xml:id="ez-8-4-WW3">
     <title>Estimating the sum of an alternating series</title>
     <webwork source="Library/Rochester/setSeries3Convergent/ur_sr_3_8.pg" />
   </exercise>
-
   <exercise xml:id="ez-8-4-WW4">
     <title>Estimating the sum of a different alternating series</title>
     <webwork source="Library/Rochester/setSeries3Convergent/ur_sr_3_9.pg" />
   </exercise>
-
   <exercise xml:id="ez-8-4-WW5">
     <title>Estimating the sum of one more alternating series</title>
     <webwork source="Library/Rochester/setSeries3Convergent/ur_sr_3_10.pg" />
   </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Conditionally convergent series converge very slowly.
+        As an example,
+        consider the famous formula<fn>We will derive this formula in upcoming work.</fn><men xml:id="Ex-8-4-pi">
+          \frac{\pi}{4} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \cdots = \sum_{k=0}^{\infty} (-1)^{k} \frac{1}{2k+1}
+        </men>.
+      </p>
 
-      <exercise>
-        <statement>
-          <p>Conditionally convergent series converge very slowly. As an example, consider the famous formula<fn>We will derive this formula in upcoming work.</fn>
-            <men xml:id="Ex-8-4-pi" >
-              \frac{\pi}{4} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \cdots = \sum_{k=0}^{\infty} (-1)^{k} \frac{1}{2k+1}
-            </men>.
+      <p>
+        In theory, the partial sums of this series could be used to approximate <m>\pi</m>.
+      </p>
+
+      <p>
+        <ol label="a.">
+          <li>
+            <p>
+              Show that the series in <xref ref="Ex-8-4-pi" /> converges conditionally.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Let <m>S_n</m> be the <m>n</m>th partial sum of the series in <xref ref="Ex-8-4-pi" />.
+              Calculate the error in approximating
+              <m>\frac{\pi}{4}</m> with <m>S_{100}</m> and explain why this is not a very good approximation.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Determine the number of terms it would take in the series <xref ref="Ex-8-4-pi" /> to approximate
+              <m>\frac{\pi}{4}</m> to 10 decimal places. (The fact that it takes such a large number of terms to obtain even a modest degree of accuracy is why we say that conditionally convergent series converge very slowly.)
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        In this case we have
+        <me>
+          |S_n - \sum_{k=0}^{\infty} (-1)^{k} \frac{1}{2k+1}| \lt  a_{n+1} = \frac{1}{2n+1}
+        </me>.
+      </p>
+
+      <p>
+        To have <m>a_{n+1} \lt  10^{-10}</m> would require
+        <md>
+          <mrow>\frac{1}{2n+1} \amp \lt  10^{-10}</mrow>
+          <mrow>2n+1 \amp \gt 10^{10}</mrow>
+          <mrow>n \amp \gt \frac{10^{10}-1}{2}</mrow>
+          <mrow>n \amp \gt 4{,}999{,}999{,}999.5</mrow>
+        </md>.
+      </p>
+    </solution>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        We have shown that if <m>\sum (-1)^{k+1} a_k</m> is a convergent alternating series,
+        then the sum <m>S</m> of the series lies between any two consecutive partial sums <m>S_n</m>.
+        This suggests that the average <m>\frac{S_n+S_{n+1}}{2}</m>
+                  is a better approximation to <m>S</m> than is <m>S_n</m>.
+        <ol label="a.">
+          <li>
+            <p>
+              Show that <m>\frac{S_n+S_{n+1}}{2} = S_n + \frac{1}{2}(-1)^{n+2} a_{n+1}</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Use this revised approximation in (a) with <m>n = 20</m> to approximate <m>\ln(2)</m> given that
+              <me>
+                \ln(2) = \sum_{k=1}^{\infty} (-1)^{k+1} \frac{1}{k}
+              </me>.
+              Compare this to the approximation using just <m>S_{20}</m>.
+              For your convenience, <m>S_{20} = \frac{155685007}{232792560}</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <ol label="a.">
+          <li>
+            <p>
+              Since <m>S_{n+1} = S_n + (-1)^{n+2}a_{n+1}</m> we have
+              <md>
+                <mrow>\frac{S_n+S_{n+1}}{2} \amp = \frac{S_n+S_{n} + (-1)^{n+2}a_{n+1}}{2}</mrow>
+                <mrow>\amp = \frac{2S_{n} + (-1)^{n+2}a_{n+1}}{2}</mrow>
+                <mrow>\amp = S_n + \frac{1}{2}(-1)^{n+2}a_{n+1}</mrow>
+              </md>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        In this exercise,
+        we examine one of the conditions of the Alternating Series Test.
+        Consider the alternating series
+        <me>
+          1 - 1 + \frac{1}{2} - \frac{1}{4} + \frac{1}{3} - \frac{1}{9} + \frac{1}{4} - \frac{1}{16} + \cdots
+        </me>,
+        where the terms are selected alternately from the sequences
+        <m>\left\{\frac{1}{n}\right\}</m> and <m>\left\{-\frac{1}{n^2}\right\}</m>.
+      </p>
+
+      <p>
+        <ol label="a.">
+          <li>
+            <p>
+              Explain why the <m>n</m>th term of the given series converges to 0 as <m>n</m> goes to infinity.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Rewrite the given series by grouping terms in the following manner:
+              <me>
+                (1 - 1) + \left(\frac{1}{2} - \frac{1}{4}\right) + \left(\frac{1}{3} - \frac{1}{9}\right) + \left(\frac{1}{4} - \frac{1}{16}\right) + \cdots
+              </me>.
+              Use this regrouping to determine if the series converges or diverges.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Explain why the condition that the sequence <m>\{a_n\}</m> <em>decreases</em>
+              to a limit of 0 is included in the Alternating Series Test.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <ol label="a.">
+          <li>
+            <p>
+              Since both sequences <m>\left\{\frac{1}{n}\right\}</m> and
+              <m>\left\{-\frac{1}{n^2}\right\}</m> converge to 0 as <m>n</m> goes to infinity,
+              we see that the sequence of <m>n</m>th terms of our series converge to 0 as <m>n</m> goes to infinity.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Notice that <m>\frac{1}{k} - \frac{1}{k^2} = \frac{k-1}{k^2}</m>.
+              So our series can be rewritten as
+              <me>
+                \sum_{k=1}^{\infty} \frac{k-1}{k^2}
+              </me>.
+            </p>
+
+            <p>
+              Since
+              <me>
+                \lim_{k \to \infty} \frac{ \frac{k-1}{k^2} }{ \frac{1}{k} } = \lim_{k \to \infty} \frac{k^2-k}{k^2} = 1
+              </me>,
+              the Limit Comparison Test shows that the series
+              <m>\sum_{k=1}^{\infty} \frac{k-1}{k^2}</m> behaves like the harmonic series <m>\sum_{k=1}^{\infty} \frac{1}{k}</m>.
+              Since the harmonic series diverges,
+              it follows that the series <m>\sum_{k=1}^{\infty} \frac{k-1}{k^2}</m> diverges as well.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Conditionally convergent series exhibit interesting and unexpected behavior.
+        In this exercise we examine the conditionally convergent alternating harmonic series
+        <m>\sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k}</m> and discover that addition is not commutative for conditionally convergent series.
+        We will also encounter Riemann's Theorem concerning rearrangements of conditionally convergent series.
+        Before we begin, we remind ourselves that
+        <me>
+          \sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k} = \ln(2)
+        </me>,
+        a fact which will be verified in a later section.
+      </p>
+
+      <p>
+        <ol label="a.">
+        <li>
+          <p>
+            First we make a quick analysis of the positive and negative terms of the alternating harmonic series.
           </p>
 
-          <p>In theory, the partial sums of this series could be used to approximate <m>\pi</m>.</p>
+          <p>
+            <ol label="i.">
+              <li>
+                <p>
+                  Show that the series <m>\sum_{k=1}^{\infty} \frac{1}{2k}</m> diverges.
+                </p>
+              </li>
 
-          <p><ol label="a.">
-            <li>
-              <p>Show that the series in <xref ref="Ex-8-4-pi" /> converges conditionally.</p>
-            </li>
+              <li>
+                <p>
+                  Show that the series <m>\sum_{k=1}^{\infty} \frac{1}{2k+1}</m> diverges.
+                </p>
+              </li>
 
-            <li>
-              <p>Let <m>S_n</m> be the <m>n</m>th partial sum of the series in <xref ref="Ex-8-4-pi" />. Calculate the error in approximating <m>\frac{\pi}{4}</m> with <m>S_{100}</m> and explain why this is not a very good approximation.</p>
-            </li>
-
-            <li>
-              <p>Determine the number of terms it would take in the series <xref ref="Ex-8-4-pi" /> to approximate <m>\frac{\pi}{4}</m> to 10 decimal places. (The fact that it takes such a large number of terms to obtain even a modest degree of accuracy is why we say that conditionally convergent series converge very slowly.)
-              </p>
-            </li>
-          </ol>
+              <li>
+                <p>
+                  Based on the results of the previous parts of this exercise,
+                  what can we say about the sums <m>\sum_{k=C}^{\infty} \frac{1}{2k}</m> and
+                  <m>\sum_{k=C}^{\infty} \frac{1}{2k+1}</m> for any positive integer <m>C</m>?
+                  Be specific in your explanation.
+                </p>
+              </li>
+            </ol>
           </p>
-        </statement>
-        <solution>
-          <p>In this case we have
+        </li>
+
+        <li>
+          <p>
+            Recall addition of real numbers is commutative; that is
             <me>
-              |S_n - \sum_{k=0}^{\infty} (-1)^{k} \frac{1}{2k+1}| \lt  a_{n+1} = \frac{1}{2n+1}
-            </me>.
+              a + b = b + a
+            </me>
+            for any real numbers <m>a</m> and <m>b</m>.
+            This property is valid for any sum of finitely many terms,
+            but does this property extend when we add infinitely many terms together?
           </p>
 
-          <p>To have <m>a_{n+1} \lt  10^{-10}</m> would require
-            <md>
-              <mrow>\frac{1}{2n+1} \amp \lt  10^{-10}</mrow>
-              <mrow>2n+1 \amp \gt 10^{10}</mrow>
-              <mrow>n \amp \gt \frac{10^{10}-1}{2}</mrow>
-              <mrow>n \amp \gt 4{,}999{,}999{,}999.5</mrow>
-            </md>.
+          <p>
+            The answer is no, and something even more odd happens.
+            Riemann's Theorem
+            (after the nineteenth-century mathematician Georg Friedrich Bernhard Riemann)
+            states that a conditionally convergent series can be rearranged to converge to
+            <em>any</em> prescribed sum.
+            More specifically,
+            this means that if we choose any real number <m>S</m>,
+            we can rearrange the terms of the alternating harmonic series
+            <m>\sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k}</m> so that the sum is <m>S</m>.
+            To understand how Riemann's Theorem works,
+            let's assume for the moment that the number <m>S</m> we want our rearrangement to converge to is positive.
+            Our job is to find a way to order the sum of terms of the alternating harmonic series to converge to <m>S</m>.
           </p>
-        </solution>
-      </exercise>
 
-      <exercise>
-        <statement>
-          <p>We have shown that if <m>\sum (-1)^{k+1} a_k</m> is a convergent alternating series, then the sum <m>S</m> of the series lies between any two consecutive partial sums <m>S_n</m>. This suggests that the average <m>\frac{S_n+S_{n+1}}{2}</m>
-          is a better approximation to <m>S</m> than is <m>S_n</m>.
+          <p>
+            <ol label="i.">
+              <li>
+                <p>
+                  Explain how we know that,
+                  regardless of the value of <m>S</m>,
+                  we can find a partial sum <m>P_1</m>
+                  <me>
+                    P_1 = \sum_{k=1}^{n_1} \frac{1}{2k+1} = 1 + \frac{1}{3} + \frac{1}{5} + \cdots + \frac{1}{2n_1+1}
+                  </me>
+                  of the positive terms of the alternating harmonic series that equals or exceeds <m>S</m>.
+                  Let
+                  <me>
+                    S_1 = P_1
+                  </me>.
+                </p>
+              </li>
 
-          <ol label="a.">
-            <li>
-              <p>Show that <m>\frac{S_n+S_{n+1}}{2} = S_n + \frac{1}{2}(-1)^{n+2} a_{n+1}</m>.</p>
-            </li>
-
-            <li>
-              <p>Use this revised approximation in (a) with <m>n = 20</m> to approximate <m>\ln(2)</m> given that
-                <me>
-                  \ln(2) = \sum_{k=1}^{\infty} (-1)^{k+1} \frac{1}{k}
-                </me>.
-              Compare this to the approximation using just <m>S_{20}</m>. For your convenience, <m>S_{20} = \frac{155685007}{232792560}</m>.</p>
-            </li>
-          </ol></p>
-        </statement>
-        <solution>
-          <p><ol label="a.">
-            <li>
-              <p>Since <m>S_{n+1} = S_n + (-1)^{n+2}a_{n+1}</m> we have
-                <md>
-                  <mrow>\frac{S_n+S_{n+1}}{2} \amp = \frac{S_n+S_{n} + (-1)^{n+2}a_{n+1}}{2}</mrow>
-                  <mrow>\amp = \frac{2S_{n} + (-1)^{n+2}a_{n+1}}{2}</mrow>
-                  <mrow>\amp = S_n + \frac{1}{2}(-1)^{n+2}a_{n+1}</mrow>
-                </md>.
-              </p>
-            </li>
-          </ol></p>
-        </solution>
-      </exercise>
-
-      <exercise>
-        <statement>
-          <p>In this exercise, we examine one of the conditions of the Alternating Series Test. Consider the alternating series
-            <me>
-              1 - 1 + \frac{1}{2} - \frac{1}{4} + \frac{1}{3} - \frac{1}{9} + \frac{1}{4} - \frac{1}{16} + \cdots
-            </me>,
-          where the terms are selected alternately from the sequences <m>\left\{\frac{1}{n}\right\}</m> and <m>\left\{-\frac{1}{n^2}\right\}</m>.</p>
-
-          <p><ol label="a.">
-            <li>
-              <p>Explain why the <m>n</m>th term of the given series converges to 0 as <m>n</m> goes to infinity.</p>
-            </li>
-
-            <li>
-              <p>Rewrite the given series by grouping terms in the following manner:
-                <me>
-                  (1 - 1) + \left(\frac{1}{2} - \frac{1}{4}\right) + \left(\frac{1}{3} - \frac{1}{9}\right) + \left(\frac{1}{4} - \frac{1}{16}\right) + \cdots
-                </me>.
-              Use this regrouping to determine if the series converges or diverges.</p>
-            </li>
-
-            <li>
-              <p>Explain why the condition that the sequence <m>\{a_n\}</m> <em>decreases</em> to a limit of 0 is included in the Alternating Series Test.</p>
-            </li>
-          </ol></p>
-        </statement>
-        <solution>
-          <p><ol label="a.">
-            <li>
-              <p>Since both sequences <m>\left\{\frac{1}{n}\right\}</m> and <m>\left\{-\frac{1}{n^2}\right\}</m> converge to 0 as <m>n</m> goes to infinity, we see that the sequence of <m>n</m>th terms of our series converge to 0 as <m>n</m> goes to infinity.</p>
-            </li>
-            <li>
-              <p>Notice that <m>\frac{1}{k} - \frac{1}{k^2} = \frac{k-1}{k^2}</m>. So our series can be rewritten as
-                <me>
-                  \sum_{k=1}^{\infty} \frac{k-1}{k^2}
-                </me>.
-              </p>
-
-              <p>Since
-                <me>
-                  \lim_{k \to \infty} \frac{ \frac{k-1}{k^2} }{ \frac{1}{k} } = \lim_{k \to \infty} \frac{k^2-k}{k^2} = 1
-                </me>,
-              the Limit Comparison Test shows that the series <m>\sum_{k=1}^{\infty} \frac{k-1}{k^2}</m> behaves like the harmonic series <m>\sum_{k=1}^{\infty} \frac{1}{k}</m>. Since the harmonic series diverges, it follows that the series <m>\sum_{k=1}^{\infty} \frac{k-1}{k^2}</m> diverges as well.</p>
-            </li>
-          </ol></p>
-        </solution>
-      </exercise>
-
-      <exercise>
-        <statement>
-          <p>Conditionally convergent series exhibit interesting and unexpected behavior. In this exercise we examine the conditionally convergent alternating harmonic series <m>\sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k}</m> and discover that addition is not commutative for conditionally convergent series. We will also encounter Riemann's Theorem concerning rearrangements of conditionally convergent series. Before we begin, we remind ourselves that
-            <me>
-              \sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k} = \ln(2)
-            </me>,
-          a fact which will be verified in a later section.</p>
-
-          <p><ol label="a.">
-            <li>
-              <p>First we make a quick analysis of the positive and negative terms of the alternating harmonic series.</p>
-
-              <p><ol label="i.">
-                <li>
-                  <p>Show that the series <m>\sum_{k=1}^{\infty} \frac{1}{2k}</m> diverges.</p>
-                </li>
-
-                <li>
-                  <p>Show that the series <m>\sum_{k=1}^{\infty} \frac{1}{2k+1}</m> diverges.</p>
-                </li>
-
-                <li>
-                  <p>Based on the results of the previous parts of this exercise, what can we say about the sums <m>\sum_{k=C}^{\infty} \frac{1}{2k}</m> and <m>\sum_{k=C}^{\infty} \frac{1}{2k+1}</m> for any positive integer <m>C</m>? Be specific in your explanation.</p>
-                </li>
-              </ol></p>
-            </li>
-
-            <li>
-              <p>Recall addition of real numbers is commutative; that is
-                <me>
-                  a + b = b + a
-                </me>
-              for any real numbers <m>a</m> and <m>b</m>. This property is valid for any sum of finitely many terms, but does this property extend when we add infinitely many terms together?</p>
-
-              <p>The answer is no, and something even more odd happens. Riemann's Theorem (after the nineteenth-century mathematician Georg Friedrich Bernhard Riemann) states that a conditionally convergent series can be rearranged to converge to <em>any</em> prescribed sum. More specifically, this means that if we choose any real number <m>S</m>, we can rearrange the terms of the alternating harmonic series <m>\sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k}</m> so that the sum is <m>S</m>. To understand how Riemann's Theorem works, let's assume for the moment that the number <m>S</m> we want our rearrangement to converge to is positive. Our job is to find a way to order the sum of terms of the alternating harmonic series to converge to <m>S</m>.</p>
-
-              <p><ol label="i.">
-                <li>
-                  <p>Explain how we know that, regardless of the value of <m>S</m>, we can find a partial sum <m>P_1</m>
-                    <me>
-                      P_1 = \sum_{k=1}^{n_1} \frac{1}{2k+1} = 1 + \frac{1}{3} + \frac{1}{5} + \cdots + \frac{1}{2n_1+1}
-                    </me>
-                  of the positive terms of the alternating harmonic series that equals or exceeds <m>S</m>. Let
-                    <me>
-                      S_1 = P_1
-                    </me>.
-                  </p>
-                </li>
-
-                <li>
-                  <p>Explain how we know that, regardless of the value of <m>S_1</m>, we can find a partial sum <m>N_1</m>
-                    <me>
-                      N_1 = -\sum_{k=1}^{m_1} \frac{1}{2k} = -\frac{1}{2} - \frac{1}{4} - \frac{1}{6} - \cdots - \frac{1}{2m_1}
-                    </me>
+              <li>
+                <p>
+                  Explain how we know that,
+                  regardless of the value of <m>S_1</m>,
+                  we can find a partial sum <m>N_1</m>
+                  <me>
+                    N_1 = -\sum_{k=1}^{m_1} \frac{1}{2k} = -\frac{1}{2} - \frac{1}{4} - \frac{1}{6} - \cdots - \frac{1}{2m_1}
+                  </me>
                   so that
-                    <me>
-                      S_2 = S_1 + N_1 \leq S
-                    </me>.
-                  </p>
-                </li>
+                  <me>
+                    S_2 = S_1 + N_1 \leq S
+                  </me>.
+                </p>
+              </li>
 
-                <li>
-                  <p>Explain how we know that, regardless of the value of <m>S_2</m>, we can find a partial sum <m>P_2</m>
-                    <me>
-                      P_2 = \sum_{k=n_1+1}^{n_2} \frac{1}{2k+1} = \frac{1}{2(n_1+1)+1} + \frac{1}{2(n_1+2)+1} + \cdots + \frac{1}{2n_2+1}
-                    </me>
+              <li>
+                <p>
+                  Explain how we know that,
+                  regardless of the value of <m>S_2</m>,
+                  we can find a partial sum <m>P_2</m>
+                  <me>
+                    P_2 = \sum_{k=n_1+1}^{n_2} \frac{1}{2k+1} = \frac{1}{2(n_1+1)+1} + \frac{1}{2(n_1+2)+1} + \cdots + \frac{1}{2n_2+1}
+                  </me>
                   of the remaining positive terms of the alternating harmonic series so that
-                    <me>
-                      S_3 = S_2 + P_2 \geq S
-                    </me>.
-                  </p>
-                </li>
+                  <me>
+                    S_3 = S_2 + P_2 \geq S
+                  </me>.
+                </p>
+              </li>
 
-                <li>
-                  <p>Explain how we know that, regardless of the value of <m>S_3</m>, we can find a partial sum
-                    <me>
-                      N_2 = -\sum_{k=m_1+1}^{m_2} \frac{1}{2k} = -\frac{1}{2(m_1+1)} - \frac{1}{2(m_1+2)} - \cdots - \frac{1}{2m_2}
-                    </me>
+              <li>
+                <p>
+                  Explain how we know that,
+                  regardless of the value of <m>S_3</m>, we can find a partial sum
+                  <me>
+                    N_2 = -\sum_{k=m_1+1}^{m_2} \frac{1}{2k} = -\frac{1}{2(m_1+1)} - \frac{1}{2(m_1+2)} - \cdots - \frac{1}{2m_2}
+                  </me>
                   of the remaining negative terms of the alternating harmonic series so that
-                    <me>
-                      S_4 = S_3 + N_2 \leq S
-                    </me>.
-                  </p>
-                </li>
+                  <me>
+                    S_4 = S_3 + N_2 \leq S
+                  </me>.
+                </p>
+              </li>
 
-                <li>
-                  <p>Explain why we can continue this process indefinitely and find a sequence <m>\{S_n\}</m> whose terms are partial sums of a rearrangement of the terms in the alternating harmonic series so that <m>\lim_{n \to \infty} S_n = S</m>.</p>
-                </li>
-              </ol></p>
-            </li>
-          </ol></p>
-        </statement>
-      </exercise>
-    </exercises>
+              <li>
+                <p>
+                  Explain why we can continue this process indefinitely and find a sequence <m>\{S_n\}</m> whose terms are partial sums of a rearrangement of the terms in the alternating harmonic series so that <m>\lim_{n \to \infty} S_n = S</m>.
+                </p>
+              </li>
+            </ol>
+          </p>
+        </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+</exercises>

@@ -1,119 +1,203 @@
 
+
 <section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-8-6-powerseries">
   <title>Power Series</title>
-    <objectives>
-      <ul>
-        <li><p>What is a power series?</p></li>
+  <objectives>
+    <ul>
+      <li>
+        <p>
+          What is a power series?
+        </p>
+      </li>
 
-        <li><p>What are some important uses of power series?</p></li>
+      <li>
+        <p>
+          What are some important uses of power series?
+        </p>
+      </li>
 
-        <li><p>What is the connection between power series and Taylor series?</p></li>
-      </ul>
-    </objectives>
+      <li>
+        <p>
+          What is the connection between power series and Taylor series?
+        </p>
+      </li>
+    </ul>
+  </objectives>
   <introduction>
-    <p>We have noted at several points in our work with Taylor polynomials and Taylor series that polynomial functions are the simplest possible functions in mathematics, in part because they essentially only require addition and multiplication to evaluate. Moreover, from the point of view of calculus, polynomials are especially nice: we can easily differentiate or integrate any polynomial. In light of our work in <xref ref="sec-8-5-taylor">Section</xref>, we now know that several important non-polynomials have polynomial-like expansions. For example, for any real number <m>x</m>,
+    <p>
+      We have noted at several points in our work with Taylor polynomials and Taylor series that polynomial functions are the simplest possible functions in mathematics,
+      in part because they essentially only require addition and multiplication to evaluate.
+      Moreover, from the point of view of calculus,
+      polynomials are especially nice:
+      we can easily differentiate or integrate any polynomial.
+      In light of our work in <xref ref="sec-8-5-taylor">Section</xref>,
+      we now know that several important non-polynomials have polynomial-like expansions.
+      For example, for any real number <m>x</m>,
       <me>
         e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots + \frac{x^n}{n!} + \cdots
       </me>.
     </p>
 
-    <p>As we continue our study of infinite series, there are two settings where other series like the one for <m>e^x</m> arise: one is where we are simply given an expression like
+    <p>
+      As we continue our study of infinite series,
+      there are two settings where other series like the one for <m>e^x</m> arise:
+      one is where we are simply given an expression like
       <me>
         1 + 2x + 3x^2 + 4x^3 + \cdots
       </me>
-    and we seek the values of <m>x</m> for which the expression makes sense, while another is where we are trying to find an unknown function <m>f</m>, and we think about the possibility that the function has expression
+      and we seek the values of <m>x</m> for which the expression makes sense,
+      while another is where we are trying to find an unknown function <m>f</m>,
+      and we think about the possibility that the function has expression
       <me>
         f(x) = a_0 + a_1 x + a_2 x^2 + \cdots + a_k x^k + \cdots
       </me>,
-    and we try to determine the values of the constants <m>a_0</m>, <m>a_1</m>, <m>\ldots</m>. The latter situation is explored in <xref ref="PA-8-6">Preview Activity</xref>.</p>
+      and we try to determine the values of the constants <m>a_0</m>,
+      <m>a_1</m>, <m>\ldots</m>.
+      The latter situation is explored in <xref ref="PA-8-6">Preview Activity</xref>.
+    </p>
 
-  <xi:include href="./previews/PA-8-6.xml" />
-
+    <xi:include href="./previews/PA-8-6.xml" />
   </introduction>
 
   <subsection>
     <title>Power Series</title>
     <idx><h>power series</h></idx>
 
-    <p>As <xref ref="PA-8-6">Preview Activity</xref> shows, it can be useful to treat an unknown function as if it has a Taylor series, and then determine the coefficients from other information. In other words, we define a function as an infinite series of powers of <m>x</m> and then determine the coefficients based on something besides a formula for the function. This method of using series illustrated in <xref ref="PA-8-6">Preview Activity</xref> to solve differential equations is a powerful and important one that allows us to approximate solutions to many different types of differential equations even if we cannot explicitly solve them. This approach is different from defining a Taylor series based on a given function, and these functions we define with arbitrary coefficients are given a special name.</p>
+    <p>
+      As <xref ref="PA-8-6">Preview Activity</xref> shows,
+      it can be useful to treat an unknown function as if it has a Taylor series,
+      and then determine the coefficients from other information.
+      In other words,
+      we define a function as an infinite series of powers of <m>x</m> and then determine the coefficients based on something besides a formula for the function.
+      This method of using series illustrated in <xref ref="PA-8-6">Preview Activity</xref>
+      to solve differential equations is a powerful and important one that allows us to approximate solutions to many different types of differential equations even if we cannot explicitly solve them.
+      This approach is different from defining a Taylor series based on a given function,
+      and these functions we define with arbitrary coefficients are given a special name.
+    </p>
 
     <definition>
-    <idx><h>power series</h><h>definition</h></idx>
+      <idx><h>power series</h><h>definition</h></idx>
       <statement>
-        <p>A <term>power series</term> centered at <m>x = a</m> is a function of the form
-          <men xml:id="eq-8-6-power-series" >
+        <p>
+          A <term>power series</term>
+          centered at <m>x = a</m> is a function of the form
+          <men xml:id="eq-8-6-power-series">
             \sum_{k=0}^{\infty} c_k(x-a)^k
           </men>
-        where <m>\{c_k\}</m> is a sequence of real numbers and <m>x</m> is an independent variable.</p>
+          where <m>\{c_k\}</m> is a sequence of real numbers and <m>x</m> is an independent variable.
+        </p>
       </statement>
     </definition>
 
-    <p>We can substitute different values for <m>x</m> and test whether the resulting series converges or diverges. Thus, a power series defines a function <m>f</m> whose domain is the set of <m>x</m> values for which the power series converges. We therefore write
+    <p>
+      We can substitute different values for <m>x</m> and test whether the resulting series converges or diverges.
+      Thus, a power series defines a function <m>f</m> whose domain is the set of <m>x</m> values for which the power series converges.
+      We therefore write
       <me>
         f(x) = \sum_{k=0}^{\infty} c_k(x-a)^k
       </me>.
     </p>
 
-    <p>It turns out that<fn>See <xref ref="ex-8-5-2">Exercise</xref> in this section.</fn>, on its interval of convergence, a power series is the Taylor series of the function that is the sum of the power series, so all of the techniques we developed in the previous section can be applied to power series as well.</p>
+    <p>
+      It turns out that<fn>See <xref ref="ex-8-5-2">Exercise</xref> in this section.</fn>,
+      on its interval of convergence,
+      a power series is the Taylor series of the function that is the sum of the power series,
+      so all of the techniques we developed in the previous section can be applied to power series as well.
+    </p>
 
     <example xml:id="Ex-8-6-1">
       <statement>
-        <p>Consider the power series defined by
+        <p>
+          Consider the power series defined by
           <me>
             f(x) = \sum_{k=0}^{\infty} \frac{x^k}{2^k}
           </me>.
         </p>
 
-        <p>What are <m>f(1)</m> and <m>f\left(\frac{3}{2}\right)</m>? Find a general formula for <m>f(x)</m> and determine the values for which this power series converges.</p>
+        <p>
+          What are <m>f(1)</m> and <m>f\left(\frac{3}{2}\right)</m>?
+          Find a general formula for <m>f(x)</m> and determine the values for which this power series converges.
+        </p>
       </statement>
       <solution>
-        <p>If we evaluate <m>f</m> at <m>x=1</m> we obtain the series
+        <p>
+          If we evaluate <m>f</m> at <m>x=1</m> we obtain the series
           <me>
             \sum_{k=0}^{\infty} \frac{1}{2^k}
           </me>
-        which is a geometric series with ratio <m>\frac{1}{2}</m>. So we can sum this series and find that
+          which is a geometric series with ratio <m>\frac{1}{2}</m>.
+          So we can sum this series and find that
           <me>
             f(1) = \frac{1}{1-\frac{1}{2}} = 2
           </me>.
         </p>
 
-        <p>Similarly,
+        <p>
+          Similarly,
           <me>
             f(3/2) = \sum_{k=0}^{\infty} \left(\frac{3}{4}\right)^k = \frac{1}{1-\frac{3}{4}} = 4
           </me>.
         </p>
 
-        <p>In general, <m>f(x)</m> is a geometric series with ratio <m>\frac{x}{2}</m> and
+        <p>
+          In general,
+          <m>f(x)</m> is a geometric series with ratio <m>\frac{x}{2}</m> and
           <me>
             f(x) = \sum_{k=0}^{\infty} \left(\frac{x}{2}\right)^k = \frac{1}{1-\frac{x}{2}} = \frac{2}{2-x}
           </me>
-        provided that <m>-1 \lt  \frac{x}{2} \lt  1</m> (so that the ratio is less than 1 in absolute value). Thus, the power series that defines <m>f</m> converges for <m>-2 \lt  x \lt  2</m>.</p>
+          provided that <m>-1 \lt  \frac{x}{2} \lt  1</m> (so that the ratio is less than 1 in absolute value).
+          Thus, the power series that defines <m>f</m> converges for <m>-2 \lt  x \lt  2</m>.
+        </p>
 
-        <p>As with Taylor series, we define the interval of convergence of a power series <xref ref="eq-8-6-power-series" /> to be the set of values of <m>x</m> for which the series converges. In the same way as we did with Taylor series, we typically use the Ratio Test to find the values of <m>x</m> for which the power series converges absolutely, and then check the endpoints separately if the radius of convergence is finite.</p>
+        <p>
+          As with Taylor series,
+          we define the interval of convergence of a power series <xref ref="eq-8-6-power-series" /> to be the set of values of <m>x</m> for which the series converges.
+          In the same way as we did with Taylor series,
+          we typically use the Ratio Test to find the values of <m>x</m> for which the power series converges absolutely,
+          and then check the endpoints separately if the radius of convergence is finite.
+        </p>
       </solution>
     </example>
 
     <example xml:id="Ex-8-6-2">
       <statement>
-        <p>Let <m>f(x) = \sum_{k=1}^{\infty} \frac{x^k}{k^2}</m>. Determine the interval of convergence of this power series.</p>
+        <p>
+          Let <m>f(x) = \sum_{k=1}^{\infty} \frac{x^k}{k^2}</m>.
+          Determine the interval of convergence of this power series.
+        </p>
       </statement>
       <solution>
-        <p>First we will draw graphs of some of the partial sums of this power series to get an idea of the interval of convergence. Let
+        <p>
+          First we will draw graphs of some of the partial sums of this power series to get an idea of the interval of convergence.
+          Let
           <me>
             S_n(x) = \sum_{k=1}^{n} \frac{x^k}{k^2}
           </me>
-        for each <m>n \geq 1</m>. <xref ref="F-8-6-Power-Series">Figure</xref> shows plots of <m>S_{10}(x)</m> (in red), <m>S_{25}(x)</m> (in blue), and <m>S_{50}(x)</m> (in green).</p>
+          for each <m>n \geq 1</m>.
+          <xref ref="F-8-6-Power-Series">Figure</xref>
+          shows plots of <m>S_{10}(x)</m>
+          (in red),
+          <m>S_{25}(x)</m>
+          (in blue),
+          and <m>S_{50}(x)</m> (in green).
+        </p>
 
-        <figure xml:id="F-8-6-Power-Series" >
+        <figure xml:id="F-8-6-Power-Series">
           <caption>Graphs of partial sums of the power series <m>\sum_{k=1}^{\infty} \frac{x^k}{k^2}</m></caption>
           <image width="47%" source="images/8_6_Power_Series" />
         </figure>
 
-        <p>The behavior of <m>S_{50}</m> particularly highlights that it appears to be converging to a particular curve on the interval <m>(-1,1)</m>, while growing without bound outside of that interval. This suggests that the interval of convergence might be <m>-1 \lt  x \lt  1</m>. To more fully understand this power series, we apply the Ratio Test to determine the values of <m>x</m> for which the power series converges absolutely. For the given series, we have
+        <p>
+          The behavior of <m>S_{50}</m> particularly highlights that it appears to be converging to a particular curve on the interval <m>(-1,1)</m>,
+          while growing without bound outside of that interval.
+          This suggests that the interval of convergence might be <m>-1 \lt  x \lt  1</m>.
+          To more fully understand this power series,
+          we apply the Ratio Test to determine the values of <m>x</m> for which the power series converges absolutely.
+          For the given series, we have
           <me>
             a_k = \frac{x^k}{k^2}
           </me>,
-        so
+          so
           <md>
             <mrow>\lim_{k \to \infty} \frac{\left| a_{k+1} \right|}{ \left| a_k \right|} \amp = \lim_{k \to \infty} \frac{ \frac{|x|^{k+1}}{(k+1)^2} }{ \frac{| x|^{k}}{k^2} }</mrow>
             <mrow>\amp = \lim_{k \to \infty} |x| \left(\frac{k}{k+1}\right)^2</mrow>
@@ -122,93 +206,151 @@
           </md>.
         </p>
 
-        <p>Therefore, the Ratio Test tells us that the given power series <m>f(x)</m> converges absolutely when <m>| x | \lt  1</m> and diverges when <m>| x | \gt 1</m>. Since the Ratio Test is inconclusive when <m>|x| = 1</m>, we need to check <m>x = 1</m> and <m>x = -1</m> individually.</p>
+        <p>
+          Therefore, the Ratio Test tells us that the given power series <m>f(x)</m> converges absolutely when
+          <m>| x | \lt 1</m> and diverges when <m>| x | \gt 1</m>.
+          Since the Ratio Test is inconclusive when <m>|x| = 1</m>,
+          we need to check <m>x = 1</m> and <m>x = -1</m> individually.
+        </p>
 
-        <p>When <m>x = 1</m>, observe that
+        <p>
+          When <m>x = 1</m>, observe that
           <me>
             f(1) = \sum_{k=1}^{\infty} \frac{1}{k^2}
           </me>.
         </p>
 
-        <p>This is a <m>p</m>-series with <m>p \gt 1</m>, which we know converges. When <m>x = -1</m>, we have
+        <p>
+          This is a <m>p</m>-series with <m>p \gt 1</m>, which we know converges.
+          When <m>x = -1</m>, we have
           <me>
             f(-1) = \sum_{k=1}^{\infty} \frac{(-1)^k}{k^2}
           </me>.
         </p>
 
-        <p>This is an alternating series, and since the sequence <m>\left\{ \frac{1}{n^2} \right\}</m> decreases to 0, the power series converges when <m>x=-1</m> by the Alternating Series Test. Thus, the interval of convergence of this power series is <m>-1 \le x \le 1</m>.</p>
+        <p>
+          This is an alternating series,
+          and since the sequence <m>\left\{ \frac{1}{n^2} \right\}</m> decreases to 0, the power series converges when <m>x=-1</m> by the Alternating Series Test.
+          Thus, the interval of convergence of this power series is <m>-1 \le x \le 1</m>.
+        </p>
       </solution>
     </example>
 
-  <xi:include href="./activities/act-8-6-1.xml" />
-
+    <xi:include href="./activities/act-8-6-1.xml" />
   </subsection>
 
   <subsection>
     <title>Manipulating Power Series</title>
-    <p>Recall that we know several power series expressions for important functions such as <m>\sin(x)</m> and <m>e^x</m>. Often, we can take a known power series expression for such a function and use that series expansion to find a power series for a different, but related, function. The next activity demonstrates one way to do this.</p>
-
-  <xi:include href="./activities/act-8-6-2.xml" />
-
-    <p>In a previous section we determined several important Maclaurin series and their intervals of convergence. Here, we list these key functions and remind ourselves of their corresponding expansions.</p>
-
-  <assemblage>
-    <p><md>
-      <mrow>\sin(x) \amp =\sum_{k=0}^{\infty} \frac{(-1)^k x^{2k+1}}{(2k+1)!}\amp\text{for}\amp-\infty \lt  x \lt  \infty</mrow>
-      <mrow>\cos(x) \amp =\sum_{k=0}^{\infty} \frac{(-1)^k x^{2k}}{(2k)!}\amp\text{for}\amp-\infty \lt  x \lt  \infty</mrow>
-      <mrow>e^x \amp =\sum_{k=0}^{\infty} \frac{x^{k}}{k!}\amp\text{for}\amp-\infty \lt  x \lt  \infty</mrow>
-      <mrow>\frac{1}{1-x} \amp =\sum_{k=0}^{\infty} x^k\amp\text{for}\amp-1 \lt  x \lt  1</mrow>
-    </md></p>
-  </assemblage>
-
-    <p>As we saw in <xref ref="act-8-6-2">Activity</xref>, we can use these known series to find other power series expansions for related functions such as <m>\sin(x^2)</m>, <m>e^{5x^3}</m>, and <m>\cos(x^5)</m>. Another important way that we can manipulate power series is illustrated in the next activity.</p>
-
-  <xi:include href="./activities/act-8-6-3.xml" />
-
-    <p>It turns out that our work in <xref ref="act-8-6-2">Activity</xref> holds more generally. The corresponding theorem, which we will not prove, states that we can differentiate a power series for a function <m>f</m> term by term and obtain the series expansion for <m>f'</m>, and similarly we can integrate a series expansion for a function <m>f</m> term by term and obtain the series expansion for <m>\int f(x) \ dx</m>. For both, the radius of convergence of the resulting series is the same as the original, though it is possible that the convergence status of the resulting series may differ at the endpoints. The formal statement of the Power Series Differentiation and Integration Theorem follows.</p>
-
-  <assemblage>
-    <title>Power Series Differentiation and Integration Theorem</title><idx><h>power series differentiation and integration theorem</h></idx>
-    <p>Suppose <m>f(x)</m> has a power series expansion
-      <me>
-        f(x) = \sum_{k=0}^{\infty} c_kx^k
-      </me>
-    so that the series converges absolutely to <m>f(x)</m> on the interval <m>-r \lt  x \lt  r</m>. Then, the power series <m>\sum_{k=1}^{\infty} kc_kx^{k-1}</m> obtained by differentiating the power series for <m>f(x)</m> term by term converges absolutely to <m>f'(x)</m> on the interval <m>-r \lt  x \lt  r</m>. That is,
-      <me>
-        f'(x) = \sum_{k=1}^{\infty} kc_kx^{k-1}, \ \text{for}  \ |x| \lt  r
-      </me>.
+    <p>
+      Recall that we know several power series expressions for important functions such as <m>\sin(x)</m> and <m>e^x</m>.
+      Often, we can take a known power series expression for such a function and use that series expansion to find a power series for a different, but related,
+      function.
+      The next activity demonstrates one way to do this.
     </p>
-  </assemblage>
 
-    <p>Similarly, the power series <m>\sum_{k=0}^{\infty} c_k\frac{x^{k+1}}{k+1}</m> obtained by integrating the power series for <m>f(x)</m> term by term converges absolutely on the interval <m>-r \lt  x \lt  r</m>, and
+    <xi:include href="./activities/act-8-6-2.xml" />
+
+    <p>
+      In a previous section we determined several important Maclaurin series and their intervals of convergence.
+      Here, we list these key functions and remind ourselves of their corresponding expansions.
+    </p>
+
+    <assemblage>
+      <p>
+        <md>
+          <mrow>\sin(x) \amp =\sum_{k=0}^{\infty} \frac{(-1)^k x^{2k+1}}{(2k+1)!}\amp\text{for}\amp-\infty \lt  x \lt  \infty</mrow>
+          <mrow>\cos(x) \amp =\sum_{k=0}^{\infty} \frac{(-1)^k x^{2k}}{(2k)!}\amp\text{for}\amp-\infty \lt  x \lt  \infty</mrow>
+          <mrow>e^x \amp =\sum_{k=0}^{\infty} \frac{x^{k}}{k!}\amp\text{for}\amp-\infty \lt  x \lt  \infty</mrow>
+          <mrow>\frac{1}{1-x} \amp =\sum_{k=0}^{\infty} x^k\amp\text{for}\amp-1 \lt  x \lt  1</mrow>
+        </md>
+      </p>
+    </assemblage>
+
+    <p>
+      As we saw in <xref ref="act-8-6-2">Activity</xref>,
+      we can use these known series to find other power series expansions for related functions such as <m>\sin(x^2)</m>,
+      <m>e^{5x^3}</m>, and <m>\cos(x^5)</m>.
+      Another important way that we can manipulate power series is illustrated in the next activity.
+    </p>
+
+    <xi:include href="./activities/act-8-6-3.xml" />
+
+    <p>
+      It turns out that our work in <xref ref="act-8-6-2">Activity</xref> holds more generally.
+      The corresponding theorem, which we will not prove,
+      states that we can differentiate a power series for a function <m>f</m> term by term and obtain the series expansion for <m>f'</m>,
+      and similarly we can integrate a series expansion for a function <m>f</m> term by term and obtain the series expansion for <m>\int f(x) \ dx</m>.
+      For both, the radius of convergence of the resulting series is the same as the original,
+      though it is possible that the convergence status of the resulting series may differ at the endpoints.
+      The formal statement of the Power Series Differentiation and Integration Theorem follows.
+    </p>
+
+    <assemblage>
+      <title>Power Series Differentiation and Integration Theorem</title>
+      <idx><h>power series differentiation and integration theorem</h></idx>
+
+      <p>
+        Suppose <m>f(x)</m> has a power series expansion
+        <me>
+          f(x) = \sum_{k=0}^{\infty} c_kx^k
+        </me>
+        so that the series converges absolutely to <m>f(x)</m> on the interval <m>-r \lt  x \lt  r</m>.
+        Then, the power series <m>\sum_{k=1}^{\infty} kc_kx^{k-1}</m> obtained by differentiating the power series for <m>f(x)</m> term by term converges absolutely to <m>f'(x)</m> on the interval <m>-r \lt  x \lt  r</m>.
+        That is,
+        <me>
+          f'(x) = \sum_{k=1}^{\infty} kc_kx^{k-1}, \ \text{for}  \ |x| \lt  r
+        </me>.
+      </p>
+    </assemblage>
+
+    <p>
+      Similarly, the power series
+      <m>\sum_{k=0}^{\infty} c_k\frac{x^{k+1}}{k+1}</m> obtained by integrating the power series for <m>f(x)</m> term by term converges absolutely on the interval <m>-r \lt  x \lt  r</m>, and
       <me>
         \int f(x) \ dx = \sum_{k=0}^{\infty} c_k\frac{x^{k+1}}{k+1} + C, \ \text{for}  \ |x| \lt  r
       </me>.
     </p>
 
-    <p>This theorem validates the steps we took in <xref ref="act-8-6-3">Activity</xref>. It is important to note that this result about differentiating and integrating power series tells us that we can differentiate and integrate term by term on the interior of the interval of convergence, but it does not tell us what happens at the endpoints of this interval. We always need to check what happens at the endpoints separately. More importantly, we can use use the approach of differentiating or integrating a series term by term to find new series.</p>
+    <p>
+      This theorem validates the steps we took in <xref ref="act-8-6-3">Activity</xref>.
+      It is important to note that this result about differentiating and integrating power series tells us that we can differentiate and integrate term by term on the interior of the interval of convergence,
+      but it does not tell us what happens at the endpoints of this interval.
+      We always need to check what happens at the endpoints separately.
+      More importantly,
+      we can use use the approach of differentiating or integrating a series term by term to find new series.
+    </p>
 
     <example xml:id="Ex-8-6-3">
       <statement>
-        <p>Find a series expansion centered at <m>x = 0</m> for <m>\arctan(x)</m>, as well as its interval of convergence.</p>
+        <p>
+          Find a series expansion centered at <m>x = 0</m> for <m>\arctan(x)</m>,
+          as well as its interval of convergence.
+        </p>
       </statement>
-
       <solution>
-        <p>While we could differentiate <m>\arctan(x)</m> repeatedly and look for patterns in the derivative values at <m>x = 0</m> in an attempt to find the Maclaurin series for <m>\arctan(x)</m> from the definition, it turns out to be far easier to use a known series in an insightful way. In <xref ref="act-8-6-2">Activity</xref>, we found that
+        <p>
+          While we could differentiate
+          <m>\arctan(x)</m> repeatedly and look for patterns in the derivative values at <m>x = 0</m> in an attempt to find the Maclaurin series for <m>\arctan(x)</m> from the definition,
+          it turns out to be far easier to use a known series in an insightful way.
+          In <xref ref="act-8-6-2">Activity</xref>, we found that
           <me>
             \frac{1}{1+x^2} = \sum_{k=0}^{\infty} (-1)^k x^{2k}
           </me>
-        for <m>-1 \lt  x \lt  1</m>. Recall that
+          for <m>-1 \lt  x \lt  1</m>.
+          Recall that
           <me>
             \frac{d}{dx} \left[ \arctan(x) \right] = \frac{1}{1+x^2}
           </me>,
-        and therefore
+          and therefore
           <me>
             \int \frac{1}{1+x^2} \ dx = \arctan(x) + C
           </me>.
         </p>
 
-        <p>It follows that we can integrate the series for <m>\frac{1}{1+x^2}</m> term by term to obtain the power series expansion for <m>\arctan(x)</m>. Doing so, we find that
+        <p>
+          It follows that we can integrate the series for
+          <m>\frac{1}{1+x^2}</m> term by term to obtain the power series expansion for <m>\arctan(x)</m>.
+          Doing so, we find that
           <md>
             <mrow>\arctan(x) \amp = \int \left( \sum_{k=0}^{\infty} (-1)^kx^{2k} \right) \ dx</mrow>
             <mrow>\amp = \sum_{k=0}^{\infty} \left( \int (-1)^k x^{2k} \ dx \right)</mrow>
@@ -216,52 +358,74 @@
           </md>.
         </p>
 
-        <p>The Power Series Differentiation and Integration Theorem tells us that this equality is valid for at least <m>-1 \lt  x \lt  1</m>.</p>
+        <p>
+          The Power Series Differentiation and Integration Theorem tells us that this equality is valid for at least <m>-1 \lt x \lt 1</m>.
+        </p>
 
-        <p>To find the value of the constant <m>C</m>, we can use the fact that <m>\arctan(0) = 0</m>. So
+        <p>
+          To find the value of the constant <m>C</m>,
+          we can use the fact that <m>\arctan(0) = 0</m>.
+          So
           <me>
             0 = \arctan(0) = \left( \sum_{k=0}^{\infty} (-1)^k\frac{0^{2k+1}}{2k+1} \right) + C = C
           </me>,
-        and we must have <m>C = 0</m>. Therefore,
-          <men xml:id="E-arctanseries" >
+          and we must have <m>C = 0</m>.
+          Therefore,
+          <men xml:id="E-arctanseries">
             \arctan(x) = \sum_{k=0}^{\infty} (-1)^k\frac{x^{2k+1}}{2k+1}
           </men>
-        for at least <m>-1 \lt  x \lt  1</m>.</p>
+          for at least <m>-1 \lt  x \lt  1</m>.
+        </p>
 
-        <p>It is a straightforward exercise to check that the power series
+        <p>
+          It is a straightforward exercise to check that the power series
           <me>
             \sum_{k=0}^{\infty} (-1)^k\frac{x^{2k+1}}{2k+1}
           </me>
-        converges both when <m>x = -1</m> and when <m>x = 1</m>; in each case, we have an alternating series with terms <m>\frac{1}{2k+1}</m> that decrease to 0, and thus the interval of convergence for the series expansion for <m>\arctan(x)</m> in Equation<nbsp /><xref ref="E-arctanseries" /> is <m>-1 \le x \le 1</m>.</p>
+          converges both when <m>x = -1</m> and when <m>x = 1</m>;
+          in each case, we have an alternating series with terms
+          <m>\frac{1}{2k+1}</m> that decrease to 0, and thus the interval of convergence for the series expansion for
+          <m>\arctan(x)</m> in Equation<nbsp /><xref ref="E-arctanseries" /> is <m>-1 \le x \le 1</m>.
+        </p>
       </solution>
     </example>
 
-  <xi:include href="./activities/act-8-6-4.xml" />
-
+    <xi:include href="./activities/act-8-6-4.xml" />
   </subsection>
 
   <subsection>
     <title>Summary</title>
-    <p><ul>
-      <li>
-        <p>A power series is a series of the form
-          <me>
-            \sum_{k=0}^{\infty} a_kx^k
-          </me>.
-        </p>
-      </li>
+    <p>
+      <ul>
+        <li>
+          <p>
+            A power series is a series of the form
+            <me>
+              \sum_{k=0}^{\infty} a_kx^k
+            </me>.
+          </p>
+        </li>
 
-      <li>
-        <p>We can often assume a solution to a given problem can be written as a power series, then use the information in the problem to determine the coefficients in the power series. This method allows us to approximate solutions to certain problems using partial sums of the power series; that is, we can find approximate solutions that are polynomials.</p>
-      </li>
+        <li>
+          <p>
+            We can often assume a solution to a given problem can be written as a power series,
+            then use the information in the problem to determine the coefficients in the power series.
+            This method allows us to approximate solutions to certain problems using partial sums of the power series;
+            that is,
+      we can find approximate solutions that are polynomials.
+          </p>
+        </li>
 
-      <li>
-        <p>The connection between power series and Taylor series is that they are essentially the same thing: on its interval of convergence a power series is the Taylor series of its sum.</p>
-      </li>
-    </ul></p>
-
+        <li>
+          <p>
+            The connection between power series and Taylor series is that they are essentially the same thing:
+            on its interval of convergence a power series is the Taylor series of its sum.
+          </p>
+        </li>
+      </ul>
+    </p>
   </subsection>
 
   <xi:include href="./exercises/ez-8-6.xml" />
-
 </section>
+

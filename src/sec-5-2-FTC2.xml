@@ -13,213 +13,444 @@
 <!-- derivatives for profit.  All trademarks are the registered marks of   -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
+
 <section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-5-2-FTC2">
   <title>The Second Fundamental Theorem of Calculus</title>
-    <objectives>
-      <ul>
-        <li><p>How does the integral function <m>A(x) = \int_1^x f(t) \, dt</m> define an antiderivative of <m>f</m>?</p></li>
+  <objectives>
+    <ul>
+      <li>
+        <p>
+          How does the integral function
+          <m>A(x) = \int_1^x f(t) \, dt</m> define an antiderivative of <m>f</m>?
+        </p>
+      </li>
 
-        <li><p>What is the statement of the Second Fundamental Theorem of Calculus?</p></li>
+      <li>
+        <p>
+          What is the statement of the Second Fundamental Theorem of Calculus?
+        </p>
+      </li>
 
-        <li><p>How do the First and Second Fundamental Theorems of Calculus enable us to formally see how differentiation and integration are almost inverse processes?</p></li>
-      </ul>
-    </objectives>
+      <li>
+        <p>
+          How do the First and Second Fundamental Theorems of Calculus enable us to formally see how differentiation and integration are almost inverse processes?
+        </p>
+      </li>
+    </ul>
+  </objectives>
   <introduction>
-    <p>In <xref ref="sec-4-4-FTC">Section</xref>, we learned the Fundamental Theorem of Calculus (FTC), which from here forward will be referred to as the <em>First</em> Fundamental Theorem of Calculus<idx><h>Fundamental Theorem of Calculus</h><h>First</h></idx>, as in this section we develop a corresponding result that follows it. In particular, recall that the First FTC tells us that if <m>f</m> is a continuous function on <m>[a,b]</m> and <m>F</m> is any antiderivative of <m>f</m> (that is, <m>F' = f</m>), then
+    <p>
+      In <xref ref="sec-4-4-FTC">Section</xref>,
+      we learned the Fundamental Theorem of Calculus (FTC), which from here forward will be referred to as the <em>First</em>
+      Fundamental Theorem of Calculus,
+          <idx><h>Fundamental Theorem of Calculus</h><h>First</h></idx>
+      as in this section we develop a corresponding result that follows it.
+      In particular,
+      recall that the First FTC tells us that if <m>f</m> is a continuous function on <m>[a,b]</m> and <m>F</m> is any antiderivative of <m>f</m>
+      (that is, <m>F' = f</m>),
+      then
       <me>
-        \int_a^b f(x) \, dx = F(b) - F(a).
-      </me>
+        \int_a^b f(x) \, dx = F(b) - F(a)
+      </me>.
     </p>
 
-    <p>We have typically used this result in two settings: (1) where <m>f</m> is a function whose graph we know and for which we can compute the exact area bounded by <m>f</m> on a certain interval <m>[a,b]</m>, we can compute the change in an antiderivative <m>F</m> over the interval; and (2) where <m>f</m> is a function for which it is easy to determine an algebraic formula for an antiderivative, we may evaluate the integral exactly and hence determine the net-signed area bounded by the function on the interval. For the former, see <xref ref="PA-5-1">Preview Activity</xref> or <xref ref="act-5-1-1">Activity</xref>. For the latter, we can easily evaluate exactly integrals such as
+    <p>
+      We have typically used this result in two settings: (1) where <m>f</m> is a function whose graph we know and for which we can compute the exact area bounded by <m>f</m> on a certain interval <m>[a,b]</m>,
+      we can compute the change in an antiderivative <m>F</m> over the interval;
+      and (2) where <m>f</m> is a function for which it is easy to determine an algebraic formula for an antiderivative,
+      we may evaluate the integral exactly and hence determine the net-signed area bounded by the function on the interval.
+      For the former, see <xref ref="PA-5-1">Preview Activity</xref>
+      or <xref ref="act-5-1-1">Activity</xref>.
+      For the latter, we can easily evaluate exactly integrals such as
       <me>
-        \int_1^4 x^2 \, dx,
-      </me>
-      since we know that the function <m>F(x) = \frac{1}{3}x^3</m> is an antiderivative of <m>f(x) = x^2</m>. Thus,
+        \int_1^4 x^2 \, dx
+      </me>,
+      since we know that the function
+      <m>F(x) = \frac{1}{3}x^3</m> is an antiderivative of <m>f(x) = x^2</m>.
+      Thus,
       <md>
         <mrow>\int_1^4 x^2 \, dx =\mathstrut \amp  \frac{1}{3}x^3 \bigg\vert_1^4</mrow>
         <mrow>=\mathstrut \amp  \frac{1}{3}(4)^3 - \frac{1}{3}(1)^3</mrow>
-        <mrow>=\mathstrut \amp  21.</mrow>
-      </md>
+        <mrow>=\mathstrut \amp  21</mrow>
+      </md>.
     </p>
 
-    <p>Here we see that the First FTC can be viewed from at least two perspectives: first, as a tool to find the difference <m>F(b) - F(a)</m> for an antiderivative <m>F</m> of the integrand <m>f</m>. In this situation, we need to be able to determine the value of the integral <m>\int_a^b f(x) \, dx</m> exactly, perhaps through known geometric formulas for area. It is possible that we may not have a formula for <m>F</m> itself. From a second perspective, the First FTC provides a way to find the exact value of a definite integral, and hence a certain net-signed area exactly, by finding an antiderivative of the integrand and evaluating its total change over the interval. In this latter case, we need to know a formula for the antiderivative <m>F</m>, as this enables us to compute net-signed areas exactly through definite integrals, as demonstrated in <xref ref="F-5-2-Intro">Figure</xref>.</p>
+    <p>
+      Here we see that the First FTC can be viewed from at least two perspectives:
+      first, as a tool to find the difference
+      <m>F(b) - F(a)</m> for an antiderivative <m>F</m> of the integrand <m>f</m>.
+      In this situation,
+      we need to be able to determine the value of the integral <m>\int_a^b f(x) \, dx</m> exactly,
+      perhaps through known geometric formulas for area.
+      It is possible that we may not have a formula for <m>F</m> itself.
+      From a second perspective,
+      the First FTC provides a way to find the exact value of a definite integral,
+      and hence a certain net-signed area exactly,
+      by finding an antiderivative of the integrand and evaluating its total change over the interval.
+      In this latter case,
+      we need to know a formula for the antiderivative <m>F</m>,
+      as this enables us to compute net-signed areas exactly through definite integrals,
+      as demonstrated in <xref ref="F-5-2-Intro">Figure</xref>.
+    </p>
 
-    <figure xml:id="F-5-2-Intro" >
+    <figure xml:id="F-5-2-Intro">
       <caption>At left, the graph of <m>f(x) = x^2</m> on the interval <m>[1,4]</m> and the area it bounds.  At right, the antiderivative function <m>F(x) = \frac{1}{3}x^3</m>, whose total change on <m>[1,4]</m> is the value of the definite integral at left.</caption>
       <image width="100%" source="images/5_2_Intro" />
     </figure>
 
-    <p>We recall further that the value of a definite integral may have additional meaning depending on context: change in position when the integrand is a velocity function, total pollutant leaked from a tank when the integrand is the rate at which pollution is leaking, or other total changes that correspond to a given rate function that is the integrand. In addition, the value of the definite integral is always connected to the average value of a continuous function on a given interval: <m>f_{\operatorname{AVG} [a,b]} = \frac{1}{b-a} \int_a^b f(x) \, dx</m>.</p>
+    <p>
+      We recall further that the value of a definite integral may have additional meaning depending on context:
+      change in position when the integrand is a velocity function,
+      total pollutant leaked from a tank when the integrand is the rate at which pollution is leaking,
+      or other total changes that correspond to a given rate function that is the integrand.
+      In addition,
+      the value of the definite integral is always connected to the average value of a continuous function on a given interval:
+      <m>f_{\operatorname{AVG} [a,b]} = \frac{1}{b-a} \int_a^b f(x) \, dx</m>.
+    </p>
 
-    <p>Next, remember that in the last part of <xref ref="sec-5-1-antid-graphs">Section</xref>, we studied integral functions of the form <m>A(x) = \int_c^x f(t) \, dt</m>. <xref ref="F-5-1-IntFxn">Figure</xref> is a particularly important image to keep in mind as we work with integral functions, and the corresponding java applet at <url href="http://gvsu.edu/s/cz">gvsu.edu/s/cz</url> is likewise foundational to our understanding of the function <m>A</m>. In what follows, we use the First FTC to gain additional understanding of the function <m>A(x) = \int_c^x f(t) \, dt</m>, where the integrand <m>f</m> is given (either through a graph or a formula), and <m>c</m> is a constant. In particular, we investigate further the special nature of the relationship between the functions <m>A</m> and <m>f</m>.</p>
+    <p>
+      Next, remember that in the last part of <xref ref="sec-5-1-antid-graphs">Section</xref>,
+      we studied integral functions of the form <m>A(x) = \int_c^x f(t) \, dt</m>.
+      <xref ref="F-5-1-IntFxn">Figure</xref>
+      is a particularly important image to keep in mind as we work with integral functions,
+      and the corresponding java applet at <url href="http://gvsu.edu/s/cz">gvsu.edu/s/cz</url> is likewise foundational to our understanding of the function <m>A</m>.
+      In what follows,
+      we use the First FTC to gain additional understanding of the function <m>A(x) = \int_c^x f(t) \, dt</m>,
+      where the integrand <m>f</m> is given
+      (either through a graph or a formula),
+      and <m>c</m> is a constant.
+      In particular,
+      we investigate further the special nature of the relationship between the functions <m>A</m> and <m>f</m>.
+    </p>
 
     <xi:include href="./previews/PA-5-2.xml" />
-
   </introduction>
 
   <subsection>
     <title>The Second Fundamental Theorem of Calculus</title>
     <idx><h>Fundamental Theorem of Calculus</h><h>Second</h></idx>
 
-    <p>The result of <xref ref="PA-5-2">Preview Activity</xref> is not particular to the function <m>f(t) = 4-2t</m>, nor to the choice of <q><m>1</m></q> as the lower bound in the integral that defines the function <m>A</m>. For instance, if we let <m>f(t) = \cos(t) - t</m> and set <m>A(x) = \int_2^x f(t) \, dt</m>, then we can determine a formula for <m>A</m> without integrals by the First FTC. Specifically,
+    <p>
+      The result of <xref ref="PA-5-2">Preview Activity</xref>
+      is not particular to the function <m>f(t) = 4-2t</m>,
+      nor to the choice of <q><m>1</m></q>
+      as the lower bound in the integral that defines the function <m>A</m>.
+      For instance,
+      if we let <m>f(t) = \cos(t) - t</m> and set <m>A(x) = \int_2^x f(t) \, dt</m>,
+      then we can determine a formula for <m>A</m> without integrals by the First FTC. Specifically,
       <md>
         <mrow>A(x) =\mathstrut \amp  \int_2^x (\cos(t) - t) \, dt</mrow>
         <mrow>=\mathstrut \amp  \sin(t) - \frac{1}{2}t^2 \bigg\vert_2^x</mrow>
-        <mrow>=\mathstrut \amp  \sin(x) -  \frac{1}{2}x^2 - \left(\sin(2) - 2 \right).</mrow>
-      </md>
+        <mrow>=\mathstrut \amp  \sin(x) -  \frac{1}{2}x^2 - \left(\sin(2) - 2 \right)</mrow>
+      </md>.
     </p>
 
-    <p>Differentiating <m>A(x)</m>, since <m>(\sin(2) - 2)</m> is constant, it follows that
+    <p>
+      Differentiating <m>A(x)</m>,
+      since <m>(\sin(2) - 2)</m> is constant, it follows that
       <me>
-        A'(x) = \cos(x) - x,
-      </me>
-      and thus we see that <m>A'(x) = f(x)</m>. This tells us that for this particular choice of <m>f</m>, <m>A</m> is an antiderivative of <m>f</m>. More specifically, since <m>A(2) = \int_2^2 f(t) \, dt = 0</m>, <m>A</m> is the only antiderivative of <m>f</m> for which <m>A(2) = 0</m>.</p>
+        A'(x) = \cos(x) - x
+      </me>,
+      and thus we see that <m>A'(x) = f(x)</m>.
+      This tells us that for this particular choice of <m>f</m>,
+      <m>A</m> is an antiderivative of <m>f</m>.
+      More specifically, since <m>A(2) = \int_2^2 f(t) \, dt = 0</m>,
+      <m>A</m> is the only antiderivative of <m>f</m> for which <m>A(2) = 0</m>.
+    </p>
 
-    <p>In general, if <m>f</m> is any continuous function, and we define the function <m>A</m> by the rule
+    <p>
+      In general, if <m>f</m> is any continuous function,
+      and we define the function <m>A</m> by the rule
       <me>
-        A(x) = \int_c^x f(t) \, dt,
-      </me>
-      where <m>c</m> is an arbitrary constant, then we can show that <m>A</m> is an antiderivative of <m>f</m>. To see why, let's demonstrate that <m>A'(x) = f(x)</m> by using the limit definition of the derivative. Doing so, we observe that
+        A(x) = \int_c^x f(t) \, dt
+      </me>,
+      where <m>c</m> is an arbitrary constant,
+      then we can show that <m>A</m> is an antiderivative of <m>f</m>.
+      To see why, let's demonstrate that
+      <m>A'(x) = f(x)</m> by using the limit definition of the derivative.
+      Doing so, we observe that
       <mdn>
         <mrow number="no">A'(x) \amp = \lim_{h \to 0} \frac{A(x+h) - A(x)}{h}</mrow>
         <mrow number="no">\amp = \lim_{h \to 0} \frac{\int_c^{x+h} f(t) \, dt - \int_c^x f(t) \, dt}{h}</mrow>
-        <mrow xml:id="E-FTC2limdef">\amp = \lim_{h \to 0} \frac{\int_x^{x+h} f(t) \, dt}{h},</mrow>
-      </mdn>
-      where Equation<nbsp /><xref ref="E-FTC2limdef" /> in the preceding chain follows from the fact that <m>\int_c^x f(t) \,dt + \int_x^{x+h} f(t) \, dt = \int_c^{x+h} f(t) \, dt</m>. Now, observe that for small values of <m>h</m>,
+        <mrow xml:id="E-FTC2limdef">\amp = \lim_{h \to 0} \frac{\int_x^{x+h} f(t) \, dt}{h}</mrow>
+      </mdn>,
+      where Equation<nbsp /><xref ref="E-FTC2limdef" /> in the preceding chain follows from the fact that <m>\int_c^x f(t) \,dt + \int_x^{x+h} f(t) \, dt = \int_c^{x+h} f(t) \, dt</m>.
+      Now, observe that for small values of <m>h</m>,
       <me>
-        \int_x^{x+h} f(t) \, dt \approx f(x) \cdot h,
-      </me>
-      by a simple left-hand approximation of the integral. Thus, as we take the limit in Equation<nbsp /><xref ref="E-FTC2limdef" />, it follows that
+        \int_x^{x+h} f(t) \, dt \approx f(x) \cdot h
+      </me>,
+      by a simple left-hand approximation of the integral.
+      Thus, as we take the limit in Equation<nbsp /><xref ref="E-FTC2limdef" />, it follows that
       <me>
-        A'(x) =  \lim_{h \to 0} \frac{\int_x^{x+h} f(t) \, dt}{h} = \lim_{h \to 0} \frac{f(x) \cdot h}{h} = f(x).
-      </me>
+        A'(x) =  \lim_{h \to 0} \frac{\int_x^{x+h} f(t) \, dt}{h} = \lim_{h \to 0} \frac{f(x) \cdot h}{h} = f(x)
+      </me>.
     </p>
 
-    <p>Hence, <m>A</m> is indeed an antiderivative of <m>f</m>. In addition, <m>A(c) = \int_c^c f(t) \, dt = 0.</m> The preceding argument demonstrates the truth of the Second Fundamental Theorem of Calculus, which we state as follows.</p>
+    <p>
+      Hence, <m>A</m> is indeed an antiderivative of <m>f</m>.
+      In addition, <m>A(c) = \int_c^c f(t) \, dt = 0</m>.
+      The preceding argument demonstrates the truth of the Second Fundamental Theorem of Calculus,
+      which we state as follows.
+    </p>
 
     <assemblage xml:id="FTC-2">
-        <title>The Second Fundamental Theorem of Calculus</title>
-        <p><idx><h>second fundamental theorem of calculus</h></idx>If <m>f</m> is a continuous function and <m>c</m> is any constant, then <m>f</m> has a unique antiderivative <m>A</m> that satisfies <m>A(c) = 0</m>, and that antiderivative is given by the rule <m>A(x) = \int_c^x f(t) \, dt</m>.</p>
+      <title>The Second Fundamental Theorem of Calculus</title>
+      <p>
+            <idx><h>second fundamental theorem of calculus</h></idx>
+        If <m>f</m> is a continuous function and <m>c</m> is any constant,
+        then <m>f</m> has a unique antiderivative <m>A</m> that satisfies <m>A(c) = 0</m>,
+        and that antiderivative is given by the rule <m>A(x) = \int_c^x f(t) \, dt</m>.
+      </p>
     </assemblage>
 
     <xi:include href="./activities/act-5-2-1.xml" />
-
   </subsection>
 
   <subsection>
     <title>Understanding Integral Functions</title>
-    <p>The Second FTC provides us with a means to construct an antiderivative of any continuous function. In particular, if we are given a continuous function <m>g</m> and wish to find an antiderivative of <m>G</m>, we can now say that
+    <p>
+      The Second FTC provides us with a means to construct an antiderivative of any continuous function.
+      In particular,
+      if we are given a continuous function <m>g</m> and wish to find an antiderivative of <m>G</m>,
+      we can now say that
       <me>
         G(x) = \int_c^x g(t) \, dt
       </me>
-      provides the rule for such an antiderivative, and moreover that <m>G(c) = 0</m>. Note especially that we know that <m>G'(x) = g(x)</m>. We sometimes want to write this relationship between <m>G</m> and <m>g</m> from a different notational perspective. In particular, observe that
-      <men xml:id="E_diffint" >
-        \frac{d}{dx} \left[ \int_c^x g(t) \, dt \right] = g(x).
-      </men>
+      provides the rule for such an antiderivative,
+      and moreover that <m>G(c) = 0</m>.
+      Note especially that we know that <m>G'(x) = g(x)</m>.
+      We sometimes want to write this relationship between <m>G</m> and <m>g</m> from a different notational perspective.
+      In particular, observe that
+      <men xml:id="E_diffint">
+        \frac{d}{dx} \left[ \int_c^x g(t) \, dt \right] = g(x)
+      </men>.
     </p>
 
-    <p>This result can be particularly useful when we're given an integral function such as <m>G</m> and wish to understand properties of its graph by recognizing that <m>G'(x) = g(x)</m>, while not necessarily being able to exactly evaluate the definite integral <m>\int_c^x g(t) \, dt</m>. To see how this is the case, we consider the following example.</p>
+    <p>
+      This result can be particularly useful when we're given an integral function such as <m>G</m> and wish to understand properties of its graph by recognizing that <m>G'(x) = g(x)</m>,
+      while not necessarily being able to exactly evaluate the definite integral <m>\int_c^x g(t) \, dt</m>.
+      To see how this is the case,
+      we consider the following example.
+    </p>
 
     <example>
       <statement>
-        <p>Investigate the behavior of the integral function
+        <p>
+          Investigate the behavior of the integral function
           <me>
-            E(x) = \int_0^x e^{-t^2} \, dt.
-          </me>
+            E(x) = \int_0^x e^{-t^2} \, dt
+          </me>.
         </p>
       </statement>
-    <solution>
-    <p><m>E</m> is closely related to the well known <em>error function</em><idx><h>error functin</h></idx><fn>The error function is defined by the rule <m>\erf  (x) = \frac{2}{\sqrt{\pi}} \int_0^x e^{-t^2} \,dt</m> and has the key property that <m>0 \le \erf  (x) \lt  1</m> for all <m>x \ge 0</m> and moreover that <m>\lim_{x \to \infty} \erf  (x) = 1</m>.</fn>, a function that is particularly important in probability and statistics. It turns out that the function <m>e^{-t^2}</m> does not have an elementary antiderivative that we can express without integrals. That is, whereas a function such as <m>f(t) = 4-2t</m> has elementary antiderivative <m>F(t) = 4t - t^2</m>, we are unable to find a simple formula for an antiderivative of <m>e^{-t^2}</m> that does not involve a definite integral. We will learn more about finding (complicated) algebraic formulas for antiderivatives without definite integrals in the chapter on infinite series.</p>
+      <solution>
+        <p>
+          <m>E</m> is closely related to the well known <em>error function</em>
+              <idx><h>error functin</h></idx>
+          <fn>The error function is defined by the rule
+          <m>\erf (x) = \frac{2}{\sqrt{\pi}} \int_0^x e^{-t^2} \,dt</m> and has the key property that
+          <m>0 \le \erf (x) \lt 1</m> for all <m>x \ge 0</m> and moreover that <m>\lim_{x \to \infty} \erf (x) = 1</m>.</fn>,
+          a function that is particularly important in probability and statistics.
+          It turns out that the function
+          <m>e^{-t^2}</m> does not have an elementary antiderivative that we can express without integrals.
+          That is, whereas a function such as
+          <m>f(t) = 4-2t</m> has elementary antiderivative <m>F(t) = 4t - t^2</m>,
+          we are unable to find a simple formula for an antiderivative of
+          <m>e^{-t^2}</m> that does not involve a definite integral.
+          We will learn more about finding (complicated) algebraic formulas for antiderivatives without definite integrals in the chapter on infinite series.
+        </p>
 
-    <p>Returning our attention to the function <m>E</m>, while we cannot evaluate <m>E</m> exactly for any value other than <m>x = 0</m>,
-      we still can gain a tremendous amount of information about the function <m>E</m>. To begin, applying the rule in Equation<nbsp /><xref ref="E_diffint" /> to <m>E</m>, it follows that
-      <me>
-        E'(x) = \frac{d}{dx} \left[ \int_0^x e^{-t^2} \, dt \right] = e^{-x^2},
-      </me>
-      so we know a formula for the derivative of <m>E</m>. Moreover, we know that <m>E(0) = 0</m>. This information is precisely the type we were given in problems such as the one in <xref ref="act-3-1-1">Activity</xref> and others in <xref ref="sec-3-1-tests">Section</xref>, where we were given information about the derivative of a function, but lacked a formula for the function itself.</p>
+        <p>
+          Returning our attention to the function <m>E</m>,
+          while we cannot evaluate <m>E</m> exactly for any value other than <m>x = 0</m>,
+                we still can gain a tremendous amount of information about the function <m>E</m>.
+          To begin, applying the rule in Equation<nbsp /><xref ref="E_diffint" /> to <m>E</m>,
+          it follows that
+          <me>
+            E'(x) = \frac{d}{dx} \left[ \int_0^x e^{-t^2} \, dt \right] = e^{-x^2}
+          </me>,
+          so we know a formula for the derivative of <m>E</m>.
+          Moreover, we know that <m>E(0) = 0</m>.
+          This information is precisely the type we were given in problems such as the one in <xref ref="act-3-1-1">Activity</xref>
+          and others in <xref ref="sec-3-1-tests">Section</xref>,
+          where we were given information about the derivative of a function,
+          but lacked a formula for the function itself.
+        </p>
 
-    <p>Here, using the first and second derivatives of <m>E</m>, along with the fact that <m>E(0) = 0</m>, we can determine more information about the behavior of <m>E</m>. First, with <m>E'(x) = e^{-x^2}</m>, we note that for all real numbers <m>x</m>, <m>e^{-x^2} \gt 0</m>, and thus <m>E'(x) \gt 0</m> for all <m>x</m>. Thus <m>E</m> is an always increasing function. Further, we note that as <m>x \to \infty</m>, <m>E'(x) = e^{-x^2} \to 0</m>, hence the slope of the function <m>E</m> tends to zero as <m>x \to \infty</m> (and similarly as <m>x \to -\infty</m>). Indeed, it turns out (due to some more sophisticated analysis) that <m>E</m> has horizontal asymptotes as <m>x</m> increases or decreases without bound.</p>
+        <p>
+          Here, using the first and second derivatives of <m>E</m>,
+          along with the fact that <m>E(0) = 0</m>,
+          we can determine more information about the behavior of <m>E</m>.
+          First, with <m>E'(x) = e^{-x^2}</m>,
+          we note that for all real numbers <m>x</m>,
+          <m>e^{-x^2} \gt 0</m>, and thus <m>E'(x) \gt 0</m> for all <m>x</m>.
+          Thus <m>E</m> is an always increasing function.
+          Further, we note that as <m>x \to \infty</m>,
+          <m>E'(x) = e^{-x^2} \to 0</m>,
+          hence the slope of the function <m>E</m> tends to zero as
+          <m>x \to \infty</m> (and similarly as <m>x \to -\infty</m>).
+          Indeed, it turns out
+          (due to some more sophisticated analysis)
+          that <m>E</m> has horizontal asymptotes as <m>x</m> increases or decreases without bound.
+        </p>
 
-    <p>In addition, we can observe that <m>E''(x) = -2xe^{-x^2}</m>, and that <m>E''(0) = 0</m>, while <m>E''(x) \lt  0</m> for <m>x \gt 0</m> and <m>E''(x) \gt 0</m> for <m>x \lt  0</m>. This information tells us that <m>E</m> is concave up for <m>x\lt 0</m> and concave down for <m>x \gt 0</m> with a point of inflection at <m>x = 0</m>.</p>
+        <p>
+          In addition, we can observe that <m>E''(x) = -2xe^{-x^2}</m>,
+          and that <m>E''(0) = 0</m>,
+          while <m>E''(x) \lt 0</m> for <m>x \gt 0</m> and <m>E''(x) \gt 0</m> for <m>x \lt 0</m>.
+          This information tells us that <m>E</m> is concave up for <m>x\lt 0</m> and concave down for <m>x \gt 0</m> with a point of inflection at <m>x = 0</m>.
+        </p>
 
-    <p>The only thing we lack at this point is a sense of how big <m>E</m> can get as <m>x</m> increases. If we use a midpoint Riemann sum with 10 subintervals to estimate <m>E(2)</m>, we see that <m>E(2) \approx 0.8822</m>; a similar calculation to estimate <m>E(3)</m> shows little change (<m>E(3) \approx 0.8862</m>), so it appears that as <m>x</m> increases without bound, <m>E</m> approaches a value just larger than <m>0.886</m>, which aligns with the fact that <m>E</m> has horizontal asymptotes. Putting all of this information together (and using the symmetry of <m>f(t) = e^{-t^2}</m>), we see the results shown in <xref ref="F-5-2-erf">Figure</xref>.</p>
+        <p>
+          The only thing we lack at this point is a sense of how big <m>E</m> can get as <m>x</m> increases.
+          If we use a midpoint Riemann sum with 10 subintervals to estimate <m>E(2)</m>,
+          we see that <m>E(2) \approx 0.8822</m>;
+          a similar calculation to estimate <m>E(3)</m> shows little change (<m>E(3) \approx 0.8862</m>),
+          so it appears that as <m>x</m> increases without bound,
+          <m>E</m> approaches a value just larger than <m>0.886</m>,
+          which aligns with the fact that <m>E</m> has horizontal asymptotes.
+          Putting all of this information together (and using the symmetry of <m>f(t) = e^{-t^2}</m>),
+          we see the results shown in <xref ref="F-5-2-erf">Figure</xref>.
+        </p>
 
-    <figure xml:id="F-5-2-erf" >
-      <caption>At left, the graph of <m>f(t) = e^{-t^2}</m>.  At right, the integral function <m>E(x) = \int_0^x e^{-t^2} \ dt</m>, which is the unique antiderivative of <m>f</m> that satisfies <m>E(0) = 0</m>.</caption>
-      <image width="100%" source="images/5_2_erf" />
-    </figure>
+        <figure xml:id="F-5-2-erf">
+          <caption>At left, the graph of <m>f(t) = e^{-t^2}</m>.  At right, the integral function <m>E(x) = \int_0^x e^{-t^2} \ dt</m>, which is the unique antiderivative of <m>f</m> that satisfies <m>E(0) = 0</m>.</caption>
+          <image width="100%" source="images/5_2_erf" />
+        </figure>
 
-    <p>Again, <m>E</m> is the antiderivative of <m>f(t) = e^{-t^2}</m> that satisfies <m>E(0) = 0</m>. Moreover, the values on the graph of <m>y = E(x)</m> represent the net-signed area of the region bounded by <m>f(t) = e^{-t^2}</m> from 0 up to <m>x</m>. We see that the value of <m>E</m> increases rapidly near zero but then levels off as <m>x</m> increases since there is less and less additional accumulated area bounded by <m>f(t) = e^{-t^2}</m> as <m>x</m> increases.</p>
-    </solution>
-</example>
+        <p>
+          Again, <m>E</m> is the antiderivative of
+          <m>f(t) = e^{-t^2}</m> that satisfies <m>E(0) = 0</m>.
+          Moreover, the values on the graph of <m>y = E(x)</m> represent the net-signed area of the region bounded by
+          <m>f(t) = e^{-t^2}</m> from 0 up to <m>x</m>.
+          We see that the value of <m>E</m> increases rapidly near zero but then levels off as <m>x</m> increases since there is less and less additional accumulated area bounded by
+          <m>f(t) = e^{-t^2}</m> as <m>x</m> increases.
+        </p>
+      </solution>
+    </example>
 
     <xi:include href="./activities/act-5-2-2.xml" />
-
   </subsection>
 
   <subsection>
     <title>Differentiating an Integral Function</title>
-    <p>We have seen that the Second FTC enables us to construct an antiderivative <m>F</m> of any continuous function <m>f</m> by defining <m>F</m> by the corresponding integral function <m>F(x) = \int_c^x f(t) \, dt</m>. Said differently, if we have a function of the form <m>F(x) = \int_c^x f(t) \, dt</m>, then we know that <m>F'(x) = \frac{d}{dx} \left[\int_c^x f(t) \, dt \right] = f(x)</m>. This shows that integral functions, while perhaps having the most complicated formulas of any functions we have encountered, are nonetheless particularly simple to differentiate. For instance, if
+    <p>
+      We have seen that the Second FTC enables us to construct an antiderivative <m>F</m> of any continuous function <m>f</m> by defining <m>F</m> by the corresponding integral function <m>F(x) = \int_c^x f(t) \, dt</m>.
+      Said differently,
+      if we have a function of the form <m>F(x) = \int_c^x f(t) \, dt</m>,
+      then we know that <m>F'(x) = \frac{d}{dx} \left[\int_c^x f(t) \, dt \right] = f(x)</m>.
+      This shows that integral functions,
+      while perhaps having the most complicated formulas of any functions we have encountered,
+      are nonetheless particularly simple to differentiate.
+      For instance, if
       <me>
-        F(x) = \int_{\pi}^x \sin(t^2) \, dt,
-      </me>
+        F(x) = \int_{\pi}^x \sin(t^2) \, dt
+      </me>,
       then by the Second FTC, we know immediately that
       <me>
-        F'(x) = \sin(x^2).
-      </me>
+        F'(x) = \sin(x^2)
+      </me>.
     </p>
 
-    <p>Stating this result more generally for an arbitrary function <m>f</m>, we know by the Second FTC that
+    <p>
+      Stating this result more generally for an arbitrary function <m>f</m>,
+      we know by the Second FTC that
       <me>
-        \frac{d}{dx} \left[ \int_a^x f(t) \, dt \right] = f(x).
-      </me>
+        \frac{d}{dx} \left[ \int_a^x f(t) \, dt \right] = f(x)
+      </me>.
     </p>
 
-    <p>In words, the last equation essentially says that <q>the derivative of the integral function whose integrand is <m>f</m>, is <m>f</m>.</q> In this sense, we see that if we first integrate the function <m>f</m> from <m>t = a</m> to <m>t = x</m>, and then differentiate with respect to <m>x</m>, these two processes <q>undo</q> one another.</p>
+    <p>
+      In words, the last equation essentially says that
+      <q>the derivative of the integral function whose integrand is <m>f</m>,
+      is <m>f</m>.</q> In this sense,
+      we see that if we first integrate the function <m>f</m> from <m>t = a</m> to <m>t = x</m>,
+      and then differentiate with respect to <m>x</m>,
+      these two processes <q>undo</q> one another.
+    </p>
 
-    <p>Taking a different approach, say we begin with a function <m>f(t)</m> and differentiate with respect to <m>t</m>. What happens if we follow this by integrating the result from <m>t = a</m> to <m>t = x</m>? That is, what can we say about the quantity
+    <p>
+      Taking a different approach,
+      say we begin with a function <m>f(t)</m> and differentiate with respect to <m>t</m>.
+      What happens if we follow this by integrating the result from <m>t = a</m> to <m>t = x</m>?
+      That is, what can we say about the quantity
       <me>
         \int_a^x \frac{d}{dt} \left[ f(t) \right] \, dt?
       </me>
     </p>
 
-    <p>Here, we use the First FTC and note that <m>f(t)</m> is an antiderivative of <m>\frac{d}{dt} \left[ f(t) \right].</m> Applying this result and evaluating the antiderivative function, we see that
+    <p>
+      Here, we use the First FTC and note that <m>f(t)</m> is an antiderivative of <m>\frac{d}{dt} \left[ f(t) \right]</m>.
+      Applying this result and evaluating the antiderivative function,
+      we see that
       <md>
         <mrow>\int_a^x \frac{d}{dt} \left[ f(t) \right] \, dt =\mathstrut \amp  f(t) \bigg\vert_a^x</mrow>
-        <mrow>=\mathstrut \amp  f(x) - f(a).</mrow>
-      </md>
+        <mrow>=\mathstrut \amp  f(x) - f(a)</mrow>
+      </md>.
     </p>
 
-    <p>Thus, we see that if we apply the processes of first differentiating <m>f</m> and then integrating the result from <m>a</m> to <m>x</m>, we return to the function <m>f</m>, minus the constant value <m>f(a)</m>. So in this situation, the two processes almost undo one another, up to the constant <m>f(a)</m>.</p>
+    <p>
+      Thus, we see that if we apply the processes of first differentiating <m>f</m> and then integrating the result from <m>a</m> to <m>x</m>,
+      we return to the function <m>f</m>,
+      minus the constant value <m>f(a)</m>.
+      So in this situation, the two processes almost undo one another,
+      up to the constant <m>f(a)</m>.
+    </p>
 
-    <p>The observations made in the preceding two paragraphs demonstrate that differentiating and integrating (where we integrate from a constant up to a variable) are almost inverse processes. In one sense, this should not be surprising: integrating involves antidifferentiating, which reverses the process of differentiating. On the other hand, we see that there is some subtlety involved, as integrating the derivative of a function does not quite produce the function itself. This is connected to a key fact we observed in <xref ref="sec-5-1-antid-graphs">Section</xref>, which is that any function has an entire family of antiderivatives, and any two of those antiderivatives differ only by a constant.</p>
+    <p>
+      The observations made in the preceding two paragraphs demonstrate that differentiating and integrating
+      (where we integrate from a constant up to a variable)
+      are almost inverse processes.
+      In one sense, this should not be surprising:
+      integrating involves antidifferentiating,
+      which reverses the process of differentiating.
+      On the other hand, we see that there is some subtlety involved,
+      as integrating the derivative of a function does not quite produce the function itself.
+      This is connected to a key fact we observed in <xref ref="sec-5-1-antid-graphs">Section</xref>,
+      which is that any function has an entire family of antiderivatives,
+      and any two of those antiderivatives differ only by a constant.
+    </p>
 
     <xi:include href="./activities/act-5-2-3.xml" />
-
   </subsection>
 
   <subsection>
     <title>Summary</title>
-    <p><ul>
-      <li><p>For a continuous function <m>f</m>, the integral function <m>A(x) = \int_1^x f(t) \, dt</m> defines an antiderivative of <m>f</m>.</p></li>
+    <p>
+      <ul>
+        <li>
+          <p>
+            For a continuous function <m>f</m>,
+            the integral function
+      <m>A(x) = \int_1^x f(t) \, dt</m> defines an antiderivative of <m>f</m>.
+          </p>
+        </li>
 
-      <li><p>The Second Fundamental Theorem of Calculus is the formal, more general statement of the preceding fact:  if <m>f</m> is a continuous function and <m>c</m> is any constant, then <m>A(x) = \int_c^x f(t) \, dt</m> is the unique antiderivative of <m>f</m> that satisfies <m>A(c) = 0</m>.</p></li>
+        <li>
+          <p>
+            The Second Fundamental Theorem of Calculus is the formal,
+            more general statement of the preceding fact:
+            if <m>f</m> is a continuous function and <m>c</m> is any constant,
+            then <m>A(x) = \int_c^x f(t) \, dt</m> is the unique antiderivative of <m>f</m> that satisfies <m>A(c) = 0</m>.
+          </p>
+        </li>
 
-      <li><p>Together, the First and Second FTC enable us to formally see how differentiation and integration are almost inverse processes through the observations that
-          <me>
-            \int_c^x \frac{d}{dt} \left[ f(t) \right] \, dt = f(x) - f(c)
-          </me>
-          and
-          <me>
-            \frac{d}{dx} \left[ \int_c^x f(t) \, dt \right] = f(x).
-          </me>
-        </p></li>
-    </ul></p>
+        <li>
+          <p>
+            Together,
+      the First and Second FTC enable us to formally see how differentiation and integration are almost inverse processes through the observations that
+            <me>
+              \int_c^x \frac{d}{dt} \left[ f(t) \right] \, dt = f(x) - f(c)
+            </me>
+            and
+            <me>
+              \frac{d}{dx} \left[ \int_c^x f(t) \, dt \right] = f(x)
+            </me>.
+          </p>
+        </li>
+      </ul>
+    </p>
   </subsection>
 
-    <xi:include href="./exercises/ez-5-2.xml" />
-
-
-
+  <xi:include href="./exercises/ez-5-2.xml" />
 </section>
+

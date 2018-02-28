@@ -13,76 +13,188 @@
 <!-- derivatives for profit.  All trademarks are the registered marks of   -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
+
 <section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-3-4-applied-opt">
-<title>Applied Optimization</title>
-
-<objectives>
+  <title>Applied Optimization</title>
+  <objectives>
     <ul>
-        <li><p>In a setting where a situation is described for which optimal parameters are sought, how do we develop a function that models the situation and use calculus to find the desired maximum or minimum?</p></li>
+      <li>
+        <p>
+          In a setting where a situation is described for which optimal parameters are sought,
+          how do we develop a function that models the situation and use calculus to find the desired maximum or minimum?
+        </p>
+      </li>
     </ul>
-</objectives>
-<introduction>
-<p>
-Near the conclusion of <xref ref="sec-3-3-optimization">Section</xref>, we considered two examples of optimization problems where determining the function to be optimized was part of a broader question. In <xref ref="Ex-3-3-1">Example</xref>, we sought to use a single piece of wire to build two geometric figures (an equilateral triangle and square) and to understand how various choices for how to cut the wire led to different values of the area enclosed. One of our conclusions was that in order to maximize the total combined area enclosed by the triangle and square, all of the wire must be used to make a square. In the subsequent <xref ref="act-3-3-3">Activity</xref>, we investigated how the volume of a box constructed from a piece of cardboard by removing squares from each corner and folding up the sides depends on the size of the squares removed.
-</p>
+  </objectives>
+  <introduction>
+    <p>
+      Near the conclusion of <xref ref="sec-3-3-optimization">Section</xref>,
+      we considered two examples of optimization problems where determining the function to be optimized was part of a broader question.
+      In <xref ref="Ex-3-3-1">Example</xref>,
+      we sought to use a single piece of wire to build two geometric figures
+      (an equilateral triangle and square)
+      and to understand how various choices for how to cut the wire led to different values of the area enclosed.
+      One of our conclusions was that in order to maximize the total combined area enclosed by the triangle and square,
+      all of the wire must be used to make a square.
+      In the subsequent <xref ref="act-3-3-3">Activity</xref>,
+      we investigated how the volume of a box constructed from a piece of cardboard by removing squares from each corner and folding up the sides depends on the size of the squares removed.
+    </p>
 
-<p>
-Both of these problems exemplify situations where there is not a function explicitly provided to optimize. Rather, we first worked to understand the given information in the problem, drawing a figure and introducing variables, and then sought to develop a formula for a function that models the quantity (area or volume, in the two examples, respectively) to be optimized. Once the function was established, we then considered what domain was appropriate on which to pursue the desired absolute minimum or maximum (or both). At this point in the problem, we are finally ready to apply the ideas of calculus to determine and justify the absolute minimum or maximum. Thus, what is primarily different about problems of this type is that the problem-solver must do considerable work to introduce variables and develop the correct function and domain to represent the described situation.
-</p>
+    <p>
+      Both of these problems exemplify situations where there is not a function explicitly provided to optimize.
+      Rather, we first worked to understand the given information in the problem,
+      drawing a figure and introducing variables,
+      and then sought to develop a formula for a function that models the quantity
+      (area or volume, in the two examples, respectively)
+      to be optimized.
+      Once the function was established,
+      we then considered what domain was appropriate on which to pursue the desired absolute minimum or maximum (or both).
+      At this point in the problem,
+      we are finally ready to apply the ideas of calculus to determine and justify the absolute minimum or maximum.
+      Thus, what is primarily different about problems of this type is that the problem-solver must do considerable work to introduce variables and develop the correct function and domain to represent the described situation.
+    </p>
 
-<p>
-Throughout what follows in the current section, the primary emphasis is on the reader solving problems. Initially, some substantial guidance is provided, with the problems progressing to require greater independence as we move along.
-</p>
+    <p>
+      Throughout what follows in the current section,
+      the primary emphasis is on the reader solving problems.
+      Initially, some substantial guidance is provided,
+      with the problems progressing to require greater independence as we move along.
+    </p>
 
     <xi:include href="./previews/PA-3-4.xml" />
+  </introduction>
 
-</introduction>
+  <subsection>
+    <title>More applied optimization problems</title>
+    <p>
+      Many of the steps in <xref ref="PA-3-4">Preview Activity</xref>
+      are ones that we will execute in any applied optimization problem.
+      We briefly summarize those here to provide an overview of our approach in subsequent questions.
 
-<subsection>
-<title>More applied optimization problems</title>
-<p>
-Many of the steps in <xref ref="PA-3-4">Preview Activity</xref> are ones that we will execute in any applied optimization problem. We briefly summarize those here to provide an overview of our approach in subsequent questions.
-<note>
-    <p><ul>
-        <li><p>Draw a picture and introduce variables.  It is essential to first understand what quantities are allowed to vary in the problem and then to represent those values with variables.  Constructing a figure with the variables labeled is almost always an essential first step.  Sometimes drawing several diagrams can be especially helpful to get a sense of the situation.  A nice example of this can be seen at <url href="http://gvsu.edu/s/99">http://gvsu.edu/s/99</url>, where the choice of where to bend a piece of wire into the shape of a rectangle determines both the rectangle's shape and area.</p></li>
-        <li><p>Identify the quantity to be optimized as well as any key relationships among the variable quantities.  Essentially this step involves writing equations that involve the variables that have been introduced: one to represent the quantity whose minimum or maximum is sought, and possibly others that show how multiple variables in the problem may be interrelated.</p></li>
-        <li><p>Determine a function of a single variable that models the quantity to be optimized; this may involve using other relationships among variables to eliminate one or more variables in the function formula.  For example, in <xref ref="PA-3-4">Preview Activity</xref>, we initially found that <m>V = x^2 y</m>, but then the additional relationship that <m>4x + y = 108</m> (girth plus length equals 108 inches) allows us to relate <m>x</m> and <m>y</m> and thus observe equivalently that <m>y = 108-4x</m>.  Substituting for <m>y</m> in the volume equation yields <m>V(x) = x^2(108-4x)</m>, and thus we have written the volume as a function of the single variable <m>x</m>.</p></li>
-        <li><p>Decide the domain on which to consider the function being optimized.  Often the physical constraints of the problem will limit the possible values that the independent variable can take on.  Thinking back to the diagram describing the overall situation and any relationships among variables in the problem often helps identify the smallest and largest values of the input variable.</p></li>
-        <li><p>Use calculus to identify the absolute maximum and/or minimum of the quantity being optimized.  This always involves finding the critical numbers of the function first.  Then, depending on the domain, we either construct a first derivative sign chart (for an open or unbounded interval) or evaluate the function at the endpoints and critical numbers (for a closed, bounded interval), using ideas we've studied so far in <xref ref="C-3">Chapter</xref>.</p></li>
-        <li><p>Finally, we make certain we have answered the question:  does the question seek the absolute maximum of a quantity, or the values of the variables that produce the maximum?  That is, finding the absolute maximum volume of a parcel is different from finding the dimensions of the parcel that produce the maximum.</p></li>
-    </ul></p>
-</note>
+      <note>
+        <p>
+          <ul>
+            <li>
+              <p>
+                Draw a picture and introduce variables.
+                It is essential to first understand what quantities are allowed to vary in the problem and then to represent those values with variables.
+                Constructing a figure with the variables labeled is almost always an essential first step.
+                Sometimes drawing several diagrams can be especially helpful to get a sense of the situation.
+                A nice example of this can be seen at <url href="http://gvsu.edu/s/99">http://gvsu.edu/s/99</url>,
+                where the choice of where to bend a piece of wire into the shape of a rectangle determines both the rectangle's shape and area.
+              </p>
+            </li>
 
-</p>
+            <li>
+              <p>
+                Identify the quantity to be optimized as well as any key relationships among the variable quantities.
+                Essentially this step involves writing equations that involve the variables that have been introduced:
+                one to represent the quantity whose minimum or maximum is sought,
+                and possibly others that show how multiple variables in the problem may be interrelated.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Determine a function of a single variable that models the quantity to be optimized;
+                this may involve using other relationships among variables to eliminate one or more variables in the function formula.
+                For example, in <xref ref="PA-3-4">Preview Activity</xref>,
+                we initially found that <m>V = x^2 y</m>,
+                but then the additional relationship that <m>4x + y = 108</m>
+                (girth plus length equals 108 inches)
+                allows us to relate <m>x</m> and <m>y</m> and thus observe equivalently that <m>y = 108-4x</m>.
+                Substituting for <m>y</m> in the volume equation yields <m>V(x) = x^2(108-4x)</m>,
+                and thus we have written the volume as a function of the single variable <m>x</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Decide the domain on which to consider the function being optimized.
+                Often the physical constraints of the problem will limit the possible values that the independent variable can take on.
+                Thinking back to the diagram describing the overall situation and any relationships among variables in the problem often helps identify the smallest and largest values of the input variable.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Use calculus to identify the absolute maximum and/or minimum of the quantity being optimized.
+                This always involves finding the critical numbers of the function first.
+                Then, depending on the domain,
+                we either construct a first derivative sign chart
+                (for an open or unbounded interval)
+                or evaluate the function at the endpoints and critical numbers
+                (for a closed, bounded interval),
+                using ideas we've studied so far in <xref ref="C-3">Chapter</xref>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Finally, we make certain we have answered the question:
+                does the question seek the absolute maximum of a quantity,
+                or the values of the variables that produce the maximum?
+                That is,
+          finding the absolute maximum volume of a parcel is different from finding the dimensions of the parcel that produce the maximum.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </note>
+
+    </p>
 
     <xi:include href="./activities/act-3-4-1.xml" />
 
-<p>
-Familiarity with common geometric formulas is particularly helpful in problems like the one in <xref ref="act-3-4-1">Activity</xref>. Sometimes those involve perimeter, area, volume, or surface area. At other times, the constraints of a problem introduce right triangles (where the Pythagorean Theorem applies) or other functions whose formulas provide relationships among variables present.
-</p>
+    <p>
+      Familiarity with common geometric formulas is particularly helpful in problems like the one in <xref ref="act-3-4-1">Activity</xref>.
+      Sometimes those involve perimeter,
+      area, volume, or surface area.
+      At other times,
+      the constraints of a problem introduce right triangles
+      (where the Pythagorean Theorem applies)
+      or other functions whose formulas provide relationships among variables present.
+    </p>
 
     <xi:include href="./activities/act-3-4-2.xml" />
 
-<p>
-In more geometric problems, we often use curves or functions to provide natural constraints. For instance, we could investigate which isosceles triangle that circumscribes a unit circle has the smallest area, which you can explore for yourself at <url href="http://gvsu.edu/s/9b">http://gvsu.edu/s/9b</url>. Or similarly, for a region bounded by a parabola, we might seek the rectangle of largest area that fits beneath the curve, as shown at <url href="http://gvsu.edu/s/9c">http://gvsu.edu/s/9c</url>. The next activity is similar to the latter problem.
-</p>
+    <p>
+      In more geometric problems,
+      we often use curves or functions to provide natural constraints.
+      For instance,
+      we could investigate which isosceles triangle that circumscribes a unit circle has the smallest area,
+      which you can explore for yourself at <url href="http://gvsu.edu/s/9b">http://gvsu.edu/s/9b</url>.
+      Or similarly, for a region bounded by a parabola,
+      we might seek the rectangle of largest area that fits beneath the curve,
+      as shown at <url href="http://gvsu.edu/s/9c">http://gvsu.edu/s/9c</url>.
+      The next activity is similar to the latter problem.
+    </p>
 
     <xi:include href="./activities/act-3-4-3.xml" />
 
-    <xi:include href="./activities/act-3-4-4.xml" />
+        <xi:include href="./activities/act-3-4-4.xml" />
+  </subsection>
 
-</subsection>
+  <subsection>
+    <title>Summary</title>
+    <p>
+      <ul>
+        <li>
+          <p>
+            While there is no single algorithm that works in every situation where optimization is used,
+            in most of the problems we consider,
+            the following steps are helpful:
+            draw a picture and introduce variables;
+            identify the quantity to be optimized and find relationships among the variables;
+            determine a function of a single variable that models the quantity to be optimized;
+            decide the domain on which to consider the function being optimized;
+            use calculus to identify the absolute maximum and/or minimum of the quantity being optimized.
+          </p>
+        </li>
+      </ul>
+    </p>
+  </subsection>
 
-<subsection>
-<title>Summary</title>
-    <p><ul>
-        <li><p>While there is no single algorithm that works in every situation where optimization is used, in most of the problems we consider, the following steps are helpful:  draw a picture and introduce variables; identify the quantity to be optimized and find relationships among the variables; determine a function of a single variable that models the quantity to be optimized; decide the domain on which to consider the function being optimized; use calculus to identify the absolute maximum and/or minimum of the quantity being optimized.</p></li>
-    </ul></p>
-
-</subsection>
-
-    <xi:include href="./exercises/ez-3-4.xml" />
-
-
-
+  <xi:include href="./exercises/ez-3-4.xml" />
 </section>
+
