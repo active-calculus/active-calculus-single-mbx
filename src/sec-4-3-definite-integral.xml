@@ -40,9 +40,8 @@
   </objectives>
   <introduction>
     <p>
-      In <xref ref="F-4-2-NegF">Figure</xref>,
-      which is repeated below as <xref ref="F-4-3-IncreaseN">Figure</xref>,
-      we see visual evidence that increasing the number of rectangles in a Riemann sum improves the accuracy of the approximation of the net signed area that is bounded by the given function on the interval under consideration.
+      In <xref ref="F-4-3-IncreaseN">Figure</xref>,
+      we see evidence that increasing the number of rectangles in a Riemann sum improves the accuracy of the approximation of the net signed area bounded by the given function.
     </p>
 
     <figure xml:id="F-4-3-IncreaseN">
@@ -51,12 +50,9 @@
     </figure>
 
     <p>
-      We thus explore the natural idea of allowing the number of rectangles to increase without bound in an effort to compute the exact net signed area bounded by a function on an interval.
-      In addition,
-      it is important to think about the differences among left, right,
+      We therefore explore the natural idea of allowing the number of rectangles to increase without bound. In an effort to compute the exact net signed area we also consider the differences among left, right,
       and middle Riemann sums and the different results they generate as the value of <m>n</m> increases.
-      As we have done throughout our investigations with area,
-      we begin with functions that are exclusively positive on the interval under consideration.
+      We begin with functions that are exclusively positive on the interval under consideration.
     </p>
 
     <xi:include href="./previews/PA-4-3.xml" />
@@ -67,14 +63,14 @@
     <idx><h>definite integral</h><h>definition</h></idx>
 
     <p>
-      In both examples in <xref ref="PA-4-3">Preview Activity</xref>,
+      In <xref ref="PA-4-3">Preview Activity</xref>,
       we saw that as the number of rectangles got larger and larger,
       the values of <m>L_n</m>, <m>M_n</m>,
       and <m>R_n</m> all grew closer and closer to the same value.
       It turns out that this occurs for any continuous function on an interval <m>[a,b]</m>,
-      and even more generally for a Riemann sum using any point
+      and also for a Riemann sum using any point
       <m>x_{i+1}^*</m> in the interval <m>[x_i, x_{i+1}]</m>.
-      Said differently, as we let <m>n \to \infty</m>,
+      Thus, as we let <m>n \to \infty</m>,
       it doesn't really matter where we choose to evaluate the function within a given subinterval, because
       <me>
         \lim_{n \to \infty} L_n = \lim_{n \to \infty} R_n = \lim_{n \to \infty} M_n = \lim_{n \to \infty} \sum_{i=1}^{n} f(x_i^*) \Delta x
@@ -84,10 +80,10 @@
     <p>
       That these limits always exist
       (and share the same value)
-      for a continuous<fn>It turns out that a function need not be continuous in order to have a definite integral.
+      when <m>f</m> is continuous <fn>It turns out that a function need not be continuous in order to have a definite integral.
       For our purposes,
       we assume that the functions we consider are continuous on the interval(s) of interest.
-      It is straightforward to see that any function that is piecewise continuous on an interval of interest will also have a well-defined definite integral.</fn>function <m>f</m> allows us to make the following definition.
+      It is straightforward to see that any function that is piecewise continuous on an interval of interest will also have a well-defined definite integral.</fn> allows us to make the following definition.
     </p>
 
     <definition xml:id="D-4-3-DefInt">
@@ -118,7 +114,7 @@
       and the function <m>f</m> the <em>integrand</em><idx><h>integrand</h></idx>
       The process of determining the real number <m>\int_a^b f(x) \, dx</m> is called
       <em>evaluating the definite integral</em>.
-      While we will come to understand that there are several different interpretations of the value of the definite integral,
+      While there are several different interpretations of the definite integral,
       for now the most important is that
       <m>\int_a^b f(x) \, dx</m> measures the net signed area bounded by
       <m>y = f(x)</m> and the <m>x</m>-axis on the interval <m>[a,b]</m>.
@@ -126,8 +122,7 @@
 
     <sidebyside widths="47% 47%" margins="0%">
       <p>
-        For example, in the notation of the definite integral,
-        if <m>f</m> is the function pictured in <xref ref="F-4-3-DefIntInterp">Figure</xref> and <m>A_1</m>,
+        For example, if <m>f</m> is the function pictured in <xref ref="F-4-3-DefIntInterp">Figure</xref>, and <m>A_1</m>,
         <m>A_2</m>,
         and <m>A_3</m> are the exact areas bounded by <m>f</m> and the <m>x</m>-axis on the respective intervals <m>[a,b]</m>,
         <m>[b,c]</m>, and <m>[c,d]</m>, then
@@ -144,9 +139,9 @@
       </figure>
     </sidebyside>
     <p>
-      We can also use definite integrals to express the change in position and distance traveled by a moving object.
-      In the setting of a velocity function <m>v</m> on an interval <m>[a,b]</m>,
-      it follows from our work above and in preceding sections that the change in position,
+      We can also use definite integrals to express the change in position and the distance traveled by a moving object.
+      If <m>v</m> is a velocity function on an interval <m>[a,b]</m>,
+      then the change in position of the object,
       <m>s(b) - s(a)</m>, is given by
       <me>
         s(b) - s(a) = \int_a^b v(t) \, dt
@@ -156,39 +151,37 @@
     <p>
       If the velocity function is nonnegative on <m>[a,b]</m>,
       then <m>\int_a^b v(t) \,dt</m> tells us the distance the object traveled.
-      When velocity is sometimes negative on <m>[a,b]</m>,
-      the areas bounded by the function on intervals where <m>v</m> does not change sign can be found using integrals,
-      and the sum of these values will tell us the distance the object traveled.
+      If the velocity is sometimes negative on <m>[a,b]</m>,
+      we can use definite integrals to find the areas bounded by the function on each interval where <m>v</m> does not change sign,
+      and the sum of these areas will tell us the distance the object traveled.
     </p>
 
     <p>
-      If we wish to compute the value of a definite integral using the definition,
+      To compute the value of a definite integral from the definition,
       we have to take the limit of a sum.
       While this is possible to do in select circumstances,
-      it is also tedious and time-consuming;
-      moreover, computing these limits does not offer much additional insight into the meaning or interpretation of the definite integral.
+      it is also tedious and time-consuming,
+      and does not offer much additional insight into the meaning or interpretation of the definite integral.
       Instead, in <xref ref="sec-4-4-FTC">Section</xref>,
       we will learn the Fundamental Theorem of Calculus,
-      a result that provides a shortcut for evaluating a large class of definite integrals.
-      This will enable us to determine the exact net signed area bounded by a continuous function and the <m>x</m>-axis in many circumstances,
-      including examples such as <m>\int_1^4 (x^2 + 1) \, dx</m>,
-      which we approximated by Riemann sums in <xref ref="PA-4-3">Preview Activity</xref>.
+      which provides a shortcut for evaluating a large class of definite integrals.
+      This will enable us to determine the exact net signed area bounded by a continuous function and the <m>x</m>-axis in many circumstances.
     </p>
 
     <p>
       For now, our goal is to understand the meaning and properties of the definite integral,
-      rather than how to actually compute its value using ideas in calculus.
-      Thus, we temporarily rely on the net signed area interpretation of the definite integral and observe that if a given curve produces regions whose areas we can compute exactly through known area formulas,
-      we can thus compute the exact value of the integral.
+      rather than to compute its value.
+      To do this, we will rely on the net signed area interpretation of the definite integral. So we will use as examples curves that produce regions whose areas we can compute exactly through area formulas.
+      We can thus compute the exact value of the corresponding integral.
     </p>
 
     <sidebyside widths="47% 47%" margins="0%">
       <p>
         For instance,
         if we wish to evaluate the definite integral <m>\int_1^4 (2x+1) \, dx</m>,
-        we can observe that the region bounded by this function and the <m>x</m>-axis is the trapezoid shown in <xref ref="F-4-3-TrapArea">Figure</xref>,
-        and by the known formula for the area of a trapezoid,
-        its area is <m>A = \frac{1}{2}(3+9) \cdot 3 = 18</m>, so
+        we observe that the region bounded by this function and the <m>x</m>-axis is the trapezoid shown in <xref ref="F-4-3-TrapArea">Figure</xref>.
+        By the formula for the area of a trapezoid,
+        <m>A = \frac{1}{2}(3+9) \cdot 3 = 18</m>, so
         <me>
           \int_1^4 (2x+1) \, dx = 18
         </me>.
@@ -205,16 +198,15 @@
   <subsection>
     <title>Some properties of the definite integral</title>
     <p>
-      With the perspective that the definite integral of a function <m>f</m> over an interval <m>[a,b]</m> measures the net signed area bounded by <m>f</m> and the <m>x</m>-axis over the interval,
-      we naturally arrive at several different standard properties of the definite integral.
-      In addition,
-      it is helpful to remember that the definite integral is defined in terms of Riemann sums that fundamentally consist of the areas of rectangles.
+      Regarding the definite integral of a function <m>f</m> over an interval <m>[a,b]</m> as the net signed area bounded by <m>f</m> and the <m>x</m>-axis,
+      we discover several standard properties of the definite integral.
+      It is helpful to remember that the definite integral is defined in terms of Riemann sums, which consist of the areas of rectangles.
     </p>
 
     <p>
-      If we consider the definite integral
-      <m>\int_a^a f(x) \, dx</m> for any real number <m>a</m>,
-      it is evident that no area is being bounded because the interval begins and ends with the same point.
+      For any real number <m>a</m> and the definite integral
+      <m>\int_a^a f(x) \, dx</m>
+      it is evident that no area is enclosed, because the interval begins and ends with the same point.
       Hence,
     </p>
 
@@ -227,13 +219,13 @@
 
     <sidebyside widths="47% 47%" margins="0%">
       <p>
-        Next, we consider the results of subdividing a given interval.
+        Next, we consider the result of subdividing the interval of integration.
         In <xref ref="F-4-3-AdditiveProp">Figure</xref>, we see that
         <md>
           <mrow>\int_a^b f(x) \, dx = A_1, \ \int_b^c f(x) \, dx = A_2,</mrow>
           <mrow>\text{and }\int_a^c f(x) \, dx = A_1 + A_2</mrow>
         </md>,
-        which is indicative of the following general rule.
+        which illustrates the following general rule.
       </p>
 
       <figure xml:id="F-4-3-AdditiveProp">
@@ -252,11 +244,10 @@
     </assemblage>
 
     <p>
-      While this rule is most apparent in the situation where <m>a \lt b \lt c</m>,
+      While this rule is easy to see if <m>a \lt b \lt c</m>,
       it in fact holds in general for any values of <m>a</m>, <m>b</m>,
       and <m>c</m>.
-      This result is connected to another property of the definite integral,
-      which states that if we reverse the order of the limits of integration,
+      Another property of the definite integral states that if we reverse the order of the limits of integration,
       we change the sign of the integral's value.
     </p>
 
@@ -271,34 +262,34 @@
 
     <p>
       This result makes sense because if we integrate from <m>a</m> to <m>b</m>,
-      then in the defining Riemann sum <m>\Delta x = \frac{b-a}{n}</m>,
-      while if we integrate from <m>b</m> to <m>a</m>,
+      then in the defining Riemann sum we set <m>\Delta x = \frac{b-a}{n}</m>,
+      while if we integrate from <m>b</m> to <m>a</m>, we have
       <m>\Delta x = \frac{a-b}{n} = -\frac{b-a}{n}</m>,
       and this is the only change in the sum used to define the integral.
     </p>
 
     <p>
-      There are two additional properties of the definite integral that we need to understand.
-      Recall that when we worked with derivative rules in <xref ref="C-2">Chapter</xref>,
-      we found that both the Constant Multiple Rule and the Sum Rule held.
-      The Constant Multiple Rule tells us that if <m>f</m> is a differentiable function and <m>k</m> is a constant, then
+      There are two additional useful properties of the definite integral.
+      When we worked with derivative rules in <xref ref="C-2">Chapter</xref>,
+      we formulated the Constant Multiple Rule and the Sum Rule.
+      (Recall that the Constant Multiple Rule says if <m>f</m> is a differentiable function and <m>k</m> is a constant, then
       <me>
         \frac{d}{dx} [kf(x)] = kf'(x)
       </me>,
-      and the Sum Rule states that if <m>f</m> and <m>g</m> are differentiable functions, then
+      and the Sum Rule says that if <m>f</m> and <m>g</m> are differentiable functions, then
       <me>
         \frac{d}{dx}[f(x) + g(x)] = f'(x) + g'(x)
-      </me>.
+      </me>.)
     </p>
 
     <p>
-      These rules are useful because they enable us to deal individually with the simplest parts of certain functions and take advantage of the elementary operations of addition and multiplying by a constant.
-      They also tell us that the process of taking the derivative respects addition and multiplying by constants in the simplest possible way.
+      These rules are useful because they allow to deal individually with the simplest parts of certain functions by taking advantage of addition and multiplying by a constant.
+      In other words, the process of taking the derivative respects addition and multiplying by constants in the simplest possible way.
     </p>
 
     <p>
       It turns out that similar rules hold for the definite integral.
-      First, let's consider the situation pictured in <xref ref="F-4-3-ConstMult">Figure</xref>,
+      First, let's consider the functions pictured in <xref ref="F-4-3-ConstMult">Figure</xref>.
     </p>
 
     <figure xml:id="F-4-3-ConstMult">
@@ -307,22 +298,19 @@
     </figure>
 
     <p>
-      where we examine the effect of multiplying a function by a factor of 2 on the area it bounds with the <m>x</m>-axis.
       Because multiplying the function by 2 doubles its height at every <m>x</m>-value,
-      we see that if we consider a typical rectangle from a Riemann sum,
-      the difference in area comes from the changed height of the rectangle:
+      we see that the height of each rectangle in a left Riemann sum is doubled,
       <m>f(x_i)</m> for the original function,
-      versus <m>2f(x_i)</m> in the doubled function, in the case of left sum.
-      Hence, in <xref ref="F-4-3-ConstMult">Figure</xref>,
-      we see that for the pictured rectangles with areas <m>A</m> and <m>B</m>,
+      versus <m>2f(x_i)</m> in the doubled function.
+      For the areas <m>A</m> and <m>B</m>,
       it follows <m>B = 2A</m>.
-      As this will happen in every such rectangle,
-      regardless of the value of <m>n</m> and the type of sum we use,
+      As this is true
+      regardless of the value of <m>n</m> or the type of sum we use,
       we see that in the limit,
       the area of the red region bounded by
-      <m>y = 2f(x)</m> will be twice that of the area of the blue region bounded by <m>y = f(x)</m>.
+      <m>y = 2f(x)</m> will be twice the area of the blue region bounded by <m>y = f(x)</m>.
       As there is nothing special about the value <m>2</m> compared to an arbitrary constant <m>k</m>,
-      it turns out that the following general principle holds.
+      the following general principle holds.
     </p>
 
     <assemblage>
@@ -338,7 +326,7 @@
     </assemblage>
 
     <p>
-      Finally, we see a similar situation geometrically with the sum of two functions <m>f</m> and <m>g</m>.
+      We see a similar situation with the sum of two functions <m>f</m> and <m>g</m>.
     </p>
 
     <figure xml:id="F-4-3-Sum">
@@ -347,17 +335,15 @@
     </figure>
 
     <p>
-      In particular, as shown in <xref ref="F-4-3-Sum">Figure</xref>,
-      if we take the sum of two functions <m>f</m> and <m>g</m>,
+      If we take the sum of two functions <m>f</m> and <m>g</m>
       at every point in the interval,
-      the height of the function <m>f+g</m> is given by <m>(f+g)(x_i) = f(x_i) + g(x_i)</m>,
-      which is the sum of the individual function values of <m>f</m> and <m>g</m> (taken at left endpoints).
+      the height of the function <m>f+g</m> is given by <m>(f+g)(x_i) = f(x_i) + g(x_i)</m>.
       Hence, for the pictured rectangles with areas <m>A</m>, <m>B</m>,
       and <m>C</m>,
-      it follows that <m>C = A + B</m>,
-      and because this will occur for every such rectangle,
+      it follows that <m>C = A + B</m>.
+      Because this will occur for every such rectangle,
       in the limit the area of the gray region will be the sum of the areas of the blue and red regions.
-      Stated in terms of definite integrals,
+      In terms of definite integrals,
       we have the following general rule.
     </p>
 
@@ -374,8 +360,7 @@
     </assemblage>
 
     <p>
-      More generally,
-      the Constant Multiple and Sum Rules can be combined to make the observation that for any continuous functions <m>f</m> and <m>g</m> and any constants <m>c</m> and <m>k</m>,
+      The Constant Multiple and Sum Rules can be combined to say that for any continuous functions <m>f</m> and <m>g</m> and any constants <m>c</m> and <m>k</m>,
       <me>
         \int_a^b [c f(x) \pm k g(x)] \,dx = c \int_a^b f(x) \,dx \pm k \int_a^b g(x) \,dx
       </me>.
@@ -389,10 +374,10 @@
     <idx><h>average value of a function</h></idx>
 
     <p>
-      One of the most valuable applications of the definite integral is that it provides a way to meaningfully discuss the average value of a function,
+      One of the most valuable applications of the definite integral is that it provides a way to discuss the average value of a function,
       even for a function that takes on infinitely many values.
       Recall that if we wish to take the average of <m>n</m> numbers <m>y_1</m>,
-      <m>y_2</m>, <m>\ldots</m>, <m>y_n</m>, we do so by computing
+      <m>y_2</m>, <m>\ldots</m>, <m>y_n</m>, we compute
       <me>
         AVG  = \frac{y_1 + y_2 + \cdots + y_n}{n}
       </me>.
@@ -400,7 +385,7 @@
 
     <p>
       Since integrals arise from Riemann sums in which we add <m>n</m> values of a function,
-      it should not be surprising that evaluating an integral is something like averaging the output values of a function.
+      it should not be surprising that evaluating an integral is similar to averaging the output values of a function.
       Consider, for instance,
       the right Riemann sum <m>R_n</m> of a function <m>f</m>,
       which is given by
@@ -418,10 +403,10 @@
     </p>
 
     <p>
-      Here, we see that the right Riemann sum with <m>n</m> subintervals is the length of the interval <m>(b-a)</m> times the average of the <m>n</m> function values found at the right endpoints.
+      We see that the right Riemann sum with <m>n</m> subintervals is just the length of the interval <m>(b-a)</m> times the average of the <m>n</m> function values found at the right endpoints.
       And just as with our efforts to compute area,
-      we see that the larger the value of <m>n</m> we use,
-      the more accurate our average of the values of <m>f</m> will be.
+      the larger the value of <m>n</m> we use,
+      the more accurate our average will be.
       Indeed, we will define the average value of <m>f</m> on <m>[a,b]</m> to be
       <me>
         f_{\operatorname{AVG} [a,b]} = \lim_{n \to \infty} \frac{f(x_1) + f(x_2) + \cdots + f(x_n)}{n}
@@ -457,9 +442,9 @@
     </assemblage>
 
     <p>
-      Observe that Equation<nbsp /><xref ref="E-RAvg2" /> tells us another way to interpret the definite integral:
+      Equation<nbsp /><xref ref="E-RAvg2" /> tells us another way to interpret the definite integral:
       the definite integral of a function <m>f</m> from <m>a</m> to <m>b</m> is the length of the interval <m>(b-a)</m> times the average value of the function on the interval.
-      In addition, Equation<nbsp /><xref ref="E-RAvg2" /> has a natural visual interpretation when the function <m>f</m> is nonnegative on <m>[a,b]</m>.
+      In addition, when the function <m>f</m> is nonnegative on <m>[a,b]</m>, Equation<nbsp /><xref ref="E-RAvg2" /> has a natural visual interpretation.
     </p>
 
     <figure xml:id="F-4-3-AvgVal">
@@ -472,15 +457,12 @@
       where we see at left the shaded region whose area is <m>\int_a^b f(x) \, dx</m>,
       at center the shaded rectangle whose dimensions are <m>(b-a)</m> by <m>f_{\operatorname{AVG} [a,b]}</m>,
       and at right these two figures superimposed.
-      Specifically,
-      note that in dark green we show the horizontal line <m>y = f_{\operatorname{AVG} [a,b]}</m>.
+      Note that in dark green we show the horizontal line <m>y = f_{\operatorname{AVG} [a,b]}</m>.
       Thus, the area of the green rectangle is given by <m>(b-a) \cdot f_{\operatorname{AVG} [a,b]}</m>,
       which is precisely the value of <m>\int_a^b f(x) \, dx</m>.
-      Said differently,
-      the area of the blue region in the left figure is the same as that of the green rectangle in the center figure;
-      this can also be seen by observing that the areas <m>A_1</m> and <m>A_2</m> in the rightmost figure appear to be equal.
-      Ultimately,
-      the average value of a function enables us to construct a rectangle whose area is the same as the value of the definite integral of the function on the interval.
+      The area of the blue region in the left figure is the same as the area of the green rectangle in the center figure.
+      (You can also 0bserve that the areas <m>A_1</m> and <m>A_2</m> in the rightmost figure appear to be equal.)
+      Thus, knowing the average value of a function enables us to construct a rectangle whose area is the same as the value of the definite integral of the function on the interval.
       The java applet<fn>David Austin,
       <url href="http://gvsu.edu/s/5r">http://gvsu.edu/s/5r</url>.</fn>at <url href="http://gvsu.edu/s/az">http://gvsu.edu/s/az</url> provides an opportunity to explore how the average value of the function changes as the interval changes,
       through an image similar to that found in <xref ref="F-4-3-AvgVal">Figure</xref>.
@@ -503,7 +485,7 @@
 
         <li>
           <p>
-            When we take the just described limit of Riemann sums,
+            When we take the limit of Riemann sums,
             we arrive at what we call the definite integral of <m>f</m> over the interval <m>[a,b]</m>.
             In particular, the symbol
             <m>\int_a^b f(x) \, dx</m> denotes the definite integral of <m>f</m> over <m>[a,b]</m>,
