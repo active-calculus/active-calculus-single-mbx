@@ -39,37 +39,26 @@
   </objectives>
   <introduction>
     <p>
-      In the preceding sections,
-      we have learned two very specific antidifferentiation techniques:
+      We have learned two antidifferentiation techniques:
       <m>u</m>-substitution and integration by parts.
       The former is used to reverse the chain rule,
       while the latter to reverse the product rule.
-      But we have seen that each only works in very specialized circumstances.
+      But we have seen that each works only in specialized circumstances.
       For example,
       while <m>\int xe^{x^2} \, dx</m> may be evaluated by <m>u</m>-substitution and
       <m>\int x e^x \, dx</m> by integration by parts,
-      neither method provides a route to evaluate <m>\int e^{x^2} \, dx</m>.
-      That fact is not a particular shortcoming of these two antidifferentiation techniques,
-      as it turns out there does not exist an elementary algebraic antiderivative for <m>e^{x^2}</m>.
-      Said differently,
-      no matter what antidifferentiation methods we could develop and learn to execute,
-      none of them will be able to provide us with a simple formula that does not involve integrals for a function <m>F(x)</m> that satisfies <m>F'(x) = e^{x^2}</m>.
+      neither method provides a route to evaluate <m>\int e^{x^2} \, dx</m>,
+      and in fact an elementary algebraic antiderivative for <m>e^{x^2}</m> does not exist.
+      No antidifferentiation method will provide us with a simple algebraic formula for a function <m>F(x)</m> that satisfies <m>F'(x) = e^{x^2}</m>.
     </p>
 
     <p>
       In this section of the text,
-      our main goals are to better understand some classes of functions that can always be antidifferentiated,
-      as well as to learn some options for so doing.
-      At the same time,
-      we want to recognize that there are many functions for which an algebraic formula for an antiderivative does not exist,
-      and also appreciate the role that computing technology can play in helping us find antiderivatives of other complicated functions.
-      Throughout,
-      it is helpful to remember what we have learned so far:
-      how to reverse the chain rule through <m>u</m>-substitution,
-      how to reverse the product rule through integration by parts,
-      and that overall,
-      there are subtle and challenging issues to address when trying to find antiderivatives.
-    </p>
+      our main goals are to identify some classes of functions that can be antidifferentiated,
+      and to learn some methods to do so.
+     We should also recognize that there are many functions for which an algebraic formula for an antiderivative does not exist,
+      and appreciate the role that computing technology can play in finding antiderivatives of other complicated functions.
+      </p>
 
     <xi:include href="./previews/PA-5-5.xml" />
   </introduction>
@@ -79,26 +68,28 @@
     <idx><h>partial fractions</h></idx>
 
     <p>
-      The method of partial fractions is used to integrate rational functions,
-      and essentially involves reversing the process of finding a common denominator.
-      For example,
-      suppoes we have the function <m>R(x) = \frac{5x}{x^2 - x - 2}</m> and want to evaluate
+      The method of partial fractions is used to integrate rational functions.
+      It involves reversing the process of finding a common denominator.
+      
+      <example><statement><p>
+      Evaluate
       <me>
         \int \frac{5x}{x^2-x-2} \, dx
       </me>.
-    </p>
+    </p></statement>
 
-    <p>
-      Thinking algebraically, if we factor the denominator,
-      we can see how <m>R</m> might come from the sum of two fractions of the form <m>\frac{A}{x-2} + \frac{B}{x+1}</m>.
-      In particular, suppose that
+    <solution><p>
+      If we factor the denominator,
+      we can see how <m>R</m> might be the sum of two fractions of the form <m>\frac{A}{x-2} + \frac{B}{x+1}</m>, so we
+      suppose that
       <me>
         \frac{5x}{(x-2)(x+1)} = \frac{A}{x-2} + \frac{B}{x+1}
-      </me>.
+      </me>
+      and look for the constants <m>A</m> and <m>B</m>.
     </p>
 
     <p>
-      Multiplying both sides of this last equation by <m>(x-2)(x+1)</m>,
+      Multiplying both sides of this equation by <m>(x-2)(x+1)</m>,
       we find that
       <me>
         5x = A(x+1) + B(x-2)
@@ -112,40 +103,43 @@
       <me>
         5(-1) = A(0) + B(-3)
       </me>,
-      and thus <m>B = \frac{5}{3}</m>.
+      so <m>B = \frac{5}{3}</m>.
       Choosing <m>x = 2</m>, it follows
       <me>
         5(2) = A(3) + B(0)
       </me>,
       so <m>A = \frac{10}{3}</m>.
-            Therefore, we now know that
+            Thus,
       <me>
         \int \frac{5x}{x^2-x-2} \, dx = \int \frac{10/3}{x-2} + \frac{5/3}{x+1} \, dx
       </me>.
     </p>
 
     <p>
-      This equivalent integral expression is straightforward to evaluate,
+      This integral is straightforward to evaluate,
       and hence we find that
       <me>
         \int \frac{5x}{x^2-x-2} \, dx = \frac{10}{3} \ln|x-2| + \frac{5}{3}\ln|x+1| + C
       </me>.
-    </p>
+    </p></solution></example>
 
     <p>
-      It turns out that for any rational function
-      <m>R(x) = \frac{P(x)}{Q(x)}</m> where the degree of the polynomial <m>P</m> is less than<fn>If the degree of <m>P</m> is greater than or equal to the degree of <m>Q</m>,
-      long division may be used to write <m>R</m> as the sum of a polynomial plus a rational function where the numerator's degree is less than the denominator's.</fn>the degree of the polynomial <m>Q</m>,
-      the method of partial fractions can be used to rewrite the function as a sum of simpler rational functions of one of the following forms:
+      It turns out that we can use the method of partial fractions to rewrite any ratinal function
+      <m>R(x) = \frac{P(x)}{Q(x)}</m> where the degree of the polynomial <m>P</m> is less than
+      <fn>If the degree of <m>P</m> is greater than or equal to the degree of <m>Q</m>,
+      long division may be used to write <m>R</m> as the sum of a polynomial plus a rational function where the numerator's degree is less than the denominator's.</fn>
+      the degree of <m>Q</m>
+       as a sum of simpler rational functions of one of the following forms:
       <me>
         \frac{A}{x-c},\ \frac{A}{(x-c)^n},\ \frac{Ax+B}{x^2 + k},\ \text{or }\frac{Ax+B}{\left(x^2 + k\right)^n}
       </me>
       where <m>A</m>, <m>B</m>,
       and <m>c</m> are real numbers,
       and <m>k</m> is a positive real number.
-      Because each of these basic forms is one we can antidifferentiate,
-      partial fractions enables us to antidifferentiate any rational function.
-            A computer algebra system such as
+      Because we can antidifferentiate each of these basic forms,
+      partial fractions enables us to antidifferentiate any rational function.</p>
+
+      <p>A computer algebra system such as
       <em>Maple</em>, <em>Mathematica</em>,
       or <em>WolframAlpha</em>
       can be used to find the partial fraction decomposition of any rational function.
@@ -166,8 +160,8 @@
     </p>
 
     <p>
-      We will primarily use technology to generate partial fraction decompositions of rational functions,
-      and then work from there to evaluate the integrals of interest using established methods.
+      We will use technology to generate partial fraction decompositions of rational functions,
+      and then evaluate the integrals using established methods.
     </p>
 
     <xi:include href="./activities/act-5-5-1.xml" />
@@ -176,31 +170,28 @@
   <subsection>
     <title>Using an Integral Table</title>
     <p>
-      Calculus has a long history,
-      with key ideas going back as far as Greek mathematicians in 400-300 BC. Its main foundations were first investigated and understood independently by Isaac Newton and Gottfried Wilhelm Leibniz in the late 1600s,
+      Calculus has a long history, going back to Greek mathematicians in 400-300 BC. Its main foundations were first investigated and understood independently by Isaac Newton and Gottfried Wilhelm Leibniz in the late 1600s,
       making the modern ideas of calculus well over 300 years old.
       It is instructive to realize that until the late 1980s,
-      the personal computer essentially did not exist, so calculus
+      the personal computer did not exist, so calculus
       (and other mathematics)
       had to be done by hand for roughly 300 years.
       During the last 30 years, however,
       computers have revolutionized many aspects of the world we live in,
       including mathematics.
-      In this section we take a short historical tour to precede the following discussion of the role computer algebra systems can play in evaluating indefinite integrals.
+      In this section we take a short historical tour to precede discussing the role computer algebra systems can play in evaluating indefinite integrals.
       In particular,
-      we consider a class of integrals involving certain radical expressions that,
-      until the advent of computer algebra systems,
-      were often evaluated using an integral table.
+      we consider a class of integrals involving certain radical expressions.
     </p>
 
     <p>
       As seen in the short table of integrals found in <xref ref="integral-table">Appendix</xref>,
-      there are also many forms of integrals that involve
+      there are many forms of integrals that involve
       <m>\sqrt{a^2 \pm w^2}</m> and <m>\sqrt{w^2 - a^2}</m>.
       These integral rules can be developed using a technique known as
       <em>trigonometric substitution</em> that we choose to omit;
       instead, we will simply accept the results presented in the table.
-      To see how these rules are needed and used,
+      To see how these rules are used,
       consider the differences among
       <me>
         \int \frac{1}{\sqrt{1-x^2}} \,dx, \ \ \  \int \frac{x}{\sqrt{1-x^2}} \,dx, \ \ \  \text{and}  \ \ \ \int \sqrt{1-x^2} \,dx
@@ -232,23 +223,24 @@
     </p>
 
     <p>
-      One important point to note is that whenever we are applying a rule in the table,
-      we are doing a <m>u</m>-substitution.
-      This is especially key when the situation is more complicated than allowing <m>u = x</m> as in the last example.
-      For instance, say we wish to evaluate the integral
+      Whenever we are applying a rule in the table,
+      we are doing a <m>u</m>-substitution,
+      especially when the substitution is more complicated than setting <m>u = x</m> as in the last example.
+      
+      <example><statement> <p>Evaluate the integral
       <me>
         \int \sqrt{9 + 64x^2} \, dx
       </me>.
-    </p>
+    </p></statement>
 
-    <p>
+    <solution><p>
       Here, we want to use Rule (c) from the table,
-      and do so with <m>a = 3</m> and <m>u = 8x</m>;
-      we also choose the <q><m>+</m></q> option in the rule.
+      but we now set <m>a = 3</m> and <m>u = 8x</m>.
+      We also choose the <q><m>+</m></q> option in the rule.
       With this substitution,
       it follows that <m>du = 8dx</m>,
       so <m>dx = \frac{1}{8} du</m>.
-      Applying this substitution,
+      Applying the substitution,
       <me>
         \int \sqrt{9 + 64x^2} \, dx = \int \sqrt{9 + u^2} \cdot \frac{1}{8} \, du = \frac{1}{8} \int \sqrt{9+u^2} \, du
       </me>.
@@ -263,10 +255,9 @@
     </p>
 
     <p>
-      In problems such as this one,
-      it is essential that we not forget to account for the factor of
-      <m>\frac{1}{8}</m> that must be present in the evaluation.
-    </p>
+      Don't forget to include the factor of
+      <m>\frac{1}{8}</m>in the evaluation.
+    </p></solution></example>
 
     <xi:include href="./activities/act-5-5-2.xml" />
   </subsection>
@@ -275,17 +266,17 @@
     <title>Using Computer Algebra Systems</title>
     <p>
       A computer algebra system (CAS) is a computer program that is capable of executing symbolic mathematics.
-      For a simple example, if we ask a CAS to solve the equation
+      For example, if we ask a CAS to solve the equation
       <m>ax^2 + bx + c = 0</m> for the variable <m>x</m>,
       where <m>a</m>, <m>b</m>, and <m>c</m> are arbitrary constants,
       the program will return <m>x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}</m>.
-      While research to develop the first CAS dates to the 1960s,
-      these programs became more common and publicly available in the early 1990s.
+      Research to develop the first CAS dates to the 1960s, and
+      these programs became publicly available in the early 1990s.
       Two prominent early examples are the programs
       <em>Maple</em> and <em>Mathematica</em>,
       which were among the first computer algebra systems to offer a graphical user interface.
       Today, <em>Maple</em> and <em>Mathematica</em>
-      are exceptionally powerful professional software packages that are capable of executing an amazing array of sophisticated mathematical computations.
+      are exceptionally powerful professional software packages that can execute an amazing array of sophisticated mathematical computations.
       They are also very expensive,
       as each is a proprietary program.
       The CAS <em>SAGE</em> is an open-source,
@@ -336,7 +327,7 @@
     <p>
       Although (1) likely goes without saying,
       we have to be careful with our input:
-      if we enter syntax that defines a function other than the problem of interest,
+      if we enter syntax that defines the wrong function,
       the CAS will work with precisely the function we define.
       For example, if we are interested in evaluating the integral
       <me>
@@ -359,7 +350,7 @@
     </p>
 
     <p>
-      It is essential that we are sufficiently well-versed in antidifferentiation to recognize that this function cannot be the one that we seek:
+      But if we are sufficiently well-versed in antidifferentiation, we will recognize that this function cannot be the one that we seek:
       integrating a rational function such as <m>\frac{1}{16-5x^2}</m>,
       we expect the logarithm function to be present in the result.
     </p>
@@ -471,7 +462,7 @@
     </p>
 
     <p>
-      So, the above observations regarding computer algebra systems lead us to proceed with some caution:
+      So, we should proceed with some caution:
       while any CAS is capable of evaluating a wide range of integrals
       (both definite and indefinite),
       there are times when the result can mislead us.
@@ -487,9 +478,8 @@
       <ul>
         <li>
           <p>
-            The method of partial fractions enables any rational function to be antidifferentiated,
-            because any polynomial function can be factored into a product of linear and irreducible quadratic terms.
-            This allows any rational function to be written as the sum of a polynomial plus rational terms of the form <m>\frac{A}{(x-c)^n}</m>
+            We can antidifferentiate any rational function with the method of partial fractions.
+            Any polynomial function can be factored into a product of linear and irreducible quadratic terms, so any rational function to be written as the sum of a polynomial plus rational terms of the form <m>\frac{A}{(x-c)^n}</m>
             (where <m>n</m> is a natural number)
             and <m>\frac{Bx+C}{x^2 + k}</m> (where <m>k</m> is a positive real number).
           </p>
@@ -498,7 +488,7 @@
         <li>
           <p>
             Until the development of computing algebra systems,
-            integral tables enabled students of calculus to more easily evaluate integrals such as <m>\int \sqrt{a^2 + u^2} \, du</m>,
+            integral tables enabled students of calculus to evaluate integrals such as <m>\int \sqrt{a^2 + u^2} \, du</m>,
             where <m>a</m> is a positive real number.
             A short table of integrals may be found in <xref ref="integral-table">Appendix</xref>.
           </p>
