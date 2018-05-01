@@ -95,8 +95,11 @@ pg:
 
 #  HTML output 
 #  Output lands in the subdirectory:  $(HTMLOUT)
+#    Remove the entire $(HTMLOUT)/knowl directory because of how PTX now
+#    seems to make a knowl for everything and rm throws an error.
 html:
 	install -d $(HTMLOUT)
+	-rm -rf $(HTMLOUT)/knowl
 	install -d $(HTMLOUT)/knowl
 	install -d $(HTMLOUT)/images
 	install -d $(OUTPUT)
@@ -104,7 +107,6 @@ html:
 	install -d $(MBUSR)
 	install -b xsl/acs-html.xsl $(MBUSR)
 	-rm $(HTMLOUT)/*.html
-	-rm $(HTMLOUT)/knowl/*.html
 	cp -a $(IMAGESOUT) $(HTMLOUT)
 	cp -a $(IMAGESSRC) $(HTMLOUT)
 	cd $(HTMLOUT); \
