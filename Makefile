@@ -148,8 +148,6 @@ latex:
 
 # PDF for print
 # Automatically builds LaTeX source
-# the "webwork-tex" directory must be given here
-# [note trailing slash (subject to change)]
 pdf: latex
 	cd $(PDFOUT); \
 	xelatex index; \
@@ -160,7 +158,7 @@ pdf: latex
 ###########
 
 # Verify Source integrity
-#   Leaves "dtderrors.txt" in OUTPUT
+#   Leaves "schema_errors.txt" in OUTPUT
 #   can then grep on, e.g.
 #     "element XXX:"
 #     "does not follow"
@@ -169,6 +167,6 @@ pdf: latex
 #   Automatically invokes the "less" pager, could configure as $(PAGER)
 check:
 	install -d $(OUTPUT)
-	-rm $(OUTPUT)/dtderrors.*
-	-xmllint --xinclude --postvalid --noout --dtdvalid $(DTD)/mathbook.dtd $(MAINFILE) 2> $(OUTPUT)/dtderrors.txt
-	less $(OUTPUT)/dtderrors.txt
+	-rm $(OUTPUT)/schema_errors.*
+	-java -classpath $(JING_DIR)/build -Dorg.apache.xerces.xni.parser.XMLParserConfiguration=org.apache.xerces.parsers.XIncludeParserConfiguration -jar $(JING_DIR)/build/jing.jar $(MB)/schema/pretext.rng $(MAINFILE) > $(OUTPUT)/schema_errors.txt
+	less $(OUTPUT)/schema_errors.txt
