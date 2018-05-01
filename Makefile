@@ -101,12 +101,14 @@ html:
 	install -d $(HTMLOUT)/images
 	install -d $(OUTPUT)
 	install -d $(OUTPUT)/images
+	install -d $(MBUSR)
+	install -b xsl/acs-html.xsl $(MBUSR)
 	-rm $(HTMLOUT)/*.html
 	-rm $(HTMLOUT)/knowl/*.html
 	cp -a $(IMAGESOUT) $(HTMLOUT)
 	cp -a $(IMAGESSRC) $(HTMLOUT)
 	cd $(HTMLOUT); \
-	xsltproc -xinclude --stringparam webwork.server $(SERVER) --stringparam html.knowl.exercise.inline no --stringparam html.knowl.example no --stringparam exercise.text.solution no --stringparam exercise.text.answer no --stringparam exercise.backmatter.statement no --stringparam project.text.hint no --stringparam project.text.answer no --stringparam project.text.solution no  --stringparam html.css.file mathbook-4.css $(MBXSL)/mathbook-html.xsl $(MAINFILE)
+	xsltproc -xinclude --stringparam webwork.server $(SERVER) $(MBUSR)/acs-html.xsl $(MAINFILE)
 
 # make all the image files in svg format
 images:
