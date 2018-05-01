@@ -14,22 +14,18 @@
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
 
-<!-- ACS customizations for HTML runs -->
+<!-- ACS customizations for all LaTeX runs -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 <!-- Assumes current file is in mathbook/user, so it must be copied there -->
-<xsl:import href="../xsl/mathbook-html.xsl" />
+<xsl:import href="../xsl/mathbook-latex.xsl" />
 <!-- Assumes next file can be found in mathbook/user, so it must be copied there -->
 <!--<xsl:import href="acs-common.xsl" />-->
 
-<!-- List Chapters and Sections in sidebar Table of Contents -->
+<!-- List Chapters and Sections in printed Table of Contents -->
 <xsl:param name="toc.level" select="'2'" />
 
-<!-- Examples and inline exercises are knowlized by default -->
-<!-- We disable this behavior  -->
-<xsl:param name="html.knowl.example" select="'no'" />
-<xsl:param name="html.knowl.exercise.inline" select="'no'" />
 
 <!-- Exercises have hint (sporadically), answer, and solution -->
 <!-- Put answers in backmatter -->
@@ -47,9 +43,6 @@
 <xsl:param name="project.text.hint" select="'no'" />
 <xsl:param name="project.text.answer" select="'no'" />
 <xsl:param name="project.text.solution" select="'no'" />
-
-<!-- Specify the color scheme to use for HTML -->
-<xsl:param name="html.css.file" select="'mathbook-4.css'" />
 
 
 </xsl:stylesheet>

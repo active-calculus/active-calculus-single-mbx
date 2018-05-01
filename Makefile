@@ -137,23 +137,21 @@ webwork-server-tex:
 # [note trailing slash (subject to change)]
 latex:
 	install -d $(PDFOUT)
+	install -d $(MBUSR)
+	install -b xsl/acs-latex.xsl $(MBUSR)
 	-rm $(PDFOUT)/*.tex
 	cp -a $(IMAGESSRC) $(PDFOUT)
 	cd $(PDFOUT); \
-	xsltproc -xinclude --stringparam webwork.server.latex $(PDFOUT)/webwork-tex/ $(MBXSL)/mathbook-latex.xsl $(MAINFILE) \
+	xsltproc -xinclude --stringparam webwork.server.latex $(PDFOUT)/webwork-tex/ $(MBUSR)/acs-latex.xsl $(MAINFILE) \
 
 # PDF for print
-# see prerequisite just above
+# Automatically builds LaTeX source
 # the "webwork-tex" directory must be given here
 # [note trailing slash (subject to change)]
-pdf:
-	install -d $(PDFOUT)
-	-rm $(PDFOUT)/*.tex
-	cp -a $(IMAGESSRC) $(PDFOUT)
+pdf: latex
 	cd $(PDFOUT); \
-	xsltproc -xinclude --stringparam webwork.server.latex $(PDFOUT)/webwork-tex/ $(MBXSL)/mathbook-latex.xsl $(MAINFILE); \
-	xelatex index.tex; \
-	xelatex index.tex
+	xelatex index; \
+	xelatex index
 
 ###########
 # Utilities
