@@ -95,18 +95,22 @@ pg:
 
 #  HTML output 
 #  Output lands in the subdirectory:  $(HTMLOUT)
+#    Remove the entire $(HTMLOUT)/knowl directory because of how PTX now
+#    seems to make a knowl for everything and rm throws an error.
 html:
 	install -d $(HTMLOUT)
+	-rm -rf $(HTMLOUT)/knowl
 	install -d $(HTMLOUT)/knowl
 	install -d $(HTMLOUT)/images
 	install -d $(OUTPUT)
 	install -d $(OUTPUT)/images
+	install -d $(MBUSR)
+	install -b xsl/acs-html.xsl $(MBUSR)
 	-rm $(HTMLOUT)/*.html
-	-rm $(HTMLOUT)/knowl/*.html
 	cp -a $(IMAGESOUT) $(HTMLOUT)
 	cp -a $(IMAGESSRC) $(HTMLOUT)
 	cd $(HTMLOUT); \
-	xsltproc -xinclude --stringparam webwork.server $(SERVER) --stringparam html.knowl.exercise.inline no --stringparam html.knowl.example no --stringparam exercise.text.solution no --stringparam exercise.text.answer no --stringparam exercise.backmatter.statement no --stringparam project.text.hint no --stringparam project.text.answer no --stringparam project.text.solution no  --stringparam html.css.file mathbook-4.css $(MBXSL)/mathbook-html.xsl $(MAINFILE)
+	xsltproc -xinclude --stringparam webwork.server $(SERVER) $(MBUSR)/acs-html.xsl $(MAINFILE)
 
 # make all the image files in svg format
 images:
@@ -135,30 +139,26 @@ webwork-server-tex:
 # [note trailing slash (subject to change)]
 latex:
 	install -d $(PDFOUT)
+	install -d $(MBUSR)
+	install -b xsl/acs-latex.xsl $(MBUSR)
 	-rm $(PDFOUT)/*.tex
 	cp -a $(IMAGESSRC) $(PDFOUT)
 	cd $(PDFOUT); \
-	xsltproc -xinclude --stringparam webwork.server.latex $(PDFOUT)/webwork-tex/ $(MBXSL)/mathbook-latex.xsl $(MAINFILE) \
+	xsltproc -xinclude --stringparam webwork.server.latex $(PDFOUT)/webwork-tex/ $(MBUSR)/acs-latex.xsl $(MAINFILE) \
 
 # PDF for print
-# see prerequisite just above
-# the "webwork-tex" directory must be given here
-# [note trailing slash (subject to change)]
-pdf:
-	install -d $(PDFOUT)
-	-rm $(PDFOUT)/*.tex
-	cp -a $(IMAGESSRC) $(PDFOUT)
+# Automatically builds LaTeX source
+pdf: latex
 	cd $(PDFOUT); \
-	xsltproc -xinclude --stringparam webwork.server.latex $(PDFOUT)/webwork-tex/ $(MBXSL)/mathbook-latex.xsl $(MAINFILE); \
-	xelatex index.tex; \
-	xelatex index.tex
+	xelatex index; \
+	xelatex index
 
 ###########
 # Utilities
 ###########
 
 # Verify Source integrity
-#   Leaves "dtderrors.txt" in OUTPUT
+#   Leaves "schema_errors.txt" in OUTPUT
 #   can then grep on, e.g.
 #     "element XXX:"
 #     "does not follow"
@@ -167,6 +167,6 @@ pdf:
 #   Automatically invokes the "less" pager, could configure as $(PAGER)
 check:
 	install -d $(OUTPUT)
-	-rm $(OUTPUT)/dtderrors.*
-	-xmllint --xinclude --postvalid --noout --dtdvalid $(DTD)/mathbook.dtd $(MAINFILE) 2> $(OUTPUT)/dtderrors.txt
-	less $(OUTPUT)/dtderrors.txt
+	-rm $(OUTPUT)/schema_errors.*
+	-java -classpath $(JING_DIR)/build -Dorg.apache.xerces.xni.parser.XMLParserConfiguration=org.apache.xerces.parsers.XIncludeParserConfiguration -jar $(JING_DIR)/build/jing.jar $(MB)/schema/pretext.rng $(MAINFILE) > $(OUTPUT)/schema_errors.txt
+	less $(OUTPUT)/schema_errors.txt
