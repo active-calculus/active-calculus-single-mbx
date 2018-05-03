@@ -73,6 +73,7 @@ PGOUT      = $(OUTPUT)/pg
 # HTMLOUT    = $(OUTPUT)/html
 PDFOUT     = $(OUTPUT)/pdf
 IMAGESOUT  = $(OUTPUT)/images
+SOLNOUT    = $(OUTPUT)/soln-man
 
 # Some aspects of producing these examples require a WeBWorK server.
 # For all but trivial testing or examples, please look into setting
@@ -152,6 +153,28 @@ pdf: latex
 	cd $(PDFOUT); \
 	xelatex index; \
 	xelatex index
+
+# Solutions manual (LaTeX only for PDF)
+# see prerequisite just above
+# the "webwork-tex" directory must be given here
+# [note trailing slash (subject to change)]
+# Need this to ensure all the numbering is right.
+soln-latex:
+	install -d $(SOLNOUT)
+	install -d $(MBUSR)
+	install -b xsl/acs-solution-manual.xsl $(MBUSR)
+	-rm $(SOLNOUT)/*.tex
+	cp -a $(IMAGESSRC) $(SOLNOUT)
+	cd $(SOLNOUT); \
+	xsltproc -xinclude --stringparam webwork.server.latex $(PDFOUT)/webwork-tex/ $(MBUSR)/acs-solution-manual.xsl $(MAINFILE) \
+
+# Solutions manual for PDF
+# Automatically builds LaTeX source for solutions manual
+soln-pdf: soln-latex
+	cd $(SOLNOUT); \
+	xelatex index; \
+	xelatex index
+
 
 ###########
 # Utilities
