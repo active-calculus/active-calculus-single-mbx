@@ -18,7 +18,7 @@
 
 <!-- Next paths assume current file has been copied to mathbook/user -->
 <xsl:import href="../xsl/mathbook-latex.xsl" />
-<!--<xsl:import href="aata-common.xsl" />-->
+<!--<xsl:import href="acs-common.xsl" />-->
 
 <!-- (1) Copy solution-manual files for exercises on top of public versions              -->
 <!-- (2) Process entire book with this stylesheet, in order to get some numbering intact -->
@@ -31,19 +31,6 @@
 <!-- 0.30 scale fits most of width of page  -->
 <!-- http://tex.stackexchange.com/questions/125882/how-to-write-multiple-lines-as-watermark-and-images-with-transparency -->
 <!--<xsl:param name="latex.watermark" select="'\parbox{36in}{\centering Issued to: John Smith\\DO NOT COPY, POST, REDISTRIBUTE.}'"/>-->
-<!--<xsl:param name="latex.watermark" select="'\parbox{36in}{\centering Issued to: Laramie Paxton\\DO NOT COPY, POST, REDISTRIBUTE.}'"/>-->
-<!--<xsl:param name="latex.watermark" select="'\parbox{36in}{\centering Issued to: Nima Namazi\\DO NOT COPY, POST, REDISTRIBUTE.}'"/>-->
-<!--<xsl:param name="latex.watermark" select="'\parbox{36in}{\centering Issued to: Max Wakefield\\DO NOT COPY, POST, REDISTRIBUTE.}'"/>-->
-<!--<xsl:param name="latex.watermark" select="'\parbox{36in}{\centering Issued to: Tracee A. Wilson\\DO NOT COPY, POST, REDISTRIBUTE.}'"/>-->
-<!--<xsl:param name="latex.watermark" select="'\parbox{36in}{\centering Issued to: Aaron D. Wood\\DO NOT COPY, POST, REDISTRIBUTE.}'"/>-->
-<!--<xsl:param name="latex.watermark" select="'\parbox{36in}{\centering Issued to: Jesse Smith\\DO NOT COPY, POST, REDISTRIBUTE.}'"/>-->
-<!--<xsl:param name="latex.watermark" select="'\parbox{36in}{\centering Issued to: Jose Luis Pena\\DO NOT COPY, POST, REDISTRIBUTE.}'"/>-->
-<!--<xsl:param name="latex.watermark" select="'\parbox{36in}{\centering Issued to: David Roe\\DO NOT COPY, POST, REDISTRIBUTE.}'"/>-->
-<!--<xsl:param name="latex.watermark" select="'\parbox{36in}{\centering Issued to: Dhruba Adhikari\\DO NOT COPY, POST, REDISTRIBUTE.}'"/>-->
-<!--<xsl:param name="latex.watermark" select="'\parbox{36in}{\centering Issued to: Faun Doherty\\DO NOT COPY, POST, REDISTRIBUTE}'"/>-->
-<!--<xsl:param name="latex.watermark" select="'\parbox{36in}{\centering Issued to: Gary Roodman\\DO NOT COPY, POST, REDISTRIBUTE}'"/> -->
-<!--<xsl:param name="latex.watermark" select="'\parbox{36in}{\centering Issued to: Cynthia Gibson\\DO NOT COPY, POST, REDISTRIBUTE}'"/>-->
-<!--<xsl:param name="latex.watermark" select="'\parbox{36in}{\centering Issued to: T. W. Judson\\DO NOT COPY, POST, REDISTRIBUTE}'"/>-->
 
 <xsl:param name="latex.watermark.scale" select="0.30"/>
 
@@ -55,7 +42,7 @@
 
 <xsl:param name="project.text.statement" select="'yes'" />
 <xsl:param name="project.text.hint" select="'no'" />
-<xsl:param name="project.text.answer" select="'yes'" />
+<xsl:param name="project.text.answer" select="'no'" />
 <xsl:param name="project.text.solution" select="'yes'" />
 
 
@@ -66,10 +53,16 @@
 
 <!-- Chapters: default presentation, we have them all, so numbers OK     -->
 <!-- Sections and Equivalents: kill them, except for specific ones below -->
-<xsl:template match="introduction/node()[not(self::exploration)]|conclusion|subsection/node()[not(self::activity)]|subsection/title|references|objectives|appendix" />
+<xsl:template match="conclusion|references|objectives|appendix" />
 
 <!-- Kill solutions to WeBWorK exercises -->
-<xsl:template match="webwork" />
+<!-- But if the first exercise is a WeBWorK one, we need to start -->
+<!-- the exercise list. Do this by checking for no preceding-sibling. -->
+<xsl:template match="exercise[webwork]">
+    <xsl:if test="not(preceding-sibling::*)">
+        <xsl:text>\begin{exerciselist}&#xA;</xsl:text>
+    </xsl:if>
+</xsl:template>
 
 <!-- As a subset of full content, we can't            -->
 <!-- trust LaTeX's auto-numbering to coincide         -->
@@ -85,10 +78,9 @@
     <xsl:apply-templates select="." mode="title-full" />
     <xsl:text>}&#xa;</xsl:text>
     <xsl:apply-templates />
-    <!-- Here's where to put a page break if there is no following sibling. -->
-    <xsl:if test="not(following-sibling::*)">
-        <xsl:text>\clearpage&#xA;&#xA;</xsl:text>
-    </xsl:if>
+    <!-- Insert a page break so that each section's exercises start on a -->
+    <!-- new page. -->
+    <xsl:text>\clearpage&#xA;&#xA;</xsl:text>
 </xsl:template>
 
 <!-- As a subset of full content, we can't         -->
@@ -151,5 +143,16 @@
     </xsl:choose>
 </xsl:template>
 
+<!-- Let's attempt to start a new page after each activity and PA -->
+<xsl:template match="activity|exploration">
+    <xsl:apply-imports />
+    <xsl:text>\clearpage&#xA;&#xA;</xsl:text>
+</xsl:template>
+
+<!-- Only process activity within subsection -->
+
+<xsl:template match="introduction|subsection">
+    <xsl:apply-templates select="exploration|activity" />
+</xsl:template>
 </xsl:stylesheet>
 
