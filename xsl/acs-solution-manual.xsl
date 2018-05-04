@@ -43,15 +43,21 @@
 <!--<xsl:param name="latex.watermark" select="'\parbox{36in}{\centering Issued to: Faun Doherty\\DO NOT COPY, POST, REDISTRIBUTE}'"/>-->
 <!--<xsl:param name="latex.watermark" select="'\parbox{36in}{\centering Issued to: Gary Roodman\\DO NOT COPY, POST, REDISTRIBUTE}'"/> -->
 <!--<xsl:param name="latex.watermark" select="'\parbox{36in}{\centering Issued to: Cynthia Gibson\\DO NOT COPY, POST, REDISTRIBUTE}'"/>-->
-<xsl:param name="latex.watermark" select="'\parbox{36in}{\centering Issued to: T. W. Judson\\DO NOT COPY, POST, REDISTRIBUTE}'"/>
+<!--<xsl:param name="latex.watermark" select="'\parbox{36in}{\centering Issued to: T. W. Judson\\DO NOT COPY, POST, REDISTRIBUTE}'"/>-->
 
 <xsl:param name="latex.watermark.scale" select="0.30"/>
 
 <!-- These switches will control what we include -->
 <xsl:param name="exercise.text.statement" select="'yes'" />
-<xsl:param name="exercise.text.hint" select="'yes'" />
-<xsl:param name="exercise.text.answer" select="'yes'" />
+<xsl:param name="exercise.text.hint" select="'no'" />
+<xsl:param name="exercise.text.answer" select="'no'" />
 <xsl:param name="exercise.text.solution" select="'yes'" />
+
+<xsl:param name="project.text.statement" select="'yes'" />
+<xsl:param name="project.text.hint" select="'no'" />
+<xsl:param name="project.text.answer" select="'yes'" />
+<xsl:param name="project.text.solution" select="'yes'" />
+
 
 <!-- Superfluous frontmatter for a solution manual -->
 <!-- So we don't bother and kill first two pages   -->
@@ -60,10 +66,10 @@
 
 <!-- Chapters: default presentation, we have them all, so numbers OK     -->
 <!-- Sections and Equivalents: kill them, except for specific ones below -->
-<xsl:template match="introduction|conclusion|subsection|references|exercises" />
+<xsl:template match="introduction/node()[not(self::exploration)]|conclusion|subsection/node()[not(self::activity)]|subsection/title|references|objectives|appendix" />
 
 <!-- Kill solutions to WeBWorK exercises -->
-<xsl:template match="webwork-tex" />
+<xsl:template match="webwork" />
 
 <!-- As a subset of full content, we can't            -->
 <!-- trust LaTeX's auto-numbering to coincide         -->
@@ -72,12 +78,17 @@
 <!-- With \section* we do not get ToC entries, but    -->
 <!-- we could purposely add them if we wished         -->
 <xsl:template match="exercises">
+
     <xsl:text>\section*{</xsl:text>
     <xsl:apply-templates select="." mode="number" />
     <xsl:text>\quad </xsl:text>
     <xsl:apply-templates select="." mode="title-full" />
     <xsl:text>}&#xa;</xsl:text>
     <xsl:apply-templates />
+    <!-- Here's where to put a page break if there is no following sibling. -->
+    <xsl:if test="not(following-sibling::*)">
+        <xsl:text>\clearpage&#xA;&#xA;</xsl:text>
+    </xsl:if>
 </xsl:template>
 
 <!-- As a subset of full content, we can't         -->

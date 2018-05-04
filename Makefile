@@ -57,6 +57,7 @@ IMAGESSRC = $(PRJSRC)/images
 
 # The project's main hub file
 MAINFILE  = $(PRJSRC)/index.xml
+SOLNMAIN = $(PRJSRC)/acs-solution-manual.xml
 
 # These paths are subdirectories of
 # the Mathbook XML distribution
@@ -166,14 +167,14 @@ soln-latex:
 	-rm $(SOLNOUT)/*.tex
 	cp -a $(IMAGESSRC) $(SOLNOUT)
 	cd $(SOLNOUT); \
-	xsltproc -xinclude --stringparam webwork.server.latex $(PDFOUT)/webwork-tex/ $(MBUSR)/acs-solution-manual.xsl $(MAINFILE) \
+	xsltproc -xinclude --stringparam webwork.server.latex $(PDFOUT)/webwork-tex/ $(MBUSR)/acs-solution-manual.xsl $(SOLNMAIN) \
 
 # Solutions manual for PDF
 # Automatically builds LaTeX source for solutions manual
 soln-pdf: soln-latex
 	cd $(SOLNOUT); \
-	xelatex index; \
-	xelatex index
+	xelatex acs-solution-manual; \
+	xelatex acs-solution-manual
 
 
 ###########
