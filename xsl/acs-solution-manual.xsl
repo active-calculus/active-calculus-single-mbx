@@ -20,19 +20,8 @@
 <xsl:import href="../xsl/mathbook-latex.xsl" />
 <!--<xsl:import href="acs-common.xsl" />-->
 
-<!-- (1) Copy solution-manual files for exercises on top of public versions              -->
-<!-- (2) Process entire book with this stylesheet, in order to get some numbering intact -->
 
 <xsl:output method="text" />
-
-<!-- PDF Watermarking of Personal Copies    -->
-<!-- Non-empty string makes it happen       -->
-<!-- 36in parbox just fits "DO NOT" string  -->
-<!-- 0.30 scale fits most of width of page  -->
-<!-- http://tex.stackexchange.com/questions/125882/how-to-write-multiple-lines-as-watermark-and-images-with-transparency -->
-<!--<xsl:param name="latex.watermark" select="'\parbox{36in}{\centering Issued to: John Smith\\DO NOT COPY, POST, REDISTRIBUTE.}'"/>-->
-
-<xsl:param name="latex.watermark.scale" select="0.30"/>
 
 <!-- These switches will control what we include -->
 <xsl:param name="exercise.text.statement" select="'yes'" />
@@ -40,6 +29,7 @@
 <xsl:param name="exercise.text.answer" select="'no'" />
 <xsl:param name="exercise.text.solution" select="'yes'" />
 
+<!-- Preview activities and activities are project-like. -->
 <xsl:param name="project.text.statement" select="'yes'" />
 <xsl:param name="project.text.hint" select="'no'" />
 <xsl:param name="project.text.answer" select="'no'" />
@@ -53,7 +43,7 @@
 
 <!-- Chapters: default presentation, we have them all, so numbers OK     -->
 <!-- Sections and Equivalents: kill them, except for specific ones below -->
-<xsl:template match="conclusion|references|objectives|appendix" />
+<xsl:template match="conclusion|references|objectives|appendix|index" />
 
 <!-- Kill solutions to WeBWorK exercises -->
 <!-- But if the first exercise is a WeBWorK one, we need to start -->
@@ -149,10 +139,18 @@
     <xsl:text>\clearpage&#xA;&#xA;</xsl:text>
 </xsl:template>
 
-<!-- Only process activity within subsection -->
+<!-- Let's attempt to start a new page after each exercise -->
+<xsl:template match="exercise">
+    <xsl:apply-imports />
+    <xsl:text>\clearpage&#xA;&#xA;</xsl:text>
+</xsl:template>
 
-<xsl:template match="introduction|subsection">
-    <xsl:apply-templates select="exploration|activity" />
+
+<!-- Only process activity within subsection -->
+<!-- This could match="introduction|subsection" and then -->
+<!-- select="exploration|activity" if preview activities were to be included -->
+<xsl:template match="subsection">
+    <xsl:apply-templates select="activity" />
 </xsl:template>
 </xsl:stylesheet>
 
