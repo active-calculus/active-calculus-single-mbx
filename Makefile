@@ -58,6 +58,7 @@ IMAGESSRC = $(PRJSRC)/images
 # The project's main hub file
 MAINFILE  = $(PRJSRC)/index.xml
 SOLNMAIN = $(PRJSRC)/acs-solution-manual.xml
+WKBKMAIN = $(PRJSRC)/acs-activity-workbook.xml
 
 # These paths are subdirectories of
 # the Mathbook XML distribution
@@ -75,6 +76,7 @@ PGOUT      = $(OUTPUT)/pg
 PDFOUT     = $(OUTPUT)/pdf
 IMAGESOUT  = $(OUTPUT)/images
 SOLNOUT    = $(OUTPUT)/soln-man
+WKBKOUT    = $(OUTPUT)/workbook
 
 # Some aspects of producing these examples require a WeBWorK server.
 # For all but trivial testing or examples, please look into setting
@@ -183,20 +185,20 @@ soln-pdf: soln-latex
 # [note trailing slash (subject to change)]
 # Need this to ensure all the numbering is right.
 workbook-latex:
-	install -d $(SOLNOUT)
+	install -d $(WKBKOUT)
 	install -d $(MBUSR)
 	install -b xsl/acs-activity-workbook.xsl $(MBUSR)
-	-rm $(SOLNOUT)/*.tex
-	cp -a $(IMAGESSRC) $(SOLNOUT)
-	cd $(SOLNOUT); \
-	xsltproc -xinclude --stringparam webwork.server.latex $(PDFOUT)/webwork-tex/ $(MBUSR)/acs-activity-workbook.xsl $(SOLNMAIN) \
+	-rm $(WKBKOUT)/*.tex
+	cp -a $(IMAGESSRC) $(WKBKOUT)
+	cd $(WKBKOUT); \
+	xsltproc -xinclude --stringparam webwork.server.latex $(PDFOUT)/webwork-tex/ $(MBUSR)/acs-activity-workbook.xsl $(WKBKMAIN) \
 
-# Solutions manual for PDF
+# Activity workbook for PDF
 # Automatically builds LaTeX source for solutions manual
 workbook-pdf: workbook-latex
-	cd $(SOLNOUT); \
-	xelatex acs-solution-manual; \
-	xelatex acs-solution-manual
+	cd $(WKBKOUT); \
+	xelatex acs-activity-workbook; \
+	xelatex acs-activity-workbook
 
 
 ###########

@@ -19,7 +19,7 @@
 <!-- Next paths assume current file has been copied to mathbook/user -->
 <xsl:import href="../xsl/mathbook-latex.xsl" />
 <!--<xsl:import href="acs-common.xsl" />-->
-
+<xsl:param name="toc.level" select="'3'" />
 
 <xsl:output method="text" />
 
@@ -43,7 +43,8 @@
 
 <!-- Chapters: default presentation, we have them all, so numbers OK     -->
 <!-- Sections and Equivalents: kill them, except for specific ones below -->
-<xsl:template match="conclusion|references|objectives|appendix|index" />
+<!-- Killing introduction here kills preview activities from output -->
+<xsl:template match="introduction|conclusion|references|objectives|appendix|index" />
 
 <!-- Kill solutions to WeBWorK exercises -->
 <!-- But if the first exercise is a WeBWorK one, we need to start -->
@@ -62,14 +63,16 @@
 <!-- we could purposely add them if we wished         -->
 <xsl:template match="exercises">
 
-    <xsl:text>\section*{</xsl:text>
+    <xsl:text>\section*{\arabic{chapter}.\arabic{section}</xsl:text>
     <xsl:apply-templates select="." mode="number" />
     <xsl:text>\quad </xsl:text>
     <xsl:apply-templates select="." mode="title-full" />
     <xsl:text>}&#xa;</xsl:text>
+    <xsl:text>\addcontentsline{toc}{subsection}{Exercises}&#xa;</xsl:text>
     <xsl:apply-templates />
     <!-- Insert a page break so that each section's exercises start on a -->
-    <!-- new page. -->
+    <!-- new page. This is mainly insurance for when a more compact version -->
+    <!-- without a page break after each exercise's solution is being produced. -->
     <xsl:text>\clearpage&#xA;&#xA;</xsl:text>
 </xsl:template>
 
