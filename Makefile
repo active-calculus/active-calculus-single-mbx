@@ -177,6 +177,28 @@ soln-pdf: soln-latex
 	xelatex acs-solution-manual
 
 
+# Activity workbook (LaTeX only for PDF)
+# see prerequisite just above
+# the "webwork-tex" directory must be given here
+# [note trailing slash (subject to change)]
+# Need this to ensure all the numbering is right.
+workbook-latex:
+	install -d $(SOLNOUT)
+	install -d $(MBUSR)
+	install -b xsl/acs-activity-workbook.xsl $(MBUSR)
+	-rm $(SOLNOUT)/*.tex
+	cp -a $(IMAGESSRC) $(SOLNOUT)
+	cd $(SOLNOUT); \
+	xsltproc -xinclude --stringparam webwork.server.latex $(PDFOUT)/webwork-tex/ $(MBUSR)/acs-activity-workbook.xsl $(SOLNMAIN) \
+
+# Solutions manual for PDF
+# Automatically builds LaTeX source for solutions manual
+workbook-pdf: workbook-latex
+	cd $(SOLNOUT); \
+	xelatex acs-solution-manual; \
+	xelatex acs-solution-manual
+
+
 ###########
 # Utilities
 ###########
