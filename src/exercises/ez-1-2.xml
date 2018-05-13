@@ -36,6 +36,7 @@
     <title>Evaluating a limit algebraically</title>
     <webwork source="Library/ASU-topics/setLimitConcepts/3-2-34.pg" />
   </exercise>
+
   <exercise xml:id="ez-1-2-Rational">
     <statement>
       <p>
@@ -70,16 +71,167 @@
       </p>
     </statement>
     <answer>
-      <p>
-        Exercise Answer
+        <ol label="a.">
+        	<li>
+        		<p>
+        			All real numbers except <m>x = \pm 2</m>.
+        		</p>
+        	</li>
+        	<li>	
+        			    <table xml:id="T-1-2-Ez-1a">
+					      <caption>Values of <m>f(x) = \frac{16-x^4}{x^2-4}</m> near <m>a = 2</m>.</caption>
+					      <tabular top="minor" bottom="minor">
+					        <row>
+					          <cell><m>x</m></m></cell>
+					          <cell><m>f(x)</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>2.1</m></cell>
+					          <cell><m>-8.41</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>2.01</m></cell>
+					          <cell><m>-8.0401</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>2.001</m></cell>
+					          <cell><m>-8.004001</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>1.999</m></cell>
+					          <cell><m>-7.996001</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>1.99</m></cell>
+					          <cell><m>-7.9601</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>1.9</m></cell>
+					          <cell><m>-7.61</m></cell>
+					        </row>						        	        
+					      </tabular>
+					    </table>
+				<p>
+        			<m>\lim_{x \to 2} f(x) = -8</m>.
+        		</p>
+        	</li>
+        	<li>
+        		<p>
+					<m>
+						\lim_{x \to 2} \frac{16-x^4}{x^2-4} = -8.
+					</m>
+        		</p>
+        	</li>
+        	<li>
+        		<p>
+        			False.  
+        		</p>
+        	</li>
+        	<li>
+        		<p>
+        			False.
+        		</p>
+        	</li>
+        	<li>
+        		<figure xml:id="F-ez-1-2-rational-limit-a">
+			       <caption>Plot of <m>f(x) = \frac{16-x^4}{x^2-4}</m> near <m>a = 2</m>.</caption>
+			       <image source="images/1_2_Ez1f_soln">
+			       </image>
+			    </figure>           		
+        	</li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+        	<li>
+        		<p>
+        			<m>f</m> is defined for every value of <m>x</m> except those that make <m>x^2 - 4 = 0</m>.  Hence, the domain of <m>f</m> is the set of all real numbers except <m>x = \pm 2</m>.
+        		</p>
+        	</li>
+        	<li>
+        		<p> 
+        			Using a spreadsheet, we generate the following table.
+        		</p>	
+        			    <table xml:id="T-1-2-Ez-1s">
+					      <caption>Values of <m>f(x) = \frac{16-x^4}{x^2-4}</m> near <m>a = 2</m>.</caption>
+					      <tabular top="minor" bottom="minor">
+					        <row>
+					          <cell><m>x</m></m></cell>
+					          <cell><m>f(x)</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>2.1</m></cell>
+					          <cell><m>-8.41</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>2.01</m></cell>
+					          <cell><m>-8.0401</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>2.001</m></cell>
+					          <cell><m>-8.004001</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>1.999</m></cell>
+					          <cell><m>-7.996001</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>1.99</m></cell>
+					          <cell><m>-7.9601</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>1.9</m></cell>
+					          <cell><m>-7.61</m></cell>
+					        </row>						        	        
+					      </tabular>
+					    </table>
+				<p>
+        			The numerical trend suggests that <m>\lim_{x \to 2} f(x) = -8</m>.
+        		</p>
+        	</li>
+        	<li>
+        		<p>
+        			By factoring the numerator and denominator of <m>f(x)</m>, we observe that 
+        			<me>
+        				\frac{16-x^4}{x^2-4} = \frac{(4-x^2)(4+x^2)}{(x-2)(x+2)} = \frac{(2-x)(2+x)(4+x^2)}{(x-2)(x+2)}.
+        			</me>
+        			Taking the limit as <m>x \to 2</m>, we take values closer and closer, but not equal to 2, and therefore
+        			<me>
+        				\lim_{x \to 2} \frac{16-x^4}{x^2-4} = \lim_{x \to 2} \frac{(2-x)(2+x)(4+x^2)}{(x-2)(x+2)} = \lim_{x \to 2} -1(4+x^2),
+        			</me>
+					since <m>\frac{2-x}{x-2} = -1</m> for all <m>x \ne 2</m>.  Finally, evaluating the last limit as <m>x \to 2</m>, we see that
+					<me>
+						\lim_{x \to 2} \frac{16-x^4}{x^2-4} = -1(4+2^2) = -8.
+					</me>
+        		</p>
+        	</li>
+        	<li>
+        		<p>
+        			False.  In part (a), we saw that <m>f(2)</m> is not defined.  We now know that <m>f</m> has a limit of <m>-8</m> as <m>x</m> approaches <m>2</m>, but it is still the case that <m>f(2)</m> is undefined.
+        		</p>
+        	</li>
+        	<li>
+        		<p>
+        			False.  The noted equality only holds for <m>x</m>-values other than <m>2</m>or <m>-2</m>.  We can use this equality when evaluating the limit, since in so doing we never let <m>x</m> actually equal <m>2</m>, but only approach <m>2</m>.
+        		</p>
+        	</li>
+        	<li>
+        		<p>
+        			Since <m>f(2)</m> is not defined but <m>f</m> has a limit of <m>-8</m> as <m>x \to 2</m>, we see that the graph has a ``hole'' in it at the point <m>(2,-8)</m>, as seen in the following figure.
+        		</p>
+        		<figure xml:id="F-ez-1-2-rational-limit-s">
+			       <caption>Plot of <m>f(x) = \frac{16-x^4}{x^2-4}</m> near <m>a = 2</m>.</caption>
+			       <image source="images/1_2_Ez1f_soln">
+			       </image>
+			    </figure>           		
+        	</li>
+        </ol>
       </p>
     </solution>
   </exercise>
+
   <exercise xml:id="ez-1-2-abs-val">
     <statement>
       <p>
@@ -117,15 +269,170 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+        	<li>
+        		<p>
+        			All real numbers except <m>x = -3</m>.
+        		</p>
+        	</li>
+        	<li>
+        			    <table xml:id="T-1-2-Ez-2a">
+					      <caption>Values of <m>g(x) = -\frac{|x+3|}{x+3}</m> near <m>a = -3</m>.</caption>
+					      <tabular top="minor" bottom="minor">
+					        <row>
+					          <cell><m>x</m></m></cell>
+					          <cell><m>g(x)</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>-2.9</m></cell>
+					          <cell><m>-1</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>-2.99</m></cell>
+					          <cell><m>-1</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>-2.999</m></cell>
+					          <cell><m>-1</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>-3.001</m></cell>
+					          <cell><m>1</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>-3.01</m></cell>
+					          <cell><m>-1</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>-3.1</m></cell>
+					          <cell><m>-1</m></cell>
+					        </row>						        	        
+					      </tabular>
+					    </table>
+				<p>
+        			The limit does not exist.
+        		</p>
+        	</li>
+        	<li>
+        		<p>
+	        		If <m>x \gt -3</m>,
+	        		<me>
+	        			-\frac{|x+3|}{x+3} = -\frac{x+3}{x+3} = -1;
+	        		</me>
+	        		if <m>x \lt -3</m>, it follows that
+	        		<me>
+	        			-\frac{|x+3|}{x+3} = -\frac{-(x+3)}{x+3} = +1.
+	        		</me>
+	        		Hence the limit does not exist.
+	        	</p>	
+        	</li>
+        	<li>
+        		<p>
+        			False.
+        		</p>
+        	</li>
+        	<li>
+        		<p>
+        			False.  
+        		</p>
+        	</li>
+        	<li>
+        		<figure xml:id="F-ez-1-2-abs-value-a">
+			       <caption>Plot of <m>g</m> near <m>a = -3</m>.</caption>
+			       <image source="images/1_2_Ez2f_soln">
+			       </image>
+			    </figure>
+        	</li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+        	<li>
+        		<p>
+        			The domain of <m>g</m> is all real numbers except <m>x = -3</m>.
+        		</p>
+        	</li>
+        	<li>
+        		<p>
+        			Using a spreadsheet, we generate the following table.
+        		</p>	
+        			    <table xml:id="T-1-2-Ez-2s">
+					      <caption>Values of <m>g(x) = -\frac{|x+3|}{x+3}</m> near <m>a = -3</m>.</caption>
+					      <tabular top="minor" bottom="minor">
+					        <row>
+					          <cell><m>x</m></m></cell>
+					          <cell><m>g(x)</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>-2.9</m></cell>
+					          <cell><m>-1</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>-2.99</m></cell>
+					          <cell><m>-1</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>-2.999</m></cell>
+					          <cell><m>-1</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>-3.001</m></cell>
+					          <cell><m>1</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>-3.01</m></cell>
+					          <cell><m>-1</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>-3.1</m></cell>
+					          <cell><m>-1</m></cell>
+					        </row>						        	        
+					      </tabular>
+					    </table>
+				<p>
+        			As we approach <m>-3</m> from the right, the function values approach (stay constant at) <m>1</m>; but as we approach <m>-3</m> from the left, the function values approach (stay constant at) <m>-1</m>.  As such, the function values do not get arbitrarily close to a single value, and hence the limit does not exist.
+        		</p>
+        	</li>
+        	<li>
+        		<p>
+	        		We observe that <m>|x+3| = (x+3)</m> whenever <m>x \ge -3</m>, and that <m>|x+3| = -(x+3)</m> whenever <m>x \lt -3</m>.  So, if <m>x \gt -3</m>, we see that
+	        		<me>
+	        			-\frac{|x+3|}{x+3} = -\frac{x+3}{x+3} = -1
+	        		</me>
+	        		whereas if <m>x \lt -3</m>, it follows that
+	        		<me>
+	        			-\frac{|x+3|}{x+3} = -\frac{-(x+3)}{x+3} = +1.
+	        		</me>
+	        		Because the function value is <m>-1</m> to the right of <m>-3</m> and <m>+1</m> to the left of <m>-3</m>, it follows that the limit does not exist.
+	        	</p>	
+        	</li>
+        	<li>
+        		<p>
+        			False, since <m>-3</m> does not belong to the domain of <m>g</m>, <m>g(-3)</m> is undefined.
+        		</p>
+        	</li>
+        	<li>
+        		<p>
+        			False.  This equality is only true when <m>x \gt -3</m>, as seen in our work in (c).
+        		</p>
+        	</li>
+        	<li>
+        		<p>
+        			Since <m>g</m> approaches different output values as <m>x</m> approaches <m>-3</m> from different directions, <m>g</m> does not have a limit as <m>x \to -3</m>, as seen in the following figure.
+        		</p>
+        		<figure xml:id="F-ez-1-2-abs-value-s">
+			       <caption>Plot of <m>g</m> near <m>a = -3</m>.</caption>
+			       <image source="images/1_2_Ez2f_soln">
+			       </image>
+			    </figure>
+        	</li>
+        </ol>
       </p>
     </solution>
   </exercise>
+
   <exercise xml:id="ez-1-2-Two-Graphs">
     <statement>
       <p>
@@ -177,12 +484,44 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+        	<li>
+        		<figure xml:id="F-ez-1-2-two-plots-a-a">
+			       <caption>Plot of <m>f</m> that satisfies the given conditions.  (The open circle at <m>(1,0)</m> indicates that <m>f(1)</m> is not defined.).</caption>
+			       <image source="images/1_2_Ez3a_soln">
+			       </image>
+			    </figure>        		
+        	</li>
+        	<li>
+        		<figure xml:id="F-ez-1-2-two-plots-b-a">
+			       <caption>Plot of <m>g</m> that satisfies the given conditions.</caption>
+			       <image source="images/1_2_Ez3b_soln">
+			       </image>
+			    </figure>        		
+        	</li>        	
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+        	<li>
+        		<p>One possible graph follows.</p>
+        		<figure xml:id="F-ez-1-2-two-plots-a-s">
+			       <caption>Plot of <m>f</m> that satisfies the given conditions.  (The open circle at <m>(1,0)</m> indicates that <m>f(1)</m> is not defined.).</caption>
+			       <image source="images/1_2_Ez3a_soln">
+			       </image>
+			    </figure>        		
+        	</li>
+        	<li>
+        		<p>One possible graph follows.</p>
+        		<figure xml:id="F-ez-1-2-two-plots-b-s">
+			       <caption>Plot of <m>g</m> that satisfies the given conditions.</caption>
+			       <image source="images/1_2_Ez3b_soln">
+			       </image>
+			    </figure>        		
+        	</li>        	
+        </ol>
       </p>
     </solution>
   </exercise>
@@ -206,12 +545,97 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+        	<li>
+        		<p>
+        			<me>
+        				AV_{[1,1+h]} = \frac{100\cos(0.75(1+h)) \cdot e^{-0.2(1+h)} - 100\cos(0.75) \cdot e^{-0.2}}{h}
+        			</me>
+        		</p>
+        	</li>
+        	<li>
+        		<p> 
+					<me>\lim_{h \to 0} AV_{1, 1+h} \approx -53.837.</me>
+        		</p>
+        	</li>
+        	<li>
+        		<p>
+        			The instantaneous velocity of the bungee jumper at the moment <m>t = 1</m> is approximately <m>-53.837</m> 	ft/sec. 
+        		</p>
+        	</li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+        	<li>
+        		<p>
+        			Using the standard formula for average velocity, we see that
+        			<md>
+        				<mrow>AV_{[1,1+h]} &amp;= \frac{s(1+h)-s(1)}{h}</mrow>
+        				<mrow>             &amp;= \frac{(100\cos(0.75(1+h)) \cdot e^{-0.2(1+h)}+100) - (100\cos(0.75) \cdot e^{-0.2}+100)}{h}</mrow>
+        				<mrow>             &amp;= \frac{100\cos(0.75(1+h)) \cdot e^{-0.2(1+h)}+100 - 100\cos(0.75) \cdot e^{-0.2}-100)}{h}</mrow>
+        				<mrow>             &amp;= \frac{100\cos(0.75(1+h)) \cdot e^{-0.2(1+h)} - 100\cos(0.75) \cdot e^{-0.2}}{h}</mrow>
+        			</md>
+        		</p>
+        	</li>
+        	<li>
+        		<p>
+        			Using a spreadsheet and small values of <m>h</m> in the expression <m>AV_{[1,1+h]}</m>, we see that 
+        		</p>
+        			    <table xml:id="T-1-2-Ez-4-s">
+					      <caption>Values of <m>AV_{[1,1+h]}</m> near <m>h=0</m>.</caption>
+					      <tabular top="minor" bottom="minor">
+					        <row>
+					          <cell><m>h</m></m></cell>
+					          <cell><m>AV_{[1,1+h]}</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>0.1</m></cell>
+					          <cell><m>-54.50145823</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>0.01</m></cell>
+					          <cell><m>-53.90917396</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>0.001</m></cell>
+					          <cell><m>-53.84429251</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>0.0001</m></cell>
+					          <cell><m>-53.83774757</m></cell>
+					        </row>					        
+					        <row>
+					          <cell><m>-0.1</m></cell>
+					          <cell><m>-53.83629174</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>-0.01</m></cell>
+					          <cell><m>-53.82973418</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>-0.001</m></cell>
+					          <cell><m>-53.76359015</m></cell>
+					        </row>
+					        <row>
+					          <cell><m>-0.0001</m></cell>
+					          <cell><m>-53.04508149</m></cell>
+					        </row>						        	        
+					      </tabular>
+					    </table>        			
+				<p>
+					and hence 
+					<me>\lim_{h \to 0} AV_{1, 1+h} \approx -53.837.</me>
+        		</p>
+        	</li>
+        	<li>
+        		<p>
+        			Since <m>\lim_{h \to 0} AV_{1, 1+h} \approx -53.837</m> this tells us that the instantaneous velocity of the bungee jumper at the moment <m>t = 1</m> is approximately <m>-53.837</m> 	ft/sec. 
+        		</p>
+        	</li>
+        </ol>
       </p>
     </solution>
   </exercise>
