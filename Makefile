@@ -156,7 +156,7 @@ webwork-server-tex:
 # LaTeX and PDF versions,
 # see prerequisite just above about merge files.
 # xsltproc may be passed --stringparam latex.fillin.style box for box answer blanks
-acs-pdf:
+pdf: acs-merge
 	install -d $(PDFOUT)
 	install -d $(PDFOUT)/images
 	-rm $(PDFOUT)/*.*
@@ -182,7 +182,7 @@ soln-latex:
 	-rm $(SOLNOUT)/*.tex
 	cp -a $(IMAGESSRC) $(SOLNOUT)
 	cd $(SOLNOUT); \
-	xsltproc -xinclude --stringparam webwork.server.latex $(PDFOUT)/webwork-tex/ $(MBUSR)/acs-solution-manual.xsl $(SOLNMAIN) \
+	xsltproc -xinclude $(MBUSR)/acs-solution-manual.xsl $(SOLNMAIN) \
 
 # Solutions manual for PDF
 # Automatically builds LaTeX source for solutions manual
