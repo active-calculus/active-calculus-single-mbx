@@ -204,7 +204,7 @@ workbook-latex:
 	-rm $(WKBKOUT)/*.tex
 	cp -a $(IMAGESSRC) $(WKBKOUT)
 	cd $(WKBKOUT); \
-	xsltproc -xinclude --stringparam webwork.server.latex $(PDFOUT)/webwork-tex/ $(MBUSR)/acs-activity-workbook.xsl $(WKBKMAIN) \
+	xsltproc -xinclude $(MBUSR)/acs-activity-workbook.xsl $(WKBKMAIN) \
 
 # Activity workbook for PDF
 # Automatically builds LaTeX source for solutions manual
