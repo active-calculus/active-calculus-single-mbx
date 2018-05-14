@@ -72,6 +72,7 @@ PGOUT      = $(OUTPUT)/pg
 # HTMLOUT set in Makefile.paths
 # HTMLOUT    = $(OUTPUT)/html
 PDFOUT     = $(OUTPUT)/pdf
+WWOUT      = $(OUTPUT)/webwork-extraction
 IMAGESOUT  = $(OUTPUT)/images
 SOLNOUT    = $(OUTPUT)/soln-man
 WKBKOUT    = $(OUTPUT)/workbook
@@ -80,7 +81,7 @@ WKBKOUT    = $(OUTPUT)/workbook
 # For all but trivial testing or examples, please look into setting
 # up your own WeBWorK server, or consult Alex Jordan about the use
 # of PCC's server in a nontrivial capacity.    <alex.jordan@pcc.edu>
-SERVER = https://webwork.pcc.edu
+SERVER = https://webwork-ptx.aimath.org
 
 #  Write out each WW problem as a standalone problem in PGML ready 
 #  for use on a WW server.  "def" files and "header" files are 
@@ -94,6 +95,23 @@ pg:
 	install -d $(PGOUT)
 	cd $(PGOUT); \
 	xsltproc -xinclude --stringparam chunk.level 2 $(MBXSL)/mathbook-webwork-archive.xsl $(MAINFILE)
+
+#  Extract webwork problems into a single XML file called
+#  webwork-extraction.xml which holds multiple versions of each problem.
+#  Also locally store images from the WeBWorK server.
+
+acs-extraction:
+	install -d $(WWOUT)
+	-rm $(WWOUT)/webwork-extraction.xml
+	$(MB)/script/mbx -v -c webwork -d $(WWOUT) -s $(SERVER) $(MAINFILE)
+
+#  Make a new PTX file from the source tree, with webwork elements replaced
+#  by the webwork-reps from webwork-extraction.xml. (So run the above at
+#  least once first.) Subsequent templates are applied to the result.
+
+acs-merge:
+	cd $(WWOUT); \
+	xsltproc -xinclude  --stringparam webwork.extraction $(WWOUT)/webwork-extraction.xml $(MBXSL)/pretext-merge.xsl $(MAINFILE) > acs-merge.ptx
 
 #  HTML output 
 #  Output lands in the subdirectory:  $(HTMLOUT)
@@ -135,23 +153,20 @@ webwork-server-tex:
 	install -d $(PDFOUT)/webwork-tex
 	$(MB)/script/mbx -v -c webwork-tex -s $(SERVER) -d $(PDFOUT)/webwork-tex $(MAINFILE)
 
-# LaTeX for print
-# see prerequisite just above
-# the "webwork-tex" directory must be given here
-# [note trailing slash (subject to change)]
-latex:
+# LaTeX and PDF versions,
+# see prerequisite just above about merge files.
+# xsltproc may be passed --stringparam latex.fillin.style box for box answer blanks
+acs-pdf:
 	install -d $(PDFOUT)
+	install -d $(PDFOUT)/images
+	-rm $(PDFOUT)/*.*
+	-rm $(PDFOUT)/images/*
+	cp -a $(WWOUT)/*.png $(PDFOUT)/images
 	install -d $(MBUSR)
 	install -b xsl/acs-latex.xsl $(MBUSR)
-	-rm $(PDFOUT)/*.tex
 	cp -a $(IMAGESSRC) $(PDFOUT)
 	cd $(PDFOUT); \
-	xsltproc -xinclude --stringparam webwork.server.latex $(PDFOUT)/webwork-tex/ $(MBUSR)/acs-latex.xsl $(MAINFILE) \
-
-# PDF for print
-# Automatically builds LaTeX source
-pdf: latex
-	cd $(PDFOUT); \
+	xsltproc -xinclude $(MBUSR)/acs-latex.xsl $(WWOUT)/acs-merge.ptx \
 	xelatex index; \
 	xelatex index
 
