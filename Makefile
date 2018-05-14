@@ -33,7 +33,6 @@
 
 #   install         (system tool to make directories)
 #   xsltproc        (xml/xsl text processor)
-#   xmllint         (only to check source against DTD)
 #   <helpers>       (PDF viewer, web browser, pager, Sage executable, etc)
 
 #####
@@ -66,7 +65,6 @@ WKBKMAIN = $(PRJSRC)/acs-activity-workbook.xml
 # so relative paths work properly
 MBXSL = $(MB)/xsl
 MBUSR = $(MB)/user
-DTD   = $(MB)/schema/dtd
 
 # These paths are subdirectories of
 # the scratch directory
