@@ -19,21 +19,21 @@
 <!-- Next paths assume current file has been copied to mathbook/user -->
 <xsl:import href="../xsl/mathbook-latex.xsl" />
 <!--<xsl:import href="acs-common.xsl" />-->
-<xsl:param name="toc.level" select="'3'" />
+
 
 <xsl:output method="text" />
 
 <!-- These switches will control what we include -->
-<xsl:param name="exercise.text.statement" select="'yes'" />
+<xsl:param name="exercise.text.statement" select="'no'" />
 <xsl:param name="exercise.text.hint" select="'no'" />
 <xsl:param name="exercise.text.answer" select="'no'" />
-<xsl:param name="exercise.text.solution" select="'yes'" />
+<xsl:param name="exercise.text.solution" select="'no'" />
 
 <!-- Preview activities and activities are project-like. -->
 <xsl:param name="project.text.statement" select="'yes'" />
 <xsl:param name="project.text.hint" select="'no'" />
 <xsl:param name="project.text.answer" select="'no'" />
-<xsl:param name="project.text.solution" select="'yes'" />
+<xsl:param name="project.text.solution" select="'no'" />
 
 
 <!-- Superfluous frontmatter for a solution manual -->
@@ -43,38 +43,8 @@
 
 <!-- Chapters: default presentation, we have them all, so numbers OK     -->
 <!-- Sections and Equivalents: kill them, except for specific ones below -->
-<!-- Killing introduction here kills preview activities from output -->
-<xsl:template match="introduction|conclusion|references|objectives|appendix|index" />
+<xsl:template match="conclusion|exercises|references|objectives|appendix|index" />
 
-<!-- Kill solutions to WeBWorK exercises -->
-<!-- But if the first exercise is a WeBWorK one, we need to start -->
-<!-- the exercise list. Do this by checking for no preceding-sibling. -->
-<xsl:template match="exercise[webwork]">
-    <xsl:if test="not(preceding-sibling::*)">
-        <xsl:text>\begin{exerciselist}&#xA;</xsl:text>
-    </xsl:if>
-</xsl:template>
-
-<!-- As a subset of full content, we can't            -->
-<!-- trust LaTeX's auto-numbering to coincide         -->
-<!-- with the sections of the full book               -->
-<!-- Thus we need to redo the whole exercises section -->
-<!-- With \section* we do not get ToC entries, but    -->
-<!-- we could purposely add them if we wished         -->
-<xsl:template match="exercises">
-
-    <xsl:text>\section*{\arabic{chapter}.\arabic{section}</xsl:text>
-    <xsl:apply-templates select="." mode="number" />
-    <xsl:text>\quad </xsl:text>
-    <xsl:apply-templates select="." mode="title-full" />
-    <xsl:text>}&#xa;</xsl:text>
-    <xsl:text>\addcontentsline{toc}{subsection}{Exercises}&#xa;</xsl:text>
-    <xsl:apply-templates />
-    <!-- Insert a page break so that each section's exercises start on a -->
-    <!-- new page. This is mainly insurance for when a more compact version -->
-    <!-- without a page break after each exercise's solution is being produced. -->
-    <xsl:text>\clearpage&#xA;&#xA;</xsl:text>
-</xsl:template>
 
 <!-- As a subset of full content, we can't         -->
 <!-- point to much of the content with hyperlinks  -->
@@ -142,18 +112,10 @@
     <xsl:text>\clearpage&#xA;&#xA;</xsl:text>
 </xsl:template>
 
-<!-- Let's attempt to start a new page after each exercise -->
-<xsl:template match="exercise">
-    <xsl:apply-imports />
-    <xsl:text>\clearpage&#xA;&#xA;</xsl:text>
-</xsl:template>
-
-
 <!-- Only process activity within subsection -->
-<!-- This could match="introduction|subsection" and then -->
-<!-- select="exploration|activity" if preview activities were to be included -->
-<xsl:template match="subsection">
-    <xsl:apply-templates select="activity" />
+
+<xsl:template match="introduction|subsection">
+    <xsl:apply-templates select="exploration|activity" />
 </xsl:template>
 </xsl:stylesheet>
 
