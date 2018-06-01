@@ -124,11 +124,78 @@
     <p>
       <ol label="a.">
         <li>
+          <sidebyside widths="47% 47%" margins="0%">
+              <tabular top="minor" bottom="minor">
+                <row bottom="medium">
+                  <cell><m>t_i</m></cell>
+                  <cell><m>y_i</m></cell>
+                  <cell><m>dy/dt</m></cell>
+                  <cell><m>\Delta y</m></cell>
+                </row>
+                <row>
+                  <cell><m>0</m></cell>
+                  <cell><m>0</m></cell>
+                  <cell><m>-1</m></cell>
+                  <cell><m>-0.2</m></cell>
+                </row>
+                <row>
+                  <cell><m>0.2</m></cell>
+                  <cell><m>-0.2</m></cell>
+                  <cell><m>-0.6</m></cell>
+                  <cell><m>-0.12</m></cell>
+                </row>
+                <row>
+                  <cell><m>0.4</m></cell>
+                  <cell><m>-0.32</m></cell>
+                  <cell><m>-0.2</m></cell>
+                  <cell><m>-0.04</m></cell>
+                </row>
+                <row>
+                  <cell><m>0.6</m></cell>
+                  <cell><m>-0.36</m></cell>
+                  <cell><m>0.2</m></cell>
+                  <cell><m>0.04</m></cell>
+                </row>
+                <row>
+                  <cell><m>0.8</m></cell>
+                  <cell><m>-0.32</m></cell>
+                  <cell><m>0.6</m></cell>
+                  <cell><m>0.12</m></cell>
+                </row>
+                <row>
+                  <cell><m>1.0</m></cell>
+                  <cell><m>-0.2</m></cell>
+                  <cell><m>1</m></cell>
+                  <cell><m>0.2</m></cell>
+                </row>
+              </tabular>
+              <image source="images/7_3_Act1_soln" />
+
+          </sidebyside>
+        </li>
+
+        <li>
           <p>
-            Solutions for each of the prompts above.
+            <m>y = t^2 - t</m>, with errors <m>e_1 = 0.04</m>, <m>e_2 = 0.08</m>, <m>e_3 = 0.12</m>, <m>e_4 = 0.16</m>, <m>e_5 = 0.2</m>.
           </p>
         </li>
-      </ol>
+
+        <li>
+          <p>
+            If we first think about how <m>y_1</m> is generated for the initial value problem <m>\frac{dy}{dt} = f(t) = 2t-1, \ y(0) = 0</m>, we see that <m>y_1 = y_0 + \Delta t \cdot f(t_0)</m>.  Since <m>y_0 = 0</m>, we have <m>y_1 = \Delta t \cdot f(t_0)</m>.  From there, we know that <m>y_2</m> is given by <m>y_2 = y_1 + \Delta t f(t_1)</m>. Substituting our earlier result for <m>y_1</m>, we see that <m>y_2 = \Delta t \cdot f(t_0) + \Delta t f(t_1)</m>.  Continuing this process up to <m>y_5</m>, we get
+            <me>
+              y_5 = \Delta t \cdot f(t_0) + \Delta t f(t_1) + \Delta t f(t_2) + \Delta t f(t_3) + \Delta t f(t_4)
+            </me>
+            This is precisely the left Riemann sum with five subintervals for the definite integral <m>\int_0^1 (2t-1)~dt</m>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Solutions to this differential equation all differ by only a constant.
+          </p>
+        </li>
+      </ol>    
     </p>
   </answer>
   <solution>
@@ -136,10 +203,83 @@
       <ol label="a.">
         <li>
           <p>
-            Solutions for each of the prompts above.
+            Using Euler's Method with <m>\Delta t = 0.2</m>, we find the results shown in the table and graph below.
+          </p>
+
+          <sidebyside widths="47% 47%" margins="0%">
+              <tabular top="minor" bottom="minor">
+                <row bottom="medium">
+                  <cell><m>t_i</m></cell>
+                  <cell><m>y_i</m></cell>
+                  <cell><m>dy/dt</m></cell>
+                  <cell><m>\Delta y</m></cell>
+                </row>
+                <row>
+                  <cell><m>0</m></cell>
+                  <cell><m>0</m></cell>
+                  <cell><m>-1</m></cell>
+                  <cell><m>-0.2</m></cell>
+                </row>
+                <row>
+                  <cell><m>0.2</m></cell>
+                  <cell><m>-0.2</m></cell>
+                  <cell><m>-0.6</m></cell>
+                  <cell><m>-0.12</m></cell>
+                </row>
+                <row>
+                  <cell><m>0.4</m></cell>
+                  <cell><m>-0.32</m></cell>
+                  <cell><m>-0.2</m></cell>
+                  <cell><m>-0.04</m></cell>
+                </row>
+                <row>
+                  <cell><m>0.6</m></cell>
+                  <cell><m>-0.36</m></cell>
+                  <cell><m>0.2</m></cell>
+                  <cell><m>0.04</m></cell>
+                </row>
+                <row>
+                  <cell><m>0.8</m></cell>
+                  <cell><m>-0.32</m></cell>
+                  <cell><m>0.6</m></cell>
+                  <cell><m>0.12</m></cell>
+                </row>
+                <row>
+                  <cell><m>1.0</m></cell>
+                  <cell><m>-0.2</m></cell>
+                  <cell><m>1</m></cell>
+                  <cell><m>0.2</m></cell>
+                </row>
+              </tabular>
+            </sidebyside>
+
+            <sidebyside>
+              <image source="images/7_3_Act1_soln" />
+          </sidebyside>
+        </li>
+
+        <li>
+          <p>
+            The exact solution to the initial value problem <m>\frac{dy}{dt} = 2t-1, \ y(0) = 0</m> is <m>y = t^2 - t</m>, which we find by integrating both sides with respect to <m>t</m> and then applying the fact that <m>y(0) = 0</m> to determine that the integration constant is <m>0</m>.  From here, we can see that the errors are <m>e_1 = y(0.2) - y_1 = 0.04</m>, <m>e_2 = y(0.4) - y_2 = 0.08</m>, <m>e_3 = y(0.6) - y_3 = 0.12</m>, <m>e_4 = y(0.8) - y_4 = 0.16</m>, <m>e_5 = y(1.0) - y_5 = 0.2</m>.
           </p>
         </li>
-      </ol>
+
+        <li>
+          <p>
+            If we first think about how <m>y_1</m> is generated for the initial value problem <m>\frac{dy}{dt} = f(t) = 2t-1, \ y(0) = 0</m>, we see that <m>y_1 = y_0 + \Delta t \cdot f(t_0)</m>.  Since <m>y_0 = 0</m>, we have <m>y_1 = \Delta t \cdot f(t_0)</m>.  From there, we know that <m>y_2</m> is given by <m>y_2 = y_1 + \Delta t f(t_1)</m>. Substituting our earlier result for <m>y_1</m>, we see that <m>y_2 = \Delta t \cdot f(t_0) + \Delta t f(t_1)</m>.  Continuing this process up to <m>y_5</m>, we get
+            <me>
+              y_5 = \Delta t \cdot f(t_0) + \Delta t f(t_1) + \Delta t f(t_2) + \Delta t f(t_3) + \Delta t f(t_4)
+            </me>
+            This is precisely the left Riemann sum with five subintervals for the definite integral <m>\int_0^1 (2t-1)~dt</m>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Since <m>\frac{dy}{dt} = 2t-1</m>, the slope of the tangent line depends only on <m>t</m>.  Thus, the different initial condition of <m>y(0) = 1</m> simply adds <m>1</m> to every value of <m>y_i</m> in our computations, which shifts every point we compute by Euler's Method up by 1 unit.  This tells us that the solutions to this differential equation all differ by only a constant.  We can see that both in our computations with Euler's Method and if we solve the differential equation to get <m>y = t^2 - t + C</m>.
+          </p>
+        </li>
+      </ol>    
     </p>
   </solution>
 </activity>
