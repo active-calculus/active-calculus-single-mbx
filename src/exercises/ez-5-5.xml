@@ -66,10 +66,70 @@
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+            <p>
+              Wolfram|Alpha shows that
+              <me>
+                \frac{x^3 + x + 1}{x^4 - 1} = -\frac{1}{2(x^2+1)} + \frac{1}{4(x+1)} + \frac{3}{4(x-1)}.
+              </me>
+              Then, using standard antiderivatives,
+              <md>
+                <mrow>\int \frac{x^3 + x + 1}{x^4 - 1} \, dx &amp;= \int -\frac{1}{2(x^2+1)} + \frac{1}{4(x+1)} + \frac{3}{4(x-1)} \ dx</mrow>
+                <mrow>   &amp;= \int -\frac{1}{2(x^2+1)} \ dx + \int \frac{1}{4(x+1)} \ dx + int \frac{3}{4(x-1)} \ dx</mrow>
+                <mrow>   &amp;= -\frac{1}{2} \arctan(x) + \frac{1}{4} \ln|x+1| + \frac{3}{4} \ln|x-1| + C</mrow>
+              </md>
+              Directly asking Wolfram|Alpha to integrate <m>\frac{x^3 + x + 1}{x^4 - 1}</m> yields
+              <me>
+                \int \frac{x^3 + x + 1}{x^4 - 1} \, dx = \frac{1}{4} \left( 3\log(1-x) + \log(x+1) - 2\arctan{x} \right) + C.
+              </me>
+              By rearranging, distributing the <m>\frac{1}{4}</m>, and noticing that Wolfram|Alpha does not use absolute value with integrals involving the logarithm (as well as that <m>|x-1| = |1-x|</m>), we see that these two results are the same.
+            </p>
+          </li>
+          <li>
+            <p>
+              Wolfram|Alpha shows that
+              <me>
+                \frac{x^5 + x^2 + 3}{x^3 - 6x^2 + 11x - 6} = x^2 + 6x + 25 + \frac{255}{2(x-3)} - \frac{39}{x-2} + \frac{5}{2(x-1)}.
+              </me>
+              Then, using standard antiderivatives,
+              <md>
+                <mrow>\int \frac{x^5 + x^2 + 3}{x^3 - 6x^2 + 11x - 6} \, dx &amp;= \int x^2 + 6x + 25 + \frac{255}{2(x-3)} - \frac{39}{x-2} + \frac{5}{2(x-1)} \ dx</mrow>
+                <mrow>   &amp;= \int x^2 \ dx + \int 6x \ dx + \int 25 \ dx + \int \frac{255}{2(x-3)} \ dx - \int \frac{39}{x-2} \ dx + \int \frac{5}{2(x-1)} \ dx</mrow>
+                <mrow>   &amp;= \frac{x^3}{3} + 3x^2 + 25x + \frac{255}{2} \ln|x-3| - 39 \ln|x-2| + \frac{5}{2} \ln|x-1| + C.</mrow>
+              </md>
+              Directly asking Wolfram|Alpha to integrate <m>\frac{x^5 + x^2 + 3}{x^3 - 6x^2 + 11x - 6}</m> yields the same result with the caveats mentioned in part (a).
+            </p>
+          </li>
+          <li>
+            <p>
+              Wolfram|Alpha shows that
+              <me>
+                \frac{x^2 - x - 1}{(x-3)^3} = \frac{1}{x-3} + \frac{5}{(x-3)^2} + \frac{5}{(x-3)^3}.
+              </me>
+              Then, using standard antiderivatives,
+              <md>
+                <mrow>\int \frac{x^2 - x - 1}{(x-3)^3} \, dx &amp;= \int \frac{1}{x-3} + \frac{5}{(x-3)^2} + \frac{5}{(x-3)^3} \ dx</mrow>
+                <mrow>   &amp;= \int \frac{1}{x-3} \ dx + \int \frac{5}{(x-3)^2} \ dx + \int \frac{5}{(x-3)^3} \ dx</mrow>
+                <mrow>   &amp;= \ln|x-3| + \int 5(x-3)^{-2} \ dx + \int 5(x-3)^{-3} \ dx</mrow>
+                <mrow>   &amp;= \ln|x-3| - \frac{5}{x-3} - \frac{5}{2(x-3)^2} + C.</mrow>
+              </md>
+              Directly asking Wolfram|Alpha to integrate <m>\frac{x^2 - x - 1}{(x-3)^3}</m> yields
+              <me>
+                \int \frac{x^2 - x - 1}{(x-3)^3} \, dx = \log(x-3) - \frac{5(2x-5)}{2(x-3)^2} + C.
+              </me>
+              The logarithm part is the same, and since
+              <me>
+                -\frac{5}{x-3} - \frac{5}{2(x-3)^2}  = -\frac{5[2(x-3) + 1]}{2(x-3)^2} = -\frac{5(2x-5)}{2(x-3)^2},
+              </me>
+              we see that the rest of the result matches as well.
+            </p>
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -105,15 +165,140 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+          <li>
+            <p>
+              <m>
+                \int \frac{1}{x \sqrt{9x^2 + 25}} \, dx = -\frac{1}{5} \ln \left| \frac{5+\sqrt{9x^2 + 5^2}}{3x} \right| + C.
+              </m>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>
+                \int x \sqrt{1 + x^4} \, dx = \frac{1}{2} \left( \frac{x^2}{2}\sqrt{x^4 + 1} + \frac{1}{2}\ln|x^2 + \sqrt{x^4 + 1}| \right) + C
+              </m>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>
+                \int e^x \sqrt{4 + e^{2x}} \, dx = \frac{e^x}{2}\sqrt{e^{2x} + 4} + 2\ln|e^x + \sqrt{e^{2x} + 4}|  + C
+              </m>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>
+                \int \frac{\tan(x)}{\sqrt{9 - \cos^2(x)}} \, dx = \frac{1}{3} \ln \left| \frac{3 + \sqrt{9 - \cos^2(x)}}{\cos(x)} \right| + C.
+              </m>
+            </p>
+          </li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+            <p>
+              For <m>\int \frac{1}{x \sqrt{9x^2 + 25}} \, dx</m>, we let <m>u = 3x</m> so <m>du = 3 \, dx</m> and <m>x = \frac{1}{3} u</m>.  Applying this substitution,
+              <me>
+                \int \frac{1}{x \sqrt{9x^2 + 25}} \, dx = \int \frac{3}{u \sqrt{u^2 + 25}} \cdot \frac{1}{3} \, du = \int \frac{1}{u \sqrt{u^2 + 25}} \, du.
+              </me>
+              Now, using Rule (e) from the appendix with <m>a = 5</m>,
+              <me>
+                \int \frac{1}{u \sqrt{u^2 + 25}} \, du = -\frac{1}{5} \ln \left| \frac{5+\sqrt{u^2 + 5^2}}{u} \right| + C
+              </me>
+              Substituting back to <m>x</m>, we've shown that
+              <me>
+                \int \frac{1}{x \sqrt{9x^2 + 25}} \, dx = -\frac{1}{5} \ln \left| \frac{5+\sqrt{9x^2 + 5^2}}{3x} \right| + C.
+              </me>
+              Asking Wolfram|Alpha to evaluate the same original integral, the program reports that 
+              <me>
+                \int \frac{1}{x \sqrt{9x^2 + 25}} \, dx = \frac{1}{5} \left( \log(x) - \log\left( \sqrt{9x^2 + 25} + 5\right) \right) + C.
+              </me>
+              These two results are in fact the same (the program uses ``<m>\log</m>'' where we use ``<m>\ln</m>''), though it takes some work with logarithm properties to show this.  Using the rule <m>\ln(\frac{u}{v}) = \ln (u) - \ln (v)</m> and <m>\ln(3x) = \ln(3) + \ln(x)</m> and including the value <m>\ln(3)</m> in the arbitrary constant of integration, it follows that the two results match.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              For <m>\int x \sqrt{1 + x^4} \, dx</m>, we first recognize that <m>x^4 = (x^2)^2</m>, and that with <m>u = x^2</m> we have a function-derivative pair present with <m>du = 2x \, dx</m>.  Applying this substitution,
+              <me>
+                \int x \sqrt{1 + x^4} \, dx = \int \frac{1}{2} \sqrt{1+u^2} \, du.
+              </me>
+              Next, we use Rule (c) with ``<m>+</m>'' and <m>a = 1</m> to find that
+              <me>
+                \int \frac{1}{2} \sqrt{1+u^2} \, du = \frac{1}{2} \left( \frac{u}{2}\sqrt{u^2 + 1} + \frac{1}{2}\ln|u + \sqrt{u^2 + 1}| \right) + C
+              </me>
+              Returning to the original variable, <m>x</m>, we have
+              <me>
+                \int x \sqrt{1 + x^4} \, dx = \frac{1}{2} \left( \frac{x^2}{2}\sqrt{x^4 + 1} + \frac{1}{2}\ln|x^2 + \sqrt{x^4 + 1}| \right) + C
+              </me>
+              Wolfram|Alpha's first response when asked to evaluate this integral is to give a result that involves the hyperbolic sine function (<m>\sinh^{-1}(x^2)</m>); if we scroll down to ``alternate results'', we find one that matches what we've found above.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              For <m>\int e^x \sqrt{4 + e^{2x}} \, dx</m>, we first observe that <m>e^{2x} = (e^x)^2</m>.  If we use the substitution <m>u = e^x</m>, the resulting integral is 
+              <me>
+                \int e^x \sqrt{4 + e^{2x}} \, dx = \int \sqrt{4 + u^2} \, du,
+              </me>
+              which can be evaluated by the same approach as in part (b) with Rule (c) from the Appendix, this time with <m>a = 2</m>.  Thus,
+              <me>
+                \int \sqrt{4 + u^2} \, du = \frac{u}{2}\sqrt{u^2 + 4} + \frac{2^2}{2}\ln|u + \sqrt{u^2 + 4}|
+              </me>
+              Substituting back,
+              <me>
+                \int e^x \sqrt{4 + e^{2x}} \, dx = \frac{e^x}{2}\sqrt{e^{2x} + 4} + 2\ln|e^x + \sqrt{e^{2x} + 4}|  + C
+              </me>
+              As in part (b), we need to scroll down in Wolfram|Alpha's results to find one close to what we have here.  The alternate result almost matches, but the program writes
+              <me>
+                \log(\left( \sqrt{\frac{e^{2x}}{4} + 1 } + \frac{e^{x}}{2} \right)
+              </me>
+              where we have 
+              <me>
+                \ln|e^x + \sqrt{e^{2x} + 4}.|
+              </me>
+              This discrepancy can be explained using properties of the logarithm function and the presence of the arbitrary constant.  If we write 
+              <me>
+                \log(\left( \sqrt{\frac{e^{2x}}{4} + 1 } + \frac{e^{x}}{2} \right) = \log(\left( \sqrt{\frac{e^{2x} + 4}{4}} + \frac{e^{x}}{2} \right) = \log(\left( \frac{ \sqrt{e^{2x} + 4} + e^{x}}{2} \right)
+              </me>
+              and then recall that <m>\log \left( \frac{z}{2} \right) = \log(z) - \log(2)</m>, we see that the <m>\log(2)</m> can be included in the arbitray constant, and the two different results actually match.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              To evaluate the integral <m>\int \frac{\tan(x)}{\sqrt{9 - \cos^2(x)}} \, dx</m>, we first write <m>\tan(x) = \frac{\sin(x)}{\cos(x)}</m> to have the integral in the form
+              <me>
+                \int \frac{\tan(x)}{\sqrt{9 - \cos^2(x)}} \, dx = \int \frac{\sin(x)}{\cos(x) \sqrt{9 - \cos^2(x)}} \, dx.
+              </me>
+              Next, letting <m>u = \cos(x)</m>, it follows <m>du = -\sin(x) \, dx</m>, and therefore 
+              <me>
+                \int \frac{\tan(x)}{\sqrt{9 - \cos^2(x)}} \, dx = \int \frac{-1}{u \sqrt{9 - u^2}} \, du.
+              </me>
+              By Rule (j) in the appendix, we know that
+              <me>
+                \int \frac{1}{u \sqrt{9 - u^2}} \, du = -\frac{1}{3} \ln \left| \frac{3 + \sqrt{9 - u^2}}{u} \right| + C.
+              </me>
+              Connecting the above chain of equalities and substituting back to <m>x</m>, we have shown that 
+              <me>
+                \int \frac{\tan(x)}{\sqrt{9 - \cos^2(x)}} \, dx = \frac{1}{3} \ln \left| \frac{3 + \sqrt{9 - \cos^2(x)}}{\cos(x)} \right| + C.
+              </me>
+              When Wolfram|Alpha is asked to evaluate the original integral, its first result involves the inverse hyperbolic tangent function, and the alternate forms are equally complicated.  It seems that the technology is unable to evaluate this integral in the most straightforward way.
+            </p>
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -158,7 +343,36 @@
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+            <p>
+              Looking at the composite functions that are present, there are two possible <m>u</m>-substitutions to try.  One is <m>u = 1+x^2</m>, for which <m>du = 2x \, dx</m> and <m>x = \sqrt{u-1}</m>.  Because there is no <m>x \, dx</m> term present in the integral, this substitution will not work.
+            </p>
+
+            <p>
+              A second subsitution to attempt is letting <m>u = x + \sqrt{1+x^2}</m>, for which <m>du = \left(1 + x(1+x^2)^{-1/2} \right) \, dx</m>.  Here, too, the needed product is not present in the integral in order for the subsitution to work.
+            </p>
+          </li>
+          <li>
+            <p>
+              For integration by parts to work, we normally need a choice of <m>u</m> that is straightforward to differentiate, and <m>dv</m> that is straightforward to antidifferentiate.  Noting that the integrand can really only be written as the product of <m>\frac{1}{x}</m> and <m>\sqrt{x+\sqrt{1+x^2}}</m>, it appears that the most natural possible option is to let <m>u = \sqrt{x+\sqrt{1+x^2}}</m> and <m>dv = \frac{1}{x} \, dx</m>, since we can antidifferentiate <m>\frac{1}{x}</m>.  Here, however, the approach stalls, because integration by parts requires us to evaluate <m>\int v \, du</m>, and that integral is
+              <me>
+                \int \ln|x| \cdot \frac{1}{2} \left( x + \sqrt{1+x^2} \right)^{-1/2} \cdot \left( 1 + x(1+x^2)^{-1/2} \right) \, dx
+              </me>
+              which is far more complicated than the already-complicated integral we started with.  From this it appears that integration by parts will not be productive.
+            </p>
+          </li>
+          <li>
+            <p>
+              Since we can't seem to find a <m>u</m>-substitution that simplifies the given integral, and there are no formulas in the Appendix that use nested square roots, it appears that the table doesn't offer any help in evaluating this particular integral.
+            </p>
+          </li>
+          <li>
+            <p>
+              Wolfram|Alpha returns results that either involve inverse hyperbolic trigonometric functions or complex numbers.  As such, it appears that the function <m>\frac{\sqrt{x+\sqrt{1+x^2}}}{x}</m> does not have an elementary antiderivative that we can find.
+            </p>
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
