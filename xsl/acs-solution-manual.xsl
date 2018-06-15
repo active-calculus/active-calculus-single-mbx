@@ -25,16 +25,16 @@
 
 <!-- These switches will control what we include -->
 <xsl:param name="exercise.text.statement" select="'yes'" />
-<xsl:param name="exercise.text.hint" select="'no'" />
-<xsl:param name="exercise.text.answer" select="'no'" />
-<xsl:param name="exercise.text.solution" select="'yes'" />
+<xsl:param name="exercise.divisional.hint" select="'no'" />
+<xsl:param name="exercise.divisional.answer" select="'no'" />
+<xsl:param name="exercise.divisional.solution" select="'yes'" />
+
 
 <!-- Preview activities and activities are project-like. -->
 <xsl:param name="project.text.statement" select="'yes'" />
 <xsl:param name="project.text.hint" select="'no'" />
 <xsl:param name="project.text.answer" select="'no'" />
 <xsl:param name="project.text.solution" select="'yes'" />
-
 
 <!-- Superfluous frontmatter for a solution manual -->
 <!-- So we don't bother and kill first two pages   -->
@@ -47,12 +47,7 @@
 <xsl:template match="introduction|conclusion|references|objectives|appendix|index" />
 
 <!-- Kill solutions to WeBWorK exercises -->
-<!-- But if the first exercise is a WeBWorK one, we need to start -->
-<!-- the exercise list. Do this by checking for no preceding-sibling. -->
 <xsl:template match="exercise[webwork]">
-    <xsl:if test="not(preceding-sibling::*)">
-        <xsl:text>\begin{exerciselist}&#xA;</xsl:text>
-    </xsl:if>
 </xsl:template>
 
 <!-- As a subset of full content, we can't            -->
