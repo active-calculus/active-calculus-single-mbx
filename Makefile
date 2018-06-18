@@ -202,6 +202,7 @@ soln-latex:
 # Automatically builds LaTeX source for solutions manual
 soln-pdf: soln-latex
 	cd $(SOLNOUT); \
+	sed -i ".bak" -f ../../change-documentclass-soln-man.sed acs-solution-manual.tex; \
 	xelatex acs-solution-manual; \
 	xelatex acs-solution-manual
 
