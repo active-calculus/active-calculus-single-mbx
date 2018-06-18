@@ -179,7 +179,8 @@ pdf: acs-merge
 	install -b xsl/acs-latex.xsl $(MBUSR)
 	cp -a $(IMAGESSRC) $(PDFOUT)
 	cd $(PDFOUT); \
-	xsltproc -xinclude $(MBUSR)/acs-latex.xsl $(WWOUT)/acs-merge.ptx \
+	xsltproc -xinclude $(MBUSR)/acs-latex.xsl $(WWOUT)/acs-merge.ptx; \
+	sed -i ".bak" -f ../../change-documentclass.sed index.tex; \
 	xelatex index; \
 	xelatex index
 
