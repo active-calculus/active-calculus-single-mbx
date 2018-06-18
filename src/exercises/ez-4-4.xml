@@ -88,15 +88,111 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+          <li>
+            <p>
+              <m>20</m> meters.
+            </p>
+          </li>
+          <li>
+            <p> 
+              <m>
+                \displaystyle v_{\operatorname{AVG} [12,24]} = 12.5
+              </m>
+              meters per minute.
+            </p>
+          </li>
+          <li>
+            <p>
+              The object's maximum acceleration is <m>3</m> meters per minute per minute at the instant <m>t = 2</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>c = \frac{60}{24} = 2.5</m>.
+            </p>
+          </li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+            <p>
+              Since velocity is positive, distance traveled is the definite integral of velocity.  Thus, on <m>[0,4]</m>, the total distance, <m>D</m>, is 
+              <me>
+                D = \int_0^4 v(t) \, dt = \int_0^4 \left( -\frac{1}{4}t^3 + \frac{3}{2}t^2 + 1 \right) \, dt.
+              </me>
+              By the Fundamental Theorem of Calculus, 
+              <md>
+                <mrow>\int_0^4 \left( -\frac{1}{4}t^3 + \frac{3}{2}t^2 + 1 \right) \, dt &amp;= \left. \left( -\frac{1}{16}t^4 + \frac{1}{2}t^3 + t \right) \right|_{t=0}^{t=4}</mrow>
+                <mrow>    &amp;= -\frac{1}{16}4^4 + \frac{1}{2}4^3 + 4</mrow>
+                <mrow>    &amp;= 20,</mrow>
+              </md>
+              so the distance traveled by the object on <m>[0,4]</m> is <m>20</m> meters.
+            </p>
+          </li>
+          <li>
+            <p>
+              To find the average velocity of the object on <m>[12,24]</m>, we first evaluate <m>\int_{12}^{24} v(t) \, dt</m>.  To do so, we use the fact that <m>v</m> is piecewise linear and employ standard geometric formulas to determine the value of the integral.  The area of the trapezoid formed by <m>v(t)</m> and the vertical line segments at <m>t = 12</m> and <m>t = 16</m> is 
+              <me>
+                A_1 = \frac{1}{2}(f(12) + f(16))(4) = 2(9 + 15) = 48.
+              </me> 
+              The area of the rectangle formed by <m>v(t)</m> and the vertical line segments at <m>t = 16</m> and <m>t = 20</m> is
+              <me>
+                A_2 = 4 \cdot 15 = 60.
+              </me>
+              Finally, the area of the trapezoid formed by <m>v(t)</m> and the vertical line segments at <m>t = 20</m> and <m>t = 24</m> is 
+              <me>
+                A_3 = \frac{1}{2}(f(20) + f(24))(4) = 2(15 + 6) = 42.
+              </me>
+              Thus, 
+              <me>
+                \int_{12}^{24} v(t) \, dt = A_1 + A_2 + A_3 = 48 + 60 + 42 = 150,
+              </me> 
+              from which it follows that 
+              <me>
+                \displaystyle v_{\operatorname{AVG} [12,24]}  = \frac{1}{24-12} \int_{12}^{24} v(t) \, dt = \frac{150}{12} = 12.5
+              </me>
+              meters per minute.
+            </p>
+          </li>
+          <li>
+            <p>
+              To find where <m>a(t)</m> is greatest, we recall that <m>a(t) = v'(t)</m>, so we are seeking the location where the slope of the tangent line to <m>v(t)</m> is maximized on the interval <m>[0,24]</m>.  From the graph, there are only two possible intervals where this can occur:  <m>0 \lt t \lt 4</m> and <m>12 \lt t \lt 16</m>, as these are both where <m>v</m> is increasing and thus <m>a(t) = v'(t)</m> is positive.
+            </p>
+
+            <p>
+              On <m>12 \lt t \lt 16</m>, <m>a(t) = v'(t) = \frac{3}{2}</m> since this is the slope of the line that forms <m>v(t)</m> on this interval.  On <m>0 \lt t \lt 4</m>, <m>v(t) = -\frac{1}{4}t^3 + \frac{3}{2}t^2 + 1</m>, so <m>a(t) = v'(t) = -\frac{3}{4}t^2 + 3t</m>.  We see that <m>a(t)</m> is a quadratic function that opens down, so its maximum occurs at its vertex, which is located where <m>a'(t) = 0</m>.  We know that <m>a'(t) = -\frac{3}{2}t + 3</m>, and <m>0 = -\frac{3}{2}t + 3</m> implies <m>t = 2</m>.  Moreover, <m>a(2) = v'(2) = -\frac{3}{4} \cdot 2^2 + 3(2) = 3</m>.  Clearly <m>a(2) = 3 \gt \frac{3}{2}</m>, so the object's maximum acceleration is <m>3</m> meters per minute per minute at the instant <m>t = 2</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <m>V(t) = v(t) + c</m> be the new velocity function that is the original velocity <m>v</m> increased by <m>c</m> at every time.  We want to know the value of <m>c</m> for which total distance traveled is <m>210</m> meters.  For this to be true, we must have that
+              <me>
+                210 = \int_{0}^{24} V(t) \, dt = \int_{0}^{24} \left( v(t) + c \right) \, dt.
+              </me>
+              Using the additive property of the definite integral and our earlier work in (b), we can say that
+              <me>
+                210 = \int_{0}^{24} v(t) \, dt + \int_{0}^{24} c \, dt = 150 + \int_{0}^{24} c \, dt,
+              </me>
+              so 
+              <me>
+                \int_{0}^{24} c \, dt = 60.
+              </me>
+              Since the function <m>f(t) = c</m> is constant, the integral <m>\int_{0}^{24} c \, dt</m> represents the area of a rectangle <m>24</m> units wide and <m>c</m> units tall, so  <m>\int_{0}^{24} c \, dt = 24c</m>.  Hence, 
+              <me>
+                24c = 60
+              </me>
+              so <m>c = \frac{60}{24} = 2.5</m>.
+            </p>
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -135,15 +231,88 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+          <li>
+            <p>
+              <m>-\frac{5}{6}</m>.
+            </p>          
+          </li>
+          <li>
+            <p>
+              <m>
+                \displaystyle f_{\operatorname{AVG} [0,5]} = \frac{1}{2}.
+              </m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>g(x) = f(x)</m> for <m>0 \le x \lt 5</m> and <m>g(x) = -\frac{5}{4}(x - 5)</m> on <m>5 \le x \le 7</m>.
+            </p>
+            <sidebyside width="50%">
+              <image source="images/4_4_Ez2Solnc" />
+            </sidebyside>             
+          </li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+            <p>
+              The net signed area enclosed by <m>f</m> and the <m>x</m>-axis on the interval <m>[2,5]</m> is <m>\int_2^5 f(x) \, dx</m>.  The figure below shows a graph of <m>f</m> on the interval <m>[0,5]</m>. To calculate the definite integral of <m>f</m> on the interval <m>[2,5]</m>, we consider the integrals on the subintervals <m>[2,3]</m> and <m>[3,5]</m>.  Doing so and using the Fundamental Theorem of Calculus, 
+              <md>
+                <mrow>\int_2^5 f(x) \, dx &amp;= \int_2^3 f(x) \, dx + \int_3^5 f(x) \, dx</mrow>
+                <mrow>                    &amp;= \int_2^3 -x+3 \, dx + \int_3^5 x^2-8x+15 \, dx</mrow>
+                <mrow>                    &amp;= \left. \left( -\frac{1}{2}x^2 + 3x \right)\right|_2^3 + \left. \left( \frac{1}{3}x^3 - 4x^2 + 15x  \right)\right|_3^5</mrow>
+                <mrow>                    &amp;= \left(\frac{9}{2}-4\right) + \left( \frac{50}{3}-18 \right)</mrow>
+                <mrow>                    &amp;= \frac{127}{6} - 22 = -\frac{5}{6}.</mrow>
+              </md>
+            </p>
+            <sidebyside width="50%">
+              <image source="images/4_4_Ez2Soln" />
+            </sidebyside>             
+          </li>
+          <li>
+            <p>
+              To find the average value of <m>f</m> on <m>[0,5]</m> we need to first calculate
+              <me>
+                \int_0^5 f(x) \, dx.
+              </me>
+              Using our work in (a) and considering the subintervals <m>[0,2]</m> and <m>[2,5]</m>,
+              <md>
+                <mrow>\int_0^5 f(x) \, dx &amp;= \int_0^2 f(x) \, dx + \int_2^5 f(x) \, dx</mrow>
+                <mrow>                    &amp;= \int_0^2 -x^2 + 2x + 1 \, dx - \frac{5}{6}</mrow>
+                <mrow>                    &amp;= \left. \left( -\frac{1}{3}x^3 + x^2 + x \right)\right|_0^2 - \frac{5}{6}  </mrow>
+                <mrow>                    &amp;= \frac{10}{3} - \frac{5}{6}</mrow>
+                <mrow>                    &amp;= \frac{5}{2}.</mrow>
+              </md>
+              Therefore, the average value of <m>f</m> on <m>[0,5]</m> is 
+              <me>
+                \displaystyle f_{\operatorname{AVG} [0,5]} = \frac{1}{5-0} \int_0^5 f(x) \, dx = \left(\frac{1}{5}\right) \left(\frac{5}{2}\right) = \frac{1}{2}.
+              </me>
+            </p>
+          </li>
+          <li>
+            <p>
+              Since <m>\int_0^5 f(x) \, dx = \frac{5}{2}</m>, we need a function <m>g</m> that matches <m>f</m> but that is also defined on <m>[5,7]</m> so that <m>\int_5^7 g(x) \, dx = -\frac{5}{2}</m>. To preserve continuity, we will choose a formula for <m>g</m> that also satisfies <m>g(5) = 0</m>.  It's natural to pick a linear function whose graph encloses <m>5/2</m> units of area, so one that has a slope of <m>5/4</m>.  To check, we compute 
+              <md>
+                <mrow>\int_5^7 -\frac{5}{4}(x - 5) \, dx &amp;= -\left(\frac{5}{4}\right) \left. \left(\frac{x^2}{2} - 5x\right) \right|_5^7</mrow>
+                <mrow>                                   &amp;= -\left(\frac{5}{4}\right) \left( \frac{49-25}{2} - 5(7-5) \right)</mrow>
+                <mrow>                                   &amp;= -\left(\frac{5}{4}\right) \left( 12 - 10 \right) </mrow>
+                <mrow>                                   &amp;= -\left(\frac{5}{4}\right) \left( 2 \right) = -\frac{5}{2}.</mrow>
+              </md>
+              So <m>g</m> defined so that <m>g(x) = f(x)</m> for <m>0 \le x \lt 5</m> and <m>g(x) = -\frac{5}{4}(x - 5)</m> on <m>5 \le x \le 7</m> has the desired property. A graph of <m>g</m> is shown in the figure below.
+            </p>
+            <sidebyside width="50%">
+              <image source="images/4_4_Ez2Solnc" />
+            </sidebyside>             
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -228,15 +397,163 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+          <li>
+            <sidebyside>
+              <tabular top="minor" bottom="minor">
+                <row>
+                  <cell><m>h</m> (feet)</cell>
+                  <cell><m>0</m></cell>
+                  <cell><m>1000</m></cell>
+                  <cell><m>2000</m></cell>
+                  <cell><m>3000</m></cell>
+                  <cell><m>4000</m></cell>
+                  <cell><m>5000</m></cell>
+                  <cell><m>6000</m></cell>
+                  <cell><m>7000</m></cell>
+                  <cell><m>8000</m></cell>
+                  <cell><m>9000</m></cell>
+                  <cell><m>10{,}000</m></cell>
+                </row>
+                <row>
+                  <cell><m>c</m> (ft/min)</cell>
+                  <cell><m>925</m></cell>
+                  <cell><m>875</m></cell>
+                  <cell><m>830</m></cell>
+                  <cell><m>780</m></cell>
+                  <cell><m>730</m></cell>
+                  <cell><m>685</m></cell>
+                  <cell><m>635</m></cell>
+                  <cell><m>585</m></cell>
+                  <cell><m>535</m></cell>
+                  <cell><m>490</m></cell>
+                  <cell><m>440</m></cell>
+                </row>
+                <row>
+                  <cell><m>m</m> (min/ft)</cell>
+                  <cell><m>\frac{1}{925}</m></cell>
+                  <cell><m>\frac{1}{875}</m></cell>
+                  <cell><m>\frac{1}{830}</m></cell>
+                  <cell><m>\frac{1}{780}</m></cell>
+                  <cell><m>\frac{1}{730}</m></cell>
+                  <cell><m>\frac{1}{685}</m></cell>
+                  <cell><m>\frac{1}{635}</m></cell>
+                  <cell><m>\frac{1}{585}</m></cell>
+                  <cell><m>\frac{1}{535}</m></cell>
+                  <cell><m>\frac{1}{490}</m></cell>
+                  <cell><m>\frac{1}{440}</m></cell>
+                </row>
+              </tabular>
+            </sidebyside>
+          </li>
+          <li>
+            <p>
+              The antiderivative function tells the total number of minutes it takes for the plane to climb to an altitude of <m>h</m> feet.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>
+                M = \int_{0}^{10000} m(h) \, dh
+              </m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              It takes the plane aabout <m>M_5 \approx 15.27</m> minutes.
+            </p>
+          </li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+            <p>
+              Since the given climb rate, <m>c(h)</m>, is in feet per minute, and the new function, <m>m(h)</m>, is measured in minutes per foot, it follows that <m>m(h)</m> is the reciprocal of <m>c(h)</m>, so <m>m(h) = \frac{1}{c(h)}</m>.  Hence we get the following updated table.
+            </p>
+
+            <sidebyside>
+              <tabular top="minor" bottom="minor">
+                <row>
+                  <cell><m>h</m> (feet)</cell>
+                  <cell><m>0</m></cell>
+                  <cell><m>1000</m></cell>
+                  <cell><m>2000</m></cell>
+                  <cell><m>3000</m></cell>
+                  <cell><m>4000</m></cell>
+                  <cell><m>5000</m></cell>
+                  <cell><m>6000</m></cell>
+                  <cell><m>7000</m></cell>
+                  <cell><m>8000</m></cell>
+                  <cell><m>9000</m></cell>
+                  <cell><m>10{,}000</m></cell>
+                </row>
+                <row>
+                  <cell><m>c</m> (ft/min)</cell>
+                  <cell><m>925</m></cell>
+                  <cell><m>875</m></cell>
+                  <cell><m>830</m></cell>
+                  <cell><m>780</m></cell>
+                  <cell><m>730</m></cell>
+                  <cell><m>685</m></cell>
+                  <cell><m>635</m></cell>
+                  <cell><m>585</m></cell>
+                  <cell><m>535</m></cell>
+                  <cell><m>490</m></cell>
+                  <cell><m>440</m></cell>
+                </row>
+                <row>
+                  <cell><m>m</m> (min/ft)</cell>
+                  <cell><m>\frac{1}{925}</m></cell>
+                  <cell><m>\frac{1}{875}</m></cell>
+                  <cell><m>\frac{1}{830}</m></cell>
+                  <cell><m>\frac{1}{780}</m></cell>
+                  <cell><m>\frac{1}{730}</m></cell>
+                  <cell><m>\frac{1}{685}</m></cell>
+                  <cell><m>\frac{1}{635}</m></cell>
+                  <cell><m>\frac{1}{585}</m></cell>
+                  <cell><m>\frac{1}{535}</m></cell>
+                  <cell><m>\frac{1}{490}</m></cell>
+                  <cell><m>\frac{1}{440}</m></cell>
+                </row>
+              </tabular>
+            </sidebyside>
+          </li>
+          <li>
+            <p>
+              Given an original function, we know that the units on its derivative are ``units of input per unit of output.''  Since the units on  <m>m(h)</m> are ``minutes per foot'', it follows that the antiderivative of <m>m(h)</m> should have output units of ``minutes'' since its input units are ``feet''.  The antiderivative function should thus tell us the total number of minutes that it takes for the plane to climb to an altitude of <m>h</m> feet.
+            </p>
+          </li>
+          <li>
+            <p>
+              The number of minutes required for the airplane to ascend to <m>10{,}000</m> feet of altitude is given by the definite integral
+              <me>
+                M = \int_{0}^{10000} m(h) \, dh
+              </me>
+              since the units on <m>m(h)</m> are ``minutes per foot'' and the units on <m>\triangle h</m> in the corresponding Riemann sum are ``feet'', so when we take the product of quantities with these units, the resulting numerical quantity is measured in minutes.
+            </p>
+          </li>
+          <li>
+            <p>
+              For the Riemann sum <m>M_5</m>, we have <m>5</m> subintervals.  Given the original data, this means that we need to evaluate the function at every other known data point.  In particular,
+              <md>
+                <mrow>\int_{0}^{10000} m(h) \, dh &amp;\approx M_5</mrow>
+                <mrow>       &amp;= m(1000) \cdot 2000 + m(3000) \cdot 2000 + m(5000) \cdot 2000 </mrow>
+                <mrow>       &amp;+ m(7000) \cdot 2000 + m(9000) \cdot 2000</mrow>
+                <mrow>       &amp;= \left( \frac{1}{875} + \frac{1}{780} + \frac{1}{685} + \frac{1}{585} + \frac{1}{490} \right) \cdot 2000</mrow>
+                <mrow>       &amp;\approx 0.007634980475 \cdot 2000</mrow>
+                <mrow>       &amp;\approx 15.27.</mrow>
+              </md> 
+              Thus, it takes the plane a bit more than <m>15</m> minutes to climb to an altitude of 10,000 feet.
+            </p>
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -244,7 +561,7 @@
         we showed that for an object moving along a straight line with position function <m>s(t)</m>,
         the object's <q>average velocity on the interval <m>[a,b]</m></q> is given by
         <me>
-          \displaystyle AV_{[a,b]} =  \frac{s(b)-s(a)}{b-a}
+          AV_{[a,b]} =  \frac{s(b)-s(a)}{b-a}
         </me>.
       </p>
 
@@ -266,12 +583,18 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        Yes.
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        Yes, <m>AV_{[a,b]} = \displaystyle v_{\operatorname{AVG} [a,b]}.</m>  This is true because of the Fundamental Theorem of Calculus and the definitions of these two quantities.  In particular,
+        <md>
+          <mrow>\displaystyle v_{\operatorname{AVG} [a,b]} &amp;= \frac{1}{b-a} \int_a^b v(t) \, dt</mrow>
+          <mrow>        &amp;= \frac{s(b)-s(a)}{b-a}</mrow>
+          <mrow>        &amp;= AV_{a,b}.</mrow>
+        </md>
+        Average velocity can be thought of in two very different ways:  one as the change in position divided by change in time, the other as an average of the values of <m>v(t)</m> itself.
       </p>
     </solution>
   </exercise>

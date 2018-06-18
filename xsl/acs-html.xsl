@@ -51,5 +51,7 @@
 <!-- Specify the color scheme to use for HTML -->
 <xsl:param name="html.css.file" select="'mathbook-4.css'" />
 
-
+<!-- Specify options for WeBWorK exercises -->
+<xsl:param name="webwork.divisional.static" select="'no'" />
+<xsl:param name="html.knowl.exercise.sectional" select="'no'" />
 </xsl:stylesheet>

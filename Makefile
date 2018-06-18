@@ -23,9 +23,22 @@
 # Introduction
 ##############
 
-# This is not a "true" makefile, since it does not
-# operate on dependencies.  It is more of a shell
+# This is not a "true" makefile, since it 
+# operates on very few dependencies.  It is more of a shell
 # script, sharing common configurations
+
+# Useful targets:
+# make acs-extraction --- Run this any time a change is made to a WeBWorK
+#                         exercise. Do not run if no such changes have been
+#                         made.
+# make html --- Build the HTML version. Requires that make acs-extraction have
+#               been run in the past, but need not run it immediately before.
+# make  pdf --- Build the PDF version. Requires that make acs-extraction have
+#               been run in the past, but need not run it immediately before.
+# make soln-pdf --- Make a PDF of the full solutions manual.
+# make workbook-pdf --- Make a PDF of the activity workbook.
+# make check --- Validate against the schema and report errors. List of errors is
+#                displayed on screen and stored in output/schema_errors.txt
 
 ######################
 # System Prerequisites
@@ -117,7 +130,7 @@ acs-merge:
 #  Output lands in the subdirectory:  $(HTMLOUT)
 #    Remove the entire $(HTMLOUT)/knowl directory because of how PTX now
 #    seems to make a knowl for everything and rm throws an error.
-html:
+html: acs-merge
 	install -d $(HTMLOUT)
 	-rm -rf $(HTMLOUT)/knowl
 	install -d $(HTMLOUT)/knowl
@@ -130,7 +143,7 @@ html:
 	cp -a $(IMAGESOUT) $(HTMLOUT)
 	cp -a $(IMAGESSRC) $(HTMLOUT)
 	cd $(HTMLOUT); \
-	xsltproc -xinclude --stringparam webwork.server $(SERVER) $(MBUSR)/acs-html.xsl $(MAINFILE)
+	xsltproc -xinclude $(MBUSR)/acs-html.xsl $(WWOUT)/acs-merge.ptx
 
 # make all the image files in svg format
 images:
@@ -166,7 +179,8 @@ pdf: acs-merge
 	install -b xsl/acs-latex.xsl $(MBUSR)
 	cp -a $(IMAGESSRC) $(PDFOUT)
 	cd $(PDFOUT); \
-	xsltproc -xinclude $(MBUSR)/acs-latex.xsl $(WWOUT)/acs-merge.ptx \
+	xsltproc -xinclude $(MBUSR)/acs-latex.xsl $(WWOUT)/acs-merge.ptx; \
+	sed -i ".bak" -f ../../change-documentclass.sed index.tex; \
 	xelatex index; \
 	xelatex index
 
