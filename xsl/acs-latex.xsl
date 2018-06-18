@@ -145,4 +145,9 @@
 <xsl:text>\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,filecolor=black,urlcolor=black}&#xa;</xsl:text>
 </xsl:param>
 
+<xsl:template match="exercise[webwork-reps]">
+    <xsl:text>\marginnote{\tiny \includegraphics[width=0.25in]{images/webwork-logo.png}}</xsl:text>
+    <xsl:apply-imports />
+</xsl:template>
+
 </xsl:stylesheet>
