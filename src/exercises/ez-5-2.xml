@@ -23,7 +23,7 @@
     <webwork source="Library/Michigan/Chap6Sec4/Q19.pg" />
   </exercise>
   <!-- has an unsupported list within a table -->
-    <!--
+  <!--
   <exercise xml:id="ez-5-2-WW3">
     <webwork source="Library/FortLewis/Calc1/06-04-FTC2/HGM4-06-04-FTC2-21.pg" />
   </exercise>
@@ -62,15 +62,40 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <m>F</m> is increasing on <m>x \lt -1</m>, <m>0.5 \lt x \lt 4</m>, and <m>5 \lt x \lt 6.5</m>; decreasing on <m>-1 \lt x \lt 0.5</m> and <m>4 \lt x \lt 5</m>; concave up on approximately <m>-0.4 \lt x \lt 2</m> and <m>4.5 \lt x \lt 6</m>; concave down on approximately <m>2 \lt x \lt 4.5</m> and <m>x \gt 6</m>; <m>F(2) = 0</m>; <m>F(0.5) = -6.06</m>; <m>F(-1) = -1.77</m>; <m>F(4) = 6.69</m>; <m>F(5) = 6.33</m>; <m>F(6.5) = 8.12</m>.
       </p>
+
+      <sidebyside width="80%">
+        <image source="images/5_2_Ez1Soln" />
+      </sidebyside>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        By the Second Fundamental Theorem of Calculus, we know that <m>F'(x) = g(x)</m>.  Thus, from the given graph of <m>g</m>, it follows that <m>F</m> is increasing wherever <m>g</m> is positive (on the intervals <m>x \lt -1</m>, <m>0.5 \lt x \lt 4</m>, and <m>5 \lt x \lt 6.5</m>) and decreasing wherever <m>g</m> is negative (on <m>-1 \lt x \lt 0.5</m> and <m>4 \lt x \lt 5</m>).  Furthermore, <m>F</m> is concave up wherever <m>g</m> is increasing (on approximately <m>-0.4 \lt x \lt 2</m> and <m>4.5 \lt x \lt 6</m>) and concave down werever <m>g</m> is decreasing (on approximately <m>2 \lt x \lt 4.5</m> and <m>x \gt 6</m>).
       </p>
+
+      <p>
+        In addition, from the given data about definite integrals and properties of the definite integral, we can determine the following function values:
+        <md>
+          <mrow>F(2) &amp;= \int_{2}^{2} g(t) \, dt = 0</mrow>
+          <mrow>F(0.5) &amp;= \int_{2}^{0.5} g(t) \, dt = -6.06 </mrow>
+          <mrow>F(4) &amp;= \int_{2}^{4} g(t) \, dt = \int_{0.5}^4 g(t) \, dt - \int_{0.5}^2 g(t) \, dt = 12.75 - 6.06 = 6.69</mrow>
+          <mrow>F(5) &amp;= F(4) + \int_4^5 g(t) \,dt = 6.69 - 0.36 = 6.33</mrow>
+          <mrow>F(6.5) &amp;= F(5) + \int_4^{6.5} g(t) \,dt = 6.33 + 1.79 = 8.12</mrow>
+          <mrow>F(-1) &amp;= \int_2^{-1} g(t) \, dt = -\int_{-1}^2 g(t) \, dt = -\left( \int_{-1}^{0.5} g(t) \, dt + \int_{0.5}^2 g(t) \, dt \right) = -(-4.29 + 6.06) = -1.77</mrow>
+        </md>
+      </p>
+
+      <p>
+        In the figure below, we put all of this information to work and sketch an approximate graph of <m>y = F(x)</m>.
+      </p>
+
+      <sidebyside width="80%">
+        <image source="images/5_2_Ez1Soln" />
+      </sidebyside>         
     </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -132,7 +157,38 @@
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+            <p>
+              Since the tide removes sand at a rate of <m>R(t) = 2 + 5\sin \left( \frac{4\pi t}{25} \right)</m> cubic yards of sand per hour, on the time interval <m>[0,6]</m>, it follows that since the units on <m>R(t) \cdot \triangle t</m> are ``cubic yards'', the total sand removed on this time interval is
+              <me>
+                \int_0^6 \left[2 + 5\sin \left( \frac{4\pi t}{25} \right) \right] \, dt.
+              </me>
+             </p>
+          </li>
+          <li>
+            <p>
+              Because sand is being both removed and added, we can determine the total amount of sand on the beach at a given time <m>t</m> by integrating the difference between the the rates at which sand is being added and removed.  In particular, since the total change is the integral of the rate of change, we have that the total amount of sand on the beach at time <m>x</m> is given by
+              <me>
+                Y(x) = \int_0^x \left[ S(t) - R(t) \right] \, dt = \int_0^x \left[ \frac{15t}{1+3t} - \left( 2 + 5\sin \left( \frac{4\pi t}{25} \right) \right) \right] \, dt.
+              </me>
+            </p>
+          </li>
+          <li>
+            <p>
+              We know that <m>Y(x)</m> measures the total amount of sand on the beach at time <m>x</m>.  Thus, the instantaneous rate at which the total number of cubic yards of sand on the beach is changing at time <m>t=4</m> is given by <m>Y'(4)</m>.  We first compute <m>Y'(x)</m>.  By the Second Fundamental Theorem of Calculus, we have
+              <me>
+                Y'(x) = S(x) - R(x),
+              </me>
+              and thus <m>Y'(4) = S(4) - R(4) \approx -1.90875</m> cubic yards per hour.
+            </p>
+          </li>
+          <li>
+            <p>
+              To find where the total sand function <m>Y(x)</m> has its minimum value on <m>[0,6]</m>, we look at the behavior of <m>Y'(x) = S(x) - R(x)</m>.  Plotting <m>Y'(x)</m> on the interval, we see that <m>Y'(x) = 0</m> at <m>x \approx 5.118</m>, and for <m>0 \le x \lt 5.118</m>, <m>Y'(x) \lt 0</m>, and for <m>5.118 \lt x \le 6</m>, <m>Y'(x) \gt 0</m>.  Thus, <m>Y</m> changes from decreasing to increasing at <m>x \approx 5.118</m> and has an absolute minimum there on the interval <m>[0,6]</m>.  Furthermore, <m>Y(5.118) \approx 2492.368</m>.
+            </p>
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
@@ -186,8 +242,8 @@
       <p>
         Let a new function <m>m</m>,
         that also depends on <m>h</m>, (say <m>y = m(h)</m>) measure
-                  the number of minutes required for a plane at altitude <m>h</m> to climb the
-                  next foot of altitude.
+        the number of minutes required for a plane at altitude <m>h</m> to climb the
+        next foot of altitude.
         <ol label="a.">
           <li>
             <p>
@@ -235,7 +291,117 @@
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+            <p>
+              Since the given climb rate, <m>c(h)</m>, is in feet per minute, and the new function, <m>m(h)</m>, is measured in minutes per foot, it follows that <m>m(h)</m> is the reciprocal of <m>c(h)</m>, so <m>m(h) = \frac{1}{c(h)}</m>.  Hence we get the following updated table.
+            </p>
+
+            <sidebyside>
+              <tabular top="minor" bottom="minor">
+                <row>
+                  <cell><m>h</m> (feet)</cell>
+                  <cell><m>0</m></cell>
+                  <cell><m>1000</m></cell>
+                  <cell><m>2000</m></cell>
+                  <cell><m>3000</m></cell>
+                  <cell><m>4000</m></cell>
+                  <cell><m>5000</m></cell>
+                  <cell><m>6000</m></cell>
+                  <cell><m>7000</m></cell>
+                  <cell><m>8000</m></cell>
+                  <cell><m>9000</m></cell>
+                  <cell><m>10{,}000</m></cell>
+                </row>
+                <row>
+                  <cell><m>c</m> (ft/min)</cell>
+                  <cell><m>925</m></cell>
+                  <cell><m>875</m></cell>
+                  <cell><m>830</m></cell>
+                  <cell><m>780</m></cell>
+                  <cell><m>730</m></cell>
+                  <cell><m>685</m></cell>
+                  <cell><m>635</m></cell>
+                  <cell><m>585</m></cell>
+                  <cell><m>535</m></cell>
+                  <cell><m>490</m></cell>
+                  <cell><m>440</m></cell>
+                </row>
+                <row>
+                  <cell><m>m</m> (min/ft)</cell>
+                  <cell><m>\frac{1}{925}</m></cell>
+                  <cell><m>\frac{1}{875}</m></cell>
+                  <cell><m>\frac{1}{830}</m></cell>
+                  <cell><m>\frac{1}{780}</m></cell>
+                  <cell><m>\frac{1}{730}</m></cell>
+                  <cell><m>\frac{1}{685}</m></cell>
+                  <cell><m>\frac{1}{635}</m></cell>
+                  <cell><m>\frac{1}{585}</m></cell>
+                  <cell><m>\frac{1}{535}</m></cell>
+                  <cell><m>\frac{1}{490}</m></cell>
+                  <cell><m>\frac{1}{440}</m></cell>
+                </row>
+              </tabular>
+            </sidebyside>
+          </li>
+          <li>
+            <p>
+              Given an original function, we know that the units on its derivative are ``units of input per unit of output.''  Since the units on  <m>m(h)</m> are ``minutes per foot'', it follows that the antiderivative of <m>m(h)</m> should have output units of ``minutes'' since its input units are ``feet''.  The antiderivative function should thus tell us the total number of minutes that it takes for the plane to climb to an altitude of <m>h</m> feet.
+            </p>
+          </li>
+          <li>
+            <p>
+              The number of minutes required for the airplane to ascend to <m>10{,}000</m> feet of altitude is given by the definite integral
+              <me>
+                M = \int_{0}^{10000} m(h) \, dh
+              </me>
+              since the units on <m>m(h)</m> are ``minutes per foot'' and the units on <m>\triangle h</m> in the corresponding Riemann sum are ``feet'', so when we take the product of quantities with these units, the resulting numerical quantity is measured in minutes.
+            </p>
+          </li>
+          <li>
+            <p>
+              Reasoning similarly to our work in (c), the number of minutes required for the airplane to ascend to <m>h</m> feet of altitude is given by the definite integral
+              <me>
+                M(h) = \int_{0}^{t} m(t) \, dt.
+              </me>
+              Note that because <m>h</m> is the upper limit of integration, we need to use a different variable (<m>t</m>) of integration.
+            </p>
+          </li>
+          <li>
+            <p>
+              The best possible estimates are provided by using the midpoint rule (we will learn why in Chapter 6, but the can also be determined by using left and right rules and thinking about the error for an always decreasing function like <m>m(h)</m>).  
+            </p>
+
+            <p>
+              On the interval <m>[0,6000]</m>, if we evaluate the function at every other data point, we can estimate the desired integral using <m>3</m> subintervals and find that
+              <md>
+                <mrow>\int_{0}^{6000} m(h) \, dh &amp;\approx M_3</mrow>
+                <mrow>       &amp;= m(1000) \cdot 2000 + m(3000) \cdot 2000 + m(5000) \cdot 2000 </mrow>
+                <mrow>       &amp;= \left( \frac{1}{875} + \frac{1}{780} + \frac{1}{685} \right) \cdot 2000</mrow>
+                <mrow>       &amp;\approx 0.00388476 \cdot 2000</mrow>
+                <mrow>       &amp;\approx 7.77.</mrow>
+              </md> 
+              Thus, it takes the plane a bit less than <m>8</m> minutes to climb to an altitude of 6,000 feet.
+            </p>
+
+            <p>
+              Using <m>5</m> subintervals,
+              <md>
+                <mrow>\int_{0}^{10000} m(h) \, dh &amp;\approx M_5</mrow>
+                <mrow>       &amp;= m(1000) \cdot 2000 + m(3000) \cdot 2000 + m(5000) \cdot 2000 </mrow>
+                <mrow>       &amp;+ m(7000) \cdot 2000 + m(9000) \cdot 2000</mrow>
+                <mrow>       &amp;= \left( \frac{1}{875} + \frac{1}{780} + \frac{1}{685} + \frac{1}{585} + \frac{1}{490} \right) \cdot 2000</mrow>
+                <mrow>       &amp;\approx 0.007634980475 \cdot 2000</mrow>
+                <mrow>       &amp;\approx 15.27.</mrow>
+              </md> 
+              Thus, it takes the plane a bit more than <m>15</m> minutes to climb to an altitude of 10,000 feet.
+            </p>
+
+            <p>
+              Note that in both of these computations, we are using <m>M_n</m> to denote the midpoint rule with <m>n</m> subintervals, and this ``<m>M</m>'' is different from the one we used earlier in <m>M(h)</m>.
+            </p>
+          </li>
+        </ol>  
       </p>
     </solution>
   </exercise>
