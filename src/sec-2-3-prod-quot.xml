@@ -106,17 +106,18 @@
     <p>
       To help us understand the relationship among changes in <m>N</m>,
       <m>S</m>, and <m>V</m>, let's consider some specific data.
-      Suppose that on day 100, <ul>
-      <li>the investor owns 520 shares of stock and the stock's current value is <dollar />27.50 per share.
-      This tells us that <m>N(100) = 520</m> and <m>S(100) = 27.50</m>.</li>
-      <li>On day 100,
-      the investor purchases an additional 12 shares
-      (so the number of shares held is rising at a rate of 12 shares per day).</li>
-      <li>On that same day the price of the stock is rising at a rate of 0.75 dollars per share per day.</li>
-    </ul></p>
+      <ul>
+        <li>Suppose that on day 100, the investor owns 520 shares of stock and the stock's current value is <dollar />27.50 per share.
+        This tells us that <m>N(100) = 520</m> and <m>S(100) = 27.50</m>.</li>
+        <li>On day 100,
+        the investor purchases an additional 12 shares
+        (so the number of shares held is rising at a rate of 12 shares per day).</li>
+        <li>On that same day the price of the stock is rising at a rate of 0.75 dollars per share per day.</li>
+      </ul>
+    </p>
 
-      <p>In calculus notation,
-      we say that <m>N'(100) = 12</m>
+      <p>In calculus notation, the latter two facts tell us 
+      that <m>N'(100) = 12</m>
       (shares per day)
       and <m>S'(100) = 0.75</m> (dollars per share per day).
       At what rate is the value of the investor's total holdings changing on day 100?
@@ -322,7 +323,7 @@
     <p>
       In this particular example,
       it is possible to simplify <m>Q'(t)</m> by removing a factor of <m>2^t</m> from both the numerator and denominator,
-      hence finding that
+      so that
       <me>
         Q'(t) = \frac{\cos(t) - \sin(t) \ln(2)}{2^t}
       </me>.
@@ -343,63 +344,72 @@
       In order to apply the derivative shortcut rules correctly we must recognize the fundamental structure of a function.
       </p>
 
-      <example><statement><p>Consider the function given by
-      <me>
-        f(x) = x\sin(x) + \frac{x^2}{\cos(x) + 2}
-      </me>.
-          How do we decide which rules to apply?
-      Our first task is to recognize the structure of the function.
-      This function <m>f</m> is a sum of two slightly less complicated functions,
-      so we can apply the sum rule<fn>When taking a derivative that involves the use of multiple derivative rules,
-      it is often helpful to use the notation
-      <m>\frac{d}{dx} \left[ ~~\right]</m> to wait to apply subsequent rules.
-      This is demonstrated in each of the two examples presented here.</fn> to get
-      <md>
-        <mrow>f'(x) =\mathstrut \amp  \frac{d}{dx} \left[ x\sin(x) + \frac{x^2}{\cos(x) + 2} \right]</mrow>
-        <mrow>=\mathstrut \amp  \frac{d}{dx} \left[ x\sin(x) \right] + \frac{d}{dx}\left[ \frac{x^2}{\cos(x) + 2} \right]</mrow>
-      </md>
-    </p>
+      <example>
+        <statement>
+          <p>
+            Determine the derivative of the function
+            <me>
+              f(x) = x\sin(x) + \frac{x^2}{\cos(x) + 2}
+            </me>.
+                How do we decide which rules to apply?
+            Our first task is to recognize the structure of the function.
+            This function <m>f</m> is a sum of two slightly less complicated functions,
+            so we can apply the sum rule<fn>When taking a derivative that involves the use of multiple derivative rules,
+            it is often helpful to use the notation
+            <m>\frac{d}{dx} \left[ ~~\right]</m> to wait to apply subsequent rules.
+            This is demonstrated in each of the two examples presented here.</fn> to get
+            <md>
+              <mrow>f'(x) =\mathstrut \amp  \frac{d}{dx} \left[ x\sin(x) + \frac{x^2}{\cos(x) + 2} \right]</mrow>
+              <mrow>=\mathstrut \amp  \frac{d}{dx} \left[ x\sin(x) \right] + \frac{d}{dx}\left[ \frac{x^2}{\cos(x) + 2} \right]</mrow>
+            </md>
+          </p>
 
-    <p>
-      Now, the left-hand term above is a product,
-      so the product rule is needed there,
-      while the right-hand term is a quotient,
-      so the quotient rule is required.
-      Applying these rules respectively, we find that
-      <md>
-        <mrow>f'(x) =\mathstrut \amp  \left( x \cos(x) + \sin(x) \right) + \frac{(\cos(x) + 2) 2x - x^2(-\sin(x))}{(\cos(x) + 2)^2}</mrow>
-        <mrow>=\mathstrut \amp  x \cos(x) + \sin(x) + \frac{2x\cos(x) + 4x^2 + x^2\sin(x)}{(\cos(x) + 2)^2}</mrow>
-      </md>.
-    </p></statement></example>
+          <p>
+            Now, the left-hand term above is a product,
+            so the product rule is needed there,
+            while the right-hand term is a quotient,
+            so the quotient rule is required.
+            Applying these rules respectively, we find that
+            <md>
+              <mrow>f'(x) =\mathstrut \amp  \left( x \cos(x) + \sin(x) \right) + \frac{(\cos(x) + 2) 2x - x^2(-\sin(x))}{(\cos(x) + 2)^2}</mrow>
+              <mrow>=\mathstrut \amp  x \cos(x) + \sin(x) + \frac{2x\cos(x) + 4x^2 + x^2\sin(x)}{(\cos(x) + 2)^2}</mrow>
+            </md>.
+          </p>
+        </statement>
+      </example>
 
-    <example><statement><p>
-      Use the derivative rules to differnetiate
-      <me>
-        s(y) = \frac{y \cdot 7^y}{y^2 + 1}
-      </me>.
-       
-      The function <m>s</m> is a quotient of two simpler functions,
-      so the quotient rule will be needed.
-      To begin, we set up the quotient rule and use the notation
-      <m>\frac{d}{dy}</m> to indicate the derivatives of the numerator and denominator.
-      Thus,
-      <me>
-        s'(y) = \frac{(y^2 + 1) \cdot \frac{d}{dy}\left[ y \cdot 7^y \right] - y \cdot 7^y \cdot \frac{d}{dy}\left[y^2 + 1 \right]}{(y^2 + 1)^2}
-      </me>.
-    
-      Now, there remain two derivatives to calculate.
-      The first one,
-      <m>\frac{d}{dy}\left[ y \cdot 7^y \right]</m> calls for use of the product rule,
-      while the second,
-      <m>\frac{d}{dy}\left[y^2 + 1 \right]</m> needs only the sum rule.
-      Applying these rules, we now have
-      <me>
-        s'(y) = \frac{(y^2 + 1) [y \cdot 7^y \ln(7) + 7^y \cdot 1] - y \cdot 7^y [2y]}{(y^2 + 1)^2}
-      </me>.
-    
-      While some simplification is possible,
-      we are content to leave <m>s'(y)</m> in its current form.
-        </p></statement></example>
+    <example>
+      <statement>
+        <p>
+          Differentiate
+          <me>
+            s(y) = \frac{y \cdot 7^y}{y^2 + 1}
+          </me>.
+           
+          The function <m>s</m> is a quotient of two simpler functions,
+          so the quotient rule will be needed.
+          To begin, we set up the quotient rule and use the notation
+          <m>\frac{d}{dy}</m> to indicate the derivatives of the numerator and denominator.
+          Thus,
+          <me>
+            s'(y) = \frac{(y^2 + 1) \cdot \frac{d}{dy}\left[ y \cdot 7^y \right] - y \cdot 7^y \cdot \frac{d}{dy}\left[y^2 + 1 \right]}{(y^2 + 1)^2}
+          </me>.
+        
+          Now, there remain two derivatives to calculate.
+          The first one,
+          <m>\frac{d}{dy}\left[ y \cdot 7^y \right]</m> calls for use of the product rule,
+          while the second,
+          <m>\frac{d}{dy}\left[y^2 + 1 \right]</m> needs only the sum rule.
+          Applying these rules, we now have
+          <me>
+            s'(y) = \frac{(y^2 + 1) [y \cdot 7^y \ln(7) + 7^y \cdot 1] - y \cdot 7^y [2y]}{(y^2 + 1)^2}
+          </me>.
+        
+          While some simplification is possible,
+          we are content to leave <m>s'(y)</m> in its current form.
+        </p>
+      </statement>
+    </example>
 
     <p>
       Success in applying derivative rules begins with recognizing the structure of the function,
