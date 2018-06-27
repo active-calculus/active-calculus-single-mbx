@@ -41,23 +41,30 @@
       we have also been developing our ability to use rules to differentiate certain algebraic combinations of them.</p>
       
 
-      <p><example><statement><p>Describe how to find the derivative of each of the following combinations of <m>f(x) = \sin(x)</m> and <m>g(x) = x^2</m>:
-      <me>
-        s(x) = 3x^2 - 5\sin(x)
-      </me>,
-      <me>
-        p(x) = x^2 \sin(x), \text{and}
-      </me>
-      <me>
-        q(x) = \frac{\sin(x)}{x^2}
-      </me>.
-    </p></statement>
+      <example>
+        <statement>
+          <p>
+            State the rule(s) to find the derivative of each of the following combinations of <m>f(x) = \sin(x)</m> and <m>g(x) = x^2</m>:
+            <me>
+              s(x) = 3x^2 - 5\sin(x)
+            </me>,
+            <me>
+              p(x) = x^2 \sin(x), \text{and}
+            </me>
+            <me>
+              q(x) = \frac{\sin(x)}{x^2}
+            </me>.
+          </p>
+        </statement>
 
-    <solution><statement><p>
-      Finding <m>s'</m> uses the sum and constant multiple rules, because <m>s(x) = 3g(x) - 5f(x)</m>.
-      Determining <m>p'</m> requires the product rule, because <m>p(x) = g(x) \cdot f(x)</m>.
-      To calculate <m>q'</m> we use the quotient rule, because <m>q(x) =\frac{f(x)}{g(x)}</m>.
-    </p></statement></solution></example>
+        <solution>
+          <p>
+            Finding <m>s'</m> uses the sum and constant multiple rules, because <m>s(x) = 3g(x) - 5f(x)</m>.
+            Determining <m>p'</m> requires the product rule, because <m>p(x) = g(x) \cdot f(x)</m>.
+            To calculate <m>q'</m> we use the quotient rule, because <m>q(x) =\frac{f(x)}{g(x)}</m>.
+          </p>
+        </solution>
+      </example>
 
     <p>
       There is one more natural way to combine basic functions algebraically,
@@ -158,14 +165,14 @@
 
     <p>
       It may seem that
-      <xref ref="ex-2-5-linear">Example</xref> is too elementary to illustrate differentiating a composition.
-      Linear functions are the simplest of all functions,
+      <xref ref="ex-2-5-linear">Example</xref> is too elementary to illustrate how to differentiate a composite fuction.
+      Linear functions are the simplest of all functions, and
       composing linear functions yields another linear function.
-      does not illustrate the complexity of 
-      But remember that any differentiable function is
+      While this example does not illustrate the full complexity of a composition of nonlinear functions,
+      at the same time we remember that any differentiable function is
       <em>locally</em> linear,
-      so any function with a derivative behaves like a line when viewed up close.
-      So the fact that the derivatives of <m>f</m> and <m>g</m> are multiplied to find the derivative of their composition turns out to be a key insight.
+      and thus any function with a derivative behaves like a line when viewed up close.
+      The fact that the derivatives of the linear functions <m>f</m> and <m>g</m> are multiplied to find the derivative of their composition turns out to be a key insight.
     </p>
 
     <p>
@@ -265,54 +272,66 @@
     <p>
       It is helpful to identify clearly the inner function <m>g</m> and outer function <m>f</m>,
       compute their derivatives individually,
-      and then put all of the pieces together by the chain rule.</p>
+      and then put all of the pieces together by the chain rule.
+    </p>
       
-      <example><statement><p>Consider the function
-      <me>
-        r(x) = (\tan(x))^2
-      </me>.
-      The function <m>r</m> is composite,
-      with inner function <m>g(x) = \tan(x)</m> and outer function <m>f(x) = x^2</m>.
-      Organizing the key information involving <m>f</m>,
-      <m>g</m>, and their derivatives, we have
-    </p>
+    <example>
+      <statement>
+        <p>
+          Determine the derivative of the function
+          <me>
+            r(x) = (\tan(x))^2
+          </me>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          The function <m>r</m> is composite,
+          with inner function <m>g(x) = \tan(x)</m> and outer function <m>f(x) = x^2</m>.
+          Organizing the key information involving <m>f</m>,
+          <m>g</m>, and their derivatives, we have
+        </p>
+            <sidebyside>
+              <tabular>
+                <row>
+                  <cell><m>f(x) = x^2</m></cell>
+                  <cell></cell>
+                  <cell><m>g(x) = \tan(x)</m></cell>
+                </row>
+                <row>
+                  <cell><m>f'(x) = 2x</m></cell>
+                  <cell></cell>
+                  <cell><m>g'(x) = \sec^2(x)</m></cell>
+                </row>
+                <row>
+                  <cell><m>f'(g(x)) = 2\tan(x)</m></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+              </tabular>
+            </sidebyside>
 
-    <sidebyside>
-      <tabular>
-        <row>
-          <cell><m>f(x) = x^2</m></cell>
-          <cell></cell>
-          <cell><m>g(x) = \tan(x)</m></cell>
-        </row>
-        <row>
-          <cell><m>f'(x) = 2x</m></cell>
-          <cell></cell>
-          <cell><m>g'(x) = \sec^2(x)</m></cell>
-        </row>
-        <row>
-          <cell><m>f'(g(x)) = 2\tan(x)</m></cell>
-          <cell></cell>
-          <cell></cell>
-        </row>
-      </tabular>
-    </sidebyside>
-    <p>
-      Applying the chain rule, we find that 
-      <me>
-        r'(x) = f'(g(x))g'(x) = 2\tan(x) \sec^2(x)
-      </me>.
-    </p>
+            <p>
+              Applying the chain rule, we find that 
+              <me>
+                r'(x) = f'(g(x))g'(x) = 2\tan(x) \sec^2(x)
+              </me>.
+            </p>
+      
+      </solution>    
+    </example>
 
-    <p>
-      As a side note,
-      we remark that  <m>r(x)</m> is usually written as <m>\tan^2(x)</m>.
-      This is common notation for powers of trigonometric functions:
-      <m>\cos^4(x)</m>, <m>\sin^5(x)</m>,
-      and <m>\sec^2(x)</m> are all composite functions,
-      with the outer function a power function and the inner function a trigonometric one.
-    </p>
+            <p>
+              As a side note,
+              we remark that  <m>r(x)</m> is usually written as <m>\tan^2(x)</m>.
+              This is common notation for powers of trigonometric functions:
+              <m>\cos^4(x)</m>, <m>\sin^5(x)</m>,
+              and <m>\sec^2(x)</m> are all composite functions,
+              with the outer function a power function and the inner function a trigonometric one.
+            </p>  
 
-        <xi:include href="./activities/act-2-5-1.xml" />
+    <xi:include href="./activities/act-2-5-1.xml" />
+
   </subsection>
 
   <subsection>
@@ -441,44 +460,59 @@
       As we gain more experience with differention,
       we will become more comfortable in simply writing down the derivative without taking multiple steps.
      This is particularly simple when the inner function is linear,
-      sincecause the derivative of a linear function is a constant.
-      
+      since the derivative of a linear function is a constant.
+    </p>  
 
-      <example><statement><p>For instance,
-      <me>
-        \frac{d}{dx} \left[ (5x+7)^{10} \right] = 10(5x+7)^9 \cdot 5
-      </me>,
-      <me>
-        \frac{d}{dx} \left[ \tan(17x) \right] = 17\sec^2(17x), \ \text{and}
-      </me>
-      <me>
-        \frac{d}{dx} \left[ e^{-3x} \right] = -3e^{-3x}</me></p></statement></example>
-
-        <p>
-      Here is an excellent exercise for getting comfortable with the derivative rules.
-      Write down a list of all the basic functions whose derivatives we know, and
-      list the derivatives.
-      Then write a composite function with the inner function being an unknown function <m>u(x)</m> and the outer function being a basic function. Finally, write the chain rule for the composite function.
-      </p>
-            
-      <example><statement><p>If we want to know
-      <me>
-        \frac{d}{dx}[\sin(u(x))]
-      </me>,
-      where <m>u</m> is a differentiable function of <m>x</m>,
-      we will use the chain rule with the sine function as the outer function.
-      Applying the chain rule, we write
-      <me>
-        \frac{d}{dx}[\sin(u(x))] = \cos(u(x)) \cdot u'(x)</me>.
-    </p>
+      <example>
+        <statement>
+          <p>
+            Use the chain rule to differentiate each of the following composite functions whose inside function is linear:
+            <me>
+              \frac{d}{dx} \left[ (5x+7)^{10} \right] = 10(5x+7)^9 \cdot 5
+            </me>,
+            <me>
+              \frac{d}{dx} \left[ \tan(17x) \right] = 17\sec^2(17x), \ \text{and}
+            </me>
+            <me>
+              \frac{d}{dx} \left[ e^{-3x} \right] = -3e^{-3x}.
+            </me>
+          </p>
+        </statement>
+      </example>
 
     <p>
-      Similarly, since <m>\frac{d}{dx}[a^x] = a^x \ln(a)</m>,
-      it follows by the chain rule that
-      <me>
-        \frac{d}{dx}[a^{u(x)}] = a^{u(x)} \ln(a) \cdot u'(x)
-      </me>.
-    </p></statement></example>
+      More generally, following is an excellent exercise for getting comfortable with the derivative rules.
+      Write down a list of all the basic functions whose derivatives we know, and
+      list the derivatives.
+      Then write a composite function with the inner function being an unknown function <m>u(x)</m> and the outer function being a basic function. Finally, write the chain rule for the composite function.  The following example illustrates this for two different functions.
+    </p>
+            
+    <example>
+      <statement>
+        <p>
+          To determine
+          <me>
+            \frac{d}{dx}[\sin(u(x))]
+          </me>,
+          where <m>u</m> is a differentiable function of <m>x</m>,
+          we use the chain rule with the sine function as the outer function.
+          Applying the chain rule, we find that
+          <me>
+            \frac{d}{dx}[\sin(u(x))] = \cos(u(x)) \cdot u'(x)
+          </me>.
+          This rule is analogous to the basic derivative rule that <m>\frac{d}{dx}[\sin(x)] = \cos(x)</m>.
+        </p>
+
+        <p>
+          Similarly, since <m>\frac{d}{dx}[a^x] = a^x \ln(a)</m>,
+          it follows by the chain rule that
+          <me>
+            \frac{d}{dx}[a^{u(x)}] = a^{u(x)} \ln(a) \cdot u'(x)
+          </me>.
+          This rule is analogous to the basic derivative rule that <m>\frac{d}{dx}[a^{x}] = a^{x} \ln(a)</m>.
+        </p>
+      </statement>
+    </example>
 
     
   </subsection>
