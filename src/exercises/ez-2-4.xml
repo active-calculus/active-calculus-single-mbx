@@ -19,7 +19,7 @@
     <webwork source="Library/Michigan/Chap3Sec5/Q29.pg" />
   </exercise>
   <!-- Not compatible with PTX -->
-    <!--
+  <!--
   <exercise xml:id="ez-2-4-WW2">
     <webwork source="Library/Rochester/setDerivatives4Trig/s2_4_20a.pg" />
   </exercise>
@@ -69,15 +69,60 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+          <li>
+            <p>
+              <m>h'(2) = \frac{-2\sin(2) - 2\cos(2) \ln(1.2)}{1.2^2} \approx -1.1575</m> feet per second.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>h''(2) = \frac{\cos(2)(-2 + 2ln^2(1.2)) + 4\ln(1.2)\sin(2))}{1.2^2} \approx 1.0193</m> feet per second per second.
+            </p>
+          </li>
+          <li>
+            <p>
+              The object is falling and slowing down.  
+            </p>
+          </li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+            <p>
+              The object's instantaneous velocity at <m>t=2</m> is given by <m>h'(2)</m>.  Since <m>h(t) = 3 + \frac{2\cos(t)}{1.2^t}</m>, by the quotient rule we can determine that
+              <md>
+                <mrow>h'(t) &amp;= \frac{1.2^t \cdot (-2\sin(t)) - 2\cos(t) \cdot 1.2^t \ln(1.2)}{(1.2^t)^2} </mrow>
+                <mrow>      &amp;= \frac{1.2^t (-2\sin(t) - 2\cos(t) \ln(1.2))}{(1.2^t)^2}</mrow> 
+                <mrow>      &amp;= \frac{-2\sin(t) - 2\cos(t) \ln(1.2)}{1.2^t}.</mrow>
+              </md>
+              Thus, <m>h'(2) = \frac{-2\sin(2) - 2\cos(2) \ln(1.2)}{1.2^2} \approx -1.1575</m> feet per second is the instanateous (vertical) velocity of the object at <m>t=2</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              To find the object's acceleration at <m>t=2</m>, we compute <m>h''(2)</m>.  First, by the quotient rule, 
+              <md><!--\frac{-2\sin(t) - 2\cos(t) \ln(1.2)}{1.2^t}-->
+                <mrow>h''(t) &amp;= \frac{1.2^t(-2\cos(t) + 2\sin(t) \ln(1.2)) - (-2\sin(t) - 2\cos(t) \ln(1.2))1.2^t \ln(1.2)}{(1.2^t)^2}</mrow>
+                <mrow>       &amp;= \frac{-2\cos(t) + 2\sin(t) \ln(1.2)) + 2\sin(t)\ln(1.2) + 2\cos(t) \ln^2(1.2)}{1.2^t}</mrow>
+                <mrow>       &amp;= \frac{\cos(t)(-2 + 2\ln^2(1.2)) + 4\ln(1.2)\sin(t))}{1.2^t}.</mrow>
+              </md>
+              Therefore, the acceleration at <m>t = 2</m> is <m>h''(2) = \frac{\cos(2)(-2 + 2\ln^2(1.2)) + 4\ln(1.2)\sin(2))}{1.2^2} \approx 1.0193</m> feet per second per second.
+            </p>
+          </li>
+          <li>
+            <p>
+              At <m>t=2</m>, the object is falling and slowing down.  We know the object is falling because its velocity is negative, and slowing down because its negative velocity is increasing (due to <m>h''(2)</m> being positive) and thus getting less negative.
+            </p>
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -110,15 +155,64 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+          <li>
+            <p>
+              <m>f'(x) = \sin(x) \cdot (-\csc^2(x)) + \cot(x) \cdot \cos(x)</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              False.  
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>
+                f'(x) = \frac{-\sin^2(x)}{\sin(x)} = -\sin(x)
+              </m>
+              for <m>x \ne \frac{\pi}{2} + k\pi</m> for some integer value of <m>k</m>.
+            </p>
+          </li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+            <p>
+              Since <m>f(x) = \sin(x) \cot(x)</m>, by the product rule we know that <m>f'(x) = \sin(x) \cdot (-\csc^2(x)) + \cot(x) \cdot \cos(x)</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              False.  Since <m>\cot(x) = \frac{\cos(x)}{\sin(x)}</m>, we can write <m>f(x) = \sin(x) \cdot \frac{\cos(x)}{\sin(x)}</m>.  From here, it is tempting to ``cancel'' the <m>\sin(x)</m> term in the numerator and denominator.  However, note that because of the <m>\sin(x)</m> in the denominator, <m>f</m> is not defined for <m>x = \frac{\pi}{2} + k\pi</m> for any integer <m>k</m>.  In other words, the domain of <m>f</m> is all real numbers except odd multiples of <m>\frac{\pi}{2}</m>.  Thus, we can say that <m>f(x) = \cos(x)</m> for all real numbers except odd multiples of <m>\frac{\pi}{2}</m>.  But it is not the case that <m>f(x) = \cos(x)</m> for every value of <m>x</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Taking our result from (a) and converting <m>\csc(x)</m> and <m>\cot(x)</m> to expressions involving the sine and cosine functions, we have 
+              <md>
+                <mrow>f'(x) &amp;= \sin(x) \cdot (-\csc^2(x)) + \cot(x) \cdot \cos(x) </mrow>
+                <mrow>      &amp;= \sin(x) \cdot \left(-\frac{1}{\sin^2(x)}\right) + \frac{\cos(x)}{\sin(x)} \cdot \cos(x)</mrow>
+              </md>
+              Provided that <m>x \ne \frac{\pi}{2} + k\pi</m> for some integer value of <m>k</m>, it follows that 
+              <me>
+                f'(x) = -\frac{1}{\sin(x)} + \frac{\cos^2(x)}{\sin(x)} = \frac{\cos^2(x)-1}{\sin(x)}.
+              </me>
+              By the Fundamental Trigonometric Identity, recall that <m>\cos^2(x) + \sin^2(x) = 1</m>, and thus <m>\cos^2(x)-1 = -\sin^2(x)</m>.  Hence, for <m>x \ne \frac{\pi}{2} + k\pi</m> for some integer value of <m>k</m>, we have 
+              <m>
+                f'(x) = \frac{-\sin^2(x)}{\sin(x)} = -\sin(x).
+              </m>
+              Again, this equality holds only for <m>x \ne \frac{\pi}{2} + k\pi</m> for some integer value of <m>k</m> because those values of <m>x</m> are not in the domain of the original function <m>f</m>.
+            </p>
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -151,12 +245,50 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+          <li>
+            <p>
+              <m>p'(z) = \frac{\left(z^2\sec(z) +1 \right)\left(z\sec^2(z)+\tan(z)\right) - z\tan(z) \left(z^2\sec(z)\tan(z)+2z\sec(z)\right)}{\left(z^2\sec(z) + 1\right)^2} +3e^z</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>y - 4 = 3(x-0)</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Increasing.
+            </p>
+          </li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+            <p>
+              We use the quotient, product, sum, and constant multiple rules to obtain
+              <md>
+                <mrow>p'(z) &amp;= \frac{d}{dz}\left(\frac{z\tan(z)}{z^2\sec(z) + 1} + 3 e^z + 1\right)</mrow>
+                <mrow>      &amp;= \frac{d}{dz}\left(\frac{z\tan(z)}{z^2\sec(z) + 1}\right) + \frac{d}{dz} \left(3 e^z \right) + \frac{d}{dz}(1)</mrow>
+                <mrow>      &amp;= \frac{\left(z^2\sec(z) +1 \right)\frac{d}{dz}\left(z\tan(z)\right) - z\tan(z) \frac{d}{dz}\left(z^2\sec(z) + 1\right)}{\left(z^2\sec(z) + 1\right)^2} +3e^z</mrow>
+                <mrow>      &amp;= \frac{\left(z^2\sec(z) +1 \right)\left(z\sec^2(z)+\tan(z)\right) - z\tan(z) \left(z^2\sec(z)\tan(z)+2z\sec(z)\right)}{\left(z^2\sec(z) + 1\right)^2} +3e^z</mrow>
+              </md>
+            </p>
+          </li>
+          <li>
+            <p>
+              We have <m>p(0) = 0+3+1 = 4</m> and <m>p'(0) = 0+3=3</m>, so an equation for the tangent line to <m>p</m> at the point where <m>z=0</m> is <m>y - 4 = 3(x-0)</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              We found that <m>p'(0) = 3</m> is positive, so <m>p</m> is increasing at <m>t=0</m>.
+            </p>
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
