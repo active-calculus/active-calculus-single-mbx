@@ -56,8 +56,9 @@
       Thus, knowing <m>f'</m> and <m>f''</m> enables us to understand the shape of the graph of <m>f</m>.
     </p>
 
-    <p>IWe returned to this question in even more detail in <xref ref="sec-4-1-velocity-distance">Section</xref> we knew the instantaneous velocity of a moving object and worked to determine as much as possible about the object's position function.
-      We found connections between the net signed area under the velocity function and the corresponding change in position of the function;
+    <p>
+      We returned to this question in even more detail in <xref ref="sec-4-1-velocity-distance">Section</xref>. In that setting, we knew the instantaneous velocity of a moving object and worked to determine as much as possible about the object's position function.
+      We found connections between the net signed area under the velocity function and the corresponding change in position of the function, and 
       the Total Change Theorem further illuminated these connections between <m>f'</m> and <m>f</m>,
       showing that the total change in the value of <m>f</m> over an interval <m>[a,b]</m> is determined by the net signed area bounded by <m>f'</m> and the <m>x</m>-axis on the same interval.
     </p>
@@ -91,7 +92,7 @@
      This is a consequence of the Fundamental Theorem of Calculus:
       if we know a function <m>f</m> and the value of the antiderivative <m>F</m> at some starting point <m>a</m>, 
       we can determine the value of <m>F(b)</m> via the definite integral.
-      Since , it follows that
+      Since <m>F(b) - F(a) = \int_a^b f(x) \, dx</m>, it follows that
       <men xml:id="E-FTCTCT">
         F(b) = F(a) + \int_a^b f(x) \, dx
       </men>.
@@ -99,7 +100,7 @@
 
     <p>
       We can also interpret the equation <m>F(b) - F(a) = \int_a^b f(x) \, dx</m> in terms of the graphs of <m>f</m> and <m>F</m> as follows.
-       on an interval <m>[a,b]</m>,
+      On an interval <m>[a,b]</m>,
     </p>
 
     <blockquote>
@@ -107,7 +108,7 @@
         <em>differences in heights on the graph of the antiderivative</em>
         <em>given by <m>F(b) - F(a)</m></em>
         <em>correspond to the net signed area bounded by the original function on the interval <m>[a,b]</m>,</em>
-        <em>given by</em> <m>\int_a^b f(x) \, dx</m>.
+        <em>which is given by</em> <m>\int_a^b f(x) \, dx</m>.
       </p>
     </blockquote>
 
@@ -137,10 +138,16 @@
 
     <p>
       Then, using <xref ref="E-FTCTCT">Equation</xref>,
-      we can compute <m>F(1) = 1.5</m>, <m>F(2) = 1.5</m>,
+      we can compute 
+      <md>
+        <mrow>F(1) &amp;= F(0) + \int_0^1 f(x) \, dx</mrow>
+        <mrow>   &amp;= 1 + 0.5</mrow>
+        <mrow>   &amp;= 1.5</mrow>
+      </md>. 
+      Similarly, <m>F(2) = 1.5</m>,
       <m>F(3) = -0.5</m>, <m>F(4) = -2</m>,
       <m>F(5) = -0.5</m>, and <m>F(6) = 1</m>.
-      We can use the fact that <m>F' = f</m> to ascertain where <m>F</m> is increasing and decreasing,
+      In addition, we can use the fact that <m>F' = f</m> to ascertain where <m>F</m> is increasing and decreasing,
       concave up and concave down,
       and has relative extremes and inflection points.
       We ultimately find that the graph of <m>F</m> is the one given in blue in <xref ref="F-5-1-Ex1">Figure</xref>.
@@ -186,7 +193,7 @@
     </p>
 
     <p>
-      We now see that if a function has a single antiderivative,
+      We now see that if a function has at least one antiderivative,
       it must have infinitely many:
       we can add any constant of our choice to the antiderivative and get another antiderivative.
       For this reason, we sometimes refer to the
@@ -225,7 +232,7 @@
     </p>
 
     <p>
-      We have used this formula to compute <m>F(b)</m> forseveral different values of <m>b</m>, and then plotted the points
+      In several situations, we have used this formula to compute <m>F(b)</m> for several different values of <m>b</m>, and then plotted the points
       <m>(b,F(b))</m> to help us draw an accurate graph of <m>F</m>.
       This suggests that we may want to think of <m>b</m>,
       the upper limit of integration, as a variable itself.
@@ -235,19 +242,21 @@
       a function whose formula involves a definite integral.
     </p>
 
-    <assemblage>
+    <definition>
+      <statement>
       <p>
         If <m>f</m> is a continuous function,
-        we define the corresponding integral function <m>A</m> according to the rule
+        we define the corresponding <term>integral function</term> <m>A</m> according to the rule
         <men xml:id="E-intfxn">
           A(x) = \int_a^x f(t) \, dt
         </men>.
       </p>
-    </assemblage>
+      </statement>
+    </definition>
 
     <p>
       Note that because <m>x</m> is the independent variable in the function <m>A</m>,
-      and determines the endpoint of the intervalof integration,
+      and determines the endpoint of the interval of integration,
       we need to use a different variable as the variable of integration.
       A standard choice is <m>t</m>,
       but any variable other than <m>x</m> is acceptable.
