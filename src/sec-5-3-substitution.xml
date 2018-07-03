@@ -42,8 +42,7 @@
     <p>
       In <xref ref="sec-4-4-FTC">Section</xref>,
       we learned the key role that antiderivatives play in the process of evaluating definite integrals exactly.
-      In particular,
-      the Fundamental Theorem of Calculus tells us that if <m>F</m> is any antiderivative of <m>f</m>, then
+      The Fundamental Theorem of Calculus tells us that if <m>F</m> is any antiderivative of <m>f</m>, then
       <me>
         \int_a^b f(x) \, dx = F(b) - F(a)
       </me>.
@@ -60,27 +59,23 @@
       </me>,
       it is straightforward to do so,
       since we can easily antidifferentiate <m>f(x) = x^3 - \sqrt{x} + 5^x</m>.
-      In particular,
-      since a function <m>F</m> whose derivative is <m>f</m> is given by <m>F(x) = \frac{1}{4}x^4 - \frac{2}{3}x^{3/2} + \frac{1}{\ln(5)}5^x</m>,
+      Because one antiderivative of <m>f</m> is <m>F(x) = \frac{1}{4}x^4 - \frac{2}{3}x^{3/2} + \frac{1}{\ln(5)}5^x</m>,
       the Fundamental Theorem of Calculus tells us that
       <md>
-        <mrow>\int_0^1 \left(x^3 - \sqrt{x} + 5^x\right) \,dx =\mathstrut \amp  \left. \frac{1}{4}x^4 - \frac{2}{3}x^{3/2} + \frac{1}{\ln(5)}5^x\right|_0^1</mrow>
-        <mrow>=\mathstrut \amp  \left( \frac{1}{4}(1)^4 - \frac{2}{3}(1)^{3/2} + \frac{1}{\ln(5)}5^1 \right) - \left( 0 - 0 + \frac{1}{\ln(5)}5^0 \right)</mrow>
-        <mrow>=\mathstrut \amp  -\frac{5}{12} + \frac{4}{\ln(5)}</mrow>
+        <mrow>\int_0^1 \left(x^3 - \sqrt{x} + 5^x\right) \,dx &amp;=  \left. \frac{1}{4}x^4 - \frac{2}{3}x^{3/2} + \frac{1}{\ln(5)}5^x\right|_0^1</mrow>
+        <mrow>   &amp;= \left( \frac{1}{4}(1)^4 - \frac{2}{3}(1)^{3/2} + \frac{1}{\ln(5)}5^1 \right) - \left( 0 - 0 + \frac{1}{\ln(5)}5^0 \right)</mrow>
+        <mrow>   &amp;= -\frac{5}{12} + \frac{4}{\ln(5)}</mrow>
       </md>.
     </p>
 
     <p>
-      Because an algebraic formula for an antiderivative of <m>f</m> enables us to evaluate the definite integral <m>\int_a^b f(x) \, dx</m> exactly,
-      we see that we have a natural interest in being able to find such algebraic antiderivatives.
-      Note that we emphasize <em>algebraic</em> antiderivatives,
+      We see that we have a natural interest in being able to find such algebraic antiderivatives.
+      We emphasize <em>algebraic</em> antiderivatives,
       as opposed to any antiderivative,
       since we know by the Second Fundamental Theorem of Calculus that
       <m>G(x) = \int_a^x f(t) \, dt</m> is indeed an antiderivative of the given function <m>f</m>,
       but one that still involves a definite integral.
-      One of our main goals in this section and the one following is to develop understanding,
-      in select circumstances,
-      of how to <q>undo</q> the process of differentiation in order to find an algebraic antiderivative for a given function.
+      Our goal in this section is to <q>undo</q> the process of differentiation to find an algebraic antiderivative for a given function.
     </p>
 
     <xi:include href="./previews/PA-5-3.xml" />
@@ -89,36 +84,44 @@
   <subsection>
     <title>Reversing the Chain Rule: First Steps</title>
     <p>
-      In <xref ref="PA-5-3">Preview Activity</xref>,
-      we saw that it is usually straightforward to antidifferentiate a function of the form
+      Whenever <m>f</m> is a familiar function whose antiderivative is known and <m>u(x)</m> is a linear function, it is  straightforward to antidifferentiate a function of the form
       <me>
         h(x) = f(u(x))
-      </me>,
-      whenever <m>f</m> is a familiar function whose antiderivative is known and <m>u(x)</m> is a linear function.
-      For example, if we consider
-      <me>
-        h(x) = (5x-3)^6
-      </me>,
-      in this context the outer function <m>f</m> is <m>f(u) = u^6</m>,
-      while the inner function is <m>u(x) = 5x - 3</m>.
-      Since the antiderivative of <m>f</m> is <m>F(u) = \frac{1}{7}u^7+C</m>, we
-            see that the antiderivative of <m>h</m> is
-      <me>
-        H(x) = \frac{1}{7} (5x-3)^7 \cdot \frac{1}{5} + C = \frac{1}{35} (5x-3)^7 + C
       </me>.
     </p>
+    <example>
+      <statement>
+        <p>
+          Determine the general antiderivative of 
+          <me>
+            h(x) = (5x-3)^6
+          </me>.  Check the result by differentiating.
+        </p>
 
-    <p>
-      The inclusion of the constant
-      <m>\frac{1}{5}</m> is essential precisely because the derivative of the inner function is <m>u'(x) = 5</m>.
-      Indeed, if we now compute <m>H'(x)</m>, we find by the Chain Rule
-      (and Constant Multiple Rule)
-      that
-      <me>
-        H'(x) = \frac{1}{35} \cdot 7(5x-3)^6 \cdot 5 = (5x-3)^6 = h(x)
-      </me>,
-      and thus <m>H</m> is indeed the general antiderivative of <m>h</m>.
-    </p>
+        <p>
+          For this composite function, the outer function <m>f</m> is <m>f(u) = u^6</m>,
+          while the inner function is <m>u(x) = 5x - 3</m>.
+          Since the antiderivative of <m>f</m> is <m>F(u) = \frac{1}{7}u^7+C</m>, we
+          see that the antiderivative of <m>h</m> is
+          <me>
+            H(x) = \frac{1}{7} (5x-3)^7 \cdot \frac{1}{5} + C = \frac{1}{35} (5x-3)^7 + C
+          </me>.
+        </p>
+
+        <p>
+          The inclusion of the constant
+          <m>\frac{1}{5}</m> is essential precisely because the derivative of the inner function is <m>u'(x) = 5</m>.
+          Indeed, if we now compute <m>H'(x)</m>, we find by the Chain Rule
+          (and Constant Multiple Rule)
+          that
+          <me>
+            H'(x) = \frac{1}{35} \cdot 7(5x-3)^6 \cdot 5 = (5x-3)^6 = h(x)
+          </me>,
+          and thus <m>H</m> is indeed the general antiderivative of <m>h</m>.
+        </p>
+
+      </statement>
+    </example>  
 
     <p>
       Hence, in the special case where the outer function is familiar and the inner function is linear,
@@ -136,8 +139,7 @@
     </assemblage>
 
     <p>
-      When discussing antiderivatives,
-      it is often useful to have shorthand notation that indicates the instruction to find an antiderivative.
+      It is useful to have shorthand notation that indicates the instruction to find an antiderivative.
       Thus, in a similar way to how the notation
       <me>
         \frac{d}{dx} \left[ f(x) \right]
@@ -149,8 +151,7 @@
         \int f(x) \, dx
       </me>
       to represent the general antiderivative of <m>f</m> with respect to <m>x</m>.
-      For instance,
-      returning to the earlier example with <m>h(x) = (5x-3)^6</m> above,
+      Returning to the earlier example with <m>h(x) = (5x-3)^6</m>,
       we can rephrase the relationship between <m>h</m> and its antiderivative <m>H</m> through the notation
       <me>
         \int (5x-3)^6 \, dx = \frac{1}{35} (5x-6)^7 + C
@@ -159,10 +160,8 @@
 
     <p>
       When we find an antiderivative,
-      we will often say that we <em>evaluate an indefinite integral</em>
+      we will often say that we <em>evaluate an indefinite integral</em>.
           <idx><h>indefinite integral</h><h>evaluate</h></idx>
-      ; said differently,
-      the instruction to evaluate an indefinite integral means to find the general antiderivative.
       Just as the notation <m>\frac{d}{dx} [ \Box ]</m> means
       <q>find the derivative with respect to <m>x</m> of <m>\Box</m>,</q>
       the notation <m>\int \Box \, dx</m> means <q>find a function of <m>x</m> whose derivative is <m>\Box</m>.</q>
@@ -176,8 +175,8 @@
     <idx><h><m>u</m>-substitution</h></idx>
 
     <p>
-      Of course, a natural question arises from our recent work:
-      what happens when the inner function is not a linear function?
+      A natural question arises from our recent work:
+      what happens when the inner function is not linear?
       For example, can we find antiderivatives of such functions as
       <me>
         g(x) = x e^{x^2} \ \text{and}  \ h(x) = e^{x^2}?
@@ -185,9 +184,8 @@
     </p>
 
     <p>
-      It is important to explicitly remember that differentiation and antidifferentiation are essentially inverse processes;
-      that they are not quite inverse processes is due to the <m>+C</m> that arises when antidifferentiating.
-      This close relationship enables us to take any known derivative rule and translate it to a corresponding rule for an indefinite integral.
+      It is important to remember that differentiation and antidifferentiation are almost inverse processes (that they are not is due to the <m>+C</m> that arises when antidifferentiating).
+      This almost-inverse relationship enables us to take any known derivative rule and rewrite it as a corresponding rule for an indefinite integral.
       For example, since
       <me>
         \frac{d}{dx} \left[x^5\right] = 5x^4
@@ -213,20 +211,20 @@
     </p>
 
     <p>
-      Hence, Equation<nbsp /><xref ref="E-usubst" /> tells us that if we can take a given function and view its algebraic structure as
+      <xref ref="E-usubst">Equation</xref> tells us that if we can view a given function as
       <m>f'(g(x)) g'(x)</m> for some appropriate choices of <m>f</m> and <m>g</m>,
       then we can antidifferentiate the function by reversing the Chain Rule.
-      It is especially notable that both <m>g(x)</m> and <m>g'(x)</m> appear in the form of <m>f'(g(x)) g'(x)</m>;
+      Note that both <m>g(x)</m> and <m>g'(x)</m> appear in the form of <m>f'(g(x)) g'(x)</m>;
       we will sometimes say that we seek to
       <em>identify a function-derivative pair</em>
           <idx><h>function-derivative pair</h></idx>
-      when trying to apply the rule in Equation<nbsp /><xref ref="E-usubst" />.
+      (<m>g(x)</m> and <m>g'(x)</m>) when trying to apply the rule in <xref ref="E-usubst">Equation</xref>.
     </p>
 
     <p>
-      In the situation where we can identify a function-derivative pair,
+      If we can identify a function-derivative pair,
       we will introduce a new variable <m>u</m> to represent the function <m>g(x)</m>.
-      Observing that with <m>u = g(x)</m>,
+      With <m>u = g(x)</m>,
       it follows in Leibniz notation that <m>\frac{du}{dx} = g'(x)</m>,
       so that in terms of differentials<fn>If we recall from the definition of the derivative that
       <m>\frac{du}{dx} \approx \frac{\Delta{u}}{\Delta{x}}</m> and use the fact that <m>\frac{du}{dx} = g'(x)</m>,
@@ -238,7 +236,7 @@
       notation enables us to write
       <m>du = g'(x) \, dx</m> in the change of variable formula.</fn>,
       <m>du = g'(x)\, dx</m>.
-      Now converting the indefinite integral of interest to a new one in terms of <m>u</m>, we have
+      Now converting the indefinite integral to a new one in terms of <m>u</m>, we have
       <me>
         \int f'(g(x)) g'(x) \, dx = \int f'(u) \,du
       </me>.
@@ -246,7 +244,7 @@
 
     <p>
       Provided that <m>f'</m> is an elementary function whose antiderivative is known,
-      we can now easily evaluate the indefinite integral in <m>u</m>,
+      we can easily evaluate the indefinite integral in <m>u</m>,
       and then go on to determine the desired overall antiderivative of <m>f'(g(x)) g'(x)</m>.
       We call this process <em><m>u</m>-substitution</em>.
       To see <m>u</m>-substitution at work,
@@ -265,7 +263,7 @@
       </statement>
       <solution>
         <p>
-          We can make two key algebraic observations regarding the integrand,
+          We can make two algebraic observations regarding the integrand,
           <m>x^3 \cdot \sin (7x^4 + 3)</m>.
           First, <m>\sin (7x^4 + 3)</m> is a composite function;
           as such, we know we'll need a more sophisticated approach to antidifferentiating.
@@ -280,17 +278,16 @@
         <p>
           Letting <m>u</m> represent the inner function of the composite function <m>\sin (7x^4 + 3)</m>,
           we have <m>u = 7x^4 + 3</m>,
-                and thus <m>\frac{du}{dx} = 28x^3</m>.
+          and thus <m>\frac{du}{dx} = 28x^3</m>.
           In differential notation,
           it follows that <m>du = 28x^3 \, dx</m>,
           and thus <m>x^3 \, dx = \frac{1}{28} \, du</m>.
-          We make this last observation because the original indefinite integral may now be written
+          The original indefinite integral may be slightly rewritten as
           <me>
             \int \sin (7x^4 + 3) \cdot x^3 \, dx
           </me>,
-          and so by substituting the expressions in <m>u</m> for <m>x</m>
-          (specifically <m>u</m> for <m>7x^4 + 3</m> and
-          <m>\frac{1}{28} \, du</m> for <m>x^3 \, dx</m>),
+          and so by substituting <m>u</m> for <m>7x^4 + 3</m> and
+          <m>\frac{1}{28} \, du</m> for <m>x^3 \, dx</m>,
           it follows that
           <me>
             \int \sin (7x^4 + 3) \cdot x^3 \, dx = \int \sin(u) \cdot \frac{1}{28} \, du
@@ -298,14 +295,14 @@
         </p>
 
         <p>
-          Now we may evaluate the original integral by first evaluating the easier integral in <m>u</m>,
-          followed by replacing <m>u</m> by the expression <m>7x^4 + 3</m>.
+          Now we may evaluate the easier integral in <m>u</m>,
+          and then replace <m>u</m> by the expression <m>7x^4 + 3</m>.
           Doing so, we find
           <md>
-            <mrow>\int \sin (7x^4 + 3) \cdot x^3 \, dx =\mathstrut \amp  \int \sin(u) \cdot \frac{1}{28} \, du</mrow>
-            <mrow>=\mathstrut \amp  \frac{1}{28} \int \sin(u) \, du</mrow>
-            <mrow>=\mathstrut \amp  \frac{1}{28} (-\cos(u)) + C</mrow>
-            <mrow>=\mathstrut \amp  -\frac{1}{28} \cos(7x^4 + 3) + C</mrow>
+            <mrow>\int \sin (7x^4 + 3) \cdot x^3 \, dx &amp;= \int \sin(u) \cdot \frac{1}{28} \, du</mrow>
+            <mrow> &amp;= \frac{1}{28} \int \sin(u) \, du</mrow>
+            <mrow> &amp;= \frac{1}{28} (-\cos(u)) + C</mrow>
+            <mrow> &amp;= -\frac{1}{28} \cos(7x^4 + 3) + C</mrow>
           </md>.
         </p>
 
@@ -320,33 +317,30 @@
     </example>
 
     <p>
-      An essential observation about our work in <xref ref="Ex-5-3-usub">Example</xref>
-      is that the <m>u</m>-substitution only worked because the function multiplying <m>\sin (7x^4 + 3)</m> was <m>x^3</m>.
+      The <m>u</m>-substitution worked because the function multiplying <m>\sin (7x^4 + 3)</m> was <m>x^3</m>.
       If instead that function was <m>x^2</m> or <m>x^4</m>,
-      the substitution process may not
-      (and likely would not)
-      have worked.
+      the substitution process would not have worked.
       This is one of the primary challenges of antidifferentiation:
       slight changes in the integrand make tremendous differences.
       For instance,
       we can use <m>u</m>-substitution with <m>u = x^2</m> and <m>du = 2xdx</m> to find that
       <md>
-        <mrow>\int xe^{x^2} \, dx =\mathstrut \amp  \int e^u \cdot \frac{1}{2} \, du</mrow>
-        <mrow>=\mathstrut \amp  \frac{1}{2} \int e^u \, du</mrow>
-        <mrow>=\mathstrut \amp  \frac{1}{2} e^u + C</mrow>
-        <mrow>=\mathstrut \amp  \frac{1}{2} e^{x^2} + C</mrow>
+        <mrow>\int xe^{x^2} \, dx &amp;=  \int e^u \cdot \frac{1}{2} \, du</mrow>
+        <mrow>   &amp;= \frac{1}{2} \int e^u \, du</mrow>
+        <mrow>   &amp;= \frac{1}{2} e^u + C</mrow>
+        <mrow>   &amp;= \frac{1}{2} e^{x^2} + C</mrow>
       </md>.
     </p>
 
     <p>
-      If, however, we consider the similar indefinite integral
+      However, for the similar indefinite integral
       <me>
         \int e^{x^2} \, dx
       </me>,
-      the missing <m>x</m> to multiply <m>e^{x^2}</m> makes the <m>u</m>-substitution <m>u = x^2</m> no longer possible.
+      the <m>u</m>-substitution <m>u = x^2</m> is no longer possible because the factor of <m>x</m> is missing.
       Hence, part of the lesson of <m>u</m>-substitution is just how specialized the process is:
       it only applies to situations where, up to a missing constant,
-      the integrand that is present is the result of applying the Chain Rule to a different,
+      the integrand is the result of applying the Chain Rule to a different,
       related function.
     </p>
 
@@ -356,7 +350,7 @@
   <subsection>
     <title>Evaluating Definite Integrals via <m>u</m>-substitution</title>
     <p>
-      We have just introduced <m>u</m>-substitution as a means to evaluate indefinite integrals of functions that can be written,
+      We have introduced <m>u</m>-substitution as a means to evaluate indefinite integrals of functions that can be written,
       up to a constant multiple, in the form <m>f(g(x))g'(x)</m>.
       This same technique can be used to evaluate definite integrals involving such functions,
       though we need to be careful with the corresponding limits of integration.
@@ -387,9 +381,9 @@
       Thus, under the change of variables of <m>u</m>-substitution,
       we now have
       <md>
-        <mrow>\int_{x=2}^{x=5} xe^{x^2} \, dx =\mathstrut \amp  \int_{u=4}^{u=25} e^{u} \cdot \frac{1}{2} \, du</mrow>
-        <mrow>=\mathstrut \amp  \left. \frac{1}{2}e^u \right|_{u=4}^{u=25}</mrow>
-        <mrow>=\mathstrut \amp  \frac{1}{2}e^{25} - \frac{1}{2}e^4</mrow>
+        <mrow>\int_{x=2}^{x=5} xe^{x^2} \, dx    &amp;= \int_{u=4}^{u=25} e^{u} \cdot \frac{1}{2} \, du</mrow>
+        <mrow>   &amp;= \left. \frac{1}{2}e^u \right|_{u=4}^{u=25}</mrow>
+        <mrow>   &amp;= \frac{1}{2}e^{25} - \frac{1}{2}e^4</mrow>
       </md>.
     </p>
 
@@ -398,10 +392,10 @@
       we could consider the related indefinite integral <m>\int xe^{x^2} \, dx</m>,
       find the antiderivative <m>\frac{1}{2}e^{x^2}</m> through <m>u</m>-substitution,
       and then evaluate the original definite integral.
-      From that perspective, we'd have
+      With that method, we'd have
       <md>
-        <mrow>\int_{2}^{5} xe^{x^2} \, dx =\mathstrut \amp  \left. \frac{1}{2}e^{x^2} \right|_{2}^{5}</mrow>
-        <mrow>=\mathstrut \amp  \frac{1}{2}e^{25} - \frac{1}{2}e^4</mrow>
+        <mrow>\int_{2}^{5} xe^{x^2} \, dx    &amp;= \left. \frac{1}{2}e^{x^2} \right|_{2}^{5}</mrow>
+        <mrow>   &amp;= \frac{1}{2}e^{25} - \frac{1}{2}e^4</mrow>
       </md>,
       which is, of course, the same result.
     </p>
@@ -415,7 +409,7 @@
       <ul>
         <li>
           <p>
-            To begin to find algebraic formulas for antiderivatives of more complicated algebraic functions,
+            To find algebraic formulas for antiderivatives of more complicated algebraic functions,
             we need to think carefully about how we can reverse known differentiation rules.
             To that end,
             it is essential that we understand and recall known derivatives of basic functions,
