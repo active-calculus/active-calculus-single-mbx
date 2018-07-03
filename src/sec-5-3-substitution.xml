@@ -59,12 +59,12 @@
       </me>,
       it is straightforward to do so,
       since we can easily antidifferentiate <m>f(x) = x^3 - \sqrt{x} + 5^x</m>.
-      Because one antiderivative is <m>F(x) = \frac{1}{4}x^4 - \frac{2}{3}x^{3/2} + \frac{1}{\ln(5)}5^x</m>,
+      Because one antiderivative of <m>f</m> is <m>F(x) = \frac{1}{4}x^4 - \frac{2}{3}x^{3/2} + \frac{1}{\ln(5)}5^x</m>,
       the Fundamental Theorem of Calculus tells us that
       <md>
-        <mrow>\int_0^1 \left(x^3 - \sqrt{x} + 5^x\right) \,dx =\mathstrut \amp  \left. \frac{1}{4}x^4 - \frac{2}{3}x^{3/2} + \frac{1}{\ln(5)}5^x\right|_0^1</mrow>
-        <mrow>=\mathstrut \amp  \left( \frac{1}{4}(1)^4 - \frac{2}{3}(1)^{3/2} + \frac{1}{\ln(5)}5^1 \right) - \left( 0 - 0 + \frac{1}{\ln(5)}5^0 \right)</mrow>
-        <mrow>=\mathstrut \amp  -\frac{5}{12} + \frac{4}{\ln(5)}</mrow>
+        <mrow>\int_0^1 \left(x^3 - \sqrt{x} + 5^x\right) \,dx &amp;=  \left. \frac{1}{4}x^4 - \frac{2}{3}x^{3/2} + \frac{1}{\ln(5)}5^x\right|_0^1</mrow>
+        <mrow>   &amp;= \left( \frac{1}{4}(1)^4 - \frac{2}{3}(1)^{3/2} + \frac{1}{\ln(5)}5^1 \right) - \left( 0 - 0 + \frac{1}{\ln(5)}5^0 \right)</mrow>
+        <mrow>   &amp;= -\frac{5}{12} + \frac{4}{\ln(5)}</mrow>
       </md>.
     </p>
 
@@ -84,35 +84,44 @@
   <subsection>
     <title>Reversing the Chain Rule: First Steps</title>
     <p>
-      It is usually straightforward to antidifferentiate a function of the form
+      Whenever <m>f</m> is a familiar function whose antiderivative is known and <m>u(x)</m> is a linear function, it is  straightforward to antidifferentiate a function of the form
       <me>
         h(x) = f(u(x))
-      </me>,
-      whenever <m>f</m> is a familiar function whose antiderivative is known and <m>u(x)</m> is a linear function.
-      For example, if we consider
-      <me>
-        h(x) = (5x-3)^6
-      </me>,
-      the outer function <m>f</m> is <m>f(u) = u^6</m>,
-      while the inner function is <m>u(x) = 5x - 3</m>.
-      Since the antiderivative of <m>f</m> is <m>F(u) = \frac{1}{7}u^7+C</m>, we
-      see that the antiderivative of <m>h</m> is
-      <me>
-        H(x) = \frac{1}{7} (5x-3)^7 \cdot \frac{1}{5} + C = \frac{1}{35} (5x-3)^7 + C
       </me>.
     </p>
+    <example>
+      <statement>
+        <p>
+          Determine the general antiderivative of 
+          <me>
+            h(x) = (5x-3)^6
+          </me>.  Check the result by differentiating.
+        </p>
 
-    <p>
-      The inclusion of the constant
-      <m>\frac{1}{5}</m> is essential precisely because the derivative of the inner function is <m>u'(x) = 5</m>.
-      Indeed, if we now compute <m>H'(x)</m>, we find by the Chain Rule
-      (and Constant Multiple Rule)
-      that
-      <me>
-        H'(x) = \frac{1}{35} \cdot 7(5x-3)^6 \cdot 5 = (5x-3)^6 = h(x)
-      </me>,
-      and thus <m>H</m> is indeed the general antiderivative of <m>h</m>.
-    </p>
+        <p>
+          For this composite function, the outer function <m>f</m> is <m>f(u) = u^6</m>,
+          while the inner function is <m>u(x) = 5x - 3</m>.
+          Since the antiderivative of <m>f</m> is <m>F(u) = \frac{1}{7}u^7+C</m>, we
+          see that the antiderivative of <m>h</m> is
+          <me>
+            H(x) = \frac{1}{7} (5x-3)^7 \cdot \frac{1}{5} + C = \frac{1}{35} (5x-3)^7 + C
+          </me>.
+        </p>
+
+        <p>
+          The inclusion of the constant
+          <m>\frac{1}{5}</m> is essential precisely because the derivative of the inner function is <m>u'(x) = 5</m>.
+          Indeed, if we now compute <m>H'(x)</m>, we find by the Chain Rule
+          (and Constant Multiple Rule)
+          that
+          <me>
+            H'(x) = \frac{1}{35} \cdot 7(5x-3)^6 \cdot 5 = (5x-3)^6 = h(x)
+          </me>,
+          and thus <m>H</m> is indeed the general antiderivative of <m>h</m>.
+        </p>
+
+      </statement>
+    </example>  
 
     <p>
       Hence, in the special case where the outer function is familiar and the inner function is linear,
@@ -151,9 +160,8 @@
 
     <p>
       When we find an antiderivative,
-      we will often say that we <em>evaluate an indefinite integral</em>
+      we will often say that we <em>evaluate an indefinite integral</em>.
           <idx><h>indefinite integral</h><h>evaluate</h></idx>
-      .
       Just as the notation <m>\frac{d}{dx} [ \Box ]</m> means
       <q>find the derivative with respect to <m>x</m> of <m>\Box</m>,</q>
       the notation <m>\int \Box \, dx</m> means <q>find a function of <m>x</m> whose derivative is <m>\Box</m>.</q>
@@ -176,8 +184,8 @@
     </p>
 
     <p>
-      It is important to remember that differentiation and antidifferentiation are not quite inverse processes is due to the <m>+C</m> that arises when antidifferentiating.
-      This relationship enables us to take any known derivative rule and rewrite it as a corresponding rule for an indefinite integral.
+      It is important to remember that differentiation and antidifferentiation are almost inverse processes (that they are not is due to the <m>+C</m> that arises when antidifferentiating).
+      This almost-inverse relationship enables us to take any known derivative rule and rewrite it as a corresponding rule for an indefinite integral.
       For example, since
       <me>
         \frac{d}{dx} \left[x^5\right] = 5x^4
@@ -203,14 +211,14 @@
     </p>
 
     <p>
-      Equation<nbsp /><xref ref="E-usubst" /> tells us that if we can view a given function as
+      <xref ref="E-usubst">Equation</xref> tells us that if we can view a given function as
       <m>f'(g(x)) g'(x)</m> for some appropriate choices of <m>f</m> and <m>g</m>,
       then we can antidifferentiate the function by reversing the Chain Rule.
       Note that both <m>g(x)</m> and <m>g'(x)</m> appear in the form of <m>f'(g(x)) g'(x)</m>;
       we will sometimes say that we seek to
       <em>identify a function-derivative pair</em>
           <idx><h>function-derivative pair</h></idx>
-      when trying to apply the rule in Equation<nbsp /><xref ref="E-usubst" />.
+      (<m>g(x)</m> and <m>g'(x)</m>) when trying to apply the rule in <xref ref="E-usubst">Equation</xref>.
     </p>
 
     <p>
@@ -274,7 +282,7 @@
           In differential notation,
           it follows that <m>du = 28x^3 \, dx</m>,
           and thus <m>x^3 \, dx = \frac{1}{28} \, du</m>.
-          The original indefinite integral may now be written
+          The original indefinite integral may be slightly rewritten as
           <me>
             \int \sin (7x^4 + 3) \cdot x^3 \, dx
           </me>,
@@ -291,10 +299,10 @@
           and then replace <m>u</m> by the expression <m>7x^4 + 3</m>.
           Doing so, we find
           <md>
-            <mrow>\int \sin (7x^4 + 3) \cdot x^3 \, dx =\mathstrut \amp  \int \sin(u) \cdot \frac{1}{28} \, du</mrow>
-            <mrow>=\mathstrut \amp  \frac{1}{28} \int \sin(u) \, du</mrow>
-            <mrow>=\mathstrut \amp  \frac{1}{28} (-\cos(u)) + C</mrow>
-            <mrow>=\mathstrut \amp  -\frac{1}{28} \cos(7x^4 + 3) + C</mrow>
+            <mrow>\int \sin (7x^4 + 3) \cdot x^3 \, dx &amp;= \int \sin(u) \cdot \frac{1}{28} \, du</mrow>
+            <mrow> &amp;= \frac{1}{28} \int \sin(u) \, du</mrow>
+            <mrow> &amp;= \frac{1}{28} (-\cos(u)) + C</mrow>
+            <mrow> &amp;= -\frac{1}{28} \cos(7x^4 + 3) + C</mrow>
           </md>.
         </p>
 
@@ -317,10 +325,10 @@
       For instance,
       we can use <m>u</m>-substitution with <m>u = x^2</m> and <m>du = 2xdx</m> to find that
       <md>
-        <mrow>\int xe^{x^2} \, dx =\mathstrut \amp  \int e^u \cdot \frac{1}{2} \, du</mrow>
-        <mrow>=\mathstrut \amp  \frac{1}{2} \int e^u \, du</mrow>
-        <mrow>=\mathstrut \amp  \frac{1}{2} e^u + C</mrow>
-        <mrow>=\mathstrut \amp  \frac{1}{2} e^{x^2} + C</mrow>
+        <mrow>\int xe^{x^2} \, dx &amp;=  \int e^u \cdot \frac{1}{2} \, du</mrow>
+        <mrow>   &amp;= \frac{1}{2} \int e^u \, du</mrow>
+        <mrow>   &amp;= \frac{1}{2} e^u + C</mrow>
+        <mrow>   &amp;= \frac{1}{2} e^{x^2} + C</mrow>
       </md>.
     </p>
 
@@ -373,9 +381,9 @@
       Thus, under the change of variables of <m>u</m>-substitution,
       we now have
       <md>
-        <mrow>\int_{x=2}^{x=5} xe^{x^2} \, dx =\mathstrut \amp  \int_{u=4}^{u=25} e^{u} \cdot \frac{1}{2} \, du</mrow>
-        <mrow>=\mathstrut \amp  \left. \frac{1}{2}e^u \right|_{u=4}^{u=25}</mrow>
-        <mrow>=\mathstrut \amp  \frac{1}{2}e^{25} - \frac{1}{2}e^4</mrow>
+        <mrow>\int_{x=2}^{x=5} xe^{x^2} \, dx    &amp;= \int_{u=4}^{u=25} e^{u} \cdot \frac{1}{2} \, du</mrow>
+        <mrow>   &amp;= \left. \frac{1}{2}e^u \right|_{u=4}^{u=25}</mrow>
+        <mrow>   &amp;= \frac{1}{2}e^{25} - \frac{1}{2}e^4</mrow>
       </md>.
     </p>
 
@@ -386,8 +394,8 @@
       and then evaluate the original definite integral.
       With that method, we'd have
       <md>
-        <mrow>\int_{2}^{5} xe^{x^2} \, dx =\mathstrut \amp  \left. \frac{1}{2}e^{x^2} \right|_{2}^{5}</mrow>
-        <mrow>=\mathstrut \amp  \frac{1}{2}e^{25} - \frac{1}{2}e^4</mrow>
+        <mrow>\int_{2}^{5} xe^{x^2} \, dx    &amp;= \left. \frac{1}{2}e^{x^2} \right|_{2}^{5}</mrow>
+        <mrow>   &amp;= \frac{1}{2}e^{25} - \frac{1}{2}e^4</mrow>
       </md>,
       which is, of course, the same result.
     </p>
