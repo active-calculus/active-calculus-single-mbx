@@ -46,7 +46,7 @@
     </figure>
 
     <p>
-      We have seen several different circumstances where the integral enables us to measure the accumulation of a quantity that varies,
+      We have seen several different circumstances where the definite integral enables us to measure the accumulation of a quantity that varies,
       provided the quantity is approximately constant over small intervals.
       For instance, to find
       the area bounded by a nonnegative curve
@@ -78,12 +78,12 @@
     </p>
 
     <p>
-      Finally, we considered the mass of an object of non-constant density.
-      Because <m>M = D \cdot V</m>
+      Finally, if we want to determine the mass of an object of non-constant density,
+      because <m>M = D \cdot V</m>
       (mass equals density times volume,
       provided that density is constant),
-      if we can consider a small slice of an object on which the density is approximately constant,
-      a definite integral may be used to determine the exact mass of the object.
+      we can consider a small slice of an object on which the density is approximately constant,
+      and a definite integral may be used to determine the exact mass of the object.
       For instance,
       if we have a thin rod whose cross sections have constant density,
       but whose density is distributed along the <m>x</m> axis according to the function <m>y = \rho(x)</m>,
@@ -109,9 +109,9 @@
     </p>
 
     <p>
-      We next turn to the notion of <em>work</em>
+      We next turn to the notion of <em>work</em>: 
           <idx><h>work</h></idx>
-      : from physics,
+      from physics,
       a basic principal is that work is the product of force and distance.
       For example,
       if a person exerts a force of 20 pounds to lift a 20-pound weight 4 feet off the ground,
@@ -146,11 +146,11 @@
     <idx><h>work</h></idx>
 
     <p>
-      Because work is calculated by the rule <m>W = F \cdot d</m>,
+      Because work is calculated by the rule <m>W = F \cdot d</m>
       whenever the force <m>F</m> is constant,
       it follows that we can use a definite integral to compute the work accomplished by a varying force.
       For example,
-      suppose that a bucket whose weight at height <m>h</m> is given by <m>B(h) = 12 + 8e^{-0.1h}</m> is being lifted in a 50-foot well .
+      suppose that a bucket whose weight at height <m>h</m> is given by <m>B(h) = 12 + 8e^{-0.1h}</m> is being lifted in a 50-foot well.
     </p>
 
     <p>
@@ -181,13 +181,13 @@
 
     <p>
       Our work in <xref ref="PA-6-4">Preview Activity</xref>
-      and in the most recent example above employs the following important general principle.
+      and in the most recent discussion above employs the following important general principle.
     </p>
 
     <assemblage>
       <p>
-        For an object being moved in the positive direction along an axis,
-        <m>x</m>, by a force <m>F(x)</m>,
+        For an object being moved in the positive direction along an axis with location
+        <m>x</m> by a force <m>F(x)</m>,
         the total work to move the object from <m>a</m> to <m>b</m> is given by
         <me>
           W = \int_a^b F(x) \, dx
@@ -227,102 +227,110 @@
         <image source="images/6_4_SumpCrock" />
       </figure>
     </sidebyside>
-    <sidebyside widths="47% 47%" margins="0%">
       
-      <example><statement><p>
-        
-        Suppose that the sump crock has the shape of a frustum of a cone,
-        as pictured in <xref ref="F-6-4-Crock">Figure</xref>.
-        The crock has a diameter of 3 feet at its surface,
-        a diameter of 1.5 feet at its base, and a depth of 4 feet.
-        In addition,
-        suppose that the sump pump is set up so that it pumps the water vertically up a pipe to a drain that is located at ground level just outside a basement window.
-        To accomplish this, the pump must send the water to a location 9 feet above the surface of the sump crock.
-      </p></statement>
+    <example>
+      <statement>
+        <sidebyside widths="47% 47%" margins="0%">
+          <p>
+            Suppose that a sump crock has the shape of a frustum of a cone,
+            as pictured in <xref ref="F-6-4-Crock">Figure</xref>.
+            The crock has a diameter of 3 feet at its surface,
+            a diameter of 1.5 feet at its base, and a depth of 4 feet.
+            In addition,
+            suppose that the sump pump is set up so that it pumps the water vertically up a pipe to a drain that is located at ground level just outside a basement window.
+            To accomplish this, the pump must send the water to a location 9 feet above the surface of the sump crock.  How much work is required to empty the sump crock if it is initially completely full?
+          </p>
 
-      <figure xml:id="F-6-4-Crock">
-        <caption>A sump crock with approximately cylindrical cross-sections that is 4 feet deep, 1.5 feet in diameter at its base, and 3 feet in diameter at its top.</caption>
-        <image source="images/6_4_Crock" />
-      </figure>
-    </sidebyside>
-    
-    <solution><p>
-      Think of the depth below the surface of the crock as being the independent variable, so,
-      we let the positive <m>x</m>-axis point down,
-      and the positive <m>y</m>-axis to the right,
-      as pictured in the figure.
-      Because the pump sits on the surface of the water,
-      it makes sense to think about the pump moving the water one
-      <q>slice</q> at a time,
-      where it takes a thin slice from the surface,
-      pumps it out of the tank, and then proceeds to pump the next slice below.
-    </p>
+          <figure xml:id="F-6-4-Crock">
+            <caption>A sump crock with approximately cylindrical cross-sections.</caption>
+            <image source="images/6_4_Crock" />
+          </figure>   
+
+        </sidebyside>
+      </statement>
+      
+      <solution>
+        <p>
+          It is helpful to 
+          think of the depth below the surface of the crock as being the independent variable, so
+          we let the positive <m>x</m>-axis point down,
+          and the positive <m>y</m>-axis to the right,
+          as pictured in the figure.
+          Because the pump sits on the surface of the water,
+          it makes sense to think about the pump moving the water one
+          <q>slice</q> at a time,
+          where it takes a thin slice from the surface,
+          pumps it out of the tank, and then proceeds to pump the next slice below.
+        </p>
+
+        <p>
+          Each slice of water is cylindrical in shape.
+          We see that the radius of each slice varies according to the linear function
+          <m>y = f(x)</m> that passes through the points <m>(0,1.5)</m> and <m>(4,0.75)</m>,
+          where <m>x</m> is the depth of the particular slice in the tank;
+          it is a straightforward exercise to find that <m>f(x) = 1.5 - 0.1875x</m>.
+          Now we think about the problem in several steps: <ol label="a">
+          <li> determining the volume of a typical slice; </li>
+          <li> finding the weight<fn>We assume that the weight density of water is 62.4 pounds per cubic foot.</fn>of a typical slice
+          (and thus the force that must be exerted on it);</li>
+          <li> deciding the distance that a typical slice moves;</li>
+          <li>and computing the work to move a representative slice.</li></ol>
+          Once we know the work it takes to move one slice,
+          we use a definite integral over an appropriate interval to find the total work.
+        </p>
+
+        <p>
+          Consider a representative cylindrical slice at a depth of <m>x</m> feet below the top of the crock.
+          The approximate volume of that slice is given by
+          <me>
+            V_{\text{slice} } = \pi f(x)^2 \Delta x = \pi (1.5 - 0.1875x)^2 \Delta x
+          </me>.
+        </p>
+
+        <p>
+          Since water weighs 62.4 lb/ft<m>^3</m>,
+          the approximate weight of a representative slice is
+          <me>
+            F_{\text{slice} } = 62.4 \cdot V_{\text{slice} } = 62.4 \pi (1.5 - 0.1875x)^2 \Delta x
+          </me>.
+          This is also the approximate force the pump must exert to move the slice.
+        </p>
+
+        <p>
+          Because the slice is located at a depth of <m>x</m> feet below the top of the crock,
+          the slice being moved by the pump must move <m>x</m> feet to get to the level of the basement floor,
+          and then,
+          as stated in the problem description,
+          another 9 feet to reach the drain at ground level.
+          Hence, the total distance a representative slice travels is
+          <me>
+            d_{\text{slice} } = x + 9
+          </me>.
+        </p>
+
+        <p>
+          Finally, the work to move a representative slice is given by
+          <me>
+            W_{\text{slice} } = F_{\text{slice} } \cdot d_{\text{slice} } = 62.4 \pi (1.5 - 0.1875x)^2 \Delta x \cdot (x+9)
+          </me>.
+        </p>
+
+        <p>
+          We sum the work required to move slices throughout the tank
+          (from <m>x = 0</m> to <m>x = 4</m>),
+          let <m>\Delta x \to 0</m>, and hence
+          <me>
+            W = \int_0^4 62.4 \pi (1.5 - 0.1875x)^2 (x+9) \, dx
+          </me>.
+          When evaluated using appropriate technology, the integral
+          shows that the total work is <m>W = 3463.2 \pi</m> foot-pounds.
+        </p>
+      </solution>
+    </example>
 
     <p>
-      Each slice of water is cylindrical in shape.
-      We see that the radius of each slice varies according to the linear function
-      <m>y = f(x)</m> that passes through the points <m>(0,1.5)</m> and <m>(4,0.75)</m>,
-      where <m>x</m> is the depth of the particular slice in the tank;
-      it is a straightforward exercise to find that <m>f(x) = 1.5 - 0.1875x</m>.
-      Now we think about the problem in several steps: <ol label="a">
-      <li> determining the volume of a typical slice; </li>
-      <li> finding the weight<fn>We assume that the weight density of water is 62.4 pounds per cubic foot.</fn>of a typical slice
-      (and thus the force that must be exerted on it);</li>
-      <li> deciding the distance that a typical slice moves;</li>
-      <li>and computing the work to move a representative slice.</li></ol>
-      Once we know the work it takes to move one slice,
-      we use a definite integral over an appropriate interval to find the total work.
-    </p>
-
-    <p>
-      Consider a representative cylindrical slice at a depth of <m>x</m> feet below the top of the crock.
-      The approximate volume of that slice is given by
-      <me>
-        V_{\text{slice} } = \pi f(x)^2 \Delta x = \pi (1.5 - 0.1875x)^2 \Delta x
-      </me>.
-    </p>
-
-    <p>
-      Since water weighs 62.4 lb/ft<m>^3</m>,
-      the approximate weight of a representative slice is
-      <me>
-        F_{\text{slice} } = 62.4 \cdot V_{\text{slice} } = 62.4 \pi (1.5 - 0.1875x)^2 \Delta x
-      </me>.
-      This is also the approximate force the pump must exert to move the slice.
-    </p>
-
-    <p>
-      Because the slice is located at a depth of <m>x</m> feet below the top of the crock,
-      the slice being moved by the pump must move <m>x</m> feet to get to the level of the basement floor,
-      and then,
-      as stated in the problem description,
-      another 9 feet to reach the drain at ground level.
-      Hence, the total distance a representative slice travels is
-      <me>
-        d_{\text{slice} } = x + 9
-      </me>.
-    </p>
-
-    <p>
-      Finally, the work to move a representative slice is given by
-      <me>
-        W_{\text{slice} } = F_{\text{slice} } \cdot d_{\text{slice} } = 62.4 \pi (1.5 - 0.1875x)^2 \Delta x \cdot (x+9)
-      </me>.
-    </p>
-
-    <p>
-      We sum the work required to move slices throughout the tank
-      (from <m>x = 0</m> to <m>x = 4</m>),
-      let <m>\Delta x \to 0</m>, and hence
-      <me>
-        W = \int_0^4 62.4 \pi (1.5 - 0.1875x)^2 (x+9) \, dx
-      </me>,
-      which, when evaluated using appropriate technology,
-      shows that the total work is <m>W = 3463.2 \pi</m> foot-pounds.
-    </p>
-
-    <p>
-      The preceding example demonstrates the standard approach to finding the work required to empty a tank filled with liquid.
+      The preceding example demonstrates the standard approach to finding the work 
+      required to empty a tank filled with liquid.
       The main task in each such problem is to determine the volume of a representative slice,
       followed by the force exerted on the slice,
       as well as the distance such a slice moves.
@@ -339,6 +347,7 @@
     </p>
 
     <xi:include href="./activities/act-6-4-2.xml" />
+
   </subsection>
 
   <subsection>
@@ -361,7 +370,7 @@
     </p>
 
     <p>
-      Most people know from experience that the deeper one dives underwater while swimming,
+      We know from experience that the deeper one dives underwater while swimming,
       the greater the pressure exerted by the water.
       This is because at a greater depth,
       there is more water right on top of the swimmer:
@@ -457,10 +466,10 @@
     <xi:include href="./activities/act-6-4-3.xml" />
 
     <p>
-      Although there are many different formulas involving work, force,
-      and pressure,
-      the fundamental ideas behind these problems are similar to others we've encountered in applications of the definite integral.
-      We somehow slice it into more manageable pieces and then use a definite integral to add them up.
+      Although there are many different formulas involving work, force, and pressure,
+      the fundamental ideas behind these problems are similar to others we've encountered 
+      in applications of the definite integral.
+      We slice the quantity of interest into more manageable pieces and then use a definite integral to add them up.
     </p>
   </subsection>
 
