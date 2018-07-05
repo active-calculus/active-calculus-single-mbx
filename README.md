@@ -7,4 +7,5 @@ Active Calculus is available from [scholarworks.gvsu.edu](http://scholarworks.gv
 1. Clone this repository.
 2. Clone [MathBook XML](https://github.com/rbeezer/mathbook) and install its dependencies.
 3. Copy `Makefile.paths.original` to `Makefile.paths`. Edit `Makefile.paths` as instructed within that file.
-4. Execute `make html`, `make pdf`, or other things detailed in `Makefile`. Output will be produced in the `output` folder.
+4. Execute `make acs-extraction`
+5. Then execute `make html`, `make pdf`, or other things detailed in `Makefile`. Output will be produced in the `output` folder.
