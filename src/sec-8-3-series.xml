@@ -48,7 +48,7 @@
   <introduction>
     <p>
       In <xref ref="sec-8-2-geometric">Section</xref>,
-      we encountered geometric series.
+      we encountered infinite geometric series.
       For example, by writing
       <me>
         N = 0.1212121212 \cdots = \frac{12}{100} + \frac{12}{100} \cdot \frac{1}{100} + \frac{12}{100} \cdot \frac{1}{100^2} + \cdots
@@ -71,8 +71,7 @@
       <xref ref="PA-8-3">Preview Activity</xref>
       shows that an approximation to <m>e</m> using a linear polynomial is 2, an approximation to <m>e</m> using a quadratic polynomial is <m>2.5</m>,
       and an approximation using a cubic polynomial is 2.6667.
-      If we continue this process we can obtain approximations from quartic (degree 4), quintic (degree 5),
-      and higher degree polynomials, giving us the following approximations to <m>e</m>:
+      If we continue this process we can obtain approximations from quartic (degree 4) and quintic (degree 5) polynomials, giving us the following approximations to <m>e</m>:
     </p>
 
     <sidebyside>
@@ -133,7 +132,7 @@
 
     <p>
       This sum is an example of an
-      <em>infinite series</em><idx><h>infinite series</h></idx>
+      <em>infinite series</em>.<idx><h>infinite series</h></idx>
       Note that the series<nbsp /><xref ref="eq-8-3-e-infinite" /> is the sum of the terms of the infinite sequence <m>\left\{\frac{1}{n!}\right\}</m>.
       In general, we use the following notation and terminology.
     </p>
@@ -172,10 +171,11 @@
 
     <p>
       Is it even possible to sum an infinite list of numbers?
-      The answer shouldn't come as a surprise.
+      That doing so is possible in some situations shouldn't come as a surprise.
       The definite integral is the sum of an infinite collections of numbers,
       and we have already examined the special case of geometric series in the previous section.
-      
+      As we investigate other infinite sums, there are two key questions we seek to answer:  
+      (1) is the sum finite? and (2) if yes, what is its value?
     </p>
 
     <xi:include href="./activities/act-8-3-1.xml" />
@@ -183,12 +183,13 @@
     <p>
       The example in <xref ref="act-8-3-1">Activity</xref>
       illustrates how we define the sum of an infinite series.
-      We can add up the first <m>n</m> terms of the series to obtain a new sequence of numbers (called the
-      <em>sequence of partial sums</em>).
+      We construct a new sequence of numbers (called the
+      <em>sequence of partial sums</em>)
           <idx><h>partial sum</h></idx><idx><h>sequence of partial sums</h></idx>
-      If that sequence converges,
+      where the <m>n</m>th term in the sequence consists of the sum of the first <m>n</m> terms of the series.
+      If this sequence converges,
       the corresponding infinite series is said to converge,
-      and we say that we can find the sum of the series.
+      and we say that we can find the sum of the series.  More formally, we have the following definition.
     </p>
 
     <definition>
@@ -202,7 +203,7 @@
 
     <p>
       In other words,
-      the <m>n</m>th partial sum <m>S_n</m> of a series is the sum of the first <m>n</m> terms in the series, or
+      the <m>n</m>th partial sum <m>S_n</m> of a series is the sum of the first <m>n</m> terms in the series, 
       <me>
         S_n = a_1 + a_2 + \cdots + a_n
       </me>.
@@ -291,7 +292,7 @@
       <me>
         \sum a_k
       </me>
-      when we are interested in questions of convergence/divergence and not necessarily the exact sum of a series.
+      when we are interested in questions of convergence/divergence as opposed to the exact sum of a series.
     </p>
 
     <p>
@@ -305,6 +306,9 @@
       </me>,
       and thus a geometric series converges if <m>|r| \lt  1</m>.
       Geometric series diverge for all other values of <m>r</m>.
+    </p>
+
+    <p>
       It is generally a difficult question to determine if a given nongeometric series converges or diverges.
       There are several tests we can use that we will consider in the following sections.
     </p>
@@ -334,7 +338,7 @@
     </blockquote>
 
     <p>
-      It is logically equivalent to say that if the sequence <m>\{a_k\}</m> of <m>n</m> terms does not converge to 0, then the series <m>\sum_{k = 1}^{\infty} a_k</m> cannot converge.
+      It is logically equivalent to say that if the sequence <m>\{a_k\}</m> does not converge to 0, then the series <m>\sum_{k = 1}^{\infty} a_k</m> cannot converge.
       This statement is called the Divergence Test.
           <idx><h>Divergence Test</h></idx>
     </p>
@@ -370,46 +374,34 @@
       Often, we have to investigate the sequence of partial sums or apply some other technique.
     </p>
 
-    <sidebyside widths="32% 62%" margins="0%">
-      <stack>
-
-      <p>
-        As an example, consider the <term>harmonic
+    <p>
+        Next, we consider the <term>harmonic
         series</term>
             <idx><h>harmonic series</h></idx>
         <fn>This series is called harmonic because each term in the series after the first is the harmonic mean of the term  before it and the term after it.
         The harmonic mean of two numbers <m>a</m> and <m>b</m> is <m>\frac{2ab}{a+b}</m>.
         See <q>What's Harmonic about the Harmonic Series</q>,
-        by David E. Kullman (in the <pubtitle>College Mathematics Journal</pubtitle>, Vol. 32, No. 3 (May, 2001), 201-203) for an interesting discussion of the harmonic mean.</fn><me>
+        by David E. Kullman (in the <pubtitle>College Mathematics Journal</pubtitle>, Vol. 32, No. 3 (May, 2001), 201-203) for an interesting discussion of the harmonic mean.</fn>
+        <me>
           \sum_{k=1}^{\infty} \frac{1}{k}
         </me>.
-      </p>
-
-      <p>
-        Some partial sums of this series are shown to the right.
-      </p>
-
-      </stack>
-
-      <p>
+        The first 9 partial sums of this series are shown following.
         <md>
-          <mrow>\sum_{k=1}^{1} \frac{1}{k} \amp= 1 \amp \sum_{k=1}^{6} \frac{1}{k} \amp= 2.450000000</mrow>
-          <mrow>\sum_{k=1}^{2} \frac{1}{k} \amp= 1.5 \amp \sum_{k=1}^{7} \frac{1}{k} \amp= 2.592857143</mrow>
-          <mrow>\sum_{k=1}^{3} \frac{1}{k} \amp= 1.833333333 \amp \sum_{k=1}^{8} \frac{1}{k} \amp= 2.717857143</mrow>
-          <mrow>\sum_{k=1}^{4} \frac{1}{k} \amp= 2.083333333 \amp \sum_{k=1}^{9} \frac{1}{k} \amp= 2.828968254</mrow>
-          <mrow>\sum_{k=1}^{5} \frac{1}{k} \amp= 2.283333333 \amp \sum_{k=1}^{10} \frac{1}{k} \amp= 2.928968254</mrow>
+          <mrow>\sum_{k=1}^{1} \frac{1}{k} \amp= 1 \amp \sum_{k=1}^{4} \frac{1}{k} \amp= 2.083333333 \amp \sum_{k=1}^{7} \frac{1}{k} \amp= 2.592857143</mrow>
+          <mrow>\sum_{k=1}^{2} \frac{1}{k} \amp= 1.5 \amp \sum_{k=1}^{5} \frac{1}{k} \amp= 2.283333333 \amp \sum_{k=1}^{8} \frac{1}{k} \amp= 2.717857143</mrow>
+          <mrow>\sum_{k=1}^{3} \frac{1}{k} \amp= 1.833333333 \amp \sum_{k=1}^{6} \frac{1}{k} \amp= 2.450000000 \amp \sum_{k=1}^{9} \frac{1}{k} \amp= 2.828968254</mrow>
         </md>
-      </p>
-    </sidebyside>
+    </p>
+
     <p>
-      This information doesn't seem to be enough to tell us if the series
+      This information alone doesn't seem to be enough to tell us if the series
       <m>\sum_{k=1}^{\infty} \frac{1}{k}</m> converges or diverges.
       The partial sums could eventually level off to some fixed number or continue to grow without bound.
       Even if we look at larger partial sums,
       such as <m>\sum_{n=1}^{1000} \frac{1}{k} \approx 7.485470861</m>,
-      the result doesn't particularly sway us one way or another.
+      the result isn't particularly convincing one way or another.
       The Integral Test is one way to determine whether or not the harmonic series converges,
-      and we explore this further in the next activity.
+      and we explore this test further in the next activity.
     </p>
 
     <xi:include href="./activities/act-8-3-4.xml" />
@@ -423,7 +415,7 @@
       <me>
         S_n = \sum_{k=1}^{n} a_k
       </me>
-      can always be viewed as a left hand Riemann sum of <m>f(x)</m>, using rectangles with bases of length 1 and heights given by the values <m>a_k</m>.
+      can always be viewed as a left hand Riemann sum of <m>f(x)</m>, using rectangles with bases of width 1 and heights given by the values <m>a_k</m>.
       A representative picture is shown at left in <xref ref="F-8-3-Integral-Test">Figure</xref>.
       Since <m>f</m> is a decreasing function, we have that
       <me>
@@ -432,7 +424,7 @@
     </p>
 
     <p>
-      Taking limits as <m>n</m> goes to infinity shows that
+      Taking the limit as <m>n</m> goes to infinity shows that
       <me>
         \sum_{k=1}^{\infty} a_k \gt \int_{1}^{\infty} f(x) \ dx
       </me>.
@@ -463,7 +455,7 @@
     <p>
       So if <m>\int_{1}^{\infty} f(x) \ dx</m> converges,
       then so does <m>\sum_{k=2}^{\infty} a_k</m>,
-      which also means that the series <m>\sum_{k=1}^{\infty} a_k</m> converges.
+      which also means that the series <m>\sum_{k=1}^{\infty} a_k</m> also converges.
       Our preceding discussion has demonstrated the truth of the Integral Test.
           <idx><h>integral test</h></idx>
     </p>
@@ -508,23 +500,22 @@
     <p>
       The Integral Test allows us to determine the convergence of an entire family of series:
       the <m>p</m>-series.
-      However, we have seen that it is, in general,
+      However, we have seen that it is often
       difficult to integrate functions,
       so the Integral Test is not one that we can use all of the time.
-      In fact, even for a relatively simple series like <m>\sum \frac{k^2+1}{k^4+2k+2}</m>,
+      In fact, even for a relatively simple series such as <m>\sum \frac{k^2+1}{k^4+2k+2}</m>,
       the Integral Test is not an option.
-      In this section we will develop a test that we can use to apply to series of rational functions by comparing their behavior to the behavior of <m>p</m>-series.
+      In what follows we develop a test that applies to series of rational functions by comparing their behavior to the behavior of <m>p</m>-series.
     </p>
 
     <xi:include href="./activities/act-8-3-6.xml" />
 
     <p>
       <xref ref="act-8-3-6">Activity</xref>
-      illustrates how we can compare one series with positive terms to another whose behavior
-      (that is, whether the series converges or diverges)
-      we know.
+      illustrates how we can compare one series with positive terms to another whose 
+      convergence status we know.
       Suppose we have two series <m>\sum a_k</m> and
-      <m>\sum b_k</m> with positive terms and we know the behavior of the series <m>\sum a_k</m>.
+      <m>\sum b_k</m> with positive terms and we know the convergence status of the series <m>\sum a_k</m>.
       Recall that the convergence or divergence of a series depends only on the terms of the series for large values of <m>k</m>,
       so if we know that <m>a_k</m> and <m>b_k</m> are proportional for large <m>k</m>,
       then the two series <m>\sum a_k</m> and
@@ -635,7 +626,8 @@
     </assemblage>
 
     <p>
-      <em>Note well:</em> The Ratio Test looks at the limit of the ratio of consecutive terms;
+      <em>Note well:</em> The Ratio Test looks at the limit of the ratio of consecutive terms
+      of a given series;
       in so doing, the test is asking,
       <q>is this series approximately geometric?</q>
       If so,
@@ -643,17 +635,29 @@
     </p>
 
     <p>
-      We have now encountered several tests for determining convergence or divergence of series.<ul>
-      <li>The Divergence Test can be used to show that a series diverges,
-      but never to prove that a series converges.</li>
-      <li>We used the Integral Test to determine the convergence status of an entire class of series,
-      the <m>p</m>-series.</li>
-      <li>The Limit Comparison Test works well for series that involve rational functions and which can therefore by compared to <m>p</m>-series.</li>
-      <li>Finally, the Ratio Test allows us to compare our series to a geometric series;
-      it is particularly useful for series that involve <m>n</m>th powers and factorials.</li>
-      <li>Two other tests, the Direct Comparison Test and the Root Test,
-      are discussed in the exercises.</li></ul>
-      Now it is time for some practice.
+      We have now encountered several tests for determining convergence or divergence of series.
+      <ul>
+        <li>
+          The Divergence Test can be used to show that a series diverges,
+          but never to prove that a series converges.
+        </li>
+        <li>
+          We used the Integral Test to determine the convergence status of an entire class of series,
+          the <m>p</m>-series.
+        </li>
+        <li>
+          The Limit Comparison Test works well for series that involve rational functions and which can therefore by compared to <m>p</m>-series.
+        </li>
+        <li>
+          Finally, the Ratio Test allows us to compare our series to a geometric series;
+          it is particularly useful for series that involve <m>n</m>th powers and factorials.
+        </li>
+        <li>
+          Two other tests, the Direct Comparison Test and the Root Test,
+          are discussed in the exercises.
+        </li>
+      </ul>
+      One of the challenges of determining whether a series converges or diverges is finding which test answers that question.  
     </p>
 
     <xi:include href="./activities/act-8-3-9.xml" />
