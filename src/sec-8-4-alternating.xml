@@ -26,12 +26,6 @@
 
       <li>
         <p>
-          What does it mean for an alternating series to converge?
-        </p>
-      </li>
-
-      <li>
-        <p>
           Under what conditions does an alternating series converge?
           Why?
         </p>
@@ -44,11 +38,6 @@
         </p>
       </li>
 
-      <li>
-        <p>
-          What is the difference between absolute convergence and conditional convergence?
-        </p>
-      </li>
     </ul>
   </objectives>
   <introduction>
@@ -73,6 +62,7 @@
     </p>
 
     <xi:include href="./previews/PA-8-4.xml" />
+
   </introduction>
 
   <subsection>
@@ -80,21 +70,11 @@
     <p>
       <xref ref="PA-8-4">Preview Activity</xref>
       gives us several approximations to <m>\ln(2)</m>.
-      The linear approximation is 1, and the quadratic approximation is <m>1 - \frac{1}{2} = \frac{1}{2}</m>.
+      The linear approximation is <m>1</m>, and the quadratic approximation is <m>1 - \frac{1}{2} = \frac{1}{2}</m>.
       If we continue this process, cubic,
-      quartic (degree 4), quintic (degree 5),
+      quartic (degree <m>4</m>), quintic (degree <m>5</m>),
       and higher degree polynomials give us the approximations to <m>\ln(2)</m> in <xref ref="T-8-4-ln2">Table</xref>.
     </p>
-
-    <sidebyside widths="47% 47%" margins="0%" valign="bottom">
-      <p>
-        The pattern here shows that <m>\ln(2)</m> can be approximated by the partial sums of the infinite series
-        <men xml:id="eq-ln-2">
-          \sum_{k=1}^{\infty} (-1)^{k+1} \frac{1}{k}
-        </men>
-        where the alternating signs are indicated by the factor <m>(-1)^{k+1}</m>. We call such a series an <em>alternating series</em>.
-          <idx><h>alternating series</h></idx>
-      </p>
 
       <table xml:id="T-8-4-ln2">
         <caption /><tabular>
@@ -125,7 +105,16 @@
           </row>
         </tabular>
       </table>
-    </sidebyside>
+
+      <p>
+        The pattern here shows that <m>\ln(2)</m> can be approximated by the partial sums of the infinite series
+        <men xml:id="eq-ln-2">
+          \sum_{k=1}^{\infty} (-1)^{k+1} \frac{1}{k}
+        </men>
+        where the alternating signs are indicated by the factor <m>(-1)^{k+1}</m>. We call such a series an <em>alternating series</em>.
+          <idx><h>alternating series</h></idx>
+      </p>
+
     <p>
       Using computational technology,
       we find that the sum of the first 100 terms in this series is 0.6881721793.
@@ -181,7 +170,7 @@
       <me>
         \sum_{k=1}^{\infty} (-1)^{k+1} a_k
       </me>
-      in which the sequence <m>a_k</m> consists of positive numbers that decrease to 0.
+      in which the sequence <m>a_k</m> consists of positive numbers that decrease to <m>0</m>.
       The <m>n</m>th partial sum <m>S_n</m> is
       <me>
         S_n = \sum_{k=1}^n (-1)^{k+1} a_k
@@ -249,6 +238,7 @@
         <image source="images/8_4_Alternating_Series_Test" />
       </figure>
     </sidebyside>
+
     <p>
       Note further that the absolute value of the difference between the <m>(n-1)</m>st partial sum <m>S_{n-1}</m> and the <m>n</m>th partial sum <m>S_n</m> is
       <me>
@@ -257,7 +247,7 @@
     </p>
 
     <p>
-      Because the sequence <m>\{a_n\}</m> converges to 0, the distance between successive partial sums becomes as close to zero as we'd like,
+      Because the sequence <m>\{a_n\}</m> converges to <m>0</m>, the distance between successive partial sums becomes as close to zero as we'd like,
       and thus the sequence of partial sums converges (even though we don't know the exact value to which it converges).
     </p>
 
@@ -270,9 +260,9 @@
       <title>The Alternating Series Test</title>
       <p>
         Given an alternating series
-        <me>
+        <m>
           \sum (-1)^k a_k
-        </me>,
+        </m>,
         if the sequence <m>\{a_k\}</m> of positive terms decreases to 0 as <m>k \to \infty</m>,
         then the alternating series converges.
       </p>
@@ -313,13 +303,13 @@
       <title>Alternating Series Estimation Theorem</title>
       <p>
         If the alternating series
-        <me>
+        <m>
           \sum_{k=1}^{\infty} (-1)^{k+1}a_k
-        </me>
+        </m>
         converges and has sum <m>S</m>, and
-        <me>
+        <m>
           S_n = \sum_{k=1}^{n} (-1)^{k+1}a_k
-        </me>
+        </m>
         is the <m>n</m>th partial sum of the alternating series, then
         <me>
           \left\lvert \sum_{k=1}^{\infty} (-1)^{k+1}a_k - S_n \right\rvert \leq a_{n+1}
@@ -330,7 +320,7 @@
     <example xml:id="Ex-8-4-1">
       <statement>
         <p>
-          Let's determine how well the 100th partial sum <m>S_{100}</m> of
+          Determine how well the <m>100</m>th partial sum <m>S_{100}</m> of
           <me>
             \sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k}
           </me>
@@ -363,13 +353,13 @@
             S_{100} = \sum_{k=1}^{100} \frac{(-1)^{k+1}}{k} \approx 0.6881721793
           </me>.
         </p>
+
+        <p>
+          We see that the actual difference between <m>S</m> and <m>S_{100}</m> is approximately <m>0.0049750013</m>,
+          which is indeed less than <m>0.0099</m>.
+        </p>
       </solution>
     </example>
-
-    <p>
-      We see that the actual difference between <m>S</m> and <m>S_{100}</m> is approximately <m>0.0049750013</m>,
-      which is indeed less than <m>0.0099</m>.
-    </p>
 
     <xi:include href="./activities/act-8-4-3.xml" />
   </subsection>
@@ -522,7 +512,7 @@
         </li>
 
         <li>
-          <title>Direct Comparision Test</title>
+          <title>Direct Comp. Test</title>
           <p>
             (see Ex 4 in <xref ref="sec-8-3-series">Section</xref>)
           </p>
@@ -553,7 +543,7 @@
         </li>
 
         <li>
-          <title>Limit Comparison Test</title>
+          <title>Limit Comp. Test</title>
           <p>
             Let <m>a_n</m> and <m>b_n</m> be sequences of positive terms.
             If
@@ -650,7 +640,7 @@
         </li>
 
         <li>
-          <title>Alternating Series Test</title>
+          <title>Alt. Series Test</title>
           <p>
             If <m>a_n</m> is a positive,
             decreasing sequence so that <m>\displaystyle \lim_{n \to \infty} a_n = 0</m>,
@@ -663,10 +653,10 @@
         </li>
 
         <li>
-          <title>Alternating Series Estimation</title>
+          <title>Alt. Series Est.</title>
           <p>
             Let <m>S_n = \displaystyle \sum_{k=1}^n (-1)^{k+1} a_k</m> be the <m>n</m>th partial sum of the alternating series <m> \displaystyle \sum_{k=1}^{\infty} (-1)^{k+1} a_k</m>.
-            Assume <m>a_n > 0</m> for each positive integer <m>n</m>,
+            Assume <m>a_n \gt 0</m> for each positive integer <m>n</m>,
             the sequence <m>a_n</m> decreases to 0 and <m>\displaystyle \lim_{n \to \infty} S_n = S</m>.
             Then it follows that <m>|S - S_n| \lt a_{n+1}</m>.
           </p>
@@ -693,16 +683,6 @@
               \sum (-1)^ka_k
             </me>
             where <m>a_k</m> is a positive real number for each <m>k</m>.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            An alternating series
-            <m>\sum_{k=1}^{\infty} (-1)^ka_k</m> converges if and only if its sequence <m>\{S_n\}</m> of partial sums converges, where
-            <me>
-              S_n = \sum_{k=1}^{n} (-1)^ka_k
-            </me>.
           </p>
         </li>
 
