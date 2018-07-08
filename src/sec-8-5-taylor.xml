@@ -33,10 +33,7 @@
   </objectives>
   <introduction>
     <p>
-      In our work to date in <xref ref="C-8">Chapter</xref>,
-      essentially every sum we have considered has been a sum of numbers.
-      In particular,
-      each infinite series that we have discussed has been a series of real numbers, such as
+      So far, each infinite series we have discussed has been a series of real numbers, such as
       <men xml:id="E-geom12">
         1 + \frac{1}{2} + \frac{1}{4} + \cdots + \frac{1}{2^k} + \cdots = \sum_{k=0}^{\infty} \frac{1}{2^k}
       </men>.
@@ -44,12 +41,11 @@
 
     <p>
       In the remainder of this chapter,
-      we will expand our notion of series to include series that involve a variable,
-      say <m>x</m>.
+      we will include series that involve a variable.
       For instance,
       if in the geometric series in <xref ref="E-geom12">Equation</xref>
       we replace the ratio <m>r = \frac{1}{2}</m> with the variable <m>x</m>,
-      then we have the infinite
+      we have the infinite
       (still geometric)
       series
       <men xml:id="E-geomx">
@@ -59,7 +55,7 @@
 
     <p>
       Here we see something very interesting:
-      since a geometric series converges whenever its ratio <m>r</m> satisfies <m>|r|\lt 1</m>,
+      because a geometric series converges whenever its ratio <m>r</m> satisfies <m>|r|\lt 1</m>,
       and the sum of a convergent geometric series is <m>\frac{a}{1-r}</m>,
       we can say that for <m>|x| \lt  1</m>,
       <men xml:id="E-geomxsummed">
@@ -68,11 +64,11 @@
     </p>
 
     <p>
-      Note well what <xref ref="E-geomxsummed">Equation</xref> states:
+      <xref ref="E-geomxsummed">Equation</xref> states that
       the non-polynomial function
       <m>\frac{1}{1-x}</m> on the right is equal to the infinite polynomial expresssion on the left.
-      Moreover, it appears natural to truncate the infinite sum on the left
-      (whose terms get very small as <m>k</m> gets large)
+      Because the terms on the left
+      get very small as <m>k</m> gets large, we can truncate the series
       and say, for example, that
       <me>
         1 + x + x^2 + x^3 \approx \frac{1}{1-x}
@@ -84,9 +80,7 @@
 
     <p>
       In <xref ref="PA-8-5">Preview Activity</xref>,
-      we begin our explorations of approximating non-polynomial functions with polynomials,
-      from which we will also develop ideas regarding infinite series that involve a variable,
-      <m>x</m>.
+      we begin our exploration of approximating functions with polynomials.
     </p>
 
     <xi:include href="./previews/PA-8-5.xml" />
@@ -98,7 +92,7 @@
 
     <p>
       <xref ref="PA-8-5">Preview Activity</xref>
-      illustrates the first steps in the process of approximating complicated functions with polynomials.
+      illustrates the first steps in the process of approximating functions with polynomials.
       Using this process we can approximate trigonometric, exponential,
       logarithmic,
       and other nonpolynomial functions as closely as we like
@@ -106,26 +100,23 @@
       with polynomials.
       This is extraordinarily useful in that it allows us to calculate values of these functions to whatever precision we like using only the operations of addition,
       subtraction, multiplication, and division,
-      which are operations that can be easily programmed in a computer.
+      which can be easily programmed in a computer.
     </p>
 
     <p>
       We next extend the approach in <xref ref="PA-8-5">Preview Activity</xref>
       to arbitrary functions at arbitrary points.
       Let <m>f</m> be a function that has as many derivatives at a point <m>x=a</m> as we need.
-      Since first learning it in <xref ref="sec-1-8-tan-line-approx">Section</xref>,
-      we have regularly used the linear approximation <m>P_1(x)</m> to <m>f</m> at <m>x=a</m>,
-      which in one sense is the best linear approximation to <m>f</m> near <m>a</m>.
       Recall that <m>P_1(x)</m> is the tangent line to <m>f</m> at
       <m>(a,f(a))</m> and is given by the formula
       <me>
         P_1(x) = f(a) + f'(a)(x-a)
       </me>.
+      <m>P_1(x)</m> is the best linear approximation to <m>f</m> near <m>a</m>.
     </p>
 
     <p>
-      If we proceed as in <xref ref="PA-8-5">Preview Activity</xref>,
-      we then want to find the best quadratic approximation
+      We next want to find the best quadratic approximation
       <me>
         P_2(x) = P_1(x) + c_2(x-a)^2
       </me>
@@ -162,7 +153,7 @@
     </p>
 
     <p>
-      Therefore, the quadratic approximation <m>P_2(x)</m> to <m>f</m> centered at <m>x=0</m> is
+      Therefore, the quadratic approximation <m>P_2(x)</m> to <m>f</m> centered at <m>x=a</m> is
       <me>
         P_2(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2
       </me>.
@@ -170,13 +161,13 @@
 
     <p>
       This approach extends naturally to polynomials of higher degree.
-      In this situation, we define polynomials
+      We define polynomials
       <md>
         <mrow>P_3(x) \amp = P_2(x) + c_3(x-a)^3\text{,}</mrow>
         <mrow>P_4(x) \amp = P_3(x) + c_4(x-a)^4\text{,}</mrow>
         <mrow>P_5(x) \amp = P_4(x) + c_5(x-a)^5</mrow>
       </md>,
-      and so on, with the general one being
+      and in general
       <me>
         P_n(x) = P_{n-1}(x) + c_n(x-a)^n
       </me>.
@@ -184,7 +175,7 @@
 
     <p>
       The defining property of these polynomials is that for each <m>n</m>,
-      <m>P_n(x)</m> must have its value and all its first <m>n</m> derivatives agree with those of <m>f</m> at <m>x = a</m>.
+      <m>P_n(x)</m> and all its first <m>n</m> derivatives must agree with those of <m>f</m> at <m>x = a</m>.
       In other words we require that
       <me>
         P^{(k)}_n(a) = f^{(k)}(a)
@@ -229,8 +220,8 @@
         c_k = \frac{f^{(k)}(a)}{k!}
       </me>
       for each value of <m>k</m>.
-      In this expression for <m>c_k</m>,
-      we have found the formula for the degree <m>n</m> polynomial approximation of <m>f</m> that we seek.
+      Using this expression for <m>c_k</m>,
+      we have found the formula for the polynomial approximation of <m>f</m> that we seek.
     </p>
 
     <assemblage>
@@ -388,10 +379,6 @@
 
     <xi:include href="./activities/act-8-5-2.xml" />
 
-    <p>
-      The next activity further considers the important issue of the <m>x</m>-values for which the Taylor series of a function converges to the function itself.
-    </p>
-
     <xi:include href="./activities/act-8-5-3.xml" />
 
     <p>
@@ -412,18 +399,15 @@
       we observed that the Taylor polynomials centered at 0 for <m>e^x</m>,
       <m>\cos(x)</m>,
       and <m>\sin(x)</m> converged to these functions for all values of <m>x</m> in their domain,
-      but that the Taylor polynomials centered at 0 for <m>\frac{1}{1-x}</m> converged to
-      <m>\frac{1}{1-x}</m> for only some values of <m>x</m>.
-      In fact, the Taylor polynomials centered at 0 for <m>\frac{1}{1-x}</m> converge to
+      but that the Taylor polynomials centered at 0 for <m>\frac{1}{1-x}</m> converge to
       <m>\frac{1}{1-x}</m> on the interval <m>(-1,1)</m> and diverge for all other values of <m>x</m>.
       So the Taylor series for a function <m>f(x)</m> does not need to converge for all values of <m>x</m> in the domain of <m>f</m>.
     </p>
 
     <p>
-      Our observations to date suggest two natural questions:
+      Our observations suggest two natural questions:
       can we determine the values of <m>x</m> for which a given Taylor series converges?
-      Moreover, given the Taylor series for a function <m>f</m>,
-      does it actually converge to <m>f(x)</m> for those values of <m>x</m> for which the Taylor series converges?
+     And does the Taylor series for a function <m>f</m> actually converge to <m>f(x)</m>?
     </p>
 
     <example xml:id="Ex-8-5-2">
@@ -440,13 +424,9 @@
       </statement>
       <solution>
         <p>
-          In previous work,
-          we used the Ratio Test on series of numbers that did not involve a variable;
-          recall, too,
-          that the Ratio Test only applies to series of nonnegative terms.
-          In this example,
-          we have to address the presence of the variable <m>x</m>.
-          Because we are interested in absolute convergence,
+          Recall that the Ratio Test applies only to series of nonnegative terms.
+          In this example, the variable <m>x</m> may have negative values.
+          But we are interested in absolute convergence, so
           we apply the Ratio Test to the series
           <me>
             \sum_{k=0}^{\infty} \left| \frac{x^k}{k!} \right| = \sum_{k=0}^{\infty} \frac{| x |^k}{k!}
@@ -469,7 +449,7 @@
     </example>
 
     <p>
-      One key question remains:
+      One question still remains:
       while the Taylor series for <m>e^x</m> converges for all <m>x</m>,
       what we have done does not tell us that this Taylor series actually converges to <m>e^x</m> for each <m>x</m>.
       We'll return to this question when we consider the error in a Taylor approximation near the end of this section.
@@ -483,7 +463,7 @@
       </me>,
       centered at <m>x = a</m> will converge,
       we apply the Ratio Test with
-      <m>a_k = | c_k (x-a)^k |</m> and recall that the series to which the Ratio Test is applied converges if <m>\lim_{k \to \infty} \frac{a_{k+1}}{a_k} \lt  1</m>.
+      <m>a_k = | c_k (x-a)^k |</m>. The series converges if <m>\lim_{k \to \infty} \frac{a_{k+1}}{a_k} \lt  1</m>.
     </p>
 
     <p>
@@ -491,32 +471,31 @@
       <me>
         \frac{a_{k+1}}{{a_k}} = | x-a | \frac{| c_{k+1} |}{| c_{k} |}
       </me>,
-      so when we apply the Ratio Test, we get that
+      so when we apply the Ratio Test, we get 
       <me>
-        \lim_{k \to \infty} \frac{a_{k+1}}{a_k} = \lim_{k \to \infty} |x-a| \frac{c_{k+1}}{c_k}
+        \lim_{k \to \infty} \frac{a_{k+1}}{a_k} = \lim_{k \to \infty} |x-a| \frac{| c_{k+1} |}{| c_{k} |}
       </me>.
     </p>
 
     <p>
-      Note further that <m>c_k = \frac{f^{(k)}(a)}{k!}</m>,
-      and say that
+      Note suppose that
       <me>
-        \lim_{k \to \infty} \frac{c_{k+1}}{c_k} = L
-      </me>.
+        \lim_{k \to \infty} \frac{| c_{k+1} |}{| c_{k} |} = L
+      </me>,
     </p>
 
     <p>
-      Thus, we have found that
+      so that
       <me>
         \lim_{k \to \infty} \frac{a_{k+1}}{a_k} = |x-a| \cdot L
       </me>.
     </p>
 
     <p>
-      There are three important possibilities for <m>L</m>:
-      <m>L</m> can be 0, a finite positive value, or infinite.
+      There are three possibilities for <m>L</m>:
+      <m>L</m> can be 0, it can be a finite positive value, or it can be infinite.
       Based on this value of <m>L</m>,
-      we can therefore determine for which values of <m>x</m> the original Taylor series converges.
+      we can determine for which values of <m>x</m> the original Taylor series converges.
     </p>
 
     <p>
@@ -541,13 +520,12 @@
             then the Taylor series converges absolutely for all <m>x</m> that satisfy
             <me>
               |x-a| \cdot L \lt  1
-            </me>.
-            In other words,
-            the series converges absolutely for all <m>x</m> such that
+            </me>
+            or for all <m>x</m> such that
             <me>
               |x-a| \lt  \frac{1}{L}
             </me>,
-            which is also the interval
+            which is the interval
             <me>
               \left(a-\frac{1}{L}, a+\frac{1}{L}\right)
             </me>.
@@ -572,9 +550,9 @@
     <xi:include href="./activities/act-8-5-4.xml" />
 
     <p>
-      The Ratio Test tells us how we can determine the set of <m>x</m> values for which a Taylor series converges absolutely.
+      The Ratio Test allows us to determine the set of <m>x</m> values for which a Taylor series converges absolutely.
       However, just because a Taylor series for a function <m>f</m> converges,
-      we cannot be certain that the Taylor series actually converges to <m>f(x)</m> on its interval of convergence.
+      we cannot be certain that the Taylor series actually converges to <m>f(x)</m>.
       To show why and where a Taylor series does in fact converge to the function <m>f</m>,
       we next consider the error that is present in Taylor polynomials.
     </p>
@@ -586,16 +564,15 @@
 
     <p>
       We now know how to find Taylor polynomials for functions such as <m>\sin(x)</m>,
-      as well as how to determine the interval of convergence of the corresponding Taylor series.
+      and how to determine the interval of convergence of the corresponding Taylor series.
       We next develop an error bound that will tell us how well an <m>n</m>th order Taylor polynomial <m>P_n(x)</m> approximates its generating function <m>f(x)</m>.
       This error bound will also allow us to determine whether a Taylor series on its interval of convergence actually equals the function <m>f</m> from which the Taylor series is derived.
-      Finally, we will be able to use the error bound to determine the order of the Taylor polynomial <m>P_n(x)</m> for a function <m>f</m> that we need to ensure that <m>P_n(x)</m> approximates <m>f(x)</m> to any desired degree of accuracy.
+      Finally, we will be able to use the error bound to determine the order of the Taylor polynomial <m>P_n(x)</m> that we will ensure that <m>P_n(x)</m> approximates <m>f(x)</m> to the desired degree of accuracy.
     </p>
 
     <p>
-      In all of this, we need to compare <m>P_n(x)</m> to <m>f(x)</m>.
       For this argument,
-      we assume throughout that we center our approximations at 0 (a similar argument holds for approximations centered at <m>a</m>).
+      we assume throughout that we center our approximations at 0 (but a similar argument holds for approximations centered at <m>a</m>).
       We define the exact error, <m>E_n(x)</m>,
       that results from approximating <m>f(x)</m> with <m>P_n(x)</m> by
       <me>
@@ -606,7 +583,7 @@
     <p>
       We are particularly interested in <m>|E_n(x)|</m>,
       the distance between <m>P_n</m> and <m>f</m>.
-      Note that since
+      Because
       <me>
         P^{(k)}_n(0) = f^{(k)}(0)
       </me>
@@ -663,7 +640,7 @@
     </p>
 
     <p>
-      Integrating the most recent inequality, we obtain
+      Integrating this last inequality, we obtain
       <me>
         \int_0^x -Mt \ dt \leq \int_0^x E^{(n)}_n(t) \ dt \leq \int_0^x Mt \ dt
       </me>
@@ -685,7 +662,7 @@
         \left|E_n(x)\right| \leq M\frac{|x|^{n+1}}{(n+1)!}
       </me>
       for all <m>x</m> in <m>[0, c]</m>,
-      which shows an important bound on the approximation's error,
+      and we have found a bound on the approximation's error,
       <m>E_n</m>.
     </p>
 
@@ -708,7 +685,7 @@
     </p>
 
     <p>
-      This error bound may now be used to tell us important information about Taylor polynomials and Taylor series,
+      We can use this error bound to tell us important information about Taylor polynomials and Taylor series,
       as we see in the following examples and activities.
     </p>
 
@@ -724,8 +701,7 @@
           To answer this question we use
           <m>f(x) = \sin(x)</m>, <m>c = 2</m>, <m>a=0</m>,
           and <m>n = 10</m> in the Lagrange error bound formula.
-          To use the bound,
-          we also need to find an appropriate value for <m>M</m>.
+          We also need to find an appropriate value for <m>M</m>.
           Note that the derivatives of <m>f(x) = \sin(x)</m> are all equal to
           <m>\pm \sin(x)</m> or <m>\pm \cos(x)</m>.
           Thus,
@@ -775,9 +751,9 @@
         </p>
 
         <p>
-          We showed in earlier work with the Taylor series
+          We showed in earlier work that the Taylor series
           <m>\sum_{k=0}^{\infty} \frac{x^k}{k!}</m> converges for every value of <m>x</m>.
-          Since the terms of any convergent series must approach zero,
+          Because the terms of any convergent series must approach zero,
           it follows that
           <me>
             \lim_{n \to \infty} \frac{x^{n+1}}{(n+1)!} = 0
@@ -809,8 +785,8 @@
       <ul>
         <li>
           <p>
-            We can use Taylor polynomials to approximate complicated functions.
-            This allows us to approximate values of complicated functions using only addition,
+            We can use Taylor polynomials to approximate functions.
+            This allows us to approximate values of functions using only addition,
             subtraction, multiplication,
             and division of real numbers.
             The <m>n</m>th order Taylor polynomial centered at <m>x=a</m> of a function <m>f</m> is
