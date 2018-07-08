@@ -25,9 +25,9 @@
   </objectives>
   <introduction>
     <p>
-      We have noted at several points in our work with Taylor polynomials and Taylor series that polynomial functions are the simplest possible functions in mathematics,
-      in part because they essentially only require addition and multiplication to evaluate.
-      Moreover, from the point of view of calculus,
+      We have noted in our work with Taylor polynomials and Taylor series that polynomial functions are the simplest possible functions in mathematics,
+      in part because they require only addition and multiplication to evaluate.
+      From the point of view of calculus,
       polynomials are especially nice:
       we can easily differentiate or integrate any polynomial.
       In light of our work in <xref ref="sec-8-5-taylor">Section</xref>,
@@ -39,15 +39,13 @@
     </p>
 
     <p>
-      As we continue our study of infinite series,
-      there are two settings where other series like the one for <m>e^x</m> arise:
-      one is where we are simply given an expression like
+      There are two settings where other series like the one for <m>e^x</m> arise:
+     we may be given an expression such as
       <me>
         1 + 2x + 3x^2 + 4x^3 + \cdots
       </me>
-      and we seek the values of <m>x</m> for which the expression makes sense,
-      while another is where we are trying to find an unknown function <m>f</m>,
-      and we think about the possibility that the function has expression
+      and we seek the values of <m>x</m> for which the expression makes sense.
+      Or we may be trying to find an unknown function <m>f</m>that has expression
       <me>
         f(x) = a_0 + a_1 x + a_2 x^2 + \cdots + a_k x^k + \cdots
       </me>,
@@ -69,10 +67,8 @@
       and then determine the coefficients from other information.
       In other words,
       we define a function as an infinite series of powers of <m>x</m> and then determine the coefficients based on something besides a formula for the function.
-      This method of using series illustrated in <xref ref="PA-8-6">Preview Activity</xref>
-      to solve differential equations is a powerful and important one that allows us to approximate solutions to many different types of differential equations even if we cannot explicitly solve them.
-      This approach is different from defining a Taylor series based on a given function,
-      and these functions we define with arbitrary coefficients are given a special name.
+      This method allows us to approximate solutions to many different types of differential equations, even if we cannot solve them explicitly.
+      Notice that this is different from defining a Taylor series based on a given function.
     </p>
 
     <definition>
@@ -90,8 +86,7 @@
     </definition>
 
     <p>
-      We can substitute different values for <m>x</m> and test whether the resulting series converges or diverges.
-      Thus, a power series defines a function <m>f</m> whose domain is the set of <m>x</m> values for which the power series converges.
+      A power series defines a function <m>f</m> whose domain is the set of <m>x</m> values for which the power series converges.
       We therefore write
       <me>
         f(x) = \sum_{k=0}^{\infty} c_k(x-a)^k
@@ -101,7 +96,7 @@
     <p>
       It turns out that<fn>See <xref ref="ex-8-5-2">Exercise</xref> in this section.</fn>,
       on its interval of convergence,
-      a power series is the Taylor series of the function that is the sum of the power series,
+      every power series is in fact the Taylor series of the function,
       so all of the techniques we developed in the previous section can be applied to power series as well.
     </p>
 
@@ -141,19 +136,19 @@
 
         <p>
           In general,
-          <m>f(x)</m> is a geometric series with ratio <m>\frac{x}{2}</m> and
+          <m>f(x)</m> is a geometric series with ratio <m>\frac{x}{2}</m>, so
           <me>
             f(x) = \sum_{k=0}^{\infty} \left(\frac{x}{2}\right)^k = \frac{1}{1-\frac{x}{2}} = \frac{2}{2-x}
           </me>
-          provided that <m>-1 \lt  \frac{x}{2} \lt  1</m> (so that the ratio is less than 1 in absolute value).
-          Thus, the power series that defines <m>f</m> converges for <m>-2 \lt  x \lt  2</m>.
+          provided that <m>-1 \lt  \frac{x}{2} \lt  1</m> (which ensures that the ratio is less than 1 in absolute value).
+          Thus, the power series that defines <m>f(x)=\frac{2}{2-x}</m> converges for <m>-2 \lt  x \lt  2</m>.
         </p>
 
         <p>
-          As with Taylor series,
+          As we did for Taylor series,
           we define the interval of convergence of a power series <xref ref="eq-8-6-power-series" /> to be the set of values of <m>x</m> for which the series converges.
-          In the same way as we did with Taylor series,
-          we typically use the Ratio Test to find the values of <m>x</m> for which the power series converges absolutely,
+          And as we did with Taylor series,
+          we use the Ratio Test to find the values of <m>x</m> for which the power series converges absolutely,
           and then check the endpoints separately if the radius of convergence is finite.
         </p>
       </solution>
@@ -188,12 +183,11 @@
         </figure>
 
         <p>
-          The behavior of <m>S_{50}</m> particularly highlights that it appears to be converging to a particular curve on the interval <m>(-1,1)</m>,
+          The behavior of <m>S_{50}</m> in particular suggests that <m>f(x)</m> appears to be converging to a particular curve on the interval <m>(-1,1)</m>,
           while growing without bound outside of that interval.
-          This suggests that the interval of convergence might be <m>-1 \lt  x \lt  1</m>.
-          To more fully understand this power series,
-          we apply the Ratio Test to determine the values of <m>x</m> for which the power series converges absolutely.
-          For the given series, we have
+          Thus, the interval of convergence might be <m>-1 \lt  x \lt  1</m>.
+          To verify our conjecture,
+          we apply the Ratio Test. Now,
           <me>
             a_k = \frac{x^k}{k^2}
           </me>,
@@ -207,9 +201,9 @@
         </p>
 
         <p>
-          Therefore, the Ratio Test tells us that the given power series <m>f(x)</m> converges absolutely when
+          Therefore, the Ratio Test tells us that <m>f(x)</m> converges absolutely when
           <m>| x | \lt 1</m> and diverges when <m>| x | \gt 1</m>.
-          Since the Ratio Test is inconclusive when <m>|x| = 1</m>,
+          Because the Ratio Test is inconclusive when <m>|x| = 1</m>,
           we need to check <m>x = 1</m> and <m>x = -1</m> individually.
         </p>
 
@@ -230,7 +224,7 @@
 
         <p>
           This is an alternating series,
-          and since the sequence <m>\left\{ \frac{1}{n^2} \right\}</m> decreases to 0, the power series converges when <m>x=-1</m> by the Alternating Series Test.
+          and since the sequence <m>\left\{ \frac{1}{n^2} \right\}</m> decreases to 0, the power series converges by the Alternating Series Test.
           Thus, the interval of convergence of this power series is <m>-1 \le x \le 1</m>.
         </p>
       </solution>
@@ -242,8 +236,8 @@
   <subsection>
     <title>Manipulating Power Series</title>
     <p>
-      Recall that we know several power series expressions for important functions such as <m>\sin(x)</m> and <m>e^x</m>.
-      Often, we can take a known power series expression for such a function and use that series expansion to find a power series for a different, but related,
+      We know power series expansions for important functions such as <m>\sin(x)</m> and <m>e^x</m>.
+      Often, we can use a known power series expansion to find a power series for a different, but related,
       function.
       The next activity demonstrates one way to do this.
     </p>
@@ -251,8 +245,8 @@
     <xi:include href="./activities/act-8-6-2.xml" />
 
     <p>
-      In a previous section we determined several important Maclaurin series and their intervals of convergence.
-      Here, we list these key functions and remind ourselves of their corresponding expansions.
+      In a previous section we found several important Maclaurin series and their intervals of convergence.
+      Here, we list these key functions and their corresponding expansions.
     </p>
 
     <assemblage>
@@ -270,13 +264,13 @@
       As we saw in <xref ref="act-8-6-2">Activity</xref>,
       we can use these known series to find other power series expansions for related functions such as <m>\sin(x^2)</m>,
       <m>e^{5x^3}</m>, and <m>\cos(x^5)</m>.
-      Another important way that we can manipulate power series is illustrated in the next activity.
+      
     </p>
 
     <xi:include href="./activities/act-8-6-3.xml" />
 
     <p>
-      It turns out that our work in <xref ref="act-8-6-2">Activity</xref> holds more generally.
+      Our work in <xref ref="act-8-6-2">Activity</xref> holds more generally.
       The corresponding theorem, which we will not prove,
       states that we can differentiate a power series for a function <m>f</m> term by term and obtain the series expansion for <m>f'</m>,
       and similarly we can integrate a series expansion for a function <m>f</m> term by term and obtain the series expansion for <m>\int f(x) \ dx</m>.
@@ -313,7 +307,7 @@
 
     <p>
       This theorem validates the steps we took in <xref ref="act-8-6-3">Activity</xref>.
-      It is important to note that this result about differentiating and integrating power series tells us that we can differentiate and integrate term by term on the interior of the interval of convergence,
+      It tells us that we can differentiate and integrate term by term on the interior of the interval of convergence,
       but it does not tell us what happens at the endpoints of this interval.
       We always need to check what happens at the endpoints separately.
       More importantly,
