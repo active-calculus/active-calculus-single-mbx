@@ -47,6 +47,7 @@
     </p>
 
     <xi:include href="./previews/PA-8-2.xml" />
+
   </introduction>
 
   <subsection>
@@ -65,8 +66,8 @@
         a+ar+ar^2+ \cdots + ar^{n-1}
       </men>
       where <m>a=5 \times 0.08</m> and <m>r=0.08</m>.
-      Such a sum is called a <em>geometric sum</em>
-          <idx><h>geometric sum</h></idx>
+      Such a sum is called a <em>finite geometric series</em>
+          <idx><h>finite geometric series</h></idx>
       with ratio <m>r</m>.
       
     </p>
@@ -77,20 +78,22 @@
       The sum of the terms of a sequence is called a <em>series</em>. We summarize the result of <xref ref="act-8-2-1">Activity</xref> in the following way.
     </p>
 
-    <p>
-      A geometric series <m>S_n</m> is a sum of the form
-      <men xml:id="eq-8-2-geometric-sum">
-        S_n = a + ar + ar^2 + \cdots + ar^{n-1}
-      </men>,
-      where <m>a</m> and <m>r</m> are real numbers such that <m>r \ne 1</m>.
-      The geometric series <m>S_n</m> can be written more simply as
-      <men xml:id="eq-8-2-part-sum-geometric">
-        S_n = a+ar+ar^2+ \cdots + ar^{n-1} = \frac{a(1-r^n)}{1-r}
-      </men>.
-    </p>
+      <assemblage>
+      <p>
+        A finite geometric series <m>S_n</m> is a sum of the form
+        <men xml:id="eq-8-2-geometric-sum">
+          S_n = a + ar + ar^2 + \cdots + ar^{n-1}
+        </men>,
+        where <m>a</m> and <m>r</m> are real numbers such that <m>r \ne 1</m>.
+        The finite geometric series <m>S_n</m> can be written more simply as
+        <men xml:id="eq-8-2-part-sum-geometric">
+          S_n = a+ar+ar^2+ \cdots + ar^{n-1} = \frac{a(1-r^n)}{1-r}
+        </men>.
+      </p>      
+    </assemblage>
 
     <p>
-      We now apply equation <xref ref="eq-8-2-part-sum-geometric" /> to the example involving warfarin from <xref ref="PA-8-2">Preview Activity</xref>.
+      We now apply Equation <xref ref="eq-8-2-part-sum-geometric" /> to the example involving Warfarin from <xref ref="PA-8-2">Preview Activity</xref>.
       Recall that
       <me>
         Q(n)=(5 \times 0.08)\left(1+0.08+0.08^2+0.08^3+ \cdots + 0.08^{n-1}\right) \text{mg}
@@ -118,7 +121,7 @@
 
     <p>
       To determine the long-term effect of Warfarin,
-      we considered a geometric series of <m>n</m> terms,
+      we considered a finite geometric series of <m>n</m> terms,
       and then considered what happened as <m>n</m> was allowed to grow without bound.
       In this sense,
       we were actually interested in an infinite geometric series (the result of letting <m>n</m> go to infinity in the finite sum).
@@ -139,11 +142,14 @@
     <p>
       The value of <m>r</m> in the geometric series <xref ref="eq-8-2-geometric-series" /> is called the <em>common ratio</em>
           <idx><h>geometric series</h><h>common ratio</h></idx>
-      of the series because the ratio of the (<m>n+1</m>)st term <m>ar^n</m> to the <m>n</m>th term <m>ar^{n-1}</m> is always <m>r</m>.
+      of the series because the ratio of the (<m>n+1</m>)st term, <m>ar^n</m>, to the <m>n</m>th term, <m>ar^{n-1}</m>, is always <m>r</m>:
+      <me>
+        \frac{ar^n}{ar^{n-1}} = r
+      </me>.
     </p>
 
     <p>
-      Geometric series are very common in mathematics and arise naturally in many different situations.
+      Geometric series are common in mathematics and arise naturally in many different situations.
       As a familiar example,
       suppose we want to write the number with repeating decimal expansion
       <me>
@@ -157,15 +163,21 @@
       </md>.
       This is an infinite geometric series with
       <m>a=\frac{12}{100}</m> and <m>r = \frac{1}{100}</m>.
+    </p>
+
+    <p>  
       By using the formula for the value of a finite geometric sum,
-      we can develop a formula for the value of an infinite geometric series.
+      we can also develop a formula for the value of an infinite geometric series.
       We explore this idea in the following activity.
     </p>
 
     <xi:include href="./activities/act-8-2-2.xml" />
 
     <p>
-      We can now find the value of the geometric series <m>N = \left(\frac{12}{100}\right) + \left(\frac{12}{100}\right)\left(\frac{1}{100}\right) + \left(\frac{12}{100}\right)\left(\frac{1}{100}\right)^2 + \cdots</m>.
+      We can now find the value of the geometric series 
+      <me>
+        N = \left(\frac{12}{100}\right) + \left(\frac{12}{100}\right)\left(\frac{1}{100}\right) + \left(\frac{12}{100}\right)\left(\frac{1}{100}\right)^2 + \cdots
+      </me>.
       Using <m>a = \frac{12}{100}</m> and <m>r = \frac{1}{100}</m>,
       we see that
       <me>
@@ -174,7 +186,7 @@
     </p>
 
     <p>
-      The sum of a finite number of terms of a geometric series is called a <em>partial sum</em>
+      The sum of a finite number of terms of an infinite geometric series is often called a <em>partial sum</em>
           <idx><h>partial sum</h></idx>
       of the series.
       Thus,
@@ -189,7 +201,7 @@
         <ul>
           <li>
             <p>
-              A geometric series is an infinite sum of the form
+              An infinite geometric series is an infinite sum of the form
               <men xml:id="eq-8-2-geometric-series-2">
                 a + ar + ar^2 + \cdots = \sum_{n=0}^{\infty} ar^n
               </men>,
@@ -199,7 +211,7 @@
 
           <li>
             <p>
-              The <m>n</m>th partial sum <m>S_n</m> of the geometric series is
+              The <m>n</m>th partial sum <m>S_n</m> of an infinite geometric series is
               <me>
                 S_n = a+ar+ar^2+ \cdots + ar^{n-1}
               </me>.
@@ -210,7 +222,7 @@
             <p>
               If <m>|r| \lt  1</m>,
               then using the fact that <m>S_n = a\frac{1-r^n}{1-r}</m>,
-              it follows that the sum <m>S</m> of the geometric series <xref ref="eq-8-2-geometric-series-2" /> is
+              it follows that the sum <m>S</m> of the infinite geometric series <xref ref="eq-8-2-geometric-series-2" /> is
               <me>
                 S = \lim_{n \to \infty} S_n = \lim_{n \to \infty} a\frac{1-r^n}{1-r} = \frac{a}{1-r}
               </me>
@@ -229,7 +241,7 @@
       <ul>
         <li>
           <p>
-            A geometric series is an infinite sum of the form
+            An infinite geometric series is an infinite sum of the form
             <me>
               \sum_{k=0}^{\infty} ar^k
             </me>
