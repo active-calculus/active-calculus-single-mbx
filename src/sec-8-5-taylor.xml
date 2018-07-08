@@ -19,13 +19,6 @@
 
       <li>
         <p>
-          How are Taylor polynomials and Taylor series different?
-          How are they related?
-        </p>
-      </li>
-
-      <li>
-        <p>
           How do we determine the accuracy when we use a Taylor polynomial to approximate a function?
         </p>
       </li>
@@ -106,17 +99,17 @@
     <p>
       We next extend the approach in <xref ref="PA-8-5">Preview Activity</xref>
       to arbitrary functions at arbitrary points.
-      Let <m>f</m> be a function that has as many derivatives at a point <m>x=a</m> as we need.
+      Let <m>f</m> be a function that has as many derivatives as we need at a point <m>x=a</m>.
       Recall that <m>P_1(x)</m> is the tangent line to <m>f</m> at
       <m>(a,f(a))</m> and is given by the formula
       <me>
         P_1(x) = f(a) + f'(a)(x-a)
       </me>.
-      <m>P_1(x)</m> is the best linear approximation to <m>f</m> near <m>a</m>.
+      <m>P_1(x)</m> is the linear approximation to <m>f</m> near <m>a</m> that has the same slope and function value as <m>f</m> at the point <m>x = a</m>.
     </p>
 
     <p>
-      We next want to find the best quadratic approximation
+      We next want to find a quadratic approximation
       <me>
         P_2(x) = P_1(x) + c_2(x-a)^2
       </me>
@@ -134,7 +127,7 @@
 
     <p>
       To make <m>P_2(x)</m> fit <m>f(x)</m> better than <m>P_1(x)</m>,
-      we want <m>P_2(x)</m> and <m>f(x)</m> to have the same concavity at <m>x=a</m>.
+      we want <m>P_2(x)</m> and <m>f(x)</m> to have the same concavity at <m>x=a</m>, in addition to having the same slope and function value.
       That is, we want to have
       <me>
         P''_2(a) = f''(a)
@@ -222,6 +215,7 @@
       for each value of <m>k</m>.
       Using this expression for <m>c_k</m>,
       we have found the formula for the polynomial approximation of <m>f</m> that we seek.
+      Such a polynomial is called a <em>Taylor polynomial</em>. <idx><h>Taylor polynomial</h></idx>
     </p>
 
     <assemblage>
@@ -237,7 +231,7 @@
 
       <p>
         This degree <m>n</m> polynomial approximates <m>f(x)</m> near <m>x=a</m> and has the property that
-        <m>P_n^{(k)}(a) = f^{(k)}(a)</m> for <m>k = 0 \ldots n</m>.
+        <m>P_n^{(k)}(a) = f^{(k)}(a)</m> for <m>k = 0, 1, \ldots, n</m>.
       </p>
     </assemblage>
 
@@ -292,7 +286,7 @@
       It is possible that an <m>n</m>th order Taylor polynomial is not a polynomial of degree <m>n</m>;
       that is, the order of the approximation can be different from the degree of the polynomial.
       For example, in <xref ref="act-8-5-2">Activity</xref>
-      we found that the second order Taylor polynomial <m>P_2(x)</m> centered at 0 for <m>\sin(x)</m> is <m>P_2(x) = x</m>.
+      we found that the second order Taylor polynomial <m>P_2(x)</m> centered at <m>0</m> for <m>\sin(x)</m> is <m>P_2(x) = x</m>.
       In this case,
       the second order Taylor polynomial is a degree 1 polynomial.
     </p>
@@ -304,7 +298,7 @@
 
     <p>
       In <xref ref="act-8-5-1">Activity</xref>
-      we saw that the fourth order Taylor polynomial <m>P_4(x)</m> for <m>\sin(x)</m> centered at 0 is
+      we saw that the fourth order Taylor polynomial <m>P_4(x)</m> for <m>\sin(x)</m> centered at <m>0</m> is
       <me>
         P_4(x) = x - \frac{x^3}{3!}
       </me>.
@@ -320,7 +314,7 @@
       </md>,
       and so on.
       It is instructive to consider the graphical behavior of these functions;
-      the following figure shows the graphs of a few of the Taylor polynomials centered at 0 for the sine function.
+      the following figure shows the graphs of a few of the Taylor polynomials centered at <m>0</m> for the sine function.
     </p>
 
     <figure xml:id="F-8-5-T1579">
@@ -339,7 +333,7 @@
     </figure>
 
     <p>
-      Notice that <m>P_1(x)</m> is close to the sine function only for values of <m>x</m> that are close to 0, but as we increase the degree of the Taylor polynomial the Taylor polynomials provide a better fit to the graph of the sine function over larger intervals.
+      Notice that <m>P_1(x)</m> is close to the sine function only for values of <m>x</m> that are close to <m>0</m>, but as we increase the degree of the Taylor polynomial the Taylor polynomials provide a better fit to the graph of the sine function over larger intervals.
       This illustrates the general behavior of Taylor polynomials:
       for any sufficiently well-behaved function,
       the sequence <m>\{P_n(x)\}</m> of Taylor polynomials converges to the function <m>f</m> on larger and larger intervals (though those intervals may not necessarily increase without bound).
@@ -370,7 +364,7 @@
           <idx><h>Maclaurin series</h></idx>
       for <m>f</m>.
       From <xref ref="Ex-8-5-1">Example</xref>
-      we know the <m>n</m>th order Taylor polynomial centered at 0 for the exponential function <m>e^x</m>;
+      we know the <m>n</m>th order Taylor polynomial centered at <m>0</m> for the exponential function <m>e^x</m>;
       thus, the Maclaurin series for <m>e^x</m> is
       <me>
         \sum_{k=0}^{\infty} \frac{x^k}{k!}
@@ -396,10 +390,10 @@
       In the previous section
       (in <xref ref="F-8-5-T1579">Figure</xref>
       and <xref ref="act-8-5-3">Activity</xref>)
-      we observed that the Taylor polynomials centered at 0 for <m>e^x</m>,
+      we observed that the Taylor polynomials centered at <m>0</m> for <m>e^x</m>,
       <m>\cos(x)</m>,
       and <m>\sin(x)</m> converged to these functions for all values of <m>x</m> in their domain,
-      but that the Taylor polynomials centered at 0 for <m>\frac{1}{1-x}</m> converge to
+      but that the Taylor polynomials centered at <m>0</m> for <m>\frac{1}{1-x}</m> converge to
       <m>\frac{1}{1-x}</m> on the interval <m>(-1,1)</m> and diverge for all other values of <m>x</m>.
       So the Taylor series for a function <m>f(x)</m> does not need to converge for all values of <m>x</m> in the domain of <m>f</m>.
     </p>
@@ -413,7 +407,7 @@
     <example xml:id="Ex-8-5-2">
       <statement>
         <p>
-          Graphical evidence suggests that the Taylor series centered at 0 for <m>e^x</m> converges for all values of <m>x</m>.
+          Graphical evidence suggests that the Taylor series centered at <m>0</m> for <m>e^x</m> converges for all values of <m>x</m>.
           To verify this,
           use the Ratio Test to determine all values of <m>x</m> for which the Taylor series
           <men xml:id="eq-8-5-exponential">
@@ -493,7 +487,7 @@
 
     <p>
       There are three possibilities for <m>L</m>:
-      <m>L</m> can be 0, it can be a finite positive value, or it can be infinite.
+      <m>L</m> can be <m>0</m>, it can be a finite positive value, or it can be infinite.
       Based on this value of <m>L</m>,
       we can determine for which values of <m>x</m> the original Taylor series converges.
     </p>
@@ -572,7 +566,7 @@
 
     <p>
       For this argument,
-      we assume throughout that we center our approximations at 0 (but a similar argument holds for approximations centered at <m>a</m>).
+      we assume throughout that we center our approximations at <m>0</m> (but a similar argument holds for approximations centered at <m>a</m>).
       We define the exact error, <m>E_n(x)</m>,
       that results from approximating <m>f(x)</m> with <m>P_n(x)</m> by
       <me>
@@ -610,7 +604,7 @@
     </p>
 
     <p>
-      Suppose that we want to approximate <m>f(x)</m> at a number <m>c</m> close to 0 using <m>P_n(c)</m>.
+      Suppose that we want to approximate <m>f(x)</m> at a number <m>c</m> close to <m>0</m> using <m>P_n(c)</m>.
       If we assume <m>|f^{(n+1)}(t)|</m> is bounded by some number <m>M</m> on <m>[0, c]</m>, so that
       <me>
         \left|f^{(n+1)}(t)\right| \leq M
@@ -619,7 +613,7 @@
       <me>
         \left|E^{(n+1)}_n(t)\right| = \left|f^{(n+1)}(t)\right| \leq M
       </me>
-      for all <m>t</m> between 0 and <m>c</m>.
+      for all <m>t</m> between <m>0</m> and <m>c</m>.
       Equivalently,
       <men xml:id="E-ErrorIneq">
         -M \leq E^{(n+1)}_n(t) \leq M
@@ -672,17 +666,19 @@
       which results in the following theorem.
     </p>
 
-    <p>
-      <em>The Lagrange Error Bound for <m>P_n(x)</m>.</em>
-          <idx><h>Lagrange error bound</h></idx>
-      Let <m>f</m> be a continuous function with <m>n+1</m> continuous derivatives.
-      Suppose that <m>M</m> is a positive real number such that
-      <m>\left|f^{(n+1)}(x)\right| \le M</m> on the interval <m>[a, c]</m>.
-      If <m>P_n(x)</m> is the <m>n</m>th order Taylor polynomial for <m>f(x)</m> centered at <m>x=a</m>, then
-      <me>
-        \left|P_n(c) - f(c)\right| \leq M\frac{|c-a|^{n+1}}{(n+1)!}
-      </me>.
-    </p>
+    <assemblage>
+      <title>The Lagrange Error Bound for <m>P_n(x)</m></title>
+        <idx><h>Lagrange error bound</h></idx>
+        <p>          
+          Let <m>f</m> be a continuous function with <m>n+1</m> continuous derivatives.
+          Suppose that <m>M</m> is a positive real number such that
+          <m>\left|f^{(n+1)}(x)\right| \le M</m> on the interval <m>[a, c]</m>.
+          If <m>P_n(x)</m> is the <m>n</m>th order Taylor polynomial for <m>f(x)</m> centered at <m>x=a</m>, then
+          <me>
+            \left|P_n(c) - f(c)\right| \leq M\frac{|c-a|^{n+1}}{(n+1)!}
+          </me>.
+        </p>        
+    </assemblage>
 
     <p>
       We can use this error bound to tell us important information about Taylor polynomials and Taylor series,
@@ -693,7 +689,7 @@
       <statement>
         <p>
           Determine how well the 10th order Taylor polynomial <m>P_{10}(x)</m> for <m>\sin(x)</m>,
-          centered at 0, approximates <m>\sin(2)</m>.
+          centered at <m>0</m>, approximates <m>\sin(2)</m>.
         </p>
       </statement>
       <solution>
@@ -709,7 +705,7 @@
             \left| f^{(n+1)}(x) \right| \leq 1
           </me>
           for any <m>n</m> and <m>x</m>.
-          Therefore, we can choose <m>M</m> to be 1.
+          Therefore, we can choose <m>M</m> to be <m>1</m>.
           Then
           <me>
             \left|P_{10}(2) - f(2)\right| \leq (1)\frac{|2-0|^{11}}{(11)!} = \frac{2^{11}}{(11)!} \approx 0.00005130671797
@@ -717,12 +713,12 @@
         </p>
 
         <p>
-          So <m>P_{10}(2)</m> approximates <m>\sin(2)</m> to within at most 0.00005130671797.
+          So <m>P_{10}(2)</m> approximates <m>\sin(2)</m> to within at most <m>0.00005130671797</m>.
           A computer algebra system tells us that
           <me>
             P_{10}(2) \approx 0.9093474427 \ \ \text{ and }  \ \ \sin(2) \approx 0.9092974268
           </me>
-          with an actual difference of about 0.0000500159.
+          with an actual difference of about <m>0.0000500159</m>.
         </p>
       </solution>
     </example>
@@ -803,11 +799,6 @@
             <me>
               \sum_{k=0}^{\infty} \frac{f^{(k)}(a)}{k!}(x-a)^k
             </me>.
-          </p>
-        </li>
-
-        <li>
-          <p>
             The <m>n</m>th order Taylor polynomial centered at <m>a</m> for <m>f</m> is the <m>n</m>th partial sum of its Taylor series centered at <m>a</m>.
             So the <m>n</m>th order Taylor polynomial for a function <m>f</m> is an approximation to <m>f</m> on the interval where the Taylor series converges;
             for the values of <m>x</m> for which the Taylor series converges to <m>f</m> we write
