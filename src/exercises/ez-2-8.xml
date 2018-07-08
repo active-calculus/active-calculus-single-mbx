@@ -65,15 +65,30 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <m>\lim_{x \to 3} h(x) = -2</m>.
       </p>
+      <sidebyside>
+        <image source="images/2_8_Ez1Soln" />
+      </sidebyside> 
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        See the figure below for possible graphs of <m>f</m> and <m>g</m>.  To evaluate the limit, we can apply L'Hôpital's Rule twice.  Since <m>f(3) = g(3) = 0</m>, we know by the rule that
+        <me>
+          \lim_{x \to 3} \frac{f(x)}{g(x)} = \lim_{x \to 3}  \frac{f'(x)}{g'(x)}.
+        </me>
+        Since <m>f'(3) = g'(3) = 0</m>, the limit is still indeterminate, and we can apply the rule again to get
+        <me>
+          \lim_{x \to 3} \frac{f(x)}{g(x)} = \lim_{x \to 3}  \frac{f''(x)}{g''(x)} = \frac{f''(3)}{g''(3)} = \frac{-2}{1}.
+        </me>
+        Hence, <m>\lim_{x \to 3} h(x) = -2</m>.
       </p>
+      <sidebyside>
+        <image source="images/2_8_Ez1Soln" />
+      </sidebyside>      
     </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -83,28 +98,51 @@
         </me>,
         where <m>a</m>,
         <m>b</m>, and <m>c</m> are distinct, arbitrary constants.
-        In addition, state all values of <m>x</m> for which <m>R</m> is not continuous.
+        In addition,
+        state all values of <m>x</m> for which <m>R</m> is not continuous.
         Sketch a possible graph of <m>R</m>,
         clearly labeling the values of <m>a</m>, <m>b</m>, and <m>c</m>.
       </p>
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        Horizontal asymptote: <m>y = \frac{3}{5}</m>; vertical asymptote: <m>x = c</m>; hole: <m>(a, \frac{3(a-b)}{5(a-c)})</m>.  <m>R</m> is not continuous at <m>x = a</m> and <m>x = c</m>.
       </p>
+      <sidebyside>
+        <image source="images/2_8_Ez2Soln" />
+      </sidebyside> 
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        First, we note that since both the numerator and denominator of <m>R</m> are quadratic, the limit as <m>x \to \infty</m> can be found by taking the quotient of the leading coefficients.  In particular,
+        <me>
+          \lim_{x \to \infty} R(x) = \frac{3}{5}
+        </me>
+        and thus the horizontal asymptote of <m>R</m> is <m>y = \frac{3}{5}</m>.
       </p>
+      <p>
+        Next, since <m>b</m> and <m>c</m> are distinct, we see that the numerator of <m>R</m> is zero (and the denominator is not) when <m>x = b</m>, and thus <m>R(b) = 0</m>.  In addition, the denominator is zero (and the numerator is not) when <m>x = c</m>, and this results in there being a vertical asymptote at <m>x = c</m>. 
+      </p>
+      <p>
+        Finally, we observe that <m>x = a</m> makes both the numerator and denominator zero.  Since <m>R(a)</m> is thus not defined, the graph of <m>R</m> has either a hole or a vertical asymptote at <m>x = a</m>.  To determine which, we evaluate the limit and see that
+        <me>
+          \lim_{x \to a} \frac{3(x-a)(x-b)}{5(x-a)(x-c)} = \lim_{x \to a} \frac{3(x-b)}{5(x-c)} = \frac{3(a-b)}{5(a-c)}.
+        </me>
+        This tells us that <m>R</m> has a hole at the point <m>(a, \frac{3(a-b)}{5(a-c)})</m>.  Moreover, <m>R</m> is not continuous at <m>x = a</m> and <m>x = c</m>.
+      </p>
+      <p>A possible graph of <m>R</m> is shown in the following figure.</p>
+      <sidebyside>
+        <image source="images/2_8_Ez2Soln" />
+      </sidebyside>        
     </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
         Consider the function <m>g(x) = x^{2x}</m>,
-        which is defined for all <m>x > 0</m>.
-        Observe that <m>\lim_{x \to 0^+} g(x)</m> is indeterminate due to its form of <m>0^0</m>. (Think about how we know that <m>0^k = 0</m> for all <m>k > 0</m>,
+        which is defined for all <m>x \gt 0</m>.
+        Observe that <m>\lim_{x \to 0^+} g(x)</m> is indeterminate due to its form of <m>0^0</m>. (Think about how we know that <m>0^k = 0</m> for all <m>k \gt 0</m>,
         while <m>b^0 = 1</m> for all <m>b \ne 0</m>,
         but that neither rule can apply to <m>0^0</m>.)
         <ol label="a.">
@@ -139,15 +177,83 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+          <li>
+            <p>
+              <m>
+                \ln(x^{2x}) = 2x \cdot \ln(x).
+              </m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>x = \frac{1}{\frac{1}{x}}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\lim_{x \to 0^+} h(x) = 0</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>
+                \lim_{x \to 0^+} g(x) = \lim_{x \to 0^+} x^{2x} = 1.
+              </m>
+            </p>
+          </li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+            <p>
+              Since <m>h(x) = \ln(g(x))</m> and we are given that <m>g(x) = x^{2x}</m>, it follows that 
+              <me>
+                h(x) = \ln(x^{2x}) = 2x \cdot \ln(x).
+              </me>
+            </p>
+          </li>
+          <li>
+            <p>
+              Since <m>x = (x^{-1})^{-1} = \frac{1}{\frac{1}{x}}</m>, we can also write 
+              <me>
+                h(x) = \frac{2\ln(x)}{\frac{1}{x}}.
+              </me>
+            </p>
+          </li>
+          <li>
+            <p>
+              Since <m>\ln(x) \to -\infty</m> as <m>x \to 0^+</m> and <m>\frac{1}{x} \to +\infty</m> as <m>x \to 0^+</m>, we see that 
+              <me>
+                \lim_{x \to 0^+} h(x) = \lim_{x \to 0^+} \frac{2\ln(x)}{\frac{1}{x}}
+              </me>
+              is of an indeterminate form to which we can apply L'Hôpital's Rule.  Doing so, 
+              <me>
+                \lim_{x \to 0^+} h(x) = \lim_{x \to 0^+} \frac{2\ln(x)}{\frac{1}{x}} = \lim_{x \to 0^+} \frac{\frac{2}{x}}{-\frac{1}{x^2}}
+              </me>
+              Simplifying algebraically, 
+              <me>
+                \lim_{x \to 0^+} h(x) = \lim_{x \to 0^+} \frac{2}{x} \cdot \left(-\frac{x^2}{1}\right) = \lim_{x \to 0^+} (-2x)
+              </me>
+              Hence, it follows that <m>\lim_{x \to 0^+} h(x) = 0</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Having shown that <m>\lim_{x \to 0^+} h(x) = 0</m> and recalling that <m>h(x) = \ln(g(x))</m>, we know that as <m>x \to 0^+</m>, the natural log of <m>g(x)</m> tends to <m>0</m>.  Since <m>\ln(1) = 0</m>, it must be the case that <m>g(x)</m> is tending to <m>1</m>, and thus
+              <me>
+                \lim_{x \to 0^+} g(x) = \lim_{x \to 0^+} x^{2x} = 1
+              </me>
+            </p>
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -193,12 +299,107 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+          <li>
+            <p>Show that  
+              <m>
+                \lim_{x \to \infty}\frac{\ln(x)}{\sqrt{x}} = 0.
+              </m>
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that
+              <m>
+                \lim_{x \to \infty}\frac{\ln(x)}{\sqrt[n]{x}} = 0.
+              </m>
+            </p>
+          </li>
+          <li>
+            <p>
+              Consider
+              <m>
+                \lim_{x \to \infty} \frac{p(x)}{e^x} 
+              </m>
+              By repeated application of LHR, the numerator will eventually be simply a constant (after <m>n</m> applications of LHR), and thus with <m>e^x</m> still in the denominator, the overall limit will be <m>0</m>.  
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that
+              <m>
+                \lim_{x \to \infty} \frac{\ln(x)}{x^n} = 0
+              </m>
+            </p>
+          </li>
+          <li>
+            <p>
+              For example, <m>f(x) = 3x^2 + 1</m> and <m>g(x) = -0.5x^2 + 5x - 2</m>.
+            </p>
+          </li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+            <p>
+              We note that both  <m>\ln(x)</m> or <m>\sqrt{x}</m> increase without bound as <m>x \to \infty</m>, so we consider
+              <me>
+                \lim_{x \to \infty}\frac{\ln(x)}{\sqrt{x}}.
+              </me>
+              By L'Hôpital's Rule and some simplifying algebra,
+              <me>
+                \lim_{x \to \infty}\frac{\ln(x)}{\sqrt{x}} = \lim_{x \to \infty}\frac{\frac{1}{x}}{\frac{1}{2x^{1/2}}} = \lim_{x \to \infty}\frac{2x^{1/2}}{x} = \lim_{x \to \infty}\frac{2}{x^{1/2}}.
+              </me>  
+              Thus, it follows that 
+              <me>
+                \lim_{x \to \infty}\frac{\ln(x)}{\sqrt{x}} = 0,
+              </me>
+              and hence <m>\sqrt{x}</m> dominates <m>\ln(x)</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Using a similar argument to our work in <m>(a)</m>, we can show that <m>\sqrt[n]{x}</m> dominates <m>\ln(x)</m> for any positive integer <m>n</m>.  In particular, by L'Hôpital's Rule and some simplifying algebra,
+              <me>
+                \lim_{x \to \infty}\frac{\ln(x)}{\sqrt[n]{x}} = \lim_{x \to \infty}\frac{\frac{1}{x}}{\frac{1}{nx^{(n-1)/n}}} = \lim_{x \to \infty}\frac{nx^{(n-1)/n}}{x}.
+              </me>  
+              Since <m>\frac{x^{(n-1)/n}}{x} = x^{(n-1)/n - 1} = x^{(n-1-n)/n} = x^{-1/n}</m>, it follows that 
+              <me>
+                \lim_{x \to \infty}\frac{\ln(x)}{\sqrt[n]{x}} = \lim_{x \to \infty} \frac{1}{x^{1/n}} = 0
+              </me>
+              we've shown that <m>\sqrt[n]{x}</m> dominates <m>\ln(x)</m> for any positive integer <m>n</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              To see why <m>e^x</m> will dominate any polynomial function, consider <m>p(x) = x^4</m>.  If we consider the limit of their quotient and apply LHR once, we see that
+              <me>
+                \lim_{x \to \infty} \frac{x^4}{e^x} = \lim_{x \to \infty} \frac{4x^3}{e^x}
+              </me>
+              By repeated application of LHR, the numerator (regardless of what polynomial we start with) will eventually be simply a constant (after <m>n</m> applications of LHR), and thus with <m>e^x</m> still in the denominator, the overall limit will be <m>0</m>.  
+            </p>
+          </li>
+          <li>
+            <p>
+              Here we naturally consider the limit of the quotient of <m>\ln(x)</m> and <m>x^n</m>, where <m>n \ge 1</m>.  Since both functions increase without bound, we can apply LHR.  Doing so along with some simplifying algebra, we see
+              <me>
+                \lim_{x \to \infty} \frac{\ln(x)}{x^n} =  \lim_{x \to \infty} \frac{\frac{1}{x}}{nx^{n-1}} = \frac{1}{nx^n} = 0
+              </me>
+              and thus <m>x^n</m> indeed dominates.
+            </p>
+          </li>
+          <li>
+            <p>
+              Consider <m>f(x) = 3x^2 + 1</m> and <m>g(x) = -0.5x^2 + 5x - 2</m>.  Since these functions are polynomials of the same degree, we know 
+              <me>
+                \lim_{x \to \infty} \frac{f(x)}{g(x)} = \frac{3}{-0.5} = -6.
+              </me>
+            </p>
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
