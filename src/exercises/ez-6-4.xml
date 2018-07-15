@@ -49,12 +49,12 @@
         <ol label="a.">
           <li>
             <p>
-              Picture the coordinate axes rotated 90 degrees clockwise so that the positive <m>x</m>-axis points straight down,
+              Picture the coordinate axes rotated <m>90</m> degrees clockwise so that the positive <m>x</m>-axis points straight down,
               and the positive <m>y</m>-axis points to the right.
               Suppose that <m>R</m> is rotated about the <m>x</m> axis to form a solid of revolution,
               and we consider this solid as a storage tank.
-              Suppose that the resulting tank is filled to a depth of 1.5 feet with water weighing 62.4 pounds per cubic foot.
-              Find the amount of work required to lower the water in the tank until it is 0.5 feet deep,
+              Suppose that the resulting tank is filled to a depth of <m>1.5</m> feet with water weighing <m>62.4</m> pounds per cubic foot.
+              Find the amount of work required to lower the water in the tank until it is <m>0.5</m> feet deep,
               by pumping the water to the top of the tank.
             </p>
           </li>
@@ -66,7 +66,7 @@
               Suppose that <m>R</m>,
               together with its reflection across the <m>x</m>-axis,
               forms one end of a storage tank that is 10 feet long.
-              Suppose that the resulting tank is filled completely with water weighing 62.4 pounds per cubic foot.
+              Suppose that the resulting tank is filled completely with water weighing <m>62.4</m> pounds per cubic foot.
               Find a formula for a function that tells the amount of work required to lower the water by <m>h</m> feet.
             </p>
           </li>
@@ -82,21 +82,124 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+          <li>
+
+            <sidebyside width="50%">
+              <image source="images/6_4_Ez1Soln" />
+            </sidebyside>
+            
+            <p>
+              <m>W \approx 1646.79</m> foot-pounds.
+            </p> 
+          </li>
+
+          <li>
+            <p>
+              <m>
+                W = \int_0^h  3744 x \cos \left( \frac{x^3}{4} \right) \, dx
+              </m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>
+                F \approx 462.637
+              </m>
+              pounds.
+            </p>
+          </li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+            <p>
+              First, we construct a picture of the tank as described.  Below we see a sketch of <m>f(x) = 3\cos \left( \frac{x^3}{4} \right)</m> in the setting where the positive <m>x</m>-axis points down; note that this function first crosses the <m>x</m>-axis at about <m>1.84527</m>.  We reflect the curve from the first quadrant across the positive <m>x</m>-axis to generate a solid of revolution.  Cross-sections perpendicular to the <m>x</m>-axis have thickness <m>\triangle x</m> and are circular disks.
+            </p>
+
+            <sidebyside width="50%">
+              <image source="images/6_4_Ez1Soln" />
+            </sidebyside>
+            
+            <p>
+              We now suppose that the resulting tank is filled to a depth of <m>1.5</m> feet with water weighing <m>62.4</m> pounds per cubic foot.  Since the bottom of the tank is at <m>1.84527</m>, being full to a depth of <m>1.5</m> feet means that there is water from <m>x = 0.34527</m> to <m>x = 1.84527</m>.  To find the work done to pump the water until <m>0.5</m> feet remain in the tank (i.e. to a level where <m>x = 1.34527</m>), we have to first find the weight of a typical slice, which requires us to know the volume of such a slice.  Observe that for a slice at depth <m>x</m>,
+              <me>
+                V_{\text{slice}} \approx \pi \left( 3\cos \left( \frac{x^3}{4} \right) \right)^2 \triangle x
+              </me>.
+              Since water weighs <m>62.4</m> pounds per cubic foot, the weight (and thus force to be exerted) of such a slice is
+              <me>
+                F_{\text{slice}} \approx 62.4 \cdot 9 \cdot \pi \cos^2 \left( \frac{x^3}{4} \right) \triangle x
+              </me>.
+              Finally, the work done to pump such a slice to the top of the tank requires the slice to move <m>x</m> units, and thus work for that slice is
+              <me>
+                W_{\text{slice}} \approx x \cdot 561.6 \pi \cos^2 \left( \frac{x^3}{4} \right) \triangle x
+              </me>.
+              To find the total work accomplished, we use a definite integral to sum the work done on each slice from <m>x = 0.34527</m> (the top of the water when the tank is initially full to <m>1.84527</m> feet) to <m>x = 1.34527</m> (the height of the water after <m>1</m> foot has been emptied).  Thus,
+              <me>
+                W = \int_{0.34527}^{1.34527}  561.6 \pi \cos^2 \left( \frac{x^3}{4} \right) \, dx
+              </me>.
+              Evaluating the integral, we find <m>W \approx 1646.79</m> foot-pounds.
+            </p> 
+          </li>
+
+          <li>
+            <p>
+              If instead we envision the tank not as a solid of revolution but as a trough, where the two-dimensional figure above forms one end of a tank that is 10 feet long, we now have a similar problem but with slices that are thin rectangular slabs, rather than thin cylindrical disks.  Note that each such slice is <m>2 f(x)</m> wide, <m>10</m> feet long, and <m>\triangle x</m> thick.  Thus, for a slice at depth <m>x</m>,
+              <me>
+                V_{\text{slice}} \approx 2 \left( 3\cos \left( \frac{x^3}{4} \right) \right) \cdot 10 \cdot \triangle x
+              </me>.
+              Since water weighs <m>62.4</m> pounds per cubic foot, the weight (and thus force to be exerted) of such a slice is
+              <me>
+                F_{\text{slice}} \approx 62.4 \cdot 60 \cos \left( \frac{x^3}{4} \right) \triangle x
+              </me>.
+              Finally, the work done to pump such a slice to the top of the tank requires the slice to move <m>x</m> units, and thus work for that slice is
+              <me>
+                W_{\text{slice}} \approx x \cdot 3744 \cos \left( \frac{x^3}{4} \right) \triangle x
+              </me>.
+              Assuming that the tank is completely full, to lower the tank by <m>h</m> feet, we consider slices from <m>x = 0</m> to <m>x = h</m>, and thus using a definite integral to sum the work required for each slice, we find that the total work is
+              <me>
+                W = \int_0^h  3744 x \cos \left( \frac{x^3}{4} \right) \, dx
+              </me>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              For the trough described in (b), we now seek to find the total hydrostatic force on one of the ends of the tank when it is completely full.  First, we note that a typical slice at location <m>x</m> will be at a depth of <m>x</m> feet below the water and have area
+              <me>
+                A_{\text{slice}} \approx 2 f(x) \triangle x = 2 \left( 3\cos \left( \frac{x^3}{4} \right) \right) \triangle x
+              </me>.
+              At any point on this slice, which again lies at depth <m>x</m>, the pressure exerted is 
+              <me>
+                P_{\text{slice}} \approx 62.4 x
+              </me>
+              since pressure is the weight density of water times depth.
+              Finally, since <m>F = P \cdot A</m>, the total force water is exerting on this slice is 
+              <me>
+                F_{\text{slice}} = P_{\text{slice}} \cdot A_{\text{slice}} \approx 62.4 x \cdot 6 \cos \left( \frac{x^3}{4} \right) \triangle x
+              </me>.
+              Integrating to sum the total force, we find that 
+              <me>
+                F = \int_0^{1.84527} 374.4 x \cos \left( \frac{x^3}{4} \right) \, dx \approx 462.637
+              </me>
+              pounds.
+            </p>
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
         A cylindrical tank, buried on its side,
-        has radius 3 feet and length 10 feet.
-        It is filled completely with water whose weight density is 62.4 lbs/ft<m>^3</m>,
+        has radius <m>3</m> feet and length <m>10</m> feet.
+        It is filled completely with water whose weight density is <m>62.4</m> lbs/ft<m>^3</m>,
         and the top of the tank is two feet underground.
         <ol label="a.">
           <li>
@@ -117,12 +220,84 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+          <li>
+            <p>
+              <m>
+                W = 5904(19\pi - 8) \approx 305179.3 
+              </m>       
+              foot-pounds.
+            </p>
+          </li>
+          <li>
+            <p>
+              <me>
+                F \approx 1123.2
+              </me>
+              pounds.
+            </p>
+          </li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+            <p>
+              First, we set up axes and a sketch for one of the ends of the cylindrical tank.  It is simplest to let ground level correspond to the (horizontal) <m>y</m>-axis with the positive <m>x</m>-axis pointing straight down, so that <m>x = 0</m> corresponds to ground level and the value of <m>x</m> tells us the depth of a particular location.  The circular end of the tank has radius <m>3</m> and is centered at the point <m>(5,0)</m> since its top is <m>2</m> feet underground.  Thus, the equation of that circle is 
+              <me>
+                (x-5)^2 + y^2 = 3^2
+              </me>.
+              Solving for <m>y</m>, we find the equation of one half of the circle, the half that is pictured at right in the figure below:  <m>y = f(x) = \sqrt{9 - (x-5)^2}</m>.
+            </p>
+
+            <sidebyside width="50%">
+              <image source="images/6_4_Ez2Soln" />
+            </sidebyside>            
+
+            <p>
+              Next, for a slice at depth <m>x</m>, its shape is a rectangular slab with thickness <m>\triangle x</m>.  Its length is <m>10</m>, and its width is <m>2 f(x) = 2 \sqrt{9 - (x-5)^2}</m>.  Thus, the volume of such a slice is
+              <me>
+                V_{\text{slice}} \approx 10 \cdot  2 \sqrt{9 - (x-5)^2} \cdot \triangle x
+              </me>.
+              With the water weighing <m>62.4</m> pounds per cubic foot, the weight of (and thus force to be exerted upon) a typical slice is 
+              <me>
+                F_{\text{slice}} \approx 262.4 \cdot 20 \sqrt{9 - (x-5)^2} \triangle x
+              </me>.  
+              To move such a slice from its depth <m>x</m> feet below the ground to a tank on a truck that's <m>4.5</m> feet above ground, each slice must travel <m>x + 4.5</m> feet, and thus the work to move the slice is
+              <me>
+                W_{\text{slice}} \approx (x+4.5) 5248 \sqrt{9 - (x-5)^2} \triangle x
+              </me>.
+              Finally, to empty half the tank, we need to consider slices from <m>x = 2</m> to <m>x = 5</m>, and thus using a definite integral to sum the work required for each slice, we get
+              <me>
+                W = \int_2^5 5248 (x+4.5) \sqrt{9 - (x-5)^2} \, dx = 5904(19\pi - 8) \approx 305179.3 
+              </me>       
+              foot-pounds.
+            </p>
+          </li>
+          <li>
+            <p>
+              To find the hydrostatic force due to water pressure that is exerted on one end of the tank by the remaining water, we first find the area of a rectangular slice at a location <m>x</m>, which is
+              <me>
+                A_{\text{slice}} \approx 2 f(x) \triangle x = 2 \sqrt{9 - (x-5)^2} \triangle x
+              </me>.
+              We note that such a slice lies between <m>x = 5</m> and <m>x = 8</m>, which is the values of <m>x</m> that represent the depths of remaining water from top to bottom.  At an <m>x</m> in this interval, the slice's depth below the surface of the water is <m>x - 5</m>.  Thus, since pressure is weight-density times depth, it follows that
+              <me>
+                P_{\text{slice}} \approx 62.4 (x-5)
+              </me>.
+              Finally, since <m>F = P \cdot A</m>, the total force water is exerting on this slice is 
+              <me>
+                F_{\text{slice}} = P_{\text{slice}} \cdot A_{\text{slice}} \approx 62.4 (x-5) \cdot 2 \sqrt{9 - (x-5)^2}  \triangle x
+              </me>.
+              Integrating to sum the total force, we find
+              <me>
+                F = \int_5^8 124.8 (x-5) \sqrt{9 - (x-5)^2} \, dx \approx 1123.2
+              </me>
+              pounds.
+            </p>
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
