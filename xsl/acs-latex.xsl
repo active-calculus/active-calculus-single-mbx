@@ -27,21 +27,16 @@
 
 
 <!-- Exercises have hint (sporadically), answer, and solution -->
-<!-- Put answers in backmatter -->
-<xsl:param name="exercise.text.statement" select="'yes'" />
-<xsl:param name="exercise.text.hint" select="'yes'" />
-<xsl:param name="exercise.text.answer" select="'no'" />
-<xsl:param name="exercise.text.solution" select="'no'" />
-<xsl:param name="exercise.backmatter.statement" select="'no'" />
-<xsl:param name="exercise.backmatter.hint" select="'no'" />
-<xsl:param name="exercise.backmatter.answer" select="'yes'" />
-<xsl:param name="exercise.backmatter.solution" select="'no'" />
+<!-- Hint can be displayed where born, but otherwise suppress -->
+<xsl:param name="exercise.divisional.hint" select="'yes'" />
+<xsl:param name="exercise.divisional.answer" select="'no'" />
+<xsl:param name="exercise.divisional.solution" select="'no'" />
 
 <!-- activity is a project-like, so we need to set those stringparams -->
 <!-- to control hints, answers, and solutions -->
-<xsl:param name="project.text.hint" select="'no'" />
-<xsl:param name="project.text.answer" select="'no'" />
-<xsl:param name="project.text.solution" select="'no'" />
+<xsl:param name="project.hint" select="'no'" />
+<xsl:param name="project.answer" select="'no'" />
+<xsl:param name="project.solution" select="'no'" />
 
 <!-- LaTeX formatting commands we can inject here without incident -->
 
@@ -154,4 +149,9 @@
     <xsl:apply-imports />
 </xsl:template>
 
+<!-- We don't want to start each section's answers on a new page in the backmatter -->
+<xsl:template match="backmatter">
+    <xsl:text>\renewcommand\section{\oldsection}</xsl:text>
+    <xsl:apply-imports />
+</xsl:template>
 </xsl:stylesheet>
