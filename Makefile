@@ -179,7 +179,8 @@ pdf: acs-merge
 	install -b xsl/acs-latex.xsl $(MBUSR)
 	cp -a $(IMAGESSRC) $(PDFOUT)
 	cd $(PDFOUT); \
-	xsltproc -xinclude $(MBUSR)/acs-latex.xsl $(WWOUT)/acs-merge.ptx \
+	xsltproc -xinclude $(MBUSR)/acs-latex.xsl $(WWOUT)/acs-merge.ptx; \
+	sed -i ".bak" -f ../../change-documentclass.sed index.tex; \
 	xelatex index; \
 	xelatex index
 
@@ -201,6 +202,7 @@ soln-latex:
 # Automatically builds LaTeX source for solutions manual
 soln-pdf: soln-latex
 	cd $(SOLNOUT); \
+	sed -i ".bak" -f ../../change-documentclass-soln-man.sed acs-solution-manual.tex; \
 	xelatex acs-solution-manual; \
 	xelatex acs-solution-manual
 
