@@ -182,6 +182,7 @@ pdf: acs-merge
 	xsltproc -xinclude $(MBUSR)/acs-latex.xsl $(WWOUT)/acs-merge.ptx; \
 	sed -i ".bak" -f ../../change-documentclass.sed index.tex; \
 	xelatex index; \
+	xelatex index; \
 	xelatex index
 
 # Solutions manual (LaTeX only for PDF)
