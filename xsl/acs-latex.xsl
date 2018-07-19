@@ -113,30 +113,45 @@
     <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
     <xsl:text>% Greg's L &#xa;</xsl:text>
     <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
-    <xsl:text>%% Package for breakable highlight boxes &#xa;</xsl:text>
     <xsl:text>\usepackage[framemethod=tikz]{mdframed}&#xa;</xsl:text>
-    <xsl:text>\newtheorem{mdactivity}[cpjt]{Activity}&#xa;</xsl:text>
-    <xsl:text>\newtheorem{mdexploration}[cpjt]{Preview Activity}&#xa;</xsl:text>
-    <xsl:text>\renewenvironment{activity}[1][]% &#xa;</xsl:text>
-    <xsl:text>  {\begin{mdframed}[linecolor=ActiveBlue,topline=false, &#xa;</xsl:text>
+    <xsl:text>\RenewDocumentEnvironment{exploration}{o}&#xa;</xsl:text>
+    <xsl:text>  {\IfValueTF{#1}{\begin{mdframed}[linecolor=ActiveBlue,topline=false, &#xa;</xsl:text>
+    <xsl:text>    rightline=false, &#xa;</xsl:text>
+    <xsl:text>    bottomline=false, &#xa;</xsl:text>
+    <xsl:text>    linewidth=3pt, &#xa;</xsl:text>
+    <xsl:text>    innerleftmargin=15pt, &#xa;</xsl:text>
+    <xsl:text>    innerrightmargin=0pt, &#xa;</xsl:text>
+    <xsl:text>    skipabove=\baselineskip,&#xa;</xsl:text>
+    <xsl:text> skipabove=1.2\baselineskip,]\begin{explorationtitle}[#1]}&#xa;</xsl:text>
+    <xsl:text>{\begin{mdframed}[linecolor=ActiveBlue,topline=false, &#xa;</xsl:text>
     <xsl:text>    rightline=false, &#xa;</xsl:text>
     <xsl:text>    bottomline=false, &#xa;</xsl:text>
     <xsl:text>    linewidth=3pt, &#xa;</xsl:text>
     <xsl:text>    innerleftmargin=15pt, &#xa;</xsl:text>
     <xsl:text>    innerrightmargin=0pt, &#xa;</xsl:text>
     <xsl:text>    skipabove=\baselineskip, &#xa;</xsl:text>
-    <xsl:text>    skipabove=1.2\baselineskip,]\begin{mdactivity}[#1]}&#xa;</xsl:text>
-    <xsl:text>  {\end{mdactivity}\end{mdframed}}&#xa;</xsl:text>
-    <xsl:text>\renewenvironment{exploration}[1][]% &#xa;</xsl:text>
-    <xsl:text>  {\begin{mdframed}[linecolor=ActiveBlue,topline=false, &#xa;</xsl:text>
+    <xsl:text>    skipabove=1.2\baselineskip,]\begin{explorationnotitle}}}&#xa;</xsl:text>
+    <xsl:text>    {\IfValueTF{#1}{\end{explorationtitle}\end{mdframed}}&#xa;</xsl:text>
+    <xsl:text>    {\end{explorationnotitle}\end{mdframed}}}&#xa;</xsl:text>
+    <xsl:text>\RenewDocumentEnvironment{activity}{o}&#xa;</xsl:text>
+    <xsl:text>  {\IfValueTF{#1}{\begin{mdframed}[linecolor=ActiveBlue,topline=false, &#xa;</xsl:text>
     <xsl:text>    rightline=false, &#xa;</xsl:text>
     <xsl:text>    bottomline=false, &#xa;</xsl:text>
     <xsl:text>    linewidth=3pt, &#xa;</xsl:text>
     <xsl:text>    innerleftmargin=15pt, &#xa;</xsl:text>
     <xsl:text>    innerrightmargin=0pt, &#xa;</xsl:text>
     <xsl:text>    skipabove=\baselineskip, &#xa;</xsl:text>
-    <xsl:text>   skipabove=1.2\baselineskip,]\begin{mdexploration}[#1]}&#xa;</xsl:text>
-    <xsl:text>  {\end{mdexploration}\end{mdframed}}&#xa;</xsl:text>
+    <xsl:text> skipabove=1.2\baselineskip,]\begin{activitytitle}[#1]}&#xa;</xsl:text>
+    <xsl:text>    {\begin{mdframed}[linecolor=ActiveBlue,topline=false, &#xa;</xsl:text>
+    <xsl:text>    rightline=false, &#xa;</xsl:text>
+    <xsl:text>    bottomline=false, &#xa;</xsl:text>
+    <xsl:text>    linewidth=3pt, &#xa;</xsl:text>
+    <xsl:text>    innerleftmargin=15pt, &#xa;</xsl:text>
+    <xsl:text>    innerrightmargin=0pt, &#xa;</xsl:text>
+    <xsl:text>    skipabove=\baselineskip, &#xa;</xsl:text>
+    <xsl:text>    skipabove=1.2\baselineskip,]\begin{activitynotitle}}}&#xa;</xsl:text>
+    <xsl:text>  {\IfValueTF{#1}{\end{activitytitle}\end{mdframed}}&#xa;</xsl:text>
+    <xsl:text>    {\end{activitynotitle}\end{mdframed}}}&#xa;</xsl:text>
     <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
     <xsl:text>% In print, trying to reduce color use &#xa;</xsl:text>
     <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>

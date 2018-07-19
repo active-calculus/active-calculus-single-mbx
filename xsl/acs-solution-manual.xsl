@@ -23,14 +23,12 @@
 <xsl:output method="text" />
 
 <!-- These switches will control what we include -->
-<xsl:param name="exercise.text.statement" select="'yes'" />
 <xsl:param name="exercise.divisional.hint" select="'no'" />
 <xsl:param name="exercise.divisional.answer" select="'no'" />
 <xsl:param name="exercise.divisional.solution" select="'yes'" />
 
 
 <!-- Preview activities and activities are project-like. -->
-<xsl:param name="project.text.statement" select="'yes'" />
 <xsl:param name="project.text.hint" select="'no'" />
 <xsl:param name="project.text.answer" select="'no'" />
 <xsl:param name="project.text.solution" select="'yes'" />
@@ -42,7 +40,7 @@
 
 <!-- Chapters: default presentation, we have them all, so numbers OK     -->
 <!-- Sections and Equivalents: kill them, except for specific ones below -->
-<xsl:template match="conclusion|references|objectives|appendix|index" />
+<xsl:template match="conclusion|references|objectives|appendix|index|solutions" />
 
 <!-- Kill solutions to WeBWorK exercises -->
 <xsl:template match="exercise[webwork]">
