@@ -36,6 +36,7 @@
     <title>Describing equilibrium solutions</title>
     <webwork source="Library/Rochester/setDiffEQ6AutonomousStability/ur_de_6_4.pg" />
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -85,10 +86,50 @@
     </answer>
     <solution>
       <p>
-        Exercise Solution
+          <ol label="a.">
+            <li>
+              <p>
+                Sketching the slopes at individual points by computing <m>\frac{dy}{dt}\vert_{(t,y)}</m> at various values of <m>(t,y)</m>, we see the following slope field.
+              </p>
+
+              <sidebyside width="50%">
+                <image source="images/7_2_Ez1Soln" />
+              </sidebyside>
+
+            </li>
+
+            <li>
+              <p>
+                By following the slope field so that we pass through the points <m>(0,-4)</m>, <m>(0,-3)</m>, <m>\ldots</m>, <m>(0,4)</m>, we see the collection of curves in the figure above..
+              </p>
+            </li>
+
+            <li>
+              <p>
+                It looks like the solution that passes through <m>(0,-1)</m> is a straight line with slope <m>m = 1</m>, and thus has the formula <m>y(t) = t-1</m>.  To verify this function is a solution, we compute both <m>\frac{dy}{dt}</m> and <m>t-y</m>.  Doing so, we see
+                <me>
+                  \frac{dy}{dt} = 1
+                </me>
+                and 
+                <me>
+                  t-y = t - (t-1) = 1 
+                </me>.
+                Thus, <m>y(t) = t-1</m> is indeed a solution to the differential equation.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                From both the differential equation and the graphs we have sketched,
+                it appears that <m>t</m> and <m>y</m> are equal at any point where a solution has a local minimum.
+                This is because when <m>t = y</m>, <m>\frac{dy}{dt} = t - y = 0</m>, and having the derivative be zero is required for any local minimum on a differentiable function.
+              </p>
+            </li>
+          </ol>
       </p>
     </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -134,13 +175,7 @@
 
           <li>
             <p>
-              If <m>P(0) \gt 1</m>, what is the eventual fate of the species?
-            </p>
-          </li>
-
-          <li>
-            <p>
-              if <m>P(0) \lt 1</m>, what is the eventual fate of the species?
+              If <m>P(0) \gt 1</m>, what is the eventual fate of the species? if <m>P(0) \lt 1</m>?
             </p>
           </li>
 
@@ -161,7 +196,36 @@
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+            <p>
+              We first observe from the given plot of <m>\frac{dP}{dt}</m> versus <m>P</m> that <m>\frac{dP}{dt} = 0</m> when <m>P = 0</m>, <m>P = 1</m>, and <m>P = 3</m>.  Moreover, we see that <m>\frac{dP}{dt} \gt 0</m> when <m>P \lt 0</m> or <m>1 \lt P \lt 3</m>, and <m>\frac{dP}{dt} \lt 0</m> otherwise.  The closer <m>P</m> is to <m>0</m>, <m>1</m>, or <m>3</m>, the closer <m>\frac{dP}{dt}</m> is to <m>0</m>.  This leads us to sketch a direction field like the following.
+            </p>
+              <sidebyside width="50%">
+                <image source="images/7_2_Ez2Soln" />
+              </sidebyside>            
+          </li>
+          <li>
+            <p>
+              Following the slope field plotted above, we see that any solution curve that starts with <m>P(0) \gt 3</m> will decrease to <m>P(t) = 3</m> as <m>t \to \infty</m>.  Any curve that starts with <m>1 \lt P(0) \lt 3</m> will increase to <m>P(t) = 3</m>.  And any curve that starts with <m>0 \lt P(0) \lt 1</m> will decrease to <m>P(t) = 0</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The equilibrium solutions are the values of <m>P</m> where <m>\frac{dP}{dt} = 0</m>.  These are <m>P = 0</m>, <m>P = 1</m>, and <m>P = 3</m>.  The equilibrium solution <m>P = 1</m> is unstable, while the solutions <m>P = 0</m> and <m>P = 3</m> are stable.
+            </p>
+          </li>
+          <li>
+            <p>
+              If <m>P(0) \gt 1</m>, the population's value will tend to <m>P(t) = 3</m> as <m>t \to \infty</m>; if <m>P(0) \lt 1</m>, the population's value will tend to <m>P(t) = 0</m>.  Thus, the population will stabilize either way, but either at the value <m>P = 3</m> or at a level that corresponds to the population going extinct.
+            </p>
+          </li>
+          <li>
+            <p>
+              We can view <m>P(t) = 1</m> as the threshold for this population since if there aren't at least <m>P(t) = 1</m> members of the population, the population cannot grow.  This aligns well with the definition of the word threshold: <q>the magnitude or intensity that must be exceeded for a certain reaction, phenomenon, result, or condition to occur or be manifested</q>.
+            </p>
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
