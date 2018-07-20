@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- **********************************************************************-->
-<!-- Copyright 2012-2017                                                   -->
+<!-- Copyright 2012-2018                                                   -->
 <!-- Matthew Boelkins                                                      -->
 <!--                                                                       -->
 <!-- This file is part of Active Calculus.                                 -->
 <!--                                                                       -->
 <!-- Permission is granted to copy, distribute and/or modify this document -->
-<!-- under the terms of the Creative Commons BY-NC-SA license.  The work   -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
 <!-- may be used for free by any party so long as attribution is given to  -->
 <!-- the author(s), the work and its derivatives are used in the spirit of -->
-<!-- "share and share alike"; no party may sell this work or any of its    -->
-<!-- derivatives for profit.  All trademarks are the registered marks of   -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
 
@@ -44,32 +43,28 @@
       and the definition of the derivative involves a limit,
       there is a sense in which all of calculus rests on limits.
       In addition,
-      the limit involved in the limit definition of the derivative is one that always generates an indeterminate form of <m>\frac{0}{0}</m>.
-      If <m>f</m> is a differentiable function for which <m>f'(x)</m> exists,
-      then when we consider
+      the limit involved in the definition of the derivative always generates the indeterminate form <m>\frac{0}{0}</m>.
+      If <m>f</m> is a differentiable function,
+      thenin the definition
       <me>
         f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}
       </me>,
-      it follows that not only does <m>h \to 0</m> in the denominator,
+      not only does <m>h \to 0</m> in the denominator,
       but also <m>(f(x+h)-f(x)) \to 0</m> in the numerator,
       since <m>f</m> is continuous.
-      Thus, the fundamental form of the limit involved in the definition of <m>f'(x)</m> is <m>\frac{0}{0}</m>.
-      Remember, saying a limit has an indeterminate form only means that we don't yet know its value and have more work to do:
+      Remember, saying that a limit has an indeterminate form only means that we don't yet know its value and have more work to do:
       indeed, limits of the form
       <m>\frac{0}{0}</m> can take on any value,
       as is evidenced by evaluating <m>f'(x)</m> for varying values of <m>x</m> for a function such as <m>f'(x) = x^2</m>.
     </p>
 
     <p>
-      Of course, we have learned many different techniques for evaluating the limits that result from the derivative definition,
-      and including a large number of shortcut rules that enable us to evaluate these limits quickly and easily.
+      We have learned many techniques for evaluating the limits that result from the derivative definition,
+      including a large number of shortcut rules.
       In this section, we turn the situation upside-down:
-      rather than using limits to evaluate derivatives,
+      instead of using limits to evaluate derivatives,
       we explore how to use derivatives to evaluate certain limits.
-      This topic will combine several different ideas,
-      including limits, derivative shortcuts,
-      local linearity, and the tangent line approximation.
-    </p>
+      </p>
 
     <xi:include href="./previews/PA-2-8.xml" />
   </introduction>
@@ -82,30 +77,23 @@
     </figure>
 
     <p>
-      The fundamental idea of <xref ref="PA-2-8">Preview Activity</xref>
+      The idea demonstrated in <xref ref="PA-2-8">Preview Activity</xref>
       <mdash /> that we can evaluate an indeterminate limit of the form
-      <m>\frac{0}{0}</m> by replacing each of the numerator and denominator with their local linearizations at the point of interest <mdash /> can be generalized in a way that enables us to easily evaluate a wide range of limits.
-      We begin by assuming that we have a function <m>h(x)</m> that can be written in the form
-      <m>h(x) = \frac{f(x)}{g(x)}</m> where <m>f</m> and <m>g</m> are both differentiable at <m>x=a</m> and for which <m>f(a) = g(a) = 0</m>.
-      We are interested in finding a way to evaluate the indeterminate limit given by
+      <m>\frac{0}{0}</m> by replacing each of the numerator and denominator with their local linearizations at the point of interest <mdash /> can be generalized in a way that enables us to evaluate a wide range of limits.
+      We with a function <m>h(x)</m> that can be written as a quotient
+      <m>h(x) = \frac{f(x)}{g(x)}</m>, where <m>f</m> and <m>g</m> are both differentiable at <m>x=a</m> and for which <m>f(a) = g(a) = 0</m>.
+      We would like to evaluate the indeterminate limit given by
       <m>\lim_{x \to a} h(x)</m>.
-      In <xref ref="F-2-8-LHR">Figure</xref>,
-      we see a visual representation of the situation involving such functions <m>f</m> and <m>g</m>.
-      In particular,
-      we see that both <m>f</m> and <m>g</m> have an <m>x</m>-intercept at the point where <m>x = a</m>.
-      In addition,
-      since each function is differentiable, each is locally linear,
-      and we can find their respective tangent line approximations <m>L_f</m> and <m>L_g</m> at <m>x = a</m>,
-      which are also shown in the figure.
-      Since we are interested in the limit of <m>\frac{f(x)}{g(x)}</m> as <m>x \to a</m>,
-      the individual behaviors of <m>f(x)</m> and <m>g(x)</m> as <m>x \to a</m> are key to understand.
-      Here, we take advantage of the fact that each function and its tangent line approximation become indistinguishable as <m>x \to a</m>.
+      <xref ref="F-2-8-LHR">Figure</xref> illustrates the situation.
+      We see that both <m>f</m> and <m>g</m> have an <m>x</m>-intercept at <m>x = a</m>.
+      Their respective tangent line approximations <m>L_f</m> and <m>L_g</m> at <m>x = a</m>
+      are also shown in the figure.
+      We can take advantage of the fact that a function and its tangent line approximation become indistinguishable as <m>x \to a</m>.
     </p>
 
     <p>
-      First, let's reall that <m>L_f(x) = f'(a)(x-a) + f(a)</m> and <m>L_g(x) = g'(a)(x-a) +g(a)</m>.
-      The critical observation we make is that when taking the limit,
-      because <m>x</m> is getting arbitrarily close to <m>a</m>,
+      First, let's recall that <m>L_f(x) = f'(a)(x-a) + f(a)</m> and <m>L_g(x) = g'(a)(x-a) +g(a)</m>.
+      Because <m>x</m> is getting arbitrarily close to <m>a</m> when we take the limit,
       we can replace <m>f</m> with <m>L_f</m> and replace <m>g</m> with <m>L_g</m>,
       and thus we observe that
       <md>
@@ -115,18 +103,16 @@
     </p>
 
     <p>
-      Next, we remember a key fundamental assumption:
-      that both <m>f(a) = 0</m> and <m>g(a) = 0</m>,
-      as this is precisely what makes the original limit indeterminate.
+      Next, we remember that both <m>f(a) = 0</m> and <m>g(a) = 0</m>,
+      which is precisely what makes the original limit indeterminate.
       Substituting these values for <m>f(a)</m> and <m>g(a)</m> in the limit above,
       we now have
       <md>
         <mrow>\lim_{x \to a} \frac{f(x)}{g(x)} =\mathstrut \amp  \lim_{x \to a} \frac{f'(a)(x-a)}{g'(a)(x-a)}</mrow>
         <mrow>=\mathstrut \amp  \lim_{x \to a} \frac{f'(a)}{g'(a)}</mrow>
       </md>,
-      where the latter equality holds since <m>x</m> is approaching
-      (but not equal to)
-      <m>a</m>, so <m>\frac{x-a}{x-a} = 1</m>.
+      where the latter equality holds because <m>\frac{x-a}{x-a} = 1</m> when <m>x</m> is approaching
+      (but not equal to) <m>a</m>.
       Finally, we note that <m>\frac{f'(a)}{g'(a)}</m> is constant with respect to <m>x</m>, and thus
       <me>
         \lim_{x \to a} \frac{f(x)}{g(x)} = \frac{f'(a)}{g'(a)}
@@ -134,11 +120,8 @@
     </p>
 
     <p>
-      We have, of course,
-      implicitly made the assumption that <m>g'(a) \ne 0</m>,
-      which is essential to the overall limit having the value <m>\frac{f'(a)}{g'(a)}</m>.
-      We summarize our work above with the statement of L'Hôpital's Rule,
-      which is the formal name of the result we have shown.
+      This result holds as long as <m>g'(a)</m> is not equal to zero.
+     The formal name of the result is L'Hôpital's Rule.
     </p>
 
     <assemblage>
@@ -160,11 +143,12 @@
         \lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to a} \frac{f'(x)}{g'(x)}
       </me>,
       provided the righthand limit exists.
-      This form reflects the fundamental benefit of L'Hôpital's Rule:
+      This form reflects the basic idea of L'Hôpital's Rule:
       if <m>\frac{f(x)}{g(x)}</m> produces an indeterminate limit of form <m>\frac{0}{0}</m> as <m>x \to a</m>,
-      it is equivalent to consider the limit of the quotient of the two functions' derivatives,
-      <m>\frac{f'(x)}{g'(x)}</m>.
-      For example,
+      that limit is equivalent to the limit of the quotient of the two functions' derivatives,
+      <m>\frac{f'(x)}{g'(x)}</m>.</p>
+      
+      <p>For example,
       if we consider the limit from <xref ref="PA-2-8">Preview Activity</xref>,
       <me>
         \lim_{x \to 1} \frac{x^5 + x - 2}{x^2 - 1}
@@ -176,8 +160,8 @@
     </p>
 
     <p>
-      By being able to replace the numerator and denominator with their respective derivatives,
-      we often move from an indeterminate limit to one whose value we can easily determine.
+      By replacing the numerator and denominator with their respective derivatives,
+      we often replace an indeterminate limit with one whose value we can easily determine.
     </p>
 
     <xi:include href="./activities/act-2-8-1.xml" />
@@ -192,10 +176,9 @@
     </figure>
 
     <p>
-      it is important to remember that the genesis of the rule is graphical:
+      it is important to remember that the justification of the rule is graphical:
       the main idea is that the slopes of the tangent lines to <m>f</m> and <m>g</m> at <m>x = a</m> determine the value of the limit of <m>\frac{f(x)}{g(x)}</m> as <m>x \to a</m>.
       We see this in <xref ref="F-2-8-LHR2">Figure</xref>,
-      which is a modified version of <xref ref="F-2-8-LHR">Figure</xref>,
       where we can see from the grid that
       <m>f'(a) = 2</m> and <m>g'(a) = -1</m>,
       hence by L'Hôpital's Rule,
@@ -205,7 +188,7 @@
     </p>
 
     <p>
-      Indeed, what we observe is that it's not the fact that <m>f</m> and <m>g</m> both approach zero that matters most,
+      It's not the fact that <m>f</m> and <m>g</m> both approach zero that matters most,
       but rather the <em>rate</em>
       at which each approaches zero that determines the value of the limit.
       This is a good way to remember what L'Hôpital's Rule says:
@@ -222,7 +205,7 @@
       The concept of infinity,
           <idx><h>infinity</h></idx>
       denoted <m>\infty</m>, arises naturally in calculus,
-      like it does in much of mathematics.
+      as it does in much of mathematics.
       It is important to note from the outset that <m>\infty</m> is a concept,
       but not a number itself.
       Indeed, the notion of <m>\infty</m> naturally invokes the idea of limits.
@@ -249,11 +232,11 @@
       </figure>
     </sidebyside>
     <p>
-      Recall that when we write <m>\lim_{x \to a} f(x) = L</m>,
-      this means that can make <m>f(x)</m> as close to <m>L</m> as we'd like by taking <m>x</m> sufficiently close
+      Recall that the statement <m>\lim_{x \to a} f(x) = L</m>,
+      means that can make <m>f(x)</m> as close to <m>L</m> as we'd like by taking <m>x</m> sufficiently close
       (but not equal)
       to <m>a</m>.
-      We thus expand this notation and language to include the possibility that either <m>L</m> or <m>a</m> can be <m>\infty</m>.
+      We now expand this notation and language to include the possibility that either <m>L</m> or <m>a</m> can be <m>\infty</m>.
       For instance, for <m>f(x) = \frac{1}{x}</m>, we now write
       <me>
         \lim_{x \to 0^+} \frac{1}{x} = \infty
@@ -262,7 +245,7 @@
       <m>\frac{1}{x}</m> as large as we like by taking <m>x</m> sufficiently close
       (but not equal)
       to 0.
-      In a similar way, we naturally write
+      In a similar way, we write
       <me>
         \lim_{x \to \infty} \frac{1}{x} = 0
       </me>,
@@ -270,13 +253,13 @@
     </p>
 
     <p>
-      In general, we understand the notation
-      <m>\lim_{x \to a} f(x) = \infty</m> to mean that we can make <m>f(x)</m> as large as we'd like by taking <m>x</m> sufficiently close
+      In general, the notation
+      <m>\lim_{x \to a} f(x) = \infty</m> means that we can make <m>f(x)</m> as large as we like by taking <m>x</m> sufficiently close
       (but not equal)
       to <m>a</m>, and the notation
-      <m>\lim_{x \to \infty} f(x) = L</m> to mean that we can make <m>f(x)</m> as close to <m>L</m> as we'd like by taking <m>x</m> sufficiently large.
-      This notation applies to left- and right-hand limits,
-      plus we can also use limits involving <m>-\infty</m>.
+      <m>\lim_{x \to \infty} f(x) = L</m>  means that we can make <m>f(x)</m> as close to <m>L</m> as we like by taking <m>x</m> sufficiently large.
+      This notation also applies to left- and right-hand limits,
+      and to limits involving <m>-\infty</m>.
       For example, returning to <xref ref="F-2-8-Infty">Figure</xref>
       and <m>f(x) = \frac{1}{x}</m>, we can say that
       <me>
@@ -289,7 +272,7 @@
       <me>
         \lim_{x \to \infty} f(x) = \infty
       </me>
-      when we can make the value of <m>f(x)</m> as large as we'd like by taking <m>x</m> sufficiently large.
+      if we can make the value of <m>f(x)</m> as large as we'd like by taking <m>x</m> sufficiently large.
       For example,
       <me>
         \lim_{x \to \infty} x^2 = \infty
@@ -297,7 +280,7 @@
     </p>
 
     <p>
-      Note particularly that limits involving infinity identify <em>vertical</em>
+      Limits involving infinity identify <em>vertical</em>
       and <em>horizontal asymptotes</em>
           <idx><h>asymptote</h></idx> <idx><h>asymptote</h><h>vertical</h></idx> <idx><h>asymptote</h><h>horizontal</h></idx>
       of a function.
@@ -306,7 +289,7 @@
       while if <m>\lim_{x \to \infty} f(x) = L</m>,
       then <m>y = L</m> is a horizontal asymptote of <m>f</m>.
       Similar statements can be made using <m>-\infty</m>,
-      as well as with left- and right-hand limits as <m>x \to a^-</m> or <m>x \to a^+</m>.
+      and with left- and right-hand limits as <m>x \to a^-</m> or <m>x \to a^+</m>.
     </p>
 
     <p>
@@ -315,7 +298,7 @@
       of certain families of functions,
       by which we mean the behavior of a function as
       <m>x \to \infty</m> and as <m>x \to -\infty</m>.
-      Here we briefly examine a library of some familiar functions and note the values of several limits involving <m>\infty</m>.
+      Here we briefly examine some familiar functions and note the values of several limits involving <m>\infty</m>.
     </p>
 
     <figure xml:id="F-2-8-InftyLib">
@@ -325,9 +308,9 @@
 
     <p>
       For the natural exponential function <m>e^x</m>,
-      we note that <m>\lim_{x \to \infty} e^x = \infty</m> and <m>\lim_{x \to -\infty} e^x = 0</m>,
-      while for the related exponential decay function <m>e^{-x}</m>,
-      observe that these limits are reversed,
+      we note that <m>\lim_{x \to \infty} e^x = \infty</m> and <m>\lim_{x \to -\infty} e^x = 0</m>.
+      For the exponential decay function <m>e^{-x}</m>,
+      these limits are reversed,
       with <m>\lim_{x \to \infty} e^{-x} = 0</m> and <m>\lim_{x \to -\infty} e^{-x} = \infty</m>.
       Turning to the natural logarithm function,
       we have <m>\lim_{x \to 0^+} \ln(x) = -\infty</m> and <m>\lim_{x \to \infty} \ln(x) = \infty</m>.
@@ -337,7 +320,7 @@
     </p>
 
     <p>
-      For polynomial functions of the form <m>p(x) = a_n x^n + a_{n-1}x^{n-1} + \cdots a_1 x + a_0</m>,
+      For polynomial functions of the form <me>p(x) = a_n x^n + a_{n-1}x^{n-1} + \cdots a_1 x + a_0</me>,
       the end behavior depends on the sign of <m>a_n</m> and whether the highest power <m>n</m> is even or odd.
       If <m>n</m> is even and <m>a_n</m> is positive,
       then <m>\lim_{x \to \infty} p(x) = \infty</m> and <m>\lim_{x \to -\infty} p(x) = \infty</m>,
@@ -362,29 +345,36 @@
 
     <p>
       Finally, it is straightforward to analyze the behavior of any rational function as <m>x \to \infty</m>.
-      Consider, for example, the function
-      <me>
-        q(x) =  \frac{3x^2 - 4x + 5}{7x^2 + 9x - 10}
-      </me>.
     </p>
+      
+    <example>
+      <statement>
+        <p>
+          Determine the limit of the function
+          <me>
+            q(x) =  \frac{3x^2 - 4x + 5}{7x^2 + 9x - 10}
+          </me>
+          as <m>x \to \infty</m>.
+        </p>
 
-    <p>
-      Note that both <m>(3x^2 - 4x + 5) \to \infty</m> as <m>x \to \infty</m> and
-      <m>(7x^2 + 9x - 10) \to \infty</m> as <m>x \to \infty</m>.
-      Here we say that <m>\lim_{x \to \infty} q(x)</m> has indeterminate form <m>\frac{\infty}{\infty}</m>,
-      much like we did when we encountered limits of the form <m>\frac{0}{0}</m>.
-      We can determine the value of this limit through a standard algebraic approach.
-      Multiplying the numerator and denominator each by <m>\frac{1}{x^2}</m>,
-      we find that
-      <md>
-        <mrow>\lim_{x \to \infty} q(x) =\mathstrut \amp  \lim_{x \to \infty} \frac{3x^2 - 4x + 5}{7x^2 + 9x - 10} \cdot \frac{\frac{1}{x^2}}{\frac{1}{x^2}}</mrow>
-        <mrow>=\mathstrut \amp  \lim_{x \to \infty} \frac{3 - 4\frac{1}{x} + 5\frac{1}{x^2}}{7 + 9\frac{1}{x} - 10\frac{1}{x^2}} = \frac{3}{7}</mrow>
-      </md>
-      since <m>\frac{1}{x^2} \to 0</m> and
-      <m>\frac{1}{x} \to 0</m> as <m>x \to \infty</m>.
-      This shows that the rational function <m>q</m> has a horizontal asymptote at <m>y = \frac{3}{7}</m>.
-      A similar approach can be used to determine the limit of any rational function as <m>x \to \infty</m>.
-    </p>
+        <p>
+          Note that both <m>(3x^2 - 4x + 5) \to \infty</m> as <m>x \to \infty</m> and
+          <m>(7x^2 + 9x - 10) \to \infty</m> as <m>x \to \infty</m>.
+          Here we say that <m>\lim_{x \to \infty} q(x)</m> has indeterminate form <m>\frac{\infty}{\infty}</m>.
+          We can determine the value of this limit through a standard algebraic approach.
+          Multiplying the numerator and denominator each by <m>\frac{1}{x^2}</m>,
+          we find that
+          <md>
+            <mrow>\lim_{x \to \infty} q(x) =\mathstrut \amp  \lim_{x \to \infty} \frac{3x^2 - 4x + 5}{7x^2 + 9x - 10} \cdot \frac{\frac{1}{x^2}}{\frac{1}{x^2}}</mrow>
+            <mrow>=\mathstrut \amp  \lim_{x \to \infty} \frac{3 - 4\frac{1}{x} + 5\frac{1}{x^2}}{7 + 9\frac{1}{x} - 10\frac{1}{x^2}} = \frac{3}{7}</mrow>
+          </md>
+          since <m>\frac{1}{x^2} \to 0</m> and
+          <m>\frac{1}{x} \to 0</m> as <m>x \to \infty</m>.
+          This shows that the rational function <m>q</m> has a horizontal asymptote at <m>y = \frac{3}{7}</m>.
+          A similar approach can be used to determine the limit of any rational function as <m>x \to \infty</m>.
+        </p>
+      </statement>
+    </example>
 
     <p>
       But how should we handle a limit such as
@@ -416,14 +406,14 @@
 
     <p>
       (To be technically correct,
-      we need to the additional hypothesis that
+      we need to add the additional hypothesis that
       <m>g'(x) \ne 0</m> on an open interval that contains <m>a</m> or in every neighborhood of infinity if <m>a</m> is <m>\infty</m>;
       this is almost always met in practice.)
     </p>
 
     <p>
       To evaluate <m>\lim_{x \to \infty} \frac{x^2}{e^x}</m>,
-      we observe that we can apply L'Hôpital's Rule,
+       we can apply L'Hôpital's Rule,
       since both <m>x^2 \to \infty</m> and <m>e^x \to \infty</m>.
       Doing so, it follows that
       <me>
@@ -434,7 +424,7 @@
     <p>
       This updated limit is still indeterminate and of the form <m>\frac{\infty}{\infty}</m>,
       but it is simpler since <m>2x</m> has replaced <m>x^2</m>.
-      Hence, we can apply L'Hôpital's Rule again, by which we find that
+      Hence, we can apply L'Hôpital's Rule again, and find that
       <me>
         \lim_{x \to \infty} \frac{x^2}{e^x} = \lim_{x \to \infty} \frac{2x}{e^x} = \lim_{x \to \infty} \frac{2}{e^x}
       </me>.
@@ -453,7 +443,7 @@
     <xi:include href="./activities/act-2-8-3.xml" />
 
     <p>
-      When we are considering the limit of a quotient of two functions
+      To evaluate the limit of a quotient of two functions
       <m>\frac{f(x)}{g(x)}</m> that results in an indeterminate form of <m>\frac{\infty}{\infty}</m>,
       in essence we are asking which function is growing faster without bound.
       We say that the function <m>g</m> <em>dominates</em>
@@ -465,8 +455,7 @@
       Finally, if the value of <m>\lim_{x \to \infty} \frac{f(x)}{g(x)}</m> is finite and nonzero,
       we say that <m>f</m> and <m>g</m>
       <em>grow at the same rate</em>.
-      For example,
-      from earlier work we know that <m>\lim_{x \to \infty} \frac{x^2}{e^x} = 0</m>,
+      For example, we saw that <m>\lim_{x \to \infty} \frac{x^2}{e^x} = 0</m>,
       so <m>e^x</m> dominates <m>x^2</m>,
       while <m>\lim_{x \to \infty} \frac{3x^2 - 4x + 5}{7x^2 + 9x - 10} = \frac{3}{7}</m>,
       so <m>f(x) = 3x^2 - 4x + 5</m> and
@@ -480,9 +469,9 @@
       <ul>
         <li>
           <p>
-            Derivatives be used to help us evaluate indeterminate limits of the form
+            Derivatives can be used to help us evaluate indeterminate limits of the form
             <m>\frac{0}{0}</m> through L'Hôpital's Rule,
-            which is developed by replacing the functions in the numerator and denominator with their tangent line approximations.
+        by replacing the functions in the numerator and denominator with their tangent line approximations.
             In particular,
             if <m>f(a) = g(a) = 0</m> and <m>f</m> and <m>g</m> are differentiable at <m>a</m>, L'Hôpital's Rule tells us that
             <me>
@@ -495,17 +484,17 @@
           <p>
             When we write <m>x \to \infty</m>,
             this means that <m>x</m> is increasing without bound.
-            We thus use <m>\infty</m> along with limit notation to write <m>\lim_{x \to \infty} f(x) = L</m>,
-            which means we can make <m>f(x)</m> as close to <m>L</m> as we like by choosing <m>x</m> to be sufficiently large,
-            and similarly <m>\lim_{x \to a} f(x) = \infty</m>,
-            which means we can make <m>f(x)</m> as large as we like by choosing <m>x</m> sufficiently close to <m>a</m>.
+            Thus, <m>\lim_{x \to \infty} f(x) = L</m>
+            means that we can make <m>f(x)</m> as close to <m>L</m> as we like by choosing <m>x</m> to be sufficiently large.
+            Similarly, <m>\lim_{x \to a} f(x) = \infty</m>,
+            means that we can make <m>f(x)</m> as large as we like by choosing <m>x</m> sufficiently close to <m>a</m>.
           </p>
         </li>
 
         <li>
           <p>
-            A version of L'Hôpital's Rule also allows us to use derivatives to assist us in evaluating indeterminate limits of the form <m>\frac{\infty}{\infty}</m>.
-            In particular, If <m>f</m> and <m>g</m> are differentiable and both approach zero or both approach <m>\pm \infty</m> as <m>x \to a</m>
+            A version of L'Hôpital's Rule also helps us evaluate indeterminate limits of the form <m>\frac{\infty}{\infty}</m>.
+            If <m>f</m> and <m>g</m> are differentiable and both approach zero or both approach <m>\pm \infty</m> as <m>x \to a</m>
             (where <m>a</m> is allowed to be <m>\infty</m>),
             then
             <me>

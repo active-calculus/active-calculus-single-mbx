@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- **********************************************************************-->
-<!-- Copyright 2012-2017                                                   -->
+<!-- Copyright 2012-2018                                                   -->
 <!-- Matthew Boelkins                                                      -->
 <!--                                                                       -->
 <!-- This file is part of Active Calculus.                                 -->
 <!--                                                                       -->
 <!-- Permission is granted to copy, distribute and/or modify this document -->
-<!-- under the terms of the Creative Commons BY-NC-SA license.  The work   -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
 <!-- may be used for free by any party so long as attribution is given to  -->
 <!-- the author(s), the work and its derivatives are used in the spirit of -->
-<!-- "share and share alike"; no party may sell this work or any of its    -->
-<!-- derivatives for profit.  All trademarks are the registered marks of   -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
 
@@ -32,32 +31,22 @@
   <introduction>
     <p>
       In most of our applications of the derivative so far,
-      we have worked in settings where one quantity
-      (often called <m>y</m>)
-      depends explicitly on another
-      (say <m>x</m>),
-      and in some way we have been interested in the instantaneous rate at which <m>y</m> changes with respect to <m>x</m>,
-      leading us to compute <m>\frac{dy}{dx}</m>.
-      These settings emphasize how the derivative enables us to quantify how the quantity <m>y</m> is changing as <m>x</m> changes at a given <m>x</m>-value.
-    </p>
-
-    <p>
-      We are next going to consider situations where multiple quantities are related to one another and changing,
-      but where each quantity can be considered an implicit function of the variable <m>t</m>,
-      which represents time.
+      we have been interested in the instantaneous rate at which one variable, say <m>y</m>, changes with respect to another, say <m>x</m>,
+      leading us to compute and interpret <m>\frac{dy}{dx}</m>.
+      We next consider situations where several variable quantities are related,
+      but where each quantity is implicitly a function of time, which will be represented by the variable <m>t</m>.
       Through knowing how the quantities are related,
       we will be interested in determining how their respective rates of change with respect to time are related.
-      For example,
-      suppose that air is being pumped into a spherical balloon in such a way that its volume increases at a constant rate of 20 cubic inches per second.
-      It makes sense that since the balloon's volume and radius are related,
-      by knowing how fast the volume is changing,
-      we ought to be able to relate this rate to how fast the radius is changing.
-      More specifically,
-      can we find how fast the radius of the balloon is increasing at the moment the balloon's diameter is 12 inches?
     </p>
-
+      
     <p>
-      The following preview activity leads you through the steps to answer this question.
+      For example,
+      suppose that air is being pumped into a spherical balloon so that its volume increases at a constant rate of 20 cubic inches per second.
+      Since the balloon's volume and radius are related,
+      by knowing how fast the volume is changing,
+      we ought to be able to discover how fast the radius is changing.
+      We are interested in questions such as:
+      can we determine how fast the radius of the balloon is increasing at the moment the balloon's diameter is 12 inches?
     </p>
 
     <xi:include href="./previews/PA-3-5.xml" />
@@ -67,158 +56,160 @@
     <title>Related Rates Problems</title>
     <p>
       In problems where two or more quantities can be related to one another,
-      and all of the variables involved can be viewed as implicit functions of time,
+      and all of the variables involved are implicitly functions of time,
       <m>t</m>,
-      we are often interested in how the rates of change of the individual quantities with respect to time are themselves related;
+      we are often interested in how their rates are related;
       we call these <em>related rates</em> problems.
           <idx><h>related rates</h></idx>
-      Often these problems involve identifying one or more key underlying geometric relationships to relate the variables involved.
-      Once we have an equation establishing the fundamental relationship among variables,
+      
+      Once we have an equation establishing the relationship among the variables,
       we differentiate implicitly with respect to time to find connections among the rates of change.
     </p>
 
+    <example xml:id="Ex-3-5-FallingSand">
+      <statement>
+        <p>
+          Sand is being dumped by a conveyor belt onto a pile so that the sand forms a right circular cone,
+          as pictured in <xref ref="F-3-5-ConeEx">Figure</xref>.
+        </p>
+        <figure xml:id="F-3-5-ConeEx">
+          <caption>A conical pile of sand.</caption>
+          <image width="50%" source="images/3_5_ConeEx" />
+        </figure>    
+      </statement>
+
+      <solution>
+        <p>
+          As sand falls from the conveyor belt,
+          several features of the sand pile will change:
+          the volume of the pile will grow,
+          the height will increase, and the radius will get bigger, too.
+          All of these quantities are related to one another,
+          and the rate at which each is changing is related to the rate at which sand falls from the conveyor.
+        </p>
+
+        <p>
+          We begin by identifying which variables are changing and how they are related.
+          In this problem,
+          we observe that the radius and height of the pile are related to its volume by the standard equation for the volume of a cone,
+          <me>
+            V = \frac{1}{3} \pi r^2 h
+          </me>.
+        </p>
+
+        <p>
+          Viewing each of <m>V</m>, <m>r</m>,
+          and <m>h</m> as functions of <m>t</m>,
+          we differentiate implicitly to arrive at an equation that relates their respective rates of change.
+          Taking the derivative of each side of the equation with respect to <m>t</m>, we find
+          <me>
+            \frac{d}{dt}[V] = \frac{d}{dt}\left[\frac{1}{3} \pi r^2 h\right]
+          </me>.
+        </p>
+
+        <p>
+          On the left,
+          <m>\frac{d}{dt}[V]</m> is simply <m>\frac{dV}{dt}</m>.
+          On the right, the situation is more complicated,
+          as both <m>r</m> and <m>h</m> are implicit functions of <m>t</m>.
+          Hence we need the product and chain rules.
+          We find that
+          <md>
+            <mrow>\frac{dV}{dt} &amp;=  \frac{d}{dt}\left[\frac{1}{3} \pi r^2 h\right]</mrow>
+            <mrow>   &amp;=  \frac{1}{3} \pi r^2 \frac{d}{dt}[h] + \frac{1}{3} \pi h \frac{d}{dt}[r^2]</mrow>
+            <mrow>   &amp;=  \frac{1}{3} \pi r^2 \frac{dh}{dt} + \frac{1}{3} \pi h 2r \frac{dr}{dt}</mrow>
+          </md>
+        </p>
+
+        <p>
+          (Note particularly how we are using ideas from <xref ref="sec-2-7-implicit">Section</xref> on implicit differentiation.
+          There we found that when <m>y</m> is an implicit function of <m>x</m>,
+          <m>\frac{d}{dx}[y^2] = 2y \frac{dy}{dx}</m>.
+          The same principles are applied here when we compute <m>\frac{d}{dt}[r^2] = 2r \frac{dr}{dt}</m>.)
+        </p>
+
+        <p>
+          The equation
+          <me>
+            \frac{dV}{dt} = \frac{1}{3} \pi r^2 \frac{dh}{dt} + \frac{2}{3} \pi rh \frac{dr}{dt}
+          </me>,
+         relates the rates of change of <m>V</m>, <m>h</m>,
+          and <m>r</m>.
+        </p>
+      </solution>
+    </example>
+
     <p>
-      For example,
-      consider the situation where sand is being dumped by a conveyor belt on a pile so that the sand forms a right circular cone,
-      as pictured in <xref ref="F-3-5-ConeEx">Figure</xref>.
+      If we are given sufficient additional information,
+      we may then find the value of one or more of these rates of change at a specific point in time.
     </p>
 
-    <figure xml:id="F-3-5-ConeEx">
-      <caption>A conical pile of sand.</caption>
-      <image width="50%" source="images/3_5_ConeEx" />
-    </figure>
+    <example>
+      <statement>
+        <p>
+          In the setting of <xref ref="Ex-3-5-FallingSand">Example</xref>, suppose we also know the following: (a) sand falls from the conveyor in such a way that the height of the pile is always half the radius,
+          and (b) sand falls from the conveyor belt at a constant rate of 10 cubic feet per minute.
+          How fast is the height of the sandpile changing at the moment the radius is 4 feet?
+        </p>
+      </statement>
+
+    <solution>
+      <p>
+        The information that the height is always half the radius tells us that for all values of <m>t</m>,
+        <m>h = \frac{1}{2}r</m>.
+        Differentiating with respect to <m>t</m>,
+        it follows that <m>\frac{dh}{dt} = \frac{1}{2} \frac{dr}{dt}</m>.
+        These relationships enable us to relate
+        <m>\frac{dV}{dt}</m> to just one of <m>r</m> or <m>h</m>.
+        Substituting the expressions involving <m>r</m> and
+        <m>\frac{dr}{dt}</m> for <m>h</m> and <m>\frac{dh}{dt}</m>,
+        we now have that
+        <men xml:id="E-ConeRR">
+          \frac{dV}{dt} = \frac{1}{3} \pi r^2 \cdot \frac{1}{2} \frac{dr}{dt} + \frac{2}{3} \pi r \cdot \frac{1}{2}r \cdot \frac{dr}{dt}
+        </men>.
+      </p>
+
+      <p>
+        Since sand falls from the conveyor at the constant rate of 10 cubic feet per minute,
+        the value of <m>\frac{dV}{dt}</m>,
+        the rate at which the volume of the sand pile changes, is <m>\frac{dV}{dt} = 10</m> ft<m>^3</m>/min.
+        We are interested in how fast the height of the pile is changing at the instant when <m>r = 4</m>, so
+        we substitute <m>r = 4</m> and
+        <m>\frac{dV}{dt} = 10</m> into Equation<nbsp /><xref ref="E-ConeRR" />, to find 
+        <me>
+          10 = \frac{1}{3} \pi 4^2 \cdot \frac{1}{2}  \left. \frac{dr}{dt} \right|_{r=4} + \frac{2}{3} \pi 4 \cdot \frac{1}{2}4 \cdot \left. \frac{dr}{dt} \right|_{r=4} = \frac{8}{3}\pi \left. \frac{dr}{dt} \right|_{r=4} + \frac{16}{3} \pi \left. \frac{dr}{dt} \right|_{r=4}
+        </me>.
+      </p>
+
+      <p>
+        Only the value of <m>\left. \frac{dr}{dt} \right|_{r=4}</m> remains unknown.  We combine like terms on the right side of the equation above to get
+         <m>10 = 8 \pi \left. \frac{dr}{dt} \right|_{r=4}</m>, and solve for <m>\left. \frac{dr}{dt} \right|_{r=4}</m> to find
+        <me>
+          \left. \frac{dr}{dt} \right|_{r=4} = \frac{10}{8\pi} \approx 0.39789
+        </me>
+        feet per second.
+        Because we were interested in how fast the height of the pile was changing at this instant,
+        we want to know <m>\frac{dh}{dt}</m> when <m>r = 4</m>.
+        Since <m>\frac{dh}{dt} = \frac{1}{2} \frac{dr}{dt}</m> for all values of <m>t</m>,
+        it follows
+        <me>
+          \left. \frac{dh}{dt} \right|_{r=4} = \frac{5}{8\pi} \approx 0.19894 \ \text{ft/min}
+        </me>.
+      </p>
+    </solution>
+  </example>
 
     <p>
-      As sand falls from the conveyor belt onto the top of the pile,
-      obviously several features of the sand pile will change:
-      the volume of the pile will grow,
-      the height will increase, and the radius will get bigger, too.
-      All of these quantities are related to one another,
-      and the rate at which each is changing is related to the rate at which sand falls from the conveyor.
-    </p>
-
-    <p>
-      The first key steps in any related rates problem involve identifying which variables are changing and how they are related.
-      In the current problem involving a conical pile of sand,
-      we observe that the radius and height of the pile are related to the volume of the pile by the standard equation for the volume of a cone,
-      <me>
-        V = \frac{1}{3} \pi r^2 h
-      </me>.
-    </p>
-
-    <p>
-      Viewing each of <m>V</m>, <m>r</m>,
-      and <m>h</m> as functions of <m>t</m>,
-      we can differentiate implicitly to determine an equation that relates their respective rates of change.
-      Taking the derivative of each side of the equation with respect to <m>t</m>,
-      <me>
-        \frac{d}{dt}[V] = \frac{d}{dt}\left[\frac{1}{3} \pi r^2 h\right]
-      </me>.
-    </p>
-
-    <p>
-      On the left,
-      <m>\frac{d}{dt}[V]</m> is simply <m>\frac{dV}{dt}</m>.
-      On the right, the situation is more complicated,
-      as both <m>r</m> and <m>h</m> are implicit functions of <m>t</m>,
-      hence we have to use the product and chain rules.
-      Doing so, we find that
-      <md>
-        <mrow>\frac{dV}{dt} =\mathstrut \amp  \frac{d}{dt}\left[\frac{1}{3} \pi r^2 h\right]</mrow>
-        <mrow>=\mathstrut \amp  \frac{1}{3} \pi r^2 \frac{d}{dt}[h] + \frac{1}{3} \pi h \frac{d}{dt}[r^2]</mrow>
-        <mrow>=\mathstrut \amp  \frac{1}{3} \pi r^2 \frac{dh}{dt} + \frac{1}{3} \pi h 2r \frac{dr}{dt}</mrow>
-      </md>
-    </p>
-
-    <p>
-      Note particularly how we are using ideas from <xref ref="sec-2-7-implicit">Section</xref> on implicit differentiation.
-      There we found that when <m>y</m> is an implicit function of <m>x</m>,
-      <m>\frac{d}{dx}[y^2] = 2y \frac{dy}{dx}</m>.
-      The exact same thing is occurring here when we compute <m>\frac{d}{dt}[r^2] = 2r \frac{dr}{dt}</m>.
-    </p>
-
-    <p>
-      With our arrival at the equation
-      <me>
-        \frac{dV}{dt} = \frac{1}{3} \pi r^2 \frac{dh}{dt} + \frac{2}{3} \pi rh \frac{dr}{dt}
-      </me>,
-      we have now related the rates of change of <m>V</m>, <m>h</m>,
-      and <m>r</m>.
-      If we are given sufficient information,
-      we may then find the value of one or more of these rates of change at one or more points in time.
-      Say, for instance,
-      that we know the following: (a) sand falls from the conveyor in such a way that the height of the pile is always half the radius,
-      and (b) sand falls from the conveyor belt at a constant rate of 10 cubic feet per minute.
-      With this information given,
-      we can answer questions such as:
-      how fast is the height of the sandpile changing at the moment the radius is 4 feet?
-    </p>
-
-    <p>
-      The information that the height is always half the radius tells us that for all values of <m>t</m>,
-      <m>h = \frac{1}{2}r</m>.
-      Differentiating with respect to <m>t</m>,
-      it follows that <m>\frac{dh}{dt} = \frac{1}{2} \frac{dr}{dt}</m>.
-      These relationships enable us to relate
-      <m>\frac{dV}{dt}</m> exclusively to just one of <m>r</m> or <m>h</m>.
-      Substituting the expressions involving <m>r</m> and
-      <m>\frac{dr}{dt}</m> for <m>h</m> and <m>\frac{dh}{dt}</m>,
-      we now have that
-      <men xml:id="E-ConeRR">
-        \frac{dV}{dt} = \frac{1}{3} \pi r^2 \cdot \frac{1}{2} \frac{dr}{dt} + \frac{2}{3} \pi r \cdot \frac{1}{2}r \cdot \frac{dr}{dt}
-      </men>.
-    </p>
-
-    <p>
-      Since sand falls from the conveyor at the constant rate of 10 cubic feet per minute,
-      this tells us the value of <m>\frac{dV}{dt}</m>,
-      the rate at which the volume of the sand pile changes.
-      In particular, <m>\frac{dV}{dt} = 10</m> ft<m>^3</m>/min.
-      Furthermore,
-      since we are interested in how fast the height of the pile is changing at the instant <m>r = 4</m>,
-      we use the value <m>r = 4</m> along with
-      <m>\frac{dV}{dt} = 10</m> in Equation<nbsp /><xref ref="E-ConeRR" />, and hence find that
-      <me>
-        10 = \frac{1}{3} \pi 4^2 \cdot \frac{1}{2}  \left. \frac{dr}{dt} \right|_{r=4} + \frac{2}{3} \pi 4 \cdot \frac{1}{2}4 \cdot \left. \frac{dr}{dt} \right|_{r=4} = \frac{8}{3}\pi \left. \frac{dr}{dt} \right|_{r=4} + \frac{16}{3} \pi \left. \frac{dr}{dt} \right|_{r=4}
-      </me>.
-    </p>
-
-    <p>
-      With only the value of <m>\left. \frac{dr}{dt} \right|_{r=4}</m> remaining unknown,
-      we solve for <m>\left. \frac{dr}{dt} \right|_{r=4}</m> and find that <m>10 = 8 \pi \left. \frac{dr}{dt} \right|_{r=4}</m>, so that
-      <me>
-        \left. \frac{dr}{dt} \right|_{r=4} = \frac{10}{8\pi} \approx 0.39789
-      </me>
-      feet per second.
-      Because we were interested in how fast the height of the pile was changing at this instant,
-      we want to know <m>\frac{dh}{dt}</m> when <m>r = 4</m>.
-      Since <m>\frac{dh}{dt} = \frac{1}{2} \frac{dr}{dt}</m> for all values of <m>t</m>,
-      it follows
-      <me>
-        \left. \frac{dh}{dt} \right|_{r=4} = \frac{5}{8\pi} \approx 0.19894 \ \text{ft/min}
-      </me>.
-    </p>
-
-    <p>
-      Note particularly how we distinguish between the notations
+      Note the difference between the notations
       <m>\frac{dr}{dt}</m> and <m>\left. \frac{dr}{dt} \right|_{r=4}</m>.
       The former represents the rate of change of <m>r</m> with respect to <m>t</m> at an arbitrary value of <m>t</m>,
       while the latter is the rate of change of <m>r</m> with respect to <m>t</m> at a particular moment,
-      in fact the moment <m>r = 4</m>.
-      While we don't know the exact value of <m>t</m>,
-      because information is provided about the value of <m>r</m>,
-      it is important to distinguish that we are using this more specific data.
+      the moment when <m>r = 4</m>.
     </p>
 
     <p>
-      The relationship between <m>h</m> and <m>r</m>,
-      with <m>h = \frac{1}{2}r</m> for all values of <m>t</m>,
-      enables us to transition easily between questions involving <m>r</m> and <m>h</m>.
-      Indeed, had we known this information at the problem's outset,
-      we could have immediately simplified our work.
-      Using <m>h = \frac{1}{2}r</m>,
-      it follows that since <m>V = \frac{1}{3} \pi r^2 h</m>,
-      we can write <m>V</m> solely in terms of <m>r</m> to have
+      Had we known that <m>h = \frac{1}{2}r</m> at the beginning of <xref ref="Ex-3-5-FallingSand">Example</xref>,
+      we could have immediately simplified our work by writing <m>V</m> solely in terms of <m>r</m> to have
       <me>
         V = \frac{1}{3} \pi r^2 \left(\frac{1}{2}h\right) = \frac{1}{6} \pi r^3
       </me>.
@@ -229,8 +220,7 @@
       <me>
         \frac{dV}{dt} = \frac{1}{2} \pi r^2 \frac{dr}{dt}
       </me>,
-      from which the same conclusions made earlier about
-      <m>\frac{dr}{dt}</m> and <m>\frac{dh}{dt}</m> can be made.
+      from which the same conclusions can be made.
     </p>
 
     <p>
@@ -281,11 +271,11 @@
     </note>
 
     <p>
-      In the first step of identifying changing quantities and drawing a picture,
-      it is important to think about the dynamic ways in which the involved quantities change.
+      When identifying variables and drawing a picture,
+      it is important to think about the dynamic ways in which the quantities change.
       Sometimes a sequence of pictures can be helpful;
-      for some already-drawn pictures that can be easily modified as applets built in Geogebra,
-      see the following links<fn>We again refer to the work of Prof.<nbsp />Marc Renault of Shippensburg University,
+      for some pictures that can be easily modified as applets built in Geogebra,
+      see the following links,<fn>We again refer to the work of Prof.<nbsp />Marc Renault of Shippensburg University,
       found at <url href="http://gvsu.edu/s/5p">http://gvsu.edu/s/5p</url>.</fn>which represent
 
       <ul>
@@ -322,38 +312,33 @@
     <xi:include href="./activities/act-3-5-1.xml" />
 
     <p>
-      Recognizing familiar geometric configurations is one way that we relate the changing quantities in a given problem.
+      Recognizing which geometric relationships are relevant in a given problem 
+      is often the key to finding the function to optimize.
       For instance,
-      while the problem in <xref ref="act-3-5-1">Activity</xref>
-      is centered on a conical tank,
-      one of the most important observations is that there are two key right triangles present.
-      In another setting,
-      a right triangle might be indicative of an opportunity to take advantage of the Pythagorean Theorem to relate the legs of the triangle.
+      although the problem in <xref ref="act-3-5-1">Activity</xref>
+      is about a conical tank,
+      the most important fact is that there are two similar right triangles involved.
+      In another setting, we might use the Pythagorean Theorem to relate the legs of the triangle.
       But in the conical tank,
-      the fact that the water at any time fills a portion of the tank in such a way that the ratio of radius to depth is constant turns out to be the most important relationship with which to work.
-      That enables us to write <m>r</m> in terms of <m>h</m> and reduce the overall problem to one that involves only one variable,
-      where the volume of water depends simply on <m>h</m>,
-      and hence to subsequently relate
-      <m>\frac{dV}{dt}</m> and <m>\frac{dh}{dt}</m>.
+      the fact that the water fills the tank so that that the ratio of radius to depth is constant turns out to be the important relationship.
       In other situations where a changing angle is involved,
-      a right triangle may offer the opportunity to find relationships among various parts of the triangle using trigonometric functions.
+      trigonometric functions may provide the means to find relationships among various parts of the triangle.
     </p>
 
     <xi:include href="./activities/act-3-5-2.xml" />
 
     <p>
-      In addition to being able to find instantaneous rates of change at particular points in time,
-      we are often able to make more general observations about how particular rates themselves will change over time.
-      For instance, when a conical tank
-      (point down)
-      is filling with water at a constant rate,
-      we naturally intuit that the depth of the water should increase more slowly over time.
-      Note how carefully we need to speak:
+      In addition to finding instantaneous rates of change at particular points in time,
+      we can often make more general observations about how particular rates themselves will change over time.
+      For instance, when a conical tank is filling with water at a constant rate,
+      it seems obvious that the depth of the water should increase more slowly over time.
+      Note how carefully we must phrase the relationship:
       we mean to say that while the depth,
       <m>h</m>, of the water is increasing,
-      its rate of change <m>\frac{dh}{dt}</m> is decreasing (both as a function of <m>t</m> and as a function of <m>h</m>).
-      These observations may often be made by taking the general equation that relates the various rates and solving for one of them,
-      and doing this without substituting any particular values for known variables or rates.
+      its rate of change, <m>\frac{dh}{dt}</m>, is decreasing 
+      (both as a function of <m>t</m> and as a function of <m>h</m>).
+      We make this observation by solving the equation that relates the various rates for one particular rate,
+      without substituting any particular values for known variables or rates.
       For instance,
       in the conical tank problem in <xref ref="act-3-5-1">Activity</xref>,
       we established that
@@ -369,23 +354,22 @@
     <p>
       Provided that <m>\frac{dV}{dt}</m> is constant,
       it is immediately apparent that as <m>h</m> gets larger,
-      <m>\frac{dh}{dt}</m> will get smaller,
-      while always remaining positive.
+      <m>\frac{dh}{dt}</m> will get smaller
+      but remain positive.
       Hence, the depth of the water is increasing at a decreasing rate.
     </p>
 
     <xi:include href="./activities/act-3-5-3.xml" />
 
     <p>
-      As we progress further into related rates problems,
-      less direction will be provided.
       In the first three activities of this section,
-      we have been provided with guided instruction to build a solution in a step by step way.
+      we provided guided instruction to build a solution in a step by step way.
       For the closing activity and the following exercises,
       most of the detailed work is left to the reader.
     </p>
 
     <xi:include href="./activities/act-3-5-4.xml" />
+
   </subsection>
 
   <subsection>

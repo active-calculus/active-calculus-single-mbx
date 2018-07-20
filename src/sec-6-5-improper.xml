@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- **********************************************************************-->
-<!-- Copyright 2012-2017                                                   -->
+<!-- Copyright 2012-2018                                                   -->
 <!-- Matthew Boelkins                                                      -->
 <!--                                                                       -->
 <!-- This file is part of Active Calculus.                                 -->
 <!--                                                                       -->
 <!-- Permission is granted to copy, distribute and/or modify this document -->
-<!-- under the terms of the Creative Commons BY-NC-SA license.  The work   -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
 <!-- may be used for free by any party so long as attribution is given to  -->
 <!-- the author(s), the work and its derivatives are used in the spirit of -->
-<!-- "share and share alike"; no party may sell this work or any of its    -->
-<!-- derivatives for profit.  All trademarks are the registered marks of   -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
 
@@ -40,10 +39,10 @@
   <introduction>
     <p>
       Another important application of the definite integral
-      regards how the likelihood of certain events can be measured.
-      For example,
-      consider a company that manufactures incandescent light bulbs,
-      and suppose that based on a large volume of test results,
+      measures the likelihood of certain events.
+      For instance,
+      consider a company that manufactures incandescent light bulbs.
+      Based on a large volume of test results,
       they have determined that the fraction of light bulbs that fail between times <m>t = a</m> and <m>t = b</m> of use
       (where <m>t</m> is measured in months)
       is given by
@@ -75,18 +74,10 @@
     <idx><h>improper integral</h></idx>
 
     <p>
-      In light of our example with light bulbs that fail,
-      as well as with the problem involving customer wait time in <xref ref="PA-6-5">Preview Activity</xref>,
-      we see that it is natural to consider questions where we desire to integrate over an interval whose upper limit grows without bound.
-      For example,
-      if we are interested in the fraction of light bulbs that fail within the first <m>b</m> months of use,
-      we know that the expression
-      <me>
-        \int_0^b 0.3e^{-0.3t} \, dt
-      </me>
-      measures this value.
-      To think about the fraction of light bulbs that fail <em>eventually</em>,
-      we understand that we wish to find
+      In view of the above examples, 
+      we see that we may want to integrate over an interval whose upper limit grows without bound.
+      For example, to find the fraction of light bulbs that fail <em>eventually</em>,
+      we wish to find
       <me>
         \lim_{b \to \infty} \int_0^b 0.3e^{-0.3t} \, dt
       </me>,
@@ -97,8 +88,8 @@
     </p>
 
     <p>
-      Note particularly that we are studying the area of an unbounded region,
-      as pictured in <xref ref="F-6-5-InfReg">Figure</xref>.
+      Such an integral can be interpreted as the area of an unbounded region,
+      as pictured at right in <xref ref="F-6-5-InfReg">Figure</xref>.
     </p>
 
     <figure xml:id="F-6-5-InfReg">
@@ -107,40 +98,35 @@
     </figure>
 
     <p>
-      Anytime we are interested in an integral for which the interval of integration is unbounded
-      (that is, one for which at least one of the limits of integration involves <m>\infty</m>),
-      we say that the integral is <em>improper</em>.
+      We call an integral for which the interval of integration is unbounded <em>improper</em>.
           <idx><h>improper integral</h><h>unbounded region of integration</h></idx>
       For instance, the integrals
       <me>
         \int_1^{\infty} \frac{1}{x^2} \, dx, \ \ \int_{-\infty}^0 \frac{1}{1+x^2} \, dx, \ \ \text{and}  \int_{-\infty}^{\infty} e^{-x^2} \, dx
       </me>
-      are all improper due to having limits of integration that involve <m>\infty</m>.
-      We investigate the value of any such integral by replacing the improper integral with a limit of proper integrals;
-      for an improper integral such as <m>\int_0^\infty f(x) \, dx</m>, we write
+      are all improper because they have limits of integration that involve <m>\infty</m>.
+      To evaluate an improper integral we replace it with a limit of proper integrals.
+      That is,
       <me>
         \int_0^\infty f(x) \, dx = \lim_{b \to \infty} \int_0^b f(x) \,dx
       </me>.
     </p>
 
     <p>
-      We can then attempt to evaluate
-      <m>\int_0^b f(x) \,dx</m> using the First FTC, after which we can evaluate the limit.
-      An immediate and important question arises:
-      is it even possible for the area of such an unbounded region to be finite?
+      We first attempt to evaluate
+      <m>\int_0^b f(x) \,dx</m> using the First FTC, and then evaluate the limit.
+      Is it even possible for the area of an unbounded region to be finite?
       The following activity explores this issue and others in more detail.
     </p>
 
     <xi:include href="./activities/act-6-5-1.xml" />
+
   </subsection>
 
   <subsection>
     <title>Convergence and Divergence</title>
     <p>
-      Our work so far has suggested that when we consider a nonnegative function <m>f</m> on an interval <m>[1,\infty]</m>,
-      such as <m>f(x) = \frac{1}{x}</m> or <m>f(x) = \frac{1}{x^{3/2}}</m>,
-      there are at least two possibilities for the value of <m>\lim_{b \to \infty} \int_1^b f(x) \, dx</m>:
-      the limit is finite or infinite.
+      <xref ref="act-6-5-1">Activity</xref> suggests that  <m>\lim_{b \to \infty} \int_1^b f(x) \, dx</m> is either finite or infinite (or it doesn't exist).
       With these possibilities in mind,
       we introduce the following terminology.
     </p>
@@ -149,22 +135,22 @@
       <p>
         If <m>f(x)</m> is nonnegative for <m>x \ge a</m>,
         then we say that the improper integral <m>\int_a^{\infty} f(x) \, dx</m>
-        <em>converges</em>
+        <term>converges</term>
             <idx><h>improper integral</h><h>converges</h></idx>
         provided that
         <me>
           \lim_{b \to \infty} \int_a^{b} f(x) \, dx
         </me>
         exists and is finite.
-        Otherwise, we say that <m>\int_a^{\infty} f(x) \, dx</m> <em>diverges</em>.
+        Otherwise, we say that <m>\int_a^{\infty} f(x) \, dx</m> <term>diverges</term>.
             <idx><h>improper integral</h><h>diverges</h></idx>
       </p>
     </assemblage>
 
     <p>
-      We normally restrict our interest to improper integrals for which the integrand is nonnegative.
-      Further, we note that our primary interest is in functions <m>f</m> for which <m>\lim_{x \to \infty} f(x) = 0</m>,
-      for if the function <m>f</m> does not approach <m>0</m> as <m>x \to \infty</m>,
+      We will restrict our interest to improper integrals for which the integrand is nonnegative.
+      Also, we require that <m>\lim_{x \to \infty} f(x) = 0</m>,
+      for if <m>f</m> does not approach <m>0</m> as <m>x \to \infty</m>,
       then it is impossible for <m>\int_a^{\infty} f(x) \, dx</m> to converge.
     </p>
 
@@ -174,14 +160,14 @@
   <subsection>
     <title>Improper Integrals Involving Unbounded Integrands</title>
     <p>
-      It is also possible for an integral to be improper due to the integrand being unbounded on the interval of integration.
-      For example, if we consider
+      An integral is also called improper if the integrand is unbounded on the interval of integration.
+      For example, consider
       <me>
         \int_0^1 \frac{1}{\sqrt{x}} \, dx
-      </me>,
-      we see that because <m>f(x) = \frac{1}{\sqrt{x}}</m> has a vertical asymptote at <m>x = 0</m>,
+      </me>.
+      Because <m>f(x) = \frac{1}{\sqrt{x}}</m> has a vertical asymptote at <m>x = 0</m>,
       <m>f</m> is not continuous on <m>[0,1]</m>,
-      and the integral is attempting to represent the area of the unbounded region shown at right in <xref ref="F-6-5-InfIntegrand">Figure</xref>.
+      and the integral represents the area of the unbounded region shown at right in <xref ref="F-6-5-InfIntegrand">Figure</xref>.
     </p>
 
     <figure xml:id="F-6-5-InfIntegrand">
@@ -190,30 +176,28 @@
     </figure>
 
     <p>
-      Just as we did with improper integrals involving infinite limits,
-      we address the problem of the integrand being unbounded
+      We address the problem of the integrand being unbounded
           <idx><h>improper integral</h><h>unbounded integrand</h></idx>
-      by replacing such an improper integral with a limit of proper integrals.
+      by replacing the improper integral with a limit of proper integrals.
       For example,
       to evaluate <m>\int_0^1 \frac{1}{\sqrt{x}} \, dx</m>,
       we replace <m>0</m> with <m>a</m> and let <m>a</m> approach 0 from the right.
       Thus,
       <me>
         \int_0^1 \frac{1}{\sqrt{x}} \, dx = \lim_{a \to 0^+} \int_a^1 \frac{1}{\sqrt{x}} \, dx
-      </me>,
-      and then we evaluate the proper integral <m>\int_a^1 \frac{1}{\sqrt{x}} \, dx</m>,
-      followed by taking the limit.
-      In the same way as with improper integrals involving unbounded regions,
-      we will say that the improper integral converges provided that this limit exists,
+      </me>.
+      We evaluate the proper integral <m>\int_a^1 \frac{1}{\sqrt{x}} \, dx</m>,
+      and then take the limit.
+      We will say that the improper integral converges if this limit exists,
       and diverges otherwise.
-      In the present example, we observe that
+      In this example, we observe that
       <md>
-        <mrow>\int_0^1 \frac{1}{\sqrt{x}} \, dx \amp =  \lim_{a \to 0^+} \int_a^1 \frac{1}{\sqrt{x}} \, dx</mrow>
-        <mrow>\amp = \lim_{a \to 0^+} 2\sqrt{x} \big\vert_a^1</mrow>
-        <mrow>\amp = \lim_{a \to 0^+} 2\sqrt{1} - 2\sqrt{a}</mrow>
-        <mrow>\amp = 2</mrow>
+        <mrow>\int_0^1 \frac{1}{\sqrt{x}} \, dx &amp;=  \lim_{a \to 0^+} \int_a^1 \frac{1}{\sqrt{x}} \, dx</mrow>
+        <mrow>   &amp;= \lim_{a \to 0^+} 2\sqrt{x} \big\vert_a^1</mrow>
+        <mrow>   &amp;= \lim_{a \to 0^+} 2\sqrt{1} - 2\sqrt{a}</mrow>
+        <mrow>   &amp;= 2</mrow>
       </md>,
-      and therefore the improper integral
+      so the improper integral
       <m>\int_0^1 \frac{1}{\sqrt{x}} \, dx</m> converges (to the value 2).
     </p>
 
@@ -229,7 +213,7 @@
     <sidebyside widths="47% 47%" margins="0%">
       <p>
         At first glance we might think that we can simply apply the Fundamental Theorem of Calculus by antidifferentiating <m>\frac{1}{(x-2)^2}</m> to get
-        <m>-\frac{1}{x-2}</m> and then evaluate from <m>1</m> to <m>3</m>.
+        <m>-\frac{1}{x-2}</m> and then evaluating from <m>1</m> to <m>3</m>.
         Were we to do so, we would be erroneously applying the FTC because
         <m>f(x) = \frac{1}{(x-2)^2}</m> fails to be continuous throughout the interval,
         as seen in <xref ref="F-6-5-InfIntegrand2">Figure</xref>.
@@ -243,19 +227,18 @@
     <p>
       Such an incorrect application of the FTC leads to an impossible result (<m>-2</m>),
       which would itself suggest that something we did must be wrong.
-      Indeed, we must address the vertical asymptote in
-      <m>f(x) = \frac{1}{(x-2)^2}</m> at <m>x = 2</m> by writing
+      Instead, we must address the vertical asymptote at <m>x = 2</m> by writing
       <me>
         \int_1^3 \frac{1}{(x-2)^2} \, dx = \lim_{a \to 2^-} \int_1^a \frac{1}{(x-2)^2} \, dx + \lim_{b \to 2^+} \int_b^3 \frac{1}{(x-2)^2} \, dx
-      </me>
-      and then evaluate two separate limits of proper integrals.
+      </me>.
+      We then evaluate two separate limits of proper integrals.
       For instance,
       doing so for the integral with <m>a</m> approaching <m>2</m> from the left, we find
       <md>
-        <mrow>\int_1^2 \frac{1}{(x-2)^2} \, dx \amp = \lim_{a \to 2^-} \int_1^a \frac{1}{(x-2)^2} \, dx</mrow>
-        <mrow>\amp = \lim_{a \to 2^-} -\frac{1}{(x-2)} \bigg\vert_1^a</mrow>
-        <mrow>\amp = \lim_{a \to 2^-} -\frac{1}{(a-2)} + \frac{1}{1-2}</mrow>
-        <mrow>\amp =\infty</mrow>
+        <mrow>\int_1^2 \frac{1}{(x-2)^2} \, dx&amp;= \lim_{a \to 2^-} \int_1^a \frac{1}{(x-2)^2} \, dx</mrow>
+        <mrow>   &amp;= \lim_{a \to 2^-} -\frac{1}{(x-2)} \bigg\vert_1^a</mrow>
+        <mrow>   &amp;= \lim_{a \to 2^-} -\frac{1}{(a-2)} + \frac{1}{1-2}</mrow>
+        <mrow>   &amp;= \infty</mrow>
       </md>,
       since <m>\frac{1}{a-2} \to -\infty</m> as <m>a</m> approaches 2 from the left.
       Thus, the improper integral <m>\int_1^2 \frac{1}{(x-2)^2} \, dx</m> diverges;
