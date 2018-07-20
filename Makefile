@@ -246,4 +246,5 @@ check:
 	install -d $(OUTPUT)
 	-rm $(OUTPUT)/schema_errors.*
 	-java -classpath $(JING_DIR)/build -Dorg.apache.xerces.xni.parser.XMLParserConfiguration=org.apache.xerces.parsers.XIncludeParserConfiguration -jar $(JING_DIR)/build/jing.jar $(MB)/schema/pretext.rng $(MAINFILE) > $(OUTPUT)/schema_errors.txt
+	xsltproc --xinclude $(MB)/schema/pretext-schematron.xsl $(MAINFILE) >> $(OUTPUT)/schema_errors.txt
 	less $(OUTPUT)/schema_errors.txt
