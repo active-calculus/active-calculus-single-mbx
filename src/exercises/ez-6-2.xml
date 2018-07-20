@@ -37,6 +37,7 @@
     <title>Solid of revolution from two functions about a vertical line</title>
     <webwork source="Library/ASU-topics/setCalc2/tracogna5.pg" />
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -79,15 +80,112 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+          <li>
+            <p>
+              <m>
+                L = \int_0^{1.84257} \sqrt{1+\left( -3 \sin \left(\frac{x^3}{4}\right) \cdot \frac{3}{4}x^2 \right)^2} \, dx
+              \approx 4.10521</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>
+                A = \int_0^{1.84527} 3 \cos\left( \frac{x^3}{4} \right) \, dx \approx 4.6623
+              </m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>
+                V = \int_0^{1.84527} \pi \cdot 9 \cos^2 \left( \frac{x^3}{4} \right) \, dx \approx 40.31965
+              </m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>
+                V = \int_0^3 \pi \left( 4\arccos \left(\frac{y}{3} \right) \right)^{2/3} \, dy \approx 23.29194
+              </m>.
+            </p>
+          </li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+            <p>
+              Plotting the function and using technology to find where <m>f(x)</m> intersects the <m>x</m>-axis, we see that the region <m>R</m> as pictured in the following figure.
+            </p>
+            <sidebyside width="50%">
+              <image source="images/6_2_Ez1Region" />
+            </sidebyside>             
+            <p>  
+              To apply the formula we developed for arc length, we need the derivative of <m>f</m>.  By the chain rule, <m>f'(x) = -3 \sin(\frac{x^3}{4}) \cdot \frac{3}{4}x^2</m>, so the arc length of <m>f</m> that lies along the upper boundary of <m>R</m> is 
+              <me>
+                L = \int_0^{1.84257} \sqrt{1+\left( -3 \sin \left(\frac{x^3}{4}\right) \cdot \frac{3}{4}x^2 \right)^2} \, dx
+              </me>.
+              Using technology to evaluate the integral, we find <m>L \approx 4.10521</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              The area of <m>R</m> is
+              <me>
+                A = \int_0^{1.84527} 3 \cos\left( \frac{x^3}{4} \right) \, dx \approx 4.6623
+              </me>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Revolving <m>R</m> around the <m>x</m>-axis, we can use the disk method with slices perpendicular to the <m>x</m>-axis to find the volume of the resulting region.
+              Noting that the radius of each such disk is <m>r(x) = 3 \cos(\frac{x^3}{4})</m> and the width of each such disk is <m>\triangle x</m>, we know the volume of each slice is 
+              <me>
+                V_{\text{slice}} \approx \pi r(x)^2 \triangle x = \pi \left( 3 \cos\left( \frac{x^3}{4} \right) \right)^2 \triangle x
+              </me>
+              and thus the total volume is
+              <me>
+                V = \int_0^{1.84527} \pi \cdot 9 \cos^2 \left( \frac{x^3}{4} \right) \, dx \approx 40.31965
+              </me>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              If we instead revolve <m>R</m> around the <m>y</m>-axis, we need to use horizontal disks of thickness <m>\triangle y</m> in order to apply the disk method.  To do that, we also need to express <m>x</m> as a function of <m>y</m>, rather than <m>y</m> as a function of <m>x</m> as given.  Thus we take the given function <m>y = 3 \cos(\frac{x^3}{4})</m> and solve the equation for <m>x</m>.  First, we observe
+              <me>
+                \cos\left( \frac{x^3}{4} \right) = \frac{y}{3}
+              </me>
+              and thus using the inverse cosine,
+              <me>
+                \frac{x^3}{4} = \arccos \left( \frac{y}{3} \right)
+              </me>
+              and therefore <m>x^3 = 4\arccos \left(\frac{y}{3} \right)</m> so that
+              <me>
+                x = \sqrt[3]{4\arccos \left(\frac{y}{3} \right)}
+              </me>.
+              Now, a typical slice has radius <m>r(y) = \sqrt[3]{4\arccos \left(\frac{y}{3} \right)}</m> with thickness <m>\triangle y</m>, and volume
+              <me>
+                V_{\text{slice}} \approx \pi \cdot \left( \sqrt[3]{4\arccos \left(\frac{y}{3} \right)} \right)^2 \triangle y
+              </me>.
+              Integrating to add up the slices from <m>y = 0</m> to <m>y = 3</m>, we have the volume of the solid of revolution is
+              <me>
+                V = \int_0^3 \pi \left( 4\arccos \left(\frac{y}{3} \right) \right)^{2/3} \, dy \approx 23.29194
+              </me>.
+            </p>
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -131,7 +229,7 @@
 
           <li>
             <p>
-              Set up a definite integral whose value is the exact volume of the solid of revolution generated by revolving <m>R</m> about the <m>x = -1</m>.
+              Set up a definite integral whose value is the exact volume of the solid of revolution generated by revolving <m>R</m> about the line <m>x = -1</m>.
             </p>
           </li>
         </ol>
@@ -139,15 +237,136 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+          <li>
+            <sidebyside width="50%">
+              <image source="images/6_2_Ez2Region" />
+            </sidebyside>
+          </li>
+
+          <li>
+            <p>
+              <m>
+                A = \int_0^{\frac{\pi}{4}} ( \cos(x) - \sin(x) ) \, dx
+              </m>.
+            </p>
+          </li>
+
+          <li>
+             <p> 
+              <m>
+                V = \int_0^{\frac{\pi}{4}} \pi (\cos^2(x) - \sin^2(x)) \, dx
+              </m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>
+                V = \int_0^{\frac{\sqrt{2}}{2}} \pi  \arcsin^2(y) \, dy +  \int_{\frac{\sqrt{2}}{2}}^1 \pi  \arccos^2(y) \, dy
+              </m> 
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>
+                V = \int_0^{\frac{\pi}{4}} \pi [(2 - \sin(x))^2 - (2 - \cos(x))^2] \, dx
+              </m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>
+                V = \int_0^{\frac{\sqrt{2}}{2}} \pi [ (1+\arcsin(y))^2 - 1^2 ] \, dy +  \int_{\frac{\sqrt{2}}{2}}^1 \pi  [ (1+\arccos(y))^2 - 1^2 ] \, dy
+              </m> 
+
+            </p>
+          </li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+
+            <sidebyside width="50%">
+              <image source="images/6_2_Ez2Region" />
+            </sidebyside>
+
+            <p>
+              See the sketch above.  The exact intersection point of the curves is where <m>\cos(x) = \sin(x)</m> in the first quadrant, and thus at the point <m>(\frac{\pi}{4}, \frac{\sqrt{2}}{2})</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              The area of <m>R</m> is given by the definite integral
+              <me>
+                A = \int_0^{\frac{\pi}{4}} ( \cos(x) - \sin(x) ) \, dx
+              </me>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Revolving <m>R</m> about the <m>x</m>-axis and using slices perpendicular to the axis with thickness <m>\triangle x</m>, the outer radius of the resulting washers is <m>R(x) = \cos(x)</m>, while the inner radius of the washers is <m>r(x) = \sin(x)</m>.  The volume of a typical slice is 
+              <me>
+                V_{\text{slice}} \approx \pi (\cos^2(x) - \sin^2(x)) \triangle x
+              </me>
+              and thus using an integral to sum the slices over the interval <m>x = 0</m> to <m>x = \pi/4</m>, we find the volume of the solid is
+              <me>
+                V = \int_0^{\frac{\pi}{4}} \pi (\cos^2(x) - \sin^2(x)) \, dx
+              </me>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Revolving <m>R</m> about the <m>y</m>-axis, the resulting figure has solid cross sections that are disks perpendicular to the <m>y</m>-axis with thickness <m>\triangle x</m>, but the radius <m>R(y)</m> that governs the radius of each disk changes at the height where <m>y = \frac{\sqrt{2}}{2}</m> in the interval from <m>y = 0</m> to <m>y = 1</m>.  We also need to express the two curves that bound the region with <m>x</m> as a function of <m>y</m>.  On the interval from <m>y = 0</m> to <m>y = \frac{\sqrt{2}}{2}</m>, the sine function provides the boundary, which we write as <m>x = \arcsin(y)</m>; on the interval from <m>y = \frac{\sqrt{2}}{2}</m> to <m>y = 1</m>, the cosine function provides the boundary, which we write as <m>x = \arccos(y)</m>.  On the lower interval, a typical slice has volume
+              <me>
+                V_{\text{slice}} \approx \pi \arcsin^2(y) \triangle y
+              </me>.
+              Using similar reasoning for the upper interval and summing the slices using appropriate definite integrals, we find that 
+              <me>
+                V = \int_0^{\frac{\sqrt{2}}{2}} \pi  \arcsin^2(y) \, dy +  \int_{\frac{\sqrt{2}}{2}}^1 \pi  \arccos^2(y) \, dy
+              </me> 
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Draw a picture.  Revolving <m>R</m> about the line <m>y = 2</m>, we see that cross-sections perpendicular to the line <m>y = 2</m> are washers with thickness <m>\triangle x</m>, outer radius <m>R(x) = 2 - \sin(x)</m>, and inner radius <m>r(x) = 2 - \cos(x)</m>, since <m>2 - \sin(x) \ge 2 - \cos(x)</m> on the interval <m>[0, \frac{\pi}{4}]</m>.  Thus, the volume of a typical slice is 
+              <me>
+                V_{\text{slice}} \approx \pi [(2 - \sin(x))^2 - (2 - \cos(x))^2] \triangle x
+              </me>
+              and hence integrating to sum the total volume, we find
+              <me>
+                V = \int_0^{\frac{\pi}{4}} \pi [(2 - \sin(x))^2 - (2 - \cos(x))^2] \, dx
+              </me>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Revolving <m>R</m> about the line <m>x = -1</m>, the resulting figure has solid cross sections that are washers perpendicular to the <m>y</m>-axis with thickness <m>\triangle x</m>; the inner radius is always <m>r(y) = 1</m>, but the outer radius <m>R(y)</m> that governs the larger radius of each washer changes at the height where <m>y = \frac{\sqrt{2}}{2}</m> in the interval from <m>y = 0</m> to <m>y = 1</m>.  As in (d), we express the two curves that bound the region with <m>x</m> as a function of <m>y</m>.  On the interval from <m>y = 0</m> to <m>y = \frac{\sqrt{2}}{2}</m>, <m>R(y) = 1 + \arcsin(y)</m>; on the interval from <m>y = \frac{\sqrt{2}}{2}</m> to <m>y = 1</m>,<m>R(y) = 1 + \arccos(y)</m>.  On the lower interval, a typical slice has volume
+              <me>
+                V_{\text{slice}} \approx \pi [ (1+\arcsin(y))^2 - 1^2 ] \triangle y
+              </me>.
+              Using similar reasoning for the upper interval and summing the slices using appropriate definite integrals, we find that 
+              <me>
+                V = \int_0^{\frac{\sqrt{2}}{2}} \pi [ (1+\arcsin(y))^2 - 1^2 ] \, dy +  \int_{\frac{\sqrt{2}}{2}}^1 \pi  [ (1+\arccos(y))^2 - 1^2 ] \, dy
+              </me> 
+
+            </p>
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -182,12 +401,96 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+          <li>
+            <p>
+              <m>A = \int_0^{1.5} 1+\frac{1}{2}(x-2)^2 - \frac{1}{2}x^2 \ dx = 2.25</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>
+                V = \int_0^{1.5} \pi\left[\left(2+\frac{1}{2}(x-2)^2\right)^2 - \left(1+\frac{1}{2}x^2\right)^2 \right] \ dx = \frac{315}{32} \pi
+              </m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>
+                V = \int_{0}^{1.125} \pi \left(\sqrt{2y}\right)^2 \ dy + \int_{1.125}^3 \pi \left(2 - \sqrt{2(y-1)}\right)^2 \ dy \approx 7.06858347
+              </m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>
+                P = 3 + \int_0^{1.5} \sqrt{1+(x-2)^2} + \sqrt{1+x^2} \ dx \approx 7.387234642
+              </m>.
+            </p>
+          </li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+
+            <sidebyside width="50%">
+              <image source="images/6_2_Ez3Region" />
+            </sidebyside>
+
+            <p>
+              A picture of the region is shown in the figure above. The point of intersection occurs when 
+              <me>
+                1+\frac{1}{2}(x-2)^2 = \frac{1}{2}x^2
+              </me>,
+              so <m>2+(x-2)^2 = x^2</m>, which implies <m>2+(x^2-4x+4) = x^2</m> and thus <m>4x=6</m> so <m>x = \frac{3}{2}</m>.  Since <m>g(x) = 1+\frac{1}{2}(x-2)^2 \ge \frac{1}{2}x^2 = f(x)</m> on the interval <m>\left[0, \frac{3}{2} \right]</m>, the area of the region between the two curves is
+              <md>
+                <mrow>A = &amp;= \int_0^{1.5} 1+\frac{1}{2}(x-2)^2 - \frac{1}{2}x^2 \ dx</mrow>
+                <mrow>   &amp;= \int_0^{1.5} 1+\frac{1}{2}(x^2-4x+4) - \frac{1}{2}x^2 \ dx </mrow>
+                <mrow>   &amp;= \int_0^{1.5} 3-2x \ dx </mrow>
+                <mrow>   &amp;= \left(3x-x^2\right)\biggm|_{0}^{1.5}</mrow>
+                <mrow>   &amp;= 4.5-2.25</mrow>
+                <mrow>   &amp;= 2.25</mrow>
+              </md>.
+            </p>
+          </li>
+          <li>
+            <p>
+              (You should draw a picture of the solid, based on the figure above, with the region <m>R</m> revolved about <m>y = -1</m>.)  We slice vertically so that our cross sections are washers with thickness <m>\triangle x</m>. Because we are revolving about <m>y = -1</m>,  the outer radius is <m>R(x) = 2+\frac{1}{2}(x-2)^2</m>, while the inner radius is <m>1+\frac{1}{2}x^2</m>.  Hence the volume of a typical slice, which has thickness <m>\triangle x</m> is given by
+              <me>
+                V_{\text{slice}} \approx \pi \left( R(x)^2 - r(x)^2 \right) \triangle x = \pi\left[\left(2+\frac{1}{2}(x-2)^2\right)^2 - \left(1+\frac{1}{2}x^2\right)^2 \right] \triangle x
+              </me>.
+              Hence, the volume of the solid obtained by revolving the region <m>R</m> around the line <m>y=-1</m> is given by
+              <me>
+                V = \int_0^{1.5} \pi\left[\left(2+\frac{1}{2}(x-2)^2\right)^2 - \left(1+\frac{1}{2}x^2\right)^2 \right] \ dx = \frac{315}{32} \pi
+              </me>
+            </p>
+          </li>
+          <li>
+            <p>
+              (Draw a picture of the solid, based on revolving the region <m>R</m> about the <m>y</m>-axis.)
+              We slice horizontally and thus the resulting cross sections are cylinders with thickness <m>\triangle y</m>.  The radius of the disks changes as <m>y</m> passes through <m>f\left(\frac{3}{2}\right) = \frac{9}{8} = 1.125</m>, so we need two different integrals to find the total volume. Since we are slicing horizontally, we will integrate with respect to <m>y</m>, so we  need to solve both of our equations for <m>x</m> as functions of <m>y</m>. Observe that <m>y = 1+\frac{1}{2}(x-2)^2 </m> implies <m>2(y-1) = (x-2)^2</m>, so <m>x-2 = \pm \sqrt{2(y-1)}</m> and thus <m>x = 2 \pm \sqrt{2(y-1)}</m>,
+              and similarly <m>y = \frac{1}{2}x^2</m> implies <m>x = \pm \sqrt{2y}</m>.  The portion of the curve defined by <m>y = 1+\frac{1}{2}(x-2)^2</m> that determines one of the boundaries is the left hand portion of the parabola, so <m>x = 2 - \sqrt{2(y-1)}</m>, while the portion of the curve <m>y = \frac{1}{2}x^2</m> that determines the other boundary is the right hand portion of the parabola, so <m>x = \sqrt{2y}</m>. These two curves define the radius of the disk (one for <m>y \lt 1.125</m>, the other for <m>y \gt 1.125</m>) and the lowest point on the region is <m>(0,0)</m> while the highest is <m>(0,3)</m>. So a sum of integrals that represents the volume of the solid obtained by revolving the region <m>R</m> around the <m>y</m>-axis is
+              <me>
+                V = \int_{0}^{1.125} \pi \left(\sqrt{2y}\right)^2 \ dy + \int_{1.125}^3 \pi \left(2 - \sqrt{2(y-1)}\right)^2 \ dy \approx 7.06858347
+              </me>
+            </p>
+          </li>
+          <li>
+            <p>
+              Recall that the length of a curve defined by a function <m>f</m> on an interval <m>[a,b]</m> is given by
+              <me>
+                \int_a^b \sqrt{1+(f'(x))^2} \ dx
+              </me>.
+              To find the perimeter of the region <m>R</m> we calculate the length of the curves defined by <m>y = 1+\frac{1}{2}(x-2)^2</m> (for which <m>y' = x-2</m>) and <m>y=\frac{1}{2}x^2</m> (for which <m>y' = x</m>) on the interval <m>[0,1.5]</m> and the length of the segment along <m>x=0</m> as <m>y</m> goes from <m>0</m> to <m>3</m>. This last length is <m>3</m>, so the perimeter of the region <m>R</m> is given by
+              <me>
+                P = 3 + \int_0^{1.5} \sqrt{1+(x-2)^2} + \sqrt{1+x^2} \ dx \approx 7.387234642
+              </me>.
+            </p>
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
