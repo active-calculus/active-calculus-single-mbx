@@ -23,14 +23,12 @@
 <xsl:output method="text" />
 
 <!-- These switches will control what we include -->
-<xsl:param name="exercise.text.statement" select="'yes'" />
 <xsl:param name="exercise.divisional.hint" select="'no'" />
 <xsl:param name="exercise.divisional.answer" select="'no'" />
 <xsl:param name="exercise.divisional.solution" select="'yes'" />
 
 
 <!-- Preview activities and activities are project-like. -->
-<xsl:param name="project.text.statement" select="'yes'" />
 <xsl:param name="project.text.hint" select="'no'" />
 <xsl:param name="project.text.answer" select="'no'" />
 <xsl:param name="project.text.solution" select="'yes'" />
@@ -42,8 +40,7 @@
 
 <!-- Chapters: default presentation, we have them all, so numbers OK     -->
 <!-- Sections and Equivalents: kill them, except for specific ones below -->
-<!-- Killing introduction here kills preview activities from output -->
-<xsl:template match="introduction|conclusion|references|objectives|appendix|index" />
+<xsl:template match="conclusion|references|objectives|appendix|index|solutions" />
 
 <!-- Kill solutions to WeBWorK exercises -->
 <xsl:template match="exercise[webwork]">
@@ -146,8 +143,96 @@
 <!-- Only process activity within subsection -->
 <!-- This could match="introduction|subsection" and then -->
 <!-- select="exploration|activity" if preview activities were to be included -->
+<!-- Also need to remove the template for introduction below -->
 <xsl:template match="subsection">
     <xsl:apply-templates select="activity" />
 </xsl:template>
+
+<!-- Horrible, dirty, awful hack to get numbering right when we dont -->
+<!-- include Preview Activities. This relies 100% on there being exactly one  -->
+<!-- Preview Activity per section. -->
+<xsl:template match="introduction">
+    <xsl:text>\setcounter{cpjt}{1}&#xa;</xsl:text>
+</xsl:template>
+    
+
+<!-- Configure font with latex.preamble.early -->
+<xsl:param name="latex.preamble.early">
+    <xsl:text>%% Customized to load Palatino fonts&#xa;</xsl:text>
+    <xsl:text>\usepackage[T1]{fontenc}&#xa;</xsl:text>
+    <xsl:text>%Roman font for use in math mode&#xa;</xsl:text>
+    <xsl:text>\renewcommand{\rmdefault}{zpltlf}&#xa;</xsl:text>
+    <xsl:text>% used only by \mathtt&#xa;</xsl:text>
+    <xsl:text>\usepackage[scaled=.85]{beramono}&#xa;</xsl:text>
+    <xsl:text>%used only by \mathsf&#xa;</xsl:text>
+    <xsl:text>\usepackage[type1]{cabin}&#xa;</xsl:text>
+    <xsl:text>%load before newpxmath&#xa;</xsl:text>
+    <xsl:text>\usepackage{amsmath,amssymb,amsthm}&#xa;</xsl:text>
+    <xsl:text>\usepackage[varg,cmintegrals,bigdelims,varbb]{newpxmath}</xsl:text>
+    <xsl:text>&#xa;</xsl:text>
+    <xsl:text>\usepackage[scr=rsfso]{mathalfa}&#xa;</xsl:text>
+    <xsl:text>%load after all math to give access to bold math&#xa;</xsl:text>
+    <xsl:text>\usepackage{bm} &#xa;</xsl:text>
+    <xsl:text>% Now load the otf text fonts using fontspec--</xsl:text>
+    <xsl:text>wont affect math&#xa;</xsl:text>
+    <xsl:text>\usepackage[no-math]{fontspec}&#xa;</xsl:text>
+    <xsl:text>\setmainfont{TeXGyrePagellaX}&#xa;</xsl:text>
+    <xsl:text>\defaultfontfeatures{Ligatures=TeX,Scale=1,Mapping=tex-text}</xsl:text>
+    <xsl:text>&#xa;</xsl:text>
+    <xsl:text>\linespread{1.02}&#xa;</xsl:text>
+</xsl:param>
+
+<!-- Use letter paper and leave one-inch margins all around -->
+<xsl:param name="latex.geometry" select="'letterpaper,tmargin=.5in,bmargin=.3in,hmargin=.75in,includeheadfoot '" />
+
+<!-- Format headers to match the text PDF -->
+<xsl:param name="latex.preamble.late">
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>% Modified from Mitch Keller's chapter handling &#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>\definecolor{ActiveBlue}{cmyk}{1, 0.5, 0, 0.35}&#xa;</xsl:text>
+    <xsl:text>\colorlet{chaptercolor}{ActiveBlue}&#xa;</xsl:text>
+    <xsl:text>\setkomafont{chapter}{\normalfont\color{chaptercolor}</xsl:text>
+    <xsl:text>\Huge\itshape}&#xa;</xsl:text>
+    <xsl:text>\setkomafont{chapterprefix}{\normalfont\Large}&#xa;</xsl:text>
+    <xsl:text>\renewcommand*{\raggedchapter}{\raggedleft}&#xa;</xsl:text>
+    <xsl:text>\renewcommand*{\chapterformat}{\MakeUppercase</xsl:text>
+    <xsl:text>{\chapappifchapterprefix{}}&#xa;</xsl:text>
+    <xsl:text>\rlap{\enskip\resizebox{!}{1.2cm}{\thechapter} </xsl:text>
+    <xsl:text>\rule{15cm}{1.2cm} }}&#xa;</xsl:text>
+    <xsl:text>\RedeclareSectionCommand[beforeskip=30pt,</xsl:text>
+    <xsl:text>afterskip=20pt]{chapter}&#xa;</xsl:text>
+    <xsl:text>\renewcommand*\chapterheadmidvskip{\par\nobreak</xsl:text>
+    <xsl:text>\vspace{10pt}}&#xa;</xsl:text>
+    <xsl:text>\setkomafont{captionlabel}{}&#xa;</xsl:text>
+    <xsl:text>\setkomafont{caption}{}&#xa;</xsl:text>
+    <xsl:text>\setcapindent{0em}&#xa;</xsl:text>
+    <xsl:text>\addtokomafont{disposition}{\rmfamily\bfseries}&#xa;</xsl:text>
+    <xsl:text>\addtokomafont{descriptionlabel}{\rmfamily\bfseries}&#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>% CC icon at bottom of each page &#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>\usepackage[automark,headsepline]{scrpage2}&#xa;</xsl:text>
+    <xsl:text>\deftripstyle{ccfooter}&#xa;</xsl:text>
+    <xsl:text>  {}&#xa;</xsl:text>
+    <xsl:text>  {}&#xa;</xsl:text>
+    <xsl:text>  {}&#xa;</xsl:text>
+    <xsl:text>  {}&#xa;</xsl:text>
+    <xsl:text>  {}&#xa;</xsl:text>
+    <xsl:text>  {\includegraphics[height=1pc]{images/CClicense.pdf}}&#xa;</xsl:text>
+    <xsl:text>\renewcommand{\chapterpagestyle}{ccfooter}&#xa;</xsl:text>
+    <xsl:text>&#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>% Basic paragraph parameters &#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>\setlength{\parindent}{0mm}&#xa;</xsl:text>
+    <xsl:text>\setlength{\parskip}{0.5pc}&#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>% In print, trying to reduce color use &#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,</xsl:text>
+    <xsl:text>filecolor=black,urlcolor=black}&#xa;</xsl:text>
+</xsl:param>
+
 </xsl:stylesheet>
 

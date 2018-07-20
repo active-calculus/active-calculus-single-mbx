@@ -1,0 +1,1 @@
+s/documentclass\[10pt,\]{book}/documentclass\[paper=7.565in:9.94in,DIV=calc,BCOR=0.125in,chapterprefix,numbers=noenddot,fontsize=10pt,toc=indentunnumbered\]{scrbook}/g
