@@ -55,7 +55,7 @@
 <!-- we could purposely add them if we wished         -->
 <xsl:template match="exercises">
 
-    <xsl:text>\section*{\arabic{chapter}.\arabic{section}</xsl:text>
+    <xsl:text>\section*{</xsl:text>
     <xsl:apply-templates select="." mode="number" />
     <xsl:text>\quad </xsl:text>
     <xsl:apply-templates select="." mode="title-full" />
