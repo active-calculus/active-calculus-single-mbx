@@ -25,6 +25,7 @@
     <title>Using Euler's method with different time steps</title>
     <webwork source="Library/Michigan/Chap11Sec3/Q09.pg" />
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -97,15 +98,249 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+          <li>
+            <p>
+              Alice's coffee: 
+              <m>\frac{dT_A}{dt} \vert_{T = 100} = -0.5(30) = -15</m> degrees per minute; Bob's coffee:
+              <m>\frac{dT_B}{dt} \vert_{T = 100} = -0.1(30) = -3</m> degrees per minute. 
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Consider the insulation of the containers.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Alice's coffee:
+              <me>
+                \frac{dT_A}{dt} = -0.5(T_A-(70+10\sin t))
+              </me>,
+              with the inital condition <m>T_A(0) = 100</m>.
+            </p>
+
+            <sidebyside>
+              <tabular top="minor" bottom="minor">
+                <row>
+                  <cell><m>t</m></cell>
+                  <cell><m>0.0</m></cell>
+                  <cell><m>0.1</m></cell>
+                  <cell><m>0.2</m></cell>
+                  <cell><m>0.3</m></cell>
+                  <cell><m>0.4</m></cell>
+                  <cell><m>\cdots</m></cell>
+                  <cell><m>49.6</m></cell>
+                  <cell><m>49.7</m></cell>
+                  <cell><m>49.8</m></cell>
+                  <cell><m>49.9</m></cell>
+                  <cell><m>50</m></cell>
+                </row>
+                <row>
+                  <cell><m>T_A(t)</m></cell>
+                  <cell><m>100</m></cell>
+                  <cell><m>98.5</m></cell>
+                  <cell><m>97.12492</m></cell>
+                  <cell><m>95.86801</m></cell>
+                  <cell><m>94.72237</m></cell>
+                  <cell><m>\cdots</m></cell>
+                  <cell><m>65.56715</m></cell>
+                  <cell><m>65.48008</m></cell>
+                  <cell><m>65.43816</m></cell>
+                  <cell><m>65.44183</m></cell>
+                  <cell><m>65.49103</m></cell>
+                </row>
+              </tabular>              
+            </sidebyside>
+
+            <sidebyside width="30%">
+              <image source="images/7_3_Ez1Soln" />
+            </sidebyside>
+
+          </li>
+
+          <li>
+
+            <sidebyside>
+              <tabular top="minor" bottom="minor">
+                <row>
+                  <cell><m>t</m></cell>
+                  <cell><m>0.0</m></cell>
+                  <cell><m>0.1</m></cell>
+                  <cell><m>0.2</m></cell>
+                  <cell><m>0.3</m></cell>
+                  <cell><m>0.4</m></cell>
+                  <cell><m>\cdots</m></cell>
+                  <cell><m>49.6</m></cell>
+                  <cell><m>49.7</m></cell>
+                  <cell><m>49.8</m></cell>
+                  <cell><m>49.9</m></cell>
+                  <cell><m>50</m></cell>
+                </row>
+                <row>
+                  <cell><m>T_A(t)</m></cell>
+                  <cell><m>100</m></cell>
+                  <cell><m>99.7</m></cell>
+                  <cell><m>99.41298</m></cell>
+                  <cell><m>99.13872</m></cell>
+                  <cell><m>98.87689</m></cell>
+                  <cell><m>\cdots</m></cell>
+                  <cell><m>69.39515</m></cell>
+                  <cell><m>69.33946</m></cell>
+                  <cell><m>69.29248</m></cell>
+                  <cell><m>69.25467</m></cell>
+                  <cell><m>69.22638</m></cell>
+                </row>
+              </tabular>              
+            </sidebyside>
+
+            <sidebyside width="30%">
+              <image source="images/7_3_Ez1SolnB" />
+            </sidebyside>
+
+          </li>
+
+          <li>
+            <p>
+              Compare the rate of initial decrease and amplitude of oscillation.
+            </p>
+          </li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+            <p>
+              The differential equation for Alice's coffee is 
+              <me>
+                \frac{dT_A}{dt} = -0.5(T-70)
+              </me>,
+              so at the instant <m>t = 0</m>, <m>T = 100</m>, and thus <m>\frac{dT_A}{dt} \vert_{T = 100} = -0.5(30) = -15</m> degrees per minute.  For Bob's coffee,
+              <me>
+                \frac{dT_B}{dt} = -0.1(T-70)
+              </me>,
+              so <m>\frac{dT_B}{dt} \vert_{T = 100} = -0.1(30) = -3</m> degrees per minute. These are the initial rates of change of the respective cups of coffee.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              The difference between the cups of coffee could be explained by how insulated the containers are:  Bob's coffee loses temperature less quickly, so his is likely better insulated.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              With this varying temperature, the governing differential equation for Alice's coffee is
+              <me>
+                \frac{dT_A}{dt} = -0.5(T_A-(70+10\sin t))
+              </me>,
+              with the inital condition <m>T_A(0) = 100</m>.
+              Implementing Euler's Method with <m>\Delta t = 0.1</m>, we get the following (abbreviated)
+              table of data.
+            </p>
+
+            <sidebyside>
+              <tabular top="minor" bottom="minor">
+                <row>
+                  <cell><m>t</m></cell>
+                  <cell><m>0.0</m></cell>
+                  <cell><m>0.1</m></cell>
+                  <cell><m>0.2</m></cell>
+                  <cell><m>0.3</m></cell>
+                  <cell><m>0.4</m></cell>
+                  <cell><m>\cdots</m></cell>
+                  <cell><m>49.6</m></cell>
+                  <cell><m>49.7</m></cell>
+                  <cell><m>49.8</m></cell>
+                  <cell><m>49.9</m></cell>
+                  <cell><m>50</m></cell>
+                </row>
+                <row>
+                  <cell><m>T_A(t)</m></cell>
+                  <cell><m>100</m></cell>
+                  <cell><m>98.5</m></cell>
+                  <cell><m>97.12492</m></cell>
+                  <cell><m>95.86801</m></cell>
+                  <cell><m>94.72237</m></cell>
+                  <cell><m>\cdots</m></cell>
+                  <cell><m>65.56715</m></cell>
+                  <cell><m>65.48008</m></cell>
+                  <cell><m>65.43816</m></cell>
+                  <cell><m>65.44183</m></cell>
+                  <cell><m>65.49103</m></cell>
+                </row>
+              </tabular>              
+            </sidebyside>
+
+            <p>
+              Plotting the data points that result from Euler's Method along with the room temperature function, we see how the room temperature drives the temperature of the coffee up and down as time goes on, as pictured in the following figure, where the data points for the coffee's approximate temperature are shown in dark blue, while the room temperature function, <m>T_R(t) = 70 + 10\sin(t)</m> is shown in green.
+            </p>
+
+            <sidebyside width="30%">
+              <image source="images/7_3_Ez1Soln" />
+            </sidebyside>
+
+          </li>
+
+          <li>
+            <p>
+              Similar work with the differential equation for Bob's coffee yields the following abbreviated table of approximate function values along with the plot of the data and the temperature function.
+            </p>
+
+            <sidebyside>
+              <tabular top="minor" bottom="minor">
+                <row>
+                  <cell><m>t</m></cell>
+                  <cell><m>0.0</m></cell>
+                  <cell><m>0.1</m></cell>
+                  <cell><m>0.2</m></cell>
+                  <cell><m>0.3</m></cell>
+                  <cell><m>0.4</m></cell>
+                  <cell><m>\cdots</m></cell>
+                  <cell><m>49.6</m></cell>
+                  <cell><m>49.7</m></cell>
+                  <cell><m>49.8</m></cell>
+                  <cell><m>49.9</m></cell>
+                  <cell><m>50</m></cell>
+                </row>
+                <row>
+                  <cell><m>T_A(t)</m></cell>
+                  <cell><m>100</m></cell>
+                  <cell><m>99.7</m></cell>
+                  <cell><m>99.41298</m></cell>
+                  <cell><m>99.13872</m></cell>
+                  <cell><m>98.87689</m></cell>
+                  <cell><m>\cdots</m></cell>
+                  <cell><m>69.39515</m></cell>
+                  <cell><m>69.33946</m></cell>
+                  <cell><m>69.29248</m></cell>
+                  <cell><m>69.25467</m></cell>
+                  <cell><m>69.22638</m></cell>
+                </row>
+              </tabular>              
+            </sidebyside>
+
+            <sidebyside width="30%">
+              <image source="images/7_3_Ez1SolnB" />
+            </sidebyside>
+
+          </li>
+
+          <li>
+            <p>
+              The behaviors of both cups of coffee are similar in that each decreases toward the room temperature initially and then is driven in an osciallating way by the room temperature function as it rises and falls.  We see that Alice's coffee is more susceptible to being influenced away from the average room temperature, which is consistent with her mug being less well insulated, while in Bob's coffee, we see much less radical oscillations (and a slower overall rate of decrease to get near room temperature), which is consistent with being better insulated.
+            </p>
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -176,15 +411,86 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+          <li>
+            <p>
+              <m>K = 1.054</m>; <m>y(1) = 2.6991</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>K = 1.272</m>; <m>y(1) = 2.7169</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>K = 0.122</m> and <m>y(0.3) = 0.0412</m>.
+            </p>
+          </li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+            <p>
+              To solve the linear system 
+              <md>
+                <mrow>y(1) - 2.4883 =\mathstrut \amp  0.2K</mrow>
+                <mrow>y(1) - 2.5937 =\mathstrut \amp  0.1K</mrow>
+              </md>
+              we subtract the second equation from the first to eliminate <m>y(1)</m>.
+              Doing so, we find that 
+              <me>
+                -2.4883 - (-2.5937) = 0.2K - 0.1K
+              </me>
+              so that
+              <me>
+                0.1054 = 0.1K
+              </me>
+              and thus <m>K = 1.054</m>.  Substituting this value into the first equation in the system, it follows that 
+              <me>
+                y(1) - 2.4883 = 0.2(1.054) 
+              </me>
+              so <m>y(1) = 0.2(1.054) + 2.4883 = 2.6991</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Recalling that <m>E_{0.05} = 2.6533</m> and
+              <m>E_{0.025} = 2.6851</m>, it follows that this data generates the similar
+              linear system given by
+              <md>
+                <mrow>y(1) - 2.6533 =\mathstrut \amp  0.05K</mrow>
+                <mrow>y(1) - 2.6851 =\mathstrut \amp  0.025K</mrow>
+              </md>.
+              Solving this system yields <m>K = 1.272</m> and <m>y(1) = 2.7169</m>.
+              Knowing that the true value of <m>y(1)</m> is <m>e = 2.71828\ldots</m>, we see that the approximation here in (b) is much better.  That is expected because we are already working with better approximations that come from using <m>\Delta t = 0.05</m> and <m>\Delta t = 0.025</m>, which have been twice halved from the smaller <m>\Delta t</m> value in (a).
+            </p>
+          </li>
+
+          <li>
+            <p>
+              To compute <m>E_{0.1}</m> and <m>E_{0.05}</m>, we first compute the estimates to <m>y(0.3)</m>
+              using <m>\Delta t = 0.1</m> and <m>\Delta t = 0.5</m>.  Doing so and making similar assumptions about the error as we did in (a) and (b), we find that for <m>\Delta t = 0.1</m>, <m>y(1) \approx 0.0290</m> and for <m>\Delta t = 0.05</m>, <m>y(1) \approx 0.0351</m>, and therefore we consider the system
+              <md>
+                <mrow>y(0.3) - 0.0290 &amp;= 0.1K</mrow>
+                <mrow>y(0.3) - 0.0351 &amp;= 0.05K</mrow>
+              </md>.
+              Solving the system, it follows that <m>K = (-0.0290 + 0.0351)/0.05 = 0.122</m> and
+              <m>y(0.3) = 0.1(0.122) + 0.0290 = 0.0412</m>, which is much closer to 
+              the actual value of <m>y(0.3) = 0.0408</m>.
+            </p>
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -283,12 +589,53 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+          <li>
+            <p>
+              <m>y(1) \approx y_5 = 2.7027</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>y(1) \approx y_{10} = 2.7141</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              The square of <m>\Delta t</m>.
+            </p>
+          </li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+            <p>
+              Continuing with this method, we find <m>y(0.6) \approx y_3 = 1.8156</m>, <m>y(0.8) \approx y_4 = 2.2153</m>, and <m>y(1) \approx y_5 = 2.7027</m>, which is an approximation for <m>y(1) = e</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Updating this method with <m>\Delta t = 0.1</m>, we find <m>y(0.1) \approx y_1 = 1.105</m>, <m>y(0.2) \approx y_2 = 1.221</m>, <m>\ldots</m>, <m>y(1) \approx y_{10} = 2.7141</m>, which is an even better approximation for <m>y(1) = e</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              We have halved the value of <m>\Delta t</m> in these two approximations of <m>y(1)</m> in the Improved Euler Method.  Using the notation <m>I_{0.2} = 2.7027</m> and <m>I_{0.1} = 2.7141</m> for the estimates generated by the method with the respective <m>t</m>-values, we see that the following occurs with the error (using the known value of <m>y(1) = e</m>:
+              <md>
+                <mrow>y(1) - I_{0.2} = 2.7183 - 2.7027 = 0.0156</mrow>
+                <mrow>y(1) - I_{0.1} = 2.7183 - 2.7141 = 0.0042</mrow>                
+              </md>
+              Computing <m>I_{0.05}</m>, we find <m>I_{0.05} = 2.7172</m>, and thus <m>y(1) - I_{0.05} = 0.0011</m>.  Experimenting with powers of <m>\Delta t</m>, it appears that these errors are each approximately <m>0.4 \Delta t^2</m>, and thus the error in the Improved Euler Method seems to be proportional to the square of <m>\Delta t</m>.
+            </p>
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
