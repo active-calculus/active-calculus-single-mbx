@@ -29,6 +29,7 @@
     <title>Analyzing a population growth model</title>
     <webwork source="Library/Michigan/Chap11Sec7/Q15.pg" />
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -74,15 +75,94 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+          <li>
+            <p>
+              <m>p(t) \to 1</m> as <m>t \to \infty</m> provided <m>p(0) \gt 0</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>
+                p(t) = \frac{1}{9e^{-0.2t} + 1}
+              </m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>t = -5 \ln(1/9) \approx 10.986</m> days.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>t = -5 \ln(0.2/9) \approx 19.033</m> days.
+            </p>
+          </li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+            <p>
+              The equilibrium solutions for this logistic equation are <m>p = 0</m> and <m>p = 1</m>.  Since <m>p = 1</m> is the carrying capacity and thus a stable equilibrium, <m>p(t) \to 1</m> as <m>t \to \infty</m> provided <m>p(0) \gt 0</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              We know that the general solution to the logistic equation <m>\frac{dP}{dt} = kP(N-P), \ P(0) = P_0</m>
+              is
+              <me>
+                P(t) = \frac{N}{\left(\frac{N-P_0}{P_0}\right) e^{-kNt} + 1}
+              </me>.
+              In the context of this problem, we know that <m>k = 0.2</m>, <m>N = 1</m>, and <m>p(0) = 0.1</m> and therefore the solution is
+              <me>
+                p(t) = \frac{1}{\left(\frac{1-0.1}{0.1}\right) e^{-0.2t} + 1} = \frac{1}{9e^{-0.2t} + 1}
+              </me>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              We know that <m>p</m> is changing most rapidly when its derivative, <m>p'</m>, is largest.  Recalling the original differential equation, we know that 
+              <me>
+                p' = 0.2p(1-p)
+              </me>
+              which shows that <m>p'</m> is a quadratic function of <m>p</m>.  That quadratic function has zeros at <m>p = 0</m> and <m>p = 1</m>, so the vertex of this concave down quadratic function lies at <m>p = \frac{1}{2}</m>, and at this value of <m>p</m> the rate of change of <m>p</m> is largest.  Thus, we solve the equation <m>p(t) = 0.5</m> to find the time at which the population is increasing fastest.  We see that
+              <me>
+                0.5 = \frac{1}{9e^{-0.2t} + 1}
+              </me>
+              so
+              <me>
+                9e^{-0.2t} + 1 = 2
+              </me>
+              and <m>e^{-0.2t} = 1/9</m>.  It follows that <m>t = -5 \ln(1/9) \approx 10.986</m> days.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Since <m>p(t)</m> tells us the percentage of people who've heard the rumor, we need to solve the equation <m>p(t) = 0.8</m>.  Thus we have
+              <me>
+                0.8 = \frac{1}{9e^{-0.2t} + 1}
+              </me>
+              so
+              <me>
+                9e^{-0.2t} + 1 = 1.2
+              </me>
+              and <m>e^{-0.2t} = 0.2/9</m>.  It follows that <m>t = -5 \ln(0.2/9) \approx 19.033</m> days.
+            </p>
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -128,15 +208,93 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+          <li>
+            <p>
+              <m>
+                \frac{db}{dt} = \frac{1}{3000} b(15000 - b)
+              </m>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>b = 15000</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              When <m>b = 7500</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>t = -\frac{1}{5} \ln(1/70) \approx 0.8497</m> days.
+            </p>
+          </li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+            <p>
+              Let <m>y</m> be the per capita growth rate as a function of <m>b</m>.  Using the given data in the problem statement, we know that this linear function passes through the points <m>(6000,3)</m> and <m>(9000,2)</m>.  The equation of this line is thus
+              <me>
+                y - 3 = -\frac{1}{3000}(b - 6000)
+              </me>
+              so <m>y = (3 + 2) - \frac{1}{3000}b = 5 - \frac{1}{3000}b</m>.  Since the logistic equation comes from taking the product of the population at time <m>t</m> with its per capita growth rate at that time, we find that
+              <me>
+                \frac{db}{dt} = b \left( 5 - \frac{1}{3000}b \right) = \frac{1}{3000} b(15000 - b)
+              </me>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              From the form of the logistic equation, we see that the carrying capacity for the bacteria is <m>b = 15000</m>, which is a stable equilibrium for the population.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              The bacteria is increasing most rapidly when <m>\frac{db}{dt}</m> is greatest.  Since 
+              <me>
+                \frac{db}{dt} = \frac{1}{3000} b(15000 - b)
+              </me>
+              is a quadratic function of <m>b</m>, <m>\frac{db}{dt}</m> is maximized at the vertex of this concave down parabola, which occurs halfway between its zeros: <m>b = 0</m> and <m>b = 15000</m>.  Thus, when <m>b = 7500</m>, the population is growing fastest.  To find the exact <m>t</m>-value when this occurs, we'd need to know an initial condition like in the next part of the problem.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Using <m>b(0) = 1000</m>, we solve the logistic equation IVP with 
+              <me>
+                \frac{db}{dt} = \frac{1}{3000} b(15000 - b)
+              </me>.
+              Using <m>N = 15000</m>, <m>k = \frac{1}{3000}</m>, and <m>b_0 = 1000</m>, we know from the standard form of the solution to the logistic equation that
+              <me>
+                b(t) = \frac{15000}{\left(\frac{15000-1000}{1000}\right) e^{-5t} + 1} = \frac{15000}{14e^{-5t} + 1}
+              </me>.
+              To find how long it takes the bacteria to reach 80<percent /> of the carrying capacity, we solve the equation
+              <me>
+                0.8 \cdot 15 = \frac{15000}{14e^{-5t} + 1}
+              </me>.
+              That equation implies that 
+              <me>
+                0.8 = \frac{1}{14e^{-5t} + 1}
+              </me>,
+              so <m>14e^{-5t} + 1 = 1.2</m> and thus <m>e^{-5t} = 0.2/14 = 1/70</m>.  It follows that <m>t = -\frac{1}{5} \ln(1/70) \approx 0.8497</m> days.
+            </p>
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -189,12 +347,96 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+          <li>
+            <p>
+              10000 fish.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>
+                \frac{dP}{dt} = 0.1P(10 - P) - 0.2P
+              </m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>8000</m> fish.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>
+                P(1) \approx 8.7899
+              </m>
+              thousand fish.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>t = -1.2 \ln(5/11) \approx 0.9461</m> years.
+            </p>
+          </li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+            <p>
+              From the form of the given logistic equation, we can see the carrying capacity is 10000 fish.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              In this situation, the initial condition is <m>P(0) = 10</m>, and by removing <m>20</m><percent /> of the population per year, we subtract <m>0.2P</m> from the rate that defines the differential equation, thus finding
+              <me>
+                \frac{dP}{dt} = 0.1P(10 - P) - 0.2P
+              </me>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Expanding and rewriting the differential equation in (b), we see that
+              <me>
+                \frac{dP}{dt} = P - 0.1P^2 - 0.2P = 0.8P - 0.1P^2 = 0.1P(8 - P)
+              </me>.
+              This, too, is a logistic equation, with carrying capacity <m>8000</m> fish.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              We can solve this logistic equation in the usual way (keeping in mind the initial condition <m>P(0) = 10</m>, and noting that the carrying capacity is <m>8</m>):
+              <me>
+                P(t) = \frac{8}{\frac{8-10}{10}e^{-0.1 \cdot 8 t}+1} = \frac{8}{-0.2e^{-0.8t}+1}
+              </me>
+              After one year, the population of fish will thus be
+              <me>
+                P(1) \approx 8.7899
+              </me>
+              thousand fish.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              To be within 10<percent /> of the carrying capacity, we need <m>0.9(8) \le P(t) \le 1.1(8)</m>.  Since the initial condition is larger than the carrying capacity, we want to know when <m>P(t) = 1.1(8) = 8.8</m>.  Thus we solve the equation
+              <me>
+                8.8 = \frac{8}{-0.2e^{-0.8t}+1}
+              </me>,
+              which implies <m>-0.2e^{-0.8t}+1 = 8/8.8 = 10/11</m>.  Thus, <m>e^{-0.8t} = 5/11</m>, so <m>t = -1.2 \ln(5/11) \approx 0.9461</m> years.
+            </p>
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
