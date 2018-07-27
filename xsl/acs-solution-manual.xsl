@@ -194,7 +194,51 @@
 <xsl:param name="latex.geometry" select="'letterpaper,tmargin=.5in,bmargin=.3in,hmargin=.75in,includeheadfoot '" />
 
 <xsl:param name="latex.preamble.late">
-    <xsl:value-of select="$latex.preamble.late.common" />
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>% Modified from Mitch Keller's chapter handling &#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>\definecolor{ActiveBlue}{cmyk}{1, 0.5, 0, 0.35}&#xa;</xsl:text>
+    <xsl:text>\colorlet{chaptercolor}{ActiveBlue}&#xa;</xsl:text>
+    <xsl:text>\setkomafont{chapter}{\normalfont\color{chaptercolor}</xsl:text>
+    <xsl:text>\Huge\itshape}&#xa;</xsl:text>
+    <xsl:text>\setkomafont{chapterprefix}{\normalfont\Large}&#xa;</xsl:text>
+    <xsl:text>\renewcommand*{\raggedchapter}{\raggedleft}&#xa;</xsl:text>
+    <xsl:text>\renewcommand*{\chapterformat}{\MakeUppercase</xsl:text>
+    <xsl:text>{\chapappifchapterprefix{}}&#xa;</xsl:text>
+    <xsl:text>\rlap{\enskip\resizebox{!}{1.2cm}{\thechapter} </xsl:text>
+    <xsl:text>\rule{15cm}{1.2cm} }}&#xa;</xsl:text>
+    <xsl:text>\RedeclareSectionCommand[beforeskip=30pt,</xsl:text>
+    <xsl:text>afterskip=20pt]{chapter}&#xa;</xsl:text>
+    <xsl:text>\renewcommand*\chapterheadmidvskip{\par\nobreak</xsl:text>
+    <xsl:text>\vspace{10pt}}&#xa;</xsl:text>
+    <xsl:text>\setkomafont{captionlabel}{}&#xa;</xsl:text>
+    <xsl:text>\setkomafont{caption}{}&#xa;</xsl:text>
+    <xsl:text>\setcapindent{0em}&#xa;</xsl:text>
+    <xsl:text>\addtokomafont{disposition}{\rmfamily\bfseries}&#xa;</xsl:text>
+    <xsl:text>\addtokomafont{descriptionlabel}{\rmfamily\bfseries}&#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>% CC icon at bottom of first page of each chapter &#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>\usepackage[automark]{scrlayer-scrpage}&#xa;</xsl:text>
+    <xsl:text>\deftripstyle{ccfooter}&#xa;</xsl:text>
+    <xsl:text>  {}&#xa;</xsl:text>
+    <xsl:text>  {}&#xa;</xsl:text>
+    <xsl:text>  {}&#xa;</xsl:text>
+    <xsl:text>  {}&#xa;</xsl:text>
+    <xsl:text>  {}&#xa;</xsl:text>
+    <xsl:text>  {\includegraphics[height=1pc]{images/CClicense.pdf}}&#xa;</xsl:text>
+    <xsl:text>\renewcommand{\chapterpagestyle}{ccfooter}&#xa;</xsl:text>
+    <xsl:text>&#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>% Basic paragraph parameters &#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>\setlength{\parindent}{0mm}&#xa;</xsl:text>
+    <xsl:text>\setlength{\parskip}{0.5pc}&#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>% In print, trying to reduce color use &#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,</xsl:text>
+    <xsl:text>filecolor=black,urlcolor=black}&#xa;</xsl:text>
 </xsl:param>
 
 <!-- This suppresses subsection headings in the backmatter answers -->
