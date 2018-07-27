@@ -83,9 +83,9 @@
     <xsl:text>\addtokomafont{disposition}{\rmfamily\bfseries}&#xa;</xsl:text>
     <xsl:text>\addtokomafont{descriptionlabel}{\rmfamily\bfseries}&#xa;</xsl:text>
     <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
-    <xsl:text>% CC icon at bottom of each page &#xa;</xsl:text>
+    <xsl:text>% CC icon at bottom of first page of chapter &#xa;</xsl:text>
     <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
-    <xsl:text>\usepackage[automark,headsepline]{scrpage2}&#xa;</xsl:text>
+    <xsl:text>\usepackage[automark]{scrlayer-scrpage}&#xa;</xsl:text>
     <xsl:text>\deftripstyle{ccfooter}&#xa;</xsl:text>
     <xsl:text>  {}&#xa;</xsl:text>
     <xsl:text>  {}&#xa;</xsl:text>
