@@ -67,7 +67,63 @@
         </ol>
       </p>
     </statement>
+    <answer>
+      <p>
+        <ol label="a.">
+          <li>
+            <p>
+              <m>
+                P_3(x) = -1 + 3x - \frac{4}{2!}x^2 + \frac{6}{3!}x^3
+              </m>,
+              which is the same polynomial as <m>f(x)</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              For <m>n \ge 3</m>, <m>P_n(x) = f(x)</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              For <m>n \ge m</m>, <m>P_n(x) = f(x)</m>. 
+            </p>
+          </li>
+        </ol>        
+      </p>      
+    </answer>
+    <solution>
+      <p>
+        <ol label="a.">
+          <li>
+            <p>
+              Observe that <m>f'(x) = 3x^2 - 4x + 3</m>, <m>f''(x) = 6x - 4</m>, and <m>f'''(x) = 6</m>, so <m>f'(0) = 3</m>, <m>f''(0) = -4</m>, and <m>f'''(0) = 6</m>.  In addition, <m>f(0) = -1</m>  Thus, the 3rd order Taylor polynomial centered at <m>a = 0</m> is 
+              <me>
+                P_3(x) = -1 + 3x - \frac{4}{2!}x^2 + \frac{6}{3!}x^3
+              </me>.
+              Note that this is the same polynomial as <m>f(x)</m>, which is not surprising since the degree 3 Taylor polynomial is the degree 3 polynomial that has the same value, slope, concavity, and third derivative at <m>a = 0</m> as the original.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Since <m>f^{(4)}(x) = 0</m> for all <m>x</m>, <m>f^{(4)}(0) = 0</m>, and similarly every higher derivative of <m>f</m> will be zero.  Thus, the the 4th, 12th, and 100th order Taylor polynomials
+              (centered at <m>a = 0</m>) are all identical to <m>P_3(x)</m> found in (a).
+              for <m>f(x) = x^3-2x^2+3x-1</m>.  We should expect this because all of the higher derivatives (than the third) of the original function are identically zero.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              For <m>n = 1, 2, \ldots, m-1</m>, the degree <m>n</m> Taylor polyomial of <m>f</m> will be given by the usual formula.  But for every <m>n \ge m</m>, <m>P_n(x) = f(x)</m>. That is, all of the Taylor polynomials of degree at least that of the original function are simply the function itself.
+            </p>
+          </li>
+        </ol>        
+      </p>
+    </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -103,7 +159,59 @@
         </ol>
       </p>
     </statement>
+    <answer>
+      
+    </answer>
+    <solution>
+      <p>
+        <ol label="a.">
+          <li>
+            <p>
+              For <m>f(x) = \sin(x)</m>, <m>f'(x) = \cos(x)</m>, <m>f''(x) = -\sin(x)</m>, <m>f'''(x) = -\cos(x)</m>, and <m>f^{(4)}(x) = \sin(x)</m>.  Thus, <m>f\left(\frac{\pi}{2} \right) = 1</m>, <m>f'f\left(\frac{\pi}{2} \right) = 0</m>, <m>f''f\left(\frac{\pi}{2} \right) = -1</m>, <m>f'''f\left(\frac{\pi}{2} \right) = 0</m>, and <m>f^{(4)}f\left(\frac{\pi}{2} \right) = 1</m>.  It follows that the first four Taylor polynomials of <m>f</m> are
+              <md>
+                <mrow>P_1(x) &amp;= 1 + 0\left(x - \frac{\pi}{2} \right) = 1</mrow>
+                <mrow>P_2(x) &amp;= 1 + 0\left(x - \frac{\pi}{2} \right) - \frac{1}{2!}\left(x - \frac{\pi}{2} \right)^2 = 1-\frac{1}{2!}\left(x - \frac{\pi}{2} \right)^2</mrow>
+                <mrow>P_3(x) &amp;= 1 + 0\left(x - \frac{\pi}{2} \right) - \frac{1}{2!}\left(x - \frac{\pi}{2} \right)^2 + \frac{0}{3!}\left(x - \frac{\pi}{2} \right)^3 </mrow>
+                <mrow>   &amp;= 1-\frac{1}{2!}\left(x - \frac{\pi}{2} \right)^2 = P_2(x)</mrow>
+                <mrow>P_4(x) &amp;= 1 + 0\left(x - \frac{\pi}{2} \right) - \frac{1}{2!}\left(x - \frac{\pi}{2} \right)^2 + \frac{0}{3!}\left(x - \frac{\pi}{2} \right)^3 + \frac{1}{4!}\left(x - \frac{\pi}{2} \right)^4</mrow>
+                <mrow>   &amp;= 1 - \frac{1}{2!}\left(x - \frac{\pi}{2} \right)^2 + \frac{1}{4!}\left(x - \frac{\pi}{2} \right)^4</mrow>
+              </md>
+              From the pattern, the Taylor series for <m>f(x)</m> centered at <m>x = \frac{\pi}{2}</m> is
+              <me>
+                P(x) = 1 - \frac{1}{2!}\left(x - \frac{\pi}{2} \right)^2 + \frac{1}{4!}\left(x - \frac{\pi}{2} \right)^4 - \frac{1}{6!}\left(x - \frac{\pi}{2} \right)^6 + \cdots
+              </me>
+              which is expected because of the repeating patterns in the derivatives of the sine function evaluated at <m>\frac{pi}{2}</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              For <m>f(x) = \ln(x)</m>, <m>f'(x) = x^{-1}</m>, <m>f''(x) = -x^{-2}</m>, <m>f'''(x) = 2x^{-3}</m>, and <m>f^{(4)}(x) = -6x^{-4}</m>.  It follows that <m>f(1) = 0</m>, <m>f'(1) = 1</m>, <m>f''(1) = -1</m>, <m>f'''(1) = 2</m>, and <m>f^{(4)}(1) = -6</m>.  Thus, the fourth Taylor polynomial (in which we can see the polynomials of lower degree) is
+              <me>
+                P_4(x) = 0 + 1(x-1) - \frac{1}{2!}(x-1)^2 + \frac{2}{3!}(x-1)^3 - \frac{6}{4!}(x-1)^4
+              </me>.  
+              Simplifying the coefficients and seeing the pattern, it follows that
+              the Taylor series for <m>f(x)</m> centered at <m>x = 1</m> is
+              <me>
+                P(x) = 1(x-1) - \frac{1}{2}(x-1)^2 + \frac{1}{3}(x-1)^3 - \frac{1}{4}(x-1)^4 + \frac{1}{5}(x-1)^5 - \cdots
+              </me>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              To estimate <m>\ln(2)</m> to two decimal places, we use the fact that <m>\ln(x) = = 1(x-1) - \frac{1}{2}(x-1)^2 + \frac{1}{3}(x-1)^3 - \frac{1}{4}(x-1)^4 + \frac{1}{5}(x-1)^5 - \cdots</m> for <m>x</m> near <m>1</m>, and thus
+              <me>
+                \ln(2) = P(2) = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \cdots
+              </me>.
+              Because <m>P(2)</m> is an alternating series, we need to know when the next term in the series is less than <m>0.01</m>, which occurs when <m>n = 101</m>.  Thus, if we compute <m>P_{101}(1) = \sum_{k = 1}^{101} (-1)^{k+1} \frac{1}{k}</m>, we get the desired estimate.  We note particularly that <m>P_{101}(1) \approx 0.698073</m>, which is indeed an estimate of <m>\ln(2)</m> accurate to two decimal places.
+            </p>
+          </li>
+        </ol>
+      </p>  
+    </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -151,7 +259,104 @@
         </ol>
       </p>
     </statement>
+    <answer>
+      <p>
+        <ol label="a.">
+          <li>
+            <p>
+              <m>
+                P_4(x) = x^2
+              </m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <ol label="i.">
+                <li>
+                  <p>
+                    <m>
+                      g(x) = P(x^2) = x^2 - \frac{1}{3!}x^6 + \frac{1}{5!}x^10 - \cdots
+                    </m>.
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    All real numbers.
+                  </p>
+                </li>
+              </ol>
+            </p>
+          </li>
+        </ol>
+      </p>  
+    </answer>
+    <solution>
+      <p>
+        <ol label="a.">
+          <li>
+            <p>
+              Let <m>f(x) = \sin(x^2)</m>. Then
+              <sidebyside>
+                <tabular>
+                  <row>
+                    <cell><m>\sin(x^2)</m></cell>
+                    <cell><m>f(0) = 0</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>f'(x) = 2x\cos(x^2)</m></cell>
+                    <cell><m>f'(0) = 0</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>f''(x) = -4x^2\sin(x^2) + 2\cos(x^2)</m></cell>
+                    <cell><m>f''(0) = 0</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>f'''(x) = -8x^3\cos(x^2) - 12x\sin(x^2)</m></cell>
+                    <cell><m>f'''(0) = 0</m></cell>
+                  </row>
+                  <row>
+                    <cell><m>f^{(4)}(x) = 16x^4\sin(x^2) - 48x^2\cos(x^2) - 12\sin(x^2)</m></cell>
+                    <cell><m>f^{(4)}(0) = 0</m></cell>
+                  </row>
+                </tabular>
+              </sidebyside>
+              so the fourth order Taylor polynomial for <m>f</m> centered at <m>a=0</m> is
+              <me>
+                P_4(x) = x^2
+              </me>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <ol label="i.">
+                <li>
+                  <p>
+                    Substituting <m>x^2</m> for <m>x</m> in the Taylor series for <m>\sin(x)</m>, we find that since
+                    <me>
+                      P(x) = x - \frac{1}{3!}x^3 + \frac{1}{5!}x^5 - \cdots
+                    </me>,
+                    we have 
+                    <me>
+                      g(x) = P(x^2) = x^2 - \frac{1}{3!}x^6 + \frac{1}{5!}x^10 - \cdots
+                    </me>
+                    which should be the Taylor series for <m>\sin(x^2)</m> since <m>\sin(x) = x - \frac{1}{3!}x^3 + \frac{1}{5!}x^5 - \cdots</m> for every value of <m>x</m>.
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    We expect the interval of convergence of the series for <m>\sin(x^2)</m> to be the same as the series for <m>\sin(x)</m>, since <m>\sin(x) = x - \frac{1}{3!}x^3 + \frac{1}{5!}x^5 - \cdots</m> for every value of <m>x</m>.
+                  </p>
+                </li>
+              </ol>
+            </p>  
+          </li>
+        </ol>
+      </p>
+    </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
