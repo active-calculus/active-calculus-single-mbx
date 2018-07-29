@@ -69,6 +69,99 @@
         </li>
       </ol>
     </p>
-  </hint>
+  </hint>  
+  <answer>
+    <p>
+      <ol label="a.">
+        <li>
+          <p>
+            Compare <xref ref="Ex-8-5-4">Example</xref>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <ol label="i.">
+              <li>
+                <p>
+                  Use the fact that that <m>|f^{(n)}(x)| \le e^c</m> on the interval <m>[0,c]</m> for any fixed positive value of <m>c</m>.  
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  Repeat the argument in (a) but replace <m>e^c</m> with <m>1</m>, and everything else holds in the same way.
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  Combine the results of (a) and (b)
+                </p>
+              </li>
+            </ol>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>n = 28</m>.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </answer>
+  <solution>
+    <p>
+      <ol label="a.">
+        <li>
+          <p>
+            Compare <xref ref="Ex-8-5-4">Example</xref>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <ol label="i.">
+              <li>
+                <p>
+                  Let <m>x \ge 0</m>.  Since <m>f(x) = e^x</m>, <m>f^{(n)}(x) = e^x</m> for every natural number <m>n</m>.  Since <m>e^x</m> is an increasing function, we know that <m>|f^{(n)}(x)| \le e^c</m> on the interval <m>[0,c]</m> for any fixed positive value of <m>c</m>.  Thus, by the Lagrange error formula, we can say that
+                  <me>
+                    |P_n(x) - e^x| \le e^c \frac{x^{n+1}}{(n+1)!}
+                  </me>.
+                  Since the series <m>\sum \frac{x^{n}}{n!}</m> converges for every <m>x</m>, <m>\frac{x^{n}}{n!} \to 0</m> as <m>x \to \infty</m>, and thus <m>\frac{x^{n+1}}{(n+1)!} \to 0</m> as <m>n \to \infty</m> for every <m>x</m> in <m>[0,c]</m>.  Further, since <m>e^c</m> is a constant independent of <m>n</m>, <m>e^c \frac{x^{n+1}}{(n+1)!} \to 0</m> as well.  Thus, 
+                  <me>
+                    \lim_{n \to \infty} |P_n(x) - e^x| = 0
+                  </me>, as desired.
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  When <m>x \lt 0</m>, we know <m>e^x \lt 1</m>.  Thus, we can repeat our argument in (a) but replace <m>e^c</m> with <m>1</m>, and everything else holds in the same way.
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  Because we have shown that the Taylor series for <m>e^x</m> converges to <m>e^x</m> for both every nonnegative <m>x</m>-value and for every negative <m>x</m>-value, it follows that we have convergence for every value of <m>x</m>.
+                </p>
+              </li>
+            </ol>
+          </p>
+        </li>
+        <li>
+          <p>
+            Since <m>e^x</m> is increasing on <m>[0,5]</m> we know that <m>e^x \lt e^5</m> on <m>[0,5]</m>. Now <m>e^5 \lt 243</m>, so 
+            <me>
+              \left|P_n(5) - e^5\right| \leq 243\frac{|5|^{n+1}}{(n+1)!}
+            </me>.
+            We want a value of <m>n</m>that makes this error term less than <m>10^{-8}</m>. Testing various values of <m>n</m> gives <me>
+              243\frac{|5|^{28+1}}{(28+1)!} \approx 5.119146745 \times 10^{-9}
+            </me>
+            so we can choose <m>n = 28</m>. A computer algebra system shows that <m>P_{28}(5) \approx 148.413159102551</m> while <m>e^5 \approx 148.413159102577</m> and we can see that these two approximations agree to 8 decimal places.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </solution>
+
 </activity>
 
