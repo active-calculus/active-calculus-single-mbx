@@ -226,7 +226,7 @@
     <xsl:text>  {}&#xa;</xsl:text>
     <xsl:text>  {}&#xa;</xsl:text>
     <xsl:text>  {}&#xa;</xsl:text>
-    <xsl:text>  {\includegraphics[height=1pc]{images/CClicense.pdf}}&#xa;</xsl:text>
+    <xsl:text>  {\includegraphics[height=1pc]{images/CC-BY-SA-license.pdf}}&#xa;</xsl:text>
     <xsl:text>\renewcommand{\chapterpagestyle}{ccfooter}&#xa;</xsl:text>
     <xsl:text>&#xa;</xsl:text>
     <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
