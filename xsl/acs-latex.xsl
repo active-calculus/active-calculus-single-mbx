@@ -60,6 +60,8 @@
     <xsl:text>\global\let\znewpage\clearpage &#xa;</xsl:text>
 </xsl:param>
 <xsl:param name="latex.preamble.late">
+    <xsl:text>%% Used to get WeBWorK logo into margin next to WW exercises&#xa;</xsl:text>
+    <xsl:text>\usepackage{marginnote}&#xa;</xsl:text>
     <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
     <xsl:text>% Modified from Mitch Keller's chapter handling &#xa;</xsl:text>
     <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
