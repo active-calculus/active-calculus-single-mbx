@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- **********************************************************************-->
-<!-- Copyright 2012-2017                                                   -->
+<!-- Copyright 2012-2018                                                   -->
 <!-- Matthew Boelkins                                                      -->
 <!--                                                                       -->
 <!-- This file is part of Active Calculus.                                 -->
 <!--                                                                       -->
 <!-- Permission is granted to copy, distribute and/or modify this document -->
-<!-- under the terms of the Creative Commons BY-NC-SA license.  The work   -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
 <!-- may be used for free by any party so long as attribution is given to  -->
 <!-- the author(s), the work and its derivatives are used in the spirit of -->
-<!-- "share and share alike"; no party may sell this work or any of its    -->
-<!-- derivatives for profit.  All trademarks are the registered marks of   -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
 <exercises xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="ez-8-4">
@@ -36,6 +35,7 @@
     <title>Estimating the sum of one more alternating series</title>
     <webwork source="Library/Rochester/setSeries3Convergent/ur_sr_3_10.pg" />
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -75,25 +75,69 @@
         </ol>
       </p>
     </statement>
+    <answer>
+      <p>
+        <ol label="a.">
+          <li>
+            <p>
+              <m>\sum_{k=0}^{\infty} \frac{1}{2k+1}</m> diverges by comparison to the Harmonic series.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>
+                |S_{100} - \sum_{k=0}^{\infty} (-1)^{k} \frac{1}{2k+1}| \lt  \approx 0.0049
+              </m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>n \gt 4{,}999{,}999{,}999.5</m>
+            </p>            
+          </li>
+        </ol>        
+      </p>
+    </answer>
     <solution>
       <p>
-        In this case we have
-        <me>
-          |S_n - \sum_{k=0}^{\infty} (-1)^{k} \frac{1}{2k+1}| \lt  a_{n+1} = \frac{1}{2n+1}
-        </me>.
-      </p>
+        <ol label="a.">
+          <li>
+            <p>
+              Since <m>\sum_{k=0}^{\infty} (-1)^{k} \frac{1}{2k+1}</m> is an alternating series and <m>\frac{1}{2k+1} \to 0</m>,
+              the series converges by the Alternating Series Test.  However, the corresponding series of positive terms <m>\sum_{k=0}^{\infty} \frac{1}{2k+1}</m> diverges by comparison to the Harmonic series.
+            </p>
+          </li>
+          <li>
+            <p>
+              <me>
+                |S_{100} - \sum_{k=0}^{\infty} (-1)^{k} \frac{1}{2k+1}| \lt  a_{101} = \frac{1}{2 \cdot 101 +1} \approx 0.0049
+              </me>
+              is a considerable amount of error when trying to estimate <m>\frac{\pi}{4}</m> accurately.
+            </p>
+          </li>
+          <li>
+            <p>
+              In this case we have
+              <me>
+                |S_n - \sum_{k=0}^{\infty} (-1)^{k} \frac{1}{2k+1}| \lt  a_{n+1} = \frac{1}{2n+1}
+              </me>.
+            </p>
 
-      <p>
-        To have <m>a_{n+1} \lt  10^{-10}</m> would require
-        <md>
-          <mrow>\frac{1}{2n+1} \amp \lt  10^{-10}</mrow>
-          <mrow>2n+1 \amp \gt 10^{10}</mrow>
-          <mrow>n \amp \gt \frac{10^{10}-1}{2}</mrow>
-          <mrow>n \amp \gt 4{,}999{,}999{,}999.5</mrow>
-        </md>.
+            <p>
+              To have <m>a_{n+1} \lt  10^{-10}</m> would require
+              <md>
+                <mrow>\frac{1}{2n+1} \amp \lt  10^{-10}</mrow>
+                <mrow>2n+1 \amp \gt 10^{10}</mrow>
+                <mrow>n \amp \gt \frac{10^{10}-1}{2}</mrow>
+                <mrow>n \amp \gt 4{,}999{,}999{,}999.5</mrow>
+              </md>.
+            </p>            
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -121,6 +165,28 @@
         </ol>
       </p>
     </statement>
+    <answer>
+      <p>
+        <ol label="a.">
+          <li>
+            <p>
+              <m>\frac{S_n+S_{n+1}}{2} = \frac{S_n+S_{n} + (-1)^{n+2}a_{n+1}}{2}
+              </m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>
+                S_{20} = 0.668771403 \ldots
+              </m>;
+              <m>\frac{S_{20} + S_{21}}{2} = \frac{161227687}{232792560} = 0.692580926 \ldots
+              </m>,
+              accurate to within about <m>0.0006</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </answer>
     <solution>
       <p>
         <ol label="a.">
@@ -134,10 +200,28 @@
               </md>.
             </p>
           </li>
+          <li>
+            <p>
+              We have two options for estimating <m>\ln(2)</m> using partial sums.  For the first one, we use
+              <me>
+                \ln(2) \approx S_{20} = \frac{155685007}{232792560} = 0.668771403 \ldots
+              </me>,
+              and note that <m>\ln(2) \approx 0.6931471</m>, so the error in approximating with <m>S_{20}</m> is about <m>0.025</m>.  If we instead use <m>\frac{S_{20} + S_{21}}{2}</m>, we get 
+              <me>
+                \ln(2) \approx \frac{\frac{155685007}{232792560} + \left(\frac{155685007}{232792560} + \frac{1}{21} \right) }{2} = \frac{161227687}{232792560}
+              </me>
+              and since 
+              <me>
+                \frac{161227687}{232792560} = 0.692580926 \ldots
+              </me>,
+              we see that we've obtained a much more accurate approximation of <m>\ln(2)</m>, accurate to within about <m>0.0006</m>.
+            </p>
+          </li>
         </ol>
       </p>
     </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -178,6 +262,30 @@
         </ol>
       </p>
     </statement>
+    <answer>
+      <p>
+        <ol label="a.">
+          <li>
+            <p>
+              <m>\left\{\frac{1}{n}\right\}</m> and
+              <m>\left\{-\frac{1}{n^2}\right\}</m> converge to 0.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Notice that <m>\frac{1}{k} - \frac{1}{k^2} = \frac{k-1}{k^2}</m> and compare to the Harmonic series.
+            </p>
+          </li>
+          
+          <li>
+            <p>
+              It is possible for a series to alternate, have the terms go to zero, have the terms not <em>decrease</em> to zero, and the series diverge.  
+            </p>
+          </li>
+        </ol>
+      </p>
+    </answer>
     <solution>
       <p>
         <ol label="a.">
@@ -209,10 +317,17 @@
               it follows that the series <m>\sum_{k=1}^{\infty} \frac{k-1}{k^2}</m> diverges as well.
             </p>
           </li>
+
+          <li>
+            <p>
+              We have just demonstrated an example where the series alternates, the terms go to zero, but the terms don't <em>decrease</em> to zero, and the series diverges.  This shows that the condition that the series decreases is necessary in the AST.
+            </p>
+          </li>
         </ol>
       </p>
     </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>

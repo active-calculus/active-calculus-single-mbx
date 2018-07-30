@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- **********************************************************************-->
-<!-- Copyright 2012-2017                                                   -->
+<!-- Copyright 2012-2018                                                   -->
 <!-- Matthew Boelkins                                                      -->
 <!--                                                                       -->
 <!-- This file is part of Active Calculus.                                 -->
 <!--                                                                       -->
 <!-- Permission is granted to copy, distribute and/or modify this document -->
-<!-- under the terms of the Creative Commons BY-NC-SA license.  The work   -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
 <!-- may be used for free by any party so long as attribution is given to  -->
 <!-- the author(s), the work and its derivatives are used in the spirit of -->
-<!-- "share and share alike"; no party may sell this work or any of its    -->
-<!-- derivatives for profit.  All trademarks are the registered marks of   -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
 
@@ -47,52 +46,47 @@
   </objectives>
   <introduction>
     <p>
-      In the very first section of the text,
-      we considered a situation where a moving object had a known position at time <m>t</m>.
-      In particular,
-      we stipulated that a tennis ball tossed into the air had its height <m>s</m>
+      In the first section of the text,
+      we considered a moving object with known position at time <m>t</m>, namely,
+      a tennis ball tossed into the air with height <m>s</m>
       (in feet)
       at time <m>t</m>
       (in seconds)
       given by <m>s(t) = 64 - 16(t-1)^2</m>.
-      From this starting point,
-      we investigated the average velocity of the ball on a given interval <m>[a,b]</m>,
-      computed by the difference quotient <m>\frac{s(b)-s(a)}{b-a}</m>,
-      and eventually found that we could determine the exact instantaneous velocity of the ball at time <m>t</m> by taking the derivative of the position function,
+      We investigated the average velocity of the ball on an interval <m>[a,b]</m>,
+      computed by the difference quotient <m>\frac{s(b)-s(a)}{b-a}</m>.
+      We found that we could determine the instantaneous velocity of the ball at time <m>t</m> by taking the derivative of the position function,
       <me>
         s'(t) = \lim_{h \to 0} \frac{s(t+h)-s(t)}{h}
       </me>.
     </p>
 
     <p>
-      Thus, given a differentiable position function,
-      we are able to know the exact velocity of the moving object at any point in time.
+      Thus, if its position function is differentiable,
+      we can find the velocity of a moving object at any point in time.
     </p>
 
     <p>
-      Moreover, from this foundational problem involving position and velocity we have learned a great deal.
-      Given a differentiable function <m>f</m>,
-      we are now able to find its derivative and use this derivative to determine the function's instantaneous rate of change at any point in the domain,
-      as well as to find where the function is increasing or decreasing,
-      is concave up or concave down,
-      and has relative extremes.
+      From this study of position and velocity we have learned a great deal.
+      We can use the derivative to find a function's instantaneous rate of change at any point in the domain,
+      to find where the function is increasing or decreasing,
+      where it is concave up or concave down,
+      and to locate relative extremes.
       The vast majority of the problems and applications we have considered have involved the situation where a particular function is known and we seek information that relies on knowing the function's instantaneous rate of change.
-      That is, we have typically proceeded from a function <m>f</m> to its derivative,
+      For all these tasks, we proceed from a function <m>f</m> to its derivative,
       <m>f'</m>,
-      and then used the meaning of the derivative to help us answer important questions.
+      and use the meaning of the derivative to help us answer important questions.
     </p>
 
     <p>
-      In a much smaller number of situations so far,
-      we have encountered the reverse situation where we instead know the derivative,
-      <m>f'</m>,
-      and have tried to deduce information about <m>f</m>.
-      It is this particular problem that will be the focus of our attention in most of <xref ref="C-4">Chapter</xref>:
+      We have also encountered the reverse situation, where we know the derivative of a function,
+      <m>f'</m>, and try to deduce information about <m>f</m>.
+      We will focus our attention in <xref ref="C-4">Chapter</xref> on this problem:
       if we know the instantaneous rate of change of a function,
-      are we able to determine the function itself?
-      To begin, we start with a more focused question:
+      can we find the function itself?
+      We start with a more specific question:
       if we know the instantaneous velocity of an object moving along a straight line path,
-      can we determine its corresponding position function?
+      can we find its corresponding position function?
     </p>
 
     <xi:include href="./previews/PA-4-1.xml" />
@@ -104,10 +98,10 @@
 
     <p>
       In <xref ref="PA-4-1">Preview Activity</xref>,
-      we encountered a fundamental fact:
-      when a moving object's velocity is constant
+      we learned that
+      when the velocity of a moving object's velocity is constant
       (and positive),
-      the area under the velocity curve over a given interval tells us the distance the object traveled.
+      the area under the velocity curve over an interval of time tells us the distance the object traveled.
     </p>
 
     <figure xml:id="F-4-1-VelArea">
@@ -116,69 +110,65 @@
     </figure>
 
     <p>
-      As seen at left in <xref ref="F-4-1-VelArea">Figure</xref>,
-      if we consider an object moving at 2 miles per hour over the time interval <m>[1,1.5]</m>,
-      then the area <m>A_1</m> of the shaded region under <m>y = v(t)</m> on <m>[1,1.5]</m> is
+      The left-hand graph of <xref ref="F-4-1-VelArea">Figure</xref>
+      shows the velocity of an object moving at 2 miles per hour over the time interval <m>[1,1.5]</m>.
+      The area <m>A_1</m> of the shaded region under <m>y = v(t)</m> on <m>[1,1.5]</m> is
       <me>
         A_1= 2 \, \frac{\text{miles} }{\text{hour} } \cdot \frac{1}{2} \, \text{hours}  = 1 \, \text{mile}
       </me>.
     </p>
 
     <p>
-      This principle holds in general simply due to the fact that distance equals rate times time,
+      This result is simply the fact that distance equals rate times time,
       provided the rate is constant.
       Thus, if <m>v(t)</m> is constant on the interval <m>[a,b]</m>,
-      then the distance traveled on <m>[a,b]</m> is the area <m>A</m> that is given by
+      the distance traveled on <m>[a,b]</m> is equal to the area <m>A</m> given by
       <me>
         A = v(a) (b-a) = v(a) \Delta t
       </me>,
       where <m>\Delta t</m> is the change in <m>t</m> over the interval.
-      Note, too, that we could use any value of <m>v(t)</m> on the interval <m>[a,b]</m>,
-      since the velocity is constant;
+      (Since the velocity is constant, we can use any value of <m>v(t)</m> on the interval <m>[a,b]</m>,
       we simply chose <m>v(a)</m>,
-      the value at the interval's left endpoint.
+      the value at the interval's left endpoint.)
       For several examples where the velocity function is piecewise constant, see <url href="http://gvsu.edu/s/9T">http://gvsu.edu/s/9T</url>.<fn>Marc Renault, calculus applets.</fn></p>
 
     <p>
-      The situation is obviously more complicated when the velocity function is not constant.
-      At the same time,
-      on relatively small intervals on which <m>v(t)</m> does not vary much,
-      the area principle allows us to estimate the distance the moving object travels on that time interval.
-      For instance,
-      for the non-constant velocity function shown at right in <xref ref="F-4-1-VelArea">Figure</xref>,
-      we see that on the interval <m>[1,1.5]</m>,
+      The situation is more complicated when the velocity function is not constant.
+      But on relatively small intervals where <m>v(t)</m> does not vary much, we can use 
+      the area principle to estimate the distance traveled.
+      The graph at right in <xref ref="F-4-1-VelArea">Figure</xref> shows a non-constant velocity function.
+      On the interval <m>[1,1.5]</m>, the
       velocity varies from <m>v(1) = 2.5</m> down to <m>v(1.5) \approx 2.1</m>.
-      Hence, one estimate for distance traveled is the area of the pictured rectangle,
+      One estimate for the distance traveled is the area of the pictured rectangle,
       <me>
         A_2 = v(1) \Delta t = 2.5 \, \frac{\text{miles} }{\text{hour} } \cdot \frac{1}{2} \, \text{hours}  = 1.25 \, \text{miles}
       </me>.
     </p>
 
     <p>
-      Because <m>v</m> is decreasing on <m>[1,1.5]</m> and the rectangle lies above the curve,
-      clearly <m>A_2 = 1.25</m> is an over-estimate of the actual distance traveled.
+      Note that because <m>v</m> is decreasing on <m>[1,1.5]</m>,
+      <m>A_2 = 1.25</m> is an over-estimate of the actual distance traveled.
     </p>
 
-    <sidebyside widths="47% 47%" margins="0%" valign="bottom">
+    <!--<sidebyside widths="47% 47%" margins="0%" valign="bottom">-->
       <p>
-        If we want to estimate the area under the non-constant velocity function on a wider interval,
-        say <m>[0,3]</m>,
-        it becomes apparent that one rectangle probably will not give a good approximation.
+        To estimate the area under this non-constant velocity function on a wider interval,
+        say <m>[0,3]</m>, one rectangle will not give a good approximation.
         Instead, we could use the six rectangles pictured in <xref ref="F-4-1-VelArea2">Figure</xref>,
         find the area of each rectangle, and add up the total.
         Obviously there are choices to make and issues to understand:
-        how many rectangles should we use? where should we evaluate the function to decide the rectangle's height? what happens if velocity is sometimes negative? can we attain the exact area under any non-constant curve?
+        How many rectangles should we use? Where should we evaluate the function to decide the rectangle's height? What happens if the velocity is sometimes negative? Can we find the exact area under any non-constant curve?
       </p>
 
       <figure xml:id="F-4-1-VelArea2">
         <caption>Using six rectangles to estimate the area under <m>y = v(t)</m> on <m>[0,3]</m>.</caption>
-        <image source="images/4_1_VelArea2" />
+        <image width="47%" source="images/4_1_VelArea2" />
       </figure>
-    </sidebyside>
+<!--</sidebyside>-->
     <p>
-      These questions and more are ones we will study in what follows;
-      for now it suffices to realize that the simple idea of the area of a rectangle gives us a powerful tool for estimating both distance traveled from a velocity function as well as the area under an arbitrary curve.
-      To explore the setting of multiple rectangles to approximate area under a non-constant velocity function, see the applet found at <url href="http://gvsu.edu/s/9U">http://gvsu.edu/s/9U</url>.<fn>Marc Renault, calculus applets.</fn></p>
+       We will study these questions and more in what follows;
+      for now it suffices to observe that the simple idea of the area of a rectangle gives us a powerful tool for estimating distance traveled from a velocity function, as well as for estimating the area under an arbitrary curve.
+      To explore the use of multiple rectangles to approximate area under a non-constant velocity function, see the applet found at <url href="http://gvsu.edu/s/9U">http://gvsu.edu/s/9U</url>.<fn>Marc Renault, calculus applets.</fn></p>
 
     <xi:include href="./activities/act-4-1-1.xml" />
   </subsection>
@@ -190,38 +180,32 @@
     <p>
       When the velocity of a moving object is positive,
       the object's position is always increasing.
-      While we will soon consider situations where velocity is negative and think about the ramifications of this condition on distance traveled,
-      for now we continue to assume that we are working with a positive velocity function.
-      In that setting,
-      we have established that whenever <m>v</m> is actually constant,
-      the exact distance traveled on an interval is the area under the velocity curve;
-      furthermore,
-      we have observed that when <m>v</m> is not constant,
-      we can estimate the total distance traveled by finding the areas of rectangles that help to approximate the area under the velocity curve on the given interval.
-      Hence, we see the importance of the problem of finding the area between a curve and the horizontal axis:
+      (We will soon consider situations where velocity is negative; for now, we focus on the situation where velocity is always positive.) We have established that whenever <m>v</m> is constant on an interval,
+      the exact distance traveled is the area under the velocity curve. When <m>v</m> is not constant,
+      we can estimate the total distance traveled by finding the areas of rectangles that approximate the area under the velocity curve.</p>
+
+      <p>Thus, we see that finding the area between a curve and the horizontal axis is an important exercise:
       besides being an interesting geometric question,
-      in the setting of the curve being the (positive) velocity of a moving object,
-      the area under the curve over an interval tells us the exact distance traveled on the interval.
-      We can estimate this area any time we have a graph of the velocity function or a table of data that tells us some relevant values of the function.
+      if the curve gives the velocity of a moving object,
+      the area under the curve tells us the exact distance traveled on an interval.
+      We can estimate this area if we have a graph or a table of values for the velocity function.
     </p>
 
     <p>
       In <xref ref="act-4-1-1">Activity</xref>,
-      we also encountered an alternate approach to finding the distance traveled.
-      In particular,
-      if we know a formula for the instantaneous velocity, <m>y = v(t)</m>,
-      of the moving body at time <m>t</m>,
-      then we realize that <m>v</m> must be the derivative of some corresponding position function <m>s</m>.
-      If we can find a formula for <m>s</m> from the formula for <m>v</m>,
-      it follows that we know the position of the object at time <m>t</m>.
-      In addition, under the assumption that velocity is positive,
-      the change in position over a given interval then tells us the distance traveled on that interval.
+      we encountered an alternate approach to finding the distance traveled.
+      If <m>y = v(t)</m> is a formula for the instantaneous velocity
+      of a moving object,
+      then <m>v</m> must be the derivative of the object's position function, <m>s</m>.
+      If we can find a formula for <m>s(t)</m> from the formula for <m>v(t)</m>,
+      we will know the position of the object at time <m>t</m>,
+      and the change in position over a particular time interval tells us the distance traveled on that interval.
     </p>
 
     <p>
       For a simple example,
       consider the situation from <xref ref="PA-4-1">Preview Activity</xref>,
-      where a person is walking along a straight line and has velocity function <m>v(t) = 3</m> mph.
+      where a person is walking along a straight line with velocity function <m>v(t) = 3</m> mph.
     </p>
 
     <figure xml:id="F-4-1-PA1Soln">
@@ -230,46 +214,57 @@
     </figure>
 
     <p>
-      As pictured in <xref ref="F-4-1-PA1Soln">Figure</xref>,
-      we see the already noted relationship between area and distance traveled on the left-hand graph of the velocity function.
-      In addition,
-      because the velocity is constant at 3, we know that if<fn>Here we are making the implicit assumption that <m>s(0) = 0</m>;
-      we will further discuss the different possibilities for values of <m>s(0)</m> in subsequent study.</fn><m>s(t) = 3t</m>,
-      then <m>s'(t) = 3</m>,
-      so <m>s(t) = 3t</m> is a function whose derivative is <m>v(t)</m>.
-      Furthermore, we now observe that
-      <m>s(1.5) = 4.5</m> and <m>s(0.25) = 0.75</m>,
-      which are the respective locations of the person at times
-      <m>t = 0.25</m> and <m>t = 1.5</m>, and therefore
+      On the left-hand graph of the velocity function in <xref ref="F-4-1-PA1Soln">Figure</xref>,
+      we see the relationship between area and distance traveled,
+      <me>
+        A= 3 \, \frac{\text{miles} }{\text{hour} } \cdot 1.25 \, \text{hours}  = 3.75 \, \text{miles}
+      </me>.
+      In addition, we observe
+        <fn>Here we are making the implicit assumption that <m>s(0) = 0</m>;
+        we will discuss different possibilities for values of <m>s(0)</m> in subsequent study.</fn>
+      that if <m>s(t) = 3t</m>,
+      then <m>s'(t) = 3</m>, 
+      so <m>s(t) = 3t</m> is the position function whose derivative is the given velocity function, <m>v(t) = 3</m>.
+      The respective locations of the person at times
+      <m>t = 0.25</m> and <m>t = 1.5</m> are
+      <m>s(1.5) = 4.5</m> and <m>s(0.25) = 0.75</m>, and therefore
       <me>
         s(1.5) - s(0.25) = 4.5 - 0.75 = 3.75 \ \text{miles}
       </me>.
     </p>
 
     <p>
-      This is not only the change in position on <m>[0.25,1.5]</m>,
-      but also precisely the distance traveled on <m>[0.25,1.5]</m>,
-      which can also be computed by finding the area under the velocity curve over the same interval.
-      There are profound ideas and connections present in this example that we will spend much of the remainder of <xref ref="C-4">Chapter</xref> studying and exploring.
+      This is the person's change in position on <m>[0.25,1.5]</m>,
+      which is precisely the distance traveled.
+      In this example there are profound ideas and connections that we will study throughout <xref ref="C-4">Chapter</xref>.
     </p>
 
     <p>
-      For now, it is most important to observe that if we are given a formula for a velocity function <m>v</m>,
+      For now, observe that if we know a formula for a velocity function <m>v</m>,
       it can be very helpful to find a function <m>s</m> that satisfies <m>s' = v</m>.
-      In this context, we say that <m>s</m> is an
+      We say that <m>s</m> is an
       <em>antiderivative</em> of <m>v</m>.
-      More generally,
-      just as we say that <m>f'</m> is the derivative of <m>f</m> for a given function <m>f</m>,
-      if we are given a function <m>g</m> and <m>G</m> is a function such that <m>G' = g</m>,
-      we say that <m>G</m> is an <em>antiderivative</em>
+      More generally, we have the following formal definition.
+    </p>
+    
+    <definition>
+      <statement>
+        <p>
+          If <m>g</m> and <m>G</m> are functions such that <m>G' = g</m>,
+          we say that <m>G</m> is an <term>antiderivative</term>
           <idx><h>antiderivative</h></idx>
-      of <m>g</m>.
+          of <m>g</m>.
+        </p>
+      </statement>
+    </definition>  
+      
+    <p>
       For example, if <m>g(x) = 3x^2 + 2x</m>,
-      an antiderivative of <m>g</m> is <m>G(x) = x^3 + x^2</m>,
-      since <m>G'(x) = g(x)</m>.
+      <m>G(x) = x^3 + x^2</m> is an antiderivative of <m>g</m>,
+      because <m>G'(x) = g(x)</m>.
       Note that we say <q>an</q>
       antiderivative of <m>g</m> rather than <q>the</q>
-      antiderivative of <m>g</m> because
+      antiderivative of <m>g</m>, because
       <m>H(x) = x^3 + x^2 + 5</m> is also a function whose derivative is <m>g</m>,
       and thus <m>H</m> is another antiderivative of <m>g</m>.
     </p>
@@ -280,76 +275,74 @@
   <subsection>
     <title>When velocity is negative</title>
     <p>
-      Most of our work in this section has occurred under the assumption that velocity is positive.
-      This hypothesis guarantees that the movement of the object under consideration is always in a single direction,
-      and hence ensures that the moving body's change in position is the same as the distance it travels on a given interval.
+      The assumption that its velocity is positive on a given interval guarantees that the movement of an object is always in a single direction,
+      and hence ensures that its change in position is the same as the distance it travels.
       As we saw in <xref ref="act-4-1-2">Activity</xref>,
-      there are natural settings in which a moving object's velocity is negative;
-      we would like to understand this scenario fully as well.
+      there are natural settings in which an object's velocity is negative, and
+      we would like to understand this scenario as well.
     </p>
 
     <p>
-      Consider a simple example where a person goes for a walk on a beach along a stretch of very straight shoreline that runs east-west.
-      We can naturally assume that their initial position is <m>s(0) = 0</m>,
-      and further stipulate that their position function increases as they move east from their starting location.
+      Consider a simple example where a woman goes for a walk on the beach along a stretch of very straight shoreline that runs east-west.
+      We assume that her initial position is <m>s(0) = 0</m>,
+      and that her position function increases as she moves east from her starting location.
       For instance,
-      a position of <m>s = 1</m> mile represents being one mile east of the start location,
-      while <m>s = -1</m> tells us the person is one mile west of where they began walking on the beach.
-      Now suppose the person walks in the following manner.
+       <m>s = 1</m> mile represents one mile east of the start location,
+      while <m>s = -1</m> tells us she is one mile west of where she began walking on the beach.</p>
+
+      <p>Now suppose she walks in the following manner.
       From the outset at <m>t = 0</m>,
-      the person walks due east at a constant rate of <m>3</m> mph for 1.5 hours.
+      she walks due east at a constant rate of <m>3</m> mph for 1.5 hours.
       After 1.5 hours,
-      the person stops abruptly and begins walking due west at the constant rate of <m>4</m> mph and does so for 0.5 hours.
+      she stops abruptly and begins walking due west at a constant rate of <m>4</m> mph and does so for 0.5 hours.
       Then, after another abrupt stop and start,
-      the person resumes walking at a constant rate of <m>3</m> mph to the east for one more hour.
-      What is the total distance the person traveled on the time interval <m>t = 0</m> to <m>t = 3</m>?
-      What is the person's total change in position over that time?
+      she resumes walking at a constant rate of <m>3</m> mph to the east for one more hour.
+      What is the total distance she traveled on the time interval from <m>t = 0</m> to <m>t = 3</m>?
+      What the total change in her position over that time?
     </p>
 
     <p>
-      On one hand,
-      these are elementary questions to answer because the velocity involved is constant on each interval.
-      From <m>t = 0</m> to <m>t = 1.5</m>, the person traveled
+      These questions are possible to answer without calculus because the velocity is constant on each interval.
+      From <m>t = 0</m> to <m>t = 1.5</m>, she traveled
       <me>
         D_{[0,1.5]} = 3 \ \text{miles per hour}  \cdot 1.5 \ \text{hours}  = 4.5 \ \text{miles}
       </me>.
     </p>
 
     <p>
-      Similarly, on <m>t = 1.5</m> to <m>t = 2</m>,
-      having a different rate, the distance traveled is
+      On <m>t = 1.5</m> to <m>t = 2</m>,
+      the distance traveled is
       <me>
         D_{[1.5,2]} = 4 \ \text{miles per hour}  \cdot 0.5 \ \text{hours}  = 2 \ \text{miles}
       </me>.
     </p>
 
     <p>
-      Finally, similar calculations reveal that in the final hour,
-      the person walked
+      Finally, in the last hour she walked
       <me>
         D_{[2,3]} = 3 \ \text{miles per hour}  \cdot 1 \ \text{hours}  = 3 \ \text{miles}
       </me>,
-      so the total distance traveled is
+      so the total distance she traveled is
       <me>
         D = D_{[0,1.5]} + D_{[1.5,2]} + D_{[2,3]} = 4.5 + 2 + 3 = 9.5 \ \text{miles}
       </me>.
     </p>
 
     <p>
-      Since the velocity on <m>1.5 \lt  t \lt  2</m> is actually <m>v = -4</m>,
-      being negative to indicate motion in the westward direction,
-      this tells us that the person first walked 4.5 miles east,
+      Since the velocity for <m>1.5 \lt  t \lt  2</m> is <m>v = -4</m>,
+      indicating motion in the westward direction,
+      the woman first walked 4.5 miles east,
       then 2 miles west, followed by 3 more miles east.
-      Thus, the walker's total change in position is
+      Thus, the total change in her position is
       <me>
         \text{change in position}  = 4.5 - 2 + 3 = 5.5 \ \text{miles}
       </me>.
     </p>
 
     <p>
-      While we have been able to answer these questions fairly easily,
-      it is also important to think about this problem graphically in order that we can generalize our solution to the more complicated setting when velocity is not constant,
-      as well as to note the particular impact that negative velocity has.
+      We have been able to answer these questions fairly easily,
+      and if we think about the problem graphically, we can generalize our solution to the more complicated setting when velocity is not constant,
+      and possibly negative.
     </p>
 
     <figure xml:id="F-4-1-NegVel">
@@ -359,14 +352,14 @@
 
     <p>
       In <xref ref="F-4-1-NegVel">Figure</xref>,
-      we see how the distances we computed above can be viewed as areas:
-      <m>A_1 = 4.5</m> comes from taking rate times time (<m>3 \cdot 1.5</m>),
-      as do <m>A_2</m> and <m>A_3</m> for the second and third rectangles.
-      The big new issue is that while <m>A_2</m> is an area
+      we see how the distances we computed can be viewed as areas:
+      <m>A_1 = 4.5</m> comes from multiplyimg rate times time (<m>3 \cdot 1.5</m>),
+      as do <m>A_2</m> and <m>A_3</m>.
+      But while <m>A_2</m> is an area
       (and is therefore positive),
-      because this area involves an interval on which the velocity function is negative,
-      its area has a negative sign associated with it.
-      This helps us to distinguish between distance traveled and change in position.
+      because the velocity function is negative for <m>1.5 \lt  t \lt  2</m>,
+      this area has a negative sign associated with it.
+      The negative area distinguishes between distance traveled and change in position.
     </p>
 
     <p>
@@ -377,38 +370,31 @@
     </p>
 
     <p>
-      But the change in position has to account for the sign associated with the area,
-      where those above the <m>t</m>-axis are considered positive while those below the <m>t</m>-axis are viewed as negative, so that
+      But the change in position has to account for travel in the negative direction.  
+      An area above the <m>t</m>-axis is considered positive because it represents distance traveled in the positive direction, while one below the <m>t</m>-axis is viewed as negative because it represents travel in thenegative direction. Thus, the change in the woman's position is
       <me>
         s(3) - s(0) = (+4.5) + (-2) + (+3) = 5.5 \ \text{miles}
-      </me>,
-      assigning the <q><m>-2</m></q>
-      to the area in the interval <m>[1.5,2]</m> because there velocity is negative and the person is walking in the
-      <q>negative</q> direction.
+      </me>.
       In other words,
-      the person walks 4.5 miles in the positive direction,
+      the woman walks 4.5 miles in the positive direction,
       followed by two miles in the negative direction,
-      and then 3 more miles in the positive direction.
-      This affect of velocity being negative is also seen in the graph of the function <m>y=s(t)</m>,
-      which has a negative slope (specifically,
-      its slope is <m>-4</m>) on the interval
-      <m>1.5\lt t\lt 2</m> since the velocity is <m>-4</m> on that interval,
-      which shows the person's position function is decreasing due to the fact that she is walking east,
+      and then 3 more miles in the positive direction.</p>
+      <p>
+      Negative velocity is also seen in the graph of the position function <m>y=s(t)</m>.
+      Its slope is negative (specifically,
+       <m>-4</m>) on the interval
+      <m>1.5\lt t\lt 2</m> because the velocity is <m>-4</m> on that interval.
+      The negative slope shows the position function is decreasing because the woman is walking east,
       rather than west.
-      On the intervals where she is walking west,
-      the velocity function is positive and the slope of the position function <m>s</m> is therefore also positive.
-    </p>
+      </p>
 
     <p>
       To summarize, we see that if velocity is sometimes negative,
-      this makes the moving object's change in position different from its distance traveled.
-      By viewing the intervals on which velocity is positive and negative separately,
-      we may compute the distance traveled on each such interval,
-      and then depending on whether we desire total distance traveled or total change in position,
-      we may account for negative velocities that account for negative change in position,
-      while still contributing positively to total distance traveled.
-      We close this section with one additional activity that further explores the effects of negative velocity on the problem of finding change in position and total distance traveled.
-    </p>
+      a moving object's change in position different from its distance traveled.
+      If we compute separately the distance traveled on each interval where velocity is positive or negative,
+      we can calculate either the total distance traveled or the total change in position.
+      We assign a negative value to distances traveled in the negative direction when we calculate change in position,  but a positive value when we calculate the total distance traveled.
+     </p>
 
     <xi:include href="./activities/act-4-1-3.xml" />
   </subsection>
@@ -449,12 +435,11 @@
 
         <li>
           <p>
-            In the setting where velocity is sometimes negative,
-            this means that the object is sometimes traveling in the opposite direction
-            (depending on whether velocity is positive or negative),
-            and thus involves the object backtracking.
+            If its velocity is sometimes negative,
+            a moving object is sometimes traveling in the opposite direction
+            or backtracking.
             To determine distance traveled,
-            we have to think about the problem separately on intervals where velocity is positive and negative and account for the change in position on each such interval.
+            we have to think compute the distance separately on intervals where velocity is positive or negative, and account for the change in position on each such interval.
           </p>
         </li>
       </ul>
