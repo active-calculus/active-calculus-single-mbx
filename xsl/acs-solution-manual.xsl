@@ -1,16 +1,15 @@
-<?xml version='1.0'?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!-- **********************************************************************-->
-<!-- Copyright 2012-2017                                                   -->
+<!-- Copyright 2012-2018                                                   -->
 <!-- Matthew Boelkins                                                      -->
 <!--                                                                       -->
 <!-- This file is part of Active Calculus.                                 -->
 <!--                                                                       -->
 <!-- Permission is granted to copy, distribute and/or modify this document -->
-<!-- under the terms of the Creative Commons BY-NC-SA license.  The work   -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
 <!-- may be used for free by any party so long as attribution is given to  -->
 <!-- the author(s), the work and its derivatives are used in the spirit of -->
-<!-- "share and share alike"; no party may sell this work or any of its    -->
-<!-- derivatives for profit.  All trademarks are the registered marks of   -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
 
@@ -24,14 +23,12 @@
 <xsl:output method="text" />
 
 <!-- These switches will control what we include -->
-<xsl:param name="exercise.text.statement" select="'yes'" />
 <xsl:param name="exercise.divisional.hint" select="'no'" />
 <xsl:param name="exercise.divisional.answer" select="'no'" />
 <xsl:param name="exercise.divisional.solution" select="'yes'" />
 
 
 <!-- Preview activities and activities are project-like. -->
-<xsl:param name="project.text.statement" select="'yes'" />
 <xsl:param name="project.text.hint" select="'no'" />
 <xsl:param name="project.text.answer" select="'no'" />
 <xsl:param name="project.text.solution" select="'yes'" />
@@ -43,7 +40,7 @@
 
 <!-- Chapters: default presentation, we have them all, so numbers OK     -->
 <!-- Sections and Equivalents: kill them, except for specific ones below -->
-<xsl:template match="conclusion|references|objectives|appendix|index" />
+<xsl:template match="conclusion|references|objectives|appendix|index|solutions" />
 
 <!-- Kill solutions to WeBWorK exercises -->
 <xsl:template match="exercise[webwork]">
@@ -57,7 +54,7 @@
 <!-- we could purposely add them if we wished         -->
 <xsl:template match="exercises">
 
-    <xsl:text>\section*{\arabic{chapter}.\arabic{section}</xsl:text>
+    <xsl:text>\section*{</xsl:text>
     <xsl:apply-templates select="." mode="number" />
     <xsl:text>\quad </xsl:text>
     <xsl:apply-templates select="." mode="title-full" />
@@ -216,16 +213,16 @@
     <xsl:text>\addtokomafont{disposition}{\rmfamily\bfseries}&#xa;</xsl:text>
     <xsl:text>\addtokomafont{descriptionlabel}{\rmfamily\bfseries}&#xa;</xsl:text>
     <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
-    <xsl:text>% CC icon at bottom of each page &#xa;</xsl:text>
+    <xsl:text>% CC icon at bottom of first page of each chapter &#xa;</xsl:text>
     <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
-    <xsl:text>\usepackage[automark,headsepline]{scrpage2}&#xa;</xsl:text>
+    <xsl:text>\usepackage[automark]{scrlayer-scrpage}&#xa;</xsl:text>
     <xsl:text>\deftripstyle{ccfooter}&#xa;</xsl:text>
     <xsl:text>  {}&#xa;</xsl:text>
     <xsl:text>  {}&#xa;</xsl:text>
     <xsl:text>  {}&#xa;</xsl:text>
     <xsl:text>  {}&#xa;</xsl:text>
     <xsl:text>  {}&#xa;</xsl:text>
-    <xsl:text>  {\includegraphics[height=1pc]{images/CClicense.pdf}}&#xa;</xsl:text>
+    <xsl:text>  {\includegraphics[height=1pc]{images/CC-BY-SA-license.pdf}}&#xa;</xsl:text>
     <xsl:text>\renewcommand{\chapterpagestyle}{ccfooter}&#xa;</xsl:text>
     <xsl:text>&#xa;</xsl:text>
     <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>

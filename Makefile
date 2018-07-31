@@ -1,5 +1,5 @@
 ## ********************************************************************* ##
-## Copyright 2016--2017                                                  ##
+## Copyright 2016--2018                                                  ##
 ## Matt Boelkins                                                         ##
 ##                                                                       ##
 ## This file is part of Active Calculus                                  ##
@@ -182,6 +182,7 @@ pdf: acs-merge
 	xsltproc -xinclude $(MBUSR)/acs-latex.xsl $(WWOUT)/acs-merge.ptx; \
 	sed -i ".bak" -f ../../change-documentclass.sed index.tex; \
 	xelatex index; \
+	xelatex index; \
 	xelatex index
 
 # Solutions manual (LaTeX only for PDF)
@@ -245,4 +246,5 @@ check:
 	install -d $(OUTPUT)
 	-rm $(OUTPUT)/schema_errors.*
 	-java -classpath $(JING_DIR)/build -Dorg.apache.xerces.xni.parser.XMLParserConfiguration=org.apache.xerces.parsers.XIncludeParserConfiguration -jar $(JING_DIR)/build/jing.jar $(MB)/schema/pretext.rng $(MAINFILE) > $(OUTPUT)/schema_errors.txt
+	xsltproc --xinclude $(MB)/schema/pretext-schematron.xsl $(MAINFILE) >> $(OUTPUT)/schema_errors.txt
 	less $(OUTPUT)/schema_errors.txt

@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- **********************************************************************-->
-<!-- Copyright 2012-2017                                                   -->
+<!-- Copyright 2012-2018                                                   -->
 <!-- Matthew Boelkins                                                      -->
 <!--                                                                       -->
 <!-- This file is part of Active Calculus.                                 -->
 <!--                                                                       -->
 <!-- Permission is granted to copy, distribute and/or modify this document -->
-<!-- under the terms of the Creative Commons BY-NC-SA license.  The work   -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
 <!-- may be used for free by any party so long as attribution is given to  -->
 <!-- the author(s), the work and its derivatives are used in the spirit of -->
-<!-- "share and share alike"; no party may sell this work or any of its    -->
-<!-- derivatives for profit.  All trademarks are the registered marks of   -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
 <exercises xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="ez-7-1">
@@ -101,15 +100,136 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+          <li>
+            <p>
+              <m>\frac{dT}{dt}\vert_{T=105} = -2</m>; when <m>T = 105</m>, 
+              the coffee's temperature is decreasing at an instantaneous rate
+              of <m>-2</m> degrees F per minute.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>T</m> decreasing at <m>t=0</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>
+              	T(1) \approx 103
+              </m>
+              degrees F.
+            </p>
+          </li>
+
+          <li>
+
+            <sidebyside width="50%">
+              <image source="images/7_1_Ez1Soln" />
+            </sidebyside>
+          </li>
+
+          <li>
+            <p>
+              For <m>T \lt 75</m>, <m>T</m> increases.
+              For <m>T \gt 75</m>, <m>T</m> decreases.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Room temperature is <m>75</m> degrees F.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Substitute <m>T(t) = 75 + 30e^{-t/15}</m> in for <m>T</m> in the differential equation <m>\frac{dT}{dt}= -\frac1{15}T+5</m> and verify the equality holds; <m>T(0) = 75 + 30e^0 = 75 + 30 = 105</m>; <m>T(t) = 75 + 30e^{-t/15} \to 75</m> as <m>t \to \infty</m>.
+            </p>
+          </li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+            <p>
+              Since <m>\frac{dT}{dt}= -\frac1{15}T+5</m> and <m>T(0)=105</m>,
+              <m>\frac{dT}{dt}\vert_{T=105} = -\frac{1}{15}(105) + 5 = -7 + 5 = -2</m>.  The fact that 
+              <m>T(0) = 105</m> tells us the coffee's temperature at time <m>t = 0</m> is <m>T = 105</m> degrees F,
+              and <m>\frac{dT}{dt}\vert_{T=105} = -2</m> tells us that at the instant <m>T = 105</m>
+              (i.e. when <m>t = 0</m>), the coffee's temperature is decreasing at an instantaneous rate
+              of <m>-2</m> degrees F per minute.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              At <m>t = 0</m>, <m>T = 105</m>, and since <m>\frac{dT}{dt}\vert_{T=105}</m> is negative, <m>T</m> decreasing at <m>t=0</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Using the linear approximation <m>T(1) \approx T(0) + \frac{dT}{dt}\vert_{t=0} (1-0)</m> along with the given information, it follows that 
+              <me>
+              	T(1) \approx 105 + (-2)(1) = 103
+              </me>
+              degrees F.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              We note that <m>\frac{dT}{dt}</m> is a linear function of <m>T</m> with slope <m>-\frac{1}{15}</m> and vertical intercept <m>(0,5)</m>, so its graph is as shown below.  Note particularly that <m>\frac{dT}{dt}\vert_{T = 75} = 0</m>.
+            </p>
+
+            <sidebyside width="50%">
+              <image source="images/7_1_Ez1Soln" />
+            </sidebyside>
+          </li>
+
+          <li>
+            <p>
+              For <m>T \lt 75</m>, <m>\frac{dT}{dt} \gt 0</m>, so for these <m>T</m>-values, <m>T</m> increases.
+              For <m>T \gt 75</m>, <m>\frac{dT}{dt} \lt 0</m>, so for these <m>T</m>-values, <m>T</m> decreases.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              In the previous question, we observed that <m>75</m> degrees F is the critical temperature that changes
+              the behavior of <m>T</m>.  There are several reasons to think that <m>75</m> degrees F is room temperature: if the coffee's temperature is above room temperature (<m>75</m>), its temperature will decrease to room temperature, while if the coffee is below room temperature, its temperature will increase to room temperature.  Moreover, if the coffee's temperature is <m>75</m> (which would match the room temperature), then its rate of change is <m>0</m> and the coffee's temperature doesn't change.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Verify that <m>T(t) = 75 + 30e^{-t/15}</m> is the solution to the differential equation with initial value <m>T(0) = 105</m>.
+              What happens to this solution after a long time?
+              Assuming that <m>T(t) = 75 + 30e^{-t/15}</m>, we observe that 
+              <me>
+              	\frac{dT}{dt} = 30e^{-t/15} \left(-\frac{1}{15} \right) = -2e^{-t/15}
+              </me>.
+              In addition,
+              <me>
+              	-\frac{1}{15}T + 5 = -\frac{1}{15}(75 + 30e^{-t/15}) + 5 = -5 - 2e^{-t/15} + 5 = -2e^{-t/15}
+              </me>.
+              The two preceding equations show that 
+              <me>
+              	\frac{dT}{dt}= -\frac1{15}T+5
+              </me>
+              when we substitute <m>T(t) = 75 + 30e^{-t/15}</m> in for <m>T</m>, and thus this function is a solution to the differential equation.  Moreover, <m>T(0) = 75 + 30e^0 = 75 + 30 = 105</m>, so the function satisfies the initial condition, too.  Finally, because <m>e^{-t/15} \to 0</m> as <m>t \to \infty</m>, it follows that <m>T(t) = 75 + 30e^{-t/15} \to 75</m> as <m>t \to \infty</m>, which shows that the solution function's value tends to room temperature as time increases without bound, as we expect.
+            </p>
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -181,80 +301,275 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+          <li>
+            <p>
+              <m>1 \lt P \lt 3</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>P \lt 1</m> and <m>3 \lt P \lt 4</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>P</m> will not change at all.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              The population will decrease toward <m>P = 0</m> with <m>P</m> always being positive.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              The population will increase toward <m>P = 3</m> with <m>P</m> always being between <m>1</m> and <m>3</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              The population will decrease toward <m>P = 3</m> with <m>P</m> always being above <m>3</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              There's a maximum threshold of <m>P = 3</m>.
+            </p>
+          </li>
+        </ol>
       </p>
     </answer>
     <solution>
-      <p>
-        Exercise Solution
+      <p>	
+        <ol label="a.">
+          <li>
+            <p>
+              <m>P</m> increases for <m>1 \lt P \lt 3</m> since <m>\frac{dP}{dt} \gt 0</m> for these <m>P</m>-values.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>P</m> decreases for <m>P \lt 1</m> and <m>3 \lt P \lt 4</m> since <m>\frac{dP}{dt} \lt 0</m> for these <m>P</m>-values.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              If <m>P(0) = 3</m>, <m>\frac{dP}{dt}\vert_{P=3} = 0</m>, so <m>P</m> will not change at all with time since its derivative is <m>0</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              If the initial population satisfies <m>0\lt P(0)\lt 1</m>,
+              we expect that the population will decrease toward <m>P = 0</m> with <m>P</m> always being positive.
+              Since <m>\frac{dP}{dt}</m> is always negative for <m>0\lt P \lt 1</m>, <m>P</m> is always decreasing on this interval.  The population can't drop below <m>P = 0</m> because at that value of <m>P</m>, <m>\frac{dP}{dt} = 0</m> and at that value the population wouldn't change.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              If the initial population satisfies <m>1\lt P(0)\lt 3</m>,
+              we expect that the population will increase toward <m>P = 3</m> with <m>P</m> always being between <m>1</m> and <m>3</m>.
+              Since <m>\frac{dP}{dt}</m> is always positive for <m>1 \lt P \lt 3</m>, <m>P</m> is always increasing on this interval.  The population can't increase above <m>P = 3</m> because at that value of <m>P</m>, <m>\frac{dP}{dt} = 0</m> and at that value the population wouldn't change.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              If the initial population satisfies <m>3\lt P(0)</m>, we
+              expect that the population will decrease toward <m>P = 3</m> with <m>P</m> always being above <m>3</m>.
+              Since <m>\frac{dP}{dt}</m> is always negative for <m>P \gt 3</m>, <m>P</m> is always decreasing on this interval.  The population can't drop below <m>P = 3</m> because at that value of <m>P</m>, <m>\frac{dP}{dt} = 0</m> and at that value the population wouldn't change.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              It looks like there are two thresholds for the population:  there's a minimum threshold of <m>P = 1</m>, since below that population, the population decreases to <m>0</m>, and there's a maximum threshold of <m>P = 3</m>, where if we are above the minimum but below the maximum, the population works to increase toward the maximum threshold, while if the population is above the maximum, its value will fall back toward it.
+            </p>
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
         In this problem,
         we test further what it means for a function to be a solution to a given differential equation.
         <ol label="a.">
-        <li>
-          <p>
-            Consider the differential equation
-            <me>
-              \frac{dy}{dt} = y - t
-            </me>.
-            Determine whether the following functions are solutions to the given differential equation.
-            <ol label="i.">
-              <li>
-                <p>
-                  <m>y(t) = t + 1 + 2e^t</m>
-                </p>
-              </li>
+	        <li>
+	          <p>
+	            Consider the differential equation
+	            <me>
+	              \frac{dy}{dt} = y - t
+	            </me>.
+	            Determine whether the following functions are solutions to the given differential equation.
+	            <ol label="i.">
+	              <li>
+	                <p>
+	                  <m>y(t) = t + 1 + 2e^t</m>
+	                </p>
+	              </li>
 
-              <li>
-                <p>
-                  <m>y(t) = t + 1</m>
-                </p>
-              </li>
+	              <li>
+	                <p>
+	                  <m>y(t) = t + 1</m>
+	                </p>
+	              </li>
 
-              <li>
-                <p>
-                  <m>y(t) = t + 2</m>
-                </p>
-              </li>
-            </ol>
-          </p>
-        </li>
+	              <li>
+	                <p>
+	                  <m>y(t) = t + 2</m>
+	                </p>
+	              </li>
+	            </ol>
+	          </p>
+	        </li>
 
-        <li>
-          <p>
-            When you weigh bananas in a scale at the grocery store, the
-            height <m>h</m> of the bananas is described by the differential
-            equation
-            <me>
-              \frac{d^2h}{dt^2} = -kh
-            </me>
-            where <m>k</m> is the <em>spring constant</em>,
-            a constant that depends
-            on the properties of the spring in the scale.
-            After you put the
-            bananas in the scale,
-            you (cleverly) observe that the height of the bananas
-            is given by <m>h(t) = 4\sin(3t)</m>.
-            What is the value of the spring
-            constant?
-          </p>
-        </li>
+	        <li>
+	          <p>
+	            When you weigh bananas in a scale at the grocery store, the
+	            height <m>h</m> of the bananas is described by the differential
+	            equation
+	            <me>
+	              \frac{d^2h}{dt^2} = -kh
+	            </me>
+	            where <m>k</m> is the <em>spring constant</em>,
+	            a constant that depends
+	            on the properties of the spring in the scale.
+	            After you put the
+	            bananas in the scale,
+	            you (cleverly) observe that the height of the bananas
+	            is given by <m>h(t) = 4\sin(3t)</m>.
+	            What is the value of the spring
+	            constant?
+	          </p>
+	        </li>
         </ol>
       </p>
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+	        <li>
+	          <p>
+	            <ol label="i.">
+	              <li>
+	                <p>
+	               	  <m>y(t) = t + 1 + 2e^t</m> is a solution to the DE.
+	                </p>
+	              </li>
+
+	              <li>
+	                <p>
+	                  <m>y(t) = t + 1</m> is a solution to the DE. 
+	                </p>
+	              </li>
+
+	              <li>
+	                <p>
+	                  <m>y(t) = t + 2</m> is a not solution to the DE. 
+	                </p>
+	              </li>
+	            </ol>
+	          </p>
+	        </li>
+
+	        <li>
+	          <p>
+	            <m>k = 9</m>.
+	          </p>
+	        </li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+	        <li>
+	          <p>
+	            <ol label="i.">
+	              <li>
+	                <p>
+	               	  To see if 
+	                  <m>y(t) = t + 1 + 2e^t</m>
+	                  is a solution to <m>\frac{dy}{dt} = y - t</m>, we compute <m>\frac{dy}{dt}</m> and <m>y - t</m> separately and see if they are equal.  First, using <m>y(t) = t + 1 + 2e^t</m>,
+	                  <me>
+	                  	\frac{dy}{dt} = 1 + 2e^t
+	                  </me>.
+	                  Next,
+	                  <me>
+	                  	y - t = ( t + 1 + 2e^t ) - t = 1 + 2e^t
+	                  </me>.
+	                  Thus, <m>y(t) = t + 1 + 2e^t</m> satisfies the DE and is indeed a solution.
+	                </p>
+	              </li>
+
+	              <li>
+	                <p>
+	                  For <m>y(t) = t + 1</m>, observe that 
+	                  <me>
+	                  	\frac{dy}{dt} = 1
+	                  </me>
+	                  and 
+	                  <me>
+	                  	y - t = 1
+	                  </me>
+	                  as well, so <m>y(t) = t + 1</m> is a solution to the DE. 
+	                </p>
+	              </li>
+
+	              <li>
+	                <p>
+	                  If <m>y(t) = t + 2</m>, then 
+	                  <me>
+	                  	\frac{dy}{dt} = 1
+	                  </me>
+	                  but 
+	                  <me>
+	                  	y - t = 2
+	                  </me>
+	                  as well, so <m>\frac{dy}{dt} \ne y-t</m>, and therefore <m>y(t) = t + 2</m> is a not solution to the DE. 
+	                </p>
+	              </li>
+	            </ol>
+	          </p>
+	        </li>
+
+	        <li>
+	          <p>
+	            In order for <m>h(t) = 4\sin(3t)</m> to be a solution to
+	            <me>
+	              \frac{d^2h}{dt^2} = -kh
+	            </me>,
+	            it must make the equation true.  To find <m>k</m>, we substitute the formula for <m>h</m> into the
+	            DE and see what is required of <m>k</m>.  We observe that for <m>h(t) = 4\sin(3t)</m>,
+	            <me>
+	            	\frac{dh}{dt} = 12\cos(3t)
+	            </me>
+	            and
+	            <me>
+	              \frac{d^2h}{dt^2} = -36\sin(3t)
+	            </me>.
+	            To satisfy the DE
+	            <me>
+	              \frac{d^2h}{dt^2} = -kh
+	            </me>,
+	            it follows that we must have <m>-36\sin(3t) = -kh = -k \cdot 4\sin(3t)</m>.  Thus, we need 
+	            <m>-36 = -4k</m>, and hence <m>k = 9</m>.
+	          </p>
+	        </li>
+        </ol>
       </p>
     </solution>
   </exercise>

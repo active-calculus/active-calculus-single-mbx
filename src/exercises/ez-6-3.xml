@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- **********************************************************************-->
-<!-- Copyright 2012-2017                                                   -->
+<!-- Copyright 2012-2018                                                   -->
 <!-- Matthew Boelkins                                                      -->
 <!--                                                                       -->
 <!-- This file is part of Active Calculus.                                 -->
 <!--                                                                       -->
 <!-- Permission is granted to copy, distribute and/or modify this document -->
-<!-- under the terms of the Creative Commons BY-NC-SA license.  The work   -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
 <!-- may be used for free by any party so long as attribution is given to  -->
 <!-- the author(s), the work and its derivatives are used in the spirit of -->
-<!-- "share and share alike"; no party may sell this work or any of its    -->
-<!-- derivatives for profit.  All trademarks are the registered marks of   -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
 <exercises xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="ez-0-0-0">
@@ -68,15 +67,94 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+        	<li>
+        		<p>
+        			<m>a = -10 \ln(0.7) \approx 3.567 \text{ cm}.</m>
+        		</p>
+        	</li>
+        	<li>
+        		<p>
+        			Left of the midpoint.
+        		</p>
+        	</li>
+        	<li>
+        		<p>
+        			<m>\overline{x} \approx \frac{50.3338}{30} \approx 1.687</m>.
+        		</p>
+        	</li>
+        	<li>
+        		<p>
+        			<m>q = -10\ln(0.85) \approx 1.625</m> cm. 
+        		</p>
+        	</li>        	        	        	
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+        	<li>
+        		<p>
+        			To find mass we slice the rod horizontally into uniform slices of length <m>\Delta x</m> and approximate the density on the <m>i</m>th slice with the constant density <m>\rho(x_i)</m>. Then the approximate mass of the <m>i</m>th slice is <m>\rho(x_i) \Delta x</m>. Adding the approximations and taking the limit as the number of slices goes to infinity gives us the definite integral
+        			<me>
+        				\int_0^a \rho(x) \ dx
+        			</me>
+        			to represent the mass of the rod. Using the substitution <m>u = -0.1x</m> and <m>du = -0.1 \ dx</m> we have
+        			<md>
+        				<mrow>\int_0^a \rho(x) \ dx &amp;= \int_0^a 10e^{-0.1x} \ dx</mrow>
+        				<mrow>   &amp;= \int_0^{-0.1a} -100 e^u \ du</mrow>
+        				<mrow>   &amp;= -100e^u \biggm|_0^{-0.1a}</mrow>
+						<mrow>   &amp;= -100\left(e^{-0.1a} - 1\right)</mrow>
+						<mrow>   &amp;= 100\left(1-e^{-0.1a}\right)</mrow>
+        			</md>.
+        			So if the mass is <m>30</m> g, then <m>100\left(1-e^{-0.1a}\right) = 30</m>, so <m>1-e^{-0.1a} = 0.3</m>, and <m>e^{-0.1a} = 0.7</m>.  It follows that <m>-0.1a = \ln(0.7)</m>, and thus, <m>a = -10 \ln(0.7) \approx 3.567 \text{ cm}.</m>
+        		</p>
+        	</li>
+        	<li>
+        		<p>
+        			Since the density is a decreasing function, we should expect that the center of mass of the rod will lie to the left of the midpoint.
+        		</p>
+        	</li>
+        	<li>
+        		<p>
+        			To find the center of mass, we slice the rod horizontally into uniform slices of length <m>\Delta x</m> and approximate the mass on the <m>i</m>th slice with the constant density <m>\rho(x_i)</m> to be <m>\rho(x_i) \Delta x</m> as in (a). The position of the <m>i</m>th slice is approximately <m>x_i/</m>. Treating the rod as a collection of <m>n</m> discrete masses (the slices), the center of mass <m>\overline{x}</m> is approximately
+        			<me>
+        				\overline{x} \approx \frac{\sum_{i=1}^n x_i \rho(x_i) \Delta x}{\sum_{i=1}^n \rho(x_i) \Delta x}
+        			</me>.
+        			Letting the number of slices go to infinity gives us the exact location of the center of mass of the rod,
+        			<me>
+        				\overline{x} = \frac{\int_0^a x \rho(x) \ dx}{\int_0^a \rho(x) \ dx}
+        			</me>.
+        			The mass of the rod is <m>30</m> g, so now we just need to evaluate
+        			<m>\int_0^a x \rho(x) \ dx = \int_0^a 10xe^{-0.1x} \ dx</m>.
+        			Integrating by parts with <m>u = x</m>, <m>du = dx</m>, <m>dv = e^{-0.1x} \ dx</m>, and <m>v = -10e^{-0.1x}</m> gives us
+        			<md>
+        				<mrow> \int_0^a 10xe^{-0.1x} \ dx  &amp;= 10\left(-10xe^{-0.1x}\biggm|_0^a + \int_0^a -10e^{-0.1x} \ dx \right)</mrow>
+        				<mrow>   &amp;= 10\left(-10ae^{-0.1a} + 100(1-e^{-0.1a})\right)</mrow>
+        				<mrow>   &amp;\approx 10\left(-10(3.567)ae^{-0.1(3.567)} + 100(1-e^{-0.1(3.567)})\right)</mrow>
+        				<mrow>   &amp;\approx 50.3338 </mrow>
+        			</md>.
+        			So the center of mass is <m>\overline{x} \approx \frac{50.3338}{30} \approx 1.687</m>, which is less than midway across the <m>3.567</m> cm rod as expected.
+        		</p>
+        	</li>
+        	<li>
+        		<p>
+        			Each piece would have mass <m>15</m> grams. Let <m>q</m> be a value of <m>x</m> between 0 and <m>a</m> so the the mass of the rod on the interval <m>[0, q]</m> is 15. Using the substitution <m>u = -0.1x</m> and <m>du = -0.1 \ dx</m> we have that the mass of the rod on the interval <m>[0, q]</m> is
+        			<md>
+        				<mrow> \int_0^q \rho(x) \ dx  &amp;= \int_0^q 10e^{-0.1x} \ dx </mrow>
+        				<mrow>  &amp;= \int_0^{-0.1q} -100e^{u} \ du</mrow>
+        				<mrow>  &amp;= -100e^u\biggm|_0^{-0.1q}  </mrow>
+        				<mrow>  &amp;= 100\left(1-e^{-0.1q}\right)</mrow>
+        			</md>
+        			We want this mass to be <m>15</m> grams, so we find <m>q</m> such that <m>100\left(1-e^{-0.1q}\right) = 15</m>.  Solving for <m>q</m> in the usual way, we find <m>q = -10\ln(0.85) \approx 1.625</m> cm.  Note that this is not the same as the center of mass. The center of mass takes into account the torque (determined by distance from the center of mass), which is not incorporated into the calculation of the point to split the object into two pieces of equal mass.
+        		</p>
+        	</li>        	        	        	
+        </ol>
       </p>
     </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -136,15 +214,146 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+        <li>
+          <p>
+            <m>M_1 = \arctan(10) \approx 1.47113</m>; <m>M_2 = 10 - 10e^{-1} \approx 6.32121</m>.          	
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <m>
+            	\overline{x_1} \approx 1.56857
+            </m>;
+            <m>
+            	\overline{x_2} \approx 4.18023
+            </m>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <ol label="(i)">
+              <li>
+                <p>
+                  <me>
+                  	M = \int_0^{10} \rho(x) \, dx + \int_0^{10} p(x) \, dx \approx 1.47113 + 6.32121 = 7.79234
+                  </me>.
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  <me>
+                  	\int_0^{10} x(\rho(x) + p(x))) \, dx = 28.73167
+                  </me>.
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  False.  
+                </p>
+              </li>
+            </ol>
+          </p>
+        </li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+        <li>
+          <p>
+            To find the mass of the first bar, we use the fact that <m>M = \int_0^a \rho(x) \, dx</m>, with <m>a = 10</m> and <m>\rho(x) = \frac{1}{1+x^2}</m>.  Thus, the mass of the first bar is
+            <me>
+            	M_1 = \int_0^{10} \frac{1}{1+x^2} \, dx = \left. \arctan(x) \right|_0^{10} 
+            </me>,
+            so <m>M_1 = \arctan(10) \approx 1.47113</m>.
+          </p>
+          <p>
+          	Similar computations for the second bar shows that its mass is
+            <me>
+            	M_2 = \int_0^{10} e^{-0.1x} \, dx = \left. -10e^{-0.1x} \right|_0^{10} 
+            </me>,
+            so <m>M_2 = 10 - 10e^{-1} \approx 6.32121</m>.          	
+          </p>
+        </li>
+
+        <li>
+          <p>
+            To find the center of mass of each bar, we use the standard formula:  
+            <me>
+            	\overline{x} = \frac{\int_0^{10} x \rho(x) \, dx}{\int_0^{10} \rho(x) \, dx}
+            </me>.
+            Having already evaluated the denominator for each mass distribution, we simply need to compute the numerator.  It is straightforward to show that 
+            <me>
+            	\int_0^{10} x \frac{1}{1+x^2} \, dx = \frac{1}{2} \ln(101) \approx 2.30756 
+            </me>,
+            so the first bar's center of mass is 
+            <me>
+            	\overline{x_1} = \frac{\arctan(10)}{\frac{1}{2}\ln(101)} \approx \frac{2.30756}{1.47113} \approx 1.56857
+            </me>.
+            For the second bar,
+            <me>
+            	\int_0^{10} x e^{-0.1x} \, dx = 100-200e^{-1} \approx 26.42411 
+            </me>,
+            so its center of mass is
+            <me>
+            	\overline{x_2} = \frac{10 - 10e^{-1}}{100-200e^{-1}} \approx \frac{26.42411}{6.32121} \approx 4.18023
+            </me>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Consider a new 10 cm bar whose mass density function is <m>f(x) = \rho(x) + p(x)</m>.
+          </p>
+
+          <p>
+            <ol label="(i)">
+              <li>
+                <p>
+                  The mass of this new bar is <m>M = \int_0^{10} (\rho(x) + p(x)) \, dx</m>. Using the additive property of the definite integral,
+                  <me>
+                  	M = \int_0^{10} \rho(x) \, dx + \int_0^{10} p(x) \, dx \approx 1.47113 + 6.32121 = 7.79234
+                  </me>.
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  Applying the same idea to <m>\int_0^{10} xf(x) \, dx</m>, we have
+                  <me>
+                  	\int_0^{10} x(\rho(x) + p(x))) \, dx = \int_0^{10} x \rho(x) \, dx + \int_0^{10} x p(x) \, dx 
+                  	\approx 2.30756 + 26.42411 = 28.73167
+                  </me>.
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  False.  The center of mass of the new bar is
+                  <me>
+                  	\overline{x} = \frac{\int_0^{10} x(\rho(x) + p(x)) \, dx}{\int_0^{10} (\rho(x) + p(x)) \, dx} \approx \frac{2.30756 + 26.42411}{1.47113 + 6.32121} = 3.68717
+                  </me>
+                  while the average of the two bars' centers of mass is 
+                  <me>
+                  	\frac{\overline{x_1} + \overline{x_2}}{2} \approx \frac{\frac{2.30756}{1.47113} + \frac{26.42411}{6.32121}}{2} = 2.8744
+                  </me>.
+                  Although the computations prove the conclusion, the result is also intuitive:  the average treats the two bars as equal contributors and doesn't take into account that one bar has much more mass than the other.  Indeed, a weighted average is needed to correctly compute the center of mass, which is what our earlier computations in (i) and (ii) accomplish.
+                </p>
+              </li>
+            </ol>
+          </p>
+        </li>
+        </ol>
       </p>
     </solution>
   </exercise>
+
   <exercise>
     <statement>
       <p>
@@ -164,14 +373,14 @@
             <p>
               Let <m>x</m> and <m>y</m> be measured in inches.
               Find the total volume of the baseball bat generated by revolving the given curve about the <m>x</m>-axis.
-              Include units on your answer
+              Include units on your answer.
             </p>
           </li>
 
           <li>
             <p>
               Suppose that the baseball bat has constant weight density,
-              and that the weight density is 0.6 ounces per cubic inch.
+              and that the weight density is <m>0.6</m> ounces per cubic inch.
               Find the total weight of the bat whose volume you found in (b).
             </p>
           </li>
@@ -196,12 +405,111 @@
     </statement>
     <answer>
       <p>
-        Exercise Answer
+        <ol label="a.">
+          <li>
+
+          	<sidebyside width="100%">
+              <image source="images/6_3_Ez3Soln" />
+            </sidebyside> 
+
+          </li>
+
+          <li>
+            <p>
+              <m>
+              	V = \int_0^{30} \pi (2xe^{-1.25x} + (30-x) e^{-0.25(30-x)})^2 \, dx \approx 52.0666
+              </m>
+              cubic inches.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>
+              	W \approx 0.6 \cdot 52.0666 = 31.23996
+              </m>
+              ounces.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              At a given <m>x</m>-location, the amount of weight concentrated there is approximately the weight density (<m>0.6</m> ounces per cubic inch) times the volume of the slice, which is <m>V_{text{slice}} \approx \pi f(x)^2</m>.  
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>\overline{x} \approx 23.21415
+              </m>
+            </p>
+          </li>
+        </ol>
       </p>
     </answer>
     <solution>
       <p>
-        Exercise Solution
+        <ol label="a.">
+          <li>
+          	<sidebyside width="100%">
+              <image source="images/6_3_Ez3Soln" />
+            </sidebyside> 
+            <p>
+              The plot shown above (with the curve reflected across the <m>x</m>-axis to generate the solid of revolution) shows why this solid of revolution is a reasonable approximation to a baseball bat (if perhaps a bit thin between <m>x = 3</m> and <m>x = 9</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              We use the disk method to find the volume of the solid of revolution.  In the usual way, the volume of a typical slice is
+              <me>
+              	V_{\text{slice}} \approx \pi (2xe^{-1.25x} + (30-x) e^{-0.25(30-x)})^2 \triangle x
+              </me>
+              and thus using a definite integral to sum the volumes of the slices, we get
+              <me>
+              	V = \int_0^{30} \pi (2xe^{-1.25x} + (30-x) e^{-0.25(30-x)})^2 \, dx
+              </me>.
+              Using technology to evaluate the integral, we find that <m>V \approx 52.0666</m> cubic inches.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Given that the bat has (constant) weight density <m>0.6</m> ounces per cubic inch, it follows that the total weight of the bat is
+              <m>
+              	W \approx 0.6 \cdot 52.0666 = 31.23996
+              </m>
+              ounces.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              If we slice the baseball bat perpendicular to the horizontal axes, we get thin cylindrical disks
+              as cross-sections.  At a given <m>x</m>-location, the amount of weight concentrated there is approximately the weight density (<m>0.6</m> ounces per cubic inch) times the volume of the slice, which is <m>V_{text{slice}} \approx \pi f(x)^2</m>.  Thus,
+              we see that the amount of weight concentrated at a location <m>x</m> along the bat is 
+              given by <m>\rho(x) = 0.6 \pi f(x)^2</m>, which we can therefore view
+              as being the weight density function for how the weight of the baseball bat is distributed 
+              from <m>x = 0</m> to <m>x = 30</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Even though we are dealing with ``weight'' instead of ``mass'', we can compute the center of mass in the usual way since weight differs from mass only by the gravitational constant, and this constant is present in both the numerator and denominator of the center of mass.  Thus, using the standard formula,
+              <me>
+              	\overline{x} = \frac{\int_0^{30} x \rho(x) \ dx}{\int_0^{30} \rho(x) \ dx} 
+              </me>
+              so
+              <md>
+              	<mrow>\overline{x} &amp;= \frac{\int_0^{30} x \cdot 0.6 \pi (2xe^{-1.25x} + (30-x) e^{-0.25(30-x)})^2) \ dx}{\int_0^{30} 0.6 \pi (2xe^{-1.25x} + (30-x) e^{-0.25(30-x)})^2 \ dx}</mrow> 
+              	<mrow>  &amp;= \frac{\int_0^{30} x \cdot (2xe^{-1.25x} + (30-x) e^{-0.25(30-x)})^2) \ dx}{\int_0^{30} (2xe^{-1.25x} + (30-x) e^{-0.25(30-x)})^2 \ dx}</mrow>  
+              	<mrow>  &amp;\approx \frac{384.735}{16.5733} = 23.21415</mrow>
+              </md>,
+              so the center of mass is just over 2/3 along the length of the bat.
+            </p>
+          </li>
+        </ol>
       </p>
     </solution>
   </exercise>

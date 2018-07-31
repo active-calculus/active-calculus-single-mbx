@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- **********************************************************************-->
-<!-- Copyright 2012-2017                                                   -->
+<!-- Copyright 2012-2018                                                   -->
 <!-- Matthew Boelkins                                                      -->
 <!--                                                                       -->
 <!-- This file is part of Active Calculus.                                 -->
 <!--                                                                       -->
 <!-- Permission is granted to copy, distribute and/or modify this document -->
-<!-- under the terms of the Creative Commons BY-NC-SA license.  The work   -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
 <!-- may be used for free by any party so long as attribution is given to  -->
 <!-- the author(s), the work and its derivatives are used in the spirit of -->
-<!-- "share and share alike"; no party may sell this work or any of its    -->
-<!-- derivatives for profit.  All trademarks are the registered marks of   -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
 
@@ -47,13 +46,13 @@
       In this section,
       we focus on a particular class of differential equations
       (called <em>separable</em>)
-      and develop a method for finding algebraic formulas for solutions to these equations.
+      and develop a method for finding algebraic formulas for their solutions.
     </p>
 
     <p>
       A <em>separable differential equation</em>
           <idx><h>separable</h></idx>
-      is a differential equation whose algebraic structure permits the variables present to be separated in a particular way.
+      is a differential equation whose algebraic structure allows the variables to be separated in a particular way.
       For instance, consider the equation
       <me>
         \frac{dy}{dt} = ty
@@ -64,17 +63,17 @@
       We would like to separate the variables <m>t</m> and <m>y</m> so that all
       occurrences of <m>t</m> appear on the right-hand side,
       and all occurrences
-      of <m>y</m> appears on the left and multiply <m>dy/dt</m>.
-      We may do this in the preceding differential equation by dividing both sides by
-      <m>y</m>:
+      of <m>y</m> appear on the left, multiplied by <m>dy/dt</m>.
+      For this example, we divide both sides by
+      <m>y</m> so that
       <me>
-        \frac1y\frac{dy}{dt} = t
+        \frac1y \frac{dy}{dt} = t
       </me>.
     </p>
 
     <p>
-      Note particularly that when we attempt to separate the variables in a differential equation,
-      we require that the left-hand side be a product in which the derivative <m>dy/dt</m> is one term.
+      Note that when we attempt to separate the variables in a differential equation,
+      we require that one side is a product in which the derivative <m>dy/dt</m> is one factor and the other factor is solely an expression involving <m>y</m>.
     </p>
 
     <p>
@@ -92,17 +91,16 @@
 
     <p>
       As we will see,
-      this will not be helpful since the left-hand side is not a product of a function of <m>y</m> with <m>\frac{dy}{dt}</m>.
+      this will not be helpful, since the left-hand side is not a product of a function of <m>y</m> with <m>\frac{dy}{dt}</m>.
     </p>
 
     <xi:include href="./previews/PA-7-4.xml" />
+    
   </introduction>
 
   <subsection>
     <title>Solving separable differential equations</title>
-    <p>
           <idx><h>separable</h></idx>
-    </p>
 
     <p>
       Before we discuss a general approach to solving a separable differential equation,
@@ -137,7 +135,7 @@
         <p>
           Next, we notice that the left-hand side allows us to change
           the variable of antidifferentiation<fn>This is why we required that the left-hand side be written as a
-          product in which <m>dy/dt</m> is one of the terms.</fn>from <m>t</m> to <m>y</m>.
+          product in which <m>dy/dt</m> is one of the terms.</fn> from <m>t</m> to <m>y</m>.
           In
           particular,
           <m>dy = \frac{dy}{dt}~dt</m>, so we now have
@@ -147,11 +145,11 @@
         </p>
 
         <p>
-          This most recent equation says that two families of antiderivatives are
-          equal to one another.
+          This equation says that two families of antiderivatives are
+          equal to each other.
           Therefore, when we find representative
           antiderivatives of both sides,
-          we know they must differ by
+          we know they must differ by an
           arbitrary constant <m>C</m>.
           Antidifferentiating and including the integration constant <m>C</m> on the right,
           we find that
@@ -161,12 +159,12 @@
         </p>
 
         <p>
-          Again, note that it is not necessary to include an arbitrary constant on both sides of the equation;
+          It is not necessary to include an arbitrary constant on both sides of the equation;
           we know that <m>y^3/3</m> and <m>t^2/2</m> are in the same family of antiderivatives and must therefore differ by a single constant.
         </p>
 
         <p>
-          Finally, we may now solve the last equation above for <m>y</m> as a function of <m>t</m>,
+          Finally, we solve the last equation above for <m>y</m> as a function of <m>t</m>,
           which gives
           <me>
             y(t) = \sqrt[3]{\frac 32 \, t^2 + 3C}
@@ -225,14 +223,10 @@
       </me>,
       and then integrating both sides with respect to <m>t</m>.
       After integrating,
-      we strive to solve algebraically for <m>y</m> in order to write <m>y</m> as a function of <m>t</m>.
+      we try to solve algebraically for <m>y</m> in order to write <m>y</m> as a function of <m>t</m>.
     </p>
 
-    <p>
-      We consider one more example before doing further exploration in some activities.
-    </p>
-
-    <example xml:id="Ex-7-4-2">
+        <example xml:id="Ex-7-4-2">
       <statement>
         <p>
           Solve the differential equation
@@ -284,11 +278,8 @@
           that it is positive (because <m>e^x</m> is positive for any <m>x</m>).
           When we remove the absolute value in order to solve for <m>y</m>, however,
           this constant may be either positive or
-          negative.
-          We
-          will denote this updated constant
-          (that accounts for a possible <m>+</m> or <m>-</m>)
-          by <m>C</m> to obtain
+          negative.  To account for a possible <m>+</m> or <m>-</m>,
+          we denote this updated constant by <m>C</m> to obtain
           <me>
             y(t) = Ce^{3t}
           </me>.
@@ -297,13 +288,13 @@
     </example>
 
     <p>
-      There is one more slightly technical point to make.
+      There is one more technical point to make.
       Notice that <m>y=0</m> is an equilibrium solution to this differential equation.
       In solving the equation above,
       we begin by dividing both sides by <m>y</m>,
       which is not allowed if <m>y=0</m>.
       To be perfectly careful, therefore,
-      we will typically consider the equilibrium solutions separately.
+      we should consider the equilibrium solutions separately.
       In this case,
       notice that the final form of our solution captures the equilibrium solution by allowing <m>C=0</m>.
     </p>
