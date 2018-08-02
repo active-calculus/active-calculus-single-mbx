@@ -239,8 +239,7 @@ workbook-latex:
 # Automatically builds LaTeX source for solutions manual
 workbook-pdf: workbook-latex
 	cd $(WKBKOUT); \
-	sed -i '' -e 's/for\\\\/for\\\\[0.25\\baselineskip]/' acs-activity-workbook.tex; \
-	xelatex acs-activity-workbook; \
+	sed -i ".bak" -f ../../change-documentclass-soln-man.sed acs-activity-workbook.tex; \
 	xelatex acs-activity-workbook; \
 	xelatex acs-activity-workbook
 
