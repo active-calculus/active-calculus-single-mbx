@@ -17,7 +17,7 @@
 
 <!-- Next paths assume current file has been copied to mathbook/user -->
 <xsl:import href="../xsl/mathbook-latex.xsl" />
-<xsl:import href="acs-common.xsl" />
+<!--<xsl:import href="acs-common.xsl" />-->
 <xsl:param name="toc.level" select="'3'" />
 
 <xsl:output method="text" />
@@ -27,12 +27,11 @@
 <xsl:param name="exercise.divisional.answer" select="'no'" />
 <xsl:param name="exercise.divisional.solution" select="'no'" />
 
-<xsl:param name="exercise.reading.statement" select="'no'" />
 
 <!-- Preview activities and activities are project-like. -->
-<xsl:param name="project.hint" select="'no'" />
-<xsl:param name="project.answer" select="'no'" />
-<xsl:param name="project.solution" select="'no'" />
+<xsl:param name="project.text.hint" select="'no'" />
+<xsl:param name="project.text.answer" select="'no'" />
+<xsl:param name="project.text.solution" select="'no'" />
 
 <!-- Superfluous frontmatter for workbook -->
 <!-- So we don't bother and kill first two pages   -->
@@ -41,7 +40,7 @@
 
 <!-- Chapters: default presentation, we have them all, so numbers OK     -->
 <!-- Sections and Equivalents: kill them, except for specific ones below -->
-<xsl:template match="conclusion|exercises|references|objectives|appendix|index|solutions|reading-questions" />
+<xsl:template match="conclusion|exercises|references|objectives|appendix|index|solutions" />
 
 
 <!-- As a subset of full content, we can't         -->
@@ -90,97 +89,84 @@
     <xsl:apply-templates select="exploration|activity" />
 </xsl:template>
 
-<!-- Captions for Figures, Tables, Listings, Lists -->
-<!-- xml:id is on parent, but LaTeX generates number with caption -->
-<xsl:template match="figure|listing|table|list" mode="title-caption">
-    <!-- construct appropriate command -->
-    <xsl:choose>
-        <xsl:when test="parent::sidebyside/parent::figure or parent::sidebyside/parent::sbsgroup/parent::figure">
-            <xsl:text>\subcaption*{</xsl:text>
-        </xsl:when>
-        <xsl:when test="self::figure/parent::sidebyside">
-            <xsl:text>\captionof*{figure}{</xsl:text>
-        </xsl:when>
-        <xsl:when test="self::table/parent::sidebyside">
-            <xsl:text>\captionof*{table}{</xsl:text>
-        </xsl:when>
-        <xsl:when test="self::listing">
-            <xsl:text>\captionof*{listingcap}{</xsl:text>
-        </xsl:when>
-        <xsl:when test="self::list">
-            <xsl:text>\captionof*{namedlistcap}{</xsl:text>
-        </xsl:when>
-        <xsl:otherwise>
-            <xsl:text>\caption*{</xsl:text>
-        </xsl:otherwise>
-    </xsl:choose>
-    <!-- produce the actual content -->
-    <xsl:text>\textbf{</xsl:text>
-    <xsl:apply-templates select="." mode="type-name"/>
-    <xsl:text> </xsl:text>
-    <xsl:apply-templates select="." mode="number"/>
-    <xsl:text>:} </xsl:text>
-    <xsl:choose>
-        <xsl:when test="self::figure or self::listing">
-            <xsl:apply-templates select="." mode="caption-full"/>
-        </xsl:when>
-        <xsl:when test="self::table or self::list">
-            <xsl:apply-templates select="." mode="title-full"/>
-        </xsl:when>
-        <!-- never used? -->
-        <xsl:otherwise>
-            <xsl:apply-templates select="caption"/>
-        </xsl:otherwise>
-    </xsl:choose>
-    <xsl:text>}&#xa;</xsl:text>
-</xsl:template>
 
-<!-- Style titles -->
-<xsl:template name="titlesec-section-style">
-    <!-- Only the formatting of chapter titles was changed -->
-    <xsl:text>\titleformat{\chapter}[display]&#xa;</xsl:text>
-    <xsl:text>{\raggedleft\normalfont\color{chaptercolor}\Large}{</xsl:text>
-    <xsl:text>\MakeUppercase{\divisionnameptx}\space</xsl:text>
-    <!-- Don't draw the rule that makes the colored box since KDP barfs -->
-    <!-- when we do that. -->
-    <xsl:text>\rlap{\enskip\resizebox{!}{0.95cm}{\thechapter}</xsl:text>
-    <xsl:text>}}{10pt}{\normalfont\Huge\itshape#1}&#xa;</xsl:text>
-    <xsl:text>[{\Large\authorsptx}]&#xa;</xsl:text>
-    <xsl:text>\titleformat{name=\chapter,numberless}[display]&#xa;</xsl:text>
-    <xsl:text>{\raggedleft\normalfont\color{chaptercolor}\Huge\itshape}{}{0pt}{#1}&#xa;</xsl:text>
-    <xsl:text>[{\Large\authorsptx}]&#xa;</xsl:text>
-    <xsl:text>\titlespacing*{\chapter}{0pt}{30pt}{20pt}&#xa;</xsl:text>
-
-    <!-- Everything in this template below here is stock PTX as of 2018-12-17 -->
-    <xsl:text>\titleformat{\section}[block]&#xa;</xsl:text>
-<xsl:text>{\normalfont\Large\bfseries}{\thesection\space\titleptx}{1em}{}&#xa;</xsl:text>
-    <xsl:text>[{\large\authorsptx}]&#xa;</xsl:text>
-    <xsl:text>\titleformat{name=\section,numberless}[block]&#xa;</xsl:text>
-    <xsl:text>{\normalfont\Large\bfseries}{}{0pt}{#1}&#xa;</xsl:text>
-    <xsl:text>[{\large\authorsptx}]&#xa;</xsl:text>
-    <xsl:text>\titlespacing*{\section}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}&#xa;</xsl:text>
-    <xsl:text>\titleformat{\subsection}[block]&#xa;</xsl:text>
-    <xsl:text>{\normalfont\large\bfseries}{\thesubsection\space\titleptx}{1em}{}&#xa;</xsl:text>
-    <xsl:text>[{\normalsize\authorsptx}]&#xa;</xsl:text>
-    <xsl:text>\titleformat{name=\subsection,numberless}[block]&#xa;</xsl:text>
-    <xsl:text>{\normalfont\large\bfseries}{}{0pt}{#1}&#xa;</xsl:text>
-    <xsl:text>[{\normalsize\authorsptx}]&#xa;</xsl:text>
-    <xsl:text>\titlespacing*{\subsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}&#xa;</xsl:text>
-    <xsl:text>\titleformat{\subsubsection}[block]&#xa;</xsl:text>
-    <xsl:text>{\normalfont\normalsize\bfseries}{\thesubsubsection\space\titleptx}{1em}{}&#xa;</xsl:text>
-    <xsl:text>[{\small\authorsptx}]&#xa;</xsl:text>
-    <xsl:text>\titleformat{name=\subsubsection,numberless}[block]&#xa;</xsl:text>
-    <xsl:text>{\normalfont\normalsize\bfseries}{}{0pt}{#1}&#xa;</xsl:text>
-    <xsl:text>[{\normalsize\authorsptx}]&#xa;</xsl:text>
-    <xsl:text>\titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}&#xa;</xsl:text>
-</xsl:template>
-
+<!-- Configure font with latex.preamble.early -->
+<xsl:param name="latex.preamble.early">
+    <xsl:text>%% Customized to load Palatino fonts&#xa;</xsl:text>
+    <xsl:text>\usepackage[T1]{fontenc}&#xa;</xsl:text>
+    <xsl:text>%Roman font for use in math mode&#xa;</xsl:text>
+    <xsl:text>\renewcommand{\rmdefault}{zpltlf}&#xa;</xsl:text>
+    <xsl:text>% used only by \mathtt&#xa;</xsl:text>
+    <xsl:text>\usepackage[scaled=.85]{beramono}&#xa;</xsl:text>
+    <xsl:text>%used only by \mathsf&#xa;</xsl:text>
+    <xsl:text>\usepackage[type1]{cabin}&#xa;</xsl:text>
+    <xsl:text>%load before newpxmath&#xa;</xsl:text>
+    <xsl:text>\usepackage{amsmath,amssymb,amsthm}&#xa;</xsl:text>
+    <xsl:text>\usepackage[varg,cmintegrals,bigdelims,varbb]{newpxmath}</xsl:text>
+    <xsl:text>&#xa;</xsl:text>
+    <xsl:text>\usepackage[scr=rsfso]{mathalfa}&#xa;</xsl:text>
+    <xsl:text>%load after all math to give access to bold math&#xa;</xsl:text>
+    <xsl:text>\usepackage{bm} &#xa;</xsl:text>
+    <xsl:text>% Now load the otf text fonts using fontspec--</xsl:text>
+    <xsl:text>wont affect math&#xa;</xsl:text>
+    <xsl:text>\usepackage[no-math]{fontspec}&#xa;</xsl:text>
+    <xsl:text>\setmainfont{TeXGyrePagellaX}&#xa;</xsl:text>
+    <xsl:text>\defaultfontfeatures{Ligatures=TeX,Scale=1,Mapping=tex-text}</xsl:text>
+    <xsl:text>&#xa;</xsl:text>
+    <xsl:text>\linespread{1.02}&#xa;</xsl:text>
+</xsl:param>
 
 <!-- Use letter paper and leave one-inch margins all around -->
 <xsl:param name="latex.geometry" select="'letterpaper,tmargin=.5in,bmargin=.3in,hmargin=.75in,includeheadfoot,lmargin=1in'" />
 
+<!-- Format headers to match the text PDF -->
 <xsl:param name="latex.preamble.late">
-    <xsl:value-of select="$latex.preamble.late.common" />
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>% Modified from Mitch Keller's chapter handling &#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>\definecolor{ActiveBlue}{cmyk}{1, 0.5, 0, 0.35}&#xa;</xsl:text>
+    <xsl:text>\colorlet{chaptercolor}{ActiveBlue}&#xa;</xsl:text>
+    <xsl:text>\setkomafont{chapter}{\normalfont\color{chaptercolor}</xsl:text>
+    <xsl:text>\Huge\itshape}&#xa;</xsl:text>
+    <xsl:text>\setkomafont{chapterprefix}{\normalfont\Large}&#xa;</xsl:text>
+    <xsl:text>\renewcommand*{\raggedchapter}{\raggedleft}&#xa;</xsl:text>
+    <xsl:text>\renewcommand*{\chapterformat}{\MakeUppercase</xsl:text>
+    <xsl:text>{\chapappifchapterprefix{}}&#xa;</xsl:text>
+    <xsl:text>\rlap{\enskip\resizebox{!}{0.95cm}{\thechapter} </xsl:text>
+    <!--<xsl:text>\rule{15cm}{1.2cm} }}&#xa;</xsl:text>-->
+    <xsl:text>}}&#xa;</xsl:text>
+    <xsl:text>\RedeclareSectionCommand[beforeskip=30pt,</xsl:text>
+    <xsl:text>afterskip=20pt]{chapter}&#xa;</xsl:text>
+    <xsl:text>\renewcommand*\chapterheadmidvskip{\par\nobreak</xsl:text>
+    <xsl:text>\vspace{10pt}}&#xa;</xsl:text>
+    <xsl:text>\setkomafont{captionlabel}{}&#xa;</xsl:text>
+    <xsl:text>\setkomafont{caption}{}&#xa;</xsl:text>
+    <xsl:text>\setcapindent{0em}&#xa;</xsl:text>
+    <xsl:text>\addtokomafont{disposition}{\rmfamily\bfseries}&#xa;</xsl:text>
+    <xsl:text>\addtokomafont{descriptionlabel}{\rmfamily\bfseries}&#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>% CC icon at bottom of first page of each chapter &#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>\usepackage[automark]{scrlayer-scrpage}&#xa;</xsl:text>
+    <xsl:text>\deftripstyle{ccfooter}&#xa;</xsl:text>
+    <xsl:text>  {}&#xa;</xsl:text>
+    <xsl:text>  {}&#xa;</xsl:text>
+    <xsl:text>  {}&#xa;</xsl:text>
+    <xsl:text>  {}&#xa;</xsl:text>
+    <xsl:text>  {}&#xa;</xsl:text>
+    <xsl:text>  {\includegraphics[height=1pc]{images/CC-BY-SA-license.pdf}}&#xa;</xsl:text>
+    <xsl:text>\renewcommand{\chapterpagestyle}{ccfooter}&#xa;</xsl:text>
+    <xsl:text>&#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>% Basic paragraph parameters &#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>\setlength{\parindent}{0mm}&#xa;</xsl:text>
+    <xsl:text>\setlength{\parskip}{0.5pc}&#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>% In print, trying to reduce color use &#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,</xsl:text>
+    <xsl:text>filecolor=black,urlcolor=black}&#xa;</xsl:text>
 </xsl:param>
 
 </xsl:stylesheet>
