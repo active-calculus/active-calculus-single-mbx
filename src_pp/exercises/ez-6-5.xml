@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2018                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+<exercises permid="ez" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="ez-6-5">
+  <!-- Uses EV2 and incompatible with PTX -->
+  <!--
+  <exercise xml:id="ez-6-5-WW1">
+    <webwork source="Library/Indiana/Indiana_setIntegrals18Improper/ur_in_18_5.pg" />
+  </exercise>
+  -->
+  <exercise permid="ez-ww4" xml:id="ez-6-5-WW4">
+    <title>An improper integral on a finite interval</title>
+    <webwork source="Library/UCSB/Stewart5_7_8/Stewart5_7_8_28.pg" />
+  </exercise>
+
+  <exercise permid="ez-ww5" xml:id="ez-6-5-WW5">
+    <title>An improper integral on an infinite interval</title>
+    <webwork source="Library/Michigan/Chap7Sec7/Q07.pg" />
+  </exercise>
+
+  <exercise permid="ez-ww6" xml:id="ez-6-5-WW6">
+    <title>An improper integral involving a ratio of exponential functions</title>
+    <webwork source="Library/Michigan/Chap7Sec7/Q11.pg" />
+  </exercise>
+
+  <exercise permid="ez-ww7" xml:id="ez-6-5-WW7">
+    <title>A subtle improper integral</title>
+    <webwork source="Library/Michigan/Chap7Sec7/Q15.pg" />
+  </exercise>
+
+  <exercise permid="ez-ww8" xml:id="ez-6-5-WW8">
+    <title>An improper integral involving a ratio of trigonometric functions</title>
+    <webwork source="Library/Michigan/Chap7Sec7/Q34.pg" />
+  </exercise>
+
+  <exercise permid="e_xo">
+    <statement>
+      <p permid="p">
+        Determine, with justification,
+        whether each of the following improper integrals converges or diverges.
+
+        <ol permid="ol" label="a.">
+          <li permid="l_j">
+            <p permid="p">
+              <m>\int_e^{\infty} \frac{\ln(x)}{x} \, dx</m>
+            </p>
+          </li>
+
+          <li permid="l_s">
+            <p permid="p">
+              <m>\int_e^{\infty} \frac{1}{x\ln(x)} \, dx</m>
+            </p>
+          </li>
+
+          <li permid="l_b">
+            <p permid="p">
+              <m>\int_e^{\infty} \frac{1}{x(\ln(x))^2} \, dx</m>
+            </p>
+          </li>
+
+          <li permid="l_k">
+            <p permid="p">
+              <m>\int_e^{\infty} \frac{1}{x(\ln(x))^p} \, dx</m>,
+              where <m>p</m> is a positive real number
+            </p>
+          </li>
+
+          <li permid="l_t">
+            <p permid="p">
+              <m>\int_0^1 \frac{\ln(x)}{x} \, dx</m>
+            </p>
+          </li>
+
+          <li permid="l_c">
+            <p permid="p">
+              <m>\int_0^1 \ln(x) \, dx</m>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+    <answer permid="a">
+      <p permid="p">
+        <ol permid="ol" label="a.">
+          <li permid="l_j">
+            <p permid="p">
+              Diverges.
+            </p>
+          </li>
+
+          <li permid="l_s">
+            <p permid="p">
+              Diverges.
+            </p>
+          </li>
+
+          <li permid="l_b">
+            <p permid="p">
+              Converges to <m>1</m>.
+            </p>
+          </li>
+
+          <li permid="l_k">
+            <p permid="p">
+              <m>\int_e^{\infty} \frac{1}{x(\ln(x))^p} \, dx</m> diverges if
+              <m>p \leq 1</m> and converges to <m>\frac{1}{p-1}</m> if <m>p \gt 1</m>.
+            </p>
+          </li>
+
+          <li permid="l_t">
+            <p permid="p">
+              Diverges.
+            </p>
+          </li>
+
+          <li permid="l_c">
+            <p permid="p">
+              Converges to <m>-1</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </answer>
+    <solution permid="s">
+      <p permid="p">
+        <ol permid="ol" label="a.">
+          <li permid="l_j">
+            <p permid="p">
+              We write the improper integral as a limit and use the substitution <m>u = \ln(x)</m> and
+              <m>du = \frac{1}{x} \ dx</m> to evaluate the definite integral,
+              then take the limit:
+              <md>
+                <mrow>\int_e^{\infty} \frac{\ln(x)}{x} \, dx  &amp;= \lim_{b \to \infty} \int_e^{b} \frac{\ln(x)}{x} \, dx</mrow>
+                <mrow>&amp;= \lim_{b \to \infty} \int_1^{\ln(b)} u \, du</mrow>
+                <mrow>&amp;= \lim_{b \to \infty} \left( \frac{u^2}{2} \right)\biggm|_1^{\ln(b)}</mrow>
+                <mrow>&amp;= \lim_{b \to \infty} \left( \frac{(\ln(b))^2}{2} - \frac{1}{2} \right)</mrow>
+                <mrow>&amp;= \infty</mrow>
+              </md>.
+              So the improper integral <m>\int_e^{\infty} \frac{\ln(x)}{x} \, dx</m> diverges.
+            </p>
+          </li>
+
+          <li permid="l_s">
+            <p permid="p">
+              We write the improper integral as a limit and use the substitution <m>u = \ln(x)</m> and
+              <m>du = \frac{1}{x} \ dx</m> to revaluate the definite integral,
+              then take the limit:.
+              <md>
+                <mrow>\int_e^{\infty} \frac{1}{x\ln(x)} \, dx  &amp;= \lim_{b \to \infty} \int_e^{b} \frac{1}{x\ln(x)} \, dx</mrow>
+                <mrow>&amp;= \lim_{b \to \infty} \int_1^{\ln(b)} \frac{1}{u} \, du</mrow>
+                <mrow>&amp;= \lim_{b \to \infty} \left( \ln(|u|) \right)\biggm|_1^{\ln(b)}</mrow>
+                <mrow>&amp;= \lim_{b \to \infty} \left( \ln(\ln(|b|)) - \ln(1) \right)</mrow>
+                <mrow>&amp;= \infty</mrow>
+              </md>.
+              So the improper integral <m>\int_e^{\infty} \frac{1}{x\ln(x)} \, dx</m> diverges.
+            </p>
+          </li>
+
+          <li permid="l_b">
+            <p permid="p">
+              We again write the improper integral as a limit and use the substitution <m>u = \ln(x)</m> and
+              <m>du = \frac{1}{x} \ dx</m> to evaluate the definite integral,
+              then take the limit:
+              <md>
+                <mrow>\int_e^{\infty} \frac{1}{x(\ln(x))^2} \, dx  &amp;= \lim_{b \to \infty} \int_e^{b} \frac{1}{x(\ln(x))^2} \, dx</mrow>
+                <mrow>&amp;= \lim_{b \to \infty} \int_1^{\ln(b)} \frac{1}{u^2} \, du</mrow>
+                <mrow>&amp;= \lim_{b \to \infty} \left( -u^{-1} \right)\biggm|_1^{\ln(b)}</mrow>
+                <mrow>&amp;= \lim_{b \to \infty} \left( -\frac{1}{\ln(b)} - (-1) \right)</mrow>
+                <mrow>&amp;= 1</mrow>
+              </md>.
+              So the improper integral <m>\int_e^{\infty} \frac{1}{x(\ln(x))^2} \, dx</m> converges to <m>1</m>.
+            </p>
+          </li>
+
+          <li permid="l_k">
+            <p permid="p1">
+              We again write the improper integral as a limit and use the substitution <m>u = \ln(x)</m> and
+              <m>du = \frac{1}{x} \ dx</m> to rewrite the definite integral.
+              If <m>p=1</m>, then the integral diverges by part (b).
+              If <m>p \neq 1</m>, we have
+              <md>
+                <mrow>\int_e^{\infty} \frac{1}{x(\ln(x))^p} \, dx  &amp;= \lim_{b \to \infty} \int_e^{b} \frac{1}{x(\ln(x))^p} \, dx</mrow>
+                <mrow>&amp;= \lim_{b \to \infty} \int_1^{\ln(b)} \frac{1}{u^p} \, du</mrow>
+                <mrow>&amp;= \lim_{b \to \infty} \int_1^{\ln(b)} u^{-p} \, du</mrow>
+                <mrow>&amp;= \lim_{b \to \infty} \left( \frac{u^{-p+1}}{-p+1} \right)\biggm|_1^{\ln(b)}</mrow>
+                <mrow>&amp;= \frac{1}{1-p} \lim_{b \to \infty} \left( (\ln(b))^{1-p} - 1 \right)</mrow>
+                <mrow>&amp;= 1</mrow>
+              </md>.
+            </p>
+
+            <p permid="p2">
+              If <m>p \lt 1</m>, then <m>1-p \gt 0</m> and
+              <me>
+                \frac{1}{1-p} \lim_{b \to \infty} \left( (\ln(b))^{1-p} - 1 \right) = \left(\frac{1}{1-p}\right)\infty = \infty
+              </me>.
+              In this case the improper integral <m>\int_e^{\infty} \frac{1}{x(\ln(x))^p} \, dx</m> diverges.
+            </p>
+
+            <p permid="p3">
+              If <m>p \gt 1</m>, then <m>1-p \lt 0</m> and
+              <me>
+                \frac{1}{1-p}\lim_{b \to \infty} \left( (\ln(b))^{1-p} - 1 \right) = \frac{1}{1-p}\lim_{b \to \infty} \left( \frac{1}{(\ln(b))^{p-1}} - 1 \right)  = \left(\frac{1}{1-p}\right)(0-1) = \frac{1}{p-1}
+              </me>
+              In this case the improper integral
+              <m>\int_e^{\infty} \frac{1}{x(\ln(x))^p} \, dx</m> converges to <m>\frac{1}{p-1}</m>.
+            </p>
+
+            <p permid="p4">
+              Thus, the improper integral <m>\int_e^{\infty} \frac{1}{x(\ln(x))^p} \, dx</m> diverges if
+              <m>p \leq 1</m> and converges to <m>\frac{1}{p-1}</m> if <m>p \gt 1</m>.
+            </p>
+          </li>
+
+          <li permid="l_t">
+            <p permid="p">
+              This integral is improper since the integrand is undefined at <m>x = 0</m>.
+              So we write the improper integral as a limit,
+              use the substitution <m>u = \ln(x)</m> and
+              <m>du = \frac{1}{x} \ dx</m> to evaluate the definite integral,
+              then take the limit:
+              <md>
+                <mrow>\int_0^1 \frac{\ln(x)}{x} \, dx  &amp;= \lim_{a \to 0^+} \int_a^1 \frac{\ln(x)}{x} \, dx</mrow>
+                <mrow>&amp;= \lim_{a \to 0^+} \int_{\ln(a)}^{0} u \, du</mrow>
+                <mrow>&amp;= \lim_{a \to 0^+} \left( \frac{u^2}{2} \right)\biggm|_{\ln(a)}^{0}</mrow>
+                <mrow>&amp;= \lim_{a \to 0^+} \left( -\frac{(\ln(a))^2}{2} \right)</mrow>
+                <mrow>&amp;= -\infty</mrow>
+              </md>.
+              So the improper integral <m>\int_0^1 \frac{\ln(x)}{x} \, dx</m> diverges.
+            </p>
+          </li>
+
+          <li permid="l_c">
+            <p permid="p">
+              This integral is improper since the integrand is undefined at <m>x=0</m>.
+              So we write the improper integral as a limit,
+              then use parts with <m>u = \ln(x)</m>,
+              <m>du = \frac{1}{x} \, dx</m>, <m>dv = dx</m>,
+              and <m>v = x</m> to evaluate the definite integral, then take the limit:
+              <md>
+                <mrow>\int_0^1 \ln(x) \, dx  &amp;= \lim_{a \to 0^+} \int_a^1 \ln(x) \, dx</mrow>
+                <mrow>&amp;= \lim_{a \to 0^+} \left( x\ln(x)\biggm|_a^1 - \int_{a}^{1} \ dx \right)</mrow>
+                <mrow>&amp;= \lim_{a \to 0^+} \left( -a\ln(a) - x\biggm|_{\ln(a)}^{0} \right)</mrow>
+                <mrow>&amp;= \lim_{a \to 0^+} \left( -a\ln(a) - (1-a) \right)</mrow>
+                <mrow>&amp;= \lim_{a \to 0^+} \left( -a\ln(a) \right) - 1</mrow>
+              </md>.
+              The limit <m>\lim_{a \to 0^+} \left( -a\ln(a) \right)</m> has the form
+              <m>0 \times \infty</m>, which is indeterminate,
+              so we need to rewrite it in a form in which we can apply L'Hopital's Rule.
+              Now,
+              <me>
+                \lim_{a \to 0^+} \left( -a\ln(a) \right) = \lim_{a \to 0^+} \left( \frac{-\ln(a)}{\frac{1}{a}} \right)
+              </me>,
+              and this latter limit is of the form <m>\frac{\infty}{\infty}</m>.
+              Applying L'Hopital's Rule gives us
+              <md>
+                <mrow>\lim_{a \to 0^+} \left( \frac{-\ln(a)}{\frac{1}{a}} \right)  &amp;= \lim_{a \to 0^+} \left( \frac{-\frac{1}{a}}{-\frac{1}{a^2}} \right)</mrow>
+                <mrow>&amp;= \lim_{a \to 0^+} a</mrow>
+                <mrow>&amp;= 0</mrow>
+              </md>
+              Returning to our earlier established equality that
+              <me>
+                \int_0^1 \ln(x) \, dx = \lim_{a \to 0^+} \left( -a\ln(a) \right) - 1
+              </me>,
+              this most recent limit shows that the improper integral
+              <m>\int_0^1 \ln(x) \, dx</m> converges to <m>-1</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+  <exercise permid="e_ag">
+    <statement>
+      <p permid="p1">
+        Sometimes we may encounter an improper integral for which we cannot easily evaluate the limit of the corresponding proper integrals.
+        For instance,
+        consider <m>\int_1^{\infty} \frac{1}{1+x^3} \, dx</m>.
+        While it is hard
+        (or perhaps impossible)
+        to find an antiderivative for <m>\frac{1}{1+x^3}</m>,
+        we can still determine whether or not the improper integral converges or diverges by comparison to a simpler one.
+        Observe that for all <m>x \gt 0</m>,
+        <m>1 + x^3 \gt x^3</m>, and therefore
+        <me>
+          \frac{1}{1+x^3} \lt  \frac{1}{x^3}
+        </me>.
+      </p>
+
+      <p permid="p2">
+        It therefore follows that
+        <me>
+          \int_1^b \frac{1}{1+x^3} \, dx \lt  \int_1^b \frac{1}{x^3} \, dx
+        </me>
+        for every <m>b \gt 1</m>.
+        If we let <m>b \to \infty</m> so as to consider the two improper integrals
+        <m>\int_1^\infty \frac{1}{1+x^3} \, dx</m> and <m>\int_1^\infty \frac{1}{x^3} \, dx</m>,
+        we know that the larger of the two improper integrals converges.
+        And thus, since the smaller one lies below a convergent integral,
+        it follows that the smaller one must converge, too.
+        In particular,
+        <m>\int_1^\infty \frac{1}{1+x^3} \, dx</m> must converge,
+        even though we never explicitly evaluated the corresponding limit of proper integrals.
+        We use this idea and similar ones in the exercises that follow.
+
+        <ol permid="ol" label="a.">
+          <li permid="l_j">
+            <p permid="p">
+              Explain why <m>x^2 + x + 1 \gt x^2</m> for all <m>x \ge 1</m>,
+              and hence show that
+              <m>\int_1^{\infty} \frac{1}{x^2 + x + 1} \, dx</m> converges by comparison to <m>\int_1^{\infty} \frac{1}{x^2} \, dx</m>.
+            </p>
+          </li>
+
+          <li permid="l_s">
+            <p permid="p">
+              Observe that for each <m>x \gt 1</m>, <m>\ln(x) \lt  x</m>.
+              Explain why
+              <me>
+                \int_2^b \frac{1}{x} \, dx \lt  \int_2^b \frac{1}{\ln(x)} \,dx
+              </me>
+              for each <m>b \gt 2</m>.
+              Why must it be true that <m>\int_2^b \frac{1}{\ln(x)} \, dx</m> diverges?
+            </p>
+          </li>
+
+          <li permid="l_b">
+            <p permid="p">
+              Explain why <m>\sqrt{\frac{x^4+1}{x^4}} \gt 1</m> for all <m>x \gt 1</m>.
+              Then, determine whether or not the improper integral
+              <me>
+                \int_1^{\infty} \frac{1}{x} \cdot \sqrt{\frac{x^4+1}{x^4}} \, dx
+              </me>
+              converges or diverges.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+    <answer permid="a">
+      <p permid="p">
+        <ol permid="ol" label="a.">
+          <li permid="l_j">
+            <p permid="p">
+              converges
+            </p>
+          </li>
+
+          <li permid="l_s">
+            <p permid="p">
+              diverges
+            </p>
+          </li>
+
+          <li permid="l_b">
+            <p permid="p">
+              diverges
+            </p>
+          </li>
+        </ol>
+      </p>
+    </answer>
+    <solution permid="s">
+      <p permid="p">
+        <ol permid="ol" label="a.">
+          <li permid="l_j">
+            <p permid="p">
+              Since <m>x \ge 1</m>, it follows that <m>x + 1 \ge 1 \gt 0</m>,
+              so adding <m>x^2</m> to both sides of this inequality shows that
+              <me>
+                x^2 + x + 1 \gt x^2
+              </me>
+              for all <m>x \ge 1</m>.
+              Taking reciprocals (which reverses the inequality),
+              <me>
+                \frac{1}{x^2 + x + 1} \lt \frac{1}{x^2}
+              </me>
+              and thus for any <m>b \gt 1</m>,
+              <me>
+                \int_1^b \frac{1}{x^2 + x + 1} \, dx \lt \int_1^b \frac{1}{x^2} \, dx
+              </me>.
+              Taking the limit as <m>b \to \infty</m>, it follows that
+              <me>
+                \int_1^{\infty} \frac{1}{x^2 + x + 1} \, dx \lt \int_1^{\infty} \frac{1}{x^2} \, dx
+              </me>,
+              and since we know that <m>\int_1^{\infty} \frac{1}{x^2} \, dx</m>  converges,
+              we conclude that            
+              <m>\int_1^{\infty} \frac{1}{x^2 + x + 1} \, dx</m> also converges.
+            </p>
+          </li>
+
+          <li permid="l_s">
+            <p permid="p">
+              Since for each <m>x \gt 1</m>, <m>\ln(x) \lt  x</m>,
+              it also holds that <m>\ln(x) \lt  x</m> for all <m>x \gt 2</m>.
+              Taking reciprocals,
+              <me>
+                \frac{1}{x} \lt \frac{1}{\ln(x)}
+              </me>
+              and thus
+              <me>
+                \int_2^b \frac{1}{x} \, dx \lt  \int_2^b \frac{1}{\ln(x)} \,dx
+              </me>
+              for each <m>b \gt 2</m>.
+              Taking the limit as <m>b \to \infty</m>, we have
+              <me>
+                \int_2^{\infty} \frac{1}{x} \, dx \le  \int_2^{\infty} \frac{1}{\ln(x)} \,dx
+              </me>
+              and since we know that <m>\int_1^\infty \frac{1}{x} \, dx</m> diverges,
+              it follows that
+              <m>\int_2^b \frac{1}{\ln(x)} \, dx</m> also diverges.
+            </p>
+          </li>
+
+          <li permid="l_b">
+            <p permid="p">
+              Since <m>x^4+1 \gt x^4</m> for all <m>x</m>, it follows that
+              <me>
+                \frac{x^4+1}{x^4} \gt 1
+              </me>
+              for all <m>x \gt 1</m>, and thus taking square roots,
+              <me>
+                \sqrt{\frac{x^4+1}{x^4}} \gt 1
+              </me>
+              for all <m>x \gt 1</m>.
+              Integrating from <m>1</m> to <m>b</m> and then letting
+              <m>b \to \infty</m>, we can next say that
+              <me>
+                \int_1^{\infty} \sqrt{\frac{x^4+1}{x^4}}  \, dx \ge \int_1^{\infty} 1  \, dx
+              </me>
+              It is obvious that <m>\int_1^{\infty} 1 \, dx</m> diverges since the integrand does not tend to <m>0</m>.  
+              By the last inequality above, we can conclude that
+              <me>
+                \int_1^{\infty} \frac{1}{x} \cdot \sqrt{\frac{x^4+1}{x^4}} \, dx
+              </me>
+              diverges.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+</exercises>
