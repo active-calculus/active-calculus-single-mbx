@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2018                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+<activity permid="act" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="act-6-1-1">
+  <statement>
+    <p permid="p">
+      In each of the following problems,
+      our goal is to determine the area of the region described.
+      For each region, (i) determine the intersection points of the curves, (ii) sketch the region whose area is being found, (iii) draw and label a representative slice,
+      and (iv) state the area of the representative slice.
+      Then, state a definite integral whose value is the exact area of the region,
+      and evaluate the integral to find the numeric value of the region's area.
+
+      <ol permid="ol" label="a.">
+        <li permid="l_j">
+          <p permid="p">
+            The finite region bounded by
+            <m>y = \sqrt{x}</m> and <m>y = \frac{1}{4}x</m>.
+          </p>
+        </li>
+
+        <li permid="l_s">
+          <p permid="p">
+            The finite region bounded by
+            <m>y = 12-2x^2</m> and <m>y = x^2 - 8</m>.
+          </p>
+        </li>
+
+        <li permid="l_b">
+          <p permid="p">
+            The area bounded by the <m>y</m>-axis,
+            <m>f(x) = \cos(x)</m>,
+            and <m>g(x) = \sin(x)</m>,
+            where we consider the region formed by the first positive value of <m>x</m> for which <m>f</m> and <m>g</m> intersect.
+          </p>
+        </li>
+
+        <li permid="l_k">
+          <p permid="p">
+            The finite regions between the curves <m>y = x^3-x</m> and <m>y = x^2</m>.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </statement>
+  <hint permid="h">
+    <p permid="p">
+      <ol permid="ol" label="a.">
+        <li permid="l_j">
+          <p permid="p">
+            Find where the two curves intersect.
+          </p>
+        </li>
+
+        <li permid="l_s">
+          <p permid="p">
+            Plot both functions and think about how they compare to <m>y=x^2</m>.
+          </p>
+        </li>
+
+        <li permid="l_b">
+          <p permid="p">
+            Remember that <m>\sin(\pi/4)=\cos(\pi/4)</m>.
+          </p>
+        </li>
+
+        <li permid="l_k">
+          <p permid="p">
+            Find three points where the curves intersect and thus two finite regions between two pairs of those points.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </hint>
+  <answer permid="a">
+    <p permid="p">
+      <ol permid="ol" label="a.">
+        <li permid="l_j">
+          <p permid="p">
+            <m> A = \int_{0}^{16} (\sqrt{x} - \frac{1}{4}x) \, dx = \frac{32}{3}</m>.
+          </p>
+        </li>
+
+        <li permid="l_s">
+          <p permid="p">
+            <m> A = \int_{-\sqrt{20}/3}^{\sqrt{20}/3} ((12-x^2)-(x^2-8)) \, dx \frac{160 \sqrt{\frac{5}{3}}}{3} \approx 68.853</m>.
+          </p>
+        </li>
+
+        <li permid="l_b">
+          <p permid="p">
+            <m> A = \int_0^\frac{\pi}{4} \left( \cos(x) - \sin(x) \right) dx = \sqrt{2} - 1</m>.
+          </p>
+        </li>
+
+        <li permid="l_k">
+          <p permid="p">
+            The left-hand region has area
+            <me>
+              A_1 = \int_{\frac{1 - \sqrt{5}}{2}}^0 \left( x^2 - \left(x^3 - x \right) \right) dx = \dfrac{13 + 5\sqrt{5}}{24} \approx 1.007514
+            </me>.
+            The right-hand region has area
+            <me>
+              A_2 = \int_0^{\frac{1 + \sqrt{5}}{2}} \left( \left(x^3 - x \right) - x^2\right) dx = \dfrac{13 - 5\sqrt{5}}{24} \approx 0.075819
+            </me>.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </answer>
+  <solution permid="s">
+    <p permid="p">
+      <ol permid="ol" label="a.">
+        <li permid="l_j">
+          <p permid="p1">
+            By solving <m>\sqrt{x}=\frac{1}{4}x</m>,
+            we see that the two curves intersect when <m>x=0</m> and <m>x=16</m>,
+            so at the points <m>(0,0)</m> and <m>(16,4)</m>.
+            We can plot the region as shown in the figure below.
+          </p>
+
+          <sidebyside width="40%">
+            <image source="images/6_1_act1a_soln" />
+          </sidebyside>
+
+          <p permid="p2">
+            Slicing the region with thin vertical rectangles,
+            we see that a typical rectangle's height is given by <m>\sqrt{x}-\frac{1}{4}x</m>,
+            and thus the area of such a slice is <m>A_{\text{rect} } = (\sqrt{x} - \frac{1}{4}x) \Delta x</m>.
+            It follows that the area of the region bounded by the two curves is
+            <me>
+              A = \int_{0}^{16} (\sqrt{x} - \frac{1}{4}x) \, dx
+            </me>.
+            Evaluating the integral,
+            we find <m>A = \frac{32}{3}</m>.
+          </p>
+        </li>
+
+        <li permid="l_s">
+          <p permid="p1">
+            Solving <m>12-2x^2=x^2-8</m>,
+            we find that the two curves intersect where <m>3x^2=2-</m>,
+            so at <m>x=\pm \sqrt{20/3}</m>.
+            We can plot the region as shown in the figure below.
+          </p>
+
+          <sidebyside width="40%">
+            <image source="images/6_1_act1b_soln" />
+          </sidebyside>
+
+          <p permid="p2">
+            Slicing the region with thin vertical rectangles,
+            a typical rectangle's height is given by <m>(12-x^2)-(x^2-8)</m>,
+            and thus the area of such a slice is <m>A_{\text{rect} } = ((12-x^2)-(x^2-8)) \Delta x</m>.
+            Hence,
+            the area of the region bounded by the two curves is
+            <me>
+              A = \int_{-\sqrt{20}/3}^{\sqrt{20}/3} ((12-x^2)-(x^2-8)) \, dx
+            </me>.
+            Evaluating the integral,
+            we find <m>A = \frac{160 \sqrt{\frac{5}{3}}}{3} \approx 68.853</m>.
+          </p>
+        </li>
+
+        <li permid="l_b">
+          <p permid="p1">
+            The first positive value at which the sine and cosine functions intersect is <m>x=\frac{\pi}{4}</m>.
+            Plotting the functions in a surrounding region,
+            we see the following figure.
+          </p>
+
+          <sidebyside width="40%">
+            <image source="images/6_1_act1c_soln" />
+          </sidebyside>
+
+          <p permid="p2">
+            Slicing the region with vertical rectangles,
+            we find the area of the shaded region is given by
+            <me>
+              A = \int_0^\frac{\pi}{4} \left( \cos(x) - \sin(x) \right) dx = \sqrt{2} - 1
+            </me>.
+          </p>
+        </li>
+
+        <li permid="l_k">
+          <p permid="p1">
+            The curves <m>y = x^3-x</m> and <m>y = x^2</m> intersect at three points,
+            forming two regions.
+            Setting <m>x^3-x=x^2</m> and solving, we find that
+            <me>
+              x^3-x^2-x=x(x^2-x-1)=0
+            </me>,
+            which implies that <m>x=0</m> or <m>x = \frac{1}{2}(1 \pm \sqrt{5})</m>.
+            Plotting the curves, we see that for the left-hand region,
+            the relative interval is
+            <m>[\frac{1-\sqrt{5}}{2},0]</m> and <m>g(x)=x^3-x \gt x^2 = f(x)</m>.
+          </p>
+
+          <sidebyside width="40%">
+            <image source="images/6_1_act1d_soln" />
+          </sidebyside>
+
+          <p permid="p2">
+            Thus, the left-hand region has area
+            <me>
+              A_1 = \int_{\frac{1 - \sqrt{5}}{2}}^0 \left( x^2 - \left(x^3 - x \right) \right) dx = \dfrac{13 + 5\sqrt{5}}{24} \approx 1.007514
+            </me>.
+            For the right-hand region,
+            the interval is <m>[0, \frac{1+\sqrt{5}}{2}]</m> and <m>f(x)=x^2 \gt x^3-x = g(x)</m>,
+            so that its area is
+            <me>
+              A_2 = \int_0^{\frac{1 + \sqrt{5}}{2}} \left( \left(x^3 - x \right) - x^2\right) dx = \dfrac{13 - 5\sqrt{5}}{24} \approx 0.075819
+            </me>.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </solution>
+</activity>
+

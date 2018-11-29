@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2018                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+<section permid="sec-sequences" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-8-1-sequences">
+  <title>Sequences</title>
+  <objectives permid="ob">
+    <ul permid="ul">
+      <li permid="l_j">
+        <p permid="p">
+          What is a sequence?
+        </p>
+      </li>
+
+      <li permid="l_s">
+        <p permid="p">
+          What does it mean for a sequence to converge?
+        </p>
+      </li>
+
+      <li permid="l_b">
+        <p permid="p">
+          What does it mean for a sequence to diverge?
+        </p>
+      </li>
+    </ul>
+  </objectives>
+
+  <introduction>
+    <sidebyside widths="47% 47%" margins="0%">
+      <p permid="p1">
+        We encounter sequences every day.
+        Your monthly utility payments,
+        the annual interest you earn on investments,
+        the amount you spend on groceries each week;
+        all are examples of sequences.
+        Other sequences with which you may be familiar include the Fibonacci sequence
+            <idx><h>Fibonacci sequence</h></idx>
+        <m> 1, 1, 2, 3, 5, 8, \ldots </m>,
+        where each term is the sum of the two preceding terms,
+        and the triangular numbers
+            <idx><h>triangular numbers</h></idx>
+        <m> 1, 3, 6, 10, 15, 21, 28, 36, 45, 55, \ldots </m>,
+        the number of vertices in the triangles shown in <xref ref="F-8-1-Triangular-numbers">Figure</xref>.
+      </p>
+
+      <figure xml:id="F-8-1-Triangular-numbers">
+        <caption>Triangular numbers</caption>
+        <image source="images/8_1_Triangular_Numbers" />
+      </figure>
+    </sidebyside>
+
+    <p permid="p2">
+      Sequences of integers are of such interest to mathematicians and others that they have a journal<fn>
+      <pubtitle>The Journal of Integer Sequences</pubtitle> at <url href="http://www.cs.uwaterloo.ca/journals/JIS/" />
+      </fn> devoted to them and an on-line encyclopedia<fn>
+      The On-Line Encyclopedia of Integer Sequences at <url href="http://oeis.org/" />
+      </fn> that catalogs a huge number of integer sequences and their connections.
+      Sequences are also used in digital recordings and images.
+    </p>
+
+    <p permid="p3">
+      Our studies in calculus have dealt with continuous continuous functions.
+      Sequences model <em>discrete</em>
+      instead of continuous information.
+      We will study ways to represent and work with discrete information in this chapter as we investigate
+      <em>sequences</em> and <em>series</em>,
+      and ultimately see key connections between the discrete and continuous.
+    </p>
+
+    <xi:include href="./previews/PA-8-1.xml" />
+  </introduction>
+
+  <subsection permid="ssec-sequences">
+    <title>Sequences</title>
+    <idx><h>sequence</h></idx>
+
+    <p permid="p1">
+      As <xref ref="PA-8-1">Preview Activity</xref> illustrates,
+      many discrete phenomena can be represented as lists of numbers
+      (like the amount of money in an account over a period of months).
+      We call any such list a <em>sequence</em>.
+      A sequence is nothing more than list of terms in some order.
+      We often list the entries of the sequence with subscripts,
+      <me>
+        s_1, s_2, \ldots, s_n \ldots
+      </me>,
+      where the subscript denotes the position of the entry in the sequence.
+    </p>
+
+    <definition permid="d-sequence" xml:id="D-8-1-sequence">
+      <statement>
+        <p permid="p">
+          A sequence is a list of terms
+          <m>s_1, s_2, s_3, \ldots</m> in a specified order.
+        </p>
+      </statement>
+    </definition>
+
+    <p permid="p2">
+      We can think of a sequence as a function <m>f</m> whose domain is the set of positive integers where 
+      <m>f(n) = s_n</m> for each positive integer <m>n</m>.
+      This alternative view will be be useful in many situations.
+    </p>
+
+    <p permid="p3">
+      We often denote the sequence
+      <me>
+        s_1, s_2, s_3, \ldots
+      </me>
+      by <m>\{s_n\}</m>.
+      The value <m>s_n</m> (alternatively <m>s(n)</m>) is called the <m>n</m>th <em>term</em>
+          <idx><h>sequence</h><h>term</h></idx>
+      in the sequence.
+      If the terms are all 0 after some fixed value of <m>n</m>,
+      we say the sequence is finite.
+      Otherwise the sequence is infinite.
+      With infinite sequences,
+      we are often interested in their end behavior and the idea of
+      <em>convergent</em> sequences.
+    </p>
+
+    <xi:include href="./activities/act-8-1-1.xml" />
+
+    <p permid="p4">
+      Next we formalize the ideas from <xref ref="act-8-1-1">Activity</xref>.
+    </p>
+
+    <xi:include href="./activities/act-8-1-2.xml" />
+
+    <p permid="p5">
+      In <xref ref="act-8-1-1">Activities</xref>
+      and <xref ref="act-8-1-2"></xref>
+      we investigated a sequence <m>\{s_n\}</m> that has a limit as <m>n</m> goes to infinity.
+      More formally, we 
+      make the following definition.
+    </p>
+
+    <definition permid="d-sequence-convergence" xml:id="D-8-1-sequence-convergence">
+      <statement>
+        <p permid="p">
+          A sequence <m>\{ s_n \}</m> <term>converges</term>
+              <idx><h>converge</h><h>sequence</h></idx>
+          or is a
+          <term>convergent sequence</term>
+              <idx><h>convergent sequence</h></idx>
+          provided that there is a number <m>L</m> such that we can make <m>s_n</m> as close to <m>L</m> as we want
+          by taking <m>n</m> sufficiently large.
+          In this situation, we call <m>L</m> the <em>limit</em>
+          of the convergent sequence and write
+          <me>
+            \lim_{n \to \infty} s_n = L
+          </me>.
+          If the sequence <m>\{s_n\}</m> does not converge,
+          we say that the sequence <m>\{s_n\}</m> <term>diverges</term>.
+              <idx><h>diverge</h><h>sequence</h></idx>
+        </p>
+      </statement>
+    </definition>
+
+    <p permid="p6">
+      The idea of sequence having a limit as
+      <m>n \to \infty</m> is the same as the idea of a continuous function having a limit as <m>x \to \infty</m>.
+      The only difference is that sequences are discrete instead of continuous.
+    </p>
+
+    <xi:include href="./activities/act-8-1-3.xml" />
+  </subsection>
+
+  <subsection permid="ssec-summary">
+    <title>Summary</title>
+    <p permid="p">
+      <ul permid="ul">
+        <li permid="l_j">
+          <p permid="p">
+            A sequence is a list of objects in a specified order.
+            We will typically work with sequences of real numbers.
+            We can think of a sequence as a function from the positive integers to the set of real numbers.
+          </p>
+        </li>
+
+        <li permid="l_s">
+          <p permid="p">
+            A sequence <m>\{s_n\}</m> of real numbers converges to a number <m>L</m> if we can make every value of <m>s_k</m> for <m>k \ge n</m> as close as we want to <m>L</m> by choosing <m>n</m> sufficiently large.
+          </p>
+        </li>
+
+        <li permid="l_b">
+          <p permid="p">
+            A sequence diverges if it does not converge.
+          </p>
+        </li>
+      </ul>
+    </p>
+  </subsection>
+
+  <xi:include href="./exercises/ez-8-1.xml" />
+</section>
+<!-- <xi:include href="./activities/act-1-1-1.xml" /> -->
+<!-- <xi:include href="./exercises/ez-1-1.xml" /> -->

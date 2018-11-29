@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2018                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+<section permid="sec-elem-rules" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-2-1-elem-rules">
+  <title>Elementary derivative rules</title>
+  <objectives permid="ob">
+    <ul permid="ul">
+      <li permid="l_j">
+        <p permid="p">
+          What are alternate notations for the derivative?
+        </p>
+      </li>
+
+      <li permid="l_s">
+        <p permid="p">
+          How can we use the algebraic structure of a function <m>f(x)</m> to compute a formula for <m>f'(x)</m>?
+        </p>
+      </li>
+
+      <li permid="l_b">
+        <p permid="p">
+          What is the derivative of a power function of the form <m>f(x) = x^n</m>?
+          What is the derivative of an exponential function of form <m>f(x) = a^x</m>?
+        </p>
+      </li>
+
+      <li permid="l_k">
+        <p permid="p">
+          If we know the derivative of <m>y = f(x)</m>,
+          what is the derivative of <m>y = k f(x)</m>,
+          where <m>k</m> is a constant?
+        </p>
+      </li>
+
+      <li permid="l_t">
+        <p permid="p">
+          If we know the derivatives of <m>y = f(x)</m> and <m>y = g(x)</m>,
+          how do we compute the derivative of <m>y = f(x) + g(x)</m>?
+        </p>
+      </li>
+    </ul>
+  </objectives>
+
+  <introduction>
+    <p permid="p1">
+      In <xref ref="C-1">Chapter</xref>,
+      we developed the concept of the derivative of a function.
+      We now know that the derivative <m>f'</m> of a function <m>f</m> measures the instantaneous rate of change of <m>f</m> with respect to <m>x</m>.
+      The derivative also tells us the slope of the tangent line to <m>y=f(x)</m> at any given value of <m>x</m>.
+      So far, we have focused on interpreting the derivative graphically or,
+      in the context of a physical setting,
+      as a meaningful rate of change.
+      To calculate the value of the derivative at a specific point,
+      we have relied on the limit definition of the derivative,
+      <me>
+        f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}
+      </me>.
+    </p>
+
+    <p permid="p2">
+      In this chapter,
+      we investigate how the limit definition of the derivative      
+      leads to interesting patterns and rules that enable us to find a formula for <m>f'(x)</m> quickly,
+      <em>without</em>
+      using the limit definition directly.
+      For example,
+      we would like to apply shortcuts to differentiate a function such as <m>g(x) = 4x^7 - \sin(x) + 3e^x</m>
+    </p>
+
+    <xi:include href="./previews/PA-2-1.xml" />
+  </introduction>
+
+  <subsection permid="ssec-some-key-notation">
+    <title>Some Key Notation</title>
+    <p permid="p1">
+      In addition to our usual <m>f'</m> notation,
+      there are other ways to denote the derivative of a function,
+      as well as the instruction to take the derivative.
+      If we are thinking about the relationship between <m>y</m> and <m>x</m>,
+      we sometimes denote the derivative of <m>y</m> with respect to <m>x</m> by the symbol
+      <me>
+        \frac{dy}{dx}
+      </me>
+      which we read <q>dee-y dee-x.</q>
+      For example, if <m>y = x^2</m>,
+      we'll write that the derivative is <m>\frac{dy}{dx} = 2x</m>.
+      This notation comes from the fact that the derivative is related to the slope of a line,
+      and slope is measured by <m>\frac{\Delta y}{\Delta x}</m>.
+      Note that while we read <m>\frac{\Delta y}{\Delta x}</m> as
+      <q>change in <m>y</m> over change in <m>x</m>,</q> we view
+      <m>\frac{dy}{dx}</m> as a single symbol,
+      not a quotient of two quantities.
+    </p>
+
+    <p permid="p2">
+      We use a variant of this notation as the instruction to take the derivative.
+      In particular,
+      <me>
+        \frac{d}{dx}\left[ \Box \right]
+      </me>
+      means <q>take the derivative of the quantity in <m>\Box</m> with respect to <m>x</m>.</q>
+      For example, we may write <m>\frac{d}{dx}[x^2] = 2x</m>.
+    </p>
+
+    <p permid="p3">
+      It is important to note that the independent variable can be different from <m>x</m>.
+      If we have <m>f(z) = z^2</m>,
+      we then write <m>f'(z) = 2z</m>.
+      Similarly, if <m>y = t^2</m>,
+      we say <m>\frac{dy}{dt} = 2t</m>.
+      And it is also true that <m>\frac{d}{dq}[q^2] = 2q</m>.
+      This notation may also be used for second derivatives:
+      <m>f''(z) = \frac{d}{dz}\left[\frac{df}{dz}\right] = \frac{d^2 f}{dz^2}</m>.
+    </p>
+
+    <p permid="p4">
+      In what follows,
+      we'll build a repertoire of functions for which we can quickly compute the derivative.
+    </p>
+  </subsection>
+
+  <subsection permid="ssec-constant-power-exponential-functions">
+    <title>Constant, Power, and Exponential Functions</title>
+    <p permid="p1">
+      So far, we know the derivative formula for two important classes of functions:
+      constant functions and power functions.
+      If
+      <m>f(x) = c</m> is a constant function,
+      its graph is a horizontal line with slope zero at every point.
+      Thus, <m>\frac{d}{dx}[c] = 0</m>.
+      We summarize this with the following rule.
+    </p>
+
+    <assemblage permid="const-fxns" xml:id="const-fxns">
+      <title>Constant Functions</title>
+      <p permid="p">
+            <idx><h>derivative</h><h>constant function</h></idx>
+        For any real number <m>c</m>,
+        if <m>f(x) = c</m>, then <m>f'(x) = 0</m>.
+      </p>
+    </assemblage>
+
+    <example permid="ex1">
+      <statement>
+        <p permid="p">
+          If <m>f(x) = 7</m>, then <m>f'(x) = 0</m>.
+          Similarly, <m>\frac{d}{dx} [\sqrt{3}] = 0</m>.
+        </p>
+      </statement>
+    </example>
+
+    <p permid="p2">
+      In your work in <xref ref="PA-2-1">Preview Activity</xref>,
+      you conjectured that for any positive integer <m>n</m>,
+      if <m>f(x) = x^n</m>, then <m>f'(x) = nx^{n-1}</m>.
+      This rule can be formally proved for any positive integer <m>n</m>,
+      and also for any nonzero real number
+      (positive or negative).
+    </p>
+
+    <assemblage permid="power-fxns" xml:id="power-fxns">
+      <title>Power Functions</title>
+      <p permid="p">
+            <idx><h>derivative</h><h>power function</h></idx>
+        For any nonzero real number <m>n</m>,
+        if <m>f(x) = x^n</m>, then <m>f'(x) = nx^{n-1}</m>.
+      </p>
+    </assemblage>
+
+    <example permid="ex2">
+      <statement>
+        <p permid="p">
+          Using the rule for power functions,
+          we can compute the following derivatives.
+          If <m>g(z) = z^{-3}</m>, then <m>g'(z) = -3z^{-4}</m>.
+          Similarly, if <m>h(t) = t^{7/5}</m>,
+          then <m>\frac{dh}{dt} = \frac{7}{5}t^{2/5}</m>,
+          and <m>\frac{d}{dq} [q^{\pi}] = \pi q^{\pi - 1}</m>.
+        </p>
+      </statement>
+    </example>
+
+    <p permid="p3">
+      It will be instructive to have a derivative formula for one more type of basic function.
+      For now, we simply state this rule without explanation or justification;
+      we will explore why this rule is true in one of the exercises.
+      And we will encounter graphical reasoning for why the rule is plausible in <xref ref="PA-2-2">Preview Activity</xref>.
+    </p>
+
+    <assemblage permid="exp-fxns" xml:id="exp-fxns">
+      <title>Exponential Functions</title>
+      <p permid="p">
+            <idx><h>derivative</h><h>exponential function</h></idx>
+        For any positive real number <m>a</m>,
+        if <m>f(x) = a^x</m>, then <m>f'(x) = a^x \ln(a)</m>.
+      </p>
+    </assemblage>
+
+    <example permid="ex3">
+      <statement>
+        <p permid="p">
+          If <m>f(x) = 2^x</m>,
+          then <m>f'(x) = 2^x \ln(2)</m>.
+          Similarly, for <m>p(t) = 10^t</m>,
+          <m>p'(t) = 10^t \ln(10)</m>.
+          It is especially important to note that when <m>a = e</m>,
+          where <m>e</m> is the base of the natural logarithm function,
+          we have that
+          <me>
+            \frac{d}{dx} [e^x] = e^x \ln(e) = e^x
+          </me>
+          since <m>\ln(e) = 1</m>.
+          This is an extremely important property of the function <m>e^x</m>:
+          its derivative function is itself!
+        </p>
+      </statement>
+    </example>
+
+    <p permid="p4">
+      Note carefully the distinction between power functions and exponential functions:
+      in power functions, the variable is in the base, as in <m>x^2</m>,
+      while in exponential functions,
+      the variable is in the power, as in <m>2^x</m>.
+      As we can see from the rules,
+      this makes a big difference in the form of the derivative.
+    </p>
+
+    <xi:include href="./activities/act-2-1-1.xml" />
+  </subsection>
+
+  <subsection permid="ssec-constant-multiples-sums-functions">
+    <title>Constant Multiples and Sums of Functions</title>
+    <p permid="p1">
+      Next we will learn how to compute the derivative of a function constructed as an algebraic combination of basic functions.
+      For instance,
+      we'd like to be able to take the derivative of a polynomial function such as
+      <me>
+        p(t) = 3t^5 - 7t^4 + t^2 - 9
+      </me>,
+      which is a sum of constant multiples of powers of <m>t</m>.
+      To that end, we develop two new rules:
+      the Constant Multiple Rule and the Sum Rule.
+    </p>
+
+    <p permid="p2">
+      How is the derivative of <m>y = kf(x)</m> related to the derivative of <m>y = f(x)</m>?
+      Recall that when we multiply a function by a constant <m>k</m>,
+      we vertically stretch the graph by a factor of <m>|k|</m>
+      (and reflect the graph across <m>y = 0</m> if <m>k \lt 0</m>).
+      This vertical stretch affects the slope of the graph,
+      so the slope of the function
+      <m>y = kf(x)</m> is <m>k</m> times as steep as the slope of <m>y = f(x)</m>.
+      Thus, when we multiply a function by a factor of <m>k</m>,
+      we change the value of its derivative by a factor of <m>k</m> as well.<fn>
+      The Constant Multiple Rule can be formally proved as a consequence of properties of limits,
+      using the limit definition of the derivative.
+      </fn>,
+    </p>
+
+    <assemblage permid="const-mult-rule" xml:id="const-mult-rule">
+      <title>The Constant Multiple Rule</title>
+      <p permid="p">
+            <idx><h>constant multiple rule</h></idx>
+        For any real number <m>k</m>,
+        if <m>f(x)</m> is a differentiable function with derivative <m>f'(x)</m>,
+        then <m>\frac{d}{dx}[k f(x)] = k f'(x)</m>.
+      </p>
+    </assemblage>
+
+    <p permid="p3">
+      In words, this rule says that <q>the derivative of a constant times a function is the constant times the derivative of the function.</q>
+    </p>
+
+    <example permid="ex1">
+      <statement>
+        <p permid="p">
+          If <m>g(t) = 3 \cdot 5^t</m>,
+          we have <m>g'(t) = 3 \cdot 5^t \ln(5)</m>.
+          Similarly, <m>\frac{d}{dz} [5z^{-2}] = 5 (-2z^{-3})</m>.
+        </p>
+      </statement>
+    </example>
+
+    <p permid="p4">
+      Next we examine a sum of two functions.
+      If we have <m>y = f(x)</m> and <m>y = g(x)</m>,
+      we can compute a new function
+      <m>y = (f+g)(x)</m> by adding the outputs of the two functions:
+      <m>(f+g)(x) = f(x) + g(x)</m>.
+      Not only is the value of the new function the sum of the values of the two known functions,
+      but the slope of the new function is the sum of the slopes of the known functions.
+      Therefore<fn>
+      Like the Constant Multiple Rule,
+      the Sum Rule can be formally proved as a consequence of properties of limits,
+      using the limit definition of the derivative.
+      </fn>,
+      we arrive at the following Sum Rule for derivatives:
+    </p>
+
+    <assemblage permid="sum-rule" xml:id="sum-rule">
+      <title>The Sum Rule</title>
+      <p permid="p">
+            <idx><h>sum rule</h></idx>
+        If <m>f(x)</m> and <m>g(x)</m> are differentiable functions with derivatives <m>f'(x)</m> and <m>g'(x)</m> respectively,
+        then <m>\frac{d}{dx}[f(x) + g(x)] = f'(x) + g'(x)</m>.
+      </p>
+    </assemblage>
+
+    <p permid="p5">
+      In words, the Sum Rule tells us that
+      <q>the derivative of a sum is the sum of the derivatives.</q>
+      It also tells us that a sum of two differentiable functions is also differentiable.
+      Furthermore, because we can view the difference function
+      <m>y = (f-g)(x) = f(x) - g(x)</m> as <m>y = f(x) + (-1 \cdot g(x))</m>,
+      the Sum Rule and Constant Multiple Rules together tell us that <m>\frac{d}{dx}[f(x) + (-1 \cdot g(x))] = f'(x) - g'(x)</m>,
+      or that <q>the derivative of a difference is the difference of the derivatives.</q>
+      We can now compute derivatives of sums and differences of elementary functions.
+    </p>
+
+    <example permid="ex2">
+      <statement>
+        <p permid="p">
+          Using the sum rule, <m>\frac{d}{dw} (2^w + w^2) = 2^w \ln(2) + 2w</m>.
+          Using both the sum and constant multiple rules,
+          if <m>h(q) = 3q^6 - 4q^{-3}</m>,
+          then <m>h'(q) = 3 (6q^5) - 4(-3q^{-4}) = 18q^5 + 12q^{-4}</m>.
+        </p>
+      </statement>
+    </example>
+
+    <xi:include href="./activities/act-2-1-2.xml" />
+
+    <p permid="p6">
+      In the same way that we have shortcut rules to help us find derivatives,
+      we introduce some language that is simpler and shorter.
+      Often, rather than say <q>take the derivative of <m>f</m>,</q>
+      we'll instead say simply <q>differentiate <m>f</m>.</q>
+      Similarly,
+      if the derivative exists at a point,
+      we say <q><m>f</m> is differentiable at that point,</q>
+      or that <m>f</m> can be differentiated.
+    </p>
+
+    <p permid="p7">
+      As we work with the algebraic structure of functions,
+      it is important to develop a big picture view of what we are doing.
+      Here, we make several general observations based on the rules we have so far.
+
+      <ul permid="ul">
+        <li permid="l_j">
+          The derivative of any polynomial function will be another polynomial function,
+          and that the degree of the derivative is one less than the degree of the original function.
+          For instance, if <m>p(t) = 7t^5 - 4t^3 + 8t</m>,
+          <m>p</m> is a degree 5 polynomial, and its derivative,
+          <m>p'(t) = 35t^4 - 12t^2 + 8</m>, is a degree 4 polynomial.
+        </li>
+
+        <li permid="l_s">
+          The derivative of any exponential function is another exponential function:
+          for example, if <m>g(z) = 7 \cdot 2^z</m>,
+          then <m>g'(z) = 7 \cdot 2^z \ln(2)</m>,
+          which is also exponential.
+        </li>
+
+        <li permid="l_b">
+          We should not lose sight of the fact that all of the meaning of the derivative that we developed in <xref ref="C-1">Chapter</xref> still holds.
+          The derivative measures the instantaneous rate of change of the original function,
+          as well as the slope of the tangent line at any selected point on the curve.
+        </li>
+      </ul>
+    </p>
+
+    <xi:include href="./activities/act-2-1-3.xml" />
+  </subsection>
+
+  <subsection permid="ssec-summary">
+    <title>Summary</title>
+    <p permid="p">
+      <ul permid="ul">
+        <li permid="l_j">
+          <p permid="p">
+            Given a differentiable function <m>y = f(x)</m>,
+            we can express the derivative of <m>f</m> in several different notations:
+            <m>f'(x)</m>, <m>\frac{df}{dx}</m>,
+            <m>\frac{dy}{dx}</m>, and <m>\frac{d}{dx}[f(x)]</m>.
+          </p>
+        </li>
+
+        <li permid="l_s">
+          <p permid="p">
+            The limit definition of the derivative leads to patterns among certain families of functions that enable us to compute derivative formulas without resorting directly to the limit definition.
+            For example,
+            if <m>f</m> is a power function of the form <m>f(x) = x^n</m>,
+            then <m>f'(x) = nx^{n-1}</m> for any real number <m>n</m> other than 0.
+            This is called the Rule for Power Functions.
+          </p>
+        </li>
+
+        <li permid="l_b">
+          <p permid="p">
+            We have stated a rule for derivatives of exponential functions in the same spirit as the rule for power functions:
+            for any positive real number <m>a</m>,
+            if <m>f(x) = a^x</m>, then <m>f'(x) = a^x \ln(a)</m>.
+          </p>
+        </li>
+
+        <li permid="l_k">
+          <p permid="p">
+            If we are given a constant multiple of a function whose derivative we know,
+            or a sum of functions whose derivatives we know,
+            the Constant Multiple and Sum Rules make it straightforward to compute the derivative of the overall function.
+            More formally,
+            if <m>f(x)</m> and <m>g(x)</m> are differentiable with derivatives <m>f'(x)</m> and <m>g'(x)</m> and <m>a</m> and <m>b</m> are constants, then
+            <me>
+              \frac{d}{dx} \left[af(x) + bg(x)\right] = af'(x) + bg'(x)
+            </me>.
+          </p>
+        </li>
+      </ul>
+    </p>
+  </subsection>
+
+  <xi:include href="./exercises/ez-2-1.xml" />
+</section>
+
