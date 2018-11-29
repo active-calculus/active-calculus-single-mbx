@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2018                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+<section permid="sec-qualitative" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-7-2-qualitative">
+  <title>Qualitative behavior of solutions to DEs</title>
+  <objectives permid="ob">
+    <ul permid="ul">
+      <li permid="l_j">
+        <p permid="p">
+          What is a slope field?
+        </p>
+      </li>
+
+      <li permid="l_s">
+        <p permid="p">
+          How can we use a slope field to obtain qualitative information about the solutions of a differential equation?
+        </p>
+      </li>
+
+      <li permid="l_b">
+        <p permid="p">
+          What are stable and unstable equilibrium solutions of an autonomous differential equation?
+        </p>
+      </li>
+    </ul>
+  </objectives>
+
+  <introduction>
+    <p permid="p1">
+      In earlier work, we have used the tangent line to the graph of a
+      function <m>f</m> at a point <m>a</m> to approximate the values of <m>f</m> near <m>a</m>.
+      The usefulness of this approximation is that we need to know very
+      little about the function;
+      armed with only the value <m>f(a)</m> and the
+      derivative <m>f'(a)</m>,
+      we may find the equation of the tangent line and
+      the approximation
+      <me>
+        f(x) \approx f(a) + f'(a)(x-a)
+      </me>.
+    </p>
+
+    <p permid="p2">
+      Remember that a first-order differential equation gives us information about the derivative of an unknown function.
+      Since the derivative at a point tells us the slope of the tangent line at this point,
+      a differential equation gives us crucial information about the tangent lines to the graph of a solution.
+      We will use this information about the tangent lines to create a <em>slope field</em>
+      for the differential equation,
+      which enables us to sketch solutions to initial value problems.
+      Our aim will be to understand the solutions qualitatively.
+      That is, we would like to understand the basic nature of solutions,
+      such as their long-range behavior,
+      without precisely determining the value of a solution at a particular point.
+    </p>
+
+    <xi:include href="./previews/PA-7-2.xml" />
+  </introduction>
+
+  <subsection permid="ssec-slope-fields">
+    <title>Slope fields</title>
+    <idx><h>slope field</h></idx>
+
+    <p permid="p1">
+      <xref ref="PA-7-2">Preview Activity</xref>
+      shows that we can sketch the solution to an initial value problem if we know an appropriate collection of tangent lines.
+      We can use the differential equation to find the slope of the tangent line at any point of interest,
+      and hence plot such a collection.
+    </p>
+
+    <p permid="p2">
+      Let's continue looking at the differential equation <m>\frac{dy}{dt} = t-2</m>.
+      If <m>t=0</m>, this equation says that <m>dy/dt = 0-2=-2</m>.
+      Note that this value holds regardless of the value of <m>y</m>.
+      We will therefore sketch tangent lines for several values of <m>y</m> and <m>t=0</m> with a slope of <m>-2</m>,
+      as shown in <xref ref="F-7-2-field-0">Figure</xref>.
+    </p>
+
+    <sidebyside widths="47% 47%" margins="0%">
+      <figure xml:id="F-7-2-field-0">
+        <caption>Tangent lines at points with <m>t=0</m>.</caption>
+        <image source="images/7_2_field_0" />
+      </figure>
+
+      <figure xml:id="F-7-2-field-1">
+        <caption>Adding tangent lines at points with <m>t=1</m>.</caption>
+        <image source="images/7_2_field_1" />
+      </figure>
+    </sidebyside>
+
+    <p permid="p3">
+      Let's continue in the same way:
+      if <m>t=1</m>,
+      the differential equation tells us that <m>dy/dt = 1-2=-1</m>,
+      and this holds regardless of the value of <m>y</m>.
+      We now sketch tangent lines for several values of <m>y</m> and <m>t=1</m> with a slope of <m>-1</m> in 
+      <xref ref="F-7-2-field-1">Figure</xref>.
+    </p>
+
+    <p permid="p4">
+      Similarly, we see that when <m>t=2</m>,
+      <m>dy/dt = 0</m> and when <m>t=3</m>, <m>dy/dt=1</m>.
+      We may therefore add to our growing collection of tangent line plots to achieve <xref ref="F-7-2-field-2">Figure</xref>.
+    </p>
+
+    <sidebyside widths="47% 47%" margins="0%">
+      <figure xml:id="F-7-2-field-2">
+        <caption>Adding tangent lines at points with <m>t=2</m> and <m>t=3</m>.</caption>
+        <image source="images/7_2_field_3" />
+      </figure>
+
+      <figure xml:id="F-7-2-field-23">
+        <caption>A completed slope field.</caption>
+        <image source="images/7_2_field_23" />
+      </figure>
+    </sidebyside>
+
+    <p permid="p5">
+      In <xref ref="F-7-2-field-2">Figure</xref>,
+      we begin to see the solutions to the differential equation emerge.
+      For the sake of even greater clarity,
+      we add more tangent lines to provide the more complete picture shown at right in <xref ref="F-7-2-field-23">Figure</xref>.
+    </p>
+
+    <p permid="p6">
+      <xref ref="F-7-2-field-23">Figure</xref>
+      is called a <em>slope field</em>
+          <idx><h>slope field</h></idx>
+      for the differential equation.
+      It
+      allows us to sketch solutions just as we did in the preview activity.
+      We can begin with the initial value
+      <m>y(0) = 1</m> and start sketching the solution by following the tangent line.
+      Whenever the solution passes through a point at which a tangent line is drawn,
+      that line is tangent to the solution.
+      This principle leads us to the sequence of images in <xref ref="F-7-2-IVP-soln">Figure</xref>.
+    </p>
+    <!-- <sbsgroup> -->
+    <figure xml:id="F-7-2-IVP-soln">
+      <caption>A sequence of images that show how to sketch the IVP solution that satisfies <m>y(0)=1</m>.</caption>
+      <sidebyside widths="30% 30% 30%" margins="0%">
+      <!--
+
+      <figure xml:id="F-7-2-field-31">
+        -->
+        <image source="images/7_2_field_31" />
+        <!--
+      </figure>
+
+      -->
+      <!--
+
+      <figure xml:id="F-7-2-field-32">
+        -->
+        <image source="images/7_2_field_32" />
+        <!--
+      </figure>
+
+        -->
+        <image source="images/7_2_field_33" />
+      </sidebyside>
+
+    </figure>
+
+    <p permid="p7">
+      In fact, we can draw solutions for any initial value.
+      <xref ref="F-7-2-field-4">Figure</xref>
+      shows solutions for several different initial values for <m>y(0)</m>.
+    </p>
+
+    <figure xml:id="F-7-2-field-4">
+      <caption>Different solutions to <m>\frac{dy}{dt} = t-2</m> that correspond to different initial values.</caption>
+      <image width="40%" source="images/7_2_field_4" />
+    </figure>
+    <!-- </sbsgroup> -->
+    <p permid="p8">
+      Just as we did for the equation <m>\frac{dy}{dt} = t-2</m>,
+      we can construct a slope field for any differential equation of interest.
+      The slope field provides us with visual information about how we expect solutions to the differential equation to behave.
+    </p>
+
+    <xi:include href="./activities/act-7-2-1.xml" />
+  </subsection>
+
+  <subsection permid="ssec-equilibrium-solutions-stability">
+    <title>Equilibrium solutions and stability</title>
+    <p permid="p1">
+      As our work in <xref ref="act-7-2-1">Activity</xref> demonstrates,
+      first-order autonomous equations may have solutions that are constant.
+      These are simple to detect by inspecting the differential equation <m>dy/dt = f(y)</m>:
+      constant solutions necessarily have a zero derivative,
+      so <m>dy/dt = 0 = f(y)</m>.
+    </p>
+
+    <p permid="p2">
+      For example, in <xref ref="act-7-2-1">Activity</xref>,
+      we considered the equation <m>\frac{dy}{dt} = f(y)=-\frac12(y-4)</m>.
+      Constant solutions are found by setting <m>f(y) = -\frac12(y-4) = 0</m>,
+      which we immediately see implies that <m>y = 4</m>.
+    </p>
+
+    <p permid="p3">
+      Values of <m>y</m> for which
+      <m>f(y) = 0</m> in an autonomous differential equation
+      <m>\frac{dy}{dt} = f(y)</m> are called 
+      <em>equilibrium solutions</em>
+          <idx><h>equilibrium solution</h></idx>
+      of the differential equation.
+    </p>
+
+    <xi:include href="./activities/act-7-2-2.xml" />
+  </subsection>
+
+  <subsection permid="ssec-summary">
+    <title>Summary</title>
+    <p permid="p">
+      <ul permid="ul">
+        <li permid="l_j">
+          <p permid="p">
+            A slope field is a plot created by graphing the tangent lines of many different solutions to a differential equation.
+          </p>
+        </li>
+
+        <li permid="l_s">
+          <p permid="p">
+            Once we have a slope field,
+            we may sketch the graph of solutions by drawing a curve that is always tangent to the lines in the slope field.
+          </p>
+        </li>
+
+        <li permid="l_b">
+          <p permid="p">
+            Autonomous differential equations sometimes have constant solutions that we call equilibrium solutions.
+            These may be classified as stable or unstable,
+            depending on the behavior of nearby solutions.
+          </p>
+        </li>
+      </ul>
+    </p>
+  </subsection>
+
+  <xi:include href="./exercises/ez-7-2.xml" />
+</section>
+

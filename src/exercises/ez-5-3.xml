@@ -624,58 +624,79 @@
         </ol>
       </p>
     </answer>
-    <solution>
-        <p>
-        <ol label="a.">
-        <li>
-          <p>
-            In the following plot, we see that the model is reasonable because it appears to be periodic and repeats every <m>24</m> hours, as well as that the rate of consumption seems to peak at the times of day where people are most active in their homes: around <m>7</m> a.m. and around <m>5</m> p.m.
-          </p>
-          <sidebyside width="50%">
-            <image source="images/5_3_Ez4Soln" />
-          </sidebyside>           
-        </li>
-        <li>
-          <p>
-            The meaning of <m>\int_0^{24} r(t) \, dt</m> is the total power consumed in <m>24</m> hours, measured in megawatt-hours.  This is because <m>r(t)</m> is measured in megawatts and <m>\triangle t</m> in hours, and thus in the Riemann sum that corresponds to the definite integral, the terms in the sum of the form <m>r(t) \cdot \triangle t</m> have units ``megawatt-hours''.  Moreover, by integrating the rate of power consumption we get the total change in power consumed.
-          </p>
-        </li>
-        <li>
-          <p>
-            In a typical day, we know that Mathland consumes <m>\int_0^{24} r(t) \, dt</m> megawatt-hours of power, and thus we seek to evaluate the integral
-            <me>
-              \int_0^{24} r(t) \, dt = \int_0^{24} \left[ 4 + \sin(0.263t + 4.7) + \cos(0.526t+9.4) \right] \, dt.
+    <solution permid="mQk">
+      <p permid="kTT">
+        <ol label="a." permid="rAd">
+          <li permid="bVG">
+            <p permid="AcR">
+              In the following plot,
+              we see that the model is reasonable because it appears to be periodic and repeats every <m>24</m> hours,
+              as well as that the rate of consumption seems to peak at the times of day where people are most active in their homes:
+              around <m>7</m> a.m. and around <m>5</m> p.m.
+            </p>
+
+            <sidebyside width="50%" permid="Myn">
+              <image source="images/5_3_Ez4Soln" />
+            </sidebyside>
+
+          </li>
+
+          <li permid="IcP">
+            <p permid="gka">
+              The meaning of <m>\int_0^{24} r(t) \, dt</m> is the total power consumed in <m>24</m> hours,
+              measured in megawatt-hours.
+              This is because <m>r(t)</m> is measured in megawatts and <m>\triangle t</m> in hours,
+              and thus in the Riemann sum that corresponds to the definite integral,
+              the terms in the sum of the form
+              <m>r(t) \cdot \triangle t</m> have units ``megawatt-hours''. Moreover,
+              by integrating the rate of power consumption we get the total change in power consumed.
+            </p>
+          </li>
+
+          <li permid="ojY">
+            <p permid="Mrj">
+              In a typical day, we know that Mathland consumes
+              <m>\int_0^{24} r(t) \, dt</m> megawatt-hours of power,
+              and thus we seek to evaluate the integral
+              <me permid="AML">
+                \int_0^{24} r(t) \, dt = \int_0^{24} \left[ 4 + \sin(0.263t + 4.7) + \cos(0.526t+9.4) \right] \, dt
+              </me>.
+              To do so, we use the subtitutions <m>u = 0.263t + 4.7</m>
+              (so <m>du = 0.263 \, dt</m>)
+              and <m>w = 0.526t + 9.4</m>
+              (so <m>dw = 0.526 \, dt</m>)
+              to help us antidifferentiate the two trigonometric expressions,
+              and thus we find that
+              <me permid="gTU">
+                \int \sin(0.263t + 4.7) \, dt = \frac{1}{0.263} \int \sin(u) \, du = -\frac{1}{0.263} \cos(u) = -\frac{1}{0.263} \cos(0.263t + 4.7)
+              </me>
+              and
+              <me permid="Nbd">
+                \int \cos(0.526t + 9.4) \, dt = \frac{1}{0.526} \int \cos(w) \, dw = \frac{1}{0.526} \sin(w) = \frac{1}{0.526} \sin(0.526t + 9.4)
+              </me>.
+              Putting this all together and using the Fundamental Theorem of Calculus, we have
+              <md permid="tim">
+                <mrow>\int_0^{24} r(t) \, dt &amp;= \left. 4t -\frac{1}{0.263} \cos(0.263t + 4.7) + \frac{1}{0.526} \sin(0.526t + 9.4) \right|_0^{24}</mrow>
+                <mrow>&amp;= \left[ 4 \cdot 24 -\frac{1}{0.263} \cos(0.263 \cdot 24 + 4.7) + \frac{1}{0.526} \sin(0.526 \cdot 24 + 9.4) \right] - \left[ -\frac{1}{0.263} \cos(4.7) + \frac{1}{0.526} \sin(9.4) \right]</mrow>
+                <mrow>&amp;\approx 95.7809</mrow>
+              </md>
+              megawatts of power used in <m>24</m> hours.
+            </p>
+          </li>
+
+          <li permid="Urh">
+            We know that the average value of the rate function <m>r</m> on <m>[0,24]</m> is
+            <me permid="Zpv">
+              \displaystyle r_{\operatorname{AVG} [0,24]}  = \frac{1}{24-0} \int_{0}^{24} r(t) \, dt
+            </me>.
+            Thus, by our work in (c), we have that
+            <me permid="FwE">
+              \displaystyle r_{\operatorname{AVG} [0,24]}  \approx \frac{1}{24} \cdot 95.7809 = 3.99087
             </me>
-            To do so, we use the subtitutions <m>u = 0.263t + 4.7</m> (so <m>du = 0.263 \, dt</m>) and <m>w = 0.526t + 9.4</m> (so <m>dw = 0.526 \, dt</m>) to help us antidifferentiate the two trigonometric expressions, and thus we find that
-            <me>
-              \int \sin(0.263t + 4.7) \, dt = \frac{1}{0.263} \int \sin(u) \, du = -\frac{1}{0.263} \cos(u) = -\frac{1}{0.263} \cos(0.263t + 4.7)
-            </me>
-            and
-            <me>
-              \int \cos(0.526t + 9.4) \, dt = \frac{1}{0.526} \int \cos(w) \, dw = \frac{1}{0.526} \sin(w) = \frac{1}{0.526} \sin(0.526t + 9.4).
-            </me>
-            Putting this all together and using the Fundamental Theorem of Calculus, we have
-            <md>
-              <mrow>\int_0^{24} r(t) \, dt &amp;= \left. 4t -\frac{1}{0.263} \cos(0.263t + 4.7) + \frac{1}{0.526} \sin(0.526t + 9.4) \right|_0^{24}</mrow>
-              <mrow>  &amp;= \left[ 4 \cdot 24 -\frac{1}{0.263} \cos(0.263 \cdot 24 + 4.7) + \frac{1}{0.526} \sin(0.526 \cdot 24 + 9.4) \right] - \left[ -\frac{1}{0.263} \cos(4.7) + \frac{1}{0.526} \sin(9.4) \right]</mrow>
-              <mrow>  &amp;\approx 95.7809 </mrow>
-            </md>
-            megawatts of power used in <m>24</m> hours.
-          </p>
-        </li>
-        <li>
-          We know that the average value of the rate function <m>r</m> on <m>[0,24]</m> is
-          <me>
-            \displaystyle r_{\operatorname{AVG} [0,24]}  = \frac{1}{24-0} \int_{0}^{24} r(t) \, dt.
-          </me>
-          Thus, by our work in (c), we have that 
-          <me>
-            \displaystyle r_{\operatorname{AVG} [0,24]}  \approx \frac{1}{24} \cdot 95.7809 = 3.99087
-          </me>
-          which is measured in megawatts.
-        </li>
+            which is measured in megawatts.
+          </li>
         </ol>
-        </p>
+      </p>
     </solution>
   </exercise>
 
