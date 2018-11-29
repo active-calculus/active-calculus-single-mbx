@@ -148,13 +148,16 @@
     <xsl:apply-templates select="activity" />
 </xsl:template>
 
-<!-- Horrible, dirty, awful hack to get numbering right when we dont -->
-<!-- include Preview Activities. This relies 100% on there being exactly one  -->
-<!-- Preview Activity per section. -->
+<!-- We can't just kill introductions, since if we do, it messes up the -->
+<!-- numbering. Instead, we increment the cpjt counter every time we see -->
+<!-- an exploration (Preview Activity). If you want to include Preview Activities -->
+<!-- just remove the template that matches exploration. -->
 <xsl:template match="introduction">
-    <xsl:text>\setcounter{cpjt}{1}&#xa;</xsl:text>
+    <xsl:apply-templates select="exploration" />
 </xsl:template>
-    
+<xsl:template match="exploration">
+    <xsl:text>\stepcounter{cpjt}&#xa;</xsl:text>
+</xsl:template>    
 
 <!-- Configure font with latex.preamble.early -->
 <xsl:param name="latex.preamble.early">
@@ -198,8 +201,8 @@
     <xsl:text>\renewcommand*{\raggedchapter}{\raggedleft}&#xa;</xsl:text>
     <xsl:text>\renewcommand*{\chapterformat}{\MakeUppercase</xsl:text>
     <xsl:text>{\chapappifchapterprefix{}}&#xa;</xsl:text>
-    <xsl:text>\rlap{\enskip\resizebox{!}{1.2cm}{\thechapter} </xsl:text>
-    <xsl:text>\rule{15cm}{1.2cm} }}&#xa;</xsl:text>
+    <xsl:text>\rlap{\enskip\resizebox{!}{0.95cm}{\thechapter} </xsl:text>
+    <xsl:text>\rule{15cm}{0.95cm} }}&#xa;</xsl:text>
     <xsl:text>\RedeclareSectionCommand[beforeskip=30pt,</xsl:text>
     <xsl:text>afterskip=20pt]{chapter}&#xa;</xsl:text>
     <xsl:text>\renewcommand*\chapterheadmidvskip{\par\nobreak</xsl:text>
