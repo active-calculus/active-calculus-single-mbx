@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2018                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+<section permid="sec-inverse" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-2-6-inverse">
+  <title>Derivatives of Inverse Functions</title>
+  <objectives permid="ob">
+    <ul permid="ul">
+      <li permid="l_j">
+        <p permid="p">
+          What is the derivative of the natural logarithm function?
+        </p>
+      </li>
+
+      <li permid="l_s">
+        <p permid="p">
+          What are the derivatives of the inverse trigonometric functions
+          <m>\arcsin(x)</m> and <m>\arctan(x)</m>?
+        </p>
+      </li>
+
+      <li permid="l_b">
+        <p permid="p">
+          If <m>g</m> is the inverse of a differentiable function <m>f</m>,
+          how is <m>g'</m> computed in terms of <m>f</m>, <m>f'</m>,
+          and <m>g</m>?
+        </p>
+      </li>
+    </ul>
+  </objectives>
+
+  <introduction>
+    <p permid="p1">
+      Much of mathematics centers on the notion of function.
+      Indeed, throughout our study of calculus,
+      we are investigating the behavior of functions,
+      with particular emphasis on how fast the output of the function changes in response to changes in the input.
+      Because each function represents a process,
+      a natural question to ask is whether or not the particular process can be reversed.
+      That is, if we know the output that results from the function,
+      can we determine the input that led to it?
+      And
+      if we know how fast a particular process is changing,
+      can we determine how fast the inverse process is changing?
+    </p>
+
+    <p permid="p2">
+      One of the most important functions in all of mathematics is the natural exponential function <m>f(x) = e^x</m>.
+      Its inverse, the natural logarithm,
+      <m>g(x) = \ln(x)</m>, is similarly important.
+      One of our goals in this section is to learn how to differentiate the logarithm function.
+      First, we review some of the basic concepts surrounding functions and their inverses.
+    </p>
+
+    <xi:include href="./previews/PA-2-6.xml" />
+  </introduction>
+
+  <subsection permid="ssec-basic-facts-about-inverse-functions">
+    <title>Basic facts about inverse functions</title>
+    <p permid="p1">
+      A function
+          <idx><h>function</h></idx>
+      <m>f : A \to B</m> is a rule that associates each element in the set <m>A</m> to one and only one element in the set <m>B</m>.
+      We call <m>A</m> the <em>domain</em>
+          <idx><h>domain</h></idx>
+      of <m>f</m> and <m>B</m> the
+      <em>codomain</em> 
+          <idx><h>codomain</h></idx>
+      of <m>f</m>.
+      If there exists a function <m>g : B \to A</m> such that
+      <m>g(f(a)) = a</m> for every possible choice of <m>a</m> in the set <m>A</m> and
+      <m>f(g(b)) = b</m> for every <m>b</m> in the set <m>B</m>,
+      then we say that <m>g</m> is the
+      <em>inverse</em> of <m>f</m>.
+    </p>
+
+    <p permid="p2">
+      We often use the notation <m>f^{-1}</m>
+      (read <q><m>f</m>-inverse</q>)
+      to denote the inverse of <m>f</m>.
+      The inverse function undoes the work of <m>f</m>.
+      Indeed, if <m>y = f(x)</m>, then
+      <me>
+        f^{-1}(y) = f^{-1}(f(x)) = x
+      </me>.
+      Thus, the equations <m>y = f(x)</m> and
+      <m>x = f^{-1}(y)</m> say the same thing.
+      The only difference between the two equations is one of perspective <mdash /> one is solved for <m>x</m>,
+      while the other is solved for <m>y</m>.
+    </p>
+
+    <p permid="p3">
+      Here we briefly remind ourselves of some key facts about inverse functions.
+    </p>
+
+    <note>
+      <p permid="p4">
+        For a function <m>f : A \to B</m>,
+
+        <ul permid="ul">
+          <li permid="l_j">
+            <p permid="p">
+              <m>f</m> has an inverse if and only if <m>f</m> is one-to-one
+                <idx><h>one-to-one</h></idx><fn>
+              A function <m>f</m> is <em>one-to-one</em>
+              provided that no two distinct inputs lead to the same output.
+              </fn> and onto
+                <idx><h>onto</h></idx><fn>
+              A function <m>f</m> is <em>onto</em>
+              provided that every possible element of the codomain can be realized as an output of the function for some choice of input from the domain.
+              </fn>;
+            </p>
+          </li>
+
+          <li permid="l_s">
+            <p permid="p">
+              provided <m>f^{-1}</m> exists,
+              the domain of <m>f^{-1}</m> is the codomain of <m>f</m>,
+              and the codomain of <m>f^{-1}</m> is the domain of <m>f</m>;
+            </p>
+          </li>
+
+          <li permid="l_b">
+            <p permid="p">
+              <m>f^{-1}(f(x)) = x</m> for every <m>x</m> in the domain of <m>f</m> and
+              <m>f(f^{-1}(y)) = y</m> for every <m>y</m> in the codomain of <m>f</m>;
+            </p>
+          </li>
+
+          <li permid="l_k">
+            <p permid="p">
+              <m>y = f(x)</m> if and only if <m>x = f^{-1}(y)</m>.
+            </p>
+          </li>
+        </ul>
+      </p>
+    </note>
+
+    <p permid="p5">
+      The last fact reveals a special relationship between the graphs of <m>f</m> and <m>f^{-1}</m>.
+      If a point <m>(x,y)</m> that lies on the graph of <m>y = f(x)</m>,
+      then it is also true that <m>x = f^{-1}(y)</m>,
+      which means that the point <m>(y,x)</m> lies on the graph of <m>f^{-1}</m>.
+      This shows us that the graphs of <m>f</m> and <m>f^{-1}</m> are the reflections of each other across the line <m>y = x</m>,
+      because this reflection is precisely the geometric action that swaps the coordinates in an ordered pair.
+      In <xref ref="F-2-6-Inverse-Plot">Figure</xref>,
+      we see this illustrated by the function <m>y = f(x) = 2^x</m> and its inverse,
+      with the points <m>(-1,\frac{1}{2})</m> and
+      <m>(\frac{1}{2},-1)</m> highlighting the reflection of the curves across <m>y = x</m>.
+    </p>
+
+    <figure xml:id="F-2-6-Inverse-Plot">
+      <caption>A graph of a function <m>y = f(x)</m> along with its inverse, <m>y = f^{-1}(x)</m>.</caption>
+      <image width="47%" source="images/2_6_InversePlot" />
+    </figure>
+
+    <p permid="p6">
+      To close our review of important facts about inverses,
+      we recall that the natural exponential function
+      <m>y = f(x) = e^x</m> has an inverse function,
+      namely the natural logarithm,
+      <m>x = f^{-1}(y) = \ln(y)</m>.
+      Thus, writing <m>y = e^x</m> is interchangeable with <m>x = \ln(y)</m>,
+      plus <m>\ln(e^x) = x</m> for every real number <m>x</m> and
+      <m>e^{\ln(y)} = y</m> for every positive real number <m>y</m>.
+    </p>
+  </subsection>
+
+  <subsection permid="ssec-derivative-natural-logarithm-function">
+    <title>The derivative of the natural logarithm function</title>
+    <p permid="p1">
+      In what follows,
+      we find a formula for the derivative of <m>g(x) = \ln(x)</m>.
+      To do so, we take advantage of the fact that we know the derivative of the natural exponential function,
+      the inverse of <m>g</m>.
+      In particular, we know that writing
+      <m>g(x) = \ln(x)</m> is equivalent to writing <m>e^{g(x)} = x</m>.
+      Now we differentiate both sides of this equation and observe that
+      <me>
+        \frac{d}{dx}\left[e^{g(x)}\right] = \frac{d}{dx}[x]
+      </me>.
+    </p>
+
+    <p permid="p2">
+      The righthand side is simply <m>1</m>;
+      by applying the chain rule to the left side, we find that
+      <me>
+        e^{g(x)} g'(x) = 1
+      </me>.
+    </p>
+
+    <p permid="p3">
+      Next we solve for <m>g'(x)</m>, to get
+      <me>
+        g'(x) = \frac{1}{e^{g(x)}}
+      </me>.
+    </p>
+
+    <p permid="p4">
+      Finally, we recall that <m>g(x) = \ln(x)</m>, so
+      <m>e^{g(x)} = e^{\ln(x)} = x</m>, and thus
+      <me>
+        g'(x) = \frac{1}{x}
+      </me>.
+    </p>
+
+    <assemblage permid="natural-log" xml:id="natural-log">
+      <title>Natural Logarithm</title>
+      <p permid="p">
+            <idx><h>derivative</h><h>logarithm</h></idx>
+        For all positive real numbers <m>x</m>,
+        <m>\frac{d}{dx}[\ln(x)] = \frac{1}{x}</m>.
+      </p>
+    </assemblage>
+
+    <p permid="p5">
+      This rule for the natural logarithm function now joins our list of basic derivative rules.
+      Note that this rule applies only to positive values of <m>x</m>,
+      as these are the only values for which <m>\ln(x)</m> is defined.
+    </p>
+
+    <p permid="p6">
+      Also notice that for the first time in our work,
+      differentiating a basic function of a particular type has led to a function of a very different nature:
+      the derivative of the natural logarithm is not another logarithm,
+      nor even an exponential function,
+      but rather a rational one.
+    </p>
+
+    <p permid="p7">
+      Derivatives of logarithms may now be computed in concert with all of the rules known to date.
+      For instance, if <m>f(t) = \ln(t^2 + 1)</m>,
+      then by the chain rule, <m>f'(t) = \frac{1}{t^2 + 1} \cdot 2t</m>.
+    </p>
+
+    <p permid="p8">
+      There are interesting connections between the graphs of
+      <m>f(x) = e^x</m> and <m>f^{-1}(x) = \ln(x)</m>.
+    </p>
+
+    <sidebyside widths="44% 50%" margins="0%" valign="top">
+      <p permid="p9">
+        In <xref ref="F-2-6-Log-Exp">Figure</xref>,
+        we are reminded that since the natural exponential function has the property that its derivative is itself,
+        the slope of the tangent to <m>y = e^x</m> is equal to the height of the curve at that point.
+        For instance, at the point <m>A = (\ln(0.5), 0.5)</m>,
+        the slope of the tangent line is <m>m_A = 0.5</m>,
+        and at <m>B = (\ln(5), 5)</m>,
+        the tangent line's slope is <m>m_B = 5</m>.
+      </p>
+
+      <figure xml:id="F-2-6-Log-Exp">
+        <caption>A graph of the function <m>y = e^x</m> along with its inverse, <m>y = \ln(x)</m>, where both functions are viewed using the input variable <m>x</m>.</caption>
+        <image source="images/2_6_LogExp" />
+      </figure>
+    </sidebyside>
+
+    <p permid="p10">
+      At the corresponding points <m>A'</m> and <m>B'</m> on the graph of the natural logarithm function
+      (which come from reflecting <m>A</m> and <m>B</m> across the line <m>y = x</m>),
+      we know that the slope of the tangent line is the reciprocal of the <m>x</m>-coordinate of the point (since <m>\frac{d}{dx}[\ln(x)] = \frac{1}{x}</m>).
+      Thus, at <m>A' = (0.5, \ln(0.5))</m>,
+      we have <m>m_{A'} = \frac{1}{0.5} = 2</m>,
+      and at <m>B' = (5, \ln(5))</m>,
+      <m>m_{B'} = \frac{1}{5}</m>.
+    </p>
+
+    <p permid="p11">
+      In particular, we observe that
+      <m>m_{A'} = \frac{1}{m_A}</m> and <m>m_{B'} = \frac{1}{m_B}</m>.
+      This is not a coincidence,
+      but in fact holds for any curve <m>y = f(x)</m> and its inverse,
+      provided the inverse exists.
+      This is due to the reflection across <m>y = x</m>.
+      It changes the roles of <m>x</m> and <m>y</m>,
+      thus reversing the rise and run,
+      so the slope of the inverse function at the reflected point is the reciprocal of the slope of the original function.
+    </p>
+
+    <xi:include href="./activities/act-2-6-1.xml" />
+  </subsection>
+
+  <subsection permid="ssec-inverse-trigonometric-functions-their-derivatives">
+    <title>Inverse trigonometric functions and their derivatives</title>
+    <p permid="p1">
+      Trigonometric functions are periodic,
+      so they fail to be one-to-one,
+      and thus do not have inverse functions.
+      However, we can restrict the domain of each trigonometric function
+      so that it is one-to-one on that domain.
+    </p>
+
+    <p permid="p2">
+      For instance,
+      consider the sine function on the domain <m>[-\frac{\pi}{2}, \frac{\pi}{2}]</m>.
+      Because no output of the sine function is repeated on this interval,
+      the function is one-to-one and thus has an inverse.
+      Thus, the function <m>f(x) = \sin(x)</m> with
+      <m>[-\frac{\pi}{2}, \frac{\pi}{2}]</m> and codomain <m>[-1,1]</m>
+      has an inverse function <m>f^{-1}</m> such that
+      <me>
+        f^{-1} : [-1,1] \to [-\frac{\pi}{2}, \frac{\pi}{2}]
+      </me>.
+    </p>
+
+    <sidebyside widths="47% 47%" margins="0%" valign="top">
+      <p permid="p3">
+        We call <m>f^{-1}</m> the <em>arcsine</em>
+            <idx><h>arcsine</h></idx>
+        (or inverse sine) function and write <m>f^{-1}(y) = \arcsin(y)</m>.
+        It is especially important to remember that
+        <me>
+          y = \sin(x) \ \ \text{and}  \ \ x = \arcsin(y)
+        </me>
+        say the same thing.
+        <q>The arcsine of <m>y</m></q>
+        means <q>the angle whose sine is <m>y</m>.</q> For example,
+        <m>\arcsin(\frac{1}{2}) = \frac{\pi}{6}</m> means that
+        <m>\frac{\pi}{6}</m> is the angle whose sine is <m>\frac{1}{2}</m>,
+        which is equivalent to writing <m>\sin(\frac{\pi}{6}) = \frac{1}{2}</m>.
+      </p>
+
+      <figure xml:id="F-2-6-arcsine">
+        <caption>A graph of <m>f(x) = \sin(x)</m> (in blue), restricted to the domain <m>[-\frac{\pi}{2}, \frac{\pi}{2}]</m>, along with its inverse, <m>f^{-1}(x) = \arcsin(x)</m> (in magenta).</caption>
+        <image source="images/2_6_arcsine" />
+      </figure>
+    </sidebyside>
+
+    <p permid="p4">
+      Next, we determine the derivative of the arcsine function.
+      Letting <m>h(x) = \arcsin(x)</m>,
+      our goal is to find <m>h'(x)</m>.
+      Since <m>h(x)</m> is the angle whose sine is <m>x</m>,
+      it is equivalent to write
+      <me>
+        \sin(h(x)) = x
+      </me>.
+    </p>
+
+    <p permid="p5">
+      Differentiating both sides of the previous equation, we have
+      <me>
+        \frac{d}{dx}[\sin(h(x))] = \frac{d}{dx}[x]
+      </me>.
+      The righthand side is simply <m>1</m>,
+      and by applying the chain rule applied to the left side,
+      <me>
+        \cos(h(x)) h'(x) = 1
+      </me>.
+    </p>
+
+    <p permid="p6">
+      Solving for <m>h'(x)</m>, it follows that
+      <me>
+        h'(x) = \frac{1}{\cos(h(x))}
+      </me>.
+    </p>
+
+    <p permid="p7">
+      Finally, we recall that <m>h(x) = \arcsin(x)</m>,
+      so the denominator of <m>h'(x)</m> is the function <m>\cos(\arcsin(x))</m>,
+      or in other words,
+      <q>the cosine of the angle whose sine is <m>x</m>.</q>
+      A bit of right triangle trigonometry allows us to simplify this expression considerably.
+    </p>
+
+    <sidebyside widths="47% 47%" margins="0%">
+      <p permid="p8">
+        Let's say that <m>\theta = \arcsin(x)</m>,
+        so that <m>\theta</m> is the angle whose sine is <m>x</m>.
+        We can picture <m>\theta</m> as an angle in a right triangle with hypotenuse <m>1</m> and a vertical leg of length <m>x</m>,
+        as shown in <xref ref="F-2-6-cosarcsin">Figure</xref>.
+        The horizontal leg must be <m>\sqrt{1-x^2}</m>,
+        by the Pythagorean Theorem.
+      </p>
+
+      <figure xml:id="F-2-6-cosarcsin">
+        <caption>The right triangle that corresponds to the angle <m>\theta = \arcsin(x)</m>.</caption>
+        <image source="images/2_6_cosarcsin" />
+      </figure>
+    </sidebyside>
+
+    <p permid="p9">
+      Now, because
+      <m>\theta = \arcsin(x)</m>,
+      the expression for <m>\cos(\arcsin(x))</m> is equivalent to <m>\cos(\theta)</m>.
+      From the figure,
+      <m>\cos(\arcsin(x)) = \cos(\theta) = \sqrt{1-x^2}</m>.
+    </p>
+
+    <p permid="p10">
+      Substituting this expression into our formula,
+      <m>h'(x) = \frac{1}{\cos(\arcsin(x))}</m>, we have now shown that
+      <me>
+        h'(x) = \frac{1}{\sqrt{1-x^2}}
+      </me>.
+    </p>
+
+    <assemblage permid="inverse-sine" xml:id="inverse-sine">
+      <title>Inverse sine</title>
+      <p permid="p">
+            <idx><h>derivative</h><h>arcsine</h></idx>
+        For all real numbers <m>x</m> such that <m>-1 \lt  x \lt  1</m>,
+        <me>
+          \frac{d}{dx}[\arcsin(x)] = \frac{1}{\sqrt{1-x^2}}
+        </me>.
+      </p>
+    </assemblage>
+
+    <xi:include href="./activities/act-2-6-2.xml" />
+
+    <p permid="p11">
+      While derivatives for other inverse trigonometric functions can be established similarly,
+      for now we limit ourselves to the arcsine and arctangent functions.
+    </p>
+
+    <xi:include href="./activities/act-2-6-3.xml" />
+  </subsection>
+
+  <subsection permid="ssec-link-between-derivative-a-function-derivative-its-inverse">
+    <title>The link between the derivative of a function and the derivative of its inverse</title>
+    <p permid="p1">
+      In <xref ref="F-2-6-Log-Exp">Figure</xref>,
+      we saw an interesting relationship between the slopes of tangent lines to the natural exponential and natural logarithm functions at points reflected across the line <m>y = x</m>.
+      In particular, we observed that at the point 
+      <m>(\ln(2), 2)</m> on the graph of <m>f(x) = e^x</m>,
+      the slope of the tangent line is <m>f'(\ln(2)) = 2</m>,
+      while at the corresponding point
+      <m>(2, \ln(2))</m> on the graph of <m>f^{-1}(x) = \ln(x)</m>,
+      the slope of the tangent line is <m>(f^{-1})'(2) = \frac{1}{2}</m>,
+      which is the reciprocal of <m>f'(\ln(2))</m>.
+    </p>
+
+    <p permid="p2">
+      That the two corresponding tangent lines have reciprocal slopes is not a coincidence.
+      If <m>f</m> and <m>g</m> are differentiable inverse functions, then
+      <m>y = f(x)</m> if and only if <m>x = g(y)</m>,
+      then<m>f(g(x)) = x</m> for every <m>x</m> in the domain of <m>f^{-1}</m>.
+      Differentiating both sides of this equation, we have
+      <me>
+        \frac{d}{dx} [f(g(x))] = \frac{d}{dx} [x]
+      </me>,
+      and by the chain rule,
+      <me>
+        f'(g(x)) g'(x) = 1
+      </me>.
+    </p>
+
+    <p permid="p3">
+      Solving for <m>g'(x)</m>, we have <m>g'(x) = \frac{1}{f'(g(x))}</m>.
+      Here we see that the slope of the tangent line to the inverse function <m>g</m> at the point
+      <m>(x,g(x))</m> is precisely the reciprocal of the slope of the tangent line to the original function <m>f</m> at the point <m>(g(x),f(g(x))) = (g(x),x)</m>.
+    </p>
+
+    <figure xml:id="F-2-6-Gen-Inv">
+      <caption>A graph of function <m>y = f(x)</m> along with its inverse, <m>y = g(x) = f^{-1}(x)</m>.  Observe that the slopes of the two tangent lines are reciprocals of one another.</caption>
+      <image width="50%" source="images/2_6_GenInv" />
+    </figure>
+
+    <p permid="p4">
+      To see this more clearly,
+      consider the graph of the function
+      <m>y = f(x)</m> shown in <xref ref="F-2-6-Gen-Inv">Figure</xref>,
+      along with its inverse <m>y = g(x)</m>.
+      Given a point <m>(a,b)</m> that lies on the graph of <m>f</m>,
+      we know that <m>(b,a)</m> lies on the graph of <m>g</m>;
+      because <m>f(a) = b</m> and <m>g(b) = a</m>.
+      Now, applying the rule that
+      <m>g'(x) = 1/f'(g(x))</m> to the value <m>x = b</m>, we have
+      <me>
+        g'(b) = \frac{1}{f'(g(b))} = \frac{1}{f'(a)}
+      </me>,
+      which is precisely what we see in the figure:
+      the slope of the tangent line to <m>g</m> at <m>(b,a)</m> is the reciprocal of the slope of the tangent line to <m>f</m> at <m>(a,b)</m>,
+      since these two lines are reflections of one another across the line <m>y = x</m>.
+    </p>
+
+    <assemblage permid="inverse-function" xml:id="inverse-function">
+      <title>Derivative of an inverse function</title>
+      <p permid="p">
+            <idx><h>derivative</h><h>inverse</h></idx>
+        Suppose that <m>f</m> is a differentiable function with inverse <m>g</m> and that <m>(a,b)</m> is a point that lies on the graph of <m>f</m> at which <m>f'(a) \ne 0</m>.
+        Then
+        <me>
+          g'(b) = \frac{1}{f'(a)}
+        </me>.
+      </p>
+    </assemblage>
+
+    <p permid="p5">
+      More generally, for any <m>x</m> in the domain of <m>g'</m>,
+      we have <m>g'(x) = 1/f'(g(x))</m>.
+    </p>
+
+    <p permid="p6">
+      The rules we derived for <m>\ln(x)</m>, <m>\arcsin(x)</m>,
+      and <m>\arctan(x)</m> are all just specific examples of this general property of the derivative of an inverse function.
+      For example,
+      with <m>g(x) = \ln(x)</m> and <m>f(x) = e^x</m>, it follows that
+      <me>
+        g'(x) = \frac{1}{f'(g(x))} = \frac{1}{e^{\ln(x)}} = \frac{1}{x}
+      </me>.
+    </p>
+  </subsection>
+
+  <subsection permid="ssec-summary">
+    <title>Summary</title>
+    <p permid="p">
+      <ul permid="ul">
+        <li permid="l_j">
+          <p permid="p">
+            For all positive real numbers <m>x</m>,
+            <m>\frac{d}{dx}[\ln(x)] = \frac{1}{x}</m>.
+          </p>
+        </li>
+
+        <li permid="l_s">
+          <p permid="p">
+            For all real numbers <m>x</m> such that <m>-1 \lt x \lt 1</m>,
+            <m>\frac{d}{dx}[\arcsin(x)] = \frac{1}{\sqrt{1-x^2}}</m>.
+            In addition, for all real numbers <m>x</m>,
+            <m>\frac{d}{dx}[\arctan(x)] = \frac{1}{1+x^2}</m>.
+          </p>
+        </li>
+
+        <li permid="l_b">
+          <p permid="p">
+            If <m>g</m> is the inverse of a differentiable function <m>f</m>,
+            then for any point <m>x</m> in the domain of <m>g'</m>,
+            <m>g'(x) = \frac{1}{f'(g(x))}</m>.
+          </p>
+        </li>
+      </ul>
+    </p>
+  </subsection>
+
+  <xi:include href="./exercises/ez-2-6.xml" />
+</section>
+

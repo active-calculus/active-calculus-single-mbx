@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2018                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+<section permid="sec-second-d" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-1-6-second-d">
+  <title>The second derivative</title>
+  <objectives permid="ob">
+    <ul permid="ul">
+      <li permid="l_j">
+        <p permid="p">
+          How does the derivative of a function tell us whether the function is increasing or decreasing at a point or on an interval?
+        </p>
+      </li>
+
+      <li permid="l_s">
+        <p permid="p">
+          What can we learn by taking the derivative of the derivative
+          (the <em>second</em> derivative)
+          of a function <m>f</m>?
+        </p>
+      </li>
+
+      <li permid="l_b">
+        <p permid="p">
+          What does it mean to say that a function is concave up or concave down?
+          How are these characteristics connected to certain properties of the derivative of the function?
+        </p>
+      </li>
+
+      <li permid="l_k">
+        <p permid="p">
+          What are the units of the second derivative?
+          How do they help us understand the rate of change of the rate of change?
+        </p>
+      </li>
+    </ul>
+  </objectives>
+
+  <introduction>
+    <p permid="p1">
+      Given a differentiable function <m>y= f(x)</m>,
+      we know that its derivative, <m>y = f'(x)</m>,
+      is a related function whose output at <m>x=a</m> tells us the slope of the tangent line to
+      <m>y = f(x)</m> at the point <m>(a,f(a))</m>.
+      That is, heights on the derivative graph tell us the values of slopes on the original function's graph.
+    </p>
+
+    <p permid="p2">
+      At a point where <m>f'(x)</m> is positive,
+      the slope of the tangent line to <m>f</m> is positive.
+      Therefore, on an interval where <m>f'(x)</m> is positive,
+      the function <m>f</m> is increasing
+      (or rising).
+          <idx><h>increasing</h></idx>
+      Similarly,
+      if <m>f'(x)</m> is negative on an interval,
+      the graph of <m>f</m> is decreasing 
+          <idx><h>decreasing</h></idx>
+      (or falling).
+    </p>
+
+    <p permid="p3">
+      The derivative of <m>f</m> tells us not only <em>whether</em>
+      the function <m>f</m> is increasing or decreasing on an interval,
+      but also <em>how</em> the function <m>f</m> is increasing or decreasing.
+      Look at the two tangent lines shown in <xref ref="F-1-6-Intro">Figure</xref>.
+      We see that at point <m>A</m>
+      the value of <m>f'(x)</m> is positive and relatively close to zero,
+      and at that point the graph is rising slowly.
+      By contrast, at point <m>B</m>,
+      the derivative is negative and relatively large in absolute value,
+      and <m>f</m> is decreasing rapidly at <m>B</m>.
+    </p>
+
+    <figure xml:id="F-1-6-Intro">
+      <caption>Two tangent lines on a graph.</caption>
+      <image width="45%" source="images/1_6_Intro" />
+    </figure>
+
+    <p permid="p4">
+      Besides asking whether the value of the derivative function is positive or negative and whether it is large or small,
+      we can also ask <q>how is the derivative changing?</q>
+    </p>
+
+    <p permid="p5">
+      Because the derivative,
+      <m>y = f'(x)</m>, is itself a function,
+      we can consider taking its derivative <mdash /> the derivative of the derivative <mdash /> and ask 
+      <q>what does the derivative of the derivative tell us about how the original function behaves?</q>
+      We start with an investigation of a moving object.
+    </p>
+
+    <xi:include href="./previews/PA-1-6.xml" />
+  </introduction>
+
+  <subsection permid="ssec-increasing-decreasing-or-neither">
+    <title>Increasing, decreasing, or neither</title>
+    <p permid="p1">
+      So far,
+      we have used the words
+      <em>increasing</em> and <em>decreasing</em> intuitively
+      to describe a function's graph.
+      Here we define these terms more formally.
+    </p>
+
+    <definition permid="d">
+      <statement>
+        <p permid="p">
+          Given a function <m>f(x)</m> defined on the interval <m>(a,b)</m>,
+          we say that <term><m>f</m> is increasing on <m>(a,b)</m></term>
+          provided that for all <m>x</m>,
+          <m>y</m> in the interval <m>(a,b)</m>,
+          if <m>x \lt y</m>, then <m>f(x) \lt f(y)</m>.
+          Similarly, we say that <term><m>f</m> is decreasing on <m>(a,b)</m></term>
+          provided that for all <m>x</m>,
+          <m>y</m> in the interval <m>(a,b)</m>,
+          if <m>x \lt y</m>, then <m>f(x) \gt f(y)</m>.
+        </p>
+      </statement>
+    </definition>
+
+    <p permid="p2">
+      Simply put,
+      an increasing function is one that is rising as we move from left to right along the graph,
+      and a decreasing function is one that falls as the value of the input increases.
+      If the function has a derivative,
+      the sign of the derivative tells us whether the function is increasing or decreasing.
+    </p>
+
+    <p permid="p3">
+      Let <m>f</m> be a function that is differentiable on an interval <m>(a,b)</m>.
+      It is possible to show that that <m>f</m> is increasing on <m>(a,b)</m> if and only if
+      <m>f'(x) > 0</m> for every <m>x</m> such that <m>a \lt x \lt b</m>;
+      similarly, <m>f</m> is decreasing on <m>(a,b)</m> if and only if <m>f'(x) \lt 0</m>.
+      If <m>f'(a) = 0</m>,
+      then <m>f</m> is neither increasing nor decreasing at <m>x = a</m>.
+    </p>
+
+    <p permid="p4">
+      For example,
+      the function pictured in <xref ref="F-1-6-Intro2">Figure</xref>
+      is increasing on the entire interval <m>-2 \lt x \lt 0</m>.
+      Note that at both <m>x = \pm 2</m> and <m>x = 0</m>,
+      we say that <m>f</m> is neither increasing nor decreasing,
+      because <m>f'(x) = 0</m> at these values.
+    </p>
+
+    <figure xml:id="F-1-6-Intro2">
+      <caption>A function that is decreasing on the intervals <m>-3 \lt  x \lt  -2</m> and <m>0 \lt  x  \lt  2</m> and increasing on <m>-2 \lt  x \lt  0</m> and <m>2 \lt  x \lt  3</m>.</caption>
+      <image width="47%" source="images/1_6_Intro2" />
+    </figure>
+  </subsection>
+
+  <subsection permid="ssec-second-derivative">
+    <title>The Second Derivative</title>
+    <idx><h>second derivative</h></idx>
+
+    <p permid="p1">
+      We are now accustomed to investigating the behavior of a function by examining its derivative.
+      The derivative of a function <m>f</m>
+      is a new function given by the rule
+      <me>
+        f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}
+      </me>.
+    </p>
+
+    <p permid="p2">
+      Because <m>f'</m> is itself a function,
+      it is perfectly feasible for us to consider the derivative of the derivative,
+      which is the new function <m>y = [f'(x)]'</m>.
+      We call this resulting function
+      <em>the second derivative</em>
+          <idx><h>second derivative</h></idx>
+      of <m>y = f(x)</m>,
+      and denote the second derivative by <m>y = f''(x)</m>.
+      Consequently,
+      we will sometimes call <m>f'</m>
+      <q>the first derivative</q> of <m>f</m>,
+      rather than simply <q>the derivative</q> of <m>f</m>.
+    </p>
+
+    <definition permid="d">
+      <statement>
+        <p permid="p">
+          The <term>second derivative</term>
+          is defined by the limit definition of the derivative of the first derivative.
+          That is,
+          <me>
+            f''(x) = \lim_{h \to 0} \frac{f'(x+h)-f'(x)}{h}
+          </me>.
+        </p>
+      </statement>
+    </definition>
+
+    <p permid="p3">
+      The meaning of the derivative function still holds,
+      so when we compute <m>y = f''(x)</m>,
+      this new function measures slopes of tangent lines to the curve <m>y = f'(x)</m>,
+      as well as the instantaneous rate of change of <m>y = f'(x)</m>.
+      In other words,
+      just as the first derivative measures the rate at which the original function changes,
+      the second derivative measures the rate at which the first derivative changes.
+      The second derivative will help us understand how the rate of change of the original function is itself changing.
+    </p>
+  </subsection>
+
+  <subsection permid="ssec-concavity">
+    <title>Concavity</title>
+    <p permid="p1">
+      In addition to asking <em>whether</em>
+      a function is increasing or decreasing,
+      it is also natural to inquire <em>how</em>
+      a function is increasing or decreasing.
+      There are three basic behaviors that an increasing function can demonstrate on an interval,
+      as pictured in <xref ref="F-1-6-3optsi">Figure</xref>:
+      the function can increase more and more rapidly,
+      it can increase at the same rate,
+      or it can increase in a way that is slowing down.
+      Fundamentally,
+      we are beginning to think about how a particular curve bends,
+      with the natural comparison being made to lines, which don't bend at all.
+      More than this,
+      we want to understand how the bend in a function's graph is tied to behavior characterized by the first derivative of the function.
+    </p>
+
+    <figure xml:id="F-1-6-3optsi">
+      <caption>Three functions that are all increasing, but doing so at an increasing rate, at a constant rate, and at a decreasing rate, respectively.</caption>
+      <image width="100%" source="images/1_6_3optsi" />
+    </figure>
+
+    <p permid="p2">
+      On the leftmost curve in <xref ref="F-1-6-3optsi">Figure</xref>,
+      draw a sequence of tangent lines to the curve.
+      As we move from left to right,
+      the slopes of those tangent lines will increase.
+      Therefore, the rate of change of the pictured function is increasing,
+      and this explains why we say this function is
+      <em>increasing at an increasing rate</em>.
+      For the rightmost graph in <xref ref="F-1-6-3optsi">Figure</xref>,
+      observe that as <m>x</m> increases,
+      the function increases, but the slopes of the tangent lines decrease.
+      This function is <em>increasing at a decreasing rate</em>.
+    </p>
+
+    <p permid="p3">
+      Similar options hold for how a function can decrease.
+      Here we must be extra careful with our language,
+      because decreasing functions involve negative slopes.
+      Negative numbers present an interesting tension between common language and mathematical language.
+      For example, it can be tempting to say that
+      <q><m>-100</m> is bigger than <m>-2</m>.</q>
+      But we must remember that <q>greater than</q>
+      describes how numbers lie on a number line:
+      <m>x \gt y</m> provided that <m>x</m> lies to the right of <m>y</m>.
+      So of course, <m>-100</m> is less than <m>-2</m>.
+      Informally, it might be helpful to say that
+      <q><m>-100</m> is more negative than <m>-2</m>.</q>
+      When a function's values are negative,
+      and those values get more negative as the input increases,
+      the function must be decreasing.
+    </p>
+
+    <figure xml:id="F-1-6-3optsd">
+      <caption>From left to right, three functions that are all decreasing, but doing so in different ways.</caption>
+      <image width="100%" source="images/1_6_3optsd" />
+    </figure>
+
+    <p permid="p4">
+      Now consider the three graphs shown in <xref ref="F-1-6-3optsd">Figure</xref>.
+      Clearly the middle graph depicts a function decreasing at a constant rate.
+      Now, on the first curve, draw a sequence of tangent lines.
+      We see that the slopes of these lines get less and less negative as we move from left to right.
+      That means that the values of the first derivative,
+      while all negative, are increasing,
+      and thus we say that the leftmost curve is
+      <em>decreasing at an increasing rate</em>.
+    </p>
+
+    <p permid="p5">
+      This leaves only the rightmost curve in <xref ref="F-1-6-3optsd">Figure</xref> to consider.
+      For that function,
+      the slopes of the tangent lines are negative throughout the pictured interval,
+      but as we move from left to right,
+      the slopes get more and more negative.
+      Hence the slope of the curve is decreasing,
+      and we say that the function is
+      <em>decreasing at a decreasing rate</em>.
+    </p>
+
+    <p permid="p6">
+      We now introduce the notion of <em>concavity</em>
+          <idx><h>concavity</h></idx>
+      which provides simpler language to describe these behaviors.
+      When a curve opens upward on a given interval,
+      like the parabola <m>y = x^2</m> or the exponential growth function <m>y = e^x</m>,
+      we say that the curve is <em>concave up</em> on that interval.
+      Likewise, when a curve opens down,
+      like the parabola <m>y = -x^2</m> or the opposite of the exponential function <m>y = -e^{x}</m>,
+      we say that the function is <em>concave down</em>.
+      Concavity is linked to both the first and second derivatives of the function.
+    </p>
+
+    <p permid="p7">
+      In <xref ref="F-1-6-concavity">Figure</xref>,
+      we see two functions and a sequence of tangent lines to each.
+      On the lefthand plot, where the function is concave up,
+      observe that the tangent lines always lie below the curve itself, and 
+      the slopes of the tangent lines are increasing as we move from left to right.
+      In other words,
+      the function <m>f</m> is concave up on the interval shown because its derivative,
+      <m>f'</m>, is increasing on that interval.
+      Similarly, on the righthand plot in <xref ref="F-1-6-concavity">Figure</xref>,
+      where the function shown is concave down,
+      we see that the tangent lines alway lie above the curve,
+      and the slopes of the tangent lines are decreasing as we move from left to right.
+      The fact that its derivative,
+      <m>f'</m>, is decreasing makes <m>f</m> concave down on the interval.
+    </p>
+
+    <figure xml:id="F-1-6-concavity">
+      <caption>At left, a function that is concave up; at right, one that is concave down.</caption>
+      <image width="90%" source="images/1_6_concavity" />
+    </figure>
+
+    <p permid="p8">
+      We state these most recent observations formally as the definitions of the terms
+      <em>concave up</em> and <em>concave down</em>.
+    </p>
+
+    <definition permid="d">
+      <statement>
+        <p permid="p">
+          Let <m>f</m> be a differentiable function on an interval <m>(a,b)</m>.
+          Then <m>f</m> is <term>concave up</term>
+              <idx><h>concave up</h></idx>
+          on <m>(a,b)</m> if and only if <m>f'</m> is increasing on <m>(a,b)</m>;
+          <m>f</m> is <term>concave down</term>
+              <idx><h>concave down</h></idx>
+          on <m>(a,b)</m> if and only if <m>f'</m> is decreasing on <m>(a,b)</m>.
+        </p>
+      </statement>
+    </definition>
+
+    <xi:include href="./activities/act-1-6-1.xml" />
+
+    <p permid="p9">
+      Exploring the context of position, velocity,
+      and acceleration is an excellent way to understand how a function,
+      its first derivative,
+      and its second derivative are related to one another.
+      In <xref ref="act-1-6-1">Activity</xref>,
+      we can replace <m>s</m>, <m>v</m>,
+      and <m>a</m> with an arbitrary function <m>f</m> and its derivatives <m>f'</m> and <m>f''</m>,
+      and essentially all the same observations hold.
+      In particular, note that the following are equivalent:
+      on an interval where the graph of <m>f</m> is concave up,
+      <m>f'</m> is increasing and <m>f''</m> is positive.
+      Likewise, on an interval where the graph of <m>f</m> is concave down,
+      <m>f'</m> is decreasing and <m>f''</m> is negative.
+    </p>
+
+    <xi:include href="./activities/act-1-6-2.xml" />
+
+    <xi:include href="./activities/act-1-6-3.xml" />
+  </subsection>
+
+  <subsection permid="ssec-summary">
+    <title>Summary</title>
+    <p permid="p">
+      <ul permid="ul">
+        <li permid="l_j">
+          <p permid="p">
+            A differentiable function <m>f</m> is increasing at a point or on an interval whenever its first derivative is positive,
+            and decreasing whenever its first derivative is negative.
+          </p>
+        </li>
+
+        <li permid="l_s">
+          <p permid="p">
+            By taking the derivative of the derivative of a function <m>f</m>,
+            we arrive at the second derivative, <m>f''</m>.
+            The second derivative measures the instantaneous rate of change of the first derivative.
+            The sign of the second derivative tells us whether the slope of the tangent line to <m>f</m> is increasing or decreasing.
+          </p>
+        </li>
+
+        <li permid="l_b">
+          <p permid="p">
+            A differentiable function is concave up whenever its first derivative is increasing
+            (or equivalently whenever its second derivative is positive),
+            and concave down whenever its first derivative is decreasing
+            (or equivalently whenever its second derivative is negative).
+            Examples of functions that are everywhere concave up are <m>y = x^2</m> and <m>y = e^x</m>;
+            examples of functions that are everywhere concave down are <m>y = -x^2</m> and <m>y = -e^x</m>.
+          </p>
+        </li>
+
+        <li permid="l_k">
+          <p permid="p">
+            The units on the second derivative are
+            <q>units of output per unit of input per unit of input.</q>
+            They tell us how the value of the derivative function is changing in response to changes in the input.
+            In other words,
+            the second derivative tells us the rate of change of the rate of change of the original function.
+          </p>
+        </li>
+      </ul>
+    </p>
+  </subsection>
+
+  <xi:include href="./exercises/ez-1-6.xml" />
+</section>
+
