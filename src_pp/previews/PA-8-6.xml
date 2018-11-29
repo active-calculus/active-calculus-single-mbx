@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2018                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+<exploration permid="pa" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="PA-8-6">
+  <statement>
+    <p permid="p1">
+      In <xref ref="C-7">Chapter</xref>,
+      we learned some of the many important applications of differential equations,
+      and learned some approaches to solve or analyze them.
+      Here, we consider an important approach that will allow us to solve a wider variety of differential equations.
+    </p>
+
+    <p permid="p2">
+      Let's consider the familiar differential equation from exponential population growth given by
+      <men xml:id="eq-PA-8-6-Resistance-ode">
+        y' = ky
+      </men>,
+      where <m>k</m> is the constant of proportionality.
+      While we can solve this differential equation using methods we have already learned,
+      we take a different approach now that can be applied to a much larger set of differential equations.
+      For the rest of this activity,
+      let's assume that <m>k=1</m>.
+      We will use our knowledge of Taylor series to find a solution to the differential equation <xref ref="eq-PA-8-6-Resistance-ode" />.
+    </p>
+
+    <p permid="p3">
+      To do so, we assume that we have a solution <m>y=f(x)</m> and that <m>f(x)</m> has a Taylor series that can be written in the form
+      <me>
+        y = f(x) = \sum_{k=0}^{\infty} a_kx^k
+      </me>,
+      where the coefficients <m>a_k</m> are undetermined.
+      Our task is to find the coefficients.
+    </p>
+
+    <p permid="p4">
+      <ol permid="ol" label="a.">
+        <li permid="l_j">
+          <p permid="p">
+            Assume that we can differentiate a power series term by term.
+            By taking the derivative of <m>f(x)</m> with respect to <m>x</m> and substituting the result into the differential equation <xref ref="eq-PA-8-6-Resistance-ode" />, show that the equation
+            <me>
+              \sum_{k=1}^{\infty} ka_kx^{k-1} = \sum_{k=0}^{\infty} a_kx^{k}
+            </me>
+            must be satisfied in order for
+            <m>f(x) = \sum_{k=0}^{\infty} a_kx^k</m> to be a solution of the DE.
+          </p>
+        </li>
+
+        <li permid="l_s">
+          <p permid="p">
+            Two series are equal if and only if they have the same coefficients on like power terms.
+            Use this fact to find a relationship between <m>a_1</m> and <m>a_0</m>.
+          </p>
+        </li>
+
+        <li permid="l_b">
+          <p permid="p">
+            Now write <m>a_2</m> in terms of <m>a_1</m>.
+            Then write <m>a_2</m> in terms of <m>a_0</m>.
+          </p>
+        </li>
+
+        <li permid="l_k">
+          <p permid="p">
+            Write <m>a_3</m> in terms of <m>a_2</m>.
+            Then write <m>a_3</m> in terms of <m>a_0</m>.
+          </p>
+        </li>
+
+        <li permid="l_t">
+          <p permid="p">
+            Write <m>a_4</m> in terms of <m>a_3</m>.
+            Then write <m>a_4</m> in terms of <m>a_0</m>.
+          </p>
+        </li>
+
+        <li permid="l_c">
+          <p permid="p">
+            Observe that there is a pattern in (b)-(e).
+            Find a general formula for <m>a_k</m> in terms of <m>a_0</m>.
+          </p>
+        </li>
+
+        <li permid="l_l">
+          <p permid="p">
+            Write the series expansion for <m>y</m> using only the unknown coefficient <m>a_0</m>.
+            From this,
+            determine what familiar functions satisfy the differential equation <xref ref="eq-PA-8-6-Resistance-ode" />.
+            (<em>Hint</em>: Compare to a familiar Taylor series.)
+          </p>
+        </li>
+      </ol>
+    </p>
+  </statement>
+  <solution permid="s">
+    <p permid="p">
+      <ol permid="ol" label="a.">
+        <li permid="l_j">
+          <p permid="p1">
+            Differentiation term by term gives
+            <me>
+              y' = \sum_{k=1}^{\infty} ka_kx_{k-1}
+            </me>.
+          </p>
+
+          <p permid="p2">
+            We then substitute this series into the differential equation <xref ref="eq-PA-8-6-Resistance-ode" /> to obtain the equation
+          </p>
+          <!--This seems to end prematurely. -->
+        </li>
+
+        <li permid="l_s">
+          <p permid="p1">
+            When we write the first few terms of the series on either side of our differential equation we obtain
+            <md>
+              <mrow>\amp a_1 + (2)a_2x + (3)a_3x^2 + (4)a_4x^3 + \cdots + (k+1)a_{k+1}x^{k} + \cdots</mrow>
+              <mrow>\amp= a_0 + a_1x + a_2x^2 + \cdots + a_kx^k + \cdots</mrow>
+            </md>.
+          </p>
+
+          <p permid="p2">
+            Equating the constant terms gives us <m>a_1 = a_0</m>.
+          </p>
+        </li>
+
+        <li permid="l_b">
+          <p permid="p">
+            Equating the degree 1 terms gives us
+            <m>2a_2 = a_1</m> or <m>a_2 = \frac{a_1}{2}</m>.
+            Since <m>a_1 = a_0</m>,
+            we have <m>a_2 = \frac{a_0}{2}</m>.
+          </p>
+        </li>
+
+        <li permid="l_k">
+          <p permid="p">
+            Equating the degree 2 terms gives us
+            <m>3a_3 = a_2</m> or <m>a_3 = \frac{a_2}{3}</m>.
+            Since <m>a_2 = \frac{a_0}{2}</m>,
+            we have <m>a_3 = \frac{a_0}{3!}</m>.
+          </p>
+        </li>
+
+        <li permid="l_t">
+          <p permid="p">
+            Equating the degree 3 terms gives us
+            <m>4a_4 = a_3</m> or <m>a_4 = \frac{a_3}{4}</m>.
+            Since <m>a_3 = \frac{a_0}{3!}</m>,
+            we have <m>a_4 = \frac{a_0}{4!}</m>.
+          </p>
+        </li>
+
+        <li permid="l_c">
+          <p permid="p">
+            Equating the degree <m>k-1</m> terms gives us
+            <m>ka_k = a_{k-1}</m> or <m>a_k = \frac{a_{k-1}}{k}</m>.
+            It appears that <m>a_{k-1} = \frac{a_0}{(k-1)!}</m>,
+            so we have
+            <me>
+              a_k = \frac{a_0}{k!}
+            </me>.
+          </p>
+        </li>
+
+        <li permid="l_l">
+          <p permid="p1">
+            Since <m>a_k = \frac{a_0}{k!}</m> we have
+            <me>
+              y = a_0 \sum_{k=0}^{\infty} \frac{x^k}{k!}
+            </me>.
+          </p>
+
+          <p permid="p2">
+            So the functions that satisfy the differential equation <xref ref="eq-PA-8-6-Resistance-ode" /> are the exponential functions of the form <m>y = a_0e^x</m>.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </solution>
+</exploration>
+

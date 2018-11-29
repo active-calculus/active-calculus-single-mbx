@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2018                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+<exercises permid="ez" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="ez-5-3">
+
+  <exercise permid="ez-ww1" xml:id="ez-5-3-WW1">
+    <title>Product involving 4th power of a polynomial</title>
+    <webwork source="Library/Michigan/Chap7Sec1/Q11.pg" />
+  </exercise>
+
+  <exercise permid="ez-ww2" xml:id="ez-5-3-WW2">
+    <title>Product involving <m>\sin(x^6)</m></title>
+    <webwork source="Library/Michigan/Chap7Sec1/Q49.pg" />
+  </exercise>
+
+  <exercise permid="ez-ww3" xml:id="ez-5-3-WW3">
+    <title>Fraction involving <m>\ln^9</m></title>
+    <webwork source="Library/Michigan/Chap7Sec1/Q27.pg" />
+  </exercise>
+
+  <exercise permid="ez-ww4" xml:id="ez-5-3-WW4">
+    <title>Fraction involving <m>e^{5 x}</m></title>
+    <webwork source="Library/Michigan/Chap7Sec1/Q33.pg" />
+  </exercise>
+
+  <exercise permid="ez-ww5" xml:id="ez-5-3-WW5">
+    <title>Fraction involving <m>e^{5 \sqrt{y}}</m></title>
+    <webwork source="Library/Michigan/Chap7Sec1/Q31.pg" />
+  </exercise>
+
+  <exercise permid="ez-ww6" xml:id="ez-5-3-WW6">
+    <title>Definite integral involving <m>e^{-cos(q)}</m></title>
+    <webwork source="Library/Michigan/Chap7Sec1/Q55.pg" />
+  </exercise>
+
+  <exercise permid="e_xo">
+    <statement>
+      <p permid="p">
+        This problem centers on finding antiderivatives for the basic trigonometric functions other than <m>\sin(x)</m> and <m>\cos(x)</m>.
+
+        <ol permid="ol" label="a.">
+          <li permid="l_j">
+            <p permid="p">
+              Consider the indefinite integral <m>\int \tan(x) \, dx</m>.
+              By rewriting the integrand as
+              <m>\tan(x) = \frac{\sin(x)}{\cos(x)}</m> and identifying an appropriate function-derivative pair,
+              make a <m>u</m>-substitution and hence evaluate <m>\int \tan(x) \, dx</m>.
+            </p>
+          </li>
+
+          <li permid="l_s">
+            <p permid="p">
+              In a similar way, evaluate <m>\int \cot(x) \, dx</m>.
+            </p>
+          </li>
+
+          <li permid="l_b">
+            <p permid="p">
+              Consider the indefinite integral
+              <me>
+                \int \frac{\sec^2(x) + \sec(x) \tan(x)}{\sec(x) + \tan(x)} \, dx
+              </me>.
+              Evaluate this integral using the substitution <m>u = \sec(x) + \tan(x)</m>.
+            </p>
+          </li>
+
+          <li permid="l_k">
+            <p permid="p">
+              Simplify the integrand in (c) by factoring the numerator.
+              What is a far simpler way to write the integrand?
+            </p>
+          </li>
+
+          <li permid="l_t">
+            <p permid="p">
+              Combine your work in (c) and (d) to determine <m>\int \sec(x) \, dx</m>.
+            </p>
+          </li>
+
+          <li permid="l_c">
+            <p permid="p">
+              Using (c)-(e) as a guide,
+              evaluate <m>\int \csc(x) \, dx</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+    <answer permid="a">
+      <p permid="p">
+        <ol permid="ol" label="a.">
+          <li permid="l_j">
+            <p permid="p">
+              <m>\int \tan(x) \, dx = \ln\left(|\sec(x)|\right) + C</m>.
+            </p>
+          </li>
+
+          <li permid="l_s">
+            <p permid="p">
+              <m>\int \cot(x) \, dx = -\ln\left(|\csc(x)|\right) + C</m>.
+            </p>
+          </li>
+
+          <li permid="l_b">
+            <p permid="p">
+              <m>\int \frac{\sec^2(x) + \sec(x) \tan(x)}{\sec(x) + \tan(x)} \, dx = \ln\left(|\sec(x) + \tan(x)|\right) + C</m>.
+            </p>
+          </li>
+
+          <li permid="l_k">
+            <p permid="p">
+              <m>
+              \frac{\sec^2(x) + \sec(x) \tan(x)}{\sec(x) + \tan(x)} = \sec(x)</m>.
+            </p>
+          </li>
+
+          <li permid="l_t">
+            <p permid="p">
+              <m>
+              \int \sec(x) \, dx = \ln\left(|\sec(x) + \tan(x)|\right) + C</m>.
+            </p>
+          </li>
+
+          <li permid="l_c">
+            <p permid="p">
+              <m>
+              \int \csc(x) \, dx = -\ln\left(|\csc(x) + \cot(x)|\right) + C</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </answer>
+    <solution permid="s">
+      <p permid="p">
+        <ol permid="ol" label="a.">
+          <li permid="l_j">
+            <p permid="p">
+              We let <m>u = \cos(x)</m>, so <m>du = -\sin(x) \ dx</m>.
+              This change of variable transforms the integral into one we can integrate as follows:
+              <md>
+                <mrow>\int \tan(x) \, dx &amp;= \int \frac{\sin(x)}{\cos(x)} \ dx</mrow>
+                <mrow>&amp;= -\int \frac{1}{u} \ du</mrow>
+                <mrow>&amp;= -\ln(|u|) + C</mrow>
+                <mrow>&amp;= -\ln(|\cos(x)| + C</mrow>
+                <mrow>&amp;= \ln\left(|\cos(x)|^{-1}\right) + C</mrow>
+                <mrow>&amp;= \ln\left(|\sec(x)|\right) + C</mrow>
+              </md>.
+              Note that we used the property of the logarithm that
+              <m>p \ln (z) = \ln(z^p)</m> as well as the fact that
+              <m>\frac{1}{\cos(x)} = \sec(x)</m> in order to simplify the result.
+            </p>
+          </li>
+
+          <li permid="l_s">
+            <p permid="p">
+              We let <m>u = \sin(x)</m>, so <m>du = \cos(x) \ dx</m>.
+              This change of variable transforms the integral into one we can integrate as follows:
+              <md>
+                <mrow>\int \cot(x) \, dx &amp;= \int \frac{\cos(x)}{\sin(x)} \ dx</mrow>
+                <mrow>&amp;= \int \frac{1}{u} \ du</mrow>
+                <mrow>&amp;= \ln(|u|) + C</mrow>
+                <mrow>&amp;= \ln(|\sin(x)| + C</mrow>
+                <mrow>&amp;= -\ln\left(|\sin(x)|^{-1}\right) + C</mrow>
+                <mrow>&amp;= -\ln\left(|\csc(x)|\right) + C</mrow>
+              </md>.
+              Note that here we used the fact that
+              <m>\ln(z) = (-1)(-1)\ln(z) = (-1) \ln(z^{-1})</m> in order to simplify the result.
+            </p>
+          </li>
+
+          <li permid="l_b">
+            <p permid="p">
+              We let <m>u = \sec(x) + \tan(x)</m>,
+              so it follows that <m>du = \left(\sec(x)\tan(x)+\sec^2(x)\right) \ dx</m>.
+              This change of variable shows that the basic structure of the integrand is simple and can be integrated as follows:
+              <md>
+                <mrow>\int \frac{\sec^2(x) + \sec(x) \tan(x)}{\sec(x) + \tan(x)} \, dx &amp;= \int \frac{1}{u} \ du</mrow>
+                <mrow>&amp;= \ln(|u|) + C</mrow>
+                <mrow>&amp;= \ln\left(|\sec(x) + \tan(x)|\right) + C</mrow>
+              </md>.
+            </p>
+          </li>
+
+          <li permid="l_k">
+            <p permid="p">
+              The numerator of <m>\frac{\sec^2(x) + \sec(x) \tan(x)}{\sec(x) + \tan(x)}</m> can be rewritten by removing the common factor of <m>\sec(x)</m> to obtain
+              <me>
+                \sec(x)\left(\sec(x) + \tan(x)\right)
+              </me>.
+              The integrand can then be simplified to
+              <me>
+                \frac{\sec^2(x) + \sec(x) \tan(x)}{\sec(x) + \tan(x)} = \frac{\sec(x)\left(\sec(x) + \tan(x)\right)}{\sec(x) + \tan(x)} = \sec(x)
+              </me>.
+            </p>
+          </li>
+
+          <li permid="l_t">
+            <p permid="p">
+              Using the results of (c) and (d), we see that
+              <me>
+                \int \sec(x) \, dx = \int \frac{\sec^2(x) + \sec(x) \tan(x)}{\sec(x) + \tan(x)} \, dx = \ln\left(|\sec(x) + \tan(x)|\right) + C
+              </me>.
+            </p>
+          </li>
+
+          <li permid="l_c">
+            <p permid="p">
+              Following (c)-(e) we can evaluate <m>int \csc(x) \, dx</m> as follows.
+              First, rewrite <m>\csc(x)</m> by multiplying by <m>1 = \frac{\csc(x) + \cot(x)}{\csc(x) + \cot(x)}</m>, so that
+              <me>
+                \int \csc(x) \, dx = \int \frac{\csc(x)\left(\csc(x) + \cot(x)\right)}{\csc(x) + \cot(x)} \, dx = \int \frac{\csc^2(x) + \csc(x) \cot(x)}{\csc(x) + \cot(x)} \, dx
+              </me>.
+              Now we evaluate the last integral in the preceding equation with the substitution <m>u = \csc(x) + \cot(x)</m>.
+              Then <m>du = -\left(\csc(x)\cot(x)+\csc^2(x)\right) \ dx</m>.
+              This change of variable transforms the integral so that we can integrate:
+              <md>
+                <mrow>\int \frac{\csc^2(x) + \csc(x) \cot(x)}{\csc(x) + \cot(x)} \, dx &amp;= - \int \frac{1}{u} \ dx</mrow>
+                <mrow>&amp;= -\ln(|u|) + C</mrow>
+                <mrow>&amp;= -\ln\left(|\csc(x) + \cot(x)|\right) + C</mrow>
+              </md>.
+              Connecting the equalities we have established in our work,
+              we have shown that
+              <me>
+                \int \csc(x) \, dx = -\ln\left(|\csc(x) + \cot(x)|\right) + C
+              </me>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+  <exercise permid="e_ag">
+    <statement>
+      <p permid="p">
+        Consider the indefinite integral <m>\int x \sqrt{x-1} \, dx</m>.
+
+        <ol permid="ol" label="a.">
+          <li permid="l_j">
+            <p permid="p">
+              At first glance,
+              this integrand may not seem suited to substitution due to the presence of <m>x</m> in separate locations in the integrand.
+              Nonetheless, using the composite function
+              <m>\sqrt{x-1}</m> as a guide, let <m>u = x-1</m>.
+              Determine expressions for both <m>x</m> and <m>dx</m> in terms of <m>u</m>.
+            </p>
+          </li>
+
+          <li permid="l_s">
+            <p permid="p">
+              Convert the given integral in <m>x</m> to a new integral in <m>u</m>.
+            </p>
+          </li>
+
+          <li permid="l_b">
+            <p permid="p">
+              Evaluate the integral in (b) by noting that
+              <m>\sqrt{u} = u^{1/2}</m> and observing that it is now possible to rewrite the integrand in <m>u</m> by expanding through multiplication.
+            </p>
+          </li>
+
+          <li permid="l_k">
+            <p permid="p">
+              Evaluate each of the integrals
+              <m>\int x^2 \sqrt{x-1} \, dx</m> and <m>\int x \sqrt{x^2 - 1} \, dx</m>.
+              Write a paragraph to discuss the similarities among the three indefinite integrals in this problem and the role of substitution and algebraic rearrangement in each.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+    <answer permid="a">
+      <p permid="p">
+        <ol permid="ol" label="a.">
+          <li permid="l_j">
+            <p permid="p">
+              <m>
+              \int x \sqrt{x-1} \, dx = \int (u+1) \sqrt{u} \, du</m>.
+            </p>
+          </li>
+
+          <li permid="l_s">
+            <p permid="p">
+              <m>\int x \sqrt{x-1} \, dx = \frac{2}{5} (x-1)^{5/2} + \frac{2}{3} (x-1)^{3/2} + C</m>.
+            </p>
+          </li>
+
+          <li permid="l_b">
+            <p permid="p1">
+              <m>
+              \int x^2 \sqrt{x-1} \, dx = \frac{2}{7} (x-1)^{7/2} + \frac{4}{5} (x-1)^{5/2} + \frac{2}{3} (x-1)^{3/2} + C</m>.
+            </p>
+
+            <p permid="p2">
+              <m>
+              \int x \sqrt{x^2 - 1} \, dx = \frac{1}{3} (x^2-1)^{3/2} + C</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </answer>
+    <solution permid="s">
+      <p permid="p">
+        <ol permid="ol" label="a.">
+          <li permid="l_j">
+            <p permid="p">
+              Letting <m>u = x-1</m>,
+              we find that <m>x = u+1</m> and thus <m>dx = du</m>.
+            </p>
+          </li>
+
+          <li permid="l_s">
+            <p permid="p">
+              Using the change of variables in (a),
+              <me>
+                \int x \sqrt{x-1} \, dx = \int (u+1) \sqrt{u} \, du
+              </me>.
+            </p>
+          </li>
+
+          <li permid="l_b">
+            <p permid="p">
+              Using the fact that <m>\sqrt{u} = u^{1/2}</m> and distributing,
+              we can evaluate the integral as follows:
+              <md>
+                <mrow>\int x \sqrt{x-1} \, dx &amp;= \int (u+1) u^{1/2} \, du</mrow>
+                <mrow>&amp;= \int \left(u^{3/2} + u^{1/2} \right) \, du</mrow>
+                <mrow>&amp;= \frac{2}{5} u^{5/2} + \frac{2}{3} u^{3/2} + C</mrow>
+                <mrow>&amp;= \frac{2}{5} (x-1)^{5/2} + \frac{2}{3} (x-1)^{3/2} + C</mrow>
+              </md>.
+            </p>
+          </li>
+
+          <li permid="l_k">
+            <p permid="p1">
+              First, for <m>\int x^2 \sqrt{x-1} \, dx</m>,
+              we let <m>u = x-1</m> so that <m>x = u+1</m> and <m>dx = du</m>.
+              From there, our work is very similar to what we did in (b):
+              <md>
+                <mrow>\int x^2 \sqrt{x-1} \, dx &amp;= \int (u+1)^2 u^{1/2} \, du</mrow>
+                <mrow>&amp;= \int \left(u^2 + 2u + 1 \right) u^{1/2} \, du</mrow>
+                <mrow>&amp;= \int \left(u^{5/2} + 2u^{3/2} + u^{1/2} \right) \, du</mrow>
+                <mrow>&amp;= \frac{2}{7} u^{7/2} + \frac{4}{5} u^{5/2} + \frac{2}{3} u^{3/2} + C</mrow>
+                <mrow>&amp;= \frac{2}{7} (x-1)^{7/2} + \frac{4}{5} (x-1)^{5/2} + \frac{2}{3} (x-1)^{3/2} + C</mrow>
+              </md>.
+            </p>
+
+            <p permid="p2">
+              For <m>\int x \sqrt{x^2 - 1} \, dx</m>,
+              despite the fact that the integral looks remarkably similar,
+              the situation is quite different.
+              We observe that with <m>u = x^2 - 1</m>,
+              it follows <m>du = 2x \, dx</m>,
+              so we have a standard function-derivative pair.
+              Noting that <m>x \, dx = \frac{1}{2} \, du</m>, it follows that
+              <md>
+                <mrow>\int x \sqrt{x^2 - 1} \, dx &amp;= \int \sqrt{u} \cdot \frac{1}{2} \, du</mrow>
+                <mrow>&amp;= \frac{1}{2} \cdot \frac{2}{3}u^{3/2} + C</mrow>
+                <mrow>&amp;= \frac{1}{3} u^{3/2} + C</mrow>
+                <mrow>&amp;= \frac{1}{3} (x^2-1)^{3/2} + C</mrow>
+              </md>.
+            </p>
+
+            <p permid="p3">
+              In the situation where we have <m>(x-a)</m> under a square root and a polynomial outside the square root,
+              the substitution <m>u = x-a</m> will allow us to convert the integrand into an expression we can integrate by changing the form of the radical from <m>\sqrt{x-a}</m> to <m>\sqrt{u}</m>.
+              From there we are able to distribute and integrate an expression that is essentially a sum of (fractional) powers of <m>u</m>.
+              In the situation where a polynomial of degree higher than <m>1</m>
+              (such as <m>x^2 - 1</m>)
+              is under the radical,
+              we likely have to be fortunate enough to have the derivative of said polynomial
+              (up to a constant)
+              outside the radical in order to be able to integrate,
+              as we were in the last example.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+  <exercise permid="e_dp">
+    <statement>
+      <p permid="p">
+        Consider the indefinite integral <m>\int \sin^3(x) \, dx</m>.
+
+        <ol permid="ol" label="a.">
+          <li permid="l_j">
+            <p permid="p">
+              Explain why the substitution
+              <m>u = \sin(x)</m> will not work to help evaluate the given integral.
+            </p>
+          </li>
+
+          <li permid="l_s">
+            <p permid="p">
+              Recall the Fundamental Trigonometric Identity,
+              which states that <m>\sin^2(x) + \cos^2(x) = 1</m>.
+              By observing that <m>\sin^3(x) = \sin(x) \cdot \sin^2(x)</m>,
+              use the Fundamental Trigonometric Identity to rewrite the integrand as the product of <m>\sin(x)</m> with another function.
+            </p>
+          </li>
+
+          <li permid="l_b">
+            <p permid="p">
+              Explain why the substitution
+              <m>u = \cos(x)</m> now provides a possible way to evaluate the integral in (b).
+            </p>
+          </li>
+
+          <li permid="l_k">
+            <p permid="p">
+              Use your work in (a)-(c) to evaluate the indefinite integral <m>\int \sin^3(x) \, dx</m>.
+            </p>
+          </li>
+
+          <li permid="l_t">
+            <p permid="p">
+              Use a similar approach to evaluate <m>\int \cos^3(x) \, dx</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+    <answer permid="a">
+      <p permid="p">
+        <ol permid="ol" label="a.">
+          <li permid="l_j">
+            <p permid="p">
+              We don't have a function-derivative pair.
+            </p>
+          </li>
+
+          <li permid="l_s">
+            <p permid="p">
+              <m>
+              \sin^3(x) = \sin(x) (1-\cos^2(x))</m>.
+            </p>
+          </li>
+
+          <li permid="l_b">
+            <p permid="p">
+              <m>u = \cos(x)</m> and <m>du = -\sin(x) \, dx</m>.
+            </p>
+          </li>
+
+          <li permid="l_k">
+            <p permid="p">
+              <m>
+              \int \sin^3(x) \, dx = \frac{1}{3}\cos^3(x) - \cos(x) + C</m>.
+            </p>
+          </li>
+
+          <li permid="l_t">
+            <p permid="p">
+              <m>
+              \int \cos^3(x) \, dx = \sin(x) - \frac{1}{3}\sin^3(x) + C</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </answer>
+    <solution permid="s">
+      <p permid="p">
+        <ol permid="ol" label="a.">
+          <li permid="l_j">
+            <p permid="p">
+              If we let <m>u = \sin(x)</m>,
+              then <m>du = \cos(x) \, dx</m>.
+              Since there is no cosine function present in the integrand,
+              we don't have the needed function-derivative pair present in order to transform the integral into one we can evaluate.
+            </p>
+          </li>
+
+          <li permid="l_s">
+            <p permid="p">
+              Using the Fundamental Trigonometric Identity,
+              we observe that <m>\sin^2(x) = 1-\cos^2(x)</m>, and thus
+              <me>
+                \sin^3(x) = \sin(x) \cdot \sin^2(x) = \sin(x) (1-\cos^2(x))
+              </me>.
+            </p>
+          </li>
+
+          <li permid="l_b">
+            <p permid="p">
+              By our work in (b),
+              we see that <m>\int \sin^3(x) \, dx = \int \sin(x) (1-\cos^2(x)) \, dx</m>,
+              and in this integral we have the function-derivative pair that corresponds to
+              <m>u = \cos(x)</m> and <m>du = -\sin(x) \, dx</m>.
+            </p>
+          </li>
+
+          <li permid="l_k">
+            <p permid="p">
+              Using this substitution and evaluating the resulting integral,
+              <md>
+                <mrow>\int \sin^3(x) \, dx &amp;= \int \sin(x) (1-\cos^2(x)) \, dx</mrow>
+                <mrow>&amp;= \int (-1)(1-u^2) \, du</mrow>
+                <mrow>&amp;= \int (u^2-1) \, du</mrow>
+                <mrow>&amp;= \frac{1}{3}u^3 - u + C</mrow>
+                <mrow>&amp;= \frac{1}{3}\cos^3(x) - \cos(x) + C</mrow>
+              </md>.
+            </p>
+          </li>
+
+          <li permid="l_t">
+            <p permid="p">
+              Here we observe that <m>\cos^3(x) = \cos(x) \cdot \cos^2(x) = \cos(x) (1-\sin^2(x))</m>,
+              so letting <m>u = \sin(x)</m> and thus <m>du = \cos(x) \, dx</m>, we have
+              <md>
+                <mrow>\int \cos^3(x) \, dx &amp;= \int \cos(x) (1-\sin^2(x)) \, dx</mrow>
+                <mrow>&amp;= \int (1-u^2) \, du</mrow>
+                <mrow>&amp;= u - \frac{1}{3}u^3 + C</mrow>
+                <mrow>&amp;= \sin(x) - \frac{1}{3}\sin^3(x) + C</mrow>
+              </md>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+  <exercise permid="e_gy">
+    <statement>
+      <p permid="p1">
+        For the town of Mathland, MI, residential power consumption has shown certain trends over recent years.
+        Based on data reflecting average usage,
+        engineers at the power company have modeled the town's rate of energy consumption by the function
+        <me>
+          r(t) = 4 + \sin(0.263t + 4.7) + \cos(0.526t+9.4)
+        </me>.
+      </p>
+
+      <p permid="p2">
+        Here, <m>t</m> measures time in hours after midnight on a typical weekday,
+        and <m>r</m> is the rate of consumption in megawatts<fn>
+        The unit
+        <em>megawatt</em> is itself a rate,
+        which measures energy consumption per unit time.
+        A <em>megawatt-hour</em>
+        is the total amount of energy that is equivalent to a constant stream of 1 megawatt of power being sustained for 1 hour.
+        </fn> at time <m>t</m>.
+        Units are critical throughout this problem.
+
+        <ol permid="ol" label="a.">
+          <li permid="l_j">
+            <p permid="p">
+              Sketch a carefully labeled graph of <m>r(t)</m> on the interval [0,24] and explain its meaning.
+              Why is this a reasonable model of power consumption?
+            </p>
+          </li>
+
+          <li permid="l_s">
+            <p permid="p">
+              Without calculating its value,
+              explain the meaning of <m>\int_0^{24} r(t) \, dt</m>.
+              Include appropriate units on your answer.
+            </p>
+          </li>
+
+          <li permid="l_b">
+            <p permid="p">
+              Determine the exact amount of energy Mathland consumes in a typical day.
+            </p>
+          </li>
+
+          <li permid="l_k">
+            <p permid="p">
+              What is Mathland's average rate of power consumption in a given 24-hour period?
+              What are the units on this quantity?
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+    <answer permid="a">
+      <p permid="p">
+        <ol permid="ol" label="a.">
+          <li permid="l_j">
+            <p permid="p">
+              The model is reasonable because it appears to be periodic and the rate of consumption seems to peak at the times of day where people are most active in their homes.
+            </p>
+
+            <sidebyside width="50%">
+              <image source="images/5_3_Ez4Soln" />
+            </sidebyside>
+
+          </li>
+
+          <li permid="l_s">
+            <p permid="p">
+              The total power consumed in <m>24</m> hours,
+              measured in megawatt-hours.
+            </p>
+          </li>
+
+          <li permid="l_b">
+            <p permid="p">
+              <m>
+              \int_0^{24} r(t) \, dt \approx 95.7809 
+              </m>
+              megawatts of power used in <m>24</m> hours.
+            </p>
+          </li>
+
+          <li permid="l_k">
+            <m>
+            \displaystyle r_{\operatorname{AVG} [0,24]} \approx 3.99087
+            </m>
+            megawatts.
+          </li>
+        </ol>
+      </p>
+    </answer>
+    <solution permid="s">
+      <p permid="p">
+        <ol permid="ol" label="a.">
+          <li permid="l_j">
+            <p permid="p">
+              In the following plot,
+              we see that the model is reasonable because it appears to be periodic and repeats every <m>24</m> hours,
+              as well as that the rate of consumption seems to peak at the times of day where people are most active in their homes:
+              around <m>7</m> a.m. and around <m>5</m> p.m.
+            </p>
+
+            <sidebyside width="50%">
+              <image source="images/5_3_Ez4Soln" />
+            </sidebyside>
+
+          </li>
+
+          <li permid="l_s">
+            <p permid="p">
+              The meaning of <m>\int_0^{24} r(t) \, dt</m> is the total power consumed in <m>24</m> hours,
+              measured in megawatt-hours.
+              This is because <m>r(t)</m> is measured in megawatts and <m>\triangle t</m> in hours,
+              and thus in the Riemann sum that corresponds to the definite integral,
+              the terms in the sum of the form
+              <m>r(t) \cdot \triangle t</m> have units ``megawatt-hours''. Moreover,
+              by integrating the rate of power consumption we get the total change in power consumed.
+            </p>
+          </li>
+
+          <li permid="l_b">
+            <p permid="p">
+              In a typical day, we know that Mathland consumes
+              <m>\int_0^{24} r(t) \, dt</m> megawatt-hours of power,
+              and thus we seek to evaluate the integral
+              <me>
+                \int_0^{24} r(t) \, dt = \int_0^{24} \left[ 4 + \sin(0.263t + 4.7) + \cos(0.526t+9.4) \right] \, dt
+              </me>.
+              To do so, we use the subtitutions <m>u = 0.263t + 4.7</m>
+              (so <m>du = 0.263 \, dt</m>)
+              and <m>w = 0.526t + 9.4</m>
+              (so <m>dw = 0.526 \, dt</m>)
+              to help us antidifferentiate the two trigonometric expressions,
+              and thus we find that
+              <me>
+                \int \sin(0.263t + 4.7) \, dt = \frac{1}{0.263} \int \sin(u) \, du = -\frac{1}{0.263} \cos(u) = -\frac{1}{0.263} \cos(0.263t + 4.7)
+              </me>
+              and
+              <me>
+                \int \cos(0.526t + 9.4) \, dt = \frac{1}{0.526} \int \cos(w) \, dw = \frac{1}{0.526} \sin(w) = \frac{1}{0.526} \sin(0.526t + 9.4)
+              </me>.
+              Putting this all together and using the Fundamental Theorem of Calculus, we have
+              <md>
+                <mrow>\int_0^{24} r(t) \, dt &amp;= \left. 4t -\frac{1}{0.263} \cos(0.263t + 4.7) + \frac{1}{0.526} \sin(0.526t + 9.4) \right|_0^{24}</mrow>
+                <mrow>&amp;= \left[ 4 \cdot 24 -\frac{1}{0.263} \cos(0.263 \cdot 24 + 4.7) + \frac{1}{0.526} \sin(0.526 \cdot 24 + 9.4) \right] - \left[ -\frac{1}{0.263} \cos(4.7) + \frac{1}{0.526} \sin(9.4) \right]</mrow>
+                <mrow>&amp;\approx 95.7809</mrow>
+              </md>
+              megawatts of power used in <m>24</m> hours.
+            </p>
+          </li>
+
+          <li permid="l_k">
+            We know that the average value of the rate function <m>r</m> on <m>[0,24]</m> is
+            <me>
+              \displaystyle r_{\operatorname{AVG} [0,24]}  = \frac{1}{24-0} \int_{0}^{24} r(t) \, dt
+            </me>.
+            Thus, by our work in (c), we have that
+            <me>
+              \displaystyle r_{\operatorname{AVG} [0,24]}  \approx \frac{1}{24} \cdot 95.7809 = 3.99087
+            </me>
+            which is measured in megawatts.
+          </li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+</exercises>
