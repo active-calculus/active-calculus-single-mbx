@@ -25,44 +25,8 @@
   </exercise>
 
   <exercise xml:id="ez-4-4-WW3" permid="xpc">
-      <title>Evaluating the definite integral of a linear function</title>
-      <!-- <webwork source="Library/Rochester/setIntegrals3Definite/s4_4_17.pg" />
-           OPL version is incompatible with PTX-->
-      <webwork>
-          <setup>
-            <pg-code>
-                $a1 = random(2,10,2);
-                $b1 = random(2,10,1);
-                while ($a1 == $b1) {$b1 = random(2,10,1)}
-
-                $c1 = random(5,9,1);
-                $d1 = random(2,4,1);
-                $ans = Real(($a1*$c1**2/2 + $b1*$c1) -($a1*$d1**2/2 + $b1*$d1 ));
-            </pg-code>
-          </setup>
-          <statement>
-              <p permid="xwE">
-                  Evaluate the definite integral
-                  <me permid="GQq">\int_{ <var name="$d1"/> } ^ { <var name="$c1"/> } (<var name="$a1"/> x + <var name="$b1"/>)\, dx </me>.
-              </p>
-              <p permid="dDN">
-                  <var name="$ans" width="30"/>
-              </p>
-          </statement>
-          <solution permid="scR">
-              <p permid="MFC">
-                  Each part of this integral can be done separately, and each is a special case
-                  of the general rule <m>\displaystyle \int u^n du = \frac{u^{n+1}}{n+1}</m>:
-                  <md permid="DVK">
-                      <mrow>\int_{<var name="$d1"/>}^{<var name="$c1"/>} (<var name="$a1"/> x + <var name="$b1"/>) dx \amp=  <var name="$a1"/> \int_{<var name="$d1"/>}^{<var name="$c1"/>} x\, dx + <var name="$b1"/> \int_{<var name="$d1"/>}^{<var name="$c1"/>} dx</mrow>
-                      <mrow> \amp=  <var name="$a1"/> \left( \left. \frac{x^2}{2} \right|_{<var name="$d1"/>}^{<var name="$c1"/>} \right)
-                      + <var name="$b1"/> \left( \left. x \right|_{<var name="$d1"/>}^{<var name="$c1"/>} \right)</mrow>
-                      <mrow> \amp=  <var name="$a1"/> \left( \frac{<var name="$c1"/>^2}{2} - \frac{<var name="$d1"/>^2}{2} \right)
-                      + <var name="$b1"/> \left( <var name="$c1"/> - <var name="$d1"/> \right) = <var name="$ans"/></mrow>
-                  </md>
-              </p>
-          </solution>
-      </webwork>
+    <title>Evaluating the definite integral of a linear function</title>
+    <webwork source="Library/Rochester/setIntegrals3Definite/s4_4_17.pg" />
   </exercise>
 
   <exercise xml:id="ez-4-4-WW4" permid="dwl">
@@ -257,7 +221,7 @@
 
           <li permid="lKE">
             <p permid="Gnp">
-              <m>c = 5</m>.
+              <m>c = \frac{60}{24} = 2.5</m>.
             </p>
           </li>
         </ol>
@@ -344,28 +308,28 @@
           <li permid="Kno">
             <p permid="KXi">
               Let <m>V(t) = v(t) + c</m> be the new velocity function that is the original velocity <m>v</m> increased by <m>c</m> at every time.
-              We want to know the value of <m>c</m> for which total distance traveled on <m>[12,24]</m> is <m>210</m> meters.
+              We want to know the value of <m>c</m> for which total distance traveled is <m>210</m> meters.
               For this to be true, we must have that
               <me permid="BhX">
-                210 = \int_{12}^{24} V(t) \, dt = \int_{12}^{24} \left( v(t) + c \right) \, dt
+                210 = \int_{0}^{24} V(t) \, dt = \int_{0}^{24} \left( v(t) + c \right) \, dt
               </me>.
               Using the additive property of the definite integral and our earlier work in (b),
               we can say that
               <me permid="hpg">
-                210 = \int_{12}^{24} v(t) \, dt + \int_{12}^{24} c \, dt = 150 + \int_{12}^{24} c \, dt
+                210 = \int_{0}^{24} v(t) \, dt + \int_{0}^{24} c \, dt = 150 + \int_{0}^{24} c \, dt
               </me>,
               so
               <me permid="Nwp">
-                \int_{12}^{24} c \, dt = 60
+                \int_{0}^{24} c \, dt = 60
               </me>.
               Since the function <m>f(t) = c</m> is constant,
-              the integral <m>\int_{12}^{24} c \, dt</m> represents the area of a rectangle <m>12</m> units wide and <m>c</m> units tall,
-              so  <m>\int_{12}^{24} c \, dt = 12c</m>.
+              the integral <m>\int_{0}^{24} c \, dt</m> represents the area of a rectangle <m>24</m> units wide and <m>c</m> units tall,
+              so  <m>\int_{0}^{24} c \, dt = 24c</m>.
               Hence,
               <me permid="tDy">
-                12c = 60
+                24c = 60
               </me>
-              so <m>c = \frac{60}{12} = 5</m>.
+              so <m>c = \frac{60}{24} = 2.5</m>.
             </p>
           </li>
         </ol>
@@ -833,99 +797,6 @@
         one as the change in position divided by change in time,
         the other as an average of the values of <m>v(t)</m> itself.
       </p>
-    </solution>
-  </exercise>
-
-  <exercise xml:id="Ez-4-4-antid-of-1-over-x" permid="LVI">
-    <statement>
-      <p permid="uBY">
-        In <xref ref="T-4-4-Act2">Table</xref> in <xref ref="act-4-4-2">Activity</xref>, we noted that for <m>x \gt 0</m>, the antiderivative of <m>f(x) = \frac{1}{x}</m> is <m>F(x) = \ln(x)</m>.  Here we observe that a key difference between <m>f(x)</m> and <m>F(x)</m> is that <m>f</m> is defined for all <m>x \ne 0</m>, while <m>F</m> is only defined for <m>x \gt 0</m>, and see how we can actually define the antiderivative of <m>f</m> for all values of <m>x</m>.
-      </p>
-
-      <p permid="aJh">
-        <ol label="a." permid="pil">
-          <li permid="Vpu">
-            <p permid="qXy">
-              Suppose that <m>x \lt 0</m>, and let <m>G(x) = \ln(-x)</m>.  Compute <m>G'(x)</m>.
-            </p>
-          </li>
-          <li permid="BwD">
-            <p permid="XeH">
-              Explain why <m>G</m> is an antiderivative of <m>f</m> for <m>x \lt 0</m>.
-            </p>
-          </li>
-          <li permid="hDM">
-            <p permid="DlQ">
-              Let <m>H(x) = \ln(|x|)</m>, and recall that 
-              <me permid="XOB">
-                |x| = 
-                    \begin{cases}
-                      -x, \amp  \ \text{if}  \ x \lt 0 \\
-                      x, \amp  \ \text{if}   \ x \ge 0 
-                    \end{cases}
-              </me>.
-              Explain why <m>H(x) = G(x)</m> for <m>x \lt 0</m> and <m>H(x) = F(x)</m> for <m>x \gt 0</m>.
-            </p>
-          </li>
-          <li permid="NKV">
-            <p permid="jsZ">
-              Now discuss why we say that the antiderivative of <m>\frac{1}{x}</m> is <m>\ln(|x|)</m> for all <m>x \ne 0</m>.
-            </p>
-          </li>
-        </ol>
-      </p>
-    </statement>
-    <answer permid="wMK">
-      <p permid="Rpv">
-        <ol label="a." permid="Jbc">
-          <li permid="tSe">
-            <p permid="PAi">
-            <m>G'(x) = \frac{1}{-x} \cdot (-1) = \frac{1}{x}</m>.  
-            </p>
-          </li>
-          <li permid="ZZn">
-            <p permid="vHr">
-              Since for those values of <m>x</m>, <m>G'(x) = \frac{1}{x}</m>.
-            </p>
-          </li>
-          <li permid="Ggw">
-            <p permid="bOA">
-              If <m>x \lt 0</m>, then <m>H(x) = \ln(|x|) = \ln(-x) = G(x)</m>; if <m>x \gt 0</m>, then <m>H(x) = \ln(|x|) = \ln(x) = F(x)</m>.
-            </p>
-          </li>
-          <li permid="mnF">
-            <p permid="HVJ">
-              For <m>x \lt 0</m>, <m>H'(x) = G'(x) = \frac{1}{x}</m>; for <m>x \gt 0</m>, <m>H'(x) = F'(x) = \frac{1}{x}</m> for all <m>x \ne 0</m>.
-            </p>
-          </li>
-        </ol>
-      </p>       
-    </answer>
-    <solution permid="QFB">
-      <p permid="lim">
-        <ol label="a." permid="cTT">
-          <li permid="SuO">
-            <p permid="ocS">
-              By the chain rule, <m>G'(x) = \frac{1}{-x} \cdot (-1) = \frac{1}{x}</m>.  
-            </p>
-          </li>
-          <li permid="yBX">
-            <p permid="Ukb">
-              <m>G</m> is an antiderivative of <m>f</m> for <m>x \lt 0</m> since for those values of <m>x</m>, <m>G'(x) = \frac{1}{x}</m>.
-            </p>
-          </li>
-          <li permid="eJg">
-            <p permid="Ark">
-              If <m>x \lt 0</m>, then <m>H(x) = \ln(|x|) = \ln(-x) = G(x)</m>, while if <m>x \gt 0</m>, then <m>H(x) = \ln(|x|) = \ln(x) = F(x)</m>.
-            </p>
-          </li>
-          <li permid="KQp">
-            <p permid="gyt">
-              By considering the cases of <m>x \lt 0</m> and <m>x \gt 0</m>, we see that for <m>x \lt 0</m>, <m>H'(x) = G'(x) = \frac{1}{x}</m> and for <m>x \gt 0</m>, <m>H'(x) = F'(x) = \frac{1}{x}</m> for all <m>x \ne 0</m>, the derivative of <m>H(x) = \ln(|x|)</m> is <m>\frac{1}{x}</m>, which makes <m>\ln(|x|)</m> the antiderivative of <m>\frac{1}{x}</m>.
-            </p>
-          </li>
-        </ol>
-      </p>      
     </solution>
   </exercise>
 

@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2018                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+<exercises permid="ez" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="ez-3-4">
+
+  <exercise permid="ez-ww1" xml:id="ez-3-4-WW1">
+    <title>Maximizing the volume of a box</title>
+    <webwork source="Library/UVA-Stew5e/setUVA-Stew5e-C04S07-Optimization/4-7-08.pg" />
+  </exercise>
+
+  <exercise permid="ez-ww2" xml:id="ez-3-4-WW2">
+    <title>Minimizing the cost of a container</title>
+    <webwork source="Library/UVA-Stew5e/setUVA-Stew5e-C04S07-Optimization/4-7-12.pg" />
+  </exercise>
+
+  <exercise permid="ez-ww3" xml:id="ez-3-4-WW3">
+    <title>Maximizing area contained by a fence</title>
+    <webwork source="Library/Rochester/setDerivatives10_5Optim/S04.07.Optimization.PTP01.pg" />
+  </exercise>
+
+  <exercise permid="ez-ww4" xml:id="ez-3-4-WW4">
+    <title>Minimizing the area of a poster</title>
+    <webwork source="Library/Rochester/setDerivatives10_5Optim/S04.07.Optimization.PTP04.pg" />
+  </exercise>
+
+  <exercise permid="ez-ww5" xml:id="ez-3-4-WW5">
+    <title>Maximizing the area of a rectangle</title>
+    <webwork source="Library/Rochester/setDerivatives10_5Optim/S04.07.Optimization.PTP05.pg" />
+  </exercise>
+
+  <exercise permid="e_xo">
+    <statement>
+      <p permid="p">
+        A rectangular box with a square bottom and closed top is to be made from two materials.
+        The material for the side costs <dollar />1.50 per square foot and the material for the top and bottom costs <dollar />3.00 per square foot.
+        If you are willing to spend <dollar />15 on the box,
+        what is the largest volume it can contain?
+        Justify your answer completely using calculus.
+      </p>
+    </statement>
+    <answer permid="a">
+      <p permid="p">
+        The absolute maximum volume is <m>V\left( \sqrt{\frac{5}{3}} \right) = \frac{15}{12}\left( \sqrt{\frac{5}{3}} \right) - \frac{1}{4}\left( \sqrt{\frac{5}{3}} \right)^3 \approx 1.07583</m> cubic feet.
+      </p>
+    </answer>
+    <solution permid="s">
+      <p permid="p1">
+        Let <m>x</m> be the length of one side of the square bottom and <m>h</m> the height of one of the sides.
+        We first note that the volume, <m>V</m>,
+        of the box is <m>V = x^2 h</m>,
+        and the surface area of the box is <m>S = 2x^2 +  4xh</m>,
+        since there are two square sides
+        (bottom and top)
+        of area <m>x^2</m> and four identical sides of area <m>xh</m>.
+        Since the material for the top and bottom costs <dollar />3.00 per square foot and the material for the sides costs <dollar />1.50 per square foot,
+        it follows that the total cost of a box with surface area <m>S</m> is
+        <me>
+          C = 1.50 (2x^2) +  3.00 (4xh) = 3x^2 + 12xh
+        </me>.
+      </p>
+
+      <p permid="p2">
+        We are interested in building box of largest volume for which we spend <dollar />15.
+        This cost constraint implies that
+        <me>
+          15 = 3x^2 + 12xh
+        </me>,
+        which allows us to express <m>h</m> as a function of <m>x</m> by solving for <m>h</m>.
+        Doing so, we see that <m>12xh = 15 - 3x^2</m>, so
+        <me>
+          h = \frac{15-3x^2}{12x}
+        </me>.
+        Using this relationship, we are now able to express the volume,
+        <m>V</m>,
+        of the box as a function of the single variable <m>x</m>.
+        Subsituting the expression for <m>h</m>, we have
+        <me>
+          V = x^2 h = x^2 \frac{15-3x^2}{12x} = \frac{1}{12}x(15 - 3x^2) = \frac{15}{12}x - \frac{1}{4}x^3
+        </me>.
+        Note particularly that in order to have a box,
+        we require that both <m>x \gt 0</m> and <m>h \gt 0</m>.
+        The latter condition along with the fact that
+        <m>h = \frac{15-3x^2}{12x}</m> shows that we need <m>15 - 3x^2 \gt 0</m>,
+        and thus <m>x^2 \lt 5</m>, so <m>x \lt \sqrt{5}</m>.
+        Hence we are considering <m>V(x)</m> on the domain <m>0 \lt x \lt \sqrt{5}</m>.
+      </p>
+
+      <p permid="p3">
+        It is apparent that the box vanishes
+        (and its volume tends to zero)
+        as either <m>x \to 0^+</m> or <m>x \to \sqrt{5}^-</m>,
+        and thus the absolute maximum volume must appear between these values at a critical number.
+        Differentiating <m>V</m>,
+        we find that <m>V'(x) = \frac{15}{12} - \frac{3}{4}x^2</m>.
+        Solving <m>V'(x) = 0</m> to find all critical numbers of <m>V</m> in the domain,
+        we see that <m>x^2 = \frac{15}{12} \cdot \frac{4}{3} = \frac{5}{3}</m>,
+        and thus <m>x = \pm \sqrt{\frac{5}{3}}</m>,
+        so only <m>x = \sqrt{\frac{5}{3}}</m> is a critical number that lies in <m>0 \lt x \lt \sqrt{5}</m>.
+        Noting that the absolute minimum volume <m>V = 0</m> occurs at each endpoint,
+        it must be the case that the absolute maximum volume is <m>V\left( \sqrt{\frac{5}{3}} \right) = \frac{15}{12}\left( \sqrt{\frac{5}{3}} \right) - \frac{1}{4}\left( \sqrt{\frac{5}{3}} \right)^3 \approx 1.07583</m> cubic feet.
+      </p>
+    </solution>
+  </exercise>
+
+  <exercise permid="e_ag">
+    <statement>
+      <p permid="p">
+        A farmer wants to start raising cows, horses, goats, and sheep,
+        and desires to have a rectangular pasture for the animals to graze in.
+        However, no two different kinds of animals can graze together.
+        In order to minimize the amount of fencing she will need,
+        she has decided to enclose a large rectangular area and then divide it into four equally sized pens by adding three segments of fence inside the large rectangle that are parallel to two existing sides.
+        She has decided to purchase 7500 ft of fencing.
+        What is the maximum possible area that each of the four pens will enclose?
+      </p>
+    </statement>
+    <answer permid="a">
+      <p permid="p">
+        Exercise Answer
+      </p>
+    </answer>
+    <solution permid="s">
+      <p permid="p1">
+        The farmer will fence a rectangular area whose length <m>x</m> and width <m>y</m> are unknown.
+        The total area of the rectangular area is composed of 4 equal area rectangles.
+        There are two ways to do this as shown in the figure below.
+      </p>
+
+      <sidebyside>
+        <image source="images/3_4_Ez2Soln" />
+      </sidebyside>
+
+      <p permid="p2">
+        We want to maximize the area of each subrectangular region,
+        which is the same as maximizing the total area 
+        <m>A = xy</m> of the entire rectangular region.
+        Since <m>A</m> has two variables,
+        we can't yet directly apply calculus techniques to it.
+        We use the information about the amount of fencing to relate <m>x</m> and <m>y</m> in order to write <m>A</m> in terms of just one variable.
+      </p>
+
+      <p permid="p3">
+        In the case of the fencing option on the left in the figure,
+        the total amount of fencing that is needed to enclose the four grazing areas is <m>2x+5y</m>.
+        We assume that all of the <m>7500</m> feet of fencing will be used,
+        so <m>2x+5y=7500</m>.
+        Solving for <m>x</m>, <m>x = 3750 - 2.5y</m>.
+        Substituting this expression for <m>x</m> into the area formula allows us to write <m>A</m> in terms of <m>y</m> alone:
+        <me>
+          A(y) = (3750-2.5y)y = 3750y - 2.5y^2
+        </me>.
+        To enclose any area,
+        we of course must have <m>y \gt 0</m> and <m>x \gt 0</m>,
+        and since <m>x = 3750 - 2.5y</m>,
+        it follows that we need to have
+        <m>2.5y \lt 3750</m> so <m>y \lt 1500</m>.
+        To find the maximum value of <m>A</m> on this domain,
+        we find the critical numbers of <m>A</m>.
+        Since <m>A'(y) = 3750 - 5y</m>,
+        we see that <m>A'(y) = 0</m> when and only when <m>y = 750</m>.
+        For <m>0 \lt y \lt 750</m>,
+        we see that <m>A'(y) \gt 0</m> and for
+        <m>750 \lt y \lt 1500</m> we have <m>A'(y) \lt 0</m>.
+        So <m>A(750) = 1406250</m> square feet is the absolute maximum value of <m>A</m>.
+        The maximum possible area that each of the four pens can enclose is one quarter of the total,
+        or <m>351562.5</m> square feet.
+      </p>
+
+      <p permid="p4">
+        In the case of the fencing option on the right in the figure,
+        the total amount of fencing that is needed to enclose the four grazing areas is <m>3x+3y</m>.
+        We assume that all of the <m>7500</m> feet of fencing will be used,
+        so <m>3x + 3y = 7500</m>.
+        Solving for <m>x</m> and substituting into <m>A</m>,
+        we find <m>x = 2500 - y</m> and
+        <me>
+          A(y) = (2500-y)y = 2500y - y^2
+        </me>.
+        To enclose any area,
+        we of course must have <m>y \gt 0</m> and <m>x \gt 0</m>,
+        and since <m>x = 2500 - y</m>,
+        it follows that we need to have <m>y \lt 2500</m>.
+        To find the maximum value of <m>A</m> on this domain,
+        we find the critical numbers of <m>A</m>.
+        Since <m>A'(y) = 2500 - 2y</m>,
+        we see that <m>A'(y) = 0</m> when and only when <m>y = 1250</m>.
+        For <m>0 \lt y \lt 1250</m>,
+        we see that <m>A'(y) \gt 0</m> and for
+        <m>1250 \lt y \lt 2500</m> we have <m>A'(y) \lt 0</m>.
+        So <m>A(1250) = 1406250</m> square feet is the absolute maximum value of <m>A</m>.
+        The maximum possible area that each of the four pens can enclose is one quarter of the total,
+        or <m>390625</m> square feet.
+      </p>
+
+      <p permid="p5">
+        So the maximum possible area that each of the four pens can enclose is 390625 square feet.
+      </p>
+    </solution>
+  </exercise>
+
+  <exercise permid="e_dp">
+    <statement>
+      <p permid="p">
+        Two vertical poles of heights 60 ft and 80 ft stand on level ground,
+        with their bases 100 ft apart.
+        A cable that is stretched from the top of one pole to some point on the ground between the poles,
+        and then to the top of the other pole.
+        What is the minimum possible length of cable required?
+        Justify your answer completely using calculus.
+      </p>
+    </statement>
+    <answer permid="a">
+      <p permid="p">
+        <m>172.047</m> feet of cable.
+      </p>
+    </answer>
+    <solution permid="s">
+      <p permid="p1">
+        We start by constructing a careful diagram of the overall situation.
+        Let <m>x</m> be the distance from the first pole to the second pole where the cable touches the ground,
+        and let <m>y</m> be the length of the cable from the top of the first tower to the ground,
+        and <m>z</m> the length of cable from the ground to the top of the second tower,
+        as pictured in the following figure.
+        Note that we have included the given heights of the towers and the distance between them.
+      </p>
+
+      <sidebyside width="65%">
+        <image source="images/3_4_Ez3Soln" />
+      </sidebyside>
+
+      <p permid="p2">
+        The total amount of cable, <m>L</m>, used
+        (which we wish to minimize)
+        is given by <m>L = y + z</m>.
+        We can use the geometry of the situation to write both <m>y</m> and <m>z</m> in terms of <m>x</m>.
+        In the first right triangle,
+        by the Pythagorean Theorem we know that <m>x^2 + 60^2 = y^2</m>,
+        and thus <m>y = \sqrt{x^2 + 3600}</m>.
+        In the second right triangle,
+        note that the horizontal leg of the triangle has length <m>100-x</m>,
+        and thus <m>(100-x)^2 + 80^2 = z^2</m>,
+        so <m>z = \sqrt{(100-x)^2 + 6400}</m>.
+        It follows that with <m>L = y + z</m>,
+        <me>
+          L(x) = \sqrt{x^2 + 3600} + \sqrt{6400 + (100-x)^2}
+        </me>.
+        It is also apparent from the given situation that the relevant domain for <m>L</m> is <m>0 \le x \le 100</m>.
+        Given that we want to minimize <m>L</m> on this closed interval,
+        it remains to find any critical numbers of <m>L</m>.
+      </p>
+
+      <p permid="p3">
+        We note by the chain rule that
+        <me>
+          L'(x) = \frac{2x}{2(x^2+3600)^{1/2}} + \frac{-2(100-x)}{2((100-x)^2 + 6400)^{1/2}}
+        </me>
+        We use technology to solve the equation
+        <m>L'(x) = 0</m> and find that it has a single solution in the interval <m>0 \le x \le 100</m>:
+        <m>x \approx 42.85714</m>.
+      </p>
+
+      <p permid="p4">
+        To find the absolute minimum of <m>L</m> on the relevant domain,
+        we evaluate <m>L</m> at the endpoints and the only critical number.
+        Doing so, we fine <m>L(0) \approx 188.062</m>,
+        <m>L(100) \approx 196.619</m>,
+        and <m>L(42.85714) \approx 172.047</m>.
+        Hence the least amount of cable we can use is approximately <m>172.047</m> feet and is accomplished by anchoring the cable about
+        <m>42.85714</m> feet from the first tower.
+      </p>
+    </solution>
+  </exercise>
+
+  <exercise permid="e_gy">
+    <statement>
+      <p permid="p">
+        A company is designing propane tanks that are cylindrical with hemispherical ends.
+        Assume that the company wants tanks that will hold 1000 cubic feet of gas,
+        and that the ends are more expensive to make,
+        costing <dollar />5 per square foot,
+        while the cylindrical barrel between the ends costs <dollar />2 per square foot.
+        Use calculus to determine the minimum cost to construct such a tank.
+      </p>
+    </statement>
+    <answer permid="a">
+      <p permid="p">
+        The minimum cost is <dollar />1165.70.
+      </p>
+    </answer>
+    <solution permid="s">
+      <p permid="p1">
+        We let the length of the cylindrical part of the tank be <m>h</m> with the radius of the cylinder given by <m>r</m>.
+        It follows that the radius of the hemispherical ends of the tank is also <m>r</m>.
+        We first identify formulas for both the volume and surface area of the tank by looking at the cylindrical and hemispherical pieces.
+      </p>
+
+      <p permid="p2">
+        The cylindrical part of the tank has volume <m>V_c = \pi r^2 h</m>,
+        and the surface area of its sides is <m>A_c = 2\pi r h</m>
+        (which is the circumference of the cylinder's base times the cylinder's height -- think about how a cylinder unfurls to form a rectangle).
+        The two hemispherical ends together constitute a full sphere,
+        and the volume of a sphere is <m>V_s = \frac{4}{3} \pi r^3</m>,
+        while the surface area of a sphere is <m>A_s = 4 \pi r^2</m>.
+      </p>
+
+      <p permid="p3">
+        The overall volume of the tank is therefore
+        <me>
+          V = V_c + V_s = \pi r^2 h + \frac{4}{3} \pi r^3
+        </me>,
+        and its total surface area is
+        <me>
+          A = A_c + A_s = 2\pi r h + 4 \pi r^2
+        </me>.
+        Moreover, taking into account the different costs of material for the cylindrical sides and hemispherical ends,
+        we find that the total cost of the tank is
+        <me>
+          C = 2(2\pi r h) + 5(4 \pi r^2) = 4 \pi r h + 20 \pi r^2
+        </me>.
+      </p>
+
+      <p permid="p4">
+        Our goal is to minimize the total cost of the tank given that we want it to hold 1000 cubic meters of volume.
+        From this constraint,
+        we have the equation <m>1000 = \pi r^2 h + \frac{4}{3} \pi r^3</m>,
+        which we can solve for <m>h</m> to get <m>\pi r^2 h = 1000 - \frac{4}{3} \pi r^3</m>, so
+        <me>
+          h = \frac{1000 - \frac{4}{3} \pi r^3}{\pi r^2}
+        </me>.
+        This allows us to now write cost as a function of the single variable <m>r</m> by substituting the expression for <m>h</m> into the earlier formula we found for cost.
+        In particular,
+        <me>
+          C(r) = 4 \pi r \frac{1000 - \frac{4}{3} \pi r^3}{\pi r^2} + 20 \pi r^2 = 4 \frac{1000 - \frac{4}{3} \pi r^3}{r} + 20\pi r^2
+        </me>
+        Simplifying further, we have found that
+        <me>
+          C(r) = \frac{4000}{r} - \frac{16}{3}\pi r^2 + 20 \pi r^2 = \frac{4000}{r} + \frac{44}{3}r^2
+        </me>.
+        Based on the physical constraints of the problem,
+        we obviously will only consider values of <m>r \gt 0</m> and <m>h \gt 0</m>.
+        Since <m>h = \frac{1000 - \frac{4}{3} \pi r^3}{\pi r^2}</m>,
+        we must have
+        <me>
+          \frac{4}{3} \pi r^3 \lt 1000
+        </me>
+        so <m>r^3 \lt \frac{3}{4} \cdot 1000 = 750</m>,
+        and thus <m>r \lt \sqrt[3]{750} \approx 9.086</m>.
+        We now work to minimize <m>C(r)</m> on the interval <m>0 \lt r \lt \sqrt[3]{750}</m>.
+      </p>
+
+      <p permid="p5">
+        Taking the derivative of <m>C</m>,
+        we find that <m>C'(r) = -\frac{4000}{r^2} + \frac{88}{3}r</m>.
+        Setting <m>C'(r) = 0</m>, it follows that
+        <me>
+          \frac{4000}{r^2} = \frac{88}{3}r
+        </me>
+        and thus
+        <me>
+          4000 \cdot \frac{3}{88} = r^3
+        </me>.
+        Therefore, <m>r^3 = \frac{1500}{11}</m>,
+        so <m>r = \sqrt[3]{\frac{1500}{11}} \approx 5.147</m> is the only critical number of <m>C</m>;
+        observe that it lies within the interval <m>0 \lt r \lt \sqrt[3]{750}</m>.
+      </p>
+
+      <p permid="p6">
+        If we plot the derivative function, <m>y = C'(r)</m>,
+        on the interval <m>0 \lt r \lt \sqrt[3]{750}</m>,
+        we see that for <m>0 \lt r \lt 5.147</m>,
+        <m>C'(r) \lt 0</m>,
+        and for <m>5.147 \lt r \lt 9.086</m>, <m>C'(r) \gt 0</m>,
+        which shows that <m>C</m> is decreasing before the critical number and increasing after the critical number,
+        and hence <m>C</m> has a global minimum of <m>C(\sqrt[3]{\frac{1500}{11}}) \approx 1165.70</m>,
+        so <dollar />1165.70 is the minimum cost to build the desired tank under the given constraints.
+      </p>
+    </solution>
+  </exercise>
+
+</exercises>

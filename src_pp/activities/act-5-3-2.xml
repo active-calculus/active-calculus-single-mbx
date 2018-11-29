@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2018                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+<activity permid="act" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="act-5-3-2">
+  <statement>
+    <p permid="p">
+      Evaluate each of the following indefinite integrals by using these steps:
+
+      <ul permid="ul">
+        <li permid="l_j">
+          <p permid="p">
+            Find two functions within the integrand that form
+            (up to a possible missing constant)
+            a function-derivative pair;
+          </p>
+        </li>
+
+        <li permid="l_s">
+          <p permid="p">
+            Make a substitution and convert the integral to one involving <m>u</m> and <m>du</m>;
+          </p>
+        </li>
+
+        <li permid="l_b">
+          <p permid="p">
+            Evaluate the new integral in <m>u</m>;
+          </p>
+        </li>
+
+        <li permid="l_k">
+          <p permid="p">
+            Convert the resulting function of <m>u</m> back to a function of <m>x</m> by using your earlier substitution;
+          </p>
+        </li>
+
+        <li permid="l_t">
+          <p permid="p">
+            Check your work by differentiating the function of <m>x</m>.
+            You should come up with the integrand originally given.
+          </p>
+        </li>
+      </ul>
+
+      <ol permid="ol" label="a." cols="2">
+        <li permid="l_j">
+          <p permid="p">
+            <m>\int \frac{x^2}{5x^3+1} \, dx</m>
+          </p>
+        </li>
+
+        <li permid="l_s">
+          <p permid="p">
+            <m>\int e^x \sin(e^x) \, dx</m>
+          </p>
+        </li>
+
+        <li permid="l_b">
+          <p permid="p">
+            <m>\int \frac{\cos(\sqrt{x})}{\sqrt{x}} \, dx</m>
+          </p>
+        </li>
+      </ol>
+    </p>
+  </statement>
+  <hint permid="h">
+    <p permid="p">
+      <ol permid="ol" label="a.">
+        <li permid="l_j">
+          <p permid="p">
+            Note that <m>5x^3 + 1</m> and <m>15x^2</m> form a function-derivative pair.
+          </p>
+        </li>
+
+        <li permid="l_s">
+          <p permid="p">
+            Recall that <m>e^{x}</m> is its own derivative.
+          </p>
+        </li>
+
+        <li permid="l_b">
+          <p permid="p">
+            Observe that <m>x^{-1/2} = \frac{1}{\sqrt{x}}</m>.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </hint>
+  <answer permid="a">
+    <p permid="p">
+      <ol permid="ol" label="a.">
+        <li permid="l_j">
+          <p permid="p">
+            <m>\int \frac{x^2}{5x^3+1} \, dx = \frac{1}{15} \ln(5x^3 + 1) + C</m>.
+          </p>
+        </li>
+
+        <li permid="l_s">
+          <p permid="p">
+            <m>\int e^x \sin(e^x) \, dx = -\cos(e^x) + C</m>.
+          </p>
+        </li>
+
+        <li permid="l_b">
+          <p permid="p">
+            <m>\int \frac{\cos(\sqrt{x})}{\sqrt{x}} \, dx = 2\sin(\sqrt{x}) + C</m>.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </answer>
+  <solution permid="s">
+    <p permid="p">
+      <ol permid="ol" label="a.">
+        <li permid="l_j">
+          <p permid="p">
+            Since <m>5x^3 + 1</m> and <m>15x^2</m> form a function-derivative pair,
+            we let <m>u=5x^3+1</m>,
+            and observe that <m>du=15x^2dx</m>,
+            and thus <m>x^2dx=\frac{1}{15}du</m>.
+            Applying this substitution,
+            integrating, and substituting back,
+            <m>\int \frac{x^2}{5x^3+1} \, dx = \int \frac{\frac{1}{15}du}{u} = \frac{1}{15} \ln(u) + C = \frac{1}{15} \ln(5x^3 + 1) + C</m>.
+          </p>
+        </li>
+
+        <li permid="l_s">
+          <p permid="p">
+            Because <m>\frac{d}{dx}[e^x] = e^x</m>,
+            if we let <m>u=e^x</m>,
+            it follows <m>du = e^x dx</m>.
+            Substituting and integrating,
+            <m>\int e^x \sin(e^x) \, dx = \int \sin(u) \, du = -\cos(u) + C = -\cos(e^x) + C</m>.
+          </p>
+        </li>
+
+        <li permid="l_b">
+          <p permid="p">
+            Let <m>u = \sqrt{x}</m>,
+            so that <m>du = \frac{1}{2}x^{-1/2}dx = \frac{dx}{2\sqrt{x}}</m>.
+            We observe that <m>\frac{dx}{\sqrt{x}} = 2 du</m>,
+            and thus <m>\int \frac{\cos(\sqrt{x})}{\sqrt{x}}~dx = \int 2 \cos(u) \, du = 2\sin(u) + C = 2\sin(\sqrt{x}) + C</m>.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </solution>
+</activity>
+
