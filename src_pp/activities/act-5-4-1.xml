@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2018                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+<activity permid="act" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="act-5-4-1">
+  <statement>
+    <p permid="p">
+      Evaluate each of the following indefinite integrals.
+      Check each antiderivative that you find by differentiating.
+
+      <ol permid="ol" label="a." cols="2">
+        <li permid="l_j">
+          <p permid="p">
+            <m>\int te^{-t} \, dt</m>
+          </p>
+        </li>
+
+        <li permid="l_s">
+          <p permid="p">
+            <m>\int 4x \sin(3x) \, dx</m>
+          </p>
+        </li>
+
+        <li permid="l_b">
+          <p permid="p">
+            <m>\int z \sec^2(z) \,dz</m>
+          </p>
+        </li>
+
+        <li permid="l_k">
+          <p permid="p">
+            <m>\int x \ln(x) \, dx</m>
+          </p>
+        </li>
+      </ol>
+    </p>
+  </statement>
+  <hint permid="h">
+    <p permid="p">
+      <ol permid="ol" label="a.">
+        <li permid="l_j">
+          <p permid="p">
+            Try <m>u=t</m>.
+          </p>
+        </li>
+
+        <li permid="l_s">
+          <p permid="p">
+            Let <m>dv=\sin(3x)dx</m>
+          </p>
+        </li>
+
+        <li permid="l_b">
+          <p permid="p">
+            Remember that <m>\int \sec^2(z) \,dz = \tan(z)</m>.
+          </p>
+        </li>
+
+        <li permid="l_k">
+          <p permid="p">
+            Note that <m>\ln(x) \, dx</m> has a simple derivative to work with.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </hint>
+  <answer permid="a">
+    <p permid="p">
+      <ol permid="ol" label="a.">
+        <li permid="l_j">
+          <p permid="p">
+            <m>\int t e^{-t} dt = -te^{-t} - e^{-t}</m>.
+          </p>
+        </li>
+
+        <li permid="l_s">
+          <p permid="p">
+            <m> \int 4x \sin(3x) dx = -\dfrac{4}{3} x \cos(3x) + \frac{4}{9} \sin(3x) + c </m>.
+          </p>
+        </li>
+
+        <li permid="l_b">
+          <p permid="p">
+            <m> \int z \sec^2(z) dz = z \tan(z) + \ln (\cos(z)) + c </m>.
+          </p>
+        </li>
+
+        <li permid="l_k">
+          <p permid="p">
+            <m> \int x\ln(x) dx = \frac{1}{2}x^2 \ln(x) - \frac{1}{4}x^2 + c </m>.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </answer>
+  <solution permid="s">
+    <p permid="p">
+      <ol permid="ol" label="a.">
+        <li permid="l_j">
+          <p permid="p">
+            Using <m>u = t</m> and <m>dv = e^{-t} dt</m>,
+            we obtain <m>du = dt</m> and <m>v = -e^{-t}</m>.
+            So
+            <md>
+              <mrow>\int t e^{-t} dt \amp = -te^{-t} + \int e^{-t} dt</mrow>
+              <mrow>\amp = -te^{-t} - e^{-t} + c</mrow>
+            </md>
+            We check using differentiation as follows:
+            <md>
+              <mrow>\frac{d}{dt} \left( -te^{-t} - e^{-t} + c \right) \amp = \left( t e^{-t} - e^{-t} \right) + e^{-t}</mrow>
+              <mrow>\amp = te^{-t}</mrow>
+            </md>
+          </p>
+        </li>
+
+        <li permid="l_s">
+          <p permid="p">
+            Using <m>u = 4x</m> and <m>dv = \sin(3x) dx</m>,
+            we obtain <m>du = 4 dx</m> and <m>v = -\dfrac{1}{3} \cos(3x)</m>.
+            So
+            <md>
+              <mrow>\int 4x \sin(3x) dx \amp = -\dfrac{4}{3} x \cos(3x) + \dfrac{4}{3} \int \cos(3x) dx</mrow>
+              <mrow>\amp = -\dfrac{4}{3} x \cos(3x) + \frac{4}{9} \sin(3x) + c</mrow>
+            </md>
+            We check using differentiation as follows:
+            <md>
+              <mrow>\frac{d}{dx} \left( -\dfrac{4}{3} x \cos(3x) + \frac{4}{9} \sin(3x) + c \right) \amp = \left( 4x \sin(3x) - \frac{4}{3} \cos(3x) \right) + \frac{4}{3} \cos(3x)</mrow>
+              <mrow>\amp = 4x \sin(3x)</mrow>
+            </md>
+          </p>
+        </li>
+
+        <li permid="l_b">
+          <p permid="p">
+            Using <m>u = z</m> and <m>dv = \sec^2(z) dz</m>,
+            we obtain <m>du = dz</m> and <m>v = \tan(z)</m>.
+            So
+            <md>
+              <mrow>\int z \sec^2(z) dz \amp = z \tan(z) - \int \tan(z) dz</mrow>
+              <mrow>\amp = z \tan(z) + \ln (\cos(z)) + c</mrow>
+            </md>
+            We check using differentiation as follows:
+            <md>
+              <mrow>\frac{d}{dz} \left( z \tan(z) + \ln (\cos(z)) + c \right) \amp = z\sec^2(z) + \tan(z) - \frac{\sin(z)}{\cos(z)}</mrow>
+              <mrow>\amp = z\sec^2(z) + \tan(z) - \tan(z)</mrow>
+              <mrow>\amp = z \sec^2(z)</mrow>
+            </md>
+          </p>
+        </li>
+
+        <li permid="l_k">
+          <p permid="p">
+            Using <m>u = \ln(x)</m> and <m>dv = x dx</m>,
+            we obtain <m>du = \dfrac{1}{x} dx</m> and <m>v = \dfrac{1}{2}x^2</m>.
+            So
+            <md>
+              <mrow>\int x\ln(x) dx \amp = \frac{1}{2}x^2 \ln(x) - \frac{1}{2} \int x dx</mrow>
+              <mrow>\amp = \frac{1}{2}x^2 \ln(x) - \frac{1}{4}x^2 + c</mrow>
+            </md>
+            We check using differentiation as follows:
+            <md>
+              <mrow>\frac{d}{dx} \left( \frac{1}{2}x^2 \ln(x) - \frac{1}{4}x^2 + c \right) \amp = \frac{1}{2}x + x \ln(x) - \frac{1}{2} x</mrow>
+              <mrow>\amp = x \ln(x)</mrow>
+            </md>
+          </p>
+        </li>
+      </ol>
+    </p>
+  </solution>
+</activity>
+

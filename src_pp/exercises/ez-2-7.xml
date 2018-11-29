@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2018                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+<exercises permid="ez" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="ez-2-7">
+
+  <exercise permid="ez-ww1" xml:id="ez-2-7-WW1">
+    <title>Implicit differentiaion in a polynomial equation</title>
+    <webwork source="Library/Michigan/Chap3Sec7/Q07.pg" />
+  </exercise>
+
+  <exercise permid="ez-ww2" xml:id="ez-2-7-WW2">
+    <title>Implicit differentiation in an equation with logarithms</title>
+    <webwork source="Library/Michigan/Chap3Sec7/Q11.pg" />
+  </exercise>
+
+  <exercise permid="ez-ww3" xml:id="ez-2-7-WW3">
+    <title>Implicit differentiation in an equation with inverse trigonometric functions</title>
+    <webwork source="Library/Michigan/Chap3Sec7/Q15.pg" />
+  </exercise>
+
+  <exercise permid="ez-ww4" xml:id="ez-2-7-WW4">
+    <title>Slope of the tangent line to an implicit curve</title>
+    <webwork source="Library/Michigan/Chap3Sec7/Q21.pg" />
+  </exercise>
+
+  <exercise permid="ez-ww5" xml:id="ez-2-7-WW5">
+    <title>Equation of the tangent line to an implicit curve</title>
+    <webwork source="Library/Rochester/setDerivatives2_5Implicit/s2_6_19.pg" />
+  </exercise>
+
+  <exercise permid="e_xo">
+    <statement>
+      <p permid="p">
+        Consider the curve given by the equation <m>2y^3+y^2-y^5 = x^4 - 2x^3 + x^2</m>.
+        Find all points at which the tangent line to the curve is horizontal or vertical.
+        Be sure to use a graphing utility to plot this implicit curve and to visually check the results of algebraic reasoning that you use to determine where the tangent lines are horizontal and vertical.
+      </p>
+    </statement>
+    <answer permid="a">
+      <p permid="p">
+        Horizontal tangent lines: <m>(0,-1)</m>, <m>(0,-0.618)</m>,
+        <m>(0,1.618)</m>, <m>(1,-1)</m>,
+        <m>(1,-0.618)</m>, <m>(1,1.618)</m>,
+        <m>(0.5,-1.0493)</m>, <m>(0.5,0.2104)</m>, <m>(0.5, 1.6139)</m>.
+        Vertical tangent lines: <m>(-0.1756,-0.379)</m>,
+        <m>(0.2912,-0.379)</m>, <m>(0.7088,-0.379)</m>,
+        <m>(1.1756,-0.379)</m>, <m>(-0.8437, 1.235)</m>,
+        and <m>(1.8437, 1.235)</m>.
+      </p>
+
+      <sidebyside width="50%">
+        <image source="images/2_7_Ez1Soln" />
+      </sidebyside>
+    </answer>
+    <solution permid="s">
+      <p permid="p1">
+        First, we compute <m>\frac{dy}{dx}</m> by implicit differentiation.
+        Differentiating both sides of the given equation with respect to <m>x</m> while treating <m>y</m> as a function of <m>x</m>,
+        we see that
+        <me>
+          6y^2 \frac{dy}{dx} + 2y \frac{dy}{dx} - 5y^4 \frac{dy}{dx} = 4x^3 - 6x^2 + 2x
+        </me>.
+        Removing a factor of <m>\frac{dy}{dx}</m> from the lefthand side and dividing to solve for <m>\frac{dy}{dx}</m>, we have
+        <me>
+          \frac{dy}{dx} = \frac{4x^3 - 6x^2 + 2x}{6y^2 + 2y - 5y^4} = \frac{2x(2x^2 - 3x + 1)}{y(-5y^3 + 6y + 2)}
+        </me>.
+        The tangent line is potentially horizontal where the numerator of
+        <m>\frac{dy}{dx}</m> is zero and potentially vertical where <m>\frac{dy}{dx}</m> is zero.
+        Solving <m>2x(2x^2 - 3x + 1) = 0</m>, we see that
+        <me>
+          2x(2x-1)(x-1) = 0
+        </me>
+        so the numerator is zero at <m>x = 0, 0.5, 1</m>.
+        The denominator is zero where <m>y(-5y^3 + 6y + 2) = 0</m>.
+        Using technology to estimate where <m>-5y^3 + 6y + 2 = 0</m>,
+        we see the denominator is zero at <m>y = 0</m> and <m>y \approx -0.856, -0.379, 1.235</m>.
+      </p>
+
+      <p permid="p2">
+        Next, we need to find the coordinates of these points where potential horizontal or vertical tangent lines occur.
+        First, we consider the potential horizontal tangent line locations.
+        When <m>x = 0</m>, <m>2y^3+y^2-y^5 = x^4 - 2x^3 + x^2 = 0</m>,
+        and thus we know <m>y^2(2y + 1 - y^3) = 0</m>,
+        from which it follows that <m>y = 0</m>,
+        <m>y=-1</m> or <m>y \approx -0.618, 1.618</m>.
+        This leads to four points to consider:
+        <m>(0,0)</m>, <m>(0,-1)</m>,
+        <m>(0,-0.618)</m>, and <m>(0,1.618)</m>.
+        It is apparent from the graph shown below that the tangent line at <m>(0,0)</m> is not horizontal
+        (here both the numerator and denominator of <m>\frac{dy}{dx}</m> are zero),
+        but at each of the other three points,
+        the tangent line is horizontal.
+      </p>
+
+      <p permid="p3">
+        We now reason similarly for the other <m>x</m>-values where the numerator is zero.
+        At <m>x = 1</m>, <m>2y^3+y^2-y^5 = 1^4 - 2\cdot 1^3 + 1^2 = 0</m>,
+        and here again <m>y = 0</m>, <m>y=-1</m> or <m>y \approx -0.618, 1.618</m>.
+        This leads to four potential points where the tangent line is horizontal:
+        <m>(1,0)</m>, <m>(1,-1)</m>,
+        <m>(1,-0.618)</m>, and <m>(1,1.618)</m>.
+        At <m>(1,0)</m>, there's not a horizontal tangent line,
+        but at each of the others there is, as seen in the figure.
+        Similar reasoning when <m>x = 0.5</m> shows that <m>2y^3+y^2-y^5 = 0.5^4 - 2\cdot 0.5^3 + 0.5^2 = 0.625</m>,
+        from which we find that <m>y \approx -1.0493, 0.2104, 1.6139</m>,
+        and thus the three points <m>(0.5,-1.0493)</m>,
+        <m>(0.5,0.2104)</m>, <m>(0.5, 1.6139)</m>.
+      </p>
+
+      <p permid="p4">
+        Returning to where the denominator is zero (<m>y = 0</m> and <m>y \approx -0.856, -0.379, 1.235</m>),
+        we now determine points where the tangent line is vertical.
+        Is is apparent from the figure below that there are no vertical tangent lines when <m>y = 0</m> or <m>y \approx -0.856</m>,
+        so there are two values to pursue:
+        <m>y \approx -0.379, 1.235</m>.
+      </p>
+
+      <p permid="p5">
+        When <m>y \approx -0.379</m>,
+        it follows that <m>2(-0.379)^3+(-0.379)^2-(-0.379)^5 = x^4 - 2x^3 + x^2</m>, so
+        <me>
+          x^4 - 2x^3 + x^2 = 0.0426
+        </me>
+        from which we find that <m>x \approx -0.1756, 0.2912, 0.7088, 1.1756</m>.
+        The figure confirms that there are vertical tangent lines at <m>(-0.1756,-0.379)</m>,
+        <m>(0.2912,-0.379)</m>, <m>(0.7088,-0.379)</m>,
+        and <m>(1.1756,-0.379)</m>
+      </p>
+
+      <p permid="p6">
+        Lastly, when <m>y \approx 1.235</m>,
+        it follows <m>2(1.235)^3+(1.235)^2-(1.235)^5 = x^4 - 2x^3 + x^2</m>, so
+        <me>
+          x^4 - 2x^3 + x^2 = 2.4195
+        </me>
+        and thus via technology, <m>x \approx -0.8437, 1.8437</m>.
+        This leads to two additional points at which the tangent line is vertical:
+        <m>(-0.8437, 1.235)</m> and <m>(1.8437, 1.235)</m>.
+      </p>
+
+      <p permid="p7">
+        All of our above work is summarized in the following figure.
+      </p>
+
+      <sidebyside width="50%">
+        <image source="images/2_7_Ez1Soln" />
+      </sidebyside>
+    </solution>
+  </exercise>
+
+  <exercise permid="e_ag">
+    <statement>
+      <p permid="p">
+        For the curve given by the equation <m>\sin(x+y) + \cos(x-y) = 1</m>,
+        find the equation of the tangent line to the curve at the point <m>(\frac{\pi}{2}, \frac{\pi}{2})</m>.
+      </p>
+    </statement>
+    <answer permid="a">
+      <p permid="p">
+        <m>y = \frac{\pi}{2} - \left(x-\frac{\pi}{2}\right)</m>.
+      </p>
+
+      <sidebyside width="50%">
+        <image source="images/2_7_Ez2Soln" />
+      </sidebyside>
+    </answer>
+    <solution permid="s">
+      <p permid="p">
+        First we need to find the slope of the line tangent to the curve,
+        or <m>\frac{dy}{dx}</m>.
+        To do so, we differentiate both sides of the equation with respect to <m>x</m>,
+        treating <m>y</m> as a function of <m>x</m> to obtain
+        <md>
+          <mrow>\frac{d}{dx} \left( \sin(x+y) + \cos(x-y) \right) &amp;= \frac{d}{dx}(1)</mrow>
+          <mrow>\cos(x+y) \left(1+\frac{dy}{dx}\right) - \sin(x-y)\left(1-\frac{dy}{dx}\right) &amp;= 0</mrow>
+        </md>.
+        Distributing on the left side of the equation,
+        <me>
+          \cos(x+y) + \cos(x+y)\frac{dy}{dx} - \sin(x-y) + \sin(x-y)\frac{dy}{dx} = 0
+        </me>.
+        Removing a factor of <m>\frac{dy}{dx}</m> from two terms on the right and moving the other two terms to the righthand side,
+        <me>
+          \frac{dy}{dx} \left(\cos(x+y) + \sin(x-y) \right) =  \sin(x-y) - \cos(x+y)
+        </me>.
+        Therefore,
+        <me>
+          \frac{dy}{dx} = \frac{\sin(x-y) - \cos(x+y)}{\cos(x+y) + \sin(x-y)}
+        </me>.
+        At the point <m>\left(\frac{\pi}{2}, \frac{\pi}{2}\right)</m> we have that
+        <me>
+          \frac{dy}{dx}\biggm|_{\left(\frac{\pi}{2}, \frac{\pi}{2}\right)} = \frac{\sin(0)-\cos(\pi)}{\cos(\pi) + \sin(0)} = -1
+        </me>.
+        Therefore, the equation of the line tangent to the curve at the point
+        <m>\left(\frac{\pi}{2}, \frac{\pi}{2}\right)</m> is <m>y = \frac{\pi}{2} - \left(x-\frac{\pi}{2}\right)</m>.
+        A portion of the graph of the curve defined by
+        <m>\sin(x+y) + \cos(x-y) = 1</m> and the tangent line to the curve at the point
+        <m>\left(\frac{\pi}{2}, \frac{\pi}{2}\right)</m> are shown in the following figure.
+      </p>
+
+      <sidebyside width="50%">
+        <image source="images/2_7_Ez2Soln" />
+      </sidebyside>
+    </solution>
+  </exercise>
+
+  <exercise permid="e_dp">
+    <statement>
+      <p permid="p">
+        Implicit differentiation enables us a different perspective from which to see why the rule <m>\frac{d}{dx} [a^x] = a^x \ln(a)</m> holds,
+        if we assume that <m>\frac{d}{dx}[\ln(x)] = \frac{1}{x}</m>.
+        This exercise leads you through the key steps to do so.
+
+        <ol permid="ol" label="a.">
+          <li permid="l_j">
+            <p permid="p">
+              Let <m>y = a^x</m>.
+              Rewrite this equation using the natural logarithm function to write <m>x</m> in terms of <m>y</m>
+              (and the constant <m>a</m>).
+            </p>
+          </li>
+
+          <li permid="l_s">
+            <p permid="p">
+              Differentiate both sides of the equation you found in (a) with respect to <m>x</m>,
+              keeping in mind that <m>y</m> is implicitly a function of <m>x</m>.
+            </p>
+          </li>
+
+          <li permid="l_b">
+            <p permid="p">
+              Solve the equation you found in (b) for <m>\frac{dy}{dx}</m>,
+              and then use the definition of <m>y</m> to write
+              <m>\frac{dy}{dx}</m> solely in terms of <m>x</m>.
+              What have you found?
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+    <answer permid="a">
+      <p permid="p">
+        <ol permid="ol" label="a.">
+          <li permid="l_j">
+            <p permid="p">
+              <m>
+              x = \frac{\ln(y)}{\ln(a)}</m>.
+            </p>
+          </li>
+
+          <li permid="l_s">
+            <p permid="p">
+              <m>
+              1 = \frac{1}{\ln(a)} \cdot \frac{1}{y}\frac{dy}{dx}</m>.
+            </p>
+          </li>
+
+          <li permid="l_b">
+            <p permid="p">
+              <m>\frac{d}{dx}[a^x] = a^x \ln(a)</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </answer>
+    <solution permid="s">
+      <p permid="p">
+        <ol permid="ol" label="a.">
+          <li permid="l_j">
+            <p permid="p">
+              Taking the natural log of both sides,
+              <m>\ln(y) = \ln(a^x) = x \ln(a)</m>.
+              Thus, it follows that
+              <me>
+                x = \frac{\ln(y)}{\ln(a)}
+              </me>.
+            </p>
+          </li>
+
+          <li permid="l_s">
+            <p permid="p">
+              Remembering that <m>\ln(a)</m> is constant with respect to <m>x</m>,
+              we can also write <m>x = \frac{1}{\ln(a)} \cdot \ln(y)</m>.
+              Differentiating both sides with respect to <m>x</m> while treating <m>y</m> as a function of <m>x</m> (and again remembering that <m>\ln(a)</m> is constant), we have
+              <me>
+                1 = \frac{1}{\ln(a)} \cdot \frac{1}{y}\frac{dy}{dx}
+              </me>.
+            </p>
+          </li>
+
+          <li permid="l_b">
+            <p permid="p">
+              Solving for <m>\frac{dy}{dx}</m>,
+              we see that <m>\frac{dy}{dx} = y \ln(a)</m>.
+              But recall from the outset that <m>y = a^x</m>, and thus
+              <me>
+                \frac{dy}{dx} = a^x \ln(a)
+              </me>
+              which shows that <m>\frac{d}{dx}[a^x] = a^x \ln(a)</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+</exercises>
