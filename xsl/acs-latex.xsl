@@ -59,6 +59,8 @@
    <xsl:text>\linespread{1.02}&#xa;</xsl:text>
 </xsl:param>
 <xsl:param name="latex.preamble.late">
+    <xsl:text>%% Used to get WeBWorK logo into margin next to WW exercises&#xa;</xsl:text>
+    <xsl:text>\usepackage{marginnote}&#xa;</xsl:text>
     <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
     <xsl:text>% Modified from Mitch Keller's chapter handling &#xa;</xsl:text>
     <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
@@ -70,8 +72,8 @@
     <xsl:text>\renewcommand*{\raggedchapter}{\raggedleft}&#xa;</xsl:text>
     <xsl:text>\renewcommand*{\chapterformat}{\MakeUppercase</xsl:text>
     <xsl:text>{\chapappifchapterprefix{}}&#xa;</xsl:text>
-    <xsl:text>\rlap{\enskip\resizebox{!}{1.2cm}{\thechapter} </xsl:text>
-    <xsl:text>\rule{15cm}{1.2cm} }}&#xa;</xsl:text>
+    <xsl:text>\rlap{\enskip\resizebox{!}{0.95cm}{\thechapter} </xsl:text>
+    <xsl:text>\rule{15cm}{0.95cm} }}&#xa;</xsl:text>
     <xsl:text>\RedeclareSectionCommand[beforeskip=30pt,</xsl:text>
     <xsl:text>afterskip=20pt]{chapter}&#xa;</xsl:text>
     <xsl:text>\renewcommand*\chapterheadmidvskip{\par\nobreak</xsl:text>

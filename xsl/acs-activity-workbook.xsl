@@ -18,31 +18,29 @@
 <!-- Next paths assume current file has been copied to mathbook/user -->
 <xsl:import href="../xsl/mathbook-latex.xsl" />
 <!--<xsl:import href="acs-common.xsl" />-->
-
+<xsl:param name="toc.level" select="'3'" />
 
 <xsl:output method="text" />
 
 <!-- These switches will control what we include -->
-<xsl:param name="exercise.text.statement" select="'no'" />
-<xsl:param name="exercise.text.hint" select="'no'" />
-<xsl:param name="exercise.text.answer" select="'no'" />
-<xsl:param name="exercise.text.solution" select="'no'" />
+<xsl:param name="exercise.divisional.hint" select="'no'" />
+<xsl:param name="exercise.divisional.answer" select="'no'" />
+<xsl:param name="exercise.divisional.solution" select="'no'" />
+
 
 <!-- Preview activities and activities are project-like. -->
-<xsl:param name="project.text.statement" select="'yes'" />
 <xsl:param name="project.text.hint" select="'no'" />
 <xsl:param name="project.text.answer" select="'no'" />
 <xsl:param name="project.text.solution" select="'no'" />
 
-
-<!-- Superfluous frontmatter for a solution manual -->
+<!-- Superfluous frontmatter for workbook -->
 <!-- So we don't bother and kill first two pages   -->
 <xsl:template match="*" mode="half-title" />
 <xsl:template match="*" mode="ad-card" />
 
 <!-- Chapters: default presentation, we have them all, so numbers OK     -->
 <!-- Sections and Equivalents: kill them, except for specific ones below -->
-<xsl:template match="conclusion|exercises|references|objectives|appendix|index" />
+<xsl:template match="conclusion|exercises|references|objectives|appendix|index|solutions" />
 
 
 <!-- As a subset of full content, we can't         -->
@@ -105,10 +103,10 @@
     </xsl:choose>
 </xsl:template>
 
-<!-- Let's attempt to start a new page after each activity and PA -->
+<!-- We start a new page after each activity and PA -->
 <xsl:template match="activity|exploration">
     <xsl:apply-imports />
-    <xsl:text>\clearpage&#xA;&#xA;</xsl:text>
+    <xsl:text>\cleardoublepage&#xA;&#xA;</xsl:text>
 </xsl:template>
 
 <!-- Only process activity within subsection -->
@@ -116,5 +114,86 @@
 <xsl:template match="introduction|subsection">
     <xsl:apply-templates select="exploration|activity" />
 </xsl:template>
+
+
+<!-- Configure font with latex.preamble.early -->
+<xsl:param name="latex.preamble.early">
+    <xsl:text>%% Customized to load Palatino fonts&#xa;</xsl:text>
+    <xsl:text>\usepackage[T1]{fontenc}&#xa;</xsl:text>
+    <xsl:text>%Roman font for use in math mode&#xa;</xsl:text>
+    <xsl:text>\renewcommand{\rmdefault}{zpltlf}&#xa;</xsl:text>
+    <xsl:text>% used only by \mathtt&#xa;</xsl:text>
+    <xsl:text>\usepackage[scaled=.85]{beramono}&#xa;</xsl:text>
+    <xsl:text>%used only by \mathsf&#xa;</xsl:text>
+    <xsl:text>\usepackage[type1]{cabin}&#xa;</xsl:text>
+    <xsl:text>%load before newpxmath&#xa;</xsl:text>
+    <xsl:text>\usepackage{amsmath,amssymb,amsthm}&#xa;</xsl:text>
+    <xsl:text>\usepackage[varg,cmintegrals,bigdelims,varbb]{newpxmath}</xsl:text>
+    <xsl:text>&#xa;</xsl:text>
+    <xsl:text>\usepackage[scr=rsfso]{mathalfa}&#xa;</xsl:text>
+    <xsl:text>%load after all math to give access to bold math&#xa;</xsl:text>
+    <xsl:text>\usepackage{bm} &#xa;</xsl:text>
+    <xsl:text>% Now load the otf text fonts using fontspec--</xsl:text>
+    <xsl:text>wont affect math&#xa;</xsl:text>
+    <xsl:text>\usepackage[no-math]{fontspec}&#xa;</xsl:text>
+    <xsl:text>\setmainfont{TeXGyrePagellaX}&#xa;</xsl:text>
+    <xsl:text>\defaultfontfeatures{Ligatures=TeX,Scale=1,Mapping=tex-text}</xsl:text>
+    <xsl:text>&#xa;</xsl:text>
+    <xsl:text>\linespread{1.02}&#xa;</xsl:text>
+</xsl:param>
+
+<!-- Use letter paper and leave one-inch margins all around -->
+<xsl:param name="latex.geometry" select="'letterpaper,tmargin=.5in,bmargin=.3in,hmargin=.75in,includeheadfoot,lmargin=1in'" />
+
+<!-- Format headers to match the text PDF -->
+<xsl:param name="latex.preamble.late">
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>% Modified from Mitch Keller's chapter handling &#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>\definecolor{ActiveBlue}{cmyk}{1, 0.5, 0, 0.35}&#xa;</xsl:text>
+    <xsl:text>\colorlet{chaptercolor}{ActiveBlue}&#xa;</xsl:text>
+    <xsl:text>\setkomafont{chapter}{\normalfont\color{chaptercolor}</xsl:text>
+    <xsl:text>\Huge\itshape}&#xa;</xsl:text>
+    <xsl:text>\setkomafont{chapterprefix}{\normalfont\Large}&#xa;</xsl:text>
+    <xsl:text>\renewcommand*{\raggedchapter}{\raggedleft}&#xa;</xsl:text>
+    <xsl:text>\renewcommand*{\chapterformat}{\MakeUppercase</xsl:text>
+    <xsl:text>{\chapappifchapterprefix{}}&#xa;</xsl:text>
+    <xsl:text>\rlap{\enskip\resizebox{!}{0.95cm}{\thechapter} </xsl:text>
+    <!--<xsl:text>\rule{15cm}{1.2cm} }}&#xa;</xsl:text>-->
+    <xsl:text>}}&#xa;</xsl:text>
+    <xsl:text>\RedeclareSectionCommand[beforeskip=30pt,</xsl:text>
+    <xsl:text>afterskip=20pt]{chapter}&#xa;</xsl:text>
+    <xsl:text>\renewcommand*\chapterheadmidvskip{\par\nobreak</xsl:text>
+    <xsl:text>\vspace{10pt}}&#xa;</xsl:text>
+    <xsl:text>\setkomafont{captionlabel}{}&#xa;</xsl:text>
+    <xsl:text>\setkomafont{caption}{}&#xa;</xsl:text>
+    <xsl:text>\setcapindent{0em}&#xa;</xsl:text>
+    <xsl:text>\addtokomafont{disposition}{\rmfamily\bfseries}&#xa;</xsl:text>
+    <xsl:text>\addtokomafont{descriptionlabel}{\rmfamily\bfseries}&#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>% CC icon at bottom of first page of each chapter &#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>\usepackage[automark]{scrlayer-scrpage}&#xa;</xsl:text>
+    <xsl:text>\deftripstyle{ccfooter}&#xa;</xsl:text>
+    <xsl:text>  {}&#xa;</xsl:text>
+    <xsl:text>  {}&#xa;</xsl:text>
+    <xsl:text>  {}&#xa;</xsl:text>
+    <xsl:text>  {}&#xa;</xsl:text>
+    <xsl:text>  {}&#xa;</xsl:text>
+    <xsl:text>  {\includegraphics[height=1pc]{images/CC-BY-SA-license.pdf}}&#xa;</xsl:text>
+    <xsl:text>\renewcommand{\chapterpagestyle}{ccfooter}&#xa;</xsl:text>
+    <xsl:text>&#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>% Basic paragraph parameters &#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>\setlength{\parindent}{0mm}&#xa;</xsl:text>
+    <xsl:text>\setlength{\parskip}{0.5pc}&#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>% In print, trying to reduce color use &#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,</xsl:text>
+    <xsl:text>filecolor=black,urlcolor=black}&#xa;</xsl:text>
+</xsl:param>
+
 </xsl:stylesheet>
 

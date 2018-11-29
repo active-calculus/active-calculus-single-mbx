@@ -226,6 +226,7 @@ workbook-latex:
 # Automatically builds LaTeX source for solutions manual
 workbook-pdf: workbook-latex
 	cd $(WKBKOUT); \
+	sed -i ".bak" -f ../../change-documentclass-soln-man.sed acs-activity-workbook.tex; \
 	xelatex acs-activity-workbook; \
 	xelatex acs-activity-workbook
 
