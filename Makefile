@@ -196,6 +196,7 @@ soln-latex:
 	install -d $(SOLNOUT)
 	install -d $(MBUSR)
 	install -b xsl/acs-solution-manual.xsl $(MBUSR)
+	install -b xsl/acs-common.xsl $(MBUSR)
 	-rm $(SOLNOUT)/*.tex
 	cp -a $(IMAGESSRC) $(SOLNOUT)
 	cd $(SOLNOUT); \
@@ -218,6 +219,7 @@ workbook-latex:
 	install -d $(WKBKOUT)
 	install -d $(MBUSR)
 	install -b xsl/acs-activity-workbook.xsl $(MBUSR)
+	install -b xsl/acs-common.xsl $(MBUSR)
 	-rm $(WKBKOUT)/*.tex
 	cp -a $(IMAGESSRC) $(WKBKOUT)
 	cd $(WKBKOUT); \
@@ -235,6 +237,7 @@ rq-latex:
 	install -d $(RQOUT)
 	install -d $(MBUSR)
 	install -b xsl/acs-reading-questions.xsl $(MBUSR)
+	install -b xsl/acs-common.xsl $(MBUSR)
 	-rm $(RQOUT)/*.tex
 	cp -a $(IMAGESSRC) $(RQOUT)
 	cd $(RQOUT); \

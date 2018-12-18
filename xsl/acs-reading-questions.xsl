@@ -26,6 +26,12 @@
     <!-- Assumes next file can be found in mathbook/user, so it must be copied there -->
     <xsl:import href="acs-common.xsl" />
 
+    <!-- Superfluous frontmatter for a digital ancillaries -->
+    <!-- So we don't bother and kill first two pages   -->
+    <xsl:template match="*" mode="half-title" />
+    <xsl:template match="*" mode="ad-card" />
+
+    
 <!-- The 20 possible switches default to "yes" if not set,     -->
 <!-- but we try to address only the the things that ACS actually has -->
 <xsl:param name="exercise.divisional.statement" select="'no'" />
