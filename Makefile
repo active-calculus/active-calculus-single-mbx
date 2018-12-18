@@ -71,6 +71,7 @@ IMAGESSRC = $(PRJSRC)/images
 MAINFILE  = $(PRJSRC)/index.xml
 SOLNMAIN = $(PRJSRC)/acs-solution-manual.xml
 WKBKMAIN = $(PRJSRC)/acs-activity-workbook.xml
+RQMAIN   = $(PRJSRC)/acs-reading-questions.xml
 
 # These paths are subdirectories of
 # the Mathbook XML distribution
@@ -89,6 +90,7 @@ WWOUT      = $(OUTPUT)/webwork-extraction
 IMAGESOUT  = $(OUTPUT)/images
 SOLNOUT    = $(OUTPUT)/soln-man
 WKBKOUT    = $(OUTPUT)/workbook
+RQOUT      = $(OUTPUT)/reading-questions
 
 # Some aspects of producing these examples require a WeBWorK server.
 # For all but trivial testing or examples, please look into setting
@@ -177,10 +179,10 @@ pdf: acs-merge
 	cp -a $(WWOUT)/*.png $(PDFOUT)/images
 	install -d $(MBUSR)
 	install -b xsl/acs-latex.xsl $(MBUSR)
+	install -b xsl/acs-common.xsl $(MBUSR)
 	cp -a $(IMAGESSRC) $(PDFOUT)
 	cd $(PDFOUT); \
 	xsltproc -xinclude $(MBUSR)/acs-latex.xsl $(WWOUT)/acs-merge.ptx; \
-	sed -i ".bak" -f ../../change-documentclass.sed index.tex; \
 	xelatex index; \
 	xelatex index; \
 	xelatex index
@@ -203,7 +205,6 @@ soln-latex:
 # Automatically builds LaTeX source for solutions manual
 soln-pdf: soln-latex
 	cd $(SOLNOUT); \
-	sed -i ".bak" -f ../../change-documentclass-soln-man.sed acs-solution-manual.tex; \
 	xelatex acs-solution-manual; \
 	xelatex acs-solution-manual
 
@@ -226,9 +227,25 @@ workbook-latex:
 # Automatically builds LaTeX source for solutions manual
 workbook-pdf: workbook-latex
 	cd $(WKBKOUT); \
-	sed -i ".bak" -f ../../change-documentclass-soln-man.sed acs-activity-workbook.tex; \
 	xelatex acs-activity-workbook; \
 	xelatex acs-activity-workbook
+
+# Reading Questions Supplement (LaTeX only for PDF)
+rq-latex:
+	install -d $(RQOUT)
+	install -d $(MBUSR)
+	install -b xsl/acs-reading-questions.xsl $(MBUSR)
+	-rm $(RQOUT)/*.tex
+	cp -a $(IMAGESSRC) $(RQOUT)
+	cd $(RQOUT); \
+	xsltproc -xinclude $(MBUSR)/acs-reading-questions.xsl $(RQMAIN) \
+
+# Activity workbook for PDF
+# Automatically builds LaTeX source for solutions manual
+rq-pdf: rq-latex
+	cd $(RQOUT); \
+	xelatex acs-reading-questions; \
+	xelatex acs-reading-questions
 
 
 ###########

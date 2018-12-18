@@ -148,6 +148,15 @@
 <!-- Format headers to match the text PDF -->
 <xsl:param name="latex.preamble.late">
     <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>% CC icon at bottom of first page of each chapter &#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>\newpagestyle{preface}{&#xa;</xsl:text>
+    <xsl:text>\sethead[][][] % even&#xa;</xsl:text>
+    <xsl:text>{}{}{} % odd&#xa;</xsl:text>
+    <xsl:text>\setfoot[\includegraphics[height=1pc]{images/CC-BY-SA-license.pdf}][][]&#xa;</xsl:text>
+    <xsl:text>{}{}{\includegraphics[height=1pc]{images/CC-BY-SA-license.pdf}}}&#xa;</xsl:text>
+    <xsl:text>\assignpagestyle{\chapter}{chapopen}&#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
     <xsl:text>% Modified from Mitch Keller's chapter handling &#xa;</xsl:text>
     <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
     <xsl:text>\definecolor{ActiveBlue}{cmyk}{1, 0.5, 0, 0.35}&#xa;</xsl:text>
@@ -170,18 +179,6 @@
     <xsl:text>\setcapindent{0em}&#xa;</xsl:text>
     <xsl:text>\addtokomafont{disposition}{\rmfamily\bfseries}&#xa;</xsl:text>
     <xsl:text>\addtokomafont{descriptionlabel}{\rmfamily\bfseries}&#xa;</xsl:text>
-    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
-    <xsl:text>% CC icon at bottom of first page of each chapter &#xa;</xsl:text>
-    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
-    <xsl:text>\usepackage[automark]{scrlayer-scrpage}&#xa;</xsl:text>
-    <xsl:text>\deftripstyle{ccfooter}&#xa;</xsl:text>
-    <xsl:text>  {}&#xa;</xsl:text>
-    <xsl:text>  {}&#xa;</xsl:text>
-    <xsl:text>  {}&#xa;</xsl:text>
-    <xsl:text>  {}&#xa;</xsl:text>
-    <xsl:text>  {}&#xa;</xsl:text>
-    <xsl:text>  {\includegraphics[height=1pc]{images/CC-BY-SA-license.pdf}}&#xa;</xsl:text>
-    <xsl:text>\renewcommand{\chapterpagestyle}{ccfooter}&#xa;</xsl:text>
     <xsl:text>&#xa;</xsl:text>
     <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
     <xsl:text>% Basic paragraph parameters &#xa;</xsl:text>
