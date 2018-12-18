@@ -72,8 +72,6 @@ IMAGESSRC = $(PRJSRC)/images
 MAINFILE  = $(PRJSRC)/index.xml
 SOLNMAIN = $(PRJSRC)/acs-solution-manual.xml
 WKBKMAIN = $(PRJSRC)/acs-activity-workbook.xml
-WKBKMAIN14 = $(PRJSRC)/acs-activity-workbook-14.xml
-WKBKMAIN58 = $(PRJSRC)/acs-activity-workbook-58.xml
 RQMAIN   = $(PRJSRC)/acs-reading-questions.xml
 
 # These paths are subdirectories of
@@ -186,10 +184,10 @@ pdf: acs-merge
 	install -b xsl/acs-common.xsl $(MBUSR)
 	cp -a $(IMAGESSRC) $(PDFOUT)
 	cd $(PDFOUT); \
-	xsltproc -o acs.tex -xinclude $(MBUSR)/acs-latex.xsl $(WWOUT)/acs-merge.ptx; \
-	xelatex acs; \
-	xelatex acs; \
-	xelatex acs
+	xsltproc -xinclude $(MBUSR)/acs-latex.xsl $(WWOUT)/acs-merge.ptx; \
+	xelatex index; \
+	xelatex index; \
+	xelatex index
 
 # Solutions manual (LaTeX only for PDF)
 # see prerequisite just above
@@ -213,9 +211,6 @@ soln-latex:
 # We can fix this if anyone needs to build on other platforms.
 soln-pdf: soln-latex
 	cd $(SOLNOUT); \
-	sed -i '' -e 's/solutionstyle, /solutionstyle, after={\\clearpage}, /g' acs-solution-manual.tex; \
-	sed -i '' -e 's/for\\\\/for\\\\[0.25\\baselineskip]/' acs-solution-manual.tex; \
-	xelatex acs-solution-manual; \
 	xelatex acs-solution-manual; \
 	xelatex acs-solution-manual
 
@@ -239,43 +234,8 @@ workbook-latex:
 # Automatically builds LaTeX source for solutions manual
 workbook-pdf: workbook-latex
 	cd $(WKBKOUT); \
-	sed -i ".bak" -f ../../change-documentclass-soln-man.sed acs-activity-workbook.tex; \
 	xelatex acs-activity-workbook; \
 	xelatex acs-activity-workbook
-
-workbook-kdp: 
-	install -d $(WKBKOUT)
-	install -d $(MBUSR)
-	install -b xsl/acs-activity-workbook.xsl $(MBUSR)
-	install -b xsl/acs-common.xsl $(MBUSR)
-	-rm $(WKBKOUT)/*.tex
-	cp -a $(IMAGESSRC) $(WKBKOUT)
-	cd $(WKBKOUT); \
-	xsltproc -o acs-activity-workbook-14.tex -xinclude $(MBUSR)/acs-activity-workbook.xsl $(WKBKMAIN14); \
-	xsltproc --stringparam debug.chapter.start 5 -o acs-activity-workbook-58.tex -xinclude $(MBUSR)/acs-activity-workbook.xsl $(WKBKMAIN58); \
-	xelatex acs-activity-workbook-14; \
-	xelatex acs-activity-workbook-14; \
-	xelatex acs-activity-workbook-14; \
-	xelatex acs-activity-workbook-58; \
-	xelatex acs-activity-workbook-58; \
-	xelatex acs-activity-workbook-58; \
-	awk 'BEGIN { del=0 } /%% Cover image, not numbered/ { del=1 } del<=0 { print } /%% begin: title page/ { del -= 1 }' acs-activity-workbook-14.tex > acs-activity-workbook-14-kdp.tex; \
-	awk 'BEGIN { del=0 } /%% Cover image, not numbered/ { del=1 } del<=0 { print } /%% begin: title page/ { del -= 1 }' acs-activity-workbook-58.tex > acs-activity-workbook-58-kdp.tex; \
-	xelatex acs-activity-workbook-14-kdp; \
-	xelatex acs-activity-workbook-14-kdp; \
-	xelatex acs-activity-workbook-14-kdp; \
-	xelatex acs-activity-workbook-58-kdp; \
-	xelatex acs-activity-workbook-58-kdp; \
-	xelatex acs-activity-workbook-58-kdp
-
-workbook-parts:
-	cd $(WKBKOUT); \
-	qpdf acs-activity-workbook.pdf --pages . 1-210,r1 -- acs-activity-workbook-14.pdf; \
-	qpdf acs-activity-workbook-14.pdf --pages . 3-r1 -- acs-activity-workbook-14-kdp.pdf; \
-	sed -i '' -e 's/act-wkbk-cover-2018u-14.pdf/act-wkbk-cover-2018u-58.pdf/' acs-activity-workbook.tex; \
-	xelatex acs-activity-workbook; \
-	qpdf acs-activity-workbook.pdf --pages . 1-8,211-r1 -- acs-activity-workbook-58.pdf; \
-	qpdf acs-activity-workbook-58.pdf --pages . 3-r1 -- acs-activity-workbook-58-kdp.pdf
 
 # Reading Questions Supplement (LaTeX only for PDF)
 rq-latex:
@@ -286,7 +246,7 @@ rq-latex:
 	-rm $(RQOUT)/*.tex
 	cp -a $(IMAGESSRC) $(RQOUT)
 	cd $(RQOUT); \
-	xsltproc -o acs-reading-questions.tex -xinclude $(MBUSR)/acs-reading-questions.xsl $(RQMAIN) \
+	xsltproc -xinclude $(MBUSR)/acs-reading-questions.xsl $(RQMAIN) \
 
 # Activity workbook for PDF
 # Automatically builds LaTeX source for solutions manual
