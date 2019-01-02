@@ -25,7 +25,7 @@
     <xsl:import href="../xsl/pretext-solution-manual-latex.xsl" />
     <!-- Assumes next file can be found in mathbook/user, so it must be copied there -->
     <xsl:import href="acs-common.xsl" />
-
+    <xsl:param name="latex.sides" select="'one'" />
     <!-- Superfluous frontmatter for a digital ancillaries -->
     <!-- So we don't bother and kill first two pages   -->
     <xsl:template match="*" mode="half-title" />
@@ -50,8 +50,15 @@
 <xsl:param name="project.solution" select="'no'" />
 
 
+<!-- Set the headers and footers for the book -->
+<xsl:template match="book" mode="titleps-headings">
+    <xsl:text>{\sethead {}{}{\textsl{\sectiontitle}}&#xa;</xsl:text>
+    <xsl:text>\setfoot{}{\thepage}{}}&#xa;</xsl:text>
+</xsl:template>
+
+
 <!-- Use page size that matches the main text PDf -->
-<xsl:param name="latex.geometry" select="'paperwidth=7.44in,paperheight=9.69in,tmargin=.5in,bmargin=.3in,hmargin=.75in,bindingoffset=.4in,includeheadfoot '" />
+<xsl:param name="latex.geometry" select="'letterpaper,tmargin=.5in,bmargin=.3in,hmargin=.75in,includeheadfoot,lmargin=1in'" />
 
 <xsl:param name="latex.preamble.late">
     <xsl:value-of select="$latex.preamble.late.common" />
