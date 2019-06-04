@@ -182,10 +182,10 @@ pdf: acs-merge
 	install -b xsl/acs-common.xsl $(MBUSR)
 	cp -a $(IMAGESSRC) $(PDFOUT)
 	cd $(PDFOUT); \
-	xsltproc -xinclude $(MBUSR)/acs-latex.xsl $(WWOUT)/acs-merge.ptx; \
-	xelatex index; \
-	xelatex index; \
-	xelatex index
+	xsltproc -o acs.tex -xinclude $(MBUSR)/acs-latex.xsl $(WWOUT)/acs-merge.ptx; \
+	xelatex acs; \
+	xelatex acs; \
+	xelatex acs
 
 # Solutions manual (LaTeX only for PDF)
 # see prerequisite just above
@@ -200,7 +200,7 @@ soln-latex:
 	-rm $(SOLNOUT)/*.tex
 	cp -a $(IMAGESSRC) $(SOLNOUT)
 	cd $(SOLNOUT); \
-	xsltproc -xinclude $(MBUSR)/acs-solution-manual.xsl $(SOLNMAIN) \
+	xsltproc -o acs-solution-manual.tex -xinclude $(MBUSR)/acs-solution-manual.xsl $(SOLNMAIN) \
 
 # Solutions manual for PDF
 # Automatically builds LaTeX source for solutions manual
@@ -223,7 +223,7 @@ workbook-latex:
 	-rm $(WKBKOUT)/*.tex
 	cp -a $(IMAGESSRC) $(WKBKOUT)
 	cd $(WKBKOUT); \
-	xsltproc -xinclude $(MBUSR)/acs-activity-workbook.xsl $(WKBKMAIN) \
+	xsltproc -o acs-activity-workbook.tex -xinclude $(MBUSR)/acs-activity-workbook.xsl $(WKBKMAIN) \
 
 # Activity workbook for PDF
 # Automatically builds LaTeX source for solutions manual
@@ -241,7 +241,7 @@ rq-latex:
 	-rm $(RQOUT)/*.tex
 	cp -a $(IMAGESSRC) $(RQOUT)
 	cd $(RQOUT); \
-	xsltproc -xinclude $(MBUSR)/acs-reading-questions.xsl $(RQMAIN) \
+	xsltproc -o acs-reading-questions.tex -xinclude $(MBUSR)/acs-reading-questions.xsl $(RQMAIN) \
 
 # Activity workbook for PDF
 # Automatically builds LaTeX source for solutions manual
