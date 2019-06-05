@@ -33,12 +33,13 @@
 #                         made.
 # make html --- Build the HTML version. Requires that make acs-extraction have
 #               been run in the past, but need not run it immediately before.
-# make  pdf --- Build the PDF version. Requires that make acs-extraction have
+# make pdf --- Build the PDF version. Requires that make acs-extraction have
 #               been run in the past, but need not run it immediately before.
 # make soln-pdf --- Make a PDF of the full solutions manual.
 # make workbook-pdf --- Make a PDF of the activity workbook.
-# make check --- Validate against the schema and report errors. List of errors is
-#                displayed on screen and stored in output/schema_errors.txt
+# make check --- Validate against the schema and report errors. List of errors
+#                is displayed on screen and stored in output/schema_errors.txt
+
 
 ######################
 # System Prerequisites
@@ -118,7 +119,7 @@ pg:
 acs-extraction:
 	install -d $(WWOUT)
 	-rm $(WWOUT)/webwork-extraction.xml
-	$(MB)/script/mbx -v -c webwork -d $(WWOUT) -s $(SERVER) $(MAINFILE)
+	PYTHONWARNINGS=module $(MB)/script/mbx -c webwork -d $(WWOUT) -s $(SERVER) $(MAINFILE)
 
 #  Make a new PTX file from the source tree, with webwork elements replaced
 #  by the webwork-reps from webwork-extraction.xml. (So run the above at
