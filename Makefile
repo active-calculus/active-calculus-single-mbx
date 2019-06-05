@@ -118,8 +118,8 @@ pg:
 
 acs-extraction:
 	install -d $(WWOUT)
-	-rm $(WWOUT)/webwork-representations.ptx
-	$(MB)/pretext/pretext -c webwork -d $(WWOUT) -s $(SERVER) $(MAINFILE)
+	-rm $(WWOUT)/webwork-extraction.xml
+	PYTHONWARNINGS=module $(MB)/script/mbx -c webwork -d $(WWOUT) -s $(SERVER) $(MAINFILE)
 
 #  Make a new PTX file from the source tree, with webwork elements replaced
 #  by the webwork-reps from webwork-extraction.xml. (So run the above at
