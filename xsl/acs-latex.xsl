@@ -44,7 +44,7 @@
 
 <!-- LaTeX formatting commands we can inject here without incident -->
 <!-- Different products have different page sizes, so this stays here -->
-<xsl:param name="latex.geometry" select="'paperwidth=7.44in,paperheight=9.69in,tmargin=.5in,bmargin=.3in,hmargin=.75in,bindingoffset=.4in,includeheadfoot '" />
+<xsl:param name="latex.geometry" select="'paperwidth=7.44in,paperheight=9.69in,tmargin=.5in,bmargin=.3in,hmargin=.75in,bindingoffset=.4in,includeheadfoot,marginparsep=6ex '" />
 
 <xsl:param name="latex.preamble.late.main">
     <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
@@ -64,6 +64,12 @@
     <xsl:value-of select="$latex.preamble.late.common" />
     <xsl:value-of select="$latex.preamble.late.main" />
 </xsl:param>
+
+<!-- Put a WeBWorK icon in the margin next to WeBWorK exercises -->
+<xsl:template match="exercise/webwork-reps/static/statement">
+    <xsl:text>\marginnote{\hspace*{-10ex}\tiny \includegraphics[width=0.25in]{images/webwork-logo.png}}</xsl:text>
+    <xsl:apply-imports />
+</xsl:template>
 
 <!-- We don't want to start each section's answers on a new page in the backmatter -->
 <!-- This applies only to the answers in the backmatter of the main book -->
