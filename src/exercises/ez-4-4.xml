@@ -25,8 +25,44 @@
   </exercise>
 
   <exercise xml:id="ez-4-4-WW3" permid="xpc">
-    <title>Evaluating the definite integral of a linear function</title>
-    <webwork source="Library/Rochester/setIntegrals3Definite/s4_4_17.pg" />
+      <title>Evaluating the definite integral of a linear function</title>
+      <!-- <webwork source="Library/Rochester/setIntegrals3Definite/s4_4_17.pg" />
+           OPL version is incompatible with PTX-->
+      <webwork>
+          <setup>
+              <pg-code>
+                  $a1 = random(2,10,2);
+                  $b1 = random(2,10,1);
+                  while ($a1 == $b1) {$b1 = random(2,10,1)}
+
+                  $c1 = random(5,9,1);
+                  $d1 = random(2,4,1);
+                  $ans = Real(($a1*$c1**2/2 + $b1*$c1) -($a1*$d1**2/2 + $b1*$d1 ));
+              </pg-code>
+          </setup>
+          <statement>
+              <p>
+                  Evaluate the definite integral
+                  <me>\int_{ <var name="$d1"/> } ^ { <var name="$c1"/> } (<var name="$a1"/> x + <var name="$b1"/>)\, dx </me>.
+              </p>
+              <p>
+                  <var name="$ans" width="30"/>
+              </p>
+          </statement>
+          <solution>
+              <p>
+                  Each part of this integral can be done separately, and each is a special case
+                  of the general rule <m>\displaystyle \int u^n du = \frac{u^{n+1}}{n+1}</m>:
+                  <md>
+                      <mrow>\int_{<var name="$d1"/>}^{<var name="$c1"/>} (<var name="$a1"/> x + <var name="$b1"/>) dx \amp=  <var name="$a1"/> \int_{<var name="$d1"/>}^{<var name="$c1"/>} x\, dx + <var name="$b1"/> \int_{<var name="$d1"/>}^{<var name="$c1"/>} dx</mrow>
+                      <mrow> \amp=  <var name="$a1"/> \left( \left. \frac{x^2}{2} \right|_{<var name="$d1"/>}^{<var name="$c1"/>} \right)
+                      + <var name="$b1"/> \left( \left. x \right|_{<var name="$d1"/>}^{<var name="$c1"/>} \right)</mrow>
+                      <mrow> \amp=  <var name="$a1"/> \left( \frac{<var name="$c1"/>^2}{2} - \frac{<var name="$d1"/>^2}{2} \right)
+                      + <var name="$b1"/> \left( <var name="$c1"/> - <var name="$d1"/> \right) = <var name="$ans"/></mrow>
+                  </md>
+              </p>
+          </solution>
+      </webwork>
   </exercise>
 
   <exercise xml:id="ez-4-4-WW4" permid="dwl">
@@ -34,23 +70,25 @@
     <!--<webwork source="Library/Rochester/setIntegrals3Definite/s4_4_21.pg" />
         OPL version is incompatible with PTX-->
     <webwork>
+        <setup>
             <pg-code>
                 $a1 = random(2,10,2);
                 $a2 = $a1*$a1;
                 $ans = 4*$a1**3/3;
                 $num = 2*$a1**3; 
             </pg-code>
+        </setup>
         <statement>
-            <p permid="JKW">Evaluate the definite integral
-            <me permid="mXz">\int_{ -<var name="$a1"/> } ^ { <var name="$a1"/> } (<var name="$a2"/> -x^2)\, dx</me>.
+            <p>Evaluate the definite integral
+            <me>\int_{ -<var name="$a1"/> } ^ { <var name="$a1"/> } (<var name="$a2"/> -x^2)\, dx</me>.
             </p>
-            <p permid="pSf">
+            <p>
                   <var name="$ans" width="30"/>
               </p>
         </statement>
-        <solution permid="Yka">
-            <p permid="sML">Since the function <m>f(x)=<var name="$a2"/> - x^2</m> is even, 
-            <me permid="TeI"> \int_{-<var name="$a1" />}^{<var name="$a1" />} (<var name="$a2" /> -x^2)\, dx = 2 \int_{0}^{<var name="$a1" />} (<var name="$a2"/> -x^2)\, dx = 
+        <solution>
+            <p>Since the function <m>f(x)=<var name="$a2"/> - x^2</m> is even, 
+            <me> \int_{-<var name="$a1" />}^{<var name="$a1" />} (<var name="$a2" /> -x^2)\, dx = 2 \int_{0}^{<var name="$a1" />} (<var name="$a2"/> -x^2)\, dx = 
 2 \left. \left(<var name="$a2"/> x - \frac{x^3}{3}\right) \right|_ {0}^{<var name="$a1"/>} = 
 2 \left[ \left(<var name="$a2"/> \cdot <var name="$a1"/>- \frac{<var name="$a1"/>^3}{3}\right) - (0-0) \right] = 2 \frac{<var name="$num"/>}{3} = <var name="$ans"/></me>.
             </p>
@@ -63,6 +101,7 @@
     <!--<webwork source="Library/Rochester/setIntegrals3Definite/s4_4_27.pg" />
         OPL version is not compatible with PTX-->
     <webwork>
+        <setup>
             <pg-code>
                 $a1 = random(2,10,2);
                 $b1 = random(2,10,1);
@@ -72,26 +111,27 @@
                 $p2 =  (2*$a1*$d1**2.5/5 + 2*$b1*$d1**.5 );
                 $ans = $p1 - $p2;
             </pg-code>
+        </setup>
         <statement>
-            <p permid="VZo">Evaluate the definite integral
-            <me permid="zlR">\int_{ <var name="$d1"/> } ^ { <var name="$c1"/> } \frac {<var name="$a1"/> x^2 + <var name="$b1"/> } { \sqrt x }\,dx</me>.
+            <p>Evaluate the definite integral
+            <me>\int_{ <var name="$d1"/> } ^ { <var name="$c1"/> } \frac {<var name="$a1"/> x^2 + <var name="$b1"/> } { \sqrt x }\,dx</me>.
             </p>
-            <p permid="Cgx">
+            <p>
                   <var name="$ans" width="40"/>
               </p>
         </statement>
-        <solution permid="Erj">
-            <p permid="YTU">To evaluate the definite integral,
+        <solution>
+            <p>To evaluate the definite integral,
             we need to determine the antiderivative of the formula to be integrated.
             This can be done term-by-term by rewriting the integral as:
-            <me permid="fta">\int_{<var name="$d1"/>}^{<var name="$c1"/>} \frac{{<var name="$a1"/>}x^2 + <var name="$b1"/>}{\sqrt{x}}\,dx = 
+            <me>\int_{<var name="$d1"/>}^{<var name="$c1"/>} \frac{{<var name="$a1"/>}x^2 + <var name="$b1"/>}{\sqrt{x}}\,dx = 
             \int_{<var name="$d1"/>}^{<var name="$c1"/>} \left( \frac{{<var name="$a1"/>}x^2}{\sqrt{x}} + \frac{<var name="$b1"/>}{\sqrt{x}}  \right)\,dx</me>.
             Then, we can find the derivative, which is:
-            <me permid="LAj">F(x) =  \frac{2}{5}\left(\frac{{<var name="$a1"/>}x^3}{\sqrt{x}}\right)
+            <me>F(x) =  \frac{2}{5}\left(\frac{{<var name="$a1"/>}x^3}{\sqrt{x}}\right)
             - 2(<var name="$b1"/>)\sqrt{x}</me>.
             Now, applying the second part of the Fundamental Theorem of Calculus,
             we get the value of the definite integral as:
-            <md permid="kcT">
+            <md>
                 <mrow>F(<var name="$c1"/>) - F(<var name="$d1"/>) &amp;=
                 \frac{2}{5}\left(\frac{{<var name="$a1"/>}(<var name="$c1"/>)^3}{\sqrt{<var name="$c1"/>}}\right)
                 + 2(<var name="$b1"/>)\sqrt{<var name="$c1"/>}
@@ -110,21 +150,23 @@
     <!--<webwork source="Library/Rochester/setIntegrals3Definite/s4_4_41.pg" />
         OPL version is not compatible with PTX -->
     <webwork>
+        <setup>
             <pg-code>
                 $a1 = random(2,10,2);
                 $ans = 2*$a1;
             </pg-code>
+        </setup>
         <statement>
-            <p permid="inG">
+            <p>
                 Evaluate the definite integral
-                <me permid="rHs"> \int_{ 0 } ^ { \pi } <var name="$a1"/> \sin(x)\,dx</me>.
+                <me> \int_{ 0 } ^ { \pi } <var name="$a1"/> \sin(x)\,dx</me>.
             </p>
-            <p permid="OuP">
+            <p>
                   <var name="$ans" width="30"/>
               </p>
         </statement>
-        <solution permid="kys">
-            <p permid="Fbd">
+        <solution>
+            <p>
                 This integration can be done because we know that the derivative with respect
                 to <m>x</m> of <m>\cos(x)</m> is <m>-\sin(x)</m>.  So we obtain a
                 <m>-\sin(x)</m> inside
@@ -132,7 +174,7 @@
                 Of course, since there isn't a minus sign inside the integral,
                 we'll have to multiply inside and outside by <m>-1</m>
                 (which doesn't change the value of course):
-                <md permid="Qkc">
+                <md>
                     <mrow>\int_0^\pi <var name="$a1"/> \sin(x)\,dx &amp;=	-<var name="$a1"/> \int_0^\pi (-\sin(x))\,dx</mrow>
                     <mrow>&amp;=	-<var name="$a1"/> \left( \left. \cos(x) \right|_0^\pi \right)</mrow>
                     <mrow>&amp;=	-<var name="$a1"/> ( \cos(\pi) - \cos(0) ) = -<var name="$a1"/> (-1-1) = 2 \cdot <var name="$a1"/> = <var name="$ans"/>
