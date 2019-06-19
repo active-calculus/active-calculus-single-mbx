@@ -80,12 +80,6 @@
     <xsl:text>filecolor=black,urlcolor=black}&#xa;</xsl:text>
 </xsl:param>
 
-<!-- Put a WeBWorK icon in the margin next to WeBWorK exercises -->
-<xsl:template match="exercise[webwork-reps]">
-    <xsl:text>\marginnote{\tiny \includegraphics[width=0.25in]{images/webwork-logo.png}}</xsl:text>
-    <xsl:apply-imports />
-</xsl:template>
-
 <!-- Set the headers and footers for the book -->
 <xsl:template match="book" mode="titleps-headings">
     <xsl:text>{\sethead[\textsl{\ifthechapter{\chaptertitlename{} </xsl:text>

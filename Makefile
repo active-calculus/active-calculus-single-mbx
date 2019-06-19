@@ -33,12 +33,13 @@
 #                         made.
 # make html --- Build the HTML version. Requires that make acs-extraction have
 #               been run in the past, but need not run it immediately before.
-# make  pdf --- Build the PDF version. Requires that make acs-extraction have
+# make pdf --- Build the PDF version. Requires that make acs-extraction have
 #               been run in the past, but need not run it immediately before.
 # make soln-pdf --- Make a PDF of the full solutions manual.
 # make workbook-pdf --- Make a PDF of the activity workbook.
-# make check --- Validate against the schema and report errors. List of errors is
-#                displayed on screen and stored in output/schema_errors.txt
+# make check --- Validate against the schema and report errors. List of errors
+#                is displayed on screen and stored in output/schema_errors.txt
+
 
 ######################
 # System Prerequisites
@@ -118,7 +119,7 @@ pg:
 acs-extraction:
 	install -d $(WWOUT)
 	-rm $(WWOUT)/webwork-extraction.xml
-	$(MB)/script/mbx -v -c webwork -d $(WWOUT) -s $(SERVER) $(MAINFILE)
+	PYTHONWARNINGS=module $(MB)/script/mbx -c webwork -d $(WWOUT) -s $(SERVER) $(MAINFILE)
 
 #  Make a new PTX file from the source tree, with webwork elements replaced
 #  by the webwork-reps from webwork-extraction.xml. (So run the above at
@@ -182,10 +183,10 @@ pdf: acs-merge
 	install -b xsl/acs-common.xsl $(MBUSR)
 	cp -a $(IMAGESSRC) $(PDFOUT)
 	cd $(PDFOUT); \
-	xsltproc -xinclude $(MBUSR)/acs-latex.xsl $(WWOUT)/acs-merge.ptx; \
-	xelatex index; \
-	xelatex index; \
-	xelatex index
+	xsltproc -o acs.tex -xinclude $(MBUSR)/acs-latex.xsl $(WWOUT)/acs-merge.ptx; \
+	xelatex acs; \
+	xelatex acs; \
+	xelatex acs
 
 # Solutions manual (LaTeX only for PDF)
 # see prerequisite just above
@@ -200,7 +201,7 @@ soln-latex:
 	-rm $(SOLNOUT)/*.tex
 	cp -a $(IMAGESSRC) $(SOLNOUT)
 	cd $(SOLNOUT); \
-	xsltproc -xinclude $(MBUSR)/acs-solution-manual.xsl $(SOLNMAIN) \
+	xsltproc -o acs-solution-manual.tex -xinclude $(MBUSR)/acs-solution-manual.xsl $(SOLNMAIN) \
 
 # Solutions manual for PDF
 # Automatically builds LaTeX source for solutions manual
@@ -223,7 +224,7 @@ workbook-latex:
 	-rm $(WKBKOUT)/*.tex
 	cp -a $(IMAGESSRC) $(WKBKOUT)
 	cd $(WKBKOUT); \
-	xsltproc -xinclude $(MBUSR)/acs-activity-workbook.xsl $(WKBKMAIN) \
+	xsltproc -o acs-activity-workbook.tex -xinclude $(MBUSR)/acs-activity-workbook.xsl $(WKBKMAIN) \
 
 # Activity workbook for PDF
 # Automatically builds LaTeX source for solutions manual
@@ -241,7 +242,7 @@ rq-latex:
 	-rm $(RQOUT)/*.tex
 	cp -a $(IMAGESSRC) $(RQOUT)
 	cd $(RQOUT); \
-	xsltproc -xinclude $(MBUSR)/acs-reading-questions.xsl $(RQMAIN) \
+	xsltproc -o acs-reading-questions.tex -xinclude $(MBUSR)/acs-reading-questions.xsl $(RQMAIN) \
 
 # Activity workbook for PDF
 # Automatically builds LaTeX source for solutions manual
