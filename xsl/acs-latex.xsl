@@ -78,4 +78,7 @@
     <xsl:apply-imports />
 </xsl:template>
 
+<!-- Kill answers to WeBWorK exercises -->
+<xsl:template match="exercise[webwork-reps]" mode="solutions">
+</xsl:template>
 </xsl:stylesheet>
