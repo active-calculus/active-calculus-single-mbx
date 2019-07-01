@@ -168,4 +168,9 @@
     <xsl:text>fonttitle=\bfseries, attach boxed title to top &#xa;</xsl:text>
     <xsl:text>left={xshift=4mm,yshift=-3mm}, top=3mm,&#xa;</xsl:text>
 </xsl:template>
+
+<!-- Kill answers to WeBWorK exercises -->
+<xsl:template match="exercise[webwork-reps]" mode="solutions">
+</xsl:template>
+
 </xsl:stylesheet>
