@@ -151,7 +151,7 @@
 <!-- in summer 2018 when the 2018 edition was produced. -->
 <!-- The only change made here is to use ActiveBlue instead of the default blue. -->
 <xsl:template match="assemblage" mode="tcb-style">
-    <xsl:text>breakable, skin=enhanced, arc=2ex, &#xa;</xsl:text>
+    <xsl:text>skin=enhanced, arc=2ex, &#xa;</xsl:text>
     <xsl:text>colback=ActiveBlue!5,colframe=ActiveBlue!75!black, &#xa;</xsl:text>
     <xsl:text>colbacktitle=ActiveBlue!20, coltitle=black, &#xa;</xsl:text>
     <xsl:text>boxed title style={sharp corners, frame hidden}, &#xa;</xsl:text>
