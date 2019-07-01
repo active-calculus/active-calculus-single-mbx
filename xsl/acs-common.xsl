@@ -132,9 +132,19 @@
     <xsl:text>enhanced,frame hidden,interior hidden, sharp corners,&#xa;</xsl:text>
     <xsl:text>boxrule=0pt,borderline west={3pt}{0pt}{ActiveBlue}, &#xa;</xsl:text>
     <xsl:text>runintitlestyle, blockspacingstyle, after title={.\space}, &#xa;</xsl:text>
-    <xsl:text>after upper={\hfill{}\(\square\)}, colback=white,&#xa;</xsl:text>
+    <xsl:text>colback=white,&#xa;</xsl:text>
     <xsl:text>coltitle=black,</xsl:text>
 </xsl:template>
+
+
+<xsl:template match="&DEFINITION-LIKE;" mode="tcb-style">
+    <xsl:text>bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, </xsl:text>
+</xsl:template>
+
+<xsl:template match="&EXAMPLE-LIKE;" mode="tcb-style">
+    <xsl:text>bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, </xsl:text>
+</xsl:template>
+
 
 <!-- Restore horizontal rules around Motivating Questions -->
 <!-- This is fixing a bug in PreTeXt and can be removed when it's fixed -->
