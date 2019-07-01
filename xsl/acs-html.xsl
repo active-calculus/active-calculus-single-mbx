@@ -44,4 +44,9 @@
 
 <!-- Specify Google Custom Search -->
 <xsl:param name="html.google-search" select="'015103900096539427448:ngwuia10qci'" />
+
+<!-- Kill answers to WeBWorK exercises -->
+<xsl:template match="exercise[webwork-reps]" mode="solutions">
+</xsl:template>
+
 </xsl:stylesheet>
