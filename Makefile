@@ -1,5 +1,5 @@
 ## ********************************************************************* ##
-## Copyright 2016--2018                                                  ##
+## Copyright 2016-2019                                                  ##
 ## Matt Boelkins                                                         ##
 ##                                                                       ##
 ## This file is part of Active Calculus                                  ##
