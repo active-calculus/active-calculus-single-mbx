@@ -22,6 +22,14 @@
 <!-- Assumes next file can be found in mathbook/user, so it must be copied there -->
 <xsl:import href="acs-common.xsl" />
 
+<!-- List Chapters and Sections in sidebar Table of Contents -->
+<xsl:param name="toc.level" select="'2'" />
+
+<!-- Examples and inline exercises are knowlized by default -->
+<!-- We disable this behavior  -->
+<xsl:param name="html.knowl.example" select="'no'" />
+<xsl:param name="html.knowl.exercise.inline" select="'no'" />
+
 <!-- Exercises have hint (sporadically), answer, and solution -->
 <xsl:param name="exercise.divisional.statement" select="'yes'" />
 <xsl:param name="exercise.divisional.hint" select="'yes'" />
@@ -44,9 +52,5 @@
 
 <!-- Specify Google Custom Search -->
 <xsl:param name="html.google-search" select="'015103900096539427448:ngwuia10qci'" />
-
-<!-- Kill answers to WeBWorK exercises -->
-<xsl:template match="exercise[webwork-reps]" mode="solutions">
-</xsl:template>
 
 </xsl:stylesheet>
