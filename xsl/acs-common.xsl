@@ -173,4 +173,6 @@
 <xsl:template match="exercise[webwork-reps]" mode="solutions">
 </xsl:template>
 
+<xsl:template match="subsection/title" mode="solutions">
+</xsl:template>
 </xsl:stylesheet>
