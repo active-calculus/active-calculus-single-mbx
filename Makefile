@@ -1,5 +1,5 @@
 ## ********************************************************************* ##
-## Copyright 2016--2018                                                  ##
+## Copyright 2016-2019                                                  ##
 ## Matt Boelkins                                                         ##
 ##                                                                       ##
 ## This file is part of Active Calculus                                  ##
@@ -142,6 +142,7 @@ html: acs-merge
 	install -d $(OUTPUT)/images
 	install -d $(MBUSR)
 	install -b xsl/acs-html.xsl $(MBUSR)
+	install -b xsl/acs-common.xsl $(MBUSR)
 	-rm $(HTMLOUT)/*.html
 	cp -a $(IMAGESOUT) $(HTMLOUT)
 	cp -a $(IMAGESSRC) $(HTMLOUT)

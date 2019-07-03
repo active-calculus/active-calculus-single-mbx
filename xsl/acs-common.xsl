@@ -132,9 +132,19 @@
     <xsl:text>enhanced,frame hidden,interior hidden, sharp corners,&#xa;</xsl:text>
     <xsl:text>boxrule=0pt,borderline west={3pt}{0pt}{ActiveBlue}, &#xa;</xsl:text>
     <xsl:text>runintitlestyle, blockspacingstyle, after title={.\space}, &#xa;</xsl:text>
-    <xsl:text>after upper={\hfill{}\(\square\)}, colback=white,&#xa;</xsl:text>
+    <xsl:text>colback=white,&#xa;</xsl:text>
     <xsl:text>coltitle=black,</xsl:text>
 </xsl:template>
+
+
+<xsl:template match="&DEFINITION-LIKE;" mode="tcb-style">
+    <xsl:text>bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, </xsl:text>
+</xsl:template>
+
+<xsl:template match="&EXAMPLE-LIKE;" mode="tcb-style">
+    <xsl:text>bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, </xsl:text>
+</xsl:template>
+
 
 <!-- Restore horizontal rules around Motivating Questions -->
 <!-- This is fixing a bug in PreTeXt and can be removed when it's fixed -->
@@ -151,11 +161,64 @@
 <!-- in summer 2018 when the 2018 edition was produced. -->
 <!-- The only change made here is to use ActiveBlue instead of the default blue. -->
 <xsl:template match="assemblage" mode="tcb-style">
-    <xsl:text>breakable, skin=enhanced, arc=2ex, &#xa;</xsl:text>
+    <xsl:text>skin=enhanced, arc=2ex, &#xa;</xsl:text>
     <xsl:text>colback=ActiveBlue!5,colframe=ActiveBlue!75!black, &#xa;</xsl:text>
     <xsl:text>colbacktitle=ActiveBlue!20, coltitle=black, &#xa;</xsl:text>
     <xsl:text>boxed title style={sharp corners, frame hidden}, &#xa;</xsl:text>
     <xsl:text>fonttitle=\bfseries, attach boxed title to top &#xa;</xsl:text>
     <xsl:text>left={xshift=4mm,yshift=-3mm}, top=3mm,&#xa;</xsl:text>
+</xsl:template>
+
+<!-- Kill answers to WeBWorK exercises -->
+<xsl:template match="exercise[webwork-reps]" mode="solutions">
+</xsl:template>
+
+<!-- This suppresses subsection headings in the backmatter answers -->
+<!-- It had to be developed by clobbering part of the template from -->
+<!-- upstream PreTeXt. If something goes wrong with backmatter answer -->
+<!-- formatting, this is the most likely culprit. -->
+<xsl:template match="subsection|exercises" mode="division-in-solutions">
+    <xsl:param name="scope" />
+    <xsl:param name="b-has-heading"/>
+    <xsl:param name="content" />
+    <!-- Usually we create an automatic heading,  -->
+    <!-- but not at the root division -->
+    <xsl:if test="$b-has-heading">
+        <xsl:variable name="font-size">
+            <xsl:choose>
+                <!-- backmatter placement gets appendix like chapter -->
+                <xsl:when test="$scope/self::book">
+                    <xsl:text>\Large</xsl:text>
+                </xsl:when>
+                <!-- backmatter placement gets appendix like section -->
+                <xsl:when test="$scope/self::article">
+                    <xsl:text>\large</xsl:text>
+                </xsl:when>
+                <!-- divisional placement is one level less -->
+                <xsl:when test="$scope/self::chapter">
+                    <xsl:text>\Large</xsl:text>
+                </xsl:when>
+                <xsl:when test="$scope/self::section">
+                    <xsl:text>\large</xsl:text>
+                </xsl:when>
+                <xsl:when test="$scope/self::subsection">
+                    <xsl:text>\normalsize</xsl:text>
+                </xsl:when>
+                <xsl:when test="$scope/self::subsubsection">
+                    <xsl:text>\normalsize</xsl:text>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:message>PTX:BUG:     "solutions" division title does not have a font size</xsl:message>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+
+        <!-- Does the current division get a number at birth? -->
+        <xsl:variable name="is-structured">
+            <xsl:apply-templates select="parent::*" mode="is-structured-division"/>
+        </xsl:variable>
+        <xsl:variable name="b-is-structured" select="$is-structured = 'true'"/>
+    </xsl:if>
+    <xsl:copy-of select="$content" />
 </xsl:template>
 </xsl:stylesheet>
