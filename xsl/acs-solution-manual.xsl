@@ -16,7 +16,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 <!-- Next paths assume current file has been copied to mathbook/user -->
-<xsl:import href="../xsl/mathbook-latex.xsl" />
+<xsl:import href="../xsl/pretext-solution-manual-latex.xsl" />
 <xsl:import href="acs-common.xsl" />
 <xsl:param name="toc.level" select="'3'" />
 
@@ -35,8 +35,8 @@
 <xsl:param name="exercise.reading.answer" select="'no'" />
 <xsl:param name="exercise.reading.solution" select="'no'" />
 
-
 <!-- Preview activities and activities are project-like. -->
+<xsl:param name="project.statement" select="'yes'" />
 <xsl:param name="project.hint" select="'no'" />
 <xsl:param name="project.answer" select="'no'" />
 <xsl:param name="project.solution" select="'yes'" />
@@ -46,133 +46,64 @@
 <xsl:template match="*" mode="half-title" />
 <xsl:template match="*" mode="ad-card" />
 
-<!-- Chapters: default presentation, we have them all, so numbers OK     -->
-<!-- Sections and Equivalents: kill them, except for specific ones below -->
-<xsl:template match="conclusion|references|objectives|appendix|index|solutions|reading-questions" />
-
-<!-- Kill solutions to WeBWorK exercises -->
-<xsl:template match="exercise[webwork]">
-</xsl:template>
-
-<!-- As a subset of full content, we can't            -->
-<!-- trust LaTeX's auto-numbering to coincide         -->
-<!-- with the sections of the full book               -->
-<!-- Thus we need to redo the whole exercises section -->
-<!-- With \section* we do not get ToC entries, but    -->
-<!-- we could purposely add them if we wished         -->
-<xsl:template match="exercises">
-
-    <xsl:text>\section*{</xsl:text>
-    <xsl:apply-templates select="." mode="number" />
-    <xsl:text>\quad </xsl:text>
-    <xsl:apply-templates select="." mode="title-full" />
-    <xsl:text>}&#xa;</xsl:text>
-    <xsl:text>\addcontentsline{toc}{subsection}{Exercises}&#xa;</xsl:text>
-    <xsl:apply-templates />
-    <!-- Insert a page break so that each section's exercises start on a -->
-    <!-- new page. This is mainly insurance for when a more compact version -->
-    <!-- without a page break after each exercise's solution is being produced. -->
-    <xsl:text>\clearpage&#xA;&#xA;</xsl:text>
-</xsl:template>
-
-<!-- As a subset of full content, we can't         -->
-<!-- point to much of the content with hyperlinks  -->
-<!-- We do have the full context as we process, so -->
-<!-- we can get numbers for cross-references and   -->
-<!-- hard code them into the LaTeX                 -->
-<!-- This override obliterates autonaming support  -->
-<xsl:template match="*" mode="ref-id">
-    <xsl:apply-templates select="." mode="number" />
-</xsl:template>
-
-<!-- We do the expedient thing and *hard-code* the number    -->
-<!-- of each item cross-referenced from within the solutions -->
-<!-- manual, so the cropss-refernce text matches with HTML   -->
-<!-- output and LaTeX output for the entire book.            -->
-<!-- Since the output LaTeX file is a subset of the content, -->
-<!-- there will not be a \label for many \ref, and worse, if -->
-<!-- there is a \label then a \ref to it will be wrong.      -->
-<xsl:template match="*" mode="xref-number">
-  <xsl:apply-templates select="." mode="number" />
-</xsl:template>
-
-<!-- As a subset of the full content, the auto-numbering of          -->
-<!-- a figure or table included in the solution manual will          -->
-<!-- be incorrect, so we have to supply the MBX number               -->
-<!-- NB: this may not work for figures or tables within a sidebyside -->
-<xsl:template match="table/caption|figure/caption">
-    <xsl:choose>
-      <xsl:when test="ancestor::sidebyside and ancestor::table and not(ancestor::sidebyside/caption)">
-            <xsl:text>\captionof*{table}{\textbf{</xsl:text>
-      </xsl:when>
-      <xsl:when test="ancestor::sidebyside and ancestor::figure and not(ancestor::sidebyside/caption)">
-            <xsl:text>\captionof*{figure}{\textbf{</xsl:text>
-      </xsl:when>
-      <xsl:otherwise>
-          <xsl:text>\caption*{\textbf{</xsl:text>
-      </xsl:otherwise>
-    </xsl:choose>
-    <xsl:apply-templates select=".." mode="type-name" />
-    <xsl:text> </xsl:text>
-    <xsl:apply-templates select=".." mode="number" />
-    <xsl:if test="not(. = '')">
-        <xsl:text>: </xsl:text>
-    </xsl:if>
-    <xsl:text>}</xsl:text>
-    <xsl:apply-templates />
-    <xsl:text>}&#xa;</xsl:text>
-</xsl:template>
-
-<!-- If we do not include statements, then we kill -->
-<!-- introductions and conclusions for exercise    -->
-<!-- sections and exercise groups                  -->
-<xsl:template match="exercises/introduction|exercises/conclusion|exercisegroup/introduction|exercisegroup/conclusion">
-    <xsl:choose>
-        <xsl:when test="$exercise.text.statement='yes'">
-            <xsl:apply-imports />
-        </xsl:when>
-        <xsl:otherwise></xsl:otherwise>
-    </xsl:choose>
-</xsl:template>
-
-<!-- Let's attempt to start a new page after each activity and PA -->
-<xsl:template match="activity|exploration">
-    <xsl:apply-imports />
-    <xsl:text>\clearpage&#xA;&#xA;</xsl:text>
-</xsl:template>
-
-<!-- Let's attempt to start a new page after each exercise -->
-<xsl:template match="exercise">
-    <xsl:apply-imports />
-    <xsl:text>\clearpage&#xA;&#xA;</xsl:text>
-</xsl:template>
-
-
-<!-- Only process activity within subsection -->
-<!-- This could match="introduction|subsection" and then -->
-<!-- select="exploration|activity" if preview activities were to be included -->
-<!-- Also need to remove the template for introduction below -->
-<xsl:template match="subsection">
-    <xsl:apply-templates select="activity" />
-</xsl:template>
-
-<!-- We can't just kill introductions, since if we do, it messes up the -->
-<!-- numbering. Instead, we increment the cpjt counter every time we see -->
-<!-- an exploration (Preview Activity). If you want to include Preview Activities -->
-<!-- just remove the template that matches exploration. -->
-<xsl:template match="introduction">
-    <xsl:apply-templates select="exploration" />
-</xsl:template>
-<xsl:template match="exploration">
-    <xsl:text>\stepcounter{cpjt}&#xa;</xsl:text>
-</xsl:template>    
-
-
 <!-- Use letter paper and leave one-inch margins all around -->
 <xsl:param name="latex.geometry" select="'letterpaper,tmargin=.5in,bmargin=.3in,hmargin=.75in,includeheadfoot '" />
 
 <xsl:param name="latex.preamble.late">
     <xsl:value-of select="$latex.preamble.late.common" />
 </xsl:param>
+
+<!-- This suppresses subsection headings in the backmatter answers -->
+<!-- It had to be developed by clobbering part of the template from -->
+<!-- upstream PreTeXt. If something goes wrong with backmatter answer -->
+<!-- formatting, this is the most likely culprit. -->
+<!-- This lives here rather than in acs-common.xsl because we want to see -->
+<!-- where exercises start in the solutions manual. -->
+<xsl:template match="subsection" mode="division-in-solutions">
+    <xsl:param name="scope" />
+    <xsl:param name="b-has-heading"/>
+    <xsl:param name="content" />
+    <!-- Usually we create an automatic heading,  -->
+    <!-- but not at the root division -->
+    <xsl:if test="$b-has-heading">
+        <xsl:variable name="font-size">
+            <xsl:choose>
+                <!-- backmatter placement gets appendix like chapter -->
+                <xsl:when test="$scope/self::book">
+                    <xsl:text>\Large</xsl:text>
+                </xsl:when>
+                <!-- backmatter placement gets appendix like section -->
+                <xsl:when test="$scope/self::article">
+                    <xsl:text>\large</xsl:text>
+                </xsl:when>
+                <!-- divisional placement is one level less -->
+                <xsl:when test="$scope/self::chapter">
+                    <xsl:text>\Large</xsl:text>
+                </xsl:when>
+                <xsl:when test="$scope/self::section">
+                    <xsl:text>\large</xsl:text>
+                </xsl:when>
+                <xsl:when test="$scope/self::subsection">
+                    <xsl:text>\normalsize</xsl:text>
+                </xsl:when>
+                <xsl:when test="$scope/self::subsubsection">
+                    <xsl:text>\normalsize</xsl:text>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:message>PTX:BUG:     "solutions" division title does not have a font size</xsl:message>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+
+        <!-- Does the current division get a number at birth? -->
+        <xsl:variable name="is-structured">
+            <xsl:apply-templates select="parent::*" mode="is-structured-division"/>
+        </xsl:variable>
+        <xsl:variable name="b-is-structured" select="$is-structured = 'true'"/>
+    </xsl:if>
+    <xsl:copy-of select="$content" />
+</xsl:template>
+
+
 </xsl:stylesheet>
 
