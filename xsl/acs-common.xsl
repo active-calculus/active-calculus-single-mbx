@@ -29,6 +29,7 @@
 <!-- Set font size and two-sided mode -->
 <xsl:param name="latex.font.size" select="'10pt'" />
 <xsl:param name="latex.sides" select="'two'" />
+<xsl:param name="latex.pageref" select="'no'" />
 
 <!-- Font configuration should be consistent -->
 <xsl:param name="latex.preamble.early">
@@ -84,7 +85,8 @@
 <xsl:template match="book" mode="titleps-headings">
     <xsl:text>{\sethead[\textsl{\ifthechapter{\chaptertitlename{} </xsl:text>
     <xsl:text>\thechapter }{} \chaptertitle}][][]&#xa;</xsl:text>
-    <xsl:text>{}{}{\textsl{\thesection{} \sectiontitle}}&#xa;</xsl:text>
+    <xsl:text>{}{}{\textsl{\ifthesection{\thesection{} \sectiontitle}</xsl:text>
+    <xsl:text>{\sectiontitle} }}&#xa;</xsl:text>
     <xsl:text>\setfoot[\thepage][][]&#xa;</xsl:text>
     <xsl:text>{}{}{\thepage}}&#xa;</xsl:text>
 </xsl:template>
@@ -170,55 +172,7 @@
 </xsl:template>
 
 <!-- Kill answers to WeBWorK exercises -->
-<xsl:template match="exercise[webwork-reps]" mode="solutions">
+<xsl:template match="exercise[webwork-reps]|exercise[webwork]" mode="solutions">
 </xsl:template>
 
-<!-- This suppresses subsection headings in the backmatter answers -->
-<!-- It had to be developed by clobbering part of the template from -->
-<!-- upstream PreTeXt. If something goes wrong with backmatter answer -->
-<!-- formatting, this is the most likely culprit. -->
-<xsl:template match="subsection|exercises" mode="division-in-solutions">
-    <xsl:param name="scope" />
-    <xsl:param name="b-has-heading"/>
-    <xsl:param name="content" />
-    <!-- Usually we create an automatic heading,  -->
-    <!-- but not at the root division -->
-    <xsl:if test="$b-has-heading">
-        <xsl:variable name="font-size">
-            <xsl:choose>
-                <!-- backmatter placement gets appendix like chapter -->
-                <xsl:when test="$scope/self::book">
-                    <xsl:text>\Large</xsl:text>
-                </xsl:when>
-                <!-- backmatter placement gets appendix like section -->
-                <xsl:when test="$scope/self::article">
-                    <xsl:text>\large</xsl:text>
-                </xsl:when>
-                <!-- divisional placement is one level less -->
-                <xsl:when test="$scope/self::chapter">
-                    <xsl:text>\Large</xsl:text>
-                </xsl:when>
-                <xsl:when test="$scope/self::section">
-                    <xsl:text>\large</xsl:text>
-                </xsl:when>
-                <xsl:when test="$scope/self::subsection">
-                    <xsl:text>\normalsize</xsl:text>
-                </xsl:when>
-                <xsl:when test="$scope/self::subsubsection">
-                    <xsl:text>\normalsize</xsl:text>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:message>PTX:BUG:     "solutions" division title does not have a font size</xsl:message>
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:variable>
-
-        <!-- Does the current division get a number at birth? -->
-        <xsl:variable name="is-structured">
-            <xsl:apply-templates select="parent::*" mode="is-structured-division"/>
-        </xsl:variable>
-        <xsl:variable name="b-is-structured" select="$is-structured = 'true'"/>
-    </xsl:if>
-    <xsl:copy-of select="$content" />
-</xsl:template>
 </xsl:stylesheet>
