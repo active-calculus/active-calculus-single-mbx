@@ -211,6 +211,9 @@ soln-latex:
 # We can fix this if anyone needs to build on other platforms.
 soln-pdf: soln-latex
 	cd $(SOLNOUT); \
+	sed -i '' -e 's/solutionstyle, /solutionstyle, after={\\clearpage}, /g' acs-solution-manual.tex; \
+	sed -i '' -e 's/for\\\\/for\\\\[0.25\\baselineskip]/' acs-solution-manual.tex; \
+	xelatex acs-solution-manual; \
 	xelatex acs-solution-manual; \
 	xelatex acs-solution-manual
 
@@ -234,8 +237,19 @@ workbook-latex:
 # Automatically builds LaTeX source for solutions manual
 workbook-pdf: workbook-latex
 	cd $(WKBKOUT); \
+	sed -i '' -e 's/for\\\\/for\\\\[0.25\\baselineskip]/' acs-activity-workbook.tex; \
+	xelatex acs-activity-workbook; \
 	xelatex acs-activity-workbook; \
 	xelatex acs-activity-workbook
+
+workbook-parts:
+	cd $(WKBKOUT); \
+	qpdf acs-activity-workbook.pdf --pages . 1-210,r1 -- acs-activity-workbook-14.pdf; \
+	qpdf acs-activity-workbook-14.pdf --pages . 3-r1 -- acs-activity-workbook-14-kdp.pdf; \
+	sed -i '' -e 's/act-wkbk-cover-2018u-14.pdf/act-wkbk-cover-2018u-58.pdf/' acs-activity-workbook.tex; \
+	xelatex acs-activity-workbook; \
+	qpdf acs-activity-workbook.pdf --pages . 1-8,211-r1 -- acs-activity-workbook-58.pdf; \
+	qpdf acs-activity-workbook-58.pdf --pages . 3-r1 -- acs-activity-workbook-58-kdp.pdf
 
 # Reading Questions Supplement (LaTeX only for PDF)
 rq-latex:
