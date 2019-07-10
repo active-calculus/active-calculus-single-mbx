@@ -65,32 +65,6 @@
   <xsl:apply-templates select="." mode="number" />
 </xsl:template>
 
-<!-- As a subset of the full content, the auto-numbering of          -->
-<!-- a figure or table included in the solution manual will          -->
-<!-- be incorrect, so we have to supply the MBX number               -->
-<!-- NB: this may not work for figures or tables within a sidebyside -->
-<xsl:template match="table/caption|figure/caption">
-    <xsl:choose>
-      <xsl:when test="ancestor::sidebyside and ancestor::table and not(ancestor::sidebyside/caption)">
-            <xsl:text>\captionof*{table}{\textbf{</xsl:text>
-      </xsl:when>
-      <xsl:when test="ancestor::sidebyside and ancestor::figure and not(ancestor::sidebyside/caption)">
-            <xsl:text>\captionof*{figure}{\textbf{</xsl:text>
-      </xsl:when>
-      <xsl:otherwise>
-          <xsl:text>\caption*{\textbf{</xsl:text>
-      </xsl:otherwise>
-    </xsl:choose>
-    <xsl:apply-templates select=".." mode="type-name" />
-    <xsl:text> </xsl:text>
-    <xsl:apply-templates select=".." mode="number" />
-    <xsl:if test="not(. = '')">
-        <xsl:text>: </xsl:text>
-    </xsl:if>
-    <xsl:text>}</xsl:text>
-    <xsl:apply-templates />
-    <xsl:text>}&#xa;</xsl:text>
-</xsl:template>
 
 <!-- If we do not include statements, then we kill -->
 <!-- introductions and conclusions for exercise    -->
@@ -116,6 +90,50 @@
     <xsl:apply-templates select="exploration|activity" />
 </xsl:template>
 
+<!-- Captions for Figures, Tables, Listings, Lists -->
+<!-- xml:id is on parent, but LaTeX generates number with caption -->
+<xsl:template match="figure|listing|table|list" mode="title-caption">
+    <!-- construct appropriate command -->
+    <xsl:choose>
+        <xsl:when test="parent::sidebyside/parent::figure or parent::sidebyside/parent::sbsgroup/parent::figure">
+            <xsl:text>\subcaption*{</xsl:text>
+        </xsl:when>
+        <xsl:when test="self::figure/parent::sidebyside">
+            <xsl:text>\captionof*{figure}{</xsl:text>
+        </xsl:when>
+        <xsl:when test="self::table/parent::sidebyside">
+            <xsl:text>\captionof*{table}{</xsl:text>
+        </xsl:when>
+        <xsl:when test="self::listing">
+            <xsl:text>\captionof*{listingcap}{</xsl:text>
+        </xsl:when>
+        <xsl:when test="self::list">
+            <xsl:text>\captionof*{namedlistcap}{</xsl:text>
+        </xsl:when>
+        <xsl:otherwise>
+            <xsl:text>\caption*{</xsl:text>
+        </xsl:otherwise>
+    </xsl:choose>
+    <!-- produce the actual content -->
+    <xsl:text>\textbf{</xsl:text>
+    <xsl:apply-templates select="." mode="type-name"/>
+    <xsl:text> </xsl:text>
+    <xsl:apply-templates select="." mode="number"/>
+    <xsl:text>:} </xsl:text>
+    <xsl:choose>
+        <xsl:when test="self::figure or self::listing">
+            <xsl:apply-templates select="." mode="caption-full"/>
+        </xsl:when>
+        <xsl:when test="self::table or self::list">
+            <xsl:apply-templates select="." mode="title-full"/>
+        </xsl:when>
+        <!-- never used? -->
+        <xsl:otherwise>
+            <xsl:apply-templates select="caption"/>
+        </xsl:otherwise>
+    </xsl:choose>
+    <xsl:text>}&#xa;</xsl:text>
+</xsl:template>
 
 
 <!-- Use letter paper and leave one-inch margins all around -->
