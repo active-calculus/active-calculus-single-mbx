@@ -72,6 +72,8 @@ IMAGESSRC = $(PRJSRC)/images
 MAINFILE  = $(PRJSRC)/index.xml
 SOLNMAIN = $(PRJSRC)/acs-solution-manual.xml
 WKBKMAIN = $(PRJSRC)/acs-activity-workbook.xml
+WKBKMAIN14 = $(PRJSRC)/acs-activity-workbook-14.xml
+WKBKMAIN58 = $(PRJSRC)/acs-activity-workbook-58.xml
 RQMAIN   = $(PRJSRC)/acs-reading-questions.xml
 
 # These paths are subdirectories of
@@ -231,7 +233,7 @@ workbook-latex:
 	-rm $(WKBKOUT)/*.tex
 	cp -a $(IMAGESSRC) $(WKBKOUT)
 	cd $(WKBKOUT); \
-	xsltproc -o acs-activity-workbook.tex -xinclude $(MBUSR)/acs-activity-workbook.xsl $(WKBKMAIN) \
+	xsltproc -o acs-activity-workbook.tex -xinclude $(MBUSR)/acs-activity-workbook.xsl $(WKBKMAIN) 
 
 # Activity workbook for PDF
 # Automatically builds LaTeX source for solutions manual
@@ -241,6 +243,31 @@ workbook-pdf: workbook-latex
 	xelatex acs-activity-workbook; \
 	xelatex acs-activity-workbook; \
 	xelatex acs-activity-workbook
+
+workbook-kdp: 
+	install -d $(WKBKOUT)
+	install -d $(MBUSR)
+	install -b xsl/acs-activity-workbook.xsl $(MBUSR)
+	install -b xsl/acs-common.xsl $(MBUSR)
+	-rm $(WKBKOUT)/*.tex
+	cp -a $(IMAGESSRC) $(WKBKOUT)
+	cd $(WKBKOUT); \
+	xsltproc -o acs-activity-workbook-14.tex -xinclude $(MBUSR)/acs-activity-workbook.xsl $(WKBKMAIN14); \
+	xsltproc --stringparam debug.chapter.start 5 -o acs-activity-workbook-58.tex -xinclude $(MBUSR)/acs-activity-workbook.xsl $(WKBKMAIN58); \
+	xelatex acs-activity-workbook-14; \
+	xelatex acs-activity-workbook-14; \
+	xelatex acs-activity-workbook-14; \
+	xelatex acs-activity-workbook-58; \
+	xelatex acs-activity-workbook-58; \
+	xelatex acs-activity-workbook-58; \
+	awk 'BEGIN { del=0 } /%% Cover image, not numbered/ { del=1 } del<=0 { print } /%% begin: title page/ { del -= 1 }' acs-activity-workbook-14.tex > acs-activity-workbook-14-kdp.tex; \
+	awk 'BEGIN { del=0 } /%% Cover image, not numbered/ { del=1 } del<=0 { print } /%% begin: title page/ { del -= 1 }' acs-activity-workbook-58.tex > acs-activity-workbook-58-kdp.tex; \
+	xelatex acs-activity-workbook-14-kdp; \
+	xelatex acs-activity-workbook-14-kdp; \
+	xelatex acs-activity-workbook-14-kdp; \
+	xelatex acs-activity-workbook-58-kdp; \
+	xelatex acs-activity-workbook-58-kdp; \
+	xelatex acs-activity-workbook-58-kdp
 
 workbook-parts:
 	cd $(WKBKOUT); \
