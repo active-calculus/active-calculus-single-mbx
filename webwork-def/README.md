@@ -10,6 +10,6 @@ The following outlines a method to use these files.
 1. Upload the `AC-WeBWorK-2018-Updated-Ed.tgz` file to your course using the `File Manager`. 
 2. Go to the `Hmwk Sets Editor` and select the `Import` tab.
 3. Find the section to import from the `Import from where?` scroll menu. 
-4. Fill in the rest of the form as desired and click `Take Action` (make sure to not use spaces in your set name). 
+4. Fill in the rest of the form as desired and click `Take Action` (do not use spaces in your set name). 
 
 This will create a homework set (see your `Homework Sets`) that contains the webwork problems from the book. It can then be modified as desired. 
