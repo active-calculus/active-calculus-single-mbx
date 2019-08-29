@@ -27,13 +27,11 @@ for num in range(num_sections):
     soup = BeautifulSoup(file_contents, 'html.parser')
     
     ww_paths = soup.findAll('webwork')
-#     print(ww_paths)
+
     g = open(set_files[num], 'a')
     g.write(preamble+'\n')
     for ww_path in ww_paths:
-        if set_files[num] != 'set-4-4.def':
+        if set_files[num] != 'set-4-4.def': # ez-4.4.xml has hard coded webwork problems. So skip and do it by hand.
             g.write(ww_path['source']+'\n')
     g.close()
     f.close() 
-
-print(files[num],set_files[num])
