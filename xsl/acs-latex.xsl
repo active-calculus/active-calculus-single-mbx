@@ -44,7 +44,7 @@
 
 <!-- LaTeX formatting commands we can inject here without incident -->
 <!-- Different products have different page sizes, so this stays here -->
-<xsl:param name="latex.geometry" select="'paperwidth=7.44in,paperheight=9.69in,tmargin=.5in,bmargin=.3in,hmargin=.75in,bindingoffset=.4in,includeheadfoot '" />
+<xsl:param name="latex.geometry" select="'paperwidth=7.44in,paperheight=9.69in,tmargin=.5in,bmargin=.3in,hmargin=.75in,bindingoffset=.4in,includeheadfoot,marginparsep=6ex '" />
 
 <xsl:param name="latex.preamble.late.main">
     <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
@@ -65,11 +65,69 @@
     <xsl:value-of select="$latex.preamble.late.main" />
 </xsl:param>
 
+<!-- Put a WeBWorK icon in the margin next to WeBWorK exercises -->
+<xsl:template match="exercise/webwork-reps/static/statement">
+    <xsl:text>\marginnote{\hspace*{-10ex}\tiny \includegraphics[width=0.25in]{images/webwork-logo.png}}</xsl:text>
+    <xsl:apply-imports />
+</xsl:template>
+
 <!-- We don't want to start each section's answers on a new page in the backmatter -->
 <!-- This applies only to the answers in the backmatter of the main book -->
 <xsl:template match="backmatter">
     <xsl:text>\renewcommand\section{\oldsection}</xsl:text>
     <xsl:apply-imports />
 </xsl:template>
+
+<!-- This suppresses subsection headings in the backmatter answers -->
+<!-- It had to be developed by clobbering part of the template from -->
+<!-- upstream PreTeXt. If something goes wrong with backmatter answer -->
+<!-- formatting, this is the most likely culprit. -->
+<!-- This lives here rather than in acs-common.xsl because we want to see -->
+<!-- where exercises start in the solutions manual. -->
+<xsl:template match="subsection|exercises" mode="division-in-solutions">
+    <xsl:param name="scope" />
+    <xsl:param name="b-has-heading"/>
+    <xsl:param name="content" />
+    <!-- Usually we create an automatic heading,  -->
+    <!-- but not at the root division -->
+    <xsl:if test="$b-has-heading">
+        <xsl:variable name="font-size">
+            <xsl:choose>
+                <!-- backmatter placement gets appendix like chapter -->
+                <xsl:when test="$scope/self::book">
+                    <xsl:text>\Large</xsl:text>
+                </xsl:when>
+                <!-- backmatter placement gets appendix like section -->
+                <xsl:when test="$scope/self::article">
+                    <xsl:text>\large</xsl:text>
+                </xsl:when>
+                <!-- divisional placement is one level less -->
+                <xsl:when test="$scope/self::chapter">
+                    <xsl:text>\Large</xsl:text>
+                </xsl:when>
+                <xsl:when test="$scope/self::section">
+                    <xsl:text>\large</xsl:text>
+                </xsl:when>
+                <xsl:when test="$scope/self::subsection">
+                    <xsl:text>\normalsize</xsl:text>
+                </xsl:when>
+                <xsl:when test="$scope/self::subsubsection">
+                    <xsl:text>\normalsize</xsl:text>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:message>PTX:BUG:     "solutions" division title does not have a font size</xsl:message>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+
+        <!-- Does the current division get a number at birth? -->
+        <xsl:variable name="is-structured">
+            <xsl:apply-templates select="parent::*" mode="is-structured-division"/>
+        </xsl:variable>
+        <xsl:variable name="b-is-structured" select="$is-structured = 'true'"/>
+    </xsl:if>
+    <xsl:copy-of select="$content" />
+</xsl:template>
+
 
 </xsl:stylesheet>
