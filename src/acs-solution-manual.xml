@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- **********************************************************************-->
-<!-- Copyright 2012-2018                                                   -->
+<!-- Copyright 2012-2019                                                   -->
 <!-- Matthew Boelkins                                                      -->
 <!--                                                                       -->
 <!-- This file is part of Active Calculus.                                 -->
@@ -12,16 +12,28 @@
 <!-- "share and share alike".  All trademarks are the registered marks of  -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
-<mathbook xmlns:xi="http://www.w3.org/2001/XInclude">
-    <!-- Has LaTeX macros, which may be needed       -->
-    <!-- May have some unnecessary stuff, but OK now -->
-  <xi:include href="./bookinfo.xml" />
-    <!-- a small hack until "line" element is available -->
-    <!-- the use of \\ assumes LaTeX output only        -->
-    <!-- https://github.com/rbeezer/mathbook/issues/640 -->
+<pretext xmlns:xi="http://www.w3.org/2001/XInclude">
+<docinfo>
+  <macros>
+		\newcommand{\dollar}{\$}
+		\DeclareMathOperator{\erf}{erf}
+		\DeclareMathOperator{\arctanh}{arctanh}
+                \DeclareMathOperator{\arcsec}{arcsec}
+
+                % This macro should only be used in ancillary production!
+                \raggedbottom
+  </macros>
+  <cross-references text="global" />
+  <covers front="images/soln-cover-2018u.pdf" />
+  <rename element="exploration" xml:lang="en-US">Preview Activity</rename>
+  <rename element="objectives" xml:lang="en-US">Motivating Questions</rename>
+</docinfo>
+
   <book xml:id="acs-solution-manual" permid="Pux">
-      <!--    <title>Solutions Manual\\for\\[0.3\baselineskip]Active Calculus Single Variable</title>-->
-               <title>Solutions Manual for Active Calculus Single Variable</title>
+      <title><line>Solutions Manual</line>
+      <line>for</line>
+      <line>Active Calculus Single Variable</line>
+      </title>
     <frontmatter permid="bIP">
             <!-- Don't xi:include the titlepage, since solution authors differ -->
       <titlepage >
@@ -103,8 +115,15 @@
     <xi:include href="./chap-6.xml" />
     <xi:include href="./chap-7.xml" />
     <xi:include href="./chap-8.xml" />
-    <xi:include href="./backmatter.xml" />
+    <backmatter>
+    <colophon>
+    <p>
+      This book was authored in <pretext />.
+    </p>
+  </colophon>
+</backmatter>
+
   </book>
 
-</mathbook>
+</pretext>
 

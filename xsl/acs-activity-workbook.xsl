@@ -65,32 +65,6 @@
   <xsl:apply-templates select="." mode="number" />
 </xsl:template>
 
-<!-- As a subset of the full content, the auto-numbering of          -->
-<!-- a figure or table included in the solution manual will          -->
-<!-- be incorrect, so we have to supply the MBX number               -->
-<!-- NB: this may not work for figures or tables within a sidebyside -->
-<xsl:template match="table/caption|figure/caption">
-    <xsl:choose>
-      <xsl:when test="ancestor::sidebyside and ancestor::table and not(ancestor::sidebyside/caption)">
-            <xsl:text>\captionof*{table}{\textbf{</xsl:text>
-      </xsl:when>
-      <xsl:when test="ancestor::sidebyside and ancestor::figure and not(ancestor::sidebyside/caption)">
-            <xsl:text>\captionof*{figure}{\textbf{</xsl:text>
-      </xsl:when>
-      <xsl:otherwise>
-          <xsl:text>\caption*{\textbf{</xsl:text>
-      </xsl:otherwise>
-    </xsl:choose>
-    <xsl:apply-templates select=".." mode="type-name" />
-    <xsl:text> </xsl:text>
-    <xsl:apply-templates select=".." mode="number" />
-    <xsl:if test="not(. = '')">
-        <xsl:text>: </xsl:text>
-    </xsl:if>
-    <xsl:text>}</xsl:text>
-    <xsl:apply-templates />
-    <xsl:text>}&#xa;</xsl:text>
-</xsl:template>
 
 <!-- If we do not include statements, then we kill -->
 <!-- introductions and conclusions for exercise    -->
@@ -116,6 +90,90 @@
     <xsl:apply-templates select="exploration|activity" />
 </xsl:template>
 
+<!-- Captions for Figures, Tables, Listings, Lists -->
+<!-- xml:id is on parent, but LaTeX generates number with caption -->
+<xsl:template match="figure|listing|table|list" mode="title-caption">
+    <!-- construct appropriate command -->
+    <xsl:choose>
+        <xsl:when test="parent::sidebyside/parent::figure or parent::sidebyside/parent::sbsgroup/parent::figure">
+            <xsl:text>\subcaption*{</xsl:text>
+        </xsl:when>
+        <xsl:when test="self::figure/parent::sidebyside">
+            <xsl:text>\captionof*{figure}{</xsl:text>
+        </xsl:when>
+        <xsl:when test="self::table/parent::sidebyside">
+            <xsl:text>\captionof*{table}{</xsl:text>
+        </xsl:when>
+        <xsl:when test="self::listing">
+            <xsl:text>\captionof*{listingcap}{</xsl:text>
+        </xsl:when>
+        <xsl:when test="self::list">
+            <xsl:text>\captionof*{namedlistcap}{</xsl:text>
+        </xsl:when>
+        <xsl:otherwise>
+            <xsl:text>\caption*{</xsl:text>
+        </xsl:otherwise>
+    </xsl:choose>
+    <!-- produce the actual content -->
+    <xsl:text>\textbf{</xsl:text>
+    <xsl:apply-templates select="." mode="type-name"/>
+    <xsl:text> </xsl:text>
+    <xsl:apply-templates select="." mode="number"/>
+    <xsl:text>:} </xsl:text>
+    <xsl:choose>
+        <xsl:when test="self::figure or self::listing">
+            <xsl:apply-templates select="." mode="caption-full"/>
+        </xsl:when>
+        <xsl:when test="self::table or self::list">
+            <xsl:apply-templates select="." mode="title-full"/>
+        </xsl:when>
+        <!-- never used? -->
+        <xsl:otherwise>
+            <xsl:apply-templates select="caption"/>
+        </xsl:otherwise>
+    </xsl:choose>
+    <xsl:text>}&#xa;</xsl:text>
+</xsl:template>
+
+<!-- Style titles -->
+<xsl:template name="titlesec-section-style">
+    <!-- Only the formatting of chapter titles was changed -->
+    <xsl:text>\titleformat{\chapter}[display]&#xa;</xsl:text>
+    <xsl:text>{\raggedleft\normalfont\color{chaptercolor}\Large}{</xsl:text>
+    <xsl:text>\MakeUppercase{\divisionnameptx}\space</xsl:text>
+    <!-- Don't draw the rule that makes the colored box since KDP barfs -->
+    <!-- when we do that. -->
+    <xsl:text>\rlap{\enskip\resizebox{!}{0.95cm}{\thechapter}</xsl:text>
+    <xsl:text>}}{10pt}{\normalfont\Huge\itshape#1}&#xa;</xsl:text>
+    <xsl:text>[{\Large\authorsptx}]&#xa;</xsl:text>
+    <xsl:text>\titleformat{name=\chapter,numberless}[display]&#xa;</xsl:text>
+    <xsl:text>{\raggedleft\normalfont\color{chaptercolor}\Huge\itshape}{}{0pt}{#1}&#xa;</xsl:text>
+    <xsl:text>[{\Large\authorsptx}]&#xa;</xsl:text>
+    <xsl:text>\titlespacing*{\chapter}{0pt}{30pt}{20pt}&#xa;</xsl:text>
+
+    <!-- Everything in this template below here is stock PTX as of 2018-12-17 -->
+    <xsl:text>\titleformat{\section}[block]&#xa;</xsl:text>
+<xsl:text>{\normalfont\Large\bfseries}{\thesection\space\titleptx}{1em}{}&#xa;</xsl:text>
+    <xsl:text>[{\large\authorsptx}]&#xa;</xsl:text>
+    <xsl:text>\titleformat{name=\section,numberless}[block]&#xa;</xsl:text>
+    <xsl:text>{\normalfont\Large\bfseries}{}{0pt}{#1}&#xa;</xsl:text>
+    <xsl:text>[{\large\authorsptx}]&#xa;</xsl:text>
+    <xsl:text>\titlespacing*{\section}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}&#xa;</xsl:text>
+    <xsl:text>\titleformat{\subsection}[block]&#xa;</xsl:text>
+    <xsl:text>{\normalfont\large\bfseries}{\thesubsection\space\titleptx}{1em}{}&#xa;</xsl:text>
+    <xsl:text>[{\normalsize\authorsptx}]&#xa;</xsl:text>
+    <xsl:text>\titleformat{name=\subsection,numberless}[block]&#xa;</xsl:text>
+    <xsl:text>{\normalfont\large\bfseries}{}{0pt}{#1}&#xa;</xsl:text>
+    <xsl:text>[{\normalsize\authorsptx}]&#xa;</xsl:text>
+    <xsl:text>\titlespacing*{\subsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}&#xa;</xsl:text>
+    <xsl:text>\titleformat{\subsubsection}[block]&#xa;</xsl:text>
+    <xsl:text>{\normalfont\normalsize\bfseries}{\thesubsubsection\space\titleptx}{1em}{}&#xa;</xsl:text>
+    <xsl:text>[{\small\authorsptx}]&#xa;</xsl:text>
+    <xsl:text>\titleformat{name=\subsubsection,numberless}[block]&#xa;</xsl:text>
+    <xsl:text>{\normalfont\normalsize\bfseries}{}{0pt}{#1}&#xa;</xsl:text>
+    <xsl:text>[{\normalsize\authorsptx}]&#xa;</xsl:text>
+    <xsl:text>\titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}&#xa;</xsl:text>
+</xsl:template>
 
 
 <!-- Use letter paper and leave one-inch margins all around -->

@@ -29,6 +29,7 @@
 <!-- Set font size and two-sided mode -->
 <xsl:param name="latex.font.size" select="'10pt'" />
 <xsl:param name="latex.sides" select="'two'" />
+<xsl:param name="latex.pageref" select="'no'" />
 
 <!-- Font configuration should be consistent -->
 <xsl:param name="latex.preamble.early">
@@ -80,17 +81,12 @@
     <xsl:text>filecolor=black,urlcolor=black}&#xa;</xsl:text>
 </xsl:param>
 
-<!-- Put a WeBWorK icon in the margin next to WeBWorK exercises -->
-<xsl:template match="exercise[webwork-reps]">
-    <xsl:text>\marginnote{\tiny \includegraphics[width=0.25in]{images/webwork-logo.png}}</xsl:text>
-    <xsl:apply-imports />
-</xsl:template>
-
 <!-- Set the headers and footers for the book -->
 <xsl:template match="book" mode="titleps-headings">
     <xsl:text>{\sethead[\textsl{\ifthechapter{\chaptertitlename{} </xsl:text>
     <xsl:text>\thechapter }{} \chaptertitle}][][]&#xa;</xsl:text>
-    <xsl:text>{}{}{\textsl{\thesection{} \sectiontitle}}&#xa;</xsl:text>
+    <xsl:text>{}{}{\textsl{\ifthesection{\thesection{} \sectiontitle}</xsl:text>
+    <xsl:text>{\sectiontitle} }}&#xa;</xsl:text>
     <xsl:text>\setfoot[\thepage][][]&#xa;</xsl:text>
     <xsl:text>{}{}{\thepage}}&#xa;</xsl:text>
 </xsl:template>
@@ -138,9 +134,19 @@
     <xsl:text>enhanced,frame hidden,interior hidden, sharp corners,&#xa;</xsl:text>
     <xsl:text>boxrule=0pt,borderline west={3pt}{0pt}{ActiveBlue}, &#xa;</xsl:text>
     <xsl:text>runintitlestyle, blockspacingstyle, after title={.\space}, &#xa;</xsl:text>
-    <xsl:text>after upper={\hfill{}\(\square\)}, colback=white,&#xa;</xsl:text>
+    <xsl:text>colback=white,&#xa;</xsl:text>
     <xsl:text>coltitle=black,</xsl:text>
 </xsl:template>
+
+
+<xsl:template match="&DEFINITION-LIKE;" mode="tcb-style">
+    <xsl:text>bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, </xsl:text>
+</xsl:template>
+
+<xsl:template match="&EXAMPLE-LIKE;" mode="tcb-style">
+    <xsl:text>bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, </xsl:text>
+</xsl:template>
+
 
 <!-- Restore horizontal rules around Motivating Questions -->
 <!-- This is fixing a bug in PreTeXt and can be removed when it's fixed -->
@@ -157,11 +163,16 @@
 <!-- in summer 2018 when the 2018 edition was produced. -->
 <!-- The only change made here is to use ActiveBlue instead of the default blue. -->
 <xsl:template match="assemblage" mode="tcb-style">
-    <xsl:text>breakable, skin=enhanced, arc=2ex, &#xa;</xsl:text>
+    <xsl:text>skin=enhanced, arc=2ex, &#xa;</xsl:text>
     <xsl:text>colback=ActiveBlue!5,colframe=ActiveBlue!75!black, &#xa;</xsl:text>
     <xsl:text>colbacktitle=ActiveBlue!20, coltitle=black, &#xa;</xsl:text>
     <xsl:text>boxed title style={sharp corners, frame hidden}, &#xa;</xsl:text>
     <xsl:text>fonttitle=\bfseries, attach boxed title to top &#xa;</xsl:text>
     <xsl:text>left={xshift=4mm,yshift=-3mm}, top=3mm,&#xa;</xsl:text>
 </xsl:template>
+
+<!-- Kill answers to WeBWorK exercises -->
+<xsl:template match="exercise[webwork-reps]|exercise[webwork]" mode="solutions">
+</xsl:template>
+
 </xsl:stylesheet>
