@@ -18,7 +18,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 <!-- Assumes current file is in mathbook/user, so it must be copied there -->
-<xsl:import href="../xsl/mathbook-html.xsl" />
+<xsl:import href="../xsl/pretext-html.xsl" />
 <!-- Assumes next file can be found in mathbook/user, so it must be copied there -->
 <xsl:import href="acs-common.xsl" />
 
@@ -43,14 +43,9 @@
 <xsl:param name="project.answer" select="'no'" />
 <xsl:param name="project.solution" select="'no'" />
 
-<!-- Specify the color scheme to use for HTML -->
-<xsl:param name="debug.colors" select="'blue_grey'" />
 
 <!-- Specify options for WeBWorK exercises -->
 <xsl:param name="webwork.divisional.static" select="'no'" />
 <xsl:param name="html.knowl.exercise.sectional" select="'no'" />
-
-<!-- Specify Google Custom Search -->
-<xsl:param name="html.google-search" select="'015103900096539427448:ngwuia10qci'" />
 
 </xsl:stylesheet>
