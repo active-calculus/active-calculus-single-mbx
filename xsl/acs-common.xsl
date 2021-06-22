@@ -23,12 +23,9 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
-<!-- List Chapters and Sections in printed Table of Contents -->
-<xsl:param name="toc.level" select="'2'" />
 
-<!-- Set font size and two-sided mode -->
+<!-- Set font size  -->
 <xsl:param name="latex.font.size" select="'10pt'" />
-<xsl:param name="latex.sides" select="'two'" />
 <xsl:param name="latex.pageref" select="'no'" />
 
 <!-- Font configuration should be consistent -->
