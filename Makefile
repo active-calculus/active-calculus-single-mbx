@@ -121,7 +121,7 @@ pg:
 acs-extraction:
 	install -d $(WWOUT)
 	-rm $(WWOUT)/webwork-representations.ptx
-	PYTHONWARNINGS=module $(MB)/pretext/pretext -c webwork -d $(WWOUT) -s $(SERVER) $(MAINFILE)
+	$(MB)/pretext/pretext -c webwork -d $(WWOUT) -s $(SERVER) $(MAINFILE)
 
 #  Make a new PTX file from the source tree, with webwork elements replaced
 #  by the webwork-reps from webwork-extraction.xml. (So run the above at
@@ -149,7 +149,7 @@ html:
 	cp -a $(WWOUT)/webwork*image* $(HTMLOUT)/images
 	cp -a $(IMAGESSRC) $(HTMLOUT)
 	cd $(HTMLOUT); \
-	xsltproc -xinclude -stringparam publisher $(PRJ)/pub/html.xml $(MBUSR)/acs-html.xsl $(MAINFILE)
+	xsltproc -xinclude -stringparam publisher $(PRJ)/pub/publication.xml $(MBUSR)/acs-html.xsl $(MAINFILE)
 
 # make all the image files in svg format
 images:
