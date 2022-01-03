@@ -59,92 +59,10 @@
     <xsl:text>&#xa;</xsl:text>
     <xsl:text>\global\let\znewpage\clearpage &#xa;</xsl:text>
 </xsl:param>
+
 <xsl:param name="latex.preamble.late">
-    <xsl:text>%% Used to get WeBWorK logo into margin next to WW exercises&#xa;</xsl:text>
-    <xsl:text>\usepackage{marginnote}&#xa;</xsl:text>
-    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
-    <xsl:text>% Modified from Mitch Keller's chapter handling &#xa;</xsl:text>
-    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
-    <xsl:text>\definecolor{ActiveBlue}{cmyk}{1, 0.5, 0, 0.35}&#xa;</xsl:text>
-    <xsl:text>\colorlet{chaptercolor}{ActiveBlue}&#xa;</xsl:text>
-    <xsl:text>\setkomafont{chapter}{\normalfont\color{chaptercolor}</xsl:text>
-    <xsl:text>\Huge\itshape}&#xa;</xsl:text>
-    <xsl:text>\setkomafont{chapterprefix}{\normalfont\Large}&#xa;</xsl:text>
-    <xsl:text>\renewcommand*{\raggedchapter}{\raggedleft}&#xa;</xsl:text>
-    <xsl:text>\renewcommand*{\chapterformat}{\MakeUppercase</xsl:text>
-    <xsl:text>{\chapappifchapterprefix{}}&#xa;</xsl:text>
-    <xsl:text>\rlap{\enskip\resizebox{!}{0.95cm}{\thechapter} </xsl:text>
-    <xsl:text>\rule{15cm}{0.95cm} }}&#xa;</xsl:text>
-    <xsl:text>\RedeclareSectionCommand[beforeskip=30pt,</xsl:text>
-    <xsl:text>afterskip=20pt]{chapter}&#xa;</xsl:text>
-    <xsl:text>\renewcommand*\chapterheadmidvskip{\par\nobreak</xsl:text>
-    <xsl:text>\vspace{10pt}}&#xa;</xsl:text>
-    <xsl:text>\setkomafont{captionlabel}{}&#xa;</xsl:text>
-    <xsl:text>\setkomafont{caption}{}&#xa;</xsl:text>
-    <xsl:text>\setcapindent{0em}&#xa;</xsl:text>
-    <xsl:text>\addtokomafont{disposition}{\rmfamily\bfseries}&#xa;</xsl:text>
-    <xsl:text>\addtokomafont{descriptionlabel}{\rmfamily\bfseries}&#xa;</xsl:text>
-    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
-    <xsl:text>% CC icon at bottom of first page of chapter &#xa;</xsl:text>
-    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
-    <xsl:text>\usepackage[automark]{scrlayer-scrpage}&#xa;</xsl:text>
-    <xsl:text>\deftripstyle{ccfooter}&#xa;</xsl:text>
-    <xsl:text>  {}&#xa;</xsl:text>
-    <xsl:text>  {}&#xa;</xsl:text>
-    <xsl:text>  {}&#xa;</xsl:text>
-    <xsl:text>  {}&#xa;</xsl:text>
-    <xsl:text>  {}&#xa;</xsl:text>
-    <xsl:text>  {\includegraphics[height=1pc]{images/CClicense.pdf}}&#xa;</xsl:text>
-    <xsl:text>\renewcommand{\chapterpagestyle}{ccfooter}&#xa;</xsl:text>
-    <xsl:text>&#xa;</xsl:text>
-    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
-    <xsl:text>% Start sections on new page, just not the first one &#xa;</xsl:text>
-    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
-    <xsl:text>\let\oldsection\section &#xa;</xsl:text>
-    <xsl:text>\renewcommand\section{\znewpage\oldsection}&#xa;</xsl:text>
-    <xsl:text>&#xa;</xsl:text>
-    <xsl:text>\let\oldchapter\chapter &#xa;</xsl:text>
-    <xsl:text>\renewcommand\chapter{\clearpage\gdef\znewpage{</xsl:text>
-    <xsl:text>\global\let\znewpage\clearpage}\oldchapter}&#xa;</xsl:text>
-    <xsl:text>&#xa;</xsl:text>
-    <xsl:text>\global\let\znewpage\clearpage &#xa;</xsl:text>
-    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
-    <xsl:text>% Basic paragraph parameters &#xa;</xsl:text>
-    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
-    <xsl:text>\setlength{\parindent}{0mm}&#xa;</xsl:text>
-    <xsl:text>\setlength{\parskip}{0.5pc}&#xa;</xsl:text>
-    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
-    <xsl:text>% Greg's L &#xa;</xsl:text>
-    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
-    <xsl:text>%% Package for breakable highlight boxes &#xa;</xsl:text>
-    <xsl:text>\usepackage[framemethod=tikz]{mdframed}&#xa;</xsl:text>
-    <xsl:text>\newtheorem{mdactivity}[cpjt]{Activity}&#xa;</xsl:text>
-    <xsl:text>\newtheorem{mdexploration}[cpjt]{Preview Activity}&#xa;</xsl:text>
-    <xsl:text>\renewenvironment{activity}[1][]% &#xa;</xsl:text>
-    <xsl:text>  {\begin{mdframed}[linecolor=ActiveBlue,topline=false, &#xa;</xsl:text>
-    <xsl:text>    rightline=false, &#xa;</xsl:text>
-    <xsl:text>    bottomline=false, &#xa;</xsl:text>
-    <xsl:text>    linewidth=3pt, &#xa;</xsl:text>
-    <xsl:text>    innerleftmargin=15pt, &#xa;</xsl:text>
-    <xsl:text>    innerrightmargin=0pt, &#xa;</xsl:text>
-    <xsl:text>    skipabove=\baselineskip, &#xa;</xsl:text>
-    <xsl:text>    skipabove=1.2\baselineskip,]\begin{mdactivity}[#1]}&#xa;</xsl:text>
-    <xsl:text>  {\end{mdactivity}\end{mdframed}}&#xa;</xsl:text>
-    <xsl:text>\renewenvironment{exploration}[1][]% &#xa;</xsl:text>
-    <xsl:text>  {\begin{mdframed}[linecolor=ActiveBlue,topline=false, &#xa;</xsl:text>
-    <xsl:text>    rightline=false, &#xa;</xsl:text>
-    <xsl:text>    bottomline=false, &#xa;</xsl:text>
-    <xsl:text>    linewidth=3pt, &#xa;</xsl:text>
-    <xsl:text>    innerleftmargin=15pt, &#xa;</xsl:text>
-    <xsl:text>    innerrightmargin=0pt, &#xa;</xsl:text>
-    <xsl:text>    skipabove=\baselineskip, &#xa;</xsl:text>
-    <xsl:text>   skipabove=1.2\baselineskip,]\begin{mdexploration}[#1]}&#xa;</xsl:text>
-    <xsl:text>  {\end{mdexploration}\end{mdframed}}&#xa;</xsl:text>
-    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
-    <xsl:text>% In print, trying to reduce color use &#xa;</xsl:text>
-    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
-    <xsl:text>\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,</xsl:text>
-    <xsl:text>filecolor=black,urlcolor=black}&#xa;</xsl:text>
+    <xsl:value-of select="$latex.preamble.late.common" />
+    <xsl:value-of select="$latex.preamble.late.main" />
 </xsl:param>
 
 <!-- Put a WeBWorK icon in the margin next to WeBWorK exercises -->

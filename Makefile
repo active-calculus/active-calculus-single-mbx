@@ -120,8 +120,8 @@ pg:
 
 acs-extraction:
 	install -d $(WWOUT)
-	-rm $(WWOUT)/webwork-extraction.xml
-	PYTHONWARNINGS=module $(MB)/script/mbx -c webwork -d $(WWOUT) -s $(SERVER) $(MAINFILE)
+	-rm $(WWOUT)/webwork-representations.ptx
+	$(MB)/pretext/pretext -c webwork -d $(WWOUT) -s $(SERVER) $(MAINFILE)
 
 #  Make a new PTX file from the source tree, with webwork elements replaced
 #  by the webwork-reps from webwork-extraction.xml. (So run the above at
@@ -135,7 +135,7 @@ acs-merge:
 #  Output lands in the subdirectory:  $(HTMLOUT)
 #    Remove the entire $(HTMLOUT)/knowl directory because of how PTX now
 #    seems to make a knowl for everything and rm throws an error.
-html: acs-merge
+html: 
 	install -d $(HTMLOUT)
 	-rm -rf $(HTMLOUT)/knowl
 	install -d $(HTMLOUT)/knowl
@@ -146,10 +146,10 @@ html: acs-merge
 	install -b xsl/acs-html.xsl $(MBUSR)
 	install -b xsl/acs-common.xsl $(MBUSR)
 	-rm $(HTMLOUT)/*.html
-	cp -a $(IMAGESOUT) $(HTMLOUT)
+	cp -a $(WWOUT)/webwork*image* $(HTMLOUT)/images
 	cp -a $(IMAGESSRC) $(HTMLOUT)
 	cd $(HTMLOUT); \
-	xsltproc -xinclude $(MBUSR)/acs-html.xsl $(WWOUT)/acs-merge.ptx
+	xsltproc -xinclude -stringparam publisher $(PRJ)/pub/publication.xml $(MBUSR)/acs-html.xsl $(MAINFILE)
 
 # make all the image files in svg format
 images:
@@ -239,7 +239,8 @@ workbook-latex:
 # Automatically builds LaTeX source for solutions manual
 workbook-pdf: workbook-latex
 	cd $(WKBKOUT); \
-	sed -i ".bak" -f ../../change-documentclass-soln-man.sed acs-activity-workbook.tex; \
+	sed -i '' -e 's/for\\\\/for\\\\[0.25\\baselineskip]/' acs-activity-workbook.tex; \
+	xelatex acs-activity-workbook; \
 	xelatex acs-activity-workbook; \
 	xelatex acs-activity-workbook
 
