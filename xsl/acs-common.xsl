@@ -23,12 +23,9 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
-<!-- List Chapters and Sections in printed Table of Contents -->
-<xsl:param name="toc.level" select="'2'" />
 
-<!-- Set font size and two-sided mode -->
+<!-- Set font size  -->
 <xsl:param name="latex.font.size" select="'10pt'" />
-<xsl:param name="latex.sides" select="'two'" />
 <xsl:param name="latex.pageref" select="'no'" />
 
 <!-- Font configuration should be consistent -->
@@ -38,7 +35,7 @@
    <xsl:text>\renewcommand{\rmdefault}{zpltlf} %Roman font for use in math mode&#xa;</xsl:text>
    <xsl:text>\usepackage[scaled=.85]{beramono}% used only by \mathtt&#xa;</xsl:text>
    <xsl:text>\usepackage[type1]{cabin}%used only by \mathsf&#xa;</xsl:text>
-   <xsl:text>\usepackage{amsmath,amssymb,amsthm}%load before newpxmath&#xa;</xsl:text>
+   <xsl:text>\usepackage{amsmath,amssymb}%load before newpxmath&#xa;</xsl:text>
    <xsl:text>\usepackage[varg,cmintegrals,bigdelims,varbb]{newpxmath}&#xa;</xsl:text>
    <xsl:text>\usepackage[scr=rsfso]{mathalfa}&#xa;</xsl:text>
    <xsl:text>\usepackage{bm} %load after all math to give access to bold math&#xa;</xsl:text>
