@@ -24,7 +24,8 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 <!-- Assumes current file is in mathbook/user, so it must be copied there -->
-<xsl:import href="../xsl/mathbook-latex.xsl" />
+<xsl:import href="../xsl/pretext-latex.xsl"
+	    pretext-href="pretext-latex.xsl" />
 <!-- Assumes next file can be found in mathbook/user, so it must be copied there -->
 <xsl:import href="acs-common.xsl" />
 
@@ -67,7 +68,7 @@
 
 <!-- Put a WeBWorK icon in the margin next to WeBWorK exercises -->
 <xsl:template match="exercise/webwork-reps/static/statement">
-    <xsl:text>\marginnote{\hspace*{-10ex}\tiny \includegraphics[width=0.25in]{images/webwork-logo.png}}</xsl:text>
+    <xsl:text>\marginnote{\hspace*{-10ex}\tiny \includegraphics[width=0.25in]{external/images/webwork-logo.png}}</xsl:text>
     <xsl:apply-imports />
 </xsl:template>
 
