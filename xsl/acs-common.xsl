@@ -15,7 +15,7 @@
 
 <!-- Conveniences for classes of similar elements -->
 <!DOCTYPE xsl:stylesheet [
-    <!ENTITY % entities SYSTEM "../xsl/entities.ent">
+    <!ENTITY % entities SYSTEM "entities.ent">
     %entities;
 ]>
 
