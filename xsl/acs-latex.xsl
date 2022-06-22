@@ -29,20 +29,6 @@
 <!-- Assumes next file can be found in mathbook/user, so it must be copied there -->
 <xsl:import href="acs-common.xsl" />
 
-<!-- Exercises have hint (sporadically), answer, and solution -->
-<!-- Hint can be displayed where born, but otherwise suppress -->
-<!-- These configurations live here because workbook and solutions manual need -->
-<!-- different settings. -->
-<xsl:param name="exercise.divisional.hint" select="'yes'" />
-<xsl:param name="exercise.divisional.answer" select="'no'" />
-<xsl:param name="exercise.divisional.solution" select="'no'" />
-
-<!-- activity is a project-like, so we need to set those stringparams -->
-<!-- to control hints, answers, and solutions -->
-<xsl:param name="project.hint" select="'no'" />
-<xsl:param name="project.answer" select="'no'" />
-<xsl:param name="project.solution" select="'no'" />
-
 <!-- LaTeX formatting commands we can inject here without incident -->
 <!-- Different products have different page sizes, so this stays here -->
 <xsl:param name="latex.geometry" select="'paperwidth=7.44in,paperheight=9.69in,tmargin=.5in,bmargin=.3in,hmargin=.75in,bindingoffset=.4in,includeheadfoot,marginparsep=6ex '" />
