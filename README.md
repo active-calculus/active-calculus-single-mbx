@@ -5,7 +5,8 @@ Active Calculus is available from [scholarworks.gvsu.edu](http://scholarworks.gv
 
 # quickstart instructions
 1. Clone this repository.
-2. Clone [MathBook XML](https://github.com/rbeezer/mathbook) and install its dependencies.
-3. Copy `Makefile.paths.original` to `Makefile.paths`. Edit `Makefile.paths` as instructed within that file.
-4. Execute `make acs-extraction`
-5. Then execute `make html`, `make pdf`, or other things detailed in `Makefile`. Output will be produced in the `output` folder.
+1. Install the [PreTeXt-CLI](https://pypi.org/project/pretextbook/)
+1. Execute `pretext generate` to prepare the WeBWorK problems. (This
+   step needs to be done any time you change a WeBWorK problem.)
+1. Then execute `pretext build html`, `pretext view html` `pretext build pdf`, `pretext
+   build latex`or other things you can find in `project.ptx`.
