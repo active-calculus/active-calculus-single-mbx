@@ -16,23 +16,10 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 <!-- Next paths assume current file has been copied to mathbook/user -->
-<xsl:import href="../xsl/mathbook-latex.xsl" />
+<xsl:import href="../xsl/pretext-latex.xsl" pretext-href="pretext-latex.xsl"/>
 <xsl:import href="acs-common.xsl" />
-<xsl:param name="toc.level" select="'3'" />
 
 <xsl:output method="text" />
-
-<!-- These switches will control what we include -->
-<xsl:param name="exercise.divisional.hint" select="'no'" />
-<xsl:param name="exercise.divisional.answer" select="'no'" />
-<xsl:param name="exercise.divisional.solution" select="'no'" />
-
-<xsl:param name="exercise.reading.statement" select="'no'" />
-
-<!-- Preview activities and activities are project-like. -->
-<xsl:param name="project.hint" select="'no'" />
-<xsl:param name="project.answer" select="'no'" />
-<xsl:param name="project.solution" select="'no'" />
 
 <!-- Superfluous frontmatter for workbook -->
 <!-- So we don't bother and kill first two pages   -->
