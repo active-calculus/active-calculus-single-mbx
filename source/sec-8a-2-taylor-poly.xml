@@ -31,7 +31,7 @@
 
 
             <table xml:id="T-8a-2-intro">
-            <title>Formulas and values for <m>f(x)</m> and <m>Q(x)</m>.</title>
+            <title>Formulas and values for <m>f(x) = e^x</m> and <m>T(x) = k_0 + k_1 x + k_2 x^2 + k_3 x^3</m>.</title>
               <tabular top="minor" bottom="minor">
                 <row>
                   <cell halign="right"><m>f(x)=</m></cell>
@@ -95,13 +95,109 @@
 
     <p>
       Equating the function and derivative values of <m>f</m> and <m>T</m> at <m>a = 0</m>, we found that
+      <me>k_0 = 1, k_1 = 1, 2k_2 = 1, 6k_3 = 1</me>
+      and therefore
+      <me>k_0 = 1, k_1 = 1, k_2 = \frac{1}{2}, k_3 = \frac{1}{6}</me>
+      so that <me>T(x) = 1 + x + \frac{1}{2}x^2 + \frac{1}{6}x^3</me>.  Moreover, plotting <m>f</m> and <m>T</m> near <m>a = 0</m>, we see in the <xref ref="F-8a-2-intro">Figure</xref> that the interval of accuracy for a tolerance of <m>0.1</m> is about <m>-1.2 \le x \le 1.2</m>, where the approximation is slightly better to the left of <m>a = 0</m> than to the right.  
+
+      <figure xml:id="F-8a-2-intro">
+        <caption>The function <m>f(x)=e^x</m> and its degree <m>3</m> Taylor approximation  <m>T(x) = 1 + x + \frac{1}{2}x^2 + \frac{1}{6}x^3</m> near the point <m>(0,f(0))</m>.</caption>
+      <image width="50%" source="images/8a_2_intro" />
+    </figure>
     </p>
+
+    <p>
+      More precisely, we might compute that <m>|f(-1.16) - T(-1.16)| \approx 0.0608</m> and <m>|f(1.16) - T(1.16)| \approx 0.0970</m> and <m>|f(-1.16) - T(-1.16)| \approx 0.0608</m>, which helps us see the degree <m>3</m> approximation is very accurate on an interval wider than <m>|x| \lt 1</m>.
+    </p>
+
+    <p>
+      In this section, we will see how we can find higher degree approximations for functions other than <m>f(x) = e^x</m>, as well as how to center the approximation at a value other than <m>a = 0</m>.
+    </p>
+
+    <xi:include href="./previews/PA-8a-2.xml" />
+
   </introduction>  
 
   <subsection>
+    <title>Taylor polynomials</title>
     <p>
-      
+      In our work so far in <xref ref="C-8a">Chapter</xref>, we have found several different approximations of two important functions: <m>e^x</m> and <m>\sin(x)</m>.  In <xref ref="sec-8a-1-linear-poly">Section</xref>, we saw that near <m>a = 0</m>
+      <ul>
+        <li>
+          <p>
+            <m>e^x \approx 1 + x</m> (the degree <m>1</m> approximation);
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>e^x \approx 1 + x + \frac{1}{2}x^2</m> (the degree <m>2</m> approximation);  and
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>e^x \approx 1 + x + \frac{1}{2}x^2 + \frac{1}{6}x^3</m> (the degree <m>3</m> approximation).
+          </p>
+        </li>
+      </ul>
+      Moreover, we found that as the degree of the approximation increased, the polynomial approximation got more accurate by being closer to the <m>e^x</m> on a wider interval.
     </p>
+
+    <p>
+      In <xref ref="PA-8a-2">Preview</xref>, we saw further that 
+      <ul>
+        <li>
+          <p>
+            <m>\sin(x) \approx x</m> (the degree <m>1</m> approximation); and
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\sin(x) \approx x - \frac{1}{6}x^3</m> (the degree <m>3</m> approximation).
+          </p>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      We can also notice that the linear approximation is embedded within the quadratic approximation, and the quadratic approximation within the cubic one, and so on.  These observations naturally lead us to consider approximations of arbitrary degree <m>n</m> in order to generate more accurate approximations for any function with a sufficient number of derivatives.  We thus define the <term>Taylor polynomial of degree <m>n</m> centered at <m>a = 0</m></term> as follows.
+    </p>
+
+    <definition xml:id="def-Taylor-poly-0">
+      <statement>
+         Let <m>n</m> be a natural number and let <m>f</m> be a function with at least <m>n</m> derivatives at <m>a = 0</m>.  The <term>degree <m>n</m> Taylor polynomial of <m>f</m> centered at <m>a = 0</m></term> is the function
+         <me>T_n(x) = c_0 + c_1x + c_2x^2 + \cdots + c_nx^n</me>
+         that satisfies
+         <m>T_n(0) = f(0)</m>, <m>T_n’(0) = f’(0)</m>, <m>T_n’’(0) = f’’(0)</m>, <m>\ldots</m>, <m>T_n^{(n)}(0) = f^{(n)}(0)</m>.
+      </statement>
+    </definition>
+
+    <p>
+      By definition, <m>T_n</m> is the polynomial whose function and first <m>n</m> derivative values at <m>a = 0</m> match the function value and all <m>n</m> derivative values of <m>f</m> at <m>a = 0</m>.  
+    </p>
+
+    <p>
+      The <m>n+1</m> equations <m>T_n(0) = f(0)</m>, <m>T_n’(0) = f’(0)</m>, <m>T_n’’(0) = f’’(0)</m>, <m>\ldots</m>, <m>T_n^{(n)}(0) = f^{(n)}(0)</m> enable us to determine the coefficients <m>c_0, c_1, \ldots, c_n</m> in terms of the values of the various derivatives of <m>f</m>.  Indeed, by taking the various derivatives of <m>T_n(x)</m>, evaluating those derivatives at <m>a = 0</m>, and setting each result equal to the corresponding derivative value of <m>f</m>, we see the results in the <xref ref="T-8a-2-Taylor-0">Table</xref>. 
+    </p>
+
+          <table xml:id="T-8a-2-Taylor-0">
+            <title>Finding the coefficients <m>c_0, c_1, \ldots, c_n</m> in a Taylor polynomial.</title>
+              <tabular top="minor" bottom="minor">
+                <row>
+                  <cell>Taylor polynomial</cell>
+                  <cell>coefficient</cell>
+                </row>
+                <row>
+                  <cell><m>T_n(x) = c_0 + c_1x + c_2x^2 + c_3x^3 + c_4x^4 + \cdots + c_nx^n</m></cell>
+                  <cell><m>T(0)=c_0=f(0)</m></cell>
+                </row>
+                <row>
+                  <cell><m>T_n’(x) = c_1 + 2c_2x + 3c_3x^2 + 4c_4x^3 + \cdots +nc_nx^{n-1}</m></cell>
+                  <cell><m>T’(0)=c_1=f’(0)</m></cell>
+                </row>                
+              </tabular>
+            </table>
+
+
   </subsection>
 
   <subsection>
