@@ -18,7 +18,13 @@
     <ul>
       <li>
         <p>
-          A
+          Can find higher degree polynomial approximations for functions other than <m>f(x) = e^x</m>?
+        </p>
+        <p>
+          How are the coefficients of the polynomial approximation to a function <m>f(x)</m> near <m>a = 0</m> determined by the values of the various derivatives of <m>f</m>, evaluated at <m>a = 0</m>?
+        </p>
+        <p>
+          Can we find polynomial approximations to a given function <m>f</m> that are centered at a point other than <m>a = 0</m>?
         </p>
       </li>
     </ul>
@@ -98,7 +104,7 @@
       <me>k_0 = 1, k_1 = 1, 2k_2 = 1, 6k_3 = 1</me>
       and therefore
       <me>k_0 = 1, k_1 = 1, k_2 = \frac{1}{2}, k_3 = \frac{1}{6}</me>
-      so that <me>T(x) = 1 + x + \frac{1}{2}x^2 + \frac{1}{6}x^3</me>.  Moreover, plotting <m>f</m> and <m>T</m> near <m>a = 0</m>, we see in the <xref ref="F-8a-2-intro">Figure</xref> that the interval of accuracy for a tolerance of <m>0.1</m> is about <m>-1.2 \le x \le 1.2</m>, where the approximation is slightly better to the left of <m>a = 0</m> than to the right.  
+      so that <me>T(x) = 1 + x + \frac{1}{2}x^2 + \frac{1}{6}x^3</me>.  Moreover, plotting <m>f</m> and <m>T</m> near <m>a = 0</m>, we see in the <xref ref="F-8a-2-intro">Figure</xref> that the interval of accuracy for a tolerance of <m>0.1</m> is about <m>-1.2 \le x \le 1.2</m>.  
 
       <figure xml:id="F-8a-2-intro">
         <caption>The function <m>f(x)=e^x</m> and its degree <m>3</m> Taylor approximation  <m>T(x) = 1 + x + \frac{1}{2}x^2 + \frac{1}{6}x^3</m> near the point <m>(0,f(0))</m>.</caption>
@@ -107,11 +113,11 @@
     </p>
 
     <p>
-      More precisely, we might compute that <m>|f(-1.16) - T(-1.16)| \approx 0.0608</m> and <m>|f(1.16) - T(1.16)| \approx 0.0970</m> and <m>|f(-1.16) - T(-1.16)| \approx 0.0608</m>, which helps us see the degree <m>3</m> approximation is very accurate on an interval wider than <m>|x| \lt 1</m>.
+      More precisely, we might compute that <m>|f(-1.16) - T(-1.16)| \approx 0.0608</m> and <m>|f(1.16) - T(1.16)| \approx 0.0970</m>, which helps us see the degree <m>3</m> approximation is very accurate on an interval wider than <m>|x| \lt 1</m>.
     </p>
 
     <p>
-      In this section, we will see how we can find higher degree approximations for functions other than <m>f(x) = e^x</m>, as well as how to center the approximation at a value other than <m>a = 0</m>.
+      In this section, we will learn how we can find higher degree approximations for functions other than <m>f(x) = e^x</m>, as well as how to center the approximation at a value other than <m>a = 0</m>.
     </p>
 
     <xi:include href="./previews/PA-8a-2.xml" />
@@ -225,7 +231,7 @@
       <me>
         c_0 = f(0), c_1 = f’(0), c_2 = \frac{f’’(0)}{2!}, c_3 = \frac{f’’’(0)}{3!}, c_4 = \frac{f^{(4)}(0)}{4!}, \ldots, c_n = \frac{f^{(n)}(0)}{n!}
       </me>
-      This enables us to find the Taylor polynomial of degree $n$ for any function <m>f</m> by computing the polynomial's coefficients via finding the values of <m>f(0), f'(0), \ldots, f^{(n)}(0)</m>.
+      This enables us to find the Taylor polynomial of degree <m>n</m> for any function <m>f</m> by computing the polynomial's coefficients via finding the values of <m>f(0), f'(0), \ldots, f^{(n)}(0)</m>.
     </p>
 
     <assemblage xml:id="find-Taylor-poly-0">
@@ -341,13 +347,13 @@
     </title>
 
     <p>
-      In all of our work so far in <xref ref="C-8a">Chapter</xref>, we have focused on approximating functions such as <m>f(x) = e^x</m>, <m>f(x) = \sin(x)</m>, <m>f(x) = \ln(1+x)</m>, and <m>f(x) = \cos(x)</m> near <m>a = 0</m>.  But we could instead be interested in the behavior of some function <m>f</m> near <m>a = 5</m>, or be interested in a function <m>f</m> that wasn’t even defined at <m>a = 0</m>, so next we consider how we can generalize our earlier work to Taylor polynomial approximations at any value <m>a</m>.
+      In all of our work so far in <xref ref="C-8a">Chapter</xref>, we have focused on approximating functions such as <m>f(x) = e^x</m>, <m>f(x) = \sin(x)</m>, <m>f(x) = \ln(1+x)</m>, and <m>f(x) = \cos(x)</m> near <m>a = 0</m>.  But we could instead be interested in the behavior of some function <m>f</m> near <m>a = 5</m>, or be interested in a function <m>f</m> that wasn't even defined at <m>a = 0</m>, so next we consider how we can generalize our earlier work to Taylor polynomial approximations at any value <m>a</m>.
     </p>
 
     <p>
       From our early studies in <xref ref="sec-1-8-tan-line-approx">Section</xref>, we know that at any input value <m>x = a</m> where a function <m>f</m> has a first derivative, <m>f</m> has a tangent line approximation 
       <me>L(x) = f(a) + f'(a)(x-a)</me>
-      that satisfies <m>f(x) \approx L(x)</m> for <m>x</m> values near <m>a</m>.  Provided that <m>f</m> has a second derivative at <m>x=a</m>, we can generate a quadratic approximation near <m>a</m>for <m>f</m>like we found at <m>a = 0</m> for <m>f(x)=e^x</m> in <xref ref="act-8a-1-2">Activity</xref>, and as long as <m>f</m> has a third derivative at <m>x=a</m>, we can even find a cubic approximation (as in <xref ref="act-8a-1-3">Activity</xref>).  In developing such an approximation, our guiding principle is the same as with our work at <m>a = 0</m>: we’ll require that at the input value <m>a</m>, the original function’s output and its derivatives’ outputs match the corresponding approximation’s output and derivatives' output.
+      that satisfies <m>f(x) \approx L(x)</m> for <m>x</m> values near <m>a</m>.  Provided that <m>f</m> has a second derivative at <m>x=a</m>, we can generate a quadratic approximation near <m>a</m> for <m>f</m> like we found at <m>a = 0</m> for <m>f(x)=e^x</m> in <xref ref="act-8a-1-2">Activity</xref>, and as long as <m>f</m> has a third derivative at <m>x=a</m>, we can even find a cubic approximation (as in <xref ref="act-8a-1-3">Activity</xref>).  In developing such an approximation, our guiding principle is the same as with our work at <m>a = 0</m>: we'll require that at the input value <m>a</m>, the original function's output and its derivatives' outputs match the corresponding approximation's output and derivatives' output.
     </p>
 
     <p>
@@ -387,19 +393,28 @@
   <subsection>
     <title>Summary</title>
     <p>
-      <ul>
-        <li>
-          <p>
-            A .
-          </p>
-        </li>
-
-      </ul>
+    <ul>
+      <li>
+        <p>
+          Provided that a function <m>f(x)</m> has <m>n</m> derivatives at a selected input value <m>x = a</m>, we can find a degree <m>n</m> polynomial <m>T_n(x)</m> that approximates <m>f(x)</m> near <m>a</m> by requiring that <m>T_n(a) = f(a)</m>, <m>T_n'(a) = f'(a)</m>, <m>T_n''(a) = f''(a)</m>, <m>\ldots</m>, <m>T_n^{(n)}(a) = f^{(n)}(a)</m>. 
+        </p>
+        <p>
+          When <m>a = 0</m>, we call the degree <m>n</m> polynomial approximation, <m>T_n(x)</m> to a function <m>f(x)</m> near <m>0</m> the <q>degree <m>n</m> Taylor polynomial of <m>f</m> centered at <m>a = 0</m></q>, and if we write 
+          <me>T_n(x) = c_0 + c_1 x + c_2 x^2 + \cdots c_n x^n</me>
+          it follows that the coefficients <m>c_k</m> are determined by the values of the various derivatives of <m>f(x)</m> evaluated at <m>0</m> according to the formula
+          <me>c_k = \frac{f^{(k)}(0)}{k!}.</me>
+        </p>
+        <p>
+          Just as we can consider any function <m>f</m> that has <m>n</m> derivatives, we can also consider any input value <m>a</m> at which those <m>n</m> derivatives exist, and find a polynomial approximation that satisfies <m>T_n(a) = f(a)</m>, <m>T_n'(a) = f'(a)</m>, <m>T_n''(a) = f''(a)</m>, <m>\ldots</m>, <m>T_n^{(n)}(a) = f^{(n)}(a)</m>.  We call the degree <m>n</m> polynomial approximation, <m>T_n(x)</m> to the function <m>f(x)</m> near <m>a</m> the <q>degree <m>n</m> Taylor polynomial of <m>f</m> centered at <m>a</m></q>, and if we write 
+          <me>T_n(x) = c_0 + c_1 (x-a) + c_2 (x-a)^2 + \cdots c_n (x-a)^n</me>
+          it follows that the coefficients <m>c_k</m> are determined by the values of the various derivatives of <m>f(x)</m> evaluated at <m>a</m> according to the formula
+          <me>c_k = \frac{f^{(k)}(a)}{k!}.</me>
+        </p>
+      </li>
+    </ul>
     </p>
   </subsection>
 
-<!-- 
   <xi:include href="./exercises/ez-8a-2.xml" />
--->
 
 </section>
