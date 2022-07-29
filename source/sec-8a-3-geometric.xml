@@ -27,24 +27,78 @@
 
   <introduction>
     <p>
-      In 
+      In our work in <xref ref="sec-8a-2-taylor-poly">Section</xref>, we learned how to find a degree <m>n</m> polynomial approximation centered at a value <m>a</m> for a given function <m>f</m> with at least <m>n</m> derivatives.  Through working with several different functions and <m>n</m>-values, we've seen that increasing the degree of the polynomial improves the approximation, and also often helps us to see a pattern in the coefficients of the Taylor polynomials.
     </p>
 
-<!--    <xi:include href="./previews/PA-8a-3.xml" /> -->
+    <p>
+      For example, the degree <m>5</m> Taylor approximation of <m>f(x) = \ln(1+x)</m> at <m>a = 0</m> is
+          <me>
+            T_5(x) = 1x - \frac{1}{2}x^2 + \frac{1}{3}x^3 - \frac{1}{4}x^4 + \frac{1}{5}x^5,
+          </me>
+      and we see a pattern in the coefficients that allows us to easily generate <m>T_6(x)</m>, <m>T_{10}(x)</m>, or indeed <m>T_n(x)</m> for any <m>n</m>.  Note that if we want to use <m>T_{10}(x)</m> to estimate <m>\ln(\frac{1}{2})</m>, we need to compute the sum of <m>10</m> terms given by
+          <me>
+            \ln\left( \frac{1}{2} \right) \approx T_{10}\left( \frac{1}{2} \right) = 1 - \frac{1}{2} \left( \frac{1}{2} \right)^2 + \frac{1}{3} \left( \frac{1}{2} \right)^3 - \frac{1}{4} \left( \frac{1}{2} \right)^4 + \cdots - \frac{1}{10} \left( \frac{1}{2} \right)^{10}.  
+          </me>
+      This computation suggests at least two questions:  is there an easy way (without a computer) to determine the value of the <m>10</m>-term sum 
+      <me>1 - \frac{1}{2} \left( \frac{1}{2} \right)^2 + \frac{1}{3} \left( \frac{1}{2} \right)^3 - \frac{1}{4} \left( \frac{1}{2} \right)^4 + \cdots - \frac{1}{10} \left( \frac{1}{2} \right)^{10}?</me> and, is there a way we can make sense of continuing the sum indefinitely, <me>1 - \frac{1}{2} \left( \frac{1}{2} \right)^2 + \frac{1}{3} \left( \frac{1}{2} \right)^3 - \frac{1}{4} \left( \frac{1}{2} \right)^4 + \cdots - \frac{1}{10} \left( \frac{1}{2} \right)^{10} + \cdots?</me>
+    </p>
+
+    <p>
+      In this section, we investigate a special collection of similar sums that are called <term>geometric</term> sums.
+    </p>
+
+    <xi:include href="./previews/PA-8a-3.xml" />
 
   </introduction>  
 
   <subsection>
-    <title>G</title>
+    <title>Finite Geometric Sums</title>
     <p>
-      In 
-    </p>  
+      Sums such as 
+      <me>
+        1 + \frac{1}{2} + \left( \frac{1}{2} \right)^2 + \left( \frac{1}{2} \right)^3 + \cdots + \left( \frac{1}{2} \right)^n
+      </me>,
+      <me>
+        1 + \frac{1}{4} + \left( \frac{1}{4} \right)^2 + \left( \frac{1}{4} \right)^3 + \cdots + \left( \frac{1}{4} \right)^n
+      </me>,
+      and 
+      <me>
+        2 - \frac{4}{3} + \frac{8}{9} - \frac{16}{27} + \cdots + (-1)^n \cdot 2 \cdot \left( \frac{2}{3} \right)^n
+      </me>
+      all share a similar structural feature:  the next term in each sum is always found by multiplying the last term by the same number.  In the first sum, each subsequent term is found by multiplying by <m>\frac{1}{2}</m>; in the second sum, by multiplying by <m>\frac{1}{4}</m>; and in the third sum, the multiplier is <m>\frac{-2}{3}</m>.
+      These sums each have the form
+      <men xml:id="eq-8-3a-finite-geometric-1">
+        a+ar+ar^2+ \cdots + ar^{n-1}
+      </men>
+      which we call a <em>finite geometric series</em>
+<!--          <idx><h>finite geometric series</h></idx> -->
+      with ratio <m>r</m>.  It turns out that each sum that has this form can be computed quickly without having to add all of the individual terms.
+    </p>
 
-<!--    <xi:include href="./activities/act-8a-3-1.xml" /> -->
+    <xi:include href="./activities/act-8a-3-1.xml" />
 
+    <P>
+      Do a couple examples; don't belabor
+    </P>
 
   </subsection>
 
+  <subsection>
+    <title>Infinite Geometric Sums</title>
+
+    <p>
+      Start with non-geometric ... say <m>e^1 = 1 + \cdots</m>
+    </p>
+
+  </subsection>
+
+  <subsection>
+    <title>How geometric sums arise in Taylor polynomials</title>
+
+    <p>
+      The case of <m>f(x) = \frac{1}{1-x}</m>.
+    </p>
+  </subsection>
 
   <subsection>
     <title>Summary</title>
