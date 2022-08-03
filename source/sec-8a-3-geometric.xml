@@ -148,14 +148,111 @@
       </solution>
     </example>
 
+    <p>
+      Recall from our work in <xref ref="C-4">Chapter</xref> with Riemann sums, we can use sigma notation (see <xref ref="sigma-notation">Subsection</xref>) to express a sum in convenient shorthand.  For instance, it's equivalent to write
+      <me>
+        S_n = a + ar + ar^2 + \cdots + ar^{n-1} = \sum_{k=0}^{n-1} ar^k 
+      </me>.
+    </p>
+
   </subsection>
 
   <subsection>
     <title>Infinite Geometric Sums</title>
 
     <p>
-      Start with non-geometric ... say <m>e^1 = 1 + \cdots</m>
+      Taylor polynomials can be used to approximate a given function near the point where the approximation is centered.  For instance, we know that for <m>f(x) = e^x</m>, its degree <m>5</m> Taylor polynomial centered at <m>a=0</m> is 
+      <me>T_5(x) = 1 + x + \frac{1}{2!}x^2 + \frac{1}{3!}x^3 + \frac{1}{4!}x^4 + \frac{1}{5!}x^5</me>, so 
+      <mdn>
+        <mrow number="no">e^1 \approx \mathstrut \amp T(1)</mrow>
+        <mrow number="no">=\mathstrut \amp 1 + 1 + \frac{1}{2!}1^2 + \frac{1}{3!}1^3 + \frac{1}{4!}1^4 + \frac{1}{5!}1^5 </mrow>
+        <mrow number="no">=\mathstrut \amp 1 + 1 + \frac{1}{2} + \frac{1}{6} + \frac{1}{24} + \frac{1}{120} </mrow>
+        <mrow number="no">=\mathstrut \amp \frac{163}{60}</mrow>
+        <mrow number="no">=\mathstrut \amp 2.71\overline{6}</mrow>
+      </mdn>.
+      While this results in a reasonably good approximation of <m>e</m>, it is natural to go further, using higher and higher degree Taylor polynomials.  Indeed, it seems reasonable to say that
+      <me>
+        e^1 = 1 + 1 + \frac{1}{2!}1^2 + \frac{1}{3!}1^3 + \cdots + \frac{1}{n!}1^n + \cdots
+      </me>,
+      where the sum <em>never</em> stops.  What does it mean to sum an infinite number of numbers?  Is this even possible?  We now explore that idea for the special case of geometric series.
     </p>
+
+    <example xml:id="Ex-8a-3-inf-geom-1">
+      <title>An infinite geometric series</title>
+      <statement>
+        Can we find the value of 
+        <me>
+          1 + \frac{1}{2} + \left( \frac{1}{2} \right)^2 + \left( \frac{1}{2} \right)^3 + \cdots
+        </me>, 
+        where the sum never terminates?
+      </statement>
+      <solution>
+        <p>
+          In <xref ref="PA-8a-3">Preview Activity</xref>, we saw that for the finite geometric series
+          <me>
+            S_n = 1 + \frac{1}{2} + \left( \frac{1}{2} \right)^2 + \left( \frac{1}{2} \right)^3 + \cdots + \left( \frac{1}{2} \right)^{n-1}
+          </me>,
+          <m>S_3 = \frac{7}{4}</m>, <m>S_4 = \frac{15}{8}</m>, <m>S_5 = \frac{31}{16}</m>, and indeed
+          <men xml:id="eq-8a-3-Sn-one-half-closed">
+            S_n = \frac{2^n - 1}{2^{n-1}}
+          </men>.
+          In <xref ref="eq-8a-3-Sn-one-half-closed">Equation</xref>, if we divide the two terms in the numerator of <m>S_n</m> by the denominator, we see that an equivalent definition for <m>S_n</m> is 
+          <men xml:id="eq-8a-3-Sn-one-half">
+            S_n = 2 - \frac{1}{2^{n-1}}
+          </men>.
+          In <xref ref="eq-8a-3-Sn-one-half">Equation</xref>, we see that if we let <m>n \to \infty</m>, we have 
+          <me>
+            \lim_{n \to \infty} S_n = \lim_{n \to \infty}  - \frac{1}{2^{n-1}} = 2
+          </me>,
+          since <m>\frac{1}{2^{n-1}} \to 0</m> as <m>n</m> increases without bound.
+        </p>
+
+        <p>
+          Thus, it makes sense to say that the sum of the infinite geometric series 
+          <me>
+            S = 1 + \frac{1}{2} + \left( \frac{1}{2} \right)^2 + \left( \frac{1}{2} \right)^3 + \cdots
+          </me>
+          is finite and that <m>S = 2</m>.
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      <xref ref="Ex-8a-3-inf-geom-1">Example</xref> demonstrates the general principle that mathematicians use to determine if any infinite series has a finite sum:  we consider the <term>partial sum</term>, <m>S_n</m>, which is the finite sum of the first <m>n</m> terms, and then investigate if the partial sums converge to a single value as <m>n</m> increases without bound.  For geometric series, determining whether the partial sums converge or not is straightforward.
+    </p>
+
+    <assemblage>
+      <title>Summing an infinite geometric series</title>
+      <p>
+        An infinite geometric series <m>S</m> is a sum of the form
+        <men xml:id="eq-8a-3-geometric-series-infinite">
+          S = a + ar + ar^2 + \cdots + ar^{n-1} + \cdots
+        </men>,
+        where <m>a</m> and <m>r</m> are real numbers.
+        If <m>|r| \lt 1</m>, then the infinite geometric series converges to a finite sum whose value is
+        <men xml:id="eq-8a-3-infinite-geometric-sum">
+          S = \frac{a}{1-r}
+        </men>.
+        If <m>|r| \ge 1</m>, then the infinite geometric series does not converge to a finite sum.
+      </p>
+    </assemblage>   
+
+    <p>
+      <xref ref="eq-8a-3-infinite-geometric-sum">Equation</xref> holds primarily because when <m>|r| \lt 1</m>, it follows that <m>r^n \to 0</m> as <m>n \to \infty</m>.  Indeed, when <m>|r| \lt 1</m>, we see by taking the limit as <m>n \to \infty</m> in <xref ref="eq-8a-3-geometric-series-finite">Equation</xref>, that
+      <me>
+        \lim_{n \to \infty} S_n = \lim_{n \to \infty} \frac{a(1-r^n)}{1-r} = \frac{a}{1-r}
+      </me>.
+      In Exercise **, we will explore why the infinite geometric series does not converge when <m>|r| = 1</m> and when <m>|r| \gt 1</m>.
+    </p> 
+
+    <p>
+      Like with finite sums, we can use sigma notation for a more concise way to express an infinite geometric series.  For example, it is equivalent to write 
+      <me>
+        1 + \frac{1}{2} + \left( \frac{1}{2} \right)^2 + \left( \frac{1}{2} \right)^3 + \cdots = \sum_{k = 0}^{\infty} \left( \frac{1}{2} \right)^k
+      </me>
+    </p>
+
+    <xi:include href="./activities/act-8a-3-2.xml" />
 
   </subsection>
 
