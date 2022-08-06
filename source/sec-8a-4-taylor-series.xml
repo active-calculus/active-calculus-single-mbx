@@ -27,18 +27,113 @@
 
   <introduction>
     <p>
-      In 
+      In <xref ref="act-8a-3-3">Activity</xref>, we investigated the Taylor polynomials centered at <m>0</m> for the function <m>f(x) = \frac{1}{1-x}</m> and found that 
+      <me>
+        T_n(x) = 1 + x + x^2 + x^3 + \cdots + x^n
+      </me>.
+      Moreover, we saw that it is natural to extend the degree <m>n</m> Taylor polynomial to an infinite Taylor <em>series</em>; for <m>f(x) = \frac{1}{1-x}</m>, the corresponding Taylor series is
+      <me>
+        T(x) = 1 + x + x^2 + x^3 + \cdots x^n + \cdots
+      </me>.
+      Because <m>T(x)</m> is an infinite geometric series with <m>a = 1</m> and <m>r = x</m>, whenever <m>|r| = |x| \lt 1</m>, the series converges and its sum is
+      <me>
+        T(x) = \frac{a}{1-r} = \frac{1}{1-x} = f(x)
+      </me>.
+      Remarkably, this shows that the original function, <m>f(x) = \frac{1}{1-x}</m>, is <em>equal to its Taylor series</em> for all values of <m>x</m> that satisfy <m>|x| \lt 1</m>.  So, not only do Taylor polynomials provide increasingly better approximations to a function as the degree <m>n</m> increases, but it appears that if we let <m>n</m> increase without bound we arrive at a new representation of the original function through its Taylor series<fn>This new representation may only be valid for a limited set of <m>x</m>-values, such as <m>|x| \lt 1</m> in the case of <m>f(x) = \frac{1}{1-x}</m></fn>.
     </p>
 
-<!--    <xi:include href="./previews/PA-8a-4.xml" /> -->
+    <p>
+      In this section, we will find and discuss the Taylor series for several well-known functions.  But first, we start with an infinite geometric series and explore the function to which the series is related. 
+    </p>
+
+    <xi:include href="./previews/PA-8a-4.xml" /> 
 
   </introduction>  
 
   <subsection>
     <title>Taylor series</title>
     <p>
-      In  derivatives that enables us to find the general form of the degree <n>n</n> Taylor polynomial.
+      From our work in <xref ref="act-8a-3-3">Activity</xref> and <xref ref="PA-8a-4">Preview Activity</xref>, we have seen two examples where the Taylor polynomials of a given function lead to a corresponding infinite Taylor series that is actually equal to the original function itself.  This suggests that Taylor series are important as they can give rise to a polynomial-like representation of a non-polynomial function.  We start with the formal definition of the Taylor series of a function.
     </p>
+
+    <definition xml:id="D-8a-4-Taylor-series">
+      <!-- <idx><h>Taylor series</h></idx> -->
+      <statement>
+        <p>
+          Let <m>f</m> be a function such that <m>f^{(n)}(a)</m> exists for every natural number <m>n</m>.
+          The <term>Taylor series</term>
+          for <m>f</m> centered at <m>x=a</m> is the series <m>T_f(x)</m> defined by
+          <md>
+            <mrow>T_f(x) =\mathstrut \amp \sum_{k=0}^{\infty} \frac{f^{(k)}(a)}{k!}(x-a)^k</mrow> 
+            <mrow>=\mathstrut \amp f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \cdots + \frac{f^{(n)}(a)}{n!}(x-a)^n + \cdots</mrow> 
+          </md>.
+        </p>
+      </statement>
+    </definition>  
+
+      <p>
+        In the special case where <m>a=0</m> in <xref ref="D-8a-4-Taylor-series">Definition</xref>,
+        the Taylor series is also sometimes called the
+        <term>Maclaurin series</term>
+           <!-- <idx><h>Maclaurin series</h></idx> -->
+        for <m>f</m>.
+      </p>
+
+      <p>
+        From <xref ref="act-8a-3-3">Activity</xref>
+        we know the <m>n</m>th order Taylor polynomial centered at <m>0</m> for the function <m>f(x) = \frac{1}{1-x}</m> is
+        <me>
+          T_n(x) = 1 + x + x^2 + \cdots + x^n
+        </me>,
+        and thus the Maclaurin series for <m>f(x) = \frac{1}{1-x}</m> is
+        <me>
+          T_f(x) = \sum_{k=0}^{\infty} x^k
+        </me>.
+        Because this particular series is geometric, we are able to easily find a shortcut formula for its sum and understand the values of <m>x</m> for which the infinite sum makes sense.  In particular, for <m>|x| \lt 1</m>, 
+        <me>
+          f(x) = \frac{1}{1-x} = \sum_{k=0}^{\infty} x^k = T_f(x)
+        </me>.
+        It turns out that while most Taylor series are not geometric series, we can compare Taylor series to geometric series in order to determine the <m>x</m>-values for which they make sense.  To see how we might approach this issue, we consider the following example.
+      </p>
+  
+    <example xml:id="Ex-8a-4-ln">
+      <title>Investigating the Taylor series for <m>\ln(1+x)</m></title>
+      <statement>
+        <p>
+          State the Taylor series at <m>a = 0</m> for <m>\ln(1+x)</m>, determine whether or not the Taylor series is geometric, and investigate the <m>x</m>-values for which the series appears to converge.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          In <xref ref="Ex-8a-2-Taylor-example">Example</xref>, we found that the general degree <m>n</m> Taylor polynomial centered at <m>a = 0</m> for <m>f(x) = \ln(1+x)</m> is
+          <me>
+            T_n(x) = x - \frac{1}{2}x^2 + \frac{1}{3}x^3 - \cdots + (-1)^{n-1}\frac{1}{n}x^n.
+          </me>
+          This pattern thus allows us to see that the Taylor series for <m>f(x)</m>, centered at <m>a = 0</m>, is
+          <md>
+            <mrow>T_f(x) =\mathstrut \amp \sum_{k=1}^{\infty} (-1)^{n-1}\frac{1}{n}x^n</mrow>
+            <mrow> =\mathstrut \amp x - \frac{1}{2}x^2 + \frac{1}{3}x^3 - \cdots + (-1)^{n-1}\frac{1}{n}x^n + \cdots</mrow>
+          </md>.
+          Next, we determine whether or not this Taylor series is a geometric series.
+        </p>
+
+        <p>
+          For a series to be geometric, it must have a constant ratio between the terms.  In <m>T_f(x)</m>, the general <m>n</m>th term is 
+          <me>
+            a_n(x) = (-1)^{n-1}\frac{1}{n}x^n 
+          </me>
+          so the <m>(n+1)</m>st term is
+          <me>
+            a_{n+1}(x) = (-1)^{n}\frac{1}{n+1}x^{n+1} 
+          </me>.
+          If we consider the ratio of these consecutive terms and call that quantity <m>r_n(x)</m>, we find that
+          <me>
+            r_n(x) = \frac{a_{n+1}(x)}{a_n(x)} = \frac{(-1)^{n}\frac{1}{n+1}x^{n+1}}{(-1)^{n-1}\frac{1}{n}x^n}
+          </me>
+        </p>
+      </solution>
+    </example>
+
 
 <!--     <xi:include href="./activities/act-8a-4-1.xml" /> -->
 
