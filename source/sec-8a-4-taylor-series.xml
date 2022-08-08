@@ -36,14 +36,14 @@
         T(x) = 1 + x + x^2 + x^3 + \cdots x^n + \cdots
       </me>.
       Because <m>T(x)</m> is an infinite geometric series with <m>a = 1</m> and <m>r = x</m>, whenever <m>|r| = |x| \lt 1</m>, the series converges and its sum is
-      <me>
-        T(x) = \frac{a}{1-r} = \frac{1}{1-x} = f(x)
-      </me>.
+      <men xml:id="Eq-8a-4-f-equals-Tf">
+        T(x) = 1 + x + x^2 + x^3 + \cdots x^n + \cdots \frac{a}{1-r} = \frac{1}{1-x} = f(x)
+      </men>.
       Remarkably, this shows that the original function, <m>f(x) = \frac{1}{1-x}</m>, is <em>equal to its Taylor series</em> for all values of <m>x</m> that satisfy <m>|x| \lt 1</m>.  So, not only do Taylor polynomials provide increasingly better approximations to a function as the degree <m>n</m> increases, but it appears that if we let <m>n</m> increase without bound we arrive at a new representation of the original function through its Taylor series<fn>This new representation may only be valid for a limited set of <m>x</m>-values, such as <m>|x| \lt 1</m> in the case of <m>f(x) = \frac{1}{1-x}</m></fn>.
     </p>
 
     <p>
-      In this section, we will find and discuss the Taylor series for several well-known functions.  But first, we start with an infinite geometric series and explore the function to which the series is related. 
+      In this section, we will find and discuss the Taylor series for several well-known functions.  We begin with an infinite geometric series and explore the function to which the series is related. 
     </p>
 
     <xi:include href="./previews/PA-8a-4.xml" /> 
@@ -138,7 +138,7 @@
           <me>
             r_n(x) = (-1) \cdot \frac{n}{n+1} \cdot x
           </me>.
-          This tells us the series <m>T_f(x)</m> is not geometric since the ration depends on <m>n</m>.  For example, if we take <m>n = 2</m>, we have 
+          This tells us the series <m>T_f(x)</m> is not geometric since the ratio depends on <m>n</m>.  For example, if we take <m>n = 2</m>, we have 
           <me>
             r_2(x) = -\frac{2}{3}x
           </me>,
@@ -154,10 +154,41 @@
           <me>
             r_n(x) \approx -x
           </me>.
-          This suggests that the series <m>T_f(x)</m> converges for <m>|r_n(x)| \approx |-x| = |x| \lt 1</m>, since the series is very close to being geometric with a common ratio <m>-x</m>.  Graphical evidence suggests that for <m>|x| \lt 1</m>, the series <m>T_f(x)</m> converges in the same way that a geometric one would, and also that the interval of convervence is <m>-1 \lt x \lt 1</m>.  In **FIGURE**, we see plots of <m>f(x) = \ln(1+x)</m>, <m>T_{10}(x) = x - \frac{1}{2}x^2 + \frac{1}{3}x^3 - \cdots - \frac{1}{10}x^{10}</m>, and <m>T_{20}(x) = x - \frac{1}{2}x^2 + \frac{1}{3}x^3 - \cdots - \frac{1}{20}x^{20}</m>. ****
+          This suggests that the series <m>T_f(x)</m> converges for <m>|r_n(x)| \approx |-x| = |x| \lt 1</m>, since the series is very close to being geometric with a common ratio <m>-x</m>.  Graphical evidence supports the conclusion that for <m>|x| \lt 1</m>, the series <m>T_f(x)</m> converges in the same way that a geometric one would, and also that the interval of convervence is <m>-1 \lt x \lt 1</m>.  In **FIGURE**, we see plots of <m>f(x) = \ln(1+x)</m>, <m>T_{10}(x) = x - \frac{1}{2}x^2 + \cdots - \frac{1}{10}x^{10}</m>, and <m>T_{20}(x) = x - \frac{1}{2}x^2 + \cdots - \frac{1}{20}x^{20}</m>. ****
+        </p>
+
+        <p>
+          *** ADD FIGURE ***
+        </p>
+
+        <p>
+          In FIGURE we see that on roughly the interval <m>-0.8 \lt x \lt 0.8</m>, <m>f(x)</m>, <m>T_{10}(x)</m>, and <m>T_{20}(x)</m> are nearly indistinguishable.  Furthermore, we see that if we widen the interval to <m>-0.9 \lt x \lt 0.9</m>, <m>T_{20}(x)</m> remains a very good approximation of <m>f(x)</m>.  For example, we can do some computations and find that
+          <me>
+            f(-0.8) - T_{10}(-0.8) \approx -0.030563, f(-0.8) - T_{20}(-0.8) \approx -0.001091
+          </me>,
+          and
+          <me>
+            f(-0.9) - T_{10}(-0.9) \approx -0.183837, f(-0.8) - T_{20}(-0.8) \approx -0.032564 
+          </me>.
+          Increasing the degree of the approximation further allows us to do a bit better, but since <m>f(x) = \ln(1+x)</m> is undefined and has a vertical asymptote at <m>x = -1</m>, there won't be any polynomial function that can accurately approximate <m>f(x)</m> at <m>x = -1</m>.  Thus, it appears to be the case that <m>T_f(x)</m> converges for <m>x</m>-values that satisfy <m>-1 \lt x \lt 1</m>, and on that interval the Taylor series converges to <m>f(x) = \ln(1+x)</m>.
         </p>
       </solution>
     </example>
+
+    <p>
+      From <xref ref="Ex-8a-4-ln">Example</xref>, we see a striking result:  it appears that for <m>x</m>-values where the Taylor series <m>T_f(x)</m> of <m>f(x) = \ln(1+x)</m> converges to a finite value, the Taylor series actually equals the function <m>f</m>.  Said differently, it appears that
+      <me>
+        \ln(1+x) = x - \frac{1}{2}x^2 + \frac{1}{3}x^3 - \cdots + (-1)^{n-1}\frac{1}{n}x^n + \cdots
+      </me>
+      for <m>x</m>-values that satisfy <m>-1 \lt x \lt 1</m>.  This result is analogous to <xref ref="Eq-8a-4-f-equals-Tf">Equation</xref>, but is different in the sense that the Taylor series for <m>\ln(1+x)</m> is not geometric.  We next introduce a more formal way to test <q>how geometric</q> a Taylor series is in an effort to understand where the Taylor series converges.
+    </p>
+
+    <assemblage>
+    <title>The Ratio Test</title>
+      <p>
+        Consider an infinite series of the form <m>T(x) = \sum_{k=0}^{\infty} c_n (x-a)^k</m>, where <m>a</m> is any real number.
+      </p>
+    </assemblage>
 
 
 <!--     <xi:include href="./activities/act-8a-4-1.xml" /> -->
