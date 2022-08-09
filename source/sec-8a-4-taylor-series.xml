@@ -37,7 +37,7 @@
       </me>.
       Because <m>T(x)</m> is an infinite geometric series with <m>a = 1</m> and <m>r = x</m>, whenever <m>|r| = |x| \lt 1</m>, the series converges and its sum is
       <men xml:id="Eq-8a-4-f-equals-Tf">
-        T(x) = 1 + x + x^2 + x^3 + \cdots x^n + \cdots \frac{a}{1-r} = \frac{1}{1-x} = f(x)
+        T(x) = 1 + x + x^2 + x^3 + \cdots x^n + \cdots = \frac{a}{1-r} = \frac{1}{1-x} = f(x)
       </men>.
       Remarkably, this shows that the original function, <m>f(x) = \frac{1}{1-x}</m>, is <em>equal to its Taylor series</em> for all values of <m>x</m> that satisfy <m>|x| \lt 1</m>.  So, not only do Taylor polynomials provide increasingly better approximations to a function as the degree <m>n</m> increases, but it appears that if we let <m>n</m> increase without bound we arrive at a new representation of the original function through its Taylor series<fn>This new representation may only be valid for a limited set of <m>x</m>-values, such as <m>|x| \lt 1</m> in the case of <m>f(x) = \frac{1}{1-x}</m></fn>.
     </p>
@@ -61,8 +61,7 @@
       <statement>
         <p>
           Let <m>f</m> be a function such that <m>f^{(n)}(a)</m> exists for every natural number <m>n</m>.
-          The <term>Taylor series</term>
-          for <m>f</m> centered at <m>x=a</m> is the series <m>T_f(x)</m> defined by
+          The <term>Taylor series for <m>f</m> centered at <m>x=a</m></term> is the series <m>T_f(x)</m> defined by
           <md>
             <mrow>T_f(x) =\mathstrut \amp \sum_{k=0}^{\infty} \frac{f^{(k)}(a)}{k!}(x-a)^k</mrow> 
             <mrow>=\mathstrut \amp f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \cdots + \frac{f^{(n)}(a)}{n!}(x-a)^n + \cdots</mrow> 
@@ -89,10 +88,13 @@
         <me>
           T_f(x) = \sum_{k=0}^{\infty} x^k
         </me>.
-        Because this particular series is geometric (with common ratio <m>r = x</m>), we are able to easily find a shortcut formula for its sum and understand the values of <m>x</m> for which the infinite sum makes sense.  In particular, for <m>|x| \lt 1</m>, 
+        As we noted earlier in <xref ref="Eq-8a-4-f-equals-Tf">Equation</xref>, because this particular series is geometric (with common ratio <m>r = x</m>), we are able to easily find a shortcut formula for its sum and understand the values of <m>x</m> for which the infinite sum makes sense.  In particular, for <m>|x| \lt 1</m>, 
         <me>
-          f(x) = \frac{1}{1-x} = \sum_{k=0}^{\infty} x^k = T_f(x)
-        </me>.
+          T_f(x) = \sum_{k=0}^{\infty} x^k = \frac{1}{1-x} 
+        </me>,
+        which is equal to the original function <m>f(x)</m> itself.
+      </p>
+      <p>  
         It turns out that while most Taylor series are not geometric series, we can compare Taylor series to geometric series in order to determine the <m>x</m>-values for which they make sense.  To see how we might approach this issue, we consider the following example.
       </p>
   
@@ -111,7 +113,7 @@
           </me>.
           This pattern thus allows us to see that the Taylor series for <m>f(x)</m>, centered at <m>a = 0</m>, is
           <md>
-            <mrow>T_f(x) =\mathstrut \amp \sum_{k=1}^{\infty} (-1)^{n-1}\frac{1}{n}x^n</mrow>
+            <mrow>T_f(x) =\mathstrut \amp \sum_{k=1}^{\infty} (-1)^{k-1}\frac{1}{k}x^k</mrow>
             <mrow> =\mathstrut \amp x - \frac{1}{2}x^2 + \frac{1}{3}x^3 - \cdots + (-1)^{n-1}\frac{1}{n}x^n + \cdots</mrow>
           </md>.
           Next, we determine whether or not this Taylor series is a geometric series.
@@ -154,7 +156,7 @@
           <me>
             r_n(x) \approx -x
           </me>.
-          This suggests that the series <m>T_f(x)</m> converges for <m>|r_n(x)| \approx |-x| = |x| \lt 1</m>, since the series is very close to being geometric with a common ratio <m>-x</m>.  Graphical evidence supports the conclusion that for <m>|x| \lt 1</m>, the series <m>T_f(x)</m> converges in the same way that a geometric one would, and also that the interval of convervence is <m>-1 \lt x \lt 1</m>.  In **FIGURE**, we see plots of <m>f(x) = \ln(1+x)</m>, <m>T_{10}(x) = x - \frac{1}{2}x^2 + \cdots - \frac{1}{10}x^{10}</m>, and <m>T_{20}(x) = x - \frac{1}{2}x^2 + \cdots - \frac{1}{20}x^{20}</m>. ****
+          This suggests that the series <m>T_f(x)</m> converges for <m>|r_n(x)| \approx |-x| = |x| \lt 1</m>, since the series is very close to being geometric with a common ratio <m>-x</m>.  Graphical evidence supports the conclusion that for <m>|x| \lt 1</m>, the series <m>T_f(x)</m> converges in the same way that a geometric one would, and also that the interval of convervence is <m>-1 \lt x \lt 1</m>.  In **FIGURE**, we see plots of <m>f(x) = \ln(1+x)</m>, <m>T_{10}(x) = x - \frac{1}{2}x^2 + \cdots - \frac{1}{10}x^{10}</m>, and <m>T_{20}(x) = x - \frac{1}{2}x^2 + \cdots - \frac{1}{20}x^{20}</m>.
         </p>
 
         <p>
@@ -186,9 +188,50 @@
     <assemblage>
     <title>The Ratio Test</title>
       <p>
-        Consider an infinite series of the form <m>T(x) = \sum_{k=0}^{\infty} c_n (x-a)^k</m>, where <m>a</m> is any real number.
+        Consider an infinite series of the form <m>T(x) = \sum_{k=0}^{\infty} c_k (x-a)^k</m>, where <m>a</m> is any real number.  Let <m>r_n(x) = \frac{c_{n+1} (x-a)^{n+1}}{c_n (x-a)^n}</m> and 
+        <me>
+          r(x) = \lim_{n \to \infty} r_n(x) = \lim_{n \to \infty} \frac{c_{n+1} (x-a)^{n+1}}{c_n (x-a)^n}
+        </me>.
+        Then,
+        <ul>
+          <li>
+            <p>
+              for any real number <m>x</m> such that <m>|r(x)| \lt 1</m>, the series <m>T(x)</m> converges;
+            </p>  
+          </li>
+          <li>
+            <p>
+              for any real number <m>x</m> such that <m>|r(x)| \gt 1</m>, the series <m>T(x)</m> does not converge;
+            </p>
+          </li>
+          <li>
+            <p>
+              and for any <m>x</m> such that <m>|r(x)| = 1</m>, the series <m>T(x)</m> may or may not converge.
+            </p>
+          </li>
+        </ul>
       </p>
     </assemblage>
+
+    <p>
+      In essence, the Ratio Test is a way to find <m>x</m> values for which <m>T(x)</m> behaves like a geometric series with ratio <m>r(x)</m> such that <m>|r(x)| \lt 1</m>, and for those <m>x</m>-values, the infinite series converges to a finite value.
+    </p>
+
+    <p>
+      In <xref ref="Ex-8a-4-ln">Example</xref>, we essentially applied the Ratio Test to find an interval of <m>x</m>-values for which the Taylor series of <m>f(x) = \ln(1+x)</m> converges.  In particular, for 
+      <me>
+        T_f(x) = \sum_{k=1}^{\infty} (-1)^{k-1}\frac{1}{k}x^k
+      </me>
+      we found that 
+      <me>
+        r_n(x) = \frac{(-1)^{n}\frac{1}{n+1}x^{n+1}}{(-1)^{n-1}\frac{1}{n}x^n} = (-1) \cdot \frac{n}{n+1} \cdot x
+      </me>
+      and therefore
+      <me>
+        r(x) = \lim_{n \to \infty} r_n(x) = \lim_{n \to \infty} (-1) \cdot \frac{n}{n+1} \cdot x = -x
+      </me>.
+      By the Ratio Test, it follows that if <m>|r(x)| = |-x| = x \lt 1</m>, then the series converges, and if <m>|r(x)| = x \gt 1</m>, the series does not converge.  When <m>x = \pm 1</m>, we don't know if the series converges or diverges, but we will normally not be concerned with this <q>endpoint behavior</q>.
+    </p>
 
 
 <!--     <xi:include href="./activities/act-8a-4-1.xml" /> -->
