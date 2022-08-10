@@ -27,11 +27,11 @@
 
   <introduction>
     <p>
-      In <xref ref="act-8a-3-3">Activity</xref>, we investigated the Taylor polynomials centered at <m>0</m> for the function <m>f(x) = \frac{1}{1-x}</m> and found that 
+      In <xref ref="act-8a-3-3">Activity</xref>, we investigated several Taylor polynomials centered at <m>0</m> for the function <m>f(x) = \frac{1}{1-x}</m> and found that 
       <me>
         T_n(x) = 1 + x + x^2 + x^3 + \cdots + x^n
       </me>.
-      Moreover, we saw that it is natural to extend the degree <m>n</m> Taylor polynomial to an infinite Taylor <em>series</em>; for <m>f(x) = \frac{1}{1-x}</m>, the corresponding Taylor series is
+      Moreover, we saw that it is natural to extend the degree <m>n</m> Taylor polynomial to an infinite Taylor <em>series</em><fn>We formally define the Taylor series of a function <m>f</m> in <xref ref="D-8a-4-Taylor-series">Definition</xref>.</fn>; for <m>f(x) = \frac{1}{1-x}</m>, the corresponding Taylor series is
       <me>
         T(x) = 1 + x + x^2 + x^3 + \cdots x^n + \cdots
       </me>.
@@ -43,7 +43,7 @@
     </p>
 
     <p>
-      In this section, we will find and discuss the Taylor series for several well-known functions.  We begin with an infinite geometric series and explore the function to which the series is related. 
+      In <xref ref="PA-8a-4">Preview Activity</xref>, we consider an infinite geometric series and explore the function to which the series is related and that function's Taylor polynomials. 
     </p>
 
     <xi:include href="./previews/PA-8a-4.xml" /> 
@@ -53,7 +53,7 @@
   <subsection>
     <title>Taylor series</title>
     <p>
-      From our work in <xref ref="act-8a-3-3">Activity</xref> and <xref ref="PA-8a-4">Preview Activity</xref>, we have seen two examples where the Taylor polynomials of a given function lead to a corresponding infinite Taylor series that is actually equal to the original function itself.  This suggests that Taylor series are important as they can give rise to a polynomial-like representation of a non-polynomial function.  We start with the formal definition of the Taylor series of a function.
+      From our work in <xref ref="act-8a-3-3">Activity</xref> and <xref ref="PA-8a-4">Preview Activity</xref>, we have seen two examples where the Taylor polynomials of a given function lead to a corresponding infinite Taylor series that is actually equal to the original function itself.  This suggests that Taylor series are important as they can give rise to a polynomial-like representation of a non-polynomial function.  We are now ready to formally define the Taylor series of a function.
     </p>
 
     <definition xml:id="D-8a-4-Taylor-series">
@@ -95,7 +95,7 @@
         which is equal to the original function <m>f(x)</m> itself.
       </p>
       <p>  
-        It turns out that while most Taylor series are not geometric series, we can compare Taylor series to geometric series in order to determine the <m>x</m>-values for which they make sense.  To see how we might approach this issue, we consider the following example.
+        It turns out that while most Taylor series are not geometric series, we can compare any Taylor series to a geometric series in order to determine an interval of <m>x</m>-values for which the Taylor series converges.  To see how we approach this issue, we consider the following example.
       </p>
   
     <example xml:id="Ex-8a-4-ln">
@@ -132,7 +132,7 @@
           <me>
             r_n(x) = \frac{a_{n+1}(x)}{a_n(x)} = \frac{(-1)^{n}\frac{1}{n+1}x^{n+1}}{(-1)^{n-1}\frac{1}{n}x^n}
           </me>.
-          We can rewrite this fraction algebraically and simplify it consderably.  Grouping the similar terms between the numerator and denominator, we see
+          We can rewrite this fraction algebraically and simplify it considerably.  Grouping the similar terms between the numerator and denominator, we see
           <me>
             r_n(x) = \frac{(-1)^{n}}{(-1)^{n-1}} \cdot \frac{n}{n+1} \cdot \frac{x^{n+1}}{x^n}
           </me>,
@@ -140,7 +140,7 @@
           <me>
             r_n(x) = (-1) \cdot \frac{n}{n+1} \cdot x
           </me>.
-          This tells us the series <m>T_f(x)</m> is not geometric since the ratio depends on <m>n</m>.  For example, if we take <m>n = 2</m>, we have 
+          This tells us the series <m>T_f(x)</m> is not geometric since the ratio of consecutive terms depends on <m>n</m>.  For example, if we take <m>n = 2</m>, we have 
           <me>
             r_2(x) = -\frac{2}{3}x
           </me>,
@@ -156,15 +156,16 @@
           <me>
             r_n(x) \approx -x
           </me>.
-          This suggests that the series <m>T_f(x)</m> converges for <m>|r_n(x)| \approx |-x| = |x| \lt 1</m>, since the series is very close to being geometric with a common ratio <m>-x</m>.  Graphical evidence supports the conclusion that for <m>|x| \lt 1</m>, the series <m>T_f(x)</m> converges in the same way that a geometric one would, and also that the interval of convervence is <m>-1 \lt x \lt 1</m>.  In **FIGURE**, we see plots of <m>f(x) = \ln(1+x)</m>, <m>T_{10}(x) = x - \frac{1}{2}x^2 + \cdots - \frac{1}{10}x^{10}</m>, and <m>T_{20}(x) = x - \frac{1}{2}x^2 + \cdots - \frac{1}{20}x^{20}</m>.
+          This suggests that the series <m>T_f(x)</m> converges for <m>|r_n(x)| \approx |-x| = |x| \lt 1</m>, since the series is very close to being geometric with a common ratio <m>-x</m>.  Graphical evidence supports the conclusion that for <m>|x| \lt 1</m>, the series <m>T_f(x)</m> converges in the same way that a geometric one would, and also that the interval of convervence is <m>-1 \lt x \lt 1</m>.  In <xref ref="F-8a-4-ln-10-20">Figure</xref>, we plot <m>f(x) = \ln(1+x)</m>, <m>T_{10}(x) = x - \frac{1}{2}x^2 + \cdots - \frac{1}{10}x^{10}</m>, and <m>T_{20}(x) = x - \frac{1}{2}x^2 + \cdots - \frac{1}{20}x^{20}</m>.
         </p>
 
-        <p>
-          *** ADD FIGURE ***
-        </p>
+        <figure xml:id="F-8a-4-ln-10-20">
+            <caption>The function <m>f(x)=\ln(1+x)</m> and its degree <m>10</m> and <m>20</m> Taylor approximations  <m>T_{10}(x)</m> and <m>T_{20}(x)</m> near the point <m>(0,f(0))</m>.</caption>
+          <image width="50%" source="images/8a_4_Ex_1" />
+        </figure>
 
         <p>
-          In FIGURE we see that on roughly the interval <m>-0.8 \lt x \lt 0.8</m>, <m>f(x)</m>, <m>T_{10}(x)</m>, and <m>T_{20}(x)</m> are nearly indistinguishable.  Furthermore, we see that if we widen the interval to <m>-0.9 \lt x \lt 0.9</m>, <m>T_{20}(x)</m> remains a very good approximation of <m>f(x)</m>.  For example, we can do some computations and find that
+          In <xref ref="F-8a-4-ln-10-20">Figure</xref> we see that on the interval <m>-0.8 \lt x \lt 0.8</m>, <m>f(x)</m>, <m>T_{10}(x)</m>, and <m>T_{20}(x)</m> are nearly indistinguishable.  Furthermore, we see that if we widen the interval to <m>-0.9 \lt x \lt 0.9</m>, <m>T_{20}(x)</m> remains a very good approximation of <m>f(x)</m>.  For example, we can do some computations and find that
           <me>
             f(-0.8) - T_{10}(-0.8) \approx -0.030563, f(-0.8) - T_{20}(-0.8) \approx -0.001091
           </me>,
@@ -172,7 +173,7 @@
           <me>
             f(-0.9) - T_{10}(-0.9) \approx -0.183837, f(-0.8) - T_{20}(-0.8) \approx -0.032564 
           </me>.
-          Increasing the degree of the approximation further allows us to do a bit better, but since <m>f(x) = \ln(1+x)</m> is undefined and has a vertical asymptote at <m>x = -1</m>, there won't be any polynomial function that can accurately approximate <m>f(x)</m> at <m>x = -1</m>.  Thus, it appears to be the case that <m>T_f(x)</m> converges for <m>x</m>-values that satisfy <m>-1 \lt x \lt 1</m>, and on that interval the Taylor series converges to <m>f(x) = \ln(1+x)</m>.
+          Increasing the degree of the approximation further allows us to do a bit better, but since <m>f(x) = \ln(1+x)</m> is undefined with a vertical asymptote at <m>x = -1</m>, no polynomial function can accurately approximate <m>f(x)</m> at <m>x = -1</m>.  Thus, it appears to be the case that <m>T_f(x)</m> converges for <m>x</m>-values that satisfy <m>-1 \lt x \lt 1</m>, and on that interval the Taylor series converges to <m>f(x) = \ln(1+x)</m>.
         </p>
       </solution>
     </example>
@@ -182,7 +183,7 @@
       <me>
         \ln(1+x) = x - \frac{1}{2}x^2 + \frac{1}{3}x^3 - \cdots + (-1)^{n-1}\frac{1}{n}x^n + \cdots
       </me>
-      for <m>x</m>-values that satisfy <m>-1 \lt x \lt 1</m>.  This result is analogous to <xref ref="Eq-8a-4-f-equals-Tf">Equation</xref>, but is different in the sense that the Taylor series for <m>\ln(1+x)</m> is not geometric.  We next introduce a more formal way to test <q>how geometric</q> a Taylor series is in an effort to understand where the Taylor series converges.
+      for <m>x</m>-values that satisfy <m>-1 \lt x \lt 1</m>.  This result is analogous to <xref ref="Eq-8a-4-f-equals-Tf">Equation</xref>, but is different in the sense that the Taylor series for <m>\ln(1+x)</m> is not geometric.  We next introduce a more formal way to test <q>how geometric</q> a Taylor series is in an effort to understand where the Taylor series is guaranteed to converge.
     </p>
 
     <assemblage>
@@ -214,11 +215,11 @@
     </assemblage>
 
     <p>
-      In essence, the Ratio Test is a way to find <m>x</m> values for which <m>T(x)</m> behaves like a geometric series with ratio <m>r(x)</m> such that <m>|r(x)| \lt 1</m>, and for those <m>x</m>-values, the infinite series converges to a finite value.
+      In essence, the Ratio Test is a way to find <m>x</m> values for which <m>T(x)</m> behaves like a geometric series with ratio <m>r(x)</m> such that <m>|r(x)| \lt 1</m>; for those <m>x</m>-values, the infinite series converges to a finite value<fn>It is possible that the series <m>T(x)</m> also converges when <m>|r(x)| = 1</m>, but in what remains in <xref ref="C-8a">Chapter</xref>, we will not concern ourselves with this minor issue.</fn>.
     </p>
 
     <p>
-      In <xref ref="Ex-8a-4-ln">Example</xref>, we essentially applied the Ratio Test to find an interval of <m>x</m>-values for which the Taylor series of <m>f(x) = \ln(1+x)</m> converges.  In particular, for 
+      In light of the formal statement of the Ratio Test, we now see that in <xref ref="Ex-8a-4-ln">Example</xref>, we applied the Ratio Test to find an interval of <m>x</m>-values for which the Taylor series of <m>f(x) = \ln(1+x)</m> converges.  In particular, for 
       <me>
         T_f(x) = \sum_{k=1}^{\infty} (-1)^{k-1}\frac{1}{k}x^k
       </me>
@@ -233,19 +234,31 @@
       By the Ratio Test, it follows that if <m>|r(x)| = |-x| = x \lt 1</m>, then the series converges, and if <m>|r(x)| = x \gt 1</m>, the series does not converge.  When <m>x = \pm 1</m>, we don't know if the series converges or diverges, but we will normally not be concerned with this <q>endpoint behavior</q>.
     </p>
 
-
-<!--     <xi:include href="./activities/act-8a-4-1.xml" /> -->
+    <xi:include href="./activities/act-8a-4-1.xml" />
 
   </subsection>
 
   <subsection>
     <title>
-      Taylor 
+      Taylor series of several important functions
     </title>
 
     <p>
-      In 
-    </p> 
+      So far, we have established that the Taylor series of two important functions, <m>\frac{1}{1-x}</m> and <m>\ln(1+x)</m>, converge on an interval of <m>x</m>-values and on that interval converge to the respective functions.  In particular,
+      <ul>
+        <li>
+          <p>
+            If <m>|x| \lt 1</m>, then <m>\frac{1}{1-x} = \sum_{k=0}^{\infty} x^k = 1 + x + x^2 + x^3 + \cdots</m>;
+          </p>
+        </li>
+        <li>
+          <p>
+            If <m>|x| \lt 1</m>, then <m>\ln(1+x) = \sum_{k=1}^{\infty} (-1)^{n-1} \cdot \frac{1}{n} \cdot x^n =  x - \frac{1}{2}x^2 + \frac{1}{3}x^3 - \cdots</m>.
+          </p>
+        </li>
+      </ul>
+      Three other important functions <dash> <m>\sin(x)</m>, <m>\cos(x)</m>, and <m>e^x</m> </dash> that we have studied turn out to have similar representations, and so we build on our work with their respective Taylor polynomials in <xref ref="sec-8a-1-linear-poly">Section</xref> and <xref ref="sec-8a-2-taylor-poly">Section</xref> in order to investigate and understand their Taylor series.
+    </p>
 
 <!--    <xi:include href="./activities/act-8a-4-2.xml" /> -->
 
