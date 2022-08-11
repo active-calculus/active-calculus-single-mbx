@@ -18,7 +18,17 @@
     <ul>
       <li>
         <p>
-          Can we 
+          What is the Taylor series centered at <m>a</m> of a function <m>f</m>?
+        </p>
+      </li>
+      <li>
+        <p>
+          What does it mean for an infinite Taylor series to converge to a finite sum, and how can we determine <m>x</m>-values for which the series converges?
+        </p>
+      </li>
+      <li>
+        <p>
+          What are the Taylor series centered at <m>a = 0</m> for <m>\frac{1}{1-x}</m>, <m>\ln(1+x)</m>, <m>\sin(x)</m>, <m>\cos(x)</m>, and <m>e^x</m>, and for which <m>x</m>-values do these series converge?  
         </p>
       </li>
     </ul>
@@ -253,16 +263,149 @@
         </li>
         <li>
           <p>
-            If <m>|x| \lt 1</m>, then <m>\ln(1+x) = \sum_{k=1}^{\infty} (-1)^{n-1} \cdot \frac{1}{n} \cdot x^n =  x - \frac{1}{2}x^2 + \frac{1}{3}x^3 - \cdots</m>.
+            If <m>|x| \lt 1</m>, then<fn>It turns out that this representation is also valie when <m>x = 1</m> because the series <m>1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \cdots</m> converges, and does so to the exact value <m>\ln(2)</m>.</fn> <m>\ln(1+x) = \sum_{k=1}^{\infty} (-1)^{n-1} \cdot \frac{1}{n} \cdot x^n =  x - \frac{1}{2}x^2 + \frac{1}{3}x^3 - \cdots</m>.
           </p>
         </li>
       </ul>
-      Three other important functions <dash> <m>\sin(x)</m>, <m>\cos(x)</m>, and <m>e^x</m> </dash> that we have studied turn out to have similar representations, and so we build on our work with their respective Taylor polynomials in <xref ref="sec-8a-1-linear-poly">Section</xref> and <xref ref="sec-8a-2-taylor-poly">Section</xref> in order to investigate and understand their Taylor series.
+      Three other important functions <mdash> <m>\sin(x)</m>, <m>\cos(x)</m>, and <m>e^x</m> </mdash> that we have studied turn out to have similar representations, and so we build on our work with their respective Taylor polynomials in <xref ref="sec-8a-1-linear-poly">Section</xref> and <xref ref="sec-8a-2-taylor-poly">Section</xref> in order to investigate and understand their Taylor series.
     </p>
 
-<!--    <xi:include href="./activities/act-8a-4-2.xml" /> -->
+    <p>
+      Following <xref ref="act-8a-2-1">Activity</xref>, we noted some of the higher degree Taylor polynomials centered at <m>a = 0</m> for <m>\sin(x)</m>, <m>\cos(x)</m>, and <m>e^x</m>.  For the sine function, we observed that
+      <me>
+        \sin(x) \approx P_7(x) = x - \frac{1}{3!}x^3 + \frac{1}{5!} x^5 - \frac{1}{7!}x^7
+      </me>.
+      In the next example, we determine the Taylor series of <m>f(x) = \sin(x)</m> and investigate the <m>x</m>-values for which the series converges.
+    </p>
 
-<!--    <xi:include href="./activities/act-8a-4-3.xml" /> -->
+    <example xml:id="Ex-8a-4-sine">
+      <statement>
+        <p>
+          Explain why the Taylor series centered at <m>a = 0</m> for <m>f(x) = \sin(x)</m> is 
+          <me>
+            T_f(x) = \sum_{k=0}^{\infty} (-1)^{k} \frac{1}{(2k+1)!}x^{2k+1}
+          </me>
+          and find the interval of <m>x</m>-values for which this Taylor series converges.  Investigate whether or not the Taylor series converges to <m>f(x) = \sin(x)</m>.
+        </p>
+      </statement>
+      <solution>
+          <p>
+            We observed in <xref ref="sec-8a-2-taylor-poly">Section</xref> that the derivatives of the sine function cycle and repeat every <m>4</m> derivatives, since
+            <me>
+              f(x) = \sin(x), f'(x) = \cos(x), f''(x) = -\sin(x), f'''(x) = -\cos(x), 
+            </me>
+            and so 
+            <me>
+              f^{(4)}(x) = \sin(x), f^{(5)}(x) = \cos(x), f^{(6)}(x) = -\sin(x), f^{(7)}(x) = -\cos(x)
+            </me>.
+            We observe that <m>f^{(4k)}(x) = \sin(x)</m> and <m>f^{(4k+2)}(x) = -\sin(x)</m>  for every natural number <m>k</m>.  This shows that <m>f^{(4k)}(0) = \sin(0) = 0</m> and <m>f^{(4k+2)}(0) = -\sin(0) = 0</m>, from which it follows that every even power of <m>x</m> in the Taylor series of the sine function has a coefficient of <m>0</m>.  
+          </p>
+
+          <p>
+            If we instead consider the odd powers, we can see that since <m>f'(x) = \cos(x)</m>, we also have <m>f^{(5)}(x) = \cos(x)</m>, <m>f^{(9)}(x) = \cos(x)</m>, and so on.  From this, <m>f'(0) = \cos(0) = 1</m>, and similarly, <m>f^{(5)}(0) = 1</m>, <m>f^{(9)}(x) = 1</m>, and indeed <m>f^{(4k+1)}(0) = 1</m> for every nonnegative whole number <m>k</m>.  Finally, since <m>f'''(x) = -\cos(x)</m>, we have <m>f'''(0) = -\cos(0) = -1</m>, and so <m>f'''(0) = -1</m>, <m>f^{(7)}(0) = -1</m>, and thus <m>f^{(4k+3)}(0) = 1</m> for every nonnegative whole number <m>k</m>.
+          </p>
+
+          <p>
+            Putting these observations together about the various derivatives of <m>f(x) = \sin(x)</m> evaluated at <m>a = 0</m> and using the fact that the Taylor series of <m>f(x)</m> centered at <m>0</m> has form
+            <me>
+              T_f(x) = \sum_{k=0}^{\infty} \frac{f^{(k)}(0)}{k!}x^k
+            </me>
+            we see that
+            <mdn>
+              <mrow number="no">T_f(x) =\mathstrut \amp x - \frac{1}{3!}x^3 + \frac{1}{5!}x^5 - \frac{1}{7!}x^7 + \cdots + (-1)^{n} \frac{1}{(2n+1)!} x^{2n+1} + \cdots</mrow>
+              <mrow xml:id="Eq-8a-4-sine"> =\mathstrut \amp \sum_{k=0}^{\infty} (-1)^{k} \frac{1}{(2k+1)!}x^{2k+1}</mrow>.
+            </mdn>
+          </p>
+
+          <p>
+            Next, we use the Ratio Test to investigate the values of <m>x</m> where <m>T_f(x)</m> converges.  We therefore consider <m>r_n(x)</m>, which is the ratio of consecutive nonzero terms, and have 
+            <me>
+              r_n(x) = \frac{(-1)^{n+1} \frac{1}{(2(n+1)+1)!}x^{2(n+1)+1}}{(-1)^{n} \frac{1}{(2n+1)!}x^{2n+1}}
+            </me>.
+            Expanding the expression <m>2(n+1)</m>, combining like terms, and slightly rearranging how we write the fraction, we see that
+            <mdn>
+              <mrow number="no">r_n(x) =\mathstrut \amp \frac{(-1)^{n+1}}{(-1)^{n}} \cdot \frac{\frac{1}{(2n+3)!}}{\frac{1}{(2n+1)!}} \cdot \frac{x^{2n+3}}{x^{2n+1}}</mrow>
+              <mrow xml:id="Eq-8a-4-sine-ratio"> =\mathstrut \amp \frac{(-1)^{n+1}}{(-1)^{n}} \cdot \frac{(2n+1)!}{(2n+3)!} \cdot \frac{x^{2n+3}}{x^{2n+1}}</mrow>.
+            </mdn>
+            We now consider the three fractions in <xref ref="Eq-8a-4-sine-ratio">Equation</xref> one at a time and simplify each.  First, we observe that
+            <me>
+              \frac{(-1)^{n+1}}{(-1)^{n}} = -1
+            </me>
+            since the numerator and denominator are each always either <m>1</m> or <m>-1</m> and always of opposite signs.  Next, we expand the factorials and see that
+            <me>
+              (2n+1)! = (2n+1) (2n) (2n-1) \cdots (2) (1)
+            </me>
+            and
+            <me>
+              (2n+1)!  = (2n+3) (2n+2) (2n+1) (2n) (2n-1) \cdots (2) (1)
+            </me>
+            so 
+            <me>
+              \frac{(2n+1)!}{(2n+3)!} = \frac{1}{(2n+3)(2n+2)}
+            </me>.
+            Finally, we observe that
+            <me>
+              \frac{x^{2n+3}}{x^{2n+1}} = x^{(2n+3) - (2n+1)} = x^2
+            </me>.
+            Putting all of this work together, we can update <xref ref="Eq-8a-4-sine-ratio">Equation</xref> in the simpler form
+            <me>
+              r_n(x) = (-1) \cdot \frac{1}{(2n+3)(2n+2)} \cdot x^2
+            </me>.
+            From here, we compute <m>r(x)</m>, the limit of <m>r_n(x)</m> as <m>n</m> increases without bound.  Since <m>\frac{1}{(2n+3)(2n+2)} \to 0</m> as <m>n \to \infty</m>, it follows that for any fixed <m>x</m>-value,
+            <me>
+              r(x) = \lim_{n \to \infty} r_n(x) = \lim_{n \to \infty} (-1) \cdot \frac{1}{(2n+3)(2n+2)} \cdot x^2 = -1 \cdot 0 \cdot x^2 = 0
+            </me>.
+            The Ratio Test tells us that for any <m>x</m> for which <m>|r(x)| \lt 1</m>, the series <m>T_f(x)</m> converges.  Here, since <m>r(x) = 0</m> for every value of <m>x</m>, this means that <m>T_f(x)</m> converges for every real number <m>x</m>.
+          </p>
+          <p>
+            Finally, we investigate whether the Taylor series appears to converge to <m>f(x) = \sin(x)</m> or not.  In <xref ref="F-8a-4-T159">Figure</xref>, we see the Taylor polynomials of degree <m>1</m>, <m>5</m>, and <m>9</m>, and the significant improvement of the approximation as the degree increases.  
+          </p>
+
+          <figure xml:id="F-8a-4-T159">
+            <caption>Left to right, the degree <m>1</m>, <m>5</m>, and <m>9</m> Taylor polynomials centered at <m>x = 0</m> for <m>f(x) = \sin(x)</m>.</caption>
+              <sidebyside widths="30% 30% 30%" margins="auto">
+                <image source="images/8_5_Taylor1" />
+                <image source="images/8_5_Taylor5" />
+                <image source="images/8_5_Taylor9" />
+              </sidebyside>
+          </figure>    
+
+          <p>
+            In particular, for the degree <m>9</m> approximation, we see that <m>T_9(x)</m> and <m>f(x) = \sin(x)</m> are almost indistinguishable on <m>-4 \lt x \lt 4</m>, which is much wider than the interval <m>-2 \lt x \lt 2</m> on which the <m>T_5(x)</m> approximation is accurate.  Increasing the degree of the approximation shows graphically that doing so appears to widen the interval on which the approximation is accurate and seems to do so without bound, which suggests that the Taylor series of <m>f(x) = \sin(x)</m> in fact converges to <m>f(x) = \sin(x)</m>.
+          </p>    
+      </solution>
+    </example>
+
+    <p>
+      In <xref ref="Ex-8a-4-sine">Example</xref>, we found that the Taylor series for the sine function appears to converge to the sine function, and to do so for every real number <m>x</m>.  This result can be proven formally using a famous theorem called the Lagrange Error Bound<fn>The Lagrange Error Bound states: Let <m>f</m> be a continuous function with <m>n+1</m> continuous derivatives.
+        Suppose that <m>M</m> is a positive real number such that
+        <m>\left|f^{(n+1)}(x)\right| \le M</m> on the interval <m>[a, c]</m>.
+        If <m>P_n(x)</m> is the <m>n</m>th order Taylor polynomial for <m>f(x)</m> centered at <m>x=a</m>, then
+        <m>
+          \left|P_n(c) - f(c)\right| \leq M\frac{|c-a|^{n+1}}{(n+1)!}
+        </m>.</fn>, a result that quantifies how accurate a Taylor polynomial approximation is on an interval.  
+      To summarize, we now know the remarkable result that the sine function is equal to its Taylor series for every value of <m>x</m>:
+      <men xml:id="Eq-8a-4-sine-Taylor">
+        \sin(x) = \sum_{k=0}^{\infty} (-1)^{k} \frac{1}{(2k+1)!}x^{2k+1} = x - \frac{1}{3!}x^3 + \frac{1}{5!}x^5 - \cdots
+      </men>  
+    </p>
+
+    <p>
+      Nearly identical reasoning shows a similar result for the cosine function:  that its Taylor series centered at <m>a = 0</m> converges for every real number <m>x</m> and converges to the cosine function itself.  That is, for any real number <m>x</m>,
+      <men xml:id="Eq-8a-4-cosine-Taylor">
+        \cos(x) = \sum_{k=0}^{\infty} (-1)^{k} \frac{1}{(2k)!}x^{2k} = 1 - \frac{1}{2!}x^2 + \frac{1}{4!}x^4 - \cdots
+      </men>  
+    </p>
+
+    <p>
+      In the next activity, we conduct a similar investigation for <m>f(x) = e^x</m>.
+    </p>
+
+   <xi:include href="./activities/act-8a-4-2.xml" />
+
+    <p>
+      While there is considerable technical detail involved in finding Taylor series and deciding where they converge, it's important not to miss the big picture.  For certain <q>nice</q> functions that are infinitely differentiable and that have clear patterns in their derivatives, such as <m>f(x) = \ln(1+x)</m> and <m>f(x) = \sin(x)</m>, not only can we find the Taylor series for each and determine the <m>x</m>-values at which the Taylor series converges, but <em>the Taylor series converges to the function itself</em>.  This means that for certain <m>x</m>-values (and sometimes <em>all</em> <m>x</m>-values), we can represent a non-polynomial function as being equal to an infinite polynomial.  
+    </p>   
 
   </subsection>
 
@@ -272,7 +415,60 @@
     <ul>
       <li>
         <p>
-          Provided 
+          Provided that <m>f</m> is a function for which every derivative of <m>f</m> exists at <m>x = a</m>, the Taylor series centered at <m>a</m> of <m>f</m> is the series <m>T_f(x)</m> defined by
+          <md>
+            <mrow>T_f(x) =\mathstrut \amp \sum_{k=0}^{\infty} \frac{f^{(k)}(a)}{k!}(x-a)^k</mrow> 
+            <mrow>=\mathstrut \amp f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \cdots + \frac{f^{(n)}(a)}{n!}(x-a)^n + \cdots</mrow> 
+          </md>.
+        </p>
+      </li>
+      <li>
+        <p>
+          We know that an infinite geometric series converges whenever its common ratio, <m>r</m>, satisfies <m>|r(x)| \lt 1</m>.  The Ratio Test enables us to consider a Taylor series and determine an interval of <m>x</m>-values on which the series converges, essentially by comparing the Taylor series to a geometric series.  By letting <m>r_n(x)</m> be the ratio of consecutive terms in the series and taking the limit 
+          <me>
+            r(x) = \lim_{n \to \infty} r_n(x)
+          </me>,
+          we can say that for all <m>x</m> for which <m>|r(x)| \lt 1</m>, the Taylor series converges to a finite sum.
+        </p>
+      </li>
+      <li>
+        <p>
+          We have found the Taylor series for five important functions, determined an interval of <m>x</m>-values on which each converges, and seen the striking result that where each Taylor series converges, it converges to the respective function <m>f(x)</m>.  We summarize these results in <xref ref="T-8a-4-big-5">Table</xref>.
+            <table xml:id="T-8a-4-big-5">
+            <title>Taylor series and intervals of convergence for <m>5</m> important functions.</title>
+              <tabular top="minor" bottom="minor">
+                <row>
+                  <cell halign="right">function <m>f</m></cell>
+                  <cell>Taylor series, <m>T_f</m>, centered at <m>0</m></cell>
+                  <cell>where <m>T_f</m> converges</cell>
+                </row>
+                <row>
+                  <cell halign="right"><m>\frac{1}{1-x}=</m></cell>
+                  <cell><m>\sum_{k=0}^{\infty} x^k = 1 + x + x^2 + x^3 + \cdots</m></cell>
+                  <cell>if <m>|x| \lt 1</m></cell>
+                </row>
+                <row>
+                  <cell halign="right"><m>\ln(1+x)=</m></cell>
+                  <cell><m>\sum_{k=1}^{\infty} (-1)^{k+1}x^k = x - \frac{1}{2}x^2 + \frac{1}{3}x^3 - \cdots</m></cell>
+                  <cell>if <m>|x| \lt 1</m></cell>
+                </row>
+                <row>
+                  <cell halign="right"><m>\sin(x)=</m></cell>
+                  <cell><m>\sum_{k=0}^{\infty} (-1)^{k} \frac{1}{(2k+1)!}x^{2k+1} = x - \frac{1}{3!}x^3 + \frac{1}{5!}x^5 - \cdots</m></cell>
+                  <cell>for all real numbers <m>x</m></cell>
+                </row>
+                <row>
+                  <cell halign="right"><m>\cos(x)=</m></cell>
+                  <cell><m>\sum_{k=0}^{\infty} (-1)^{k} \frac{1}{(2k)!}x^{2k} = 1 - \frac{1}{2!}x^2 + \frac{1}{4!}x^4 - \cdots</m></cell>
+                  <cell>for all real numbers <m>x</m></cell>
+                </row>
+                <row>
+                  <cell halign="right"><m>e^x=</m></cell>
+                  <cell><m>\sum_{k=0}^{\infty} \frac{1}{k!}x^k = 1 + x + \frac{1}{2!}x^2 + \frac{1}{3!}x^3 + \cdots</m></cell>
+                  <cell>for all real numbers <m>x</m></cell>
+                </row>
+              </tabular>
+            </table>   
         </p>
       </li>
     </ul>
