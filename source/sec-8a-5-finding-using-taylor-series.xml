@@ -27,7 +27,7 @@
 
   <introduction>
     <p>
-      So far, we have focused our attention on a small collection of basic functions functions <mdash><m>\frac{1}{1-x}</m>, <m>\ln(1+x)</m>, <m>\sin(x)</m>, <m>\cos(x)</m>, and <m>e^x</m></mdash> and their Taylor series centered at <m>a = 0</m>.  One of the reasons we were able to find these Taylor series is that clear patterns arise in the derivatives of each of these functions.  While we can always use <xref ref="D-8a-4-Taylor-series">Definition</xref> to find the first few terms of a Taylor series, finding a pattern among the various derivatives is challenging for most functions.  In <xref ref="PA-8a-5">Preview Activity</xref>, we explore this issue and investigate a different approach to finding the Taylor series of the function. 
+      So far, we have focused our attention on a small collection of basic functions functions <mdash/> <m>\frac{1}{1-x}</m>, <m>\ln(1+x)</m>, <m>\sin(x)</m>, <m>\cos(x)</m>, and <m>e^x</m> <mdash/> and their Taylor series centered at <m>a = 0</m>.  One of the reasons we were able to find these Taylor series is the clear patterns in the derivatives of each of these functions.  While we can always use <xref ref="D-8a-4-Taylor-series">Definition</xref> to find the first few terms of a Taylor series, finding a pattern among the various derivatives is challenging for most functions.  In <xref ref="PA-8a-5">Preview Activity</xref>, we explore this issue and investigate a different approach to finding the Taylor series of the function. 
     </p>
 
   <xi:include href="./previews/PA-8a-5.xml" /> 
@@ -37,35 +37,81 @@
   <subsection>
     <title>Using substitution and algebra to find new Taylor series expressions</title>
     <p>
-      The substitution technique we used in <xref ref="PA-8a-5">Preview Activity</xref> can be used to find the Taylor series for any function whose structure is similar to that of a Taylor series we already know.  For instance, since 
-      <me>
-        f(x) = \cos(x) = 1 - \frac{1}{2!}x^2 + \frac{1}{4!}x^4 - \cdots + (-1)^n \frac{1}{(2n)!} x^{2n} + \cdots
-      </me>
-      for all <m>x</m>, we can change variables and view this equation as saying
-      <men xml:id="eq-8a-5-cosu">
-        f(u) = \cos(u) = 1 - \frac{1}{2!}u^2 + \frac{1}{4!}u^4 - \cdots + (-1)^n \frac{1}{(2n)!} u^{2n} + \cdots
-      </men>
-      for all <m>u</m>.  If we then wanted to find the Taylor series expansion for <m>g(x) = x^4 \cdot \cos(x^3)</m>, we could do so using the following process.
+      The substitution technique we used in <xref ref="PA-8a-5">Preview Activity</xref> can be used to find the Taylor series for any function whose structure is similar to that of a Taylor series we already know.  
+    </p>
+
+    <example xml:id="ex-8a-5-cosx3">
+      <statement>
+        Find the Taylor series expansion for <m>g(x) = x^4 \cdot \cos(x^3)</m> and determine the <m>x</m>-values for which the series converges.
+      </statement>
+      <solution>
+        <p>
+          Because <m>\cos(x^3)</m> is part of the function whose Taylor series we seek, we start with the familiar series for <m>\cos(x)</m>.  We know that 
+          <men xml:id="eq-8a-5-cosu">
+            f(u) = \cos(u) = 1 - \frac{1}{2!}u^2 + \frac{1}{4!}u^4 - \cdots + (-1)^n \frac{1}{(2n)!} u^{2n} + \cdots
+          </men>
+          for all real numbers <m>u</m>. 
+        </p>
+
+        <p>
+          By letting <m>u = x^3</m> in <xref ref="eq-8a-5-cosu">Equation</xref>, it follows that
+          <me>
+            \cos(x^3) = 1 - \frac{1}{2!}(x^3)^2 + \frac{1}{4!}(x^3)^4 - \cdots + (-1)^n \frac{1}{(2n)!} (x^3)^{2n} + \cdots
+          </me>, 
+          or
+          <men xml:id="eq-8a-5-cosx3">
+            \cos(x^3) = 1 - \frac{1}{2!}x^6 + \frac{1}{4!}x^{12} - \cdots + (-1)^n \frac{1}{(2n)!} x^{6n} + \cdots
+          </men>.      
+          Then, multiplying both sides of <xref ref="eq-8a-5-cosx3">Equation</xref> by <m>x^4</m>, we find that 
+          <me>
+            g(x) = x^4 \cos(x^3) = x^4 - \frac{1}{2!}x^{10} + \frac{1}{4!}x^{16} - \cdots + (-1)^n \frac{1}{(2n)!} x^{6n+4} + \cdots
+          </me>.
+          Since <xref ref="eq-8a-5-cosu">Equation</xref> is valid for every real number <m>u</m>, letting <m>u = x^3</m> tells us that <xref ref="eq-8a-5-cosx3">Equation</xref> is valid for every real number <m>x</m>.  The Ratio Test can be used to show that multiplying every term of a Taylor series by the same power of <m>x</m> does not change the set of <m>x</m>-values for which the series converges, so the Taylor series for <m>g(x)</m> also converges for every value of <m>x</m>.
+        </p>          
+      </solution>
+    </example>
+
+    <p>
+      Because the approach in <xref ref="PA-8a-5">Preview Activity</xref> and <xref ref="ex-8a-5-cosx3">Example</xref> each require us to use a known Taylor series, we restate the Taylor series we've established so far for <m>5</m> important functions in <xref ref="T-8a-5-big-5-redux">Table</xref>.
+          <table xml:id="T-8a-5-big-5-redux">
+            <title>Taylor series and intervals of convergence for <m>5</m> important functions.</title>
+              <tabular top="minor" bottom="minor">
+                <row>
+                  <cell halign="right">function <m>f</m></cell>
+                  <cell>Taylor series, <m>T_f</m>, centered at <m>0</m></cell>
+                  <cell>where <m>T_f</m> converges</cell>
+                </row>
+                <row>
+                  <cell halign="right"><m>\frac{1}{1-x}=</m></cell>
+                  <cell><m>\sum_{k=0}^{\infty} x^k = 1 + x + x^2 + x^3 + \cdots</m></cell>
+                  <cell>if <m>|x| \lt 1</m></cell>
+                </row>
+                <row>
+                  <cell halign="right"><m>\ln(1+x)=</m></cell>
+                  <cell><m>\sum_{k=1}^{\infty} (-1)^{k+1}x^k = x - \frac{1}{2}x^2 + \frac{1}{3}x^3 - \cdots</m></cell>
+                  <cell>if <m>|x| \lt 1</m></cell>
+                </row>
+                <row>
+                  <cell halign="right"><m>\sin(x)=</m></cell>
+                  <cell><m>\sum_{k=0}^{\infty} (-1)^{k} \frac{1}{(2k+1)!}x^{2k+1} = x - \frac{1}{3!}x^3 + \frac{1}{5!}x^5 - \cdots</m></cell>
+                  <cell>for all real numbers <m>x</m></cell>
+                </row>
+                <row>
+                  <cell halign="right"><m>\cos(x)=</m></cell>
+                  <cell><m>\sum_{k=0}^{\infty} (-1)^{k} \frac{1}{(2k)!}x^{2k} = 1 - \frac{1}{2!}x^2 + \frac{1}{4!}x^4 - \cdots</m></cell>
+                  <cell>for all real numbers <m>x</m></cell>
+                </row>
+                <row>
+                  <cell halign="right"><m>e^x=</m></cell>
+                  <cell><m>\sum_{k=0}^{\infty} \frac{1}{k!}x^k = 1 + x + \frac{1}{2!}x^2 + \frac{1}{3!}x^3 + \cdots</m></cell>
+                  <cell>for all real numbers <m>x</m></cell>
+                </row>
+              </tabular>
+            </table>         
     </p>
 
     <p>
-      First, by letting <m>u = x^3</m>, we see that <xref ref="eq-8a-5-cosu">Equation</xref> implies
-      <me>
-        \cos(x^3) = 1 - \frac{1}{2!}(x^3)^2 + \frac{1}{4!}(x^3)^4 - \cdots + (-1)^n \frac{1}{(2n)!} (x^3)^{2n} + \cdots
-      </me>, 
-      or
-      <men xml:id="eq-8a-5-cosx3">
-        \cos(x^3) = 1 - \frac{1}{2!}x^6 + \frac{1}{4!}x^{12} - \cdots + (-1)^n \frac{1}{(2n)!} x^{6n} + \cdots
-      </men>.      
-      Then, multiplying both sides of <xref ref="eq-8a-5-cosx3">Equation</xref> by <m>x^4</m>, we find that 
-      <me>
-        g(x) = x^4 \cos(x^3) = x^4 - \frac{1}{2!}x^{10} + \frac{1}{4!}x^{16} - \cdots + (-1)^n \frac{1}{(2n)!} x^{6n+4} + \cdots
-      </me>.
-      Since <xref ref="eq-8a-5-cosu">Equation</xref> is valid for every real number <m>u</m>, letting <m>u = x^3</m> tells us that <xref ref="eq-8a-5-cosx3">Equation</xref> is valid for every real number <m>x</m>.  The Ratio Test can be used to show that multiplying every term of a Taylor series by the same power of <m>x</m> does not change the set of <m>x</m>-values for which the series converges, so the Taylor series for <m>g(x)</m> also converges for every value of <m>x</m>.
-    </p>
-
-    <p>
-      In <xref ref="act-8a-5-1">Activity</xref>, we find several Taylor series using similar techniques to our approach for <m>x^4 \cos(x^3)</m> above.
+      In <xref ref="act-8a-5-1">Activity</xref>, we find several Taylor series using substitution and algebraic techniques.
     </p>
 
     <xi:include href="./activities/act-8a-5-1.xml" />
@@ -82,7 +128,7 @@
       <me>
         \int_0^1 e^{-x^2} \, dx
       </me>.
-      Because we are unable to find a simple algebraic antiderivative for the function <m>e^{-x^2}</m>, we cannot use the Fundamental Theorem of Calculus to evaluate the integral exactly.  An alternate approach is to estimate the integral using an effective numerical approximation technique such as Simpson's Rule.         
+      Because we are unable to find a simple algebraic antiderivative for the function <m>e^{-x^2}</m>, we cannot use the Fundamental Theorem of Calculus to evaluate the integral exactly.  One approach is to estimate the integral using an effective numerical approximation technique such as Simpson's Rule.         
     </p>
 
     <p>
@@ -98,7 +144,7 @@
     </p>
 
     <p>
-      It is not immediately apparent how integrating a Taylor series might change the values of <m>x</m> for which the series converges.  It turns out that both differentiating and integrating a power series has almost no effect<fn>It is possible for the convergence status at the endpoints of the interval to change, but we are normally not concerned with those specific <m>x</m>-values.</fn> on where the series converges, as stated in a result from advanced calculus, The Power Series Differentiation and Integration Theorem.
+      We might wonder how integrating a Taylor series changes the values of <m>x</m> for which the series converges.  It turns out that integrating a power series has almost no effect<fn>It is possible for the convergence status at the endpoints of the interval to change, but we are normally not concerned with those specific <m>x</m>-values.</fn> on where the series converges (nor does differentiating such a series), as stated in a result from advanced calculus, The Power Series Differentiation and Integration Theorem.
     </p>
 
     <assemblage>
@@ -112,13 +158,15 @@
         <me>
           \int f(x) \, dx = C + \sum_{k=0}^{\infty} \frac{c_k}{k+1} (x-a)^{k+1}
         </me>
-        and both of these series converge for <m>|x-a| \lt R</m>.
+        and both of these series converge if <m>|x-a| \lt R</m>.
       </p>
     </assemblage>
 
-<!--   <xi:include href="./activities/act-8a-4-2.xml" /> -->
+    <p>
+      The Power Series Differentiation and Integration Theorem tells us that when it comes to taking a derivative or antiderivative, we can treat infinite Taylor series almost as if they were finite polynomials:  we can differentiate or integrate a Taylor series term-wise following the Power Rule for differentiating or integrating <m>x^n</m>.  This fact enables us to find many more Taylor series of interesting functions.
+    </p>
 
- 
+    <xi:include href="./activities/act-8a-5-2.xml" />
 
   </subsection>
 
@@ -126,6 +174,202 @@
     <title>
       Alternating series
     </title>
+
+    <p>
+      Recall that if <m>\lim_{k \to \infty} a_k \neq 0</m>,
+      then the series <m>\sum a_k</m> diverges by the Divergence Test.
+      From this point forward, we will thus only consider alternating series
+      <me>
+        \sum_{k=1}^{\infty} (-1)^{k+1} a_k
+      </me>
+      in which the sequence <m>a_k</m> consists of positive numbers that decrease to <m>0</m>.
+      The <m>n</m>th partial sum <m>S_n</m> is
+      <me>
+        S_n = \sum_{k=1}^n (-1)^{k+1} a_k
+      </me>.
+    </p>
+
+    <p>
+      Notice that
+
+      <ul>
+        <!-- Commented out so that in the PDF, an assemblage does not split across pages. -->
+        <!--
+
+        <li>
+          <p>
+            <m>S_1 = a_1</m>
+          </p>
+        </li>
+
+        -->
+        <li>
+          <p>
+            <m>S_2 = a_1 - a_2</m>,
+            and since <m>a_1 \gt a_2</m> we have <m> 0 \lt S_2 \lt S_1 </m>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <m>S_3 = S_2+a_3</m> and so <m>S_2 \lt S_3</m>.
+            But <m>a_3 \lt a_2</m>, so <m>S_3 \lt S_1</m>.
+            Thus, <m> 0 \lt S_2 \lt S_3 \lt S_1 </m>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <m>S_4 = S_3-a_4</m> and so <m>S_4 \lt S_3</m>.
+            But <m>a_4 \lt a_3</m>, so <m>S_2 \lt S_4</m>.
+            Thus, <m> 0 \lt S_2 \lt S_4 \lt S_3 \lt S_1 </m>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <m>S_5 = S_4+a_5</m> and so <m>S_4 \lt S_5</m>.
+            But <m>a_5 \lt a_4</m>, so <m>S_5 \lt S_3</m>.
+            Thus,
+            <m> 0 \lt S_2 \lt S_4 \lt S_5 \lt S_3 \lt S_1 </m>.
+          </p>
+        </li>
+      </ul>
+    </p>
+
+    <sidebyside widths="50% 44%" margins="0%">
+      <p>
+        This pattern continues as illustrated in <xref ref="Fig-8-4-Alternating-Series-Test">Figure</xref>
+        (with <m>n</m> odd)
+        so that each partial sum lies between the previous two partial sums.
+      </p>
+
+      <figure xml:id="Fig-8-4-Alternating-Series-Test">
+        <caption>Partial sums of an alternating series</caption>
+        <image source="images/8_4_Alternating_Series_Test" />
+      </figure>
+    </sidebyside>
+
+    <p>
+      Note further that the absolute value of the difference between the <m>(n-1)</m>st partial sum <m>S_{n-1}</m> and the <m>n</m>th partial sum <m>S_n</m> is
+      <me>
+        \left\lvert S_n - S_{n-1} \right\rvert = a_n
+      </me>.
+    </p>
+
+    <p>
+      Because the sequence <m>\{a_n\}</m> converges to <m>0</m>,
+      the distance between successive partial sums becomes as close to zero as we'd like,
+      and thus the sequence of partial sums converges
+      (even though we don't know the exact value to which it converges).
+    </p>
+
+    <p>
+      The preceding discussion has demonstrated the truth of the Alternating Series Test.
+          <idx><h>alternating series test</h></idx>
+    </p>
+
+    <assemblage>
+      <title>The Alternating Series Test</title>
+      <p>
+        Given an alternating series
+        <m>
+        \sum (-1)^k a_k
+        </m>,
+        if the sequence <m>\{a_k\}</m> of positive terms decreases to 0 as <m>k \to \infty</m>,
+        then the alternating series converges.
+      </p>
+    </assemblage>
+
+    <p>
+      Note that if the limit of the sequence <m>\{a_k\}</m> is not 0, then the alternating series diverges.
+    </p>
+
+    <p>
+      If the series converges,
+      the argument for the Alternating Series Test also provides us with a method to determine how close the <m>n</m>th partial sum <m>S_n</m> is to the actual sum of the series.
+      To see how this works,
+      let <m>S</m> be the sum of a convergent alternating series, so
+      <me>
+        S = \sum_{k=1}^{\infty} (-1)^k a_k
+      </me>.
+    </p>
+
+    <p>
+      Recall that the sequence of partial sums oscillates around the sum <m>S</m> so that
+      <me>
+        \left|S - S_n \right| \lt  \left| S_{n+1} - S_n \right| = a_{n+1}
+      </me>.
+    </p>
+
+    <p>
+      Therefore, the value of the term <m>a_{n+1}</m> provides an error estimate for how well the partial sum <m>S_n</m> approximates the actual sum <m>S</m>.
+      We summarize this fact in the statement of the Alternating Series Estimation Theorem.
+          <idx><h>alternating series estimation theorem</h></idx>
+    </p>
+
+    <assemblage>
+      <title>Alternating Series Estimation Theorem</title>
+      <p>
+        If the alternating series
+        <m>
+        \sum_{k=1}^{\infty} (-1)^{k+1}a_k
+        </m>
+        has positive terms <m>a_k</m> that decrease to zero as <m>k \to \infty</m>, and
+        <m>
+        S_n = \sum_{k=1}^{n} (-1)^{k+1}a_k
+        </m>
+        is the <m>n</m>th partial sum of the alternating series, then
+        <me>
+          \left\lvert \sum_{k=1}^{\infty} (-1)^{k+1}a_k - S_n \right\rvert \leq a_{n+1}
+        </me>.
+      </p>
+    </assemblage>
+
+    <example xml:id="Ex-8-4-1">
+      <statement>
+        <p>
+          Determine how well the <m>100</m>th partial sum <m>S_{100}</m> of
+          <me>
+            \sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k}
+          </me>
+          approximates the sum of the series.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          If we let <m>S</m> be the sum of the series <m>\sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k}</m>,
+          then we know that
+          <me>
+            \left| S_{100} - S \right| \lt  a_{101}
+          </me>.
+        </p>
+
+        <p>
+          Now
+          <me>
+            a_{101} = \frac{1}{101} \approx 0.0099
+          </me>,
+          so the 100th partial sum is within 0.0099 of the sum of the series.
+          We have discussed the fact
+          (and will later verify)
+          that
+          <me>
+            S = \sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k} = \ln(2)
+          </me>,
+          and so <m>S \approx 0.693147</m> while
+          <me>
+            S_{100} = \sum_{k=1}^{100} \frac{(-1)^{k+1}}{k} \approx 0.6881721793
+          </me>.
+        </p>
+
+        <p>
+          We see that the actual difference between <m>S</m> and <m>S_{100}</m> is approximately <m>0.0049750013</m>,
+          which is indeed less than <m>0.0099</m>.
+        </p>
+      </solution>
+    </example>
+
   </subsection>
 
   <subsection>
