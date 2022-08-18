@@ -27,7 +27,11 @@
 
   <introduction>
     <p>
-      So far, we have focused our attention on a small collection of basic functions functions <mdash/> <m>\frac{1}{1-x}</m>, <m>\ln(1+x)</m>, <m>\sin(x)</m>, <m>\cos(x)</m>, and <m>e^x</m> <mdash/> and their Taylor series centered at <m>a = 0</m>.  One of the reasons we were able to find these Taylor series is the clear patterns in the derivatives of each of these functions.  While we can always use <xref ref="D-8a-4-Taylor-series">Definition</xref> to find the first few terms of a Taylor series, finding a pattern among the various derivatives is challenging for most functions.  In <xref ref="PA-8a-5">Preview Activity</xref>, we explore this issue and investigate a different approach to finding the Taylor series of the function. 
+      So far, we have focused our attention on a collection of five basic functions functions <mdash/> <m>\frac{1}{1-x}</m>, <m>\ln(1+x)</m>, <m>\sin(x)</m>, <m>\cos(x)</m>, and <m>e^x</m> <mdash/> and their Taylor series centered at <m>a = 0</m>.  One of the reasons we were able to find these Taylor series is the clear patterns in the derivatives of each of these functions.  While we can always use <xref ref="D-8a-4-Taylor-series">Definition</xref> to find the first few terms of the Taylor series, for most functions it is challenging to find a pattern among the various derivatives that allows us to state the general <m>n</m>th term of the series.  
+    </p>
+
+    <p>
+      In <xref ref="PA-8a-5">Preview Activity</xref>, we explore this issue and investigate a different approach to finding the Taylor series of the function. 
     </p>
 
   <xi:include href="./previews/PA-8a-5.xml" /> 
@@ -42,7 +46,7 @@
 
     <example xml:id="ex-8a-5-cosx3">
       <statement>
-        Find the Taylor series expansion for <m>g(x) = x^4 \cdot \cos(x^3)</m> and determine the <m>x</m>-values for which the series converges.
+        Find the Taylor series expansion for <m>g(x) = x^4 \cos(x^3)</m> and determine the <m>x</m>-values for which the series converges.
       </statement>
       <solution>
         <p>
@@ -58,7 +62,7 @@
           <me>
             \cos(x^3) = 1 - \frac{1}{2!}(x^3)^2 + \frac{1}{4!}(x^3)^4 - \cdots + (-1)^n \frac{1}{(2n)!} (x^3)^{2n} + \cdots
           </me>, 
-          or
+          so
           <men xml:id="eq-8a-5-cosx3">
             \cos(x^3) = 1 - \frac{1}{2!}x^6 + \frac{1}{4!}x^{12} - \cdots + (-1)^n \frac{1}{(2n)!} x^{6n} + \cdots
           </men>.      
@@ -144,7 +148,7 @@
     </p>
 
     <p>
-      We might wonder how integrating a Taylor series changes the values of <m>x</m> for which the series converges.  It turns out that integrating a power series has almost no effect<fn>It is possible for the convergence status at the endpoints of the interval to change, but we are normally not concerned with those specific <m>x</m>-values.</fn> on where the series converges (nor does differentiating such a series), as stated in a result from advanced calculus, The Power Series Differentiation and Integration Theorem.
+      It is natural to wonder how integrating a Taylor series might change the values of <m>x</m> for which the series converges.  It turns out that integrating a power series has almost no effect<fn>It is possible for the convergence status at the endpoints of the interval to change, but we are normally not concerned with those specific <m>x</m>-values.</fn> on where the series converges (nor does differentiating such a series), as stated in a result called The Power Series Differentiation and Integration Theorem.
     </p>
 
     <assemblage>
@@ -163,7 +167,7 @@
     </assemblage>
 
     <p>
-      The Power Series Differentiation and Integration Theorem tells us that when it comes to taking a derivative or antiderivative, we can treat infinite Taylor series almost as if they were finite polynomials:  we can differentiate or integrate a Taylor series term-wise following the Power Rule for differentiating or integrating <m>x^n</m>.  This fact enables us to find many more Taylor series of interesting functions.
+      The Power Series Differentiation and Integration Theorem tells us that when it comes to taking a derivative or antiderivative, we can treat infinite Taylor series almost as if they were finite polynomials:  we can differentiate or integrate the Taylor series term-wise following the Power Rule for differentiating or integrating <m>x^n</m>.  This fact enables us to find many more Taylor series of interesting functions.
     </p>
 
     <xi:include href="./activities/act-8a-5-2.xml" />
@@ -172,83 +176,145 @@
 
   <subsection>
     <title>
-      Alternating series
+      Alternating series of real numbers
     </title>
 
     <p>
-      Recall that if <m>\lim_{k \to \infty} a_k \neq 0</m>,
-      then the series <m>\sum a_k</m> diverges by the Divergence Test.
-      From this point forward, we will thus only consider alternating series
+      Let's return to the challenge posed by the definite integral
       <me>
-        \sum_{k=1}^{\infty} (-1)^{k+1} a_k
+        \int_0^1 e^{-x^2} \, dx
+      </me>.  
+      While we are unable to find an elementary antiderivative of <m>e^{-x^2}</m>, now that we know the Taylor series 
+      <me>
+        e^{-x^2} = 1 - x^2 + \frac{1}{2!}x^4 - \frac{1}{3!}x^6 + \cdots + (-1)^n \frac{1}{n!} x^{2n} + \cdots
       </me>
-      in which the sequence <m>a_k</m> consists of positive numbers that decrease to <m>0</m>.
-      The <m>n</m>th partial sum <m>S_n</m> is
+      if we apply the Fundamental Theorem of Calculus to the series representation of <m>e^{-x^2}</m>, we find that
+      <mdn>
+        <mrow number="no">\int_0^1 e^{-x^2} \, dx =\mathstrut \amp \int_0^1 \left( 1 - x^2 + \frac{1}{2!}x^4 - \frac{1}{3!}x^6 + \cdots + (-1)^n \frac{1}{n!} x^{2n} + \cdots \right) \, dx</mrow>
+        <mrow number="no"> =\mathstrut \amp \left. x - \frac{1}{3}x^3 + \frac{1}{5 \cdot 2!} x^5 + \cdots +  \frac{(-1)^n}{(2n+1) n!} x^{2n+1} + \cdots \right|_0^1 </mrow>
+        <mrow number="no"> =\mathstrut \amp \left(1 - \frac{1}{3} + \frac{1}{5 \cdot 2!} + \cdots + \frac{(-1)^n}{(2n+1) n!} + \cdots \right) - \left( 0 \right)</mrow>
+        <mrow xml:id="eq-8a-5-alt-sum-ex2"> =\mathstrut \amp 1 - \frac{1}{3} + \frac{1}{5 \cdot 2!} - \frac{1}{7 \cdot 3!} + \cdots + \frac{(-1)^n}{(2n+1) n!} + \cdots</mrow>
+      </mdn>   
+      The infinite series in <xref ref="eq-8a-5-alt-sum-ex2">Equation</xref> is an example of an <term>alternating series</term> of real numbers.  It turns out to be straightforward to determine whether or not an alternating series converges, and also to estimate the sum of a convergent alternating series. 
+    </p>
+
+    <definition>
+      <statement>
+        <p>
+          An alternating series is a series of the form
+          <me>
+            \sum_{k=0}^{\infty} (-1)^k a_k
+          </me>,
+          where <m>a_k \gt 0</m> for each <m>k</m>.
+        </p>
+      </statement>
+    </definition>
+
+    <p>
+      We will only consider alternating series for which the sequence of positive numbers <m>a_k</m> decreases to <m>0</m>.  The following example illustrates two general results that hold for any alternating series whose terms <m>a_k</m> decrease to <m>0</m>.  We use a geometric series so that we can know its exact sum and compare certain computations to that sum.
+    </p>
+
+    <example xml:id="ex-8a-5-alt-geom">
+      <statement>
+        <p>
+          Investigate the partial sums of the alternating geometric series <m>S = \sum_{k=0}^{\infty} (-1)^k \left( \frac{1}{2} \right)^k</m>.  How do the partial sums compare to the exact sum of the series, and how can partial sums accurately estimate the value of the sum?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          First, recall that the <m>n</m>th partial sum is the sum of the first <m>n</m> terms, so 
+          <me>
+            S_n = \sum_{k=0}^{n-1} (-1)^k \left( \frac{1}{2} \right)^k = 1 - \frac{1}{2} + \frac{1}{4} - \cdots + (-1)^{n-1} \left( \frac{1}{2} \right)^{n-1}
+          </me>.
+          We compute the first <m>10</m> partial sums of the series and display the results in <xref ref="T-8a-5-ExGeom">Table</xref> and plot the points <m>(n, S_n)</m> in <xref ref="F-8a-5-ExGeom"></xref>.
+        </p> 
+        <sidebyside widths="30% 60%" margins="5%">
+          <table xml:id="T-8a-5-ExGeom">
+            <title>Partial sums of the alternating series</title>
+            <tabular top="minor" bottom="minor">
+              <row>
+                <cell halign="center"><m>n</m></cell>
+                <cell><m>S_n</m></cell>
+              </row>
+              <row>
+                <cell halign="center"><m>1</m></cell>
+                <cell><m>1</m></cell>
+              </row>  
+              <row>  
+                <cell halign="center"><m>2</m></cell>
+                <cell><m>\frac{1}{2} = 0.5</m></cell>
+              </row>
+              <row>
+                <cell halign="center"><m>3</m></cell>
+                <cell><m>\frac{3}{4} = 0.75</m></cell>
+              </row>
+              <row>
+                <cell halign="center"><m>4</m></cell>
+                <cell><m>\frac{5}{8} = 0.625</m></cell>
+              </row>
+              <row>
+                <cell halign="center"><m>5</m></cell>
+                <cell><m>\frac{11}{16} = 0.6875</m></cell>
+              </row>
+              <row>
+                <cell halign="center"><m>6</m></cell>
+                <cell><m>\frac{21}{32} = 0.65625</m></cell>
+              </row>
+              <row>
+                <cell halign="center"><m>7</m></cell>
+                <cell><m>\frac{43}{64} = 0.671875</m></cell>
+              </row>   
+              <row>
+                <cell halign="center"><m>8</m></cell>
+                <cell><m>\frac{85}{128} = 0.6640625</m></cell>
+              </row>
+              <row>
+                <cell halign="center"><m>9</m></cell>
+                <cell><m>\frac{171}{256} = 0.66796875</m></cell>               
+              </row>           
+              <row>                
+                <cell halign="center"><m>10</m></cell>
+                <cell><m>\frac{341}{512} = 0.666015625</m></cell>
+              </row>
+            </tabular>
+          </table>
+
+          <figure xml:id="F-8a-5-ExGeom">
+            <caption>Partial sums of the alternating series and the horizontal line <m>y = \frac{2}{3}</m>.</caption>
+            <image source="images/8a_5_partial_sum" />
+          </figure>
+        </sidebyside>
+
+        <p>
+          Because the given series <m>S = \sum_{k=0}^{\infty} (-1)^k \left( \frac{1}{2} \right)^k</m> is geometric with <m>a = 1</m> and <m>r = -\frac{1}{2}</m>, we know the series converges and its sum is
+          <me>
+            S = \frac{a}{1-r} = \frac{1}{1+\frac{1}{2}} = \frac{1}{\frac{3}{2}} = \frac{2}{3}
+          </me>.
+          Knowing this value helps us better understand the behavior of the partial sums.
+        </p>
+
+        <p>
+          In both the table and the figure, we see how consecutive partial sums move back and forth above and below the exact sum of the infinite series, <m>\frac{2}{3}</m>, and moreover how the amount the next partial sum lies above or below <m>\frac{2}{3}</m> is less than the amount by which the previous partial sum deviated.  For instance, 
+          <me>
+            |S_5 - \frac{2}{3}| \approx 0.0208,
+          </me>
+          but 
+          <me>
+            |S_6 - \frac{2}{3}| \approx 0.0104
+          </me>.
+          This shows  
+        </p>
+      </solution>
+    </example>
+
+    <p>  
+      In that situation, the partial sums tell us two important things about the series.  The following example 
       <me>
         S_n = \sum_{k=1}^n (-1)^{k+1} a_k
       </me>.
     </p>
 
-    <p>
-      Notice that
 
-      <ul>
-        <!-- Commented out so that in the PDF, an assemblage does not split across pages. -->
-        <!--
-
-        <li>
-          <p>
-            <m>S_1 = a_1</m>
-          </p>
-        </li>
-
-        -->
-        <li>
-          <p>
-            <m>S_2 = a_1 - a_2</m>,
-            and since <m>a_1 \gt a_2</m> we have <m> 0 \lt S_2 \lt S_1 </m>.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <m>S_3 = S_2+a_3</m> and so <m>S_2 \lt S_3</m>.
-            But <m>a_3 \lt a_2</m>, so <m>S_3 \lt S_1</m>.
-            Thus, <m> 0 \lt S_2 \lt S_3 \lt S_1 </m>.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <m>S_4 = S_3-a_4</m> and so <m>S_4 \lt S_3</m>.
-            But <m>a_4 \lt a_3</m>, so <m>S_2 \lt S_4</m>.
-            Thus, <m> 0 \lt S_2 \lt S_4 \lt S_3 \lt S_1 </m>.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <m>S_5 = S_4+a_5</m> and so <m>S_4 \lt S_5</m>.
-            But <m>a_5 \lt a_4</m>, so <m>S_5 \lt S_3</m>.
-            Thus,
-            <m> 0 \lt S_2 \lt S_4 \lt S_5 \lt S_3 \lt S_1 </m>.
-          </p>
-        </li>
-      </ul>
-    </p>
-
-    <sidebyside widths="50% 44%" margins="0%">
-      <p>
-        This pattern continues as illustrated in <xref ref="Fig-8-4-Alternating-Series-Test">Figure</xref>
-        (with <m>n</m> odd)
-        so that each partial sum lies between the previous two partial sums.
-      </p>
-
-      <figure xml:id="Fig-8-4-Alternating-Series-Test">
-        <caption>Partial sums of an alternating series</caption>
-        <image source="images/8_4_Alternating_Series_Test" />
-      </figure>
-    </sidebyside>
 
     <p>
       Note further that the absolute value of the difference between the <m>(n-1)</m>st partial sum <m>S_{n-1}</m> and the <m>n</m>th partial sum <m>S_n</m> is
