@@ -16,7 +16,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 <!-- Next paths assume current file has been copied to mathbook/user -->
-<xsl:import href="../xsl/pretext-latex.xsl" pretext-href="pretext-latex.xsl"/>
+<xsl:import href="./core/pretext-latex.xsl" />
 <xsl:import href="acs-common.xsl" />
 
 <xsl:output method="text" />
