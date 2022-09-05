@@ -42,20 +42,10 @@
         f(x) \approx L(x) = f(a) + f’(a)(x-a),
       </me>
       where <m>L</m> is the tangent line approximation to <m>f</m> at <m>a</m>.
-
-    </p>
-
-    <figure xml:id="F-8a-1-Intro">
-      <caption>The function <m>f(x)=e^x</m> and its tangent line <m>L(x)=1+x</m> near the point <m>(0,f(0))</m>.</caption>
-      <image width="75%" source="images/8a_1_intro2" />
-    </figure>
-
-    <p>
-      At right in <xref ref="F-8a-1-Intro">Figure</xref>, we see that near the point of tangency, the approximation of <m>f(x) = e^x</m> by its tangent line is quite good; at the same time, the tangent line and the function itself only agree exactly at the point of tangency, and as we see at left, we need not go far away from the point of tangency to have the difference between <m>f</m> and <m>L</m> be substantial.  
     </p>
 
     <p>
-      It is natural to ask:  can we find a simple function that approximates <m>f</m> more closely than <m>L</m> does and for more values of <m>x</m> near <m>a = 0</m>?
+      In this section, we focus on the function <m>f(x) = e^x</m> and investigate how we can approximate its value near <m>a = 0</m> using other basic functions.
     </p>
 
     <xi:include href="./previews/PA-8a-1.xml" />
@@ -68,54 +58,58 @@
     <!-- think carefully about indexing -->
 
     <p>
-      In <xref ref="PA-8a-1">Preview Activity</xref>, we found that a certain quadratic function can produce a better approximation to a given function <m>f</m> near a fixed point of interest.  This idea is a natural generalization of the tangent line approximation.  Next, we seek to understand how to find this well-chosen quadratic.
+      In <xref ref="PA-8a-1">Preview Activity</xref>, we found that the error in the tangent line approximation of <m>f(x) = e^x</m> at <m>a = 0</m> grows significantly as we consider <m>x</m>-values further and further from <m>0</m>.  This is due to the fact that the tangent line is straight while the function <m>f(x) = e^x</m> has some curvature.  So, we are going to try to find a quadratic approximation whose curvature matches that of <m>f(x) = e^x</m> at the point of tangency.
     </p>
 
     <p>
-      We know that for any function <m>f</m> that has a derivative at <m>a=0</m>, its tangent line approximation at <m>a=0</m> is 
+      While we have usually used the notation <q><m>L(x)</m></q> for the tangent line, in what follows we will instead write <q><m>T_1(x)</m></q>, and think of this as <q>the degree <m>1</m> approximation</q>.  In a similar way, we will write <m>T_2(x)</m> for the quadratic approximation.
+    </p>
+
+    <p>
+      Recall that for any function <m>f</m> that has a derivative at <m>a=0</m>, its tangent line approximation at <m>a=0</m> is 
       <me>
-        L(x) = f(0) + f’(0)(x - 0)
+        T_1(x) = f(0) + f’(0)(x - 0)
       </me>
-      Moreover, the functions <m>L</m> and <m>f</m> have two exact values in common.  First, their function values agree at the point of tangency: <m>L(0) = f(0)</m>.  And second, since <m>L(x)</m> is a linear function whose slope is <m>f’(0)</m>, it is also true that their derivative values agree at the point of tangency: <m>L’(0) = f’(0)</m>.
+      Moreover, the functions <m>T_1</m> and <m>f</m> have two exact values in common.  First, their function values agree at the point of tangency: <m>T_1(0) = f(0)</m>.  And second, since <m>T_1(x)</m> is a linear function whose slope is <m>f’(0)</m>, it is also true that their derivative values agree at the point of tangency: <m>T_1’(0) = f’(0)</m>.
     </p>
 
     <p>
-      To generate a quadratic function that approximates <m>f</m> near <m>a = 0</m>, we choose to have this quadratic function not only share the same function value and derivative value as <m>f</m> at <m>a=0</m>, but also (in order to match the concavity) the same second<fn>Here we are implicitly assuming that the function <m>f(x)</m> has a second derivative at <m>a=0</m>.</fn> derivative value at <m>a=0</m>.  
+      To generate a quadratic function that approximates <m>f</m> near <m>a = 0</m>, we choose to have this quadratic function not only share the same function value and derivative value as <m>f</m> at <m>a=0</m>, but also the same second<fn>Here we are implicitly assuming that the function <m>f(x)</m> has a second derivative at <m>a=0</m>.</fn> derivative value at <m>a=0</m>, in order to match the concavity or curvature.  In other words, we are adding a term to the linear approximation that gives the same amount of curvature as the linear function. 
     </p>
 
     <p>
-      We can state these requirements more formally as follows:  we seek a function <m>Q(x)</m> of the form
+      We can state these requirements more formally as follows:  we seek a function <m>T_2(x)</m> of the form
       <me>
-        Q(x) = c_0 + c_1 x + c_2 x^2
+        T_2(x) = c_0 + c_1 x + c_2 x^2
       </me>
       that satisfies 
       <ul>
         <li>
           <p>
-            <m>Q(0) = f(0)</m>, so <m>Q</m> and <m>f</m> share the same function value at <m>a = 0</m>;
+            <m>T_2(0) = f(0)</m>, so <m>T_2</m> and <m>f</m> share the same height at <m>a = 0</m>;
           </p>
         </li>
         <li>
           <p>
-            <m>Q'(0) = f'(0)</m>, so <m>Q</m> and <m>f</m> share the same first derivative value at <m>a = 0</m>;
+            <m>T_2'(0) = f'(0)</m>, so <m>T_2</m> and <m>f</m> share the same slope at <m>a = 0</m>;
           </p>
         </li>
         <li>
           <p>
-            <m>Q''(0) = f''(0)</m>, so <m>Q</m> and <m>f</m> share the same second derivative value at <m>a = 0</m>.
+            <m>T_2''(0) = f''(0)</m>, so <m>T_2</m> and <m>f</m> share the same concavity at <m>a = 0</m>.
           </p>
         </li>
       </ul>
     </p>
 
     <p>
-      In <xref ref="act-8a-1-1">Activity</xref>, we explore how these three requirements determine <m>c_0</m>, <m>c_1</m>, and <m>c_2</m> in <m>Q(x)</m> for the function <m>f(x) = e^x</m>.
+      In <xref ref="act-8a-1-1">Activity</xref>, we explore how these three requirements determine <m>c_0</m>, <m>c_1</m>, and <m>c_2</m> in <m>T_2(x)</m> for the function <m>f(x) = e^x</m>.
     </p>
 
     <xi:include href="./activities/act-8a-1-1.xml" />
 
     <p>
-      While we will develop this idea more formally in <xref ref="sec-8a-2-taylor-poly">Section</xref>, the polynomial <m>Q(x)</m> that we found in <xref ref="act-8a-1-1">Activity</xref> is called the <q>degree 2 <xref ref="def-Taylor-poly-0">Taylor polynomial</xref> of <m>f</m> centered at <m>a=0</m></q>.
+      While we will develop this idea more formally in <xref ref="sec-8a-2-taylor-poly">Section</xref>, the polynomial <m>T_2(x)</m> that we found in <xref ref="act-8a-1-1">Activity</xref> is called the <q>degree 2 Taylor polynomial of <m>f</m> centered at <m>a=0</m></q>.
     </p>
 
   </subsection>
