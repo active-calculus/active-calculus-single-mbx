@@ -15,43 +15,108 @@
 <activity xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="act-8a-3-3">
   <statement>
     <p>
-      We have established that for <m>f(x) = \frac{1}{1-x}</m>, the degree <m>n</m> Taylor polynomial approximation centered at <m>a = 0</m> is
-      <me>
-        T_n(x) = 1 + x + x^2 + \cdots + x^n
-      </me>.
+      Consider the function <m>f(x) = \frac{1}{1-x}</m>.  Let's find the degree <m>n</m> Taylor polynomial approximation centered at <m>a = 0</m> for <m>f</m>.
     </p>
 
     <p>
       <ol marker="a.">
         <li>
           <p>
-            Determine the exact value (as a fraction) of <m>T_1\left( \frac{1}{2} \right)</m>, <m>T_2\left( \frac{1}{2} \right)</m>, <m>T_3\left( \frac{1}{2} \right)</m>, and <m>T_4\left( \frac{1}{2} \right)</m>.  How does each compare to the exact value of <m>f\left( \frac{1}{2} \right)</m>?
-          </p>
-        </li>
-        <li>
-          <p>
-            Explain why <m>T_n\left( \frac{1}{2} \right)</m> is a finite geometric series by identifying <m>a</m> and <m>r</m>, and then use <xref ref="eq-8a-3-part-sum-geometric">Equation</xref> to find a single fraction that represents the sum given by <m>T_n\left( \frac{1}{2} \right)</m>.
-          </p>
-        </li>
-        <li>
-          <p>
-            Now think more generally and explain why <m>T_n\left( x \right)</m> is a finite geometric series by identifying <m>a</m> and <m>r</m>, and then use <xref ref="eq-8a-3-part-sum-geometric">Equation</xref> to find a single fraction that represents the sum given by <m>T_n\left( \frac{1}{2} \right)</m>.  
-          </p>
-        </li>
-        <li>
-          <p>
-            If we let the Taylor polynomial <m>T_n(x) = 1 + x + x^2 + \cdots + x^n</m> continue indefinitely, we get what we will call a <term>Taylor series</term><fn>See <xref ref="D-8a-4-Taylor-series">Definition</xref> in <xref ref="sec-8a-4-taylor-series">Section</xref></fn>.  Here we let
+            To begin finding <m>T_n(x)</m>, do the usual work of computing the various derivatives of <m>f</m> and their respective values at <m>a = 0</m>; note that it's helpful to view <m>f(x)</m> in the form <m>f(x) = (1-x)^{-1}</m> so that we can easily compute the derivatives of <m>f</m> using the chain rule.  For instance,
             <me>
-              T(x) = 1 + x + x^2 + \cdots + x^n + \cdots
-            </me>.
-            Explain why this infinite series is geometric, identify <m>a</m> and <m>r</m>, and use <xref ref="eq-8a-3-infinite-geometric-sum">Equation</xref> to find the sum of the series as a function of <m>x</m> that is expressed as a single fraction.  For which values of <m>x</m> is this sum valid?  What do you notice about this expression for <m>T(x)</m>?
-          </p>  
+              f'(x) = (-1)(1-x)^{-2}(-1)
+            </me>
+            where the first <q><m>-1</m></q> arises from the power rule, while the second <q><m></m>-1</q> results from the chain rule, since <m>\frac{d}{dx}[1-x] = -1</m>.  In order to see key patterns that arise, it's helpful not to combine the products of numbers that arise in the various derivatives.  Record the various derivatives of <m>f(x)</m> in <xref ref="T-8a-3-act-3-geom">Table</xref>.
+          </p>
+
+              <table xml:id="T-8a-3-act-3-geom">
+                <title>Finding the derivatives of <m>f(x) = \frac{1}{1-x}</m>.</title>
+                  <tabular top="none" bottom="none">
+                    <row>
+                      <cell halign="right"><m>f(x) =</m></cell>
+                      <cell><m>\frac{1}{1-x} = (1-x)^{-1}</m></cell>
+                    </row>
+                    <row>
+                      <cell halign="right"><m>f'(x) =</m></cell>
+                      <cell><m>(-1)(1-x)^{-2}(-1)</m></cell>
+                    </row>
+                    <row>
+                      <cell halign="right"><m>f''(x) = </m></cell>
+                      <cell></cell>
+                    </row>
+                    <row>
+                      <cell halign="right"><m>f'''(x) = </m></cell>
+                      <cell></cell>
+                    </row>
+                    <row>
+                      <cell halign="right"><m>f^{(4)}(x) = </m></cell>
+                      <cell></cell>
+                    </row>
+                    <row>
+                      <cell halign="right"><m>f^{(5)}(x) = </m></cell>
+                      <cell></cell>
+                    </row>
+                  </tabular>
+                </table>  
         </li>
         <li>
           <p>
-            What is the domain of the function <m>f(x) = \frac{1}{1-x}</m>?  How is this connected to your work in (d)?
+            Next, evaluate the derivatives you determined in (a) at <m>a = 0</m> and use these to find the values of the coefficients of the Taylor polynomial centered at <m>a = 0</m>.  Record your work in <xref ref="T-8a-3-act-3-geom-2">Table</xref>.
+          </p>
+
+              <table xml:id="T-8a-3-act-3-geom-2">
+                <title>Finding the Taylor polynomial coefficients <m>c_k</m>.</title>
+                  <tabular top="none" bottom="none">
+                    <row>
+                      <cell halign="right"><m>f(0) =</m></cell>
+                      <cell><m>\frac{1}{1-0} = 1</m></cell>
+                      <cell halign="right"><m>c_0 =</m></cell>
+                      <cell><m>f(0) = 1</m></cell>
+                    </row>
+                    <row>
+                      <cell halign="right"><m>f'(0) =</m></cell>
+                      <cell><m>(-1)(1-0)^{-2}(-1) = 1</m></cell>
+                      <cell halign="right"><m>c_1 =</m></cell>
+                      <cell><m>\frac{f'(0)}{1!} = \frac{1}{1!} = 1</m></cell>
+                    </row>
+                    <row>
+                      <cell halign="right"><m>f''(0) = </m></cell>
+                      <cell></cell>
+                      <cell halign="right"><m>c_2 =</m></cell>
+                      <cell><m>\frac{f''(0)}{2!} = </m></cell>
+                    </row>
+                    <row>
+                      <cell halign="right"><m>f'''(x) = </m></cell>
+                      <cell></cell>
+                      <cell halign="right"><m>c_3 = </m></cell>
+                      <cell></cell>
+                    </row>
+                    <row>
+                      <cell halign="right"><m>f^{(4)}(x) = </m></cell>
+                      <cell></cell>
+                      <cell halign="right"><m>c_4 =</m></cell>
+                      <cell></cell>
+                    </row>
+                    <row>
+                      <cell halign="right"><m>f^{(5)}(x) = </m></cell>
+                      <cell></cell>
+                      <cell halign="right"><m>c_5 =</m></cell>
+                      <cell></cell>
+                    </row>
+                  </tabular>
+                </table>  
+
+        </li>
+        <li>
+          <p>
+            What pattern do you observe in the value of <m>c_k</m>?  State the degree <m>5</m> Taylor polynomial, <m>T_5(x)</m>, as well as the formula you expect for the general degree <m>n</m> Taylor polynomial, <m>T_n(x)</m>.
           </p>
         </li>
+        <li>
+          <p>
+            By identifying the value of <m>r</m>, explain why the degree <m>n</m> Taylor polynomial <m>T_n(x)</m> can be thought of as a finite geometric sum.
+          </p>
+        </li>  
       </ol>
     </p>
   </statement>

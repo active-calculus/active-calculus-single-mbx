@@ -306,61 +306,45 @@
   </subsection>
 
   <subsection>
-    <title>How geometric sums arise naturally in Taylor polynomials</title>
+    <title>How geometric sums naturally connect to Taylor polynomials</title>
 
     <p>
-      Let's consider the function <m>f(x) = \frac{1}{1-x}</m> and determine the Taylor polynomial approximations to <m>f</m> that are centered at <m>a = 0</m>.  To begin, we do the usual work of computing the various derivatives of <m>f</m> and their respective values at <m>a = 0</m>; note that it's helpful to view <m>f(x)</m> in the form <m>f(x) = (1-x)^{-1}</m> so that we can easily compute the derivatives of <m>f</m> using the chain rule.  We do so up through <m>n = 4</m>; the results are shown in <xref ref="T-8a-3-act-3-geom">Table</xref>.
-    </p>
-              <table xml:id="T-8a-3-act-3-geom">
-                <title>Finding the derivatives of <m>f(x) = \frac{1}{1-x}</m> at <m>a = 0</m>.</title>
-                  <tabular top="minor" bottom="minor">
-                    <row>
-                      <cell halign="right"><m>f(x) =</m></cell>
-                      <cell><m>\frac{1}{1-x} = (1-x)^{-1}</m></cell>
-                      <cell halign="right"><m>f(0) =</m></cell>
-                      <cell><m>(1)^{-1} = 1</m></cell>
-                    </row>
-                    <row>
-                      <cell halign="right"><m>f'(x) =</m></cell>
-                      <cell><m>(-1)(1-x)^{-2}(-1)</m></cell>
-                      <cell halign="right"><m>f'(0) =</m></cell>
-                      <cell><m>(-1)(1)^{-2}(-1) = 1</m></cell>
-                    </row>
-                    <row>
-                      <cell halign="right"><m>f''(x) = </m></cell>
-                      <cell><m>(-2)(-1)(1-x)^{-3}(-1)^2</m></cell>
-                      <cell halign="right"><m>f''(0) =</m></cell>
-                      <cell><m>(-2)(-1)(1)^{-3}(-1)^2 = 2 \cdot 1</m></cell>
-                    </row>
-                    <row>
-                      <cell halign="right"><m>f'''(x) = </m></cell>
-                      <cell><m>(-3)(-2)(-1)(1-x)^{-4}(-1)^3</m></cell>
-                      <cell halign="right"><m>f'''(0) = </m></cell>
-                      <cell><m>(-3)(-2)(-1)(1)^{-4}(-1)^3 = 3 \cdot 2 \cdot 1</m></cell>
-                    </row>
-                    <row>
-                      <cell halign="right"><m>f^{(4)}(x) = </m></cell>
-                      <cell><m>(-4)(-3)(-2)(-1)(1-x)^{-5}(-1)^4</m></cell>
-                      <cell halign="right"><m>f^{(4)}(0) = </m></cell>
-                      <cell><m>(-4)(-3)(-2)(-1)(1)^{-5}(-1)^4 = 4 \cdot 3 \cdot 2 \cdot 1</m></cell>
-                    </row>
-                  </tabular>
-                </table>    
-    <p>
-      We see that each time we take the derivative of a function such as <m>f'''(x) = (-3)(-2)(-1)(1-x)^{-4}(-1)^3</m>, two negative terms in the product arise:  one from the power to which <m>(1-x)</m> is raised, and one from the derivative of the inner function itself when the chain rule is applied.  In addition, <m>(1-0)^n = 1</m> for every value of <m>n</m>.  Finally, as we take higher order derivatives, we build the factorial that arises from the powers being multiplied.  Thus, we see that <m>f'''(0) = 3!</m> and <m>f^{(4)}(0) = 4!</m>, and it can be proven that in general, <m>f^{(n)}(0) = n!</m>.
+      If we take <m>a = 1</m> in <xref ref="eq-8a-3-infinite-geometric-sum">Equation</xref>, we see that
+      <me>
+        1 + r + r^2 + \cdots + r^n + \cdots = \frac{1}{1-r}
+      </me>,
+      provided that <m>|r| \lt 1</m>.  To study this equation further, we are going to let <m>r</m> vary and thus we introduce the function <m>f(x) = \frac{1}{1-x}</m> and replace <m>r</m> by <m>x</m> in the preceding equation to have
+      <men xml:id="eq-8a-3-geom-taylor">
+        f(x) = \frac{1}{1-x} = 1 + x + x^2 + \cdots + x^n + \cdots
+      </men>,
+      which is valid for <m>|x| \lt 1</m>.  One reason this equation is interesting is that we have a function <m>f(x)</m> that can be represented in two different ways:  as the rational function <m>\frac{1}{1-x}</m>, and as the infinite polynomial function <m>1 + x + x^2 + \cdots</m>.
     </p>
 
     <p>
-      We have shown that if <m>f(x) = \frac{1}{1-x}</m>, it follows <m>f^{(n)}(0) = n!</m>, and from this we can conclude that the coefficients of the degree <m>n</m> Taylor polynomial centered at <m>a = 0</m> are given by
+      For <m>x</m> such that <m>|x| \lt 1</m>, we know that <m>x^n \to 0</m>, plus we know that for such <m>x</m>, the infinite sum <m>1 + x+ x^2 + \cdots + x^n + \cdots</m> is finite.  Thus, from <xref ref="eq-8a-3-geom-taylor">Equation</xref>, it follows 
       <me>
-        c_n = \frac{f^{(n)}(0)}{n!} = \frac{n!}{n!} = 1
+        f(x) = \frac{1}{1-x} \approx 1 + x + x^2 + \cdots + x^n
       </me>.
-      Thus, the degree <m>n</m> Taylor polynomial of <m>f</m> is simply
-      <me>
-        T_n(x) = 1 + x + x^2 + \cdots + x^n
-      </me>.
-      We investigate the relationship between <m>f(x) = \frac{1}{1-x}</m> and some of its Taylor polynomials in <xref ref="act-8a-3-3">Activity</xref>.
+      Moreover, because the infinite sum convergest, the larger the value of <m>n</m>, the better the approximation will be.  If we plot the function <m>f(x) = \frac{1}{1-x}</m> along with several of the polynomials that arise for different choices of <m>n</m>, say <m>P_1(x) = 1 + x</m>, <m>P_4(x) = 1 + x + \cdots + x^4</m>, and <m>P_7(x) = 1 + x + \cdots + x^7</m>, we see this occur in <xref ref="F-8a-3-geom-x">Figure</xref>.
     </p>
+
+    <figure xml:id="F-8a-3-geom-x">
+      <caption>A plot of <m>f(x) = \frac{1}{1-x}</m>, <m>P_1(x) = 1 + x</m> (light gray, small dashes), <m>P_4(x) = 1 + x + \cdots + x^4</m> (medium gray, medium dashes), and <m>P_7(x) = 1 + x + \cdots + x^7</m> (dark gray, long dashes).</caption>
+      <image width="50%" source="images/8a_3_geom_x" />
+    </figure>
+
+    <p>
+      In particular, we observe that as the degree of the polynomial approximation increases, the polynomial appears closer to <m>f(x) = \frac{1}{1-x}</m> and does so on a wider interval of <m>x</m>-values.  Since the infinite sum only converges when <m>|x| \lt 1</m> and the function <m>f(x) = \frac{1}{1-x}</m> is undefined when <m>x = 1</m>, we also expect the approximations to only be accurate on an interval that lies within <m>-1 \lt x \lt 1</m>.  This reminds of our earlier work with Taylor polynomials where in images such as <xref ref="F-8a-2-log-example">Figure</xref>, increasing the degree of the Taylor polynomial similarly improves the approximation. 
+    </p>
+
+    <p>
+      In our preceding work in this section, we arrived at the function <m>f(x) = \frac{1}{1-x}</m> by starting with the infinite geometric sum
+      <me>
+        1 + x + x^2 + \cdots + x^n + \cdots
+      </me>
+      and exploring its partial sums.  Next, we change perspective and start with function <m>f(x) = \frac{1}{1-x}</m> and determine the Taylor polynomial approximations to <m>f</m> that are centered at <m>a = 0</m> in order to see an interesting connection.  
+    </p>
+
 
     <xi:include href="./activities/act-8a-3-3.xml" />
 
