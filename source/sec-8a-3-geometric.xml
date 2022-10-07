@@ -313,7 +313,7 @@
       <me>
         1 + r + r^2 + \cdots + r^n + \cdots = \frac{1}{1-r}
       </me>,
-      provided that <m>|r| \lt 1</m>.  To study this equation further, we are going to let <m>r</m> vary and thus we introduce the function <m>f(x) = \frac{1}{1-x}</m> and replace <m>r</m> by <m>x</m> in the preceding equation to have
+      provided that <m>|r| \lt 1</m>.  To study this equation further, we are going to let <m>r</m> vary and thus we introduce the function <m>f(x) = \frac{1}{1-x}</m> and replace <m>r</m> by <m>x</m> in to have
       <men xml:id="eq-8a-3-geom-taylor">
         f(x) = \frac{1}{1-x} = 1 + x + x^2 + \cdots + x^n + \cdots
       </men>,
@@ -321,11 +321,11 @@
     </p>
 
     <p>
-      For <m>x</m> such that <m>|x| \lt 1</m>, we know that <m>x^n \to 0</m>, plus we know that for such <m>x</m>, the infinite sum <m>1 + x+ x^2 + \cdots + x^n + \cdots</m> is finite.  Thus, from <xref ref="eq-8a-3-geom-taylor">Equation</xref>, it follows 
+      For <m>x</m> such that <m>|x| \lt 1</m>, we know that the infinite sum <m>1 + x+ x^2 + \cdots + x^n + \cdots</m> converges.  Thus, from <xref ref="eq-8a-3-geom-taylor">Equation</xref>, it follows 
       <me>
         f(x) = \frac{1}{1-x} \approx 1 + x + x^2 + \cdots + x^n
       </me>.
-      Moreover, because the infinite sum convergest, the larger the value of <m>n</m>, the better the approximation will be.  If we plot the function <m>f(x) = \frac{1}{1-x}</m> along with several of the polynomials that arise for different choices of <m>n</m>, say <m>P_1(x) = 1 + x</m>, <m>P_4(x) = 1 + x + \cdots + x^4</m>, and <m>P_7(x) = 1 + x + \cdots + x^7</m>, we see this occur in <xref ref="F-8a-3-geom-x">Figure</xref>.
+      Moreover, because the infinite sum converges, the larger the value of <m>n</m>, the better the approximation will be.  If we plot the function <m>f(x) = \frac{1}{1-x}</m> along with several of the polynomials that arise for different choices of <m>n</m>, say <m>P_1(x) = 1 + x</m>, <m>P_4(x) = 1 + x + \cdots + x^4</m>, and <m>P_7(x) = 1 + x + \cdots + x^7</m>, we can see the impact of increasing the degree <m>n</m> in <xref ref="F-8a-3-geom-x">Figure</xref>.
     </p>
 
     <figure xml:id="F-8a-3-geom-x">
@@ -334,7 +334,7 @@
     </figure>
 
     <p>
-      In particular, we observe that as the degree of the polynomial approximation increases, the polynomial appears closer to <m>f(x) = \frac{1}{1-x}</m> and does so on a wider interval of <m>x</m>-values.  Since the infinite sum only converges when <m>|x| \lt 1</m> and the function <m>f(x) = \frac{1}{1-x}</m> is undefined when <m>x = 1</m>, we also expect the approximations to only be accurate on an interval that lies within <m>-1 \lt x \lt 1</m>.  This reminds of our earlier work with Taylor polynomials where in images such as <xref ref="F-8a-2-log-example">Figure</xref>, increasing the degree of the Taylor polynomial similarly improves the approximation. 
+      In particular, we observe that as the degree of the polynomial approximation increases, the polynomial not only appears closer to <m>f(x) = \frac{1}{1-x}</m>, but does so on a wider interval of <m>x</m>-values.  Since the infinite sum only converges when <m>|x| \lt 1</m> and the function <m>f(x) = \frac{1}{1-x}</m> is undefined when <m>x = 1</m>, we also expect the approximations to only be accurate on an interval that lies within <m>-1 \lt x \lt 1</m>.  This reminds of our earlier work with Taylor polynomials where in images such as <xref ref="F-8a-2-log-example">Figure</xref>, increasing the degree of the Taylor polynomial similarly improves the approximation. 
     </p>
 
     <p>
@@ -356,17 +356,42 @@
     <ul>
       <li>
         <p>
-          What is a finite geometric series and how can we quickly find the sum of such a series, no matter how many terms are in the sum?
+          A finite geometric series <m>S_n</m> is a sum of the form
+        <me>
+          S_n = a + ar + ar^2 + \cdots + ar^{n-1}
+        </me>,
+        where <m>a</m> and <m>r</m> are real numbers such that <m>r \ne 1</m>.
+        The value of the finite geometric series <m>S_n</m> can be computed directly as
+        <me>
+          S_n = \frac{a(1-r^n)}{1-r}
+        </me>.
         </p>
       </li>
       <li>
         <p>
-          How can a finite geometric series be extended to an infinite geometric series?  In what circumstances can we quickly find the sum of an infinite geometric series?
+          An infinite geometric series <m>S</m> is a sum of the form
+        <me>
+          S = a + ar + ar^2 + \cdots + ar^{n-1} + \cdots
+        </me>,
+        where <m>a</m> and <m>r</m> are real numbers.
+        If <m>|r| \lt 1</m>, then the infinite geometric series converges to a finite sum whose value is
+        <me>
+          S = \frac{a}{1-r}
+        </me>.
+        If <m>|r| \ge 1</m>, then the infinite geometric series does not converge to a finite sum.
         </p>
       </li>
       <li>
         <p>
-          How are finite and infinite geometric series connected to Taylor polynomials?
+          If we take the sum of the infinite geometric series with <m>a = 1</m> and <m>|r| \lt 1</m> and replace <m>r</m> with <m>x</m>, we can say that
+          <me>
+            \frac{1}{1-x} = 1 + x + x^2 + x^3 + \cdots + x^n + \cdots
+          </me>.
+          As we found in <xref ref="act-8a-3-3">Activity</xref>, the Taylor series centered at <m>a = 0</m> for <m>f(x) = \frac{1}{1-x}</m> is precisely the infinite geometric series
+          <me>
+            T(x) = 1 + x + x^2 + x^3 + \cdots + x^n + \cdots
+          </me>
+          and we know this series is equal to <m>f(x)</m> for <m>|x| \lt 1</m>.
         </p>
       </li>
     </ul>
