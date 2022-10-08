@@ -337,11 +337,11 @@
             <me>
               \frac{x^{2n+3}}{x^{2n+1}} = x^{(2n+3) - (2n+1)} = x^2
             </me>.
-            Putting all of this work together, we can update <xref ref="Eq-8a-4-sine-ratio">Equation</xref> in the simpler form
+            Putting all of this work together, we can update <xref ref="Eq-8a-4-sine-ratio">Equation</xref> to the simpler form
             <me>
               r_n(x) = (-1) \cdot \frac{1}{(2n+3)(2n+2)} \cdot x^2
             </me>.
-            From here, we compute <m>r(x)</m>, the limit of <m>r_n(x)</m> as <m>n</m> increases without bound.  Since <m>\frac{1}{(2n+3)(2n+2)} \to 0</m> as <m>n \to \infty</m>, it follows that for any fixed <m>x</m>-value,
+            From here, we compute <m>r(x)</m>, the limit of <m>r_n(x)</m> as <m>n</m> increases without bound.  Since <m>\frac{1}{(2n+3)(2n+2)} \to 0</m> as <m>n \to \infty</m>, it follows that for any fixed value of <m>x</m>,
             <me>
               r(x) = \lim_{n \to \infty} r_n(x) = \lim_{n \to \infty} (-1) \cdot \frac{1}{(2n+3)(2n+2)} \cdot x^2 = -1 \cdot 0 \cdot x^2 = 0
             </me>.
@@ -352,7 +352,7 @@
           </p>
 
           <figure xml:id="F-8a-4-T159">
-            <caption>Left to right, the degree <m>1</m>, <m>5</m>, and <m>9</m> Taylor polynomials centered at <m>x = 0</m> for <m>f(x) = \sin(x)</m>.</caption>
+            <caption>Left to right, the degree <m>1</m>, <m>5</m>, and <m>9</m> Taylor polynomials centered at <m>x = 0</m> for <m>f(x) = \sin(x)</m>, each plotted along with the sine function.</caption>
               <sidebyside widths="30% 30% 30%" margins="auto">
                 <image source="images/8_5_Taylor1" />
                 <image source="images/8_5_Taylor5" />
@@ -361,7 +361,7 @@
           </figure>    
 
           <p>
-            In particular, for the degree <m>9</m> approximation, we see that <m>T_9(x)</m> and <m>f(x) = \sin(x)</m> are almost indistinguishable on <m>-4 \lt x \lt 4</m>, which is much wider than the interval <m>-2 \lt x \lt 2</m> on which the <m>T_5(x)</m> approximation is accurate.  Increasing the degree of the approximation shows graphically that doing so appears to widen the interval on which the approximation is accurate and seems to do so without bound, which suggests that the Taylor series of <m>f(x) = \sin(x)</m> in fact converges to <m>f(x) = \sin(x)</m>.
+            In particular, for the degree <m>9</m> approximation, we see that <m>T_9(x)</m> and <m>f(x) = \sin(x)</m> are almost indistinguishable on <m>-4 \lt x \lt 4</m>, which is much wider than the interval <m>-2 \lt x \lt 2</m> on which the <m>T_5(x)</m> approximation is accurate.  Increasing the degree of the approximation appears to widen the interval on which the approximation is accurate and seems to do so without bound, which suggests that the Taylor series of <m>f(x) = \sin(x)</m> in fact converges to <m>f(x) = \sin(x)</m>.
           </p>    
       </solution>
     </example>
@@ -374,7 +374,7 @@
         <m>
           \left|P_n(c) - f(c)\right| \leq M\frac{|c-a|^{n+1}}{(n+1)!}
         </m>.</fn>, a result that quantifies how accurate a Taylor polynomial approximation is on an interval.  
-      To summarize, we now know the remarkable result that the sine function is equal to its Taylor series for every value of <m>x</m>:
+      To summarize, we now know the remarkable result that the sine function is equal to its Taylor series for every value of <m>x</m>, so
       <men xml:id="Eq-8a-4-sine-Taylor">
         \sin(x) = \sum_{k=0}^{\infty} (-1)^{k} \frac{1}{(2k+1)!}x^{2k+1} = x - \frac{1}{3!}x^3 + \frac{1}{5!}x^5 - \cdots
       </men>  
@@ -395,7 +395,23 @@
 
     <p>
       While there is considerable technical detail involved in finding Taylor series and deciding where they converge, it's important not to miss the big picture.  For certain <q>nice</q> functions that are infinitely differentiable and that have clear patterns in their derivatives, such as <m>f(x) = \ln(1+x)</m> and <m>f(x) = \sin(x)</m>, not only can we find the Taylor series for each and determine the <m>x</m>-values at which the Taylor series converges, but <em>the Taylor series converges to the function itself</em>.  This means that for certain <m>x</m>-values (and sometimes <em>all</em> <m>x</m>-values), we can represent a non-polynomial function as being equal to an infinite polynomial.  
-    </p>   
+    </p>  
+
+    <p>
+      For the function <m>f(x) = e^x</m> in particular, we now understand that we may write
+      <me>
+        e^x = \sum_{k=0}^\infty \frac{1}{k!}x^k = 1 + x + \frac{1}{2!}x^2 + \frac{1}{3!}x^3 + \cdots + \frac{1}{n!}x^n + \cdots
+      </me>.
+      When we use a computational device like <em>Desmos</em> or a calculator and enter <m>e^2</m>, this is how the device finds the decimal representation of the number.  Since
+      <me>
+        e^2 = 1 + 2 + \frac{1}{2!}2^2 + \frac{1}{3!}2^3 + \cdots + \frac{1}{n!}2^n + \cdots
+      </me>
+      if we take enough terms in the sum, we get a highly accurate approximation of <m>e^2</m>.  For instance, 
+      <me>
+        e^2 \approx 1 + 2 + \frac{1}{2!}2^2 + \frac{1}{3!}2^3 + \cdots + \frac{1}{12!}2^{12} = \frac{691}{93555} = 7.3890545668 \lots,
+      </me>
+      which an accurate representation of <m>e^2</m> to 5 decimal places, and more terms in the sum can be used in order to generate any desired level of accuracy.
+    </p> 
 
   </subsection>
 
@@ -414,7 +430,7 @@
       </li>
       <li>
         <p>
-          We know that an infinite geometric series converges whenever its common ratio, <m>r</m>, satisfies <m>|r(x)| \lt 1</m>.  The Ratio Test enables us to consider a Taylor series and determine an interval of <m>x</m>-values on which the series converges, essentially by comparing the Taylor series to a geometric series.  By letting <m>r_n(x)</m> be the ratio of consecutive terms in the series and taking the limit 
+          We know that an infinite geometric series converges whenever its common ratio, <m>r</m>, satisfies <m>|r| \lt 1</m>.  The Ratio Test enables us to consider a Taylor series and determine an interval of <m>x</m>-values on which the series converges, essentially by comparing the Taylor series to a geometric series.  By letting <m>r_n(x)</m> be the ratio of consecutive terms in the series and taking the limit 
           <me>
             r(x) = \lim_{n \to \infty} r_n(x)
           </me>,
@@ -423,12 +439,12 @@
       </li>
       <li>
         <p>
-          We have found the Taylor series for five important functions, determined an interval of <m>x</m>-values on which each converges, and seen the striking result that where each Taylor series converges, it converges to the respective function <m>f(x)</m>.  We summarize these results in <xref ref="T-8a-4-big-5">Table</xref>.
+          We have found the Taylor series for five important functions, determined an interval of <m>x</m>-values on which each converges, and seen the striking result that where each Taylor series converges, it converges to original function <m>f(x)</m> that we used to generate the Taylor series.  We summarize these results in <xref ref="T-8a-4-big-5">Table</xref>.
             <table xml:id="T-8a-4-big-5">
             <title>Taylor series and intervals of convergence for <m>5</m> important functions.</title>
               <tabular top="minor" bottom="minor">
                 <row>
-                  <cell halign="right">function <m>f</m></cell>
+                  <cell halign="right">function <m>f(x)</m></cell>
                   <cell>Taylor series, <m>T_f</m>, centered at <m>0</m></cell>
                   <cell>where <m>T_f</m> converges</cell>
                 </row>
