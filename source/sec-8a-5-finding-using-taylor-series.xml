@@ -41,7 +41,7 @@
     </p>
 
     <p>
-      In <xref ref="PA-8a-5">Preview Activity</xref>, we explore this issue and investigate a different approach to finding the Taylor series of the function. 
+      In <xref ref="PA-8a-5">Preview Activity</xref>, we explore this issue and investigate a different approach to finding the Taylor series of a given function. 
     </p>
 
   <xi:include href="./previews/PA-8a-5.xml" /> 
@@ -142,23 +142,30 @@
       <me>
         \int_0^1 e^{-x^2} \, dx
       </me>.
-      Because we are unable to find a simple algebraic antiderivative for the function <m>e^{-x^2}</m>, we cannot use the Fundamental Theorem of Calculus to evaluate the integral exactly.  One approach is to estimate the integral using an effective numerical approximation technique such as Simpson's Rule.         
+      Because we are unable to find a simple algebraic antiderivative for the function <m>e^{-x^2}</m>, we cannot use the Fundamental Theorem of Calculus to evaluate the integral exactly.  We learned in <xref ref="sec-5-2-FTC2">Section</xref> that the Second Fundamental Theorem of Calculus provides us with an antiderivative of a given function by using an integral function: one antiderivative of <m>f(x) = e^{-x^2}</m> is 
+      <me>
+        F(x) = \int_0^x e^{-u^2} \, du
+      </me>. 
     </p>
 
     <p>
-      Our recent work with Taylor series now suggests another way to evaluate <m>\int_0^1 e^{-x^2} \, dx</m>, and this approach also provides new options for finding additional Taylor series.  In <xref ref="act-8a-5-1">Activity</xref>, we found that
+      Our recent work with Taylor series now suggests another way to find an antiderivative <m>F(x)</m> for <m>f(x) = e^{-x^2}</m>, and this approach also provides new options for finding additional Taylor series.  In <xref ref="act-8a-5-1">Activity</xref>, we found that
       <men xml:id="eq-8a-5-ex2">
         e^{-x^2} = 1 - x^2 + \frac{1}{2!}x^4 - \frac{1}{3!}x^6 + \cdots + (-1)^n \frac{1}{n!} x^{2n} + \cdots
       </men>
-      and that this representation of <m>e^{-x^2}</m> is valid for every value of <m>x</m>.  This infinite series representation naturally suggests that we could find an antiderivative of <m>e^{-x^2}</m> by integrating both sides of <xref ref="eq-8a-5-ex2">Equation</xref>.  Doing so, we see
+      and that this representation of <m>e^{-x^2}</m> is valid for every value of <m>x</m>.  This infinite series representation suggests that we could find an antiderivative <m>F(x)</m> of <m>e^{-x^2}</m> by using <xref ref="eq-8a-5-ex2">Equation</xref> to actually evaluate the integral <m> \int_0^x e^{-u^2} \, du
+      </m>.  Doing so, we see
       <md>
-        <mrow>\int e^{-x^2} \, dx =\mathstrut \amp \int \left( 1 - x^2 + \frac{1}{2!}x^4 - \frac{1}{3!}x^6 + \cdots + (-1)^n \frac{1}{n!} x^{2n} + \cdots \right) \, dx</mrow>
-        <mrow>=\mathstrut \amp C + x - \frac{1}{3}x^3 + \frac{1}{5 \cdot 2!} x^5 - \frac{1}{7 \cdot 3!}x^7 + \cdots + \frac{(-1)^n}{(2n+1)n!} x^{2n+1} + \cdots</mrow>
+        <mrow>F(x) =\mathstrut \amp \int_0^x e^{-u^2} \, du</mrow>
+        <mrow> =\mathstrut \amp \int_0^x \left( 1 - u^2 + \frac{1}{2!}u^4 - \frac{1}{3!}u^6 + \cdots + (-1)^n \frac{1}{n!} u^{2n} + \cdots \right) \, du</mrow>
+        <mrow>=\mathstrut \amp \left. u - \frac{1}{3}u^3 + \frac{1}{5 \cdot 2!} u^5 - \frac{1}{7 \cdot 3!}u^7 + \cdots + \frac{(-1)^n}{(2n+1)n!} u^{2n+1} + \cdots \right|_0^x</mrow>
+        <mrow>=\mathstrut \amp \left(x - \frac{1}{3}x^3 + \frac{1}{5 \cdot 2!} x^5 - \frac{1}{7 \cdot 3!}x^7 + \cdots + \frac{(-1)^n}{(2n+1)n!} x^{2n+1} + \cdots \right) - 0</mrow>
+        <mrow>=\mathstrut \amp x - \frac{1}{3}x^3 + \frac{1}{5 \cdot 2!} x^5 - \frac{1}{7 \cdot 3!}x^7 + \cdots + \frac{(-1)^n}{(2n+1)n!} x^{2n+1} + \cdots </mrow>
       </md>
     </p>
 
     <p>
-      It is natural to wonder how integrating a Taylor series might change the values of <m>x</m> for which the series converges.  It turns out that integrating a power series has almost no effect<fn>It is possible for the convergence status at the endpoints of the interval to change, but we are normally not concerned with those specific <m>x</m>-values.</fn> on where the series converges (nor does differentiating such a series), as stated in a result called The Power Series Differentiation and Integration Theorem.
+      While it is natural to wonder how integrating a Taylor series might change the values of <m>x</m> for which the series converges, it turns out that integrating a power series has almost no effect<fn>It is possible for the convergence status at the endpoints of the interval to change, but we are normally not concerned with those specific <m>x</m>-values.</fn> on where the series converges (nor does differentiating such a series).  This fact is stated formally in a result called The Power Series Differentiation and Integration Theorem.
     </p>
 
     <assemblage>
