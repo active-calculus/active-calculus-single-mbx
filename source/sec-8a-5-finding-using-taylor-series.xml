@@ -184,10 +184,14 @@
     </assemblage>
 
     <p>
-      The Power Series Differentiation and Integration Theorem tells us that when it comes to taking a derivative or antiderivative, we can treat infinite Taylor series almost as if they were finite polynomials:  we can differentiate or integrate the Taylor series term-wise following the Power Rule for differentiating or integrating <m>x^n</m>.  This fact enables us to find many more Taylor series of interesting functions.
+      Stated more informally, the Power Series Differentiation and Integration Theorem tells us that when it comes to differentiating or integrating a Taylor series, we can do so just like if they were finite polynomials:  we can differentiate or integrate the Taylor series term-wise following the Power Rule for differentiating or integrating <m>x^n</m>.  Moreover, doing so doesn't change the interval on which the Taylor series converges<fn>Differentiating or integrating can change the convergence status at the endpoints of the interval, but we again will not concern ourselves with that issue in this course.</fn>  Since polynomials are the easiest of all functions to differentiate and integrate, we can now find many more Taylor series of interesting functions.
     </p>
 
     <xi:include href="./activities/act-8a-5-2.xml" />
+
+    <p>
+      Being able to easily differentiate or integrate a Taylor series will also enable us to apply Taylor series to solve problems involving definite integrals.
+    </p>
 
   </subsection>
 
@@ -234,14 +238,14 @@
     <example xml:id="ex-8a-5-alt-geom">
       <statement>
         <p>
-          Investigate the partial sums of the alternating geometric series <m>S = \sum_{k=0}^{\infty} (-1)^k \left( \frac{1}{2} \right)^k</m>.  How do the partial sums compare to the exact sum of the series, and how can partial sums accurately estimate the value of the sum?
+          Investigate the partial sums of the alternating geometric series <m>S = \sum_{k=0}^{\infty} (-1)^k \left( \frac{4}{5} \right)^k</m>.  How do the partial sums compare to the exact sum of the series, and how can partial sums accurately estimate the value of the sum?
         </p>
       </statement>
       <solution>
         <p>
           First, recall that the <m>n</m>th partial sum is the sum of the first <m>n</m> terms, so 
           <me>
-            S_n = \sum_{k=0}^{n-1} (-1)^k \left( \frac{1}{2} \right)^k = 1 - \frac{1}{2} + \frac{1}{4} - \cdots + (-1)^{n-1} \left( \frac{1}{2} \right)^{n-1}
+            S_n = \sum_{k=0}^{n-1} (-1)^k \left( \frac{4}{5} \right)^k = 1 - \frac{4}{5} + \frac{16}{25} - \cdots + (-1)^{n-1} \left( \frac{4}{5} \right)^{n-1}
           </me>.
           We compute the first <m>10</m> partial sums of the series and display the results in <xref ref="T-8a-5-ExGeom">Table</xref> and plot the points <m>(n, S_n)</m> in <xref ref="F-8a-5-ExGeom"></xref>.
         </p> 
@@ -259,53 +263,53 @@
               </row>  
               <row>  
                 <cell halign="center"><m>2</m></cell>
-                <cell><m>\frac{1}{2} = 0.5</m></cell>
+                <cell><m>\frac{2}{5} = 0.2</m></cell>
               </row>
               <row>
                 <cell halign="center"><m>3</m></cell>
-                <cell><m>\frac{3}{4} = 0.75</m></cell>
+                <cell><m>\frac{21}{25} = 0.84</m></cell>
               </row>
               <row>
                 <cell halign="center"><m>4</m></cell>
-                <cell><m>\frac{5}{8} = 0.625</m></cell>
+                <cell><m>\frac{41}{125} = 0.</m></cell>
               </row>
               <row>
                 <cell halign="center"><m>5</m></cell>
-                <cell><m>\frac{11}{16} = 0.6875</m></cell>
+                <cell><m>\frac{461}{625} = 0.</m></cell>
               </row>
               <row>
                 <cell halign="center"><m>6</m></cell>
-                <cell><m>\frac{21}{32} = 0.65625</m></cell>
+                <cell><m>\frac{1281}{3125} = 0.</m></cell>
               </row>
               <row>
                 <cell halign="center"><m>7</m></cell>
-                <cell><m>\frac{43}{64} = 0.671875</m></cell>
+                <cell><m>\frac{0}{0} = 0.0</m></cell>
               </row>   
               <row>
                 <cell halign="center"><m>8</m></cell>
-                <cell><m>\frac{85}{128} = 0.6640625</m></cell>
+                <cell><m>\frac{0}{0} = 0.0</m></cell>
               </row>
               <row>
                 <cell halign="center"><m>9</m></cell>
-                <cell><m>\frac{171}{256} = 0.66796875</m></cell>               
+                <cell><m>\frac{0}{0} = 0.0</m></cell>               
               </row>           
               <row>                
                 <cell halign="center"><m>10</m></cell>
-                <cell><m>\frac{341}{512} = 0.666015625</m></cell>
+                <cell><m>\frac{0}{0} = 0.0</m></cell>
               </row>
             </tabular>
           </table>
 
           <figure xml:id="F-8a-5-ExGeom">
-            <caption>Partial sums of the alternating series and the horizontal line <m>y = \frac{2}{3}</m>.</caption>
+            <caption>Partial sums of the alternating series and the horizontal line <m>y = \frac{5}{9}</m>.</caption>
             <image source="images/8a_5_partial_sum" />
           </figure>
         </sidebyside>
 
         <p>
-          Because the given series <m>S = \sum_{k=0}^{\infty} (-1)^k \left( \frac{1}{2} \right)^k</m> is geometric with <m>a = 1</m> and <m>r = -\frac{1}{2}</m>, we know the series converges and its sum is
+          Because the given series <m>S = \sum_{k=0}^{\infty} (-1)^k \left( \frac{4}{5} \right)^k</m> is geometric with <m>a = 1</m> and <m>r = -\frac{4}{5}</m>, we know the series converges and its sum is
           <me>
-            S = \frac{a}{1-r} = \frac{1}{1+\frac{1}{2}} = \frac{1}{\frac{3}{2}} = \frac{2}{3}
+            S = \frac{a}{1-r} = \frac{1}{1+\frac{4}{5}} = \frac{1}{\frac{3}{2}} = \frac{2}{3}
           </me>.
           Knowing this value helps us better understand the behavior of the partial sums.
         </p>
@@ -319,9 +323,9 @@
           <me>
             |S_6 - \frac{2}{3}| \approx 0.0104
           </me>.
-          Moreover, since <m>S_6 = S_5 - \left( \frac{1}{2} \right)^5</m>, and <m>-\left( \frac{1}{2} \right)^5 = -0.03125</m> is the last and smallest term (in absolute value) in <m>S_6</m>, <m>0.03125</m> is the total vertical distance from the point <m>(5, S_5)</m> to <m>(6, S_6)</m> in <xref ref="F-8a-5-ExGeom">Figure</xref>.  This implies that <m>0.03125</m> is more than the error in comparing <m>S_5</m> and <m>S</m>.  Said differently, we are guaranteed that
+          Moreover, since <m>S_6 = S_5 - \left( \frac{4}{5} \right)^5</m>, and <m>-\left( \frac{4}{5} \right)^5 = -0.03125</m> is the last and smallest term (in absolute value) in <m>S_6</m>, <m>0.03125</m> is the total vertical distance from the point <m>(5, S_5)</m> to <m>(6, S_6)</m> in <xref ref="F-8a-5-ExGeom">Figure</xref>.  This implies that <m>0.03125</m> is more than the error in comparing <m>S_5</m> and <m>S</m>.  Said differently, we are guaranteed that
           <me>
-            |S - S_5| \lt \left( \frac{1}{2} \right)^5
+            |S - S_5| \lt \left( \frac{4}{5} \right)^5
           </me>
           so the next term in the sum provides a bound on the error in a given partial sum.  A similar argument can be made for any value of <m>n</m>.
         </p>
