@@ -189,9 +189,8 @@
 
     <xi:include href="./activities/act-8a-5-2.xml" />
 
-    <p>
-      Being able to easily differentiate or integrate a Taylor series will also enable us to apply Taylor series to solve problems involving definite integrals.
-    </p>
+    <xi:include href="./activities/act-8a-5-3.xml" />
+
 
   </subsection>
 
@@ -247,7 +246,7 @@
           <me>
             S_n = \sum_{k=0}^{n-1} (-1)^k \left( \frac{4}{5} \right)^k = 1 - \frac{4}{5} + \frac{16}{25} - \cdots + (-1)^{n-1} \left( \frac{4}{5} \right)^{n-1}
           </me>.
-          We compute the first <m>10</m> partial sums of the series and display the results in <xref ref="T-8a-5-ExGeom">Table</xref> and plot the points <m>(n, S_n)</m> in <xref ref="F-8a-5-ExGeom"></xref>.
+          We compute the first <m>10</m> partial sums of the series and display the results in <xref ref="T-8a-5-ExGeom">Table</xref> and plot the points <m>(n, S_n)</m> in <xref ref="F-8a-5-ExGeom">Figure</xref>.
         </p> 
         <sidebyside widths="30% 60%" margins="5%">
           <table xml:id="T-8a-5-ExGeom">
@@ -271,31 +270,31 @@
               </row>
               <row>
                 <cell halign="center"><m>4</m></cell>
-                <cell><m>\frac{41}{125} = 0.</m></cell>
+                <cell><m>\frac{41}{125} = 0.328</m></cell>
               </row>
               <row>
                 <cell halign="center"><m>5</m></cell>
-                <cell><m>\frac{461}{625} = 0.</m></cell>
+                <cell><m>\frac{461}{625} = 0.7376</m></cell>
               </row>
               <row>
                 <cell halign="center"><m>6</m></cell>
-                <cell><m>\frac{1281}{3125} = 0.</m></cell>
+                <cell><m>\frac{1281}{3125} = 0.40992</m></cell>
               </row>
               <row>
                 <cell halign="center"><m>7</m></cell>
-                <cell><m>\frac{0}{0} = 0.0</m></cell>
+                <cell><m>\frac{10501}{15625} = 0.672064</m></cell>
               </row>   
               <row>
                 <cell halign="center"><m>8</m></cell>
-                <cell><m>\frac{0}{0} = 0.0</m></cell>
+                <cell><m>\frac{36121}{78125} = 0.4623488</m></cell>
               </row>
               <row>
                 <cell halign="center"><m>9</m></cell>
-                <cell><m>\frac{0}{0} = 0.0</m></cell>               
+                <cell><m>\frac{246141}{390625} = 0.63012096</m></cell>               
               </row>           
               <row>                
                 <cell halign="center"><m>10</m></cell>
-                <cell><m>\frac{0}{0} = 0.0</m></cell>
+                <cell><m>\frac{968561}{1953125} = 0.495903232</m></cell>
               </row>
             </tabular>
           </table>
@@ -309,21 +308,21 @@
         <p>
           Because the given series <m>S = \sum_{k=0}^{\infty} (-1)^k \left( \frac{4}{5} \right)^k</m> is geometric with <m>a = 1</m> and <m>r = -\frac{4}{5}</m>, we know the series converges and its sum is
           <me>
-            S = \frac{a}{1-r} = \frac{1}{1+\frac{4}{5}} = \frac{1}{\frac{3}{2}} = \frac{2}{3}
+            S = \frac{a}{1-r} = \frac{1}{1+\frac{4}{5}} = \frac{1}{\frac{9}{5}} = \frac{5}{9} \approx 0.5555
           </me>.
           Knowing this value helps us better understand the behavior of the partial sums.
         </p>
 
         <p>
-          In both the table and the figure, we see how consecutive partial sums move back and forth above and below the exact sum of the infinite series, <m>\frac{2}{3}</m>, and moreover how the amount the next partial sum lies above or below <m>\frac{2}{3}</m> is less than the amount by which the previous partial sum deviated.  For instance, 
+          In both the table and the figure, we see how consecutive partial sums move back and forth above and below the exact sum of the infinite series, <m>\frac{5}{9}</m>, and moreover how the amount the next partial sum lies above or below <m>\frac{5}{9}</m> is less than the amount by which the previous partial sum deviated.  For instance, 
           <me>
-            |S_5 - \frac{2}{3}| \approx 0.0208,
+            |S_5 - \frac{5}{9}| \approx 0.1820,
           </me>
           but 
           <me>
-            |S_6 - \frac{2}{3}| \approx 0.0104
+            |S_6 - \frac{5}{9}| \approx 0.1456
           </me>.
-          Moreover, since <m>S_6 = S_5 - \left( \frac{4}{5} \right)^5</m>, and <m>-\left( \frac{4}{5} \right)^5 = -0.03125</m> is the last and smallest term (in absolute value) in <m>S_6</m>, <m>0.03125</m> is the total vertical distance from the point <m>(5, S_5)</m> to <m>(6, S_6)</m> in <xref ref="F-8a-5-ExGeom">Figure</xref>.  This implies that <m>0.03125</m> is more than the error in comparing <m>S_5</m> and <m>S</m>.  Said differently, we are guaranteed that
+          Moreover, since <m>S_6 = S_5 - \left( \frac{4}{5} \right)^5</m>, and <m>-\left( \frac{4}{5} \right)^5 = -0.32768</m> is the last and smallest term (in absolute value) in <m>S_6</m>, <m>0.32768</m> is the total vertical distance from the point <m>(5, S_5)</m> to <m>(6, S_6)</m> in <xref ref="F-8a-5-ExGeom">Figure</xref>.  This implies that <m>0.32768</m> is more than the error in comparing <m>S_5</m> and <m>S</m>.  Said differently, we are guaranteed that
           <me>
             |S - S_5| \lt \left( \frac{4}{5} \right)^5
           </me>
@@ -398,12 +397,12 @@
           <me>
             a_{101} = \frac{1}{101} \approx 0.0099
           </me>,
-          so the 100th partial sum is within 0.0099 of the exact sum of the series.
+          so the 100th partial sum is within 0.0099 of the exact sum of the series.  In addition, it turns out that <m>S_{100} \approx 0.688172</m> and <m>S = \ln(2) \approx 0.69314</m>, so we wee that the difference between <m>S_{100}</m> and <m>S</m> is indeed less than the error bound of <m>0.0099</m> from the Alternating Series Estimation Theorem.
         </p>  
       </solution>
     </example>
 
-    <xi:include href="./activities/act-8a-5-3.xml" />
+    <xi:include href="./activities/act-8a-5-4.xml" />
 
   </subsection>
 
@@ -444,7 +443,7 @@
         <p>
           An alternating series is one whose terms alternate in sign, usually represented by <m>\sum_{k=1}^{\infty} (-1)^{k+1}a_k</m> where <m>a_k \gt 0</m> for all values of <m>k</m>.  Any alternating series whose terms <m>a_k</m> approach zero as <m>k \to \infty</m> is guaranteed to converge.  Moreover, the Alternating Series Estimation Theorem tells us that we can estimate the exact sum of a converging alternating series by using a partial sum, and the error of that approximation is at most the next term in the sum.  That is,
           <me>
-            | \sum_{k=1}^{\infty} (-1)^{k+1}a_k - \left(a_1 - a_2 + a_3 - a_4 + \cdots (-1)^{n+1} a_n \right) | \lt a_{n+1}
+            | \sum_{k=1}^{\infty} (-1)^{k+1}a_k - \left(a_1 - a_2 + a_3 - a_4 + \cdots + (-1)^{n+1} a_n \right) | \lt a_{n+1}
           </me>.
         </p>
       </li>
