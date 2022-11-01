@@ -138,30 +138,37 @@
     </title>
 
     <p>
-      In <xref ref="sec-5-6-num-int">Section</xref>, we discussed the challenge posed by the definite integral
+      In <xref ref="C-5">Chapter</xref>, we discussed the challenge posed by definite integrals such as
       <me>
-        \int_0^1 e^{-x^2} \, dx
+        \int_0^1 \sin(x^2) \, dx
       </me>.
-      Because we are unable to find a simple algebraic antiderivative for the function <m>e^{-x^2}</m>, we cannot use the Fundamental Theorem of Calculus to evaluate the integral exactly.  We learned in <xref ref="sec-5-2-FTC2">Section</xref> that the Second Fundamental Theorem of Calculus provides us with an antiderivative of a given function by using an integral function: one antiderivative of <m>f(x) = e^{-x^2}</m> is 
+      Because we are unable to find a simple algebraic antiderivative for the function <m>\sin(x^2)</m>, we cannot use the First Fundamental Theorem of Calculus to evaluate the integral exactly.  We learned in <xref ref="sec-5-2-FTC2">Section</xref> that the Second Fundamental Theorem of Calculus provides us with an antiderivative of a given function by using an integral function: one antiderivative of <m>f(x) = \sin(x^2)</m> is 
       <me>
-        F(x) = \int_0^x e^{-u^2} \, du
+        F(x) = \int_0^x \sin(u^2) \, du
       </me>. 
     </p>
 
     <p>
-      Our recent work with Taylor series now suggests another way to find an antiderivative <m>F(x)</m> for <m>f(x) = e^{-x^2}</m>, and this approach also provides new options for finding additional Taylor series.  In <xref ref="act-8a-5-1">Activity</xref>, we found that
+      Our recent work with Taylor series now suggests another way to find an antiderivative <m>F(x)</m> for <m>f(x) = \sin(x^2)</m>, and this approach also provides new options for finding additional Taylor series.  In <xref ref="act-8a-5-1">Activity</xref>, as part of our work in finding a Taylor series for <m>x^2 \sin(x^2)</m> we found that
       <men xml:id="eq-8a-5-ex2">
-        e^{-x^2} = 1 - x^2 + \frac{1}{2!}x^4 - \frac{1}{3!}x^6 + \cdots + (-1)^n \frac{1}{n!} x^{2n} + \cdots
+        \sin(x^2) = x^2 - \frac{1}{3!}x^6 + \frac{1}{5!}x^{10} - \frac{1}{7!}x^{14} + \cdots + (-1)^{n-1} \frac{1}{(2n-1)!} x^{4n-2} + \cdots
       </men>
-      and that this representation of <m>e^{-x^2}</m> is valid for every value of <m>x</m>.  This infinite series representation suggests that we could find an antiderivative <m>F(x)</m> of <m>e^{-x^2}</m> by using <xref ref="eq-8a-5-ex2">Equation</xref> to actually evaluate the integral <m> \int_0^x e^{-u^2} \, du
-      </m>.  Doing so, we see
+      and that this representation of <m>\sin(x^2)</m> is valid for every value of <m>x</m>.  This infinite series representation suggests that we could find an antiderivative <m>F(x)</m> of <m>\sin(x^2)</m> by using <xref ref="eq-8a-5-ex2">Equation</xref> to actually evaluate the integral <m> \int_0^x \sin(u^2) \, du</m>.  Doing so, we see
       <md>
-        <mrow>F(x) =\mathstrut \amp \int_0^x e^{-u^2} \, du</mrow>
-        <mrow> =\mathstrut \amp \int_0^x \left( 1 - u^2 + \frac{1}{2!}u^4 - \frac{1}{3!}u^6 + \cdots + (-1)^n \frac{1}{n!} u^{2n} + \cdots \right) \, du</mrow>
-        <mrow>=\mathstrut \amp \left. u - \frac{1}{3}u^3 + \frac{1}{5 \cdot 2!} u^5 - \frac{1}{7 \cdot 3!}u^7 + \cdots + \frac{(-1)^n}{(2n+1)n!} u^{2n+1} + \cdots \right|_0^x</mrow>
-        <mrow>=\mathstrut \amp \left(x - \frac{1}{3}x^3 + \frac{1}{5 \cdot 2!} x^5 - \frac{1}{7 \cdot 3!}x^7 + \cdots + \frac{(-1)^n}{(2n+1)n!} x^{2n+1} + \cdots \right) - 0</mrow>
-        <mrow>=\mathstrut \amp x - \frac{1}{3}x^3 + \frac{1}{5 \cdot 2!} x^5 - \frac{1}{7 \cdot 3!}x^7 + \cdots + \frac{(-1)^n}{(2n+1)n!} x^{2n+1} + \cdots </mrow>
+        <mrow>F(x) =\mathstrut \amp \int_0^x \sin(x^2) \, du</mrow>
+        <mrow> =\mathstrut \amp \int_0^x \left( u^2 - \frac{1}{3!}u^6 + \frac{1}{5!}u^{10} + \cdots + (-1)^{n+1} \frac{1}{(2n-1)!} u^{4n-2} + \cdots \right) \, du</mrow>
+        <mrow>=\mathstrut \amp \left. \frac{1}{3}u^3 - \frac{1}{7 \cdot 3!} u^7 + \frac{1}{11 \cdot 5!}u^{11} + \cdots + \frac{(-1)^{n+1}}{(4n-1)(2n-1)!} u^{4n-1} + \cdots \right|_0^x</mrow>
+        <mrow>=\mathstrut \amp \left( \frac{1}{3}x^3 - \frac{1}{7 \cdot 3!} x^7 + \frac{1}{11 \cdot 5!}x^{11} + \cdots + \frac{(-1)^{n+1}}{(4n-1)(2n-1)!} x^{4n-1} + \cdots \right) - 0</mrow>    
+        <mrow>=\mathstrut \amp \frac{1}{3}x^3 - \frac{1}{7 \cdot 3!} x^7 + \frac{1}{11 \cdot 5!}x^{11} + \cdots + \frac{(-1)^{n+1}}{(4n-1)(2n-1)!} x^{4n-1} + \cdots </mrow>                    
       </md>
+    </p>
+
+    <p>
+      Hence we have found that 
+      <me>
+        F(x) = \frac{1}{3}x^3 - \frac{1}{7 \cdot 3!} x^7 + \frac{1}{11 \cdot 5!}x^{11} + \cdots + \frac{(-1)^{n+1}}{(4n-1)(2n-1)!} x^{4n-1} + \cdots
+      </me>
+      is an antiderivative of <m>f(x) = \sin(x^2)</m>.
     </p>
 
     <p>
@@ -184,7 +191,7 @@
     </assemblage>
 
     <p>
-      Stated more informally, the Power Series Differentiation and Integration Theorem tells us that when it comes to differentiating or integrating a Taylor series, we can do so just like if they were finite polynomials:  we can differentiate or integrate the Taylor series term-wise following the Power Rule for differentiating or integrating <m>x^n</m>.  Moreover, doing so doesn't change the interval on which the Taylor series converges<fn>Differentiating or integrating can change the convergence status at the endpoints of the interval, but we again will not concern ourselves with that issue in this course.</fn>  Since polynomials are the easiest of all functions to differentiate and integrate, we can now find many more Taylor series of interesting functions.
+      Stated more informally, the Power Series Differentiation and Integration Theorem tells us that when it comes to differentiating or integrating a Taylor series, we can do so just like if they were finite polynomials:  we can differentiate or integrate the Taylor series term-wise following the Power Rule for differentiating or integrating <m>x^n</m>.  Moreover, doing so doesn't change the interval on which the Taylor series converges<fn>Differentiating or integrating can change the convergence status at the endpoints of the interval, but we again will not concern ourselves with that issue in this course.</fn>.  Since polynomials are the easiest of all functions to differentiate and integrate, we can now find many more Taylor series of interesting functions.
     </p>
 
     <xi:include href="./activities/act-8a-5-2.xml" />
@@ -200,11 +207,11 @@
     </title>
 
     <p>
-      Let's return to the challenge posed by the definite integral
+      Let's now consider the definite integral
       <me>
         \int_0^1 e^{-x^2} \, dx
       </me>.  
-      While we are unable to find an elementary antiderivative of <m>e^{-x^2}</m>, now that we know the Taylor series 
+      While we are unable to find an elementary algebraic antiderivative of <m>e^{-x^2}</m>, now that we know the Taylor series 
       <me>
         e^{-x^2} = 1 - x^2 + \frac{1}{2!}x^4 - \frac{1}{3!}x^6 + \cdots + (-1)^n \frac{1}{n!} x^{2n} + \cdots
       </me>
