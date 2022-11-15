@@ -101,7 +101,95 @@
 			
 		</answer>
 		<solution>
-			
+		<p>
+			 Let <m>f(x) = \ln(x)</m> and consider the degree <m>4</m> Taylor polynomial approximation 
+			 <me>
+			 	T_4(x) = c_0 + c_1 (x-2) + c_2 (x-2)^2 + c_3(x-2)^3 + c_4(x-2)^4
+			 </me>.
+		</p>
+
+			<ol marker="a.">
+		      <li>
+		        <p>
+		          <table xml:id="T-8a-2-act-3-log-soln">
+		            <title>Finding the derivatives of <m>f(x) = \ln(x)</m> at <m>a = 2</m>.</title>
+		              <tabular top="none" bottom="none">
+		                <row>
+		                  <cell halign="right"><m>f(x) =</m></cell>
+		                  <cell><m>\ln(x)</m></cell>
+		                  <cell halign="right"><m>f(2) =</m></cell>
+		                  <cell><m>\ln(2)</m></cell>
+		                </row>
+		                <row>
+		                  <cell halign="right"><m>f'(x) = </m></cell>
+		                  <cell><m>x^{-1}</m></cell>
+		                  <cell halign="right"><m>f'(2) = </m></cell>
+		                  <cell><m>\frac{1}{2}</m></cell>
+		                </row>
+		                <row>
+		                  <cell halign="right"><m>f''(x) = </m></cell>
+		                  <cell><m>-1 \cdot x^{-2}</m></cell>
+		                  <cell halign="right"><m>f''(2) = </m></cell>
+		                  <cell><m>-\frac{1}{2^2}</m></cell>
+		                </row>
+		                <row>
+		                  <cell halign="right"><m>f'''(x) = </m></cell>
+		                  <cell><m>(-2)(-1)x^{-3}</m></cell>
+		                  <cell halign="right"><m>f'''(2) = </m></cell>
+		                  <cell><m>\frac{(-2)(-1)}{2^3}</m></cell>
+		                </row>
+		                <row>
+		                  <cell halign="right"><m>f^{(4)}(x) = </m></cell>
+		                  <cell><m>(-3)(-2)(-1)x^{-4}</m></cell>
+		                  <cell halign="right"><m>f^{(4)}(2) = </m></cell>
+		                  <cell><m>\frac{(-3)(-2)(-1)}{2^4}</m></cell>
+		                </row>
+		              </tabular>
+		            </table>
+		          </p> 		
+                </li>
+                <li>
+                	<p>
+                		We see that
+          <md>
+            <mrow>T_4(x) =\mathstrut \amp c_0 + c_1 (x-2) + c_2 (x-2)^2 + c_3(x-2)^3 + c_4(x-2)^4</mrow> 
+            <mrow>=\mathstrut \amp \ln(2) + \frac{1}{2}(x-2) - \frac{1}{2! 2^2} (x-2)^2 + \frac{(-2)(-1)}{3! 2^3}(x-2)^3 + \frac{(-3)(-2)(-1)}{4! 2^4}(x-2)^4</mrow> 
+            <mrow>=\mathstrut \amp \ln(2) + \frac{1}{2}(x-2) - \frac{1}{2 \cdot 2^2} (x-2)^2 + \frac{1}{3 \cdot 2^3}(x-2)^3 - \frac{1}{4 \cdot 2^4}(x-2)^4</mrow>
+          </md>.
+                	</p>
+                </li>
+                <li>
+                	<p>
+                		Plotting <m>f(x) = \ln(x)</m>, <m>T_1(x) = \ln(2) + \frac{1}{2}(x - 2)</m>, and <m>T_4(x)</m>,
+                		      <figure xml:id="F-8a-2-act-3-soln">
+							    <caption>The function <m>f(x)=\ln(x)</m> and its degree <m>1</m> and <m>4</m> Taylor approximations  <m>T_1(x)</m> and <m>T_4(x)</m> near the point <m>(2,f(2))</m>.</caption>
+							      <image width="50%" source="images/8a_2_act_3_soln" />
+							  </figure>
+					    we observe, as expected, that <m>T_4(x)</m> provides a much better approximation of <m>f(x)</m> near <m>a = 2</m> and on a wider interval.
+                	</p>
+                </li>
+                <li>
+                	<p>
+                		 Using a slider in Desmos, we see that<m>|f(x) - T_4(x)| \lt 0.1</m> for approximately <m>0.58 \lt x \lt 3.95</m>.
+                	</p>
+                </li>		
+                <li>
+                	<p>
+                		Based on the pattern in <xref ref="T-8a-2-act-3-log-soln">Table</xref> and <m>T_4(x) = \ln(2) + \frac{1}{2}(x-2) - \frac{1}{2 \cdot 2^2} (x-2)^2 + \frac{1}{3 \cdot 2^3}(x-2)^3 - \frac{1}{4 \cdot 2^4}(x-2)^4</m>, we expect that
+                		<me>
+                			T_5(x) = \ln(2) + \frac{1}{2}(x-2) - \frac{1}{2 \cdot 2^2} (x-2)^2 + \frac{1}{3 \cdot 2^3}(x-2)^3 - \frac{1}{4 \cdot 2^4}(x-2)^4 + \frac{1}{5 \cdot 2^5 (x-2)^5}
+                		</me> 
+                		and 
+                		<me>
+                			T_6(x) = \ln(2) + \frac{1}{2}(x-2) - \frac{1}{2 \cdot 2^2} (x-2)^2 + \frac{1}{3 \cdot 2^3}(x-2)^3 - \frac{1}{4 \cdot 2^4}(x-2)^4 + \frac{1}{5 \cdot 2^5 (x-2)^5} - \frac{1}{6 \cdot 2^6 (x-2)^6}
+                		</me>.  
+                	</p>		
+
+                	<p>	
+                		When we increase the degree to <m>n = 5</m>, we see that <m>|f(x) - T_5(x)| \lt 0.1</m>  for roughly <m>0.48 \lt x \lt 4</m>, and if we go to <m>n = 6</m>, <m>|f(x) - T_6(x)| \lt 0.1</m> for about <m>0.42 \lt x lt 4</m>.  This is similar to the Taylor approximations centered at <m>a = 1</m> in <xref ref="act-8a-2-2">Activity</xref> in that there's an upper bound on the approximation interval and that the width of the interval doesn't increase much with the higher degree, but it's different in that the interval of accuracy is wider.  It seems that by moving to <m>a = 2</m>, which is further away from the asymptote at <m>x = 0</m>, we can get approximations of <m>ln(x)</m> that are good all the way up to <m>x = 4</m>.
+                	</p>
+                </li>    
+			</ol>			
 		</solution>
 </activity>
 
