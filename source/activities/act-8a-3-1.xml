@@ -54,7 +54,7 @@
         </li>
         <li>
           <p>
-            How would your work above change if instead of the original geometric sum <m>S_n</m>, we instead considered the situation with <m>a = 7</m>,
+            How would your work above change if instead of the original geometric sum <m>S_n</m>, we considered the situation with <m>a = 7</m>,
             <me>
               S_n = 7 + 7 \cdot \frac{2}{5} + 7 \cdot \left(\frac{2}{5}\right)^2 + \cdots + 7 \cdot \left(\frac{2}{5}\right)^{n-1}
             </me>?
@@ -92,58 +92,67 @@
   </hint>
   <answer>
     <p>
-      <ol marker="a.">
-        <li>
-          <p>
-            <m> rS_n = ar+ar^2+ar^3 + \cdots + ar^n </m>.
-          </p>
-        </li>
 
-        <li>
-          <p>
-            <m>S_n - rS_n = a - ar^n</m>.
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <m>S_n = a\frac{1-r^n}{1-r}</m>.
-          </p>
-        </li>
-      </ol>
     </p>
   </answer>
   <solution>
     <p>
+      Consider
+      <men xml:id="eq-act-8a-3-1-soln">
+        S_n = 1 + \frac{2}{5} + \left(\frac{2}{5}\right)^2 + \cdots + \left(\frac{2}{5}\right)^{n-1}
+      </men>,
+      for which <m>a = 1</m> and <m>r = \frac{2}{5}</m>.
+    </p>
+
+    <p>
       <ol marker="a.">
         <li>
           <p>
-            Note that
+            Multiplying both sides of <xref ref="eq-act-8a-3-1-soln">Equation</xref> by <m>r = \frac{2}{5}</m>, we see that 
             <me>
-              rS_n = ar+ar^2+ar^3 + \cdots + ar^n
+              \frac{2}{5} \cdot S_n = \frac{2}{5} + \left(\frac{2}{5}\right)^2 + \left(\frac{2}{5}\right)^3 + \cdots + \left(\frac{2}{5}\right)^{n}
             </me>.
           </p>
         </li>
 
         <li>
           <p>
-            When we subtract <m>rS_n</m> from <m>S_n</m> the middle terms all cancel and we are left with
-            <md>
-              <mrow>S_n - rS_n \amp = \left(a+ar+ar^2 + \cdots + ar^{n-1}\right)</mrow>
-              <mrow>\amp\phantom{={}}{}- \left(ar+ar^2+ar^3 + \cdots + ar^n\right)</mrow>
-              <mrow>\amp =a + (ar-ar) + \left(ar^2-ar^2\right) + \cdots + \left(ar^{n-1}-ar^{n-1}\right) - ar^n</mrow>
-              <mrow>\amp = a - ar^n</mrow>
-            </md>.
+            With 
+            <me>
+              S_n = 1 + \frac{2}{5} + \left(\frac{2}{5}\right)^2 + \cdots + \left(\frac{2}{5}\right)^{n-1}
+            </me>
+            and 
+            <me>
+              \frac{2}{5} \cdot S_n = \frac{2}{5} + \left(\frac{2}{5}\right)^2 + \left(\frac{2}{5}\right)^3 + \cdots + \left(\frac{2}{5}\right)^{n}
+            </me>,
+            it follows that if we subtract the second equation from the first, 
+            <men xml:id="eq-act-8a-3-1-soln-2">
+              S_n - \frac{2}{5} \cdot S_n = 1 - \left(\frac{2}{5}\right)^{n}
+            </men>,
+            since every term in <m>S_n</m> except <m>1</m> appears in <m>\frac{2}{5} \cdot S_n</m>, and every term in <m>\frac{2}{5} \cdot S_n</m> except <m>\left(\frac{2}{5}\right)^{n}</m> appears in <m>\frac{2}{5} \cdot S_n</m>.
           </p>
         </li>
 
         <li>
           <p>
-            Factoring <m>S_n</m> from left hand side and dividing gives us a formula for <m>S_n</m>:
-            <md>
-              <mrow>S_n(1-r) \amp = a - ar^n</mrow>
-              <mrow>S_n \amp = a\frac{1-r^n}{1-r}</mrow>
-            </md>.
+            Factoring the left side of <xref ref="eq-act-8a-3-1-soln-2">Equation</xref>, we see that
+            <me>
+              S_n(1 - \frac{2}{5}) = 1 - \left(\frac{2}{5}\right)^{n}
+            </me>
+            and dividing both sides by <m>(1 - \frac{2}{5})</m>, we have
+            <me>
+              S_n = \frac{1 - \left(\frac{2}{5}\right)^{n}}{1 - \frac{2}{5}}
+            </me>.
+            This shows that we can find the value of the <m>n</m>the partial sum directly by using this shortcut formula, rather than having to actually add up <m>n</m> terms.
+          </p>
+        </li>
+        <li>
+          <p>
+            If instead of the original geometric sum <m>S_n</m>, we had <m>a = 7</m> and
+            <me>
+              S_n = 7 + 7 \cdot \frac{2}{5} + 7 \cdot \left(\frac{2}{5}\right)^2 + \cdots + 7 \cdot \left(\frac{2}{5}\right)^{n-1}
+            </me>,
+            the only thing that would change is that our shortcut formula for <m>S_n</m> would be multiplied by <m>7</m>.
           </p>
         </li>
       </ol>
