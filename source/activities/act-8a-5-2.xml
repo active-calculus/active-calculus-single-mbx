@@ -94,7 +94,84 @@
   </answer>
 
   <solution>
-    
+    <p>
+      <ol marker="a.">
+        <li>
+          <p>
+            Let <m>g(x) = \arctan(x)</m>.  
+          </p>
+          <ol marker="i.">
+            <li>
+              <p>
+                We recall that <m>g'(x) = \frac{1}{1+x^2}</m>?
+              </p>
+            </li>
+            <li>
+              <p>
+                In <xref ref="PA-8a-5">Preview Activity</xref>, we found the Taylor series 
+                <me>
+                  f(x) = g'(x) = \frac{1}{1+x^2} = 1 - x^2 + x^4 - x^6 + \cdots
+                </me>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Since <m>g(x)</m> is an antiderivative of <m>g'(x) = f(x)</m>, by the Second FTC we have
+                <me>
+                  g(x) = \int_0^x f(u) \, du
+                </me>.  
+                Using our work in (b) and integrating, we now have
+                <md>
+                  <mrow> g(x) =\mathstrut \amp \int_0^x f(u) \, du</mrow>
+                  <mrow> =\mathstrut \amp \int_0^x 1 - u^2 + u^4 - u^6 + \cdots</mrow>
+                  <mrow> =\mathstrut \amp  \left. u - \frac{1}{3}u^3 + \frac{1}{5}u^5 - \frac{1}{7}u^7 + \cdots \right|_0^x</mrow>
+                  <mrow> =\mathstrut \amp  x - \frac{1}{3}x^3 + \frac{1}{5}x^5 - \frac{1}{7}x^7 + \cdots </mrow>
+                </md> 
+              </p>
+            </li>  
+            <li>
+              <p> 
+                Since <m>f(x) = g'(x) = \frac{1}{1+x^2} = 1 - x^2 + x^4 - x^6 + \cdots</m> is guaranteed to converge for <m>|x| \lt 1</m>, it follows that the series for <m>g(x)</m> is certain to converge on that same interval.
+              </p>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <p>
+            Let <m>h(x) = \ln(1+x)</m>.  We use substitution and integration to develop the Taylor series of <m>h(x)</m> in a different way.
+          </p>
+          <ol marker="i.">
+            <li>
+              <p>
+                We know that <m>p(u) = \frac{1}{1-u} = 1 + u + u^2 + u^3 + \cdots</m> and this series converges for <m>|u| \lt 1</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Letting <m>u = -x</m>, we have
+                  <me>r(x) = \frac{1}{1+x} = p(-x) = 1 - x + x^2 - x^3 + \cdots</me>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Finally, since
+                <me>
+                  \ln(1 + x) = \int_0^x \frac{1}{1+t} \, dt
+                </me>,
+                it follows that 
+                <md>
+                  <mrow>\ln(1 + x) =\mathstrut \amp \int_0^x \frac{1}{1+t} \, dt</mrow>
+                  <mrow>    =\mathstrut \amp \int_0^x 1 - t + t^2 - t^3 + \cdots \, dt</mrow>
+                  <mrow>    =\mathstrut \amp \left. t - \frac{1}{2}t^2 + \frac{1}{3} t^3 - \frac{1}{4}t^4 + \cdots \right|_0^x</mrow>
+                  <mrow>    =\mathstrut \amp x - \frac{1}{2}x^2 + \frac{1}{3} x^3 - \frac{1}{4}x^4 + \cdots </mrow>
+                </md>
+                and this series is guaranteed to converge on the same interval as the series we started with (<m>-1 \lt x \lt 1</m>).  This is also the same series we found for <m>h(x) = \ln(1+x)</m> working directly from the definition of a Taylor series.
+              </p>
+            </li>
+          </ol>
+        </li>
+      </ol>
+    </p>    
   </solution>
 
 </activity>

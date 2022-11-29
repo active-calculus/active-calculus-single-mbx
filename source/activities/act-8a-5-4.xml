@@ -61,7 +61,83 @@
   </answer>
 
   <solution>
-    
+    <p>
+      <ol marker="a.">
+        <li>
+          <p>
+            Since <m>\sin(x) = x - \frac{1}{3!}x^3 + \frac{1}{5!}x^7 - \cdots</m>, we have
+            <me>
+              \sin(1) = 1 - \frac{1}{3!}1^3 + \frac{1}{5!}1^7 - \frac{1}{7!}1^9 +  \cdots
+            </me>
+            so that, for example, 
+            <me>
+              \sin(1) \approx 1 - \frac{1}{3!} + \frac{1}{5!} - \frac{1}{7!}
+            </me>.
+            This approximation has error at most <m>\frac{1}{9!}</m> since that's the next term in the sum.  Since 
+            <m>\frac{1}{9!} \approx 0.00000276</m>, we are even more accurate than required.  Note that since <m>\frac{1}{7!} \approx 0.000198</m>, we can't stop after the third term and indeed need the four above.  Thus,
+            <me>
+              \sin(1) \approx 1 - \frac{1}{3!} + \frac{1}{5!} - \frac{1}{7!} = \frac{4241}{5040} = 0.8414682539682539\ldots
+            </me>
+            If we as a computational device the value of <m>\sin(1)</m>, we get <m>\sin(1) = 0.84147098\ldots</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Since
+            <me>
+              \int_0^1 e^{-x^2} \, dx = 1 - \frac{1}{3} + \frac{1}{5 \cdot 2!} - \frac{1}{7 \cdot 3!} + \cdots + \frac{(-1)^n}{(2n+1) n!} + \cdots
+            </me>,
+            we can truncate the alternating series to get a good estimate of the integral.  We note that <m>\frac{1}{11 \cdot 5!} = \frac{1}{1320} = 0.0007575\ldots</m>, and the next term after this one is less than <m>0.0001</m>, so that
+            <me>
+              \int_0^1 e^{-x^2} \, dx \approx 1 - \frac{1}{3} + \frac{1}{5 \cdot 2!} - \frac{1}{7 \cdot 3!} + \frac{1}{9 \cdot 4!} - \frac{1}{11 \cdot 5!} = \frac{31049}{41580} = 0.7467291967291967291\ldots
+            </me>
+            A computational device reports that <m>\int_0^1 e^{-x^2} \, dx \approx 0.746824</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            We find that 
+            <me>
+              \cos(x^2) = 1 - \frac{1}{2!}x^4 + \frac{1}{4!}x^8 - \frac{1}{6!}x^{12} + \cdots
+            </me>, so
+            <me>
+              \int_0^1 \cos(x^2) \, dx = \left. x - \frac{1}{5 \cdot 2!}x^5 + \frac{1}{9 \cdot 4!}x^9 - \frac{1}{13 \cdot 6!}x^{13} + \cdots \right|_0^1
+            </me>.
+            Thus,
+            <me>
+              \int_0^1 \cos(x^2) \, dx = 1 - \frac{1}{5 \cdot 2!} + \frac{1}{9 \cdot 4!} - \frac{1}{13 \cdot 6!} + \cdots 
+            </me>.
+            Since <m>\frac{1}{13 \cdot 6!} = \frac{1}{9360} \approx 0.0001068</m>, the next term is less than <m>0.0001</m>
+             and thus we have
+             <me>
+              \int_0^1 \cos(x^2) \, dx \approx 1 - \frac{1}{5 \cdot 2!} + \frac{1}{9 \cdot 4!} - \frac{1}{13 \cdot 6!} = \frac{25399}{28080} = 0.904522792022792022792\ldots  
+            </me>. 
+            A computational device reports that <m>\int_0^1 \cos(x^2) \, dx \approx 0.914524</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            If we let <m>x = 1</m> in the series
+            <me>
+              x - \frac{1}{2}x^2 + \frac{1}{3}x^3 - \cdots + (-1)^n \frac{1}{n} x^n + \cdots
+            </me>,
+            we see that we get the converging alternating series
+            <me>
+              1 - \frac{1}{2} \cdot 1^2 + \frac{1}{3} \cdot 1^3 - \cdots + (-1)^n \frac{1}{n} \cdot 1^n + \cdots
+            </me>
+            by the Alternating Series Theorem.  Indeed, since <m>\ln(1+x) = x - \frac{1}{2}x^2 + \frac{1}{3}x^3 - \cdots + (-1)^n \frac{1}{n} x^n + \cdots</m>, it follows that the exact sum of the series 
+            <me>
+              1 - \frac{1}{2} \cdot 1^2 + \frac{1}{3} \cdot 1^3 - \cdots + (-1)^n \frac{1}{n} \cdot 1^n + \cdots
+            </me>
+            is <m>\ln(2)</m>:
+            <me>
+              \ln(2) = 1 - \frac{1}{2} \cdot 1^2 + \frac{1}{3} \cdot 1^3 - \cdots + (-1)^n \frac{1}{n} \cdot 1^n + \cdots
+            </me>.
+            This is an example of a Taylor series sometimes converging at one of the endpoints of the interval of convergence.
+          </p>
+        </li>
+      </ol>
+    </p>    
   </solution>
 
 </activity>
