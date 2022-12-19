@@ -41,7 +41,7 @@
 
 
             <table xml:id="T-8a-2-intro">
-            <title>Formulas and values for <m>f(x) = e^x</m> and <m>T_3(x) = c_0 + c_1 x + c_2 x^2 + c_3 x^3</m>.</title>
+            <title>Formulas and values for <m>f(x) = e^x</m> and <m>T_3(x) = c_0 + c_1 x + c_2 x^2 + c_3 x^3</m> and their derivatives.</title>
               <tabular top="none" bottom="none">
                 <row>
                   <cell halign="right"><m>f(x)=</m></cell>
@@ -154,7 +154,7 @@
           </p>
         </li>        
       </ul>
-      Moreover, we found that as the degree of the approximation increased, the polynomial approximation got more accurate by being closer to the <m>e^x</m> on a wider interval.
+      Moreover, we found that as the degree of the approximation increased, the polynomial approximation got more accurate by being closer to <m>e^x</m> at each fixed value of <m>x</m> as well as on a wider interval.
     </p>
 
     <p>
@@ -195,7 +195,7 @@
       <me>
         T_n(0) = f(0), T_n'(0) = f'(0), T_n''(0) = f''(0), \ldots, T_n^{(n)}(0) = f^{(n)}(0)
       </me> 
-      enable us to determine the coefficients <m>c_0, c_1, \ldots, c_n</m> in terms of the values of the various derivatives of <m>f</m>.  First, we take <m>n</m> derivatives of <m>T_n(x)</m>, and assemble those in <xref ref="T-8a-2-Taylor-derivatives">Table</xref>.  As we do so, we choose not to combine products of numbers that arise in order that we can see certain patterns in the coefficients.
+      enable us to determine the coefficients <m>c_0, c_1, \ldots, c_n</m> in terms of the values of the various derivatives of <m>f</m>.  First, we take <m>n</m> derivatives of <m>T_n(x)</m>, and assemble those in <xref ref="T-8a-2-Taylor-derivatives">Table</xref>.  As we do so, we choose not to combine products of numbers that arise in order to see certain patterns in the coefficients.
     </p>
           <table xml:id="T-8a-2-Taylor-derivatives">
             <title>The first <m>n</m> derivatives of a degree <m>n</m> Taylor polynomial.</title>
@@ -232,11 +232,11 @@
             </table>
     
     <p>
-      Next, we evaluate each of the derivatives at <m>a = 0</m>, and then set the result equal to the corresponding derivative value of <m>f</m> evaluated at <m>a = 0</m>, which ultimately enables us to determine the coefficients <m>c_0, c_1, \ldots, c_n</m>.  The first two steps are summarized in <xref ref="T-8a-2-Taylor-0">Table</xref> 
+      Next, we (1) evaluate each of the derivatives at <m>a = 0</m>, and then (2) set the result equal to the corresponding derivative value of <m>f</m> evaluated at <m>a = 0</m>, which ultimately enables us to determine the coefficients <m>c_0, c_1, \ldots, c_n</m>.  These two steps are summarized in <xref ref="T-8a-2-Taylor-0">Table</xref>. 
     </p>
 
           <table xml:id="T-8a-2-Taylor-0">
-            <title>Finding <m>n</m> derivatives of a degree <m>n</m> Taylor polynomial.</title>
+            <title>Using the defining properties of a degree <m>n</m> Taylor polynomial to find equations involving the coefficients <m>c_k</m>.</title>
               <tabular top="none" bottom="none">
                 <row top="none" bottom="minor">
                   <cell><m>T_n^{(k)}(0)</m></cell>
@@ -299,7 +299,7 @@
     <p>
       It is important to remember that the Taylor polynomial then provides us with an approximation of <m>f</m> near <m>a = 0</m>.  In particular, 
       <me>
-        f(x) \approx T_n(x) = f(0) + f'(0) x + \frac{f''(0)}{2!} x^2 + \cdots + \frac{f^{n}(0)}{n!} x^n
+        f(x) \approx T_n(x) = f(0) + f'(0) x + \frac{f''(0)}{2!} x^2 + \cdots + \frac{f^{(n)}(0)}{n!} x^n
       </me>.
     </p>
 
@@ -423,7 +423,11 @@
       <me>
         e^x \approx T_4(x) = 1 + x + \frac{1}{2!}x^2 + \frac{1}{3!}x^3 + \frac{1}{4!}x^4
       </me>.
-      Thus, we now have higher degree Taylor approximations for <m>e^x</m>, <m>\sin(x)</m>, and <m>\cos(x)</m> that exhibit interesting patterns in their coefficients that we can use to easily find higher degree approximations that are even more accurate.  Indeed, these approximations are what computational devices use to find numerical estimates for quantities such as <m>e^2</m>, <m>\sin(5)</m>, and <m>\cos(1.2)</m>.  
+      Thus, we now have higher degree Taylor approximations for <m>e^x</m>, <m>\sin(x)</m>, and <m>\cos(x)</m> that exhibit interesting patterns in their coefficients that we can use to easily find higher degree approximations that are even more accurate.  Indeed, these approximations are what computational devices use to find numerical estimates for quantities such as <m>e^2</m>, <m>\sin(1)</m>, and <m>\cos(1.2)</m>.  For example, 
+      <me>
+        \sin(1) \approx T_7(1) = 1 - \frac{1}{3!}1^3 + \frac{1}{5!}1^5 - \frac{1}{7!}1^7 = \frac{4241}{5040} \approx 0.84146825
+      </me>
+      which is a remarkably accurate estimate of <m>\sin(1) = 0.84147098 \ldots</m> given that the estimate only involves the sum of four rational numbers.
     </p>
 
   </subsection>
@@ -440,7 +444,10 @@
     <p>
       From our early studies in <xref ref="sec-1-8-tan-line-approx">Section</xref>, we know that at any input value <m>x = a</m> where a function <m>f</m> has a first derivative, <m>f</m> has a tangent line approximation 
       <me>L(x) = f(a) + f'(a)(x-a)</me>
-      that satisfies <m>f(x) \approx L(x)</m> for <m>x</m> values near <m>a</m>.  Provided that <m>f</m> has a second derivative at <m>x=a</m>, we can generate a quadratic approximation near <m>a</m> for <m>f</m> like we found at <m>a = 0</m> for <m>f(x)=e^x</m> in <xref ref="act-8a-1-2">Activity</xref>; in addition, as long as <m>f</m> has a third derivative at <m>x=a</m>, we can even find a cubic approximation (as in <xref ref="act-8a-1-3">Activity</xref>), and so on.  In developing such approximations, our guiding principle is the same as with our work at <m>a = 0</m>: we'll require that at the input value <m>a</m>, the original function's output and its derivatives' outputs match the corresponding approximation's output and derivatives' output.
+      that satisfies <m>f(x) \approx L(x)</m> for <m>x</m> values near <m>a</m>.  Provided that <m>f</m> has a second derivative at <m>x=a</m>, we can build a quadratic approximation near <m>a</m> for <m>f</m>, similar to the one we found at <m>a = 0</m> for <m>f(x)=e^x</m> in <xref ref="act-8a-1-2">Activity</xref>.  In addition, as long as <m>f</m> has a third derivative at <m>x=a</m>, we can even find a cubic approximation (just as we did at <m>a = 0</m> in <xref ref="act-8a-1-3">Activity</xref>), and so on.  
+    </p>
+    <p>
+      In developing such approximations centered at any value <m>x = a</m>, our guiding principle is the same as with our work at <m>a = 0</m>: we'll require that at the input value <m>a</m>, the original function's output and its derivatives' outputs match the corresponding approximation's output and derivatives' output.
     </p>
 
     <p>
@@ -486,7 +493,7 @@
     <p>
       As with approximations centered at <m>a = 0</m>, the Taylor polynomial now provides us with an approximation of <m>f</m> near <m>a</m>.  In particular, 
       <me>
-        f(x) \approx T_n(x) = f(a) + f'(a) (x-a) + \frac{f''(a)}{2!} (x-a)^2 + \cdots + \frac{f^{n}(a)}{n!} (x-a)^n
+        f(x) \approx T_n(x) = f(a) + f'(a) (x-a) + \frac{f''(a)}{2!} (x-a)^2 + \cdots + \frac{f^{(n)}(a)}{n!} (x-a)^n
       </me>.
     </p>
 
@@ -507,9 +514,9 @@
       </li>
       <li>  
         <p>
-          When <m>a = 0</m>, we call the degree <m>n</m> polynomial approximation, <m>T_n(x)</m>, to a function <m>f(x)</m> near <m>0</m> the degree <m>n</m> Taylor polynomial of <m>f</m> centered at <m>a = 0</m>, and if we write 
+          When <m>a = 0</m>, the degree <m>n</m> polynomial approximation, <m>T_n(x)</m>, to a function <m>f(x)</m>, centered at <m>a = 0</m>, is a polynomial of the form
           <me>T_n(x) = c_0 + c_1 x + c_2 x^2 + \cdots + c_n x^n</me>
-          it follows that the coefficients <m>c_k</m> are determined by the values of the various derivatives of <m>f(x)</m> evaluated at <m>0</m> according to the formula
+          and it follows that the coefficients <m>c_k</m> are determined by the values of the various derivatives of <m>f(x)</m> evaluated at <m>0</m> according to the formula
           <me>c_k = \frac{f^{(k)}(0)}{k!}.</me>
           Moreover, for <m>x</m> near <m>a = 0</m>, 
           <me>
@@ -519,13 +526,16 @@
       </li>
       <li>  
         <p>
-          Just as we can consider any function <m>f</m> that has <m>n</m> derivatives, we can also consider any input value <m>a</m> at which those <m>n</m> derivatives exist, and find a polynomial approximation that satisfies <m>T_n(a) = f(a)</m>, <m>T_n'(a) = f'(a)</m>, <m>T_n''(a) = f''(a)</m>, <m>\ldots</m>, <m>T_n^{(n)}(a) = f^{(n)}(a)</m>.  We call the degree <m>n</m> polynomial approximation, <m>T_n(x)</m>, to the function <m>f(x)</m> near <m>a</m> the degree <m>n</m> Taylor polynomial of <m>f</m> centered at <m>a</m>, and if we write 
+          Just as we can consider any function <m>f</m> that has <m>n</m> derivatives at <m>a = 0</m> and find approximations centered there, we can also consider any input value <m>a</m> at which those <m>n</m> derivatives exist, and find a polynomial approximation that satisfies <m>T_n(a) = f(a)</m>, <m>T_n'(a) = f'(a)</m>, <m>T_n''(a) = f''(a)</m>, <m>\ldots</m>, <m>T_n^{(n)}(a) = f^{(n)}(a)</m>.  
+        </p>
+        <p>
+          At such a value <m>a</m>, the degree <m>n</m> Taylor polynomial of <m>f</m> centered at <m>a</m> has form 
           <me>T_n(x) = c_0 + c_1 (x-a) + c_2 (x-a)^2 + \cdots + c_n (x-a)^n</me>
-          it follows that the coefficients <m>c_k</m> are determined by the values of the various derivatives of <m>f(x)</m> evaluated at <m>a</m> according to the formula
+          and it follows that the coefficients <m>c_k</m> are determined by the values of the various derivatives of <m>f(x)</m> evaluated at <m>a</m> according to the formula
           <me>c_k = \frac{f^{(k)}(a)}{k!}.</me>
           Moreover, for <m>x</m> near <m>a</m>, 
           <me>
-            f(x) \approx T_n(x) = f(a) + f'(a) (x-a) + \frac{f''(a)}{2!} (x-a)^2 + \cdots + \frac{f^{n}(a)}{n!} (x-a)^n
+            f(x) \approx T_n(x) = f(a) + f'(a) (x-a) + \frac{f''(a)}{2!} (x-a)^2 + \cdots + \frac{f^{(n)}(a)}{n!} (x-a)^n
           </me>.
         </p>
       </li>
