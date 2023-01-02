@@ -6,15 +6,15 @@ Active Calculus is available from [scholarworks.gvsu.edu](http://scholarworks.gv
 # quickstart instructions
 1. Clone this repository (from @mitchkeller). The branch you want is
    `WW-PAs-CS`, so switch to that branch.
-1. Get a special branch of PreTeXt. This has some commits that are in the pipeline, but may evolve before merging into the official repo.
+1. Get a special branch of PreTeXt. This has some commits that are in
+the pipeline, but may evolve before merging into the official repo. If you use a directory other than `~/pretext` here for this, update
+paths in later steps as well.
 ```
 cd ~/pretext
 git remote add jordan https://github.com/Alex-Jordan/mathbook
 git fetch jordan active-calculus
 git checkout -b active-calculus --track jordan/active-calculus
 ```
-If you use a directory other than `~/pretext` here for this, update
-paths below.
 1. Make WeBWorK representations. Once @Alex-Jordan's branch is merged,
 that can be done with the CLI (`pretext generate -t
 runestone-safranski webwork`), but for now, you need 
