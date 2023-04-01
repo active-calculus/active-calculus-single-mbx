@@ -41,7 +41,11 @@
       <me>
         e^x = c_0 + c_1 x + c_2 x^2 + \cdots + c_n x^n + \cdots = \sum_{k=0}^{\infty} c_k x^k
       </me>.
-      Indeed, using the important fact that for <m>f(x) = e^x</m>, we know <m>f^{(k)}(x) = e^x</m> for every natural number <m>k</m>, from which it follows that <m>f^{(k)}(0) = 1</m>, we were able to determine the values of each coefficient <m>c_k</m> for the Taylor series expansion of <m>f(x) = e^x</m>.
+      Indeed, using the important fact that for <m>f(x) = e^x</m>, we know <m>f^{(k)}(x) = e^x</m> for every natural number <m>k</m>, from which it follows that <m>f^{(k)}(0) = 1</m>, we were able to determine the values of each coefficient <m>c_k</m> for the Taylor series expansion of <m>f(x) = e^x</m>, and hence establish that
+      <me>
+        e^x = 1 + x + \frac{1}{2!}x^2 + \cdots + \frac{1}{n!}x^n + \cdots = \sum_{k=0}^{\infty} \frac{1}{k!} x^k
+      </me>,
+      which is valid for every real number <m>x</m>.
     </p>
 
     <p>
@@ -53,10 +57,33 @@
   </introduction>  
 
   <subsection>
-    <title>Using </title>
+    <title>Using power series to find solutions to initial value problems</title>
     <p>
-      The 
+      In <xref ref="PA-8a-6">Preview Activity</xref>, we investigated the initial value problem given by 
+      <me>y' = y, \ y(0) = 1</me>.
+      By assuming that the solution function <m>y</m> had a power series representation, we were able to write that 
+      <me>
+            y = c_0 + c_1 x + c_2 x^2 + c_3 x^3 + c_4 x^4 + \cdots + c_n x^n + \cdots
+      </me>, 
+      and by finding <m>y'</m> and setting <m>y' = y</m>, see that the equation 
+      <me>
+        c_1 + 2c_2 x + 3c_3 x^2 + 4c_4 x^3 + \cdots = c_0 + c_1 x + c_2 x^2 + c_3 x^3 + c_4 x^4 + \cdots
+      </me>
+      must hold.  This led us to conclude that <m>c_1 = c_0</m>, <m>2c_2 = c_1</m>, <m>3c_3 = c_2</m>, and <m>4c_4 = c_3</m> by equating like coefficients.  Since <m>y(0) = 1</m> is given in the IVP and <m>y(0) = c_0</m> from the series representation, it follows that <m>c_0 = 1</m>, and from there that <m>c_1 = 1</m>, <m>c_2 = \frac{1}{2}</m>, <m>c_3 = \frac{1}{3 \cdot 2}</m>, and <m>c_4 = \frac{1}{4 \cdot 3 \cdot 2}</m>.
     </p>
+    <p>
+      This of course suggests the pattern that <m>c_n = \frac{1}{n!}</m>, and hence that the solution to the initial value problem is
+      <me>
+        y = 1 + x + \frac{1}{2!}x^2 + \frac{1}{3!}x^3 + \cdots + \frac{1}{n!}x^n + \cdots
+      </me>.
+      Remember, we found this representation of <m>y</m> by solving the IVP
+      <me>y' = y, \ y(0) = 1</me>,
+      which states that <q><m>y</m> is a function whose derivative is itself and that satisfies <m>y(0) = 1</m></q>: this is precisely the function <m>y = e^x</m>, so our approach here has established the power series representation of <m>f(x) = e^x</m> from a different line of reasoning than Taylor series.  Indeed, we've found that 
+      <me>
+        e^x = 1 + x + \frac{1}{2!}x^2 + \frac{1}{3!}x^3 + \cdots + \frac{1}{n!}x^n + \cdots
+      </me>.
+    </p>
+
 
     <example xml:id="ex-8a-6-TBD">
       <statement>
