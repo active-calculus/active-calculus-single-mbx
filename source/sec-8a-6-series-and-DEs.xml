@@ -37,11 +37,11 @@
 
   <introduction>
     <p>
-      In our work in <xref ref="C-7">Chapter</xref>, we learned that the natural exponential function, <m>e^x</m>, played a key role in the solution of several important types of differential equations.  In our more recent studies in <xref ref="C-8a">Chapter</xref>, we've learned that <m>e^x</m> can be represented as a Taylor series in the form
+      In our work in <xref ref="C-7">Chapter</xref>, we learned that the natural exponential function, <m>e^x</m>, plays a key role in the solution of several important types of differential equations.  In our more recent studies in <xref ref="C-8a">Chapter</xref>, we've learned that <m>e^x</m> can be represented as a Taylor series in the form
       <me>
         e^x = c_0 + c_1 x + c_2 x^2 + \cdots + c_n x^n + \cdots = \sum_{k=0}^{\infty} c_k x^k
       </me>.
-      Indeed, using the important fact that for <m>f(x) = e^x</m>, we know <m>f^{(k)}(x) = e^x</m> for every natural number <m>k</m>, from which it follows that <m>f^{(k)}(0) = 1</m>, we were able to determine the values of each coefficient <m>c_k</m> for the Taylor series expansion of <m>f(x) = e^x</m>, and hence establish that
+      For <m>f(x) = e^x</m>, we know <m>f^{(k)}(x) = e^x</m> for every natural number <m>k</m>, from which it follows that <m>f^{(k)}(0) = 1</m> for every <m>k</m>.  This fact enabled us to determine the values of each coefficient <m>c_k</m> for the Taylor series expansion of <m>f(x) = e^x</m>, and hence establish that
       <me>
         e^x = 1 + x + \frac{1}{2!}x^2 + \cdots + \frac{1}{n!}x^n + \cdots = \sum_{k=0}^{\infty} \frac{1}{k!} x^k
       </me>,
@@ -84,15 +84,52 @@
       </me>.
     </p>
 
+    <p>
+      This approach can be used to solve a select class of other initial value problems.  The key idea is to let <m>y = c_0 + c_1 x + c_2 x^2 + c_3 x^3 + c_4 x^4 + \cdots + c_n x^n + \cdots</m>, find the corresponding expression for <m>y'</m> (and possibly <m>y''</m> and other higher derivatives if the differential equation has higher order), and then subsitute these series expresssions into the differential equation to determine relationships that must hold among the unknown coefficients, <m>c_i</m>.  From there, using the initial condition(s), we can determine the numerical value of each <m>c_i</m>.  We demonstrate this approach in the following example.
+    </p>
 
-    <example xml:id="ex-8a-6-TBD">
+    <example xml:id="ex-8a-6-LFO">
       <statement>
-        Find 
+        Find a power series representation for the solution to the IVP given by
+        <me>
+          y' = y-x, \ y(0) = -1
+        </me>.
       </statement>
       <solution>
         <p>
-          Because 
+          To begin, we assume that 
+          <me>
+            y = c_0 + c_1 x + c_2 x^2 + c_3 x^3 + c_4 x^4 + \cdots
+          </me>,
+          from which it follows that
+          <me>
+            y' = c_1 + 2c_2 x + 3c_3 x^2 + 4c_4 x^3 + \cdots 
+          </me>.
+          Setting <m>y' = y - x</m>, we have 
+          <md>
+            <mrow> c_1 + 2c_2 x + 3c_3 x^2 + 4c_4 x^3 + \cdots =\mathstrut \amp (c_0 + c_1 x + c_2 x^2 + c_3 x^3 + c_4 x^4 + \cdots) - x</mrow>
+            <mrow>    =\mathstrut \amp c_0 + (c_1 - 1) x + c_2 x^2 + c_3 x^3 + c_4 x^4 + \cdots</mrow>
+          </md>
+          Equating like coefficients, it follows that 
+          <md>
+            <mrow>c_1 =\mathstrut \amp c_0</mrow>
+            <mrow>2c_2 =\mathstrut \amp c_1 - 1</mrow>
+            <mrow>3c_3 =\mathstrut \amp c_2</mrow>
+            <mrow>4c_4 =\mathstrut \amp c_3</mrow>
+            <mrow>\vdots\mathstrut \amp </mrow>
+          </md>
+          We can see a pattern that will continue:  <m>5c_5 = c_4</m>, <m>6c_6 = c_5</m>, and so on.  Further, we observe that by the given initial condition, <m>y(0) = -1</m>, we can find the value of <m>c_0</m> and this will then determine the value of the other constants.  In particular, since 
+          <me>
+            y = c_0 + c_1 x + c_2 x^2 + c_3 x^3 + c_4 x^4 + \cdots
+          </me>,
+          it follows <m>y(0) = c_0</m>, so <m>c_0 = -1</m>.  From that, we have <m>c_1 = c_0 = -1</m> as well.  Next, since <m>2c_2 = c_1 - 1</m>, <m>2c_2 = -2</m>, so <m>c_2 = -1</m>.  With <m>3c_3 = c_2</m>, we now know <m>c_3 = -\frac{1}{3}</m>, and using the equation involving <m>c_4</m> we see that <m>c_4 = -\frac{1}{3 \cdot 4}</m>.  Similar reasoning shows that <m>c_5 = -\frac{1}{3 \cdot 4 \cdot 5}</m> and <m>c_6 = -\frac{1}{3 \cdot 4 \cdot 5 \cdot 6}</m>.
         </p>          
+        <p>
+          Thus, we have found the first several terms of the power series expansion for the function <m>y</m> that is the solution to the given IVP.  In particular,
+          <me>
+            y = -1 - x - x^2 - \frac{1}{3}x^3 - \frac{1}{3 \cdot 4}x^4 - \frac{1}{3 \cdot 4 \cdot 5}x^5 - \frac{1}{3 \cdot 4 \cdot 5 \cdot 6}x^6 - \cdots
+          </me>
+        </p>
       </solution>
     </example>
 
@@ -103,13 +140,53 @@
 
   <subsection>
     <title>
-      Differentiating
+      Using power series to solve higher order initial value problems
     </title>
 
     <p>
-      In 
+      Initial value problems of the form
+      <me>
+        my'' + by' + ky = 0, \ y(0) = c_1, \ y'(0) = c_2
+      </me>
+       find important applications in physics, especially in spring-mass systems; the solution <m>y</m> to the IVP models a mass <m>m</m> that hangs from a spring with spring constant <m>k</m>, where the damping constant is <m>b</m> and the mass has an initial displacement of <m>c_1</m> units from equilibrium and an initial velocity of <m>c_2</m>.  While an in-depth development of solutions to these IVPs is normally studied in a full course on differential equations, we can use power series solutions to understand some of the important basic cases.
     </p>
 
+    <p>
+      We start with the simplest possible second-order IVP,
+      <me>
+        y'' = y, \ y(0) = 1, \ y'(0) = 1
+      </me>.
+      While we know that the solution to this IVP is <m>y = e^x</m>, it's instructive to see how the series solution approach confirms this.   In the same way that we did with first-order equations, we let 
+      <me>
+        y = c_0 + c_1 x + c_2 x^2 + c_3 x^3 + c_4 x^4 + \cdots + c_n x^n + \cdots
+      </me>,
+      so 
+      <me>
+        y' = c_1 + 2c_2 x + 3c_3 x^2 + 4c_4 x^3 + \cdots + nc_n x^{n-1} + \cdots
+      </me>,
+      and now further,
+      <me>
+        y'' = 2c_2 + 3 \cdot 2 c_3 x + 4 \cdot 3 c_4 x^2 + \cdots + n (n-1) c_n x^{n-2} + \cdots
+      </me>.
+      Setting <m>y'' = y</m>, we see that
+      <me>
+        2c_2 + 3 \cdot 2 c_3 x + 4 \cdot 3 c_4 x^2 + 5 \cdot 4 c_5 x^3 + \cdots = c_0 + c_1 x + c_2 x^2 + c_3 x^3 + c_4 x^4 + \cdots 
+      </me>.
+      Equating like coefficients, 
+      <md>
+        <mrow>2c_2 =\mathstrut \amp c_0</mrow>
+        <mrow>3 \cdot 2 c_3 =\mathstrut \amp c_1</mrow>
+        <mrow>4 \cdot 3 c_4 =\mathstrut \amp c_2</mrow>
+        <mrow>5 \cdot 4 c_5 =\mathstrut \amp c_3</mrow>
+      </md>
+      and so on.  We see from this chain of equalities that the even-indexed constants <m>c_i</m> depend on <m>c_0</m>, while the odd-indexed constants depend on <m>c_1</m>.  In the original IVP statement, we were given that <m>y(0) = 1</m> and <m>y'(0) = 1</m>, so this implies that <m>c_0 = 1</m> and <m>c_1 = 1</m> from the power series expansions of <m>y</m> and <m>y''</m>.
+    </p>
+
+    <p>
+      Using all of our work so far, we now see that <m>2c_2 = c_0 = 1</m>, so <m>c_2 = \frac{1}{2}</m>; next, we have that <m>3 \cdot 2 c_3 = c_1 = 1</m>, so <m>c_3 = \frac{1}{3 \cdot 2}</m>; similarly, <m>4 \cdot 3 c_4 = c_2 = \frac{1}{2}</m>, so <m>c_4 = \frac{1}{4 \cdot 3 \cdot 2}</m>; and further, <m>5 \cdot 4 c_5 = c_3 = \frac{1}{3 \cdot 2}</m>, so <m>c_5 = \frac{1}{5 \cdot 4 \cdot 3 \cdot 2}</m>.  We wee the pattern that <m>c_k = \frac{1}{k!}</m>, which of course aligns with the fact that <m>y = e^x</m> is the solution to the original IVP.  In the next activity, we explore several other second-order IVPs using a similar approach.
+    </p>
+
+    <xi:include href="./activities/act-8a-6-2.xml" />
 
   </subsection>
 
