@@ -18,17 +18,17 @@
     <ul>
       <li>
         <p>
-          Is ?
+          How can power series be used to find solutions to familiar differential equations?
         </p>
       </li>
       <li>
         <p>
-          Can ?
+          In what ways do series solutions to differential equations align with solutions we can find without using series?
         </p>
       </li>
       <li>
         <p>
-          What ?
+          What role do series solutions play in differential equations that can't be solved by other approaches?
         </p>
       </li>
     </ul>
@@ -133,6 +133,17 @@
       </solution>
     </example>
 
+    <p>
+      The IVP in <xref ref="ex-8a-6-LFO">Example</xref> can also be solved without using a series approach, and the solution turns out to be <m>y = 1 + x - 2e^x</m>.  It is straightforward to verify this directly by subsituting <m>y</m> and <m>y'</m> into the differential equation to confirm that <m>y' = y - x</m>, as well as that <m>y'(0) = -1</m>.  We note further that if we use the Taylor series for <m>e^x</m>, we also have 
+      <md>
+        <mrow>y =\mathstrut \amp 1 + x - 2e^x</mrow>
+        <mrow>  =\mathstrut \amp 1 + x - 2(1 + x + \frac{1}{2!}x^2 + \frac{1}{3!}x^3 + \frac{1}{4!}x^4 + \cdots)</mrow>
+        <mrow>  =\mathstrut \amp 1 + x - 2 - 2x - x^2 - \frac{1}{3}x^3 - \frac{1}{4\cdot 3}x^4 - \cdots</mrow>
+        <mrow>  =\mathstrut \amp -1 - x - x^2 - \frac{1}{3}x^3 - \frac{1}{4\cdot 3}x^4 - \cdots</mrow>,
+      </md>
+      which is precisely the solution we found in the example.
+    </p>
+
 
     <xi:include href="./activities/act-8a-6-1.xml" />
 
@@ -140,7 +151,7 @@
 
   <subsection>
     <title>
-      Using power series to solve higher order initial value problems
+      Using power series to solve higher order initial value problems: constant coefficients
     </title>
 
     <p>
@@ -183,14 +194,87 @@
     </p>
 
     <p>
-      Using all of our work so far, we now see that <m>2c_2 = c_0 = 1</m>, so <m>c_2 = \frac{1}{2}</m>; next, we have that <m>3 \cdot 2 c_3 = c_1 = 1</m>, so <m>c_3 = \frac{1}{3 \cdot 2}</m>; similarly, <m>4 \cdot 3 c_4 = c_2 = \frac{1}{2}</m>, so <m>c_4 = \frac{1}{4 \cdot 3 \cdot 2}</m>; and further, <m>5 \cdot 4 c_5 = c_3 = \frac{1}{3 \cdot 2}</m>, so <m>c_5 = \frac{1}{5 \cdot 4 \cdot 3 \cdot 2}</m>.  We wee the pattern that <m>c_k = \frac{1}{k!}</m>, which of course aligns with the fact that <m>y = e^x</m> is the solution to the original IVP.  In the next activity, we explore several other second-order IVPs using a similar approach.
+      Using all of our work so far, we now see that <m>2c_2 = c_0 = 1</m>, so <m>c_2 = \frac{1}{2}</m>; next, we have that <m>3 \cdot 2 c_3 = c_1 = 1</m>, so <m>c_3 = \frac{1}{3 \cdot 2}</m>; similarly, <m>4 \cdot 3 c_4 = c_2 = \frac{1}{2}</m>, so <m>c_4 = \frac{1}{4 \cdot 3 \cdot 2}</m>; and further, <m>5 \cdot 4 c_5 = c_3 = \frac{1}{3 \cdot 2}</m>, so <m>c_5 = \frac{1}{5 \cdot 4 \cdot 3 \cdot 2}</m>.  We see the pattern that <m>c_k = \frac{1}{k!}</m>, which of course aligns with the fact that <m>y = e^x</m> is the solution to the original IVP.  In the next activity, we explore several other second-order IVPs using a similar approach.
     </p>
 
     <xi:include href="./activities/act-8a-6-2.xml" />
 
+    <p>
+      In the IVPs we considered in <xref ref="act-8a-6-2">Activity</xref>, the respective differential equations each only involved <m>y''</m> and <m>y</m>.  The situation is slightly more complicated when the second order differential equation with constant coefficients
+      <me>
+        my'' + by' + ky = 0
+      </me>
+      has all nonzero coefficients.  We demonstrate how to solve such an equation using series in the following example.
+    </p>
+
+    <example  xml:id="ex-8a-6-LSO">
+      <statement>
+        Solve the IVP given by
+        <me>
+          y'' - 2y' - 3y = 0, \ y(0) = 4, \ y'(0) = 0
+        </me>
+      </statement>
+      <solution>
+        We begin in the familiar way by letting 
+        <me>
+          y = c_0 + c_1 x + c_2 x^2 + c_3 x^3 + c_4 x^4 + \cdots + c_n x^n + \cdots
+        </me>,
+        so 
+        <me>
+          y' = c_1 + 2c_2 x + 3c_3 x^2 + 4c_4 x^3 + \cdots + nc_n x^{n-1} + \cdots
+        </me>,
+        and
+        <me>
+          y'' = 2c_2 + 3 \cdot 2 c_3 x + 4 \cdot 3 c_4 x^2 + \cdots + n (n-1) c_n x^{n-2} + \cdots
+        </me>.
+        Slightly rewriting the differential equation, we know that <m>y</m> has to satisfy the equation <m>y'' = 2y' + 3y</m>.  Based on this form, we observe that
+        <me>
+          2y' = 2c_1 + 4 c_2 x + 6 c_3 x^2 + 8 c_4 x^3 + \cdots + 2nc_n x^{n-1} + \cdots
+        </me>
+        and
+        <me>
+          3y = 3c_0 + 3c_1 x + 3c_2 x^2 + 3c_3 x^3 + 3c_4 x^4 + \cdots + 3c_n x^n + \cdots
+        </me>.
+        Substituting the series expressions for <m>y''</m>, <m>2y'</m>, and <m>3y</m> in the equation <m>y'' = 2y' + 3y</m>, we see that
+        <md>
+          <mrow>2c_2 + 6 c_3 x + 12 c_4 x^2 + 20 c_5 x^3 + \cdots =\mathstrut \amp (2c_1 + 4 c_2 x + 6 c_3 x^2 + 8 c_4 x^3 + \cdots)</mrow>
+          <mrow>                                                  +\mathstrut \amp  (3c_0 + 3c_1 x + 3c_2 x^2 + 3c_3 x^3 + \cdots)</mrow>.
+        </md>
+        From this last equation, we can determine the relationships that exist among the constants <m>c_i</m>.  Equating the constant terms on boths sides of the equation, we have 
+        <me>
+          2c_2 = 2c_1 + 3c_0
+        </me>.
+        From the linear terms, we see
+        <me>
+          6c_3 = 4c_2 + 3c_1
+        </me>,
+        and the quadratic terms imply 
+        <me>
+          12c_4 = 6c_3 + 3c_2
+        </me>, 
+        and further from the cubic terms that
+        <me>
+          20c_5 = 8c_4 + 3c_3
+        </me>.
+        If we solve these equations for <m>c_2</m>, <m>c_3</m>, and so on, we have
+        <md>
+          <mrow>c_2 = \frac{2c_1 + 3c_0}{2}</mrow>
+          <mrow>c_3 = \frac{4c_2 + 3c_1}{6}</mrow> 
+          <mrow>c_4 = \frac{6c_2 + 3c_2}{12}</mrow>  
+          <mrow>c_5 = \frac{8c_2 + 3c_2}{20}</mrow>  
+        </md>
+        Using the initial conditions that <m>y(0) = 4</m> and <m>y'(0) = 0</m>, it follows from the series expansions for <m>y</m> and <m>y'</m> that 
+
+      </solution>
+    </example>
+
   </subsection>
 
 
+  <subsection>
+    
+  </subsection>
+    <title>Using power series to solve higher order initial value problems: non-constant coefficients</title>
   <subsection>
     <title>Summary</title>
     <p>
