@@ -209,10 +209,11 @@
 
     <example  xml:id="ex-8a-6-LSO">
       <statement>
-        Solve the IVP given by
+        Use power series to solve the IVP given by
         <me>
           y'' - 2y' - 3y = 0, \ y(0) = 4, \ y'(0) = 0
-        </me>
+        </me>.
+        Show at least the first 5 nonzero terms of the solution <m>y</m>.
       </statement>
       <solution>
         We begin in the familiar way by letting 
@@ -260,16 +261,35 @@
         <md>
           <mrow>c_2 = \frac{2c_1 + 3c_0}{2}</mrow>
           <mrow>c_3 = \frac{4c_2 + 3c_1}{6}</mrow> 
-          <mrow>c_4 = \frac{6c_2 + 3c_2}{12}</mrow>  
-          <mrow>c_5 = \frac{8c_2 + 3c_2}{20}</mrow>  
+          <mrow>c_4 = \frac{6c_3 + 3c_2}{12}</mrow>  
+          <mrow>c_5 = \frac{8c_4 + 3c_3}{20}</mrow>  
         </md>
-        Using the initial conditions that <m>y(0) = 4</m> and <m>y'(0) = 0</m>, it follows from the series expansions for <m>y</m> and <m>y'</m> that 
+        Using the initial conditions that <m>y(0) = 4</m> and <m>y'(0) = 0</m>, it follows from the series expansions for <m>y</m> and <m>y'</m> that <m>c_0 = 4</m> and <m>c_1 = 0</m>, so 
+        <md>
+          <mrow>c_2 = \frac{2 \cdot 0 + 3 \cdot 4}{2} = 6</mrow>
+          <mrow>c_3 = \frac{4 \cdot 6 + 3 \cdot 0}{6} = 4</mrow> 
+          <mrow>c_4 = \frac{6 \cdot 4 + 3 \cdot 6}{12} = \frac{7}{2}</mrow>  
+          <mrow>c_5 = \frac{8 \cdot \frac{7}{2} + 3 \cdot 4}{20} = 2</mrow>  
+        </md>.
+        Thus, the solution to the IVP is
+        <me>
+          y = 4 + 6x^2 + 4x^3 + \frac{7}{2}x^4 + 2x^5 + \cdots
+        </me>.
 
       </solution>
     </example>
 
   </subsection>
+    <title>Solving initial value problems with non-constant coeffiecients</title>
+    <p>
+      For differential equations such as <m>y' - 4y = 0</m> or <m>y'' - 2y' - 3y = 0</m> that we considered in the previous section, there are well-established methods for solving these equations that don't involve using power series.  But for other important differential equations, such as Airy's equation that arises in the theory of rainbows, non-constant coefficients pose a different challenge and require us to use power series in order to find a solution.  Airy's equation is given by 
+      <me>
+        y'' - xy = 0
+      </me>,
+      and the presence of the <q><m>x</m></q> that multiplies the unknown function <m>y</m> makes this equation harder to solve than one like <m>y'' - 4y = 0</m>.  Power series enable us to handle this challenge when other approaches studied in a course on differential equations fail.  We explore a similar first-order equation in the following activity, and then move on to solve Airy's equation, given certain initial conditions.
+    </p>
 
+    <xi:include href="./activities/act-8a-6-3.xml" />
 
   <subsection>
     
