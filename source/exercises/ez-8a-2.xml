@@ -45,7 +45,7 @@
         <ol marker="a.">
           <li>
             <p>
-              Determine <m>T_4(x)</m>, the degree <m>4</m> Taylor polynomial of <m>f</m> that is centereed at <m>a = 0</m>.
+              Determine <m>T_4(x)</m>, the degree <m>4</m> Taylor polynomial of <m>f</m> that is centered at <m>a = 0</m>.
             </p>
           </li>
           <li>
@@ -62,9 +62,65 @@
       </p>
     </statement>
     <answer>
-      
+ 
+      <p>
+        <ol marker="a.">
+          <li>
+            <p>
+              <m>T_4(x) = 2 - 3x - \frac{1}{2!}x^2 - \frac{3}{4!}x^4</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>
+                f(0.5) \approx T_4(0.5) = 2 - 3 \cdot 0.5 - \frac{1}{2!}(0.5)^2 - \frac{3}{4!}(0.5)^4 = 0.3671875
+              </m>.
+            </p>
+          </li>
+          <li>
+            <p>From <m>T_4(x)</m>, it follows
+              <md>
+                <mrow>T_3(x) =\mathstrut \amp 2 - 3x - \frac{1}{2!}x^2 + 0x^3</mrow>
+                <mrow>T_2(x) =\mathstrut \amp 2 - 3x - \frac{1}{2!}x^2</mrow>
+                <mrow>T_1(x) =\mathstrut \amp 2 - 3x</mrow>
+              </md>.
+            </p>
+          </li>
+        </ol>
+      </p>
+
     </answer>
     <solution>
+
+      <p>
+        <ol marker="a.">
+          <li>
+            <p>
+              Using the given information that <m>f(0) = 2, f'(0) = -3, f''(0) = -1, f'''(0) = 0, f^{(4)}(0) = -3</m> and the fact that the coeffficients of the Taylor polynomial centered at <m>a = 0</m> are <m>c_k = \frac{f^{k}(0)}{k!}</m>, we find that
+              <me>T_4(x) = 2 - 3x - \frac{1}{2!}x^2 - \frac{3}{4!}x^4</me>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Since <m>0.5</m> is near <m>0</m>, we have
+              <me>
+                f(0.5) \approx T_4(0.5) = 2 - 3 \cdot 0.5 - \frac{1}{2!}(0.5)^2 - \frac{3}{4!}(0.5)^4 = 0.3671875
+              </me>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Since each lower degree Taylor polynomial is embedded within a higher degree one, now that we know <m>T_4(x)</m>, it follows that  
+              <md>
+                <mrow>T_3(x) =\mathstrut \amp 2 - 3x - \frac{1}{2!}x^2 + 0x^3</mrow>
+                <mrow>T_2(x) =\mathstrut \amp 2 - 3x - \frac{1}{2!}x^2</mrow>
+                <mrow>T_1(x) =\mathstrut \amp 2 - 3x</mrow>
+              </md>.
+              We note that <m>T_3(x) = T_2(x)</m> since <m>f'''(0) = 0</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
       
     </solution>
   </exercise>
@@ -106,10 +162,90 @@
     </statement>
     
     <answer>
+
+      <p>
+        <ol  marker="a.">
+          <li>
+            <p>
+              <m>
+                T_2(x) = 3 + 0(x-2) + \frac{1}{2!}(x-2)^2
+              </m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>f(x) = T_2(x)</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>(2,3)</m> is the vertex of the quadratic function <m>f(x)</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>L(x) = T_1(x) = 3</m>, so <m>f</m> has a horizontal tangent line at <m>x = 2</m>, which corresponds to its global minimum at <m>x = 2</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
       
     </answer>
     
     <solution>
+
+      <p>
+        <ol  marker="a.">
+          <li>
+            <p>
+              Computing the various derivatives of <m>f</m> and evaluating them at <m>a = 2</m>, we see the results in <xref ref="T-8a-2-ez-2-1">Table</xref>.
+
+            <table xml:id="T-8a-2-ez-2-1">
+            <title>Formulas and values for <m>f(x) = \frac{1}{2}x^2 - 2x + 5</m>.</title>
+              <tabular top="none" bottom="none">
+                <row>
+                  <cell halign="right"><m>f(x)=</m></cell>
+                  <cell><m>\frac{1}{2}x^2 - 2x + 5</m></cell>
+                  <cell halign="right"><m>f(2)=</m></cell>
+                  <cell><m>3</m></cell>
+                </row>
+                <row>
+                  <cell halign="right"><m>f'(x)=</m></cell>
+                  <cell><m>x - 2</m></cell>
+                  <cell halign="right"><m>f'(2)=</m></cell>
+                  <cell><m>0</m></cell>
+                </row>                
+                <row>
+                  <cell halign="right"><m>f''(x)=</m></cell>
+                  <cell><m>1</m></cell>
+                  <cell halign="right"><m>f''(2)=</m></cell>
+                  <cell><m>1</m></cell>
+                </row>
+              </tabular>
+            </table>
+              Using the fact that <m>c_k = \frac{f^{k}(2)}{k!}</m>, we find that
+              <me>
+                T_2(x) = 3 + 0(x-2) + \frac{1}{2!}(x-2)^2
+              </me>.
+            </p>
+          </li>
+          <li>
+            <p>
+              When we plot both <m>f(x)</m> and <m>T_2(x)</m> on the same axes we observe that they are the same function: <m>f(x) = T_2(x)</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Because <m>T_2(x) = 3 + \frac{1}{2}(x-2)^2</m> is a quadratic function in vertex form, we see that <m>(2,3)</m> is the vertex of the function <m>f(x)</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The tangent line approximation to <m>f(x)</m> at <m>a = 2</m> is <m>L(x) = T_1(x) = 3</m>, which indicates that <m>f</m> has a horizontal tangent line at <m>x = 2</m>.  This corresponds to the fact that <m>f</m> has its global minimum at <m>x = 2</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
       
     </solution>
   </exercise>
@@ -144,10 +280,102 @@
     </statement>
     
     <answer>
+
+      <ol marker="a.">
+        <li>
+          <p>   <m>
+                  T_6(x) = 1 - \frac{1}{2!}(x-\frac{1}{2})^2 + \frac{1}{4!}(x-\frac{1}{2})^4 - \frac{1}{6!}(x-\frac{1}{2})^6
+                </m>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>T_6(x)</m> appears to be the same as <m>P_6(x-\frac{\pi}{2})</m>, the degree <m>6</m> Taylor polynomial of <m>\cos(x)</m> centered at <m>a = 0</m>, shifted <m>\frac{\pi}{2}</m> units to the right.
+          </p>
+        </li>
+        <li>
+          <p>
+            Since <m>\sin(x) = \cos(x - \frac{\pi}{2})</m>, this tells us that the sine function is simply a shifted version of the cosine function (the cosine function shifted <m>\frac{\pi}{2}</m> units to the right).
+          </p>
+        </li>
+      </ol>
       
     </answer>
     
     <solution>
+
+      <ol marker="a.">
+        <li>
+          <p>Finding the first <m>6</m> derivatives of <m>f(x) = \sin(x)</m> and evaluating them at <m>a = \frac{\pi}{2}</m>, we see the results in <xref ref="T-8a-2-ez-2-2-sine">Table</xref>.
+
+              <table xml:id="T-8a-2-ez-2-2-sine">
+                <title>Finding the derivatives of <m>f(x) = \sin(x)</m> at <m>a = \frac{\pi}{2}</m>.</title>
+                  <tabular top="none" bottom="none">
+                    <row>
+                      <cell halign="right"><m>f(x) =</m></cell>
+                      <cell><m>\sin(x)</m></cell>
+                      <cell halign="right"><m>f(\frac{pi}{2}) =</m></cell>
+                      <cell><m>\sin(\frac{pi}{2}) = 1</m></cell>
+                    </row>
+                    <row>
+                      <cell halign="right"><m>f'(x) = </m></cell>
+                      <cell><m>\cos(x)</m></cell>
+                      <cell halign="right"><m>f'(\frac{pi}{2}) = </m></cell>
+                      <cell><m>0</m></cell>
+                    </row>
+                    <row>
+                      <cell halign="right"><m>f''(x) = </m></cell>
+                      <cell><m>-\sin(x)</m></cell>
+                      <cell halign="right"><m>f''(\frac{pi}{2})) = </m></cell>
+                      <cell><m>-\sin(\frac{pi}{2}) = -1</m></cell>
+                    </row>
+                    <row>
+                      <cell halign="right"><m>f'''(x) = </m></cell>
+                      <cell><m>-\cos(x)</m></cell>
+                      <cell halign="right"><m>f'''(\frac{pi}{2})) = </m></cell>
+                      <cell><m>0</m></cell>
+                    </row>
+                    <row>
+                      <cell halign="right"><m>f^{(4)}(x) = </m></cell>
+                      <cell><m>\sin(x)</m></cell>
+                      <cell halign="right"><m>f^{(4)}(\frac{pi}{2}) =</m></cell>
+                      <cell><m>\sin(\frac{pi}{2}) = 1</m></cell>
+                    </row>
+                    <row>
+                      <cell halign="right"><m>f^{(5)}(x) = </m></cell>
+                      <cell><m>\cos(x)</m></cell>
+                      <cell halign="right"><m>f^{(5)}(\frac{pi}{2}) = </m></cell>
+                      <cell><m>0</m></cell>
+                    </row>
+                    <row>
+                      <cell halign="right"><m>f^{(6)}(x) = </m></cell>
+                      <cell><m>-\sin(x)</m></cell>
+                      <cell halign="right"><m>f^{(6)}(\frac{pi}{2})) = </m></cell>
+                      <cell><m>-\sin(\frac{pi}{2}) = -1</m></cell>
+                    </row>
+                  </tabular>
+                </table>  
+                Using the fact that <m>c_k = \frac{f^{k}(\frac{pi}{2})}{k!}</m>, we find that the degree <m>6</m> Taylor polynomial approximation of <m>\sin(x)</m> centered at <m>a = \frac{\pi}{2}</m> is
+                <me>
+                  T_6(x) = 1 - \frac{1}{2!}(x-\frac{1}{2})^2 + \frac{1}{4!}(x-\frac{1}{2})^4 - \frac{1}{6!}(x-\frac{1}{2})^6
+                </me>
+          </p>
+        </li>
+        <li>
+          <p>
+            Earlier, we found that the degree <m>6</m> Taylor polynomial of <m>\cos(x)</m> centered at <m>a = 0</m> is given by
+            <me>
+              P_6(x) = 1 - \frac{1}{2!}x^2 + \frac{1}{4!}x^4 - \frac{1}{6!}x^6
+            </me>,
+            so the degree <m>6</m> Taylor polynomial of <m>\sin(x)</m> centered at <m>a = \frac{\pi}{2}</m>, <m>T_6(x)</m> appears to be the same as <m>P_6(x-\frac{\pi}{2})</m>, the degree <m>6</m> Taylor polynomial of <m>\cos(x)</m> centered at <m>a = 0</m>, shifted <m>\frac{\pi}{2}</m> units to the right.
+          </p>
+        </li>
+        <li>
+          <p>
+            Since <m>\sin(x) = \cos(x - \frac{\pi}{2})</m>, this tells us that the sine function is simply a shifted version of the cosine function (the cosine function shifted <m>\frac{\pi}{2}</m> units to the right), so it makes sense that their Taylor polynomials align as we found in (c), provided that we center the sine function's approximations at <m>a = \frac{\pi}{2}</m>.
+          </p>
+        </li>
+      </ol>
       
     </solution>
   </exercise>
@@ -190,10 +418,48 @@
     </statement>
     
     <answer>
+
+      <ol marker="a.">
+        <li>
+          <p>
+            <m>\ln(1.5) = f(0.5) \approx T_5(0.5) = 1(0.5) - \frac{1}{2}(0.5)^2 + \frac{1}{3}(0.5)^3 - \frac{1}{4}(0.5)^4 + \frac{1}{5}(0.5)^5 = 0.4072916\overline{6}</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\ln(1.5) = g(1.5) \approx P_5(1.5) = 1(1.5-1) - \frac{1}{2}(1.5-1)^2 + \frac{1}{3}(1.5-1)^3 - \frac{1}{4}(1.5-1)^4 + \frac{1}{5}(1.5-1)^5 = 0.4072916\overline{6}</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            The same.  This occurs because <m>f(x) = g(1+x)</m>.
+          </p>
+        </li>
+      </ol>
       
     </answer>
     
     <solution>
+
+      <ol marker="a.">
+        <li>
+          <p>
+            We have that 
+            <me>\ln(1.5) = f(0.5) \approx T_5(0.5) = 1(0.5) - \frac{1}{2}(0.5)^2 + \frac{1}{3}(0.5)^3 - \frac{1}{4}(0.5)^4 + \frac{1}{5}(0.5)^5 = 0.4072916\overline{6}</me>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Here, we find that 
+            <me>\ln(1.5) = g(1.5) \approx P_5(1.5) = 1(1.5-1) - \frac{1}{2}(1.5-1)^2 + \frac{1}{3}(1.5-1)^3 - \frac{1}{4}(1.5-1)^4 + \frac{1}{5}(1.5-1)^5</me>.  Since <m>(1.5 - 1) = 0.5</m>, we see that <m>P_5(1.5) = T_5(0.5) = 0.4072916\overline{6}</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            In (b), we just observed that the estimates of <m>\ln(1.5)</m> generated by <m>T_5(x)</m> and <m>P_5(x)</m> are the same.  This occurs because <m>f(x) = \ln(1+x)</m> is just a shifted version of <m>g(x) = \ln(x)</m> (<m>f(x) = g(1+x)</m>, so <m>f</m> is <m>g</m> shifted 1 unit left), so by changing where their respective Taylor polynomials are centered, we are using the same structure to generate each approximation.
+          </p>
+        </li>
+      </ol>
       
     </solution>
   </exercise>
