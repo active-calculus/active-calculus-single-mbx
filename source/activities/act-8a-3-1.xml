@@ -65,94 +65,121 @@
   </statement>
 
 
-<!-- **** NEED TO WORK THROUGH THE HINTS AND SOLUTIONS SINCE I TOOK THIS ACTIVITY MOSTLY FROM THE ORIGINAL; ADD PART (D) TOO **** -->
-
   <hint>
     <p>
       <ol marker="a.">
         <li>
           <p>
-            Distribute the factor of <m>r</m>.
+            Note that <m>\frac{2}{5} \cdot \left( \frac{2}{5} \right^{n-1} = \left( \frac{2}{5} \right^{n} </m>.
           </p>
         </li>
 
         <li>
           <p>
-            Look for common terms in the two expressions being subtracted.
+            Observe that <m>\frac{2}{5} \left( 1 + \frac{2}{5} + \left(\frac{2}{5}\right)^2 + \cdots + \left(\frac{2}{5}\right)^{n-1} \right) = \frac{2}{5} + \left(\frac{2}{5}\right)^2 + \left(\frac{2}{5}\right)^3 + \cdots + \left(\frac{2}{5}\right)^{n}</m>.
           </p>
         </li>
 
         <li>
           <p>
-            Observe that you can remove a factor of <m>S_n</m> from <m>S_n - rS_n</m>.
+            Observe that we can remove a factor of <m>S_n</m> from <m>S_n - \frac{2}{5} \cdot S_n</m>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Note that we can remove a factor of <m>7</m> from every term.
           </p>
         </li>
       </ol>
     </p>
   </hint>
+  
   <answer>
-    <p>
-
-    </p>
-  </answer>
-  <solution>
-    <p>
-      Consider
-      <men xml:id="eq-act-8a-3-1-soln">
-        S_n = 1 + \frac{2}{5} + \left(\frac{2}{5}\right)^2 + \cdots + \left(\frac{2}{5}\right)^{n-1}
-      </men>,
-      for which <m>a = 1</m> and <m>r = \frac{2}{5}</m>.
-    </p>
-
     <p>
       <ol marker="a.">
         <li>
           <p>
-            Multiplying both sides of <xref ref="eq-act-8a-3-1-soln">Equation</xref> by <m>r = \frac{2}{5}</m>, we see that 
-            <me>
-              \frac{2}{5} \cdot S_n = \frac{2}{5} + \left(\frac{2}{5}\right)^2 + \left(\frac{2}{5}\right)^3 + \cdots + \left(\frac{2}{5}\right)^{n}
-            </me>.
+            <m>\frac{2}{5} \cdot S_n = \frac{2}{5} + \left(\frac{2}{5}\right)^2  \left(\frac{2}{5}\right)^3 + \cdots + \left(\frac{2}{5}\right)^n  </m>.
           </p>
         </li>
 
         <li>
           <p>
-            With 
-            <me>
-              S_n = 1 + \frac{2}{5} + \left(\frac{2}{5}\right)^2 + \cdots + \left(\frac{2}{5}\right)^{n-1}
-            </me>
-            and 
-            <me>
-              \frac{2}{5} \cdot S_n = \frac{2}{5} + \left(\frac{2}{5}\right)^2 + \left(\frac{2}{5}\right)^3 + \cdots + \left(\frac{2}{5}\right)^{n}
-            </me>,
-            it follows that if we subtract the second equation from the first, 
-            <men xml:id="eq-act-8a-3-1-soln-2">
-              S_n - \frac{2}{5} \cdot S_n = 1 - \left(\frac{2}{5}\right)^{n}
-            </men>,
-            since every term in <m>S_n</m> except <m>1</m> appears in <m>\frac{2}{5} \cdot S_n</m>, and every term in <m>\frac{2}{5} \cdot S_n</m> except <m>\left(\frac{2}{5}\right)^{n}</m> appears in <m>\frac{2}{5} \cdot S_n</m>.
+            The key observation is that <m>1 + \frac{2}{5} + \left(\frac{2}{5}\right)^2 + \cdots + \left(\frac{2}{5}\right)^{n-1} - \frac{2}{5} - \left(\frac{2}{5}\right)^2 - \left(\frac{2}{5}\right)^3 - \cdots - \left(\frac{2}{5}\right)^n = 1 -  \left(\frac{2}{5}\right)^n</m>,
           </p>
         </li>
 
         <li>
           <p>
-            Factoring the left side of <xref ref="eq-act-8a-3-1-soln-2">Equation</xref>, we see that
-            <me>
-              S_n(1 - \frac{2}{5}) = 1 - \left(\frac{2}{5}\right)^{n}
-            </me>
-            and dividing both sides by <m>(1 - \frac{2}{5})</m>, we have
-            <me>
-              S_n = \frac{1 - \left(\frac{2}{5}\right)^{n}}{1 - \frac{2}{5}}
-            </me>.
-            This shows that we can find the value of the <m>n</m>the partial sum directly by using this shortcut formula, rather than having to actually add up <m>n</m> terms.
+            <m>S_n = \frac{1 -  \left(\frac{2}{5}\right)^n}{\frac{3}{5}}</m>
           </p>
         </li>
+
+        <li>
+          <p>
+            <m>S_n = \frac{7 -  7 \cdot \left(\frac{2}{5}\right)^n}{\frac{3}{5}}</m>
+          </p>
+        </li>
+      </ol>
+    </p>
+  </answer>
+  <solution>
+
+    <p>
+      <ol marker="a.">
+        <li>
+              <p>
+                We see that
+                <me>
+                  \frac{2}{5} \cdot S_n = \frac{2}{5} \left( 1 + \frac{2}{5} + \left(\frac{2}{5}\right)^2 + \cdots + \left(\frac{2}{5}\right)^{n-1} \right) 
+                </me>,
+                or
+                <men xml:id="eq-act-8a-3-1-soln">
+                  \frac{2}{5} \cdot S_n = \frac{2}{5} + \left(\frac{2}{5}\right)^2  \left(\frac{2}{5}\right)^3 + \cdots + \left(\frac{2}{5}\right)^n 
+                </men>.
+              </p>
+        </li> 
+        <li>
+          <p>
+            Next, we use <xref ref="eq-act-8a-3-1-soln">Equation</xref> in the expression <m>S_n - \frac{2}{5} \cdot S_n</m> to find that
+            <md>
+              <mrow>
+                S_n - \frac{2}{5} \cdot S_n =\mathstrut \amp \left( 1 + \frac{2}{5} + \left(\frac{2}{5}\right)^2 + \cdots + \left(\frac{2}{5}\right)^{n-1} \right) - \left(\frac{2}{5} + \left(\frac{2}{5}\right)^2 + \left(\frac{2}{5}\right)^3 + \cdots + \left(\frac{2}{5}\right)^n \right)
+              </mrow>
+              <mrow>
+                =\mathstrut \amp 1 + \frac{2}{5} + \left(\frac{2}{5}\right)^2 + \cdots + \left(\frac{2}{5}\right)^{n-1} - \frac{2}{5} - \left(\frac{2}{5}\right)^2 - \left(\frac{2}{5}\right)^3 - \cdots - \left(\frac{2}{5}\right)^n \right)
+              </mrow>
+              <mrow>
+                =\mathstrut \amp 1 -  \left(\frac{2}{5}\right)^n
+              </mrow>.
+            </md>
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Using the fact that <m>S_n - \frac{2}{5} \cdot S_n = \frac{3}{5} \cdot S_n</m>, we see that 
+            <me>
+              \frac{3}{5} \cdot S_n = 1 -  \left(\frac{2}{5}\right)^n
+            </me>
+            so 
+            <me>
+              S_n = \frac{1 -  \left(\frac{2}{5}\right)^n}{\frac{3}{5}}
+            </me>.
+          </p>
+        </li>
+
         <li>
           <p>
             If instead of the original geometric sum <m>S_n</m>, we had <m>a = 7</m> and
             <me>
               S_n = 7 + 7 \cdot \frac{2}{5} + 7 \cdot \left(\frac{2}{5}\right)^2 + \cdots + 7 \cdot \left(\frac{2}{5}\right)^{n-1}
             </me>,
-            the only thing that would change is that our shortcut formula for <m>S_n</m> would be multiplied by <m>7</m>.
+            the only thing that would change is that our shortcut formula for <m>S_n</m> would be multiplied by <m>7</m>:
+            <me>
+              S_n = \frac{7 -  7 \cdot \left(\frac{2}{5}\right)^n}{\frac{3}{5}}
+            </me>
           </p>
         </li>
       </ol>
