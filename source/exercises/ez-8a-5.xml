@@ -60,7 +60,8 @@
             <p>
               Apply your result from (a) to estimate <m>C(0.5)</m> to within <m>0.001</m>.
             </p>
-
+          </li>  
+          <li>
             <p>
               Similarly, use the Taylor series for <m>\sin(x)</m> to find the Taylor series for <m>\sin(t^2)</m> and hence write <m>S(x)</m> as a Taylor series.
             </p>
@@ -82,16 +83,113 @@
 <!-- %%%%%%%%%%%%%%%%%%%% --> 
 
     <answer>
+        <ol marker="a.">
+          <li>
+            <p>
+              <m>C(x) = x - \frac{1}{5 \cdot 2!}x^5 + \frac{1}{9 \cdot 4!}x^9 - \frac{1}{13 \cdot 6!}t^{13} + \cdots
+              </m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              For all real numbers <m>x</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>
+                C(0.5) \approx \frac{1}{2} - \frac{1}{5 \cdot 2! \cdot 2^5} = \frac{159}{320} = 0.496875
+              </m>,
+              which is accurate to within <m>\frac{1}{9 \cdot 4! \cdot 2^9} = \frac{1}{110592} = 0.00000904 \ldots</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>
+                S(x) = \frac{1}{3}x^3 - \frac{7 \cdot 3!}x^7 + \frac{1}{11 \cdot 5!}x^{11} - \cdots
+              </m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              For all real numbers <m>x</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>
+                S(0.8) \approx \frac{1}{3} \left( \frac{4}{5} \right)^3 - \frac{1}{7 \cdot 3!} \left( \frac{4}{5} \right)^7 = \frac{271808}{1640625} = 0.16567 \ldots
+              </m>,
+              which is accurate to within <m>\frac{1}{11 \cdot 5!} \left( \frac{4}{5} \right)^{11} = 0.00006507 \ldots</m>.
+            </p>
+          </li>
+        </ol>
+    </answer>
+    <solution>
+
+      <p>
+        In this exercise we find the Taylor series representation for two famous functions, the Fresnel integral functions
+        <me>
+          C(x) = \int_0^x \cos(t^2) \, dt
+        </me>
+        and
+        <me>
+          S(x) = \int_0^x \sin(t^2) \, dt
+        </me>.
+        The Fresnel integral functions are important in optics and are used in the design of Fresnel lenses such as those found in lighthouses along the Lake Michigan shore.
+      </p>
+
       <p>
         <ol marker="a.">
           <li>
             <p>
+              Using <m>\cos(x) = 1 - \frac{1}{2!}x^2 + \frac{1}{4!}x^4 - \frac{1}{6!}x^6 + \cdots</m>,
+              <md>
+                <mrow>C(x) =\mathstrut \amp \int_0^x \cos(t^2) \, dt</mrow>
+                <mrow> =\mathstrut \amp \int_0^x \left( 1 - \frac{1}{2!}t^4 + \frac{1}{4!}t^8 - \frac{1}{6!}t^{12} + \cdots \right) \, dt</mrow>
+                <mrow> =\mathstrut \amp \left.  \left( t - \frac{1}{5 \cdot 2!}t^5 + \frac{1}{9 \cdot 4!}t^9 - \frac{1}{13 \cdot 6!}t^{13} + \cdots \right) \right|_0^x</mrow>
+                <mrow> =\mathstrut \amp x - \frac{1}{5 \cdot 2!}x^5 + \frac{1}{9 \cdot 4!}x^9 - \frac{1}{13 \cdot 6!}t^{13} + \cdots </mrow>
+              </md>
+            </p>
+          </li>
+          <li>
+            <p>
+              Because the Taylor series for <m>\cos(x)</m> converges for all real numbers <m>x</m>, the Taylor series for <m>C(x)</m> will also converge for all real numbers <m>x</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Using the Taylor series for <m>C(x)</m>,
+              <me>
+                C(0.5) \approx \frac{1}{2} - \frac{1}{5 \cdot 2! \cdot 2^5} = \frac{159}{320} = 0.496875
+              </me>,
+              which is accurate to within <m>\frac{1}{9 \cdot 4! \cdot 2^9} = \frac{1}{110592} = 0.00000904 \ldots</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Reasoning similarly with the Taylor series for <m>\sin(x)</m>, we find 
+              <me>
+                S(x) = \frac{1}{3}x^3 - \frac{7 \cdot 3!}x^7 + \frac{1}{11 \cdot 5!}x^{11} - \cdots
+              </me>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Because the Taylor series for <m>\sin(x)</m> converges for all real numbers <m>x</m>, the Taylor series for <m>S(x)</m> will also converge for all real numbers <m>x</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Using the Taylor series for <m>C(x)</m>,
+              <me>
+                S(0.8) \approx \frac{1}{3} \left( \frac{4}{5} \right)^3 - \frac{1}{7 \cdot 3!} \left( \frac{4}{5} \right)^7 = \frac{271808}{1640625} = 0.16567 \ldots
+              </me>,
+              which is accurate to within <m>\frac{1}{11 \cdot 5!} \left( \frac{4}{5} \right)^{11} = 0.00006507 \ldots</m>.
             </p>
           </li>
         </ol>
       </p>
-    </answer>
-    <solution>
 
     </solution>
   </exercise>
@@ -134,17 +232,62 @@
 <!-- %%%%%%%%%%%%%%%%%%%% --> 
 
     <answer>
-      <p>
         <ol marker="a.">
           <li>
             <p>
+              <m>a_0 = 1</m>.
+            </p>
+          </li>
+          <li>
+            <p>    
+              Both series expanstions for <m>e^x</m> have <q><m>1</m></q> as their constant term, and thus <m>a_1 = a_0 = 1</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              By equating the coefficients of the linear terms <m>a_1 x</m> and <m>2a_2 x</m>, it follows <m>a_1 = 2a_2</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>a_3 = \frac{1}{3}a_2 = \frac{1}{3 \cdot 2} = \frac{1}{3!}</m>,  <m>a_4 = \frac{1}{4}a_3 = \frac{1}{4 \cdot 3!} = \frac{1}{4!}</m>, and <m>a_5 = \frac{1}{5}a_4 = \frac{1}{5 \cdot 4!} = \frac{1}{5!}</m>; so in general, <m>a_k = \frac{1}{k!}</m>.
             </p>
           </li>
         </ol>
-      </p>
     </answer>
     <solution>
-
+        <ol marker="a.">
+          <li>
+            <p>
+              Letting <m>x = 0</m> in 
+              <me>
+                e^x = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \cdots + a_n x^n + \cdots
+              </me>
+              shows that <m>e^0 = a_0</m>, so <m>a_0 = 1</m>.
+            </p>
+          </li>
+          <li>
+            <p>    
+              Differentiating both sides of <xref ref="ez-8a-5-2-exp">Equation</xref>, since <m>\frac{d}{dx}[e^x] = e^x</m> we find
+              <me>
+                e^x = a_1 + 2a_2 x + 3a_3 x^2 + \cdots + n a_n x^{n-1} + \cdots
+              </me>.
+              By equating the constant terms in <xref ref="ez-8a-5-2-exp">Equation</xref> and in our most recent equation (Equation 2), we see that 
+              <me>a_0 = a_1</me>.
+              Having earlier established that <m>a_0 = 1</m>, we now also know <m>a_1 = 1</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              If we equate the coefficients of the linear terms <m>a_1 x</m> and <m>2a_2 x</m> in <xref ref="ez-8a-5-2-exp">Equation</xref> and Equation 2, we see that <m>a_1 = 2a_2</m>, so <m>a_2 = \frac{1}{2}a_1 = \frac{1}{2}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Equating coefficients of like terms in <xref ref="ez-8a-5-2-exp">Equation</xref> and Equation 2, we find that <m>3a_3 = a_2</m>, <m>4a_4 = a_3</m>, and <m>5a_5 = a_4</m>.  This implies that <m>a_3 = \frac{1}{3}a_2 = \frac{1}{3 \cdot 2} = \frac{1}{3!}</m>,  <m>a_4 = \frac{1}{4}a_3 = \frac{1}{4 \cdot 3!} = \frac{1}{4!}</m>, and <m>a_5 = \frac{1}{5}a_4 = \frac{1}{5 \cdot 4!} = \frac{1}{5!}</m>.  Thus we observe that <m>a_k = \frac{1}{k!}</m>, which is exactly what we'd expect for the Taylor series of <m>e^x</m>.
+            </p>
+          </li>
+        </ol>
     </solution>
 
   </exercise>      
@@ -173,7 +316,7 @@
           </li>
           <li>
             <p>
-              Observe that your result in (a) is an alternating series.  Estimate the value of that alternating series to within 0.0001.  How many terms of the series are needed to do so?
+              Observe that your result in (a) is an alternating series.  Estimate the value of that alternating series to within 0.01.  How many terms of the series are needed to do so?
             </p>
           </li>
           <li>
@@ -196,16 +339,71 @@
 <!-- %%%%%%%%%%%%%%%%%%%% --> 
 
     <answer>
-      <p>
+
         <ol marker="a.">
           <li>
             <p>
+              <m>\int_0^1 \frac{4}{1+x^2} \, dx = 4 - \frac{4}{3} + \frac{4}{5} - \frac{4}{7} + \cdots
+              </m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              It would take <m>n = 200</m> terms in the sum to get an approximation within <m>0.01</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>
+                 \int_0^1 \frac{4}{1+x^2} \, dx = \left. 4 \arctan(x) \right|_0^1 = \pi
+              </m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\pi = 4 - \frac{4}{3} + \frac{4}{5} - \frac{4}{7} + \cdots</m>.
             </p>
           </li>
         </ol>
-      </p>
+
     </answer>
     <solution>
+
+        <ol marker="a.">
+          <li>
+            <p>
+              Since <m>\frac{1}{1+x} = 1 - x + x^2 - x^3 + \cdots</m>, we can write
+              <me>
+                \frac{4}{1+x^2} = 4 - 4x^2 + 4x^4 - 4x^6 + \cdots
+              </me>,
+              so
+              <md>
+                <mrow>\int_0^1 \frac{4}{1+x^2} \, dx =\mathstrut \amp \int_0^1 4 - 4x^2 + 4x^4 - 4x^6 + \cdots \, dx</mrow>
+                <mrow>  =\mathstrut \amp \left. 4x - \frac{4}{3}x^3 + \frac{4}{5}x^5 - \frac{4}{7}x^7 + \cdots \right|_0^1</mrow>
+                <mrow>  =\mathstrut \amp 4 - \frac{4}{3} + \frac{4}{5} - \frac{4}{7} + \cdots</mrow>
+              </md>
+            </p>
+          </li>
+          <li>
+            <p>
+              Since <m>\int_0^1 \frac{4}{1+x^2} \, dx = 4 - \frac{4}{3} + \frac{4}{5} - \frac{4}{7} + \cdots</m>, to estimate this alternating series to within <m>0.01</m>, we need <m>\frac{4}{2n+1} \lt 0.01</m>, which happens when <m>n = 200</m>!
+            </p>
+          </li>
+          <li>
+            <p>
+              By the First Fundamental Theorem of Calculus, 
+              <me>
+                 \int_0^1 \frac{4}{1+x^2} \, dx = \left. 4 \arctan(x) \right|_0^1 = 4 \arctan(1) - 4 \arctan(0) = 4 \cdot \frac{\pi}{4} = \pi
+              </me>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Since both (a) and (c) find representations for <m>\int_0^1 \frac{4}{1+x^2} \, dx</m>, it follwows that the two representations are equal, and thus
+              <me>\pi = 4 - \frac{4}{3} + \frac{4}{5} - \frac{4}{7} + \cdots</me>.
+            </p>
+          </li>
+        </ol>
 
     </solution>
 
