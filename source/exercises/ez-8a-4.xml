@@ -41,8 +41,8 @@
           <li>
             <p>
               Let <m>f(x) = \cos(x)</m>.
-              Find the Taylor polynomials up through order four of <m>f</m> centered at <m>x = \frac{\pi}{2}</m>.
-              Then find the Taylor series for <m>f(x)</m> centered at <m>x = \frac{\pi}{2}</m>.
+              Find the Taylor polynomials up through order four of <m>f</m> centered at <m>a = \frac{\pi}{2}</m>.
+              Then find the Taylor series for <m>f(x)</m> centered at <m>a = \frac{\pi}{2}</m>.
               Why is the result not surprising?
             </p>
           </li>
@@ -50,8 +50,8 @@
           <li>
             <p>
               Let <m>f(x) = \frac{1}{1+x} = (1+x)^{-1}</m>.
-              Find the Taylor polynomials up through order four of <m>f</m> centered at <m>x = 1</m>.
-              Then find the Taylor series for <m>f(x)</m> centered at <m>x = 1</m>.
+              Find the Taylor polynomials up through order four of <m>f</m> centered at <m>a = 1</m>.
+              Then find the Taylor series for <m>f(x)</m> centered at <m>a = 1</m>.
             </p>
           </li>
 
@@ -62,16 +62,106 @@
 <!-- %%%%%%%%%%%%%%%%%%%% --> 
 
     <answer>
+
       <p>
         <ol marker="a.">
           <li>
             <p>
+              <m>
+                T_4(x) = 0 - 1 \left(x - \frac{\pi}{2}\right) + \frac{0}{2!}\left(x - \frac{\pi}{2}\right)^2 + \frac{1}{3!}\left(x - \frac{\pi}{2}\right)^3 + \frac{0}{4!}\left(x - \frac{\pi}{2}\right)^4
+              </m>; <m>
+                T(x) = 0 - 1 \left(x - \frac{\pi}{2}\right) + \frac{0}{2!}\left(x - \frac{\pi}{2}\right)^2 + \frac{1}{3!}\left(x - \frac{\pi}{2}\right)^3 + \frac{0}{4!}\left(x - \frac{\pi}{2}\right)^4 + \cdots + (-1)^{n+1} \frac{1}{(2n+1)!}\left(x - \frac{\pi}{2}\right)^{2n+1} + \cdots
+              </m>; think about the Taylor series centered at <m>a = 0</m> for <m>g(x) = \sin(x)</m> and note that <m>f(x) = \cos(x) = -\sin\left( x - \frac{\pi}{2} \right) = -g\left( x - \frac{\pi}{2} \right) </m>.  
             </p>
           </li>
+
+          <li>
+            <p>
+              <m>
+                T_4(x) = \frac{1}{2} - \frac{1}{2^2}(x-1) + \frac{1}{2^3}(x-1)^2 - \frac{1}{2^4}(x-1)^3 + \frac{1}{2^5}(x-1)^4
+              </m>;
+              <m>
+                T(x) = \frac{1}{2} - \frac{1}{2^2}(x-1) + \frac{1}{2^3}(x-1)^2 - \frac{1}{2^4}(x-1)^3 + \frac{1}{2^5}(x-1)^4 + \cdots + \frac{1}{2^{n+1}}(x-1)^{n} + \cdots
+              </m>.
+            </p>
+
+          </li>
+
         </ol>
       </p>
+
     </answer>
     <solution>
+
+      <p>
+        <ol marker="a.">
+          <li>
+            <p>
+              Let <m>f(x) = \cos(x)</m>.
+            </p>
+
+            <p>
+              We know that <m>f'(x) = -\sin(x)</m>, <m>f''(x) = -cos(x)</m>, <m>f'''(x) = \sin(x)</m>, and <m>f^{(4)}(x) = cos(x)</m>, so
+              <m>f'\left(\frac{\pi}{2}\right) = -\sin\left(\frac{\pi}{2}\right) = -1</m>, <m>f''\left(\frac{\pi}{2}\right) = -cos\left(\frac{\pi}{2}\right) = 0</m>, <m>f'''\left(\frac{\pi}{2}\right) = \sin\left(\frac{\pi}{2}\right) = 1</m>, and <m>f^{(4)}(x) = cos\left(\frac{\pi}{2}\right) = 0</m>.  We also note that <m>f\left(\frac{\pi}{2}\right) = \cos\left(\frac{\pi}{2}\right) = 0</m>
+            </p>
+
+            <p>
+              It follows that the degree four Taylor polynomial of <m>f</m> centered at <m>x = \frac{\pi}{2}</m> is
+              <me>
+                T_4(x) = 0 - 1 \left(x - \frac{\pi}{2}\right) + \frac{0}{2!}\left(x - \frac{\pi}{2}\right)^2 + \frac{1}{3!}\left(x - \frac{\pi}{2}\right)^3 + \frac{0}{4!}\left(x - \frac{\pi}{2}\right)^4
+              </me>,
+              from which we can also easily determine <m>T_3(x)</m>, <m>T_2(x)</m>, and <m>T_1(x)</m>.
+            </p>
+
+            <p>
+              From the pattern in <m>T_4(x)</m>, we find that the Taylor series for <m>f(x)</m> centered at <m>x = \frac{\pi}{2}</m> is
+              <me>
+                T(x) = 0 - 1 \left(x - \frac{\pi}{2}\right) + \frac{0}{2!}\left(x - \frac{\pi}{2}\right)^2 + \frac{1}{3!}\left(x - \frac{\pi}{2}\right)^3 + \frac{0}{4!}\left(x - \frac{\pi}{2}\right)^4 + \cdots + (-1)^{n+1} \frac{1}{(2n+1)!}\left(x - \frac{\pi}{2}\right)^{2n+1} + \cdots
+              </me>
+            </p>
+
+            <p>
+              This result is not surprising, because <m>f(x) = \cos(x) = -\sin\left( x - \frac{\pi}{2} \right)</m>.  So, if we stated with the Taylor series for <m>g(x) = \sin(x)</m> centered at <m>a = 0</m>, we'd have 
+              <me>
+                g(x) = \sin(x) = \sum_{k=0}^{\infty} (-1)^{k} \frac{1}{(2k+1)!}x^{2k+1}
+              </me>
+              from which it follows that 
+              <me>
+                -\sin\left(x - \frac{\pi}{2} \right) = -\sum_{k=0}^{\infty} (-1)^{k} \frac{1}{(2k+1)!} \left(x - \frac{\pi}{2} \right)^{2k+1}
+              </me>.
+              Noting that <m>-1 \cdot (-1)^k = -1^{k+1}</m>, we have established that
+              <me>
+                \cos(x) = -\sin\left(x - \frac{\pi}{2} \right) = \sum_{k=0}^{\infty} (-1)^{k+1} \frac{1}{(2k+1)!} \left(x - \frac{\pi}{2} \right)^{2k+1}
+              </me> 
+              which matches our earlier result.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              With <m>f(x) = \frac{1}{1+x} = (1+x)^{-1}</m>, we observe that <m>f'(x) = -(1+x)^{-2}</m>, <m>f''(x) = (-1)(-2)(1+x)^{-3}</m>, <m>f'''(x) = (-1)(-2)(-3)(1+x)^{-4}</m>, and <m>f^{(4)}(x) = (-1)(-2)(-3)(-4)(1+x)^{-5}</m>.  Evaluating each of these functions at <m>a = 1</m>, we find
+              <m>f(1) = \frac{1}{2}</m>, <m>f'(1) = (-1) \cdot \frac{1}{2^2}</m>, <m>f''(1) = \frac{2!}{2^3}</m>,  <m>f'''(1) = (-1) \cdot \frac{3!}{2^4}</m>, and  <m>f^{(4)}(1) = \frac{4!}{2^5}</m>.   
+            </p>
+
+            <p>
+              From these derivative values and the fact that <m>c_k = \frac{f^{(k)}(1)}{k!}</m>, it follows that 
+              <me>
+                T_4(x) = \frac{1}{2} - \frac{1}{2^2}(x-1) + \frac{1}{2^3}(x-1)^2 - \frac{1}{2^4}(x-1)^3 + \frac{1}{2^5}(x-1)^4
+              </me>,
+              from which we can also easily find <m>T_3(x)</m>, <m>T_2(x)</m>, and <m>T_1(x)</m>.
+            </p>
+
+            <p>
+              Finally, from the patterns in our preceding work, we see the Taylor series for <m>f(x)</m> centered at <m>a = 1</m> is
+              <me>
+                T(x) = \frac{1}{2} - \frac{1}{2^2}(x-1) + \frac{1}{2^3}(x-1)^2 - \frac{1}{2^4}(x-1)^3 + \frac{1}{2^5}(x-1)^4 + \cdots + \frac{1}{2^{n+1}}(x-1)^{n} + \cdots
+              </me>.
+            </p>
+
+          </li>
+
+        </ol>
+      </p>
       
     </solution>
   </exercise>
@@ -121,6 +211,7 @@
         </ol>
       </p>
     </statement>
+
     <answer>
       <p>
         <ol>
@@ -138,7 +229,7 @@
                 <li>
                   <p>
                     <m>
-                    g(x) = T(x^2) = x^2 - \frac{1}{3!}x^6 + \frac{1}{5!}x^10 - \cdots
+                    g(x) = T(x^2) = x^2 - \frac{1}{3!}x^6 + \frac{1}{5!}x^{10} - \cdots
                     </m>.
                   </p>
                 </li>
@@ -210,7 +301,7 @@
                     </me>,
                     we have
                     <me>
-                      g(x) = T(x^2) = x^2 - \frac{1}{3!}x^6 + \frac{1}{5!}x^10 - \cdots
+                      g(x) = T(x^2) = x^2 - \frac{1}{3!}x^6 + \frac{1}{5!}x^{10} - \cdots
                     </me>
                     which should be the Taylor series for <m>\sin(x^2)</m> since
                     <m>\sin(x) = x - \frac{1}{3!}x^3 + \frac{1}{5!}x^5 - \cdots</m> for every value of <m>x</m>.
