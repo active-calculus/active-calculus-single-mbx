@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2019                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+<exercises xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="ez-8-6" permid="BNa">
+  <!-- Uses EV2 and incompatible with PTX -->
+  <!--
+  <exercise xml:id="ez-8-6-WW1">
+    <webwork source="Library/Rochester/setSeries8Power/eva8_5a_1.pg" />
+  </exercise>
+  -->
+  <!-- Same problem as above -->
+  <!--
+  <exercise xml:id="ez-8-6-WW2">
+    <webwork source="Library/Rochester/setSeries8Power/eva8_5a_1.pg" />
+  </exercise>
+  -->
+  <!-- Uses EV2 and incompatible with PTX -->
+  <!--
+  <exercise xml:id="ez-8-6-WW3">
+    <webwork source="Library/Rochester/setSeries8Power/eva8_5b.pg" />
+  </exercise>
+  -->
+  <exercise xml:id="ez-8-6-WW4" permid="WSo">
+    <title>Finding coefficients in a power series expansion of a rational function</title>
+    <webwork source="Library/Rochester/setSeries8Power/eva8_6b_a.pg" />
+  </exercise>
+
+  <exercise xml:id="ez-8-6-WW5" permid="CZx">
+    <title>Finding coefficients in a power series expansion of a function involving <m>\arctan(x)</m></title>
+    <webwork source="Library/Rochester/setSeries8Power/eva8_6e.pg" />
+  </exercise>
+
+  <exercise permid="jgG">
+    <statement>
+      <p permid="LCl">
+        We can use power series to approximate definite integrals to which known techniques of integration do not apply.
+        We will illustrate this in this exercise with the definite integral <m>\int_0^1 \sin(x^2) \,ds</m>.
+
+        <ol marker="a." permid="JyD">
+          <li permid="awO">
+            <p permid="zJs">
+              Use the Taylor series for <m>\sin(x)</m> to find the Taylor series for <m>\sin(x^2)</m>.
+              What is the interval of convergence for the Taylor series for <m>\sin(x^2)</m>?
+              Explain.
+            </p>
+          </li>
+
+          <li permid="GDX">
+            <p permid="fQB">
+              Integrate the Taylor series for
+              <m>\sin(x^2)</m> term by term to obtain a power series expansion for <m>\int \sin(x^2)\,dx</m>.
+            </p>
+          </li>
+
+          <li permid="mLg">
+            <p permid="LXK">
+              Use the result from part (b) to explain how to evaluate <m>\int_0^1 \sin(x^2) \ dx</m>.
+              Determine the number of terms you will need to approximate <m>\int_0^1 \sin(x^2) \,dx</m> to 3 decimal places.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+    <answer permid="nQz">
+      <p permid="TgK">
+        <ol marker="a." permid="xkl">
+          <li permid="SSp">
+            <p permid="seT">
+              <m>
+              \sin(x^2) = \sum_{k=0}^{\infty} (-1)^k\frac{x^{2(2k+1)}}{(2k+1)!}
+              </m>,
+              with interval of convergence <m>(-\infty, \infty)</m>.
+            </p>
+          </li>
+
+          <li permid="yZy">
+            <p permid="Ymc">
+              <m>
+              \int \sin(x^2) \, dx = \sum_{k=0}^{\infty} (-1)^k\frac{x^{4k+3}}{(2k+1)!(4k+3)} + C
+              </m>.
+            </p>
+          </li>
+
+          <li permid="fgH">
+            <p permid="Etl">
+              <m>
+              \int_0^1 \sin(x^2) \, dx = \sum_{k=0}^{\infty} (-1)^k\frac{1}{(2k+1)!(4k+3)}
+              </m>.
+              Use <m>n = 1</m> to generate the desired estimate.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </answer>
+    <solution permid="HJq">
+      <p permid="aLj">
+        <ol marker="a." permid="YHB">
+          <li permid="LnQ">
+            <p permid="kAu">
+              The Taylor series expansion for <m>\sin(x)</m> centered at <m>x=0</m> is
+              <me permid="IHF">
+                \sin(x) = \sum_{k=0}^{\infty} (-1)^k\frac{x^{2k+1}}{(2k+1)!}
+              </me>.
+              Substituting <m>x^2</m> for <m>x</m> gives us
+              <me permid="oOO">
+                \sin(x^2) = \sum_{k=0}^{\infty} (-1)^k\frac{x^{2(2k+1)}}{(2k+1)!}
+              </me>,
+              as the Taylor series for <m>\sin(x^2)</m> centered at <m>x=0</m>.
+              Since the interval of convergence for the Taylor series for <m>\sin(x)</m> is <m>(-\infty, \infty)</m>,
+              it follows that the interval of convergence of the Taylor series for
+              <m>\sin(x^2)</m> is also <m>(-\infty, \infty)</m>.
+            </p>
+          </li>
+
+          <li permid="ruZ">
+            <p permid="QHD">
+              We can integrate a Taylor series term by term on its interval of convergence, so
+              <md permid="UVX">
+                <mrow>\int \sin(x^2) \, dx &amp;= \int \sum_{k=0}^{\infty} (-1)^k\frac{x^{2(2k+1)}}{(2k+1)!} \, dx</mrow>
+                <mrow>&amp;= \sum_{k=0}^{\infty} \int (-1)^k\frac{x^{2(2k+1)}}{(2k+1)!} \, dx</mrow>
+                <mrow>&amp;= \sum_{k=0}^{\infty} \int (-1)^k\frac{x^{4k+2}}{(2k+1)!} \, dx</mrow>
+                <mrow>&amp;= \sum_{k=0}^{\infty} (-1)^k\frac{x^{4k+3}}{(2k+1)!(4k+3)} + C</mrow>
+              </md>.
+            </p>
+          </li>
+
+          <li permid="XCi">
+            <p permid="wOM">
+              To evaluate <m>\int_0^1 \sin(x^2) \ dx</m>,
+              we evaluate the antiderivative
+              <m>\sum_{k=0}^{\infty} (-1)^k\frac{x^{4k+3}}{(2k+1)!(4k+2)}</m> at <m>1</m> and <m>0</m> and subtract.
+              So
+              <md permid="hkp">
+                <mrow>\int_0^1 \sin(x^2) \, dx &amp;= \left. \sum_{k=0}^{\infty} (-1)^k\frac{x^{4k+3}}{(2k+1)!(4k+3)}\right|_{0}^{1}</mrow>
+                <mrow>&amp;= \sum_{k=0}^{\infty} (-1)^k\frac{1}{(2k+1)!(4k+3)}</mrow>
+              </md>.
+              The resulting series is an alternating series,
+              so we can find a value of <m>n</m> that makes the <m>n</m>th partial sum of the series approximate the sum of the series to <m>3</m> decimal places by determining a value of <m>n</m> such that
+              <me permid="Bdg">
+                a_{n+1} = \frac{1}{(2(n+1)+1)!(4(n+1)+3)} \lt 0.001
+              </me>.
+              This is not an inequality that we can solve algebraically,
+              so we use trial and error.
+              Doing so shows that <m>n = 1</m> will work.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+  <exercise xml:id="ex-8-5-2" permid="PnP">
+    <statement>
+      <p permid="rJu">
+        There is an important connection between power series and Taylor series.
+        Suppose <m>f</m> is defined by a power series centered at 0 so that
+        <me permid="Nry">
+          f(x) = \sum_{k=0}^{\infty} a_kx^k
+        </me>.
+      </p>
+
+      <p permid="XQD">
+        <ol marker="a." permid="pFM">
+          <li permid="DJr">
+            <p permid="cVV">
+              Determine the first 4 derivatives of <m>f</m> evaluated at 0 in terms of the coefficients <m>a_k</m>.
+            </p>
+          </li>
+
+          <li permid="jQA">
+            <p permid="Jde">
+              Show that <m>f^{(n)}(0) = n!a_n</m> for each positive integer <m>n</m>.
+            </p>
+          </li>
+
+          <li permid="PXJ">
+            <p permid="pkn">
+              Explain how the result of (b) tells us the following:
+            </p>
+
+            <blockquote permid="gma">
+              <p permid="Vrw">
+                On its interval of convergence,
+                a power series is the Taylor series of its sum.
+              </p>
+            </blockquote>
+
+          </li>
+        </ol>
+      </p>
+    </statement>
+    <answer permid="AeR">
+      <p permid="znT">
+        <ol marker="a." permid="dru">
+          <li permid="weS"></li>
+
+          <li permid="cmb">
+            <p permid="ByF">
+              Then
+              <md permid="tyH">
+                <mrow>f'(x) \amp = \sum_{k=1}^{\infty} ka_kx^{k-1}</mrow>
+                <mrow>f''(x) \amp = \sum_{k=2}^{\infty} k(k-1)a_kx^{k-2}</mrow>
+                <mrow>f^{(3)}(x) \amp = \sum_{k=3}^{\infty} k(k-1)(k-2)a_kx^{k-3}</mrow>
+                <mrow>\vdots \amp  \ \qquad \vdots</mrow>
+                <mrow>f^{(n)}(x) \amp = \sum_{k=n}^{\infty} k(k-1)(k-2) \cdots (k-n+1) a_kx^{k-n}</mrow>
+                <mrow>\vdots \amp  \ \qquad \vdots</mrow>
+              </md>
+            </p>
+
+            <p permid="hFO">
+              So
+              <md permid="FMZ">
+                <mrow>f(0) \amp = a_0</mrow>
+                <mrow>f'(0) \amp = a_1</mrow>
+                <mrow>f''(0) \amp = 2!a_2</mrow>
+                <mrow>f^{(3)}(0) \amp = 3!a_3</mrow>
+                <mrow>\vdots \amp  \ \qquad \vdots</mrow>
+                <mrow>f^{(k)}(0) \amp = k!a_k</mrow>
+                <mrow>\vdots \amp  \ \qquad \vdots</mrow>
+              </md>
+              and
+              <me permid="ZFQ">
+                a_k = \frac{f^{(k)}(0)}{k!}
+              </me>
+              for each <m>k \geq 0</m>.
+              But these are just the coefficients of the Taylor series expansion of <m>f</m>,
+              which leads us to the following observation.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </answer>
+    <solution permid="TXI">
+      <p permid="GSs">
+        <ol marker="a." permid="EOK">
+          <li permid="Itk">
+            <p permid="NMX">
+              Observe that
+              <md permid="lUi">
+                <mrow>f'(x) \amp = \sum_{k=1}^{\infty} ka_kx^{k-1}</mrow>
+                <mrow>f''(x) \amp = \sum_{k=2}^{\infty} k(k-1)a_kx^{k-2}</mrow>
+                <mrow>f^{(3)}(x) \amp = \sum_{k=3}^{\infty} k(k-1)(k-2)a_kx^{k-3}</mrow>
+                <mrow>f^{(4)}(x) \amp = \sum_{k=4}^{\infty} k(k-1)(k-2)(k-3)a_kx^{k-4}</mrow>
+              </md>
+              and therefore
+              <md permid="Sbr">
+                <mrow>f(0) \amp = a_0</mrow>
+                <mrow>f'(0) \amp = a_1</mrow>
+                <mrow>f''(0) \amp = 2!a_2</mrow>
+                <mrow>f^{(3)}(0) \amp = 3!a_3</mrow>
+                <mrow>f^{(4)}(0) \amp = 4!a_4</mrow>
+              </md>.
+            </p>
+          </li>
+
+          <li permid="oAt">
+            <p permid="tUg">
+              Since
+              <me permid="yiA">
+                f^{(n)}(x) = \sum_{k=n}^{\infty} k(k-1)(k-2) \cdots (k-n+1) a_kx^{k-n}
+              </me>
+              every term of this series vanishes at <m>x = 0</m> except the first.
+              Thus
+              it follows <m>f^{(n)}(0) = n(n-1)(n-2) \cdots (1) a_n</m>, so 
+              <m>f^{(n)}(0) = n! a_n</m>.
+            </p>
+          </li>
+
+          <li permid="UHC">
+            <p permid="abp">
+              Since
+              <m>
+              a_k = \frac{f^{(k)}(0)}{k!}
+              </m>
+              for each <m>k \geq 0</m>,
+              we see that these are just the coefficients of the Taylor series expansion of <m>f</m>,
+              and thus we get the unsurprising result that the coefficients of a power series are identical to the Taylor series of the power series.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+  <exercise permid="vuY">
+    <statement>
+      <p permid="DXM">
+        In this exercise we will begin with a strange power series and then find its sum.
+        The Fibonacci sequence <m>\{f_n\}</m> is a famous sequence whose first few terms are
+        <me permid="epJ">
+          f_0 = 0, f_1 = 1, f_2 = 1, f_3 = 2, f_4 = 3, f_5 = 5, f_6 = 8, f_7 = 13, \cdots
+        </me>,
+        where each term in the sequence after the first two is the sum of the preceding two terms.
+        That is, <m>f_0 = 0</m>, <m>f_1 = 1</m> and for <m>n \geq 2</m> we have
+        <me permid="KwS">
+          f_n = f_{n-1} + f_{n-2}
+        </me>.
+      </p>
+
+      <p permid="keV">
+        Now consider the power series
+        <me permid="qEb">
+          F(x) = \sum_{k=0}^{\infty} f_kx^k
+        </me>.
+      </p>
+
+      <p permid="Qme">
+        We will determine the sum of this power series in this exercise.
+      </p>
+
+      <p permid="wtn">
+        <ol marker="a." permid="VMV">
+          <li permid="AOL">
+            <p permid="Giy">
+              Explain why each of the following is true.
+            </p>
+
+            <p permid="mpH">
+              <ol marker="i." permid="GwT">
+                <li permid="uiB">
+                  <p permid="hUj">
+                    <m>xF(x) = \sum_{k=1}^{\infty} f_{k-1}x^k</m>
+                  </p>
+                </li>
+
+                <li permid="gVU">
+                  <p permid="SwQ">
+                    <m>x^2F(x) = \sum_{k=2}^{\infty} f_{k-2}x^k</m>
+                  </p>
+                </li>
+              </ol>
+            </p>
+          </li>
+
+          <li permid="bgI">
+            <p permid="yDZ">
+              Show that
+              <me permid="WLk">
+                F(x) - xF(x) - x^2F(x) = x
+              </me>.
+            </p>
+          </li>
+
+          <li permid="HnR">
+            <p permid="eLi">
+              Now use the equation
+              <me permid="CSt">
+                F(x) - xF(x) - x^2F(x) = x
+              </me>
+              to find a simple form for <m>F(x)</m> that doesn't involve a sum.
+            </p>
+          </li>
+
+          <li permid="nva">
+            <p permid="KSr">
+              Use a computer algebra system or some other method to calculate the first 8 derivatives of <m>\frac{x}{1-x-x^2}</m> evaluated at 0.
+              Why shouldn't the results surprise you?
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise permid="bCh">
+    <statement>
+      <p permid="cAw">
+        Airy's equation<fn>
+        The general differential equations of the form
+        <m>y'' \pm k^2xy = 0</m> is called Airy's equation.
+        These equations arise in many problems,
+        such as the study of diffraction of light,
+        diffraction of radio waves around an object, aerodynamics,
+        and the buckling of a uniform column under its own weight.
+        </fn><men xml:id="eq-PA-8-6-Airy-equation" permid="PgL">
+          y'' - xy = 0
+        </men>,
+        can be used to model an undamped vibrating spring with spring constant <m>x</m>
+        (note that <m>y</m> is an unknown function of <m>x</m>).
+        So the solution to this differential equation will tell us the behavior of a spring-mass system as the spring ages
+        (like an automobile shock absorber).
+        Assume that a solution <m>y=f(x)</m> has a Taylor series that can be written in the form
+        <me permid="iZC">
+          y = \sum_{k=0}^{\infty} a_kx^k
+        </me>,
+        where the coefficients are undetermined.
+        Our job is to find the coefficients.
+      </p>
+
+      <ol permid="BUe">
+        <li permid="Ndd">
+          <p permid="qZA">
+            Differentiate the series for <m>y</m> term by term to find the series for <m>y'</m>.
+            Then repeat to find the series for <m>y''</m>.
+          </p>
+        </li>
+
+        <li permid="tkm">
+          <p permid="XgJ">
+            Substitute your results from part (a) into the Airy equation and show that we can write Equation <xref ref="eq-PA-8-6-Airy-equation" /> in the form
+            <men xml:id="eq-PA-8-6-Airy-1" permid="vnU">
+              \sum_{k=2}^{\infty} (k-1)ka_kx^{k-2} - \sum_{k=0}^{\infty} a_kx^{k+1} = 0
+            </men>.
+          </p>
+        </li>
+
+        <li permid="Zrv">
+          <p permid="DnS">
+            At this point,
+            it would be convenient if we could combine the series on the left in <xref ref="eq-PA-8-6-Airy-1" />,
+            but one written with terms of the form <m>x^{k-2}</m> and the other with terms in the form <m>x^{k+1}</m>.
+            Explain why
+            <men xml:id="eq-PA-8-6-Airy-sum-1" permid="bvd">
+              \sum_{k=2}^{\infty} (k-1)ka_kx^{k-2} = \sum_{k=0}^{\infty} (k+1)(k+2)a_{k+2}x^{k}
+            </men>.
+          </p>
+        </li>
+
+        <li permid="FyE">
+          <p permid="jvb">
+            Now show that
+            <men xml:id="eq-PA-8-6-Airy-sum-2" permid="HCm">
+              \sum_{k=0}^{\infty} a_kx^{k+1} = \sum_{k=1}^{\infty} a_{k-1}x^k
+            </men>.
+          </p>
+        </li>
+
+        <li permid="lFN">
+          <p permid="PCk">
+            We can now substitute <xref ref="eq-PA-8-6-Airy-sum-1" /> and <xref ref="eq-PA-8-6-Airy-sum-2" /> into <xref ref="eq-PA-8-6-Airy-1" /> to obtain
+            <men xml:id="eq-PA-8-6-Airy-2" permid="nJv">
+              \sum_{n=0}^{\infty} (n+1)(n+2)a_{n+2}x^{n} - \sum_{n=1}^{\infty} a_{n-1}x^{n} = 0
+            </men>.
+          </p>
+
+          <p permid="vJt">
+            Combine the like powers of <m>x</m> in the two series to show that our solution must satisfy
+            <men xml:id="eq-PA-8-6-Airy-sum-3" permid="TQE">
+              2a_2 + \sum_{k=1}^{\infty} \left[(k+1)(k+2)a_{k+2}-a_{k-1} \right] x^{k} = 0
+            </men>.
+          </p>
+        </li>
+
+        <li permid="RMW">
+          <p permid="bQC">
+            Use equation <xref ref="eq-PA-8-6-Airy-sum-3" /> to show the following:
+          </p>
+
+          <p permid="HXL">
+            <ol marker="i." permid="mEc">
+              <li permid="apK">
+                <p permid="Obs">
+                  <m>a_{3k+2} = 0</m> for every positive integer <m>k</m>,
+                </p>
+              </li>
+
+              <li permid="xUf">
+                <p permid="oeU">
+                  <m>a_{3k} = \frac{1}{(2)(3)(5)(6) \cdots (3k-1)(3k)} a_0 \text{ for } k \geq 1</m>,
+                </p>
+              </li>
+
+              <li permid="ebo">
+                <p permid="Umd">
+                  <m>a_{3k+1} = \frac{1}{(3)(4)(6)(7) \cdots (3k)(3k+1)} a_1 \text{ for } k \geq 1</m>.
+                </p>
+              </li>
+            </ol>
+          </p>
+        </li>
+
+        <li permid="TCj">
+          <p permid="Atm">
+            Use the previous part to conclude that the general solution to the Airy equation <xref ref="eq-PA-8-6-Airy-equation" /> is
+            <md permid="zXN">
+              <mrow>y \amp= a_0\left( 1+\sum_{k=1}^{\infty} \frac{x^{3k}}{(2)(3)(5)(6) \cdots (3k-1)(3k)} \right)</mrow>
+              <mrow>\amp\phantom{={}}+ a_1 \left( x + \sum_{k=1}^{\infty} \frac{x^{3k+1}}{(3)(4)(6)(7) \cdots (3k)(3k+1)} \right)</mrow>
+            </md>.
+          </p>
+
+          <p permid="gAv">
+            Any values for <m>a_0</m> and <m>a_1</m> then determine a specific solution that we can approximate as closely as we like using this series solution.
+          </p>
+        </li>
+      </ol>
+    </statement>
+    <answer permid="sAs">
+      <p permid="fvc">
+        The results from the various part of this exercise show that
+        <md permid="geW">
+          <mrow>y\amp = a_0\left( 1+\sum_{k=1}^{\infty} \frac{x^{3k}}{(2)(3)(5)(6) \cdots (3k-1)(3k)} \right)</mrow>
+          <mrow>\amp\phantom{={}}+ a_1 \left( x + \sum_{k=1}^{\infty} \frac{x^{3k+1}}{(3)(4)(6)(7) \cdots (3k)(3k+1)} \right)</mrow>
+        </md>.
+      </p>
+    </answer>
+    <solution permid="Mtj">
+      <p permid="mZB">
+        <ol marker="a." permid="Rdc">
+          <li permid="Kix">
+            <p permid="MHE">
+              <md permid="Mmf">
+                <mrow>y' \amp = \sum_{k=1}^{\infty} ka_kx^{k-1}</mrow>
+                <mrow>y'' \amp = \sum_{k=2}^{\infty} (k-1)na_kx^{k-2}</mrow>
+              </md>.
+            </p>
+          </li>
+
+          <li permid="qpG">
+            <p permid="sON">
+              We substitute our series from (a) into the Airy equation to obtain the equation
+              <me permid="sto">
+                \sum_{k=2}^{\infty} (k-1)ka_kx^{k-2} + x\sum_{k=0}^{\infty} a_kx^{k} = 0
+              </me>.
+            </p>
+
+            <p permid="YVW">
+              Distributing the <m>x</m> in the second term on the left yields the desired equation.
+            </p>
+          </li>
+
+          <li permid="WwP">
+            <p permid="Fdf">
+              Note that
+              <md permid="YAx">
+                <mrow>\amp\sum_{k=2}^{\infty} (k-1)ka_kx_{k-2}</mrow>
+                <mrow>\amp = (1)(2)a_2 + (2)(3)a_3x + (3)(4)a_4x^2 + (4)(5)a_5x^3 + \cdots + (k-1)(k)a_{k+2}x^{k-2} + \cdots</mrow>
+                <mrow>\amp = (0+1)(0+2)x^0 + (1+1)(1+2)x^1 + (2+1)(2+2)x^2 + \cdots + (k+1)(k+2)x^k + \cdots</mrow>
+              </md>.
+            </p>
+
+            <p permid="lko">
+              In other words,
+              we can re-index this series by increasing every <m>k</m> by 2, or replacing <m>k-2</m> with <m>k</m>,
+              <m>k-1</m> with <m>k+1</m> and <m>k</m> with <m>k+2</m>.
+              This gives us the next desired equation.
+            </p>
+          </li>
+
+          <li permid="CDY">
+            <p permid="Rrx">
+              As we did in the previous part,
+              <md permid="EHG">
+                <mrow>\sum_{k=0}^{\infty} a_kx_{k+1} \amp = a_0x + a_1x^2 + a_2x^3 +  \cdots + a_kx^{k+1} + \cdots</mrow>
+                <mrow>\amp = a_0x + a_1x^2 + a_2x^3 +  \cdots + a_{k-1}x^{k} + \cdots</mrow>
+                <mrow>\amp = \sum_{k=1}^{\infty} a_{k-1}x^k</mrow>
+              </md>.
+            </p>
+          </li>
+
+          <li permid="iLh">
+            <p permid="xyG">
+              Notice that we have like powers of <m>x</m> in the two series,
+              so we can combine them and obtain
+              <md permid="kOP">
+                <mrow>0 \amp = \sum_{k=0}^{\infty} (k+1)(k+2)a_{k+2}x^{k} + \sum_{k=1}^{\infty} a_{k-1}x^{k}</mrow>
+                <mrow>\amp = \left[(1)(2)a_2 + \sum_{k=1}^{\infty} (k+1)(k+2)a_{k+2}x^{k} \right] + \sum_{k=1}^{\infty} a_{k-1}x^{k}</mrow>
+                <mrow>\amp = 2a_2 + \sum_{k=1}^{\infty} \left[(k+1)(k+2)a_{k+2}+a_{k-1} \right] x^{k}</mrow>
+              </md>.
+            </p>
+          </li>
+
+          <li permid="OSq">
+            <p permid="dFP">
+              Equation <xref ref="eq-PA-8-6-Airy-sum-3" /> implies that <m>a_2 = 0</m> and
+              <m>(k+1)(k+2)a_{k+2}+a_{k-2} = 0</m> for all <m>k \geq 1</m>.
+            </p>
+
+            <p permid="JMY">
+              Solving for <m>a_{k+2}</m> in the second equation shows that
+              <md permid="QVY">
+                <mrow>a_2 \amp = 0</mrow>
+                <mrow>a_{k+2} \amp = -\frac{1}{(k+1)(k+2)}a_{k-1} \text{ for }   k \geq 1</mrow>
+              </md>.
+            </p>
+
+            <p permid="pUh">
+              These last equations are called
+              <em>recurrence relations</em>
+              and allow us to write every coefficient of <m>y</m> in terms of <m>a_0</m> and <m>a_1</m>.
+              For example,
+              <m>k=1</m> shows that <m>a_3 = \frac{1}{(2)(3)} a_0 = \frac{1}{6}a_0</m>.
+              We can continue in this way to obtain the first 10 coefficients in terms of <m>a_0</m> and <m>a_1</m>:
+              <md permid="xdh">
+                <mrow>a_3 \amp = \frac{1}{(2)(3)}a_0</mrow>
+                <mrow>a_4 \amp = \frac{1}{(3)(4)}a_1</mrow>
+                <mrow>a_5 \amp = \frac{1}{(4)(5)} a_2 = 0</mrow>
+                <mrow>a_6 \amp = \frac{1}{(5)(6)} a_3 = \frac{1}{(5)(6)} \left(\frac{1}{(2)(3)} a_0 \right) = \frac{1}{(2)(3)(5)(6)} a_0</mrow>
+                <mrow>a_7 \amp = \frac{1}{(6)(7)} a_4 = \frac{1}{(6)(7)} \left(\frac{1}{(3)(4)} a_1 \right) = \frac{1}{(3)(4)(6)(7)} a_1</mrow>
+                <mrow>a_8 \amp = \frac{1}{(7)(8)} a_5 = 0</mrow>
+                <mrow>a_9 \amp = \frac{1}{(8)(9)} a_6 = \frac{1}{(8)(9)} \left(\frac{1}{(2)(3)(5)(6)} a_0 \right) = \frac{1}{(2)(3)(5)(6)(8)(9)} a_0</mrow>
+                <mrow>a_{10} \amp = \frac{1}{(9)(10)} a_7 = \frac{1}{(9)(10)} \left(\frac{1}{(3)(4)(6)(7)} a_1 \right) = \frac{1}{(3)(4)(6)(7)(9)(10)} a_1</mrow>
+              </md>.
+            </p>
+
+            <p permid="Wbq">
+              It may not be obvious, but there is a pattern.
+
+              <ul permid="kVT">
+                <li permid="ibn">
+                  <p permid="uEa">
+                    All of the terms involving <m>a_2</m> are 0.
+                    These terms are <m>a_2</m>,
+                    <m>a_5</m>, <m>a_8</m>, etc.
+                    The subscripts of these terms are all of the form <m>3k+2</m>.
+                    So <m>a_{3k+2} = 0</m> for every positive integer <m>k</m>.
+                  </p>
+                </li>
+
+                <li permid="Oiw">
+                  <p permid="Ciz">
+                    The terms that involve <m>a_0</m> have the form <m>a_3</m>,
+                    <m>a_6</m>,
+                    <m>a_{9}</m>,
+                    etc. and are all of the form <m>a_{3k}</m> for positive integers <m>k</m>.
+                    The pattern in the denominators of the coefficient for <m>a_{3k}</m> is <m>(2)(3)(5)(6) \cdots (3k-1)(3k)</m>.
+                    So
+                    <me permid="dkq">
+                      a_{3k} = \frac{1}{(2)(3)(5)(6) \cdots (3k-1)(3k)} a_0 \text{ for }  k \geq 1
+                    </me>.
+                  </p>
+                </li>
+
+                <li permid="upF">
+                  <p permid="ipI">
+                    The terms that involve <m>a_1</m> have the form <m>a_4</m>,
+                    <m>a_7</m>, <m>a_{10}</m>,
+                    etc. and are all of the form
+                    <m>a_{3k+1}</m> for positive integers <m>k</m>.
+                    The pattern in the denominators of the coefficient for
+                    <m>a_{3k+1}</m> is <m>(3)(4)(6)(7) \cdots (3k)(3k+1)</m>.
+                    So
+                    <me permid="Jrz">
+                      a_{3k+1} = \frac{1}{(3)(4)(6)(7) \cdots (3k)(3k+1)} a_1 \text{ for }  k \geq 1
+                    </me>.
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li permid="uZz">
+            <p permid="OwR">
+              We can write the solution <m>y</m> in three pieces as
+              <me permid="pyI">
+                y = \sum_{k = 0}^{\infty} a_kx^k = \sum_{k=0}^{\infty} a_{3k}x^{3k} + \sum_{k=0}^{\infty} a_{3k+1}x^{3k+1} + \sum_{k=0}^{\infty} a_{3k+2}x^{3k+2}
+              </me>
+              and so our results from the previous part of this exercise show that
+              <md permid="VFR">
+                <mrow>y\amp = a_0\left( 1+\sum_{k=1}^{\infty} \frac{x^{3k}}{(2)(3)(5)(6) \cdots (3k-1)(3k)} \right)</mrow>
+                <mrow>\amp\phantom{={}}+ a_1 \left( x + \sum_{k=1}^{\infty} \frac{x^{3k+1}}{(3)(4)(6)(7) \cdots (3k)(3k+1)} \right)</mrow>
+              </md>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+</exercises>

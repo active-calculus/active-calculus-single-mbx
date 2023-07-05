@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2019                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+<activity xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="act-7-4-3" permid="ifA">
+  <statement>
+    <p permid="KIj">
+      Solve each of the following differential equations or initial value problems.
+
+      <ol marker="a." permid="xJX">
+        <li permid="dRg">
+          <p permid="YbU">
+            <m>\frac{dy}{dt} - (2-t) y = 2-t</m>
+          </p>
+        </li>
+
+        <li permid="JYp">
+          <p permid="Ejd">
+            <m>\frac{1}{t}\frac{dy}{dt} = e^{t^2-2y}</m>
+          </p>
+        </li>
+
+        <li permid="qfy">
+          <p permid="kqm">
+            <m>y' = 2y+2</m>, <nbsp /><m>y(0)=2</m>
+          </p>
+        </li>
+
+        <li permid="WmH">
+          <p permid="Qxv">
+            <m>y' = 2y^2</m>, <nbsp /><m>y(-1) = 2</m>
+          </p>
+        </li>
+
+        <li permid="CtQ">
+          <p permid="wEE">
+            <m>\frac{dy}{dt} = \frac{-2ty}{t^2 + 1}</m>, <nbsp /> <m>y(0) = 4</m>
+          </p>
+        </li>
+      </ol>
+    </p>
+  </statement>
+  <hint permid="Zhn">
+    <p permid="eBa">
+      <ol marker="a." permid="RCO">
+        <li permid="iAZ">
+          <p permid="cLN">
+            Small hints for each of the prompts above.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </hint>
+  <answer permid="tae">
+    <p permid="ytR">
+      <ol marker="a." permid="lvF">
+        <li permid="OIi">
+          <p permid="ISW">
+            <m>y = -1 + C e^{\left(2t - \frac{t^2}{2} \right)}</m>.
+          </p>
+        </li>
+
+        <li permid="uPr">
+          <p permid="paf">
+            <m>
+            y = \frac{1}{2} \ln \left( e^{t^2} + C \right)</m>.
+          </p>
+        </li>
+
+        <li permid="aWA">
+          <p permid="Vho">
+            <m>
+            y = -1 + 3 e^{2t}</m>.
+          </p>
+        </li>
+
+        <li permid="HdJ">
+          <p permid="Box">
+            <m>
+            y = -\frac{1}{2t + \frac{3}{2}} = -\frac{2}{4t + 3}</m>.
+          </p>
+        </li>
+
+        <li permid="nkS">
+          <p permid="hvG">
+            <m>
+            y = \frac{4}{t^2 + 1}</m>.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </answer>
+  <solution permid="MSV">
+    <p permid="SmI">
+      <ol marker="a." permid="Fow">
+        <li permid="Tsb">
+          <p permid="NCP">
+            We are given that <m>\frac{dy}{dt} - (2 - t)y = 2 - t</m>.
+            We first separate the variables by writing
+            <m>\frac{dy}{dt} = (2 - t)y + (2 - t) = (2-t)(y+1)</m> and then dividing both sides by <m>(y+1)</m> to find
+            <me permid="qPs">
+              \frac{1}{1+y} \frac{dy}{dt} = 2 - t
+            </me>.
+            Integrating both sides with respect to <m>t</m>, we have
+            <me permid="WWB">
+              \int \frac{1}{1+y} dy = \int (2 - t) dt
+            </me>.
+            Evaluating the integrals,
+            <me permid="DdK">
+              \ln|1 + y| = \left( 2t - \frac{1}{2}t^2 \right) + c
+            </me>
+            Rewriting without logarithms,
+            <me permid="jkT">
+              |1+y| = e^{\left(2t - \frac{t^2}{2} \right)} e^c
+            </me>
+            Writing <m>e^c = C</m> and including the sign from the absolute value in this constant,
+            <me permid="Psc">
+              1 + y = Ce^{\left(2t - \frac{t^2}{2} \right)}
+            </me>,
+            and therefore <m>y = -1 + C e^{\left(2t - \frac{t^2}{2} \right)}</m>.
+          </p>
+        </li>
+
+        <li permid="zzk">
+          <p permid="tJY">
+            Given that <m>\frac{1}{t} \frac{dy}{dt} = e^{t^2 - 2y}</m>,
+            we first observe that <m>e^{t^2 - 2y} = e^{t^2}e^{ -2y}</m>.
+            Separating the variables,
+            <me permid="vzl">
+              e^{2y} \frac{dy}{dt} = t e^{t^2}
+            </me>.
+            Integrating with respect to <m>t</m>,
+            <me permid="bGu">
+              \int e^{2y} dy = \int t e^{t^2} dt
+            </me>.
+            Using standard substitution techniques on both sides, we find that
+            <me permid="HND">
+              \frac{1}{2} e^{2y} = \frac{1}{2} e^{t^2} + c
+            </me>
+            Writing <m>2c = C</m>, we then have <m>e^{2y} = e^{t^2} + C</m>,
+            and taking logarithms to solve for <m>y</m>,
+            we find <m>2y = \ln \left( e^{t^2} + C \right)</m>, and thus
+            <me permid="nUM">
+              y = \frac{1}{2} \ln \left( e^{t^2} + C \right)
+            </me>.
+          </p>
+        </li>
+
+        <li permid="fGt">
+          <p permid="ZRh">
+            For the initial value problem <m>y' = 2y + 2</m>,
+            <m>y(0) = 2</m>, we first solve the differential equation.
+            Noting that <m>2y + 2 = 2(y+1)</m>, we have
+            <me permid="UbV">
+              \frac{dy}{dt} = 2(y + 1)
+            </me>,
+            so
+            <me permid="Aje">
+              \frac{1}{y + 1} \frac{dy}{dt} = 2
+            </me>
+            Integrating with respect to <m>t</m>,
+            <me permid="gqn">
+              \int \frac{1}{y + 1} dy = \int 2 dt
+            </me>
+            and thus evaluating the integrals, <m>\ln|y+1| = 2t + c</m>.
+            It follows that <m>|y + 1| = e^{2t + c} = e^c e^{2t}</m>,
+            so in the usual way we can write <m>y+1 = Ce^{2t}</m>,
+            and therefore
+            <me permid="Mxw">
+              y = -1 + Ce^{2t}
+            </me>.
+            Using <m>y(0) = 2</m> to solve the IVP, we obtain <m>2 = -1 + Ce^0</m> and so <m>C = 3</m>.
+            The solution to the initial value problem is
+            <me permid="sEF">
+              y = -1 + 3 e^{2t}
+            </me>.
+          </p>
+        </li>
+
+        <li permid="LNC">
+          <p permid="FYq">
+            For the initial value problem <m>y' = 2y^2</m>,
+            <m>y(-1) = 2</m>, we first separate variables and write
+            <me permid="YLO">
+              \frac{1}{y^2} \frac{dy}{dt} = 2
+            </me>.
+            Next, integrating with respect to <m>t</m>,
+            <me permid="ESX">
+              \int \frac{1}{y^2} dy = \int 2 dt
+            </me>,
+            and thus <m>-y^{-1} = 2t + c</m>.
+            Solving for <m>y</m>, it follows
+            <me permid="lag">
+              y = -\frac{1}{2t + c}
+            </me>.
+            We now use the initial value
+            <m>y(-1) = 2</m> and obtain <m>2 = -\frac{1}{-2 + c}</m>.
+            Solving for <m>c</m> gives <m>c = \frac{3}{2}</m>.
+            The solution of the initial value problem is thus
+            <me permid="Rhp">
+              y = -\frac{1}{2t + \frac{3}{2}} = -\frac{2}{4t + 3}
+            </me>.
+          </p>
+        </li>
+
+        <li permid="rUL">
+          <p permid="mfz">
+            For the IVP <m>\frac{dy}{dt} = \frac{-2ty}{t^2 + 1}</m>,
+            <m>y(0) = 4</m>, we first separate variables and write
+            <me permid="xoy">
+              \frac{1}{y} \frac{dy}{dt} = \frac{-2t}{t^2 + 1}
+            </me>.
+            Integrating with respect to <m>t</m> we find
+            <me permid="dvH">
+              \int \frac{1}{y} dy = -\int \frac{2t}{t^2 + 1} dt
+            </me>.
+            Using the substitution <m>u = t^2 + 1</m> on the right,
+            it follows that
+            <me permid="JCQ">
+              \ln|y|  = -\ln\left| t^2 + 1 \right| + c
+            </me>.
+            By definition and properties of the logarithm,
+            <me permid="pJZ">
+              |y| = e^{-\ln\left| t^2 + 1 \right|}e^c = e^{\ln\left| t^2 + 1 \right|^{-1}}e^c = \left| t^2 + 1 \right|^{-1} e^c
+            </me>.
+            Writing <m>C = e^c</m> and absorbing the absolute value from the left side, we have
+            <me permid="VRi">
+              y = \frac{C}{t^2 + 1}
+            </me>.
+            Using the initial condition <m>y(0) = 4</m>,
+            we obtain <m>4 = \frac{C}{1}</m> or <m>C = 4</m>.
+            Thus, the solution to the initial value problem is
+            <me permid="BYr">
+              y = \frac{4}{t^2 + 1}
+            </me>.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </solution>
+</activity>
+

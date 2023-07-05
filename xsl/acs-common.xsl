@@ -15,7 +15,7 @@
 
 <!-- Conveniences for classes of similar elements -->
 <!DOCTYPE xsl:stylesheet [
-    <!ENTITY % entities SYSTEM "../xsl/entities.ent">
+    <!ENTITY % entities SYSTEM "entities.ent">
     %entities;
 ]>
 
@@ -56,8 +56,8 @@
     <xsl:text>\newpagestyle{chapopen}{&#xa;</xsl:text>
     <xsl:text>\sethead[][][] % even&#xa;</xsl:text>
     <xsl:text>{}{}{} % odd&#xa;</xsl:text>
-    <xsl:text>\setfoot[\includegraphics[height=1pc]{images/CC-BY-SA-license.pdf}][][]&#xa;</xsl:text>
-<xsl:text>{}{}{\includegraphics[height=1pc]{images/CC-BY-SA-license.pdf}}}&#xa;</xsl:text>
+    <xsl:text>\setfoot[\includegraphics[height=1pc]{external/images/CC-BY-SA-license.pdf}][][]&#xa;</xsl:text>
+<xsl:text>{}{}{\includegraphics[height=1pc]{external/images/CC-BY-SA-license.pdf}}}&#xa;</xsl:text>
     <xsl:text>\assignpagestyle{\chapter}{chapopen}&#xa;</xsl:text>
 
     <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
