@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2019                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+<section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-5-5-other-opt" permid="GxK">
+  <title>Other Options for Finding Algebraic Antiderivatives</title>
+  <objectives permid="XvV">
+    <ul permid="MWQ">
+      <li permid="Zli">
+        <p permid="Kck">
+          How does the method of partial fractions enable any rational function to be antidifferentiated?
+        </p>
+      </li>
+
+      <li permid="Fsr">
+        <p permid="qjt">
+          What role have integral tables historically played in the study of calculus and how can a table be used to evaluate integrals such as <m>\int \sqrt{a^2 + u^2} \, du</m>?
+        </p>
+      </li>
+
+      <li permid="lzA">
+        <p permid="WqC">
+          What role can a computer algebra system play in the process of finding antiderivatives?
+        </p>
+      </li>
+    </ul>
+  </objectives>
+
+  <introduction permid="DDe">
+    <p permid="IWR">
+      We have learned two antidifferentiation techniques:
+      <m>u</m>-substitution and integration by parts.
+      The former is used to reverse the chain rule,
+      while the latter to reverse the product rule.
+      But we have seen that each works only in specialized circumstances.
+      For example,
+      while <m>\int xe^{x^2} \, dx</m> may be evaluated by <m>u</m>-substitution and
+      <m>\int x e^x \, dx</m> by integration by parts,
+      neither method provides a route to evaluate <m>\int e^{x^2} \, dx</m>,
+      and in fact an elementary algebraic antiderivative for <m>e^{x^2}</m> does not exist.
+      No antidifferentiation method will provide us with a simple algebraic formula for a function <m>F(x)</m> that satisfies <m>F'(x) = e^{x^2}</m>.
+    </p>
+
+    <p permid="pea">
+      In this section of the text,
+      our main goals are to identify some classes of functions that can be antidifferentiated,
+      and to learn some methods to do so.
+      We should also recognize that there are many functions for which an algebraic formula for an antiderivative does not exist,
+      and appreciate the role that computing technology can play in finding antiderivatives of other complicated functions.
+    </p>
+
+    <xi:include href="./previews/PA-5-5.xml" />
+  </introduction>
+
+  <subsection permid="mET">
+    <title>The Method of Partial Fractions</title>
+    <idx><h>partial fractions</h></idx>
+
+    <p permid="Vlj">
+      The method of partial fractions is used to integrate rational functions.
+      It involves reversing the process of finding a common denominator.
+    </p>
+
+    <example permid="LhD">
+      <statement>
+        <p permid="wIz">
+          Evaluate
+          <me permid="JGL">
+            \int \frac{5x}{x^2-x-2} \, dx
+          </me>.
+        </p>
+      </statement>
+      <solution permid="jKn">
+        <p permid="uTm">
+          If we factor the denominator,
+          we can see how <m>R</m> might be the sum of two fractions of the form <m>\frac{A}{x-2} + \frac{B}{x+1}</m>, so we
+          suppose that
+          <me permid="pNU">
+            \frac{5x}{(x-2)(x+1)} = \frac{A}{x-2} + \frac{B}{x+1}
+          </me>
+          and look for the constants <m>A</m> and <m>B</m>.
+        </p>
+
+        <p permid="bav">
+          Multiplying both sides of this equation by <m>(x-2)(x+1)</m>,
+          we find that
+          <me permid="VVd">
+            5x = A(x+1) + B(x-2)
+          </me>.
+        </p>
+
+        <p permid="HhE">
+          Since we want this equation to hold for every value of <m>x</m>,
+          we can use insightful choices of specific <m>x</m>-values to help us find <m>A</m> and <m>B</m>.
+          Taking <m>x = -1</m>, we have
+          <me permid="Ccm">
+            5(-1) = A(0) + B(-3)
+          </me>,
+          so <m>B = \frac{5}{3}</m>.
+          Choosing <m>x = 2</m>, it follows
+          <me permid="ijv">
+            5(2) = A(3) + B(0)
+          </me>,
+          so <m>A = \frac{10}{3}</m>.
+          Thus,
+          <me permid="OqE">
+            \int \frac{5x}{x^2-x-2} \, dx = \int \frac{10/3}{x-2} + \frac{5/3}{x+1} \, dx
+          </me>.
+        </p>
+
+        <p permid="noN">
+          This integral is straightforward to evaluate,
+          and hence we find that
+          <me permid="uxN">
+            \int \frac{5x}{x^2-x-2} \, dx = \frac{10}{3} \ln|x-2| + \frac{5}{3}\ln|x+1| + C
+          </me>.
+        </p>
+      </solution>
+    </example>
+
+    <p permid="Bss">
+      It turns out that we can use the method of partial fractions, 
+      together with <m>u</m>-substitution and other algebraic techniques,<fn>
+      Specifically, if we encounter a quadratic function of the form <m>x^2 + bx + c</m>
+      that we cannot factor, we complete the square to rewrite it as <m>(x-h)^2+k</m>.
+      Then the substitution <m>u = x - h</m> enables us to antidifferentiate the result.
+      </fn>
+      to rewrite any rational function
+      <m>R(x) = \frac{P(x)}{Q(x)}</m> where the degree of the polynomial <m>P</m> is less than<fn>
+      If 
+      the degree of <m>P</m> is greater than or equal to the degree of <m>Q</m>,
+      long division may be used to write <m>R</m> as the sum of a polynomial plus a rational function where the numerator's degree is less than the denominator's.
+      </fn> the degree of <m>Q</m>
+      as a sum of simpler rational functions of one of the following forms:
+      <me permid="aEW">
+        \frac{A}{x-c},\ \frac{A}{(x-c)^n},\ \frac{Ax+B}{x^2 + k},\ \text{or }\frac{Ax+B}{\left(x^2 + k\right)^n}
+      </me>
+      where <m>A</m>, <m>B</m>,
+      and <m>c</m> are real numbers,
+      and <m>k</m> is a positive real number.
+      Because we can antidifferentiate each of these basic forms,
+      partial fractions enables us to antidifferentiate any rational function.
+    </p>
+
+    <p permid="hzB">
+      A computer algebra system such as
+      <em>Maple</em>, <em>Mathematica</em>,
+      or <em>WolframAlpha</em>
+      can be used to find the partial fraction decomposition of any rational function.
+      In <em>WolframAlpha</em>, entering
+    </p>
+
+    <blockquote permid="vYF">
+      <p permid="fKo">
+        <c>partial fraction 5x/(x^2-x-2)</c>
+      </p>
+    </blockquote>
+
+    <p permid="NGK">
+      results in the output
+      <me permid="GMf">
+        \frac{5x}{x^2-x-2} = \frac{10}{3(x-2)} + \frac{5}{3(x+1)}
+      </me>.
+    </p>
+
+    <p permid="tNT">
+      We will use technology to generate partial fraction decompositions of rational functions,
+      and then evaluate the integrals using established methods.
+    </p>
+
+    <xi:include href="./activities/act-5-5-1.xml" />
+  </subsection>
+
+  <subsection permid="SMc">
+    <title>Using an Integral Table</title>
+    <p permid="ZVc">
+      Calculus has a long history,
+      going back to Greek mathematicians in 400-300 BC. Its main foundations were first investigated and understood independently by Isaac Newton and Gottfried Wilhelm Leibniz in the late 1600s,
+      making the modern ideas of calculus well over 300 years old.
+      It is instructive to realize that until the late 1980s,
+      the personal computer did not exist, so calculus
+      (and other mathematics)
+      had to be done by hand for roughly 300 years.
+      In the 21st century, however,
+      computers have revolutionized many aspects of the world we live in,
+      including mathematics.
+      In this section we take a short historical tour to precede discussing the role computer algebra systems can play in evaluating indefinite integrals.
+      In particular,
+      we consider a class of integrals involving certain radical expressions.
+    </p>
+
+    <p permid="Gcl">
+      As seen in the short table of integrals found in <xref ref="integral-table">Appendix</xref>,
+      there are many forms of integrals that involve
+      <m>\sqrt{a^2 \pm w^2}</m> and <m>\sqrt{w^2 - a^2}</m>.
+      These integral rules can be developed using a technique known as
+      <em>trigonometric substitution</em> that we choose to omit;
+      instead, we will simply accept the results presented in the table.
+      To see how these rules are used,
+      consider the differences among
+      <me permid="mTo">
+        \int \frac{1}{\sqrt{1-x^2}} \,dx, \ \ \  \int \frac{x}{\sqrt{1-x^2}} \,dx, \ \ \  \text{and}  \ \ \ \int \sqrt{1-x^2} \,dx
+      </me>.
+    </p>
+
+    <p permid="mju">
+      The first integral is a familiar basic one,
+      and results in <m>\arcsin(x) + C</m>.
+      The second integral can be evaluated using a standard <m>u</m>-substitution with <m>u = 1-x^2</m>.
+      The third, however,
+      is not familiar and does not lend itself to <m>u</m>-substitution.
+    </p>
+
+    <p permid="SqD">
+      In <xref ref="integral-table">Appendix</xref>, we find the rule
+      <me permid="Tax">
+        (h) ~  \int \sqrt{a^2 - u^2} \, du = \frac{u}{2}\sqrt{a^2 - u^2} + \frac{a^2}{2} \arcsin \left( \frac{u}{a} \right) + C
+      </me>.
+    </p>
+
+    <p permid="yxM">
+      Using the substitutions <m>a = 1</m> and <m>u = x</m>
+      (so that <m>du = dx</m>),
+      it follows that
+      <me permid="zhG">
+        \int \sqrt{1-x^2} \, dx = \frac{x}{2} \sqrt{1-x^2} - \frac{1}{2} \arcsin (x) + C
+      </me>.
+    </p>
+
+    <p permid="eEV">
+      Whenever we are applying a rule in the table,
+      we are doing a <m>u</m>-substitution,
+      especially when the substitution is more complicated than setting <m>u = x</m> as in the last example.
+    </p>
+
+    <example xml:id="ex-5-5-table-c" permid="roM">
+      <statement>
+        <p permid="cPI">
+          Evaluate the integral
+          <me permid="foP">
+            \int \sqrt{9 + 64x^2} \, dx
+          </me>.
+        </p>
+      </statement>
+      <solution permid="PRw">
+        <p permid="TvW">
+          Here, we want to use Rule (c) from the table,
+          but we now set <m>a = 3</m> and <m>u = 8x</m>.
+          We also choose the <q><m>+</m></q> option in the rule.
+          With this substitution,
+          it follows that <m>du = 8dx</m>,
+          so <m>dx = \frac{1}{8} du</m>.
+          Applying the substitution,
+          <me permid="LvY">
+            \int \sqrt{9 + 64x^2} \, dx = \int \sqrt{9 + u^2} \cdot \frac{1}{8} \, du = \frac{1}{8} \int \sqrt{9+u^2} \, du
+          </me>.
+        </p>
+
+        <p permid="zDf">
+          By Rule (c), we now find that
+          <md permid="rDh">
+            <mrow>\int \sqrt{9 + 64x^2} \, dx =\mathstrut \amp  \frac{1}{8} \left( \frac{u}{2}\sqrt{u^2 + 9} + \frac{9}{2}\ln|u + \sqrt{u^2 + 9}| + C \right)</mrow>
+            <mrow>=\mathstrut \amp  \frac{1}{8} \left( \frac{8x}{2}\sqrt{64x^2 + 9} + \frac{9}{2}\ln|8x + \sqrt{64x^2 + 9}| + C \right)</mrow>
+          </md>.
+        </p>
+      </solution>
+    </example>
+
+    <p permid="KMe">
+      Whenever we use a <m>u</m>-subsitution in conjunction with <xref ref="integral-table">Appendix</xref>, it's
+      important that we not forget to address any constants that arise and include them in our computations,
+      such as the <m>\frac{1}{8}</m> that appeared in <xref ref="ex-5-5-table-c">Example</xref>.
+    </p>
+
+    <xi:include href="./activities/act-5-5-2.xml" />
+  </subsection>
+
+  <subsection permid="yTl">
+    <title>Using Computer Algebra Systems</title>
+    <p permid="qTn">
+      A computer algebra system (CAS) is a computer program that is capable of executing symbolic mathematics.
+      For example, if we ask a CAS to solve the equation
+      <m>ax^2 + bx + c = 0</m> for the variable <m>x</m>,
+      where <m>a</m>, <m>b</m>, and <m>c</m> are arbitrary constants,
+      the program will return <m>x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}</m>.
+      Research to develop the first CAS dates to the 1960s, and
+      these programs became publicly available in the early 1990s.
+      Two prominent examples are the programs
+      <em>Maple</em> and <em>Mathematica</em>,
+      which were among the first computer algebra systems to offer a graphical user interface.
+      Today, <em>Maple</em> and <em>Mathematica</em>
+      are exceptionally powerful professional software packages that can execute an amazing array of sophisticated mathematical computations.
+      They are also very expensive,
+      as each is a proprietary program.
+      The CAS <em>SAGE</em> is an open-source,
+      free alternative to <em>Maple</em>
+      and <em>Mathematica</em>.
+    </p>
+
+    <p permid="Xaw">
+      For the purposes of this text,
+      when we need to use a CAS, we are going to turn instead to a similar,
+      but somewhat different computational tool,
+      the web-based <q>computational knowledge engine</q>
+      called <em>WolframAlpha</em>.
+      There are two features of <em>WolframAlpha</em>
+      that make it stand out from the CAS options mentioned above: (1) unlike
+      <em>Maple</em> and <em>Mathematica</em>,
+      <em>WolframAlpha</em> is free (provided we are willing to navigate some pop-up advertising);
+      and (2) unlike any of the three,
+      the syntax in <em>WolframAlpha</em> is flexible.
+      Think of <em>WolframAlpha</em>
+      as being a little bit like doing a Google search:
+      the program will interpret what is input,
+      and then provide a summary of options.
+    </p>
+
+    <p permid="DhF">
+      If we want to have <em>WolframAlpha</em>
+      evaluate an integral for us,
+      we can provide it syntax such as
+    </p>
+
+    <blockquote permid="cfO">
+      <p permid="LRx">
+        <c>integrate x^2 dx</c>
+      </p>
+    </blockquote>
+
+    <p permid="joO">
+      to which the program responds with
+      <me permid="XKq">
+        \int x^2 \, dx = \frac{x^3}{3} + \text{constant}
+      </me>.
+    </p>
+
+    <p permid="PvX">
+      While there is much to be enthusiastic about regarding CAS programs such as <em>WolframAlpha</em>,
+      there are several things we should be cautious about: (1) a CAS only responds to exactly what is input; (2) a CAS can answer using powerful functions from very advanced mathematics;
+      and (3) there are problems that even a CAS cannot do without additional human insight.
+    </p>
+
+    <p permid="vDg">
+      Although (1) likely goes without saying,
+      we have to be careful with our input:
+      if we enter syntax that defines the wrong function,
+      the CAS will work with precisely the function we define.
+      For example, if we are interested in evaluating the integral
+      <me permid="DRz">
+        \int \frac{1}{16-5x^2} \, dx
+      </me>,
+      and we mistakenly enter
+    </p>
+
+    <blockquote permid="ImX">
+      <p permid="rYG">
+        <c>integrate 1/16 - 5x^2 dx</c>
+      </p>
+    </blockquote>
+
+    <p permid="bKp">
+      a CAS will (correctly) reply with
+      <me permid="jYI">
+        \frac{1}{16}x - \frac{5}{3} x^3
+      </me>.
+    </p>
+
+    <p permid="HRy">
+      But if we are sufficiently well-versed in antidifferentiation,
+      we will recognize that this function cannot be the one that we seek:
+      integrating a rational function such as <m>\frac{1}{16-5x^2}</m>,
+      we expect the logarithm function to be present in the result.
+    </p>
+
+    <p permid="nYH">
+      Regarding (2), even for a relatively simple integral such as <m>\int \frac{1}{16-5x^2} \, dx</m>,
+      some CASs will invoke advanced functions rather than simple ones.
+      For instance, if we use <em>Maple</em> to execute the command
+    </p>
+
+    <blockquote permid="oug">
+      <p permid="YfP">
+        <c>int(1/(16-5*x^2), x);</c>
+      </p>
+    </blockquote>
+
+    <p permid="UfQ">
+      the program responds with
+      <me permid="QfR">
+        \int \frac{1}{16-5x^2} \, dx = \frac{\sqrt{5}}{20} \arctanh  (\frac{\sqrt{5}}{4}x)
+      </me>.
+    </p>
+
+    <p permid="AmZ">
+      While this is correct
+      (save for the missing arbitrary constant,
+      which <em>Maple</em> never reports),
+      the inverse hyperbolic tangent function is not a common nor familiar one;
+      a simpler way to express this function can be found by using the partial fractions method,
+      and happens to be the result reported by <em>WolframAlpha</em>:
+      <me permid="wna">
+        \int \frac{1}{16-5x^2} \, dx = \frac{1}{8\sqrt{5}} \left(\log(4\sqrt{5}+5x) - \log(4\sqrt{5}-5x)\right) + \text{constant}
+      </me>.
+    </p>
+
+    <p permid="gui">
+      Using sophisticated functions from more advanced mathematics is sometimes the way a CAS says to the user
+      <q>I don't know how to do this problem.</q>
+      For example, if we want to evaluate
+      <me permid="cuj">
+        \int e^{-x^2} \, dx
+      </me>,
+      and we ask <em>WolframAlpha</em> to do so, the input
+    </p>
+
+    <blockquote permid="UBp">
+      <p permid="EmY">
+        <c>integrate exp(-x^2) dx</c>
+      </p>
+    </blockquote>
+
+    <p permid="MBr">
+      results in the output
+      <me permid="IBs">
+        \int e^{-x^2} \, dx = \frac{\sqrt{\pi}}{2}\erf  (x) + \text{constant}
+      </me>.
+    </p>
+
+    <p permid="sIA">
+      The function <q>erf<m>(x)</m></q>
+      is the <em>error function</em>,
+          <idx><h>error function</h></idx>
+      which is actually defined by an integral:
+      <me permid="oIB">
+        \erf  (x) = \frac{2}{\sqrt{\pi}} \int_0^x e^{-t^2} \, dt
+      </me>.
+    </p>
+
+    <p permid="YPJ">
+      So, in producing output involving an integral,
+      the CAS has basically reported back to us the very question we asked.
+    </p>
+
+    <p permid="EWS">
+      Finally, as remarked at (3) above,
+      there are times that a CAS will actually fail without some additional human insight.
+      If we consider the integral
+      <me permid="UPK">
+        \int (1+x)e^x \sqrt{1+x^2e^{2x}} \, dx
+      </me>
+      and ask <em>WolframAlpha</em> to evaluate
+    </p>
+
+    <blockquote permid="AIy">
+      <p permid="kuh">
+        <c>int (1+x) * exp(x) * sqrt(1+x^2 * exp(2x)) dx</c>,
+      </p>
+    </blockquote>
+
+    <p permid="leb">
+      the program thinks for a moment and then reports
+    </p>
+
+    <blockquote permid="gPH">
+      <p permid="QBq">
+        (<em>no result found in terms of standard mathematical functions</em>)
+      </p>
+    </blockquote>
+
+    <p permid="Rlk">
+      But in fact this integral is not that difficult to evaluate.
+      If we let <m>u = xe^{x}</m>,
+      then <m>du = (1+x)e^x \, dx</m>,
+      which means that the preceding integral has form
+      <me permid="AWT">
+        \int (1+x)e^x \sqrt{1+x^2e^{2x}} \, dx = \int \sqrt{1+u^2} \, du
+      </me>,
+      which is a straightforward one for any CAS to evaluate.
+    </p>
+
+    <p permid="xst">
+      So, we should proceed with some caution:
+      while any CAS is capable of evaluating a wide range of integrals
+      (both definite and indefinite),
+      there are times when the result can mislead us.
+      We must think carefully about the meaning of the output,
+      whether it is consistent with what we expect,
+      and whether or not it makes sense to proceed.
+    </p>
+  </subsection>
+
+  <subsection permid="fau">
+    <title>Summary</title>
+    <p permid="dzC">
+      <ul permid="tdZ">
+        <li permid="RGJ">
+          <p permid="CxL">
+            We can antidifferentiate any rational function with the method of partial fractions.
+            Any polynomial function can be factored into a product of linear and irreducible quadratic terms,
+            so any rational function may be written as the sum of a polynomial plus rational terms of the form <m>\frac{A}{(x-c)^n}</m>
+            (where <m>n</m> is a natural number)
+            and <m>\frac{Bx+C}{x^2 + k}</m>
+            (where <m>k</m> is a positive real number).
+          </p>
+        </li>
+
+        <li permid="xNS">
+          <p permid="iEU">
+            Until the development of compute algebra systems,
+            integral tables enabled students of calculus to evaluate integrals such as <m>\int \sqrt{a^2 + u^2} \, du</m>,
+            where <m>a</m> is a positive real number.
+            A short table of integrals may be found in <xref ref="integral-table">Appendix</xref>.
+          </p>
+        </li>
+
+        <li permid="dVb">
+          <p permid="OMd">
+            Computer algebra systems can play an important role in finding antiderivatives,
+            though we must be cautious to use correct input,
+            to watch for unusual or unfamiliar advanced functions that the CAS may cite in its result,
+            and to consider the possibility that a CAS may need further assistance or insight from us in order to answer a particular question.
+          </p>
+        </li>
+      </ul>
+    </p>
+  </subsection>
+
+  <xi:include href="./exercises/ez-5-5.xml" />
+</section>
+

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2019                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+<activity xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="act-2-8-1" permid="vpu">
+  <statement>
+    <p permid="ScR">
+      Evaluate each of the following limits.
+      If you use L'Hôpital's Rule,
+      indicate where it was used,
+      and be certain its hypotheses are met before you apply it.
+
+      <ol marker="a." cols="2" permid="FeF">
+        <li permid="llO">
+          <p permid="fwC">
+            <m>\lim_{x \to 0} \frac{\ln(1 + x)}{x}</m>
+          </p>
+        </li>
+
+        <li permid="RsX">
+          <p permid="LDL">
+            <m>\lim_{x \to \pi} \frac{\cos(x)}{x}</m>
+          </p>
+        </li>
+
+        <li permid="xAg">
+          <p permid="rKU">
+            <m>\lim_{x \to 1} \frac{2 \ln(x)}{1-e^{x-1}}</m>
+          </p>
+        </li>
+
+        <li permid="dHp">
+          <p permid="XSd">
+            <m>\lim_{x \to 0} \frac{\sin(x) - x}{\cos(2x)-1}</m>
+          </p>
+        </li>
+      </ol>
+    </p>
+  </statement>
+  <hint permid="gBV">
+    <p permid="lVI">
+      <ol marker="a." permid="YXw">
+        <li permid="JOy">
+          <p permid="DZm">
+            Remember that <m>\ln(1) = 0</m>.
+          </p>
+        </li>
+
+        <li permid="pVH">
+          <p permid="kgv">
+            Note that <m>x \to \pi</m>, not <m>x \to 0</m>.
+          </p>
+        </li>
+
+        <li permid="WcQ">
+          <p permid="QnE">
+            Observe that <m>e^{x-1} \to 1</m> as <m>x \to 1</m>.
+          </p>
+        </li>
+
+        <li permid="CjZ">
+          <p permid="wuN">
+            If necessary, L'Hôpital's Rule can be applied more than once.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </hint>
+  <answer permid="AuM">
+    <p permid="FOz">
+      <ol marker="a." permid="sQn">
+        <li permid="iri">
+          <p permid="cBW">
+            <m> \lim_{x \to 0} \frac{\ln(1 + x)}{x} = 1</m>.
+          </p>
+        </li>
+
+        <li permid="Oyr">
+          <p permid="IJf">
+            <m> \lim_{x \to \pi} \frac{\cos(x)}{x} = -\frac{1}{\pi}</m>.
+          </p>
+        </li>
+
+        <li permid="uFA">
+          <p permid="oQo">
+            <m> \lim_{x \to 1} \frac{2 \ln(x)}{1-e^{x-1}} = -2</m>.
+          </p>
+        </li>
+
+        <li permid="aMJ">
+          <p permid="UXx">
+            <m> \lim_{x \to 0} \frac{\sin(x) - x}{\cos(2x)-1} = 0</m>.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </answer>
+  <solution permid="UnD">
+    <p permid="ZHq">
+      <ol marker="a." permid="MJe">
+        <li permid="GTS">
+          <p permid="BeG">
+            As <m>x \to 0</m>, we see that <m>\ln(1+x) \to \ln(1) = 0</m>,
+            thus this limit has an indeterminate form.
+            By L'Hôpital's Rule, we have
+            <me permid="yka">
+              \lim_{x \to 0} \frac{\ln(1 + x)}{x} = \lim_{x \to 0} \frac{\frac{1}{1 + x}}{1}
+            </me>.
+            As this limit is no longer indeterminate,
+            we may simply allow <m>x \to 0</m>, and thus we find that
+            <me permid="erj">
+              \lim_{x \to 0} \frac{\ln(1 + x)}{x} = \frac{\frac{1}{1 + 0}}{1} = 1
+            </me>.
+          </p>
+        </li>
+
+        <li permid="nbb">
+          <p permid="hlP">
+            Observe that
+            <me permid="Kys">
+              \lim_{x \to \pi} \frac{\cos(x)}{x} = \frac{\cos(\pi)}{\pi} = -\frac{1}{\pi}
+            </me>,
+            since this limit is not indeterminate because the function
+            <m>\frac{\cos(x)}{x}</m> is continuous at <m>x = \pi</m>.
+          </p>
+        </li>
+
+        <li permid="Tik">
+          <p permid="NsY">
+            Since <m>\ln(x) \to 0</m> and <m>e^{x-1} \to 1</m> as <m>x \to 0</m>,
+            this limit is indeterminate with form <m>\frac{0}{0}</m>.
+            Hence, by L'Hôpital's Rule,
+            <me permid="qFB">
+              \lim_{x \to 1} \frac{2 \ln(x)}{1-e^{x-1}} = \lim_{x \to 1} \frac{\frac{2}{x}}{-e^{x-1}}
+            </me>.
+            The updated limit is not indeterminate,
+            and allowing <m>x \to 1</m>, we find
+            <me permid="WMK">
+              \lim_{x \to 1} \frac{2 \ln(x)}{1-e^{x-1}} = \frac{\frac{2}{1}}{-e^{0}} = -2
+            </me>.
+          </p>
+        </li>
+
+        <li permid="zpt">
+          <p permid="tAh">
+            Since the given limit is indeterminate of form <m>\frac{0}{0}</m>,
+            by L'Hôpital's Rule we have
+            <me permid="CTT">
+              \lim_{x \to 0} \frac{\sin(x) - x}{\cos(2x)-1} =  \lim_{x \to 0} \frac{\cos(x) - 1}{-2\sin(2x)}
+            </me>.
+            Now, as <m>x \to 0</m>,
+            <m>\cos(x) \to 1</m> and <m>\sin(2x) \to 0</m>,
+            which makes the latest limit also indeterminate in form <m>\frac{0}{0}</m>.
+            Applying L'Hôpital's Rule a second time, we now have
+            <me permid="jbc">
+              \lim_{x \to 0} \frac{\sin(x) - x}{\cos(2x)-1} =  \lim_{x \to 0} \frac{-\sin(x)}{-4\cos(2x)}
+            </me>.
+            In the newest limit, we note that
+            <m>\sin(x) \to 0</m> but <m>\cos(2x) \to 1</m> as <m>x \to 0</m>,
+            so the numerator is tending to 0 while the denominator is approaching <m>-4</m>.
+            Thus, the value of the limit is determined to be
+            <me permid="Pil">
+              \lim_{x \to 0} \frac{\sin(x) - x}{\cos(2x)-1} =  0
+            </me>.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </solution>
+</activity>
+

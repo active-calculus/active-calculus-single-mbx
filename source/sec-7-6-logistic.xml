@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2019                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+<section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-7-6-logistic" permid="NVF">
+  <title>Population Growth and the Logistic Equation</title>
+  <objectives permid="yMH">
+    <ul permid="LaZ">
+      <li permid="Xpr">
+        <p permid="vSb">
+          How can we use differential equations to realistically model the growth of a population?
+        </p>
+      </li>
+
+      <li permid="DwA">
+        <p permid="bZk">
+          How can we assess the accuracy of our models?
+        </p>
+      </li>
+    </ul>
+  </objectives>
+
+  <introduction permid="eTQ">
+    <p permid="UuL">
+      The growth of the earth's population is one of the pressing issues of our time.
+      Will the population continue to grow?
+      Or will it perhaps level off at some point, and if so, when?
+      In this section,
+      we look at two ways in which we may use differential equations to help us address these questions.
+    </p>
+
+    <p permid="ABU">
+      Before we begin,
+      let's consider again two important differential equations that we have seen in earlier work this chapter.
+    </p>
+
+    <xi:include href="./previews/PA-7-6.xml" />
+  </introduction>
+
+  <subsection permid="ucO">
+    <title>The earth's population</title>
+    <p permid="gJd">
+      We will now begin studying the earth's population.
+      To get started, in <xref ref="T-7-6-earth">Table</xref>
+      are some data for the earth's population in recent years that we will use in our investigations.
+    </p>
+
+    <table xml:id="T-7-6-earth" permid="YJf">
+      <title>Some recent population data for planet Earth.</title>
+      <tabular top="minor" bottom="minor" permid="EQo">
+        <row>
+          <cell>Year</cell>
+          <cell>1998</cell>
+          <cell>1999</cell>
+          <cell>2000</cell>
+          <cell>2001</cell>
+          <cell>2002</cell>
+          <cell>2005</cell>
+          <cell>2006</cell>
+          <cell>2007</cell>
+          <cell>2008</cell>
+          <cell>2009</cell>
+          <cell>2010</cell>
+        </row>
+        <row>
+          <cell>
+            <line>Pop</line>
+            <line>(billions)</line></cell>
+          <cell><m>5.932</m></cell>
+          <cell><m>6.008</m></cell>
+          <cell><m>6.084</m></cell>
+          <cell><m>6.159</m></cell>
+          <cell><m>6.234</m></cell>
+          <cell><m>6.456</m></cell>
+          <cell><m>6.531</m></cell>
+          <cell><m>6.606</m></cell>
+          <cell><m>6.681</m></cell>
+          <cell><m>6.756</m></cell>
+          <cell><m>6.831</m></cell>
+        </row>
+      </tabular>
+
+    </table>
+
+    <xi:include href="./activities/act-7-6-1.xml" />
+
+    <p permid="MQm">
+      Our work in <xref ref="act-7-6-1">Activity</xref>
+      shows that that the exponential model is fairly accurate for years relatively close to 2000.
+      However, if we go too far into the future,
+      the model predicts increasingly large rates of change,
+      which causes the population to grow arbitrarily large.
+      This does not make much sense since it is unrealistic to expect that the earth would be able to support such a large population.
+    </p>
+
+    <p permid="sXv">
+      The constant <m>k</m> in the differential equation has an important
+      interpretation.
+      Let's rewrite the differential equation
+      <m>\frac{dP}{dt} = kP</m> by solving for <m>k</m>, so that we have
+      <me permid="FVH">
+        k = \frac{dP/dt}{P}
+      </me>.
+    </p>
+
+    <p permid="ZeE">
+      We see that
+      <m>k</m> is the ratio of the rate of change to the population;
+      in other words,
+      it is the contribution to the rate of change from a single person.
+      We call this the <em>per capita growth rate</em>.
+          <idx><h>per capita growth rate</h></idx>
+    </p>
+
+    <p permid="FlN">
+      In the exponential model we introduced in <xref ref="act-7-6-1">Activity</xref>,
+      the per capita growth rate is constant.
+      This means that when the population is large,
+      the per capita growth rate is the same as when the population is small.
+      It is natural to think that the per capita growth rate should decrease when the population becomes large,
+      since there will not be enough resources to support so many people.
+      We expect it would be a more realistic model to assume that the per capita growth rate depends on the population <m>P</m>.
+    </p>
+
+    <p permid="lsW">
+      In the previous activity,
+      we computed the per capita growth rate in a single year by computing <m>k</m>,
+      the quotient of <m>\frac{dP}{dt}</m> and <m>P</m>
+      (which we did for <m>t = 0</m>).
+      If we return to the data in <xref ref="T-7-6-earth">Table</xref>
+      and compute the per capita growth rate over a range of years,
+      we generate the data shown in <xref ref="F-7-6-census">Figure</xref>,
+      which shows how the per capita growth rate is a function of the population,
+      <m>P</m>.
+    </p>
+
+    <figure xml:id="F-7-6-census" permid="iyq">
+      <caption>A plot of per capita growth rate vs.<nbsp />population <m>P</m>.</caption>
+      <image width="50%" source="images/7_6_census" />
+    </figure>
+
+    <p permid="RAf">
+      From the data,
+      we see that the per capita growth rate appears to decrease as the population increases.
+      In fact, the points seem to lie very close to a line,
+      which is shown at two different scales in <xref ref="F-7-6-census1">Figure</xref>.
+    </p>
+
+    <figure xml:id="F-7-6-census1" permid="OFz">
+      <caption>The line that approximates per capita growth as a function of population, <m>P</m>.</caption>
+      <sidebyside widths="47% 47%" margins="0%" permid="SFy">
+        <image source="images/7_6_census_1" />
+        <image source="images/7_6_census_2" />
+      </sidebyside>
+
+    </figure>
+
+    <p permid="xHo">
+      Looking at this line carefully,
+      we can find its equation to be
+      <me permid="mcQ">
+        \frac{dP/dt}{P} = 0.025 - 0.002P
+      </me>.
+    </p>
+
+    <p permid="dOx">
+      If we multiply both sides by <m>P</m>,
+      we arrive at the differential
+      equation
+      <me permid="SjZ">
+        \frac{dP}{dt} = P(0.025 - 0.002P)
+      </me>.
+    </p>
+
+    <p permid="JVG">
+      Graphing the dependence of <m>dP/dt</m> on the population <m>P</m>,
+      we see that this differential equation demonstrates a quadratic relationship between <m>\frac{dP}{dt}</m> and <m>P</m>,
+      as shown in <xref ref="F-7-6logistic">Figure</xref>.
+    </p>
+
+    <figure xml:id="F-7-6logistic" permid="uMI">
+      <caption>A plot of <m>\frac{dP}{dt}</m> vs.<nbsp /><m>P</m> for the differential equation <m>\frac{dP}{dt} = P(0.025 - 0.002P)</m>.</caption>
+      <image width="50%" source="images/7_6_logistic_de" />
+    </figure>
+
+    <p permid="qcP">
+      The equation <m>\frac{dP}{dt} = P(0.025 - 0.002P)</m> is an example of the
+      <em>logistic equation</em>,
+      and is the second model for population growth that we will consider.
+      We expect that it will be more realistic,
+      because the per capita growth rate is a decreasing function of the population.
+    </p>
+
+    <p permid="WjY">
+      Indeed, the graph in <xref ref="F-7-6logistic">Figure</xref>
+      shows that there are two equilibrium solutions, <m>P=0</m>,
+      which is unstable, and <m>P=12.5</m>,
+      which is a stable equilibrium.
+      The graph shows that any solution with
+      <m>P(0) \gt 0</m> will eventually stabilize around 12.5.
+      Thus, our model predicts the world's population will eventually stabilize around 12.5 billion.
+    </p>
+
+    <p permid="Crh">
+      A prediction for the long-term behavior of the population is a valuable conclusion to draw from our differential equation.
+      We would, however, also like to answer some quantitative questions.
+      For instance,
+      how long will it take to reach a population of 10 billion?
+      To answer this question,
+      we need to find an explicit solution of the equation.
+    </p>
+  </subsection>
+
+  <subsection permid="ajX">
+    <title>Solving the logistic differential equation</title>
+    <idx><h>logistic</h></idx>
+
+    <p permid="aTR">
+      Since we would like to apply the logistic model in more general situations,
+      we state the logistic equation
+          <idx><h>logistic equation</h></idx>
+      in its more general form,
+      <men xml:id="E-7-6-logistic" permid="yri">
+        \frac{dP}{dt} = kP(N-P)
+      </men>.
+    </p>
+
+    <p permid="Hba">
+      The equilibrium solutions here are <m>P=0</m> and <m>1-\frac PN = 0</m>,
+      which shows that <m>P=N</m>.
+      The equilibrium at <m>P=N</m> is called the
+      <em>carrying capacity</em>
+          <idx><h>carrying capacity</h></idx>
+      of the population for it represents the stable population that can be sustained by the environment.
+    </p>
+
+    <p permid="nij">
+      We now solve the logistic equation<nbsp /><xref ref="E-7-6-logistic" />.
+      The equation is separable, so we separate the variables
+      <me permid="eyr">
+        \frac{1}{P(N-P)}\frac{dP}{dt} = k
+      </me>,
+      and integrate to find that
+      <me permid="KFA">
+        \int \frac{1}{P(N-P)}~dP = \int k~dt
+      </me>.
+    </p>
+
+    <p permid="Tps">
+      To find the antiderivative on the left,
+      we use the partial fraction decomposition
+      <me permid="qMJ">
+        \frac{1}{P(N-P)} = \frac 1N\left[\frac 1P + \frac 1{N-P}\right]
+      </me>.
+    </p>
+
+    <p permid="zwB">
+      Now we are ready to integrate, with
+      <me permid="WTS">
+        \int \frac 1N\left[\frac 1P + \frac 1{N-P}\right] ~dP  =  \int k~dt
+      </me>.
+    </p>
+
+    <p permid="fDK">
+      On the left, observe that <m>N</m> is constant,
+      so we can remove a factor of
+      <m>\frac{1}{N}</m> and antidifferentiate to find that
+      <me permid="Dbb">
+        \frac 1N (\ln|P| - \ln|N-P|)  =  kt + C
+      </me>.
+    </p>
+
+    <p permid="LKT">
+      Multiplying both sides of this last equation by <m>N</m> and using a rule of logarithms,
+      we next find that
+      <me permid="jik">
+        \ln\left|\frac{P}{N-P}\right| = kNt + C
+      </me>.
+    </p>
+
+    <p permid="rSc">
+      From the definition of the logarithm,
+      replacing <m>e^C</m> with <m>C</m>,
+      and letting <m>C</m> absorb the absolute value signs,
+      we now know that
+      <me permid="Ppt">
+        \frac{P}{N-P} =  Ce^{kNt}
+      </me>.
+    </p>
+
+    <p permid="XZl">
+      At this point,
+      all that remains is to determine <m>C</m> and solve algebraically for <m>P</m>.
+    </p>
+
+    <p permid="Egu">
+      If the initial population is <m>P(0) = P_0</m>,
+      then it follows that <m>C = \frac{P_0}{N-P_0}</m>, so
+      <me permid="vwC">
+        \frac{P}{N-P} = \frac{P_0}{N-P_0}e^{kNt}
+      </me>.
+    </p>
+
+    <p permid="knD">
+      We will solve this equation for <m>P</m> by multiplying both sides by
+      <m>(N-P)(N-P_0)</m> to obtain
+      <md permid="bDL">
+        <mrow>P(N-P_0) &amp;=  P_0(N-P)e^{kNt}</mrow>
+        <mrow>&amp;=  P_0Ne^{kNt} - P_0Pe^{kNt}</mrow>
+      </md>.
+    </p>
+
+    <p permid="QuM">
+      Solving for <m>P_0Ne^{kNt}</m>,
+      expanding, and factoring, it follows that
+      <md permid="HKU">
+        <mrow>P_0Ne^{kNt} &amp;=  P(N-P_0) + P_0 Pe^{kNt}</mrow>
+        <mrow>&amp;=  P(N-P_0 + P_0e^{kNt})</mrow>
+      </md>.
+    </p>
+
+    <p permid="wBV">
+      Dividing to solve for <m>P</m>, we see that
+      <me permid="nSd">
+        P = \frac{P_0Ne^{kNt}}{N-P_0 + P_0e^{kNt}}
+      </me>.
+    </p>
+
+    <p permid="cJe">
+      Finally, we choose to multiply the numerator and denominator by <m>\frac{1}{P_0}e^{-kNt}</m>
+      to obtain
+      <me permid="TZm">
+        P(t) = \frac{N}{\left(\frac{N-P_0}{P_0}\right) e^{-kNt} + 1}
+      </me>.
+    </p>
+
+    <p permid="IQn">
+      While that was a lot of algebra,
+      notice the result: we have
+      found an explicit solution to the logistic equation.
+    </p>
+
+    <assemblage permid="myp">
+      <title>Solution to the Logistic Equation</title>
+      <p permid="oXw">
+        The solution to the initial value problem
+        <me permid="Agv">
+          \frac{dP}{dt} = kP(N-P), \ P(0) = P_0
+        </me>,
+            <idx><h>logistic equation</h><h>solution</h></idx>
+        is
+        <men xml:id="E-7-6-logistic-solution" permid="gnE">
+          P(t) = \frac{N}{\left(\frac{N-P_0}{P_0}\right) e^{-kNt} + 1}
+        </men>.
+      </p>
+    </assemblage>
+
+    <p permid="VeF">
+      For the logistic equation describing the earth's population that we worked with earlier in this section, we have
+      <me permid="MuN">
+        k=0.002,  N= 12.5, \ \text{and} \  P_0 = 6.084
+      </me>.
+    </p>
+
+    <p permid="BlO">
+      This gives the solution
+      <me permid="sBW">
+        P(t) = \frac{12.5}{1.0546e^{-0.025t} + 1}
+      </me>,
+      whose graph is shown in <xref ref="F-7-6-logistic-sol">Figure</xref>.
+    </p>
+
+    <figure xml:id="F-7-6-logistic-sol" permid="tHp">
+      <caption>The solution to the logistic equation modeling the earth's population.</caption>
+      <image width="50%" source="images/7_6_logistic_sol" />
+    </figure>
+
+    <p permid="hsX">
+      The graph shows the population leveling off at 12.5 billion,
+      as we expected,
+      and that the population will be around 10 billion in the year 2050.
+      These results,
+      which we have found using a relatively simple mathematical model,
+      agree fairly well with predictions made using a much more sophisticated model developed by the United Nations.
+    </p>
+
+    <p permid="NAg">
+      The logistic equation is good for modeling any situation in which limited growth is possible.
+      For instance,
+      it could model the spread of a flu virus through a population contained on a cruise ship,
+      the rate at which a rumor spreads within a small town,
+      or the behavior of an animal population on an island.
+      Through our work in this section,
+      we have completely solved the logistic equation,
+      regardless of the values of the constants <m>N</m>, <m>k</m>,
+      and <m>P_0</m>.
+      Anytime we encounter a logistic equation,
+      we can apply the formula we found in Equation<nbsp /><xref ref="E-7-6-logistic-solution" />.
+    </p>
+
+    <xi:include href="./activities/act-7-6-2.xml" />
+  </subsection>
+
+  <subsection permid="Grg">
+    <title>Summary</title>
+    <p permid="ZOy">
+      <ul permid="rii">
+        <li permid="jDJ">
+          <p permid="Igt">
+            If we assume that the rate of growth of a population is proportional to the population,
+            we are led to a model in which the population grows without bound and at a rate that grows without bound.
+          </p>
+        </li>
+
+        <li permid="PKS">
+          <p permid="onC">
+            By assuming that the per capita growth rate decreases as the population grows,
+            we are led to the logistic model of population growth,
+            which predicts that the population will eventually stabilize at the carrying capacity.
+          </p>
+        </li>
+      </ul>
+    </p>
+  </subsection>
+
+  <xi:include href="./exercises/ez-7-6.xml" />
+</section>
+

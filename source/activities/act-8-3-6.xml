@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2019                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+<activity xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="act-8-3-6" permid="daI">
+  <statement>
+    <p permid="kFh">
+      Consider the series <m>\sum \frac{k+1}{k^3+2}</m>.
+      Since the convergence or divergence of a series only depends on the behavior of the series for large values of <m>k</m>,
+      we might examine the terms of this series more closely as <m>k</m> gets large.
+
+      <ol marker="a." permid="toZ">
+        <li permid="Zwi">
+          <p permid="iPU">
+            By computing the value of
+            <m>\frac{k+1}{k^3+2}</m> for <m>k = 100</m> and <m>k = 1000</m>,
+            explain why the terms <m>\frac{k+1}{k^3+2}</m> are essentially
+            <m>\frac{k}{k^3}</m> when <m>k</m> is large.
+          </p>
+        </li>
+
+        <li permid="FDr">
+          <p permid="OXd">
+            Let's formalize our observations in (a) a bit more.
+            Let <m>a_k =  \frac{k+1}{k^3+2}</m> and <m>b_k =  \frac{k}{k^3}</m>.
+            Calculate
+            <me permid="QMq">
+              \lim_{k \to \infty} \frac{a_k}{b_k}
+            </me>.
+            What does the value of the limit tell you about <m>a_k</m> and <m>b_k</m> for large values of <m>k</m>?
+            Compare your response from part (a).
+          </p>
+        </li>
+
+        <li permid="lKA">
+          <p permid="vem">
+            Does the series <m>\sum \frac{k}{k^3}</m> converge or diverge?
+            Why?
+            What do you think that tells us about the convergence or divergence of the series <m>\sum \frac{k+1}{k^3+2}</m>?
+            Explain.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </statement>
+  <hint permid="UMp">
+    <p permid="ExY">
+      <ol marker="a." permid="NhQ">
+        <li permid="RRJ">
+          <p permid="blv">
+            Small hints for each of the prompts above.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </hint>
+  <answer permid="oFg">
+    <p permid="YqP">
+      <ol marker="a." permid="haH">
+        <li permid="xYS">
+          <p permid="HsE">
+            <m>\frac{k+1}{k^3+2}</m> looks like
+            <m>\frac{k}{k^3}</m> when <m>k</m> is large.
+          </p>
+        </li>
+
+        <li permid="egb">
+          <p permid="nzN">
+            <m>
+            \lim_{k \to \infty} \frac{a_k}{b_k} = 1
+            </m>
+            so <m>a_k \approx b_k</m> for large values of <m>k</m>.
+          </p>
+        </li>
+
+        <li permid="Knk">
+          <p permid="TGW">
+            <m>\sum \frac{k+1}{k^3+2}</m> converges.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </answer>
+  <solution permid="IxX">
+    <p permid="sjG">
+      <ol marker="a." permid="ATy">
+        <li permid="qut">
+          <p permid="zOf">
+            When <m>k</m> is very large,
+            the constant 1 in the numerator is negligible compared to <m>k</m> and the constant 2 in the denominator is negligible compared to <m>k^3</m>.
+            So the numerator looks like <m>k</m> and the denominator <m>k^3</m> when <m>k</m> is large.
+            It follows that <m>\frac{k+1}{k^3+2}</m> looks like
+            <m>\frac{k}{k^3}</m> when <m>k</m> is large.
+          </p>
+        </li>
+
+        <li permid="WBC">
+          <p permid="fVo">
+            Note that
+            <md permid="wTz">
+              <mrow>\lim_{k \to \infty} \frac{a_k}{b_k} \amp = \lim_{k \to \infty} \frac{ \frac{k+1}{k^3+2} }{ \frac{k}{k^3} }</mrow>
+              <mrow>\amp = \lim_{k \to \infty} \frac{(k+1)k^3}{k(k^3+2)}</mrow>
+              <mrow>\amp = \lim_{k \to \infty} \frac{1+\frac{1}{k}}{1+\frac{2}{k}}</mrow>
+              <mrow>\amp = 1</mrow>
+            </md>.
+            This tells us that <m>a_k \approx b_k</m> for large values of <m>k</m>,
+            which is what we suggested in part (a).
+          </p>
+        </li>
+
+        <li permid="CIL">
+          <p permid="Mcx">
+            Since <m>\frac{k}{k^3} = \frac{1}{k^2}</m>,
+            the series <m>\sum \frac{k}{k^3}</m> is a <m>p</m>-series with <m>p=2</m> and so converges.
+            Since <m>a_k \approx b_k</m> for large values of <m>k</m>,
+            it seems reasonable to expect that <m>\sum a_k \approx \sum b_k</m> for large <m>k</m>s.
+            Since <m>\sum a_k</m> is finite,
+            we should then conclude that <m>\sum b_k</m> is also finite.
+            So <m>\sum \frac{k+1}{k^3+2}</m> should be a convergent series.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </solution>
+</activity>
+
