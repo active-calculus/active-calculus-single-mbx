@@ -18,21 +18,20 @@
     <!-- This exercise is very long. It runs the risk of butting up agains a server's URI length -->
     <!-- cap. So solutions are commented out for now.                                            -->
     <pg-code>
-      $mc = new_checkbox_multiple_choice();
-      $mc -> qa (
-        "If we don't rewrite ${BM}g'''(x)${EM} from the form shown above, what derivative rules
-        would be needed to calculate ${BM}g^{(4)}(x)${EM}?  Select all that apply.",
-        "Constant Multiple$BR",
-        "Sum or Difference$BR",                
-        "Quotient$BR",
-        "Chain$BR",
-        "Power$BR",
-      );
-      $mc -> extra(
-        "Product$BR",
-        "Exponential$BR",
-      );
-      $mc -> makeLast("All of the above");
+      $mc = CheckboxList(
+      [
+        ["Constant Multiple$BR",
+         "Sum or Difference$BR",
+         "Quotient$BR",
+         "Chain$BR",
+         "Power$BR",
+         "Product$BR",
+         "Exponential$BR",
+	],
+	"All of the above"
+      ],
+	[0..4]
+      );     
     </pg-code>
 
     <introduction>
@@ -78,7 +77,7 @@
           If we don't rewrite <m>g'''(x)</m> from the form shown above, what derivative rules would
           be needed to calculate <m>g^{(4)}(x)</m>?  Select all that apply.
         </p>
-        <p>
+	<p>
           <var name="$mc" form="checkboxes"/>
         </p>
       </statement>
