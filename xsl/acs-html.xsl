@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- **********************************************************************-->
 <!-- Copyright 2012-2018                                                   -->
 <!-- Matthew Boelkins                                                      -->
@@ -16,13 +16,8 @@
 <!-- ACS customizations for HTML runs -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+  <xsl:import href="./core/pretext-html.xsl" />
 
-<!-- Assumes current file is in mathbook/user, so it must be copied there -->
-<xsl:import href="./core/pretext-html.xsl" />
-<!-- Assumes next file can be found in mathbook/user, so it must be copied there -->
-<xsl:import href="acs-common.xsl" />
-
-<!-- Specify options for WeBWorK exercises -->
-<xsl:param name="webwork.divisional.static" select="'no'" />
-
+  <!-- Kill answers to WeBWorK exercises -->
+  <xsl:template match="exercise[webwork-reps]|exercise[webwork]" mode="solutions"> </xsl:template>
 </xsl:stylesheet>
