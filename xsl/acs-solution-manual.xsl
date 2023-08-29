@@ -26,6 +26,8 @@
 <xsl:template match="*" mode="half-title" />
 <xsl:template match="*" mode="ad-card" />
 
+<xsl:template match="exercise[@exercise-interactive='webwork-reps']" mode="solutions-generator"> </xsl:template>
+<xsl:template match="exercise[@exercise-interactive='webwork-reps']" mode="solutions"> </xsl:template>
 <!-- Use letter paper and leave one-inch margins all around -->
 <xsl:param name="latex.geometry" select="'letterpaper,tmargin=.5in,bmargin=.3in,hmargin=.75in,includeheadfoot '" />
 
@@ -49,4 +51,3 @@
 </xsl:param>
 
 </xsl:stylesheet>
-
