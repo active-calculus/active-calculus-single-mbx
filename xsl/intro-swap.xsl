@@ -12,8 +12,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:template match="section/introduction">
   <xsl:element name="subsection">
+    <xsl:apply-templates select="@*"/>
     <xsl:element name="title">Introduction</xsl:element>
-  <xsl:apply-templates select="@*|node()"/>
+    <xsl:apply-templates select="node()"/>
  </xsl:element>
 </xsl:template>
 
