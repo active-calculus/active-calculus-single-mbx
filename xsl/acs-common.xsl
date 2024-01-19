@@ -24,13 +24,9 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 
-<!-- Set font size  -->
-<xsl:param name="latex.font.size" select="'10pt'" />
-<xsl:param name="latex.pageref" select="'no'" />
-
 <!-- Font configuration should be consistent -->
 <xsl:param name="latex.preamble.early">
-       <xsl:text>%% Customized to load Palatino fonts&#xa;</xsl:text>
+    <xsl:text>%% Customized to load Palatino fonts&#xa;</xsl:text>
    <xsl:text>\usepackage[T1]{fontenc}&#xa;</xsl:text>
    <xsl:text>\renewcommand{\rmdefault}{zpltlf} %Roman font for use in math mode&#xa;</xsl:text>
    <xsl:text>\usepackage[scaled=.85]{beramono}% used only by \mathtt&#xa;</xsl:text>
@@ -49,7 +45,9 @@
 <xsl:param name="latex.preamble.late.common">
     <xsl:text>%% Used to get WeBWorK logo into margin next to WW exercises&#xa;</xsl:text>
     <xsl:text>\usepackage{marginnote}&#xa;</xsl:text>
-
+    <xsl:text>%%% This is from common&#xa;</xsl:text>
+    <xsl:text>\definecolor{ActiveBlue}{cmyk}{1, 0.5, 0, 0.35}&#xa;</xsl:text>
+    <xsl:text>\colorlet{chaptercolor}{ActiveBlue}&#xa;</xsl:text> 
     <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
     <xsl:text>% CC icon at bottom of first page of each chapter &#xa;</xsl:text>
     <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
@@ -63,9 +61,6 @@
     <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
     <xsl:text>% Modified from Mitch Keller's chapter handling &#xa;</xsl:text>
     <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
-    <xsl:text>%%% This is from common&#xa;</xsl:text>
-    <xsl:text>\definecolor{ActiveBlue}{cmyk}{1, 0.5, 0, 0.35}&#xa;</xsl:text>
-    <xsl:text>\colorlet{chaptercolor}{ActiveBlue}&#xa;</xsl:text>
     <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
     <xsl:text>% Basic paragraph parameters &#xa;</xsl:text>
     <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
