@@ -1,106 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    This file provides the overall configuration for your PreTeXt
-    project. To edit the content of your document, open `source/main.ptx`
-    (default location).
--->
-<project>
+<project ptx-version="2">
   <targets>
-    <target name="html">
-      <format>html</format>
-      <source>source/main.ptx</source>
-      <publication>publication/publication.ptx</publication>
-      <output-dir>output/html</output-dir>
-      <xsl>xsl/acs-html.xsl</xsl>
-    </target>
-    <target name="html-hosted">
-      <format>html</format>
-      <source>source/main.ptx</source>
-      <publication>publication/publication.ptx</publication>
-      <output-dir>/home/activec2/public_html/single</output-dir>
-      <xsl>xsl/acs-html.xsl</xsl>
-    </target>
-    <target name="latex">
-      <format>latex</format>
-      <source>source/main.ptx</source>
-      <publication>publication/publication.ptx</publication>
-      <output-dir>output/latex</output-dir>
-      <xsl>xsl/acs-latex.xsl</xsl>      
-    </target>
-    <target name="pdf" pdf-method="xelatex">
-      <format>pdf</format>
-      <source>source/main.ptx</source>
-      <publication>publication/publication.ptx</publication>
-      <output-dir>output/pdf</output-dir>
-      <xsl>xsl/acs-latex.xsl</xsl>
-    </target>
-    <target name="solutions" pdf-method="xelatex">
-      <format>pdf</format>
-      <source>source/acs-solution-manual.ptx</source>
-      <publication>publication/publication-solutions.ptx</publication>
-      <output-dir>output/solutions-pdf</output-dir>
-      <xsl>xsl/acs-solution-manual.xsl</xsl>      
-    </target>
-    <target name="solutions-latex">
-      <format>latex</format>
-      <source>source/acs-solution-manual.ptx</source>
-      <publication>publication/publication-solutions.ptx</publication>
-      <output-dir>output/solutions-latex</output-dir>
-      <xsl>xsl/acs-solution-manual.xsl</xsl>
-    </target>
-    <target name="workbook14" pdf-method="xelatex">
-      <format>pdf</format>
-      <source>source/acs-activity-workbook-14.xml</source>
-      <publication>publication/publication-workbook.ptx</publication>
-      <output-dir>output/workbook-pdf</output-dir>
-      <xsl>xsl/acs-activity-workbook.xsl</xsl>      
-    </target>
-    <target name="workbook14-latex">
-      <format>latex</format>
-      <source>source/acs-activity-workbook-14.xml</source>
-      <publication>publication/publication-workbook-14.ptx</publication>
-      <output-dir>output/workbook-latex</output-dir>
-      <xsl>xsl/acs-activity-workbook.xsl</xsl>
-    </target>
-    <target name="workbook58" pdf-method="xelatex">
-      <format>pdf</format>
-      <source>source/acs-activity-workbook-58.xml</source>
-      <publication>publication/publication-workbook-58.ptx</publication>
-      <output-dir>output/workbook-pdf</output-dir>
-      <xsl>xsl/acs-activity-workbook.xsl</xsl>      
-    </target>
-    <target name="workbook58-latex">
-      <format>latex</format>
-      <source>source/acs-activity-workbook-58.xml</source>
-      <publication>publication/publication-workbook-58.ptx</publication>
-      <output-dir>output/workbook-latex</output-dir>
-      <xsl>xsl/acs-activity-workbook.xsl</xsl>
-    </target>
-
-    <target name="subset">
-      <format>html</format>
-      <source>source/main.ptx</source>
-      <publication>publication/publication.ptx</publication>
-      <output-dir>output/subset</output-dir>
-      <stringparam key="debug.skip-knowls" value="yes"/>
-      <!-- edit this to change the section/chapter/etc. to include
-           in your subset build. Use the xml:id, not the file name! -->
-      <xmlid-root>C-8</xmlid-root>
-      <xsl>xsl/acs-html.xsl</xsl>
-    </target>
+    <target name="html" format="html" xsl="acs-html.xsl" />
+    <target name="latex" format="latex" xsl="acs-latex.xsl" />
+    <target name="pdf" format="pdf" xsl="acs-latex.xsl" />
+    <target
+      name="runestone"
+      format="html"
+      xsl="acs-html.xsl"
+      output-dir="../published/ac-single"/>
+    <target 
+      name="solutions-latex" 
+      format="latex"
+      publication="publication-solutions.ptx"
+      xsl="acs-solution-manual.xsl" />
+    <target
+      name="solutions-pdf" 
+      format="pdf"
+      publication="publication-solutions.ptx"
+      xsl="acs-solution-manual.xsl" />
+    <target
+      name="workbook-latex"
+      format="latex"
+      source="acs-activity-workbook-14.xml" 
+      publication="publication-workbook-14.ptx"
+      xsl="acs-activity-workbook.xsl" />
+    <target
+      name="workbook-pdf"
+      format="pdf"
+      source="acs-activity-workbook-14.xml" 
+      publication="publication-workbook-14.ptx"
+      xsl="acs-activity-workbook.xsl" />
+    <target
+      name="workbook58-latex"
+      format="latex"
+      source="acs-activity-workbook-58.xml" 
+      publication="publication-workbook-58.ptx"
+      xsl="acs-activity-workbook.xsl" />
+    <target
+      name="workbook58-pdf"
+      format="pdf"
+      source="acs-activity-workbook-58.xml" 
+      publication="publication-workbook-58.ptx"
+      xsl="acs-activity-workbook.xsl" />
+    <!-- html-hosted is a target specifically for deployment to ActiveCalculus.org -->
+    <target 
+      name="html-hosted"
+      format="html"
+      xsl="acs-html.xsl"
+      output-dir="/home/activec2/public_html/single" />
   </targets>
-  <executables>
-      <latex>latex</latex>
-      <pdflatex>pdflatex</pdflatex>
-      <xelatex>xelatex</xelatex>
-      <pdfsvg>pdf2svg</pdfsvg>
-      <asy>asy</asy>
-      <sage>sage</sage>
-      <pdfpng>convert</pdfpng>
-      <pdfeps>pdftops</pdfeps>
-      <pdfcrop>pdf-crop-margins</pdfcrop>
-      <pageres>pageres</pageres>
-      <node>node</node>
-      <liblouis>file2brl</liblouis>
-    </executables>
 </project>
