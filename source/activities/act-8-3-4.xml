@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- **********************************************************************-->
 <!-- Copyright 2012-2019                                                   -->
 <!-- Matthew Boelkins                                                      -->
@@ -12,58 +12,104 @@
 <!-- "share and share alike".  All trademarks are the registered marks of  -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
-<activity xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="act-8-3-4" permid="NDp">
-  <statement>
-    <p permid="QxV">
+<worksheet label="ws-act-8-3-4">
+  <activity xml:id="act-8-3-4">
+    <introduction>
+      <p>
       Consider the harmonic series <m>\sum_{k=1}^{\infty} \frac{1}{k}</m>.
       Recall that the harmonic series will converge provided that its sequence of partial sums converges.
       The <m>n</m>th partial sum <m>S_n</m> of the series <m>\sum_{k=1}^{\infty} \frac{1}{k}</m> is
-      <md permid="paF">
-        <mrow>S_n =\mathstrut \amp  \sum_{k=1}^{n} \frac{1}{k}</mrow>
-        <mrow>=\mathstrut \amp  1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n}</mrow>
-        <mrow>=\mathstrut \amp  1(1) + (1)\left(\frac{1}{2}\right) + (1)\left(\frac{1}{3}\right) + \cdots + (1)\left(\frac{1}{n}\right)</mrow>
-      </md>.
+      <md><mrow>S_n =\mathstrut \amp  \sum_{k=1}^{n} \frac{1}{k}</mrow><mrow>=\mathstrut \amp  1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n}</mrow><mrow>=\mathstrut \amp  1(1) + (1)\left(\frac{1}{2}\right) + (1)\left(\frac{1}{3}\right) + \cdots + (1)\left(\frac{1}{n}\right)</mrow></md>.
     </p>
-
-    <p permid="wFe">
+      <p>
       Through this last expression for <m>S_n</m>,
       we can visualize this partial sum as a sum of areas of rectangles with heights
       <m>\frac{1}{m}</m> and bases of length 1, as shown in <xref ref="F-8-3-4-Integral-Test">Figure</xref>,
       which uses the 9th partial sum.
     </p>
-
-    <figure xml:id="F-8-3-4-Integral-Test" permid="ITw">
-      <caption>A picture of the 9th partial sum of the harmonic series as a sum of areas of rectangles.</caption>
-      <image width="47%" source="images/8_3_Integral_test1" />
-    </figure>
-
-    <p permid="cMn">
+      <figure xml:id="F-8-3-4-Integral-Test">
+        <caption>A picture of the 9th partial sum of the harmonic series as a sum of areas of rectangles.</caption>
+        <image width="47%" source="images/8_3_Integral_test1"/>
+      </figure>
+      <p>
       The graph of the continuous function <m>f</m> defined by
       <m>f(x) = \frac{1}{x}</m> is overlaid on this plot.
 
-      <ol marker="a." permid="cct">
-        <li permid="IjC">
-          <p permid="qfY">
+      </p>
+    </introduction>
+    <task workspace="3cm" xml:id="act-8-3-4-task-0">
+      <statement>
+        <p>
             Explain how this picture represents a particular Riemann sum.
           </p>
-        </li>
-
-        <li permid="oqL">
-          <p permid="Wnh">
+      </statement>
+      <hint>
+        <p>
+            Small hints for each of the prompts above.
+          </p>
+      </hint>
+      <answer>
+        <p>
+            The <m>n</m>th partial sum of the series
+            <m>\sum_{k=1}^{\infty} \frac{1}{k}</m> is the left hand Riemann sum of <m>f(x)</m> on the interval <m>[1,n]</m>.
+          </p>
+      </answer>
+      <solution>
+        <p>
+            Notice that the <m>n</m>th partial sum of the series
+            <m>\sum_{k=1}^{\infty} \frac{1}{k}</m> is equal to the left hand Riemann sum of <m>f(x)</m> on the interval <m>[1,n]</m>.
+          </p>
+      </solution>
+    </task>
+    <task workspace="3cm" xml:id="act-8-3-4-task-1">
+      <statement>
+        <p>
             What is the definite integral that corresponds to the Riemann sum you considered in (a)?
           </p>
-        </li>
-
-        <li permid="UxU">
-          <p permid="Cuq">
+      </statement>
+      <hint/>
+      <answer>
+        <p><m> \sum_{k=1}^{n} \frac{1}{k} \gt \int_{1}^{n} \frac{1}{x} \ dx </m>.
+          </p>
+      </answer>
+      <solution>
+        <p>
+            Since <m>f</m> is a decreasing function, it follows that
+            <me>
+              \sum_{k=1}^{n} \frac{1}{k} \gt \int_{1}^{n} \frac{1}{x} \ dx
+            </me>.
+          </p>
+      </solution>
+    </task>
+    <task workspace="3cm" xml:id="act-8-3-4-task-2">
+      <statement>
+        <p>
             Which is larger, the definite integral in (b),
             or the corresponding partial sum <m>S_9</m> of the series?
             Why?
           </p>
-        </li>
-
-        <li permid="AFd">
-          <p permid="iBz">
+      </statement>
+      <hint/>
+      <answer>
+        <p><m> \sum_{k=1}^{\infty} \frac{1}{k} \gt \int_{1}^{\infty} \frac{1}{x} \ dx </m>.
+          </p>
+      </answer>
+      <solution>
+        <p>
+            Letting Since <m>f</m> is decreasing,
+            the improper integral
+            <m>\int_{1}^{\infty} \frac{1}{x} \ dx</m> is smaller than the limit of the Riemann sums as <m>n</m> goes to infinity.
+            So  we wind up with a comparison between the series
+            <m>\sum_{k=1}^{\infty} \frac{1}{n}</m> and the improper integral:
+            <me>
+              \sum_{k=1}^{\infty} \frac{1}{k} \gt \int_{1}^{\infty} \frac{1}{x} \ dx
+            </me>.
+          </p>
+      </solution>
+    </task>
+    <task workspace="3cm" xml:id="act-8-3-4-task-3">
+      <statement>
+        <p>
             If instead of considering the 9th partial sum,
             we consider the <m>n</m>th partial sum,
             and we let <m>n</m> go to infinity,
@@ -72,108 +118,21 @@
             Which of these quantities is larger?
             Why?
           </p>
-        </li>
-
-        <li permid="gMm">
-          <p permid="OII">
-            Does the improper integral <m>\int_{1}^{\infty} \frac{1}{x} \ dx</m> converge or diverge?
-            What does that result,
-            together with your work in (d),
-            tell us about the series <m>\sum_{k=1}^{\infty} \frac{1}{k}</m>?
+      </statement>
+      <hint/>
+      <answer>
+        <p><m> \int_{1}^{\infty} f(x) \ dx = \lim_{t \to \infty} \int_{1}^{t} \frac{1}{x} \ dx \infty </m> so the series <m>\sum_{k=1}^{\infty} \frac{1}{k}</m> diverges.
           </p>
-        </li>
-      </ol>
-    </p>
-  </statement>
-  <hint permid="DzJ">
-    <p permid="kqM">
-      <ol marker="a." permid="vVk">
-        <li permid="MTv">
-          <p permid="uPR">
-            Small hints for each of the prompts above.
-          </p>
-        </li>
-      </ol>
-    </p>
-  </hint>
-  <answer permid="XsA">
-    <p permid="EjD">
-      <ol marker="a." permid="POb">
-        <li permid="taE">
-          <p permid="aXa">
-            The <m>n</m>th partial sum of the series
-            <m>\sum_{k=1}^{\infty} \frac{1}{k}</m> is the left hand Riemann sum of <m>f(x)</m> on the interval <m>[1,n]</m>.
-          </p>
-        </li>
-
-        <li permid="ZhN">
-          <p permid="Hej">
-            <m> \sum_{k=1}^{n} \frac{1}{k} \gt \int_{1}^{n} \frac{1}{x} \ dx </m>.
-          </p>
-        </li>
-
-        <li permid="FoW">
-          <p permid="nls">
-            <m> \sum_{k=1}^{\infty} \frac{1}{k} \gt \int_{1}^{\infty} \frac{1}{x} \ dx </m>.
-          </p>
-        </li>
-
-        <li permid="lwf">
-          <p permid="TsB">
-            <m> \int_{1}^{\infty} f(x) \ dx = \lim_{t \to \infty} \int_{1}^{t} \frac{1}{x} \ dx \infty </m> so the series <m>\sum_{k=1}^{\infty} \frac{1}{k}</m> diverges.
-          </p>
-        </li>
-      </ol>
-    </p>
-  </answer>
-  <solution permid="rlr">
-    <p permid="Ycu">
-      <ol marker="a." permid="jGS">
-        <li permid="RDo">
-          <p permid="zzK">
-            Notice that the <m>n</m>th partial sum of the series
-            <m>\sum_{k=1}^{\infty} \frac{1}{k}</m> is equal to the left hand Riemann sum of <m>f(x)</m> on the interval <m>[1,n]</m>.
-          </p>
-        </li>
-
-        <li permid="xKx">
-          <p permid="fGT">
-            Since <m>f</m> is a decreasing function, it follows that
-            <me permid="VhO">
-              \sum_{k=1}^{n} \frac{1}{k} \gt \int_{1}^{n} \frac{1}{x} \ dx
-            </me>.
-          </p>
-        </li>
-
-        <li permid="dRG">
-          <p permid="LOc">
-            Letting Since <m>f</m> is decreasing,
-            the improper integral
-            <m>\int_{1}^{\infty} \frac{1}{x} \ dx</m> is smaller than the limit of the Riemann sums as <m>n</m> goes to infinity.
-            So  we wind up with a comparison between the series
-            <m>\sum_{k=1}^{\infty} \frac{1}{n}</m> and the improper integral:
-            <me permid="BoX">
-              \sum_{k=1}^{\infty} \frac{1}{k} \gt \int_{1}^{\infty} \frac{1}{x} \ dx
-            </me>.
-          </p>
-        </li>
-
-        <li permid="JYP">
-          <p permid="rVl">
+      </answer>
+      <solution>
+        <p>
             We can evaluate the improper integral as follows:
-            <md permid="hwg">
-              <mrow>\int_{1}^{\infty} f(x) \ dx \amp = \lim_{t \to \infty} \int_{1}^{t} \frac{1}{x} \ dx</mrow>
-              <mrow>\amp = \lim_{t \to \infty} \ln(x) |_{1}^{t}</mrow>
-              <mrow>\amp = \lim_{t \to \infty} \left(\ln(t) - \ln(1) \right)</mrow>
-              <mrow>\amp = \infty</mrow>
-            </md>.
+            <md><mrow>\int_{1}^{\infty} f(x) \ dx \amp = \lim_{t \to \infty} \int_{1}^{t} \frac{1}{x} \ dx</mrow><mrow>\amp = \lim_{t \to \infty} \ln(x) |_{1}^{t}</mrow><mrow>\amp = \lim_{t \to \infty} \left(\ln(t) - \ln(1) \right)</mrow><mrow>\amp = \infty</mrow></md>.
             Since the value of the series
             <m>\sum_{k=1}^{\infty} \frac{1}{k}</m> exceeds the value of the infinite improper integral,
             we must conclude that the series <m>\sum_{k=1}^{\infty} \frac{1}{k}</m> diverges.
           </p>
-        </li>
-      </ol>
-    </p>
-  </solution>
-</activity>
-
+      </solution>
+    </task>
+  </activity>
+</worksheet>

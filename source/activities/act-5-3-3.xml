@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- **********************************************************************-->
 <!-- Copyright 2012-2019                                                   -->
 <!-- Matthew Boelkins                                                      -->
@@ -12,93 +12,55 @@
 <!-- "share and share alike".  All trademarks are the registered marks of  -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
-<activity xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="act-5-3-3" permid="ooY">
-  <statement>
-    <p permid="IhP">
+<worksheet label="ws-act-5-3-3">
+  <activity xml:id="act-5-3-3">
+    <introduction>
+      <p>
       Evaluate each of the following definite integrals exactly through an appropriate <m>u</m>-substitution.
 
-      <ol marker="a." cols="2" permid="soX">
-        <li permid="Ywg">
-          <p permid="uek">
-            <m>\int_1^2 \frac{x}{1 + 4x^2} \, dx</m>
-          </p>
-        </li>
-
-        <li permid="EDp">
-          <p permid="alt">
-            <m>\int_0^1 e^{-x} (2e^{-x}+3)^{9} \, dx</m>
-          </p>
-        </li>
-
-        <li permid="kKy">
-          <p permid="GsC">
-            <m>\int_{2/\pi}^{4/\pi} \frac{\cos\left(\frac{1}{x}\right)}{x^{2}} \,dx</m>
-          </p>
-        </li>
-      </ol>
-    </p>
-  </statement>
-  <hint permid="TMn">
-    <p permid="caG">
-      <ol marker="a." permid="MhO">
-        <li permid="QRH">
-          <p permid="mzL">
+      </p>
+    </introduction>
+    <task workspace="3cm" xml:id="act-5-3-3-task-0">
+      <statement>
+        <p>
+          <m>\int_1^2 \frac{x}{1 + 4x^2} \, dx</m>
+        </p>
+      </statement>
+      <hint>
+        <p>
             Let <m>u = 1+4x^2</m>.
           </p>
-        </li>
-
-        <li permid="wYQ">
-          <p permid="SGU">
-            <m>(2e^{-x}+3)</m> and <m>e^{-x}</m> form a function-derivative pair
+      </hint>
+      <answer>
+        <p><m>\int_{x=1}^{x=2} \frac{x}{1 + 4x^2} \, dx = \frac{1}{8} (\ln(17) - \ln(5))</m>.
           </p>
-        </li>
-
-        <li permid="dfZ">
-          <p permid="yOd">
-            <m>\frac{d}{dx}\left[\frac{1}{x}\right] = -\frac{1}{x^2}</m>
-          </p>
-        </li>
-      </ol>
-    </p>
-  </hint>
-  <answer permid="nFe">
-    <p permid="vTx">
-      <ol marker="a." permid="gaF">
-        <li permid="Jni">
-          <p permid="eVm">
-            <m>\int_{x=1}^{x=2} \frac{x}{1 + 4x^2} \, dx = \frac{1}{8} (\ln(17) - \ln(5))</m>.
-          </p>
-        </li>
-
-        <li permid="pur">
-          <p permid="Lcv">
-            <m>\int_0^1 e^{-x} (2e^{-x}+3)^{9} \, dx = -\frac{1}{20}(2e^{-1}+3)^{10} + \frac{1}{20}(2e^{0}+3)^{10}</m>.
-          </p>
-        </li>
-
-        <li permid="VBA">
-          <p permid="rjE">
-            <m>\int_{2/\pi}^{4/\pi} \frac{\cos\left(\frac{1}{x}\right)}{x^{2}} \,dx = 1 - \frac{\sqrt{2}}{2}</m>.
-          </p>
-        </li>
-      </ol>
-    </p>
-  </answer>
-  <solution permid="HxV">
-    <p permid="PMo">
-      <ol marker="a." permid="zTw">
-        <li permid="BIJ">
-          <p permid="XqN">
+      </answer>
+      <solution>
+        <p>
             Let <m>u = 1+4x^2</m>, so
             <m>du=8x dx</m> and <m>xdx = \frac{1}{8} du</m>.
             Note that <m>x=1</m> implies <m>u=5</m> and <m>x=2</m> implies <m>u=17</m>.
             Thus,
             <m>\int_{x=1}^{x=2} \frac{x}{1 + 4x^2} \, dx = \frac{1}{8} \int_{u=5}^{u=17} \frac{du}{u} = \left. \frac{1}{8} \ln|u| \right|_5^{17} = \frac{1}{8} (\ln(17) - \ln(5))</m>.
           </p>
-        </li>
-
-        <li permid="hPS">
-          <p permid="DxW">
+      </solution>
+    </task>
+    <task workspace="3cm" xml:id="act-5-3-3-task-1">
+      <statement>
+        <p>
+          <m>\int_0^1 e^{-x} (2e^{-x}+3)^{9} \, dx</m>
+        </p>
+      </statement>
+      <hint>
+        <p><m>(2e^{-x}+3)</m> and <m>e^{-x}</m> form a function-derivative pair
+          </p>
+      </hint>
+      <answer>
+        <p><m>\int_0^1 e^{-x} (2e^{-x}+3)^{9} \, dx = -\frac{1}{20}(2e^{-1}+3)^{10} + \frac{1}{20}(2e^{0}+3)^{10}</m>.
+          </p>
+      </answer>
+      <solution>
+        <p>
             First consider the corresponding indefinite integral,
             <m>\int e^{-x} (2e^{-x}+3)^{9} \, dx</m>,
             and let <m>u=2e^{-x}+3</m> so that <m>du = -2e^{-x}dx</m>.
@@ -107,18 +69,31 @@
             Applying this antiderivative to the definite integral,
             we see that <m>\int_0^1 e^{-x} (2e^{-x}+3)^{9} \, dx = \left. -\frac{1}{20}(2e^{-x}+3)^{10} \right|_0^1 = -\frac{1}{20}(2e^{-1}+3)^{10} + \frac{1}{20}(2e^{0}+3)^{10}</m>.
           </p>
-        </li>
-
-        <li permid="NXb">
-          <p permid="jFf">
+      </solution>
+    </task>
+    <task workspace="3cm" xml:id="act-5-3-3-task-2">
+      <statement>
+        <p>
+          <m>\int_{2/\pi}^{4/\pi} \frac{\cos\left(\frac{1}{x}\right)}{x^{2}} \,dx</m>
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>\frac{d}{dx}\left[\frac{1}{x}\right] = -\frac{1}{x^2}</m>
+        </p>
+      </hint>
+      <answer>
+        <p><m>\int_{2/\pi}^{4/\pi} \frac{\cos\left(\frac{1}{x}\right)}{x^{2}} \,dx = 1 - \frac{\sqrt{2}}{2}</m>.
+          </p>
+      </answer>
+      <solution>
+        <p>
             Using the substitution <m>u=\frac{1}{x}</m>,
             it follows that <m>\int \frac{\cos\left(\frac{1}{x}\right)}{x^{2}} \,dx = -\int \cos(u) \, du = -\sin(u) + C</m>.
             Hence,
             <m>\int_{2/\pi}^{4/\pi} \frac{\cos\left(\frac{1}{x}\right)}{x^{2}} \,dx = \left.-\sin\left(\frac{1}{x}\right) \right|_{2/\pi}^{4/\pi} = -\sin(\frac{\pi}{4} + \sin(\frac{\pi}{2}) = 1 - \frac{\sqrt{2}}{2}</m>.
           </p>
-        </li>
-      </ol>
-    </p>
-  </solution>
-</activity>
-
+      </solution>
+    </task>
+  </activity>
+</worksheet>
