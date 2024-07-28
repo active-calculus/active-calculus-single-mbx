@@ -113,19 +113,19 @@
     <xsl:text>\titleformat{\chapter}[display]&#xa;</xsl:text>
     <xsl:text>{\raggedleft\normalfont\color{chaptercolor}\Large}{</xsl:text>
     <xsl:text>\MakeUppercase{\divisionnameptx}\space</xsl:text>
-    <xsl:text>\rlap{\enskip\resizebox{!}{0.95cm}{\thechapter} \rule{15cm}{0.95cm}</xsl:text>
+    <xsl:text>\rlap{\enskip\resizebox{!}{0.95cm}{\thechapter}</xsl:text>
     <xsl:text>}}{10pt}{\normalfont\Huge\itshape#1}&#xa;</xsl:text>
     <xsl:text>[{\Large\authorsptx}]&#xa;</xsl:text>
     <xsl:text>\titleformat{name=\chapter,numberless}[display]&#xa;</xsl:text>
     <xsl:text>{\raggedleft\normalfont\color{chaptercolor}\Huge\itshape}{}{0pt}{#1}&#xa;</xsl:text>
     <xsl:text>[{\Large\authorsptx}]&#xa;</xsl:text>
-    <xsl:text>\titlespacing*{\chapter}{0pt}{30pt}{20pt}&#xa;</xsl:text>
+    <xsl:text>\titlespacing*{\chapter}{0pt}{0pt}{0pt}&#xa;</xsl:text>
 
-    <!-- Put a \cleardoublepage after each section title -->
-    <xsl:text>\titleformat{\section}[block]&#xa;</xsl:text>
-<xsl:text>{\normalfont\Large\bfseries}{\thesection\space\titleptx}{1em}{}&#xa;</xsl:text>
-    <xsl:text>[{\large\authorsptx}\cleardoublepage]&#xa;</xsl:text>
+
 <!-- Everything in this template below here is stock PTX as of 2018-12-17 -->
+    <xsl:text>\titleformat{\section}[block]&#xa;</xsl:text>
+    <xsl:text>{\normalfont\Large\bfseries}{\thesection\space\titleptx}{1em}{}&#xa;</xsl:text>
+    <xsl:text>[{\large\authorsptx}]&#xa;</xsl:text>
     <xsl:text>\titleformat{name=\section,numberless}[block]&#xa;</xsl:text>
     <xsl:text>{\normalfont\Large\bfseries}{}{0pt}{#1}&#xa;</xsl:text>
     <xsl:text>[{\large\authorsptx}]&#xa;</xsl:text>
@@ -191,5 +191,7 @@
 <!-- Kill answers to WeBWorK exercises -->
 <xsl:template match="exercise[webwork-reps]|exercise[webwork]" mode="solutions">
 </xsl:template>
+
+<xsl:template match="worksheet" mode="new-geometry"></xsl:template>
 
 </xsl:stylesheet>
