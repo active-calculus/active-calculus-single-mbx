@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0"?>
 <!-- **********************************************************************-->
 <!-- Copyright 2012-2019                                                   -->
 <!-- Matthew Boelkins                                                      -->
@@ -12,24 +12,24 @@
 <!-- "share and share alike".  All trademarks are the registered marks of  -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
-<section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-6-3-mass" permid="ZGU">
+<section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-6-3-mass">
   <title>Density, Mass, and Center of Mass</title>
-  <objectives permid="jaG">
-    <ul permid="voY">
-      <li permid="HDq">
-        <p permid="sus">
+  <objectives>
+    <ul>
+      <li>
+        <p>
           How are mass, density, and volume related?
         </p>
       </li>
 
-      <li permid="nKz">
-        <p permid="YBB">
+      <li>
+        <p>
           How is the mass of an object with varying density computed?
         </p>
       </li>
 
-      <li permid="TRI">
-        <p permid="EIK">
+      <li>
+        <p>
           What is the center of mass of an object,
           and how are definite integrals used to compute it?
         </p>
@@ -37,37 +37,37 @@
     </ul>
   </objectives>
 
-  <introduction permid="PhP">
-    <p permid="JsD">
+  <subsection><title>Introduction</title>
+    <p>
       Studying the units on the integrand and variable of integration helps us understand the meaning of a definite integral.
       For instance,
       if <m>v(t)</m> is the velocity of an object moving along an axis,
       measured in feet per second,
       and <m>t</m> measures time in seconds,
       then both the definite integral and its Riemann sum approximation,
-      <me permid="lzN">
+      <me>
         \int_a^b v(t) \, dt \approx \sum_{i=1}^n v(t_i) \Delta t
       </me>,
       have units given by the product of the units of <m>v(t)</m> and <m>t</m>:
-      <me permid="RGW">
+      <me>
         \text{(feet/sec)} \cdot \text{(sec)} = \text{feet}
       </me>.
       Thus, <m>\int_a^b v(t) \, dt</m> measures the total change in position  
       of the moving object in feet.
     </p>
 
-    <p permid="pzM">
+    <p>
       Unit analysis will be particularly helpful to us in what follows.
     </p>
 
-    <xi:include href="./previews/PA-6-3.xml" />
-  </introduction>
+    <xi:include href="./previews/PA-6-3.xml"/>
+  </subsection>
 
-  <subsection permid="FOd">
+  <subsection>
     <title>Density</title>
     <idx><h>density</h></idx>
 
-    <p permid="VGV">
+    <p>
       The <em>mass</em>
           <idx><h>mass</h></idx>
       of a quantity,
@@ -78,31 +78,31 @@
       For instance,
       if a brick has mass 3 kg and volume 0.002 m<m>^3</m>,
       then the density of the brick is
-      <me permid="xOf">
+      <me>
         \frac{3 \mbox{kg} }{0.002 \mbox{m} ^3} = 1500 \frac{\mbox{kg} }{\mbox{m} ^3}
       </me>.
     </p>
 
-    <p permid="BOe">
+    <p>
       As another example, the mass density of water is 1000 kg/m<m>^3</m>.
       Each of these relationships demonstrate the following general principle.
     </p>
 
-    <assemblage permid="eqN">
-      <p permid="hVn">
+    <assemblage>
+      <p>
         For an object of constant density <m>d</m>,
         with mass <m>m</m> and volume <m>V</m>,
-        <me permid="dVo">
+        <me>
           d = \frac{m}{V}, \ \text{or}  \ m = d \cdot V
         </me>.
       </p>
     </assemblage>
 
-    <p permid="Ocw">
+    <p>
       But what happens when the density is not constant?
     </p>
 
-    <p permid="ujF">
+    <p>
       The formula <m>m = d \cdot V</m> is reminiscent of two other equations that we have used 
       in our work: for a body moving in a fixed direction,
       distance = rate <m>\cdot</m> time, and,
@@ -118,7 +118,7 @@
       we can use a definite integral to add up the values on the pieces.
     </p>
 
-    <p permid="aqO">
+    <p>
       For example,
       if we have a nonnegative velocity function that is not constant,
       over a short time interval
@@ -130,12 +130,12 @@
       Both of these principles are represented visually in <xref ref="F-6-3-VelArea">Figure</xref>.
     </p>
 
-    <figure xml:id="F-6-3-VelArea" permid="roZ">
+    <figure xml:id="F-6-3-VelArea">
       <caption>At left, estimating a small amount of distance traveled, <m>v(t) \Delta t</m>, and at right, a small amount of area under the curve, <m>f(x) \Delta x</m>.</caption>
-      <image width="100%" source="images/6_3_VelArea" />
+      <image width="100%" source="images/6_3_VelArea"/>
     </figure>
 
-    <p permid="GxX">
+    <p>
       In a similar way,
       if the density of some object is not constant, we can use a
       definite integral to compute the overall mass of the object.
@@ -143,7 +143,7 @@
       say along a single axis.
     </p>
 
-    <p permid="mFg">
+    <p>
       Let's consider a thin bar of length <m>b</m> whose left end is at the origin,
       where <m>x = 0</m>,
       and assume that the bar has constant cross-sectional area of 1 cm<m>^2</m>.
@@ -153,12 +153,12 @@
       <m>\rho(x)</m> tells us approximately how much mass will be found in a one-centimeter wide slice of the bar at <m>x</m>.
     </p>
 
-    <figure xml:id="F-6-3-Bar" permid="Xwi">
+    <figure xml:id="F-6-3-Bar">
       <caption>A thin bar of constant cross-sectional area 1 cm<m>^2</m> with density function <m>\rho(x)</m> g/cm<m>^3</m>.</caption>
-      <image width="100%" source="images/6_3_Bar" />
+      <image width="100%" source="images/6_3_Bar"/>
     </figure>
 
-    <p permid="SMp">
+    <p>
       The volume of a thin slice of the bar of width <m>\Delta x</m>,
       as pictured in <xref ref="F-6-3-Bar">Figure</xref>,
       is the cross-sectional area times <m>\Delta x</m>.
@@ -166,14 +166,14 @@
       it follows that the volume of the slice is <m>1 \Delta x</m> cm<m>^3</m>.
       And because mass is the product of density and volume,
       we see that the mass of this slice is approximately
-      <me permid="Kcx">
+      <me>
         \text{mass} _{\text{slice} } \approx \rho(x) \ \frac{\mbox{g} }{\mbox{cm} ^3} \cdot 1 \Delta x \ \mbox{cm} ^3 = \rho(x) \cdot \Delta x \ \mbox{g}
       </me>.
     </p>
 
-    <p permid="yTy">
+    <p>
       The corresponding Riemann sum (and the integral that it approximates),
-      <me permid="qjG">
+      <me>
         \sum_{i=1}^n \rho(x_i) \Delta x \approx \int_0^b \rho(x) \, dx
       </me>,
       therefore measure the mass of the bar between <m>0</m> and <m>b</m>.
@@ -181,7 +181,7 @@
       while the integral will be the exact mass.)
     </p>
 
-    <p permid="faH">
+    <p>
       For objects whose cross-sectional area is constant and whose mass is distributed relative to horizontal 
       location, <m>x</m>,
       it makes sense to think of the density function <m>\rho(x)</m> with units
@@ -191,39 +191,39 @@
       The general principle follows.
     </p>
 
-    <assemblage permid="KxW">
-      <p permid="LhQ">
+    <assemblage>
+      <p>
         For an object of constant cross-sectional area whose mass is distributed along a single axis according to the function <m>\rho(x)</m>
         (whose units are units of mass per unit of length),
         the total mass,
         <m>M</m>, of the object between <m>x = a</m> and <m>x = b</m> is given by
-        <me permid="WqP">
+        <me>
           M = \int_a^b \rho(x) \, dx
         </me>.
       </p>
     </assemblage>
 
-    <xi:include href="./activities/act-6-3-1.xml" />
+    <xi:include href="./activities/act-6-3-1.xml"/>
   </subsection>
 
-  <subsection permid="lVm">
+  <subsection>
     <title>Weighted Averages</title>
-    <p permid="DDr">
+    <p>
       The concept of an average is a natural one,
       and one that we have used repeatedly as part of our understanding of the meaning of the definite integral.
       If we have <m>n</m> values <m>a_1</m>, <m>a_2</m>,
       <m>\ldots</m>, <m>a_n</m>, we know that their average is given by
-      <me permid="CxY">
+      <me>
         \frac{a_1 + a_2 + \cdots + a_n}{n}
       </me>,
       and for a quantity being measured by a function <m>f</m> on an interval <m>[a,b]</m>,
       the average value of the quantity on <m>[a,b]</m> is
-      <me permid="iFh">
+      <me>
         \frac{1}{b-a} \int_a^b f(x) \, dx
       </me>.
     </p>
 
-    <p permid="jKA">
+    <p>
       As we continue to think about problems involving the distribution of mass,
       it is natural to consider the idea of a
       <em>weighted</em> average,
@@ -231,19 +231,19 @@
       where certain quantities involved are counted more in the average.
     </p>
 
-    <sidebyside widths="41% 53%" margins="0%" permid="CTx">
-      <p permid="dlu">
+    <sidebyside widths="41% 53%" margins="0%">
+      <p>
         A common use of weighted averages is in the computation of a student's GPA, where grades are weighted according to credit hours.
         Let's consider the scenario in <xref ref="T-6-3-grades">Table</xref>.
       </p>
 
-      <table xml:id="T-6-3-grades" permid="rYT">
+      <table xml:id="T-6-3-grades">
         <title>A college student's semester grades.</title>
-        <tabular top="minor" bottom="minor" permid="Ygc">
-          <col />
-          <col halign="center" />
-          <col halign="center" />
-          <col halign="center" />
+        <tabular top="minor" bottom="minor">
+          <col/>
+          <col halign="center"/>
+          <col halign="center"/>
+          <col halign="center"/>
           <row>
             <cell>class</cell>
             <cell>grade</cell>
@@ -280,23 +280,23 @@
 
     </sidebyside>
 
-    <p permid="PRJ">
+    <p>
       If all of the classes were of the same weight (i.e., the same number of credits),
       the student's GPA would simply be calculated by taking the average
-      <me permid="OMq">
+      <me>
         \frac{3.3 + 3.7 + 2.7 + 2.7}{4} = 3.1
       </me>.
     </p>
 
-    <p permid="vYS">
+    <p>
       But since the chemistry and calculus courses have higher weights (of 5 and 4 credits respectively),
       we actually compute the GPA according to the weighted average
-      <me permid="uTz">
+      <me>
         \frac{3.3 \cdot 5 + 3.7 \cdot 4 + 2.7 \cdot 3 + 2.7 \cdot 3}{5 + 4 + 3 + 3} = 3.1\overline{6}
       </me>.
     </p>
 
-    <p permid="cgb">
+    <p>
       The weighted average reflects the fact that chemistry and calculus,
       as courses with higher credits,
       have a greater impact on the students' grade point average.
@@ -305,17 +305,17 @@
       and we divide by the sum of the weights.
     </p>
 
-    <p permid="Ink">
+    <p>
       In the following activity,
       we explore further how weighted averages can be used to find the balancing point of a physical system.
     </p>
 
-    <xi:include href="./activities/act-6-3-2.xml" />
+    <xi:include href="./activities/act-6-3-2.xml"/>
   </subsection>
 
-  <subsection permid="Scv">
+  <subsection>
     <title>Center of Mass</title>
-    <p permid="out">
+    <p>
       In <xref ref="act-6-3-2">Activity</xref>,
       we saw that the balancing point of a system of point-masses<fn>
       In the activity,
@@ -330,22 +330,22 @@
       which is the balancing point of the axis on which the masses rest.
     </p>
 
-    <assemblage permid="qFf">
+    <assemblage>
       <title>Center of Mass (point-masses)</title>
-      <p permid="UBC">
+      <p>
         For a collection of <m>n</m> masses <m>m_1</m>, <m>\ldots</m>,
         <m>m_n</m> that are distributed along a single axis at the locations <m>x_1</m>,
         <m>\ldots</m>,
         <m>x_n</m>, the center of mass 
             <idx><h>center of mass (point-masses</h></idx> 
         is given by
-        <me permid="baI">
+        <me>
           \overline{x} = \frac{x_1 m_1  + x_2 m_2 + \cdots + x_n m_n}{m_1 + m_2 + \cdots + m_n}
         </me>.
       </p>
     </assemblage>
 
-    <p permid="AIL">
+    <p>
       Now consider a thin bar over which density is distributed continuously.
       If the density is constant,
       it is obvious that the balancing point of the bar is its midpoint.
@@ -360,19 +360,19 @@
       is <m>m_i \approx \rho(x_i) \Delta x</m>.
     </p>
 
-    <p permid="gPU">
+    <p>
       If we slice the bar into <m>n</m> pieces,
       we can approximate its center of mass by
-      <me permid="HhR">
+      <me>
         \overline{x} \approx \frac{x_1 \cdot \rho(x_1) \Delta x + x_2 \cdot \rho(x_2) \Delta x  + \cdots + x_n \cdot \rho(x_n) \Delta x }{\rho(x_1) \Delta x + \rho(x_2) \Delta x + \cdots + \rho(x_n) \Delta x}
       </me>.
       Rewriting the sums in sigma notation, we have
-      <men xml:id="E-CtrOfM" permid="npa">
+      <men xml:id="E-CtrOfM">
         \overline{x} \approx \frac{\sum_{i = 1}^{n} x_i \cdot \rho(x_i) \Delta x}{\sum_{i = 1}^{n} \rho(x_i) \Delta x}
       </men>.
     </p>
 
-    <p permid="MXd">
+    <p>
       The greater the number of slices,
       the more accurate our estimate of the balancing point will be.
       The sums in <xref ref="E-CtrOfM">Equation</xref>
@@ -381,20 +381,20 @@
       we find that the center of mass is given by the quotient of two integrals.
     </p>
 
-    <assemblage permid="WMo">
+    <assemblage>
       <title>Center of Mass (continuous mass distribution)</title>
-      <p permid="tem">
+      <p>
         For a thin rod of density <m>\rho(x)</m> distributed along an axis from <m>x = a</m> to <m>x = b</m>,
         the center of mass 
             <idx><h>center of mass (continuous mass distribution)</h></idx>
         of the rod is given by
-        <me permid="Twj">
+        <me>
           \overline{x} = \frac{\int_a^b x \rho(x) \, dx}{\int_a^b \rho(x) \, dx}
         </me>.
       </p>
     </assemblage>
 
-    <p permid="Zlv">
+    <p>
       Note that the denominator of
       <m>\overline{x}</m> is the mass of the bar,
       and that this quotient of integrals is simply the continuous version of the weighted average of locations,
@@ -402,47 +402,47 @@
       along the bar.
     </p>
 
-    <xi:include href="./activities/act-6-3-3.xml" />
+    <xi:include href="./activities/act-6-3-3.xml"/>
   </subsection>
 
-  <subsection permid="yjE">
+  <subsection>
     <title>Summary</title>
-    <p permid="FsE">
-      <ul permid="bwh">
-        <li permid="zYR">
-          <p permid="kPT">
+    <p>
+      <ul>
+        <li>
+          <p>
             For an object of constant density <m>D</m>,
             with volume <m>V</m> and mass <m>m</m>,
             we know that <m>m = D \cdot V</m>.
           </p>
         </li>
 
-        <li permid="gga">
-          <p permid="QXc">
+        <li>
+          <p>
             If an object with constant cross-sectional area
             (such as a thin bar)
             has its density distributed along an axis according to the function <m>\rho(x)</m>,
             then we can find the mass of the object between <m>x = a</m> and <m>x = b</m> by
-            <me permid="zDs">
+            <me>
               m = \int_a^b \rho(x) \, dx
             </me>.
           </p>
         </li>
 
-        <li permid="Mnj">
-          <p permid="xel">
+        <li>
+          <p>
             For a system of point-masses distributed along an axis, say
             <m>m_1, \ldots,
             m_n</m> at locations <m>x_1, \ldots,
             x_n</m>, the center of mass,
             <m>\overline{x}</m>, is given by the weighted average
-            <me permid="fKB">
+            <me>
               \overline{x} = \frac{\sum_{i=1}^n x_i m_i}{\sum_{i=1}^n m_i}
             </me>.
             If instead we have mass continuously distributed along an axis,
             such as by a density function <m>\rho(x)</m> for a thin bar of constant cross-sectional area,
             the center of mass of the portion of the bar between <m>x = a</m> and <m>x = b</m> is given by
-            <me permid="LRK">
+            <me>
               \overline{x} = \frac{\int_a^b x \rho(x) \, dx}{\int_a^b \rho(x) \, dx}
             </me>.
             In each situation,
@@ -453,6 +453,5 @@
     </p>
   </subsection>
 
-  <xi:include href="./exercises/ez-6-3.xml" />
+  <xi:include href="./exercises/ez-6-3.xml"/>
 </section>
-

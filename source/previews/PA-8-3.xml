@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- **********************************************************************-->
 <!-- Copyright 2012-2019                                                   -->
 <!-- Matthew Boelkins                                                      -->
@@ -12,9 +12,11 @@
 <!-- "share and share alike".  All trademarks are the registered marks of  -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
-<exploration xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="PA-8-3" permid="DxA">
-  <statement>
-    <p permid="hPw">
+<worksheet label="ws-PA-8-3">
+  <page>
+    <exploration xml:id="PA-8-3">
+      <introduction>
+        <p>
       Have you ever wondered how your calculator can produce a numeric approximation for complicated numbers like <m>e</m>,
       <m>\pi</m> or <m>\ln(2)</m>?
       After all, the only operations a calculator can really perform are addition,
@@ -23,20 +25,45 @@
       This activity provides the first steps in understanding how this process works.
       Throughout the activity, let <m>f(x) = e^x</m>.
     </p>
-
-    <p permid="NWF">
-      <ol marker="a." permid="vjh">
-        <li permid="bqq">
-          <p permid="Mhs">
+        <p/>
+      </introduction>
+      <task workspace="5cm" xml:id="PA-8-3-task-0">
+        <statement>
+          <p>
             Find the tangent line to <m>f</m> at <m>x=0</m> and use this linearization to approximate <m>e</m>.
             That is, find a formula <m>L(x)</m> for the tangent line,
             and compute <m>L(1)</m>,
             since <m>L(1) \approx f(1) = e</m>.
           </p>
-        </li>
-
-        <li permid="Hxz">
-          <p permid="YvK">
+        </statement>
+        <hint/>
+        <answer/>
+        <solution>
+          <p>
+            The linearization of <m>f</m> at <m>x=a</m> is
+            <me>
+              f(a) + f'(a)(x-a)
+            </me>,
+            so the linearization <m>P_1(x)</m> of <m>f(x) = e^x</m> at <m>x=0</m> is
+            <me>
+              P_1(x) = e^0 + e^0(x-0) = 1+x
+            </me>.
+          </p>
+          <p>
+            Now
+            <me>
+              f(x) \approx P_1(x)
+            </me>
+            for <m>x</m> close to <m>0</m> and so
+            <me>
+              e = e^1 \approx P_1(1) = 1+1 = 2
+            </me>.
+          </p>
+        </solution>
+      </task>
+      <task workspace="8.5cm" xml:id="PA-8-3-task-1">
+        <statement>
+          <p>
             The linearization of <m>e^x</m> does not provide a good approximation to <m>e</m> since 1 is not very close to 0.
             To obtain a better approximation,
             we alter our approach a bit.
@@ -48,11 +75,7 @@
             <m>f(x) = e^x</m> centered at <m>x=0</m> which has the property that <m>P_2(0) = f(0)</m>,
             <m>P'_2(0) = f'(0)</m>, and <m>P''_2(0) = f''(0)</m>.
           </p>
-
-          <p permid="ECT">
-            <ol marker="i)" permid="Iht">
-              <li permid="vTb">
-                <p permid="jEJ">
+                <p>
                   Let <m>P_2(x) = 1+x+\frac{x^2}{2}</m>.
                   Show that <m>P_2(0) = f(0)</m>,
                   <m>P'_2(0) = f'(0)</m>,
@@ -60,10 +83,28 @@
                   Then,
                   use <m>P_2(x)</m> to approximate <m>e</m> by observing that <m>P_2(1) \approx f(1)</m>.
                 </p>
-              </li>
 
-              <li permid="nEI">
-                <p permid="kKc">
+        </statement>
+        <hint/>
+        <answer/>
+        <solution>
+                <p>
+                  The derivatives of <m>P_2</m> and <m>f</m> are
+                  <md><mrow>P_2(x) \amp = 1+x+\frac{x^2}{2} \amp  f(x) \amp = e^x</mrow><mrow>P'_2(x) \amp = 1 + x \amp  f'(x) \amp = e^x</mrow><mrow>P''_2(x) \amp = 1 \amp  f''(x) \amp = e^x</mrow></md>,
+                  and so the derivatives of <m>P_2</m> and <m>f</m> evaluated at 0 are
+                  <md><mrow>P_2(0) \amp = 1 \amp  f(0) \amp = e^0 = 1</mrow><mrow>P'_2(0) \amp = 1 \amp  f'(0) \amp = e^0 = 1</mrow><mrow>P''_2(0) \amp = 1 \amp  f''(0) \amp = e^0 = 1</mrow></md>.
+                </p>
+                <p>
+                  Then
+                  <me>
+                    e = e^1 \approx P_2(1) = 1 + 1 + \frac{1}{2} = 2.5
+                  </me>.
+                </p>
+        </solution>
+      </task>
+      <task workspace="5cm" xml:id="PA-8-3-task-2">
+        <statement>
+                <p>
                   We can continue approximating <m>e</m> with polynomials of larger degree whose higher derivatives agree with those of <m>f</m> at 0.
                   This turns out to make the polynomials fit the graph of <m>f</m> better for more values of <m>x</m> around 0.
                   For example,
@@ -73,97 +114,25 @@
                   and <m>P'''_3(0) = f'''(0)</m>.
                   Use <m>P_3(x)</m> to approximate <m>e</m> in a way similar to how you did so with <m>P_2(x)</m> above.
                 </p>
-              </li>
-            </ol>
-          </p>
-        </li>
-      </ol>
-    </p>
-  </statement>
-  <solution permid="iUP">
-    <p permid="BIn">
-      <ol marker="a." permid="PbY">
-        <li permid="TLR">
-          <p permid="QRl">
-            The linearization of <m>f</m> at <m>x=a</m> is
-            <me permid="udO">
-              f(a) + f'(a)(x-a)
-            </me>,
-            so the linearization <m>P_1(x)</m> of <m>f(x) = e^x</m> at <m>x=0</m> is
-            <me permid="akX">
-              P_1(x) = e^0 + e^0(x-0) = 1+x
-            </me>.
-          </p>
-
-          <p permid="wYu">
-            Now
-            <me permid="Gsg">
-              f(x) \approx P_1(x)
-            </me>
-            for <m>x</m> close to <m>0</m> and so
-            <me permid="mzp">
-              e = e^1 \approx P_1(1) = 1+1 = 2
-            </me>.
-          </p>
-        </li>
-
-        <li permid="zTa">
-          <p permid="dfD">
-            <ol marker="i)" permid="ooC">
-              <li permid="cak">
-                <p permid="PLS">
-                  The derivatives of <m>P_2</m> and <m>f</m> are
-                  <md permid="SGy">
-                    <mrow>P_2(x) \amp = 1+x+\frac{x^2}{2} \amp  f(x) \amp = e^x</mrow>
-                    <mrow>P'_2(x) \amp = 1 + x \amp  f'(x) \amp = e^x</mrow>
-                    <mrow>P''_2(x) \amp = 1 \amp  f''(x) \amp = e^x</mrow>
-                  </md>,
-                  and so the derivatives of <m>P_2</m> and <m>f</m> evaluated at 0 are
-                  <md permid="yNH">
-                    <mrow>P_2(0) \amp = 1 \amp  f(0) \amp = e^0 = 1</mrow>
-                    <mrow>P'_2(0) \amp = 1 \amp  f'(0) \amp = e^0 = 1</mrow>
-                    <mrow>P''_2(0) \amp = 1 \amp  f''(0) \amp = e^0 = 1</mrow>
-                  </md>.
-                </p>
-
-                <p permid="JmM">
-                  Then
-                  <me permid="eUQ">
-                    e = e^1 \approx P_2(1) = 1 + 1 + \frac{1}{2} = 2.5
-                  </me>.
-                </p>
-              </li>
-
-              <li permid="gaj">
-                <p permid="ptV">
+        </statement>
+        <hint/>
+        <answer/>
+        <solution>
+                          <p>
                   The derivatives of <m>P_3</m> and <m>f</m> are
-                  <md permid="LbZ">
-                    <mrow>P_3(x) \amp = 1+x+\frac{x^2}{2}+\frac{x^3}{6} \amp  f(x) \amp = e^x</mrow>
-                    <mrow>P'_3(x) \amp = 1 + x +\frac{x^2}{2}  \amp  f'(x) \amp = e^x</mrow>
-                    <mrow>P''_3(x) \amp = 1+x  \amp  f''(x) \amp = e^x</mrow>
-                    <mrow>P'''_3(x) \amp = 1  \amp  f'''(x) \amp = e^x</mrow>
-                  </md>,
+                  <md><mrow>P_3(x) \amp = 1+x+\frac{x^2}{2}+\frac{x^3}{6} \amp  f(x) \amp = e^x</mrow><mrow>P'_3(x) \amp = 1 + x +\frac{x^2}{2}  \amp  f'(x) \amp = e^x</mrow><mrow>P''_3(x) \amp = 1+x  \amp  f''(x) \amp = e^x</mrow><mrow>P'''_3(x) \amp = 1  \amp  f'''(x) \amp = e^x</mrow></md>,
                   and so the derivatives of <m>P_2</m> and <m>f</m> evaluated at 0 are
-                  <md permid="rji">
-                    <mrow>P_3(0) \amp = 1 \amp  f(0) \amp = e^0 = 1</mrow>
-                    <mrow>P'_3(0) \amp = 1 \amp  f'(0) \amp = e^0 = 1</mrow>
-                    <mrow>P''_3(0) \amp = 1 \amp  f''(0) \amp = e^0 = 1</mrow>
-                    <mrow>P'''_3(0) \amp = 1 \amp  f'''(0) \amp = e^0 = 1</mrow>
-                  </md>.
+                  <md><mrow>P_3(0) \amp = 1 \amp  f(0) \amp = e^0 = 1</mrow><mrow>P'_3(0) \amp = 1 \amp  f'(0) \amp = e^0 = 1</mrow><mrow>P''_3(0) \amp = 1 \amp  f''(0) \amp = e^0 = 1</mrow><mrow>P'''_3(0) \amp = 1 \amp  f'''(0) \amp = e^0 = 1</mrow></md>.
                 </p>
-
-                <p permid="VBe">
+                <p>
                   Then
-                  <me permid="Xqr">
+                  <me>
                     e = e^1 \approx P_3(1) = 1 + 1 + \frac{1}{2} + \frac{1}{6} = \frac{8}{3} \approx 2.67
                   </me>.
                 </p>
-              </li>
-            </ol>
-          </p>
-        </li>
-      </ol>
-    </p>
-  </solution>
-</exploration>
+        </solution>
+      </task>
 
+    </exploration>
+  </page>
+</worksheet>

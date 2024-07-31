@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- **********************************************************************-->
 <!-- Copyright 2012-2019                                                   -->
 <!-- Matthew Boelkins                                                      -->
@@ -12,43 +12,138 @@
 <!-- "share and share alike".  All trademarks are the registered marks of  -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
-<activity xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="act-6-1-3" permid="xQo">
-  <statement>
-    <p permid="AKU">
+<worksheet label="ws-act-6-1-3">
+  <page>
+    <activity xml:id="act-6-1-3" workspace="7cm">
+      <introduction>
+        <p>
       Each of the following questions somehow involves the arc length along a curve.
 
-      <ol marker="a." permid="qHo">
-        <li permid="WOx">
-          <p permid="pBV">
+      </p>
+      </introduction>
+      <task workspace="5cm" xml:id="act-6-1-3-task-0">
+        <statement>
+          <p>
             Use the definition and appropriate computational technology to determine the arc length along <m>y = x^2</m> from <m>x = -1</m> to <m>x = 1</m>.
           </p>
-        </li>
-
-        <li permid="CVG">
-          <p permid="VJe">
+        </statement>
+        <hint>
+          <p>
+            Recall that <m>L = \int_a^b \sqrt{1+f'(x)^2} \, dx</m>.
+          </p>
+        </hint>
+        <answer>
+          <p><m>L \approx 2.95789</m>.
+          </p>
+        </answer>
+        <solution>
+          <p>
+            Using the formula for arc length, we know
+            <me>
+              L = \int_{-1}^{1} \sqrt{1+(2x)^2} \,dx
+            </me>.
+            Evaluating the integral,
+            we find <m>L \approx 2.95789</m>.
+          </p>
+        </solution>
+      </task>
+      <task workspace="6cm" xml:id="act-6-1-3-task-1">
+        <statement>
+          <p>
             Find the arc length of
             <m>y = \sqrt{4-x^2}</m> on the interval <m>-2 \le x \le 2</m>.
             Find this value in two different ways: (a) by using a definite integral,
             and (b) by using a familiar property of the curve.
           </p>
-        </li>
-
-        <li permid="jcP">
-          <p permid="BQn">
+        </statement>
+        <hint>
+          <p>
+            Remember that <m>x^2 + y^2 = 4</m> generates a circle centered at <m>(0,0)</m> of radius 4.
+          </p>
+        </hint>
+        <answer>
+          <p><m> L = \int_{-2}^{2} \sqrt{\frac{4}{4-x^2}} \, dx = 2\pi</m>.
+          </p>
+        </answer>
+        <solution>
+          <p>
+            The curve is a semi-circle of radius 2, so its length must be <m>L = \frac{1}{2} \cdot 2 \pi r = 2\pi</m>.
+            This is confirmed by the arc length formula,
+            since <m>f(x) = \sqrt{4-x^2}</m>,
+            so <m>f'(x) = \frac{1}{2}(4-x^2)^{-1/2}(-2x)</m><me>
+              L = \int_{-2}^{2} \sqrt{1 + \left(-x(4-x^2)^{-1/2} \right)^2} \, dx = \int_{-2}^{2} \sqrt{1 + x^2(4-x^2)^{-1}} \, dx
+            </me>.
+            It follows<fn>
+            This integral is actually "improper" because the integrand is undefined at the endpoints,
+            <m>x = \pm 2</m>.
+            We will learn how to evaluate such integrals in <xref ref="sec-6-5-improper">Section</xref>.
+            </fn> that
+            <me>
+              L = \int_{-2}^{2} \sqrt{\frac{4}{4-x^2}} \, dx = 2\pi
+            </me>.
+          </p>
+        </solution>
+      </task>
+      <task workspace="7cm" xml:id="act-6-1-3-task-2">
+        <statement>
+          <p>
             Determine the arc length of
             <m>y = xe^{3x}</m> on the interval <m>[0,1]</m>.
           </p>
-        </li>
-
-        <li permid="PjY">
-          <p permid="hXw">
+        </statement>
+        <hint>
+          <p>
+            Apply the arc length formula.
+            Use technology to evaluate the integral.
+          </p>
+        </hint>
+        <answer>
+          <p><m>L = \int_0^1 \sqrt{1 + e^{6x}(9x^2 + 6x + 1)} \, dx \approx 20.1773</m>.
+          </p>
+        </answer>
+        <solution>
+          <p>
+            For <m>y = xe^{3x}</m>,
+            we observe that <m>y' = 3xe^{3x} + e^{3x} = e^{3x}(3x+1)</m>, and that
+            <me>
+              (y')^2 = e^{6x}(9x^2 + 6x + 1)
+            </me>.
+            Thus, the arc length of the curve on <m>[0,1]</m> is
+            <me>
+              L = \int_0^1 \sqrt{1 + e^{6x}(9x^2 + 6x + 1)} \, dx \approx 20.1773
+            </me>.
+          </p>
+        </solution>
+      </task>
+      <task workspace="7cm" xml:id="act-6-1-3-task-3">
+        <statement>
+          <p>
             Will the integrals that arise calculating arc length typically be ones that we can evaluate exactly using the First FTC, or ones that we need to approximate?
             Why?
           </p>
-        </li>
-
-        <li permid="vrh">
-          <p permid="OeF">
+        </statement>
+        <hint>
+          <p>
+            Most expressions involving square roots are difficult to antidifferentiate.
+          </p>
+        </hint>
+        <answer>
+          <p>
+            We will usually have to estimate the value of
+            <m>\int_a^b \sqrt{1+f'(x)^2} \, dx</m> using computational technology.
+          </p>
+        </answer>
+        <solution>
+          <p>
+            Because <m>\sqrt{1+f'(x)^2}</m> will rarely simplify nicely and rarely have an elementary antiderivative,
+            we will usually have to estimate the value of
+            <m>\int_a^b \sqrt{1+f'(x)^2} \, dx</m> using computational technology.
+          </p>
+        </solution>
+      </task>
+      <task workspace="7cm" xml:id="act-6-1-3-task-4">
+        <statement>
+          <p>
             A moving particle is traveling along the curve given by <m>y = f(x) = 0.1x^2 + 1</m>,
             and does so at a constant rate of 7 cm/sec,
             where both <m>x</m> and <m>y</m> are measured in cm (that is,
@@ -58,150 +153,29 @@
             assuming that when <m>t = 0</m>,
             the particle's location is <m>(0,f(0))</m>.
           </p>
-        </li>
-      </ol>
-    </p>
-  </statement>
-  <hint permid="SeE">
-    <p permid="UDL">
-      <ol marker="a." permid="KAf">
-        <li permid="byq">
-          <p permid="ulO">
-            Recall that <m>L = \int_a^b \sqrt{1+f'(x)^2} \, dx</m>.
-          </p>
-        </li>
-
-        <li permid="HFz">
-          <p permid="asX">
-            Remember that <m>x^2 + y^2 = 4</m> generates a circle centered at <m>(0,0)</m> of radius 4.
-          </p>
-        </li>
-
-        <li permid="nMI">
-          <p permid="GAg">
-            Apply the arc length formula.
-            Use technology to evaluate the integral.
-          </p>
-        </li>
-
-        <li permid="TTR">
-          <p permid="mHp">
-            Most expressions involving square roots are difficult to antidifferentiate.
-          </p>
-        </li>
-
-        <li permid="Aba">
-          <p permid="SOy">
+        </statement>
+        <hint>
+          <p>
             Here you can determine the arc length and then experiment to find the upper limit of integration,
             which will help you determine position.
           </p>
-        </li>
-      </ol>
-    </p>
-  </hint>
-  <answer permid="lXv">
-    <p permid="owC">
-      <ol marker="a." permid="esW">
-        <li permid="gij">
-          <p permid="yVH">
-            <m>L \approx 2.95789</m>.
-          </p>
-        </li>
-
-        <li permid="Mps">
-          <p permid="fcQ">
-            <m> L = \int_{-2}^{2} \sqrt{\frac{4}{4-x^2}} \, dx = 2\pi</m>.
-          </p>
-        </li>
-
-        <li permid="swB">
-          <p permid="LjZ">
-            <m>L = \int_0^1 \sqrt{1 + e^{6x}(9x^2 + 6x + 1)} \, dx \approx 20.1773</m>.
-          </p>
-        </li>
-
-        <li permid="YDK">
-          <p permid="rri">
-            We will usually have to estimate the value of
-            <m>\int_a^b \sqrt{1+f'(x)^2} \, dx</m> using computational technology.
-          </p>
-        </li>
-
-        <li permid="EKT">
-          <p permid="Xyr">
+        </hint>
+        <answer>
+          <p>
             Approximately <m>(14.9165,f(14.9165)) = (14.9165, 23.2502)</m>.
           </p>
-        </li>
-      </ol>
-    </p>
-  </answer>
-  <solution permid="FQm">
-    <p permid="Ipt">
-      <ol marker="a." permid="ylN">
-        <li permid="kSc">
-          <p permid="DFA">
-            Using the formula for arc length, we know
-            <me permid="gSd">
-              L = \int_{-1}^{1} \sqrt{1+(2x)^2} \,dx
-            </me>.
-            Evaluating the integral,
-            we find <m>L \approx 2.95789</m>.
-          </p>
-        </li>
-
-        <li permid="QZl">
-          <p permid="jMJ">
-            The curve is a semi-circle of radius 2, so its length must be <m>L = \frac{1}{2} \cdot 2 \pi r = 2\pi</m>.
-            This is confirmed by the arc length formula,
-            since <m>f(x) = \sqrt{4-x^2}</m>,
-            so <m>f'(x) = \frac{1}{2}(4-x^2)^{-1/2}(-2x)</m>
-            <me permid="MZm">
-              L = \int_{-2}^{2} \sqrt{1 + \left(-x(4-x^2)^{-1/2} \right)^2} \, dx = \int_{-2}^{2} \sqrt{1 + x^2(4-x^2)^{-1}} \, dx
-            </me>.
-            It follows<fn>
-            This integral is actually "improper" because the integrand is undefined at the endpoints,
-            <m>x = \pm 2</m>.
-            We will learn how to evaluate such integrals in <xref ref="sec-6-5-improper">Section</xref>.
-            </fn> that
-            <me permid="tgv">
-              L = \int_{-2}^{2} \sqrt{\frac{4}{4-x^2}} \, dx = 2\pi
-            </me>.
-          </p>
-        </li>
-
-        <li permid="xgu">
-          <p permid="PTS">
-            For <m>y = xe^{3x}</m>,
-            we observe that <m>y' = 3xe^{3x} + e^{3x} = e^{3x}(3x+1)</m>, and that
-            <me permid="ZnE">
-              (y')^2 = e^{6x}(9x^2 + 6x + 1)
-            </me>.
-            Thus, the arc length of the curve on <m>[0,1]</m> is
-            <me permid="FuN">
-              L = \int_0^1 \sqrt{1 + e^{6x}(9x^2 + 6x + 1)} \, dx \approx 20.1773
-            </me>.
-          </p>
-        </li>
-
-        <li permid="dnD">
-          <p permid="wbb">
-            Because <m>\sqrt{1+f'(x)^2}</m> will rarely simplify nicely and rarely have an elementary antiderivative,
-            we will usually have to estimate the value of
-            <m>\int_a^b \sqrt{1+f'(x)^2} \, dx</m> using computational technology.
-          </p>
-        </li>
-
-        <li permid="JuM">
-          <p permid="cik">
+        </answer>
+        <solution>
+          <p>
             After 4 seconds traveling at 7 cm/sec,
             the particle has moved 28 cm.
             So, we have to find the value of <m>b</m> for which the arc length <m>L</m> along <m>[0,b]</m> is 28.
             Thus, we know that
-            <me permid="lBW">
+            <me>
               28 = L = \int_0^b \sqrt{1 + (0.2x)^2} \, dx
             </me>.
             Rewriting the integral, we see
-            <me permid="RJf">
+            <me>
               28 = \int_0^b \sqrt{1+0.04x^2} \, dx
             </me>.
             Experimenting with different values of <m>b</m> in a computational engine like WolframAlpha,
@@ -209,9 +183,8 @@
             <m>\int_0^{14.9165} \sqrt{1+0.04x^2} \, dx \approx 27.9998</m>,
             and thus the position of the particle when <m>t=4</m> is approximately <m>(14.9165,f(14.9165)) = (14.9165, 23.2502)</m>.
           </p>
-        </li>
-      </ol>
-    </p>
-  </solution>
-</activity>
-
+        </solution>
+      </task>
+    </activity>
+  </page>
+</worksheet>

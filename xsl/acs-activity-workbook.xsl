@@ -12,114 +12,101 @@
 <!-- "share and share alike".  All trademarks are the registered marks of  -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
+<!-- Conveniences for classes of similar elements -->
+<!DOCTYPE xsl:stylesheet [
+    <!ENTITY % entities SYSTEM "entities.ent">
+    %entities;
+]>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
+    xmlns:pi="http://pretextbook.org/2020/pretext/internal"
+>
 
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-
-<!-- Next paths assume current file has been copied to mathbook/user -->
 <xsl:import href="./core/pretext-latex.xsl" />
-<xsl:import href="acs-common.xsl" />
+
+<xsl:variable name="title-separator" select="'\\[0.25\baselineskip]'"/>
 
 <xsl:output method="text" />
 
-<!-- Superfluous frontmatter for workbook -->
+<!-- Superfluous frontmatter for a solution manual -->
 <!-- So we don't bother and kill first two pages   -->
 <xsl:template match="*" mode="half-title" />
 <xsl:template match="*" mode="ad-card" />
-
-<!-- Chapters: default presentation, we have them all, so numbers OK     -->
-<!-- Sections and Equivalents: kill them, except for specific ones below -->
-<xsl:template match="conclusion|exercises|references|objectives|appendix|index|solutions|reading-questions" />
-
-
-<!-- As a subset of full content, we can't         -->
-<!-- point to much of the content with hyperlinks  -->
-<!-- We do have the full context as we process, so -->
-<!-- we can get numbers for cross-references and   -->
-<!-- hard code them into the LaTeX                 -->
-<!-- This override obliterates autonaming support  -->
-<xsl:template match="*" mode="ref-id">
-    <xsl:apply-templates select="." mode="number" />
+<!-- Blue vertical rule next to Activity and Preview Activity -->
+<xsl:template match="&PROJECT-LIKE;" mode="tcb-style">
+    <xsl:text>enhanced,frame hidden,interior hidden, sharp corners,&#xa;</xsl:text>
+    <xsl:text>boxrule=0pt,borderline west={3pt}{0pt}{ActiveBlue}, &#xa;</xsl:text>
+    <xsl:text>runintitlestyle, blockspacingstyle, after title={.\space}, &#xa;</xsl:text>
+    <xsl:text>colback=white,&#xa;</xsl:text>
+    <xsl:text>coltitle=black,after={\cleardoublepage}</xsl:text>
 </xsl:template>
 
-<!-- We do the expedient thing and *hard-code* the number    -->
-<!-- of each item cross-referenced from within the solutions -->
-<!-- manual, so the cropss-refernce text matches with HTML   -->
-<!-- output and LaTeX output for the entire book.            -->
-<!-- Since the output LaTeX file is a subset of the content, -->
-<!-- there will not be a \label for many \ref, and worse, if -->
-<!-- there is a \label then a \ref to it will be wrong.      -->
-<xsl:template match="*" mode="xref-number">
-  <xsl:apply-templates select="." mode="number" />
-</xsl:template>
+<xsl:param name="latex.preamble.late">
+  <xsl:value-of select="$latex.preamble.late.common" />
+</xsl:param>
 
 
-<!-- If we do not include statements, then we kill -->
-<!-- introductions and conclusions for exercise    -->
-<!-- sections and exercise groups                  -->
-<xsl:template match="exercises/introduction|exercises/conclusion|exercisegroup/introduction|exercisegroup/conclusion">
-    <xsl:choose>
-        <xsl:when test="$exercise.text.statement='yes'">
-            <xsl:apply-imports />
-        </xsl:when>
-        <xsl:otherwise></xsl:otherwise>
-    </xsl:choose>
-</xsl:template>
+<!-- Set font size  -->
+<xsl:param name="latex.font.size" select="'10pt'" />
+<xsl:param name="latex.pageref" select="'no'" />
 
-<!-- We start a new page after each activity and PA -->
-<xsl:template match="activity|exploration">
-    <xsl:apply-imports />
-    <xsl:text>\cleardoublepage&#xA;&#xA;</xsl:text>
-</xsl:template>
+<!-- Font configuration should be consistent -->
+<xsl:param name="latex.preamble.early">
+       <xsl:text>%% Customized to load Palatino fonts&#xa;</xsl:text>
+   <xsl:text>\usepackage[T1]{fontenc}&#xa;</xsl:text>
+   <xsl:text>\renewcommand{\rmdefault}{zpltlf} %Roman font for use in math mode&#xa;</xsl:text>
+   <xsl:text>\usepackage[scaled=.85]{beramono}% used only by \mathtt&#xa;</xsl:text>
+   <xsl:text>\usepackage[type1]{cabin}%used only by \mathsf&#xa;</xsl:text>
+   <xsl:text>\usepackage{amsmath,amssymb}%load before newpxmath&#xa;</xsl:text>
+   <xsl:text>\usepackage[varg,cmintegrals,bigdelims,varbb]{newpxmath}&#xa;</xsl:text>
+   <xsl:text>\usepackage[scr=rsfso]{mathalfa}&#xa;</xsl:text>
+   <xsl:text>\usepackage{bm} %load after all math to give access to bold math&#xa;</xsl:text>
+   <xsl:text>% Now load the otf text fonts using fontspec--wont affect math&#xa;</xsl:text>
+   <xsl:text>\usepackage[no-math]{fontspec}&#xa;</xsl:text>
+   <xsl:text>\setmainfont{TeXGyrePagellaX}&#xa;</xsl:text>
+   <xsl:text>\defaultfontfeatures{Ligatures=TeX,Scale=1,Mapping=tex-text}&#xa;</xsl:text>
+   <xsl:text>\linespread{1.02}&#xa;</xsl:text>
+</xsl:param>
 
-<!-- Only process activity within subsection -->
+<xsl:param name="latex.preamble.late.common">
+    <xsl:text>%% Used to get WeBWorK logo into margin next to WW exercises&#xa;</xsl:text>
+    <xsl:text>\usepackage{marginnote}&#xa;</xsl:text>
 
-<xsl:template match="introduction|subsection">
-    <xsl:apply-templates select="exploration|activity" />
-</xsl:template>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>% CC icon at bottom of first page of each chapter &#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>\newpagestyle{chapopen}{&#xa;</xsl:text>
+    <xsl:text>\sethead[][][] % even&#xa;</xsl:text>
+    <xsl:text>{}{}{} % odd&#xa;</xsl:text>
+    <xsl:text>\setfoot[\includegraphics[height=1pc]{external/images/CC-BY-SA-license.pdf}][][]&#xa;</xsl:text>
+<xsl:text>{}{}{\includegraphics[height=1pc]{external/images/CC-BY-SA-license.pdf}}}&#xa;</xsl:text>
+    <xsl:text>\assignpagestyle{\chapter}{chapopen}&#xa;</xsl:text>
 
-<!-- Captions for Figures, Tables, Listings, Lists -->
-<!-- xml:id is on parent, but LaTeX generates number with caption -->
-<xsl:template match="figure|listing|table|list" mode="title-caption">
-    <!-- construct appropriate command -->
-    <xsl:choose>
-        <xsl:when test="parent::sidebyside/parent::figure or parent::sidebyside/parent::sbsgroup/parent::figure">
-            <xsl:text>\subcaption*{</xsl:text>
-        </xsl:when>
-        <xsl:when test="self::figure/parent::sidebyside">
-            <xsl:text>\captionof*{figure}{</xsl:text>
-        </xsl:when>
-        <xsl:when test="self::table/parent::sidebyside">
-            <xsl:text>\captionof*{table}{</xsl:text>
-        </xsl:when>
-        <xsl:when test="self::listing">
-            <xsl:text>\captionof*{listingcap}{</xsl:text>
-        </xsl:when>
-        <xsl:when test="self::list">
-            <xsl:text>\captionof*{namedlistcap}{</xsl:text>
-        </xsl:when>
-        <xsl:otherwise>
-            <xsl:text>\caption*{</xsl:text>
-        </xsl:otherwise>
-    </xsl:choose>
-    <!-- produce the actual content -->
-    <xsl:text>\textbf{</xsl:text>
-    <xsl:apply-templates select="." mode="type-name"/>
-    <xsl:text> </xsl:text>
-    <xsl:apply-templates select="." mode="number"/>
-    <xsl:text>:} </xsl:text>
-    <xsl:choose>
-        <xsl:when test="self::figure or self::listing">
-            <xsl:apply-templates select="." mode="caption-full"/>
-        </xsl:when>
-        <xsl:when test="self::table or self::list">
-            <xsl:apply-templates select="." mode="title-full"/>
-        </xsl:when>
-        <!-- never used? -->
-        <xsl:otherwise>
-            <xsl:apply-templates select="caption"/>
-        </xsl:otherwise>
-    </xsl:choose>
-    <xsl:text>}&#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>% Modified from Mitch Keller's chapter handling &#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>%%% This is from common&#xa;</xsl:text>
+    <xsl:text>\definecolor{ActiveBlue}{cmyk}{1, 0.5, 0, 0.35}&#xa;</xsl:text>
+    <xsl:text>\colorlet{chaptercolor}{ActiveBlue}&#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>% Basic paragraph parameters &#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>\setlength{\parindent}{0mm}&#xa;</xsl:text>
+    <xsl:text>\setlength{\parskip}{0.5pc}&#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>% In print, trying to reduce color use &#xa;</xsl:text>
+    <xsl:text>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&#xa;</xsl:text>
+    <xsl:text>\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,</xsl:text>
+    <xsl:text>filecolor=black,urlcolor=black}&#xa;</xsl:text>
+</xsl:param>
+
+<!-- Set the headers and footers for the book -->
+<xsl:template match="book" mode="titleps-headings">
+    <xsl:text>{\sethead[\textsl{\ifthechapter{\chaptertitlename{} </xsl:text>
+    <xsl:text>\thechapter }{} }][][]&#xa;</xsl:text>
+    <xsl:text>{}{}{\textsl{\ifthesection{\thesection{} \sectiontitle}</xsl:text>
+    <xsl:text>{} }}&#xa;</xsl:text>
+    <xsl:text>\setfoot[\thepage][][]&#xa;</xsl:text>
+    <xsl:text>{}{}{\thepage}}&#xa;</xsl:text>
 </xsl:template>
 
 <!-- Style titles -->
@@ -128,19 +115,18 @@
     <xsl:text>\titleformat{\chapter}[display]&#xa;</xsl:text>
     <xsl:text>{\raggedleft\normalfont\color{chaptercolor}\Large}{</xsl:text>
     <xsl:text>\MakeUppercase{\divisionnameptx}\space</xsl:text>
-    <!-- Don't draw the rule that makes the colored box since KDP barfs -->
-    <!-- when we do that. -->
     <xsl:text>\rlap{\enskip\resizebox{!}{0.95cm}{\thechapter}</xsl:text>
     <xsl:text>}}{10pt}{\normalfont\Huge\itshape#1}&#xa;</xsl:text>
     <xsl:text>[{\Large\authorsptx}]&#xa;</xsl:text>
     <xsl:text>\titleformat{name=\chapter,numberless}[display]&#xa;</xsl:text>
     <xsl:text>{\raggedleft\normalfont\color{chaptercolor}\Huge\itshape}{}{0pt}{#1}&#xa;</xsl:text>
     <xsl:text>[{\Large\authorsptx}]&#xa;</xsl:text>
-    <xsl:text>\titlespacing*{\chapter}{0pt}{30pt}{20pt}&#xa;</xsl:text>
+    <xsl:text>\titlespacing*{\chapter}{0pt}{0pt}{0pt}&#xa;</xsl:text>
 
-    <!-- Everything in this template below here is stock PTX as of 2018-12-17 -->
+
+<!-- Everything in this template below here is stock PTX as of 2018-12-17 -->
     <xsl:text>\titleformat{\section}[block]&#xa;</xsl:text>
-<xsl:text>{\normalfont\Large\bfseries}{\thesection\space\titleptx}{1em}{}&#xa;</xsl:text>
+    <xsl:text>{\normalfont\Large\bfseries}{\thesection\space\titleptx}{1em}{}&#xa;</xsl:text>
     <xsl:text>[{\large\authorsptx}]&#xa;</xsl:text>
     <xsl:text>\titleformat{name=\section,numberless}[block]&#xa;</xsl:text>
     <xsl:text>{\normalfont\Large\bfseries}{}{0pt}{#1}&#xa;</xsl:text>
@@ -163,12 +149,65 @@
 </xsl:template>
 
 
-<!-- Use letter paper and leave one-inch margins all around -->
-<xsl:param name="latex.geometry" select="'letterpaper,tmargin=.5in,bmargin=.3in,hmargin=.75in,includeheadfoot,lmargin=1in'" />
+<xsl:template match="&DEFINITION-LIKE;" mode="tcb-style">
+    <xsl:text>bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, </xsl:text>
+</xsl:template>
 
-<xsl:param name="latex.preamble.late">
-    <xsl:value-of select="$latex.preamble.late.common" />
-</xsl:param>
+<xsl:template match="&EXAMPLE-LIKE;" mode="tcb-style">
+    <xsl:text>bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, </xsl:text>
+</xsl:template>
 
+
+<!-- Restore horizontal rules around Motivating Questions -->
+<!-- This is fixing a bug in PreTeXt and can be removed when it's fixed -->
+<xsl:template match="objectives" mode="tcb-style">
+    <xsl:text>enhanced,frame hidden,interior hidden,sharp corners,&#xa;</xsl:text>
+    <xsl:text>blockspacingstyle,boxrule=0pt,left=0pt,right=0pt,&#xa;</xsl:text>
+    <xsl:text>fonttitle=\large\bfseries,&#xa;</xsl:text>
+    <xsl:text>borderline north={0.1ex}{0pt}{black},&#xa;</xsl:text>
+    <xsl:text>toptitle=0.5ex,top=2ex, bottom=0.5ex, &#xa;</xsl:text>
+    <xsl:text>borderline south={0.1ex}{0pt}{black},coltitle=black,</xsl:text>
+</xsl:template>
+
+<!-- Add some styling to assemblage. This was roughly the PreTeXt default -->
+<!-- in summer 2018 when the 2018 edition was produced. -->
+<!-- The only change made here is to use ActiveBlue instead of the default blue. -->
+<xsl:template match="assemblage" mode="tcb-style">
+    <xsl:text>skin=enhanced, arc=2ex, &#xa;</xsl:text>
+    <xsl:text>colback=ActiveBlue!5,colframe=ActiveBlue!75!black, &#xa;</xsl:text>
+    <xsl:text>colbacktitle=ActiveBlue!20, coltitle=black, &#xa;</xsl:text>
+    <xsl:text>boxed title style={sharp corners, frame hidden}, &#xa;</xsl:text>
+    <xsl:text>fonttitle=\bfseries, attach boxed title to top &#xa;</xsl:text>
+    <xsl:text>left={xshift=4mm,yshift=-3mm}, top=3mm,&#xa;</xsl:text>
+</xsl:template>
+
+<!-- Kill answers to WeBWorK exercises -->
+<xsl:template match="exercise[webwork-reps]|exercise[webwork]" mode="solutions">
+</xsl:template>
+
+<xsl:template match="worksheet" mode="new-geometry"></xsl:template>
+
+<xsl:template match="fn[@pi:url]">
+    <xsl:text> (\nolinkurl{</xsl:text>
+        <xsl:call-template name="escape-url-to-latex">
+            <xsl:with-param name="text">
+                <xsl:value-of select="@pi:url"/>
+            </xsl:with-param>
+        </xsl:call-template>
+        <xsl:text>})</xsl:text>
+</xsl:template>
+
+<xsl:template match="&PROJECT-LIKE;|&FIGURE-LIKE;|tabular|list|sidebyside|gi|&GOAL-LIKE;|backmatter/colophon|assemblage|exercise|dl/li" mode="pop-footnote-text">
+    <xsl:if test="count(ancestor::*[&ASIDE-FILTER; or &THEOREM-FILTER; or &AXIOM-FILTER;  or &DEFINITION-FILTER; or &REMARK-FILTER; or &COMPUTATION-FILTER; or &EXAMPLE-FILTER; or &PROJECT-FILTER; or &GOAL-FILTER; or &FIGURE-FILTER; or self::tabular or self::list or self::sidebyside or self::gi or self::colophon/parent::backmatter or self::assemblage or self::exercise or (self::li and parent::dl)]) = 0">
+        <xsl:for-each select=".//fn[not(@pi:url)]">
+            <xsl:text>\footnotetext[</xsl:text>
+            <xsl:apply-templates select="." mode="serial-number"/>
+            <xsl:text>]</xsl:text>
+            <xsl:text>{</xsl:text>
+            <xsl:apply-templates select="." mode="footnote-text"/>
+            <xsl:apply-templates select="." mode="label" />
+            <xsl:text>}%&#xa;</xsl:text>
+        </xsl:for-each>
+    </xsl:if>
+</xsl:template>
 </xsl:stylesheet>
-
