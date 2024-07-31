@@ -17,7 +17,9 @@
     <!ENTITY % entities SYSTEM "entities.ent">
     %entities;
 ]>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
+    xmlns:pi="http://pretextbook.org/2020/pretext/internal"
+>
 
 <xsl:import href="./core/pretext-latex.xsl" />
 
@@ -146,15 +148,6 @@
     <xsl:text>\titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}&#xa;</xsl:text>
 </xsl:template>
 
-<!-- Blue vertical rule next to Activity and Preview Activity -->
-<xsl:template match="&PROJECT-LIKE;" mode="tcb-style">
-    <xsl:text>enhanced,frame hidden,interior hidden, sharp corners,&#xa;</xsl:text>
-    <xsl:text>boxrule=0pt,borderline west={3pt}{0pt}{ActiveBlue}, &#xa;</xsl:text>
-    <xsl:text>runintitlestyle, blockspacingstyle, after title={.\space}, &#xa;</xsl:text>
-    <xsl:text>colback=white,&#xa;</xsl:text>
-    <xsl:text>coltitle=black,after=\cleardoublepage</xsl:text>
-</xsl:template>
-
 
 <xsl:template match="&DEFINITION-LIKE;" mode="tcb-style">
     <xsl:text>bwminimalstyle, runintitlestyle, blockspacingstyle, after title={\space}, </xsl:text>
@@ -194,4 +187,27 @@
 
 <xsl:template match="worksheet" mode="new-geometry"></xsl:template>
 
+<xsl:template match="fn[@pi:url]">
+    <xsl:text> (\nolinkurl{</xsl:text>
+        <xsl:call-template name="escape-url-to-latex">
+            <xsl:with-param name="text">
+                <xsl:value-of select="@pi:url"/>
+            </xsl:with-param>
+        </xsl:call-template>
+        <xsl:text>})</xsl:text>
+</xsl:template>
+
+<xsl:template match="&PROJECT-LIKE;|&FIGURE-LIKE;|tabular|list|sidebyside|gi|&GOAL-LIKE;|backmatter/colophon|assemblage|exercise|dl/li" mode="pop-footnote-text">
+    <xsl:if test="count(ancestor::*[&ASIDE-FILTER; or &THEOREM-FILTER; or &AXIOM-FILTER;  or &DEFINITION-FILTER; or &REMARK-FILTER; or &COMPUTATION-FILTER; or &EXAMPLE-FILTER; or &PROJECT-FILTER; or &GOAL-FILTER; or &FIGURE-FILTER; or self::tabular or self::list or self::sidebyside or self::gi or self::colophon/parent::backmatter or self::assemblage or self::exercise or (self::li and parent::dl)]) = 0">
+        <xsl:for-each select=".//fn[not(@pi:url)]">
+            <xsl:text>\footnotetext[</xsl:text>
+            <xsl:apply-templates select="." mode="serial-number"/>
+            <xsl:text>]</xsl:text>
+            <xsl:text>{</xsl:text>
+            <xsl:apply-templates select="." mode="footnote-text"/>
+            <xsl:apply-templates select="." mode="label" />
+            <xsl:text>}%&#xa;</xsl:text>
+        </xsl:for-each>
+    </xsl:if>
+</xsl:template>
 </xsl:stylesheet>
