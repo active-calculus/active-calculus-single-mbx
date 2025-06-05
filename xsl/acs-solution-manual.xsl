@@ -26,8 +26,7 @@
 <xsl:template match="*" mode="half-title" />
 <xsl:template match="*" mode="ad-card" />
 
-<!-- Use letter paper and leave one-inch margins all around -->
-<xsl:param name="latex.geometry" select="'letterpaper,tmargin=.5in,bmargin=.3in,hmargin=.75in,includeheadfoot '" />
+<xsl:template match="exercise[@exercise-interactive='webwork-reps']" mode="solutions"> </xsl:template>
 
 <xsl:param name="latex.preamble.late">
   <xsl:text>% These override what PreTeXt supplies by default. The only addition&#xa;</xsl:text>
@@ -49,4 +48,3 @@
 </xsl:param>
 
 </xsl:stylesheet>
-
