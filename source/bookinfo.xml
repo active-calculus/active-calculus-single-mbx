@@ -14,9 +14,38 @@
 <!-- **********************************************************************-->
 <docinfo>
   <brandlogo url="https://activecalculus.org" source="images/ActiveCalculusImage_sm.jpg" />
+  <latex-image-preamble>
+    \usepackage{pgfplots}
+    \definecolor{blue}{HTML}{0000FF}
+    \definecolor{darkgreen}{HTML}{008000}
+    \definecolor{darkorange}{HTML}{ff8c00}
 
-  <document-id component="production" edition="3">active-calc</document-id>
-  <document-id component="proteus" edition="3">active-calc-proteus</document-id>
+    \colorlet{firstcolor}{blue}
+    \colorlet{secondcolor}{darkgreen}
+    \colorlet{thirdcolor}{darkorange}
+
+    \pgfplotsset{firstcurve/.style      = {color=firstcolor,  mark=none, line width=1pt, solid, ultra thick}}
+    \pgfplotsset{secondcurve/.style     = {color=secondcolor, mark=none, line width=1pt, solid, ultra thick}}
+    \pgfplotsset{thirdcurve/.style      = {color=thirdcolor,  mark=none, line width=1pt, solid, ultra thick}}
+
+    \pgfplotscreateplotcyclelist{acplotstyles}{%
+      firstcurve\\%
+      secondcurve\\%
+      thirdcurve\\%
+    }
+
+    \pgfplotsset{every axis/.append style={
+      axis lines=middle,
+      grid = both,
+      cycle list name=acplotstyles,
+    }}
+
+    \pgfplotsset{soliddot/.style        = {fill=darkorange,  mark=*, only marks}}
+    \pgfplotsset{hollowdot/.style       = {mark=*, only marks}}
+
+    \pgfplotsset{guideline/.style       = {color=gray, mark=none, line width=1pt, -}}
+    \tikzset{guideline/.style           = {color=gray, mark=none, line width=1pt, -}}
+  </latex-image-preamble>
 
   <macros>
 		\newcommand{\dollar}{\$}
@@ -27,12 +56,15 @@
   <cross-references text="global" />
   <initialism>AC</initialism>
 
-  <feedback>
-    <url>http://gvsu.edu/s/0vK</url>
-  </feedback>
-  <document-id>boelkins-ACS</document-id>
+  <document-id component="ed2" edition="2">ac-single</document-id>
+  <document-id component="ed1-static" edition="1">ac-single</document-id>
+  <document-id component="proteus" edition="1">active-calc-proteus</document-id>
+  <blurb shelf="Mathematics">
+    Active Calculus Single Variable supports an active learning approach in the first two semesters of calculus. Every section of Active Calculus Single Variable offers engaging activities for students to complete before and during class; additional exercises that challenge students to connect and assimilate core concepts; interactive WeBWorK exercises; opportunities for students to develop conceptual understanding and improve their skills at communicating mathematical idea.  The text is free and open-source, available in HTML, PDF, and print formats.  Ancillary materials for instructors are also available.
+  </blurb>
   <rename element="exploration" xml:lang="en-US">Preview Activity</rename>
 
   <rename element="objectives" xml:lang="en-US">Motivating Questions</rename>
+  <rename element="inlineexercise" xml:lang="en-US">Question</rename>
 </docinfo>
 

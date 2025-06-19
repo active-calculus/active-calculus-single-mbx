@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2022                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-8a-3-geometric">
+  <title>Geometric Sums</title>
+  <objectives>
+    <ul>
+      <li>
+        <p>
+          What is a finite geometric sum and how can we quickly find its value, no matter how many terms are in the sum?
+        </p>
+      </li>
+      <li>
+        <p>
+          How can a finite geometric sum be extended to an infinite geometric series?  In what circumstances can we quickly find the value of an infinite geometric series?
+        </p>
+      </li>
+      <li>
+        <p>
+          How are finite and infinite geometric series connected to Taylor polynomials?
+        </p>
+      </li>
+    </ul>
+
+  </objectives>
+
+  <introduction>
+    <p>
+      In our work in <xref ref="sec-8a-2-taylor-poly">Section</xref>, we learned how to find a degree <m>n</m> polynomial approximation centered at a value <m>a</m> for a given function <m>f</m> with at least <m>n</m> derivatives.  By working with several different functions and <m>n</m>-values, we've seen that increasing the degree of the polynomial improves the approximation, and also often helps us to see a pattern in the coefficients of the Taylor polynomials.
+    </p>
+
+    <p>
+      For example, the degree <m>5</m> Taylor approximation of <m>f(x) = \ln(1+x)</m> at <m>a = 0</m> is
+          <me>
+            T_5(x) = x - \frac{1}{2}x^2 + \frac{1}{3}x^3 - \frac{1}{4}x^4 + \frac{1}{5}x^5,
+          </me>
+      and we see a pattern in the coefficients that allows us to easily generate <m>T_6(x)</m>, <m>T_{10}(x)</m>, or indeed <m>T_n(x)</m> for any <m>n</m>.  Note that if we want to use <m>T_{10}(x)</m> to estimate <m>\ln(\frac{3}{2}) = \ln(1 + \frac{1}{2})</m>, we need to compute the sum of <m>10</m> terms given by
+          <me>
+            \ln\left( \frac{3}{2} \right) \approx T_{10}\left( \frac{1}{2} \right) = \left( \frac{1}{2} \right) - \frac{1}{2} \left( \frac{1}{2} \right)^2 + \frac{1}{3} \left( \frac{1}{2} \right)^3 - \frac{1}{4} \left( \frac{1}{2} \right)^4 + \cdots - \frac{1}{10} \left( \frac{1}{2} \right)^{10}.  
+          </me>
+      This computation suggests at least two questions:  is there an easy way (without a computer) to determine the exact value of the <m>10</m>-term sum 
+      <me>
+        \left( \frac{1}{2} \right) - \frac{1}{2} \left( \frac{1}{2} \right)^2 + \frac{1}{3} \left( \frac{1}{2} \right)^3 - \frac{1}{4} \left( \frac{1}{2} \right)^4 + \cdots - \frac{1}{10} \left( \frac{1}{2} \right)^{10}
+      </me>, 
+      and is there a way we can make sense of continuing the sum indefinitely, 
+      <me>
+        \left( \frac{1}{2} \right) - \frac{1}{2} \left( \frac{1}{2} \right)^2 + \frac{1}{3} \left( \frac{1}{2} \right)^3 - \frac{1}{4} \left( \frac{1}{2} \right)^4 + \cdots - \frac{1}{10} \left( \frac{1}{2} \right)^{10} + \cdots?
+      </me>
+    </p>
+
+    <p>
+      In this section, we investigate a special collection of similar sums that are called <term>geometric</term>.
+    </p>
+
+    <xi:include href="./previews/PA-8a-3-WW.xml" />
+    <xi:include href="./previews/PA-8a-3.xml" />
+
+  </introduction>  
+
+  <subsection>
+    <title>Finite Geometric Series</title>
+    <p>
+      Sums such as 
+      <me>
+        1 + \frac{1}{2} + \left( \frac{1}{2} \right)^2 + \left( \frac{1}{2} \right)^3 + \cdots + \left( \frac{1}{2} \right)^{n-1}
+      </me>,
+      <me>
+        1 + \frac{1}{4} + \left( \frac{1}{4} \right)^2 + \left( \frac{1}{4} \right)^3 + \cdots + \left( \frac{1}{4} \right)^{n-1}
+      </me>,
+      and 
+      <me>
+        2 - \frac{4}{3} + \frac{8}{9} - \frac{16}{27} + \cdots + 2 \cdot \left( \frac{-2}{3} \right)^{n-1}
+      </me>
+      all share a similar structure:  the next term in each sum is found by multiplying the last term by the same number.  In the first sum, each subsequent term is found by multiplying by <m>\frac{1}{2}</m>; in the second sum, by multiplying by <m>\frac{1}{4}</m>; in the third sum, the multiplier is <m>-\frac{2}{3}</m>.
+      These sums each have the form
+      <men xml:id="eq-8-3a-finite-geometric-1">
+        a+ar+ar^2+ \cdots + ar^{n-1}
+      </men>,
+      which we call a <term>finite geometric series</term>
+<!--          <idx><h>finite geometric series</h></idx> -->
+      with ratio <m>r</m>.  It turns out that the value of each sum that has this form can be computed quickly without having to add all of the individual terms.
+    </p>
+
+    <xi:include href="./activities/act-8a-3-1.xml" />
+
+    <p>
+      The ideas in <xref ref="act-8a-3-1">Activity</xref> can be extended to the general case for any value of <m>a</m> and any value of <m>r \ne 1</m>.  In particular, replacing <m>1</m> with <m>a</m> and <m>\frac{2}{5}</m> with <m>r</m>, our work shows that by finding <m>r \cdot S_n</m> and then subtracting that quantity from <m>S_n</m>, we get 
+      <me>
+        S_n - rS_n = (a + ar + \cdots + ar^{n-1}) - (ar + ar^2 + \cdots + ar^n)
+      </me>,
+      so that
+      <me>
+        S_n(1-r) = a - ar^n
+      </me>,
+      and therefore
+      <me>
+        S_n = \frac{a - ar^n}{1-r}
+      </me>.
+      We summarize this result formally as follows.
+    </p>
+
+    <assemblage>
+      <title>The value of a finite geometric series</title>
+      <p>
+        A finite geometric series <m>S_n</m> is a sum of the form
+        <men xml:id="eq-8a-3-geometric-series-finite">
+          S_n = a + ar + ar^2 + \cdots + ar^{n-1}
+        </men>,
+        where <m>a</m> and <m>r</m> are real numbers such that <m>r \ne 1</m>.
+        The exact value of the finite geometric series <m>S_n</m> can be computed directly as
+        <men xml:id="eq-8a-3-part-sum-geometric">
+          S_n = \frac{a(1-r^n)}{1-r}
+        </men>.
+      </p>
+    </assemblage>
+
+    <example xml:id="Ex-8a-3-finite-geom-1">
+      <title>The value of a finite geometric series</title>
+      <statement>
+        <p>
+          Use the shortcut formula in <xref ref="eq-8a-3-part-sum-geometric">Equation</xref> to find the exact value of the finite geometric series 
+          <me>
+            1 + \frac{1}{2} + \left( \frac{1}{2} \right)^2 + \left( \frac{1}{2} \right)^3 + \cdots + \left( \frac{1}{2} \right)^9
+          </me>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We can view the given sum as the finite geometric series <m>S_{10}</m> that has <m>a = 1</m> and <m>r = \frac{1}{2}</m>.  By <xref ref="eq-8a-3-part-sum-geometric">Equation</xref>, it follows that 
+        <me>
+          S_{10} = \frac{1 - 1 \cdot \left(\frac{1}{2}\right)^{10}}{1-\frac{1}{2}} = \frac{1 - \frac{1}{1024}}{\frac{1}{2}} = \frac{2047}{1024} = 1.9990234375
+        </me>.
+        </p>
+      </solution>
+    </example>
+
+    <example xml:id="Ex-8a-3-finite-geom-2">
+      <title>The value of another finite geometric series</title>
+      <statement>
+        <p>
+          Use the shortcut formula in <xref ref="eq-8a-3-part-sum-geometric">Equation</xref> to find the exact value of the finite geometric series 
+        <me>
+          2 - \frac{8}{3} + \frac{32}{9} - \frac{128}{27} + \cdots + 2 \cdot \left( -\frac{4}{3} \right)^7
+        </me>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We can view the given sum as the finite geometric series <m>S_{8}</m> that has <m>a = 2</m> and <m>r = -\frac{4}{3}</m>.  By <xref ref="eq-8a-3-part-sum-geometric">Equation</xref>, it follows that 
+        <me>
+          S_{8} = \frac{2 - 2 \cdot \left(-\frac{4}{3}\right)^{8}}{1+\frac{4}{3}} = -\frac{16850}{2187} \approx -7.704618198
+        </me>.
+        </p>
+      </solution>
+    </example>
+
+    <example xml:id="Ex-8a-3-finite-geom-3">
+      <title>The value of one more finite geometric series</title>
+      <statement>
+        <p>
+          Use the shortcut formula in <xref ref="eq-8a-3-part-sum-geometric">Equation</xref> to find the exact value of the finite geometric series 
+        <me>
+          \frac{1}{3} + 1 + 3 + 9 + \cdots + 6561
+        </me>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Note that <m>6561 = 3^8</m>, so since this sum begins with <m>\frac{1}{3} = 3^{-1}</m>, this is a finite geometric series with <m>10</m> terms.  Hence we can view the given sum as the finite geometric series <m>S_{10}</m> that has <m>a = \frac{1}{3}</m> and <m>r = 3</m>:
+        <me>
+          S_{10} = \frac{1}{3} \cdot 3^0 + \frac{1}{3} \cdot 3^1 + \frac{1}{3} \cdot 3^2 + \cdots + \frac{1}{3} \cdot 3^9 
+        </me>.
+        By <xref ref="eq-8a-3-part-sum-geometric">Equation</xref>, we find that 
+        <me>
+          S_{10} = \frac{\frac{1}{3} - \frac{1}{3} \cdot 3^{10}}{1-3} = \frac{29524}{3}
+        </me>.
+        </p>
+      </solution>
+    </example>
+
+  </subsection>
+
+  <subsection>
+    <title>Infinite Geometric Series</title>
+
+    <p>
+      Our initial introduction to sums with many terms came from Taylor polynomial approximations such as 
+      <me>
+        e^1 \approx T_5(1) = 1 + 1 + \frac{1}{2!} + \frac{1}{3!} + \frac{1}{4!} + \frac{1}{5!}      
+      </me>.
+      Because the approximation gets better as we add more terms, it's natural to think about the possibility of the sum extending forever.  We begin by asking this question for a finite geometric series such as 
+      <me>
+        S_n = 1 + \frac{1}{2} + \left( \frac{1}{2} \right)^2 + \left( \frac{1}{2} \right)^3 + \cdots + \left( \frac{1}{2} \right)^{n-1}
+      </me>:
+      what happens if we let the sum continue indefinitely?
+    </p>
+
+    <example xml:id="Ex-8a-3-inf-geom-1">
+      <title>An infinite geometric series</title>
+      <statement>
+        <p>
+          Can we find the value of 
+        <me>
+          1 + \frac{1}{2} + \left( \frac{1}{2} \right)^2 + \left( \frac{1}{2} \right)^3 + \cdots
+        </me>, 
+        where the sum never terminates?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          In <xref ref="PA-8a-3">Preview Activity</xref>, we saw that for the finite geometric series
+          <me>
+            S_n = 1 + \frac{1}{2} + \left( \frac{1}{2} \right)^2 + \left( \frac{1}{2} \right)^3 + \cdots + \left( \frac{1}{2} \right)^{n-1}
+          </me>,
+          <m>S_1 = 1</m>, <m>S_2 = \frac{3}{2} = 1.5</m>, <m>S_3 = \frac{7}{4} = 1.75</m>, <m>S_4 = \frac{15}{8} = 1.875</m>, <m>S_5 = \frac{31}{16} = 1.9375</m>, and indeed
+          <me>
+            S_n = \frac{1 - \left( \frac{1}{2} \right)^n}{1 - \frac{1}{2}} 
+          </me>
+          so if we multiply both the numerator and denominator by <m>2^n</m>, we find that
+          <men xml:id="eq-8a-3-Sn-one-half-closed">
+            S_n = \frac{2^n - 1}{2^{n-1}}
+          </men>.
+          We can view <m>S_n</m> as a <q>partial sum</q> of the infinite geometric series
+          <me>
+          1 + \frac{1}{2} + \left( \frac{1}{2} \right)^2 + \left( \frac{1}{2} \right)^3 + \cdots
+          </me>
+          whose value we seek.  Plotting these partial sums on a number line, we see evidence that the value of the <m>n</m>th partial sum is approaching <m>2</m>.
+        </p>  
+
+    <figure xml:id="F-8a-3-geom-half">
+      <caption>A plot of <m>S_1</m>, <m>S_2</m>, <m>S_3</m>, <m>S_4</m>, <m>S_5</m>, and the number <m>2</m> on the interval <m>[1,2]</m>.</caption>
+      <image width="80%" source="images/8a_3_geom_half" />
+    </figure>
+
+        <p>
+          Indeed, we observe that each partial sum lies halfway between the preceding partial sum and the number <m>2</m>:  <m>S_2 = 1.5</m> is halfway between <m>S_1 = 1</m> and <m>2</m>; <m>S_3 = 1.75</m> is halfway between <m>S_2 = 1.5</m> and <m>2</m>; and so on. 
+        </p>
+
+        <p>
+          We can see this more formally in <xref ref="eq-8a-3-Sn-one-half-closed">Equation</xref> if we divide the two terms in the numerator of <m>S_n</m> by the denominator.  Doing so, an equivalent formula for <m>S_n</m> is 
+          <men xml:id="eq-8a-3-Sn-one-half">
+            S_n = 2 - \frac{1}{2^{n-1}}
+          </men>.
+          In <xref ref="eq-8a-3-Sn-one-half">Equation</xref>, if we let <m>n \to \infty</m>, we have 
+          <me>
+            \lim_{n \to \infty} S_n = \lim_{n \to \infty} \left( 2 - \frac{1}{2^{n-1}} \right) = 2
+          </me>,
+          since <m>\frac{1}{2^{n-1}} \to 0</m> as <m>n</m> increases without bound.
+        </p>
+
+        <p>
+          Thus, it makes sense to say that the sum of the infinite geometric series 
+          <me>
+            S = 1 + \frac{1}{2} + \left( \frac{1}{2} \right)^2 + \left( \frac{1}{2} \right)^3 + \cdots
+          </me>
+          is finite and that <m>S = 2</m>.
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      <xref ref="Ex-8a-3-inf-geom-1">Example</xref> demonstrates the general principle that we use to determine if any infinite series has a finite value:  we consider the <term>partial sum</term>, <m>S_n</m>, which is the finite sum of the first <m>n</m> terms, and then investigate if the partial sums converge to a single value as <m>n</m> increases without bound.  For geometric series, determining whether the partial sums converge or not is straightforward.
+    </p>
+
+    <assemblage>
+      <title>The value of an infinite geometric series</title>
+      <p>
+        An infinite geometric series <m>S</m> is a sum of the form
+        <men xml:id="eq-8a-3-geometric-series-infinite">
+          S = a + ar + ar^2 + \cdots + ar^{n-1} + \cdots
+        </men>,
+        where <m>a</m> and <m>r</m> are real numbers.
+        If <m>|r| \lt 1</m>, then the infinite geometric series converges to the finite value
+        <men xml:id="eq-8a-3-infinite-geometric-sum">
+          S = \frac{a}{1-r}
+        </men>.
+        If <m>|r| \ge 1</m>, then the infinite geometric series does not converge to a finite value.
+      </p>
+    </assemblage>   
+
+    <p>
+      <xref ref="eq-8a-3-infinite-geometric-sum">Equation</xref> holds because when <m>|r| \lt 1</m>, it follows that <m>r^n \to 0</m> as <m>n \to \infty</m>.  Indeed, when <m>|r| \lt 1</m>, we see by taking the limit as <m>n \to \infty</m> in <xref ref="eq-8a-3-geometric-series-finite">Equation</xref>, that
+      <me>
+        \lim_{n \to \infty} S_n = \lim_{n \to \infty} \frac{a(1-r^n)}{1-r} = \frac{a}{1-r}
+      </me>.
+      In <xref ref="ez-8a-3-1">Exercise</xref>, we will explore why the infinite geometric series does not converge when <m>|r| = 1</m> and when <m>|r| \gt 1</m>.
+    </p> 
+
+    <p>
+      As in our work in <xref ref="C-4">Chapter</xref> with Riemann sums, we can use sigma notation (see <xref ref="sigma-notation">Subsection</xref>) to express a sum in convenient shorthand.  For instance, it's equivalent to write
+      <me>
+        S_n = a + ar + ar^2 + \cdots + ar^{n-1} = \sum_{k=0}^{n-1} ar^k 
+      </me>.
+    </p>
+
+    <p>
+      Furthermore, we can use sigma notation for a more concise way to express an infinite geometric series.  For example, it is equivalent to write 
+      <me>
+        1 + \frac{1}{2} + \left( \frac{1}{2} \right)^2 + \left( \frac{1}{2} \right)^3 + \cdots = \sum_{k = 0}^{\infty} \left( \frac{1}{2} \right)^k
+      </me>.
+    </p>
+
+    <xi:include href="./activities/act-8a-3-2.xml" />
+
+  </subsection>
+
+  <subsection>
+    <title>How geometric series naturally connect to Taylor polynomials</title>
+
+    <p>
+      If we take <m>a = 1</m> in <xref ref="eq-8a-3-infinite-geometric-sum">Equation</xref>, we see that
+      <men xml:id="eq-8a-3-geom-r">
+        1 + r + r^2 + \cdots + r^n + \cdots = \frac{1}{1-r}
+      </men>,
+      provided that <m>|r| \lt 1</m>.  To study this equation further, we are going to let <m>r</m> vary and thus we introduce the function <m>f(x) = \frac{1}{1-x}</m> and replace <m>r</m> by <m>x</m> in <xref ref="eq-8a-3-geom-r">Equation</xref> to have
+      <men xml:id="eq-8a-3-geom-taylor">
+        f(x) = \frac{1}{1-x} = 1 + x + x^2 + \cdots + x^n + \cdots
+      </men>,
+      which is valid for <m>|x| \lt 1</m>.  One reason this equation is interesting is that we have a function <m>f(x)</m> that can be represented in two different ways:  as the rational function <m>\frac{1}{1-x}</m>, and as the infinite polynomial function <m>1 + x + x^2 + \cdots</m>.
+    </p>
+
+    <p>
+      For <m>x</m> such that <m>|x| \lt 1</m>, we know that the infinite geometric series <m>1 + x+ x^2 + \cdots + x^n + \cdots</m> converges.  Thus, from <xref ref="eq-8a-3-geom-taylor">Equation</xref>, it follows 
+      <me>
+        f(x) = \frac{1}{1-x} \approx 1 + x + x^2 + \cdots + x^n
+      </me>
+      for <m>x</m> near <m>a = 0</m>.
+      Moreover, because the infinite series converges, the larger the value of <m>n</m>, the better the approximation will be.  If we plot the function <m>f(x) = \frac{1}{1-x}</m> along with several of the polynomials that arise for different choices of <m>n</m>, say <m>P_1(x) = 1 + x</m>, <m>P_4(x) = 1 + x + \cdots + x^4</m>, and <m>P_7(x) = 1 + x + \cdots + x^7</m>, we can see the impact of increasing the degree <m>n</m> in <xref ref="F-8a-3-geom-x">Figure</xref>.
+    </p>
+
+    <figure xml:id="F-8a-3-geom-x">
+      <caption>A plot of <m>f(x) = \frac{1}{1-x}</m> (blue, no dashes), <m>P_1(x) = 1 + x</m> (light gray, small dashes), <m>P_4(x) = 1 + x + \cdots + x^4</m> (medium gray, medium dashes), and <m>P_7(x) = 1 + x + \cdots + x^7</m> (dark gray, long dashes).</caption>
+      <image width="50%" source="images/8a_3_geom_x" />
+    </figure>
+
+    <p>
+      In particular, we observe that as the degree of the polynomial approximation increases, the polynomial not only appears closer to <m>f(x) = \frac{1}{1-x}</m>, but does so on a wider interval of <m>x</m>-values.  Since the infinite series only converges when <m>|x| \lt 1</m> and the function <m>f(x) = \frac{1}{1-x}</m> is undefined when <m>x = 1</m>, we also expect the approximations to only be accurate on an interval that lies within <m>-1 \lt x \lt 1</m>.  This reminds of our earlier work with Taylor polynomials where in images such as <xref ref="F-8a-2-log-example">Figure</xref>, increasing the degree of the Taylor polynomial similarly improves the approximation. 
+    </p>
+
+    <p>
+      In our preceding work in this subsection, we arrived at the function <m>f(x) = \frac{1}{1-x}</m> by starting with the infinite geometric series
+      <me>
+        1 + x + x^2 + \cdots + x^n + \cdots
+      </me>
+      and exploring its partial sums.  Next, we change perspective and start with function <m>f(x) = \frac{1}{1-x}</m> and determine the Taylor polynomial approximations to <m>f</m> that are centered at <m>a = 0</m> in order to see an interesting connection.  
+    </p>
+
+
+    <xi:include href="./activities/act-8a-3-3.xml" />
+
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+    <p>
+    <ul>
+      <li>
+        <p>
+          A finite geometric series <m>S_n</m> is a sum of the form
+        <me>
+          S_n = a + ar + ar^2 + \cdots + ar^{n-1}
+        </me>,
+        where <m>a</m> and <m>r</m> are real numbers such that <m>r \ne 1</m>.
+        The value of the finite geometric series <m>S_n</m> can be computed directly as
+        <me>
+          S_n = \frac{a(1-r^n)}{1-r}
+        </me>.
+        </p>
+      </li>
+      <li>
+        <p>
+          An infinite geometric series <m>S</m> is a sum of the form
+        <me>
+          S = a + ar + ar^2 + \cdots + ar^{n-1} + \cdots
+        </me>,
+        where <m>a</m> and <m>r</m> are real numbers.
+        If <m>|r| \lt 1</m>, then the infinite geometric series converges to the finite value
+        <me>
+          S = \frac{a}{1-r}
+        </me>.
+        If <m>|r| \ge 1</m>, then the infinite geometric series does not converge to a finite sum.
+        </p>
+      </li>
+      <li>
+        <p>
+          If we consider the infinite geometric series with <m>a = 1</m> and <m>|r| \lt 1</m> and replace <m>r</m> with <m>x</m>, we can say that
+          <me>
+            \frac{1}{1-x} = 1 + x + x^2 + x^3 + \cdots + x^n + \cdots
+          </me>.
+          As we found in <xref ref="act-8a-3-3">Activity</xref>, the Taylor series centered at <m>a = 0</m> for <m>f(x) = \frac{1}{1-x}</m> is precisely the infinite geometric series
+          <me>
+            T(x) = 1 + x + x^2 + x^3 + \cdots + x^n + \cdots
+          </me>
+          and we know this series is equal to <m>f(x)</m> for <m>|x| \lt 1</m>.
+        </p>
+      </li>
+    </ul>
+    </p>
+  </subsection>
+
+<xi:include href="./exercises/ez-8a-3.xml" />
+
+</section>

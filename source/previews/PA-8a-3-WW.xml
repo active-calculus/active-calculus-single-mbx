@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2022                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<exploration xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="PA-8a-3" label="ajordan_8a-_3_Preview_geometric_sum" component="runestone">
+  <webwork xml:id="webwork-PA-8a-3">
+    <!-- This exercise is very long. It runs the risk of butting up agains a server's URI length -->
+    <!-- cap. So solutions are commented out for now.                                            -->
+    <pg-code>
+      Context("Numeric");
+      Context()->variables->are(n => 'Real');
+      $f = Formula("(2^n-1)/2^(n-1)");
+
+      $radio = RadioButtons([
+        "The sum with powers of ${BM}\frac12${EM} is larger.",
+        "The sum with powers of ${BM}\frac14${EM} is larger.",
+        "The two sums are equal."
+        ], 0
+      );
+
+      $radio2 = RadioButtons([
+        "The sum with powers of ${BM}\frac12${EM} is larger.",
+        "The sum with powers of ${BM}-\frac12${EM} is larger.",
+        "The two sums are equal."
+        ], 0
+      );
+
+      Context("Fraction");
+    </pg-code>
+    <introduction>
+      <p>
+        Let's explore sums of the form
+        <me>
+          S_n = 1+ \frac12 + \left(\frac12\right)^2 + \left(\frac12\right)^3 + \cdots + \left(\frac12\right)^{n-1}
+        </me>
+      </p>
+    </introduction>
+
+    <task>
+      <statement>
+        <p>
+          Note that <m>S_1 = 1</m>, <m>S_2 = S_1 + \frac{1}{2} = 1 + \frac{1}{2} = \frac{3}{2}</m>,
+          and <m>S_3 = S_2 + \frac{1}{4} = \frac{3}{2} + \frac{1}{4} = \frac{7}{4}</m>. Using the
+          fact that each subsequent value of <m>S_n</m> can be computed by adding one additional
+          term to the preceding sum, complete the table below with the exact (fractional) value of
+          each sum.
+        </p>
+        <tabular top="minor" halign="center">
+          <row>
+            <cell><m>S_1</m></cell>
+            <cell><m>S_2</m></cell>
+            <cell><m>S_3</m></cell>
+            <cell><m>S_4</m></cell>
+            <cell><m>S_5</m></cell>
+            <cell><m>S_6</m></cell>
+            <cell><m>S_7</m></cell>
+          </row>
+          <row bottom="minor">
+            <cell><m>1</m></cell>
+            <cell><m>\frac32</m></cell>
+            <cell><m>\frac74</m></cell>
+            <cell><var name="Fraction(15,8)" width="3"/></cell>
+            <cell><var name="Fraction(31,16)" width="3"/></cell>
+            <cell><var name="Fraction(63,32)" width="3"/></cell>
+            <cell><var name="Fraction(127,64)" width="3"/></cell>
+          </row>
+        </tabular>
+      </statement>
+
+      <!-- <solution>
+        <tabular top="minor" halign="center">
+          <row>
+            <cell><m>S_1</m></cell>
+            <cell><m>S_2</m></cell>
+            <cell><m>S_3</m></cell>
+            <cell><m>S_4</m></cell>
+            <cell><m>S_5</m></cell>
+            <cell><m>S_6</m></cell>
+            <cell><m>S_7</m></cell>
+          </row>
+          <row bottom="minor">
+            <cell><m>1</m></cell>
+            <cell><m>\frac32</m></cell>
+            <cell><m>\frac74</m></cell>
+            <cell><m>\frac74+\frac18=\frac{15}8</m></cell>
+            <cell><m>\frac{15}8+\frac1{16}=\frac{31}{16}</m></cell>
+            <cell><m>\frac{31}{16}+\frac1{32}=\frac{63}{32}</m></cell>
+            <cell><m>\frac{63}{32}+\frac1{64}=\frac{127}{64}</m></cell>
+          </row>
+        </tabular>
+      </solution> -->
+    </task>
+
+    <task>
+      <statement>
+        <p>
+          What do you expect will be the values of <m>S_8</m> and <m>S_9</m>?
+        </p>
+        <p>
+          <var name="Fraction(255,128)" width="4"/>
+        </p>
+        <p>
+          <var name="Fraction(511,256)" width="4"/>
+        </p>
+      </statement>
+
+      <!-- <solution>
+        <p>
+          Continuing the pattern in the same way, where to get the next term we double the
+          denominator and then the numerator is <m>1</m> smaller than twice the denominator, we get
+          that <m>S_8 = \frac{255}{128}</m> and <m>S_9 = \frac{511}{256}</m>.
+        </p>
+      </solution> -->
+    </task>
+
+    <task>
+      <statement>
+        <p>
+          Conjecture a simple formula for <m>S_n</m> that is given by a single fraction where the
+          numerator and/or denominator depend on <m>n</m>.
+        </p>
+
+        <p>
+          <var name="$f" width="20"/>
+        </p>
+	<p>
+          <em>Hint</em>: Think of the numerator and denominator separately, and think of powers of <m>2</m>.
+        </p>
+
+      </statement>
+
+      <hint>
+        <p>
+          Think of the numerator and denominator separately, and think of powers of <m>2</m>.
+        </p>
+      </hint>
+
+      <!-- <solution>
+        <p>
+          First, let's look at the denominator and its relation to <m>n</m>.
+        </p>
+        <tabular>
+          <row header="yes" bottom="medium">
+            <cell><m>n</m></cell>
+            <cell>Denominator of <m>S_n</m></cell>
+          </row>
+          <row>
+            <cell><m>1</m></cell>
+            <cell><m>1</m></cell>
+          </row>
+          <row>
+            <cell><m>2</m></cell>
+            <cell><m>2</m></cell>
+          </row>
+          <row>
+            <cell><m>3</m></cell>
+            <cell><m>4</m></cell>
+          </row>
+          <row>
+            <cell><m>4</m></cell>
+            <cell><m>8</m></cell>
+          </row>
+          <row>
+            <cell><m>5</m></cell>
+            <cell><m>16</m></cell>
+          </row>
+          <row>
+            <cell><m>6</m></cell>
+            <cell><m>32</m></cell>
+          </row>
+        </tabular>
+        <p>
+          It looks like the powers of <m>2</m>, but shifted back one, since for example,
+          <m>2^3=8</m>, but it's <m>S_4</m> which has a denominator of <m>8</m>. So the expression
+          for the denominator of <m>S_n</m> is <m>2^{n-1}</m>.
+        </p>
+        <p>
+          To get the numerator, we notice that the numerator is almost <m>2</m> times the
+          denominator, but then subtract <m>1</m>. So the numerator of <m>S_n</m> is
+          <m>2\cdot 2^{n-1} - 1 = 2^n - 1</m>.
+        </p>
+      </solution> -->
+    </task>
+
+    <task>
+      <statement>
+        <p>
+          What is happening to the value of <m>S_n</m> as <m>n\to \infty</m>?
+	</p>
+	<p>
+          <m>S_n\to {}</m><var name="'2'" width="4"/>
+        </p>
+        <p>
+          <em>Hint</em>: Take the answer to part (c) and divide the numerator by the denominator. What do you get?
+        </p>
+
+
+      </statement>
+
+      <hint>
+        <p>
+          Take the answer to part (c) and divide the numerator by the denominator. What do you get?
+        </p>
+      </hint>
+
+      <!-- <solution>
+        <p>
+          We can tell that as the denominator grows, the <q>missing piece</q> coming from the
+          numerator being <m>1</m> too few is getting smaller and smaller. As <m>n\to\infty</m>,
+          that missing piece is heading toward <m>0</m>. Another way to see that is to actually
+          divide
+          <me>
+            \frac{2^n - 1}{2^{n-1}} = \frac{2^n}{2^{n-1}} - \frac{1}{2^{n-1}} = 2-\frac{1}{2^{n-1}}
+          </me>
+          As <m>n\to\infty</m>, we see that <m>S_n\to 2</m>.
+        </p>
+      </solution> -->
+    </task>
+
+    <task>
+      <statement>
+        <p>
+          Now consider the sum
+          <me>
+            S_n = 1 + \frac14 + \left(\frac14\right)^2 + \left(\frac14\right)^3 + \cdots + \left(\frac14\right)^{n-1}
+          </me>.
+          Do you think this sum is larger or smaller than the sum we first considered?
+        </p>
+        <p>
+          <var name="$radio" form="buttons"/>
+        </p>
+        <p>
+          What about
+          <me>
+            S_n = 1 - \frac12 + \left(\frac12\right)^2 - \left(\frac12\right)^3 + \cdots + \left(-\frac12\right)^{n-1}
+          </me>?
+          Do you think this sum is larger or smaller than the sum we first considered?
+        </p>
+        <p>
+          <var name="$radio2" form="buttons"/>
+        </p>
+      </statement>
+
+      <!-- <solution>
+        <p>
+          Finally we compare this to a couple other sums.  When we add powers of <m>\frac14</m>
+          instead, that will be smaller than adding powers of <m>\frac12</m>. Similarly, adding
+          powers of <m>\frac{-1}{2}</m> means that when the exponent is odd, we're adding a negative
+          number, so the sum will be smaller than when we added all the positive powers of
+          <m>\frac12</m>.
+        </p>
+      </solution> -->
+    </task>
+  </webwork>
+</exploration>
+

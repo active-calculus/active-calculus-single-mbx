@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2022                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+<section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-8a-6-series-and-DEs">
+  <title>Using Series to Solve Differential Equations</title>
+  <objectives>
+    <ul>
+      <li>
+        <p>
+          How can power series be used to find solutions to familiar differential equations?
+        </p>
+      </li>
+      <li>
+        <p>
+          In what ways do series solutions to differential equations align with solutions we can find without using series?
+        </p>
+      </li>
+      <li>
+        <p>
+          What role do series solutions play in differential equations that can't be solved by other approaches?
+        </p>
+      </li>
+    </ul>
+
+  </objectives>
+
+  <introduction>
+    <p>
+      In our work in <xref ref="C-7">Chapter</xref>, we learned that the natural exponential function, <m>e^x</m>, plays a key role in the solution of several important types of differential equations.  In our more recent studies in <xref ref="C-8a">Chapter</xref>, we've learned that <m>e^x</m> can be represented as a Taylor series in the form
+      <me>
+        e^x = c_0 + c_1 x + c_2 x^2 + \cdots + c_n x^n + \cdots = \sum_{k=0}^{\infty} c_k x^k
+      </me>.
+      For <m>f(x) = e^x</m>, we know <m>f^{(k)}(x) = e^x</m> for every natural number <m>k</m>, from which it follows that <m>f^{(k)}(0) = 1</m> for every <m>k</m>.  This fact enabled us to determine the values of each coefficient <m>c_k</m> for the Taylor series expansion of <m>f(x) = e^x</m>, and hence establish that
+      <me>
+        e^x = 1 + x + \frac{1}{2!}x^2 + \cdots + \frac{1}{n!}x^n + \cdots = \sum_{k=0}^{\infty} \frac{1}{k!} x^k
+      </me>,
+      which is valid for every real number <m>x</m>.
+    </p>
+
+    <p>
+      In <xref ref="PA-8a-6">Preview Activity</xref>, we explore a different approach to finding the series representation of <m>f(x) = e^x</m>.
+    </p>
+
+  <xi:include href="./previews/PA-8a-6.xml" /> 
+
+  </introduction>  
+
+  <subsection>
+    <title>Using power series to find solutions to initial value problems</title>
+    <p>
+      In <xref ref="PA-8a-6">Preview Activity</xref>, we investigated the initial value problem given by 
+      <me>y' = y, \ y(0) = 1</me>.
+      By assuming that the solution function <m>y</m> had a power series representation, we were able to write that 
+      <me>
+            y = c_0 + c_1 x + c_2 x^2 + c_3 x^3 + c_4 x^4 + \cdots + c_n x^n + \cdots
+      </me>, 
+      and by finding <m>y'</m> and setting <m>y' = y</m>, see that the equation 
+      <me>
+        c_1 + 2c_2 x + 3c_3 x^2 + 4c_4 x^3 + \cdots = c_0 + c_1 x + c_2 x^2 + c_3 x^3 + c_4 x^4 + \cdots
+      </me>
+      must hold.  This led us to conclude that <m>c_1 = c_0</m>, <m>2c_2 = c_1</m>, <m>3c_3 = c_2</m>, and <m>4c_4 = c_3</m> by equating like coefficients.  Since <m>y(0) = 1</m> is given in the IVP and <m>y(0) = c_0</m> from the series representation, it follows that <m>c_0 = 1</m>, and from there that <m>c_1 = 1</m>, <m>c_2 = \frac{1}{2}</m>, <m>c_3 = \frac{1}{3 \cdot 2}</m>, and <m>c_4 = \frac{1}{4 \cdot 3 \cdot 2}</m>.
+    </p>
+    <p>
+      This of course suggests the pattern that <m>c_n = \frac{1}{n!}</m>, and hence that the solution to the initial value problem is
+      <me>
+        y = 1 + x + \frac{1}{2!}x^2 + \frac{1}{3!}x^3 + \cdots + \frac{1}{n!}x^n + \cdots
+      </me>.
+      Remember, we found this representation of <m>y</m> by solving the IVP
+      <me>y' = y, \ y(0) = 1</me>,
+      which states that <q><m>y</m> is a function whose derivative is itself and that satisfies <m>y(0) = 1</m></q>: this is precisely the function <m>y = e^x</m>, so our approach here has established the power series representation of <m>f(x) = e^x</m> from a different line of reasoning than Taylor series.  Indeed, we've found that 
+      <me>
+        e^x = 1 + x + \frac{1}{2!}x^2 + \frac{1}{3!}x^3 + \cdots + \frac{1}{n!}x^n + \cdots
+      </me>.
+    </p>
+
+    <p>
+      This approach can be used to solve a select class of other initial value problems.  The key idea is to let <m>y = c_0 + c_1 x + c_2 x^2 + c_3 x^3 + c_4 x^4 + \cdots + c_n x^n + \cdots</m>, find the corresponding expression for <m>y'</m> (and possibly <m>y''</m> and other higher derivatives if the differential equation has higher order), and then subsitute these series expresssions into the differential equation to determine relationships that must hold among the unknown coefficients, <m>c_i</m>.  From there, using the initial condition(s), we can determine the numerical value of each <m>c_i</m>.  We demonstrate this approach in the following example.
+    </p>
+
+    <example xml:id="ex-8a-6-LFO">
+      <statement>
+        Find a power series representation for the solution to the IVP given by
+        <me>
+          y' = y-x, \ y(0) = -1
+        </me>.
+      </statement>
+      <solution>
+        <p>
+          To begin, we assume that 
+          <me>
+            y = c_0 + c_1 x + c_2 x^2 + c_3 x^3 + c_4 x^4 + \cdots
+          </me>,
+          from which it follows that
+          <me>
+            y' = c_1 + 2c_2 x + 3c_3 x^2 + 4c_4 x^3 + \cdots 
+          </me>.
+          Setting <m>y' = y - x</m>, we have 
+          <md>
+            <mrow> c_1 + 2c_2 x + 3c_3 x^2 + 4c_4 x^3 + \cdots =\mathstrut \amp (c_0 + c_1 x + c_2 x^2 + c_3 x^3 + c_4 x^4 + \cdots) - x</mrow>
+            <mrow>    =\mathstrut \amp c_0 + (c_1 - 1) x + c_2 x^2 + c_3 x^3 + c_4 x^4 + \cdots</mrow>
+          </md>
+          Equating like coefficients, it follows that 
+          <md>
+            <mrow>c_1 =\mathstrut \amp c_0</mrow>
+            <mrow>2c_2 =\mathstrut \amp c_1 - 1</mrow>
+            <mrow>3c_3 =\mathstrut \amp c_2</mrow>
+            <mrow>4c_4 =\mathstrut \amp c_3</mrow>
+            <mrow>\vdots\mathstrut \amp </mrow>
+          </md>
+          We can see a pattern that will continue:  <m>5c_5 = c_4</m>, <m>6c_6 = c_5</m>, and so on.  Further, we observe that by the given initial condition, <m>y(0) = -1</m>, we can find the value of <m>c_0</m> and this will then determine the value of the other constants.  In particular, since 
+          <me>
+            y = c_0 + c_1 x + c_2 x^2 + c_3 x^3 + c_4 x^4 + \cdots
+          </me>,
+          it follows <m>y(0) = c_0</m>, so <m>c_0 = -1</m>.  From that, we have <m>c_1 = c_0 = -1</m> as well.  Next, since <m>2c_2 = c_1 - 1</m>, <m>2c_2 = -2</m>, so <m>c_2 = -1</m>.  With <m>3c_3 = c_2</m>, we now know <m>c_3 = -\frac{1}{3}</m>, and using the equation involving <m>c_4</m> we see that <m>c_4 = -\frac{1}{3 \cdot 4}</m>.  Similar reasoning shows that <m>c_5 = -\frac{1}{3 \cdot 4 \cdot 5}</m> and <m>c_6 = -\frac{1}{3 \cdot 4 \cdot 5 \cdot 6}</m>.
+        </p>          
+        <p>
+          Thus, we have found the first several terms of the power series expansion for the function <m>y</m> that is the solution to the given IVP.  In particular,
+          <me>
+            y = -1 - x - x^2 - \frac{1}{3}x^3 - \frac{1}{3 \cdot 4}x^4 - \frac{1}{3 \cdot 4 \cdot 5}x^5 - \frac{1}{3 \cdot 4 \cdot 5 \cdot 6}x^6 - \cdots
+          </me>
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      The IVP in <xref ref="ex-8a-6-LFO">Example</xref> can also be solved without using a series approach, and the solution turns out to be <m>y = 1 + x - 2e^x</m>.  It is straightforward to verify this directly by subsituting <m>y</m> and <m>y'</m> into the differential equation to confirm that <m>y' = y - x</m>, as well as that <m>y'(0) = -1</m>.  We note further that if we use the Taylor series for <m>e^x</m>, we also have 
+      <md>
+        <mrow>y =\mathstrut \amp 1 + x - 2e^x</mrow>
+        <mrow>  =\mathstrut \amp 1 + x - 2(1 + x + \frac{1}{2!}x^2 + \frac{1}{3!}x^3 + \frac{1}{4!}x^4 + \cdots)</mrow>
+        <mrow>  =\mathstrut \amp 1 + x - 2 - 2x - x^2 - \frac{1}{3}x^3 - \frac{1}{4\cdot 3}x^4 - \cdots</mrow>
+        <mrow>  =\mathstrut \amp -1 - x - x^2 - \frac{1}{3}x^3 - \frac{1}{4\cdot 3}x^4 - \cdots</mrow>,
+      </md>
+      which is precisely the solution we found in the example.
+    </p>
+
+
+    <xi:include href="./activities/act-8a-6-1.xml" />
+
+  </subsection>
+
+  <subsection>
+    <title>
+      Using power series to solve higher order initial value problems: constant coefficients
+    </title>
+
+    <p>
+      Initial value problems of the form
+      <me>
+        my'' + by' + ky = 0, \ y(0) = c_1, \ y'(0) = c_2
+      </me>
+       find important applications in physics, especially in spring-mass systems; the solution <m>y</m> to the IVP models a mass <m>m</m> that hangs from a spring with spring constant <m>k</m>, where the damping constant is <m>b</m> and the mass has an initial displacement of <m>c_1</m> units from equilibrium and an initial velocity of <m>c_2</m>.  While an in-depth development of solutions to these IVPs is normally studied in a full course on differential equations, we can use power series solutions to understand some of the important basic cases.
+    </p>
+
+    <p>
+      We start with the simplest possible second-order IVP,
+      <me>
+        y'' = y, \ y(0) = 1, \ y'(0) = 1
+      </me>.
+      While we know that the solution to this IVP is <m>y = e^x</m>, it's instructive to see how the series solution approach confirms this.   In the same way that we did with first-order equations, we let 
+      <me>
+        y = c_0 + c_1 x + c_2 x^2 + c_3 x^3 + c_4 x^4 + \cdots + c_n x^n + \cdots
+      </me>,
+      so 
+      <me>
+        y' = c_1 + 2c_2 x + 3c_3 x^2 + 4c_4 x^3 + \cdots + nc_n x^{n-1} + \cdots
+      </me>,
+      and now further,
+      <me>
+        y'' = 2c_2 + 3 \cdot 2 c_3 x + 4 \cdot 3 c_4 x^2 + \cdots + n (n-1) c_n x^{n-2} + \cdots
+      </me>.
+      Setting <m>y'' = y</m>, we see that
+      <me>
+        2c_2 + 3 \cdot 2 c_3 x + 4 \cdot 3 c_4 x^2 + 5 \cdot 4 c_5 x^3 + \cdots = c_0 + c_1 x + c_2 x^2 + c_3 x^3 + c_4 x^4 + \cdots 
+      </me>.
+      Equating like coefficients, 
+      <md>
+        <mrow>2c_2 =\mathstrut \amp c_0</mrow>
+        <mrow>3 \cdot 2 c_3 =\mathstrut \amp c_1</mrow>
+        <mrow>4 \cdot 3 c_4 =\mathstrut \amp c_2</mrow>
+        <mrow>5 \cdot 4 c_5 =\mathstrut \amp c_3</mrow>
+      </md>
+      and so on.  We see from this chain of equalities that the even-indexed constants <m>c_i</m> depend on <m>c_0</m>, while the odd-indexed constants depend on <m>c_1</m>.  In the original IVP statement, we were given that <m>y(0) = 1</m> and <m>y'(0) = 1</m>, so this implies that <m>c_0 = 1</m> and <m>c_1 = 1</m> from the power series expansions of <m>y</m> and <m>y''</m>.
+    </p>
+
+    <p>
+      Using all of our work so far, we now see that <m>2c_2 = c_0 = 1</m>, so <m>c_2 = \frac{1}{2}</m>; next, we have that <m>3 \cdot 2 c_3 = c_1 = 1</m>, so <m>c_3 = \frac{1}{3 \cdot 2}</m>; similarly, <m>4 \cdot 3 c_4 = c_2 = \frac{1}{2}</m>, so <m>c_4 = \frac{1}{4 \cdot 3 \cdot 2}</m>; and further, <m>5 \cdot 4 c_5 = c_3 = \frac{1}{3 \cdot 2}</m>, so <m>c_5 = \frac{1}{5 \cdot 4 \cdot 3 \cdot 2}</m>.  We see the pattern that <m>c_k = \frac{1}{k!}</m>, which of course aligns with the fact that <m>y = e^x</m> is the solution to the original IVP.  In the next activity, we explore several other second-order IVPs using a similar approach.
+    </p>
+
+    <xi:include href="./activities/act-8a-6-2.xml" />
+
+    <p>
+      In the IVPs we considered in <xref ref="act-8a-6-2">Activity</xref>, the respective differential equations each only involved <m>y''</m> and <m>y</m>.  The situation is slightly more complicated when the second order differential equation with constant coefficients
+      <me>
+        my'' + by' + ky = 0
+      </me>
+      has all nonzero coefficients.  We demonstrate how to solve such an equation using series in the following example.
+    </p>
+
+    <example  xml:id="ex-8a-6-LSO">
+      <statement>
+        Use power series to solve the IVP given by
+        <me>
+          y'' - 2y' - 3y = 0, \ y(0) = 4, \ y'(0) = 0
+        </me>.
+        Show at least the first 5 nonzero terms of the solution <m>y</m>.
+      </statement>
+      <solution>
+        We begin in the familiar way by letting 
+        <me>
+          y = c_0 + c_1 x + c_2 x^2 + c_3 x^3 + c_4 x^4 + \cdots + c_n x^n + \cdots
+        </me>,
+        so 
+        <me>
+          y' = c_1 + 2c_2 x + 3c_3 x^2 + 4c_4 x^3 + \cdots + nc_n x^{n-1} + \cdots
+        </me>,
+        and
+        <me>
+          y'' = 2c_2 + 3 \cdot 2 c_3 x + 4 \cdot 3 c_4 x^2 + \cdots + n (n-1) c_n x^{n-2} + \cdots
+        </me>.
+        Slightly rewriting the differential equation, we know that <m>y</m> has to satisfy the equation <m>y'' = 2y' + 3y</m>.  Based on this form, we observe that
+        <me>
+          2y' = 2c_1 + 4 c_2 x + 6 c_3 x^2 + 8 c_4 x^3 + \cdots + 2nc_n x^{n-1} + \cdots
+        </me>
+        and
+        <me>
+          3y = 3c_0 + 3c_1 x + 3c_2 x^2 + 3c_3 x^3 + 3c_4 x^4 + \cdots + 3c_n x^n + \cdots
+        </me>.
+        Substituting the series expressions for <m>y''</m>, <m>2y'</m>, and <m>3y</m> in the equation <m>y'' = 2y' + 3y</m>, we see that
+        <md>
+          <mrow>2c_2 + 6 c_3 x + 12 c_4 x^2 + 20 c_5 x^3 + \cdots =\mathstrut \amp (2c_1 + 4 c_2 x + 6 c_3 x^2 + 8 c_4 x^3 + \cdots)</mrow>
+          <mrow>                                                  +\mathstrut \amp  (3c_0 + 3c_1 x + 3c_2 x^2 + 3c_3 x^3 + \cdots)</mrow>.
+        </md>
+        From this last equation, we can determine the relationships that exist among the constants <m>c_i</m>.  Equating the constant terms on boths sides of the equation, we have 
+        <me>
+          2c_2 = 2c_1 + 3c_0
+        </me>.
+        From the linear terms, we see
+        <me>
+          6c_3 = 4c_2 + 3c_1
+        </me>,
+        and the quadratic terms imply 
+        <me>
+          12c_4 = 6c_3 + 3c_2
+        </me>, 
+        and further from the cubic terms that
+        <me>
+          20c_5 = 8c_4 + 3c_3
+        </me>.
+        If we solve these equations for <m>c_2</m>, <m>c_3</m>, and so on, we have
+        <md>
+          <mrow>c_2 = \frac{2c_1 + 3c_0}{2}</mrow>
+          <mrow>c_3 = \frac{4c_2 + 3c_1}{6}</mrow> 
+          <mrow>c_4 = \frac{6c_3 + 3c_2}{12}</mrow>  
+          <mrow>c_5 = \frac{8c_4 + 3c_3}{20}</mrow>  
+        </md>
+        Using the initial conditions that <m>y(0) = 4</m> and <m>y'(0) = 0</m>, it follows from the series expansions for <m>y</m> and <m>y'</m> that <m>c_0 = 4</m> and <m>c_1 = 0</m>, so 
+        <md>
+          <mrow>c_2 = \frac{2 \cdot 0 + 3 \cdot 4}{2} = 6</mrow>
+          <mrow>c_3 = \frac{4 \cdot 6 + 3 \cdot 0}{6} = 4</mrow> 
+          <mrow>c_4 = \frac{6 \cdot 4 + 3 \cdot 6}{12} = \frac{7}{2}</mrow>  
+          <mrow>c_5 = \frac{8 \cdot \frac{7}{2} + 3 \cdot 4}{20} = 2</mrow>  
+        </md>.
+        Thus, the solution to the IVP is
+        <me>
+          y = 4 + 6x^2 + 4x^3 + \frac{7}{2}x^4 + 2x^5 + \cdots
+        </me>.
+
+      </solution>
+    </example>
+
+  </subsection>
+  
+  <subsection>  
+    <title>Solving initial value problems with non-constant coeffiecients</title>
+    <p>
+      For differential equations such as <m>y' - 4y = 0</m> or <m>y'' - 2y' - 3y = 0</m> that we considered in the previous section, there are well-established methods for solving these equations that don't involve using power series.  But for other important differential equations, such as Airy's equation that arises in the theory of rainbows, non-constant coefficients pose a different challenge and require us to use power series in order to find a solution.  Airy's equation is given by 
+      <me>
+        y'' - xy = 0
+      </me>,
+      and the presence of the <q><m>x</m></q> that multiplies the unknown function <m>y</m> makes this equation harder to solve than one like <m>y'' - 4y = 0</m>.  Power series enable us to handle this challenge when other approaches studied in a course on differential equations fail.  We explore a similar first-order equation in the following activity, and then move on to solve Airy's equation, given certain initial conditions.
+    </p>
+
+    <xi:include href="./activities/act-8a-6-3.xml" />
+
+  </subsection>
+
+  <subsection>
+     <title>Using power series to solve higher order initial value problems: non-constant coefficients</title>   
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+    <p>
+    <ul>
+      <li>
+        <p>
+          Through 
+        </p>
+      </li>
+      <li>
+        <p>
+          The Power Series
+        </p>
+      </li>
+      <li>
+        <p>
+          An 
+        </p>
+      </li>
+    </ul>
+    </p>
+  </subsection>
+
+  <xi:include href="./exercises/ez-8a-6.xml" /> 
+
+</section>

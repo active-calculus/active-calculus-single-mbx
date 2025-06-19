@@ -1,0 +1,714 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2022                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+<exercises xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="ez-8a-3">
+  <exercise label="Library__Michigan__Chap9Sec2__Q05">
+    <webwork source="Library/Michigan/Chap9Sec2/Q05.pg"/>
+  </exercise>
+  <exercise label="Library__Michigan__Chap9Sec2__Q15">
+    <webwork source="Library/Michigan/Chap9Sec2/Q15.pg"/>
+  </exercise>
+  <exercise label="Library__Michigan__Chap9Sec2__Q19">
+    <webwork source="Library/Michigan/Chap9Sec2/Q19.pg"/>
+  </exercise>
+  <exercise label="Library__ASU-topics__setSequenceandSeries__jj12">
+    <webwork source="Library/ASU-topics/setSequenceandSeries/jj12.pg"/>
+  </exercise>
+  <exercise label="Library__Rochester__setSeries4Geometric__ur_sr_4_16">
+    <webwork source="Library/Rochester/setSeries4Geometric/ur_sr_4_16.pg"/>
+  </exercise>
+  <exercise label="Library__Wiley__setAnton_Section_9-_3__Anton9_3Q13">
+    <webwork source="Library/Wiley/setAnton_Section_9.3/Anton9_3Q13.pg"/>
+  </exercise>
+  <exercise xml:id="ez-8a-3-1">
+    <statement>
+      <p>
+        In <xref ref="eq-8a-3-infinite-geometric-sum">Equation</xref>, we learned that for an infinite geometric series
+        <me>
+          S = a + ar + ar^n + \cdots + ar^{n-1} + \cdots
+        </me>,
+        if <m>|r| \lt 1</m>, then 
+        <me>
+          S = \frac{a}{1-r}
+        </me>.
+        This result provides a quick way to determine the value of an infinite geometric series that converges.
+      </p>
+
+      <p>
+        In this exercise, we explore why the infinite geometric series fails to converge when <m>r = 1</m>, <m>r = -1</m>, and <m>|r|>1</m>.
+      </p>
+
+      <p>
+        <ol  marker="a.">
+          <li>
+            <p>
+              If we consider the finite geometric series that results when <m>a = 1</m> and <m>r = 1</m>, we get the sum
+              <me>
+                S_n = 1 + 1 + \cdots + 1
+              </me>,
+              where there are <m>n</m> terms in the sum.
+            </p>
+            <ol marker="i.">
+              <li>
+                <p>
+                  Compute <m>S_2</m>, <m>S_3</m>, and <m>S_4</m>.  What is the general formula for <m>S_n</m>?
+                </p>
+              </li>
+              <li>
+                <p>
+                  Explain why the sequence <m>S_n</m> does not converge to a finite value.  Contrast this with, for example, our work in <xref ref="Ex-8a-3-inf-geom-1">Example</xref>.
+                </p>
+              </li>
+            </ol>
+          </li>
+          <li>
+            <p>
+              Next, consider the finite geometric series that results when <m>a = 1</m> and <m>r = -1</m>, which is the sum
+              <me>
+                S_n = 1 - 1 + 1 - 1 + \cdots + (-1)^{n-1}
+              </me>,
+              where there are <m>n</m> terms in the sum.  (We view the first <q><m>1</m></q> as resulting from <q><m>1 \cdot (-1)^0</m></q>.)
+            </p>
+            <ol marker="i.">
+              <li>
+                <p>
+                  Compute <m>S_2</m>, <m>S_3</m>, <m>S_4</m>, and <m>S_5</m>.  What do you observe?
+                </p>
+              </li>
+              <li>
+                <p>
+                  Explain why the sequence <m>S_n</m> does not converge to a finite value.  Contrast this with, for example, our work in <xref ref="Ex-8a-3-inf-geom-1">Example</xref>.
+                </p>
+              </li>
+            </ol>  
+          </li>  
+          <li>
+              <p>
+                Now consider the geometric sum with <m>a = 1</m> and <m>r = 2</m>, so 
+                <me>
+                  S_n = 1 + 2 + 4 + \cdots + 2^{n-1}
+                </me>.
+              </p>
+              <ol marker="i.">
+                <li>
+                  <p>
+                    Compute <m>S_2</m>, <m>S_3</m>, and <m>S_4</m>.  What is the general formula for <m>S_n</m>?
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    What do you observe happens to these partial sums as <m>n</m> increases without bound?  What does this tell us about the infinite geometric series <m>1 + 2 + 4 + \cdots + 2^{n-1} + \cdots</m>?
+                  </p>
+                </li>
+              </ol>         
+          </li>
+        </ol>
+      </p>
+    </statement>
+    
+    <answer>
+ 
+      <p>
+        <ol  marker="a.">
+          <li>
+            <p>
+              For 
+              <m>
+                S_n = 1 + 1 + \cdots + 1
+              </m>,
+            </p>
+            <ol marker="i.">
+              <li>
+                <p>
+                  <m>S_2 = 1 + 1 = 2</m>, <m>S_3 = 1 + 1 + 1 = 3</m>, <m>S_4 = 4</m>, and <m>S_n = n</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  The infinite sum <m>S = 1 + 1 + \cdots + 1 + \cdots</m>  diverges.
+                </p>
+              </li>
+            </ol>
+          </li>
+          <li>
+            <p>
+              For
+              <m>
+                S_n = 1 - 1 + 1 - 1 + \cdots + (-1)^{n-1}
+              </m>,
+            </p>
+            <ol marker="i.">
+              <li>
+                <p>
+                  <m>S_2 = 1 - 1 = 0</m>, <m>S_3 = 1 - 1 + 1 = 1</m>, <m>S_4 = 1 - 1 + 1 - 1 = 0</m>, <m>S_5 = 1 - 1 + 1 - 1 + 1 = 1</m>, and <m>S_n = 0</m> when <m>n</m> is even, and <m>S_n = 1</m> when <m>n</m> is odd.
+                </p>
+              </li>
+              <li>
+                <p>
+                  The infinite sum <m>S = 1 - 1 + 1 - 1 + \cdots + 1 - 1 + \cdots</m> diverges.
+                </p>
+              </li>
+            </ol>  
+          </li>  
+          <li>
+              <p>
+                For 
+                <m>
+                  S_n = 1 + 2 + 4 + \cdots + 2^{n-1}
+                </m>.
+              </p>
+              <ol marker="i.">
+                <li>
+                  <p>
+                    <m>S_2 = \frac{1-2^2}{-1} = 3</m>, <m>S_3 = \frac{1-2^3}{-1} = 7</m>, and <m>S_4 = \frac{1-2^4}{-1} = 15</m>, so <m>S_n = 2^n - 1</m>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    The infinite geometric series <m>1 + 2 + 4 + \cdots + 2^{n-1} + \cdots</m> diverges.
+                  </p>
+                </li>
+              </ol>         
+          </li>
+        </ol>
+      </p>
+
+    </answer>
+    
+    <solution>
+
+      <p>
+        <ol  marker="a.">
+          <li>
+            <p>
+              We consider the finite geometric series that results when <m>a = 1</m> and <m>r = 1</m>:
+              <me>
+                S_n = 1 + 1 + \cdots + 1
+              </me>,
+              which has <m>n</m> terms in the sum.
+            </p>
+            <ol marker="i.">
+              <li>
+                <p>
+                  Using 
+                  <me>
+                    S_n = 1 + 1 + \cdots + 1
+                  </me>, 
+                  we see that <m>S_2 = 1 + 1 = 2</m>, <m>S_3 = 1 + 1 + 1 = 3</m>, <m>S_4 = 4</m>, and more generally, <m>S_n = n</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Because the sequence <m>1, 2, 3, 4, \ldots, n, \ldots</m> increases without bound, partial sums of the series never approach a single finite value, so the sequence diverges, which means the infinite sum <m>S = 1 + 1 + \cdots + 1 + \cdots</m> also diverges.
+                </p>
+              </li>
+            </ol>
+          </li>
+          <li>
+            <p>
+              Next, we consider the finite geometric series that results when <m>a = 1</m> and <m>r = -1</m>:
+              <me>
+                S_n = 1 - 1 + 1 - 1 + \cdots + (-1)^{n-1}
+              </me>,
+              which has <m>n</m> terms in the sum.  
+            </p>
+            <ol marker="i.">
+              <li>
+                <p>
+                  Using <m>S_n = 1 - 1 + 1 - 1 + \cdots + (-1)^{n-1}</m>, we see that <m>S_2 = 1 - 1 = 0</m>, <m>S_3 = 1 - 1 + 1 = 1</m>, <m>S_4 = 1 - 1 + 1 - 1 = 0</m>, and <m>S_5 = 1 - 1 + 1 - 1 + 1 = 1</m>, and thus that <m>S_n = 0</m> when <m>n</m> is even, and <m>S_n = 1</m> when <m>n</m> is odd.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Because the sequence <m>1, 0, 1, 0, 1, 0, \ldots, 1, 0, \ldots</m> alterates between the values <m>0</m> and <m>1</m> partial sums of the series never approach a single finite value, so the sequence diverges, which means the infinite sum <m>S = 1 - 1 + 1 - 1 + \cdots + 1 - 1 + \cdots</m> also diverges.
+                </p>
+              </li>
+            </ol>  
+          </li>  
+          <li>
+              <p>
+                Finally, we consider the geometric sum with <m>a = 1</m> and <m>r = 2</m>: 
+                <me>
+                  S_n = 1 + 2 + 4 + \cdots + 2^{n-1}
+                </me>.
+              </p>
+              <ol marker="i.">
+                <li>
+                  <p>
+                    Using the formula <m>S_n = \frac{a - ar^n}{1-4}</m>, we see that <m>S_2 = \frac{1-2^2}{-1} = 3</m>, <m>S_3 = \frac{1-2^3}{-1} = 7</m>, and <m>S_4 = \frac{1-2^4}{-1} = 15</m>, so <m>S_n = 2^n - 1</m>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    The partial sums <m>S_n = 2^n - 1</m> increase without bound, so the infinite geometric series <m>1 + 2 + 4 + \cdots + 2^{n-1} + \cdots</m> diverges.
+                  </p>
+                </li>
+              </ol>         
+          </li>
+        </ol>
+      </p>
+      
+    </solution>
+  </exercise>
+
+  <exercise xml:id="ez-8a-3-2">
+    <statement>
+      <p>
+        It is important to understand the power of geometric growth compared to linear growth.  
+        Suppose you are hired for a job that will take you 30 days to complete and are offered two options for how you'll be compensated.
+      </p>
+      <p>
+        <dl>
+          <li>
+            <title>Option 1.</title>
+            <p>
+              You can be paid $500 per day, or
+            </p>
+          </li>
+          <li>
+            <title>Option 2.</title>
+            <p>
+              You can be paid 1 cent the first day, 2 cents the second day, 4 cents the third day, 8 cents the fourth day,
+              and so on, doubling the amount you are paid each day.
+            </p>
+          </li>
+        </dl>
+      </p>
+      <p>
+        <ol marker="a.">
+          <li>
+            <p>
+              How much will you be paid for the job in total under Option 1?
+            </p>
+          </li>
+          <li>
+            <p>
+              Complete <xref ref="PA-8-2-geometric">Table</xref>
+              to determine the pay you will receive under Option 2 for the first 10 days.
+            </p>
+            <table xml:id="PA-8-2-geometric">
+              <title>Option 2 payments</title>
+              <tabular top="minor" bottom="minor">
+                <row>
+                  <cell>Day</cell>
+                  <cell>Pay on this day</cell>
+                  <cell>Total amount paid to date</cell>
+                </row>
+                <row>
+                  <cell><m>1</m></cell>
+                  <cell><m>\dollar0.01</m></cell>
+                  <cell><m>\dollar0.01</m></cell>
+                </row>
+                <row>
+                  <cell><m>2</m></cell>
+                  <cell><m>\dollar0.02</m></cell>
+                  <cell><m>\dollar0.03</m></cell>
+                </row>
+                <row>
+                  <cell><m>3</m></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell><m>4</m></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell><m>5</m></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell><m>6</m></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell><m>7</m></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell><m>8</m></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell><m>9</m></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+                <row>
+                  <cell><m>10</m></cell>
+                  <cell></cell>
+                  <cell></cell>
+                </row>
+              </tabular>
+
+            </table>
+
+          </li>
+
+          <li>
+            <p>
+              Find a formula for the amount paid <em>on</em> day <m>n</m>,
+              as well as for the total amount paid <em>by</em> day <m>n</m>.
+              Use this formula to determine which option (1 or 2) you should take.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+    <answer>
+      <p>
+        <ol marker="a.">
+          <li>
+            <p>
+              <m>30 \cdot 500 = 1500</m> dollars.
+            </p>
+          </li>
+
+          <li>
+
+            <sidebyside>
+
+              <tabular top="minor" bottom="minor">
+                <row>
+                  <cell>Day</cell>
+                  <cell>Pay on this day</cell>
+                  <cell>Total amount paid to date</cell>
+                </row>
+                <row>
+                  <cell><m>1</m></cell>
+                  <cell><m>\dollar0.01</m></cell>
+                  <cell><m>\dollar0.01</m></cell>
+                </row>
+                <row>
+                  <cell><m>2</m></cell>
+                  <cell><m>\dollar0.02</m></cell>
+                  <cell><m>\dollar0.03</m></cell>
+                </row>
+                <row>
+                  <cell><m>3</m></cell>
+                  <cell><m>\dollar0.04</m></cell>
+                  <cell><m>\dollar0.07</m></cell>
+                </row>
+                <row>
+                  <cell><m>4</m></cell>
+                  <cell><m>\dollar0.08</m></cell>
+                  <cell><m>\dollar0.15</m></cell>
+                </row>
+                <row>
+                  <cell><m>5</m></cell>
+                  <cell><m>\dollar0.16</m></cell>
+                  <cell><m>\dollar0.31</m></cell>
+                </row>
+                <row>
+                  <cell><m>6</m></cell>
+                  <cell><m>\dollar0.32</m></cell>
+                  <cell><m>\dollar0.63</m></cell>
+                </row>
+                <row>
+                  <cell><m>7</m></cell>
+                  <cell><m>\dollar0.64</m></cell>
+                  <cell><m>\dollar1.27</m></cell>
+                </row>
+                <row>
+                  <cell><m>8</m></cell>
+                  <cell><m>\dollar1.28</m></cell>
+                  <cell><m>\dollar2.55</m></cell>
+                </row>
+                <row>
+                  <cell><m>9</m></cell>
+                  <cell><m>\dollar2.56</m></cell>
+                  <cell><m>\dollar5.11</m></cell>
+                </row>
+                <row>
+                  <cell><m>10</m></cell>
+                  <cell><m>\dollar5.12</m></cell>
+                  <cell><m>\dollar10.23</m></cell>
+                </row>
+              </tabular>
+
+            </sidebyside>
+
+          </li>
+
+          <li>
+            <p>
+              <m>
+              \dollar0.01\left(2^{30}-1\right) = \dollar10,737,418.23
+              </m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </answer>
+    <solution>
+      <p>
+        <ol marker="a.">
+          <li>
+            <p>
+              You will be paid <m>30 \cdot 500 = 1500</m> dollars under Option 1.
+            </p>
+          </li>
+
+          <li>
+
+            <sidebyside>
+
+              <tabular top="minor" bottom="minor">
+                <row>
+                  <cell>Day</cell>
+                  <cell>Pay on this day</cell>
+                  <cell>Total amount paid to date</cell>
+                </row>
+                <row>
+                  <cell><m>1</m></cell>
+                  <cell><m>\dollar0.01</m></cell>
+                  <cell><m>\dollar0.01</m></cell>
+                </row>
+                <row>
+                  <cell><m>2</m></cell>
+                  <cell><m>\dollar0.02</m></cell>
+                  <cell><m>\dollar0.03</m></cell>
+                </row>
+                <row>
+                  <cell><m>3</m></cell>
+                  <cell><m>\dollar0.04</m></cell>
+                  <cell><m>\dollar0.07</m></cell>
+                </row>
+                <row>
+                  <cell><m>4</m></cell>
+                  <cell><m>\dollar0.08</m></cell>
+                  <cell><m>\dollar0.15</m></cell>
+                </row>
+                <row>
+                  <cell><m>5</m></cell>
+                  <cell><m>\dollar0.16</m></cell>
+                  <cell><m>\dollar0.31</m></cell>
+                </row>
+                <row>
+                  <cell><m>6</m></cell>
+                  <cell><m>\dollar0.32</m></cell>
+                  <cell><m>\dollar0.63</m></cell>
+                </row>
+                <row>
+                  <cell><m>7</m></cell>
+                  <cell><m>\dollar0.64</m></cell>
+                  <cell><m>\dollar1.27</m></cell>
+                </row>
+                <row>
+                  <cell><m>8</m></cell>
+                  <cell><m>\dollar1.28</m></cell>
+                  <cell><m>\dollar2.55</m></cell>
+                </row>
+                <row>
+                  <cell><m>9</m></cell>
+                  <cell><m>\dollar2.56</m></cell>
+                  <cell><m>\dollar5.11</m></cell>
+                </row>
+                <row>
+                  <cell><m>10</m></cell>
+                  <cell><m>\dollar5.12</m></cell>
+                  <cell><m>\dollar10.23</m></cell>
+                </row>
+              </tabular>
+
+            </sidebyside>
+
+          </li>
+
+          <li>
+            <p>
+              On day <m>n</m> you are paid
+              <m>0.01\left(2^{n-1}\right)</m> dollars and the total amount paid is <m>\dollar0.01\left(2^n-1\right)</m>.
+              So on day 30 under Option 2 the total payment will be
+              <me>
+                \dollar0.01\left(2^{30}-1\right) = \dollar10,737,418.23
+              </me>,
+              so Option 2 is definitely the better deal.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+  <exercise xml:id="ez-8a-3-3">
+    <statement>
+      <p>
+        Suppose you drop a golf ball onto a hard surface from a height <m>h</m>.
+        The collision with the ground causes the ball to lose energy and so it will not bounce back to its original height.
+        The ball will then fall again to the ground,
+        bounce back up, and continue.
+        Assume that at each bounce the ball rises back to a height
+        <m>\frac{3}{4}</m> of the height from which it dropped.
+        Let <m>h_n</m> be the height of the ball on the <m>n</m>th bounce,
+        with <m>h_0 = h</m>.
+        In this exercise we will determine the distance traveled by the ball and the time it takes to travel that distance.
+
+        <ol marker="a.">
+          <li>
+            <p>
+              Determine a formula for <m>h_1</m> in terms of <m>h</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Determine a formula for <m>h_2</m> in terms of <m>h</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Determine a formula for <m>h_3</m> in terms of <m>h</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Determine a formula for <m>h_n</m> in terms of <m>h</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Write an infinite series that represents the total distance traveled by the ball.
+              Then determine the value of this series.
+            </p>
+          </li>
+          <li>
+            <p>
+              Next, let's determine the total amount of time the ball is in the air.
+
+              <ol marker="i)">
+                <li>
+                  <p>
+                    When the ball is dropped from a height <m>H</m>,
+                    if we assume the only force acting on it is the acceleration due to gravity,
+                    then the height of the ball at time <m>t</m> is given by
+                    <me>
+                      H - \frac{1}{2}gt^2
+                    </me>.
+                    Use this formula to determine the time it takes for the ball to hit the ground after being dropped from height <m>H</m>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Use your work in the preceding item,
+                    along with that in (a)-(e) above to determine the total amount of time the ball is in the air.
+                  </p>
+                </li>
+              </ol>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+    <answer>
+      <p>
+        <ol marker="a.">
+          <li>
+            <p>
+              <m>
+              h_1 = \left(\frac{3}{4}\right)h
+              </m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>
+              h_2 = \left(\frac{3}{4}\right)h_1 = \left(\frac{3}{4}\right)^2h
+              </m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>
+              h_3 = \left(\frac{3}{4}\right)h_2 = \left(\frac{3}{4}\right)^3h
+              </m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>
+              h_n = \left(\frac{3}{4}\right)h_{n-1} = \left(\frac{3}{4}\right)^nh
+              </m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The distance traveled by the ball is
+              <m>7h</m>, which is finite.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </answer>
+    <solution>
+      <p>
+        <ol marker="a.">
+          <li>
+            <p>
+              Since the ball bounces back <m>3/4</m> of the original height, we have
+              <me>
+                h_1 = \left(\frac{3}{4}\right)h
+              </me>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Since the ball bounces back <m>3/4</m> of the original height, we have
+              <me>
+                h_2 = \left(\frac{3}{4}\right)h_1 = \left(\frac{3}{4}\right)^2h
+              </me>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Since the ball bounces back <m>3/4</m> of the original height, we have
+              <me>
+                h_3 = \left(\frac{3}{4}\right)h_2 = \left(\frac{3}{4}\right)^3h
+              </me>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Since the ball bounces back <m>3/4</m> of the original height, we have
+              <me>
+                h_n = \left(\frac{3}{4}\right)h_{n-1} = \left(\frac{3}{4}\right)^nh
+              </me>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The distance traveled by the ball is
+              <md>
+                <mrow>h+2[h_1+h_2+ \cdots ] \amp = h + 2 \left[ \left(\frac{3}{4}\right)^2h + \left(\frac{3}{4}\right)^2h + \left(\frac{3}{4}\right)^2h + \cdots \right]</mrow>
+                <mrow>\amp = h + 2\left(\frac{3}{4}\right)h \left[1 + \left(\frac{3}{4}\right) + \left(\frac{3}{4}\right)^2 + \cdots \right]</mrow>
+                <mrow>\amp = h + \left(\frac{3}{2}\right)h \sum_{n = 0}^{\infty} \left(\frac{3}{4}\right)^n</mrow>
+                <mrow>\amp = h + \left(\frac{3}{2}\right)h \left(\frac{1}{1-3/4}\right)</mrow>
+                <mrow>\amp = h + \left(\frac{3}{2}\right)h (4)</mrow>
+                <mrow>\amp = h + 6h</mrow>
+                <mrow>\amp = 7h</mrow>
+              </md>.
+            </p>
+            <p>
+              So no matter what the initial height of the ball,
+              the ball will bounce infinitely many times but only travel a finite distance.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+</exercises>

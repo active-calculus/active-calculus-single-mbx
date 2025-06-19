@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2022                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+<activity xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="act-8a-1-3">
+	<statement>
+		<p>
+			We continue to work with <m>f(x)=e^x</m> and the four approximations of degree <m>1</m>, <m>2</m>, <m>3</m>, and <m>4</m> given by <m>T_1(x)</m>, <m>T_2(x)</m>, <m>T_3(x)</m>, and <m>T_4(x)</m>.  
+		</p>
+
+			<ol marker="a.">
+		      <li>
+		        <p>
+		          In <xref ref="PA-8a-1">Preview Activity</xref>, we built a spreadsheet that computed the differences between <m>f(x)</m> and <m>T_1(x)</m> for <m>x</m>-values between <m>-1</m> and <m>1</m>, spaced <m>0.1</m> units apart.  Your spreadsheet started like the one shown in the table in <xref ref="PA-8a-1">Preview Activity</xref>.
+		        </p>	
+		        
+		        <p>
+		        	Next, we build an updated version of this spreadsheet that computes similar differences between <m>f</m> and the three higher degree approximations we have found.  In particular, we now want to have columns for <m>\Delta x</m>, <m>x</m>, <m>f(x)</m>, <m>T_1(x)</m>, <m>T_2(x)</m>, <m>T_3(x)</m>, and <m>T_4(x)</m>, plus the absolute differences <m>|f(x) - T_1(x)|</m>, <m>|f(x) - T_2(x)|</m>, <m>|f(x) - T_3(x)|</m>, and <m>|f(x) - T_4(x)|</m>.  <alert>Hint:</alert> when building your entries, note that you can think of <m>T_2(x)</m> as <m>T_2(x) = T_1(x) + \frac{1}{2}x^2</m>, and similarly view <m>T_3(x)</m> as <q><m>T_2(x)</m> plus one more term</q>.  
+		        </p>
+
+		        <p>
+		        	 Include at least <m>5</m> digits of accuracy beyond the decimal.  The first seven columns of your spreadsheet might start like this:		
+		          <table xml:id="T-8a-1-act-3-approx">
+		            <title>Comparing <m>f(x) = e^x</m> and its degree <m>1</m>, <m>2</m>, <m>3</m>, <m>4</m> and approximations near <m>a = 0</m>.</title>
+		              <tabular top="minor" bottom="minor">
+		                <row left="minor">
+		                  <cell right="minor"><m>\Delta x</m></cell>
+		                  <cell right="minor"><m>x</m></cell>
+		                  <cell right="minor"><m>f(x)</m></cell>
+		                  <cell right="minor"><m>T_1(x)</m></cell>
+		                  <cell right="minor"><m>T_2(x)</m></cell>
+		                  <cell right="minor"><m>T_3(x)</m></cell>
+		                  <cell right="minor"><m>T_4(x)</m></cell>
+		                </row>
+		                <row left="minor">
+		                  <cell right="minor"><m>0.1</m></cell>
+		                  <cell right="minor"><m>-1.0</m></cell>
+		                  <cell right="minor"><m>0.36787</m></cell>
+		                  <cell right="minor"><m>0.00000</m></cell>
+		                  <cell right="minor"><m>0.50000</m></cell>
+		                  <cell right="minor"><m>0.33333</m></cell>
+		                  <cell right="minor"><m>0.37500</m></cell>
+		                </row>
+		                <row left="minor">
+		                  <cell right="minor"><m>0.1</m></cell>
+		                  <cell right="minor"><m>-0.9</m></cell>
+		                  <cell right="minor"><m>0.40657</m></cell>
+		                  <cell right="minor"><m>0.10000</m></cell>
+		                  <cell right="minor"><m>0.50500</m></cell>
+		                  <cell right="minor"><m>0.38350</m></cell>
+		                  <cell right="minor"><m>0.41083</m></cell>
+		                </row>
+		              </tabular>
+		            </table>
+		         </p>
+		         <p>   
+		            The next four columns of your spreadsheet should begin as follows:		
+		          <table xml:id="T-8a-1-act-3-approx-2">
+		            <title>The absolute error between <m>f(x) = e^x</m> and its degree <m>1</m>, <m>2</m>, <m>3</m>, and <m>4</m> approximations at <m>x=-1</m> and <m>x=-0.9</m>.</title>
+		              <tabular top="minor" bottom="minor">
+		                <row left="minor">
+		                  <cell right="minor"><m>|f(x)-T_1(x)|</m></cell>
+		                  <cell right="minor"><m>|f(x)-T_2(x)|</m></cell>
+		                  <cell right="minor"><m>|f(x)-T_3(x)|</m></cell>
+		                  <cell right="minor"><m>|f(x)-T_4(x)|</m></cell>
+		                </row>
+		                <row left="minor">
+		                  <cell right="minor"><m>0.36787</m></cell>
+		                  <cell right="minor"><m>0.13212</m></cell>
+		                  <cell right="minor"><m>0.03454</m></cell>
+		                  <cell right="minor"><m>0.00712</m></cell>
+		                </row>
+		                <row left="minor">
+		                  <cell right="minor"><m>0.30657</m></cell>
+		                  <cell right="minor"><m>0.09843</m></cell>
+		                  <cell right="minor"><m>0.02307</m></cell>
+		                  <cell right="minor"><m>0.00426</m></cell>
+		                </row>
+		              </tabular>
+		            </table>
+		        </p>
+		      </li>
+		      <li>
+		      	<p>
+		      		We call the value of <m>|f(x) - T_2(x)|</m> the <term>absolute error of the quadratic approximation of <m>f</m> at the value <m>x</m></term>.  What is the absolute error of the quadratic approximation at <m>x = -1</m>? at <m>x = 1</m>?
+		      	</p>
+		      </li>
+		      <li>
+		      	<p>
+		      		What is the absolute error of the cubic (degree <m>3</m>) approximation, <m>T_3(x)</m>, at <m>x = -1</m>? at <m>x = 1</m>?
+		      	</p>
+		      </li>
+		      <li>
+		      	<p>
+		      		What is the absolute error of the quartic (degree <m>4</m>) approximation, <m>T_4(x)</m>, at <m>x = -1</m>? at <m>x = 1</m>?
+		      	</p>
+		      </li>
+		      <li>
+		      	<p>
+		      		Study your spreadsheet for trends that you notice as the value of <m>x</m> changes or the degree <m>n</m> of the approximation changes.  What are your observations? 
+		      	</p>
+		      </li>
+		      <li>
+		      	<p>
+		      		Investigate the errors in the various approximations for a wider interval of <m>x</m>-values.  For example, you might consider starting at <m>x = -2</m> with <m>\Delta x = 0.2</m>.  What do you notice?
+		      	</p>
+		      </li>
+			</ol>
+
+		</statement>
+		<hint>
+			
+		</hint>
+		<answer>
+			<ol marker="a.">
+		      <li>		        
+		        <p>
+		       	  The first seven columns and eleven rows of the spreadsheet are:		
+		          <table xml:id="T-8a-1-act-3-approx-ans">
+		            <title>Comparing <m>f(x) = e^x</m> and its degree <m>1</m>, <m>2</m>, <m>3</m>, <m>4</m> and approximations near <m>a = 0</m>.</title>
+		              <tabular top="minor" bottom="minor">
+		                <row>
+		                  <cell><m>\Delta x</m></cell>
+		                  <cell><m>x</m></cell>
+		                  <cell><m>f(x)</m></cell>
+		                  <cell><m>T_1(x)</m></cell>
+		                  <cell><m>T_2(x)</m></cell>
+		                  <cell><m>T_3(x)</m></cell>
+		                  <cell><m>T_4(x)</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.1</m></cell>
+		                  <cell><m>-1.0</m></cell>
+		                  <cell><m>0.36787</m></cell>
+		                  <cell><m>0.00000</m></cell>
+		                  <cell><m>0.50000</m></cell>
+		                  <cell><m>0.33333</m></cell>
+		                  <cell><m>0.37500</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.1</m></cell>
+		                  <cell><m>-0.9</m></cell>
+		                  <cell><m>0.40657</m></cell>
+		                  <cell><m>0.10000</m></cell>
+		                  <cell><m>0.50500</m></cell>
+		                  <cell><m>0.38350</m></cell>
+		                  <cell><m>0.41083</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.1</m></cell>
+		                  <cell><m>-0.8</m></cell>			
+		                  <cell><m>0.44933</m></cell>
+		                  <cell><m>0.20000</m></cell>
+		                  <cell><m>0.52000</m></cell>
+		                  <cell><m>0.43467</m></cell>
+		                  <cell><m>0.45173</m></cell>
+		                </row>		                
+		                <row>
+		                  <cell><m>0.1</m></cell>
+		                  <cell><m>-0.7</m></cell>
+		                  <cell><m>0.49659</m></cell>
+		                  <cell><m>0.30000</m></cell>
+		                  <cell><m>0.54500</m></cell>
+		                  <cell><m>0.48783</m></cell>
+		                  <cell><m>0.49784</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.1</m></cell>
+		                  <cell><m>-0.6</m></cell>
+		                  <cell><m>0.54881</m></cell>
+		                  <cell><m>0.40000</m></cell>
+		                  <cell><m>0.58000</m></cell>
+		                  <cell><m>0.54400</m></cell>
+		                  <cell><m>0.54940</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.1</m></cell>
+		                  <cell><m>-0.5</m></cell>
+		                  <cell><m>0.60653</m></cell>
+		                  <cell><m>0.50000</m></cell>
+		                  <cell><m>0.62500</m></cell>
+		                  <cell><m>0.60417</m></cell>
+		                  <cell><m>0.60677</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.1</m></cell>
+		                  <cell><m>-0.4</m></cell>
+		                  <cell><m>0.67032</m></cell>
+		                  <cell><m>0.60000</m></cell>
+		                  <cell><m>0.68000</m></cell>
+		                  <cell><m>0.66933</m></cell>
+		                  <cell><m>0.67040</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.1</m></cell>
+		                  <cell><m>-0.3</m></cell>
+		                  <cell><m>0.74082	</m></cell>
+		                  <cell><m>0.70000	</m></cell>
+		                  <cell><m>0.74500	</m></cell>
+		                  <cell><m>0.74050	</m></cell>
+		                  <cell><m>0.74084</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.1</m></cell>
+		                  <cell><m>-0.2</m></cell>
+		                  <cell><m>0.81873	</m></cell>
+		                  <cell><m>0.80000	</m></cell>
+		                  <cell><m>0.82000	</m></cell>
+		                  <cell><m>0.81867	</m></cell>
+		                  <cell><m>0.81873</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.1</m></cell>
+		                  <cell><m>-0.1</m></cell>
+		                  <cell><m>0.90484	</m></cell>
+		                  <cell><m>0.90000	</m></cell>
+		                  <cell><m>0.90500	</m></cell>
+		                  <cell><m>0.90483	</m></cell>
+		                  <cell><m>0.90484</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.1</m></cell>
+		                  <cell><m>0.0</m></cell>
+		                  <cell><m>1.00000</m></cell>
+		                  <cell><m>1.00000</m></cell>
+		                  <cell><m>1.00000</m></cell>
+		                  <cell><m>1.00000</m></cell>
+		                  <cell><m>1.00000</m></cell>
+		                </row>
+		              </tabular>
+		            </table>
+		         </p>
+		         <p>   
+		            The next four columns and four rows of the spreadsheet are:		
+		          <table xml:id="T-8a-1-act-3-approx-2-ans">
+		            <title>The absolute error between <m>f(x) = e^x</m> and its degree <m>1</m>, <m>2</m>, <m>3</m>, and <m>4</m> approximations at <m>x=-1</m> and <m>x=-0.9</m>.</title>
+		              <tabular top="minor" bottom="minor">
+		                <row>
+		                  <cell><m>|f(x)-T_1(x)|</m></cell>
+		                  <cell><m>|f(x)-T_2(x)|</m></cell>
+		                  <cell><m>|f(x)-T_3(x)|</m></cell>
+		                  <cell><m>|f(x)-T_4(x)|</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.36787</m></cell>
+		                  <cell><m>0.13212</m></cell>
+		                  <cell><m>0.03454</m></cell>
+		                  <cell><m>0.00712</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.30657</m></cell>
+		                  <cell><m>0.09843</m></cell>
+		                  <cell><m>0.02307</m></cell>
+		                  <cell><m>0.00426</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.24933	</m></cell>
+		                  <cell><m>0.07067	</m></cell>
+		                  <cell><m>0.01466	</m></cell>
+		                  <cell><m>0.00240</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.19659	</m></cell>
+		                  <cell><m>0.04841	</m></cell>
+		                  <cell><m>0.00875	</m></cell>
+		                  <cell><m>0.00125</m></cell>
+		                </row>
+		              </tabular>
+		            </table>
+		        </p>
+		      </li>
+		      <li>
+		      	<p>
+		      		<m>|f(-1) - T_2(-1)| \approx 0.13212</m>; <m>|f(1) - T_2(1)| \approx 0.21828</m>.
+		      	</p>
+		      </li>
+		      <li>
+		      	<p>
+		      		<m>|f(-1) - T_3(-1)| \approx 0.03455</m>; <m>|f(1) - T_3(1)| \approx 0.05162</m>.
+		      	</p>
+		      </li>
+		      <li>
+		      	<p>
+		      	  	<m>|f(-1) - T_4(-1)| \approx 0.00712</m>; <m>|f(1) - T_4(1)| \approx 0.00995</m>.
+		      	</p>
+		      </li>
+		      <li>
+		      	<p>
+		      		As the degree of the approximation increases, at each fixed <m>x</m>-value, the approximation gets better, and in addition the interval of values on which the approximation is within a certain tolderance gets wider.
+		      	</p>
+		      </li>
+		      <li>
+		      	<p>
+		      		Answers will vary.  But, as we widen the interval of <m>x</m>-values, the errors of each polynomial approximation increase near the endpoints of the interval.
+		      	</p>
+		      </li>
+			</ol>			
+		</answer>
+		<solution>
+		<p>
+			We continue to work with <m>f(x)=e^x</m> and the four approximations of degree <m>1</m>, <m>2</m>, <m>3</m>, and <m>4</m> given by <m>T_1(x)</m>, <m>T_2(x)</m>, <m>T_3(x)</m>, and <m>T_4(x)</m>.  
+		</p>
+
+			<ol marker="a.">
+		      <li>		        
+		        <p>
+		        	We build a spreadsheet that computes similar differences between <m>f</m> and the three higher degree approximations we have found.    
+		        </p>
+
+		        <p>
+		       	  The first seven columns and eleven rows of the spreadsheet should be:		
+		          <table xml:id="T-8a-1-act-3-approx-soln">
+		            <title>Comparing <m>f(x) = e^x</m> and its degree <m>1</m>, <m>2</m>, <m>3</m>, <m>4</m> and approximations near <m>a = 0</m>.</title>
+		              <tabular top="minor" bottom="minor">
+		                <row>
+		                  <cell><m>\Delta x</m></cell>
+		                  <cell><m>x</m></cell>
+		                  <cell><m>f(x)</m></cell>
+		                  <cell><m>T_1(x)</m></cell>
+		                  <cell><m>T_2(x)</m></cell>
+		                  <cell><m>T_3(x)</m></cell>
+		                  <cell><m>T_4(x)</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.1</m></cell>
+		                  <cell><m>-1.0</m></cell>
+		                  <cell><m>0.36787</m></cell>
+		                  <cell><m>0.00000</m></cell>
+		                  <cell><m>0.50000</m></cell>
+		                  <cell><m>0.33333</m></cell>
+		                  <cell><m>0.37500</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.1</m></cell>
+		                  <cell><m>-0.9</m></cell>
+		                  <cell><m>0.40657</m></cell>
+		                  <cell><m>0.10000</m></cell>
+		                  <cell><m>0.50500</m></cell>
+		                  <cell><m>0.38350</m></cell>
+		                  <cell><m>0.41083</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.1</m></cell>
+		                  <cell><m>-0.8</m></cell>			
+		                  <cell><m>0.44933</m></cell>
+		                  <cell><m>0.20000</m></cell>
+		                  <cell><m>0.52000</m></cell>
+		                  <cell><m>0.43467</m></cell>
+		                  <cell><m>0.45173</m></cell>
+		                </row>		                
+		                <row>
+		                  <cell><m>0.1</m></cell>
+		                  <cell><m>-0.7</m></cell>
+		                  <cell><m>0.49659</m></cell>
+		                  <cell><m>0.30000</m></cell>
+		                  <cell><m>0.54500</m></cell>
+		                  <cell><m>0.48783</m></cell>
+		                  <cell><m>0.49784</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.1</m></cell>
+		                  <cell><m>-0.6</m></cell>
+		                  <cell><m>0.54881</m></cell>
+		                  <cell><m>0.40000</m></cell>
+		                  <cell><m>0.58000</m></cell>
+		                  <cell><m>0.54400</m></cell>
+		                  <cell><m>0.54940</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.1</m></cell>
+		                  <cell><m>-0.5</m></cell>
+		                  <cell><m>0.60653</m></cell>
+		                  <cell><m>0.50000</m></cell>
+		                  <cell><m>0.62500</m></cell>
+		                  <cell><m>0.60417</m></cell>
+		                  <cell><m>0.60677</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.1</m></cell>
+		                  <cell><m>-0.4</m></cell>
+		                  <cell><m>0.67032</m></cell>
+		                  <cell><m>0.60000</m></cell>
+		                  <cell><m>0.68000</m></cell>
+		                  <cell><m>0.66933</m></cell>
+		                  <cell><m>0.67040</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.1</m></cell>
+		                  <cell><m>-0.3</m></cell>
+		                  <cell><m>0.74082	</m></cell>
+		                  <cell><m>0.70000	</m></cell>
+		                  <cell><m>0.74500	</m></cell>
+		                  <cell><m>0.74050	</m></cell>
+		                  <cell><m>0.74084</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.1</m></cell>
+		                  <cell><m>-0.2</m></cell>
+		                  <cell><m>0.81873	</m></cell>
+		                  <cell><m>0.80000	</m></cell>
+		                  <cell><m>0.82000	</m></cell>
+		                  <cell><m>0.81867	</m></cell>
+		                  <cell><m>0.81873</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.1</m></cell>
+		                  <cell><m>-0.1</m></cell>
+		                  <cell><m>0.90484	</m></cell>
+		                  <cell><m>0.90000	</m></cell>
+		                  <cell><m>0.90500	</m></cell>
+		                  <cell><m>0.90483	</m></cell>
+		                  <cell><m>0.90484</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.1</m></cell>
+		                  <cell><m>0.0</m></cell>
+		                  <cell><m>1.00000</m></cell>
+		                  <cell><m>1.00000</m></cell>
+		                  <cell><m>1.00000</m></cell>
+		                  <cell><m>1.00000</m></cell>
+		                  <cell><m>1.00000</m></cell>
+		                </row>
+		              </tabular>
+		            </table>
+		         </p>
+		         <p>   
+		            The next four columns and four rows of the spreadsheet are:		
+		          <table xml:id="T-8a-1-act-3-approx-2-soln">
+		            <title>The absolute error between <m>f(x) = e^x</m> and its degree <m>1</m>, <m>2</m>, <m>3</m>, and <m>4</m> approximations at <m>x=-1</m> and <m>x=-0.9</m>.</title>
+		              <tabular top="minor" bottom="minor">
+		                <row>
+		                  <cell><m>|f(x)-T_1(x)|</m></cell>
+		                  <cell><m>|f(x)-T_2(x)|</m></cell>
+		                  <cell><m>|f(x)-T_3(x)|</m></cell>
+		                  <cell><m>|f(x)-T_4(x)|</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.36787</m></cell>
+		                  <cell><m>0.13212</m></cell>
+		                  <cell><m>0.03454</m></cell>
+		                  <cell><m>0.00712</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.30657</m></cell>
+		                  <cell><m>0.09843</m></cell>
+		                  <cell><m>0.02307</m></cell>
+		                  <cell><m>0.00426</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.24933	</m></cell>
+		                  <cell><m>0.07067	</m></cell>
+		                  <cell><m>0.01466	</m></cell>
+		                  <cell><m>0.00240</m></cell>
+		                </row>
+		                <row>
+		                  <cell><m>0.19659	</m></cell>
+		                  <cell><m>0.04841	</m></cell>
+		                  <cell><m>0.00875	</m></cell>
+		                  <cell><m>0.00125</m></cell>
+		                </row>
+		              </tabular>
+		            </table>
+		        </p>
+		      </li>
+		      <li>
+		      	<p>
+		      		The absolute error of the quadratic approximation at <m>x = -1</m> is <m>|f(-1) - T_2(-1)| \approx 0.13212</m>, and at <m>x = 1</m> is  <m>|f(1) - T_2(1)| \approx 0.21828</m>.
+		      	</p>
+		      </li>
+		      <li>
+		      	<p>
+		      		For the cubic approximation, <m>T_3(x)</m>, the absolute errors at <m>x = -1</m> and <m>x = 1</m> are <m>|f(-1) - T_3(-1)| \approx 0.03455</m> and <m>|f(1) - T_3(1)| \approx 0.05162</m>.
+		      	</p>
+		      </li>
+		      <li>
+		      	<p>
+		      		For the quartic approximation, <m>T_4(x)</m>, the absolute errors at <m>x = -1</m> and <m>x = 1</m> are <m>|f(-1) - T_4(-1)| \approx 0.00712</m> and <m>|f(1) - T_4(1)| \approx 0.00995</m>.
+		      	</p>
+		      </li>
+		      <li>
+		      	<p>
+		      		We see that as the degree of the approximation increases, the approximation improves significantly.  For instance, just focusing on <m>x = 1</m>, moving from degree 2 to 3 to 4, the errors drop from about <m>0.22</m> to <m>0.05</m> to <m>0.01</m>.  So at each fixed <m>x</m>-value, the approximation gets better, and in addition the interval of values on which the approximation is within a certain tolderance gets wider.
+		      	</p>
+		      </li>
+		      <li>
+		      	<p>
+		      		If we widen the interval of <m>x</m>-values to something like <m>-2 \lt x \lt 2</m>, we see similar trends, but at the endpoints of the interval, there is a lot of error.  For example, <m>f(2) - T_2(2) \approx 2.39</m>; even for <m>T_4(x)</m>, we have <m>f(2) - T_4(2) \approx 0.39</m>.
+		      	</p>
+		      </li>
+			</ol>			
+		</solution>
+</activity>
+
