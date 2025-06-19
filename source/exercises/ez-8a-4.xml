@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2022                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+<exercises xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="ez-8a-4">
+  <exercise label="Library__WHFreeman__Rogawski_Calculus_Early_Transcendentals_Second_Edition__10_Infinite_Series__10-_7_Taylor_Series__10-_7-_1">
+    <webwork source="Library/WHFreeman/Rogawski_Calculus_Early_Transcendentals_Second_Edition/10_Infinite_Series/10.7_Taylor_Series/10.7.1.pg"/>
+  </exercise>
+  <exercise label="Library__FortLewis__Calc2__10-2-Taylor-series__Taylor-series-01">
+    <webwork source="Library/FortLewis/Calc2/10-2-Taylor-series/Taylor-series-01.pg"/>
+  </exercise>
+  <exercise label="Library__FortLewis__Calc2__10-2-Taylor-series__Taylor-series-04">
+    <webwork source="Library/FortLewis/Calc2/10-2-Taylor-series/Taylor-series-04.pg"/>
+  </exercise>
+  <exercise label="Library__FortLewis__Calc2__10-2-Taylor-series__Taylor-series-02">
+    <webwork source="Library/FortLewis/Calc2/10-2-Taylor-series/Taylor-series-02.pg"/>
+  </exercise>
+  <exercise label="Library__Michigan__5e__Chap10Sec2__Q43">
+    <webwork source="Library/Michigan/5e/Chap10Sec2/Q43.pg"/>
+  </exercise>
+  <exercise label="Library__Michigan__Chap10Sec2__Q31">
+    <webwork source="Library/Michigan/Chap10Sec2/Q31.pg"/>
+  </exercise>
+  <exercise label="csafranski__8_4HW_prob7">
+    <webwork source="csafranski/8.4HW_prob7.pg" />
+  </exercise>
+  <exercise xml:id="ez-8a-4-1">
+    <statement>
+      <p>
+        The examples we have considered so far in this section have all been for Taylor polynomials and series centered at 0, but Taylor polynomials and series can be centered at any value of <m>a</m>.
+      </p>
+      <p>
+        <ol marker="a.">
+          <li>
+            <p>
+              Let <m>f(x) = \cos(x)</m>.
+              Find the Taylor polynomials up through order four of <m>f</m> centered at <m>a = \frac{\pi}{2}</m>.
+              Then find the Taylor series for <m>f(x)</m> centered at <m>a = \frac{\pi}{2}</m>.
+              Why is the result not surprising?
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Let <m>f(x) = \frac{1}{1+x} = (1+x)^{-1}</m>.
+              Find the Taylor polynomials up through order four of <m>f</m> centered at <m>a = 1</m>.
+              Then find the Taylor series for <m>f(x)</m> centered at <m>a = 1</m>.
+            </p>
+          </li>
+
+        </ol>
+      </p>
+    </statement>
+
+<!-- %%%%%%%%%%%%%%%%%%%% --> 
+
+    <answer>
+
+      <p>
+        <ol marker="a.">
+          <li>
+            <p>
+              <m>
+                T_4(x) = 0 - 1 \left(x - \frac{\pi}{2}\right) + \frac{0}{2!}\left(x - \frac{\pi}{2}\right)^2 + \frac{1}{3!}\left(x - \frac{\pi}{2}\right)^3 + \frac{0}{4!}\left(x - \frac{\pi}{2}\right)^4
+              </m>; <m>
+                T(x) = 0 - 1 \left(x - \frac{\pi}{2}\right) + \frac{0}{2!}\left(x - \frac{\pi}{2}\right)^2 + \frac{1}{3!}\left(x - \frac{\pi}{2}\right)^3 + \frac{0}{4!}\left(x - \frac{\pi}{2}\right)^4 + \cdots + (-1)^{n+1} \frac{1}{(2n+1)!}\left(x - \frac{\pi}{2}\right)^{2n+1} + \cdots
+              </m>; think about the Taylor series centered at <m>a = 0</m> for <m>g(x) = \sin(x)</m> and note that <m>f(x) = \cos(x) = -\sin\left( x - \frac{\pi}{2} \right) = -g\left( x - \frac{\pi}{2} \right) </m>.  
+            </p>
+          </li>
+
+          <li>
+            <p>
+              <m>
+                T_4(x) = \frac{1}{2} - \frac{1}{2^2}(x-1) + \frac{1}{2^3}(x-1)^2 - \frac{1}{2^4}(x-1)^3 + \frac{1}{2^5}(x-1)^4
+              </m>;
+              <m>
+                T(x) = \frac{1}{2} - \frac{1}{2^2}(x-1) + \frac{1}{2^3}(x-1)^2 - \frac{1}{2^4}(x-1)^3 + \frac{1}{2^5}(x-1)^4 + \cdots + \frac{1}{2^{n+1}}(x-1)^{n} + \cdots
+              </m>.
+            </p>
+
+          </li>
+
+        </ol>
+      </p>
+
+    </answer>
+    <solution>
+
+      <p>
+        <ol marker="a.">
+          <li>
+            <p>
+              Let <m>f(x) = \cos(x)</m>.
+            </p>
+
+            <p>
+              We know that <m>f'(x) = -\sin(x)</m>, <m>f''(x) = -cos(x)</m>, <m>f'''(x) = \sin(x)</m>, and <m>f^{(4)}(x) = cos(x)</m>, so
+              <m>f'\left(\frac{\pi}{2}\right) = -\sin\left(\frac{\pi}{2}\right) = -1</m>, <m>f''\left(\frac{\pi}{2}\right) = -cos\left(\frac{\pi}{2}\right) = 0</m>, <m>f'''\left(\frac{\pi}{2}\right) = \sin\left(\frac{\pi}{2}\right) = 1</m>, and <m>f^{(4)}(x) = cos\left(\frac{\pi}{2}\right) = 0</m>.  We also note that <m>f\left(\frac{\pi}{2}\right) = \cos\left(\frac{\pi}{2}\right) = 0</m>
+            </p>
+
+            <p>
+              It follows that the degree four Taylor polynomial of <m>f</m> centered at <m>x = \frac{\pi}{2}</m> is
+              <me>
+                T_4(x) = 0 - 1 \left(x - \frac{\pi}{2}\right) + \frac{0}{2!}\left(x - \frac{\pi}{2}\right)^2 + \frac{1}{3!}\left(x - \frac{\pi}{2}\right)^3 + \frac{0}{4!}\left(x - \frac{\pi}{2}\right)^4
+              </me>,
+              from which we can also easily determine <m>T_3(x)</m>, <m>T_2(x)</m>, and <m>T_1(x)</m>.
+            </p>
+
+            <p>
+              From the pattern in <m>T_4(x)</m>, we find that the Taylor series for <m>f(x)</m> centered at <m>x = \frac{\pi}{2}</m> is
+              <me>
+                T(x) = 0 - 1 \left(x - \frac{\pi}{2}\right) + \frac{0}{2!}\left(x - \frac{\pi}{2}\right)^2 + \frac{1}{3!}\left(x - \frac{\pi}{2}\right)^3 + \frac{0}{4!}\left(x - \frac{\pi}{2}\right)^4 + \cdots + (-1)^{n+1} \frac{1}{(2n+1)!}\left(x - \frac{\pi}{2}\right)^{2n+1} + \cdots
+              </me>
+            </p>
+
+            <p>
+              This result is not surprising, because <m>f(x) = \cos(x) = -\sin\left( x - \frac{\pi}{2} \right)</m>.  So, if we stated with the Taylor series for <m>g(x) = \sin(x)</m> centered at <m>a = 0</m>, we'd have 
+              <me>
+                g(x) = \sin(x) = \sum_{k=0}^{\infty} (-1)^{k} \frac{1}{(2k+1)!}x^{2k+1}
+              </me>
+              from which it follows that 
+              <me>
+                -\sin\left(x - \frac{\pi}{2} \right) = -\sum_{k=0}^{\infty} (-1)^{k} \frac{1}{(2k+1)!} \left(x - \frac{\pi}{2} \right)^{2k+1}
+              </me>.
+              Noting that <m>-1 \cdot (-1)^k = -1^{k+1}</m>, we have established that
+              <me>
+                \cos(x) = -\sin\left(x - \frac{\pi}{2} \right) = \sum_{k=0}^{\infty} (-1)^{k+1} \frac{1}{(2k+1)!} \left(x - \frac{\pi}{2} \right)^{2k+1}
+              </me> 
+              which matches our earlier result.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              With <m>f(x) = \frac{1}{1+x} = (1+x)^{-1}</m>, we observe that <m>f'(x) = -(1+x)^{-2}</m>, <m>f''(x) = (-1)(-2)(1+x)^{-3}</m>, <m>f'''(x) = (-1)(-2)(-3)(1+x)^{-4}</m>, and <m>f^{(4)}(x) = (-1)(-2)(-3)(-4)(1+x)^{-5}</m>.  Evaluating each of these functions at <m>a = 1</m>, we find
+              <m>f(1) = \frac{1}{2}</m>, <m>f'(1) = (-1) \cdot \frac{1}{2^2}</m>, <m>f''(1) = \frac{2!}{2^3}</m>,  <m>f'''(1) = (-1) \cdot \frac{3!}{2^4}</m>, and  <m>f^{(4)}(1) = \frac{4!}{2^5}</m>.   
+            </p>
+
+            <p>
+              From these derivative values and the fact that <m>c_k = \frac{f^{(k)}(1)}{k!}</m>, it follows that 
+              <me>
+                T_4(x) = \frac{1}{2} - \frac{1}{2^2}(x-1) + \frac{1}{2^3}(x-1)^2 - \frac{1}{2^4}(x-1)^3 + \frac{1}{2^5}(x-1)^4
+              </me>,
+              from which we can also easily find <m>T_3(x)</m>, <m>T_2(x)</m>, and <m>T_1(x)</m>.
+            </p>
+
+            <p>
+              Finally, from the patterns in our preceding work, we see the Taylor series for <m>f(x)</m> centered at <m>a = 1</m> is
+              <me>
+                T(x) = \frac{1}{2} - \frac{1}{2^2}(x-1) + \frac{1}{2^3}(x-1)^2 - \frac{1}{2^4}(x-1)^3 + \frac{1}{2^5}(x-1)^4 + \cdots + \frac{1}{2^{n+1}}(x-1)^{n} + \cdots
+              </me>.
+            </p>
+
+          </li>
+
+        </ol>
+      </p>
+      
+    </solution>
+  </exercise>
+
+  <exercise>
+    <statement>
+      <p>
+        As we will see in more detail in the next section, we can use known Taylor series to obtain other Taylor series,
+        and we preview that idea in this exercise.
+      </p>
+
+      <p>
+        <ol marker="a.">
+          <li>
+            <p>
+              Calculate the first four derivatives of
+              <m>\sin(x^2)</m> and hence find the fourth order Taylor polynomial for
+              <m>\sin(x^2)</m> centered at <m>a=0</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Part (a) demonstrates the direct approach to finding Taylor polynomials and series.
+              Next we utilize a known Taylor series to make the process simpler.
+              Recall that the Taylor series centered at 0 for <m>f(x) = \sin(x)</m> is
+              <men xml:id="eq-8a-4-Exercise2">
+                T(x) = \sum_{k=0}^{\infty} (-1)^{k} \frac{x^{2k+1}}{(2k+1)!}
+              </men>.
+              <ol marker="i.">
+                <li>
+                  <p>
+                    Substitute <m>x^2</m> for <m>x</m> in the Taylor series <m>T(x)</m> in <xref ref="eq-8a-4-Exercise2">Equation</xref>.
+                    Write out the first several terms and compare to your work in part (a).
+                    Explain why the substitution in this problem should result in the Taylor series for <m>\sin(x^2)</m> centered at 0.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    For what interval of <m>x</m>-values should we expect the Taylor series for <m>\sin(x^2)</m> to converge?  
+                  </p>
+                </li>
+              </ol>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+    <answer>
+      <p>
+        <ol>
+          <li>
+            <p>
+              <m>
+              P_4(x) = x^2
+              </m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <ol marker="i.">
+                <li>
+                  <p>
+                    <m>
+                    g(x) = T(x^2) = x^2 - \frac{1}{3!}x^6 + \frac{1}{5!}x^{10} - \cdots
+                    </m>.
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    All real numbers.
+                  </p>
+                </li>
+              </ol>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </answer>
+    <solution>
+      <p>
+        <ol marker="a.">
+          <li>
+            <p>
+              Let <m>f(x) = \sin(x^2)</m>.
+              Then
+            </p>
+
+            <sidebyside>
+
+              <tabular>
+                <row>
+                  <cell><m>\sin(x^2)</m></cell>
+                  <cell><m>f(0) = 0</m></cell>
+                </row>
+                <row>
+                  <cell><m>f'(x) = 2x\cos(x^2)</m></cell>
+                  <cell><m>f'(0) = 0</m></cell>
+                </row>
+                <row>
+                  <cell><m>f''(x) = -4x^2\sin(x^2) + 2\cos(x^2)</m></cell>
+                  <cell><m>f''(0) = 0</m></cell>
+                </row>
+                <row>
+                  <cell><m>f'''(x) = -8x^3\cos(x^2) - 12x\sin(x^2)</m></cell>
+                  <cell><m>f'''(0) = 0</m></cell>
+                </row>
+                <row>
+                  <cell><m>f^{(4)}(x) = 16x^4\sin(x^2) - 48x^2\cos(x^2) - 12\sin(x^2)</m></cell>
+                  <cell><m>f^{(4)}(0) = 0</m></cell>
+                </row>
+              </tabular>
+
+            </sidebyside>
+
+            <p>
+              so the fourth order Taylor polynomial for <m>f</m> centered at <m>a=0</m> is
+              <me>
+                P_4(x) = x^2
+              </me>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <ol marker="i.">
+                <li>
+                  <p>
+                    Substituting <m>x^2</m> for <m>x</m> in the Taylor series for <m>\sin(x)</m>,
+                    we find that since
+                    <me>
+                      T(x) = x - \frac{1}{3!}x^3 + \frac{1}{5!}x^5 - \cdots
+                    </me>,
+                    we have
+                    <me>
+                      g(x) = T(x^2) = x^2 - \frac{1}{3!}x^6 + \frac{1}{5!}x^{10} - \cdots
+                    </me>
+                    which should be the Taylor series for <m>\sin(x^2)</m> since
+                    <m>\sin(x) = x - \frac{1}{3!}x^3 + \frac{1}{5!}x^5 - \cdots</m> for every value of <m>x</m>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    We expect the interval of convergence of the series for
+                    <m>\sin(x^2)</m> to be the same as the series for <m>\sin(x)</m>,
+                    since <m>\sin(x) = x - \frac{1}{3!}x^3 + \frac{1}{5!}x^5 - \cdots</m> for every value of <m>x</m>.
+                  </p>
+                </li>
+              </ol>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </solution>
+  </exercise>
+
+
+</exercises>

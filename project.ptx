@@ -1,39 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project ptx-version="2">
   <targets>
-    <target name="html" format="html" xsl="acs-html.xsl" />
-
+    <target name="html2e" format="html" xsl="acs-html.xsl" publication="publication_ed2.ptx" />
+    <target name="html1e" format="html" xsl="acs-html.xsl" publication="publication.ptx" />
     <target name="latex" format="latex" xsl="acs-latex.xsl" />
     <target name="pdf" format="pdf" xsl="acs-latex.xsl" latex-engine="xelatex" />
-    <target name="runestone" format="html" xsl="acs-html.xsl"/>
-
-    <target name="proteus" format="html" source="main.ptx" xsl="acs-html.xsl" publication="publication-proteus.ptx" />
-
+    <target name="proteus" format="html" source="main.ptx" xsl="acs-html.xsl" publication="publication-proteus.ptx" platform="runestone" />
+    <target
+      name="runestone"
+      format="html"
+      xsl="acs-html.xsl"
+      publication="publication_runestone.ptx"
+      platform="runestone" />
     <target 
       name="solutions-latex" 
       format="latex"
-      source="acs-solution-manual.xml" 
+      source="acs-solution-manual.ptx"
       publication="publication-solutions.ptx"
       xsl="acs-solution-manual.xsl" />
     <target
       name="solutions-pdf" 
       format="pdf"
-      source="acs-solution-manual.xml" 
+      source="acs-solution-manual.ptx"
       publication="publication-solutions.ptx"
       latex-engine="xelatex"
       xsl="acs-solution-manual.xsl" />
+      <target 
+      name="solutions-8a-latex" 
+      format="latex"
+      source="acs-solution-manual-8a.ptx"
+      publication="publication-solutions-8a.ptx"
+      xsl="acs-solution-manual.xsl" />
     <target
-      name="workbook-latex"
+      name="solutions-8a" 
+      format="pdf"
+      source="acs-solution-manual-8a.ptx"
+      publication="publication-solutions-8a.ptx"
+      latex-engine="xelatex"
+      xsl="acs-solution-manual.xsl" />
+    <target
+      name="workbook14-latex"
       format="latex"
       source="acs-activity-workbook-14.xml" 
       publication="publication-workbook-14.ptx"
       xsl="acs-activity-workbook.xsl" />
     <target
-      name="workbook-pdf"
+      name="workbook14"
       format="pdf"
       source="acs-activity-workbook-14.xml" 
       publication="publication-workbook-14.ptx"
-      latex-engine="xelatex"      
+      latex-engine="xelatex"
       xsl="acs-activity-workbook.xsl" />
     <target
       name="workbook58-latex"
@@ -42,17 +58,37 @@
       publication="publication-workbook-58.ptx"
       xsl="acs-activity-workbook.xsl" />
     <target
-      name="workbook58-pdf"
+      name="workbook58"
       format="pdf"
       source="acs-activity-workbook-58.xml" 
       publication="publication-workbook-58.ptx"
       latex-engine="xelatex"
       xsl="acs-activity-workbook.xsl" />
+    <target
+      name="workbook58a-latex"
+      format="latex"
+      source="acs-activity-workbook-58a.xml" 
+      publication="publication-workbook-58.ptx"
+      xsl="acs-activity-workbook.xsl" />
+    <target
+      name="workbook58a"
+      format="pdf"
+      source="acs-activity-workbook-58a.xml" 
+      publication="publication-workbook-58.ptx"
+      latex-engine="xelatex"
+      xsl="acs-activity-workbook.xsl" />
     <!-- html-hosted is a target specifically for deployment to ActiveCalculus.org -->
     <target 
-      name="html-hosted"
+      name="html-hosted-2e"
       format="html"
       xsl="acs-html.xsl"
-      output-dir="/home/activec2/public_html/single" />
+      output-dir="/home/activec2/public_html/single-2e"
+      publication="publication_ed2.ptx" />
+    <target 
+      name="html-hosted-1e"
+      format="html"
+      xsl="acs-html.xsl"
+      output-dir="/home/activec2/public_html/single-1e"
+      publication="publication.ptx" />
   </targets>
 </project>

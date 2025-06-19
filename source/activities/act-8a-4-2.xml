@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2022                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+<activity xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="act-8a-4-2">
+  <statement>
+    <p>
+      Let <m>f(x) = e^x</m>.  Our goal is to understand why the Taylor series for <m>f(x)</m> converges for every real number <m>x</m> and see that the Taylor series converges to <m>e^x</m>.
+    </p>
+
+    <p>
+      <ol marker="a.">
+        <li>
+          <p>
+            For <m>f(x) = e^x</m>, explain why <m>f^{(k)}(0) = 1</m> for every natural number <m>k</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            State the Taylor series, <m>T_f(x)</m> centered at <m>a = 0</m> for <m>f(x) = e^x</m>.  Write <m>T_f(x)</m> in both sigma notation and as an expanded sum.
+          </p>
+        </li>
+        <li>
+          <p>
+            Let <m>r_n(x)</m> be the ratio of the <m>(n+1)</m>st term to the <m>n</m>th term of <m>T_f(x)</m>.  Find the simplest expression you can for <m>r_n(x)</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Let <m>r(x) = \lim_{n \to \infty} r_n(x)</m>.  Evaluate this limit, and then apply the Ratio Test to say what you can conclude about the <m>x</m>-values for which <m>T_f(x)</m> converges.
+          </p>
+        </li>
+        <li>
+          <p>
+            Use a computational device to graph <m>f(x) = e^x</m>, <m>T_{10}(x)</m>, and <m>T_{20}(x)</m> on the same axes.  What do you observe?
+          </p>
+        </li>
+      </ol>
+    </p>
+  </statement>
+
+  <hint>
+
+  </hint>
+  <answer>
+
+    <p>
+      <ol marker="a.">
+        <li>
+          <p>
+            <m>f^{(k)}(0) = 1</m> for every natural number <m>k</m> because <m>f^{(k)}(x) = e^x</m> for every natural number <m>k</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>
+              T_f(x) = \sum_{n=0}^{\infty} \frac{1}{k!} x^k = 1 + x + \frac{1}{2!}x^2 + \frac{1}{3!}x^3 + \cdots + \frac{1}{n!}x^n + \cdots
+            </m>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>
+              r_n(x) = \frac{1}{n+1} \cdot x
+            </m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>
+              r(x) = \lim_{n \to \infty} r_n(x) = 0
+            </m>;
+            <m>|r(x)| \lt 1</m> for every value of <m>x</m>; <m>T_f(x)</m> converges for every real number <m>x</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>f(x)</m> and <m>T_{10}(x)</m> are almost indistinguishable on the interval <m>-4 \lt x \lt 4</m>; <m>f(x)</m> and <m>T_{20}(x)</m> are almost indistinguishable on <m>-8 \lt x \lt 8</m>.
+          </p>
+        </li>
+      </ol>
+    </p>
+
+  </answer>
+  <solution>
+    <p>
+      Let <m>f(x) = e^x</m>.  
+    </p>
+
+    <p>
+      <ol marker="a.">
+        <li>
+          <p>
+            For <m>f(x) = e^x</m>, we know that <m>f'(x) = e^x</m>, and thus <m>f^{(k)}(x) = e^x</m> for every natural number <m>k</m>.  Thus, <m>f^{(k)}(0) = e^0 = 1</m> for every natural number <m>k</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            With <m>f^{(k)}(0) = 1</m> for every natural number <m>k</m>, in the the Taylor series, <m>T_f(x)</m> centered at <m>a = 0</m> of <m>f(x) = e^x</m>, we have <m>c_k = \frac{f^{(k)}(0)}{k!} = \frac{1}{k!}</m>.  Thus
+            <me>
+              T_f(x) = \sum_{n=0}^{\infty} \frac{1}{k!} x^k = 1 + x + \frac{1}{2!}x^2 + \frac{1}{3!}x^3 + \cdots + \frac{1}{n!}x^n + \cdots
+            </me>
+          </p>
+        </li>
+        <li>
+          <p>
+            Observe that 
+            <me>
+              r_n(x) = \frac{\frac{1}{(n+1)!}x^{n+1}}{\frac{1}{n!}x^n} = \frac{n!}{(n+1)!} \cdot \frac{x^{n+1}}{x^n}
+            </me>.
+            Since <m>\frac{n!}{(n+1)!} = \frac{1}{n+1}</m> and <m>\frac{x^{n+1}}{x^n} = x</m>, it follows that
+            <me>
+              r_n(x) = \frac{1}{n+1} \cdot x
+            </me>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Now we are ready to take the limit of <m>r_n(x)</m> as <m>n \to \infty</m> and apply the Ratio Test.  Since we fix the value of <m>x</m> and know that <m>\frac{1}{n+1} \to 0</m> as <m>n \to \infty</m>, we have
+            <me>
+              r(x) = \lim_{n \to \infty} r_n(x) = \lim_{n \to \infty} \frac{1}{n+1} \cdot x = 0 \cdot x = 0
+            </me>.
+            Thus, <m>|r(x)| = |0| = 0</m>, and <m>|r(x)| \lt 1</m> for every value of <m>x</m>.  By the Ratio Test, we now know that <m>T_f(x)</m> converges for every real number <m>x</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Plotting <m>f(x) = e^x</m>, <m>T_{10}(x)</m>, and <m>T_{20}(x)</m> on the same axes, we observe that <m>f(x)</m> and <m>T_{10}(x)</m> are almost indistinguishable on the interval <m>-4 \lt x \lt 4</m>, and that when we consider <m>T_{20}(x)</m>, that interval widens to almost <m>-8 \lt x \lt 8</m>.  For instance,
+            <me>
+              f(-4) - T_{10}(-4) \approx -0.0784
+            </me>
+            and 
+            <me>
+              f(-8) - T_{20}(-8) \approx -0.1320
+            </me>.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </solution>
+</activity>
+

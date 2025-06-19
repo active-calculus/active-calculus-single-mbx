@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2022                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+<section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-8a-5-finding-using-taylor-series">
+  <title>Finding and Using Taylor Series</title>
+  <objectives>
+    <ul>
+      <li>
+        <p>
+          Is it possible to find the Taylor series expansion for a given function <m>f</m> without computing and evaluating various derivatives of <m>f</m>?
+        </p>
+      </li>
+      <li>
+        <p>
+          Can we differentiate or integrate a Taylor series similar to how we differentiate or integrate a polynomial?  If so, how does doing so affect the values of <m>x</m> for which the Taylor series converges?
+        </p>
+      </li>
+      <li>
+        <p>
+          What is an alternating series and how can we determine whether or not it converges?  How do the partial sums of a converging alternating series accurately estimate its exact sum?
+        </p>
+      </li>
+    </ul>
+
+  </objectives>
+
+  <introduction>
+    <p>
+      So far, we have focused our attention on a collection of five basic functions functions <mdash/> <m>\frac{1}{1-x}</m>, <m>\ln(1+x)</m>, <m>\sin(x)</m>, <m>\cos(x)</m>, and <m>e^x</m> <mdash/> and their Taylor series centered at <m>a = 0</m>.  One of the reasons we were able to find these Taylor series is the patterns that arise in the derivatives of each of these functions.  While we can always use <xref ref="D-8a-4-Taylor-series">Definition</xref> to find the first few terms of the Taylor series, for most functions it is challenging to find a pattern among the various derivatives that allows us to state the general <m>n</m>th term of the series.  
+    </p>
+
+    <p>
+      In <xref ref="PA-8a-5">Preview Activity</xref>, we explore this issue and investigate a different approach to finding the Taylor series of a given function. 
+    </p>
+
+  <xi:include href="./previews/PA-8a-5-WW.xml" /> 
+  <xi:include href="./previews/PA-8a-5.xml" />
+
+  </introduction>  
+
+  <subsection>
+    <title>Using substitution and algebra to find new Taylor series expressions</title>
+    <p>
+      The substitution technique we used in <xref ref="PA-8a-5">Preview Activity</xref> can be used to find the Taylor series for any function whose structure is similar to that of a Taylor series we already know.  
+    </p>
+
+    <example xml:id="ex-8a-5-cosx3">
+      <statement>
+        Find the Taylor series expansion for <m>g(x) = x^4 \cos(x^3)</m> and determine the <m>x</m>-values for which the series converges.
+      </statement>
+      <solution>
+        <p>
+          Because <m>\cos(x^3)</m> is part of the function whose Taylor series we seek, we start with the familiar series for <m>\cos(x)</m>.  We know that 
+          <men xml:id="eq-8a-5-cosu">
+            f(u) = \cos(u) = 1 - \frac{1}{2!}u^2 + \frac{1}{4!}u^4 - \cdots + (-1)^n \frac{1}{(2n)!} u^{2n} + \cdots
+          </men>
+          for all real numbers <m>u</m>. 
+        </p>
+
+        <p>
+          By letting <m>u = x^3</m> in <xref ref="eq-8a-5-cosu">Equation</xref>, it follows that
+          <me>
+            \cos(x^3) = 1 - \frac{1}{2!}(x^3)^2 + \frac{1}{4!}(x^3)^4 - \cdots + (-1)^n \frac{1}{(2n)!} (x^3)^{2n} + \cdots
+          </me>, 
+          so
+          <men xml:id="eq-8a-5-cosx3">
+            \cos(x^3) = 1 - \frac{1}{2!}x^6 + \frac{1}{4!}x^{12} - \cdots + (-1)^n \frac{1}{(2n)!} x^{6n} + \cdots
+          </men>.      
+          Then, multiplying both sides of <xref ref="eq-8a-5-cosx3">Equation</xref> by <m>x^4</m>, we find that 
+          <me>
+            g(x) = x^4 \cos(x^3) = x^4 - \frac{1}{2!}x^{10} + \frac{1}{4!}x^{16} - \cdots + (-1)^n \frac{1}{(2n)!} x^{6n+4} + \cdots
+          </me>.
+          Since <xref ref="eq-8a-5-cosu">Equation</xref> is valid for every real number <m>u</m>, letting <m>u = x^3</m> tells us that <xref ref="eq-8a-5-cosx3">Equation</xref> is valid for every real number <m>x</m>.  The Ratio Test can be used to show that multiplying every term of a Taylor series by the same power of <m>x</m> does not change the set of <m>x</m>-values for which the series converges, so the Taylor series for <m>g(x)</m> also converges for every value of <m>x</m>.
+        </p>          
+      </solution>
+    </example>
+
+    <p>
+      Because the approaches in <xref ref="PA-8a-5">Preview Activity</xref> and <xref ref="ex-8a-5-cosx3">Example</xref> each require us to use a known Taylor series, we restate the Taylor series we've established so far for <m>5</m> important functions in <xref ref="T-8a-5-big-5-redux">Table</xref>.
+    <assemblage>
+      <title>Important Taylor series representations</title>
+      <p>
+      <table xml:id="T-8a-5-big-5-redux">
+            <title>Taylor series and the <m>x</m>-values where they converge for <m>5</m> important functions.</title>
+              <tabular top="minor" bottom="minor">
+                <row>
+                  <cell halign="right">function <m>f(x)</m></cell>
+                  <cell>Taylor series, <m>T_f</m>, centered at <m>0</m></cell>
+                  <cell><m>f(x) = T_f(x)</m></cell>
+                </row>
+                <row>
+                  <cell halign="right"><m>\frac{1}{1-x}=</m></cell>
+                  <cell><m>\sum_{k=0}^{\infty} x^k = 1 + x + x^2 + x^3 + \cdots</m></cell>
+                  <cell>if <m>|x| \lt 1</m></cell>
+                </row>
+                <row>
+                  <cell halign="right"><m>\ln(1+x)=</m></cell>
+                  <cell><m>\sum_{k=1}^{\infty} (-1)^{k-1} \frac{1}{k} x^k = x - \frac{1}{2}x^2 + \frac{1}{3}x^3 - \cdots</m></cell>
+                  <cell>if <m>|x| \lt 1</m></cell>
+                </row>
+                <row>
+                  <cell halign="right"><m>\sin(x)=</m></cell>
+                  <cell><m>\sum_{k=0}^{\infty} (-1)^{k} \frac{1}{(2k+1)!}x^{2k+1} = x - \frac{1}{3!}x^3 + \frac{1}{5!}x^5 - \cdots</m></cell>
+                  <cell>for all real <m>x</m></cell>
+                </row>
+                <row>
+                  <cell halign="right"><m>\cos(x)=</m></cell>
+                  <cell><m>\sum_{k=0}^{\infty} (-1)^{k} \frac{1}{(2k)!}x^{2k} = 1 - \frac{1}{2!}x^2 + \frac{1}{4!}x^4 - \cdots</m></cell>
+                  <cell>for all real <m>x</m></cell>
+                </row>
+                <row>
+                  <cell halign="right"><m>e^x=</m></cell>
+                  <cell><m>\sum_{k=0}^{\infty} \frac{1}{k!}x^k = 1 + x + \frac{1}{2!}x^2 + \frac{1}{3!}x^3 + \cdots</m></cell>
+                  <cell>for all real <m>x</m></cell>
+                </row>
+              </tabular>
+            </table>   
+            </p>
+    </assemblage>      
+    </p>
+
+    <p>
+      In <xref ref="act-8a-5-1">Activity</xref>, we find several Taylor series using substitution and algebraic techniques.
+    </p>
+
+    <xi:include href="./activities/act-8a-5-1.xml" />
+
+  </subsection>
+
+  <subsection>
+    <title>
+      Differentiating and integrating Taylor series
+    </title>
+
+    <p>
+      In <xref ref="C-5">Chapter</xref>, we discussed the challenge posed by definite integrals such as
+      <me>
+        \int_0^1 \sin(x^2) \, dx
+      </me>.
+      Because we are unable to find a simple algebraic antiderivative for the function <m>\sin(x^2)</m>, we cannot use the First Fundamental Theorem of Calculus to evaluate the integral exactly.  We learned in <xref ref="sec-5-2-FTC2">Section</xref> that the Second Fundamental Theorem of Calculus provides us with an antiderivative of a given function by using an integral function: one antiderivative of <m>f(x) = \sin(x^2)</m> is 
+      <me>
+        F(x) = \int_0^x \sin(u^2) \, du
+      </me>. 
+    </p>
+
+    <p>
+      Our recent work with Taylor series now suggests another way to find an antiderivative <m>F(x)</m> for <m>f(x) = \sin(x^2)</m>, and this approach also provides new options for finding additional Taylor series.  In <xref ref="act-8a-5-1">Activity</xref>, as part of our work in finding a Taylor series for <m>x^3 \sin(x^2)</m> we found that
+      <men xml:id="eq-8a-5-ex2">
+        \sin(x^2) = x^2 - \frac{1}{3!}x^6 + \frac{1}{5!}x^{10} - \frac{1}{7!}x^{14} + \cdots + (-1)^{n-1} \frac{1}{(2n-1)!} x^{4n-2} + \cdots
+      </men>
+      and that this representation of <m>\sin(x^2)</m> is valid for every value of <m>x</m>.  This infinite series representation suggests that we could find an antiderivative <m>F(x)</m> of <m>\sin(x^2)</m> by using <xref ref="eq-8a-5-ex2">Equation</xref> to actually evaluate the integral <m> \int_0^x \sin(u^2) \, du</m>.  Doing so, we see
+      <md>
+        <mrow>F(x) =\mathstrut \amp \int_0^x \sin(u^2) \, du</mrow>
+        <mrow> =\mathstrut \amp \int_0^x \left( u^2 - \frac{1}{3!}u^6 + \frac{1}{5!}u^{10} + \cdots + (-1)^{n+1} \frac{1}{(2n-1)!} u^{4n-2} + \cdots \right) \, du</mrow>
+        <mrow>=\mathstrut \amp \left. \frac{1}{3}u^3 - \frac{1}{7 \cdot 3!} u^7 + \frac{1}{11 \cdot 5!}u^{11} + \cdots + \frac{(-1)^{n+1}}{(4n-1)(2n-1)!} u^{4n-1} + \cdots \right|_0^x</mrow>
+        <mrow>=\mathstrut \amp \left( \frac{1}{3}x^3 - \frac{1}{7 \cdot 3!} x^7 + \frac{1}{11 \cdot 5!}x^{11} + \cdots + \frac{(-1)^{n+1}}{(4n-1)(2n-1)!} x^{4n-1} + \cdots \right) - 0</mrow>    
+        <mrow>=\mathstrut \amp \frac{1}{3}x^3 - \frac{1}{7 \cdot 3!} x^7 + \frac{1}{11 \cdot 5!}x^{11} + \cdots + \frac{(-1)^{n+1}}{(4n-1)(2n-1)!} x^{4n-1} + \cdots </mrow>                    
+      </md>
+    </p>
+
+    <p>
+      Hence we have found that 
+      <me>
+        F(x) = \frac{1}{3}x^3 - \frac{1}{7 \cdot 3!} x^7 + \frac{1}{11 \cdot 5!}x^{11} + \cdots + \frac{(-1)^{n+1}}{(4n-1)(2n-1)!} x^{4n-1} + \cdots
+      </me>
+      is an antiderivative of <m>f(x) = \sin(x^2)</m>.
+    </p>
+
+    <p>
+      While it is natural to wonder how integrating a Taylor series might change the values of <m>x</m> for which the series converges, it turns out that integrating a Taylor series has almost no effect<fn>It is possible for the convergence status at the endpoints of the interval to change, but we are normally not concerned with those specific <m>x</m>-values.</fn> on where the series converges (nor does differentiating such a series).  This fact is stated formally in a result called The Power Series Differentiation and Integration Theorem.  (A <term>power series</term> is any series of the form <m>f(x) = \sum_{k=0}^{\infty} c_k (x-a)^k</m>; every Taylor series is a power series, and a famous result called Borel's Theorem tells us that every power series is in fact the Taylor series of a related function.)
+    </p>
+
+    <assemblage xml:id="T-PS-diff-int">
+      <title>The Power Series Differentiation and Integration Theorem</title>
+      <p>
+        If <m>f(x) = \sum_{k=0}^{\infty} c_k (x-a)^k</m> converges for <m>|x-a| \lt R</m> for a positive real number <m>R</m>, then
+        <me>
+          f'(x) = \sum_{k=1}^{\infty} k \cdot c_k (x-a)^{k-1}
+        </me>
+        and 
+        <me>
+          \int f(x) \, dx = C + \sum_{k=0}^{\infty} \frac{c_k}{k+1} (x-a)^{k+1}
+        </me>
+        and both of these series converge if <m>|x-a| \lt R</m>.
+      </p>
+    </assemblage>
+
+    <p>
+      Stated more informally, the Power Series Differentiation and Integration Theorem tells us that when it comes to differentiating or integrating a Taylor series, we can do so just as if they were finite polynomials:  we can differentiate or integrate the Taylor series term-wise following the Power Rule for differentiating or integrating <m>x^n</m>.  Moreover, doing so doesn't change the interval on which the Taylor series converges<fn>Differentiating or integrating can change the convergence status at the endpoints of the interval, but we again will not concern ourselves with that issue in this course.</fn>.  Since polynomials are the easiest of all functions to differentiate and integrate, we can now find many more Taylor series of interesting functions.
+    </p>
+
+    <xi:include href="./activities/act-8a-5-2.xml" />
+
+    <xi:include href="./activities/act-8a-5-3.xml" />
+
+    <p>
+      Near the end of <xref ref="sec-8a-4-taylor-series">Section</xref>, we noted the important big-picture perspective that for familiar basic functions that are infinitely differentiable, such as <m>f(x) = \sin(x)</m>, not only can we find the function's Taylor series and determine the <m>x</m>-values for which the Taylor series converges, but <em>the Taylor series converges to the function itself</em>.  Furthermore, we noted that these representations play a key role in how computers provide decimal approxations to quantities such as <m>\sin(1)</m>, which can be represented as 
+      <me>
+        \sin(1) = 1 - \frac{1}{3!} + \frac{1}{5!} - \frac{1}{7!} + \cdots
+      </me>.
+      Our most recent work with Taylor series shows that the news is better still:  now we can easily represent even more complicated functions with Taylor series, such as <m>f(x) = e^{-x^2}</m> and <m>g(x) = \sin(x^2)</m>, and determine their antiderivatives using their infinite Taylor series and treating that representation just like a polynomial.  In the last portion of this section, we investigate further how certain infinite series of numbers can be easily and accurately approximated using partial sums that result from evaluating Taylor series.
+    </p>
+
+
+  </subsection>
+
+  <subsection>
+    <title>
+      Alternating series of real numbers
+    </title>
+
+    <p>
+      Let's now consider the definite integral
+      <me>
+        \int_0^1 e^{-x^2} \, dx
+      </me>.  
+      While we are unable to find an elementary algebraic antiderivative of <m>e^{-x^2}</m>, if we use the Taylor series 
+      <me>
+        e^{-x^2} = 1 - x^2 + \frac{1}{2!}x^4 - \frac{1}{3!}x^6 + \cdots + (-1)^n \frac{1}{n!} x^{2n} + \cdots
+      </me>
+      and apply the Fundamental Theorem of Calculus to the series representation of <m>e^{-x^2}</m>, we find that
+      <mdn>
+        <mrow number="no">\int_0^1 e^{-x^2} \, dx =\mathstrut \amp \int_0^1 \left( 1 - x^2 + \frac{1}{2!}x^4 - \frac{1}{3!}x^6 + \cdots + (-1)^n \frac{1}{n!} x^{2n} + \cdots \right) \, dx</mrow>
+        <mrow number="no"> =\mathstrut \amp \left. x - \frac{1}{3}x^3 + \frac{1}{5 \cdot 2!} x^5 + \cdots +  \frac{(-1)^n}{(2n+1) n!} x^{2n+1} + \cdots \right|_0^1 </mrow>
+        <mrow number="no"> =\mathstrut \amp \left(1 - \frac{1}{3} + \frac{1}{5 \cdot 2!} + \cdots + \frac{(-1)^n}{(2n+1) n!} + \cdots \right) - \left( 0 \right)</mrow>
+        <mrow xml:id="eq-8a-5-alt-sum-ex2"> =\mathstrut \amp 1 - \frac{1}{3} + \frac{1}{5 \cdot 2!} - \frac{1}{7 \cdot 3!} + \cdots + \frac{(-1)^n}{(2n+1) n!} + \cdots</mrow>
+      </mdn>   
+      The infinite series in <xref ref="eq-8a-5-alt-sum-ex2">Equation</xref> is an example of an <term>alternating series</term> of real numbers.  It turns out to be straightforward to determine whether or not an alternating series converges, and also to estimate the value of a convergent alternating series. 
+    </p>
+
+    <definition>
+      <statement>
+        <p>
+          An alternating series is a series of the form
+          <me>
+            \sum_{k=0}^{\infty} (-1)^k a_k
+          </me>,
+          where <m>a_k \gt 0</m> for each <m>k</m>.
+        </p>
+      </statement>
+    </definition>
+
+    <p>
+      We will only consider alternating series for which the sequence of positive numbers <m>a_k</m> decreases to <m>0</m>.  The following example illustrates two general results that hold for any alternating series whose terms <m>a_k</m> decrease to <m>0</m>.  We use a geometric series so that we can know its exact sum and compare certain computations to that sum.
+    </p>
+
+    <example xml:id="ex-8a-5-alt-geom">
+      <statement>
+        <p>
+          Investigate the partial sums of the alternating geometric series <m>S = \sum_{k=0}^{\infty} (-1)^k \left( \frac{4}{5} \right)^k</m>.  How do the partial sums compare to the exact sum of the series, and how can partial sums accurately estimate the value of the sum?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          First, recall that the <m>n</m>th partial sum is the sum of the first <m>n</m> terms, so 
+          <me>
+            S_n = \sum_{k=0}^{n-1} (-1)^k \left( \frac{4}{5} \right)^k = 1 - \frac{4}{5} + \frac{16}{25} - \cdots + (-1)^{n-1} \left( \frac{4}{5} \right)^{n-1}
+          </me>.
+          We compute the first <m>10</m> partial sums of the series and display the results in <xref ref="T-8a-5-ExGeom">Table</xref> and plot the points <m>(n, S_n)</m> in <xref ref="F-8a-5-ExGeom">Figure</xref>.
+        </p> 
+        <sidebyside widths="30% 60%" margins="5%">
+          <table xml:id="T-8a-5-ExGeom">
+            <title>Partial sums of the alternating series</title>
+            <tabular top="minor" bottom="minor">
+              <row>
+                <cell halign="center"><m>n</m></cell>
+                <cell><m>S_n</m></cell>
+              </row>
+              <row>
+                <cell halign="center"><m>1</m></cell>
+                <cell><m>1</m></cell>
+              </row>  
+              <row>  
+                <cell halign="center"><m>2</m></cell>
+                <cell><m>\frac{2}{5} = 0.2</m></cell>
+              </row>
+              <row>
+                <cell halign="center"><m>3</m></cell>
+                <cell><m>\frac{21}{25} = 0.84</m></cell>
+              </row>
+              <row>
+                <cell halign="center"><m>4</m></cell>
+                <cell><m>\frac{41}{125} = 0.328</m></cell>
+              </row>
+              <row>
+                <cell halign="center"><m>5</m></cell>
+                <cell><m>\frac{461}{625} = 0.7376</m></cell>
+              </row>
+              <row>
+                <cell halign="center"><m>6</m></cell>
+                <cell><m>\frac{1281}{3125} = 0.40992</m></cell>
+              </row>
+              <row>
+                <cell halign="center"><m>7</m></cell>
+                <cell><m>\frac{10501}{15625} = 0.672064</m></cell>
+              </row>   
+              <row>
+                <cell halign="center"><m>8</m></cell>
+                <cell><m>\frac{36121}{78125} = 0.4623488</m></cell>
+              </row>
+              <row>
+                <cell halign="center"><m>9</m></cell>
+                <cell><m>\frac{246141}{390625} = 0.63012096</m></cell>               
+              </row>           
+              <row>                
+                <cell halign="center"><m>10</m></cell>
+                <cell><m>\frac{968561}{1953125} = 0.495903232</m></cell>
+              </row>
+            </tabular>
+          </table>
+
+          <figure xml:id="F-8a-5-ExGeom">
+            <caption>Partial sums of the alternating series and the horizontal line <m>y = \frac{5}{9}</m>.</caption>
+            <image source="images/8a_5_partial_sum" />
+          </figure>
+        </sidebyside>
+
+        <p>
+          Because the given series <m>S = \sum_{k=0}^{\infty} (-1)^k \left( \frac{4}{5} \right)^k</m> is geometric with <m>a = 1</m> and <m>r = -\frac{4}{5}</m>, we know the series converges and its sum is
+          <me>
+            S = \frac{a}{1-r} = \frac{1}{1+\frac{4}{5}} = \frac{1}{\frac{9}{5}} = \frac{5}{9} \approx 0.5555
+          </me>.
+          Knowing this value helps us better understand the behavior of the partial sums.
+        </p>
+
+        <p>
+          In both the table and the figure, we see how consecutive partial sums move back and forth above and below the exact sum of the infinite series, <m>\frac{5}{9}</m>, and moreover how the amount the next partial sum lies above or below <m>\frac{5}{9}</m> is less than the amount by which the previous partial sum deviated.  For instance, 
+          <me>
+            |S_5 - \frac{5}{9}| \approx 0.1820,
+          </me>
+          but 
+          <me>
+            |S_6 - \frac{5}{9}| \approx 0.1456
+          </me>.
+          Moreover, since <m>S_6 = S_5 - \left( \frac{4}{5} \right)^5</m>, and <m>-\left( \frac{4}{5} \right)^5 = -0.32768</m> is the last and smallest term (in absolute value) in <m>S_6</m>, <m>0.32768</m> is the total vertical distance from the point <m>(5, S_5)</m> to <m>(6, S_6)</m> in <xref ref="F-8a-5-ExGeom">Figure</xref>.  This implies that <m>0.32768</m> is more than the error in comparing <m>S_5</m> and <m>S</m>.  Said differently, we are guaranteed that
+          <me>
+            |S - S_5| \lt \left( \frac{4}{5} \right)^5
+          </me>
+          so the next term in the sum provides a bound on the error in a given partial sum.  A similar argument can be made for any value of <m>n</m>.
+        </p>
+      </solution>
+    </example>
+
+    <p>  
+      The arguments <xref ref="eq-8a-5-alt-sum-ex2">Example</xref> can be made for any alternating series whose terms go to zero.  This leads us to state two important results.
+    </p>
+
+    <assemblage>
+      <title>The Alternating Series Test</title>
+      <p>
+        Given an alternating series
+        <me>
+        \sum_{k=0}^{\infty} (-1)^k a_k
+        </me>,
+        if the positive terms <m>a_k</m> decrease to 0 as <m>k \to \infty</m>,
+        then the alternating series converges.
+      </p>
+    </assemblage>
+
+    <p>
+      If we were to compute the partial sums <m>S_n</m> of any alternating series whose terms decrease to zero and plot the points <m>(n,S_n)</m> as we did in <xref ref="F-8a-5-ExGeom">Figure</xref>, we would see a similar picture:  the partial sums alternate above and below the value to which the infinite alternating series converges.  In addition, because the terms go to zero, the amount a given partial sum deviates from the total sum is at most the next term in the series.  This result is formally stated as the Alternating Series Estimation Theorem.
+    </p>
+
+    <assemblage>
+      <title>Alternating Series Estimation Theorem</title>
+      <p>
+        If the alternating series
+        <m>
+        \sum_{k=1}^{\infty} (-1)^{k+1}a_k
+        </m>
+        has positive terms <m>a_k</m> that decrease to zero as <m>k \to \infty</m>, and
+        <m>
+        S_n = \sum_{k=1}^{n} (-1)^{k+1}a_k
+        </m>
+        is the <m>n</m>th partial sum of the alternating series, then
+        <me>
+          \left| \sum_{k=1}^{\infty} (-1)^{k+1}a_k - S_n \right| \leq a_{n+1}
+        </me>.
+      </p>
+    </assemblage>
+
+    <p>
+      Again, this result simply says: if we use a partial sum to estimate the exact sum of an alternating series, the absolute error of the approximation is less than the next term in the series.
+    </p>
+
+    <example xml:id="Ex-8a-5-ASET">
+      <statement>
+        <p>
+          Determine how well the <m>100</m>th partial sum <m>S_{100}</m> of
+          <me>
+            \sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k}
+          </me>
+          approximates the value of the converging alternating series.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          If we let <m>S</m> be the value of the series <m>\sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k}</m>,
+          then we know that
+          <me>
+            \left| S_{100} - S \right| \lt  a_{101}
+          </me>.
+        </p>
+
+        <p>
+          Now
+          <me>
+            a_{101} = \frac{1}{101} \approx 0.0099
+          </me>,
+          so the 100th partial sum is within 0.0099 of the exact value of the series.  In addition, it turns out that <m>S_{100} \approx 0.688172</m> and <m>S = \ln(2) \approx 0.69314</m>, so we see that the difference between <m>S_{100}</m> and <m>S</m> is indeed less than the error bound of <m>0.0099</m> from the Alternating Series Estimation Theorem.
+        </p>  
+      </solution>
+    </example>
+
+    <xi:include href="./activities/act-8a-5-4.xml" />
+
+  </subsection>
+
+  <subsection>
+    <title>Summary</title>
+    <p>
+    <ul>
+      <li>
+        <p>
+          Through substitution, we can use any known Taylor series to find the Taylor series of a related function.  For example, we know that if <m>|u| \lt 1</m>, 
+          <me>
+            \ln(1+u) = u - \frac{1}{2}u^2 + \frac{1}{3}u^3 - \frac{1}{4}u^4 + \cdots
+          </me>
+          Letting <m>u = 4x^2</m>, it follows that 
+          <me>
+            \ln(1+4x^2) = 4x^2 - \frac{1}{2} \cdot 16x^4 + \frac{1}{3} \cdot 64x^6  - \frac{1}{4} \cdot 256x^8 + \cdots
+          </me>
+          and that this representation converges if <m>|4x^2| \lt 1</m>, so for <m>x</m> such that <m>|x| \lt \frac{1}{2}</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          The Power Series Differentation and Integration Theorem tells us that we can differentiate or integrate a Taylor series in the natural way and that doing so has essentially no impact on the set of <m>x</m>-values for which the series converges.  For instance, we might note that if we first found the Taylor series for <m>\sin(x)</m>, which is
+          <me>
+            \sin(x) = x - \frac{1}{3!}x^3 + \frac{1}{5!}x^5 - \frac{1}{7!}x^7 + \cdots
+          </me>
+          and converges for every value of <m>x</m>, it follows by differentating that
+          <md>
+            <mrow>\cos(x) =\mathstrut \amp \frac{d}{dx}[\sin(x)]</mrow>
+            <mrow>        =\mathstrut \amp \frac{d}{dx}[x - \frac{1}{3!}x^3 + \frac{1}{5!}x^5 - \frac{1}{7!}x^7 + \cdots]</mrow>
+            <mrow>        =\mathstrut \amp 1 - \frac{1}{3!} \cdot 3x^2 + \frac{1}{5!} \cdot 5x^4 - \frac{1}{7!} \cdot 7x^6 + \cdots</mrow>
+            <mrow>        =\mathstrut \amp 1 - \frac{1}{2!}x^2 + \frac{1}{4!} x^4 - \frac{1}{6!} x^6 + \cdots</mrow>
+          </md>
+          which is precisely the Taylor series for <m>\cos(x)</m> that we found by taking derivatives and applying <xref ref="D-8a-4-Taylor-series">Definition</xref>.
+        </p>
+      </li>
+      <li>
+        <p>
+          An alternating series is one whose terms alternate in sign, usually represented by <m>\sum_{k=1}^{\infty} (-1)^{k+1}a_k</m> where <m>a_k \gt 0</m> for all values of <m>k</m>.  Any alternating series whose terms <m>a_k</m> approach zero as <m>k \to \infty</m> is guaranteed to converge.  Moreover, the Alternating Series Estimation Theorem tells us that we can estimate the exact value of a converging alternating series by using a partial sum, and the error of that approximation is at most the next term in the series.  That is,
+          <me>
+            \left| \sum_{k=1}^{\infty} (-1)^{k+1}a_k - \left(a_1 - a_2 + a_3 - a_4 + \cdots + (-1)^{n+1} a_n \right) \right| \lt a_{n+1}
+          </me>.
+        </p>
+      </li>
+    </ul>
+    </p>
+  </subsection>
+
+  <xi:include href="./exercises/ez-8a-5.xml" /> 
+
+</section>

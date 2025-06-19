@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2022                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<exploration xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="PA-8a-4" label="ajordan_8a-_4_Preview_geometric_taylor_series" component="runestone">
+  <webwork xml:id="webwork-PA-8a-4">
+    <!-- This exercise is very long. It runs the risk of butting up agains a server's URI length -->
+    <!-- cap. So solutions are commented out for now.                                            -->
+    <pg-code>
+      $radio = RadioButtons([
+        "It's the same.",
+        "The Taylor polynomials of ${BM}f(x)${EM} are partial sums of the original infinite geometric series.",
+        "No relation."
+        ], 1
+      );
+      Context("Fraction");
+    </pg-code>
+    <introduction>
+      <p>
+        Let 
+        <me>
+          T(x) = 3 - x + \frac13x^2 - \frac19x^3 + \cdots + 3\left(-\frac13\right)^n x^n + \cdots
+        </me>.
+      </p>
+    </introduction>
+
+    <task>
+      <statement>
+        <p>
+          Show that <m>T(x)</m> is a geometric series by identifying the values of <m>a</m> and <m>r</m>.
+        </p>
+        <p>
+          <m>a={}</m><var name="'3'" width="10"/> and <m>r={}</m><var name="'-x/3'" width="10"/>
+        </p>
+      </statement>
+
+      <!-- <solution>
+        <p>
+          The first term is <m>a = 3</m> and then to get the next term we multiply by
+          <m>-\frac13x</m>, and multiply by <m>-\frac13x</m> again to get the next term, and
+          so on.  That means
+          <me>
+            T(x) = 3 - x + \frac13x^2 - \frac19x^3 + \cdots + 3\left(-\frac13\right)^n x^n + \cdots
+          </me>
+          is a geometric series with <m>a = 3</m> and <m>r = -\frac13x</m>.
+        </p>
+      </solution> -->
+    </task>
+
+    <task>
+      <statement>
+        <p>
+          Use the formula for the sum of an infinite geometric series to find a single fraction that
+          represents the value of <m>T(x)</m>.
+        </p>
+        <p>
+          <var name="'3/(1+x/3)'" width="20"/>
+        </p>
+        <p>
+          For which values of <m>x</m> is this representation valid?
+        </p>
+        <instructions>Use interval notation.</instructions>
+        <p>
+          <var name="Interval('(-3,3)')" width="20"/>
+        </p>
+      </statement>
+
+      <!-- <solution>
+        <p>
+          As long as <m>\lvert-\frac13x\rvert \lt 1</m>, the series has a finite sum
+          <m>\frac{a}{1 - r} = \frac{3}{1 - \left(-\frac13x\right)}</m>.
+        </p>
+        <p>
+          We see that
+          <m>\left\lvert -\frac13x\right\rvert \lt 1</m> when <m>\lvert x\rvert \lt 3</m>,
+          or in interval notation, <m>(-3,3)</m>.
+        </p>
+      </solution> -->
+    </task>
+
+    <task>
+      <statement>
+        <p>
+          Consider the function <m>f(x) = 9(3 + x)^{-1}</m> and fill out the table below.
+        </p>
+        <tabular halign="right">
+          <row>
+            <cell halign="left"><m>f(x) = 9 (3 + x)^{-1}</m></cell>
+            <cell><m>f(0) = {}</m><var name="3" width="10"/></cell>
+          </row>
+          <row>
+            <cell><m>f'(x) = {}</m><var name="'-9(3 + x)^(-2)'" width="20"/></cell>
+            <cell><m>f'(0) = {}</m><var name="-1" width="10"/></cell>
+          </row>
+          <row>
+            <cell><m>f''(x) = {}</m><var name="'18(3 + x)^(-3)'" width="20"/></cell>
+            <cell><m>f''(0) = {}</m><var name="Fraction(2,3)" width="10"/></cell>
+          </row>
+          <row>
+            <cell><m>f'''(x) = {}</m><var name="'-54(3 + x)^(-4)'" width="20"/></cell>
+            <cell><m>f'''(0) = {}</m><var name="Fraction(-2,3)" width="10"/></cell>
+          </row>
+        </tabular>
+        <p>
+          Use your answers to calculate the degree <m>3</m> Taylor polynomial centered at <m>0</m>
+          for <m>f(x)</m>.
+        </p>
+        <p>
+          <var name="'3 - x + 1/3 x^2 - 1/9 x^3'" width="10"/>
+        </p>
+      </statement>
+
+      <!-- <solution>
+        <tabular>
+          <row>
+            <cell><m>f(x) = 9(3 + x)^{-1}</m></cell>
+            <cell><m>f(0) = \frac93 = 3</m></cell>
+          </row>
+          <row>
+            <cell><m>f'(x) = -9(3 + x)^(-2)</m></cell>
+            <cell><m>f'(0) = -\frac{9}{3^2} = -1</m></cell>
+          </row>
+          <row>
+            <cell><m>f''(x) = 18(3 + x)^(-3)</m></cell>
+            <cell><m>f''(0) = \frac{18}{3^3} = \fraac23</m></cell>
+          </row>
+          <row>
+            <cell><m>f'''(x) = -54(3 + x)^(-4)</m></cell>
+            <cell><m>f'''(0) = -\frac{54}{3^4} = -\frac23</m></cell>
+          </row>
+        </tabular>
+        <p>
+          Then we divide by <m>k!</m> to get the corresponding <m>c_k</m> in the Taylor polynomial,
+          so that
+          <me>
+             T_3(x) = 3 - x + \frac{\frac23}{2!}x^2 - \frac{\frac23}{3!}x^3 = 3 - x + \frac13x^2 - \frac{1}{9}x^3
+          </me>
+        </p>
+      </solution> -->
+    </task>
+
+    <task>
+      <statement>
+        <p>
+          How is your work in part (c) connected to the original given series <m>T(x)</m>?
+        </p>
+        <p>
+          <var name="$radio" form="buttons"/>
+        </p>
+      </statement>
+
+      <!-- <solution>
+        <p>
+          This means that the Taylor polynomials for <m>f(x) = 9(3 + x)^{-1}</m> are the partial
+          sums of the geometric series we started the problem with.
+        </p>
+      </solution> -->
+    </task>
+  </webwork>
+</exploration>
+
