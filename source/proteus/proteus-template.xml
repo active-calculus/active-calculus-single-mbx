@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ^ THat thing has to be literally the first line. -->
+
+<!-- 
+Pretext Tools extension (which you hopefully have installed) will autocomplete tags and parentheses etc. for you
+so just type like "li" or whatever and it will suggest what it should look like
+-->
+
+<!-- 
+This "exercises" thing is a wrapper for all the maybe multiple questions you want to put in the section.
+It has:
+- a component attribute which you want to say is "proteus" so that it only gets included in the proteus build.
+- this boilerplate xmlns:xi thing which you should totally just copy-paste.
+-  xml:id which is how you can xref it in other problems maybe later. I am suggesting proteus-chap-sec at least for now.
+-->
+<exercises component="proteus" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="proteus-3-5">
+
+<!-- 
+This is some kind of crappy placeholder thing that I am sticking in here until we figure out a better way to display proteus exercsies as distinct from other pretext exercises.  
+-->
+<p>
+  [PROTEUS exercises]
+</p>
+
+
+
+<!-- 
+Ok each question you want to write is inside an exercise environment.
+- component attribute which you want to say is "proteus" so that it only gets included in the proteus build.
+- label and an xml:id that should probably just be the same, and I think they should be a little bit descriptive of the story or whatever that you are writing.
+- for anything that is open-response, put attachment="yes" and then ss can upload stuff when it's slurped into runestone.
+-->
+
+<exercise component="proteus" label="proteus-water-tank-rr"  xml:id="proteus-water-tank-rr" attachment="yes">
+  <!-- 
+  Anything you ever want to be able to see has to be inside a <p> tag. (paragraph)
+  -->
+  <p>
+    A cylindrical water tank on top of a city water tower has a radius of 8 meters and a height of 15 meters.  The amount of water in the tank changes as water is being pumped in or out, depending on the time of day and the local water usage; it is usually completely refilled by about 2am, and then starts to drain around 7am as people wake up and do morning routines (e.g., showering, cooking, etc.). 
+  </p>
+  <p>
+    <ol> <!-- ordered list ~ enumerate; use marker="" attribute to change labels -->
+      <li> <!-- list item ~ \item in latex -->
+        <p> <!-- notice that content still has to be wrapped in <p> inside <li> -->
+          What is the maximum amount of water the tank can hold? Note: the formula for the volume of a cylinder is 
+          
+          <!-- inline math is in <m> tags ~ $ or \( \)    -->
+          <m>V = \pi r^2 h</m>.
+
+
+          <!-- displaymath is in <me> tags ~ $$ or \[ \]  or eqnarray -->
+          <me>V = \pi r^2 h</me>.
+
+          <!-- You can do a whole bunch of other latex-y shit. Refer to the pretext guide for specifics. -->
+          <!-- https://pretextbook.org/doc/guide/html/overview-math.html -->
+        </p>
+      </li>
+      <li>
+        <p>
+          Draw three different pictures of the water in the water tank at three different times: at 2am, at 8am, and at 12pm.
+        </p>
+      </li>
+      <li>
+        <p>
+          Which measurements of the amount of water are different in your different pictures? Which measurements are the same?
+        </p>
+      </li>
+      <li>
+        <p>
+          Determine a formula for the volume of water in the tank as a function of only one variable.  What is the varying quantity on which your volume formula depends?
+        </p>
+      </li>
+      <li>
+        <p>
+          Draw a graph relating the volume of water to the water level, and a second graph relating the volume of water to time.
+        </p>
+      </li>
+    </ol>
+  </p>
+</exercise>
+
+</exercises>
+
+<!-- 
+Ok but you're not done yet, because, this new file that you have written hasn't been included into the chapter / section file.
+So you need to go over to whatever section you are writing questions for and you need to "include" it.
+See, e.g., sec-2-3-... 
+-->
+
+<!-- 
+Here is how you build the website-viewable whatever
+- click the pretext button at the bottom of your screen
+- build target proteus
+- wait forever (this will take like 10 minutes the first time you build on your computer and then later ones will go faster bc of caching)
+- go get a snack probably
+- pet the dog
+- you can watch the progress in the output window; click "pretext tools" in the dropdown menu
+- when the build finishes, cluck the pretext button again (lol I'm leaivng it)
+- view
+- select proteus
+-->
