@@ -1,0 +1,122 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="p" from="-3" to="3" step="1" exclude="-1 0 1"/>
+  <selectFromSequence name="q" from="-4" to="4" step="1" exclude="-1 0 1 $p -$p"/>
+  <selectFromSequence name="r" from="-4" to="4" step="0.25" exclude="-1 0 1 $p -$p $q -$q"/>
+  
+  <function name="f">$p*x^2 + $q*x + $r</function>
+  <function name="fP">2*$p*x + $q</function>
+  <function name="fPP">2*$p</function>
+  <function name="T2">$b0 + $b1*x + $b2*x^2</function>
+  <function name="T2P">$b1 + 2*$b2*x</function>
+  <function name="T2PP">2*$b2</function>
+  <function name="T2Symb">b_0 + b_1*x + b_2*x^2</function>
+  <function name="T2PSymb">b_1 + 2*b_2*x</function>
+  <function name="T2PPSymb">2b_2</function>
+
+  <math name="a">0</math>
+  <math name="b0">$$f($a)</math>
+  <math name="b1">$$fP($a)</math>
+  <math name="b2">$$fPP($a)/2</math>
+</setup>
+
+<p>
+  Let <m>f(x)</m> be a function whose quadratic approximation at <m>x = 0</m> is 
+  <me>
+    T_2(x) = $f
+  </me> 
+  which has the standard property that <m>T_2(x)</m> has the same height, slope, and concavity as <m>f(x)</m> at <m>x = 0</m>. 
+</p>
+
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Determine the following values of <m>T_2(x)</m>.  
+      </p>    
+      <p>
+        <m>T_2(0) = </m> <answer>$r</answer>
+      </p>
+      <p>
+        <m>T_2'(0) = </m> <answer>$q</answer>
+      </p>
+      <p>
+        <m>T_2''(0) = </m> <answer>2*$p</answer>
+      </p>
+
+    </li>
+    <li>
+      <p>
+        In addition, determine the following values of <m>f(x)</m>.  
+      </p>
+      <p>
+        <m>f(0) = </m> <answer>$r</answer>
+      </p>
+      <p>
+        <m>f'(0) = </m> <answer>$q</answer>
+      </p>
+      <p>
+        <m>f''(0) = </m> <answer>2*$p</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Determine a formula for the tangent line approximation, <m>L(x)</m>, to <m>f(x)</m> at <m>x = 0</m>.
+      </p>
+      <p>
+        <m>L(x) = </m><answer>$q*x + $r</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Complete the following sentence to describe how the tangent line approximation compares to the true value of <m>f(x)</m> near <m>x = 0</m>.
+      </p>
+      <p>
+        Since <m>f''(0)</m> is <choiceInput name="fPPsign" inline>
+          <choice>?</choice>
+          <choice>negative</choice>
+          <choice>zero</choice>
+          <choice>positive</choice>
+        </choiceInput>, it follows that near <m>x = 0</m>,
+        <m>f(x)</m> is <choiceInput name="fconcav" inline>
+          <choice>?</choice>
+          <choice>concave down</choice>
+          <choice>linear</choice>
+          <choice>concave up</choice>
+        </choiceInput>, so the tangent line to <m>f(x)</m> at <m>x=0</m> lies
+        <choiceInput name="abovebelow" inline>
+          <choice>?</choice>
+          <choice>below</choice>
+          <choice>above</choice>
+        </choiceInput> the curve, and thus the approximation <m>L(x)</m> has values that
+        <choiceInput name="bigsmall" inline>
+          <choice>?</choice>
+          <choice>underestimate</choice>
+          <choice>overestimate</choice>
+        </choiceInput>
+        the true value of <m>f(x)</m>.
+      </p>
+      <p>
+        <answer><award><when>
+          ($b2 > 0 and $fPPsign.selectedIndices=4 and $fconcav.selectedIndices=4 and $abovebelow.selectedIndices=2 and $bigsmall.selectedIndices=2)
+          or
+          (0 > $b2 and $fPPsign.selectedIndices=2 and $fconcav.selectedIndices=2 and $abovebelow.selectedIndices=3 and $bigsmall.selectedIndices=3) 
+        </when></award></answer>
+      </p>
+    </li>
+  </ol>
+</p>

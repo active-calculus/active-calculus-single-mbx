@@ -1,0 +1,136 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- this is just a Doenet version of a WW exercise written by Chrissy Safranski -->
+
+<setup>
+  <function name="f">e^(-2*x)</function>
+  <function name="fP">-2*e^(-2*x)</function>
+  <function name="fPP">4*e^(-2*x)</function>
+  <function name="fPPP">-8*e^(-2*x)</function>
+  <function name="T3">$b0 + $b1*x + $b2*x^2 + $b3*x^3</function>
+  <function name="T3P">$b1 + 2*$b2*x + 3*$b3*x^2</function>
+  <function name="T3PP">2*$b2 + 6*$b3*x</function>
+  <function name="T3PPP">6*$b3</function>
+  <function name="T3Symb">b_0 + b_1*x + b_2*x^2 + b_3*x^3</function>
+  <function name="T3PSymb">b_1 + 2*b_2*x + 3*b_3*x^2</function>
+  <function name="T3PPSymb">2b_2 + 6*b_3*x</function>
+  <function name="T3PPPSymb">6*b_3</function>
+
+  <math name="a">0</math>
+  <math name="b0">$$f($a)</math>
+  <math name="b1">$$fP($a)</math>
+  <math name="b2">$$fPP($a)/2</math>
+  <math name="b3">$$fPPP($a)/6</math>
+</setup>
+
+<p>
+  Let <m>f(x) = $f</m> and let <m>T_3(x) = b_0 + b_1x + b_2x^2 + b_3x^3</m>.  In what follows, we find the values of <m>b_0</m>, <m>b_1</m>, <m>b_2</m>, and <m>b_3</m> that make <m>$f</m> and <m>T_3(x)</m> have the same height, slope, concavity, and third derivative value at <m>x = 0</m>.
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Complete the table below by computing derivatives of <m>f(x)</m> and <m>T_3(x)</m> and evaluating them at <m>x = 0</m> as directed.  Initially, several of your responses will involve the unknown coefficients <m>b_0</m>, <m>b_1</m>, <m>b_2</m>, and <m>b_3</m>.  Where needed, use underscores to enter the coefficients. For example, to enter <m>b_1</m> type <q>b_1</q>.
+
+              <tabular>
+                <row>
+                  <cell halign="right"><m>f(x) = </m></cell>
+                  <cell><m>$f</m></cell>
+                  <cell halign="right"><m>T_3(x) = </m></cell>
+                  <cell><m>b_0 + b_1x + b_2x^2 + b_3x^3</m></cell>
+                </row>
+               <row>
+                  <cell halign="right"><m>f'(x) = </m></cell>
+                  <cell><answer name="f1">$fP</answer></cell>
+                  <cell halign="right"><m>T_3'(x) = </m></cell>
+                  <cell><answer name="T21">$T3PSymb</answer></cell>
+                </row>
+                <row>
+                  <cell halign="right"><m>f''(x) = </m></cell>
+                  <cell><answer name="f2">$fPP</answer></cell>
+                  <cell halign="right"><m>T_3''(x) = </m></cell>
+                  <cell><answer name="T22">$T3PPSymb</answer></cell>
+                </row>
+                <row>
+                  <cell halign="right"><m>f'''(x) = </m></cell>
+                  <cell><answer name="f3">$fPPP</answer></cell>
+                  <cell halign="right"><m>T_3'''(x) = </m></cell>
+                  <cell><answer name="T23">$T3PPPSymb</answer></cell>
+                </row>
+              </tabular>
+
+              <tabular>
+                <row>
+                  <cell halign="right"><m>f($a) = </m></cell>
+                  <cell><answer name="fa">$$f($a)</answer></cell>
+                  <cell halign="right"><m>T_3($a) = </m></cell>
+                  <cell><answer name="T2a">$$T3Symb($a)</answer></cell>
+                </row>
+               <row>
+                  <cell halign="right"><m>f'($a) = </m></cell>
+                  <cell><answer name="f1a">$$fP($a)</answer></cell>
+                  <cell halign="right"><m>T_3'($a) = </m></cell>
+                  <cell><answer name="T21a">$$T3PSymb($a)</answer></cell>
+                </row>
+                <row>
+                  <cell halign="right"><m>f''($a) = </m></cell>
+                  <cell><answer name="f2a">$$fPP($a)</answer></cell>
+                  <cell halign="right"><m>T_3''($a) = </m></cell>
+                  <cell><answer name="T22a">$$T3PPSymb($a)</answer></cell>
+                </row>
+                <row>
+                  <cell halign="right"><m>f'''($a) = </m></cell>
+                  <cell><answer name="f3a">$$fPPP($a)</answer></cell>
+                  <cell halign="right"><m>T_3'''($a) = </m></cell>
+                  <cell><answer name="T23a">$$T3PPPSymb($a)</answer></cell>
+                </row>
+              </tabular>      
+      </p>    
+    </li>
+    <li>
+      <p>
+        Now, since we want <m>T_3(x)</m> and <m>f(x)=$f</m> to have the same height at <m>x = $a</m>, we set <m>T_3($a) = f($a)</m>.
+      </p>
+      <p>
+        This implies <m>b_0 = </m><answer name="b0entered">$b0</answer>.
+      </p>
+      <p>
+        Next, since we want <m>T_3(x)</m> and <m>f(x)=$f</m> to have the same slope at <m>x = $a</m>, we set <m>T_3'($a) = f'($a)</m>.
+      </p>
+      <p>
+        This implies <m>b_1 = </m><answer name="b1entered">$b1</answer>.
+      </p>
+      <p>
+        In addition, since we want <m>T_3(x)</m> and <m>f(x)=$f</m> to have the same concavity at <m>x = $a</m>, we set <m>T_3''($a) = f''($a)</m>.
+      </p>
+      <p>
+        This implies <m>b_2 = </m><answer name="b2entered">$b2</answer>.
+      </p>
+      <p>
+        Finally, since we want <m>T_3(x)</m> and <m>f(x)=$f</m> to have the same third derivative value at <m>x = $a</m>, we set <m>T_3'''($a) = f'''($a)</m>.
+      </p>
+      <p>
+        This implies <m>b_3 = </m><answer name="b3entered">$b3</answer>.
+      </p>      
+      <p>
+        Putting everything together, the resulting formula for <m>T_3(x)</m> is 
+      </p>
+      <p>
+        <m>T_3(x) = </m><answer name="T3Entered">$T3</answer>
+      </p>
+    </li>
+  </ol>
+</p>
