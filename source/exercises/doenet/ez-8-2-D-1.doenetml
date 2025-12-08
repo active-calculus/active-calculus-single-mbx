@@ -1,0 +1,89 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+
+<!--
+  <math name="c0">$$f($a)</math>
+  <math name="c1">$$fP($a)</math>
+  <math name="c2">$$fPP($a)/2</math>
+  <math name="c3">$$fPPP($a)/6</math>
+
+  <function name="f">e^(-2*x)</function>
+  <function name="fP">-2*e^(-2*x)</function>
+  <function name="fPP">4*e^(-2*x)</function>
+  <function name="fPPP">-8*e^(-2*x)</function>
+-->
+
+  <selectFromSequence name="c0" from="-3" to="3" step="1" exclude="0"/>
+  <selectFromSequence name="c1" from="-3" to="3" step="1" exclude="0 $c0"/>
+  <selectFromSequence name="c2" from="-3" to="3" step="1" exclude="0 $c0 $c1"/>
+  <selectFromSequence name="c3" from="-3" to="3" step="1" exclude="0 $c0 $c1 $c2"/>
+  <selectFromSequence name="c4" from="-3" to="3" step="1" exclude="0 $c0 $c1 $c2 $c3"/>
+
+  <selectFromSequence name="k" from="-0.4" to="0.4" step="0.1" exclude="-0.1 0 0.1"/>
+  
+  <function name="T4">$c0 + $c1*(x-$a) + $c2*(x-$a)^2 + $c3*(x-$a)^3 + $c4*(x-$a)^4</function>
+  <function name="T4Symb">c_0 + c_1*(x-$a) + c_2*(x-$a)^2 + c_3*(x-$a)^3 + c_4*(x-$a)^4</function>
+  
+  <function name="T3">$c0 + $c1*(x-$a) + $c2*(x-$a)^2 + $c3*(x-$a)^3</function>
+  <function name="T3Symb">c_0 + c_1*(x-$a) + c_2*(x-$a)^2 + c_3*(x-$a)^3</function>
+
+  <function name="T2">$c0 + $c1*(x-$a) + $c2*(x-$a)^2</function>
+  <function name="T2Symb">c_0 + c_1*(x-$a) + c_2*(x-$a)^2</function>
+
+  <function name="T1">$c0 + $c1*(x-$a)</function>
+  <function name="T1Symb">c_0 + c_1*(x-$a)</function>
+  
+  <math name="a">0</math>
+
+</setup>
+
+
+<p>
+  For a given function <m>f(x)</m>, suppose we know that 
+  <me>
+    f($a) = $c0, \ f'($a) = $c1, \ f''($a) = <math simplify>$c2*2!</math>, \ f'''($a) = <math simplify>$c3*3!</math>, \ \mbox{and} \ f^{(4)}($a) = <math simplify>$c4*4!</math>
+  </me>
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+          Find and state each of the Taylor polynomials of <m>f</m> that are centered at <m>a = $a</m>: <m>T_1(x)</m>, <m>\ldots</m>, <m>T_4(x)</m>.  
+      </p>    
+      <p>
+        <m>T_1(x) = </m><answer name="T1Entered">$T1</answer>
+      </p>
+      <p>
+        <m>T_2(x) = </m><answer name="T2Entered">$T2</answer>
+      </p>
+      <p>
+        <m>T_3(x) = </m><answer name="T3Entered">$T3</answer>
+      </p>
+      <p>
+        <m>T_4(x) = </m><answer name="T4Entered">$T4</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Use <m>T_4(x)</m> to estimate the value of <m>f($k)</m>.  Report your result to an accuracy of at least <m>0.0001</m>
+      </p>
+      <p>
+        <m>f($k) \approx T_4($k) = </m><answer name="fEst" allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute>$$T4($k)</answer>
+      </p>
+    </li>
+  </ol>
+</p>
