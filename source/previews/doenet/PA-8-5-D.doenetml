@@ -1,0 +1,142 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- a first draft of this preview was written by Chrissy Safranski at/after the 2024 Doenet workshop -->
+
+<setup>
+  <math name="a">0</math>
+  <function name="g">1/(1+x^2)</function>
+  <derivative name="gP">$g</derivative>
+  <derivative name="gPP">$gP</derivative>
+  <derivative name="gPPP">$gPP</derivative>
+  <function name="T3">$$g(0) + $$gP(0)*(x-$a) + $$gPP(0)/2!*(x-$a)^2 + $$gPPP(0)/3!*(x-$a)^3</function>
+</setup>
+    
+  <p>
+    Let 
+    <me>
+      g(x) = \frac{1}{1+x^2}.
+    </me>
+  </p>
+
+  <p>
+    <ol marker="a.">
+      <li>
+        <p>
+          Note that we can write <m>g(x) = (1+x^2)^{-1}</m>.  Determine the first and second derivatives of <m>g</m>.
+        </p>
+        <p>
+          <m>g'(x)=</m><answer>$gP</answer>   <!-- -2x/(1+x^2)^2 -->
+        </p>
+        <p>
+          <m>g''(x)=</m><answer>$gPP</answer> <!-- ((1+x^2)^2(-2)+(2x)(2)(1+x^2)(2x))/((1+x^2)^4) -->
+        </p>
+      </li>
+      <li>
+        <p>
+          If we fully simplify <m>g''(x)</m>, take its derivative to find <m>g'''(x)</m> and simplify the result, we'd find that 
+          <me>
+            g'''(x) = \frac{24x - 24x^3}{(1+x^2)^4}.
+          </me>
+          What derivative rules would be needed to find <m>g^{(4)}(x)</m> from the stated form of  <m>g'''(x)</m>?  Check all that apply.
+        </p>
+        <p>
+          <answer matchPartial selectMultiple>
+            <choice credit="1">sum or difference Rule</choice>
+            <choice>exponential function rule</choice>
+            <choice credit="1">power function rule</choice>
+            <choice credit="1">quotient rule</choice>
+            <choice>product rule</choice>
+            <choice credit="1">constant multiple rule</choice>
+            <choice credit="1">chain rule</choice>
+          </answer>
+        </p>
+      </li>
+      <li>
+        <p>
+          Use the results above to find and state <m>g(0)</m>, <m>g'(0)</m>, <m>g''(0)</m>, and <m>g'''(0)</m>, and hence state a formula for the degree <m>3</m> Taylor polynomial of <m>g</m>.
+        </p>
+        <p>
+          <m>g(0)=</m><answer>$$g(0)</answer>
+        </p>
+        <p>
+          <m>g'(0)=</m><answer>$$gP(0)</answer>
+        </p>
+        <p>
+          <m>g''(0)=</m><answer>$$gPP(0)</answer>
+        </p>
+        <p>
+          <m>g'''(0)=</m><answer>$$gPPP(0)</answer>
+        </p>
+        <p>
+          <m>T_3(x)=</m><answer>$T3</answer>
+        </p>
+      </li>
+      <li>
+        <p>
+          Since the derivatives of <m>g</m> become so complicated, we consider a different approach to finding the Taylor series centered at <m>a = 0</m> for <m>g(x) = \frac{1}{1+x^2}</m>.  We take advantage of the fact that <m>f(x) = \frac{1}{1-x}</m> has a Taylor series expansion we already know, and observe that <m>f</m> has an algebraic structure similar to <m>g</m>.
+        </p>
+
+        <p>
+          We introduce a new variable, <m>u</m>, and recall that
+          <men>
+            f(u) = \frac{1}{1-u} = 1 + u + u^2 + u^3 + \cdots + u^n + \cdots
+          </men>
+          for <m>|u| \lt 1</m>.
+        </p>
+
+        <p>
+          Now let <m>u = -x^2</m>.  What expression results from evaluating <m>f(-x^2)</m> in Equation (1) above?  Enter the first 4 nonzero terms in the sum on the right-hand-side of the equation in the blanks proviced (one blank per term).
+        </p>
+<!--           <me>
+            f(-x^2) = \frac{1}{1-(-x^2)} = <answer>1 -x^2 + x^4 - x^6</answer> + \cdots + (-x^2)^n + \cdots
+          </me> -->
+<!-- I couldn't get the above to work, with an answer inside of displayed math. Working around it instead.
+          <tabular>
+            <row>
+              <cell halign="right"><m>f(-x^2) =</m></cell>
+              <cell halign="left"><m>\frac{1}{1-(-x^2)}</m></cell>
+            </row>
+            <row>
+              <cell halign="right"><m>=</m></cell>
+              <cell halign="left"><answer>1</answer><m>+</m><answer>-x^2</answer><m>+</m><answer>x^4</answer><m>+</m><answer>-x^6</answer><m>+ \cdots + (-x^2)^n + \cdots</m></cell>
+            </row>
+          </tabular>
+          -->
+          <p>
+            <m>f(-x^2) = \frac{1}{1-(-x^2)}</m>
+          </p>
+          <p>
+            <m>f(-x^2) =</m><answer>1</answer><m>+</m><answer>-x^2</answer><m>+</m><answer>x^4</answer><m>+</m><answer>-x^6</answer><m>+ \cdots + (-x^2)^n + \cdots</m>
+          </p>
+      </li>
+      <li>
+        <p>
+          Note that the denominator of <m>f(-x^2)</m> is <m>1-(-x^2)=1+x^2</m>, so <m>f(-x^2) = g(x)</m> and we have thus found an infinite series representation for <m>g(x)=\frac{1}{1+x^2}</m> <em>without</em> calculating derivatives of <m>g(x)</m>, by using the series we had already determined for <m>f(u)=\frac{1}{1-u}</m>.  
+        </p>
+        <p>
+          Without computing any additional derivatives, what should be the formula for <m>T_4(x)</m>, the degree <m>4</m> Taylor polynomial of <m>g</m> that is centered at <m>a = 0</m>?
+        </p>
+        <p>
+          <m>T_4(x) = </m><answer>1 - x^2 + x^4</answer>
+        </p>  
+        <p>
+          Finally, for what values of <m>x</m> do you expect the series you found in (d) will converge, based on the known values of <m>u</m> for which <m>\frac{1}{1-u}</m> converges? Use interval notation. 
+        </p>
+        <p>
+          The infinite series for <m>f(-x^2)</m> converges for <m>x</m> in the interval <answer>(-1,1)</answer>.
+        </p>
+      </li>
+    </ol>
+  </p>

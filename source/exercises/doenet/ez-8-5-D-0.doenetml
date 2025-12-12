@@ -1,0 +1,41 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup> 
+  <selectFromSequence name="a" from="2" to="4" step="1"/>
+  <selectFromSequence name="b" from="2" to="4" step="1" exclude="$a"/>
+  <selectFromSequence name="c" from="1" to="4" step="1" exclude="$a $b"/>
+  <function name="k" variable="n">(n + $b)/(2n + $c)</function>
+  <function name="genTermf" variables="x n">(n + $b)/(2n + $c)*(n+$a)*x^(n+$a-1)</function>
+</setup>
+
+<p>
+  Let <m>f(x)</m> be a function whose Taylor series is
+  <me>
+    f(x) = \sum_{n=0}^{\infty} \frac{n + $b}{2n + $c}x^{n+$a}
+  </me>
+</p>
+
+<p>
+  Write out the first 4 nonzero terms of the series for <m>f(x)</m> and apply the Power Series Differentiation and Integration Theorem to find the first four nonzero terms of the series for <m>f'(x)</m> and state those in the provided blanks below.
+</p>
+<p>
+  <m>f'(x) = </m><answer>$$k(0)*(0+$a)*x^($a-1)</answer><m>+</m><answer>$$k(1)*($a+1)*x^($a)</answer><m>+</m><answer>$$k(2)*($a+2)*x^($a+1)</answer><m>+</m><answer>$$k(3)*($a+3)*x^($a+2)</answer><m>+ \cdots</m>
+</p>
+<p>
+  Finally, state the Taylor series for <m>f'(x)</m> in sigma notation.
+</p>
+ <p>
+  <m>\displaystyle f'(x) = \sum_{n=0}^{\infty} </m><answer>$genTermf</answer>
+</p> 

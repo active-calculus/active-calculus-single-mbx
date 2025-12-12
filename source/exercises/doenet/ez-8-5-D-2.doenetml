@@ -1,0 +1,115 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="c" from="3" to="6" step="1"/> 
+
+  <function name="f">cos($c*x)</function>
+  <derivative name="fP">$f</derivative>
+  <derivative name="fPP">$fP</derivative>
+  <derivative name="fPPP">$fPP</derivative>
+  <derivative name="fP4">$fPPP</derivative>
+  <derivative name="fP5">$fP4</derivative>
+  <derivative name="fP6">$fP5</derivative>
+  <derivative name="fP7">$fP6</derivative>
+
+  
+  <function name="g">sin($c*x)</function>
+  <derivative name="gP">$g</derivative>
+  <derivative name="gPP">$gP</derivative>
+  <derivative name="gPPP">$gPP</derivative>
+  <derivative name="gP4">$gPPP</derivative>
+  <derivative name="gP5">$gP4</derivative>
+  <derivative name="gP6">$gP5</derivative>
+  <derivative name="gP7">$gP6</derivative>  
+  
+  <math name="a">0</math>
+
+  <function name="genTermf" variables="x n">(-1)^n/((2*n)!)*($c*x)^(2*n)</function>
+  <function name="genTermg" variables="x n">(-1)^n/((2*n+1)!)*($c*x)^(2*n+1)</function>
+  
+</setup>
+
+<p>
+  Consider the function 
+  <me>
+    f(x) = \cos($c  x) 
+  </me>
+  In what follows, we will use the familiar Taylor series expansion for <m>\cos(x)</m> to find the Taylor series for both <m>f(x)= \cos($c  x) </m> and <m>g(x) = \sin($c  x) </m>.
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Use the familiar Taylor series expansion for <m>\cos(x) </m> and an appropriate substitution to find the Taylor series for <m>f(x) = \cos($c  x) </m> and to write the series in expanded and in sigma notation.
+      </p>
+      <p>
+        State the first 4 nonzero terms of the Taylor series of <m>f</m> centered at <m>a = $a</m> by completing the blanks below; note that there is one blank per term and that several of the terms involve the variable <m>x</m>.
+      </p>
+      <p>
+        <m>f(x) = </m><answer>$$f($a)</answer><m>+</m><answer>$$fPP($a)/2! * (x-$a)^2</answer><m>+</m><answer>$$fP4($a)/4! * (x-$a)^4</answer><m>+</m><answer>$$fP6($a)/6! * (x-$a)^6</answer><m>+ \cdots</m>
+      </p>  
+      <p>
+        State the Taylor series of <m>f</m> centered at <m>a = $a</m> in sigma notation.  You may find it helpful to note that a general term in the sequence of even numbers <m>2, 4, 6, \ldots</m> can be represented by <m>2n</m> and that a general term in the sequence of odd numbers can be represented by <m>2n+1</m> or <m>2n-1</m>.
+      </p>
+      <p>
+        <m>\displaystyle f(x) = \sum_{n=0}^{\infty} </m><answer>$genTermf</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Based on the fact that the Taylor series for <m>\cos(x)</m> converges for all real numbers, determine the open interval of convergence for the Taylor series of <m>f(x) = \cos($c x)</m>.  If the series converges for all real numbers, enter <m>(-INF, INF)</m>.
+      </p>
+      <p>
+        The Taylor series of <m>f(x)</m> converges on <answer>(-INF,INF)</answer>.
+      </p>
+    </li>
+    <li>
+      <p>
+        Now consider the function 
+        <me>
+          g(x) = \sin($c x)
+        </me>
+        which we expect to be closely related to the function <m>f(x) = \cos($c x)</m>.  First, determine <m>f'(x)</m>.
+      </p>
+      <p>
+        <m>f'(x) = </m><answer>$fP</answer>
+      </p>
+      <p> 
+        By observing the relationship between <m>f'(x)</m> and <m>g(x)</m> and using the Taylor series you found in part (a), find the Taylor series for <m>g(x)</m> and  write the series in expanded and in sigma notation.
+      </p>
+      <p>
+        State the first 4 nonzero terms of the Taylor series of <m>f</m> centered at <m>a = $a</m> by completing the blanks below; note that there is one blank per term and that several of the terms involve the variable <m>x</m>.
+      </p>
+      <p>
+        <m>g(x) = </m><answer>$$gP($a) * (x-$a)</answer><m>+</m><answer>$$gPPP($a)/3! * (x-$a)^3</answer><m>+</m><answer>$$gP5($a)/5! * (x-$a)^5</answer><m>+</m><answer>$$gP7($a)/7! * (x-$a)^7</answer><m>+ \cdots</m>
+      </p>  
+      <p>
+        State the Taylor series of <m>g</m> centered at <m>a = $a</m> in sigma notation.
+      </p>
+      <p>
+        <m>\displaystyle g(x) = \sum_{n=0}^{\infty} </m><answer>$genTermg</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Apply the Power Series Differentiation and Integration Theorem to determine the open interval of convergence for the Taylor series of <m>g(x) = \sin($c x)</m>.  If the series converges for all real numbers, enter <m>(-INF, INF)</m>.
+      </p>
+      <p>
+        The Taylor series of <m>g(x)</m> converges on <answer>(-$c,$c)</answer>.
+      </p>
+    </li>
+  </ol>
+</p>
