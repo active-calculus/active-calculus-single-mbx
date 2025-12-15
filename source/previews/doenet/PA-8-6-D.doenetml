@@ -1,0 +1,141 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+        <p>
+            Consider the alternating geometric series 
+            <me>
+                S = \sum_{k=0}^{\infty} (-1)^k \left( \frac{4}{5} \right)^k = 1 - \frac{4}{5} + \frac{16}{25} - \cdots + (-1)^{n-1} \left( \frac{4}{5} \right)^{n-1} + \cdots
+            </me>  
+            We want to explore how the partial sums of the series compare to and approximate the exact sum of the series, which is 
+            <me>S = \frac{a}{1-r} = \frac{1}{1-\left(\frac{-4}{5}\right)} = \frac{1}{\frac{9}{5}} = \frac{5}{9}</me>
+        </p>
+
+<p>
+  <ol marker="a.">
+    <li>
+            <p>
+                Recall that the <m>n</m>th partial sum, <m>S_n</m>, is the sum of the first <m>n</m> terms of the infinite geometric series <m>S</m>.  This means that
+                    <me>
+                        S_n = \sum_{k=0}^{n-1} (-1)^k \left( \frac{4}{5} \right)^k = 1 - \frac{4}{5} + \frac{16}{25} - \cdots + (-1)^{n-1} \left( \frac{4}{5} \right)^{n-1}
+                    </me> 
+                Note that the exact fractional values of <m>S_1</m>, <m>S_2</m>, <m>\ldots</m>, <m>S_6</m>, have been recorded below along with their decimal representations.  Your task is to use this information to do some related computations that help us understand the behavior of the series and its partial sums.     
+            </p>
+
+            <p>
+                First, compute the differences between <m>S_n</m> and <m>S</m> for several different values of <m>n</m> (recalling that <m>S = \frac{5}{9} = 0.\overline{5}</m>) and fill in the first column of blank spaces provided below.  In addition, fill in decimal representations of <m>a_3</m>, <m>\ldots</m>, <m>a_6</m> to compare to the differences in the adjacent column. For decimal representations you enter, be accurate to within <m>0.00001</m>.
+            </p>
+
+            <p>
+                <tabular>
+                  <!-- <col/> must not be instantiated in DoenetML 
+                  <col width="10%"/>
+                  <col width="30%"/>
+                  <col width="30%"/>
+                  <col width="30%"/>
+                  -->
+                    <row>
+                      <cell><m>n = 1</m></cell> 
+                      <cell><m>S_1 = 1</m></cell> 
+                      <cell><m>S_1 - S = </m><answer allowedErrorInNumbers="0.00001" allowedErrorIsAbsolute>4/9</answer></cell>
+                      <cell><m>a_1 = -0.8</m></cell>
+                    </row>
+                    <row>
+                      <cell><m>n = 2</m></cell> 
+                      <cell><m>S_2 = 0.2</m></cell> 
+                      <cell><m>S_2 - S = </m><answer allowedErrorInNumbers="0.00001" allowedErrorIsAbsolute><math simplify>0.2-5/9</math></answer></cell>
+                      <cell><m>a_2 = 0.64</m></cell>
+                    </row>
+                    <row>
+                      <cell><m>n = 3</m></cell> 
+                      <cell><m>S_3 = 0.84</m></cell> 
+                      <cell><m>S_3 - S = </m><answer allowedErrorInNumbers="0.00001" allowedErrorIsAbsolute><math simplify>0.84-5/9</math></answer></cell>
+                      <cell><m>a_3 =</m><answer>0.512</answer></cell>
+                    </row>
+                    <row>
+                      <cell><m>n = 4</m></cell> 
+                      <cell><m>S_4 = 0.328</m></cell> 
+                      <cell><m>S_4 - S = </m><answer allowedErrorInNumbers="0.00001" allowedErrorIsAbsolute><math simplify>0.328-5/9</math></answer></cell>
+                      <cell><m>a_4 =</m><answer>0.4096</answer></cell>
+                    </row>
+                    <row>
+                      <cell><m>n = 5</m></cell> 
+                      <cell><m>S_5 = 0.7376</m></cell> 
+                      <cell><m>S_5 - S = </m><answer allowedErrorInNumbers="0.00001" allowedErrorIsAbsolute><math simplify>0.7376-5/9</math></answer></cell>
+                      <cell><m>a_5 =</m><answer>0.32768</answer></cell>
+                    </row>
+                    <row>
+                      <cell><m>n = 6</m></cell> 
+                      <cell><m>S_6 = 0.40992</m></cell> 
+                      <cell><m>S_6 - S = </m><answer allowedErrorInNumbers="0.00001" allowedErrorIsAbsolute><math simplify>0.40992-5/9</math></answer></cell>
+                      <cell><m>a_6 =</m><answer allowedErrorInNumbers="0.00001" allowedErrorIsAbsolute>0.262144</answer></cell>
+                    </row>
+                  <!--
+                    <row>n \amp= 6 \amp S_6 \amp= \frac{1281}{3125} = 0.40992 \amp S_6 - S \amp= <answer></answer> \amp a_6 \amp= <answer></answer> </row>
+                  -->
+                  
+    <!--           <row>n \amp= 7 \amp S_7 \amp= \frac{10501}{15625} = 0.672064 \amp S - S_7 = <fillin characters="4" />  </row>
+                    <row>n \amp= 8 \amp S_8 \amp= \frac{36121}{78125} = 0.4623488 \amp S - S_8 = <fillin characters="4" />  </row> -->
+                  
+                </tabular>
+              
+            </p>           
+    </li>
+    <li>
+            <p>
+                What do you notice about the differences between <m>S_n</m> and <m>S</m> as the value of <m>n</m> increases?  Check all of the following statements that are true.
+            </p>
+      <p>
+        <answer selectMultiple>
+          <choiceInput>
+            <choice><m>S_n - S</m> always decreases in value as <m>n</m> increases</choice>
+            <choice credit="1"><m>S_n - S</m> alternates in sign as <m>n</m> increases</choice>
+            <choice credit="1">The value of the partial sum, <m>S_n</m>, is always getting closer to <m>S</m> as <m>n</m> increases</choice>
+            <choice><m>S_n - S</m> is always positive</choice>
+            <choice credit="1"><m>|S_n - S|</m> always decreases in value as <m>n</m> increases</choice>
+          </choiceInput>
+        </answer>  
+      </p>
+    </li>
+    <li>
+            <p>
+                What do you notice about how the differences between <m>S_n</m> and <m>S</m> compare to the value of <m>a_n</m>? There are at least two important things you can say. 
+            </p>
+      <p>
+        <answer selectMultiple>
+          <choiceInput>
+            <choice><m>S_n - S \lt a_n</m> for each value of <m>n</m> </choice>
+            <choice><m>S_n - S</m> has the same sign as <m>a_n</m></choice>
+            <choice credit="1"><m>S_n - S</m> has the opposite sign as <m>a_n</m></choice>
+            <choice credit="1"><m>|S_n - S| \lt |a_n|</m> for each value of <m>n</m> </choice>
+            <choice credit="1">The absolute difference between <m>S_n</m> and <m>S</m> is always less than the absolute value of the next term in the sum</choice>
+          </choiceInput>
+        </answer>  
+      </p>      
+    </li>
+  </ol>
+</p>
