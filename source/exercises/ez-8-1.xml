@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <!-- **********************************************************************-->
 <!-- Copyright 2012-2022                                                   -->
 <!-- Matthew Boelkins                                                      -->
@@ -17,7 +16,7 @@
         <exercise xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="ex-quadapprox-cos" label="ex-quadapprox-cos">
             <webwork xml:id="webwork-quadapprox-cos">                                          
                 <pg-code>
-                Context("Fraction")->variables->add(b_0=>"Real", b_1=>"Real", b_2=>"Real");
+                Context("Fraction")-&gt;variables-&gt;add(b_0=&gt;"Real", b_1=&gt;"Real", b_2=&gt;"Real");
                 $f=Fraction(-1,2);
                 $c=Formula("cos(x)");
                 $s=Formula("sin(x)");
@@ -112,7 +111,7 @@
         <exercise xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="ex-quadapprox-ln1plusx" label="ex-quadapprox-ln1plusx">
             <webwork xml:id="webwork-quadapprox-ln1plusx">                                          
                 <pg-code>
-                Context("Fraction")->variables->add(b_0=>"Real", b_1=>"Real", b_2=>"Real");
+                Context("Fraction")-&gt;variables-&gt;add(b_0=&gt;"Real", b_1=&gt;"Real", b_2=&gt;"Real");
                 $f=Fraction(-1,2);
                 $func=Formula("ln(1+x)");
                 $funcprime=Formula("1/(1+x)");
@@ -209,12 +208,12 @@
         <exercise xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="ex-cubicapprox-eneg2x" label="ex-cubicapprox-eneg2x">
             <webwork xml:id="webwork-cubicapprox-eneg2x">                                          
                 <pg-code>
-                Context("Fraction")->variables->add(c_0=>"Real", c_1=>"Real", c_2=>"Real", c_3=>"Real");
+                Context("Fraction")-&gt;variables-&gt;add(c_0=&gt;"Real", c_1=&gt;"Real", c_2=&gt;"Real", c_3=&gt;"Real");
                 $f1=Compute(-2);
                 $f2=Compute(2);
                 $f3=Fraction(-8,6);
                 $func=Formula("e^(-2x)");
-                $funcprime=$func->D('x');
+                $funcprime=$func-&gt;D('x');
                 $funcdoubleprime=Formula("4e^(-2x)");
                 $functripleprime=Formula("-8e^(-2x)");
                 $T3prime=Formula("c_1+2*c_2*x+3*c_3 x^2");
@@ -325,13 +324,13 @@
           <exercise xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="ex-quadapprox-quadratic" label="ex-quadapprox-quadratic">
             <webwork xml:id="webwork-quadapprox-quadratic">                                          
                 <pg-code>
-                Context("Fraction")->variables->add(b_0=>"Real", b_1=>"Real", b_2=>"Real");
+                Context("Fraction")-&gt;variables-&gt;add(b_0=&gt;"Real", b_1=&gt;"Real", b_2=&gt;"Real");
                 $c=non_zero_random(-5,5);
                 $b=non_zero_random(-5,5);
                 $a=random(2,8);
-                $func=Formula("$a x^2+$b x+ $c")->reduce;
-                $funcprime=$func->D('x');
-                $funcdoubleprime=$funcprime->D('x');
+                $func=Formula("$a x^2+$b x+ $c")-&gt;reduce;
+                $funcprime=$func-&gt;D('x');
+                $funcdoubleprime=$funcprime-&gt;D('x');
                 $T2prime=Formula("b_1+2*b_2*x");
                 $T2doubleprime=Formula("2*b_2");
                 <!-- evaluating formulas is giving me an error, so I'm hardcoding the answers instead until I can figure out why. -->
@@ -565,7 +564,7 @@
       </p>
 
       <p>
-        <ol  marker="a.">
+        <ol marker="a.">
           <li>
             <p>
               Determine <m>f'(x)</m> and <m>f''(x)</m> and enter their formulas below.
@@ -573,8 +572,8 @@
 
                     <md>
                       <mrow>f(x) \amp= \frac{1}{3}x^3 + \frac{1}{4}x^2 - 2x - 1</mrow>
-                      <mrow>f'(x) \amp= <fillin characters="10" /> </mrow>
-                      <mrow>f''(x) \amp= <fillin characters="10" /> </mrow>
+                      <mrow>f'(x) \amp= <fillin characters="10"/> </mrow>
+                      <mrow>f''(x) \amp= <fillin characters="10"/> </mrow>
                     </md>
                   </p>
           </li>
@@ -583,9 +582,9 @@
               Next, compute <m>f(0)</m>, <m>f'(0)</m>, and <m>f''(0)</m> and enter those values below.
 
                     <md>
-                      <mrow>f(0) \amp= <fillin characters="5" /> </mrow>
-                      <mrow>f'(0) \amp= <fillin characters="5" /> </mrow>
-                      <mrow>f''(0) \amp= <fillin characters="5" /> </mrow>
+                      <mrow>f(0) \amp= <fillin characters="5"/> </mrow>
+                      <mrow>f'(0) \amp= <fillin characters="5"/> </mrow>
+                      <mrow>f''(0) \amp= <fillin characters="5"/> </mrow>
                     </md>
             </p>
             
@@ -603,23 +602,23 @@
               <p>
                     <md>
                       <mrow>f(x) \amp= x^3/3 + x^2/4 - 2x - 1</mrow>  
-                      <mrow>f'(x) \amp= <fillin characters="10" /> </mrow>
-                      <mrow>f''(x) \amp= <fillin characters="10" /> </mrow>
+                      <mrow>f'(x) \amp= <fillin characters="10"/> </mrow>
+                      <mrow>f''(x) \amp= <fillin characters="10"/> </mrow>
                       <mrow> \amp </mrow>
-                      <mrow>f(0) \amp= <fillin characters="5" /></mrow>
-                      <mrow>f'(0) \amp= <fillin characters="5" /> </mrow>
-                      <mrow>f''(0) \amp= <fillin characters="5" /> </mrow>                     
+                      <mrow>f(0) \amp= <fillin characters="5"/></mrow>
+                      <mrow>f'(0) \amp= <fillin characters="5"/> </mrow>
+                      <mrow>f''(0) \amp= <fillin characters="5"/> </mrow>                     
                     </md>
                   </p>
                   <p>
                     <md>
                       <mrow>T_2(x) \amp= c_0 + c_1 x + c_2 x^2</mrow>
                       <mrow>T_2'(x) \amp= c_1 + 2c_2 x </mrow>
-                      <mrow>T_2''(x) \amp= <fillin characters="10" /> </mrow>
+                      <mrow>T_2''(x) \amp= <fillin characters="10"/> </mrow>
                       <mrow> \amp </mrow>
-                      <mrow>T_2(0) \amp= <fillin characters="5" /></mrow>
-                      <mrow>T_2'(0) \amp= <fillin characters="5" /> </mrow>
-                      <mrow>T_2''(0) \amp= <fillin characters="5" /> </mrow>   
+                      <mrow>T_2(0) \amp= <fillin characters="5"/></mrow>
+                      <mrow>T_2'(0) \amp= <fillin characters="5"/> </mrow>
+                      <mrow>T_2''(0) \amp= <fillin characters="5"/> </mrow>   
                     </md>
                   </p>
                   </sidebyside>
@@ -639,7 +638,7 @@
     <answer>
  
       <p>
-        <ol  marker="a.">
+        <ol marker="a.">
           <li>
               <tabular top="none" bottom="none">
                 <row>
@@ -701,10 +700,10 @@
                 </row>
 
                 <row>
-                  <cell></cell>
-                  <cell></cell>
-                  <cell></cell>
-                  <cell></cell>
+                  <cell/>
+                  <cell/>
+                  <cell/>
+                  <cell/>
                 </row>
                 <row>
                   <cell halign="right"><m>f(0)=</m></cell>
@@ -742,7 +741,7 @@
     <solution>
 
       <p>
-        <ol  marker="a.">
+        <ol marker="a.">
           <li>
               <tabular top="none" bottom="none">
                 <row>
@@ -803,10 +802,10 @@
                 </row>
 
                 <row>
-                  <cell></cell>
-                  <cell></cell>
-                  <cell></cell>
-                  <cell></cell>
+                  <cell/>
+                  <cell/>
+                  <cell/>
+                  <cell/>
                 </row>
                 <row>
                   <cell halign="right"><m>f(0)=</m></cell>
@@ -857,27 +856,27 @@
             <p>
               <md>
                 <mrow>f(x) \amp= x^3/3 + x^2/4 - 2x - 1</mrow>  
-                <mrow>f'(x) \amp= <fillin characters="10" /> </mrow>
-                <mrow>f''(x) \amp= <fillin characters="10" /> </mrow>
-                <mrow>f'''(x) \amp= <fillin characters="10" /> </mrow>
+                <mrow>f'(x) \amp= <fillin characters="10"/> </mrow>
+                <mrow>f''(x) \amp= <fillin characters="10"/> </mrow>
+                <mrow>f'''(x) \amp= <fillin characters="10"/> </mrow>
                 <mrow> \amp </mrow>
-                <mrow>f(0) \amp= <fillin characters="5" /></mrow>
-                <mrow>f'(0) \amp= <fillin characters="5" /> </mrow>
-                <mrow>f''(0) \amp= <fillin characters="5" /> </mrow>   
-                <mrow>f'''(0) \amp= <fillin characters="5" /> </mrow>                   
+                <mrow>f(0) \amp= <fillin characters="5"/></mrow>
+                <mrow>f'(0) \amp= <fillin characters="5"/> </mrow>
+                <mrow>f''(0) \amp= <fillin characters="5"/> </mrow>   
+                <mrow>f'''(0) \amp= <fillin characters="5"/> </mrow>                   
               </md>
             </p>
             <p>
               <md>
                 <mrow>T_3(x) \amp= k_0 + k_1 x + k_2 x^2 + k_3 x^3</mrow>
-                <mrow>T_3'(x) \amp= <fillin characters="10" /> </mrow>
-                <mrow>T_3''(x) \amp= <fillin characters="10" /> </mrow>
-                <mrow>T_3'''(x) \amp= <fillin characters="10" /> </mrow>
+                <mrow>T_3'(x) \amp= <fillin characters="10"/> </mrow>
+                <mrow>T_3''(x) \amp= <fillin characters="10"/> </mrow>
+                <mrow>T_3'''(x) \amp= <fillin characters="10"/> </mrow>
                 <mrow> \amp </mrow>
-                <mrow>T_3(0) \amp= <fillin characters="5" /></mrow>
-                <mrow>T_3'(0) \amp= <fillin characters="5" /> </mrow>
-                <mrow>T_3''(0) \amp= <fillin characters="5" /> </mrow>
-                <mrow>T_3'''(0) \amp= <fillin characters="5" /> </mrow>     
+                <mrow>T_3(0) \amp= <fillin characters="5"/></mrow>
+                <mrow>T_3'(0) \amp= <fillin characters="5"/> </mrow>
+                <mrow>T_3''(0) \amp= <fillin characters="5"/> </mrow>
+                <mrow>T_3'''(0) \amp= <fillin characters="5"/> </mrow>     
               </md>
             </p>
           </sidebyside>
@@ -935,10 +934,10 @@
                   <cell><m>6k_3</m></cell>
                 </row>
                 <row>
-                  <cell></cell>
-                  <cell></cell>
-                  <cell></cell>
-                  <cell></cell>
+                  <cell/>
+                  <cell/>
+                  <cell/>
+                  <cell/>
                 </row>
                 <row>
                   <cell halign="right"><m>f(0)=</m></cell>
@@ -1021,10 +1020,10 @@
                   <cell><m>6k_3</m></cell>
                 </row>
                 <row>
-                  <cell></cell>
-                  <cell></cell>
-                  <cell></cell>
-                  <cell></cell>
+                  <cell/>
+                  <cell/>
+                  <cell/>
+                  <cell/>
                 </row>
                 <row>
                   <cell halign="right"><m>f(0)=</m></cell>
