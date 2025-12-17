@@ -1,0 +1,137 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="A" from="18" to="22" step="2"/>
+  <selectFromSequence name="B" from="4" to="6" step="1"/>
+  <selectFromSequence name="k" from="0.1" to="0.3" step="0.1"/>  
+  <selectFromSequence name="m" from="24" to="36" step="6"/>  
+  <number name="d">$m/6</number>
+  <number name="D">9*$m/6</number>
+
+  <piecewiseFunction name="c" symbolic="false" styleNumber="1">
+    <function domain="(-infinity,$m)">$A-$B*e^(-$k*x)</function>
+    <function domain="[$m,infinity)">$A*e^(-$k/3*(x-$m))</function>
+  </piecewiseFunction>
+
+  
+  <function name="v">1/$a * (x-$a)^2 - $a/2</function> 
+  <number name="L9">$d * ($$c(0) + $$c($d) + $$c(2*$d) + $$c(3*$d) + $$c(4*$d) + $$c(5*$d) + $$c(6*$d) + $$c(7*$d) + $$c(8*$d))</number>
+  
+  <number name="R5">$d * ($$v($d) + $$v(2*$d) + $$v(3*$d) + $$v(4*$d) + $$v(5*$d))</number>
+
+</setup>
+<!--
+<graph xmin="-5" xmax="$m+20" ymin="-2" ymax="24">
+  $c
+</graph>
+-->
+  <p>
+    A person's rate of burning calories during a <m>$D</m>-minute workout is given the function <m>c(t)</m> whose output is measured in calories per minute at time <m>t</m> in minutes.  The following table shows some of the values of <m>c(t)</m>.
+  </p>
+
+      <tabular bottom="minor" top="minor">
+        <row bottom="minor" halign="center">
+          <cell><m>t</m></cell>
+          <cell><m><number displayDecimals="2">0</number></m></cell>
+          <cell><m><number displayDecimals="2">$d</number></m></cell>
+          <cell><m><number displayDecimals="2">2*$d</number></m></cell>
+          <cell><m><number displayDecimals="2">3*$d</number></m></cell> 
+          <cell><m><number displayDecimals="2">4*$d</number></m></cell>  
+        </row>
+        <row halign="center">
+          <cell><m>v(t)</m></cell>
+          <cell><m><number displayDecimals="2">$$c(0)</number></m></cell>
+          <cell><m><number displayDecimals="2">$$c($d)</number></m></cell>
+          <cell><m><number displayDecimals="2">$$c(2*$d)</number></m></cell>
+          <cell><m><number displayDecimals="2">$$c(3*$d)</number></m></cell>
+          <cell><m><number displayDecimals="2">$$c(4*$d)</number></m></cell>
+        </row>
+      </tabular>
+
+      <tabular bottom="minor" top="minor">
+        <row bottom="minor" halign="center">
+          <cell><m>t</m></cell>
+          <cell><m><number displayDecimals="2">5*$d</number></m></cell>
+          <cell><m><number displayDecimals="2">6*$d</number></m></cell>
+          <cell><m><number displayDecimals="2">7*$d</number></m></cell>
+          <cell><m><number displayDecimals="2">8*$d</number></m></cell>  
+          <cell><m><number displayDecimals="2">9*$d</number></m></cell>  
+        </row>
+        <row halign="center">
+          <cell><m>v(t)</m></cell>
+          <cell><m><number displayDecimals="2">$$c(5*$d)</number></m></cell>
+          <cell><m><number displayDecimals="2">$$c(6*$d)</number></m></cell>
+          <cell><m><number displayDecimals="2">$$c(7*$d)</number></m></cell>
+          <cell><m><number displayDecimals="2">$$c(8*$d)</number></m></cell>
+          <cell><m><number displayDecimals="2">$$c(9*$d)</number></m></cell>
+        </row>
+      </tabular>
+
+<p>
+  Our goal is to estimate and interpret the value of 
+  <me>
+    \int_0^{$D} c(t) \, dt
+  </me>
+</p>  
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Use a left Riemann sum with <m>9</m> subintervals to estimate the value of <m>\int_0^{$D} c(t) \, dt</m>. 
+      </p>
+      <p>
+        <m>\int_0^{$D} c(t) \, dt \approx L_9 = </m><answer allowedErrorInNumbers="0.05" allowedErrorIsAbsolute> $L9</answer>
+      </p>
+    </li>     
+    <li>
+      <p>
+        Complete the following sentence to explain the meaning of the definite integral.
+      </p>  
+      <p>
+        Since the units on <m>c(t)</m> are <choiceInput inline name="c1">
+          <choice>?</choice>
+          <choice>minutes</choice>
+          <choice>calories</choice>
+          <choice>calories per minute</choice>
+          <choice>minutes per calorie</choice>
+        </choiceInput>, and the units on <m>\Delta t</m> are <choiceInput inline name="c2">
+          <choice>?</choice>
+          <choice>minutes</choice>
+          <choice>calories</choice>
+          <choice>calories per minute</choice>
+          <choice>minutes per calorie</choice>
+        </choiceInput>, it follows that the units on definite integral <m>\int_0^{$D} c(t) \, dt</m> are <choiceInput inline name="c3">
+          <choice>?</choice>
+          <choice>minutes</choice>
+          <choice>calories</choice>
+          <choice>calories per minute</choice>
+          <choice>minutes per calorie</choice>
+        </choiceInput>, and hence the Riemann sum's value estimates <choiceInput inline name="c4">
+          <choice>?</choice>
+          <choice>the total time the workout took</choice>
+          <choice>the average calories burned per minute in the workout</choice>
+          <choice>the total calories burned during the workout</choice>
+        </choiceInput>.
+      </p>  
+      <p>
+          <answer><award><when>
+            $c1.selectedIndices=4 and $c2.selectedIndices=2 and $c3.selectedIndices=3 and
+            $c4.selectedIndices=4 
+          </when></award></answer>
+      </p>
+    </li>  
+  </ol>  
+</p>

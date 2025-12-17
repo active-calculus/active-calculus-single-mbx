@@ -1,0 +1,66 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="k" from="8" to="10" step="1"/>
+  <selectFromSequence name="pm" from="-1" to="1" step="2"/>
+  <selectFromSequence name="b" from="0" to="2" step="2"/>
+  <math name="c" simplify>$pm*$k</math>
+  <function name="f">$c*e^(-x/4)*sin(pi/2*x)</function>
+  <function name="F">-4*$c/(1+4*pi^2)*e^(-x/4)*(sin(pi/2*x)+2*pi*cos(pi/2*x))</function>
+  <math name="A1"><round numDecimals="2">abs($$F(2)-$$F(0))</round></math>
+  <math name="A2"><round numDecimals="2">abs($$F(4)-$$F(2))</round></math>
+  <math name="A3"><round numDecimals="2">abs($$F(6)-$$F(4))</round></math>
+</setup>
+
+<p>
+  Consider the function <m>f(x)</m> whose graph is pictured below, and let <m>A_1</m> be the area the function bounds along with the <m>x</m>-axis on the interval <m>[0,2]</m>.  Similarly, let <m>A_2</m> be the area the function bounds on the interval <m>[2,4]</m> and <m>A_3</m> be the area the function bounds on the interval <m>[4,6]</m>.
+</p>
+
+<graph size="small" xmin="-1" xmax="7" ymin="-10" ymax="10" showNavigation="false" fixAxes="true">
+  $f
+  <label anchor="(3,$$f(3) - $pm)"><m>f(x)</m></label>
+  <regionBetweenCurveXAxis function="$f" boundaryValues="0 2" styleNumber="3"/>
+  <regionBetweenCurveXAxis function="$f" boundaryValues="2 4" styleNumber="4"/>
+  <regionBetweenCurveXAxis function="$f" boundaryValues="4 6" styleNumber="5"/>
+</graph>    
+
+<p>
+  Suppose we know that <m>A_1 = $A1</m>, <m>A_2 = $A2</m>, and <m>A_3 = $A3</m>.  Use properties of the definite integral to determine each of the following quantities.
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        <m>\displaystyle \int_2^4 f(x) \, dx = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$F(4)-$$F(2)</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        <m>\displaystyle \int_$b^{<math simplify>$b+4</math>} f(x) \, dx = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$F($b+4)-$$F($b)</answer>
+      </p>
+    </li>  
+    <li>
+      <p>
+        <m>\displaystyle \int_0^6 f(x) \, dx = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$F(6)-$$F(0)</answer>
+      </p>
+    </li>   
+    <li>
+      <p>
+        <m>\displaystyle \int_0^6 |f(x)| \, dx = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$A1+$A2+$A3</answer>
+      </p>
+    </li>    
+  </ol>
+</p>
