@@ -1,0 +1,165 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+
+  <selectFromSequence name="a" from="16" to="32" step="8"/> 
+  <selectFromSequence name="b" from="30" to="40" step="5"/>  
+  <math name="c" simplify>$b/$a^2</math>
+  <math name="dx" simplify>$a/4</math>
+
+  <function name="v">$c*($a-x)^2</function> 
+  
+  <math name="L4">$dx * ($$v(0) + $$v($dx) + $$v(2*$dx) + $$v(3*$dx))</math>
+  <math name="R4">$dx * ($$v($dx) + $$v(2*$dx) + $$v(3*$dx) + $$v(4*$dx))</math>
+  <math name="T4">($L4 + $R4)/2</math>
+  <math name="M4">$dx * ($$v($a+$dx/2) + $$v($a+3*$dx/2) + $$v($a+5*$dx/2) + $$v($a+7*$dx/2))</math>
+  <math name="S8">(2*$M4 + $T4)/3</math>
+
+</setup>
+
+  <p>
+    Let <m>r(t)</m> represent the rate at which water is draining from a large tank (measured in liters per minute) at time <m>t</m> in minutes.  The following table shows some of the values of <m>v(t)</m>.
+  </p>
+
+      <tabular bottom="minor" top="minor">
+        <row bottom="minor" halign="center">
+          <cell><m>t</m></cell>
+          <cell><m>0</m></cell>
+          <cell><m><math simplify>$dx/2</math></m></cell>
+          <cell><m><math simplify>2*$dx/2</math></m></cell>
+          <cell><m><math simplify>3*$dx/2</math></m></cell> 
+          <cell><m><math simplify>4*$dx/2</math></m></cell>   
+        </row>
+        <row halign="center">
+          <cell><m>r(t)</m></cell>
+          <cell><m><number displayDecimals="2">$$v(0)</number></m></cell>
+          <cell><m><number displayDecimals="2">$$v($dx/2)</number></m></cell>
+          <cell><m><number displayDecimals="2">$$v(2*$dx/2)</number></m></cell>
+          <cell><m><number displayDecimals="2">$$v(3*$dx/2)</number></m></cell>
+          <cell><m><number displayDecimals="2">$$v(4*$dx/2)</number></m></cell>
+        </row>
+      </tabular>
+
+      <tabular bottom="minor" top="minor">
+        <row bottom="minor" halign="center">
+          <cell><m>t</m></cell>
+          <cell><m><math simplify>5*$dx/2</math></m></cell> 
+          <cell><m><math simplify>6*$dx/2</math></m></cell>   
+          <cell><m><math simplify>7*$dx/2</math></m></cell> 
+          <cell><m><math simplify>8*$dx/2</math></m></cell>  
+          <cell><m><math simplify>9*$dx/2</math></m></cell>  
+        </row>
+        <row halign="center">
+          <cell><m>r(t)</m></cell>
+          <cell><m><number displayDecimals="2">$$v(5*$dx/2)</number></m></cell>
+          <cell><m><number displayDecimals="2">$$v(6*$dx/2)</number></m></cell>
+          <cell><m><number displayDecimals="2">$$v(7*$dx/2)</number></m></cell>
+          <cell><m><number displayDecimals="2">$$v(8*$dx/2)</number></m></cell>
+          <cell><m><math simplify>0</math></m></cell>  
+        </row>
+      </tabular>
+
+<p>
+  We are going to use various Riemann sums with <m><math simplify>4</math></m> subintervals to generate the Simpson's Rule estimate for
+  <me>
+    \int_{0}^{$a} r(t) \, dt
+  </me>
+</p>  
+
+<p>
+  <ol marker="a.">
+    <li>
+
+      <p>
+        For this data, fill in the following blanks to identify the values of <m>\Delta t</m> and <m>t_i</m> for <m>i = 0</m> to <m>i = 4</m>.
+      </p>
+      <p>
+        <m>\Delta t = </m><answer>$dx</answer>
+      </p>
+      <p>
+        <m>t_0 = </m><answer>0</answer>, <m>t_1 = </m><answer>$dx</answer>, <m>t_2 = </m><answer>2*$dx</answer>, 
+      </p>
+      <p>
+        <m>t_3 = </m><answer>3*$dx</answer>, <m>t_4 = </m><answer>4*$dx</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Compute the left and right Riemann sums on <m>[0,$a]</m> with <m>4</m> subintervals, as well as the Trapezoid Rule for <m>4</m> subintervals. 
+      </p>
+      <p>
+        <m>L_4 = </m><answer allowedErrorInNumbers="0.2" allowedErrorIsAbsolute> $L4</answer>
+      </p>
+      <p>
+        <m>R_4 = </m><answer allowedErrorInNumbers="0.2" allowedErrorIsAbsolute> $R4</answer>
+      </p>
+      <p>
+        <m>T_4 = </m><answer allowedErrorInNumbers="0.2" allowedErrorIsAbsolute> $T4</answer>
+      </p>
+    </li> 
+    <li>
+      <p>
+        Find the value of the midpoint Riemann sum on <m>[0,$a]</m> with <m>4</m> subintervals.  
+      </p>
+      <p>
+        <m>M_4 = </m><answer allowedErrorInNumbers="0.2" allowedErrorIsAbsolute> $M4</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Finally, determine the value of the Simpson's Rule estimate for <m>\int_{0}^{$a} r(t) \, dt</m> with <m>8</m> subintervals.  
+      </p>
+      <p>
+        <m>S_8 = </m><answer name="enteredS8" allowedErrorInNumbers="0.2" allowedErrorIsAbsolute> $S8</answer>
+      </p>
+    </li> 
+
+    <li>
+      <p>
+        Complete the following sentences to explain the meaning of the estimate you found for <m>\int_{0}^{$a} r(t) \, dt</m>.
+      </p>  
+      <p>
+        Since the units on <m>r(t)</m> are <choiceInput inline name="c1">
+          <choice>?</choice>
+          <choice>liters</choice>
+          <choice>liters per minute</choice>
+          <choice>minutes</choice>
+        </choiceInput> and the units on <m>\Delta t</m> are <choiceInput inline name="c2">
+          <choice>?</choice>
+          <choice>liters</choice>
+          <choice>liters per minute</choice>
+          <choice>minutes</choice>
+        </choiceInput>, when we compute a product such as <m>r(t_2) \cdot \Delta t</m> in a Riemann sum, the units on <m>r(t_2) \cdot \Delta t</m> are
+        <choiceInput inline name="c3">
+          <choice>?</choice>
+          <choice>liters</choice>
+          <choice>liters per minute</choice>
+          <choice>minutes</choice>
+        </choiceInput>.  This means that <m>\int_{0}^{$a} r(t) \, dt \approx</m><mathInput disabled>$enteredS8</mathInput> estimates the <choiceInput inline name="c4">
+          <choice>?</choice>
+          <choice>total water (in liters) that drained from the tank on <m>[0, <math simplify>$a</math>]</m></choice>
+          <choice>total time (in minutes) it took the tank to drain <math simplify>$a</math> liters</choice>
+          <choice>average rate (in liters per minute) the tank is draining on <m>[0, <math simplify>$a</math></m></choice>
+        </choiceInput>.
+      </p>  
+      <p>
+        <answer><award><when>
+          $c1.selectedIndices=3 and $c2.selectedIndices=4 and $c3.selectedIndices=2 and $c4.selectedIndices=2
+        </when></award></answer>
+      </p>
+    </li> 
+
+  </ol>  
+</p>

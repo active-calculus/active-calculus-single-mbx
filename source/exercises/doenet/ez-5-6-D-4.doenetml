@@ -1,0 +1,112 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+ 
+<setup>
+  <selectFromSequence name="k" from="-2" to="2" step="4"/>  
+  <selectFromSequence name="a" from="-1" to="2" step="1"/>  
+  <selectFromSequence name="dx" from="0.5" to="0.75" step="0.25"/> 
+ 
+  <number name="n">4</number>
+  <math name="b" simplify>$a + 4*$dx</math>
+
+  <function name="f">3+$k*e^(-0.5*x)</function>
+  <function name="F">3*x+$k*e^(-0.5*x)</function>
+
+  <math name="L4" simplify displayDecimals="2">$dx * ($$f($a) + $$f($a+$dx) + $$f($a+2*$dx) + $$f($a+3*$dx) )</math>
+  <math name="R4" simplify displayDecimals="2">$dx * ($$f($a+$dx) + $$f($a+2*$dx) + $$f($a+3*$dx) + $$f($a+4*$dx) )</math>
+  <math name="M4" simplify displayDecimals="2">$dx * ($$f($a+$dx/2) + $$f($a+3*$dx/2) + $$f($a+5*$dx/2) + $$f($a+7*$dx/2))</math>
+  <math name="T4" simplify>($L4 + $R4)/2</math>
+  <math name="S8" simplify>(2*$M4 + $T4)/3</math>
+  <math simplify name="exactInt">$$F($b) - $$F($a) </math>
+
+</setup>
+<!--
+<graph xmin="-5" xmax="$m+20" ymin="-2" ymax="24">
+  $c
+</graph>
+-->
+  <p>
+    Suppose we are interested in the definite integral 
+    <me>
+      \int_{$a}^{$b} f(x) \, dx
+    </me>
+    for which we know the following information:
+  </p> 
+  <p>
+    <ul>
+      <li>
+        <p>
+          On <m>[$a,$b]</m>, <m>f</m> is either always increasing or always decreasing, and also either always concave up or always concave down.
+        </p>
+      </li>
+      <li>
+        <p>
+          The left, right, and midpoint Riemann sums with <m>4</m> subintervals are <me>L_4 = $L4, \ \ R_4 = $R4, \ \ \text{and} \ \ M_4 = $M4.</me>
+        </p>
+      </li>
+    </ul>
+  </p>
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Determine the estimates <m>T_4</m> and <m>S_{8}</m> for the given definite integral.  
+      </p>
+      <p>
+        <m> \int_{$a}^{$b} f(x) \, dx \approx T_4 = </m><answer allowedErrorInNumbers="0.02" allowedErrorIsAbsolute> $T4</answer>
+      </p>
+      <p>
+        <m> \int_{$a}^{$b} f(x) \, dx \approx S_8 = </m><answer allowedErrorInNumbers="0.02" allowedErrorIsAbsolute> $S8</answer>
+      </p>
+    </li>  
+    <li>
+      <p>
+        Is <m>f</m> increasing or decreasing on <m>[$a,$b]</m>?  concave up or concave down?  Complete the following sentence to justify your conclusions. 
+      </p>
+      <p>
+        The function <m>f</m> is <choiceInput name="c1" inline>
+          <choice>?</choice>
+          <choice>always increasing</choice>
+          <choice>always decreasing</choice>
+        </choiceInput> because <choiceInput name="c2" inline>
+          <choice>?</choice>
+          <choice>the Left Riemann sum is less than the Right Riemann sum</choice>
+          <choice>the Right Riemann sum is less than the Left Riemann sum</choice>
+          <choice>the Trapezoid rule is less than the Midpoint rule</choice>
+          <choice>the Midpoint rule is less than the Trapezoid rule</choice>
+        </choiceInput>, and <m>f</m> is <choiceInput name="c3" inline>
+          <choice>?</choice>
+          <choice>always concave up</choice>
+          <choice>always concave down</choice>
+        </choiceInput> because <choiceInput name="c4" inline>
+          <choice>?</choice>
+          <choice>the Left Riemann sum is less than the Right Riemann sum</choice>
+          <choice>the Right Riemann sum is less than the Left Riemann sum</choice>
+          <choice>the Trapezoid rule is less than the Midpoint rule</choice>
+          <choice>the Midpoint rule is less than the Trapezoid rule</choice>
+        </choiceInput>.
+      </p>
+      <p>
+        <answer><award><when>
+          ($k > 0 and $c1.selectedIndices=3 and $c2.selectedIndices=3 and $c3.selectedIndices=2 and $c4.selectedIndices=5)
+          or
+          (0 > $k  and $c1.selectedIndices=2 and $c2.selectedIndices=2 and $c3.selectedIndices=3 and $c4.selectedIndices=4)
+        </when></award></answer>
+      </p>
+          
+          
+    </li>
+
+  </ol>  
+</p>

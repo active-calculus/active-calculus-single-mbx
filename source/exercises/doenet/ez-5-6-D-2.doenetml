@@ -1,0 +1,105 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+ 
+<setup>
+  <selectFromSequence name="k" from="9" to="12" step="1"/>  
+  <selectFromSequence name="b" from="1" to="2" step="1" exclude="$k"/>  
+
+  <math name="a" simplify>0</math>
+  <number name="n">4</number>
+  <math name="dx" simplify>$b/$n</math>
+
+  <function name="f">$k - 1/2*x^3</function>
+  <function name="F">$k*x - 1/8*x^4</function>
+
+  <math name="L4">$dx * ($$f($a) + $$f($a+$dx) + $$f($a+2*$dx) + $$f($a+3*$dx))</math>
+  <math name="R4">$dx * ($$f($a+$dx) + $$f($a+2*$dx) + $$f($a+3*$dx) + $$f($a+4*$dx))</math>
+  <math name="M4">$dx * ($$f($a+$dx/2) + $$f($a+3*$dx/2) + $$f($a+5*$dx/2) + $$f($a+7*$dx/2))</math>
+  <math name="T4">($L4 + $R4)/2</math>
+  <math name="S8">(2*$M4 + $T4)/3</math>
+  <math simplify name="exactInt">$$F($b) - $$F($a) </math>
+
+</setup>
+<!--
+<graph xmin="-5" xmax="$m+20" ymin="-2" ymax="24">
+  $c
+</graph>
+-->
+  <p>
+    Consider the definite integral 
+    <me>
+      \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx
+    </me>
+  </p> 
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Determine the estimates <m>L_4</m>, <m>R_4</m>, <m>T_4</m>, and <m>M_4</m> for the given definite integral.  (Remember that you can use the Riemann sum calculator provided in the Preview Activity for this section to find <m>L_4</m>, <m>R_4</m>, and <m>M_4</m>. Report your results to an accuracy of at least <m>0.000001</m>.)
+      </p>
+      <p>
+        <m> \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx \approx L_4 = </m><answer allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute> $L4</answer>
+      </p>
+      <p>
+        <m> \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx \approx R_4 = </m><answer allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute> $R4</answer>
+      </p>
+      <p>
+        <m> \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx \approx M_4 = </m><answer allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute> $M4</answer>
+      </p>
+      <p>
+        <m> \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx \approx T_4 = </m><answer allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute> $T4</answer>
+      </p>
+    </li>  
+    <li>
+      <p>
+        Find the estimate that results from using Simpson's Rule with <m>8</m> subintervals.
+      </p>
+      <p>
+        <m> \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx \approx S_{8} = </m><answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute> $S8</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Use the Fundamental Theorem of Calculus to evaluate the integral 
+        <me>
+          \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx 
+        </me>
+        exactly; report your result below and choose the option that fits with your conclusion.
+      </p>
+      <p>
+        <m>\int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx = </m><answer>$exactInt</answer>
+      </p>
+      <p>
+        Simpson's Rule therefore <choiceInput name="c1" inline>
+          <choice>?</choice>
+          <choice>underestimates</choice>
+          <choice>overestimates</choice>
+          <choice>exactly matches</choice>
+        </choiceInput> the value of the definite integral.
+      </p>
+      <p>
+        <answer><award><when>
+          ($c1.selectedIndices=2 and $exactInt>$S8)
+          or
+          ($c1.selectedIndices=3 and $S8>$exactInt)
+          or
+          ($c1.selectedIndices=4 and $S8=$exactInt)
+        </when></award></answer>
+      </p>
+          
+    </li>
+
+  </ol>  
+</p>
