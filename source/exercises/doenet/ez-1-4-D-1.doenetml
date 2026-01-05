@@ -15,28 +15,31 @@
 <setup>
 
   <selectFromSequence name="a" from="-0.2" to="0.2" step="0.1" exclude="0"/>
-  <selectFromSequence name="h" from="-3" to="3" exclude="0"/>
-  <selectFromSequence name="k" from="-3" to="3" exclude="0"/>
+  <selectFromSequence name="h" from="-2" to="2" exclude="0"/>
+  <selectFromSequence name="k" from="-2" to="2" exclude="0"/>
+
+  <math name="signa"><sign>$a</sign></math>
+  <math name="yPoint" simplify>$k - $signa*2</math>
   
   <function name="f">$a*(x-$h)^2+$k</function>
 
   <derivative name="df">$f</derivative>
   
-  <function name="fp" through="$A $B $C" styleNumber="2" />  
+  <function name="fp" through="$A $B $C" styleNumber="3" />  
   
-  <point name="A" styleNumber="2">(-5,-6)
+  <point name="A" styleNumber="2">(-3,4)
     <constraints name="c1">
       <attractTo>$df</attractTo>
     </constraints>
   </point> 
 
-  <point name="B" styleNumber="2">(-1,-6)
+  <point name="B" styleNumber="2">(0,4)
     <constraints name="c2">
       <attractTo>$df</attractTo>
     </constraints>
   </point> 
 
-  <point name="C" styleNumber="2">(3,-6)
+  <point name="C" styleNumber="2">(3,4)
     <constraints name="c3">
       <attractTo>$df</attractTo>
     </constraints>
@@ -44,10 +47,10 @@
 </setup>
   
 <p>
-  Sketch an approximate graph of the derivative of the given quadratic function <m>f(x)</m>.  To do so, drag the red points so that they lie on the graph of <m>f'(x)</m> in such a way that it makes the red curve become the graph of <m>f'(x)</m>.  
+  Sketch an approximate graph of the derivative of the given quadratic function <m>f(x)</m>.  To do so, drag the red points so that they lie on the graph of <m>f'(x)</m> in such a way that it makes the orange curve be the graph of <m>f'(x)</m>. 
 </p>
 
-<graph grid="true">  
+<graph grid="true" fixAxes="true" showNavigation="false" fixAxes="true" xMin="-6" xMax="6" yMin="-6" yMax="6">  
   $f
     <label anchor="(2,$$f(2)-0.5)"><m>f</m></label>
   $A
@@ -57,9 +60,9 @@
 </graph> 
 
 <p>
-  One way to do this is to identify any <m>x</m>-values where <m>f'(x) \approx 0</m>, and then identify any <m>x</m>-values where <m>f'(x) \approx \pm 1</m> and drag the red points to the corresponding locations.
+  One way to accomplish this is to identify any <m>x</m>-values where <m>f'(x) \approx 0</m>, and then identify any <m>x</m>-values where <m>f'(x) \approx \pm 1</m> and drag the red points to the corresponding locations.
 </p>
 
 <answer><award><when>
-   $c1.constraintUsed and $c2.constraintUsed and $c3.constraintUsed
+   $A.constraintUsed and $B.constraintUsed and $C.constraintUsed
 </when></award></answer>
