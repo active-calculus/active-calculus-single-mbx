@@ -41,7 +41,7 @@
     <point styleNumber="2" coords="(1.5,-1)" name="fa" showCoordsWhenDragging="false" draggable="$showLabels" labelPosition="lowerLeft"> 
       <constraints>
         <constrainToGrid dx="0.2" dy="0.2" />
-        <attractTo><point>(1,$$f(1))</point></attractTo>
+        <attractTo><point>(1,$$f(1))</point><point>(3.5,$$f(3.5))</point></attractTo>
       </constraints>
       <label name="fa1" hide="$showLabels"> (a,f(a)) </label>
     </point>
@@ -49,7 +49,7 @@
     <point styleNumber="2" coords="(2.5,-1)" name="faph" showCoordsWhenDragging="false" draggable="$showLabels" labelPosition="lowerRight"> 
       <constraints>
         <constrainToGrid dx="0.2" dy="0.2" />
-        <attractTo><point>(3.5,$$f(3.5))</point></attractTo>
+        <attractTo><point>(1,$$f(1))</point><point>(3.5,$$f(3.5))</point></attractTo>
       </constraints>
       <label name="fa2" hide="$showLabels"> (a+h,f(a+h)) </label>
     </point>
@@ -85,9 +85,12 @@
           <m>(a,f(a))</m> and <m>(a+h, f(a+h))</m> on the graph of <m>f</m>.
         </p>
         <!--Answer block-->
-        <answer name="doneDragging" matchPartial="true">
+        <answer name="doneDragging" matchPartial="true" unorderedCompare>
           <award>
-            <when> <boolean>$fa.coords= (1,$$f(1))</boolean> and <boolean>$faph.coords= (3.5 ,$$f(3.5))</boolean> </when>
+            <when>
+              <pointList>$fa $faph</pointList>
+              = <pointList>(1,$$f(1)) (3.5 ,$$f(3.5))</pointList>
+            </when>
           </award>
         </answer>
 
