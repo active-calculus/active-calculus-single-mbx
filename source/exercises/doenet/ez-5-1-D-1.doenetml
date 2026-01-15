@@ -95,6 +95,25 @@
         <case condition="$m1=2"> 2.5*$m3 </case>
       </conditionalContent> </case>
   </conditionalContent>
+
+  <boolean name="F1wrong">
+    $F1 != $m3 and $ans.responseHasBeenSubmitted
+  </boolean>
+  <boolean name="F2wrong">
+    $F2 != $group7 and $ans.responseHasBeenSubmitted
+  </boolean>
+  <boolean name="F3wrong">
+    $F3 != $group8 and $ans.responseHasBeenSubmitted
+  </boolean>
+  <boolean name="F4wrong">
+    $F4 != $group9 and $ans.responseHasBeenSubmitted
+  </boolean>
+  <boolean name="F5wrong">
+    $F5 != $group10 and $ans.responseHasBeenSubmitted
+  </boolean>
+  <boolean name="F6wrong">
+    $F6 != $group11 and $ans.responseHasBeenSubmitted
+  </boolean>
   
 </setup>  
 
@@ -106,7 +125,7 @@
   
 <p> Let <m>F</m> be the function that satisfies <m>F'(x)=f(x)</m> and <m>F(0)=0</m>.  Determine <m>F(b)</m> for <m>b=1, 2, 3, 4, 5, 6</m>, and enter these values in the following table. </p>
   <table suppressTableNameInTitle="true"> 
-    <tabular left="minor" right="minor" top="minor" bottom="minor" vAlign="middle" hAlign="center">
+    <tabular left="minor" right="minor" top="minor" bottom="minor" vAlign="middle" hAlign="center" >
      <row>
       <cell><m>b</m></cell>
       <cell>1</cell>
@@ -118,12 +137,28 @@
      </row>
      <row>
       <cell><m>F(b)</m></cell>
-      <cell><answer>$m3</answer></cell>
-      <cell><answer>$group7</answer></cell>
-      <cell><answer>$group8</answer></cell>
-      <cell><answer>$group9</answer></cell>  
-      <cell><answer>$group10</answer></cell>  
-      <cell><answer>$group11</answer></cell>  
+      <cell><mathInput name="F1"/></cell>
+      <cell><mathInput name="F2"/></cell>
+      <cell><mathInput name="F3"/></cell>
+      <cell><mathInput name="F4"/></cell>
+      <cell><mathInput name="F5"/></cell>
+      <cell><mathInput name="F6"/></cell>  
      </row>
     </tabular>
   </table> 
+  <answer name="ans">
+    <award matchPartial>
+      <when> $F1 = $m3 and $F2 = $group7 and $F3 = $group8 and $F4 = $group9 and $F5 = $group10 and $F6 = $group11 </when>
+    </award>
+  </answer>
+<feedback condition="$F1wrong or $F2wrong or $F3wrong or $F4wrong or $F5wrong or $F6wrong">
+    Your answer(s) are incorrect for:
+    <asList>
+      <conditionalContent condition="$F1wrong"><m>F(1)</m></conditionalContent>
+      <conditionalContent condition="$F2wrong"><m>F(2)</m></conditionalContent>
+      <conditionalContent condition="$F3wrong"><m>F(3)</m></conditionalContent>
+      <conditionalContent condition="$F4wrong"><m>F(4)</m></conditionalContent>
+      <conditionalContent condition="$F5wrong"><m>F(5)</m></conditionalContent>
+      <conditionalContent condition="$F6wrong"><m>F(6)</m></conditionalContent>
+    </asList>
+  </feedback>
