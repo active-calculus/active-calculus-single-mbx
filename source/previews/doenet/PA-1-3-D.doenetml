@@ -22,14 +22,14 @@
   <setup>
     <function name="f"> 0.1*x*(x+2)*(x-3) + 2</function>
     <boolean name="showLabels">True</boolean>
-    <boolean name="showTriangle">False</boolean>     
+    <boolean name="showTriangle">False</boolean>
   </setup>
 
   <!--interactive answers-->
   <!--Note that the interactivity is built into the graph/figure for the problem-->
-  <graph name="g" showNavigation="false" xmin="-1" xmax="5" ymin="-2" ymax="6" displayXAxis="false" displayYAxis="false" showBorder="false" fixAxes="true"> 
+  <graph name="g" showNavigation="false" xmin="-1" xmax="5" ymin="-2" ymax="6" displayXAxis="false" displayYAxis="false" showBorder="false" fixAxes="true">
     $f
-    <label anchor="(4,$$f(4)-0.5)"><m>f</m></label>
+    <label anchor="(4,$$f(4)-0.5)" fixed><m>f</m></label>
     <lineSegment name="tickmarka" endpoints="(1,0.12) (1,-0.12)" styleNumber="5" draggable="false" endpointsDraggable="false" />
     <label anchor="(1,-0.5)" draggable="false"><m>a</m></label>
     <lineSegment name="tickmarkaph" endpoints="(3.5,0.12) (3.5,-0.12)" styleNumber="5" draggable="false" endpointsDraggable="false" />
@@ -37,16 +37,16 @@
     <line name="xAxis" draggable="false" styleNumber="5">y = 0</line>
     <lineSegment name="yAxis" draggable="false" styleNumber="5" endpoints="(0,6) (0,-1)" />
 
-    
-    <point styleNumber="2" coords="(1.5,-1)" name="fa" showCoordsWhenDragging="false" draggable="$showLabels" labelPosition="lowerLeft"> 
+
+    <point styleNumber="2" coords="(1.5,-1)" name="fa" showCoordsWhenDragging="false" draggable="$showLabels" labelPosition="lowerLeft">
       <constraints>
         <constrainToGrid dx="0.2" dy="0.2" />
         <attractTo><point>(1,$$f(1))</point><point>(3.5,$$f(3.5))</point></attractTo>
       </constraints>
       <label name="fa1" hide="$showLabels"> (a,f(a)) </label>
     </point>
-    
-    <point styleNumber="2" coords="(2.5,-1)" name="faph" showCoordsWhenDragging="false" draggable="$showLabels" labelPosition="lowerRight"> 
+
+    <point styleNumber="2" coords="(2.5,-1)" name="faph" showCoordsWhenDragging="false" draggable="$showLabels" labelPosition="lowerRight">
       <constraints>
         <constrainToGrid dx="0.2" dy="0.2" />
         <attractTo><point>(1,$$f(1))</point><point>(3.5,$$f(3.5))</point></attractTo>
@@ -56,18 +56,18 @@
 
 
       <group name="Triangle" hide="not $showTriangle">
-        <point name="P1" showCoordsWhenDragging="false"> (-0.75,-0.5) 
+        <point name="P1" showCoordsWhenDragging="false"> (-0.75,-0.5)
           <constraints name="c1">
             <attractTo threshold="0.25"> $fa $faph <point>(3.5,$$f(1))</point> <point>(1,$$f(3.5))</point> </attractTo>
           </constraints>
         </point>
-        <point name="P2" showCoordsWhenDragging="false"> (-0.5,-0.1) 
+        <point name="P2" showCoordsWhenDragging="false"> (-0.5,-0.1)
           <constraints name="c2">
             <attractTo threshold="0.25">  $fa $faph <point>(3.5,$$f(1))</point> <point>(1,$$f(3.5))</point> </attractTo>
           </constraints>
         </point>
-        <point name="P3" showCoordsWhenDragging="false"> (-0.25, -0.5) 
-          <constraints name="c3"> 
+        <point name="P3" showCoordsWhenDragging="false"> (-0.25, -0.5)
+          <constraints name="c3">
             <attractTo threshold="0.25">  $fa $faph <point>(3.5,$$f(1))</point> <point>(1,$$f(3.5))</point> </attractTo>
           </constraints>
         </point>
@@ -75,13 +75,13 @@
     </group>
   </graph>
   <!--End of interactive answers-->
-    
-   
+
+
   <p>
     <ol marker="a.">
       <li>
         <p>
-          Drag the two red points so that they are located at 
+          Drag the two red points so that they are located at
           <m>(a,f(a))</m> and <m>(a+h, f(a+h))</m> on the graph of <m>f</m>.
         </p>
         <!--Answer block-->
@@ -94,14 +94,14 @@
           </award>
         </answer>
 
-        <triggerSet triggerWhen="$doneDragging.creditAchieved=1"> 
+        <triggerSet triggerWhen="$doneDragging.creditAchieved=1">
           <updateValue type="boolean" target="$showTriangle" newValue="True" />
           <updateValue type="boolean"  target="$showLabels" newValue="False" />
-        </triggerSet>  
+        </triggerSet>
 
         <!--End Answer block-->
       </li>
-      
+
 
       <li>
         <p>
@@ -109,14 +109,14 @@
           <m>(a,f(a))</m> to <m>(a+h,f(a+h))</m>.
         </p>
 
-  <!--Interactive Answers-->   
+  <!--Interactive Answers-->
         <setup>
           <point name="V1">(1,$$f(1))</point>
           <point name="V2">(3.5,$$f(3.5))</point>
           <point name="V3">(3.5,$$f(1))</point>
           <point name="V4">(1,$$f(3.5))</point>
           <boolean name="triangleLower"><mathList unordered>$T1.vertices</mathList>=<mathList unordered>$V1 $V2 $V3</mathList> </boolean>
-          <boolean name="triangleUpper"><mathList unordered>$T1.vertices</mathList>=<mathList unordered>$V1 $V2 $V4</mathList> </boolean>          
+          <boolean name="triangleUpper"><mathList unordered>$T1.vertices</mathList>=<mathList unordered>$V1 $V2 $V4</mathList> </boolean>
         </setup>
 
         <!--
@@ -126,25 +126,25 @@
         -->
 
         <!--
-        
+
         <answer name="triangle" matchPartial="true">
           <award>
-            <when> <boolean><mathList unordered>$T1.vertices</mathList>=<mathList unordered>$V1 $V2 $V3</mathList></boolean> or <boolean><mathList unordered>$T1.vertices</mathList>=<mathList unordered>$V1 $V4 $V3</mathList></boolean></when> 
-          </award> 
+            <when> <boolean><mathList unordered>$T1.vertices</mathList>=<mathList unordered>$V1 $V2 $V3</mathList></boolean> or <boolean><mathList unordered>$T1.vertices</mathList>=<mathList unordered>$V1 $V4 $V3</mathList></boolean></when>
+          </award>
 
 <p>lower triangular match = $triangleLower
 </p>
 
 <p>upper triangular match = $triangleUpper
 </p>
-        --> 
-        
+        -->
+
         <answer name="triangleRight">
           <award>
-            <when> $triangleLower or $triangleUpper</when> 
-          </award> 
-        </answer>     
-          
+            <when> $triangleLower or $triangleUpper</when>
+          </award>
+        </answer>
+
 
         <p>
           What are the lengths of the respective legs of this triangle (in either order)?</p>
@@ -156,7 +156,7 @@
           </award>
         </answer>
 </p>
- 
+
 <!--End of interactive answers-->
       </li>
 
@@ -171,30 +171,30 @@
           <award>
             <when>$slope = <math>(f(a+h)-f(a))/h</math></when>
           </award>
-        </answer>        
+        </answer>
       <!-- End of interactive answers-->
 
       </li>
       <li>
         <p>
           In the algebraic expression for <m>AV_{[a,a+h]} </m>, what does <m>h</m> represent?
-        </p>  
+        </p>
         <answer>
           <choiceInput inline="true">
             <choice>the change in <m>f</m> on the interval <m>[a, a+h]</m></choice>
             <choice>the height of the function at <m>x = a</m></choice>
             <choice credit="1">the change in <m>x</m> on the interval <m>[a, a+h]</m></choice>
             <choice>the average rate of change of the function on the interval <m>[a, a+h]</m></choice>
-          </choiceInput></answer> 
-        
-      </li> 
-      
+          </choiceInput></answer>
+
+      </li>
+
       <li>
         <p>
           By choosing appropriate words from the drop-down menus, complete the following sentence to explain how the average rate of change of the function on a given interval and the slope of a related line are connected.
         </p>
         <p>
-          Since the average rate of change of a function <m>f</m> on an interval <m>[a,a + h]</m> is defined to be 
+          Since the average rate of change of a function <m>f</m> on an interval <m>[a,a + h]</m> is defined to be
           <choiceInput name="r1" inline>
             <choice>?</choice>
             <choice><m>\Delta x</m></choice>
@@ -202,7 +202,7 @@
             <choice><m>\frac{\Delta x}{\Delta f}</m></choice>
             <choice><m>\frac{\Delta f}{\Delta x}</m></choice>
           </choiceInput>
-          on the interval, which is measured by the quantity 
+          on the interval, which is measured by the quantity
           <choiceInput name="r2" inline>
             <choice>?</choice>
             <choice><m>f(a+h)-f(a)</m></choice>
@@ -213,17 +213,17 @@
           <choiceInput name="r3" inline>
             <choice>?</choice>
             <choice>the distance</choice>
-            <choice>the slope of the line</choice>            
+            <choice>the slope of the line</choice>
             <choice>the vertical change</choice>
             <choice>the horizontal change</choice>
           </choiceInput>
-          between the points <m>(a,f(a))</m> and <m>(a+h,f(a+h))</m>.            
+          between the points <m>(a,f(a))</m> and <m>(a+h,f(a+h))</m>.
         </p>
         <p>
           <answer><award><when>
-            $r1.selectedIndices=5 and $r2.selectedIndices=4 and $r3.selectedIndices=3  
+            $r1.selectedIndices=5 and $r2.selectedIndices=4 and $r3.selectedIndices=3
           </when></award></answer>
         </p>
-      </li> 
+      </li>
     </ol>
   </p>

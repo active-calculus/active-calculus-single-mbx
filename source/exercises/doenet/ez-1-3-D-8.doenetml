@@ -15,26 +15,26 @@
 <setup>
 
   <selectFromSequence name="a" from="8" to="12" step="1" />
-  <selectFromSequence name="b" from="0.25" to="0.35" step="0.25" />  
-  <selectFromSequence name="c" from="4" to="6" step="1" /> 
+  <selectFromSequence name="b" from="0.25" to="0.35" step="0.25" />
+  <selectFromSequence name="c" from="4" to="6" step="1" />
 
   <function name="f" symbolic="false">1/(1+$a*e^(-$b*x))</function>
   <function name="g" symbolic="false">1/(1+$a*e^(-$b*x))-$$f(0)</function>
-  <derivative name="gP" symbolic="false">$g</derivative>  
-  <function name="L" symbolic="false" styleNumber="3" labelPosition="lowerRight">$$gP($c)(x-$c) + $$g($c)</function>  
-    <point name="A" styleNumber="2" coords="($c,$$g($c))" showCoordsWhenDragging="false" draggable="false" labelPosition="lowerRight"> 
+  <derivative name="gP" symbolic="false">$g</derivative>
+  <function name="L" symbolic="false" styleNumber="3" labelPosition="lowerRight">$$gP($c)(x-$c) + $$g($c)</function>
+    <point name="A" styleNumber="2" coords="($c,$$g($c))" showCoordsWhenDragging="false" draggable="false" labelPosition="lowerRight">
       <label><m>A = $A.coords</m></label>
-    </point> 
-    <point name="B" styleNumber="2" coords="($c+5,$$L($c+5))" showCoordsWhenDragging="false" draggable="false" labelPosition="lowerRight"> 
+    </point>
+    <point name="B" styleNumber="2" coords="($c+5,$$L($c+5))" showCoordsWhenDragging="false" draggable="false" labelPosition="lowerRight">
       <label><m>B = $B.coords</m></label>
-    </point>   
-    <point name="C" styleNumber="2" coords="($c+5,$$g($c+5))" showCoordsWhenDragging="false" draggable="false" labelPosition="upperLeft"> 
-      <label><m>C = $C.coords</m></label>      
+    </point>
+    <point name="C" styleNumber="2" coords="($c+5,$$g($c+5))" showCoordsWhenDragging="false" draggable="false" labelPosition="upperLeft">
+      <label><m>C = $C.coords</m></label>
     </point>
 
   <label name="gLabel" anchor="(14,$$g(14)+0.06)"><m>y = s(t)</m></label>
   <label name="LLabel" anchor="(16,$$L(16)-0.08)"><m>y = L(t)</m></label>
-  
+
 </setup>
 
   <p>Let <m>s</m> be the distance a person has walked along a straight path, in miles, as a function of time <m>t</m> in minutes.  The function <m>s(t)</m> is given by the graph below and <m>L</m> its tangent line at the point <m>A</m>.</p>
@@ -42,12 +42,12 @@
 <!--  <p><m>a = $a</m>, <m>b = $b</m>, and <m>c = $c</m>, so <m>g(x) = $$g(x)</m> and <m>L(x) = $$L(x)</m>, plus <m>A = $A</m> and <m>B = $B</m></p> -->
 
     <figure>
-      <graph xmin="-1" xmax="21" ymin="-0.25" ymax="1.25" size="medium" grid="true" showNavigation="false" displayXAxis="true" displayYAxis="true"> $g $A $L $B $C $gLabel $LLabel
+      <graph xmin="-1" xmax="21" ymin="-0.25" ymax="1.25" size="medium" grid="true" fixAxes="true" showNavigation="false" displayXAxis="true" displayYAxis="true"> $g $A $L $B $C $gLabel $LLabel
       </graph>
       <caption>Plot of <m>y = g(x)</m> and its tangent line at the point <m>A</m></caption>
     </figure>
 
-  <p>Use the given information to complete the following sentences. </p>  
+  <p>Use the given information to complete the following sentences. </p>
   <p>At the instant when <m>a = $c</m> minutes, we know that the person has walked<answer><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> $$g($c)
         </award></answer> miles and that their instantaneous velocity at that moment is <answer><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> $$gP($c)
         </award></answer> miles per minute.
@@ -57,4 +57,3 @@
           </award></answer> miles, and their average velocity was <answer><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> ($$g($c+5)-$$g($c))/5
           </award></answer> miles per minute.
   </p>
-   
