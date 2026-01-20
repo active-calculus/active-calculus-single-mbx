@@ -24,66 +24,101 @@
   <function name="uSubs" variable="u">1/$k*e^u</function>
   <function name="antiDu" variable="u">1/$k*e^u</function>
 
-  <boolean name="uSubsFound">$uSubs = $uSubsChoice</boolean>
-   
+  <boolean name="uSubsFound">$usubsequals.creditAchieved</boolean>
+  <boolean name="choseduordx1">$duordx1.selectedIndices=2 or $duordx1.selectedIndices=3</boolean>
+  <boolean name="choseduordx2">$duordx2.selectedIndices=2 or $duordx2.selectedIndices=3</boolean>
+   <boolean name="choseduordx3">$duordx3.selectedIndices=2 or $duordx3.selectedIndices=3</boolean>
+
 </setup>
 
 <p>
-  Consider the indefinite integral <m>\int $c \, dx</m>.  
+  Consider the indefinite integral <m>\int $c \, dx</m>.
 </p>
-<p>  
+<p>
   In the integrand, we notice that a composite function is present, and this suggests that we try to use <m>u</m>-substitution as a way to evaluate the integral by finding an antiderivative.  In what follows, we work to identify key algebraic structure that makes <m>u</m>-substitution possible.
-</p>  
+</p>
 
 <p>
-  The composite function that is present in the integrand is 
+  The composite function that is present in the integrand is
 </p>
-<p>  
-  <answer><choiceInput> 
+<p>
+  <answer><choiceInput>
     <choice><m>\cos(x)</m></choice>
     <choice><m>$k \sin(x)</m></choice>
     <choice credit="1"><m>e^{$k \sin(x)}</m></choice>
   </choiceInput></answer>
-</p>  
+</p>
 
 <p>
-  Next, we choose the inner function in the composite function to be <m>u</m>.  Fill in the following blanks to state both <m>u</m> and <m>du</m> as functions of <m>x</m>.
-</p>  
+  Next, we choose the inner function in the composite function to be <m>u</m>.  Fill in the following blank to state <m>u</m> as a function of <m>x</m> and then calculate <m>du</m>. Note that the dropdown is part of your answer.
+</p>
 <p>
   <m>u = </m><mathInput name="uChoice"/> <answer><award><when>$uChoice = $u</when></award></answer>
-</p> 
+</p>
 <p>
-  <m>du = </m><mathInput name="duChoice"/><m>dx</m> <answer><award><when>$duChoice = $du</when></award></answer>
-</p>  
+  <m>du = </m><mathInput name="duChoice"/><choiceInput name="duordx1" inline>
+            <choice>?</choice>
+            <choice><m>dx</m></choice>
+            <choice><m>du</m></choice>
+          </choiceInput>
+    <m> =</m> <mathInput disabled> $duChoice $duordx1 </mathInput>
+  <answer name="duequals"><award><when>$duChoice = $du and $duordx1.selectedIndices=2</when></award></answer>
+</p>
+<feedback condition = "$duChoice != $du and $duChoice.responseHasBeenSubmitted">Take the derivative of what <m>u</m> equals.</feedback>
+<feedback condition = "$duequals.justSubmitted and !$choseduordx1">You must pick <m>du</m> or <m>dx</m>.</feedback>
+<feedback condition = "$duChoice = $du and $duordx1.selectedIndices!=2 and $duequals.justSubmitted and $choseduordx1">You still need to correctly pick <m>du</m> or <m>dx</m>.</feedback>
+<feedback condition = "$duChoice != $du and $duordx1.selectedIndices=2 and $duequals.justSubmitted">You have the incorrect derivative, but <m>dx</m> is correct.</feedback>
 
 <p>
-  Now, notice that <m>du</m> is almost present in the integrand of 
+  Now, notice that <m>du</m> is almost present in the integrand of
   <me>
     \int $c \, dx,
   </me>
-  up to a constant.  To see how to make the substitution from the variable <m>x</m> to the variable <m>u</m>, we next write <m>\cos(x) \, dx</m> in terms of <m>u</m>, <m>du</m>, and a constant.  Solve your most recent correct equation above for <m>\cos(x) \, dx</m> and fill in the blank accordingly below
-</p>  
-<p>
-  <m>\cos(x) \, dx = </m><mathInput name="cosxdxChoice"/><m>du</m> <answer><award><when>$cosxdxChoice = 1/$k</when></award></answer>
+  up to a constant.  To see how to make the substitution from the variable <m>x</m> to the variable <m>u</m>, we next write <m>\cos(x) \, dx</m> in terms of <m>u</m>, <m>du</m>, and a constant.  Solve <conditionalContent condition="$duequals.creditAchieved"><me>du=$duChoice $duordx1</me></conditionalContent> for <m>\cos(x) \, dx</m> and complete the answer below. Note that the dropdown is part of your answer.
+
 </p>
+<p>
+  <m>\cos(x) \, dx = </m><mathInput name="cosxdxChoice"/><choiceInput name="duordx2" inline>
+            <choice>?</choice>
+            <choice><m>dx</m></choice>
+            <choice><m>du</m></choice>
+          </choiceInput>
+    <m> =</m> <mathInput disabled> $cosxdxChoice $duordx2 </mathInput>
+  <answer name="cosxdxequals"><award><when>$cosxdxChoice = 1/$k and $duordx2.selectedIndices=3</when></award></answer>
+</p>
+<feedback condition = "$cosxdxequals.justSubmitted and !$choseduordx2">You must pick <m>du</m> or <m>dx</m>.</feedback>
+<feedback condition = "$cosxdxChoice = 1/$k and $duordx2.selectedIndices!=3 and $cosxdxequals.justSubmitted and $choseduordx2">You still need to correctly pick <m>du</m> or <m>dx</m>.</feedback>
+<feedback condition = "$cosxdxChoice != 1/$k and $duordx2.selectedIndices=3 and $cosxdxequals.justSubmitted">You have the incorrect formula, but <m>du</m> is correct.</feedback>
 
 <p>
-    Now we can apply <m>u</m>-substitution to convert the original integral in <m>x</m> to a simpler integral in <m>u</m>.  Using our work above, we have 
+    Now we can apply <m>u</m>-substitution to convert the original integral in <m>x</m> to a simpler integral in <m>u</m>.  Using our work above, we have
 </p>
 <p>
-  <m>\int $c \, dx = \int </m> <mathInput name="uSubsChoice"/> <m>\, du</m> <answer><award><when> $uSubs = $uSubsChoice</when></award></answer>
-</p>  
+  <m>\displaystyle \int $c \, dx = \int </m> <mathInput name="uSubsChoice"/><choiceInput name="duordx3" inline>
+            <choice>?</choice>
+            <choice><m>dx</m></choice>
+            <choice><m>du</m></choice>
+          </choiceInput>
+    <m> = \displaystyle \int</m><mathInput disabled> $uSubsChoice $duordx3 </mathInput>
+  <answer name="usubsequals"><award><when> $uSubs = $uSubsChoice and $duordx3.selectedIndices=3</when></award></answer>
+</p>
+<feedback condition = "$usubsequals.justSubmitted and !$choseduordx3">You must pick <m>du</m> or <m>dx</m>.</feedback>
+<feedback condition = "$uSubs = $uSubsChoice and $duordx3.selectedIndices!=3 and $usubsequals.justSubmitted and $choseduordx3">You still need to correctly pick <m>du</m> or <m>dx</m>.</feedback>
+<feedback condition = "$uSubs != $uSubsChoice and $duordx3.selectedIndices=3 and $usubsequals.justSubmitted">You have the incorrect formula, but <m>du</m> is correct.</feedback>
 
 <p hide="$uSubsFound">
   (<em>A final sequence of prompts will appear here after you correctly execute the <m>u</m>-substitution in the last step above.</em>)
 </p>
-<p hide="not $uSubsFound">
+<conditionalContent condition="$uSubsFound">
   <p>
-    Finally, we evaluate the simpler integral in <m>u</m> and then substitute back to write our final result in terms of <m>x</m>.
+    Finally, we evaluate the simpler integral in <m>u</m>
   </p>
   <p>
-  <m>\int $c \, dx = \int $uSubsChoice \, du =</m> <mathInput name="antiDuChoice"/> <m>+ C</m> <answer simplifyOnCompare><award><when> $antiDu = $antiDuChoice</when></award></answer> <m> = </m> <mathInput name="antiDxChoice"/> <m>+ C</m> <answer simplifyOnCompare><award><when> $antiDx = $antiDxChoice</when></award></answer>. 
-</p>  
+  <m>\displaystyle \int $c \, dx = \int $uSubsChoice \, du =</m> <mathInput name="antiDuChoice"/> <m>+ C</m> <answer simplifyOnCompare><award><when> $antiDu = $antiDuChoice</when></award></answer>
+  </p>
+  <p>
+     and then substitute back to write our final result in terms of <m>x</m>.<m> \displaystyle \int $c \, dx = </m> <mathInput name="antiDxChoice"/> <m>+ C</m> <answer simplifyOnCompare><award><when> $antiDx = $antiDxChoice</when></award></answer>.
+  </p>
+</conditionalContent>
 
-  
-</p>  
+

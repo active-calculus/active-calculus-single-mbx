@@ -14,14 +14,19 @@
 
 <setup>
 
-  <selectFromSequence name="k" from="1.5" to="2.5" step="0.25" numToSelect="1"/>  
-  <selectFromSequence name="m" from="2" to="5" step="1" numToSelect="1"/>    
-  <selectFromSequence name="n" from="3" to="7" step="1" numToSelect="1"/> 
-  
+  <selectFromSequence name="k" from="1.5" to="2.5" step="0.25" numToSelect="1"/>
+  <selectFromSequence name="m" from="2" to="5" step="1" numToSelect="1"/>
+  <selectFromSequence name="n" from="3" to="7" step="1" numToSelect="1"/>
+
   <math name="z" simplify>$n-2</math>
 
   <function name="s" symbolic="true">$m * $k^x</function>
-  <derivative name="sP" symbolic="true">$s</derivative>  
+  <derivative name="sP" symbolic="true">$s</derivative>
+
+  <number displayDecimals="5" name="forans">($$s($z+0.001)-$$s($z))/0.001</number>
+  <number displayDecimals="5" name="backans">($$s($z)-$$s($z-0.001))/0.001</number>
+  <number displayDecimals="5" name="instans">($$s($z+0.001)-$$s($z-0.001))/0.002</number>
+
 
 
 </setup>
@@ -33,22 +38,29 @@
 <ol marker="a.">
   <li>
     <p>Use the formula for <m>s(t)</m> to state an algebraic expression for <m>AV_{[$z,$z+h]}</m>.</p>
-    <p><m>AV_{[$z,$z+h]} = </m><answer><award>($$s($z+h)-$$s($z))/h </award></answer> </p>
+    <p><m>AV_{[$z,$z+h]} = </m><answer><mathInput prefill=" / "/><award>($$s($z+h)-$$s($z))/h </award></answer> </p>
   </li>
   <li>
-    <p>Use your expression from (a) to determine the following two average velocities.  Report your answer to at least 4 decimal places of accuracy. </p>
+    <p>Use your expression from (a) to determine the following two average velocities.  Enter your answer as a decimal, and use at least 4 digits after the decimal point. </p>
       <ul>
         <li>
-          <p><m>AV_{<math displayDigits="5" simplify>[$z,$z+0.001]</math>} = </m><answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><award> ($$s($z+0.001)-$$s($z))/0.001</award></answer></p>
-        </li>  
-        <li>
-          <p><m>AV_{<math displayDigits="5" simplify>[$z-0.001,$z]</math>} = </m><answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><award> ($$s($z)-$$s($z-0.001))/0.001</award></answer></p>
+          <p><m>AV_{<math displayDecimals="3" simplify>[$z,$z+0.001]</math>} = </m><answer name="forresp" symbolicEquality allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><award>$forans</award></answer></p>
+          <feedback condition="$forresp.creditAchieved!=1 and |$forresp - $forans|<0.0001">Make sure you're entering your answer as a decimal, not an expression.</feedback>
+          <feedback condition="$forresp.creditAchieved!=1 and |$forresp - $forans| < 0.01 and |$forresp - $forans|>0.0001">Your answer is close.  Make sure your answer uses at least 4 digits after the decimal point, and if it already does, try using more places after the decimal point throughout your calculations.</feedback>
         </li>
-      </ul>    
+        <li>
+          <p><m>AV_{<math displayDecimals="3" simplify>[$z-0.001,$z]</math>} = </m><answer name="backresp" symbolicEquality allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><award> $backans</award></answer>
+          </p>
+          <feedback condition="$backresp.creditAchieved!=1 and |$backresp - $backans|<0.0001">Make sure you're entering your answer as a decimal, not an expression.</feedback>
+          <feedback condition="$backresp.creditAchieved!=1 and |$backresp - $backans| < 0.01 and |$backresp - $backans|>0.0001">Your answer is close.  Make sure your answer uses at least 4 digits after the decimal point, and if it already does, try using more places after the decimal point throughout your calculations.</feedback>
+        </li>
+      </ul>
   </li>
   <li>
         <p>Based on the average velocities in (b), a good estimate of the object's instantaneous velocity at <m>t = <math simplify>$z</math></m> is </p>
-        <p><m> \displaystyle IV_{t=$z} = \lim_{h \to 0} AV_{[$z,$z+h]} \approx </m><answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><award> ($$s($z+0.001)-$$s($z-0.001))/0.002</award></answer>.  </p>
+        <p><m> \displaystyle IV_{t=$z} = \lim_{h \to 0} AV_{[$z,$z+h]} \approx </m><answer name="instresp" symbolicEquality allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><award> $instans</award></answer>.  </p>
+    <feedback condition="$instresp.creditAchieved!=1 and |$instresp - $instans|<0.0001">Make sure you're entering your answer as a decimal, not an expression.</feedback>
+    <feedback condition="$instresp.creditAchieved!=1 and |$instresp - $instans| < 0.01 and |$instresp - $instans|>0.0001">Your answer is close.  Make sure your answer uses at least 4 digits after the decimal point, and if it already does, try using more places after the decimal point throughout your calculations.</feedback>
   </li>
 </ol>
     
