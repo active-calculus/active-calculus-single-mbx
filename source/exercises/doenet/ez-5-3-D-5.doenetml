@@ -18,47 +18,68 @@
   <selectFromSequence name = "b" from = "3" to = "8" step = "1" exclude="$k $a ($k-1) ($k+1)"/>
 
   <function name="c">$a*sec($k*x)*tan($k*x)/(sec($k*x))^$b</function>
-  <function name="antiDx">$a/$k*1/($b-1)*1/((sec($k*x))^($b-1))</function>
+  <function name="antiDx">-$a/$k*1/($b-1)*1/((sec($k*x))^($b-1))</function>
 
   <function name="u">sec($k*x)</function>
   <function name="du">$k*sec($k*x)*tan($k*x)</function>
 
   <function name="uSubs" variable="u">$a/$k*1/u^$b</function>
-  <function name="antiDu" variable="u">$a/$k*1/($b-1)*1/u^($b-1)</function>
+  <function name="antiDu" variable="u">-$a/$k*1/($b-1)*1/u^($b-1)</function>
 
-  <boolean name="uSubsFound">$uSubs = $uSubsChoice</boolean>
-   
+  <!-- <boolean name="uSubsFound">$uSubs = $uSubsChoice</boolean> -->
+  <boolean name="uSubsFound">$usubsequals.creditAchieved</boolean>
+  <boolean name="choseduordx1">$duordx1.selectedIndices=2 or $duordx1.selectedIndices=3</boolean>
+  <boolean name="choseduordx2">$duordx2.selectedIndices=2 or $duordx2.selectedIndices=3</boolean>
+  <boolean name="choseduordx3">$duordx3.selectedIndices=2 or $duordx3.selectedIndices=3</boolean>
+
 </setup>
 
 <p>
-  Consider the indefinite integral <m>\int \frac{$a \sec($k x) \tan($k x)}{\sec^$b($k x)} \, dx</m>, which can be evaluated using <m>u</m>-substitution.  
+  Consider the indefinite integral <m>\displaystyle\int \frac{$a \sec($k x) \tan($k x)}{\sec^$b($k x)} \, dx</m>, which can be evaluated using <m>u</m>-substitution.
 </p>
-<p>  
-  Find the most complicated composite function present in the integrand and choose the corresponding inner function for <m>u</m>, and then find <m>du</m> as well.  Fill in the following blanks to state both <m>u</m> and <m>du</m> as functions of <m>x</m>.
-</p>  
-
+<p>
+  Find the most complicated composite function present in the integrand and choose the corresponding inner function for <m>u</m>, and then find <m>du</m> as well.  Fill in the following blank to state <m>u</m> as a function of <m>x</m> and then calculate <m>du</m>. Note that the dropdown is part of your answer.
+</p>
 <p>
   <m>u = </m><mathInput name="uChoice"/> <answer><award><when>$uChoice = $u</when></award></answer>
-</p> 
-<p>
-  <m>du = </m><mathInput name="duChoice"/><m>dx</m> <answer><award><when>$duChoice = $du</when></award></answer>
-</p>  
-
-<p>
-    Now we can apply <m>u</m>-substitution to convert the original integral in <m>x</m> to a simpler integral in <m>u</m>.  Using our work above, we have 
 </p>
 <p>
-  <m>\int \frac{$a \sec($k x) \tan($k x)}{\sec^$b($k x)} \, dx = \int </m> <mathInput name="uSubsChoice"/> <m>\, du</m> <answer><award><when> $uSubs = $uSubsChoice</when></award></answer>
-</p>  
+  <m>du = </m><mathInput name="duChoice"/><choiceInput name="duordx1" inline>
+            <choice>?</choice>
+            <choice><m>dx</m></choice>
+            <choice><m>du</m></choice>
+          </choiceInput>
+    <m> =</m> <mathInput disabled> $duChoice $duordx1 </mathInput>
+  <answer name="duequals"><award><when>$duChoice = $du and $duordx1.selectedIndices=2</when></award></answer>
+</p>
+<feedback condition = "$duequals.justSubmitted and !$choseduordx1">You must pick <m>du</m> or <m>dx</m>.</feedback>
+<feedback condition = "$duChoice = $du and $duordx1.selectedIndices!=2 and $duequals.justSubmitted and $choseduordx1">You still need to correctly pick <m>du</m> or <m>dx</m>.</feedback>
+<feedback condition = "$duChoice != $du and $duordx1.selectedIndices=2 and $duequals.justSubmitted">You have the incorrect derivative, but <m>dx</m> is correct.</feedback>
+
+<p>
+    Now we can apply <m>u</m>-substitution to convert the original integral in <m>x</m> to a simpler integral in <m>u</m>.  Using our work above, we have
+</p>
+<p>
+  <m>\displaystyle \int \frac{$a \sec($k x) \tan($k x)}{\sec^$b($k x)} \, dx = \int </m> <mathInput name="uSubsChoice"/><choiceInput name="duordx3" inline>
+            <choice>?</choice>
+            <choice><m>dx</m></choice>
+            <choice><m>du</m></choice>
+          </choiceInput>
+    <m> = \displaystyle \int</m><mathInput disabled> $uSubsChoice $duordx3 </mathInput>
+  <answer name="usubsequals"><award><when> $uSubs = $uSubsChoice and $duordx3.selectedIndices=3</when></award></answer>
+</p>
+<feedback condition = "$usubsequals.justSubmitted and !$choseduordx3">You must pick <m>du</m> or <m>dx</m>.</feedback>
+<feedback condition = "$uSubs = $uSubsChoice and $duordx3.selectedIndices!=3 and $usubsequals.justSubmitted and $choseduordx3">You still need to correctly pick <m>du</m> or <m>dx</m>.</feedback>
+<feedback condition = "$uSubs != $uSubsChoice and $duordx3.selectedIndices=3 and $usubsequals.justSubmitted">You have the incorrect formula, but <m>du</m> is correct.</feedback>
 
 <p hide="$uSubsFound">
   (<em>A final sequence of prompts will appear here after you correctly execute the <m>u</m>-substitution in the last step above.</em>)
 </p>
-<p hide="not $uSubsFound">
+<div hide="not $uSubsFound">
   <p>
     Finally, we evaluate the simpler integral in <m>u</m> and then substitute back to write our final result in terms of <m>x</m>.
   </p>
   <p>
-    <m>\int \frac{$a \sec($k x) \tan($k x)}{\sec^$b($k x)} \, dx = \int $uSubsChoice \, du</m> = <mathInput name="antiDuChoice"/> <m>+ C</m> <answer simplifyOnCompare><award><when> $antiDu = $antiDuChoice</when></award></answer> <m> = </m> <mathInput name="antiDxChoice"/> <m>+ C</m> <answer simplifyOnCompare><award><when> $antiDx = $antiDxChoice</when></award></answer>.  
-  </p>  
-</p>  
+    <m>\displaystyle \int \frac{$a \sec($k x) \tan($k x)}{\sec^$b($k x)} \, dx = \int $uSubsChoice \, du</m> = <mathInput name="antiDuChoice"/> <m>+ C</m> <answer simplifyOnCompare><award><when> $antiDu = $antiDuChoice</when></award></answer> <m> = </m> <mathInput name="antiDxChoice"/> <m>+ C</m> <answer simplifyOnCompare><award><when> $antiDx = $antiDxChoice</when></award></answer>.
+  </p>
+</div>  
