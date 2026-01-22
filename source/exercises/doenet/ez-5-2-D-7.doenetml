@@ -17,19 +17,19 @@
   <number name="b">-2*$m</number>
   <selectFromSequence name="c" from="3" to="4" step="1"/>
   <selectFromSequence name="p" from="-1" to="1" step="1"/>
-  
-  <piecewiseFunction symbolic="false" name="f"> 
-    <function domain="(-1,$c)"><math simplify>$m*x + $b</math></function>
+
+  <piecewiseFunction symbolic="false" name="f">
+    <function domain="[-1,$c)"><math simplify>$m*x + $b</math></function>
     <function domain="[$c, 7)"><math simplify>-$m*(x-$c) + ($m*$c+$b)</math></function>
   </piecewiseFunction>
- 
-  <piecewiseFunction symbolic="false" name="A"> 
-    <function domain="(-1,$c)"><math simplify>$m/2*x^2 + $b*x - $m/2*$p^2 - $b*$p</math></function>
-    <function domain="[$c, 7)"><math simplify>-$m/2*(x-$c)^2 + ($m*$c+$b)*x - $m/2*$c^2  - $m/2*$p^2 - $b*$p</math> </function>
-  </piecewiseFunction>  
 
- 
-  
+  <piecewiseFunction symbolic="false" name="A">
+    <function domain="[-1,$c)"><math simplify>$m/2*x^2 + $b*x - $m/2*$p^2 - $b*$p</math></function>
+    <function domain="[$c, 7)"><math simplify>-$m/2*(x-$c)^2 + ($m*$c+$b)*x - $m/2*$c^2  - $m/2*$p^2 - $b*$p</math> </function>
+  </piecewiseFunction>
+
+
+
   <number name="z1">2</number>
   <number name="z2">2*$c + $b/$m</number>
   <mathList name="crNums">$z1 $z2</mathList>
@@ -42,57 +42,57 @@
 <graph xmin="-1" xmax="7" ymin="-4" ymax="4" grid="1 1" fixAxes="true" showNavigation="false">
   $f
   <label anchor="($c,$m*$c+$b + 0.3*($m*$c+$b))"><m>f</m></label>
-</graph>  
+</graph>
 
 
 <p>
   Let <m>A(x) = \int_{$p}^x f(t) \, dt</m>, where <m>f</m> is the piecewise linear function whose graph is given.
-</p>   
+</p>
 
 <p>
   <ol marker="a.">
     <li>
       <p>
         Determine each of the following values.
-      </p>  
+      </p>
       <p>
         <m>A($p) = </m><answer allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$$A($p)</answer>
       </p>
       <p>
         <m>A'(<math simplify>$p</math>) = </m><answer allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$$f($p)</answer>
-      </p>      
+      </p>
       <p>
         <m>A'(<math simplify>$p+1</math>) = </m><answer allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$$f($p+1)</answer>
       </p>
       <p>
         <m>A'(<math simplify>$p+3</math>) = </m><answer allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$$f($p+3)</answer>
-      </p>      
+      </p>
     </li>
     <li>
       <p>
-        At what values of <m>x</m> within <m>-1 \lt x \lt 7</m> does <m>A</m> have a critical number?  If there is more than one, separate them with commas; if there are none, enter <em>none</em>.  
+        At what values of <m>x</m> within <m>-1 \lt x \lt 7</m> does <m>A</m> have a critical number?  If there is more than one, separate them with commas; if there are none, enter <em>none</em>.
       </p>
       <p>
-        <m>A</m> has critical numbers at <m>x = </m> <mathInput name="crNumEntered"/> 
+        <m>A</m> has critical numbers at <m>x = </m> <mathInput name="crNumEntered"/>
         <answer unorderedCompare>
-          <award><when> 
-            $crNumEntered = $crNums 
+          <award><when>
+            $crNumEntered = $crNums
           </when></award>
         </answer>
-      </p>  
+      </p>
     </li>
     <li>
       <p>
-        There is one value of <m>x</m> within <m>-1 \lt x \lt 7</m> where <m>A</m> has a local maximum.  What is that <m>x</m>-value and what is the corresponding value of <m>A</m>?  
+        There is one value of <m>x</m> within <m>-1 \lt x \lt 7</m> where <m>A</m> has a local maximum.  What is that <m>x</m>-value and what is the corresponding value of <m>A</m>?
       </p>
-      
+
       <p>
-        <m>A</m> has a local maximum at <m>x = </m> <mathInput name="xMaxEntered"/> 
+        <m>A</m> has a local maximum at <m>x = </m> <mathInput name="xMaxEntered"/>
         <answer name="xMax">
-          <award><when> 
+          <award><when>
             ($xMaxEntered = $z1 and $$f(1.5)>0) or ($xMaxEntered = $z2 and $$f(2.5)>0)
-          </when></award> 
-        </answer> and the corresponding value of the function <m>A</m> is 
+          </when></award>
+        </answer> and the corresponding value of the function <m>A</m> is
         <m>A(</m><mathInput minWidth="25" disabled>
           <conditionalContent condition="$xMax.creditAchieved=1">$xMaxEntered</conditionalContent>
         </mathInput><m>) = </m><mathInput name="AMax"/>
@@ -104,16 +104,16 @@
       </p>
 
       <p>
-        There is one value of <m>x</m> within <m>-1 \lt x \lt 7</m> where <m>A</m> has a local minimum.  What is that <m>x</m>-value and what is the corresponding value of <m>A</m>?  
+        There is one value of <m>x</m> within <m>-1 \lt x \lt 7</m> where <m>A</m> has a local minimum.  What is that <m>x</m>-value and what is the corresponding value of <m>A</m>?
       </p>
-      
+
       <p>
-        <m>A</m> has a local minimum at <m>x = </m> <mathInput name="xMinEntered"/> 
+        <m>A</m> has a local minimum at <m>x = </m> <mathInput name="xMinEntered"/>
         <answer name="xMin">
-          <award><when> 
+          <award><when>
             ($xMinEntered = $z1 and $$f(2.5)>0) or ($xMinEntered = $z2 and $$f(1.5)>0)
-          </when></award> 
-        </answer> and the corresponding value of the function <m>A</m> is 
+          </when></award>
+        </answer> and the corresponding value of the function <m>A</m> is
         <m>A(</m><mathInput minWidth="25" disabled>
           <conditionalContent condition="$xMin.creditAchieved=1">$xMinEntered</conditionalContent>
         </mathInput><m>) = </m><mathInput name="AMin"/>
@@ -123,10 +123,10 @@
           </when></award>
         </answer>
       </p>
-      
-    </li>    
+
+    </li>
 
 
-  </ol>  
+  </ol>
 
-</p>  
+</p>
