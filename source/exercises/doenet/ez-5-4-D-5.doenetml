@@ -21,7 +21,7 @@
   <function name="w">x^($n)</function>
   <function name="dw">$n*x^($n-1)</function>
   <function name="wInt" variable="w">1/$n*w*e^(-$k*w)</function>
-   
+
   <function name="u" variable="w">1/$n*w</function>
   <function name="du" variable="w">1/$n</function>
 
@@ -32,87 +32,98 @@
   <function name="vdu"  variable="w">$v*$du</function>
 
   <boolean name="correctwSubsFound">$wIntEntered = $wInt</boolean>
-  <boolean name="correctuvSubsFound">($uChoice=$u) and ($duChoice=$du) and ($dvChoice=$dv) and ($vChoice=$v)</boolean>
+  <boolean name="correctuvSubsFound">$udvChoice.creditAchieved=1 and $vduChoice.creditAchieved=1</boolean>
   <boolean name="correctSubsFound">$correctwSubsFound and $correctuvSubsFound</boolean>
 
-  <boolean name="wIBPFound">$vduChoice=$vdu</boolean>
-   
-  <function name="antiDx">1/$k*ln(abs(sin($k*x)))</function>
+  <boolean name="udvisintegrand">$uChoice*$dvChoice = $wInt</boolean>
+  <boolean name="almostu"> $uChoice = <math>w</math> </boolean>
+  <boolean name="possibleu"> $almostu or $uChoice = $u </boolean>
 
-   
+  <derivative name="derivuChoice" variable="w"> $uChoice </derivative>
+
+  <boolean name="udvanddu">$duChoice = <derivative variable="w">$uChoice</derivative> and $udvChoice.creditAchieved=1</boolean>
+  <boolean name="udvandv"><derivative variable="w">$vChoice</derivative> = $dvChoice and $udvChoice.creditAchieved=1</boolean>
+
+  <boolean name="wIBPFound">$vduChoiceinw=$vdu</boolean>
+
+
+
 </setup>
 
 <p>
-  Consider the indefinite integral 
+  Consider the indefinite integral
   <me>
     \int x^{<math simplify>2$n-1</math>} e^{-$k x^$n} \, dx.
-  </me>  
-  Initially, the integrand doesn't seem suited to integration by parts (not a product of basic functions) nor suited to integrating by substitution (there's not an obvious function-derivative pair).  However, if we rewrite <m>x^{<math simplify>2$n-1</math>}</m> in an insightful way, 
+  </me>
+  Initially, the integrand doesn't seem suited to integration by parts (not a product of basic functions) nor suited to integrating by substitution (there's not an obvious function-derivative pair).  However, if we rewrite <m>x^{<math simplify>2$n-1</math>}</m> in an insightful way,
   <me>
     x^{<math simplify>2$n-1</math>} = x^{<math simplify>$n-1</math>} \cdot x^{$n}
   </me>
   then it's possible to use a substitution followed by integration by parts to evaluate the original integral.
 </p>
-<p> 
+<p>
   For the updated integrand,
   <me>
     \int x^{<math simplify>2$n-1</math>} e^{-$k x^$n} \, dx = \int x^{<math simplify>$n-1</math>} \cdot x^{$n} e^{-$k x^$n} \, dx
   </me>
   use the substitution <m>w = x^$n</m> to find an updated integral in terms of <m>w</m> to evaluate.  Find and enter <m>dw</m> below, and then fill in the updated integral provided.
-</p>  
- 
+</p>
+
 <p>
   <m>w = x^$n</m>
-</p> 
+</p>
 <p>
   <m>dw = </m><mathInput name="dwChoice"/><m>dx</m> <answer><award><when>$dwChoice = $dw</when></award></answer>
-</p>  
+</p>
 <p>
-  <m>\int x^{<math simplify>2$n-1</math>} e^{-$k x^$n} \, dx = \int x^{<math simplify>$n-1</math>} \cdot x^{$n} e^{-$k x^$n} \, dx = \int </m><mathInput name="wIntEntered"/> <m>dw</m><answer><award><when>$wIntEntered = $wInt</when></award></answer>
+  <m>\displaystyle \int x^{<math simplify>2$n-1</math>} e^{-$k x^$n} \, dx = \int x^{<math simplify>$n-1</math>} \cdot x^{$n} e^{-$k x^$n} \, dx = \int </m><mathInput name="wIntEntered"/><m>dw</m> <answer><award><when>$wIntEntered = $wInt</when></award></answer>
 </p>
 
 <p>
   Now the most recent integral is appropriate for using Integration by Parts.  Identify <m>u</m>, <m>du</m>, <m>dv</m>, and <m>v</m>, and enter your results in the blanks provided.
-</p>  
+</p>
 
 <p>
-  <m>u = </m><mathInput name="uChoice"/> <answer><award><when>$uChoice = $u</when></award></answer>
-</p> 
+  <m>u = </m><mathInput name="uChoice"/>  <m>\qquad \qquad dv = </m><mathInput name="dvChoice"/><m>dw =</m><mathInput disabled>$dvChoice dw </mathInput>
+  <answer name="udvChoice"><award><when>$possibleu and $udvisintegrand </when></award></answer>
+    <!-- <when matchPartial>$uChoice = $u and $dvChoice = $dv</when> -->
+  <!-- This lets students pick where to put the constant multiple. -->
+</p>
+<feedback condition="!$udvisintegrand and $udvChoice.justSubmitted">You are rewriting the given integral, which means that <m>u</m> and <m>dv</m> must multiply to <m>$wInt dw</m>.
+</feedback>
+<!-- <feedback condition="$udvisintegrand and $almostu">You did rewrite the integral and this would work, but for integration by parts we recommend making any constant multiple part of <m>u</m> instead of <m>dv</m>.
+</feedback> -->
 <p>
-  <m>du = </m><mathInput name="duChoice"/><m>dw</m> <answer><award><when>$duChoice = $du</when></award></answer>
-</p>  
+  <m>du = </m><mathInput name="duChoice"/><m>dw</m>
 
+  <m>\qquad \quad v = </m><mathInput name="vChoice"/> <answer name="vduChoice"><award><when matchPartial> $udvanddu and $udvandv</when></award></answer>
+  <!-- <when matchPartial>$duChoice = $du and $vChoice = $v</when> -->
+</p>
 
-<p>
-  <m>dv = </m><mathInput name="dvChoice"/><m>dw</m> <answer><award><when>$dvChoice = $dv</when></award></answer>
-</p> 
-<p>
-  <m>v = </m><mathInput name="vChoice"/> <answer><award><when>$vChoice = $v</when></award></answer>
-</p>  
-
-<p>
   <p hide="$correctSubsFound">
     (<em>A subsequent prompt will appear here after you correctly complete some key steps above.</em>)
   </p>
-  <p hide="not $correctSubsFound">
+  <div hide="not $correctSubsFound">
     <p>
       Next, fill in the blanks in the Integration by Parts formula using the substitutions you found above.
-    </p>  
+    </p>
     <p>
-      <m>\int x^{<math simplify>2$n-1</math>} e^{-$k x^$n} \, dx = \int x^{<math simplify>$n-1</math>} \cdot x^{$n} e^{-$k x^$n} \, dx = \int \frac{1}{$n} w e^{-$k w} = </m> <mathInput name="uvChoice"/><m>- \int</m>  <mathInput name="vduChoice"/><m>dw</m> <answer><award><when>($uvChoice=$uv) and ($vduChoice=$vdu)</when></award></answer>
-    </p>    
- </p> 
-</p>
-<p>
+      <m>\displaystyle\int x^{<math simplify>2$n-1</math>} e^{-$k x^$n} \, dx = \int x^{<math simplify>$n-1</math>} \cdot x^{$n} e^{-$k x^$n} \, dx = \int \frac{1}{$n} w e^{-$k w} \, dw</m></p>
+    <p><m> \qquad \qquad \qquad = </m> <mathInput name="uvChoice"/><m>\displaystyle - \int</m>  <mathInput name="vduChoiceinw"/><m>dw</m> <answer><award><when matchPartial>($uvChoice=$uv) and ($vduChoiceinw=$vdu)</when></award></answer>
+    </p>
   <p hide="$wIBPFound">
   (<em>A final prompt will appear here after you correctly complete key preceding steps that appear first.</em>)
   </p>
-  <p hide="not $wIBPFound">
+  <div hide="not $wIBPFound">
     <p>
       Now let's put everything together to completely evaluate the original indefinite integral by evaluating the one remaining integral in <m>w</m> and then substituting back to the original variable <m>x</m>.
     </p>
     <p>
-      <m>\int x^{<math simplify>2$n-1</math>} e^{-$k x^$n} \, dx = -\frac{1}{<math simplify>($k*$n)</math>}w e^{-$k w} + \int \frac{1}{<math simplify>($k*$n)</math>} e^{-$k w} \, dw = </m> <mathInput name="finalW"/> <m>+C</m> <answer><award><when>$finalW = -1/$n*w*1/$k*e^(-$k*w) - 1/$n*1/$k^2*e^(-$k*w)</when></award></answer> <m>=</m> <mathInput name="finalX"/> <m>+C</m> <answer><award><when>$finalX = -1/$n*x^$n*1/$k*e^(-$k*x^$n) - 1/$n*1/$k^2*e^(-$k*x^$n)</when></award></answer> 
+      <m>\displaystyle\int x^{<math simplify>2$n-1</math>} e^{-$k x^$n} \, dx = -\frac{1}{<math simplify>($k*$n)</math>}w e^{-$k w} + \int \frac{1}{<math simplify>($k*$n)</math>} e^{-$k w} \, dw </m></p>
+    <p><m>\qquad \qquad \qquad = </m> <mathInput name="finalW" minWidth="150"/> <m>+C</m> <answer><award><when>$finalW = -1/$n*w*1/$k*e^(-$k*w) - 1/$n*1/$k^2*e^(-$k*w)</when></award></answer>
     </p>
-  </p>   
-</p>
+    <p>
+      <m>\qquad \qquad \qquad =</m> <mathInput name="finalX" minWidth="150"/> <m>+C</m> <answer><award><when>$finalX = -1/$n*x^$n*1/$k*e^(-$k*x^$n) - 1/$n*1/$k^2*e^(-$k*x^$n)</when></award></answer>
+    </p>
+  </div>
+  </div>

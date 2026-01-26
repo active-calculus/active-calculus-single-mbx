@@ -42,100 +42,112 @@
 
   <boolean name="correctSubs1Found">($u1v1Choice=$u1v1) and ($v1du1Choice=$v1du1)</boolean>
   <boolean name="correctSubs2Found">($u2v2Choice=$u2v2) and ($v2du2Choice=$v2du2)</boolean>
-   
+
+  <boolean name="u1dv1isintegrand">$u1Choice*$dv1Choice = $f</boolean>
+
+  <boolean name="almostu1"> $u1Choice = <math>x^2</math> </boolean>
+  <boolean name="possibleu1"> $almostu1 or $u1Choice = $u1 </boolean>
+
+  <boolean name="u1dv1anddu1">$du1Choice = <derivative>$u1Choice</derivative> and $u1dv1Choice.creditAchieved=1</boolean>
+  <boolean name="u1dv1andv1"><derivative>$v1Choice</derivative> = $dv1Choice and $u1dv1Choice.creditAchieved=1</boolean>
+
+  <math simplify name="f2">2*$a/$k*x*cos($k*x)</math>
+
+  <boolean name="u2dv2isintegrand">$u2Choice*$dv2Choice = $f2</boolean>
+
+  <boolean name="almostu2"> $u2Choice = <math>x</math> </boolean>
+  <boolean name="possibleu2"> $almostu2 or $u2Choice = $u2 </boolean>
+
+  <boolean name="u2dv2anddu2">$du2Choice = <derivative>$u2Choice</derivative> and $u2dv2Choice.creditAchieved=1</boolean>
+  <boolean name="u2dv2andv2"><derivative>$v2Choice</derivative> = $dv2Choice and $u2dv2Choice.creditAchieved=1</boolean>
+
 </setup>
 
 <p>
-  Consider the indefinite integral 
+  Consider the indefinite integral
   <me>
     \int $a x^2 \sin($k x) \, dx.
-  </me>  
-  Since the integrand is a product of basic functions, we will use Integration by Parts to evaluate the integral.  
+  </me>
+  Since the integrand is a product of basic functions, we will use Integration by Parts to evaluate the integral.
 </p>
-<p>  
+<p>
   Choose <m>u</m> and <m>dv</m> appropriately, and then find <m>du</m> and <m>v</m> as well; report all of your results in the blanks below.
-</p>  
- 
-<p>
-  <m>u = </m><mathInput name="u1Choice"/> <answer><award><when>$u1Choice = $u1</when></award></answer>
-</p> 
-<p>
-  <m>du = </m><mathInput name="du1Choice"/><m>dx</m> <answer><award><when>$du1Choice = $du1</when></award></answer>
-</p>  
+</p>
 
 <p>
-  <m>dv = </m><mathInput name="dv1Choice"/><m>dx</m> <answer><award><when>$dv1Choice = $dv1</when></award></answer>
-</p> 
+  <m>u = </m><mathInput name="u1Choice"/>  <m>\qquad \qquad dv = </m><mathInput name="dv1Choice"/><m>dx </m>
+  <answer name="u1dv1Choice"><award><when>$possibleu1 and $u1dv1isintegrand </when></award></answer>
+</p>
+<feedback condition="!$u1dv1isintegrand and $u1dv1Choice.justSubmitted">You are rewriting the given integral, which means that <m>u</m> and <m>dv</m> must multiply to <m>$f dx</m>.
+</feedback>
 <p>
-  <m>v = </m><mathInput name="v1Choice"/> <answer><award><when>$v1Choice = $v1</when></award></answer>
-</p>  
+  <m>du = </m><mathInput name="du1Choice"/><m>dx</m>
+
+  <m>\qquad \quad v = </m><mathInput name="v1Choice"/> <answer><award><when matchPartial> $u1dv1anddu1 and $u1dv1andv1</when></award></answer>
+</p>
 
 <p>
   Next, fill in the blanks in the Integration by Parts formula using the substitutions you found above.
-</p>  
+</p>
 <p>
-  <m>\int $f \, dx = </m><mathInput name="u1v1Choice"/><m>- \int</m>  <mathInput name="v1du1Choice"/><m>dx</m> <answer><award><when>($u1v1Choice=$u1v1) and ($v1du1Choice=$v1du1)</when></award></answer>
+  <m>\displaystyle\int $f \, dx = </m><mathInput name="u1v1Choice"/><m>\displaystyle- \int</m>  <mathInput name="v1du1Choice"/><m>dx</m> <answer><award matchPartial><when>($u1v1Choice=$u1v1) and ($v1du1Choice=$v1du1)</when></award></answer>
 </p>
 
 
 <p hide="$correctSubs1Found">
   (<em>Another prompt will appear here after you correctly apply the substitutions in the last step above.</em>)
 </p>
-  <p hide="not $correctSubs1Found">
+<div hide="not $correctSubs1Found">
     <p>
       At this step of our work, we have
       <me>
         \int $f \, dx = -\frac{$a}{$k}x^2 \cos($k x) + \int \frac{$a}{<math simplify>$k/2</math>} x \cos($k x) \, dx
-      </me>  
+      </me>
     </p>
   <p>
-    Here, we notice that while the remaining integral to evaluate (the rightmost integral above) is simpler than the original integral, we need to use Integration by Parts again in order to evaluate it.  We will again use <q><m>u</m></q> and <q><m>dv</m></q> to organize our process, but they will have different meaning here than in our first use of IBP above.  
+    Here, we notice that while the remaining integral to evaluate (the rightmost integral above) is simpler than the original integral, we need to use Integration by Parts again in order to evaluate it.  We will again use <q><m>u</m></q> and <q><m>dv</m></q> to organize our process, but they will have different meaning here than in our first use of IBP above.
   </p>
-  <p>  
+  <p>
     Choose <m>u</m> and <m>dv</m> appropriately for the rightmost integral above, and then find <m>du</m> and <m>v</m> as well; report all of your results in the blanks below.
-  </p>  
- 
-  <p>
-    <m>u = </m><mathInput name="u2Choice"/> <answer><award><when>$u2Choice = $u2</when></award></answer>
-  </p> 
-  <p>
-    <m>du = </m><mathInput name="du2Choice"/><m>dx</m> <answer><award><when>$du2Choice = $du2</when></award></answer>
-  </p>  
+  </p>
 
   <p>
-    <m>dv = </m><mathInput name="dv2Choice"/><m>dx</m> <answer><award><when>$dv2Choice = $dv2</when></award></answer>
-  </p> 
-  <p>
-    <m>v = </m><mathInput name="v2Choice"/> <answer><award><when>$v2Choice = $v2</when></award></answer>
-  </p> 
+  <m>u = </m><mathInput name="u2Choice"/>  <m>\qquad \qquad dv = </m><mathInput name="dv2Choice"/><m>dx </m>
+  <answer name="u2dv2Choice"><award><when>$possibleu2 and $u2dv2isintegrand </when></award></answer>
+</p>
+<feedback condition="!$u2dv2isintegrand and $u2dv2Choice.justSubmitted">You are rewriting the given integral, which means that <m>u</m> and <m>dv</m> must multiply to <m>$f2 dx</m>.
+</feedback>
+<p>
+  <m>du = </m><mathInput name="du2Choice"/><m>dx</m>
+
+  <m>\qquad \quad v = </m><mathInput name="v2Choice"/> <answer><award><when matchPartial> $u2dv2anddu2 and $u2dv2andv2</when></award></answer>
+</p>
   <p>
     Next, fill in the blanks in the Integration by Parts formula using the substitutions you found above.
-  </p>      
+  </p>
   <p>
-    <m>\int $f \, dx = -\frac{$a}{$k}x^2 \cos($k x) +</m> <mathInput name="u2v2Choice"/><m> - \int </m> <mathInput name="v2du2Choice"/> <m>dx</m> <answer><award><when>($u2v2 = $u2v2Choice) and ($v2du2 = $v2du2Choice)</when></award></answer>
-  </p> 
+    <m>\displaystyle\int $f \, dx = -\frac{$a}{$k}x^2 \cos($k x) +</m> <mathInput name="u2v2Choice"/><m>\displaystyle - \int </m> <mathInput name="v2du2Choice"/><m>dx</m> <answer><award matchPartial><when>($u2v2 = $u2v2Choice) and ($v2du2 = $v2du2Choice)</when></award></answer>
+  </p>
 
-</p>
 
-<p>
   <p hide="$correctSubs2Found">
     (<em>A final prompt will appear here after you correctly complete the preceding steps above.</em>)
   </p>
-  <p hide="not $correctSubs2Found">
+  <div hide="not $correctSubs2Found">
     <p>
       At this point, we are nearly finished.  We have
       <me>
-        \int $f \, dx = -\frac{$a}{$k}x^2 \cos($k x) + \frac{$a}{<math simplify>$k^2/2</math>}x \sin($k x) - \int  \frac{$a}{<math simplify>$k^2/2</math>} \sin($k x) \, dx 
-      </me>  
+        \int $f \, dx = -\frac{$a}{$k}x^2 \cos($k x) + \frac{$a}{<math simplify>$k^2/2</math>}x \sin($k x) - \int  \frac{$a}{<math simplify>$k^2/2</math>} \sin($k x) \, dx
+      </me>
       Evaluate the remaining integral and hence state the full result of evaluating the original integral.
     </p>
     <p>
-      <m> \int $f \, dx =</m> <mathInput minWidth="300" name="finalAnswerEntered"/> <m>\, + C \,</m> <answer><award><when>$finalAnswerEntered = $finalAnswer</when></award></answer>
+      <m>\displaystyle \int $f \, dx =</m> <mathInput minWidth="300" name="finalAnswerEntered"/> <m>\, + C \,</m> <answer><award><when>$finalAnswerEntered = $finalAnswer</when></award></answer>
     </p>
-  </p>
-</p>
+  </div>
+</div>
 
-<!-- , 
+<!-- ,
 <m>u2v2 = $u2v2</m>, <m>v2du2 = $v2du2</m>
 , <m>finalAns = $finalAns</m>
 
