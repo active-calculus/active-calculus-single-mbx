@@ -15,7 +15,7 @@
  <setup>
   <selectFromSequence name = "k" from = "8" to = "10" step = "1"/>
   <selectFromSequence name = "a" from = "5" to = "10" step = "1" exclude="$k ($k-1)"/>
-  <selectFromSequence name = "p" from = "4" to = "10" step = "1" exclude="$k ($k-1) $a"/>   
+  <selectFromSequence name = "p" from = "4" to = "10" step = "1" exclude="$k ($k-1) $a"/>
   <selectFromSequence name = "b" from = "3" to = "8" step = "1" exclude="$k $a ($k-1) ($k+1) $p"/>
 
   <function name="c">$a*(sec($k*x))^2*($b + tan($k*x))^$p</function>
@@ -28,29 +28,29 @@
   <function name="antiDu" variable="u">$a/$k*1/($p+1)*u^($p+1)</function>
 
   <boolean name="uSubsFound">$uSubs = $uSubsChoice</boolean>
-   
+
 </setup>
 
 <p>
-  Consider the indefinite integral <m>\int $a (\sec($k x))^2 ($b + \tan($k x))^$p \, dx</m>, which can be evaluated using <m>u</m>-substitution.  
+  Consider the indefinite integral <m>\int $a (\sec($k x))^2 ($b + \tan($k x))^{$p} \, dx</m>, which can be evaluated using <m>u</m>-substitution.
 </p>
-<p>  
+<p>
   Find an appropriate composite function present in the integrand and choose the corresponding inner function for <m>u</m>, and then find <m>du</m> as well.  Fill in the following blanks to state both <m>u</m> and <m>du</m> as functions of <m>x</m>.
-</p>  
+</p>
 
 <p>
   <m>u = </m><mathInput name="uChoice"/> <answer><award><when>$uChoice = $u</when></award></answer>
-</p> 
-<p>
-  <m>du = </m><mathInput name="duChoice"/><m>dx</m> <answer><award><when>$duChoice = $du</when></award></answer>
-</p>  
-
-<p>
-    Now we can apply <m>u</m>-substitution to convert the original integral in <m>x</m> to a simpler integral in <m>u</m>.  Using our work above, we have 
 </p>
 <p>
-  <m>\int $a (\sec($k x))^2 ($b + \tan($k x))^$p \, dx = \int </m> <mathInput name="uSubsChoice"/> <m>\, du</m> <answer><award><when> $uSubs = $uSubsChoice</when></award></answer>
-</p>  
+  <m>du = </m><mathInput name="duChoice"/><m>dx</m> <answer><award><when>$duChoice = $du</when></award></answer>
+</p>
+
+<p>
+    Now we can apply <m>u</m>-substitution to convert the original integral in <m>x</m> to a simpler integral in <m>u</m>.  Using our work above, we have
+</p>
+<p>
+  <m>\int $a (\sec($k x))^2 ($b + \tan($k x))^{$p} \, dx = \int </m> <mathInput name="uSubsChoice"/> <m>\, du</m> <answer><award><when> $uSubs = $uSubsChoice</when></award></answer>
+</p>
 
 <p hide="$uSubsFound">
   (<em>A final sequence of prompts will appear here after you correctly execute the <m>u</m>-substitution in the last step above.</em>)
@@ -60,8 +60,8 @@
     Finally, we evaluate the simpler integral in <m>u</m> and then substitute back to write our final result in terms of <m>x</m>.
   </p>
   <p>
-  <m>\int $a (\sec($k x))^2 ($b + \tan($k x))^$p \, dx = \int $uSubsChoice \, du</m> = <mathInput name="antiDuChoice"/> <m>+ C</m> <answer simplifyOnCompare><award><when> $antiDu = $antiDuChoice</when></award></answer> <m> = </m> <mathInput name="antiDxChoice"/> <m>+ C</m> <answer simplifyOnCompare><award><when> $antiDx = $antiDxChoice</when></award></answer>.  
-</p>  
+  <m>\int $a (\sec($k x))^2 ($b + \tan($k x))^{$p} \, dx = \int $uSubsChoice \, du</m> = <mathInput name="antiDuChoice"/> <m>+ C</m> <answer simplifyOnCompare><award><when> $antiDu = $antiDuChoice</when></award></answer> <m> = </m> <mathInput name="antiDxChoice"/> <m>+ C</m> <answer simplifyOnCompare><award><when> $antiDx = $antiDxChoice</when></award></answer>.
+</p>
 
-  
-</p>  
+
+</p>

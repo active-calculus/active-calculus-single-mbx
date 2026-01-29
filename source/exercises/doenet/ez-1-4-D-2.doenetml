@@ -34,16 +34,16 @@
 </setup>
 
 
-The graph of a piecewise function  <m>f(x)</m> with three linear pieces is given by the following graph.  
+The graph of a piecewise function  <m>f(x)</m> with three linear pieces is given by the following graph.
 
 <graph xmin="-3.5" xmax="7" ymin="-3" ymax="8"  showNavigation="false" fixAxes="true" grid>
 
   <polyline name="polyline1" fixed vertices="(-3,1) (0,2.5) (3,-2) (6,7)" />
 
-  <label anchor="(5.5,2.7)"> 
+  <label anchor="(5.5,2.7)">
     <m>y=f(x)</m>
   </label>
-  
+
   <point styleNumber="2">(0,0)
     <constraints><constrainTo>$polyline1</constrainTo></constraints>
   </point>
@@ -57,28 +57,28 @@ The graph of a piecewise function  <m>f(x)</m> with three linear pieces is given
     <p>
       For each of the three linear pieces, pick two points on the graph, estimate their coordinates, and from those coordinates estimate the slope of that line.  Note that you can drag the moveable point on the graph to see estimates of the coordinates of different points on each segment.  Report your three slopes in the provided spaces below, doing so to an accuracy of at least 0.1.
     </p>
-  
+
     <p>
-      Slope of left segment: 
+      Slope of left segment:
       <answer>
       <award symbolicEquality='true' allowedErrorInNumbers='0.1' allowedErrorIsAbsolute="true" simplifyOnCompare='numbers'>$m1 </award>
       </answer>
     </p>
     <p>
-      Slope of middle segment: 
+      Slope of middle segment:
       <answer>
       <award symbolicEquality='true' simplifyOnCompare='numbers' allowedErrorInNumbers='0.1' allowedErrorIsAbsolute="true">$m2 </award>
-      </answer> 
+      </answer>
     </p>
     <p>
-      Slope of right segment: 
+      Slope of right segment:
       <answer>
       <award simplifyOnCompare='numbers' symbolicEquality='true' allowedErrorInNumbers='0.1' allowedErrorIsAbsolute="true">$m3 </award>
-      </answer> 
+      </answer>
     </p>
 
-<!-- 
-<p>Should your estimate of the slope depend on your choice of points? 
+<!--
+<p>Should your estimate of the slope depend on your choice of points?
 <answer inline='true'>
 <choiceInput>
 <choice credit='1'>no</choice>
@@ -93,27 +93,27 @@ The graph of a piecewise function  <m>f(x)</m> with three linear pieces is given
   <li>
     <p>
         Remember that the derivative of any linear function is precisely the value of the linear function's slope.  For each linear piece of the function that you considered in (a), what is the derivative of <m>f(x)</m>?  Report your answers to an accuracy of at least 0.1.
-    </p>  
+    </p>
 
-  
+
     <p>
-      <m>f'(x)</m> for left segment: 
+      <m>f'(x)</m> for left segment:
         <answer>
           <award symbolicEquality='true' simplifyOnCompare='numbers' allowedErrorInNumbers='0.1' allowedErrorIsAbsolute="true">$m1 </award>
         </answer>
     </p>
     <p>
-      <m>f'(x)</m> for middle segment: 
+      <m>f'(x)</m> for middle segment:
       <answer>
         <award symbolicEquality='true' simplifyOnCompare='numbers' allowedErrorInNumbers='0.1' allowedErrorIsAbsolute="true">$m2 </award>
       </answer>
     </p>
     <p>
-      <m>f'(x)</m> for right segment: 
+      <m>f'(x)</m> for right segment:
       <answer>
         <award symbolicEquality='true' simplifyOnCompare='numbers' allowedErrorInNumbers='0.1' allowedErrorIsAbsolute="true">$m3 </award>
       </answer>
-    
+
     </p>
   </li>
 
@@ -121,91 +121,89 @@ The graph of a piecewise function  <m>f(x)</m> with three linear pieces is given
     <p>
       Sketch the derivative of <m>f</m>.  Drag the points so that each <!-- <copy prop="styleDescription" tname="derivSeg1" /> --> line segment corresponds to the corresponding segment of the original function.
     </p>
-    
+
     <graph xmin="-3.5" xmax="7" ymin="-3" ymax="8" showNavigation="false" fixAxes="true" grid>
-    
+
 <!--  <copy tname='polyline1' /> -->
       $polyline1
-    
+
     <point styleNumber="6" name="p1" x="$x1" y="2">
       <constraints>
         <constrainToGrid dy="0.5"/>
       </constraints>
     </point>
-    
+
     <point styleNumber="6" name="p2" x="$x2" y="3">
       <constraints>
         <constrainToGrid dy="0.5"/>
       </constraints>
     </point>
-    
+
     <lineSegment name="derivSeg1" styleNumber="2" endpoints="$p1 $p2" />
-        
+
     <point styleNumber="6" name="p3" x="$x2" y="-1">
       <constraints>
         <constrainToGrid dy="0.5"/>
       </constraints>
     </point>
-    
+
     <point styleNumber="6" name="p4" x="$x3" y="1">
       <constraints>
         <constrainToGrid dy="0.5"/>
       </constraints>
     </point>
-    
+
     <lineSegment styleNumber="2" endpoints="$p3 $p4" />
-    
-    
+
+
     <point styleNumber="6" name="p5" x="$x3" y="4">
       <constraints>
         <constrainToGrid dy="0.5"/>
       </constraints>
     </point>
-    
+
     <point styleNumber="6" name="p6" x="$x4" y="4">
       <constraints>
         <constrainToGrid dy="0.5"/>
       </constraints>
     </point>
-    
+
     <lineSegment stylenumber="2" endpoints="$p5 $p6" />
-    
+
   </graph>
 
     <!--
   <p>
-    <math>($p1.y-$p2.y)/($p1.x-$p2.x) </math>; <math>$m1</math>; 
+    <math>($p1.y-$p2.y)/($p1.x-$p2.x) </math>; <math>$m1</math>;
     $slope1
-  </p>  
+  </p>
     -->
-    
-  <answer>
-    <award><when>
-      <boolean> 
-        $p1.y = $m1 and $p2.y = $m1
+
+  <answer name="derivpiecewise">
+    <award><when matchPartial>
+        <boolean>$p1.y = $m1 and $p2.y = $m1</boolean>
         and
-        $p3.y = $m2 and $p4.y = $m2
+        <boolean>$p3.y = $m2 and $p4.y = $m2</boolean>
         and
-        $p5.y = $m3 and $p6.y = $m3 
-      </boolean>      
+        <boolean>$p5.y = $m3 and $p6.y = $m3</boolean>
     </when></award>
   </answer>
-  
-  <hint>
-    <p>For each segment of the function, is the slope constant or does it change? 
-    <answer weight="0"><choiceInput inline>
-      <choice credit="1">constant</choice>
-      <choice>changing</choice>
+
+
+<p>
+  Complete the following sentence using drop-down menus to explain the behavior of the graph of the derivative function.
+</p>
+<p>Because the original function is piecewise linear, on corresponding intervals the slope of the tangent line to <m>f</m> <answer><choiceInput inline>
+      <choice>is changing</choice>
+      <choice credit="1">is not changing</choice>
+    </choiceInput></answer>, which means that on those same intervals, the graph of the derivative function consists of <answer><choiceInput inline>
+      <choice credit="1">horizontal line segments.</choice>
+      <choice>line segments that are rising or falling.</choice>
+      <choice>curved pieces.</choice>
     </choiceInput></answer>
-    Therefore, each segment that you draw should be
-      <answer weight="0"><choiceInput inline>
-      <choice>vertical</choice>
-      <choice>rising or falling</choice>
-      <choice credit="1">horizontal</choice>
-    </choiceInput></answer>.
+
     </p>
-  </hint>
-    
+
   </li>
 
   <li>
@@ -220,47 +218,47 @@ The graph of a piecewise function  <m>f(x)</m> with three linear pieces is given
           <choice><m>f'(0)=-1.5</m></choice>
     </choiceInput></answer>
     </p>
-  </li>  
-  
+  </li>
+
 </ol>
 
 <!--
   <solution>
-  
-  
+
+
   <ol>
-  
+
   <li>
   Many sets of points would do.  The slopes, from left to right, are <round numberdecimals="1">$m1  </round>, <round numberdecimals="1">$m2  </round>, and <round numberdecimals="1">$m3  </round>.  The estimates should not depend on choice of points as long as both points are on the same segment.
   </li>
-  
+
   <li>
   The derivatives would be <round numberdecimals="1">$m1  </round>, <round numberdecimals="1">$m2  </round>, and <round numberdecimals="1">$m3  </round>, for the three segments, respectively.
   </li>
-  
+
   <li>
-  
+
   <graph xmin='-3.5' xmax='7' ymin='-3' ymax='8' xlabel='x' ylabel='f(x)' showNavigation="false" fixAxes="true">
-  
+
   <copy tname='polyline1' />
-  
+
   <point stylenumber="2" fixed>($x1,$m1)</point>
   <point stylenumber="2" fixed>($x2,$m1)</point>
   <point stylenumber="2" fixed>($x2,$m2)</point>
   <point stylenumber="2" fixed>($x3,$m2)</point>
   <point stylenumber="2" fixed>($x3,$m3)</point>
   <point stylenumber="2" fixed>($x4,$m3)</point>
-  
+
   <linesegment stylenumber="2" fixed endpoints="($x1, $m1) ($x2, $m1)" />
   <linesegment stylenumber="2" fixed endpoints="($x2, $m2) ($x3, $m2)" />
   <linesegment stylenumber="2" fixed endpoints="($x3, $m3) ($x4, $m3)" />
-  
+
   </graph>
-  
+
   </li>
-  
-  
+
+
   </ol>
-  
+
   </solution>
 -->
