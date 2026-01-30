@@ -30,51 +30,56 @@
   <function name="intvdu">$a/($k^2)*e^(-$k*x)</function>
 
   <boolean name="correctSubsFound">($uvChoice=$uv) and ($vduChoice=$vdu)</boolean>
-   
+
+  <boolean name="udvisintegrand">$uChoice*$dvChoice = $f</boolean>
+  <boolean name="almostu"> $uChoice = <math>x</math> </boolean>
+  <boolean name="possibleu"> $almostu or $uChoice = $u </boolean>
+
+  <boolean name="udvanddu">$duChoice = <derivative>$uChoice</derivative> and $udvChoice.creditAchieved=1</boolean>
+  <boolean name="udvandv"><derivative>$vChoice</derivative> = $dvChoice and $udvChoice.creditAchieved=1</boolean>
+
 </setup>
 
 <p>
-  Consider the indefinite integral 
+  Consider the indefinite integral
   <me>
     \int $a x e^{-$k x} \, dx.
-  </me>  
-  Since the integrand is a product of basic functions, we will use Integration by Parts to evaluate the integral.  
+  </me>
+  Since the integrand is a product of basic functions, we will use Integration by Parts to evaluate the integral.
 </p>
-<p>  
+<p>
   Choose <m>u</m> and <m>dv</m> appropriately, and then find <m>du</m> and <m>v</m> as well; report all of your results in the blanks below.
-</p>  
- 
-<p>
-  <m>u = </m><mathInput name="uChoice"/> <answer><award><when>$uChoice = $u</when></award></answer>
-</p> 
-<p>
-  <m>du = </m><mathInput name="duChoice"/><m>dx</m> <answer><award><when>$duChoice = $du</when></award></answer>
-</p>  
+</p>
 
 <p>
-  <m>dv = </m><mathInput name="dvChoice"/><m>dx</m> <answer><award><when>$dvChoice = $dv</when></award></answer>
-</p> 
+  <m>u = </m><mathInput name="uChoice"/>  <m>\qquad \qquad dv = </m><mathInput name="dvChoice"/><m>dx = </m> <mathInput disabled>$dvChoice dx </mathInput>
+  <answer name="udvChoice"><award><when>$possibleu and $udvisintegrand </when></award></answer>
+</p>
+<feedback condition="!$udvisintegrand and $udvChoice.justSubmitted">You are rewriting the given integral, which means that <m>u</m> and <m>dv</m> must multiply to <m>$f dx</m>.
+</feedback>
 <p>
-  <m>v = </m><mathInput name="vChoice"/> <answer><award><when>$vChoice = $v</when></award></answer>
-</p>  
+  <m>du = </m><mathInput name="duChoice"/><m>dx</m>
+
+  <m>\qquad \quad v = </m><mathInput name="vChoice"/> <answer><award><when matchPartial> $udvanddu and $udvandv</when></award></answer>
+</p>
 
 <p>
   Next, fill in the blanks in the Integration by Parts formula using the substitutions you found above.
-</p>  
+</p>
 <p>
-  <m>\int $f \, dx = </m><mathInput name="uvChoice"/><m>- \int</m>  <mathInput name="vduChoice"/><m>dx</m> <answer><award><when>($uvChoice=$uv) and ($vduChoice=$vdu)</when></award></answer>
+  <m>\displaystyle \int $f \, dx = </m><mathInput name="uvChoice"/><m>\displaystyle- \int</m>  <mathInput name="vduChoice"/><m>dx</m> <answer><award><when matchPartial>($uvChoice=$uv) and ($vduChoice=$vdu)</when></award></answer>
 </p>
 
 
 <p hide="$correctSubsFound">
   (<em>A final prompt will appear here after you correctly apply the substitutions in the last step above.</em>)
 </p>
-  <p hide="not $correctSubsFound">
+<div hide="not $correctSubsFound">
   <p>
     Finally, evaluate the remaining indefinite integral to complete the process of Integration by Parts.
   </p>
   <p>
-    <m>\int $f \, dx = <math simplify>$u*$v</math> - </m> <mathInput name="intvduChoice"/> <m>+ C</m> <answer><award><when> $intvdu = $intvduChoice</when></award></answer>
-  </p> 
+    <m>\displaystyle \int $f \, dx = <math simplify>$u*$v</math> - </m> <mathInput name="intvduChoice"/> <m>+ C</m> <answer><award><when> $intvdu = $intvduChoice</when></award></answer>
+  </p>
 
-</p>
+</div>
