@@ -15,35 +15,46 @@
  <setup>
   <selectFromSequence name = "k" from = "5" to = "9" step = "1"/>
   <selectFromSequence name = "a" from = "5" to = "10" step = "1" exclude="$k ($k-1)"/>
-  <selectFromSequence name = "p" from = "4" to = "10" step = "1" exclude="$k ($k-1) $a"/>   
+  <selectFromSequence name = "p" from = "4" to = "10" step = "1" exclude="$k ($k-1) $a"/>
   <selectFromSequence name = "b" from = "3" to = "8" step = "1" exclude="$k $a ($k-1) ($k+1) $p"/>
 
   <function name="c">x^(2*$k-1)*e^(x^$k)</function>
 
   <function name="u">x^$k</function>
   <function name="du">$k*x^($k-1)</function>
-   
+
+  <boolean name="choseduordx1">$duordx1.selectedIndices=2 or $duordx1.selectedIndices=3</boolean>
+
 </setup>
 
 <p>
-  Consider the indefinite integral <m>\int x^{<math simplify>2*$k-1</math>} e^{x^$k} \, dx</m>.  
+  Consider the indefinite integral <m>\displaystyle \int x^{<math simplify>2*$k-1</math>} e^{x^$k} \, dx</m>.
 </p>
-<p>  
-  Because there is a composite function present in the integrand, it's natural to attempt to use <m>u</m>-substitution.  Choose the inner function you'd find for <m>u</m>, and then find <m>du</m> as well.  Fill in the following blanks to state both <m>u</m> and <m>du</m> as functions of <m>x</m>.
-</p>  
-
+<p>
+  Because there is a composite function present in the integrand, it's natural to attempt to use <m>u</m>-substitution.  Choose the inner function you'd find for <m>u</m>, and then find <m>du</m> as well.  Fill in the following blank to state <m>u</m> as a function of <m>x</m> and then calculate <m>du</m>. Note that the dropdown is part of your answer.
+</p>
 <p>
   <m>u = </m><mathInput name="uChoice"/> <answer><award><when>$uChoice = $u</when></award></answer>
-</p> 
-<p>
-  <m>du = </m><mathInput name="duChoice"/><m>dx</m> <answer><award><when>$duChoice = $du</when></award></answer>
-</p>  
-
-<p>
-    Here we find that this <m>u</m>-substitution fails: in the original integrand, we have  <m>x^{<math simplify>2*$k-1</math>}</m> present, but in <m>du</m> we see that we would actually need the power function <answer>x^($k-1)</answer> to make the substitution work. 
 </p>
 <p>
+  <m>du = </m><mathInput name="duChoice"/><choiceInput name="duordx1" inline>
+            <choice>?</choice>
+            <choice><m>dx</m></choice>
+            <choice><m>du</m></choice>
+          </choiceInput>
+    <m> =</m> <mathInput disabled> $duChoice $duordx1 </mathInput>
+  <answer name="duequals"><award><when>$duChoice = $du and $duordx1.selectedIndices=2</when></award></answer>
+</p>
+<feedback condition = "$duequals.justSubmitted and !$choseduordx1">You must pick <m>du</m> or <m>dx</m>.</feedback>
+<feedback condition = "$duChoice = $du and $duordx1.selectedIndices!=2 and $duequals.justSubmitted and $choseduordx1">You still need to correctly pick <m>du</m> or <m>dx</m>.</feedback>
+<feedback condition = "$duChoice != $du and $duordx1.selectedIndices=2 and $duequals.justSubmitted">You have the incorrect derivative, but <m>dx</m> is correct.</feedback>
 
-  This example shows that there are many possible integrals for which <m>u</m>-substitution fails.  In the next couple of sections, we'll learn about some other possible antidifferentiation techniques, including one that would enable us to evaluate the given integral here, <m>\int x^{<math simplify>2*$k-1</math>} e^{x^$k} \, dx</m>.
-  
+<p>
+    Here we find that this <m>u</m>-substitution fails: in the original integrand, we have  <m>x^{<math simplify>2*$k-1</math>}</m> present, but in <m>du</m> we see that we would actually need the power function <answer name="powerfunc">x^($k-1)</answer> to make the substitution work.
+</p>
+<feedback condition="$powerfunc=$du">Constant multiples don't change our method of integrating.  The key is that we'd need <m>x^{<math simplify>$k-1</math>}</m>, possibly multiplied by some constant.</feedback>
+<p>
+
+  This example shows that there are many possible integrals for which <m>u</m>-substitution fails.  In the next couple of sections, we'll learn about some other possible antidifferentiation techniques, including one that would enable us to evaluate the given integral here, <m>\displaystyle \int x^{<math simplify>2*$k-1</math>} e^{x^$k} \, dx</m>.
+
 </p>  

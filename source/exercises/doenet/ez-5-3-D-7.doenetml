@@ -15,7 +15,7 @@
  <setup>
   <selectFromSequence name = "k" from = "8" to = "10" step = "1"/>
   <selectFromSequence name = "a" from = "5" to = "10" step = "1" exclude="$k ($k-1)"/>
-  <selectFromSequence name = "p" from = "4" to = "10" step = "1" exclude="$k ($k-1) $a"/>   
+  <selectFromSequence name = "p" from = "4" to = "10" step = "1" exclude="$k ($k-1) $a"/>
   <selectFromSequence name = "b" from = "3" to = "8" step = "1" exclude="$k $a ($k-1) ($k+1) $p"/>
 
   <function name="c">$a*(sec($k*x))^2*($b + tan($k*x))^$p</function>
@@ -27,41 +27,130 @@
   <function name="uSubs" variable="u">$a/$k*u^$p</function>
   <function name="antiDu" variable="u">$a/$k*1/($p+1)*u^($p+1)</function>
 
-  <boolean name="uSubsFound">$uSubs = $uSubsChoice</boolean>
-   
+  <!-- <boolean name="uSubsFound">$uSubs = $uSubsChoice</boolean> -->
+  <boolean name="uSubsFound">$usubsequals.creditAchieved</boolean>
+
+   <!-- For checking whether or not they made a choice from the dropdown menus in order to give targeted feedback. -->
+   <boolean name="choseduordx1">$duordx1.selectedIndices=2 or $duordx1.selectedIndices=3</boolean>
+   <!-- The line below is used when there's an additional step asked for. -->
+  <!-- <boolean name="choseduordx2">$duordx2.selectedIndices=2 or $duordx2.selectedIndices=3</boolean>  -->
+  <boolean name="choseduordx3">$duordx3.selectedIndices=2 or $duordx3.selectedIndices=3</boolean>
+  <boolean name="choseduordxorC1">$duordxorC1.selectedIndices=2 or $duordxorC1.selectedIndices=3 or $duordxorC1.selectedIndices=4</boolean>
+  <boolean name="choseduordxorC2">$duordxorC2.selectedIndices=2 or $duordxorC2.selectedIndices=3 or $duordxorC2.selectedIndices=4</boolean>
+
+<!-- For checking for the presence of a specific variable in their answers in order to give targeted feedback. -->
+   <derivative name="dantiDxChoicedu" variable="u">
+     $antiDxChoice
+   </derivative>
+   <derivative name="dantiDxChoicedx" variable="x">
+     $antiDxChoice
+   </derivative>
+   <derivative name="dantiDuChoicedx" variable="x">
+     $antiDuChoice
+   </derivative>
+   <derivative name="dantiDuChoicedu" variable="u">
+     $antiDuChoice
+   </derivative>
+
 </setup>
 
 <p>
-  Consider the indefinite integral <m>\int $a (\sec($k x))^2 ($b + \tan($k x))^$p \, dx</m>, which can be evaluated using <m>u</m>-substitution.  
+  Consider the indefinite integral <m>\displaystyle \int $a (\sec($k x))^2 ($b + \tan($k x))^$p \, dx</m>, which can be evaluated using <m>u</m>-substitution.
 </p>
-<p>  
-  Find an appropriate composite function present in the integrand and choose the corresponding inner function for <m>u</m>, and then find <m>du</m> as well.  Fill in the following blanks to state both <m>u</m> and <m>du</m> as functions of <m>x</m>.
-</p>  
-
+<p>
+  Find an appropriate composite function present in the integrand and choose the corresponding inner function for <m>u</m>, and then find <m>du</m> as well. Fill in the following blank to state <m>u</m> as a function of <m>x</m> and then calculate <m>du</m>. Note that the dropdown is part of your answer.
+</p>
 <p>
   <m>u = </m><mathInput name="uChoice"/> <answer><award><when>$uChoice = $u</when></award></answer>
-</p> 
-<p>
-  <m>du = </m><mathInput name="duChoice"/><m>dx</m> <answer><award><when>$duChoice = $du</when></award></answer>
-</p>  
-
-<p>
-    Now we can apply <m>u</m>-substitution to convert the original integral in <m>x</m> to a simpler integral in <m>u</m>.  Using our work above, we have 
 </p>
 <p>
-  <m>\int $a (\sec($k x))^2 ($b + \tan($k x))^$p \, dx = \int </m> <mathInput name="uSubsChoice"/> <m>\, du</m> <answer><award><when> $uSubs = $uSubsChoice</when></award></answer>
-</p>  
+  <m>du = </m><mathInput name="duChoice"/><choiceInput name="duordx1" inline>
+            <choice>?</choice>
+            <choice><m>dx</m></choice>
+            <choice><m>du</m></choice>
+          </choiceInput>
+    <m> =</m> <mathInput disabled> $duChoice $duordx1 </mathInput>
+  <answer name="duequals"><award><when>$duChoice = $du and $duordx1.selectedIndices=2</when></award></answer>
+</p>
+<feedback condition = "$duequals.justSubmitted and !$choseduordx1">You must pick <m>du</m> or <m>dx</m>.</feedback>
+<feedback condition = "$duChoice = $du and $duordx1.selectedIndices!=2 and $duequals.justSubmitted and $choseduordx1">You still need to correctly pick <m>du</m> or <m>dx</m>.</feedback>
+<feedback condition = "$duChoice != $du and $duordx1.selectedIndices=2 and $duequals.justSubmitted">You have the incorrect derivative, but <m>dx</m> is correct.</feedback>
+
+<p>
+    Now we can apply <m>u</m>-substitution to convert the original integral in <m>x</m> to a simpler integral in <m>u</m>.  Using our work above, we have
+</p>
+<p>
+  <m>\displaystyle \int $a (\sec($k x))^2 ($b + \tan($k x))^$p \, dx = \int </m> <mathInput name="uSubsChoice"/><choiceInput name="duordx3" inline>
+            <choice>?</choice>
+            <choice><m>dx</m></choice>
+            <choice><m>du</m></choice>
+          </choiceInput>
+  <answer name="usubsequals"><award><when> $uSubs = $uSubsChoice and $duordx3.selectedIndices=3</when></award></answer>
+</p>
+<p>
+    <m> = \displaystyle \int</m><mathInput disabled> $uSubsChoice $duordx3 </mathInput>
+
+</p>
+<feedback condition = "$usubsequals.justSubmitted and !$choseduordx3">You must pick <m>du</m> or <m>dx</m>.</feedback>
+<feedback condition = "$uSubs = $uSubsChoice and $duordx3.selectedIndices!=3 and $usubsequals.justSubmitted and $choseduordx3">You still need to correctly pick <m>du</m> or <m>dx</m>.</feedback>
+<feedback condition = "$uSubs != $uSubsChoice and $duordx3.selectedIndices=3 and $usubsequals.justSubmitted">You have the incorrect formula, but <m>du</m> is correct.</feedback>
 
 <p hide="$uSubsFound">
   (<em>A final sequence of prompts will appear here after you correctly execute the <m>u</m>-substitution in the last step above.</em>)
 </p>
-<p hide="not $uSubsFound">
+<div hide="not $uSubsFound">
   <p>
     Finally, we evaluate the simpler integral in <m>u</m> and then substitute back to write our final result in terms of <m>x</m>.
   </p>
   <p>
-  <m>\int $a (\sec($k x))^2 ($b + \tan($k x))^$p \, dx = \int $uSubsChoice \, du</m> = <mathInput name="antiDuChoice"/> <m>+ C</m> <answer simplifyOnCompare><award><when> $antiDu = $antiDuChoice</when></award></answer> <m> = </m> <mathInput name="antiDxChoice"/> <m>+ C</m> <answer simplifyOnCompare><award><when> $antiDx = $antiDxChoice</when></award></answer>.  
-</p>  
+  <m>\displaystyle\int $a (\sec($k x))^2 ($b + \tan($k x))^$p \, dx = \int $uSubsChoice \, du</m> = <mathInput name="antiDuChoice"/><choiceInput name="duordxorC1" inline>
+            <choice>?</choice>
+            <choice><m>dx</m></choice>
+            <choice><m>du</m></choice>
+            <choice><m>+C</m></choice>
+          </choiceInput>
+  </p>
+  <p>
+    <m>=</m><mathInput disabled><conditionalContent>
+  <case condition="$duordxorC1.selectedIndices !=4">
+    <math name="displayantiDuequals">$antiDuChoice $duordxorC1</math>
+  </case>
+  <case condition="$duordxorC1.selectedIndices = 4">
+    <math name="displayantiDuequals">$antiDuChoice + C</math>
+  </case>
+</conditionalContent></mathInput>
+  <answer name="antiDuequals"><award><when> $antiDu = $antiDuChoice and $duordxorC1.selectedIndices=4</when></award></answer>
+  </p>
 
-  
-</p>  
+<feedback condition = "$antiDuequals.justSubmitted and !$choseduordxorC1">You must pick <m>du</m> or <m>dx</m> or <m>+C</m>.</feedback>
+<feedback condition = "$duordxorC1.selectedIndices!=4 and $antiDuequals.justSubmitted and $choseduordxorC1">Recall that <m>du</m> and <m>dx</m> are part of an integral, and you've just evaluated an indefinite integral.</feedback>
+<feedback condition = "$antiDu != $antiDuChoice and $dantiDuChoicedx =0 and $duordxorC1.selectedIndices=4 and $antiDuequals.justSubmitted">You have the incorrect formula, but <m>+C</m> is correct.</feedback>
+<feedback condition = "$dantiDuChoicedx*0=0 and $dantiDuChoicedx !=0 and $duordxorC1.selectedIndices=4 and $antiDuequals.justSubmitted">Your answer should be in terms of <m>u</m> and not <m>x</m>, but <m>+C</m> is correct.</feedback>
+<feedback condition = "$dantiDuChoicedx*0!=0 and $dantiDuChoicedu*0!=0 and $duordxorC1.selectedIndices=4 and $antiDuequals.justSubmitted">The <m>+C</m> is correct.</feedback>
+  <p>
+    <m> = </m> <mathInput name="antiDxChoice"/><choiceInput name="duordxorC2" inline>
+            <choice>?</choice>
+            <choice><m>dx</m></choice>
+            <choice><m>du</m></choice>
+            <choice><m>+C</m></choice>
+          </choiceInput>
+  </p>
+  <p>
+    <m>=</m><mathInput disabled><conditionalContent>
+  <case condition="$duordxorC2.selectedIndices !=4">
+    <math name="displayantiDxequals">$antiDxChoice $duordxorC2</math>
+  </case>
+  <case condition="$duordxorC2.selectedIndices = 4">
+    <math name="displayantiDxequals">$antiDxChoice + C</math>
+  </case>
+</conditionalContent></mathInput>
+  <answer name="antiDxequals"><award><when> $antiDx = $antiDxChoice and $duordxorC2.selectedIndices=4</when></award></answer>
+  </p>
+
+<feedback condition = "$antiDxequals.justSubmitted and !$choseduordxorC2">You must pick <m>du</m> or <m>dx</m> or <m>+C</m>.</feedback>
+<feedback condition = "$duordxorC2.selectedIndices!=4 and $antiDxequals.justSubmitted and $choseduordxorC2">Recall that <m>du</m> and <m>dx</m> are part of an integral, and you've just evaluated an indefinite integral.</feedback>
+<feedback condition = "$antiDx != $antiDxChoice and $dantiDxChoicedu =0 and $duordxorC2.selectedIndices=4 and $antiDxequals.justSubmitted">You have the incorrect formula, but <m>+C</m> is correct.</feedback>
+<feedback condition = "$dantiDxChoicedu*0=0 and $dantiDxChoicedu !=0 and $duordxorC2.selectedIndices=4 and $antiDxequals.justSubmitted">Your answer should be in terms of <m>x</m> and not <m>u</m>, but <m>+C</m> is correct.</feedback>
+<feedback condition = "$dantiDxChoicedx*0!=0 and $dantiDxChoicedu*0!=0 and $duordxorC2.selectedIndices=4 and $antiDxequals.justSubmitted">The <m>+C</m> is correct.</feedback>
+
+</div>   
