@@ -14,11 +14,11 @@
 
 <setup>
 <selectFromSequence name="a" from="2" to="5"/>
-<selectFromSequence name="c" from="-3" to="3" exclude="0"/>  
+<selectFromSequence name="c" from="-3" to="3" exclude="0"/>
 <function name="f">
     $c + $a*x - x^2
   </function>
-  <derivative name="fP">$f</derivative>  
+  <derivative name="fP">$f</derivative>
 </setup>
 
   <p>
@@ -32,16 +32,18 @@
           and thus we need to determine expressions for <m>f(x+h)</m> and <m>f(x+h) - f(x)</m>.
         </p>
 
-        <p>Using the given formula, <m>f(x) = $f</m>, 
-      which of the following expressions is equivalent to <m>f(x+h)</m>?</p>
+        <p>Using the given formula, <m>f(x) = $f</m>,
+      select all of the following expressions which are equivalent to <m>f(x+h)</m>. The correct answer involves selecting more than one of the following items.</p>
             <answer>
-              <choiceInput>
-                <choice><m>f(x+h) = $c - $a(x+h) + (x+h)^2 </m></choice>
-                <choice><m>f(x+h)= $c + <math>$a*h</math> + h^2 + ($a+2x)h - x^2 </m>  </choice>
-                <choice credit="1"><m>f(x+h)= $c + <math>$a*h</math> - h^2 + ($a-2x)h - x^2 </m>  </choice>          
-                <choice><m>f(x+h)= $c + <math>$a*h</math> - h^2 + (1-2x)h - x^2 </m>  </choice>
+              <choiceInput selectMultiple>
+                <choice><m>f(x+h) = $c + <math>$a*x</math> - x^2 + h </m></choice>
+                <choice><m>f(x+h) = $c + $a(x+h) - (x^2 + h^2) </m></choice>
+                <choice credit="1"><m>f(x+h) = $c + $a(x+h) - (x+h)^2 </m></choice>
+                <choice credit="1"><m>f(x+h)= $c + <math>$a*x+$a*h</math> - (x^2 + 2xh + h^2) </m>  </choice>
+                <choice ><m>f(x+h)= $c + <math>$a*x +$a*h</math> -x^2 + 2xh + h^2 </m>  </choice>
+                <choice credit="1"><m>f(x+h)= $c + <math>$a*x-x^2 +$a*h</math> - 2xh - h^2 </m>  </choice>
               </choiceInput>
-            </answer>  
+            </answer>
       </li>
       <li>
       <p>Which of the following is the simplest possible expression for <m>f(x+h) - f(x)</m>?</p>
@@ -49,24 +51,24 @@
               <choiceInput>
                 <choice><m>f(x+h) - f(x) = $a(x+h)-(x+h)^2 + <math simplify>-1*$$f(x)</math> </m></choice>
                 <choice><m>f(x+h) - f(x) =  - h^2 + <math simplify>$a*h </math></m>  </choice>
-                <choice><m>f(x+h) - f(x) =  <math>$a*h</math> + h^2 - 2xh</m>  </choice>  
-                <choice credit="1"><m>f(x+h)  - f(x) =  <math>$a*h</math> - h^2 - 2xh</m>  </choice> 
+                <choice><m>f(x+h) - f(x) =  <math>$a*h</math> + h^2 - 2xh</m>  </choice>
+                <choice credit="1"><m>f(x+h)  - f(x) =  <math>$a*h</math> - h^2 - 2xh</m>  </choice>
               </choiceInput>
-            </answer>   
+            </answer>
       </li>
-      <li> 
+      <li>
         <p>
           Next, apply the limit definition of the derivative by substituting the simplest possible expression for <m>f(x+h)-f(x)</m> in the space provided:
         </p>
         <p><m>f'(x)= \displaystyle \lim_{h \to 0} \frac{f(x+h)-f(x)}{h} = \lim_{h \to 0} </m> <mathInput name="dq_x1" prefill="/h"></mathInput>
-      <answer><award><when>$dq_x1 = 
+      <answer><award><when>$dq_x1 =
         ($$f(x+h) - $$f(x))/h
       </when></award></answer></p>
       </li>
       <li>
         <p>Further, factoring the numerator and simplifying the quotient as much as possible, we see that</p>
         <p>  <m>f'(x)= \displaystyle \lim_{h \to 0} </m> <mathInput name="simp_x1"></mathInput>
-      <answer><award><when>$simp_x1 = 
+      <answer><award><when>$simp_x1 =
         ($$f(x+h) - $$f(x))/h
       </when></award></answer></p>
       </li>
