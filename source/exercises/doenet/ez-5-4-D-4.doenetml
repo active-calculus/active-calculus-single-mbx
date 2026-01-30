@@ -36,90 +36,106 @@
 
   <function name="wSubs" variable="w">1/$k*1/w</function>
   <function name="antiDw" variable="w">1/$k*ln(abs(w))</function>
+  <function name="almostantiDw" variable="w">1/$k*ln(w)</function>
 
   <function name="antiDx">1/$k*ln(abs(sin($k*x)))</function>
 
+  <function name="multantiDx">$a/$k^2*ln(abs(sin($k*x)))</function>
+
   <boolean name="cotIntFound">$wSubs = $wSubsChoice and $antiDw = $wIntChoice and $antiDx = $xIntChoice </boolean>
-   
+
+  <boolean name="udvisintegrand">$uChoice*$dvChoice = $f</boolean>
+  <boolean name="almostu"> $uChoice = <math>x</math> </boolean>
+  <boolean name="possibleu"> $almostu or $uChoice = $u </boolean>
+
+
+  <boolean name="udvanddu">$duChoice = <derivative>$uChoice</derivative> and $udvChoice.creditAchieved=1</boolean>
+  <boolean name="udvandv"><derivative>$vChoice</derivative> = $dvChoice and $udvChoice.creditAchieved=1</boolean>
+
 </setup>
 
 <p>
-  Consider the indefinite integral 
+  Consider the indefinite integral
   <me>
     \int $a x \csc^2($k x) \, dx.
-  </me>  
-  While the integrand might not at first seem to be the product of basic functions, since <m>\csc^2(x)</m> is the derivative of a basic function, this indefinite integral is well-suited to integration by parts.
+  </me>
+  This might not seem like the other Integration by Parts problems at first, since the integrand might not appear to be the product of basic functions.  However, because <m>\csc^2(x)</m> is the derivative of a basic function, this indefinite integral is well-suited to integration by parts.
 </p>
-<p>  
+<p>
   Choose <m>u</m> and <m>dv</m> appropriately, and then find <m>du</m> and <m>v</m> as well; report all of your results in the blanks below.
-</p>  
- 
-<p>
-  <m>u = </m><mathInput name="uChoice"/> <answer><award><when>$uChoice = $u</when></award></answer>
-</p> 
-<p>
-  <m>du = </m><mathInput name="duChoice"/><m>dx</m> <answer><award><when>$duChoice = $du</when></award></answer>
-</p>  
+</p>
 
 <p>
-  <m>dv = </m><mathInput name="dvChoice"/><m>dx</m> <answer><award><when>$dvChoice = $dv</when></award></answer>
-</p> 
+  <m>u = </m><mathInput name="uChoice"/>  <m>\qquad \qquad dv = </m><mathInput name="dvChoice"/><m>dx =</m><mathInput disabled>$dvChoice dx </mathInput>
+  <answer name="udvChoice"><award><when>$possibleu and $udvisintegrand </when></award></answer>
+</p>
+<feedback condition="!$udvisintegrand and $udvChoice.justSubmitted">You are rewriting the given integral, which means that <m>u</m> and <m>dv</m> must multiply to <m>$f dx</m>.
+</feedback>
 <p>
-  <m>v = </m><mathInput name="vChoice"/> <answer><award><when>$vChoice = $v</when></award></answer>
-</p>  
+  <m>du = </m><mathInput name="duChoice"/><m>dx</m>
+
+  <m>\qquad \quad v = </m><mathInput name="vChoice"/> <answer><award><when matchPartial> $udvanddu and $udvandv</when></award></answer>
+</p>
 
 <p>
   Next, fill in the blanks in the Integration by Parts formula using the substitutions you found above.
-</p>  
+</p>
 <p>
-  <m>\int $a x \csc^2($k x) \, dx = </m><mathInput name="uvChoice"/><m>- \int</m>  <mathInput name="vduChoice"/><m>dx</m> <answer><award><when>($uvChoice=$uv) and ($vduChoice=$vdu)</when></award></answer>
+  <m>\displaystyle\int $a x \csc^2($k x) \, dx = </m><mathInput name="uvChoice"/><m>\displaystyle - \int</m>  <mathInput name="vduChoice"/><m>dx</m> <answer><award><when matchPartial>($uvChoice=$uv) and ($vduChoice=$vdu)</when></award></answer>
 </p>
 
 
 <p hide="$correctSubsFound">
   (<em>A subsequent prompt will appear here after you correctly apply the substitutions in the last step above.</em>)
 </p>
-  <p hide="not $correctSubsFound">
+<div hide="not $correctSubsFound">
   <p>
     While the remaining indefinite integral to evaluate in the process of Integration by Parts is less complicated than the original, it's not a familiar basic function whose antiderivative we know.  So far, we have
     <me>
       \int $a x \csc^2($k x) \, dx = -<math simplify>$a/$k</math> x \cot($k x) +  <math simplify>$a/$k</math> \int \cot($k x) \, dx.
-    </me> 
+    </me>
     The remaining integral can be rewritten in terms of the sine and cosine functions as
     <me>
       \int \cot($k x) \, dx = \int \frac{\cos($k x)}{\sin($k x)} \, dx
     </me>
-    which is an integral that can be evaluated by substitution.  Since we are already using <q><m>u</m></q> in the process of Integration by Parts, we'll use <q><m>w</m></q> instead and do a <q><m>w</m>-substitution</q> to evaluate <m>\int \frac{\cos($k x)}{\sin($k x)} \, dx</m>.  Identify <m>w</m> and <m>dw</m> appropriately and report them in the blanks below.
-      
+    which is an integral that can be evaluated by substitution.  Since we are already using <q><m>u</m></q> in the process of Integration by Parts, we'll use <q><m>w</m></q> instead and do a <q><m>w</m>-substitution</q> to evaluate <m>\displaystyle \int \frac{\cos($k x)}{\sin($k x)} \, dx</m>.  Identify <m>w</m> and <m>dw</m> appropriately and report them in the blanks below.
+
 <!--    <mathInput name="intvduChoice"/> <m>+ C</m> <answer><award><when> $intvdu = $intvduChoice</when></award></answer> -->
-  </p> 
-  <p>
-    <m>w = </m><mathInput name="wChoice"/> <answer><award><when>$wChoice = $w</when></award></answer>
-  </p> 
-  <p>
-    <m>dw = </m><mathInput name="dwChoice"/><m>dx</m> <answer><award><when>$dwChoice = $dw</when></award></answer>
-  </p>  
-  
-  <p>
-      Now we can apply <m>w</m>-substitution to convert the original integral in <m>x</m> to a simpler integral in <m>w</m>, evaluate that integral (omitting <q><m>+C</m></q>), and then substitute back to <m>x</m>.  
   </p>
   <p>
-    <m>\int \cot($k x) \, dx = \int \frac{\cos($k x)}{\sin($k x)} \, dx = \int </m> <mathInput name="wSubsChoice"/> <m>\, dw</m> <answer><award><when> $wSubs = $wSubsChoice</when></award></answer> <m>=</m> <mathInput name="wIntChoice"/> <answer><award><when> $antiDw = $wIntChoice</when></award></answer> <m>=</m> <mathInput name="xIntChoice"/> <answer><award><when> $antiDx = $xIntChoice</when></award></answer> 
-  </p>  
+    <m>w = </m><mathInput name="wChoice"/> <answer><award><when>$wChoice = $w</when></award></answer>
+  </p>
+  <p>
+    <m>dw = </m><mathInput name="dwChoice"/><m>dx</m> <answer><award><when>$dwChoice = $dw</when></award></answer>
+  </p>
 
-    
-</p>
+  <p>
+      Now we can apply <m>w</m>-substitution to convert the original integral in <m>x</m> to a simpler integral in <m>w</m> and evaluate that integral (omitting <q><m>+C</m></q>),
+  </p>
+  <p>
+    <m>\displaystyle \int \frac{\cos($k x)}{\sin($k x)} \, dx = \int </m> <mathInput name="wSubsChoice"/><m>dw</m> <answer><award><when> $wSubs = $wSubsChoice</when></award></answer><m> =</m> <mathInput name="wIntChoice"/> <answer name="antiDwequals"><award><when> $antiDw = $wIntChoice</when></award></answer>
+  </p>
+  <feedback condition = "$almostantiDw = $wIntChoice and $antiDwequals.justSubmitted">Recall that an antiderivative of <m>\frac{1}{w}</m> is <m>\ln|w|</m>, not just <m>\ln(w)</m>.</feedback>
+  <p>
+    and then substituting back to <m>x</m> results in
+  </p>
+  <p>
+    <m>\displaystyle \int \cot($k x)\, dx = \int \frac{\cos($k x)}{\sin($k x)} \, dx=</m> <mathInput name="xIntChoice"/> <answer><award><when> $antiDx = $xIntChoice</when></award></answer>
+  </p>
 
-<p>
+    <!-- <m>\displaystyle \int \cot($k x) \, dx = \int \frac{\cos($k x)}{\sin($k x)} \, dx = \int </m> <mathInput name="wSubsChoice"/> <m>\, dw</m> <answer><award><when> $wSubs = $wSubsChoice</when></award></answer> <m>=</m> <mathInput name="wIntChoice"/> <answer><award><when> $antiDw = $wIntChoice</when></award></answer> <m>=</m> <mathInput name="xIntChoice"/> <answer><award><when> $antiDx = $xIntChoice</when></award></answer>  -->
+
+
   <p hide="$cotIntFound">
   (<em>A final prompt will appear here after you correctly complete the preceding steps that appear first.</em>)
 </p>
-  <p hide="not $cotIntFound">
+<div hide="not $cotIntFound">
     <p>
-      Now let's put everything together to completely evaluate the original indefinite integral.
+      Finally, let's put everything together to completely evaluate the original indefinite integral.
     </p>
     <p>
-      <m>\int $a x \csc^2($k x) \, dx = -<math simplify>$a/$k</math> x \cot($k x) +  <math simplify>$a/$k</math> \int \cot($k x) \, dx = -<math simplify>$a/$k</math> x \cot($k x) + </m> <mathInput name="atLast"/> <m>+ C</m> <answer><award><when>$atLast=$antiDx</when></award></answer>
+      <m> \displaystyle \int $a x \csc^2($k x) \, dx = -<math simplify>$a/$k</math> x \cot($k x) +  <math simplify>$a/$k</math> \int \cot($k x) \, dx</m></p>
+  <p><m> \displaystyle \qquad \qquad \qquad \qquad = -<math simplify>$a/$k</math> x \cot($k x) + </m> <mathInput name="atLast"/> <m>+ C</m> <answer><award><when>$atLast=$multantiDx</when></award></answer>
     </p>
-  </p>    
-</p>
+</div>
+</div>
