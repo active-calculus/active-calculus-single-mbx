@@ -15,22 +15,22 @@
   <setup>
     <function name="T" domain="[0.1,90]">50/x</function>
     <line name="line1">x=0</line>
-    <text name="blank"/>    
-  </setup>  
+    <text name="blank"/>
+  </setup>
 
       <p>
-        Suppose that you are driving a car on the highway using cruise control so that you drive at a constant speed.  The time, <m>T</m> (measured in hours), it takes to drive 50 miles depends on the constant rate, 
-        <m>s</m> (measured in miles per hour), at which you are driving.  Since 
+        Suppose that you are driving a car on the highway using cruise control so that you drive at a constant speed.  The time, <m>T</m> (measured in hours), it takes to drive 50 miles depends on the constant rate,
+        <m>s</m> (measured in miles per hour), at which you are driving.  Since
         <me>
           \mbox{distance} = \mbox{rate} \cdot \mbox{travel time},
         </me>
-        it follows that 
+        it follows that
         <me>
           \mbox{travel time} =  \frac{\mbox{distance}}{\mbox{rate}},
         </me>
-        and thus we know that <m>T(s) = \frac{50}{s}</m>.  
+        and thus we know that <m>T(s) = \frac{50}{s}</m>.
       </p>
-      <p>  
+      <p>
         For instance, observe that <m>T(75) = \frac{50}{75} = \frac{2}{3}</m>, so it takes <m>\frac{2}{3}</m> of an hour to drive <m>50</m> miles at <m>75</m> miles per hour, and the point <m>(75, \frac{2}{3})</m> lies on the graph of <m>T(s)</m>.
       </p>
 
@@ -39,19 +39,21 @@
     <yLabel><m>T(s)</m></yLabel>
     $T
     <point name = "A" styleNumber="2"> (10,0.5)
-      <constraints>
-        <attractToGrid dx="5" dy="0.25"/>
-      </constraints>
+      <!-- <attractToGrid  dx="5" dy="5"/> -->
+      <attractTo threshold="0.1">$T</attractTo>
+      <attractTo threshold=".2"> <point>(10,$$T(10))</point>, <point>(20,$$T(20))</point>, <point>(30,$$T(30))</point>, <point>(40,$$T(40))</point>, <point>(50,$$T(50))</point>, <point>(60,$$T(60))</point>, <point>(70,$$T(70))</point>, <point>(80,$$T(80))</point>
+      </attractTo>
+
     </point>
     <point name = "B" styleNumber="2"> (20,0.5)
-      <constraints>
-        <attractToGrid  dx="5" dy="0.25"/>
-      </constraints>
+      <attractTo threshold="0.1">$T</attractTo>
+      <attractTo threshold=".2"> <point>(10,$$T(10))</point>, <point>(20,$$T(20))</point>, <point>(30,$$T(30))</point>, <point>(40,$$T(40))</point>, <point>(50,$$T(50))</point>, <point>(60,$$T(60))</point>, <point>(70,$$T(70))</point>, <point>(80,$$T(80))</point>
+      </attractTo>
     </point>
     <point name = "C" styleNumber="2"> (30,0.5)
-      <constraints>
-        <attractToGrid  dx="5" dy="0.25"/>
-      </constraints>
+      <attractTo threshold="0.1">$T</attractTo>
+      <attractTo threshold=".2"> <point>(10,$$T(10))</point>, <point>(20,$$T(20))</point>, <point>(30,$$T(30))</point>, <point>(40,$$T(40))</point>, <point>(50,$$T(50))</point>, <point>(60,$$T(60))</point>, <point>(70,$$T(70))</point>, <point>(80,$$T(80))</point>
+      </attractTo>
     </point>
   </graph>
 
@@ -59,52 +61,52 @@
   <ol marker="a.">
     <li>
       <p>
-         Drag each of the three red points to locations on the graph of <m>T(s)</m>.  
+         Drag each of the three red points to locations on the graph of <m>T(s)</m>.
       </p>
         <answer allowedErrorInNumbers="0.02" allowedErrorIsAbsolute name="doneDragging" matchPartial="true">
           <award>
-            <when> 50/$A.x=$A.y and 50/$B.x=$B.y and 50/$C.x=$C.y  </when>
+            <when > 50/$A.x=$A.y and 50/$B.x=$B.y and 50/$C.x=$C.y  </when>
           </award>
         </answer>
       <p>
         State one point that lies on the graph, writing your point as an ordered pair.
-      </p>    
+      </p>
       <answer allowedErrorInNumbers="1" allowedErrorIsAbsolute>
         <mathInput name="userPoint"/>
         <award>
           <when> $$T($userPoint.x) = $userPoint.y</when>
         </award>
-      </answer> 
+      </answer>
     </li>
     <li>
       <p>
-        What are the value and meaning of <m>T(60)</m>? 
-      </p>      
-      <p><m>T(60) = </m> 
-      <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>5/6</answer> and the units on this quantity are <answer name="T60units">  
+        What are the value and meaning of <m>T(60)</m>?
+      </p>
+      <p><m>T(60) = </m>
+      <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>5/6</answer> and the units on this quantity are <answer name="T60units">
         <choiceInput inline>
           <choice>miles per hour</choice>
           <choice>hours per mile</choice>
           <choice credit="1">hours</choice>
           <choice>miles</choice>
         </choiceInput>
-      </answer>  
+      </answer>
       </p>
 
       <p>
-        The value of <m>T(60)</m> tells us that when the car is traveling at a speed of <m>60</m> <answer name="T60rate">  
+        The value of <m>T(60)</m> tells us that when the car is traveling at a speed of <m>60</m> <answer name="T60rate">
     <choiceInput inline>
       <choice credit="1">miles per hour</choice>
       <choice>hours per mile</choice>
       <choice>feet per second</choice>
       <choice>kilometers per hour</choice>
-    </choiceInput></answer>, the time that it takes to travel <answer name="T60miles">  
+    </choiceInput></answer>, the time that it takes to travel <answer name="T60miles">
     <choiceInput inline>
       <choice>60</choice>
       <choice>0.833</choice>
       <choice credit="1">50</choice>
       <choice>100</choice>
-    </choiceInput></answer> miles is <answer name="T60time">  
+    </choiceInput></answer> miles is <answer name="T60time">
     <choiceInput inline>
       <choice>1.2</choice>
       <choice credit="1">0.833</choice>
@@ -112,21 +114,21 @@
       <choice>0.5</choice>
     </choiceInput></answer> hours.
       </p>
-      
+
     </li>
     <li>
       <p>
-        Recall the average rate of change of a function <m>f</m> on an interval <m>[a,b]</m>, given by <m>AV_{[a,b]} = \frac{f(b)-f(a)}{b-a}</m>. 
-Compute the value of <m>AV_{[60,65]}</m> for the function <m>T</m>.         
+        Recall the average rate of change of a function <m>f</m> on an interval <m>[a,b]</m>, given by <m>AV_{[a,b]} = \frac{f(b)-f(a)}{b-a}</m>.
+Compute the value of <m>AV_{[60,65]}</m> for the function <m>T</m>.
       </p>
   <!-- Interactive Answers -->
   <m>AV_{[60,65]}=</m><mathInput name="AV"/>
   <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$AV=($$T(65)-$$T(60))/5</when></award></answer>
-  <!-- End of Interactive Answers -->  
+  <!-- End of Interactive Answers -->
       <p>
         What are the units on <m>AV_{[60,65]}</m>?
       </p>
-      <answer name="AV6065rate">  
+      <answer name="AV6065rate">
     <choiceInput inline>
       <choice>miles per hour</choice>
       <choice>hours per mile</choice>
@@ -136,32 +138,32 @@ Compute the value of <m>AV_{[60,65]}</m> for the function <m>T</m>.
     </li>
     <li>
       <p>
-        Observe that <m>AV_{[50, 60]} = \frac{T(60)-T(50)}{60-50} = \frac{\frac{50}{60}-\frac{50}{50}}{10} = \frac{-\frac{1}{6}}{10} = -\frac{1}{60}</m>.  Complete the following sentence to explain the meaning of this quantity.  
-      </p>  
+        Observe that <m>AV_{[50, 60]} = \frac{T(60)-T(50)}{60-50} = \frac{\frac{50}{60}-\frac{50}{50}}{10} = \frac{-\frac{1}{6}}{10} = -\frac{1}{60}</m>.  Complete the following sentence to explain the meaning of this quantity.
+      </p>
       <p>
-        The value of <m>AV_{[50, 60]}</m> tells us that when the car is traveling between speeds of <m>50</m> and <m>60</m> miles per hour, for each additional <answer name="AV6065input">  
+        The value of <m>AV_{[50, 60]}</m> tells us that when the car is traveling between speeds of <m>50</m> and <m>60</m> miles per hour, for each additional <answer name="AV6065input">
     <choiceInput inline>
       <choice>mile traveled</choice>
       <choice>hour traveled</choice>
       <choice credit="1">mile per hour of speed</choice>
       <choice>hour per mile traveled</choice>
-    </choiceInput></answer>, the time that it takes to travel <m>50</m> miles drops by approximately <answer name="AV6065output">  
+    </choiceInput></answer>, the time that it takes to travel <m>50</m> miles drops by approximately <answer name="AV6065output">
     <choiceInput inline>
       <choice>1 hour</choice>
-      <choice credit="1">1/60 hour</choice>      
+      <choice credit="1">1/60 hour</choice>
       <choice>1/6 hour</choice>
       <choice>1/60 mile</choice>
-    </choiceInput></answer>.  
+    </choiceInput></answer>.
       </p>
 
-      
-    </li> 
+
+    </li>
     <li>
       <p>
         Reason graphically to decide which of the following values best represents <m>T'(30)</m>.
       </p>
       <p><m>T'(30)=</m>
-      <answer name="Tp30">  
+      <answer name="Tp30">
     <choiceInput inline>
       <choice>?</choice>
       <choice>-1</choice>
@@ -169,6 +171,6 @@ Compute the value of <m>AV_{[60,65]}</m> for the function <m>T</m>.
       <choice>-0.5</choice>
       <choice credit="1">-0.05</choice>
     </choiceInput></answer></p>
-    </li>  
+    </li>
   </ol>
-</p>    
+</p>
