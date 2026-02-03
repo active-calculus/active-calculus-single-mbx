@@ -17,38 +17,36 @@
     <math name="b" simplify>$a+0.5</math>
     <math name="c" simplify>$a+1</math>
     <function name="f" symbolic="false" domain="[-2,4]" styleNumber="1">
-      <label><m>f</m></label>
       2*cos(pi*(x-1))+0.5
     </function>
     <derivative name="fP">$f</derivative>
     <derivative name="fPP">$fP</derivative>
 
     <math name="signfa"><sign>$$f($a)</sign></math>
-    <math name="signfPa"><sign><round numDecimals="14">$$fP($a)</round></sign></math>
-    <math name="signfPPa"><sign><round numDecimals="14">$$fPP($a)</round></sign></math>
+    <math name="signfPa"><sign><round numDecimals="10">$$fP($a)</round></sign></math>
+    <math name="signfPPa"><sign><round numDecimals="10">$$fPP($a)</round></sign></math>
     <math name="signfb"><sign>$$f($b)</sign></math>
-    <math name="signfPb"><sign><round numDecimals="14">$$fP($b)</round></sign></math>
-    <math name="signfPPb"><sign><round numDecimals="14">$$fPP($b)</round></sign></math>
+    <math name="signfPb"><sign><round numDecimals="10">$$fP($b)</round></sign></math>
+    <math name="signfPPb"><sign><round numDecimals="10">$$fPP($b)</round></sign></math>
     <math name="signfc"><sign>$$f($c)</sign></math>
-    <math name="signfPc"><sign><round numDecimals="14">$$fP($c)</round></sign></math>
-    <math name="signfPPc"><sign><round numDecimals="14">$$fPP($c)</round></sign></math>
+    <math name="signfPc"><sign><round numDecimals="10">$$fP($c)</round></sign></math>
+    <math name="signfPPc"><sign><round numDecimals="10">$$fPP($c)</round></sign></math>
 
-    <function name="g" symbolic="false" domain="[-2,4]" styleNumber="2">
-      <label><m>g</m></label>
+    <function name="g" symbolic="false" domain="[-2,4]" styleNumber="2" >
       -1*cos(pi/2*(x-2))+0.5
     </function>
     <derivative name="gP">$g</derivative>
     <derivative name="gPP">$gP</derivative>
 
     <math name="signga"><sign>$$g($a)</sign></math>
-    <math name="signgPa"><sign><round numDecimals="14">$$gP($a)</round></sign></math>
-    <math name="signgPPa"><sign><round numDecimals="14">$$gPP($a)</round></sign></math>
+    <math name="signgPa"><sign><round numDecimals="10">$$gP($a)</round></sign></math>
+    <math name="signgPPa"><sign><round numDecimals="10">$$gPP($a)</round></sign></math>
     <math name="signgb"><sign>$$g($b)</sign></math>
-    <math name="signgPb"><sign><round numDecimals="14">$$gP($b)</round></sign></math>
-    <math name="signgPPb"><sign><round numDecimals="14">$$gPP($b)</round></sign></math>
+    <math name="signgPb"><sign><round numDecimals="10">$$gP($b)</round></sign></math>
+    <math name="signgPPb"><sign><round numDecimals="10">$$gPP($b)</round></sign></math>
     <math name="signgc"><sign>$$g($c)</sign></math>
-    <math name="signgPc"><sign><round numDecimals="14">$$gP($c)</round></sign></math>
-    <math name="signgPPc"><sign><round numDecimals="14">$$gPP($c)</round></sign></math>
+    <math name="signgPc"><sign><round numDecimals="10">$$gP($c)</round></sign></math>
+    <math name="signgPPc"><sign><round numDecimals="10">$$gPP($c)</round></sign></math>
 
   </setup>
 
@@ -58,80 +56,128 @@
 </p>
 
 <aside startOpen><title>Part (a)</title>
-
+<sideBySide widths="47% 47%">
   <graph xMin="-2" xMax="4" yMin="-2" yMax="3" grid="true" showNavigation="false" fixAxes="true" size="small">
     <!-- <line fixed through="(-2,0) (4,0)" styleNumber="5"/> -->
     $f
+    <label fixed anchor="(2.25,2.25)"><m>f</m></label>
     <point>($a,$$f($a))</point>
     <point>($b,$$f($b))</point>
     <point>($c,$$f($c))</point>
     <!-- $g -->
   </graph>
-
-<p>
+  <div>
+   <p>
       <m>f($a)</m> is <choiceInput name="fofa" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
-      <m>\quad f'($a)</m> is <choiceInput name="fPofa" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
-      <m>\quad f''($a) </m> is <choiceInput name="fPPofa" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
-      <answer submitLabel="">
+   </p>
+  <p>
+    <m>f'($a)</m> is <choiceInput name="fPofa" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
+  </p>
+  <p>
+    <m>f''($a) </m> is <choiceInput name="fPPofa" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
+  </p>
+      <answer>
         <award><when matchPartial><math>$fofa.selectedIndices -2</math> = $signfa and <math>$fPofa.selectedIndices -2</math> = $signfPa and <math>$fPPofa.selectedIndices -2</math> = $signfPPa</when></award>
       </answer>
 
-</p>
+</div>
+</sideBySide>
 
-<p>
+<sideBySide widths="47% 47%">
+
+<div>
+  <p>
       <m>f($b)</m> is <choiceInput name="fofb" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
-      <m>\quad f'($b)</m> is <choiceInput name="fPofb" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
-      <m>\quad f''($b) </m> is <choiceInput name="fPPofb" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
-      <answer submitLabel="">
+  </p>
+  <p><m>f'($b)</m> is <choiceInput name="fPofb" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
+  </p>
+  <p>
+      <m>f''($b) </m> is <choiceInput name="fPPofb" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
+  </p>
+      <answer>
         <award><when matchPartial><math>$fofb.selectedIndices -2</math> = $signfb and <math>$fPofb.selectedIndices -2</math> = $signfPb and <math>$fPPofb.selectedIndices -2</math> = $signfPPb</when></award>
       </answer>
-</p>
-
-<p>
+</div>
+<div>
+  <p>
       <m>f($c)</m> is <choiceInput name="fofc" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
-      <m>\quad f'($c)</m> is <choiceInput name="fPofc" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
-      <m>\quad f''($c) </m> is <choiceInput name="fPPofc" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
-      <answer submitLabel="">
+  </p>
+  <p>
+      <m>f'($c)</m> is <choiceInput name="fPofc" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
+  </p>
+  <p>
+      <m>f''($c) </m> is <choiceInput name="fPPofc" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
+  </p>
+      <answer>
         <award><when matchPartial><math>$fofc.selectedIndices -2</math> = $signfc and <math>$fPofc.selectedIndices -2</math> = $signfPc and <math>$fPPofc.selectedIndices -2</math> = $signfPPc</when></award>
       </answer>
-</p>
+</div>
+</sideBySide>
+
+
+
+
 </aside>
 <aside><title>Part (b)</title>
+
+<sideBySide widths="47% 47%">
   <graph xMin="-2" xMax="4" yMin="-2" yMax="3" grid="true" showNavigation="false" fixAxes="true" size="small">
     <!-- <line fixed through="(-2,0) (4,0)" styleNumber="5"/> -->
     <!-- $f -->
     $g
+    <label fixed anchor="(3.25,1.35)"><m>g</m></label>
     <point styleNumber="2">($a,$$g($a))</point>
     <point styleNumber="2">($b,$$g($b))</point>
     <point styleNumber="2">($c,$$g($c))</point>
   </graph>
-<p>
+  <div>
+    <p>
       <m>g($a)</m> is <choiceInput name="gofa" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
-      <m>\quad g'($a)</m> is <choiceInput name="gPofa" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
-      <m>\quad g''($a) </m> is <choiceInput name="gPPofa" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
-      <answer submitLabel="">
+    </p>
+    <p>
+    <m>g'($a)</m> is <choiceInput name="gPofa" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
+    </p>
+    <p>
+      <m>g''($a) </m> is <choiceInput name="gPPofa" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
+    </p>
+      <answer>
         <award><when matchPartial><math>$gofa.selectedIndices -2</math> = $signga and <math>$gPofa.selectedIndices -2</math> = $signgPa and <math>$gPPofa.selectedIndices -2</math> = $signgPPa</when></award>
       </answer>
 
-</p>
+</div>
+</sideBySide>
 
-<p>
+  <sideBySide widths="47% 47%">
+  <div>
+    <p>
       <m>g($b)</m> is <choiceInput name="gofb" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
-      <m>\quad g'($b)</m> is <choiceInput name="gPofb" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
-      <m>\quad g''($b) </m> is <choiceInput name="gPPofb" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
-      <answer submitLabel="">
+    </p>
+    <p>
+      <m>g'($b)</m> is <choiceInput name="gPofb" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
+    </p>
+    <p>
+      <m>g''($b) </m> is <choiceInput name="gPPofb" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
+    </p>
+      <answer>
         <award><when matchPartial><math>$gofb.selectedIndices -2</math> = $signgb and <math>$gPofb.selectedIndices -2</math> = $signgPb and <math>$gPPofb.selectedIndices -2</math> = $signgPPb</when></award>
       </answer>
-</p>
+</div>
+    <div>
 
 <p>
       <m>g($c)</m> is <choiceInput name="gofc" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
-      <m>\quad g'($c)</m> is <choiceInput name="gPofc" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
-      <m>\quad g''($c) </m> is <choiceInput name="gPPofc" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
-      <answer submitLabel="">
+</p>
+      <p>
+      <m>g'($c)</m> is <choiceInput name="gPofc" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
+      </p>
+      <p>
+      <m>g''($c) </m> is <choiceInput name="gPPofc" inline><choice>negative</choice><choice>zero</choice><choice>positive</choice></choiceInput>
+      </p>
+      <answer>
         <award><when matchPartial><math>$gofc.selectedIndices -2</math> = $signgc and <math>$gPofc.selectedIndices -2</math> = $signgPc and <math>$gPPofc.selectedIndices -2</math> = $signgPPc</when></award>
       </answer>
-</p>
+</div>
+  </sideBySide>
 
 
 </aside>
