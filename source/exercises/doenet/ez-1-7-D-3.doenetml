@@ -18,9 +18,9 @@
 
 <setup>
   <selectFromSequence name="m" from="-1" to="1" exclude="0" />
-  <selectFromSequence name="a" from="-1" to="1" numToSelect="1" />       
+  <selectFromSequence name="a" from="-1" to="1" numToSelect="1" />
   <selectFromSequence name="b" from="-1" to="1" numToSelect="1" />
-  
+
 <!--   <selectFromSequence name="c" from="1" to="4"/> -->
   <selectFromSequence name="upordown" from="-1" to="1" exclude="0" />
 
@@ -30,12 +30,12 @@
   <math name="c">0</math>
 
 <!-- Virginia's note - the <select> below replaces the previous <select> which had assignNames. Now, we refer to the boolean of the first selected option as $graphSelect[1][2]. (first index is the first selection made of all the options, second index is the second component defined within that option) -->
-  
+
 <select name="graphSelect" numToSelect="3">
   <option>
     <graph name="graph1" showNavigation="false" fixAxes="true" xmin="-2.5" xmax="2.5" ymin="-4" ymax="4">
     <function> $line </function>
-  </graph> 
+  </graph>
   <boolean>1</boolean>
   </option>
   <option>
@@ -52,7 +52,7 @@
       <function domain="[$a+$c,2.5)"> $line </function>
       <endpoint open="true" draggable="false">($a, $$line($a))</endpoint>
       <endpoint draggable="false">($a, $$line($a)+$upordown)</endpoint>
-    </graph> 
+    </graph>
     <boolean>1</boolean>
   </option>
   <option>
@@ -88,19 +88,14 @@
 
 </setup>
 
-
-<!-- testing -->
-<p>correctLabels = $correctLabels</p>
-<p>checkLists = $checkLists</p>
-<p>a = $a</p> 
-<!-- /testing -->
-
- <p>Which of the following graphs below satisfy the property that <m>\displaystyle \lim_{x\to $a} f(x)= $$line($a) </m>?  Enter the (capital) letters of all such graphs, separated by commas. <mathInput name="mi1" /></p>
+ <p>Enter the (capital) letters of all of the following graphs below which satisfy the property that <me>\lim_{x\to $a} f(x)= $$line($a).</me> Separate your list by commas if needed.
  <answer>
+   <mathInput name="mi1" />
     <award>
       <when>$checkLists</when>
     </award>
   </answer>
+ </p>
 
 <sideBySide margins="1%">
   <figure suppressFigureNameInCaption="true">$graphSelect[1][1]<caption>A</caption></figure>
