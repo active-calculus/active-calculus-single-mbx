@@ -19,39 +19,39 @@
 
     <!--
     <math name="P">($c*$a+$d)/($a-$b)</math>
-    <math name="Q">($c*$b+$d)/($b-$a)</math>    
+    <math name="Q">($c*$b+$d)/($b-$a)</math>
     -->
-    
+
     <mathList name="PFdecomp">($a*x)/(x^2 + $c^2) ($b)/(x^2 + $c^2)</mathList>
     <mathList name="PFdecompEntered">$PF1 $PF2</mathList>
 
     <math name="u">x^2 + $c^2</math>
     <math name="du">2x</math>
-    
+
     <function name="f" symbolic="false" >
       ($a*x+$b)/(x^2 + $c^2)
-    </function> 
+    </function>
 
     <function name="F" symbolic="false" >
      $a/2*ln(x^2 + $c^2) + $b/$c*atan(x/$c)
-    </function>   
+    </function>
     <function name="Fa" symbolic="false" >
      $a/2*ln(abs(x^2 + $c^2)) + $b/$c*atan(x/$c)
-    </function>   
+    </function>
 
     <function name="int1a" symbolic="false" >
      $a/2*ln(x^2 + $c^2)
-    </function>   
+    </function>
     <function name="int1b" symbolic="false" >
      $a/2*ln(abs(x^2 + $c^2))
-    </function>   
+    </function>
 
     <function name="int2" symbolic="false" >
      $b/$c*atan(x/$c)
-    </function>  
-    
+    </function>
+
     <boolean name="correctPFfound">$PFfound.creditAchieved=1</boolean>
-    
+
   </setup>
 
 <p>
@@ -64,16 +64,16 @@
 
 <p>
   First, use the distributive property of division to write the integrand as a sum of two fractions, and hence the original integral as a sum of two integrals.
-</p>  
+</p>
 
 <p>
   <m>\displaystyle \int \frac{$a x + $b}{x^2 + <math simplify>$c^2</math>} \, dx = \int </m><mathInput minWidth="75" name="PF1"/> <m>\displaystyle dx + \int </m> <mathInput minWidth="75" name="PF2"/> <m>dx </m> <answer name="PFfound" unorderedCompare><award><when>$PFdecomp = $PFdecompEntered</when></award></answer>
-</p>  
+</p>
 
 <p hide="$correctPFfound">
   (<em>Once you have the correct decomposition above, additional prompts will appear.</em>)
 </p>
-<p hide="not $correctPFfound">
+<div hide="not $correctPFfound">
   <p>
     There are now two separate integrals to evaluate and they require different approaches.  We will wait to include the arbitrary <q><m>+C</m></q> until the final conclusion of our work.
   </p>
@@ -82,28 +82,28 @@
   </p>
   <p>
     <m>\displaystyle \int \frac{$a x}{x^2 + <math simplify>$c^2</math>} \, dx = </m><mathInput name="int1Entered"/><answer><award><when>$int1a = $int1Entered or $int1b = $int1Entered </when></award></answer>
-  </p> 
+  </p>
 
   <p>
-    For <m>\displaystyle \int \frac{$b}{x^2 + <math simplify>$c^2</math>} \, dx</m>, this integral is closely related to 
+    For <m>\displaystyle \int \frac{$b}{x^2 + <math simplify>$c^2</math>} \, dx</m>, this integral is closely related to
     <me>
       \int \frac{1}{x^2 + 1} dx = \arctan(x).
     </me>
-    With the substitution <m>u = \frac{x}{a}</m>, it can be shown that 
+    With the substitution <m>u = \frac{x}{a}</m>, it can be shown that
     <me>
-      \int \frac{1}{x^2 + a^2} dx = \arctan\left(\frac{x}{a}\right).
+      \int \frac{1}{x^2 + a^2} dx = \frac{1}{a}\arctan\left(\frac{x}{a}\right).
     </me>
-    Use this latest result to now evaluate <m>\displaystyle \int \frac{$b}{x^2 + <math simplify>$c^2</math>} \, dx</m> and enter your result in the provided blank.   
+    Use this latest result to now evaluate <m>\displaystyle \int \frac{$b}{x^2 + <math simplify>$c^2</math>} \, dx</m> and enter your result in the provided blank.
   </p>
   <p>
     <m>\displaystyle \int \frac{$b}{x^2 + <math simplify>$c^2</math>} \, dx = </m><mathInput name="int2Entered"/><answer><award><when>$int2 = $int2Entered </when></award></answer>
-  </p> 
+  </p>
 
   <p>
    Finally, put all of your preceding work together to evaluate the original integral.
   </p>
   <p>
-    <m>\displaystyle \int \frac{$a x + $b}{x^2 + <math simplify>$c^2</math>} \, dx = </m><mathInput minWidth="150" name="Fentered"/> <m>+ \, C \,</m><answer><award><when>$F = $Fentered</when></award></answer>
+    <m>\displaystyle \int \frac{$a x + $b}{x^2 + <math simplify>$c^2</math>} \, dx = </m><mathInput minWidth="150" name="Fentered"/> <m>+ \, C \,</m><answer><award><when>$F = $Fentered or $Fa = $Fentered</when></award></answer>
   </p>
-  
-</p>
+
+</div>
