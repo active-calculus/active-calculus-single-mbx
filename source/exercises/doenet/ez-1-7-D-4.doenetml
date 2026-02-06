@@ -15,30 +15,30 @@
 <setup>
 
   <selectFromSequence name="m1" from="0.25" to="0.75" step="0.25"/>
-  <selectFromSequence name="m2" from="0.75" to="1.5" step="0.25"/> 
-  <selectFromSequence name="x1" from="-3" to="-1" step="1"/> 
+  <selectFromSequence name="m2" from="0.75" to="1.5" step="0.25"/>
+  <selectFromSequence name="x1" from="-3" to="-1" step="1"/>
 
   <math name="x2">$x1+1</math>
-  <math name="x3">$x1+3</math>  
+  <math name="x3">$x1+3</math>
 
-  <selectFromSequence name="y1" from="-2" to="2" step="1"/>   
+  <selectFromSequence name="y1" from="-2" to="2" step="1"/>
 
-  
+
   <piecewiseFunction name="f" symbolic="false" styleNumber="1">
     <function domain="(-infinity,$x1)">$m1*(x-$x1)^2+$y1-1</function>
     <function domain="[$x1,$x2)">$y1-1</function>
     <function domain="[$x2,$x3)">$m2*(x-$x2)+$y1-1</function>
-    <function domain="[$x3,infinity)">-$m1*(x-$x3)^2 + ($m2*($x3-$x2)+$y1)</function>   
+    <function domain="[$x3,infinity)">-$m1*(x-$x3)^2 + ($m2*($x3-$x2)+$y1)</function>
     <label><m>f</m></label>
   </piecewiseFunction>
 
   <piecewiseFunction name="fP" symbolic="false"  styleNumber="2">
     <function domain="(-infinity,$x1)">2*$m1(x-$x1)</function>
     <function domain="[$x1,$x2)">0</function>
-    <function domain="[$x2,$x2]">undefined</function>    
-    <function domain="($x2,$x3)">$m2</function>   
-    <function domain="[$x3,$x3]">undefined</function>      
-    <function domain="($x3,infinity)">-2*$m1*(x-$x3)</function>      
+    <function domain="[$x2,$x2]">undefined</function>
+    <function domain="($x2,$x3)">$m2</function>
+    <function domain="[$x3,$x3]">undefined</function>
+    <function domain="($x3,infinity)">-2*$m1*(x-$x3)</function>
   </piecewiseFunction>
 
   <endpoint name="p0" open="true" draggable="false">($x1-1, $$f($x1-1))</endpoint>
@@ -50,57 +50,57 @@
     Let <m>f</m> be the piecewise function given by the graph below; each portion of the graph is either linear or quadratic.  An open circle represents a <q>hole</q> in the graph.
   </p>
 
-      <graph xmin="-5" xmax="5" ymin="-5" ymax="5" size="medium" grid="true" showNavigation="false" fixAxes="true"> 
-        $f 
+      <graph xmin="-5" xmax="5" ymin="-5" ymax="5" size="medium" grid="true" showNavigation="false" fixAxes="true">
+        $f
         $p0
         $p1
         $p2
       </graph>
 
   <p>
-    
-  </p>  
+
+  </p>
 
 <p>
   <ol marker="a.">
     <li>
  <!-- Estimate each of the following values of <m>f'(x)</m>.  If the value of the derivative does not exist, enter <q>undefined</q>. -->
-      Identify each of the values of <m>a</m> for which <m>\displaystyle \lim_{x \to a} f(x)</m> does not exist.
-      <mathInput name="noLim"/>  
+      Identify all the values of <m>a</m> for which <m>\displaystyle \lim_{x \to a} f(x)</m> does not exist.
         <answer matchPartial>
+          <mathInput name="noLim"/>
           <award unorderedCompare>
             <when>$noLim = <mathList>$x3</mathList></when>
-          </award> 
-        </answer> 
+          </award>
+        </answer>
     </li>
     <li>
-       Identify each of the values of <m>a</m> for which <m>f</m> is not continuous at <m>x=a</m>.
-      <mathInput name="notCont"/>  
+       Identify all the values of <m>a</m> for which <m>f</m> is not continuous at <m>x=a</m>.
         <answer matchPartial>
+          <mathInput name="notCont"/>
           <award unorderedCompare>
             <when>$notCont = <mathList>($x1-1) $x3</mathList></when>
-          </award> 
-        </answer>  
-    </li>    
+          </award>
+        </answer>
+    </li>
     <li>
-       Identify each of the values of <m>a</m> for which <m>f</m> is not differentiable at <m>x=a</m>.
-      <mathInput name="notDiff"/>  
+       Identify all the values of <m>a</m> for which <m>f</m> is not differentiable at <m>x=a</m>.
         <answer matchPartial>
+          <mathInput name="notDiff"/>
           <award unorderedCompare>
-            <when>$notCont = <mathList>($x1-1) $x2 $x3</mathList></when>
-          </award> 
-        </answer>   
+            <when>$notDiff = <mathList>($x1-1) $x2 $x3</mathList></when>
+          </award>
+        </answer>
 
 
-    </li> 
+    </li>
 
-    <!--      <m> f'(-2) = <math>$$fP(-2)</math></m> 
+    <!--      <m> f'(-2) = <math>$$fP(-2)</math></m>
     <li>
-      <m>f'(<math simplify>$x1+2</math>) \approx </m> 
+      <m>f'(<math simplify>$x1+2</math>) \approx </m>
       <answer>
         <award allowedErrorInNumbers="0.1" allowedErrorIsAbsolute> $$fP($x1+2)
         </award>
-      </answer>  
+      </answer>
     </li> -->
 
   </ol>
