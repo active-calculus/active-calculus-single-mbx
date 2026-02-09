@@ -17,21 +17,21 @@
     <function name="f" symbolic="false" domain="[-1,4]" styleNumber="1">
       <label><m>f</m></label>
       -1/3*(-1-x)(3-(1-x)^2)
-    </function> 
+    </function>
     <derivative name="fP">$f</derivative>
     <derivative name="fPP">$fP</derivative>
     <function name="h" symbolic="false" domain="[-1,4]" styleNumber="2">
       <label><m>h</m></label>
-      1/4*(2.7-x)(5-(1-x)^2)
-    </function>  
+      1/4*(2.2-x)(5-(1-x)^2)
+    </function>
     <derivative name="hP">$h</derivative>
     <derivative name="hPP">$hP</derivative>
     <function name="g" symbolic="false" domain="[-1,4]" styleNumber="3">
       <label><m>g</m></label>
-      -1/3*(1-x)(4-(2-x)^2)-1
-    </function>   
+      -1/3*(.7-x)(4-(2-x)^2)-1
+    </function>
     <derivative name="gP">$g</derivative>
-    <derivative name="gPP">$gP</derivative>    
+    <derivative name="gPP">$gP</derivative>
     <math name="signf"><sign>$$f($a)</sign></math>
     <math name="signfP"><sign>$$fP($a)</sign></math>
     <math name="signfPP"><sign>$$fPP($a)</sign></math>
@@ -45,87 +45,132 @@
 
 <p>
   Three functions, <m>f</m>, <m>g</m>, and <m>h</m>, are given by the graphs below.  Use the graphs to respond to each of the following questions about the signs of function values, first derivative values, and second derivative values.
-</p>  
+</p>
 
-  <graph xMin="-1" xMax="4" yMin="-2" yMax="3" grid="true" showNavigation="false" fixAxes="true">
+  <graph xMin="-1" xMax="4" yMin="-2" yMax="3" grid="true" showNavigation="false" fixAxes="true" size="small">
     $f
     $g
     $h
-  </graph>  
+  </graph>
 
-<!--
-<p>
-  <m>a = $a, f($a) = <math simplify="true">$$f($a)</math>, f'($a) = <math simplify="true">$$fP($a)</math>, f''($a) = <math simplify="true">$$fPP($a)</math></m>, $signf, $signfP, $signfPP
-  <m>a = $a, g($a) = <math simplify="true">$$g($a)</math>, g'($a) = <math simplify="true">$$gP($a)</math>, g''($a) = <math simplify="true">$$gPP($a)</math></m>, $signg, $signgP, $signgPP
-  <m>a = $a, f($a) = <math simplify="true">$$f($a)</math>, f'($a) = <math simplify="true">$$fP($a)</math>, h''($a) = <math simplify="true">$$hPP($a)</math></m>, $signh, $signhP, $signhPP  
-</p>
--->
-<p>
-  For each of the following quantities, enter <q><m>-1</m></q> if the quantity is negative, enter <q><m>1</m></q> if the quantity is positive, or enter <q><m>0</m></q> if the quantity is zero.
-</p>
+<aside startOpen><title>Part (a)</title>
+  <div>
+    <p>
+      Choose the correct sign (positive, negative, or zero) of each value below and the reason we know the sign from looking at the graph. You must get both the sign and the reason correct together to be marked correct.
+    </p>
+    <p>
 
-<sideBySide widths="31% 31% 31%">
-  <p>
-    <p>
-      <m>f($a) = </m> 
-      <answer>
-        <award>$signf</award>
-      </answer> 
-    </p>
-    <p>
-      <m>f'($a) = </m> 
-      <answer>
-        <award>$signfP</award>
-      </answer> 
-    </p>
-    <p>
-      <m>f''($a) = </m> 
-      <answer>
-        <award>$signfPP</award>
-      </answer>  
-    </p>
-  </p>  
+      <m>g($a)</m><choiceInput name="gofa" inline>
+        <choice><m>\lt 0</m></choice>
+        <choice><m>= 0</m></choice>
+        <choice><m>\gt 0</m></choice></choiceInput>
+      because <choiceInput name="gofareason" inline>
+        <choice><m>g</m> is below the <m>x-</m>axis when <m>x=$a</m></choice>
+        <choice><m>g</m> is above the <m>x-</m>axis when <m>x=$a</m></choice>
+        <choice><m>g</m> is decreasing when <m>x=$a</m></choice>
+        <choice><m>g</m> is increasing when <m>x=$a</m></choice>
+        <choice><m>g</m> is concave down when <m>x=$a</m></choice>
+        <choice><m>g</m> is concave up when <m>x=$a</m></choice></choiceInput>
 
-  <p>
-    <p>
-      <m>g($a) = </m> 
-      <answer>
-        <award>$signg</award>
-      </answer> 
+      <answer submitLabel=""><award>
+        <when><math>$gofa.selectedIndices -2</math> = $signg and
+          <boolean>
+            <boolean>$a=1 and $gofareason.selectedIndices=1</boolean> or
+            <boolean>$a=2 and $gofareason.selectedIndices=2</boolean> or
+            <boolean>$a=3 and $gofareason.selectedIndices=2</boolean>
+          </boolean>
+        </when></award>
+      </answer>
     </p>
-    <p>
-      <m>g'($a) = </m> 
-      <answer>
-        <award>$signgP</award>
-      </answer> 
-    </p>
-    <p>
-      <m>g''($a) = </m> 
-      <answer>
-        <award>$signgPP</award>
-      </answer>  
-    </p>
-  </p>    
 
-  <p>
     <p>
-      <m>h($a) = </m> 
-      <answer>
-        <award>$signh</award>
-      </answer> 
+      <m>g'($a)</m><choiceInput name="gPofa" inline>
+        <choice><m>\lt 0</m></choice>
+        <choice><m>= 0</m></choice>
+        <choice><m>\gt 0</m></choice></choiceInput>
+      because <choiceInput name="gPofareason" inline>
+        <choice><m>g</m> is below the <m>x-</m>axis when <m>x=$a</m></choice>
+        <choice><m>g</m> is above the <m>x-</m>axis when <m>x=$a</m></choice>
+        <choice><m>g</m> is decreasing when <m>x=$a</m></choice>
+        <choice><m>g</m> is increasing when <m>x=$a</m></choice>
+        <choice><m>g</m> is concave down when <m>x=$a</m></choice>
+        <choice><m>g</m> is concave up when <m>x=$a</m></choice></choiceInput>
+
+      <answer submitLabel=""><award>
+        <when><math>$gPofa.selectedIndices -2</math> = $signgP and
+          <boolean>
+            <boolean>$a=1 and $gPofareason.selectedIndices=4</boolean> or
+            <boolean>$a=2 and $gPofareason.selectedIndices=4</boolean> or
+            <boolean>$a=3 and $gPofareason.selectedIndices=3</boolean>
+          </boolean>
+        </when></award>
+      </answer>
     </p>
     <p>
-      <m>h'($a) = </m> 
-      <answer>
-        <award>$signhP</award>
-      </answer> 
+      <m>g''($a)</m><choiceInput name="gPPofa" inline>
+        <choice><m>\lt 0</m></choice>
+        <choice><m>= 0</m></choice>
+        <choice><m>\gt 0</m></choice></choiceInput>
+      because <choiceInput name="gPPofareason" inline>
+        <choice><m>g</m> is below the <m>x-</m>axis when <m>x=$a</m></choice>
+        <choice><m>g</m> is above the <m>x-</m>axis when <m>x=$a</m></choice>
+        <choice><m>g</m> is decreasing when <m>x=$a</m></choice>
+        <choice><m>g</m> is increasing when <m>x=$a</m></choice>
+        <choice><m>g</m> is concave down when <m>x=$a</m></choice>
+        <choice><m>g</m> is concave up when <m>x=$a</m></choice></choiceInput>
+
+      <answer submitLabel=""><award>
+        <when><math>$gPPofa.selectedIndices -2</math> = $signgPP and
+          <boolean>
+            <boolean>$a=1 and $gPPofareason.selectedIndices=6</boolean> or
+            <boolean>$a=2 and $gPPofareason.selectedIndices=5</boolean> or
+            <boolean>$a=3 and $gPPofareason.selectedIndices=5</boolean>
+          </boolean>
+        </when></award>
+      </answer>
+    </p>
+  </div>
+
+
+</aside>
+
+<aside><title>Part (b)</title>
+<sideBySide widths="47% 47%">
+  <div>
+    <p>
+      <m>f($a)</m><answer><choiceInput name="fofa" inline><choice><m>\lt 0</m></choice><choice><m>= 0</m></choice><choice><m>\gt 0</m></choice></choiceInput>
+        <award><when><math>$fofa.selectedIndices -2</math> = $signf</when></award>
+      </answer>
     </p>
     <p>
-      <m>h''($a) = </m> 
-      <answer>
-        <award>$signhPP</award>
-      </answer>  
+      <m>f'($a)</m><answer><choiceInput name="fPofa" inline><choice><m>\lt 0</m></choice><choice><m>= 0</m></choice><choice><m>\gt 0</m></choice></choiceInput>
+        <award><when><math>$fPofa.selectedIndices -2</math> = $signfP</when></award>
+      </answer>
     </p>
-  </p>    
-  
+    <p>
+      <m>f''($a)</m><answer><choiceInput name="fPPofa" inline><choice><m>\lt 0</m></choice><choice><m>= 0</m></choice><choice><m>\gt 0</m></choice></choiceInput>
+        <award><when><math>$fPPofa.selectedIndices -2</math> = $signfPP</when></award>
+      </answer>
+    </p>
+  </div>
+
+  <div>
+    <p>
+      <m>h($a)</m><answer><choiceInput name="hofa" inline><choice><m>\lt 0</m></choice><choice><m>= 0</m></choice><choice><m>\gt 0</m></choice></choiceInput>
+        <award><when><math>$hofa.selectedIndices -2</math> = $signh</when></award>
+      </answer>
+    </p>
+    <p>
+      <m>h'($a)</m><answer><choiceInput name="hPofa" inline><choice><m>\lt 0</m></choice><choice><m>= 0</m></choice><choice><m>\gt 0</m></choice></choiceInput>
+        <award><when><math>$hPofa.selectedIndices -2</math> = $signhP</when></award>
+      </answer>
+    </p>
+    <p>
+      <m>h''($a)</m><answer><choiceInput name="hPPofa" inline><choice><m>\lt 0</m></choice><choice><m>= 0</m></choice><choice><m>\gt 0</m></choice></choiceInput>
+        <award><when><math>$hPPofa.selectedIndices -2</math> = $signhPP</when></award>
+      </answer>
+    </p>
+  </div>
+
 </sideBySide>
+</aside>

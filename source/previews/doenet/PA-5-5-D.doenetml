@@ -27,134 +27,137 @@
   <boolean name="C3correct">$C3.creditAchieved=1</boolean>
   <boolean name="C4correct">$C4.creditAchieved=1</boolean>
   <boolean name="D1correct">$D1.creditAchieved=1</boolean>
-  <boolean name="D2correct">$D2.creditAchieved=1</boolean>  
-  <boolean name="D3correct">$D3.creditAchieved=1</boolean>  
-  <boolean name="D4correct">$D4.creditAchieved=1</boolean>  
-</setup> 
+  <boolean name="D2correct">$D2.creditAchieved=1</boolean>
+  <boolean name="D3correct">$D3.creditAchieved=1</boolean>
+  <boolean name="D4correct">$D4.creditAchieved=1</boolean>
+</setup>
 
   <p>
     For each of the following indefinite integrals, the initial question is to decide whether the integral can be most efficiently evaluated using substitution, integration by parts, a combination of the two, or neither.  For any integral except those for which the answer is <q>neither</q>, once you correctly identify the evaluation approach, you'll be prompted to state the substitution(s) you would use.
   </p>
   <p>
     <alert>Note</alert>: because we typically use <q><m>u</m></q> for both substitution and integration by parts, in what follows we are going to use <q><m>w</m></q> for a single variable substitution, and <q><m>u</m></q> and <q><m>v</m></q> for the usual structure of integration by parts.
-  </p>  
+  </p>
   <p>
 
     <ol marker="a.">
       <li>
         <p>
           <m>\int x^2 \sin(x^3) \, dx</m>
-           <p>
+
             <answer name="A1">
-             <choiceInput name="l1"> 
+             <choiceInput name="l1">
                <choice credit = '1'>substitution</choice>
                <choice>integration by parts</choice>
                <choice>combination of both</choice>
                <choice>neither</choice>
              </choiceInput>
             </answer>
+        </p>
             <p hide="not $A1correct">
               The substitution to use is <m>w = </m><mathInput name="wA1"/>, <m>dw = </m><mathInput name="dwA1"/> <m>dx</m> <answer><award><when>$wA1 = x^3 and $dwA1 = 3x^2</when></award></answer>
             </p>
-        </p>
-          
-          <nbsp /><m>\int x^2 \sin(x) \, dx</m>
-          <p>
+
+        <p>
+         <m>\int x^2 \sin(x) \, dx</m>
           <answer name="A2">
-           <choiceInput name="l2"> 
+           <choiceInput name="l2">
              <choice>substitution</choice>
              <choice credit = '1'>integration by parts</choice>
              <choice>combination of both</choice>
              <choice>neither</choice>
            </choiceInput>
           </answer>
-          <p hide="not $A2correct">
-            The substitution to use is <m>u = </m><mathInput name="uA2"/>, <m>du = </m><mathInput name="duA2"/> <m>dx</m>, <m>dv = </m><mathInput name="dvA2"/><m>dx</m>, <m>v = </m><mathInput name="vA2"/> <answer><award><when>$uA2 = x^2 and $duA2 = 2x and $dvA2 = sin(x) and $vA2 = -cos(x) </when></award></answer>
-          </p>  
         </p>
-          <nbsp /> <m>\int \sin(x^3) \, dx</m>,
-          <p>
+        <p hide="not $A2correct">
+            The substitution to use is <m>u = </m><mathInput name="uA2"/>, <m>du = </m><mathInput name="duA2"/> <m>dx</m>, <m>dv = </m><mathInput name="dvA2"/><m>dx</m>, <m>v = </m><mathInput name="vA2"/> <answer><award><when>$uA2 = x^2 and $duA2 = 2x and $dvA2 = sin(x) and $vA2 = -cos(x) </when></award></answer>
+          </p>
+          <p> <m>\int \sin(x^3) \, dx</m>,
+
           <answer name="A3">
-           <choiceInput name="l3"> 
+           <choiceInput name="l3">
              <choice>substitution</choice>
              <choice>integration by parts</choice>
              <choice>combination of both</choice>
              <choice credit = '1'>neither</choice>
            </choiceInput>
           </answer>
+          </p>
           <p hide="not $A3correct">
             While it's harder to show that no approach with substitution works, notice that <m>w = x^3</m> fails because there's not a function-derivative pair present (we'd need <m>x^2</m> in the integrand to account for <m>dw</m>), and if we tried integration by parts, the only reasonable choice is <m>u = \sin(x^3) \, dx</m> and <m>dv = 1 \, dx</m>, but that produces a more complicated integral to evaluate that is also impossible with our current approaches.
-          </p>             
-        </p>
-          <nbsp /> <m>\int x^5 \sin(x^3) \, dx</m>
-          <p>
+          </p>
+        <p>
+          <m>\int x^5 \sin(x^3) \, dx</m>
+
           <answer name="A4">
-           <choiceInput name="l4"> 
+           <choiceInput name="l4">
              <choice>substitution</choice>
              <choice>integration by parts</choice>
              <choice credit = '1'>combination of both</choice>
              <choice>neither</choice>
            </choiceInput>
           </answer>
+        </p>
           <p hide="not $A4correct">
             Observe that <m>x^5 = x^2 \cdot x^3</m>. The substitution to use first is <m>w = </m><mathInput name="wA4"/>, <m>dw = </m><mathInput name="dwA4"/> <m>dx</m> <answer><award><when>$wA4 = x^3 and $dwA4 = 3x^2 </when></award></answer>.  This then produces an integral in terms of <m>w</m> that is straightforward to evaluate by integration by parts.
-          </p> 
-        </p>
-        </p>
+          </p>
       </li>
 
       <li>
         <p>
           <m>\int \frac{1}{1+x^2} \, dx</m>
-           <p>
+
           <answer name="B1">
-           <choiceInput name="l5"> 
+           <choiceInput name="l5">
              <choice>substitution</choice>
              <choice>integration by parts</choice>
              <choice>combination of both</choice>
              <choice credit = '1'>neither</choice>
            </choiceInput>
           </answer>
+        </p>
           <p hide="not $B1correct">
             Here the integrand is the derivative of a familiar basic function (specifically, <m>\arctan(x)</m>), so we can evaluate the integral directly.
-          </p>               
-        </p>
-          <nbsp /> <m>\int \frac{x}{1+x^2} \, dx</m>
-           <p>
+          </p>
+          <p>
+            <m>\int \frac{x}{1+x^2} \, dx</m>
+
           <answer name="B2">
-           <choiceInput name="l6"> 
+           <choiceInput name="l6">
              <choice credit = '1'>substitution</choice>
              <choice>integration by parts</choice>
              <choice>combination of both</choice>
              <choice>neither</choice>
            </choiceInput>
           </answer>
+          </p>
             <p hide="not $B2correct">
-              The substitution to use is <m>w = </m><mathInput name="wB2"/>, <m>dw = </m><mathInput name="dwB2"/> <m>dx</m> <answer><award><when>$wB2 = x^2 and $dwB2 = 2x</when></award></answer>
+              The substitution to use is <m>w = </m><mathInput name="wB2"/>, <m>dw = </m><mathInput name="dwB2"/> <m>dx</m> <answer><award><when>($wB2 = x^2 or $wB2=1+x^2) and $dwB2 = 2x</when></award></answer>
             </p>
-           </p>
-          <nbsp /> <m>\int \frac{2x+3}{1+x^2} \, dx</m>
            <p>
+          <m>\int \frac{2x+3}{1+x^2} \, dx</m>
+
           <answer name="B3">
-           <choiceInput name="l7"> 
+           <choiceInput name="l7">
              <choice>substitution</choice>
              <choice>integration by parts</choice>
              <choice>combination of both</choice>
              <choice credit = '1'>neither</choice>
            </choiceInput>
           </answer>
+           </p>
           <p hide="not $B3correct">
-            For this integral, if we do some algebraic work first, we can separate the given integral into a sum of two integrals, one of which may be evaluated by substitution and the other as a familiar basic antiderivative.  Notice that <m>\frac{2x+3}{1+x^2} = \frac{2x}{1+x^2} + \frac{3}{1+x^2}</m>, so 
+            For this integral, if we do some algebraic work first, we can separate the given integral into a sum of two integrals, one of which may be evaluated by substitution and the other as a familiar basic antiderivative.  Notice that <m>\frac{2x+3}{1+x^2} = \frac{2x}{1+x^2} + \frac{3}{1+x^2}</m>, so
             <me>
               \int \frac{2x+3}{1+x^2} \, dx = \int \frac{2x}{1+x^2} \, dx + \int \frac{3}{1+x^2} \, dx.
             </me>
-          The first integral can be evaluated by substitution, and the second one as a familiar antiderivative.  Compare the two integrals here to the two preceding ones just considered above here in part (b).  
-          </p>  
-           </p>
-          <nbsp /><m>\int \frac{e^x}{1+(e^x)^2} \, dx</m>
-           <p>
+          The first integral can be evaluated by substitution, and the second one as a familiar antiderivative.  Compare the two integrals here to the two preceding ones just considered above here in part (b).
+          </p>
+          <p>
+          <m>\int \frac{e^x}{1+(e^x)^2} \, dx</m>
+
           <answer name="B4">
-           <choiceInput name="l8"> 
+           <choiceInput name="l8">
              <choice credit = '1'>substitution</choice>
              <choice>integration by parts</choice>
              <choice>combination of both</choice>
@@ -165,15 +168,14 @@
             <p hide="not $B4correct">
               The substitution to use is <m>w = </m><mathInput name="wB4"/>, <m>dw = </m><mathInput name="dwB4"/> <m>dx</m> <answer><award><when>$wB4 = e^x and $dwB4 = e^x</when></award></answer>
             </p>
-        </p>
       </li>
 
       <li>
         <p>
           <m>\int x \ln(x) \, dx</m>
-           <p>
+
           <answer name="C1">
-           <choiceInput name="m1"> 
+           <choiceInput name="m1">
              <choice>substitution</choice>
              <choice credit = '1'>integration by parts</choice>
              <choice>combination of both</choice>
@@ -183,11 +185,11 @@
         </p>
           <p hide="not $C1correct">
             The substitution to use is <m>u = </m><mathInput name="uC1"/>, <m>du = </m><mathInput name="duC1"/> <m>dx</m>, <m>dv = </m><mathInput name="dvC1"/><m>dx</m>, <m>v = </m><mathInput name="vC1"/> <answer><award><when>$uC1 = ln(x) and $duC1 = 1/x and $dvC1 = x and $vC1 = 1/2*x^2 </when></award></answer>
-          </p> 
-          <nbsp /> <m>\int \frac{\ln(x)}{x} \, dx</m>
-           <p>
+          </p>
+          <p><m>\int \frac{\ln(x)}{x} \, dx</m>
+
           <answer name="C2">
-           <choiceInput name="m2"> 
+           <choiceInput name="m2">
              <choice credit = '1'>substitution</choice>
              <choice>integration by parts</choice>
              <choice>combination of both</choice>
@@ -198,10 +200,10 @@
             <p hide="not $C2correct">
               The substitution to use is <m>w = </m><mathInput name="wC2"/>, <m>dw = </m><mathInput name="dwC2"/> <m>dx</m> <answer><award><when>$wC2 = ln(x) and $dwC2 = 1/x</when></award></answer>
             </p>
-          <nbsp /> <m>\int \ln(1+x^2) \, dx</m>
-           <p>
+          <p> <m>\int \ln(1+x^2) \, dx</m>
+
           <answer name="C3">
-           <choiceInput name="m3"> 
+           <choiceInput name="m3">
              <choice>substitution</choice>
              <choice credit = '1'>integration by parts</choice>
              <choice>combination of both</choice>
@@ -211,11 +213,11 @@
         </p>
           <p hide="not $C3correct">
             The substitution to use is <m>u = </m><mathInput name="uC3"/>, <m>du = </m><mathInput name="duC3"/> <m>dx</m>, <m>dv = </m><mathInput name="dvC3"/><m>dx</m>, <m>v = </m><mathInput name="vC3"/> <answer><award><when>$uC3 = ln(1+x^2) and $duC3 = 2x/(1+x^2) and $dvC3 = 1 and $vC3 = x </when></award></answer>.  The updated integral (of the form <m>\int v \, du </m>) that remains can be evaluated after executing some algebra that we'll learn more about in this section.
-          </p>     
-          <nbsp /><m>\int x\ln(1+x^2) \, dx</m>
-           <p>
+          </p>
+          <p> <m>\int x\ln(1+x^2) \, dx</m>
+
           <answer name="C4">
-           <choiceInput name="m4"> 
+           <choiceInput name="m4">
              <choice>substitution</choice>
              <choice>integration by parts</choice>
              <choice credit = '1'>combination of both</choice>
@@ -226,15 +228,14 @@
           <p hide="not $C4correct">
               The first substitution to use is <m>w = </m><mathInput name="wC4"/>, <m>dw = </m><mathInput name="dwC4"/> <m>dx</m> <answer><award><when>$wC4 = 1+x^2 and $dwC4 = 2x</when></award></answer>.  This then produces an integral in <m>w</m> that can be evaluated with integration by parts.
           </p>
-        </p>
       </li>
 
       <li>
         <p>
           <m>\int x \sqrt{1-x^2} \, dx</m>
-           <p>
+
           <answer name="D1">
-           <choiceInput name="m5"> 
+           <choiceInput name="m5">
              <choice credit = '1'>substitution</choice>
              <choice>integration by parts</choice>
              <choice>combination of both</choice>
@@ -243,12 +244,13 @@
           </answer>
         </p>
           <p hide="not $D1correct">
-              The substitution to use is <m>w = </m><mathInput name="wD1"/>, <m>dw = </m><mathInput name="dwD1"/> <m>dx</m> <answer><award><when>$wD1 = 1-x^2 and $dwD1 = -2x</when></award></answer>. 
+              The substitution to use is <m>w = </m><mathInput name="wD1"/>, <m>dw = </m><mathInput name="dwD1"/> <m>dx</m> <answer><award><when>$wD1 = 1-x^2 and $dwD1 = -2x</when></award></answer>.
           </p>
-          <nbsp /> <m>\int \frac{1}{\sqrt{1-x^2}} \, dx</m>
-           <p>
+
+           <p> <m>\int \frac{1}{\sqrt{1-x^2}} \, dx</m>
+
           <answer name="D2">
-           <choiceInput name="m6"> 
+           <choiceInput name="m6">
              <choice>substitution</choice>
              <choice>integration by parts</choice>
              <choice>combination of both</choice>
@@ -258,11 +260,12 @@
         </p>
           <p hide="not $D2correct">
             Here the integrand is the derivative of a familiar basic function (specifically, <m>\arcsin(x)</m>), so we can evaluate the integral directly.
-          </p>              
-          <nbsp /> <m>\int \frac{x}{\sqrt{1-x^2}}\, dx</m>
-           <p>
+          </p>
+
+           <p> <m>\int \frac{x}{\sqrt{1-x^2}}\, dx</m>
+
           <answer name="D3">
-           <choiceInput name="m7"> 
+           <choiceInput name="m7">
              <choice credit = '1'>substitution</choice>
              <choice>integration by parts</choice>
              <choice>combination of both</choice>
@@ -271,12 +274,12 @@
           </answer>
         </p>
           <p hide="not $D3correct">
-              The substitution to use is <m>w = </m><mathInput name="wD3"/>, <m>dw = </m><mathInput name="dwD3"/> <m>dx</m> <answer><award><when>$wD3 = 1-x^2 and $dwD3 = -2x</when></award></answer>. 
-          </p>          
-          <nbsp /><m>\int \frac{1}{x\sqrt{1-x^2}} \, dx</m>
-           <p>
+              The substitution to use is <m>w = </m><mathInput name="wD3"/>, <m>dw = </m><mathInput name="dwD3"/> <m>dx</m> <answer><award><when>$wD3 = 1-x^2 and $dwD3 = -2x</when></award></answer>.
+          </p>
+
+           <p> <m>\int \frac{1}{x\sqrt{1-x^2}} \, dx</m>
           <answer name="D4">
-           <choiceInput name="m8"> 
+           <choiceInput name="m8">
              <choice>substitution</choice>
              <choice>integration by parts</choice>
              <choice>combination of both</choice>
@@ -285,9 +288,8 @@
           </answer>
         </p>
           <p hide="not $D4correct">
-              The presence of the extra <m>x</m> in the denominator (multiplying the square root) is a complicating factor that makes it impossible to use either <m>w</m>-substitution or integration by parts for this integrand. 
-          </p>  
-        </p>
+              The presence of the extra <m>x</m> in the denominator (multiplying the square root) is a complicating factor that makes it impossible to use either <m>w</m>-substitution or integration by parts for this integrand.
+          </p>
       </li>
     </ol>
   </p>

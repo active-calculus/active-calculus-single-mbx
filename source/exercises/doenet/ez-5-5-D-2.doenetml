@@ -11,7 +11,7 @@
 <!-- "share and share alike".  All trademarks are the registered marks of  -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
- 
+
   <setup>
     <selectFromSequence name="a" from="4" to="7" step="1"/>
     <selectFromSequence name="b" from="4" to="7" step="1" exclude="$a"/>
@@ -19,19 +19,19 @@
     <selectFromSequence name="d" from="2" to="5" step="1" exclude="$a $b $c"/>
 
     <math name="P">($c*$a+$d)/($a-$b)</math>
-    <math name="Q">($c*$b+$d)/($b-$a)</math>    
+    <math name="Q">($c*$b+$d)/($b-$a)</math>
 
     <mathList name="PFdecomp">$P/(x-$a) $Q/(x-$b)</mathList>
     <mathList name="PFdecompEntered">$PF1 $PF2</mathList>
-    
+
     <function name="f" symbolic="false" >
       ($c*x+$d)/((x-$a)*(x-$b))
-    </function> 
+    </function>
 
     <function name="F" symbolic="false" >
       $P*ln(abs(x-$a)) + $Q*ln(abs(x-$b))
-    </function>   
-    
+    </function>
+
   </setup>
 
 <p>
@@ -44,18 +44,18 @@
 
 <p>
   First, find the partial fraction decomposition of the integrand, and enter the result in the following blanks accordingly.
-</p>  
+</p>
 
 <p>
   <m>\displaystyle \frac{$c x + $d}{(x-$a)(x-$b)} = </m><mathInput minWidth="75" name="PF1"/> <m>+</m> <mathInput minWidth="75" name="PF2"/> <answer unorderedCompare><award><when>$PFdecomp = $PFdecompEntered</when></award></answer>
-</p>  
+</p>
 
 <p>
   Once you have a correct partial fraction decomposition, evaluate the original integral accordingly by integrating the two simpler fractions found above.  Fill in the following blanks appropriately to complete your work.  (<alert>Note:</alert> remember that the absolute value signs are necessary in <m>\int \frac{1}{u} \, du = \ln(|u|) + C</m>.)
 </p>
 <p>
-  <m>\displaystyle \int \frac{1}{(x-$a)(x-$b)} \, dx = \int </m><mathInput minWidth="75" disabled>$PF1</mathInput> <m> dx + \int</m> <mathInput minWidth="75" disabled>$PF2</mathInput> <m> dx </m>
+  <m>\displaystyle \int \frac{$c x + $d}{(x-$a)(x-$b)} \, dx = \int </m><mathInput minWidth="75" disabled>$PF1</mathInput> <m> dx + \int</m> <mathInput minWidth="75" disabled>$PF2</mathInput> <m> dx </m>
 </p>
-<p>  
+<p>
     <m> = </m><mathInput minWidth="150" name="Fentered"/> <m>+ \, C \,</m><answer><award><when>$F = $Fentered</when></award></answer>
 </p>

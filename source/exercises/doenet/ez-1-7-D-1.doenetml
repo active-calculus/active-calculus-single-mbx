@@ -32,7 +32,7 @@
 </setup>
 
 <graph showNavigation="false" fixAxes="true" xmin="-3" xmax="5" ymin="$yminim-2" ymax="$ymaxim+2" >
-  <label anchor="(-2.2,4)"> <m>y=f(x)</m> </label>
+  <label fixed anchor="(1.5,$ymaxim-0.5)"> <m>y=f(x)</m> </label>
   <function domain="[-3,0-$k-0.1)">$quad</function>
   <endpoint name="xis0" open draggable="false">(0,$$quad(0))</endpoint>
   <function domain="(0+$k+0.1,$b-0.03]">$quad</function>
@@ -44,44 +44,44 @@
   <function domain="($c+0.07+$k,5)">$line</function>
 </graph>
 
-<p> 
+<p>
   Use the given graph of <m>f</m> to respond to the following prompts.  An open circle on the graph indicates a <q>hole</q> at that location.  If a limit does not exist, enter <q>DNE</q>; if a function is not defined at a point, enter <q>undefined</q>.
 </p>
 
 <p>
-  
+
   <ol marker="a.">
     <li>
       <p>
         <m>\displaystyle\lim_{x \to 0^-} f(x)=</m>
         <answer name="ansL1">
-          <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$$quad(0)</award></answer>;
-        <m>\displaystyle\lim_{x \to 0^+} f(x)=</m>
+          <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$$quad(0)</award></answer>
+        <m>\qquad \displaystyle\lim_{x \to 0^+} f(x)=</m>
         <answer name="ansR1">
-          <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$$quad(0)</award></answer>;
+          <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$$quad(0)</award></answer>
       </p>
-      <p>  
+      <p>
         <m>\displaystyle\lim_{x \to 0} f(x)=</m>
         <answer name="ans1">
-          <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$$quad(0)</award></answer>;
-        <m>f(0)=</m>
-        <answer name="ansf1">
           <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$$quad(0)</award></answer>
+        <m>\qquad \ f(0)=</m>
+        <answer name="ansf1">
+          <award>undefined</award></answer>
       </p>
     </li>
     <li>
       <p>
         <m>\displaystyle\lim_{x \to $b^-} f(x)=</m>
         <answer name="ansLb">
-          <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$$quad($b)</award></answer>;
-        <m>\displaystyle\lim_{x \to $b^+} f(x)=</m>
+          <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$$quad($b)</award></answer>
+        <m>\qquad \displaystyle\lim_{x \to $b^+} f(x)=</m>
         <answer name="ansRb">
-          <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$$line($b)</award></answer>;
+          <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$$line($b)</award></answer>
       </p>
-      <p>            
+      <p>
         <m>\displaystyle\lim_{x \to $b} f(x)=</m>
-        <answer name="ansb">DNE</answer>;
-        <m>f($b)=</m>
+        <answer name="ansb">DNE</answer>
+        <m>\qquad \ f($b)=</m>
         <answer name="ansfb">
           <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$$quad($b)</award></answer>
       </p>
@@ -90,35 +90,36 @@
       <p>
         <m>\displaystyle\lim_{x \to $c^-} f(x)=</m>
         <answer name="ansLc">
-          <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$$line($c)</award></answer>;
-        <m>\displaystyle\lim_{x \to $c^+} f(x)=</m>
+          <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$$line($c)</award></answer>
+        <m>\qquad\displaystyle\lim_{x \to $c^+} f(x)=</m>
         <answer name="ansRc">
-          <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$$line($c)</award></answer>;
+          <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$$line($c)</award></answer>
       </p>
-      <p>  
+      <p>
           <m>\displaystyle\lim_{x \to $c} f(x)=</m>
         <answer name="ansc">
-          <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$$line($c)</award></answer>;
-        <m>f($c)=</m>
+          <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$$line($c)</award></answer>
+        <m>\qquad \ f($c)=</m>
         <answer name="ansfc">
           <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$xisc2.y</award></answer>
       </p>
-    </li>  
+    </li>
     <li>
       <p>
-        List all values of <m>a</m> for which <m>\displaystyle\lim_{x \to a} f(x)</m> does not exist, separating your list with commas: <answer name="noLim">
+        List all values of <m>a</m> for which <m>\displaystyle\lim_{x \to a} f(x)</m> does not exist, separating your list with commas if needed: <answer name="noLim">
           <award allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$b</award></answer>
-      </p>  
-    </li>  
+      </p>
+    </li>
     <li>
       <p>
-        List all values of <m>a</m> for which <m>f</m> is not continuous, separating your list with commas: <mathInput name="notCont"/>  
+        List all values of <m>a</m> for which <m>f</m> is not continuous, separating your list with commas if needed:
         <answer matchPartial>
+          <mathInput name="notCont"/>
           <award unorderedCompare>
             <when>$notCont = <mathList>0 $b $c</mathList></when>
-          </award> 
-        </answer>  
-      </p>  
-    </li>      
+          </award>
+        </answer>
+      </p>
+    </li>
   </ol>
 </p>
