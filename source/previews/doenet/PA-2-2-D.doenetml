@@ -13,104 +13,106 @@
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
 
-<!-- this preview was primarily authored by Steven Clontz at the 2023 Doenet workshop -->
+<!-- this preview was originally authored by Steven Clontz at the 2023 Doenet workshop -->
+<!-- substantially revised by Chrissy Safranski in February 2026-->
+
+<setup>
+  <function name="g" symbolic="false" >2^x</function>
+  <derivative name="gP">$g</derivative>
+
+  <function name="gp" variable="h">$dg_quotient</function>
+</setup>
+
 
 <p>
-    Consider the graph of the function <m>g(x) = 2^x</m>.  Our goal is to understand why it's reasonable to say that <m>g'(x) = 2^x \ln(2)</m>.
+    Consider the graph of the function <m>g(x) = $g</m>.  Our goal is to understand why it's reasonable to say that <m>g'(x) = 2^x \ln(2)</m>.
 </p>
 
 <ol marker="a.">
   <li>
     <p>
-      Use the following interactive graph at left to sketch lines tangent to <m>y = g(x)</m>
-      at <m>x=-2,-1,0,1,2</m>.  Drag each of the five different points to the point of tangency, doing so in increasing order.  For example, move the red square to the point <m>(-2,g(-2))</m> on the graph of <m>g</m>.  When you do so correctly, the red line should look tangent to the curve at <m>(-2,g(-2))</m>.
+      Use the following interactive graph at left to explore the slopes of the lines tangent to the graph of <m>y = g(x)</m> at <m>x=-2,-1,0,1,2</m>.  Drag the point of tangency around and observe what happens to the slope of the tangent line. Then drag the points on the graph on the right so that the <m>y</m>-value of the point is the slope of the tangent line of the corresponding point on the left.
     </p>
     <p>
-      Notice that once you locate a moveable point on the left, the corresponding point on the right updates so that the <m>y</m>-value of the point is the slope of the tangent line on the left, so the righthand points lie on the graph of <m>y=g'(x)</m>.  The black curve that connects the five righthand points is an approximate graph of <m>g'(x)</m>.
+      For example, at the point <m>(-3,0.125)</m>, the slope of the tangent line is <m>0.0866</m>, so if there had been a point on the right graph located at <m>x=-3</m>, you'd drag it down so that the <m>y-</m>value was <m>0.0866</m>.
+    </p>
+    <p>
+      When you have dragged all the points to the correct heights, the black curve that connects the five points is an approximate graph of <m>g'(x)</m>.
     </p>
 
 <sideBySide>
-  
-  <graph ymin="-1" ymax="7" xmin="-4" xmax="4" showNavigation="false" fixAxes="true">
-    <function variables='x'>2^x</function>
-    <label anchor="(1.95,6)"><m>y=g(x)</m></label>
-    <point name="q_n2" stylenumber="2" x="3" y="2^(-2)">
-        <constraints>
-          <attractTo><line name="tangent_n2_correct" through="(-2,2^(-2))" slope="ln(2)*2^(-2)"/></attractTo>
-        </constraints> 
+
+  <graph ymin="-1" ymax="7" xmin="-4.5" xmax="3.5" showNavigation="false" fixAxes="true">
+    $g
+    <label anchor="(1.75,6)"><m>g(x)=2^x</m></label>
+    <point name="A" stylenumber="2" x="-3" y="2^(-3)" showCoordsWhenDragging="false" labelPosition="upperleft">
+          <label><m>($A.x,$A.y)</m></label>
+          <constrainTo>$g</constrainTo>
+          <attractTo threshold=".1">
+            <point>(-2,$$g(-2))</point>
+            <point>(-1,$$g(-1))</point>
+            <point>(0,$$g(0))</point>
+            <point>(1,$$g(1))</point>
+            <point>(2,$$g(2))</point>
+          </attractTo>
     </point>
-    <line name="tangent_n2" through="(-2,2^(-2)) $q_n2" stylenumber="2"/>
-    
-    <point name="q_n1" stylenumber="3" x="3" y="2^(-1)">
-        <constraints>
-          <attractTo><line name="tangent_n1_correct" through="(-1,2^(-1))" slope="ln(2)*2^(-1)"/></attractTo>
-        </constraints>
-    </point>
-    <line name="tangent_n1" through="(-1,2^(-1)) $q_n1" stylenumber="3"/>
-    
-    <point name="q_z0" stylenumber="4" x="3" y="2^(0)">
-        <constraints>
-          <attractTo><line name="tangent_z0_correct" through="(0,2^(0))" slope="ln(2)*2^(0)"/></attractTo>
-        </constraints>
-    </point>
-    <line name="tangent_z0" through="(0,2^(0)) $q_z0" stylenumber="4"/>
-    
-    <point name="q_p1" stylenumber="5" x="3" y="2^(1)">
-        <constraints>
-          <attractTo><line name="tangent_p1_correct" through="(1,2^(1))" slope="ln(2)*2^(1)"/></attractTo>
-        </constraints>
-    </point>
-    <line name="tangent_p1" through="(1,2^(1)) $q_p1" stylenumber="5"/>
-    
-    <point name="q_p2" stylenumber="6" x="3" y="2^(2)">
-        <constraints>
-          <attractTo><line name="tangent_p2_correct" through="(2,2^(2))" slope="ln(2)*2^(2)"/> </attractTo>
-        </constraints>
-    </point>
-    <line name="tangent_p2" through="(2,2^(2)) $q_p2" stylenumber="6"/>
+    <line name="tangent" through="$A" slope="ln(2)*2^($A.x)" stylenumber="2"/>
+    <label anchor="(-2.3,4)">tangent line slope = <m>$tangent.slope</m></label>
+
   </graph>
 
-  
-  <graph ymin="-1" ymax="7" xmin="-4" xmax="4" showNavigation="false" fixAxes="true">
+
+  <graph ymin="-1" ymax="6" xmin="-3.5" xmax="3.5" showNavigation="false" fixAxes="true">
     <function variables='x'>2^x</function>
-    <label anchor="(1.95,6)"><m>y=g(x)</m></label>
-    <point name="s_n2" stylenumber="2">
-      <constraints>
-        <constrainTo><point x="-2" y="($q_n2.y-2^(-2))/($q_n2.x-(-2))"/></constrainTo>
-      </constraints>
+    <!-- <label anchor="(1.8,5)"><m>y=2^x</m></label> -->
+    <point name="s_n2" stylenumber="5" labelPosition="upperleft">
+        (-2,4)
+        <constrainTo><line> x=-2</line></constrainTo>
+        <attractToGrid dy="0.3" yoffset="$$gP(-2)"/>
+        <label><m>($s_n2.x,$s_n2.y)</m></label>
     </point>
-    <point name="s_n1" stylenumber="3">
-      <constraints>
-        <constrainTo><point x="-1" y="($q_n1.y-2^(-1))/($q_n1.x-(-1))"/></constrainTo>
-      </constraints>
+    <point name="s_n1" stylenumber="5" labelPosition="top">
+        (-1,4)
+        <constrainTo><line> x=-1</line></constrainTo>
+        <attractToGrid dy="0.3" yoffset="$$gP(-1)"/>
+        <label><m>($s_n1.x,$s_n1.y)</m></label>
     </point>
-    <point name="s_z0" stylenumber="4">
-      <constraints>
-        <constrainTo><point x="0" y="($q_z0.y-2^(0))/($q_z0.x-(0))"/></constrainTo>
-      </constraints>
+    <point name="s_z0" stylenumber="5" labelPosition="bottom">
+      (0,4)
+      <constrainTo><line> x=0</line></constrainTo>
+      <attractToGrid dy="0.3" yoffset="$$gP(0)"/>
+        <label><m>($s_z0.x,$s_z0.y)</m></label>
     </point>
-    <point name="s_p1" stylenumber="5">
-      <constraints>
-        <constrainTo><point x="1" y="($q_p1.y-2^(1))/($q_p1.x-(1))"/></constrainTo>
-      </constraints>
+    <point name="s_p1" stylenumber="5" labelPosition="lowerright">
+      (1,4)
+      <constrainTo><line> x=1</line></constrainTo>
+      <attractToGrid dy="0.3" yoffset="$$gP(1)"/>
+        <label><m>($s_p1.x,$s_p1.y)</m></label>
     </point>
-    <point name="s_p2" stylenumber="6">
-      <constraints>
-        <constrainTo><point x="2" y="($q_p2.y-2^(2))/($q_p2.x-(2))"/></constrainTo>
-      </constraints>
+    <point name="s_p2" stylenumber="5" labelPosition="lowerright">
+      (2,4)
+      <constrainTo><line> x=2</line></constrainTo>
+      <attractToGrid dy="0.3" yoffset="$$gP(2)"/>
+        <label><m>($s_p2.x,$s_p2.y)</m></label>
     </point>
-    <curve through="$s_n2 $s_n1 $s_z0 $s_p1 $s_p2" stylenumber="5"/>
+    <curve name="tangcurve" through=" (-4,$s_n2.y-0.1297) $s_n2 $s_n1 $s_z0 $s_p1 $s_p2 (3.6,$s_p2.y+5.635) (4,$s_p2.y+8.32)" stylenumber="5"/>
+    <legend position="upperleft">
+    <label><m>g(x)=2^x</m></label>
+    <label forObject="$tangcurve"><m>y\approx g'(x)</m></label>
+  </legend>
   </graph>
 </sideBySide>
-    
+
+
+
 <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
     <award>
-        <when>
-            $tangent_n2.slope = $tangent_n2_correct.slope and
-            $tangent_n1.slope = $tangent_n1_correct.slope and
-            $tangent_z0.slope = $tangent_z0_correct.slope and
-            $tangent_p1.slope = $tangent_p1_correct.slope and
-            $tangent_p2.slope = $tangent_p2_correct.slope
+        <when matchPartial>
+            $s_n2.y = $$gP($s_n2.x) and
+            $s_n1.y = $$gP($s_n1.x) and
+            $s_z0.y = $$gP($s_z0.x) and
+            $s_p1.y = $$gP($s_p1.x) and
+            $s_p2.y = $$gP($s_p2.x)
         </when>
     </award>
 </answer>
@@ -118,54 +120,74 @@
 
       <li>
         <p>
-          Next, we will apply the limit definition of the derivative to estimate <m>g'(0)</m> by
-          using small values of <m>h</m>.
+          Next, we will use the limit definition of the derivative to estimate <m>g'(0)</m>.
         </p>
         <p>
-          First, apply the rule for <m>g(x)=2^x</m> to fill in the blank below appropriately.  Once you do so correctly, the table will automatically update with the results for each of the noted values of <m>h</m>.
-        </p>  
+          First, apply the rule for <m>g(x)=2^x</m> to fill in the blank below appropriately.  Once you do so correctly, a table will appear showing the result for small values of <m>h</m>.
+        </p>
         <p>
           <m>\displaystyle g'(0)=\lim_{h\to 0}\frac{g(0+h)-g(0)}{h}=\lim_{h\to 0}</m><answer name="dg_quotient">(2^h-2^0)/h</answer>
         </p>
-  <tabular>
-    <row bottom="minor">
-      <cell right="minor"><m>h</m></cell>
-      <cell><m>0.1</m></cell>
-      <cell><m>0.01</m></cell>
-      <cell><m>0.001</m></cell>
+<sideBySide width="40%">
+  <tabular top="minor" bottom="minor" left="minor" right="minor">
+    <row header>
+      <cell><m>h</m></cell>
+      <cell><m hide="$dg_quotient.creditAchieved != 1">\frac{2^h-1}{h}</m></cell>
+    </row>
+   <row>
+      <cell><m>-0.1</m></cell>
+     <cell><mathInput hide="$dg_quotient.creditAchieved != 1" disabled displayDigits="4">$$gp(-0.1)</mathInput></cell>
+   </row>
+  <row>
+      <cell><m>-0.01</m></cell>
+    <cell><mathInput hide="$dg_quotient.creditAchieved != 1" disabled displayDigits="4">$$gp(-0.01)</mathInput></cell>
+  </row>
+  <row>
+      <cell><m>-0.001</m></cell>
+     <cell><mathInput hide="$dg_quotient.creditAchieved != 1" disabled displayDigits="4">$$gp(-0.001)</mathInput></cell>
+  </row>
+  <row>
+      <cell><m>-0.0001</m></cell>
+     <cell><mathInput hide="$dg_quotient.creditAchieved != 1" disabled displayDigits="4">$$gp(-0.0001)</mathInput></cell>
+  </row>
+  <row>
+      <cell><m>0</m></cell>
+     <cell><mathInput hide="$dg_quotient.creditAchieved != 1" disabled></mathInput></cell>
+  </row>
+  <row>
       <cell><m>0.0001</m></cell>
-      <cell><m>0.00001</m></cell>
+     <cell><mathInput hide="$dg_quotient.creditAchieved != 1" disabled displayDigits="4">$$gp(0.0001)</mathInput></cell>
+  </row>
+  <row>
+      <cell><m>0.001</m></cell>
+    <cell><mathInput hide="$dg_quotient.creditAchieved != 1" disabled displayDigits="4">$$gp(0.001)</mathInput></cell>
+  </row>
+    <row>
+      <cell><m>0.01</m></cell>
+    <cell><mathInput hide="$dg_quotient.creditAchieved != 1" disabled displayDigits="4">$$gp(0.01)</mathInput></cell>
     </row>
     <row>
-      <cell right="minor"><mathInput disabled><function name="gp" variable="h">$dg_quotient</function></mathInput></cell>
-      <cell><mathInput disabled displayDigits="4">$$gp(0.1)</mathInput></cell>
-      <cell><mathInput disabled displayDigits="4">$$gp(0.01)</mathInput></cell>
-      <cell><mathInput disabled displayDigits="4">$$gp(0.001)</mathInput></cell>
-      <cell><mathInput disabled displayDigits="4">$$gp(0.0001)</mathInput></cell>
-      <cell><mathInput disabled displayDigits="4">$$gp(0.00001)</mathInput></cell>
+      <cell><m>0.1</m></cell>
+      <cell><mathInput hide="$dg_quotient.creditAchieved != 1" disabled displayDigits="4">$$gp(0.1)</mathInput></cell>
     </row>
   </tabular>
-        <p>  In part (a), the slope of the tangent line you found at <m>x = 0</m> is approximately
-          <mathInput disabled displayDigits="3">$s_z0.y</mathInput>; in the table, the best estimate of <m>g'(0)</m> is approximately <mathInput disabled displayDigits="4">$$gp(0.00001)</mathInput> .  Do these values approximately agree? <answer allowedErrorInNumbers="0.001"><award><when>
-$$gp(0.00001)=$s_z0.y
-  </when></award></answer></p>
+</sideBySide>
+      </li>
+      <li>
+        <p>  In part (a), the slope of the tangent line at <m>x = 0</m> was <answer>0.693</answer>.
+          </p>
+        <p>
+          From the values that appear in the table in part (b), the best estimate of <m>g'(0)</m> is <answer allowedErrorInNumbers=".00002" allowedErrorIsAbsolute>1/2*($$gp(0.0001)+$$gp(-0.0001))</answer>.
+        </p>
+        <p>
+          Use a calculator to calculate the decimal form of <m>\ln(2)</m>.  Use at least 5 places after the decimal point in your answer. <m>\ln(2)=</m><answer allowedErrorInNumbers=".00001" allowedErrorIsAbsolute>ln(2)</answer>
+        </p>
       </li>
 
       <li>
         <p>
-          Based on your work in part (a), write at least one sentence that explains why it is reasonable to think that <m>g'(x) = cg(x)</m>,
-          where <m>c</m> is a constant.
-          In addition, calculate <m>\ln(2)</m>,
-          and then write an additional sentence to discuss how this value,
-          combined with your work in (b),
-          reasonably suggests that <m>g'(x) = 2^x \ln(2)</m>.
+          Putting together all the work done above, the graph of <m>g'(x)</m> looks like it has <choiceInput name="c1" inline><choice credit="1"> the same general shape</choice><choice>a reflected shape</choice><choice>an unrelated shape</choice> </choiceInput> and is growing <choiceInput name="c2" inline><choice>faster</choice><choice credit="1">more slowly</choice><choice>at the same rate</choice> </choiceInput> as the graph of <m>g(x)</m>. Thus, it is plausible that <m>g'(x)</m> is <choiceInput name="c3" inline><choice>a downward vertical shift</choice><choice credit="1">a constant multiple less than 1</choice><choice>a horizontal translation</choice> </choiceInput> of <m>g(x)</m>. Since <m>g(0)=1</m> and <choiceInput name="c4" inline><choice credit="1"><m>g'(0)\approx \ln(2)</m></choice><choice><m>g'(1)\approx \ln(2)</m></choice><choice><m>g'(0)\approx 1</m></choice> </choiceInput>, it is reasonable to think that <choiceInput name="c5" inline><choice credit="1"><m>g'(x) = 2^x\ln(2)</m>.</choice><choice><m>g'(x)=2^x</m>.</choice></choiceInput>
+          <answer><award><when matchPartial>$c1.selectedIndices=1 and $c2.selectedIndices=2 and $c3.selectedIndices=2 and $c4.selectedIndices=1 and $c5.selectedIndices=1</when></award></answer>
         </p>
-        
-        <p>  <answer type="text" handGraded expanded forceFullCheckworkButton /></p>
       </li>
     </ol>
-
-<!--   <figure xml:id="F-2-2-PA1" permid="RPa">
-    <caption>At left, the graph of <m>y = g(x) = 2^x</m>. At right, axes for plotting <m>y = g'(x)</m>.</caption>
-    <image width="60%" source="images/2_2_PA1a" />
-  </figure> -->  
