@@ -18,65 +18,81 @@
     <math name="c"><selectFromSequence from="10" to="30" step="10"/></math>
     <function name="A" symbolic="false" variable="t">
       $P*($b)^t
-    </function>   
+    </function>
     <derivative name="AP">$A</derivative>
     <derivative name="APP">$AP</derivative>
-  
+
+   <round name="roundAofc0" numDecimals="0">$$A($c)</round>
+   <round name="roundAofc1" numDecimals="1">$$A($c)</round>
+   <round name="roundAPofc0" numDecimals="0">$$AP($c)</round>
+   <round name="roundAPofc1" numDecimals="1">$$AP($c)</round>
+
+  <boolean name="rounded">
+    $Aofc = $roundAofc0 or $Aofc = $roundAofc1 or $APofc = $roundAPofc0 or $APofc = $roundAPofc1 or $APofcagain = $roundAPofc0 or $APofcagain = $roundAPofc1
+  </boolean>
+
+  <round name="roundAofc0p25" numDecimals="0">$$A($c+25)</round>
+   <round name="roundAofc1p25" numDecimals="1">$$A($c+25)</round>
+   <round name="roundAPofc0p25" numDecimals="0">$$AP($c+25)</round>
+   <round name="roundAPofc1p25" numDecimals="1">$$AP($c+25)</round>
+
+  <boolean name="rounded2">
+    $Aofcp25 = $roundAofc0p25 or $Aofcp25 = $roundAofc1p25 or $APofcp25 = $roundAPofc0p25 or $APofcp25 = $roundAPofc1p25 or $APofcp25again = $roundAPofc0p25 or $APofcp25again = $roundAPofc1p25
+  </boolean>
+
+
   </setup>
   <p>
-    Suppose you make an investment of $<m>$P</m> in a mutual fund in the year 2025 (which we will view as <m>t = 0</m>), and the fund earns average annual interest of <m><math simplify>($b-1)*100</math></m>%.  The total amount of money in your account <m>t</m> years after your initial investment is given by the function <m>A(t) = $A</m>. <!-- <math>$$h(t)</math> -->
+    Suppose you make an investment of $<m>$P</m> in a mutual fund in the year 2025 (which we will view as <m>t = 0</m>), and the fund earns average annual interest of <m><math simplify>($b-1)*100</math></m>%.  The total amount of money in your account <m>t</m> years after your initial investment is given by the function <m>A(t) = $A</m>.
   </p>
 
-<!--
-    <figure>
-      <graph xmin="-1" xmax="3" ymin="-2" ymax="20" size="medium" grid="false" showNavigation="false"> $h $A $B  </graph>
-      <caption>Plot of <m>y = h(t)</m>, which measures the height in meters of the falling ball at time <m>t</m> in seconds.</caption>
-    </figure>
--->
+
 
   <ol marker="a">
       <li>
         <p>
-          Use appropropriate derivative shortcut rules to find a formula for <m>A'(t)</m>. 
-        </p>  
+          Use appropropriate derivative shortcut rules to find a formula for <m>A'(t)</m>.
+        </p>
         <p>
             <m>A'(t)=</m><answer><award>$AP</award></answer>
-        </p>  
+        </p>
       </li>
     <li>
       <p>
         Use <m>A(t)</m> and <m>A'(t)</m> appropriately to complete the following sentence with values and units.
-      </p>  
+      </p>
       <p>
-        After <m>$c</m> years, the total amount of money in the investment account is $<answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award>$$A($c)</award></answer>, and at this time the instantaneous rate at which the amount of money is growing is <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award>$$AP($c)</award></answer> with units <answer>
+        After <m>$c</m> years, the total amount of money in the investment account is $<answer name="Aofc" allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award>$$A($c)</award></answer>, and at this time the instantaneous rate at which the amount of money is growing is <answer name="APofc" allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award>$$AP($c)</award></answer> with units <answer>
             <choiceInput name="choice1" inline>
               <choice>dollars per day</choice>
               <choice>dollars</choice>
               <choice>years</choice>
               <choice credit="1">dollars per year</choice>
-              <choice>years per dollar</choice>  
-            </choiceInput>            
-          </answer>.  This means that in the year that elapses from <m><math simplify>2025+$c</math></m> to <m><math simplify>2025+$c+1</math></m>, we expect the amount of money in the investment account to grow by approximately <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award>$$AP($c)</award></answer> dollars.
-      </p> 
-    </li>  
+              <choice>years per dollar</choice>
+            </choiceInput>
+          </answer>.  This means that in the year that elapses from <m><math simplify>2025+$c</math></m> to <m><math simplify>2025+$c+1</math></m>, we expect the amount of money in the investment account to grow by approximately <answer name="APofcagain" allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award>$$AP($c)</award></answer> dollars.
+      </p>
+      <feedback condition="$rounded">Make sure to use at least 2 places after the decimal point.</feedback>
+    </li>
     <li>
       <p>
-        The billionaire investor Warren Buffett famously bought his first mutual fund when he was just 11 years old. Buffett is also well-known for understanding the time value of money:  it matters not just how much interest your money returns, but even more for how long that interest compounds.  
+        The billionaire investor Warren Buffett famously bought his first mutual fund when he was just 11 years old. Buffett is also well-known for understanding the time value of money:  it matters not just how much interest your money returns, but even more for how long that interest compounds.
       </p>
       <p>
         In part (b), we saw how much money had accumulated in our mutual fund after  <m>$c</m> years, as well as how fast it was growing at that time.  How do those results change after <m>25</m> more years, at <m>t = <math simplify>$c + 25</math></m>?  Use <m>A(t)</m> and <m>A'(t)</m> appropriately to complete the following sentence with values and units.
-      </p> 
+      </p>
       <p>
-        After <m><math simplify>$c+25</math></m> years, the total amount of money in the investment account is $<answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award>$$A($c+25)</award></answer>, and at this time the instantaneous rate at which the amount of money is growing is <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award>$$AP($c+25)</award></answer> with units <answer>
+        After <m><math simplify>$c+25</math></m> years, the total amount of money in the investment account is $<answer name="Aofcp25" allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award>$$A($c+25)</award></answer>, and at this time the instantaneous rate at which the amount of money is growing is <answer name="APofcp25" allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award>$$AP($c+25)</award></answer> with units <answer>
             <choiceInput name="choice1" inline>
               <choice>dollars per day</choice>
               <choice>dollars</choice>
               <choice>years</choice>
               <choice credit="1">dollars per year</choice>
-              <choice>years per dollar</choice>  
-            </choiceInput>            
-          </answer>.  This means that in the year that elapses from <m><math simplify>2025+$c+25</math></m> to <m><math simplify>2025+$c+26</math></m>, we expect the amount of money in the investment account to grow by approximately <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award>$$AP($c+25)</award></answer> dollars.
-      </p>       
+              <choice>years per dollar</choice>
+            </choiceInput>
+          </answer>.  This means that in the year that elapses from <m><math simplify>2025+$c+25</math></m> to <m><math simplify>2025+$c+26</math></m>, we expect the amount of money in the investment account to grow by approximately <answer name="APofcp25again" allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award>$$AP($c+25)</award></answer> dollars.
+      </p>
+      <feedback condition="$rounded2">Make sure to use at least 2 places after the decimal point.</feedback>
     </li>
 
   </ol>
