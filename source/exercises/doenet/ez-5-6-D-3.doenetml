@@ -11,14 +11,13 @@
 <!-- "share and share alike".  All trademarks are the registered marks of  -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
- 
+
 <setup>
-  <selectFromSequence name="pm" from="-1" to="1" step="2"/>  
-  <selectFromSequence name="c" from="1" to="2" step="1"/>  
+  <selectFromSequence name="pm" from="-1" to="1" step="2"/>
+  <selectFromSequence name="c" from="1" to="2" step="1"/>
 
   <math name="a" simplify>1.3</math>
   <number name="n">4</number>
-  <math name="dx" simplify>$b/$n</math>
 
   <function name="f">$a^($pm*x)</function>
   <derivative name="fP">$f</derivative>
@@ -26,13 +25,13 @@
   <function name="g">3-$a^($pm*x)</function>
   <derivative name="gP">$g</derivative>
   <derivative name="gPP">$gP</derivative>
-  
-  <function name="F">$k*x - 1/8*x^4</function>
 
   <mathList name="ord1">L T I M R</mathList>
   <mathList name="ord2">L M I T R</mathList>
   <mathList name="ord3">R T I M L</mathList>
   <mathList name="ord4">R M I T L</mathList>
+
+  <mathList name="orderinglist">$ordering</mathList>
 
 </setup>
 
@@ -44,24 +43,24 @@
   <case condition="$c = 1">
     <graph size="medium" xmin="-1" xmax="4" ymin="-1" ymax="3" showNavigation="false" fixAxes="true">
       $f
-      <label anchor="(2,$$f(2)+0.25)"><m>f(x)</m></label>
+      <label fixed anchor="(2,$$f(2)+0.25)"><m>f(x)</m></label>
     </graph>
   </case>
   <case condition="$c = 2">
     <graph size="medium" xmin="-1" xmax="4" ymin="-1" ymax="3" showNavigation="false" fixAxes="true">
       $g
-      <label anchor="(2,$$g(2)+0.25)"><m>f(x)</m></label>
+      <label fixed anchor="(2,$$g(2)+0.25)"><m>f(x)</m></label>
     </graph>
-  </case> 
-</conditionalContent> 
+  </case>
+</conditionalContent>
 
 
   <p>
-    We are interested in analyzing how <m>L_n</m>, <m>R_n</m>, <m>M_n</m>, and <m>T_n</m> compare to the exact value of the definite integral  
+    We are interested in analyzing how <m>L_n</m>, <m>R_n</m>, <m>M_n</m>, and <m>T_n</m> compare to the exact value of the definite integral
     <me>
       \int_0^{3} f(x) \, dx
     </me>
-  </p> 
+  </p>
 
 <p>
   <ol marker="a.">
@@ -85,29 +84,29 @@
       <p>
         <answer><award><when>
           ($c=1 and $$fP(1) > 0 and $$fPP(1) > 0 and $c1.selectedIndices=2 and $c2.selectedIndices=2)
-          or 
+          or
           ($c=1 and $$fP(1) > 0 and 0 > $$fPP(1) and $c1.selectedIndices=2 and $c2.selectedIndices=3)
-          or 
+          or
           ($c=1 and 0 > $$fP(1) and $$fPP(1) > 0 and $c1.selectedIndices=3 and $c2.selectedIndices=2)
-          or 
+          or
           ($c=1 and 0 > $$fP(1) and 0 > $$fPP(1) and $c1.selectedIndices=3 and $c2.selectedIndices=3)
           or
           ($c=2 and $$gP(1) > 0 and $$gPP(1) > 0 and $c1.selectedIndices=2 and $c2.selectedIndices=2)
-          or 
+          or
           ($c=2 and $$gP(1) > 0 and 0 > $$gPP(1) and $c1.selectedIndices=2 and $c2.selectedIndices=3)
-          or 
+          or
           ($c=2 and 0 > $$gP(1) and $$gPP(1) > 0 and $c1.selectedIndices=3 and $c2.selectedIndices=2)
-          or 
+          or
           ($c=2 and 0 > $$gP(1) and 0 > $$gPP(1) and $c1.selectedIndices=3 and $c2.selectedIndices=3)
         </when></award></answer>
       </p>
-    </li>  
+    </li>
     <li>
       <p>
          Without attempting to compute numerical values for them, let <m>L</m>, <m>R</m>, <m>M</m>, and <m>T</m> represent the results of computing a Left, Right, Midpoint, and Trapezoid Rule approximation to the definite integral <m>\int_0^{3} f(x) \, dx</m>, and let <m>I = \int_0^{3} f(x) \, dx</m> be the exact value of the integral.
       </p>
       <p>
-        Order the values of <m>L</m>, <m>R</m>, <m>M</m>, <m>T</m>, and <m>I</m> from least to greatest and enter those letters in the blank provided below, separated by commas.  For instance, if you conclude that 
+        Order the values of <m>L</m>, <m>R</m>, <m>M</m>, <m>T</m>, and <m>I</m> from least to greatest and enter those letters in the blank provided below, separated by commas.  For instance, if you conclude that
         <me>
           I \lt L \lt R \lt M \lt T
         </me>
@@ -117,17 +116,19 @@
         <mathInput name="ordering" minWidth="100"/>
       </p>
       <p>
-        <answer><award><when>
+        <answer name="ordanswer"><award><when>
           ($c=1 and $pm=1 and $ordering=$ord2)
           or
           ($c=1 and $pm=-1 and $ordering=$ord4)
           or
           ($c=2 and $pm=1 and $ordering=$ord3)
           or
-          ($c=1 and $pm=-1 and $ordering=$ord1)
-        </when></award></answer>  
+          ($c=2 and $pm=-1 and $ordering=$ord1)
+        </when></award></answer>
+
       </p>
+      <feedback condition = "$orderinglist.numComponents != 5 and $ordanswer.justSubmitted">Your answer should be a list containing the letters I, L, R, M, and T entered exactly once in order from least to greatest, separated by commas.</feedback>
     </li>
 
-  </ol>  
+  </ol>
 </p>
