@@ -17,14 +17,13 @@
   <selectFromSequence name="b" from="1" to="3" step="1"/>
   <selectFromSequence name="c" from="3.25" to="6" step="0.5"/>
   <number name="hline">$A + $c</number>
-  <number name="cplus">$c+$a/(2*$b)</number>
-   
+
   <function name="h" symbolic="false" variable="t">
     -$A*cos(t)+$hline
   </function>
   <derivative name="hP">$h</derivative>
-  <derivative name="hPP">$hP</derivative>  
-  
+  <derivative name="hPP">$hP</derivative>
+
 </setup>
 
 <p>
@@ -36,57 +35,57 @@
     <li>
       <p>
         Determine formulas for both <m>h'(t)</m> and <m>h''(t)</m>.
-      </p>  
+      </p>
       <p>
         <m>h'(t) = </m><answer><award>$hP</award></answer>
       </p>
       <p>
         <m>h''(t) = </m><answer><award>$hPP</award></answer>
-      </p>        
-    </li>  
+      </p>
+    </li>
     <li>
       <p>
         Since <m>h(t)</m> tracks the height of the car at time <m>t</m>, <m>h'(t)</m> tells us the instaneous rate of change of the height of the car at time <m>t</m>; that is, <m>h'(t)</m> gives the instanteneous vertical velocity of the car at time <m>t</m>.  Similarly, <m>h''(t)</m> determines the car's instantaneous vertical acceleration.
-      </p>  
+      </p>
       <p>
         Find the instantaneous vertical velocity and acceleration of the car at instant <m>t = $c</m>, with units.
-      </p>  
+      </p>
       <p>
-        The car's instantaneous vertical velocity at <m>t = $c</m> is <answer><award allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$$hP($c)</award></answer>   
+        The car's instantaneous vertical velocity at <m>t = $c</m> is <answer><award allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$$hP($c)</award></answer>
         <answer><choiceInput inline name="units">
-            <choice>?</choice>    
+            <choice>?</choice>
             <choice>meters</choice>
             <choice>minutes</choice>
             <choice credit="1">meters per minute</choice>
             <choice>minutes per meter</choice>
             <choice>(meters per minute) per minute</choice>
           </choiceInput></answer>.
-      </p>       
+      </p>
       <p>
-        The car's instantaneous vertical acceleration at <m>t = $c</m> is <answer><award allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$$hPP($c)</award></answer>   
+        The car's instantaneous vertical acceleration at <m>t = $c</m> is <answer><award allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$$hPP($c)</award></answer>
         <answer><choiceInput inline name="units">
-            <choice>?</choice>    
+            <choice>?</choice>
             <choice>meters</choice>
             <choice>minutes</choice>
             <choice>meters per minute</choice>
             <choice>minutes per meter</choice>
             <choice credit="1">(meters per minute) per minute</choice>
           </choiceInput></answer>.
-      </p> 
-    </li>  
+      </p>
+    </li>
     <li>
       <p>
         Finally, describe the vertical motion of the car at time <m>t = $c</m> as rising or falling and as speeding up or slowing down, based on your results in part (b).
-      </p>  
+      </p>
       <p>
         At the instant <m>t = $c</m>, the car's height is <answer>
-          <choiceInput inline name="riseorfall">    
+          <choiceInput inline name="riseorfall">
             <choice>?</choice>
             <choice credit="$$hP($c)>0">rising</choice>
             <choice credit="$$hP($c)=0">staying the same</choice>
             <choice credit="$$hP($c)<0">falling</choice>
           </choiceInput>
- 
+
         </answer>
       since the value of <m>h'($c)</m> is <answer>
           <choiceInput inline name="derivsign">
@@ -95,9 +94,9 @@
             <choice credit="$$hP($c)=0">zero</choice>
             <choice credit="$$hP($c)<0">negative</choice>
           </choiceInput>
-      </answer>, 
+      </answer>,
       and the car is <answer>
-          <choiceInput inline name="speedingorslowing">  
+          <choiceInput inline name="speedingorslowing">
             <choice>?</choice>
             <choice credit="($$hP($c)>0 and $$hPP($c)>0) or ($$hP($c)<0 and $$hPP($c)<0)">speeding up</choice>
             <choice credit="$$hP($c)>0 and $$hPP($c)=0">rising at a constant rate</choice>
@@ -107,94 +106,12 @@
         </answer>
       since the value of <m>h''($c)</m> is <answer>
           <choiceInput inline name="secderivsign">
-          <choice>?</choice>    
-          <choice credit="$$hP($c)>0">positive</choice>
-          <choice credit="$$hP($c)=0">zero</choice>
-          <choice credit="$$hP($c)<0">negative</choice></choiceInput>
+          <choice>?</choice>
+          <choice credit="$$hPP($c)>0">positive</choice>
+          <choice credit="$$hPP($c)=0">zero</choice>
+          <choice credit="$$hPP($c)<0">negative</choice></choiceInput>
         </answer>.
       </p>
     </li>
   </ol>
-</p>  
-<!--
-        
-        
-        <answer matchPartial>
-    <award>
-      <when>
-        ($cdf1=<text>f(x)</text> and $cf1 = <text>h(x)</text> and $cd2f1=<text>g(x)</text> and $cf1a = <text>h(x)</text>
-      </when>
-    </award>
-  </answer>
 </p>
-      </p>  
-
-
-
-
-
-        <p>
-          From all the given information, it follows that our estimate of <m>p($cplus)</m> in part (b) is       
-        <answer>
-          <choiceInput name="overunder" inline>
-            <choice>greater than</choice>
-            <choice>less than</choice>
-            <choice>equal to</choice>
-          </choiceInput>            
-            <award>
-              <when>$overunder.selectedIndices=1 and $cplus < $c   
-              </when>
-            </award>  
-            <award>
-              <when>$overunder.selectedIndices=2 and $cplus > $c 
-              </when> 
-            </award>
-          </answer> 
-          the true value of <m>p($cplus)</m>, since <m>p''($c)</m> is 
-          <answer>
-            <choiceInput name="reason1" inline>
-              <choice>positive</choice>
-              <choice>zero</choice>
-              <choice>negative</choice>
-            </choiceInput>            
-              <award>
-                <when>$reason1.selectedIndices=1 and $cplus > $c       
-                </when>
-              </award>  
-              <award>
-                <when>$reason1.selectedIndices=3 and $cplus < $c 
-                </when>
-              </award>
-          </answer>, so near <m>x = $c</m>, <m>f</m> is
-          <answer>
-            <choiceInput name="reason2" inline>
-              <choice>concave up</choice>
-              <choice>linear</choice>
-              <choice>concave down</choice>
-            </choiceInput>            
-              <award>
-                <when>$reason1.selectedIndices=1 and $cplus > $c     
-                </when>
-              </award>  
-              <award>
-                <when>$reason2.selectedIndices=3 and $cplus < $c  
-                </when>
-              </award>
-          </answer>, which makes the tangent line to <m>f</m> at the point <m>($c,p($c))</m> lie
-     <answer>
-            <choiceInput name="reason3" inline>
-              <choice>below</choice>
-              <choice>above</choice>
-            </choiceInput>            
-              <award>
-                <when>$reason3.selectedIndices=2 and $cplus < $c   
-                </when>
-              </award>  
-              <award>
-                <when>$reason3.selectedIndices=1 and $cplus > $c  
-                </when> 
-              </award>
-      </answer>   
-    the curve.
-        </p></p>
-  -->
