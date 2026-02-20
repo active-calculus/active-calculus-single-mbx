@@ -15,34 +15,34 @@
 <setup>
     <selectFromSequence name="a" from="-1" to="1" step="2"/>
     <selectFromSequence name="b" from="-2" to="2" step="2"/>
-    <selectFromSequence name="c" from="-2" to="2" step="2" exclude="$b -1*($b)"/>  
+    <selectFromSequence name="c" from="-2" to="2" step="2" exclude="$b -1*($b)"/>
 
     <function symbolic="false" name="f">$a*x + $b*sin(x) + $c*cos(x)</function>
     <derivative name="fP">$f</derivative>
     <derivative name="fPP">$fP</derivative>
-</setup>  
+</setup>
 
 <p>
   Let <m>f(x) = <math simplify>$f</math></m>.
-</p>  
+</p>
 
 <p>
   <ol marker="a.">
     <li>
-      <p>Determine the following derivative formulas: </p>        
+      <p>Determine the following derivative formulas: </p>
       <p><m>f'(x)=</m><answer>$fP</answer></p>
       <p><m>f''(x)=</m><answer>$fPP</answer></p>
     </li>
     <li>
-      <p>Determine a value of <m>x</m> such that <m>0 \lt x \lt 2\pi</m>.  If there are no such values, enter <q>none</q>. </p>
+      <p>Determine a value of <m>x</m> such that <m>f'(x)=0</m> and <m>0 \lt x \lt 2\pi</m>.  If there are no such values, enter <q>none</q>. </p>
       <p><m>x = </m><mathInput name="crnum"/>
         <answer>
         <award><when>
           (0 < $crnum < 2*pi) and $$fP($crnum) = 0
         </when></award>
-      </answer></p>  
+      </answer></p>
 <!--      <p>crnum = $crnum, <m>f'($crnum) = $$fP($crnum) </m> </p> -->
-    </li>     
+    </li>
     <li>
       <p>Determine a value of <m>x</m> such that <m>0 \lt x \lt 2\pi</m> and <m>f''(x)</m> changes sign at that <m>x</m>-value.  If there are no such values, enter <q>none</q>. </p>
       <p><m>x = </m><mathInput name="poi"/>
@@ -50,8 +50,8 @@
         <award><when>
           (0 < $poi< 2*pi) and $$fPP($poi) = 0
         </when></award>
-      </answer></p>  
-    </li>  
-    
-  </ol>  
-</p> 
+      </answer></p>
+    </li>
+
+  </ol>
+</p>

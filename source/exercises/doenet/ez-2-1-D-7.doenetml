@@ -14,29 +14,17 @@
 
   <setup>
     <math name="k"><selectFromSequence from="12" to="18" step="1"/></math>
-    <math name="b"><selectFromSequence from="0.25" to="0.75" step="0.25"/></math>
-    <math name="c"><selectFromSequence from="1" to="3" step="1"/></math>
+    <!-- <math name="b"><selectFromSequence from="0.25" to="0.75" step="0.25"/></math>
+    <math name="c"><selectFromSequence from="1" to="3" step="1"/></math> -->
     <function name="s" symbolic="true" domain="[0,$lands]" variable="t">
       <label>s</label>
       -4.9t^2 + $k
-    </function>   
+    </function>
     <derivative name="v">$s</derivative>
     <derivative name="a">$v</derivative>
 
-    
     <math name="lands" simplify>sqrt($k/4.9)</math>
-    <point name="A" styleNumber="2" coords="(0,$$h(0))" showCoordsWhenDragging="false"> 
-      <constraints>      
-        <constrainTo>$h</constrainTo>  
-      </constraints>
-      <label><m>$A.coords</m></label>
-    </point>
-    <point name="B" styleNumber="2" coords="(1,$$h(1))" showCoordsWhenDragging="false"> 
-      <constraints>      
-        <constrainTo>$h</constrainTo>  
-      </constraints>
-      <label><m>$B.coords</m></label>
-    </point>    
+
   </setup>
   <p>
     A ball is dropped from a window.  The ball's height (in meters) at time <m>t</m> (in seconds) is given by  the function <m>s(t) = $$s(t) </m>.  <!-- <math>$$h(t)</math> -->
@@ -52,38 +40,58 @@
   <ol marker="a">
       <li>
         <p>
-          Use appropropriate derivative shortcut rules to find formulas for the ball's velocity, <m>v(t)</m>, and acceleration, <m>a(t)</m>. 
-        </p>  
+          Use appropropriate derivative shortcut rules to find formulas with units for the ball's velocity, <m>v(t)</m>, and acceleration, <m>a(t)</m>.
+        </p>
         <p>
-            <m>v(t)=</m><answer><award>$v</award></answer>
-        </p>  
+            <m>v(t)=</m><answer name="vel"><award>$v</award></answer><answer><choiceInput name="choice1" inline>
+              <choice>feet</choice>
+              <choice>seconds</choice>
+              <choice>meters</choice>
+              <choice>feet per second</choice>
+              <choice credit="1">meters per second</choice>
+              <choice>meters per hour</choice>
+            </choiceInput></answer>
+        </p>
+        <feedback condition = "$vel.creditAchieved != 1 and $vel.responseHasBeenSubmitted">Recall that the velocity <m>v(t)</m> is the rate of change (or derivative) of the position function <m>s(t)</m>.</feedback>
         <p>
-            <m>a(t)=</m><answer><award>$a</award></answer>
-        </p> 
+            <m>a(t)=</m><answer name="acc"><award>$a</award></answer><answer><choiceInput name="choice2" inline>
+              <choice>meters per hour</choice>
+              <choice>meters per hour per hour</choice>
+              <choice>feet per second per second</choice>
+              <choice>meters per second</choice>
+              <choice credit="1">meters per second per second</choice>
+            </choiceInput></answer>
+        </p>
+        <feedback condition = "$acc.creditAchieved != 1 and $acc.responseHasBeenSubmitted">Recall that the acceleration <m>a(t)</m> is the rate of change (or derivative) of the velocity function <m>v(t)</m>.</feedback>
       </li>
     <li>
       <p>
         Find the exact time the ball lands, and call this value <m>t_{\text{lands}}</m>.
-      </p>  
+      </p>
       <p>
-         <m>t_{\text{lands}}=</m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award>$lands</award></answer>
-      </p> 
-    </li>  
+         <m>t_{\text{lands}}=</m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award>$lands</award></answer><answer><choiceInput name="choice3" inline>
+              <choice>feet</choice>
+              <choice credit="1">seconds</choice>
+              <choice>meters</choice>
+              <choice>feet per second</choice>
+              <choice>meters per second</choice>
+              <choice>meters per hour</choice>
+            </choiceInput></answer>
+      </p>
+    </li>
     <li>
       <p>
-        Find the ball's instantaneous velocity <m>1</m> second before it lands.
-      </p>  
-      <p>
-         The ball's instantaneous velocity <m>1</m> second before it lands is <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award>$lands</award></answer> and the units on this value are <answer>
-            <choiceInput name="choice1" inline>
+         The ball's instantaneous velocity <m>1</m> second before it lands is
+      </p>
+      <p><answer allowedErrorInNumbers="0.02" allowedErrorIsAbsolute><award>$$v($lands-1)</award></answer><answer>
+            <choiceInput name="choice4" inline>
               <choice>meters per hour</choice>
               <choice>meters</choice>
               <choice>feet per second</choice>
               <choice credit="1">meters per second</choice>
-              <choice>feet</choice>  
-            </choiceInput>            
+              <choice>feet</choice>
+            </choiceInput>
           </answer>
-      </p> 
+      </p>
     </li>
-
   </ol>
