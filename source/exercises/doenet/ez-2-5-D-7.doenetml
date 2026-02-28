@@ -21,7 +21,7 @@
   <selectFromSequence name = "x2" from = "-2" to = "-1" step = "1"/>
   <selectFromSequence name = "y1" from = "2" to = "3" step = "1"/>
   <selectFromSequence name = "y2" from = "-3" to = "-2" step = "1"/>
-  
+
   <piecewiseFunction name="f" symbolic="false" styleNumber="1">
     <function domain="(-infinity,$x1)">$m1*(x-$x1)+$y1</function>
     <function domain="[$x1,infinity)">$m2*(x-$x1)+$y1</function>
@@ -47,22 +47,22 @@
   <selectFromSequence name="a" from="-4" to="4" step="1" exclude="$x1 $x2"/>
   <selectFromSequence name="b" from="-4" to="4" step="1" exclude="$x1 $x2 $a"/>
   <selectFromSequence name="c" from="-4" to="4" step="1" exclude="$x1 $x2"/>
-  <selectFromSequence name="d" from="-4" to="4" step="1" exclude="$x1 $x2 $c"/> 
-  
+  <selectFromSequence name="d" from="-4" to="4" step="1" exclude="$x1 $x2 $c"/>
+
 </setup>
 
 <p>
     Let <m>f</m> and <m>g</m> be the piecewise linear functions given by the graphs below.
 </p>
-      <graph xmin="-5" xmax="5" ymin="-5" ymax="5" size="medium" grid="true" showNavigation="false" fixAxes="true"> $f $g  
+      <graph xmin="-5" xmax="5" ymin="-5" ymax="5" size="medium" grid="true" showNavigation="false" fixAxes="true"> $f $g
           <label fixLocation anchor="($x1+0.5,$$f($x1)-0.25)"><m>f</m></label>
           <label fixLocation anchor="($x2+0.25,$$g($x2)-0.25)"><m>g</m></label>
       </graph>
-   
-<!-- 
+
+<!--
 <p>If <m>a = $a</m>, and <m>h(x) = f(x) \cdot g(x)</m>, then
 <m> h'($a) = $$f($a) \cdot $$gP($a) + $$g($a) \cdot $$fP($a) </m>
-</p> 
+</p>
 -->
 
 <!--
@@ -74,128 +74,110 @@
     <p><m>g'($a)</m> is undefined, <m>p'($a)</m> is undefined, and <m>q'($a)</m> is undefined.</p>
   </case>
 </conditionalContent>
---> 
-  <p>Let <m>P(x) = f(g(x))</m>, <m>Q(x) = g(f(x))</m>, and <m>R(x) = f(f(x))</m>. Determine each of the following derivative values.</p>  
+-->
+  <p>Let <m>P(x) = f(g(x))</m>, <m>Q(x) = g(f(x))</m>, and <m>R(x) = f(f(x))</m>. Determine each of the following derivative values. If a derivative is not defined at the value specified, enter <q>undefined</q> (without quotes).</p>
 
 <p>
 <ol marker="a.">
 
   <li>
 <p>
-    <m> P'($c) = </m> 
+    <m> P'($c) = </m>
       <answer>
         <conditionalContent>
-          <case condition="$c = $x1">
+          <case condition="$c = $x2 or $$g($c)=$x1">
             undefined
           </case>
-          <case condition="$c = $x2">
-            undefined
-          </case>  
           <case>
-            $$fP($$g($c))*$$gP($c) 
+            $$fP($$g($c))*$$gP($c)
           </case>
-        </conditionalContent>  
-      </answer> 
+        </conditionalContent>
+      </answer>
     </p>
   <!--    <p><m>$$f($a)*$$gP($a) + $$g($a)*$$fP($a)  </m></p> -->
   </li>
 
   <li>
     <p>
-    <m> P'($d) = </m> 
+    <m> P'($d) = </m>
       <answer>
         <conditionalContent>
-          <case condition="$d = $x1">
+          <case condition="$d = $x2 or $$g($d)=$x1">
             undefined
           </case>
-          <case condition="$d = $x2">
-            undefined
-          </case>  
           <case>
-            $$fP($$g($d))*$$gP($d) 
+            $$fP($$g($d))*$$gP($d)
           </case>
-        </conditionalContent>  
-      </answer> 
+        </conditionalContent>
+      </answer>
       </p>
  <!--     <p><m>$$f($b)*$$gP($b) + $$g($b)*$$fP($b)  </m></p>. -->
   </li>
-    
+
   <li>
     <p>
-    <m> Q'($c) = </m> 
+    <m> Q'($c) = </m>
       <answer>
         <conditionalContent>
-          <case condition="$c = $x1">
-            undefined
-          </case>
-          <case condition="$c = $x2">
+          <case condition="$c = $x1 or $$f($c)=$x2">
             undefined
           </case>
           <case>
-            $$gP($$f($c))*$$fP($c) 
+            $$gP($$f($c))*$$fP($c)
           </case>
-        </conditionalContent>  
-      </answer>  
+        </conditionalContent>
+      </answer>
     </p>
   </li>
 
   <li>
     <p>
-    <m> Q'($d) = </m> 
+    <m> Q'($d) = </m>
       <answer>
         <conditionalContent>
-          <case condition="$d = $x1">
+          <case condition="$d = $x1 or $$f($d)=$x2">
             undefined
           </case>
-          <case condition="$d = $x2">
-            undefined
-          </case>         
           <case>
-            $$gP($$f($d))*$$fP($d) 
+            $$gP($$f($d))*$$fP($d)
           </case>
-        </conditionalContent>  
+        </conditionalContent>
       </answer>
-    </p>      
-  </li>
-
-  <li>
-    <p>
-    <m> R'($c) = </m> 
-      <answer>
-        <conditionalContent>
-          <case condition="$c = $x1">
-            undefined
-          </case>
-          <case condition="$c = $x2">
-            undefined
-          </case>
-          <case>
-            $$fP($$f($c))*$$fP($c) 
-          </case>
-        </conditionalContent>  
-      </answer>  
     </p>
   </li>
 
   <li>
     <p>
-    <m> R'($d) = </m> 
+    <m> R'($c) = </m>
       <answer>
         <conditionalContent>
-          <case condition="$d = $x1">
+          <case condition="$c = $x1 or $$f($c)=$x1">
             undefined
           </case>
-          <case condition="$d = $x2">
-            undefined
-          </case>         
           <case>
-            $$fP($$f($d))*$$fP($d) 
+            $$fP($$f($c))*$$fP($c)
           </case>
-        </conditionalContent>  
+        </conditionalContent>
       </answer>
-    </p>      
+    </p>
   </li>
 
-  
+  <li>
+    <p>
+    <m> R'($d) = </m>
+      <answer>
+        <conditionalContent>
+          <case condition="$d = $x1 or $$f($d)=$x1">
+            undefined
+          </case>
+          <case>
+            $$fP($$f($d))*$$fP($d)
+          </case>
+        </conditionalContent>
+      </answer>
+    </p>
+  </li>
+
+
 </ol>
 </p>
