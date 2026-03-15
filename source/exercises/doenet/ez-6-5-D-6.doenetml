@@ -23,11 +23,12 @@
   <math name="value">1/$k*ln(2)</math>
 
   <math name="Ffordisplay"> -10/($kfordisplay)*ln(1+e^(-$k*b)) + 10/$kfordisplay*ln(2)</math>
-  <!-- Chose to use this in the hopes it would fit better on one line to make the final limit easier to read and analyze.  Downside is that it may not look like what students entered, and they might be confused.  Revisit. -->
+  <!-- Chose to use this in the hopes it would fit better on one line to make the final limit easier to read and analyze.  Downside is that it may not look like what students entered, and they might be confused.  Revisit. (Edit: Changed it back - it didn't fit.) -->
+
 
   <conditionalContent name='nextStep'
             condition="$correctFnoInt.creditAchieved = 1">
-            <math name="math_limit" extend="$Ffordisplay"/>
+            <math name="math_limit" extend="$FnoInt.value"/>
           </conditionalContent>
 </setup>
 
@@ -62,7 +63,7 @@
     </li>
     <li>
       <p>
-        <m>\displaystyle \lim_{b\to\infty} \int_0^b \frac{e^{-$k x}}{1+e^{-$k x}} \, dx = \lim_{b\to \infty}\Bigg(</m><mathInput minWidth="100" name="antiD"/><m>\displaystyle\Bigg|_0^b\Bigg)</m><answer forceSmallCheckWorkButton><award><when>$antiD = $F or $test=0 $antiD = $F2 or $test2=0</when></award></answer>
+        <m>\displaystyle \lim_{b\to\infty} \int_0^b \frac{e^{-$k x}}{1+e^{-$k x}} \, dx = \lim_{b\to \infty}\Bigg(</m><mathInput minWidth="100" name="antiD"/><m>\displaystyle\Bigg|_0^b\Bigg)</m><answer forceSmallCheckWorkButton><award><when>$antiD = $F or $test=0 or $antiD = $F2 or $test2=0</when></award></answer>
       </p>
       <p>
         <m>\hspace{1.7in} = \displaystyle \lim_{b\to \infty}</m><mathInput name="FnoInt" minWidth="75"/><answer forceSmallCheckWorkButton name="correctFnoInt"><award><when>$FnoInt = $$F(b) or $FnoInt = $$F2(b)</when></award></answer>
