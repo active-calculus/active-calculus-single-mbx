@@ -15,11 +15,18 @@
 <setup>
   <selectFromSequence name="k" from="2" to="6" step="1"/>
   <function name="F"> 1/(2*$k)*ln(1+$k*x^2) </function>
-  <derivative name="test">$F - $antiD</derivative>
+  <function name="F2"> 1/(2*$k)*ln|1+$k*x^2| </function>
+  <derivative name="test" simplify="full">$F - $antiD</derivative>
+  <derivative name="test2" simplify="full">$F2 - $antiD</derivative>
+
+  <conditionalContent name='nextStep'
+            condition="$correctFnoInt.creditAchieved = 1">
+            <math name="math_limit" extend="$FnoInt.value"/>
+          </conditionalContent>
 </setup>
 
 <p>
-  Consider the improper integral 
+  Consider the improper integral
   <me>
     \int_0^\infty \frac{x}{1+$k x^2} \, dx
   </me>
@@ -30,37 +37,44 @@
   <ol marker="a.">
     <li>
       <p>
-        First, evaluate the corresponding indefinite integral to find an antiderivative of the integrand.
+        First, the integral is improper because <answer><choiceInput inline name="a2">
+          <choice>?</choice>
+          <choice>the interval is bounded and the integrand is continuous on the interval</choice>
+          <choice credit="1">the interval is unbounded</choice>
+          <choice>the integrand is unbounded at the left endpoint</choice>
+          <choice>the integrand is unbounded at the right endpoint</choice>
+          <choice>the integrand is unbounded at a point between the endpoints</choice>
+        </choiceInput></answer>
+
+        and so we instead consider
+        <me>
+          \lim_{b\to \infty} \int_0^b \frac{x}{1+$k x^2} \, dx.
+        </me>
+
       </p>
-      <p>
-        <m>\displaystyle \int \frac{x}{1+$k x^2} \, dx = </m><mathInput minWidth="100" name="antiD"/><answer><award><when>$antiD = $F or $test=0</when></award></answer>
-      </p>  
     </li>
     <li>
       <p>
-        Now, let <m>F(b) = \int_0^b \frac{x}{1+$k x^2} \, dx</m>.  Use your result from (a) along with the First FTC to state a formula for <m>F(b)</m> that doesn't involve an integral.
+        <m>\displaystyle  \lim_{b\to \infty} \int_0^b \frac{x}{1+$k x^2} \, dx =  \lim_{b\to \infty}\Bigg(</m><mathInput minWidth="100" name="antiD"/><m>\displaystyle\Bigg|_0^b\Bigg)</m><answer forceSmallCheckWorkButton><award><when>$antiD = $F or $test=0 $antiD = $F2 or $test2=0</when></award></answer>
       </p>
+        <!-- <boolean>$test =0 </boolean><boolean>$antiD=$F</boolean> -->
       <p>
-        <m>F(b) = </m><mathInput name="FnoInt" minWidth="75"/><answer name="correctFnoInt"><award><when>$FnoInt = $$F(b)</when></award></answer>
+        <m>\hspace{1.7in} = \displaystyle \lim_{b\to \infty}\Big(</m><mathInput name="FnoInt" minWidth="75"/><m>\Big)</m><answer forceSmallCheckWorkButton name="correctFnoInt"><award><when>$FnoInt = $$F(b) or $FnoInt = $$F2(b)</when></award></answer>
       </p>
     </li>
     <li>
-      
+
 
       <p>
         Finally, we take the limit as <m>b</m> increases without bound to determine whether the improper integral converges or diverges.  We observe that
       </p>
       <p>
         <m>
-          \displaystyle \lim_{b \to \infty} \int_0^b \frac{x}{1+$k x^2} \, dx = \lim_{b \to \infty} 
-        </m> 
-        <setup>
-          <conditionalContent name='nextStep' 
-            condition="$correctFnoInt.creditAchieved = 1"> 
-            <math name="math_limit" extend="$FnoInt.value"/>
-          </conditionalContent>
-        </setup>
-        <mathInput name="limitReady" prefill="$nextStep.math_limit"/>
+          \displaystyle \lim_{b \to \infty} \int_0^b \frac{x}{1+$k x^2} \, dx = \lim_{b \to \infty}
+        </m>
+
+
+        <mathInput disabled name="limitReady" prefill="$nextStep.math_limit"/>
       </p>
       <p>
         and since <m>b \to \infty</m>, it follows <m>(1+$k b^2)</m> will <choiceInput name="c1" inline>

@@ -14,55 +14,71 @@
 
 <setup>
   <selectFromSequence name="k" from="0.5" to="0.9" step="0.1"/>
+  <math simplify name="kfordisplay">$k*10</math>
   <function name="f"> e^(-$k*x)/(1+e^(-$k*x))</function>
   <function name="F"> -1/($k)*ln(1+e^(-$k*x)) + 1/$k*ln(2)</function>
+  <function name="F2"> -1/($k)*ln|1+e^(-$k*x)| + 1/$k*ln(2)</function>
   <derivative name="test">$F - $antiD</derivative>
+  <derivative name="test2">$F2 - $antiD</derivative>
   <math name="value">1/$k*ln(2)</math>
+
+  <math name="Ffordisplay"> -10/($kfordisplay)*ln(1+e^(-$k*b)) + 10/$kfordisplay*ln(2)</math>
+  <!-- Chose to use this in the hopes it would fit better on one line to make the final limit easier to read and analyze.  Downside is that it may not look like what students entered, and they might be confused.  Revisit. -->
+
+  <conditionalContent name='nextStep'
+            condition="$correctFnoInt.creditAchieved = 1">
+            <math name="math_limit" extend="$Ffordisplay"/>
+          </conditionalContent>
 </setup>
 
 <p>
-  Consider the improper integral 
+  Consider the improper integral
   <me>
     \int_0^\infty \frac{e^{-$k x}}{1+e^{-$k x}} \, dx
   </me>
+
   Complete the following sequence of prompts to explain why this improper integral converges and to find its value.
+
 </p>
 
 <p>
   <ol marker="a.">
     <li>
       <p>
-        First, evaluate the corresponding indefinite integral to find an antiderivative of the integrand.
+        First, the integral is improper because <answer><choiceInput inline name="a2">
+          <choice>?</choice>
+          <choice>the interval is bounded and the integrand is continuous on the interval</choice>
+          <choice credit="1">the interval is unbounded</choice>
+          <choice>the integrand is unbounded at the left endpoint</choice>
+          <choice>the integrand is unbounded at the right endpoint</choice>
+          <choice>the integrand is unbounded at a point between the endpoints</choice>
+        </choiceInput></answer>
+
+        and so we instead consider
+        <me>
+          \lim_{b\to \infty} \int_0^b \frac{e^{-$k x}}{1+e^{-$k x}} \, dx.
+        </me>
       </p>
-      <p>
-        <m>\displaystyle \int \frac{e^{-$k x}}{1+e^{-$k x}} \, dx = </m><mathInput minWidth="100" name="antiD"/><answer><award><when>$antiD = $F or $test=0</when></award></answer>
-      </p>  
     </li>
     <li>
       <p>
-        Now, let <m>F(b) = \int_0^b \frac{e^{-$k x}}{1+e^{-$k x}} \, dx</m>.  Use your result from (a) along with the First FTC to state a formula for <m>F(b)</m> that doesn't involve an integral.
+        <m>\displaystyle \lim_{b\to\infty} \int_0^b \frac{e^{-$k x}}{1+e^{-$k x}} \, dx = \lim_{b\to \infty}\Bigg(</m><mathInput minWidth="100" name="antiD"/><m>\displaystyle\Bigg|_0^b\Bigg)</m><answer forceSmallCheckWorkButton><award><when>$antiD = $F or $test=0 $antiD = $F2 or $test2=0</when></award></answer>
       </p>
       <p>
-        <m>F(b) = </m><mathInput name="FnoInt" minWidth="75"/><answer name="correctFnoInt"><award><when>$FnoInt = $$F(b)</when></award></answer>
+        <m>\hspace{1.7in} = \displaystyle \lim_{b\to \infty}</m><mathInput name="FnoInt" minWidth="75"/><answer forceSmallCheckWorkButton name="correctFnoInt"><award><when>$FnoInt = $$F(b) or $FnoInt = $$F2(b)</when></award></answer>
       </p>
     </li>
     <li>
-      
+
 
       <p>
         Finally, we take the limit as <m>b</m> increases without bound to determine whether the improper integral converges or diverges.  We observe that
       </p>
       <p>
         <m>
-          \displaystyle \lim_{b \to \infty} \int_0^b \frac{e^{-$k x}}{1+e^{-$k x}} \, dx = \lim_{b \to \infty} 
-        </m> 
-        <setup>
-          <conditionalContent name='nextStep' 
-            condition="$correctFnoInt.creditAchieved = 1"> 
-            <math name="math_limit" extend="$FnoInt.value"/>
-          </conditionalContent>
-        </setup>
-        <mathInput name="limitReady" prefill="$nextStep.math_limit"/>
+          \displaystyle \lim_{b \to \infty} \int_0^b \frac{e^{-$k x}}{1+e^{-$k x}} \, dx = \lim_{b \to \infty}
+        </m>
+        <mathInput disabled name="limitReady" prefill="$nextStep.math_limit"/>
       </p>
       <p>
         and since <m>b \to \infty</m>, it follows <m>e^{-$k b}</m> will <choiceInput name="c0" inline>
