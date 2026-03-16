@@ -24,6 +24,14 @@
   <function styleNumber="2" name = "h" domain = "[1.75,2.25]"> -1 </function>
   <function styleNumber="2" name = "i" domain = "[2.75,3.25]"> 1x -3.5</function>
   <parabola name="parab" through = "$A $B $C" styleNumber = "1"/>
+
+  <number valueOnNaN="200" name="slope" displayDecimals="3">$line.slope</number>
+
+  <function styleNumber="2" name = "line2" domain = "[$D.x,$E.x]"> $line.slope(x-$D.x) +$D.y</function>
+  <number valueOnNaN="200" name="intercept" displayDecimals="3">
+    $$line2(0)</number>
+      <boolean name="badness">$slope=200</boolean>
+      <boolean name="badness2">$intercept=200</boolean>
 </setup>
 <p>
   Let's consider the initial value problem
@@ -39,54 +47,67 @@
           Use the differential equation to find the slope of the tangent line to the solution <m>y(t)</m> at <m>t=0</m>.
         </p>
         <p>
-          slope at <m>t=0</m>: <answer>-2</answer>
+          <answer><label>Slope of <m>y(t)</m> at <m>t=0</m>:</label>-2</answer>
         </p>
         <p>
           Next, use the initial value to find the equation of the tangent line at <m>t=0</m>.
         </p>
         <p>
-          equation of tangent line at <m>t=0</m>: <answer name='eq1'>y-1=-2t</answer>
-        </p> 
-        <feedback condition='$eq1=-2t+1'>It looks like you did not enter an equation of a line. Recall that an equation of a line involves <m>t</m>, <m>y</m>, and an equals sign.
-        </feedback><feedback condition='$eq1=(y=-2x+1)'>It looks like you wrote an equation involving <m>x</m> instead of <m>t</m>. </feedback>        
+          <answer name='eq1'><label>Equation of tangent line at <m>t=0</m>: </label>y-1=-2t</answer>
+        </p>
+        <feedback condition="$eq1=-2t+1 or $eq1=-2x+1">It looks like you did not enter an equation of a line. Recall that an equation of a line involves <m>t</m>, <m>y</m>, and an equals sign.</feedback>
+        <feedback condition="$eq1=(y=-2x+1)">It looks like you wrote an equation involving <m>x</m> instead of <m>t</m>. </feedback>
         <p>
           Finally, in the graph below, sketch this tangent line at <m>t = 0</m> over the interval <m>-0.25 \leq t \leq 0.25</m> by dragging the two grey points to their correct locations.
-        </p>       
+        </p>
       <graph size="medium" xMin="-.5" xMax="3.5" yMin="-1.5" yMax="2.5" showNavigation = "false" fixAxes grid="true" aspectRatio="1/1">
+        <shortDescription>axes for sketching tangent line near t equals 0</shortDescription>
         <xLabel>t</xLabel>
         <yLabel>y</yLabel>
           $g
           $h
-          $i            
+          $i
         <point styleNumber = "6" name = "D">
           (0,2)
-          <constraints name = "a4">
-            <attractTo>
+            <attractTo threshold="0.1">
               $f
             </attractTo>
-          </constraints>
-        </point>
-           
-        <point styleNumber = "6" name = "E">(0.5,2.25)
-         <constraints name = "a5">
-           <attractTo>
-             $f
-           </attractTo>
-         </constraints>
         </point>
 
-        <lineSegment name = "line" endpoints = "$E $D" styleNumber = "5"/>
+        <point styleNumber = "6" name = "E">(0.5,2.25)
+           <attractTo threshold="0.1">
+             $f
+           </attractTo>
+        </point>
+
+        <lineSegment name = "line" endpoints = "$D $E" styleNumber = "5"/>
+
+        <text anchor="(1.25,2.3)">
+          slope:
+        </text>
+        <math hide="$badness" anchor="(1.75,2.3)">$line.slope</math>
+        <text hide="!$badness" anchor="(1.75,2.3)">undefined</text>
+        <text anchor="(1.1,2.1)">
+          value at <m>t=0</m>:
+        </text>
+        <math hide="$badness2" anchor="(1.75,2.1)">$intercept</math>
+        <text hide="!$badness2" anchor="(1.75,2.1)">undefined</text>
+        <text anchor="(1,1.9)">
+          over the interval:
+        </text>
+        <math anchor="(2,1.9)"><m>$D.x \leq x \leq $E.x</m></math>
 
       </graph>
 <p>
-    coordinates of tangent line endpoints: <m>$line.endpoints</m>
-    <answer>
+    <answer name="firstgraphans">
+      <label>Tangent line correct?</label>
       <award><when>
-        <mathList>$line.endpoints</mathList>=<mathList unordered>(-0.25,1.5) (0.25,0.5)</mathList> 
+        <mathList>$line.endpoints</mathList>=<mathList unordered>(-0.25,1.5) (0.25,0.5)</mathList>
       </when></award>
     </answer>
 </p>
-
+<feedback condition="$slope=-2 and $$line2(0)=1 and $firstgraphans.justSubmitted and $firstgraphans.creditAchieved!=1">Your line has the correct slope and value at <m>t=0</m>, but isn't over the interval <m>-0.25\leq x \leq 0.25</m>.
+</feedback>
       </li>
 
       <li>
@@ -95,19 +116,13 @@
           Use the graph to measure the slope of each tangent line and verify that each agrees with the value specified by the differential equation.
         </p>
         <p>
-          slope at <m>t=1</m>:
-          <mathInput name="b1"></mathInput>
-          <answer><award><when>$b1=-1</when></award></answer>
+          <answer name="b1"><label>slope at <m>t=1</m>:</label>-1</answer>
         </p>
         <p>
-          slope at <m>t=2</m>:
-          <mathInput name="b2"></mathInput>
-          <answer><award><when>$b2=0</when></award></answer>
+          <answer name="b2"><label>slope at <m>t=2</m>:</label>0</answer>
         </p>
         <p>
-          slope at <m>t=3</m>:
-          <mathInput name="b3"></mathInput>
-          <answer><award><when>$b3=1</when></award></answer>
+          <answer name="b3"><label>slope at <m>t=3</m>:</label>1</answer>
         </p>
       </li>
 
@@ -118,58 +133,55 @@
           <m>0\leq t\leq 3</m> so that the lines are tangent to the graph of <m>y(t)</m>.
         </p>
         <graph size="medium" xMin="-.5" xMax="3.5" yMin="-1.5" yMax="2.5" showNavigation = "false" fixAxes grid="true" aspectRatio="1/1">
+          <shortDescription>
+            axes for sketching a graph tangent to certain lines
+          </shortDescription>
           <xLabel>t</xLabel>
           <yLabel>y</yLabel>
           <point name="A">(0.2,0)
-            <constraints name="a1">
-              <attractTo>
-                $e
-              </attractTo>
-            </constraints>
+            <attractTo>
+              $e
+            </attractTo>
           </point>
 
           <point name="B">(1.5,2.32)
-            <constraints name="a2">
-              <attractTo>
-                $e
-              </attractTo>
-            </constraints>
+            <attractTo>
+              $e
+            </attractTo>
           </point>
-              
+
           <point name="C">(2.8,0)
-            <constraints name="a3">
-              <attractTo>
-                $e
-              </attractTo>
-            </constraints>
+            <attractTo>
+              $e
+            </attractTo>
           </point>
-           $parab 
-          <label anchor="(2.2,4*$parab.a+2*$parab.b+$parab.c+0.2)"><m>y(t)</m></label>
+           $parab
+          <label fixed anchor="(2.2,4*$parab.a+2*$parab.b+$parab.c+0.2)"><m>y(t)</m></label>
            $f
            $g
            $h
            $i
-          
+
         </graph>
         <answer>
         <award><when>
-            $a1.constraintUsed and $a3.constraintUsed and $a2.constraintUsed
+            $A.constraintUsed and $B.constraintUsed and $C.constraintUsed
         </when></award>
         </answer>
       </li>
 
       <li>
         <p>
-          Use the Fundamental Theorem of Calculus to find <m>y(t)</m>, the solution to the initial value problem 
+          Use the Fundamental Theorem of Calculus to find <m>y(t)</m>, the solution to the initial value problem
           <me>
             \frac{dy}{dt} = t - 2, \ \ y(0) = 1
           </me>
         </p>
         <p>
-          <m>y(t) = </m><mathInput name="b4"></mathInput>
-          <answer><award><when>$b4=(t^2)/2 - 2t + 1</when></award></answer>
-          <feedback condition="$b4=1/2x^2-2x+1">Note that we want the function <m>y(t)</m>. It looks like you entered an expression for <m>y(x)</m>.</feedback>
+          <answer name="b4"><label><m>y(t)=</m>:</label>(t^2)/2 - 2t + 1
+          </answer>
         </p>
+        <feedback condition="$b4=1/2 x^2-2x+1">Note that we want the function <m>y(t)</m>. It looks like you entered an expression for <m>y(x)</m>.</feedback>
       </li>
       <li>
         <p>
@@ -177,16 +189,25 @@
         </p>
         <p>
           The solution <m>y(t)</m> to the initial value problem is a <choiceInput inline name="e1">
+            <shortDescription>
+              multiple choice for kinds of functions
+            </shortDescription>
             <choice>?</choice>
             <choice>linear</choice>
             <choice>quadratic</choice>
             <choice>exponential</choice>
           </choiceInput> function whose vertex occurs at the point <choiceInput inline name="e2">
+            <shortDescription>
+              multiple choice for location of the vertex
+            </shortDescription>
             <choice>?</choice>
             <choice>(0,1)</choice>
             <choice>(2,-1)</choice>
             <choice>(4,0)</choice>
           </choiceInput> where the solution function's slope is <choiceInput inline name="e3">
+            <shortDescription>
+              multiple choice for slope at the vertex
+            </shortDescription>
             <choice>?</choice>
             <choice>-1</choice>
             <choice>0</choice>
