@@ -52,9 +52,9 @@
       </li>
       <li>
         <p>
-          Use the point <mathInput disabled>$point</mathInput> and
-          slope <mathInput disabled>$slope</mathInput> that you've found to find the equation
-          of the line tangent to the solution at <m>t=0</m>.  Be sure to write the tangent line equation as a function of <m>t</m>.
+          Use the point <mathInput disabled><conditionalContent condition="$point.creditAchieved=1">$point</conditionalContent></mathInput> and
+          slope <mathInput minWidth="30" disabled><conditionalContent condition="$slope.creditAchieved=1">$slope</conditionalContent></mathInput> that you've found above to write the equation
+          of the line tangent to the solution <m>y(t)</m> at <m>t=0</m>.  Be sure to write the tangent line equation as a function of <m>t</m>.
         </p>
         <p>
           <m>y=</m><answer name="approx0Exp">t/2</answer>
@@ -115,10 +115,10 @@
 
       <li>
         <p>
-          It turns out that the given initial value problem, 
+          It turns out that the given initial value problem,
           <me>
             \frac{dy}{dt} = \frac12 (y + 1), \ y(0) = 0,
-          </me> 
+          </me>
           has a solution
           of the form <m>y=ke^{t/2} - 1</m>.
         </p>
@@ -127,7 +127,7 @@
           <m>k</m>?
         </p>
         <p>
-          <m>k=</m><mathInput name="kEntered"/><answer name="kExp"><award><when>$kExp=1</when></award></answer>
+          <answer name="kEntered"><label><m>k=</m></label>1</answer>
         </p>
 
       </li>
@@ -135,11 +135,11 @@
       <!--
       <li>
         <setup>
-          <conditionalContent name="nextStep" condition="$kExp.creditAchieved = 1"> 
+          <conditionalContent name="nextStep" condition="$kExp.creditAchieved = 1">
             <math name="correctkEntered" extend="$kEntered.value"/>
             <math name="IVPsoln" simplify>$correctkEntered.value*e^(t/2) - 1</math>
           </conditionalContent>
-        </setup>      
+        </setup>
         <p>
           Then verify that
           <m>y=</m><mathInput disabled><math simplify>$k e^(t/2) - 1</math></mathInput>
