@@ -15,28 +15,21 @@
 <!-- a first draft of this preview was written by Siddhi Wakdikar after the 2024 Doenet workshop -->
 
 <setup>
-  <function name = "g1ya" variable="y">-1/(3y)</function>
-  <function name = "g1ta" variable="t">1</function>
-  <function name = "g1yb" variable="y">-1/y</function>
-  <function name = "g1tb" variable="t">1/3</function>
-  <function name = "g1yc" variable="y">1/y</function>
-  <function name = "g1tc" variable="t">-1/3</function>
-
-  <boolean name="g1Found">$a1.creditAchieved=1</boolean>  
+  <boolean name="g1Found">$a1.creditAchieved=1</boolean>
 
   <function name = "g2ya" variable="y">1/y</function>
   <function name = "g2ta" variable="t">t-1</function>
 
-  <boolean name="g2Found">$a2.creditAchieved=1</boolean>  
+  <boolean name="g2Found">$a2.creditAchieved=1</boolean>
 
   <function name = "g3ya" variable="y">1</function>
   <function name = "g3ta" variable="t">t+1</function>
 
-  <boolean name="g3Found">$a3.creditAchieved=1</boolean>  
-  <boolean name="g4Found">$a4.creditAchieved=1</boolean>  
+  <boolean name="g3Found">$a3.creditAchieved=1</boolean>
+  <boolean name="g4Found">$a4.creditAchieved=1</boolean>
 
   <function name = "f">1/2*x^2+C</function>
-  
+
 </setup>
 
   <p>
@@ -53,11 +46,11 @@
         </p>
 
         <p>
-          <ol marker="i."> 
+          <ol marker="i.">
             <li>
               <p>
                 <m>\displaystyle \frac{dy}{dt} = -3y</m>.
-              </p>
+
               <answer name="a1">
                 <choiceInput>
                   <choice name = "choice1" credit = "1">separable
@@ -65,24 +58,27 @@
                 <choice>not separable</choice>
               </choiceInput>
               </answer>
-              <p hide="not $g1Found">
+              </p>
+              <div hide="not $g1Found">
                 <p>
                   Write the equation in revised form, <m>g(y) \frac{dy}{dt} = h(t)</m>, to separate the variables.
                 </p>
                 <p>
-                  <mathInput name="g1yEntered" minWidth="40"/><m>\frac{dy}{dt} = </m><mathInput minWidth="40" name="g1tEntered"/> <answer simplifyOnCompare>
+                  <mathInput name="g1yEntered" minWidth="40"/><m>\frac{dy}{dt} = </m><mathInput minWidth="40" name="g1tEntered"/> <answer>
                     <award>
-                      <when> ($g1yEntered=$g1ya and $g1tEntered=$g1ta) or ($g1yEntered=$g1yb and $g1tEntered=$g1tb) or ($g1yEntered=$g1yc and $g1tEntered=$g1tc)
+                      <when>
+                        <derivative derivVariables="t">$g1yEntered</derivative> = 0 and <derivative derivVariables="y">$g1tEntered</derivative> = 0 and $g1tEntered/$g1yEntered=-3y
                       </when>
-                    </award></answer> 
-                </p> 
-              </p>
+                      <!-- <when> ($g1yEntered=$g1ya and $g1tEntered=$g1ta) or ($g1yEntered=$g1yb and $g1tEntered=$g1tb) or ($g1yEntered=$g1yc and $g1tEntered=$g1tc)
+                      </when> -->
+                    </award></answer>
+                </p>
+              </div>
             </li>
 
             <li>
               <p>
                 <m>\displaystyle \frac{dy}{dt} = ty - y</m>.
-              </p>
               <answer name="a2">
                 <choiceInput>
                   <choice name = "choice2" credit = "1">separable
@@ -90,66 +86,71 @@
                 <choice>not separable</choice>
               </choiceInput>
               </answer>
+              </p>
 
-              <p hide="not $g2Found">
+              <div hide="not $g2Found">
                 <p>
                   Write the equation in revised form, <m>g(y) \frac{dy}{dt} = h(t)</m>, to separate the variables.
                 </p>
                 <p>
-                  <mathInput minWidth="40" name="g2yEntered"/><m>\frac{dy}{dt} = </m><mathInput minWidth="40" name="g2tEntered"/> <answer simplifyOnCompare>
+                  <mathInput minWidth="40" name="g2yEntered"/><m>\frac{dy}{dt} = </m><mathInput minWidth="40" name="g2tEntered"/> <answer>
                     <award>
-                      <when> ($g2yEntered=$g2ya and $g2tEntered=$g2ta) 
+                      <when>
+                        <derivative derivVariables="t">$g2yEntered</derivative> = 0 and <derivative derivVariables="y">$g2tEntered</derivative> = 0 and $g2tEntered/$g2yEntered=ty-y
+                        <!-- ($g2yEntered=$g2ya and $g2tEntered=$g2ta)  -->
                       </when>
-                    </award></answer> 
-                </p> 
-              </p>
+                    </award></answer>
+                </p>
+              </div>
             </li>
 
             <li>
               <p>
                 <m>\displaystyle \frac{dy}{dt} = t + 1</m>.
-              </p>
+
               <answer name="a3">
                 <choiceInput>
                   <choice name = "choice3" credit = "1">separable</choice>
                   <choice>not separable</choice>
               </choiceInput>
               </answer>
+              </p>
 
-              <p hide="not $g3Found">
+              <div hide="not $g3Found">
                 <p>
                   Write the equation in revised form, <m>g(y) \frac{dy}{dt} = h(t)</m>, to separate the variables.
                 </p>
                 <p>
-                  <mathInput minWidth="40" name="g3yEntered"/><m>\frac{dy}{dt} = </m><mathInput minWidth="40" name="g3tEntered"/> <answer simplifyOnCompare>
+                  <mathInput minWidth="40" name="g3yEntered"/><m>\frac{dy}{dt} = </m><mathInput minWidth="40" name="g3tEntered"/> <answer>
                     <award>
-                      <when> ($g3yEntered=$g3ya and $g3tEntered=$g3ta) 
+                      <when> ($g3yEntered=$g3ya and $g3tEntered=$g3ta)
                       </when>
-                    </award></answer> 
-                </p> 
-              </p>
+                    </award></answer>
+                </p>
+              </div>
             </li>
 
             <li>
               <p>
                 <m>\displaystyle \frac{dy}{dt} = t^2 - y^2</m>.
-              </p>
+
               <answer name="a4">
                 <choiceInput>
                   <choice>separable</choice>
                   <choice name = "choice3" credit = "1">not separable</choice>
               </choiceInput>
               </answer>
+              </p>
 
-              <p hide="not $g4Found">
+              <div hide="not $g4Found">
                 <p>
                   The equation <m>\displaystyle \frac{dy}{dt} = t^2 - y^2</m> is not separable since there is no way to write <m>t^2 - y^2</m> as a product of one expression only involving <m>t</m> and another expression only involving <m>y</m>.
-                </p> 
-              </p>
+                </p>
+              </div>
             </li>
           </ol>
         </p>
-        
+
       </li>
 
       <li>

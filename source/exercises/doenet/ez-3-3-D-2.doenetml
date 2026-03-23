@@ -15,11 +15,11 @@
 <setup>
   <selectFromSequence name = "a" from = "2" to = "3" step = "1"/>
   <selectFromSequence name = "b" from = "0" to = "2" step = "1"/>
-  <selectFromSequence name = "c" from = "2" to = "3" step = "1" exclude="$a"/> 
+  <selectFromSequence name = "c" from = "2" to = "3" step = "1" exclude="$a"/>
 
-  <selectFromSequence name = "k" from = "0.33" to = "0.99" step = "0.33"/> 
-  <selectFromSequence name = "s" from = "-1" to = "1" step = "2"/> 
-  
+  <selectFromSequence name = "k" from = "0.33" to = "0.99" step = "0.33"/>
+  <selectFromSequence name = "s" from = "-1" to = "1" step = "2"/>
+
   <function name="fP">$s*$k*1/4*(x+$a)*x*(x-$c)</function>
   <derivative name="fPP">$fP</derivative>
 
@@ -38,16 +38,16 @@
   <number name="POI2"> 1/3 * (sqrt($a^2 + $a*$c + $c^2) - $a + $c)</number>
 
   <number name="midPOI">($POI1 + $POI2)/2</number>
-  
+
   <mathList name="correctPOI">$POI1 $POI2</mathList>
-  
-</setup>  
+
+</setup>
 
 <p>
   Consider the function <m>y = f(x)</m> whose <em>derivative</em> is given by the following graph.  Note that you can drag the included red point along the graph and see its coordinates.
-</p>  
-      <graph xmin="-4" xmax="4" ymin="-4" ymax="4" size="medium" grid="true" showNavigation="false" fixAxes="true"> 
-        $fP  
+</p>
+      <graph xmin="-4" xmax="4" ymin="-4" ymax="4" size="medium" grid="true" showNavigation="false" fixAxes="true">
+        $fP
         $A
         <label fixLocation anchor="(-3-0.2,$$fP(-3)+$s*0.25)"><m>f'</m></label>
         $B
@@ -58,7 +58,7 @@
 
 <p>
   Again, the graph above is <m>y = f'(x)</m>.  Two key points on the graph of <m>y = f'(x)</m> are also labeled.
-</p>  
+</p>
 
 <p>
   <ol marker="a.">
@@ -68,7 +68,7 @@
       </p>
       <p>
         The critical numbers of <m>f</m> are: <mathInput name="crNum" /> <answer unorderedCompare matchPartial allowedErrorInNumbers="0.1" allowedErrorIsAbsolute><award><when> $crNum=$correctCrNum</when></award></answer>.
-      </p>  
+      </p>
     </li>
     <li>
       <p>
@@ -76,14 +76,14 @@
       </p>
       <p>
         The inflection points of <m>f</m> are: <mathInput name="POI" /> <answer unorderedCompare matchPartial allowedErrorInNumbers="0.25" allowedErrorIsAbsolute><award><when> $POI=$correctPOI</when></award></answer>.
-      </p> 
+      </p>
 
       <!--
       <p>
         <m>POI1 = </m><number >$POI1</number>, <m>POI2 = </m><number >$POI2</number>
       </p>
       -->
-      
+
     </li>
     <li>
       <p>
@@ -95,57 +95,57 @@
           <choice credit="$$fP(-$a-1) < 0">decreasing</choice>
           <choice credit="$$fP(-$a-1) > 0">increasing</choice>
           <choice credit="0">sometimes increasing and sometimes decreasing</choice>
-        </choiceInput></answer>  
+        </choiceInput></answer>
         because <m>f'(x)</m> is <answer><choiceInput inline>
           <choice>?</choice>
           <choice credit="$$fP(-$a-1) < 0">always negative</choice>
           <choice credit="$$fP(-$a-1) > 0">always positive</choice>
           <choice credit="0">sometimes negative and sometimes positive</choice>
         </choiceInput></answer> on <m>(-\infty, -$a)</m>.
-      </p>  
+      </p>
       <p>
         On <m>(-\$a, 0)</m>, <m>f</m> is <answer><choiceInput inline>
           <choice>?</choice>
           <choice credit="$$fP(-$a+0.5) < 0">decreasing</choice>
           <choice credit="$$fP(-$a+0.5) > 0">increasing</choice>
           <choice credit="0">sometimes increasing and sometimes decreasing</choice>
-        </choiceInput></answer>  
+        </choiceInput></answer>
         because <m>f'(x)</m> is <answer><choiceInput inline>
           <choice>?</choice>
           <choice credit="$$fP(-$a+0.5) < 0">always negative</choice>
           <choice credit="$$fP(-$a+0.5) > 0">always positive</choice>
           <choice credit="0">sometimes negative and sometimes positive</choice>
         </choiceInput></answer> on <m>(-\$a, 0)</m>.
-      </p>  
+      </p>
       <p>
         On <m>(0, $c)</m>, <m>f</m> is <answer><choiceInput inline>
           <choice>?</choice>
           <choice credit="$$fP(0.5) < 0">decreasing</choice>
           <choice credit="$$fP(0.5) > 0">increasing</choice>
           <choice credit="0">sometimes increasing and sometimes decreasing</choice>
-        </choiceInput></answer>  
+        </choiceInput></answer>
         because <m>f'(x)</m> is <answer><choiceInput inline>
           <choice>?</choice>
           <choice credit="$$fP(0.5) < 0">always negative</choice>
           <choice credit="$$fP(0.5) > 0">always positive</choice>
           <choice credit="0">sometimes negative and sometimes positive</choice>
         </choiceInput></answer> on <m>(-\$a, 0)</m>.
-      </p>  
+      </p>
       <p>
         On <m>($c, \infty)</m>, <m>f</m> is <answer><choiceInput inline>
           <choice>?</choice>
           <choice credit="$$fP($c+1) < 0">decreasing</choice>
           <choice credit="$$fP($c+1) > 0">increasing</choice>
           <choice credit="0">sometimes increasing and sometimes decreasing</choice>
-        </choiceInput></answer>  
+        </choiceInput></answer>
         because <m>f'(x)</m> is <answer><choiceInput inline>
           <choice>?</choice>
           <choice credit="$$fP($c+1) < 0">always negative</choice>
           <choice credit="$$fP($c+1) > 0">always positive</choice>
           <choice credit="0">sometimes negative and sometimes positive</choice>
         </choiceInput></answer> on <m>(-\infty, -$a)</m>.
-      </p>       
-    </li> 
+      </p>
+    </li>
     <li>
       <p>
         On each of the following intervals, decide whether <m>f</m> is concave up (CCU), concave down (CCD), linear, or sometimes CCUp and sometimes CCD.
@@ -157,7 +157,7 @@
           <choice credit="$$fPP($POI1-1) > 0">CCU</choice>
           <choice credit="0">linear</choice>
           <choice credit="0">sometimes CCU and sometimes CCD</choice>
-        </choiceInput></answer>  
+        </choiceInput></answer>
         because <m>f'(x)</m> is <answer><choiceInput inline>
           <choice>?</choice>
           <choice credit="$$fPP($POI1-1) < 0">always decreasing</choice>
@@ -165,7 +165,7 @@
           <choice credit="0">always constant</choice>
           <choice credit="0">sometimes decreasing and sometimes increasing</choice>
         </choiceInput></answer> on <m>(-\infty, $POI1)</m>.
-      </p>  
+      </p>
       <p>
         On <m>($POI1,$POI2)</m>, <m>f</m> is <answer><choiceInput inline>
           <choice>?</choice>
@@ -173,7 +173,7 @@
           <choice credit="$$fPP($midPOI) > 0">CCU</choice>
           <choice credit="0">linear</choice>
           <choice credit="0">sometimes CCU and sometimes CCD</choice>
-        </choiceInput></answer>  
+        </choiceInput></answer>
         because <m>f'(x)</m> is <answer><choiceInput inline>
           <choice>?</choice>
           <choice credit="$$fPP($midPOI) < 0">always decreasing</choice>
@@ -181,26 +181,25 @@
           <choice credit="0">always constant</choice>
           <choice credit="0">sometimes decreasing and sometimes increasing</choice>
         </choiceInput></answer> on <m>($POI1,$POI2)</m>.
-      </p>  
+      </p>
       <p>
-        On <m>($POI1, \infty)</m>, <m>f</m> is <answer><choiceInput inline>
+        On <m>($POI2, \infty)</m>, <m>f</m> is <answer><choiceInput inline>
           <choice>?</choice>
           <choice credit="$$fPP($POI2+1) < 0">CCD</choice>
           <choice credit="$$fPP($POI2+1) > 0">CCU</choice>
           <choice credit="0">linear</choice>
           <choice credit="0">sometimes CCU and sometimes CCD</choice>
-        </choiceInput></answer>  
+        </choiceInput></answer>
         because <m>f'(x)</m> is <answer><choiceInput inline>
           <choice>?</choice>
           <choice credit="$$fPP($POI2+1) < 0">always decreasing</choice>
           <choice credit="$$fPP($POI2+1) > 0">always increasing</choice>
           <choice credit="0">always constant</choice>
           <choice credit="0">sometimes decreasing and sometimes increasing</choice>
-        </choiceInput></answer> on <m>($POI1, \infty)</m>.
-      </p> 
-    </li>     
-  </ol>  
+        </choiceInput></answer> on <m>($POI2, \infty)</m>.
+      </p>
+    </li>
+  </ol>
 </p>
-  
 
-  
+
