@@ -21,13 +21,13 @@
   <math simplify name="rate">100*$r</math>
   <math simplify name="A0">$w/$r + $pm*$c*50000</math>
   <math simplify name="A1">$w/$r - $pm*$c*50000</math>
-  <math simplify name="eqSol">$w/$r</math>   
-   
+  <math simplify name="eqSol">$w/$r</math>
+
   <function name = "soln" variable="t">$w/$r + ($A0-$w/$r)*e^($r*t)</function>
   <function name = "solnP" variable="t">$r*($A0-$w/$r)*e^($r*t)</function>
   <function name = "soln2" variable="t">$w/$r + ($A1-$w/$r)*e^($r*t)</function>
   <function name = "soln2P" variable="t">$r*($A1-$w/$r)*e^($r*t)</function>
-   
+
 </setup>
 
 <p>
@@ -41,11 +41,11 @@
 <p>
   <ol marker="a.">
     <li>
-      <p>  
-        Suppose that <m>A_0 = $A0</m>, which is the amount you've saved for retirement nest egg.  Use separation of variables to solve the given initial value problem and find its unique solution.  <alert>Note</alert>: you will likely find it helpful to write the righthand side of the differential equation in the form <m>$r(A - <math simplify>$w/$r</math>)</m>.
-      </p>      
       <p>
-        <m>A(t) =</m><mathInput name="solnEntered" minWidth="100"/><answer simplifyOnCompare><award><when>$solnEntered=$soln</when></award></answer>
+        Suppose that <m>A_0 = $A0</m>, which is the amount you've saved for retirement nest egg.  Use separation of variables to solve the given initial value problem and find its unique solution.  <alert>Note</alert>: you will likely find it helpful to write the righthand side of the differential equation in the form <m>$r(A - <math simplify>$w/$r</math>)</m>.
+      </p>
+      <p>
+        <m>A(t) =</m><mathInput name="solnEntered" minWidth="100"/><answer><award><when>$solnEntered=$soln</when></award></answer>
       </p>
     </li>
     <li>
@@ -84,16 +84,16 @@
           (
           ($a1.selectedIndices=3 and ($eqSol > $A0)) and $solnP = $a2 and ($a3.selectedIndices=3 and ($eqSol > $A0)) and ($a4.selectedIndices=4 and ($eqSol > $A0)) and ($a5.selectedIndices=3)
           )
-        </when></award></answer> 
+        </when></award></answer>
       </p>
     </li>
     <li>
-      <p>  
-        Now suppose that you had a different initial amount in your retirement account, <m>A_0 = $A1</m>.  Update your earlier work to find the unique solution to the corresponding initial value problem.  
-      </p>      
       <p>
-        <m>A(t) =</m><mathInput name="soln2Entered" minWidth="100"/><answer simplifyOnCompare><award><when>$soln2Entered=$soln2</when></award></answer>
-      </p>      
+        Now suppose that you had a different initial amount in your retirement account, <m>A_0 = $A1</m>.  Update your earlier work to find the unique solution to the corresponding initial value problem.
+      </p>
+      <p>
+        <m>A(t) =</m><mathInput name="soln2Entered" minWidth="100"/><answer><award><when>$soln2Entered=$soln2</when></award></answer>
+      </p>
     </li>
     <li>
       <p>
@@ -131,9 +131,9 @@
           (
           ($b1.selectedIndices=3 and ($eqSol > $A1)) and $soln2P = $b2 and ($b3.selectedIndices=3 and ($eqSol > $A1)) and ($a4.selectedIndices=4 and ($eqSol > $A1)) and ($b5.selectedIndices=3)
           )
-        </when></award></answer> 
+        </when></award></answer>
       </p>
-    </li>    
+    </li>
     <li>
       <p>
         Finally, observe that the original differential equation, <me>\frac{dA}{dt} = $r A - $w,</me> is autonomous and that it has an equilibrium solution.  State the equilibrium solution and then complete the sentence below to analyze how the equilibrium solution relates to how our retirement investment account behaves over time.
@@ -141,7 +141,7 @@
       <p>
         The equilibrium solution is <m>y = </m><mathInput name="eqSolEntered"/>
         <answer><award><when>
-          $eqSolEntered=$eqSol 
+          $eqSolEntered=$eqSol
         </when></award></answer>.
       </p>
       <p>
@@ -163,7 +163,7 @@
         </choiceInput>.  Notice that knowing the value of the equilibrium solution is crucial to understanding whether or not our retirement funds are sustainable.
       </p>
       <p>
-        <answer><award><when>$c1.selectedIndices=3 and $c2.selectedIndices=2 and $c3.selectedIndices=3</when></award></answer>
+        <answer><award><when>$c1.selectedIndices=2 and $c2.selectedIndices=3 and $stability.selectedIndices=3</when></award></answer>
       </p>
     </li>
   </ol>
