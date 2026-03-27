@@ -15,46 +15,51 @@
 <setup>
   <selectFromSequence name = "a" from = "2" to = "3" step = "1"/>
   <selectFromSequence name = "b" from = "0" to = "2" step = "1"/>
-  <selectFromSequence name = "c" from = "2" to = "3" step = "1" exclude="$a"/> 
+  <selectFromSequence name = "c" from = "2" to = "3" step = "1" exclude="$a"/>
   <selectFromSequence name = "d" from = "-2" to = "1" step = "1" exclude="0"/>
 
-  <selectFromSequence name = "k" from = "2" to = "4" step = "1"/> 
-  <selectFromSequence name = "s" from = "-1" to = "1" step = "2"/> 
+  <selectFromSequence name = "k" from = "2" to = "4" step = "1"/>
+  <selectFromSequence name = "s" from = "-1" to = "1" step = "2"/>
 
   <selectFromSequence name = "p" from = "-2" to = "1" step = "1" exclude="0"/>
   <selectFromSequence name = "q" from = "2" to = "4" step = "1" exclude="abs($p)"/>
-  
+
   <function name="f">$s*$k*1/4*(x+$a)*x*(x-$c) + $d</function>
-  <derivative name="fP">$f</derivative>
+  <function name="fextrema" domain="[$p,$q]">$f</function>
+
 
   <function name="fExpanded">-1/4*$a*$c*$k*$s*x + 1/4*$a*$k*$s*x^2 - 1/4*$c*$k*$s*x^2 + 1/4*$k*$s*x^3 + $d </function>
-  
-  <point name="A" styleNumber="2">(0,$$f(0))
-    <constraints>
-      <constrainTo>$f</constrainTo>
-    </constraints>
-  </point>
 
-  <point name="B" styleNumber="1" draggable="false">($crNum1,$$f($crNum1))</point>
-  <point name="C" styleNumber="1" draggable="false">($crNum2,$$f($crNum2))</point>
-
-  <mathList name="correctCrNum">$crNum1 $crNum2</mathList>
 
   <number name="crNum1"> 1/3 * (-sqrt($a^2 + $a*$c + $c^2) - $a + $c)</number>
   <number name="crNum2"> 1/3 * (sqrt($a^2 + $a*$c + $c^2) - $a + $c)</number>
+  <!-- could use built in functionality for these? -->
 
-  <number name="midCrNum">($crNum1 + $crNum2)/2</number>
+  <mathList name="crNums"> $crNum1 $crNum2 </mathList>
+  <boolean name="Num1in">$crNum1>= $p and $crNum1<= $q</boolean>
+  <boolean name="Num2in">$crNum2>= $p and $crNum2<= $q</boolean>
 
-  
-</setup>  
+  <math name="fofcrNums">
+    <conditionalContent>
+      <case condition="!$Num1in and !$Num2in">none</case>
+      <else>
+        <mathList>
+        <conditionalContent condition="$Num1in">$$f($crNum1)</conditionalContent>
+        <conditionalContent condition="$Num2in">$$f($crNum2)</conditionalContent>
+          </mathList>
+      </else>
+    </conditionalContent>
+  </math>
+
+</setup>
 
 <p>
-  Consider the function <m>y = f(x)</m> that is given by <m>f(x) = \displaystyle <math simplify>$fExpanded</math></m>  Our goal is to use calculus to find absolute minimum and maximum value of <m>f</m> on <m>[$p,$q]</m>.
-</p>  
+  Consider the function <m>y = f(x)</m> that is given by <me>f(x) = <math simplify>$fExpanded</math>.</me>  Our goal is to use calculus to find absolute minimum and maximum value of <m>f</m> on <m>[$p,$q]</m>.
+</p>
 
 <p>
-  
-</p>  
+
+</p>
 
 <p>
   <ol marker="a.">
@@ -63,42 +68,29 @@
          Determine the critical numbers of <m>f</m> and report your results below.  If there is more than one critical number, enter them as a list separated by commas.  If there are none, enter <em>none</em>.
       </p>
       <p>
-        The critical numbers of <m>f</m> are: <mathInput name="crNum" /> <answer unorderedCompare matchPartial allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when> $crNum=$correctCrNum</when></award></answer>
-      </p>  
+        <answer unorderedCompare matchPartial allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label>The critical numbers of <m>f</m> are:</label>$crNums</answer>
+      </p>
+      <p>
+        Evaluate the function at any critical numbers which lie in the interval <m>[$p,$q]</m>.  If there is more than one such critical number, enter the function values as a list separated by commas.  If there are no critical numbers in the interval <m>[$p,$q]</m>, enter <em>none</em>.
+      </p>
+      <answer unorderedCompare allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label>The value(s) of <m>f</m> at any applicable critical numbers are:</label>$fofcrNums</answer>
     </li>
     <li>
       <p>
         The values of the function at each of the respective endpoints of the interval are:
       </p>
       <p>
-        <m>f($p) =</m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$f($p)</answer> and <m>f($q) =</m><answer  allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$f($q)</answer>
-      </p>
-      <p>
-        Be sure to also consider any critical number that lies in the interval <m>[$p,$q]</m> and the function's value at such critical numbers.
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>f($p) =</m></label>$$f($p)</answer> and <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>f($q) =</m></label>$$f($q)</answer>
       </p>
     </li>
     <li>
       <p>
-        The absolute minimum value of <m>f</m> on <m>[$p,$q]</m> is <mathInput name="fAbsMin"/> <answer><award><when>
-          (($p < $crNum1 and $crNum1 < $q) and abs($fAbsMin - $$f($crNum1))<=0.01 and $s < 0) or  
-          (($p > $crNum1 or $crNum1 > $q) and $s < 0 and abs($fAbsMin - $$f($p))<=0.01 and $$f($p) <= $$f($q)) or
-          (($p > $crNum1 or $crNum1 > $q) and $s < 0 and abs($fAbsMin - $$f($q))<=0.01 and $$f($p) >= $$f($q)) or
-          (($p < $crNum2 and $crNum2 < $q) and abs($fAbsMin - $$f($crNum2))<=0.01 and $s > 0) or  
-          (($p > $crNum2 or $crNum2 > $q) and $s > 0 and abs($fAbsMin - $$f($p))<=0.01 and $$f($p) <= $$f($q)) or
-          (($p > $crNum2 or $crNum2 > $q) and $s > 0 and abs($fAbsMin - $$f($q))<=0.01 and $$f($p) >= $$f($q))
-        </when></award></answer>
-      </p> 
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label>The absolute minimum value of <m>f</m> on <m>[$p,$q]</m> is </label>$fextrema.globalMinimum[2]</answer>
+      </p>
       <p>
-        The absolute maximum value of <m>f</m> on <m>[$p,$q]</m> is <mathInput name="fAbsMax"/> <answer><award><when>
-          (($p < $crNum2 and $crNum2 < $q) and ($fAbsMax - $$f($crNum2))<=0.01 and $s < 0) or  
-          (($p > $crNum2 or $crNum2 > $q) and $s < 0 and abs($fAbsMax - $$f($p))<=0.01 and $$f($p) >= $$f($q)) or
-          (($p > $crNum2 or $crNum2 > $q) and $s < 0 and abs($fAbsMax - $$f($q))<=0.01 and $$f($p) <= $$f($q)) or         
-          (($p < $crNum1 and $crNum1 < $q) and abs($fAbsMax - $$f($crNum1))<=0.01 and $s > 0) or 
-          (($p > $crNum1 or $crNum1 > $q) and $s > 0 and abs($fAbsMax - $$f($p))<=0.01 and $$f($p) >= $$f($q)) or
-          (($p > $crNum1 or $crNum1 > $q) and $s > 0 and abs($fAbsMax - $$f($q))<=0.01 and $$f($p) <= $$f($q))
-        </when></award></answer>
-      </p>      
-    </li>   
-  </ol>  
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label>The absolute maximum value of <m>f</m> on <m>[$p,$q]</m> is </label>$fextrema.globalMaximum[2]</answer>
+      </p>
+    </li>
+  </ol>
 </p>
     

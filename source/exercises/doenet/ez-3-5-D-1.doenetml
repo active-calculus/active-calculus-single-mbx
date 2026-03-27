@@ -15,22 +15,23 @@
 <setup>
   <selectFromSequence name = "a" from = "-2" to = "2" step = "1" exclude="0"/>
   <selectFromSequence name = "b" from = "-3" to = "3" step = "1" exclude="0 $a"/>
-  <selectFromSequence name = "c" from = "-3" to = "3" step = "1" exclude="0 $a $b"/> 
+  <selectFromSequence name = "c" from = "-3" to = "3" step = "1" exclude="0 $a $b"/>
 
   <selectFromSequence name = "p" from = "-3" to = "1" step = "1" exclude="0"/>
   <selectFromSequence name = "q" from = "2" to = "5" step = "1" exclude="abs($p)"/>
-  
+
   <function name="f">$a*x^2 + $b*x + $c</function>
+  <function name="fextrema" domain="[$p,$q]">$f</function>
   <derivative name="fP">$f</derivative>
   <derivative name="fPP">$fP</derivative>
 
   <math name="crNum">-$b/(2*$a)</math>
-  
-</setup>  
+
+</setup>
 
 <p>
-  Consider the function <m>y = f(x) = $f</m> on the interval <m>[$p,$q]</m>. Use calculus to find the exact absolute minimum and absolute maximum of <m>f</m> on this interval.
-</p>  
+  Consider the function <math simplify>f(x) = $f</math> on the interval <m>[$p,$q]</m>. Use calculus to find the exact absolute minimum and absolute maximum of <m>f</m> on this interval.
+</p>
 
 <p>
   <ol marker="a.">
@@ -39,39 +40,33 @@
         Find all critical numbers of <m>f</m>.  If there is more than one critical number, enter them as a list separated by commas.  If there are none, enter <em>none</em>.
       </p>
       <p>
-        The exact critical numbers of <m>f</m> are: <m>x=</m> <answer> $crNum</answer> 
-      </p>  
+        <answer><label>The exact critical number(s) of <m>f</m> are: <m>x=</m> </label>$crNum</answer>
+      </p>
+      <p>
+        Evaluate the function at any critical numbers which lie in the interval <m>[$p,$q]</m>.  If there is more than one such critical number, enter the function values as a list separated by commas.  If there are no critical numbers in the interval <m>[$p,$q]</m>, enter <em>none</em>.
+      </p>
+      <answer><label>The value(s) of <m>f</m> at any applicable critical numbers are:</label>
+        <conditionalContent>
+          <case condition="$crNum>= $p and $crNum<= $q">$$f($crNum)</case>
+          <else>none</else>
+        </conditionalContent>
+      </answer>
     </li>
     <li>
       <p>
         The exact values of the function at the respective endpoints of the interval are:
       </p>
       <p>
-        <m>f($p) =</m><answer>$$f($p)</answer> and <m>f($q) =</m><answer>$$f($q)</answer>
-      </p>
-      <p>
-        Be sure to also consider any critical number that lies in the interval <m>[$p,$q]</m> and evaluate the function at such critical numbers.
+        <answer><label><m>f($p) =</m></label>$$f($p)</answer> and <answer><label><m>f($q) =</m></label>$$f($q)</answer>
       </p>
     </li>
     <li>
       <p>
-        The absolute minimum value of <m>f</m> on <m>[$p,$q]</m> is <mathInput name="fAbsMin"/> <answer><award><when>
-          (($p < $crNum and $crNum < $q) and $fAbsMin = $$f($crNum) and $a > 0) or  
-          (($p < $crNum and $crNum < $q) and $a < 0 and $fAbsMin = $$f($p) and $$f($p) <= $$f($q)) or
-          (($p < $crNum and $crNum < $q) and $a < 0 and $fAbsMin = $$f($q) and $$f($p) >= $$f($q)) or
-          (($p >= $crNum or $crNum >= $q) and $fAbsMin = $$f($p) and $$f($p) <= $$f($q)) or
-          (($p >= $crNum or $crNum >= $q) and $fAbsMin = $$f($q) and $$f($p) >= $$f($q))
-        </when></award></answer>
-      </p> 
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label>The absolute minimum value of <m>f</m> on <m>[$p,$q]</m> is </label>$fextrema.globalMinimum[2]</answer>
+      </p>
       <p>
-        The absolute maximum value of <m>f</m> on <m>[$p,$q]</m> is <mathInput name="fAbsMax"/> <answer><award><when>
-          (($p < $crNum and $crNum < $q) and $fAbsMax = $$f($crNum) and $a < 0) or  
-          (($p < $crNum and $crNum < $q) and $a > 0 and $fAbsMax = $$f($p) and $$f($p) >= $$f($q)) or
-          (($p < $crNum and $crNum < $q) and $a > 0 and $fAbsMax = $$f($q) and $$f($p) <= $$f($q)) or
-          (($p >= $crNum or $crNum >= $q) and $fAbsMin = $$f($p) and $$f($p) <= $$f($q)) or
-          (($p >= $crNum or $crNum >= $q) and $fAbsMin = $$f($q) and $$f($p) >= $$f($q))
-        </when></award></answer>
-      </p>        
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label>The absolute maximum value of <m>f</m> on <m>[$p,$q]</m> is </label>$fextrema.globalMaximum[2]</answer>
+      </p>
     </li>
-  </ol>  
+  </ol>
 </p>

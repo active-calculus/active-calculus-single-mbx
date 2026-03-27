@@ -16,18 +16,20 @@
 
   <selectFromSequence name = "p" from = "-2" to = "0" step = "1" exclude="0"/>
   <selectFromSequence name = "q" from = "2" to = "4" step = "1" exclude="abs($p)"/>
-    
+
   <selectFromSequence name = "m1" from = "-0.75" to = "0.75" step = "0.25" exclude="-0.25 0 0.25"/>
-  <selectFromSequence name = "x1" from = "-2" to = "2" step = "1" exclude="0"/>
+  <selectFromSequence name = "x1" from = "$p" to = "2" step = "1" exclude="0 $p $q"/>
   <selectFromSequence name = "x2" from = "-2" to = "-1" step = "1"/>
   <selectFromSequence name = "y1" from = "-1" to = "1" step = "1"/>
 
   <number name="m2">-$m1-0.25</number>
-  
+
   <piecewiseFunction name="f" symbolic="false" styleNumber="1">
     <function domain="(-infinity,$x1)">$m1*(x-$x1)+$y1</function>
     <function domain="[$x1,infinity)">$m2*(x-$x1)+$y1</function>
   </piecewiseFunction>
+
+  <function name="fextrema" domain="[$p,$q]">$f</function>
 
   <piecewiseFunction name="fP" symbolic="false"  styleNumber="3">
     <function domain="(-infinity,$x1)">$m1</function>
@@ -42,13 +44,13 @@
 <p>
     Let <m>f</m> be the piecewise linear function given by the graph below.
 </p>
-      <graph xmin="-5" xmax="5" ymin="-5" ymax="5" size="medium" grid="true" showNavigation="false" fixAxes="true"> $f   
+      <graph xmin="-5" xmax="5" ymin="-5" ymax="5" size="medium" grid="true" showNavigation="false" fixAxes="true"> $f
           <label fixLocation anchor="($x1+0.5,$$f($x1)-0.25)"><m>f</m></label>
       </graph>
 
 <p>
   Consider the function <m>f</m> on the interval <m>[$p,$q]</m>. Reasoning graphically, use calculus to find the exact absolute minimum and absolute maximum of <m>f</m> on this interval.
-</p>  
+</p>
 
 <p>
   <ol marker="a.">
@@ -57,8 +59,15 @@
         Find all critical numbers of <m>f</m>.  If there is more than one critical number, enter them as a list separated by commas.  If there are none, enter <em>none</em>.
       </p>
       <p>
-        The critical numbers of <m>f</m> are: <m>x=</m> <answer> $crNum</answer>
-      </p>  
+        The critical number(s) of <m>f</m> are: <answer name="critnum"><label><m>x=</m></label> $crNum</answer>
+      </p>
+      <p>
+        The value of the function at the critical number is:
+      </p>
+      <p>
+        <m>f\big(</m><mathInput disabled minWidth="15"><conditionalContent condition="$critnum.creditAchieved=1">$x1</conditionalContent></mathInput><m>\big) =</m><answer allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$$f($x1)</answer>
+      </p>
+        <!-- </div> -->
     </li>
     <li>
       <p>
@@ -67,32 +76,17 @@
       <p>
         <m>f($p) =</m><answer allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$$f($p)</answer> and <m>f($q) =</m><answer allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$$f($q)</answer>
       </p>
-      <p>
-        Be sure to also consider any critical number that lies in the interval <m>[$p,$q]</m> and evaluate the function at such critical numbers.
-      </p>
     </li>
     <li>
       <p>
-        The absolute minimum value of <m>f</m> on <m>[$p,$q]</m> is <mathInput name="fAbsMin"/> <answer><award><when>
-          (($p < $crNum and $crNum < $q) and abs($fAbsMin - $$f($crNum))<=0.1 and $m2 > 0) or  
-          (($p < $crNum and $crNum < $q) and $m2 < 0 and abs($fAbsMin - $$f($p))<=0.1 and $$f($p) <= $$f($q)) or
-          (($p < $crNum and $crNum < $q) and $m2 < 0 and abs($fAbsMin - $$f($q)<=0.1) and $$f($p) >= $$f($q)) or
-          (($p >= $crNum or $crNum >= $q) and abs($fAbsMin - $$f($p))<=0.1 and $$f($p) <= $$f($q)) or
-          (($p >= $crNum or $crNum >= $q) and abs($fAbsMin - $$f($q))<=0.1 and $$f($p) >= $$f($q))
-        </when></award></answer>
-      </p> 
+        The absolute minimum value of <m>f</m> on <m>[$p,$q]</m> is <answer>$fextrema.globalMinimum[2]</answer>
+      </p>
       <p>
-        The absolute maximum value of <m>f</m> on <m>[$p,$q]</m> is <mathInput name="fAbsMax"/> <answer><award><when>
-          (($p < $crNum and $crNum < $q) and abs($fAbsMax - $$f($crNum))<=0.1 and $m2 < 0) or  
-          (($p < $crNum and $crNum < $q) and $m2 > 0 and abs($fAbsMax - $$f($p))<=0.1 and $$f($p) >= $$f($q)) or
-          (($p < $crNum and $crNum < $q) and $m2 < 0 and abs($fAbsMax - $$f($q))<=0.1 and $$f($p) <= $$f($q)) or
-          (($p >= $crNum or $crNum >= $q) and abs($fAbsMin - $$f($p))<=0.1 and $$f($p) <= $$f($q)) or
-          (($p >= $crNum or $crNum >= $q) and abs($fAbsMin - $$f($q))<=0.1 and $$f($p) >= $$f($q))
-        </when></award></answer>
-      </p>        
+        The absolute maximum value of <m>f</m> on <m>[$p,$q]</m> is <answer>$fextrema.globalMaximum[2]</answer>
+      </p>
     </li>
-  </ol>  
+  </ol>
 </p>
-  
+
 
   
