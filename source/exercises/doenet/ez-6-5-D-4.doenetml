@@ -26,12 +26,12 @@
 </setup>
 
 <p>
-  At a customer support call center, the fraction of people who wait between time <m>t = a</m> and <m>t = b</m> (in minutes) to have their call answered is given by the definite integral 
+  At a customer support call center, the fraction of people who wait between time <m>t = a</m> and <m>t = b</m> (in minutes) to have their call answered is given by the definite integral
   <me>
     \int_a^b $k \, e^{-$k t} \, dt.
   </me>
   Note that the function <m>p(t) = $k e^{-$k t}</m> has the property that <m>\int_0^\infty $k \, e^{-$k t}  \, dt = 1</m>.
-</p>  
+</p>
 
 <p>
   It turns out that the average (or <term>mean</term>) wait time, <m>\mu</m> is given by the improper integral
@@ -39,27 +39,31 @@
     \mu = \int_0^\infty $k t \cdot e^{-$k t}  \, dt.
   </me>
   Through the steps below, we find the exact value of <m>\mu</m>.
-</p>  
+</p>
 
 <p>
   <ol marker="a.">
     <li>
       <p>
-        First, we find an antiderivative for <m>f(t) = $k t \cdot e^{-$k t}</m> using integration by parts.  Letting <m>u = $k t</m> and <m>dv =  e^{-$k t} \, dt</m>, it follows (applying the integration by parts formula) that 
+        First, we instead consider
+        <me>
+          \lim_{b\to \infty} \int_0^b $k t \cdot e^{-$k t}  \, dt
+        </me>
+        and find an antiderivative for <m>f(t) = $k t \cdot e^{-$k t}</m> using integration by parts.  Letting <m>u = $k t</m> and <m>dv =  e^{-$k t} \, dt</m>, it follows (applying the integration by parts formula) that
       </p>
       <p>
-        <m>\int $k t \cdot e^{-$k t} \, dt =</m><mathInput name="uv"/><m> - \int</m><mathInput name="vdu"/><m>dt</m> <answer><award><when>$uv = $u*$v and $vdu = $v*$du</when></award></answer>,
+        <m>\displaystyle \int_0^b $k t \cdot e^{-$k t} \, dt =</m><mathInput name="uv"/><m>\displaystyle \Bigg|_0^b - \int_0^b</m><mathInput name="vdu"/><m>dt</m> <answer><award><when>$uv = $u*$v and $vdu = $v*$du</when></award></answer>,
       </p>
       <p>
-        and then evaluating the final integral and stating the full antiderivative without integral signs,
+        and evaluate the integral above and state the full antiderivative before evaluating at the bounds.
       </p>
       <p>
-        <m>\int $k t \cdot e^{-$k t} \, dt =</m><mathInput name="int"/><answer><award><when>$int=$F</when></award></answer>
-      </p>      
+        <m>\displaystyle \int_0^b $k t \cdot e^{-$k t} \, dt =</m><mathInput name="int"/><m>\displaystyle \Bigg|_0^b</m><answer><award><when>$int=$F</when></award></answer>
+      </p>
     </li>
     <li>
       <p>
-        Next, use the antiderivative from (a), the First FTC, and appropriate limit notation to find the exact value of 
+        Next, use the antiderivative from (a), the First FTC, and appropriate limit notation to find the exact value of
         <me>
           \mu = \int_0^\infty $k t \cdot e^{-$k t}  \, dt.
         </me>
@@ -74,7 +78,7 @@
       </p>
       <p>
         <m>K = </m><mathInput name="half"/><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$half=$meanwait</when></award></answer>
-      </p>      
+      </p>
     </li>
   </ol>
 </p>
