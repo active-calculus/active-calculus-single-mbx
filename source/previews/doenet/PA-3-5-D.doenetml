@@ -14,30 +14,33 @@
 <!-- **********************************************************************-->
 
 <setup>
-  
+
   <function name="f">2+3/(1+(x+1)^2)</function>
   <derivative name="fP">$f</derivative>
   <derivative name="fPP">$fP</derivative>
 
-  <math name="fP1symbolic">(-2*(x+1))/(1+(x+1)^2)^2</math>
-  <math name="fP2symbolic">-2*(x+1))*(1+(x+1)^2)^(-2)</math>   
+  <!-- <math name="fP1symbolic">(-6*(x+1))/(1+(x+1)^2)^2</math>
+  <math name="fP2symbolic">-6*(x+1))*(1+(x+1)^2)^(-2)</math>    -->
 
   <math name="crNum1">-1</math>
   <mathList name="correctCrNums"> $crNum1 </mathList>
 
-  <text name="correctfINCR1">(-INF, -1)</text>
+  <interval name="correctfINCR">(-infinity,-1)</interval>
+  <interval name="correctfDECR">(-1, infinity)</interval>
+
+  <!-- <text name="correctfINCR1">(-INF, -1)</text>
   <text name="correctfINCR2">(-INF,-1)</text>
   <text name="correctfDECR1">(-1, INF)</text>
-  <text name="correctfDECR2">(-1,INF)</text>
+  <text name="correctfDECR2">(-1,INF)</text> -->
 
-  
+
   <!--
   <math name="POI1">a</math>
-  <math name="POI2">(a+b)/2</math>  
+  <math name="POI2">(a+b)/2</math>
   <mathList name="correctPOIs"> $POI1 $POI2 </mathList>
   -->
-  
-</setup>  
+
+</setup>
 
 
 <p>
@@ -51,28 +54,26 @@
         Find <m>f'(x)</m> and use it to determine all of the critical numbers of <m>f</m>.  If there is more than one critical number, enter them as a list separated by commas.  If there are none, enter <em>none</em>.
       </p>
       <p>
-        <m>f'(x) = </m><mathInput name="fPentered"/>
-        <answer simplifyOnCompare>
-          <award><when>
-            $fPentered = $fP1symbolic or $fPentered = $fP2symbolic or
-          </when></award>
+        <answer name="fPentered">
+          <label><m>f'(x) = </m></label>
+          $fP
         </answer>
       </p>
       <p>
         The critical numbers of <m>f</m> occur at <m>x = </m> <mathInput name="crNums" /> <answer unorderedCompare><award><when> $crNums=$correctCrNums</when></award></answer>.
-      </p>  
+      </p>
     </li>
     <li>
       <p>
-        Construct a first derivative sign chart for <m>f</m> and thus determine all intervals on which <m>f</m> is increasing or decreasing.  State your results in the following blanks.  For example, if <m>f</m> is increasing on the intervals <m>(-\infty, 2)</m> and <m>(5,\infty)</m>, enter <q>(-INF, 2), (5, INF)</q> (that is, separate the intervals with commas).  If <m>f</m> is never increasing, enter <q>never</q>. 
-      </p>  
+        Construct a first derivative sign chart for <m>f</m> and thus determine all intervals on which <m>f</m> is increasing or decreasing.  State your results in the following blanks.  For example, if <m>f</m> is increasing on the intervals <m>(-\infty, 2)</m> and <m>(5,\infty)</m>, enter <q>(-infinity, 2), (5, infinity)</q> (that is, separate the intervals with commas).  If <m>f</m> is never increasing, enter <q>never</q>.
+      </p>
       <p>
-        The function <m>f</m> is increasing for <textInput name="fINCR"/><answer type="text"><award><when>$fINCR = $correctfINCR1 or $fINCR = $correctfINCR2</when></award></answer>.
-      </p>  
+        <answer><label>The function <m>f</m> is increasing for </label>$correctfINCR</answer>.
+      </p>
       <p>
-        The function <m>f</m> is decreasing for <textInput name="fDECR"/><answer type="text"><award><when>$fDECR = $correctfDECR1 or $fINCR = $correctfDECR2$</when></award></answer>.
-      </p>  
-    </li>  
+        <answer><label>The function <m>f</m> is decreasing for </label>$correctfDECR</answer>.
+      </p>
+    </li>
     <li>
       <p>
         Explain why <m>f(x) \gt 2</m> for every value of <m>x</m> by completing the following sentence.
@@ -86,70 +87,70 @@
           <choice>negative</choice>
         </choiceInput></answer>, it follows that <m>1 + (x+1)^2</m> is always <answer><choiceInput inline>
           <choice>?</choice>
-          <choice>negative</choice>    
+          <choice>negative</choice>
           <choice credit="1">positive</choice>
         </choiceInput></answer>, and therefore <m>\frac{3}{1 + (x+1)^2}</m> is also always <answer><choiceInput inline>
           <choice>?</choice>
-          <choice>negative</choice>    
+          <choice>negative</choice>
           <choice credit="1">positive</choice>
         </choiceInput></answer>.  These observations imply that  <m>f(x) = 2 + \frac{3}{1 + (x+1)^2}</m> is always <answer><choiceInput inline>
           <choice>?</choice>
-          <choice>less than 2</choice>    
-          <choice>less than or equal to 2</choice> 
-          <choice>greater than or equal to 2</choice>   
+          <choice>less than 2</choice>
+          <choice>less than or equal to 2</choice>
+          <choice>greater than or equal to 2</choice>
           <choice credit="1">greater than 2</choice>
         </choiceInput></answer>.
-      </p>  
-    </li>  
+      </p>
+    </li>
     <li>
       <p>
         Determine <m>\displaystyle \lim_{x \to \infty} f(x)</m> and <m>\displaystyle \lim_{x \to -\infty} f(x)</m>.
       </p>
       <p>
         <m>\displaystyle \lim_{x \to \infty} f(x) = \lim_{x \to \infty} 2 + \frac{3}{1 + (x+1)^2} = </m><answer>2</answer>
-      </p>  
+      </p>
       <p>
         <m>\displaystyle \lim_{x \to -\infty} f(x) = \lim_{x \to -\infty} 2 + \frac{3}{1 + (x+1)^2} = </m><answer>2</answer>
-      </p> 
-    </li>  
+      </p>
+    </li>
     <li>
       <p>
         Complete the following sentence to explain why <m>f</m> has a global maximum and to state its value (as an ordered pair of the form <m>(a,b)</m>, where <m>b = f(a)</m>).
-      </p>  
+      </p>
       <p>
         Based on our work in (a) and (b), the function <m>f</m> has a global maximum because for <m>x \lt -1</m>, <m>f</m> is <answer><choiceInput inline>
           <choice>?</choice>
-          <choice>always decreasing</choice> 
+          <choice>always decreasing</choice>
           <choice>always concave down</choice>
-          <choice credit="1">always increasing</choice> 
+          <choice credit="1">always increasing</choice>
           <choice>always concave up</choice>
         </choiceInput></answer>, and for <m>x \gt -1</m>, <m>f</m> is <answer><choiceInput inline>
           <choice>?</choice>
-          <choice credit="1">always decreasing</choice> 
+          <choice credit="1">always decreasing</choice>
           <choice>always concave down</choice>
-          <choice>always increasing</choice> 
+          <choice>always increasing</choice>
           <choice>always concave up</choice>
         </choiceInput></answer>; the global maximum occurs at the point (enter your answer as an ordered pair) <answer>($crNum1,$$f($crNum1))</answer>.
-      </p>  
-    </li>  
+      </p>
+    </li>
     <li>
       <p>
         Finally, complete the following sentence to explain why <m>f</m> does not have a global minimum.
-      </p> 
+      </p>
       <p>
-        Based on our work in (c) and (c), the function <m>f</m> does not have a global minimum because while <m>f(x)</m> is <answer><choiceInput inline>
+        Based on our work in (c) and (d), the function <m>f</m> does not have a global minimum because while <m>f(x)</m> is <answer><choiceInput inline>
           <choice>?</choice>
-          <choice>always less than 2</choice> 
+          <choice>always less than 2</choice>
           <choice>always equal to 2</choice>
-          <choice credit="1">always greater than 2</choice> 
+          <choice credit="1">always greater than 2</choice>
         </choiceInput></answer>, since <m>\displaystyle \lim_{x \to \pm \infty} f(x) = </m><answer>2</answer>, for any value of <m>f(x)</m> that we find, no matter how close that number is to <m>2</m>, we can always find another value of <m>f(x)</m> that is <answer><choiceInput inline>
           <choice>?</choice>
-          <choice>larger, but still less than 2</choice> 
+          <choice>larger, but still less than 2</choice>
           <choice credit="1">smaller, but still larger than 2</choice>
           <choice>smaller, but still less than 2</choice>
           <choice>larger, but still greater than 2</choice>
         </choiceInput></answer>, so there is no output of <m>f(x)</m> that is less than or equal to every possible output of the function.
-      </p>  
-    </li>  
+      </p>
+    </li>
   </ol>
-</p>  
+</p>

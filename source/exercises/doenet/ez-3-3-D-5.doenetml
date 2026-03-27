@@ -15,27 +15,27 @@
 <setup>
   <selectFromSequence name = "a" from = "-4" to = "4" step = "1" exclude="-1 0 1"/>
   <selectFromSequence name = "b" from = "-6" to = "-2" step = "1" exclude="0 $a"/>
-  <selectFromSequence name = "c" from = "2" to = "6" step = "1" exclude="0 $a abs($b)"/> 
-  
+  <selectFromSequence name = "c" from = "2" to = "6" step = "1" exclude="0 $a abs($b)"/>
+
   <function name="fP">$a*(x-$b)(x-$c)</function>
   <derivative name="fPP">$fP</derivative>
 
   <number name="A">$a</number>
   <number name="B">-$a*$b - $a*$c</number>
   <number name="C">$a*$b*$c</number>
-  
+
   <boolean name="oneSol">$b^2 - 4*$a*$c = 0</boolean>
   <boolean name="noSol">$b^2 - 4*$a*$c < 0</boolean>
   <boolean name="twoSol">$b^2 - 4*$a*$c > 0</boolean>
-  
+
   <number name="crNum1">$b</number>
   <number name="crNum2">$c</number>
   <mathList name="correctCrNum">$crNum1 $crNum2</mathList>
 
   <number name="POI1"> ($b + $c)/2</number>
   <mathList name="correctPOI">$POI1</mathList>
-  
-</setup>  
+
+</setup>
 
 <!--
 <p>
@@ -45,50 +45,50 @@
 
 <p>
   Consider a function <m>y = f(x)</m> whose derivative is given by <m>f'(x) = <math simplify> $a x^2 + (-$a*$b - $a*$c)x + $a*$b*$c</math></m>.
-</p>  
+</p>
 
 <p>
   <ol marker="a.">
     <li>
       <p>
         Determine all of the critical numbers of <m>f</m>.  If there is more than one, separate your critical numbers with commas.  If there are none, enter <em>none</em>.
-      </p>  
+      </p>
       <p>
         The critical numbers of <m>f</m> are: <answer matchPartial unorderedCompare>$correctCrNum</answer>.
-      </p>  
+      </p>
     </li>
     <li>
       <p>
         Classify each of the critical numbers as a location where <m>f</m> has a relative max or min, and then report your results below.  If <m>f</m> has more than one relative max/min, separate the <m>x</m>-values with commas; if there are none, enter <q>none</q>.
-      </p>  
+      </p>
       <p>
         The function <m>f</m> has relative maxima where <m>x = </m> <mathInput name="relMax"/>
-        <answer>
+        <answer forceSmallCheckWorkButton>
           <award>
             <when>
               ($relMax=$b and $a > 0) or ($relMax=$c and $a < 0)
             </when>
-          </award>  
+          </award>
         </answer>.
-      </p>  
+      </p>
       <p>
         The function <m>f</m> has relative minima where <m>x = </m> <mathInput name="relMin"/>
-        <answer>
+        <answer forceSmallCheckWorkButton>
           <award>
             <when>
               ($relMin=$b and $a < 0) or ($relMin=$c and $a > 0)
             </when>
-          </award>  
+          </award>
         </answer>.
-      </p> 
-    </li>  
+      </p>
+    </li>
     <li>
       <p>
         Determine all points of inflection of <m>f</m>, and report them below.  If there's more than one, separate your answers with commas; if there are none, enter <em>none</em>.
-      </p>  
+      </p>
       <p>
         The inflection points of <m>f</m> are where <m>x = </m> <mathInput name="POI" /> <answer unorderedCompare matchPartial allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when> $POI=$correctPOI</when></award></answer>.
-      </p> 
+      </p>
     </li>
-  </ol>  
+  </ol>
 </p>
