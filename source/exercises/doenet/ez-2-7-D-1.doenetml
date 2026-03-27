@@ -11,25 +11,20 @@
 <!-- "share and share alike".  All trademarks are the registered marks of  -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
- 
+
 <setup>
   <selectFromSequence name = "a" from = "3" to = "8" step = "1"/>
-  <selectFromSequence name = "b" from = "2" to = "8" step = "1" exclude="$a"/>  
-  <selectFromSequence name = "c" from = "2" to = "8" step = "1" exclude="$a $b"/>  
-  <selectFromSequence name = "d" from = "2" to = "8" step = "1" exclude="$a $b $c"/>  
-  
-  <function name="F" variable="y">$Fexp</function>
-  <function name="C" variable="x">5/9(x-32)</function>
-  
-  <math name="Cx" functionSymbols="C">C(x)</math>
-  
-  <math name="Correct1">x^$a * dy/dx + $a*x^($a-1) * y</math>
-  <math name="Correct2">$d*x^($d-1)</math>  
-  <math name="Correct3">$b * dy/dx </math>  
-  <math name="Correct4">0</math>  
+  <selectFromSequence name = "b" from = "2" to = "8" step = "1" exclude="$a"/>
+  <selectFromSequence name = "c" from = "2" to = "8" step = "1" exclude="$a $b"/>
+  <selectFromSequence name = "d" from = "2" to = "8" step = "1" exclude="$a $b $c"/>
 
-  <math name="FinalAns">(-$a*x^($a-1) * y + $d*x^($d-1))/(x^$a - $b)</math>  
-  
+  <math name="Correct1">x^$a * dy/dx + $a*x^($a-1) * y</math>
+  <math name="Correct2">$d*x^($d-1)</math>
+  <math name="Correct3">$b * dy/dx </math>
+  <math name="Correct4">0</math>
+
+  <math name="FinalAns">(-$a*x^($a-1) * y + $d*x^($d-1))/(x^$a - $b)</math>
+
   <boolean name="A1solved">$A1 = $Correct1</boolean>
   <boolean name="A2solved">$A2 = $Correct2</boolean>
   <boolean name="A3solved">$A3 = $Correct3</boolean>
@@ -41,15 +36,15 @@
   In this exercise, we work through the steps to apply implicit differentiation to find <m>\frac{dy}{dx}</m> where <m>y</m> is given implicitly by the equation
   <me>
     x^$a y - x^$d - $b y + $c = 0
-  </me>  
+  </me>
 
     <ol marker="a.">
       <li>
         <p>
-          First, we differentiate both sides with respect to <m>x</m>.  Applying the sum rule on the left, we have 
+          First, we differentiate both sides with respect to <m>x</m>.  Applying the sum rule on the left, we have
             <me>
-              \frac{d}{dx}\left[ x^$a y \right] - \frac{d}{dx}\left[ x \right] - \frac{d}{dx}\left[ $b y \right] + \frac{d}{dx}\left[ $c \right] = 0.
-            </me> 
+              \frac{d}{dx}\left[ x^$a y \right] - \frac{d}{dx}\left[ x^$d \right] - \frac{d}{dx}\left[ $b y \right] + \frac{d}{dx}\left[ $c \right] = 0.
+            </me>
           Use appropriate derivative rules to state the derivative of each of the following expressions from the equation above; use <q><m>\frac{dy}{dx}</m></q> to represent the derivative of <m>y</m> with respect to <m>x</m>.
         </p>
         <p>
@@ -60,35 +55,30 @@
         </p>
         <p>
           <m>\frac{d}{dx}\left[ $b y \right]=</m><answer symbolicEquality simplifyOnCompare  name="A3">$Correct3</answer>
-        </p> 
+        </p>
         <p>
           <m>\frac{d}{dx}\left[ $c \right]=</m><answer symbolicEquality simplifyOnCompare  name="A4">$Correct4</answer>
-        </p> 
+        </p>
         <!-- answer testing
         <p>
           $A1solved, $A2solved, $A3solved, $A4solved
-        </p>  
+        </p>
         -->
-       
-        <!--
-          <feedback condition="$Yexp.numResponses > 3 && !$Yexp.creditAchieved">
-    <p><alert>Hint:</alert> If we multiply both sides by <m>\frac{9}{5}</m>, we have <m>\frac{9}{5}y = x - 32</m>.  Now solve for <m>x</m>.</p>
-  </feedback>
-        -->
-        
+
+
       </li>
 
       <li>
         <p hide="$A1solved and $A2solved and $A3solved and $A4solved">
           (<em>A prompt will appear here after you correctly respond to each portion of part a.</em>)
         </p>
-        <p hide="not ($A1solved and $A2solved and $A3solved and $A4solved)">
+        <div hide="not ($A1solved and $A2solved and $A3solved and $A4solved)">
           <p>
           Now that you have correctly differentiated each individual term, the next key step is to take the updated equation,
           <me>  $A1 - $A2 - $A3 + $A4 = 0,</me>
           and <answer name="B1"><choiceInput inline>
                 <choice>?</choice>
-                <choice>solve for <m>y</m></choice>
+                <choice>solve for <m>x</m></choice>
                 <choice credit="1">solve for <m>\frac{dy}{dx}</m></choice>
                 <choice>solve for <m>y</m></choice>
               </choiceInput></answer>.  To do so, the first step is to move all of the terms that don't involve <m>\frac{dy}{dx}</m> to the other side of the equation.  After we do that, which of the following equations results?
@@ -100,20 +90,20 @@
                 <choice><m><math simplify>x^$a * dy/dx + $b*dy/dx </math> = <math simplify> -$a*x^($a-1) * y + $d*x^($d-1)</math></m></choice>
                 <choice credit="1"><m><math simplify>x^$a * dy/dx - $b*dy/dx </math> = <math simplify> -$a*x^($a-1) * y + $d*x^($d-1)</math></m></choice>
                 <choice><m><math simplify>x^$a * dy/dx - $b*dy/dx </math> = <math simplify> $a*x^($a-1) * y + $d*x^($d-1)</math></m></choice>
-              </choiceInput>  
-            </answer> 
-          </p>   
+              </choiceInput>
+            </answer>
+          </p>
 
-          
-        </p>
- 
+
+        </div>
+
       </li>
       <li>
         <p hide="$Bsolved">
           (<em>A prompt will appear here after you correctly respond to part b.</em>)
         </p>
         <p hide="not $Bsolved">
-          Finally, remove a factor of <m>\frac{dy}{dx}</m> from each term on the lefthand side and thus solve for <m>\frac{dy}{dx}</m>: 
+          Finally, remove a factor of <m>\frac{dy}{dx}</m> from each term on the lefthand side and thus solve for <m>\frac{dy}{dx}</m>:
         </p>
         <p hide="not $Bsolved">
           <m>\frac{dy}{dx}=</m><answer symbolicEquality simplifyOnCompare >$FinalAns</answer>

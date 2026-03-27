@@ -11,26 +11,26 @@
 <!-- "share and share alike".  All trademarks are the registered marks of  -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
- 
+
 <setup>
   <selectFromSequence name = "a" from = "2" to = "6" step = "2"/>
-  <selectFromSequence name = "b" from = "2" to = "6" step = "2" exclude="$a"/>  
-  <selectFromSequence name = "c" from = "2" to = "6" step = "2" exclude="$a $b"/>  
+  <selectFromSequence name = "b" from = "2" to = "6" step = "2" exclude="$a"/>
+  <selectFromSequence name = "c" from = "2" to = "6" step = "2" exclude="$a $b"/>
 
   <number name="d">5*$a</number>
-  
-  <math name="Correct1">$b*y^($b-1)*dy/dx</math>
-  <math name="Correct2">$c</math>  
-  <math name="Correct3">0 </math>  
-  <math name="Correct4">x^$a * e^y * dy/dx + $a*x^($a-1)*e^y</math>  
 
-  <math name="FinalAns">(-$c - $a*x^($a-1)*e^y)/($b * y^($b-1) + x^$a * e^y)</math>  
-  
+  <math name="Correct1">$b*y^($b-1)*dy/dx</math>
+  <math name="Correct2">$c</math>
+  <math name="Correct3">0 </math>
+  <math name="Correct4">x^$a * e^y * dy/dx + $a*x^($a-1)*e^y</math>
+
+  <math name="FinalAns">(-$c - $a*x^($a-1)*e^y)/($b * y^($b-1) + x^$a * e^y)</math>
+
   <boolean name="A1solved">$A1 = $Correct1</boolean>
   <boolean name="A2solved">$A2 = $Correct2</boolean>
   <boolean name="A3solved">$A3 = $Correct3</boolean>
   <boolean name="A4solved">$A4 = $Correct4</boolean>
-  
+
   <boolean name="Bsolved">$B1.creditAchieved and $B2.creditAchieved</boolean>
 </setup>
 
@@ -38,19 +38,19 @@
   In this exercise, we work through the steps to apply implicit differentiation to find <m>\frac{dy}{dx}</m> where <m>y</m> is given implicitly by the equation
   <me>
     y^$b + $c x = $d - x^$a e^y
-  </me>  
+  </me>
 
     <ol marker="a.">
       <li>
         <p>
-          First, we differentiate both sides with respect to <m>x</m>.  Applying the sum rule on the left, we have 
+          First, we differentiate both sides with respect to <m>x</m>.  Applying the sum rule on the left, we have
             <me>
               \frac{d}{dx}\left[ y^$b \right] + \frac{d}{dx}\left[ $c x \right] = \frac{d}{dx}\left[ $d \right] - \frac{d}{dx}\left[ x^$a e^y \right].
-            </me> 
+            </me>
           Use appropriate derivative rules to state the derivative of each of the following expressions from the equation above; use <q><m>\frac{dy}{dx}</m></q> to represent the derivative of <m>y</m> with respect to <m>x</m>.
         </p>
         <p>
-          <m>\frac{d}{dx}\left[ y^$b \right]=</m><answer symbolicEquality simplifyOnCompare name="A1">$Correct1</answer> 
+          <m>\frac{d}{dx}\left[ y^$b \right]=</m><answer symbolicEquality simplifyOnCompare name="A1">$Correct1</answer>
         </p>
         <p>
           <m>\frac{d}{dx}\left[ $c x \right]=</m><answer symbolicEquality simplifyOnCompare name="A2">$Correct2</answer>
@@ -60,33 +60,27 @@
         </p>
         <p>
           <m>\frac{d}{dx}\left[ x^$a e^y \right]=</m><answer symbolicEquality simplifyOnCompare name="A4">$Correct4</answer>
-        </p> 
+        </p>
 
         <!-- answer testing
         <p>
           $A1solved, $A2solved, $A3solved, $A4solved
-        </p>  
+        </p>
         -->
-       
-        <!--
-          <feedback condition="$Yexp.numResponses > 3 && !$Yexp.creditAchieved">
-    <p><alert>Hint:</alert> If we multiply both sides by <m>\frac{9}{5}</m>, we have <m>\frac{9}{5}y = x - 32</m>.  Now solve for <m>x</m>.</p>
-  </feedback>
-        -->
-        
+
       </li>
 
       <li>
         <p hide="$A1solved and $A2solved and $A3solved and $A4solved">
           (<em>A prompt will appear here after you correctly respond to each portion of part a.</em>)
         </p>
-        <p hide="not ($A1solved and $A2solved and $A3solved and $A4solved)">
+        <div hide="not ($A1solved and $A2solved and $A3solved and $A4solved)">
           <p>
           Now that you have correctly differentiated, the next key step is to take the updated equation (noting carefully that we have to distribute the <m>-1</m> in the expression <m>-\frac{d}{dx} \left[ x^$a e^y \right]</m>),
           <me>  $A1 + $A2 = <math simplify>-$A4</math>,</me>
           and <answer name="B1"><choiceInput inline>
                 <choice>?</choice>
-                <choice credit="1">solve for <m>\frac{dy}{dx}</m></choice>            
+                <choice credit="1">solve for <m>\frac{dy}{dx}</m></choice>
                 <choice>solve for <m>y</m></choice>
                 <choice>solve for <m>x</m></choice>
               </choiceInput></answer>.  To do so, the first step is to move all of the terms that don't involve <m>\frac{dy}{dx}</m> to the one side of the equation, and all terms with <m>\frac{dy}{dx}</m> to the other.  After we do that, which of the following equations results?
@@ -98,20 +92,20 @@
                 <choice><m><math simplify>-$b*y^($b-1) dy/dx - x^$a * e^y *dy/dx </math> = <math simplify> -$c - $a*x^($a-1)*e^y</math></m></choice>
                 <choice><m><math simplify>$b*y^($b-1) dy/dx + x^$a * e^y *dy/dx </math> = <math simplify> $c + $a*x^($a-1)*e^y</math></m></choice>
                 <choice credit="1"><m><math simplify>$b*y^($b-1) dy/dx + x^$a * e^y *dy/dx </math> = <math simplify> -$c - $a*x^($a-1)*e^y</math></m></choice>
-              </choiceInput>  
-            </answer> 
-          </p>   
+              </choiceInput>
+            </answer>
+          </p>
 
-          
-        </p>
- 
+
+        </div>
+
       </li>
       <li>
         <p hide="$Bsolved">
           (<em>A prompt will appear here after you correctly respond to part b.</em>)
         </p>
         <p hide="not $Bsolved">
-          Finally, remove a factor of <m>\frac{dy}{dx}</m> from each term on the lefthand side and thus solve for <m>\frac{dy}{dx}</m>: 
+          Finally, remove a factor of <m>\frac{dy}{dx}</m> from each term on the lefthand side and thus solve for <m>\frac{dy}{dx}</m>:
         </p>
         <p hide="not $Bsolved">
           <m>\frac{dy}{dx}=</m><answer symbolicEquality simplifyOnCompare>$FinalAns</answer>
