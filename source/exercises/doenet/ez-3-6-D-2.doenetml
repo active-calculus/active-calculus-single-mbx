@@ -17,7 +17,7 @@
   <selectFromSequence name="k" from="2" to="5" step="1"/>
   <selectFromSequence name="B" from="15" to="25" step="5"/>
   <selectFromSequence name="S" from="8" to="12" step="2"/>
-  <selectFromSequence name="C" from="500" to="650" step="50"/>   
+  <selectFromSequence name="C" from="500" to="650" step="50"/>
 
   <math name="costEq">$B*$k*w^2 + $S*2*($k+1)*w*h</math>
   <math name="vFxn">$k*w^2*($C - $B*$k*w^2)/(2*$S*($k+1)*w)</math>
@@ -25,7 +25,7 @@
 
   <function name="vSimp" variable="w">$k*w*$C/(2*$S*($k+1)) - $B*$k^2*w^3/(2*$S*($k+1))</function>
   <function name="H" variable="w">($C - $B*$k*w^2)/($S*2*($k+1)*w)</function>
-  
+
   <number name="crNum">sqrt($C/(3*$B*$k))</number>
   <number name="p">1</number>
   <number name="q">round(sqrt($C/($B*$k)) - 0.25)</number>
@@ -35,9 +35,9 @@
   <number name="rightMin">$$vSimp($q)</number>
   <number name="hLeft">$$H($p)</number>
   <number name="hRight">$$H($q)</number>
-  
+
 </setup>
-  
+
 <p>
   An open rectangular storage container is being built to the following specifications:
   <ul>
@@ -50,22 +50,22 @@
       <p>
         the materials for the base cost $<m>$B</m> per square meter;
       </p>
-    </li>  
+    </li>
     <li>
       <p>
         the materials for the sides cost $<m>$S</m> per square meter;
       </p>
-    </li>  
+    </li>
     <li>
       <p>
         the storage container should cost $<m>$C</m>;
       </p>
-    </li> 
+    </li>
     <li>
       <p>
         the smallest allowable width of the container is <m>w = $p</m> meter, and the largest allowable width is <m>w = $q</m> meters.
       </p>
-    </li>   
+    </li>
   </ul>
   Our goal is to find the dimensions of the storage container that produce the absolute minimum and absolute maximum volume.
 </p>
@@ -78,112 +78,112 @@
   <ol marker="a.">
     <li>
       <p>
-        Based on the given information, a key relationship between <m>\ell</m> and <m>w</m> is that <m>\ell = </m><answer>$k*w</answer>.
-      </p>  
+        Based on the given information, a key relationship between <m>\ell</m> and <m>w</m> is that <answer><label><m>\ell = </m></label>$k*w</answer>.
+      </p>
     </li>
     <li>
       <p>
         State a formula for the volume of the container that involves only the variables <m>w</m> and <m>h</m>.
       </p>
       <p>
-        <m>V=</m><answer>$k*w^2*h</answer>
-      </p>  
-    </li> 
+        <answer><label><m>V=</m></label>$k*w^2*h</answer>
+      </p>
+    </li>
     <li>
       <p>
         State a formula for the cost of the container that involves only the variables <m>w</m> and <m>h</m>.
       </p>
       <p>
-        <m>C=</m><answer>$B*$k*w^2 + $S*2*($k+1)*w*h</answer>
-      </p>  
-    </li> 
+        <answer><label><m>C=</m></label>$B*$k*w^2 + $S*2*($k+1)*w*h</answer>
+      </p>
+    </li>
     <li>
       <p>
         Use the constraint (that cost is fixed) to find an equation that relates the variables <m>w</m> and <m>h</m>, and solve for <m>h</m>.  State that equation in the provided space below.
-      </p>  
+      </p>
       <p>
-        <m>h = </m><mathInput name="constraintEq"/> <answer simplifyOnCompare><award><when>$constraintEq = $H</when></award></answer>
+        <answer name="constraintEq"><label><m>h = </m></label>$H</answer>
       </p>
       <!--
       <p>
         CostEq: <m>$costEq</m>
       </p>
       -->
-    </li>  
+    </li>
     <li>
       <p>
-        Use the contraint equation appropriately to find a formula for the container's volume that depends only on <m>w</m>.
-      </p>  
+        Use the constraint equation appropriately to find a formula for the container's volume that depends only on <m>w</m>.
+      </p>
       <p>
-        <m>V(w)=</m><mathInput name="volumeEntered"/><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$volumeEntered=$vFxn</when></award></answer>
+        <answer name="volumeEntered" allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>V(w)=</m></label>$vFxn</answer>
       </p>
     </li>
     <li>
       <p>
         If you haven't done so already, simplify your expression for <m>V</m> so that it takes the form of a polynomial, which will make it easier to differentiate.  Find <m>V'(w)</m> and then find all critical numbers of <m>V</m> that lie in the domain of interest: <m>$p \le w \le $q</m>.  If there's more than one such critical number, separate them with commas; if there are no such critical numbers, enter <em>none</em>.
-      </p>  
+      </p>
       <p>
-        <m>V'(w) = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute name="vPEntered">$VP</answer>
-      </p> 
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute name="vPEntered"><label><m>V'(w) = </m></label>$VP</answer>
+      </p>
       <p>
-        The critical number(s) within the domain are <m>w = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$crNum</answer>
-      </p>  
-    </li> 
+        The critical number(s) within the domain are <answer allowedErrorInNumbers="0.001" allowedErrorIsAbsolute><label><m>w = </m></label>$crNum</answer>
+      </p>
+    </li>
     <li>
       <p>
         Finally, find the absolute maximum and absolute minimum possible volume of the container, along with the dimensions of the container that achieve those respective volumes.
       </p>
       <p>
-        The absolute maximum volume of the container is 
-        <m>V = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$absMax</answer> 
-        cubic meters and this absolute maximum is achieved when the container has dimensions 
-        <m>w = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$crNum</answer>, 
-        <m>\ell = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$k*$crNum</answer>, 
-        and <m>h = </m> <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$hMax</answer>.
-      </p>    
+        The absolute maximum volume of the container is
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>V = </m></label>$absMax</answer>
+        cubic meters and this absolute maximum is achieved when the container has dimensions
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>w = </m></label>$crNum</answer>,
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>\ell = </m></label>$k*$crNum</answer>,
+        and <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>h = </m></label>$hMax</answer>.
+      </p>
 
       <p>
-        The absolute minimum volume of the container is 
-        <m>V = </m><mathInput name="vMinEntered"/> 
-        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
+        The absolute minimum volume of the container is
+        <mathInput name="vMinEntered"><label><m>V = </m></label></mathInput>
+        <answer forceSmallCheckWorkButton allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
           <award><when>
-            ($vMinEntered=$leftMin and $leftMin <= $rightMin) or ($vMinEntered=$rightMin and $rightMin <= $leftMin) 
-          </when></award></answer> 
-        cubic meters and this absolute maximum is achieved when the container has dimensions 
-        <m>w = </m><mathInput name="wMin"/> 
-        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
-          <award><when> 
-            ($wMin=$p and $leftMin <= $rightMin) or ($wMin=$q and $rightMin <= $leftMin) 
-          </when></award></answer>, 
-        <m>\ell = </m><mathInput name="lMin"/>
-        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
+            ($vMinEntered=$leftMin and $leftMin <= $rightMin) or ($vMinEntered=$rightMin and $rightMin <= $leftMin)
+          </when></award></answer>
+        cubic meters and this absolute minimum is achieved when the container has dimensions
+        <mathInput name="wMin"><label><m>w = </m></label></mathInput>
+        <answer forceSmallCheckWorkButton allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
           <award><when>
-            ($lMin=3*$p and $leftMin <= $rightMin) or ($lMin=3*$q and $rightMin <= $leftMin)
-          </when></award></answer>, 
-        and <m>h = </m><mathInput name="hMin"/> 
-        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
+            ($wMin=$p and $leftMin <= $rightMin) or ($wMin=$q and $rightMin <= $leftMin)
+          </when></award></answer>,
+        <mathInput name="lMin"><label><m>\ell = </m></label></mathInput>
+        <answer forceSmallCheckWorkButton allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
           <award><when>
-            ($hMin=$hLeft and $leftMin <= $rightMin) or ($hMin=$hRight and $rightMin <= $leftMin) 
+            ($lMin=$k*$p and $leftMin <= $rightMin) or ($lMin=$k*$q and $rightMin <= $leftMin)
+          </when></award></answer>,
+        and <mathInput name="hMin"><label><m>h = </m></label></mathInput>
+        <answer forceSmallCheckWorkButton allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
+          <award><when>
+            ($hMin=$hLeft and $leftMin <= $rightMin) or ($hMin=$hRight and $rightMin <= $leftMin)
           </when></award></answer>.
-      </p>   
-      
-    </li>  
+      </p>
+
+    </li>
   </ol>
-</p>  
+</p>
 
 
 <!-- testing
 
       <p>
         vFxn: <m>$vFxn</m>, volumeEntered: <m>$volumeEntered</m>, costEq = <m>$costEq</m>, vPrime=<m>$VP</m>, vpEntered: <m>$vPEntered</m>
-        </p>        
+        </p>
 450=60w^2+96wh
 \frac{3w^2\left(450-60w^2\right)}{96w}
 
       <p>
         crNum=$crNum, absMax=$absMax, hMax=$hMax
-      </p>  
+      </p>
 
 -->
 
-  
+

@@ -12,7 +12,7 @@
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
 
-<setup> 
+<setup>
   <selectFromSequence name="a" from="16" to="20" step="1"/>
   <selectFromSequence name="b" from="12" to="15" step="1"/>
   <selectFromSequence name="p" from="1" to="2" step="1"/>
@@ -33,65 +33,65 @@
   <number name="rightMin">$$V($q)</number>
   <number name="rightWidth">$b - 2*$q</number>
   <number name="rightLength">$a - 2*$q</number>
-  
-  <mathList name="dimsMax"> $widthMax $lengthMax</mathList>
-  <mathList name="dimsEntered"> $wEntered $lEntered</mathList>
-</setup>  
 
-<p> 
+  <!-- <mathList name="dimsMax"> $widthMax $lengthMax</mathList> -->
+  <!-- <mathList name="dimsEntered"> $wEntered $lEntered</mathList> -->
+</setup>
+
+<p>
   An open box is to be made out of a <m>$b</m> inch by <m>$a</m> inch piece of cardboard by cutting out squares of equal size from the four corners and bending up the sides. If the box needs to be at least <m>$p</m> inches deep, and no more than <m>$q</m> inches deep, find the absolute maximum and absolute minimum volumes and the corresponding dimensions of the box.
 </p>
 
-<p> 
-  The absolute maximum total volume of the box is <m>V = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$absMax</answer> cubic inches and this absolute maximum occurs when the dimensions of the box are <m>\ell = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$lengthMax</answer> inches (longest side) <m>\times</m> <m>w = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$lengthMax</answer> inches (other side) <m>\times</m> <m>h = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$crNum</answer> inches (height).
-</p>  
+<p>
+  The absolute maximum total volume of the box is <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>V = </m></label>$absMax</answer> cubic inches and this absolute maximum occurs when the dimensions of the box are <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>\ell = </m></label>$lengthMax</answer> inches (longest side) <m>\times</m> <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>w = </m></label>$widthMax</answer> inches (other side) <m>\times</m> <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>h = </m></label>$crNum</answer> inches (height).
+</p>
 
 <!--
 <p>
   absMax = $absMax, crNum = $crNum
-</p>  
+</p>
 -->
       <p>
-        The absolute minimum volume of the box is 
-        <m>V = </m><mathInput name="vMinEntered"/> 
-        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
+        The absolute minimum volume of the box is
+        <mathInput name="vMinEntered"><label><m>V = </m></label></mathInput>
+        <answer forceSmallCheckWorkButton allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
           <award><when>
-            ($vMinEntered=$leftMin and $leftMin <= $rightMin) or ($vMinEntered=$rightMin and $rightMin <= $leftMin) 
-          </when></award></answer> 
+            ($vMinEntered=$leftMin and $leftMin <= $rightMin) or ($vMinEntered=$rightMin and $rightMin <= $leftMin)
+          </when></award></answer>
         cubic inches and this absolute minimum is achieved when the box has dimensions
-        <m>\ell = </m><mathInput name="lMin"/>
-        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
+        <mathInput name="lMin"><label><m>\ell = </m></label></mathInput>
+        <answer forceSmallCheckWorkButton allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
           <award><when>
             ($lMin=$a-2*$p and $leftMin <= $rightMin) or ($lMin=$a-2*$q and $rightMin <= $leftMin)
-          </when></award></answer>,         
-        <m>w = </m><mathInput name="wMin"/> 
-        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
-          <award><when> 
-            ($wMin=$b-2*$p and $leftMin <= $rightMin) or ($wMin=$b-2*$q and $rightMin <= $leftMin) 
-          </when></award></answer>, 
-
-        and <m>h = </m><mathInput name="hMin"/> 
-        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
+          </when></award></answer>,
+        <mathInput name="wMin"><label><m>w = </m></label></mathInput>
+        <answer forceSmallCheckWorkButton allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
           <award><when>
-            ($hMin=$p and $leftMin <= $rightMin) or ($hMin=$q and $rightMin <= $leftMin) 
+            ($wMin=$b-2*$p and $leftMin <= $rightMin) or ($wMin=$b-2*$q and $rightMin <= $leftMin)
+          </when></award></answer>,
+
+        and <mathInput name="hMin"><label><m>h = </m></label></mathInput>
+        <answer forceSmallCheckWorkButton allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
+          <award><when>
+            ($hMin=$p and $leftMin <= $rightMin) or ($hMin=$q and $rightMin <= $leftMin)
           </when></award></answer>.
-      </p> 
+      </p>
 
 
- 
+
 <!--
 17.85640646
 35.71281292
 <p>
   $crNum, $absMax, $dimsMax, $dimsEntered
-</p> 
-<p> Width= <mathInput name="mp6" /> 
+</p>
+<p> Width= <mathInput name="mp6" />
   <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>
-    $mp6 = $w4 
-  </when></award></answer> 
+    $mp6 = $w4
+  </when></award></answer>
   (include units) </p>
-<p> Height= <mathInput name="mp7" /> 
+<p> Height= <mathInput name="mp7" />
   <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>
-    $mp7 = $h4 
+    $mp7 = $h4
   </when></award></answer> (include units) </p>
 -->
