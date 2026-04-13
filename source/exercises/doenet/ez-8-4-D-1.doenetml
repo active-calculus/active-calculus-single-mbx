@@ -14,14 +14,14 @@
 
 <setup>
   <selectFromSequence name="k" from="-3" to="3" step="1" exclude="-1 0 1"/>
-  <selectFromSequence name="a" from="1" to="3" step="1" exclude="-1 0 1 $k $-k"/> 
+  <selectFromSequence name="a" from="1" to="3" step="1" exclude="-1 0 1 $k $-k"/>
   <function name="f">$k/x</function>
   <derivative name="fP">$f</derivative>
   <derivative name="fPP">$fP</derivative>
   <derivative name="fPPP">$fPP</derivative>
   <derivative name="fP4">$fPPP</derivative>
 
-  <function name="genTerm" variables="x n">$k*(-1)^n/$a^n*(x-$a)^n</function>
+  <function name="genTerm" variables="x n">$k*(-1)^n/$a^(n+1)*(x-$a)^n</function>
 </setup>
 <p>
   By responding to the following prompts, find the first several terms of the Taylor series of <me>f(x) = $f</me> centered at <m>a = $a</m> and express the Taylor series in sigma notation.
@@ -32,36 +32,36 @@
     <li>
       <p>
         Complete the following table to assemble key information needed for the Taylor series of <m>f</m> centered at <m>a = $a</m>.
+      </p>
         <tabular>
                 <row>
                   <cell><m>f(x)=$f</m></cell>
-                  <cell><m>f($a)=</m><answer>$$f($a)</answer></cell>
+                  <cell><answer><label><m>f($a)=</m></label>$$f($a)</answer></cell>
                 </row>
                 <row>
-                  <cell><m>f'(x)=</m><answer>$fP</answer></cell>
-                  <cell><m>f'($a)=</m><answer>$$fP($a)</answer></cell>
+                  <cell><answer><label><m>f'(x)=</m></label>$fP</answer></cell>
+                  <cell><answer><label><m>f'($a)=</m></label>$$fP($a)</answer></cell>
                 </row>
                 <row>
-                  <cell><m>f''(x)=</m><answer>$fPP</answer></cell>
-                  <cell><m>f''($a)=</m><answer>$$fPP($a)</answer></cell>
+                  <cell><answer><label><m>f''(x)=</m></label>$fPP</answer></cell>
+                  <cell><answer><label><m>f''($a)=</m></label>$$fPP($a)</answer></cell>
                 </row>
                 <row>
-                  <cell><m>f'''(x)=</m><answer>$fPPP</answer></cell>
-                  <cell><m>f'''($a)=</m><answer>$$fPPP($a)</answer></cell>
+                  <cell><answer><label><m>f'''(x)=</m></label>$fPPP</answer></cell>
+                  <cell><answer><label><m>f'''($a)=</m></label>$$fPPP($a)</answer></cell>
                 </row>
                 <row>
-                  <cell><m>f^{(4)}(x)=</m><answer>$fP4</answer></cell>
-                  <cell><m>f^{(4)}($a)=</m><answer>$$fP4($a)</answer></cell>
+                  <cell><answer><label><m>f^{(4)}(x)=</m></label>$fP4</answer></cell>
+                  <cell><answer><label><m>f^{(4)}($a)=</m></label>$$fP4($a)</answer></cell>
                 </row>
               </tabular>
-      </p>
     </li>
     <li>
       <p>
         State the first 5 terms of the Taylor series of <m>f</m> centered at <m>a = $a</m> by completing the blanks below; note that there is one blank per term and that several of the terms involve the variable <m>x</m>.
       </p>
-      <p>
-        <m>T_f(x) = </m><answer>$$f($a)</answer><m>+</m><answer>$$fP($a)(x-$a)</answer><m>+</m><answer>$$fPP($a)/2! * (x-$a)^2</answer><m>+</m><answer>$$fPPP($a)/3! * (x-$a)^3</answer><m>+</m><answer>$$fP4($a)/4! * (x-$a)^4</answer><m>+ \cdots</m>
+      <p sectionWideCheckWork forceIndividualAnswerColoring>
+        <m>T_f(x) = </m><answer><shortDescription>first term of the Taylor series of f centered at a equals $a</shortDescription>$$f($a)</answer><m>+</m><answer><shortDescription>second term of the Taylor series of f centered at a equals $a</shortDescription>$$fP($a)(x-$a)</answer><m>+</m><answer><shortDescription>third term of the Taylor series of f centered at a equals $a</shortDescription>$$fPP($a)/2! * (x-$a)^2</answer><m>+</m><answer><shortDescription>fourth term of the Taylor series of f centered at a equals $a</shortDescription>$$fPPP($a)/3! * (x-$a)^3</answer><m>+</m><answer><shortDescription>fifth term of the Taylor series of f centered at a equals $a</shortDescription>$$fP4($a)/4! * (x-$a)^4</answer><m>+ \cdots</m>
       </p>
     </li>
     <li>
@@ -69,7 +69,7 @@
         State the Taylor series of <m>f</m> centered at <m>a = $a</m> in sigma notation; it will be helpful to review your work in computing the values of <m>f'''($a)/3!</m> and <m>f^{(4)}($a)/4!</m> and to look for patterns that arise in these coefficients.
       </p>
       <p>
-        <m>\displaystyle T_f(x) = \sum_{n=0}^{\infty} </m><answer>$genTerm</answer>
+        <answer><label><m>\displaystyle T_f(x) = \sum_{n=0}^{\infty} </m></label>$genTerm</answer>
       </p>
     </li>
   </ol>
