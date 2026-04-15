@@ -1,4 +1,3 @@
-
 <!-- **********************************************************************-->
 <!-- Copyright 2012-2025                                                   -->
 <!-- Matthew Boelkins                                                      -->
@@ -90,50 +89,69 @@
     </row>
 </tabular>
 
-<!-- Graph the function, points at (a,0) and (b,0), and then the n rectangles -->
-<graph size="small" xmin="$a-1.5" xmax="$b+1.5" ymin="$minY-1" ymax="$maxY+1" identicalAxisScales="false" showNavigation="false" fixAxes>
-  $f
-  <regionBetweenCurveXAxis function="$f" boundaryValues="$a $b" />
-
-  <conditionalContent>
+<!-- I know this activity asks for n=25 and n=100, and moving from n=25 to n=100 takes 10 or so seconds, even with only using 30 rectangles on the graph.  So for the purposes of this activity, I'm going to cheat and not draw any rectangles for n> 29.  It seemed faster to use conditional content on the whole graph than it was to do it within the graph; destroying 25 rectangles must be something that takes a few seconds.   -->
+<sideBySide valigns="middle">
+<conditionalContent>
     <case condition="$smalln">
-      <repeatForSequence from="1" to="$n" step="1" valueName="index">
-        <rectangle stylenumber="6" filled="true" draggable="false"
-          vertices="($xiValues[$index],0)
-                    ($xiValues[$index]+$dxN, $fValues[$index])" />
-      </repeatForSequence>
+      <graph size="small" xmin="$a-1.5" xmax="$b+1.5" ymin="$minY-1.5" ymax="$maxY+1" identicalAxisScales="false" showNavigation="false" fixAxes>
+        $f
+        <regionBetweenCurveXAxis function="$f" boundaryValues="$a $b" />
+        <repeat for="$group" valueName="xVal">
+          <rectangle stylenumber="6" filled="true" draggable="false"
+            vertices="($xVal,0)
+                      ($xVal+$dxN, $$f($xVal+$offset))" />
+        </repeat>
+        <!-- <repeatForSequence from="1" to="$n" step="1" valueName="index">
+          <rectangle stylenumber="6" filled="true" draggable="false"
+            vertices="($xiValues[$index],0)
+                      ($xiValues[$index]+$dxN, $fValues[$index])" />
+        </repeatForSequence> -->
+      </graph>
     </case>
     <case condition="$largen">
-      <sequence from="$a" to="$b-($b-$a)/30" step="($b-$a)/30" name="xiValueslargen" hide/>
-      <repeat for="$xiValueslargen" valueName="xVal" name="largenrectangles">
-        <rectangle stylenumber="6" filled="true" draggable="false"
-          vertices="($xVal,0)
-                    ($xVal+($b-$a)/30, $$f($xVal))" />
-      </repeat>
+      <graph size="small" xmin="$a-1.5" xmax="$b+1.5" ymin="$minY-1.5" ymax="$maxY+1" identicalAxisScales="false" showNavigation="false" fixAxes>
+        $f
+        <regionBetweenCurveXAxis function="$f" boundaryValues="$a $b" styleNumber="5" />
+          <!-- The code below would draw 30 rectangles whenever n>29. -->
+            <!-- <sequence from="$a" to="$b-($b-$a)/30" step="($b-$a)/30" name="xiValueslargen" hide/>
+            <repeat for="$xiValueslargen" valueName="xVal" name="largenrectangles">
+              <rectangle stylenumber="6" filled="true" draggable="false"
+                vertices="($xVal,0)
+                          ($xVal+($b-$a)/30, $$f($xVal))" />
+            </repeat>   -->
+      </graph>
     </case>
+    <else>
+      <graph size="small" xmin="$a-1.5" xmax="$b+1.5" ymin="$minY-1.5" ymax="$maxY+1" identicalAxisScales="false" showNavigation="false" fixAxes>
+        $f
+        <regionBetweenCurveXAxis function="$f" boundaryValues="$a $b" />
+      </graph>
+    </else>
   </conditionalContent>
-</graph>
-
-<p>
+  <div>
   <conditionalContent>
     <case condition="$nisInt">
+      <p>
       The value of the Riemann sum is:
+      </p>
       <conditionalContent>
         <case condition="$ruleChoice.selectedIndex=1">
-          <m>L_{$n}=</m>
+          <me>L_{$n}=$RiemannSum</me>
         </case>
         <case condition="$ruleChoice.selectedIndex=3">
-          <m>R_{$n}=</m>
+          <me>R_{$n}=$RiemannSum</me>
         </case>
         <case condition="$ruleChoice.selectedIndex=2">
-          <m>M_{$n}=</m>
+          <me>M_{$n}=$RiemannSum</me>
         </case>
       </conditionalContent>
-      $RiemannSum
     </case>
-    <else>The value of n needs to be an integer</else>
+    <else>The value of n needs to be an integer.</else>
   </conditionalContent>
-</p>
+  </div>
+</sideBySide>
+
+
 
 <aside startOpen><title>(a)</title>
 
