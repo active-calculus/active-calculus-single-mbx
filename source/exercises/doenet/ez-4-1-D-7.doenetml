@@ -23,6 +23,9 @@
   <selectFromSequence name="p" from="1" to="3" step="1"/>
   <selectFromSequence name="q" from="4" to="6" step="1"/>
 
+  <derivative name="dsEntdx" variable="x">$sEnt</derivative>
+  <derivative name="dsEntdt" variable="t">$sEnt</derivative>
+
 </setup>
 
 <p>
@@ -36,15 +39,23 @@
         Recall that the object's position function, <m>s(t)</m>, is an antiderivative of its velocity, <m>v(t)</m>.  That is, <m>s'(t) = v(t)</m>.  Find a function <m>s(t)</m> for which <m>s'(t) = $v</m> and <m>s(0) = $c</m>.
       </p>
       <p>
-        <answer><label><m>s(t) = </m> </label>$s</answer>
+        <answer name="sEnt"><label><m>s(t) = </m> </label>$s</answer>
       </p>
+      <feedback condition="$dsEntdx !=0 and $sEnt.justSubmitted">Make sure your function uses the variable <m>t</m>, not <m>x</m>.</feedback>
+      <feedback condition="$dsEntdt=$v and $sEnt.creditAchieved!= 1">You entered an antiderivative of <m>v(t)</m>, but it doesn't satisfy the condition that <m>s(0)=$c</m>.</feedback>
     </li>
     <li>
       <p>
         Use the position function to find the object's change in position on <m>[$p, $q]</m>.
       </p>
-      <p>
-        <answer><label>The object's change in position on <m>[$p, $q]</m> is </label>$$s($q)-$$s($p)</answer> meters.
+      <p sectionWideCheckWork>
+        <answer><mathInput minWidth="20"><label>The object's position at <m>t=$q</m> is <m>s($q)=</m></label></mathInput>$$s($q)</answer>meters.
+      </p>
+      <p sectionWideCheckWork>
+        <answer><mathInput minWidth="20"><label>The object's position at <m>t=$p</m> is <m>s($p)=</m></label></mathInput>$$s($p)</answer>meters.
+      </p>
+      <p sectionWideCheckWork>
+        <answer><mathInput minWidth="20"><label>The object's change in position on <m>[$p, $q]</m> is </label></mathInput>$$s($q)-$$s($p)</answer>meters.
       </p>
     </li>
     <li>
@@ -52,7 +63,7 @@
         Use the position function to also find the object's total distance traveled on <m>[$p, $q]</m>.
       </p>
       <hint>We need to consider all distances positively, even if the velocity is negative.  When does <m>v(t)=0</m>?</hint>
-      <p>
+      <p sectionWideCheckWork>
         <answer><label>The object's total distance traveled on <m>[$p, $q]</m> is </label>
           <conditionalContent>
             <case condition="$b/$a < $q and $b/$a > $p">
