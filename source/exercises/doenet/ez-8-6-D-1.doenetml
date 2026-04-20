@@ -15,23 +15,102 @@
 <setup>
   <selectFromSequence name="a" from="0.3" to="0.6" step="0.1"/>
   <function name="f">e^x</function>
+  <function name="asubk" variable="j">(-1)^j $a^j/(j)!</function>
+  <number name="tolerance">0.0000001</number>
+  <!-- <number name="nEntminus1">$nEnt-1</number> -->
+
+  <number name="n">
+    <conditionalContent condition="$a=0.3">7</conditionalContent>
+    <conditionalContent condition="$a=0.4 or $a=0.5">8</conditionalContent>
+    <conditionalContent condition="$a=0.6">9</conditionalContent>
+  </number>
+
+  <repeatForSequence from="0" to="$n-1" valueName="k" name="terms">
+      <number>(-1)^$k $a^$k/($k)!</number>
+    </repeatForSequence>
+  <sum name="partialsum" displayDecimals="9">$terms</sum>
 </setup>
 
 <p>
-  Consider the converent infinite alternating series
+  Consider the convergent infinite alternating series
   <me>
     S = \sum_{k=0}^{\infty}(-1)^k \frac{($a)^k}{k!} = 1 - $a + \frac{$a^2}{2!} - \frac{$a^3}{3!} + \cdots
   </me>
 </p>
 <p>
-  Let <m>S_n</m> be the sum of the first <m>n</m> terms of the series <m>S</m>.  If we use the Alternating Series Estimation Theorem to guarantee that a partial sum estimate, <m>S_n</m>, is within <m>0.0000001</m> of the exact value of <m>S</m>, what value of <m>n</m> is needed?
+  Let <m>\displaystyle a_k=(-1)^k \frac{($a)^k}{k!}</m>.  Calculate the values of the terms below, using at least 7 or 8 places after the decimal point.
+</p>
+
+<conditionalContent condition="$a!=0.6">
+<p>
+  <answer allowedErrorInNumbers="$tolerance/10" allowedErrorIsAbsolute><label><m>a_6=</m></label>$$asubk(6)</answer>
+</p>
+</conditionalContent>
+<p>
+  <answer allowedErrorInNumbers="$tolerance/10" allowedErrorIsAbsolute><label><m>a_7=</m></label>$$asubk(7)</answer>
 </p>
 <p>
-  <m>n = </m><mathInput name="nEnt"/><answer><award><when>0.0000001 > $a^$nEnt/($nEnt!)</when></award></answer>
+  <answer allowedErrorInNumbers="$tolerance/10" allowedErrorIsAbsolute><label><m>a_8=</m></label>$$asubk(8)</answer>
+</p>
+<conditionalContent condition="$a=0.6">
+<p>
+  <answer allowedErrorInNumbers="$tolerance/10" allowedErrorIsAbsolute><label><m>a_9=</m></label>$$asubk(9)</answer>
+</p>
+</conditionalContent>
+<p>
+  Complete the following sentence:
 </p>
 <p>
-  State the estimate, <m>S_n</m>, that corresponds to the value of <m>n</m> that you identified above, and hence approximate the infinite sum, <m>S</m>, to within <m>0.0000001</m>.
+  Since <choiceInput inline name="toleranceterm"><shortDescription>first term less than tolerance</shortDescription>
+  <choice><m>a_6</m></choice>
+  <choice><m>a_7</m></choice>
+  <choice><m>a_8</m></choice>
+  <choice><m>a_9</m></choice>
+  </choiceInput>
+  is the first term whose absolute value is less than <m>0.0000001</m>, the Alternating Series Estimation Theorem guarantees that the partial sum <choiceInput inline name="sumterms"><shortDescription>which terms in the partial sum</shortDescription>
+  <choice><m>a_0+a_1+\cdots + a_5</m></choice>
+  <choice><m>a_0+a_1+\cdots + a_6</m></choice>
+  <choice><m>a_0+a_1+\cdots + a_7</m></choice>
+  <choice><m>a_0+a_1+\cdots + a_8</m></choice>
+  <choice><m>a_0+a_1+\cdots + a_9</m></choice>
+  </choiceInput> will be within <m>0.0000001</m> of the exact value of <m>S</m>.
+  <answer>
+    <award><when>$a=0.3 and $toleranceterm.selectedIndex=2 and $sumterms.selectedIndex=2</when></award>
+    <award><when> ($a=0.4 or $a=0.5) and $toleranceterm.selectedIndex=3 and $sumterms.selectedIndex=3</when></award>
+    <award><when>$a=0.6 and $toleranceterm.selectedIndex=4 and $sumterms.selectedIndex=4</when></award>
+  </answer>
+</p>
+
+
+
+  <!-- <p>
+    Let <m>S_n</m> be the sum of the first <m>n</m> terms of the series <m>S</m>. If we use the Alternating Series Estimation Theorem to guarantee that a partial sum estimate, <m>S_n</m>, is within <m>0.0000001</m> of the exact value of <m>S</m>, what value of <m>n</m> is needed?
 </p>
 <p>
-  <m>S_n = </m><mathInput name="SnEnt"/><answer allowedErrorInNumbers="0.0000001" allowedErrorIsAbsolute><award><when>$SnEnt = $$f(-$a)</when></award></answer>
+  <answer name="correctn"><mathInput name="nEnt"><label><m>n = </m></label></mathInput><award>
+    <when>
+      <isInteger>$nEnt</isInteger> and $tolerance > $a^$nEnt/($nEnt!) and $tolerance <= $a^($nEnt-1)/(($nEnt-1)!)
+    </when></award></answer>
+</p> -->
+<!-- <p>
+  State the estimate, <m>S_n</m>, that corresponds to the value of <m>n</m> that you identified above, and hence approximate the infinite sum, <m>S</m>, to within <m>0.0000001</m>.  Enter <m>S_n</m> using least 8 digits after the decimal point.
+</p> -->
+<p>
+  State the estimate, <m>S_n</m>, which approximates the infinite sum, <m>S</m>, to within <m>0.0000001</m>.  Enter <m>S_n</m> using least 8 digits after the decimal point.
+</p>
+<p>
+  <answer allowedErrorInNumbers="$tolerance/5" allowedErrorIsAbsolute><mathInput name="SnEnt"><label><m>S_n = </m></label></mathInput>
+    <!-- <award><when>$SnEnt = $partialsum and $correctn.creditAchieved=1</when></award> -->
+    <award><when>$SnEnt = $partialsum</when></award>
+  </answer>
+</p>
+<p sectionWideCheckWork forceIndividualAnswerColoring>
+  We can recognize <m>S</m> as being related to the Taylor series for a familiar function <answer><choiceInput inline name="seriesfunction"><shortDescription>which function is S the Taylor Series for</shortDescription>
+  <choice><m>\frac{1}{1-x}</m></choice>
+  <choice><m>\ln(1+x)</m></choice>
+  <choice><m>\sin(x)</m></choice>
+  <choice><m>\cos(x)</m></choice>
+  <choice credit="1"><m>e^x</m></choice>
+  </choiceInput></answer> and thus the true value of <m>S</m> up to at least 8 decimal places is
+  <answer allowedErrorInNumbers="$tolerance/10" allowedErrorIsAbsolute><label><m>S=</m></label>$$f(-$a)</answer>
 </p>

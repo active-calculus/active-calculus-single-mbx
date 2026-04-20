@@ -15,23 +15,57 @@
 <setup>
   <selectFromSequence name="a" from="0.4" to="0.7" step="0.1"/>
   <function name="f">ln(1+x)</function>
+  <function name="asubk" variable="j">(-1)^(j+1) $a^j/j</function>
+  <number name="tolerance" displayDecimals="4">0.001</number>
+  <number name="nEntminus1">$nEnt-1</number>
+
+  <!-- <number name="n">
+    <conditionalContent condition="$a=0.3">7</conditionalContent>
+    <conditionalContent condition="$a=0.4 or $a=0.5">8</conditionalContent>
+    <conditionalContent condition="$a=0.6">9</conditionalContent>
+  </number> -->
+
+  <repeatForSequence from="1" to="$nEntminus1" valueName="k" name="terms">
+      <number>(-1)^($k+1) $a^$k/($k)</number>
+    </repeatForSequence>
+  <sum name="partialsum" displayDecimals="9">$terms</sum>
 </setup>
 
 <p>
-  Consider the converent infinite alternating series
+  Consider the convergent infinite alternating series
   <me>
     S = \sum_{k=1}^{\infty}(-1)^{k+1} \frac{($a)^k}{k} = $a - \frac{$a^2}{2} + \frac{$a^3}{3} - \cdots
   </me>
 </p>
+
 <p>
-  Let <m>S_n</m> be the sum of the first <m>n</m> terms of the series <m>S</m>.  If we use the Alternating Series Estimation Theorem to guarantee that a partial sum estimate, <m>S_n</m>, is within <m>0.01</m> of the exact value of <m>S</m>, what value of <m>n</m> is needed?
+  Let <m>a_n</m> be the general term of the series <m>S</m>. What is the smallest <m>n</m> for which <m>a_n \lt $tolerance</m>?
 </p>
 <p>
-  <m>n = </m><mathInput name="nEnt"/><answer><award><when>0.01 > $a^($nEnt+1)/($nEnt+1)</when></award></answer>
+  <answer name="correctn"><mathInput name="nEnt"><label><m>n = </m></label></mathInput><award>
+    <when>
+      <isInteger>$nEnt</isInteger> and $tolerance > $a^$nEnt/($nEnt) and $tolerance <= $a^($nEnt-1)/(($nEnt-1))
+    </when></award></answer>
+</p>
+<!-- <p>
+  State the estimate, <m>S_n</m>, that corresponds to the value of <m>n</m> that you identified above, and hence approximate the infinite sum, <m>S</m>, to within <m>0.0000001</m>.  Enter <m>S_n</m> using least 8 digits after the decimal point.
+</p> -->
+<!-- The above paragraph works well when the sum starts at k=0, but less so when it starts at k=1. -->
+<p>
+  State the estimate which is guaranteed by the Alternating Series Estimation Theorem and your answer above to be within <m>$tolerance</m> of the exact value of <m>S</m>.  Use at least 6 digits after the decimal point.
 </p>
 <p>
-  State the estimate, <m>S_n</m>, that corresponds to the value of <m>n</m> that you identified above, and hence approximate the infinite sum, <m>S</m>, to within <m>0.01</m>.
+  <answer allowedErrorInNumbers="$tolerance/5" allowedErrorIsAbsolute><mathInput name="SnEnt"><label>The approximate sum is </label></mathInput>
+    <award><when>$SnEnt = $partialsum and $correctn.creditAchieved=1</when></award>
+  </answer>
 </p>
-<p>
-  <m>S_n = </m><mathInput name="SnEnt"/><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$SnEnt = $$f($a)</when></award></answer>
+<p sectionWideCheckWork forceIndividualAnswerColoring>
+  We can recognize <m>S</m> as being related to the Taylor series for a familiar function <answer><choiceInput inline name="seriesfunction"><shortDescription>which function is S the Taylor Series for</shortDescription>
+  <choice><m>\frac{1}{1-x}</m></choice>
+  <choice credit="1"><m>\ln(1+x)</m></choice>
+  <choice><m>\sin(x)</m></choice>
+  <choice><m>\cos(x)</m></choice>
+  <choice><m>e^x</m></choice>
+  </choiceInput></answer> and thus the true value of <m>S</m> up to at least 6 decimal places is
+  <answer allowedErrorInNumbers=".000001" allowedErrorIsAbsolute><label><m>S=</m></label>$$f($a)</answer>
 </p>
