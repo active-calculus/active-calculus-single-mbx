@@ -23,7 +23,7 @@
   <selectFromSequence name = "y2" from = "-3" to = "-2" step = "1"/>
   <selectFromSequence name = "a" from = "-3" to = "-2" step = "1"/>
   <selectFromSequence name = "b" from = "2" to = "3" step = "1"/>
-  
+
   <piecewiseFunction name="f" symbolic="false" styleNumber="1">
     <function domain="(-infinity,$x1)">$m1*(x-$x1)+$y1</function>
     <function domain="[$x1,infinity)">$m2*(x-$x1)+$y1</function>
@@ -32,7 +32,7 @@
   <piecewiseFunction name="F" symbolic="false" styleNumber="2">
     <function domain="(-infinity,$x1)">($m1/2*(x-$x1)^2+$y1*x)</function>
     <function domain="[$x1,infinity)">($m2/2*(x-$x1)^2+$y1*x)</function>
-  </piecewiseFunction>  
+  </piecewiseFunction>
 
   <piecewiseFunction name="fP" symbolic="false"  styleNumber="3">
     <function domain="(-infinity,$x1)">$m1</function>
@@ -58,7 +58,19 @@
 
   <math name="intF">$$F($b)-$$F($a)</math>
   <math name="intG">$$G($b)-$$G($a)</math>
-  
+
+  <boolean name="Fsigns">
+    ($intF > 0 and $c1.selectedIndices=3 and $c3.selectedIndices=3) or
+    ($intF < 0 and $c1.selectedIndices=2 and $c3.selectedIndices=2) or
+    ($intF = 0 and $c1.selectedIndices=4 and $c3.selectedIndices=4)
+  </boolean>
+
+  <boolean name="Gsigns">
+    ($intG > 0 and $c2.selectedIndices=3 and $c4.selectedIndices=3) or
+    ($intG < 0 and $c2.selectedIndices=2 and $c4.selectedIndices=2) or
+    ($intG = 0 and $c2.selectedIndices=4 and $c4.selectedIndices=4)
+  </boolean>
+
 </setup>
 
 <p>
@@ -66,12 +78,12 @@
 </p>
 
 <sideBySide widths="40% 40%">
-      <graph size="small" xmin="-5" xmax="5" ymin="-5" ymax="5" size="medium" grid="true" showNavigation="false" fixAxes="true"> 
-        $f 
+      <graph size="small" xmin="-5" xmax="5" ymin="-5" ymax="5" size="medium" grid="true" showNavigation="false" fixAxes="true">
+        $f
         <regionBetweenCurveXAxis function="$f" boundaryValues="$a $b" styleNumber="3"/>
           <label fixLocation anchor="($x1+0.5,$$f($x1)+0.35)"><m>f</m></label>
       </graph>
-      <graph size="small" xmin="-5" xmax="5" ymin="-5" ymax="5" size="medium" grid="true" showNavigation="false" fixAxes="true"> 
+      <graph size="small" xmin="-5" xmax="5" ymin="-5" ymax="5" size="medium" grid="true" showNavigation="false" fixAxes="true">
         $g
         <regionBetweenCurveXAxis function="$g" boundaryValues="$a $b" styleNumber="2"/>
           <label fixLocation anchor="($x2+0.25,$$g($x2)-0.35)"><m>g</m></label>
@@ -122,25 +134,9 @@
           <choice>zero</choice>
         </choiceInput>
       </p>
-    </li> 
+    </li>
   </ul>
 </p>
 <p>
-  <answer><award><when>
-    (
-     $intF > 0 and $intG > 0 and $c1.selectedIndices=3 and $c2.selectedIndices=3 and $c3.selectedIndices=3 and $c4.selectedIndices=3
-    )
-    or 
-    (
-    $intF > 0 and 0 > $intG and $c1.selectedIndices=3 and $c2.selectedIndices=2 and $c3.selectedIndices=3 and $c4.selectedIndices=2
-    )
-    or 
-    (
-    0 > $intF and $intG > 0 and $c1.selectedIndices=2 and $c2.selectedIndices=3 and $c3.selectedIndices=2 and $c4.selectedIndices=3
-    )
-    or 
-    (
-    0 > $intF and 0 > $intG and $c1.selectedIndices=2 and $c2.selectedIndices=2 and $c3.selectedIndices=2 and $c4.selectedIndices=2
-    )
-  </when></award></answer>
+  <answer><award><when> $Fsigns and $Gsigns </when></award></answer>
 </p>
