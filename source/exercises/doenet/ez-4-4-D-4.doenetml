@@ -20,18 +20,20 @@
   <selectFromSequence name="k" from="0.5" to="2.5" step="1"/>
   <selectFromSequence name="s0" from="1" to="4"/>
 
-  <number name="AV">($k*$q+$c*$p)/($q-$p)</number>
+  <number name="AV" displayDecimals="4">($k*$q+$c*$p)/($q-$p)</number>
   <number name="vZero">$p + $c*$p/$AV</number>
-  
+
   <function name="v" variable="t">$AV*(t-$p)-$c*$p</function>
-  <function name="s" variable="t">$AV/2*(t-$p)^2-$c*$p*t + $s0 - $AV/2*(-$p)^2 </function>  
-  
-</setup>   
+  <function name="s" variable="t">$AV/2*t^2-$AV*$p*t-$c*$p*t+$s0</function>
+  <!-- I thought the above was better for s since in this chapter students should be multiplying out before antidifferentiating.  If we want to use the below as correct, or allow students to not multiply out first, we need expandOnCompare on the answer. Right now, I've given feedback instead.-->
+  <function name="sadvanced" variable="t">$AV/2*(t-$p)^2-$c*$p*t + $s0 - $AV/2*(-$p)^2 </function>
+
+</setup>
 
 <p>
   An object moving along a straight line has its instantaneous velocity at time <m>t</m> given by <me>v(t) = $AV(t-$p) - <math simplify>$c*$p</math>,</me>
   where <m>v</m> is measured in feet per second and <m>t</m> is time in seconds.
-</p>  
+</p>
 
 <p>
   <ol marker="a.">
@@ -40,32 +42,39 @@
         If the object's initial position is <m>s(0) = $s0</m>, find a formula for <m>s(t)</m>, the object's position along the straight line at time <m>t</m>.
       </p>
       <p>
-        <m>s(t) = </m> <mathInput name="pos"/> <answer simplifyOnCompare><award><when>$pos=$s</when></award></answer>
-      </p>  
+        <answer name="pos" symbolicEquality simplifyOnCompare allowedErrorInNumbers=".001" allowedErrorIsAbsolute><label><m>s(t) = </m> </label>
+          <award>$s</award>
+          <award name="close" credit=".5">$s-$s0</award>
+          <award name="sadvancedEnt1" credit="0">$sadvanced</award>
+          <award name="sadvancedEnt2" credit="0">$AV/2*(t-$p)^2-$c*$p*t + $s0</award>
+          <award name="sadvancedEnt3" credit="0">$AV/2*(t-$p)^2-$c*$p*t</award></answer>
+      </p>
+      <feedback condition="$close">You correctly took an antiderivative of <m>v(t)</m>, but you didn't yet use the information given about the object's initial position.</feedback>
+      <feedback condition="$sadvancedEnt1 or $sadvancedEnt2 or $sadvancedEnt3">Multiply the terms in the velocity function before attempting to take an antiderivative.</feedback>
     </li>
     <li>
       <p>
         Determine the object's total change in position on the time interval <m>[$p, $q]</m>.
       </p>
       <p>
-        Change in position on <m>[$p, $q]</m> is <mathInput name="coP"/> feet <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$coP = $$s($q)-$$s($p)</when></award></answer>
-      </p>  
-    </li>  
+        Change in position on <m>[$p, $q]</m> is <mathInput name="coP"><shortDescription>change in position over the interval from $p to $q</shortDescription></mathInput> feet <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$coP = $$s($q)-$$s($p)</when></award></answer>
+      </p>
+    </li>
     <li>
       <p>
         Determine the object's total distance traveled on the time interval <m>[$p, $q]</m>.
       </p>
       <p>
-        Distance traveled on <m>[$p, $q]</m> is <mathInput name="dist"/> feet <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$dist = $$s($q)+$$s($p)-2*$$s($vZero)</when></award></answer>
-      </p> 
-    </li>  
+        Distance traveled on <m>[$p, $q]</m> is <mathInput name="dist"><shortDescription>distance traveled by the object over the interval from $p to $q</shortDescription></mathInput> feet <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$dist = $$s($q)+$$s($p)-2*$$s($vZero)</when></award></answer>
+      </p>
+    </li>
     <li>
       <p>
         Find the object's average velocity on <m>[$p, $q]</m>.
       </p>
       <p>
-        <m>AV_{[$p,$q]} = </m> <mathInput name="avgVel"/> feet per second <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$avgVel = ($$s($q)-$$s($p))/($q-$p)</when></award></answer> 
-      </p>  
-    </li>  
-  </ol>       
+        <m>AV_{[$p,$q]} = </m> <mathInput name="avgVel"><shortDescription>average velocity of the object over the interval from $p to $q</shortDescription></mathInput> feet per second <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$avgVel = ($$s($q)-$$s($p))/($q-$p)</when></award></answer>
+      </p>
+    </li>
+  </ol>
 </p>  
