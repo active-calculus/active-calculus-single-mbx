@@ -13,19 +13,19 @@
 <!-- **********************************************************************-->
 
 <setup>
-  <selectFromSequence name="pm" from="-1" to="1" step="2"/> 
+  <selectFromSequence name="pm" from="-1" to="1" step="2"/>
   <selectFromSequence name="n" from="2" to="4" step="1"/>
-  <selectFromSequence name="m" from="2" to="3" step="1" exclude="$n"/>  
-  <selectFromSequence name="a1" from="4" to="8" step="1" exclude="$n $m 7"/> 
-  <selectFromSequence name="a2" from="4" to="9" step="1" exclude="$n $m $a1 7"/> 
-  <selectFromSequence name="a3" from="2" to="9" step="1" exclude="$n $m $a1 $a2 7"/> 
-  <selectFromSequence name="r1Denom" from="3" to="11" step="4" /> 
-  <selectFromSequence name="r1Num" from="3" to="11" step="4" exclude="$r1Denom"/> 
-  <selectFromSequence name="r2Denom" from="3" to="11" step="4" exclude="$r1Denom" /> 
-  <selectFromSequence name="r2Num" from="3" to="11" step="4" exclude="$r2Denom"/> 
-  <selectFromSequence name="r3Denom" from="3" to="11" step="4" exclude="$r1Denom $r2Denom"/> 
-  <selectFromSequence name="r3Num" from="3" to="11" step="4" exclude="$r3Denom"/> 
-</setup>  
+  <selectFromSequence name="m" from="2" to="3" step="1" exclude="$n"/>
+  <selectFromSequence name="a1" from="4" to="8" step="1" exclude="$n $m 7"/>
+  <selectFromSequence name="a2" from="4" to="9" step="1" exclude="$n $m $a1 7"/>
+  <selectFromSequence name="a3" from="2" to="9" step="1" exclude="$n $m $a1 $a2 7"/>
+  <selectFromSequence name="r1Denom" from="3" to="11" step="4" />
+  <selectFromSequence name="r1Num" from="3" to="11" step="4" exclude="$r1Denom"/>
+  <selectFromSequence name="r2Denom" from="3" to="11" step="4" exclude="$r1Denom" />
+  <selectFromSequence name="r2Num" from="3" to="11" step="4" exclude="$r2Denom"/>
+  <selectFromSequence name="r3Denom" from="3" to="11" step="4" exclude="$r1Denom $r2Denom"/>
+  <selectFromSequence name="r3Num" from="3" to="11" step="4" exclude="$r3Denom"/>
+</setup>
 <p>
   For each of the following infinite geometric series, determine the first term, <m>a</m>, the ratio <m>r</m>, and whether or not the series converges.  If the series converges, find its exact sum.  If the series does not converge, enter <q><em>DNC</em></q>.
 </p>
@@ -37,13 +37,13 @@
         <m> \displaystyle S = \sum_{n=$n}^{\infty} $a1 \cdot \left( \frac{$r1Num}{$r1Denom} \right)^n</m>
       </p>
       <p>
-        <m>r = </m><answer>$r1Num/$r1Denom</answer>
+        <answer><label><m>r = </m></label>$r1Num/$r1Denom</answer>
       </p>
       <p>
-        <m>a = </m><answer>$a1*($r1Num/$r1Denom)^$n</answer>
+        <answer><label><m>a = </m></label>$a1*($r1Num/$r1Denom)^$n</answer>
       </p>
       <p>
-        This geometric series <choiceInput inline name="S1">
+        <choiceInput inline name="S1"><label>This geometric series </label>
           <choice>?</choice>
           <choice>converges</choice>
           <choice>does not converge</choice>
@@ -55,11 +55,9 @@
         </when></award></answer>
       </p>
       <p>
-        The exact sum of the series is (enter <q><em>DNC</em></q> if the series does not converge)
-        <m>S = </m><mathInput name="S1sum"/>
-      </p>
+        The exact sum of the series is (enter <q><em>DNC</em></q> if the series does not converge)</p>
       <p>
-        <answer><award><when>
+        <answer><mathInput name="S1sum"><label><m>S = </m></label></mathInput><award><when>
           ($S1sum = $a1*($r1Num/$r1Denom)^$n/(1-($r1Num/$r1Denom)) and 1 > ($r1Num/$r1Denom))
           or
           ($S1sum = DNC and ($r1Num/$r1Denom) >= 1)
@@ -71,13 +69,13 @@
         <m> \displaystyle S = $a2 \cdot \frac{$r2Num}{$r2Denom} - $a2 \cdot \left(\frac{$r2Num}{$r2Denom}\right)^2 + \cdots + (-1)^{n-1} \cdot $a2 \cdot \left( \frac{$r2Num}{$r2Denom} \right)^n + \cdots</m>
       </p>
       <p>
-        <m>r = </m><answer>$r2Num/$r2Denom</answer>
+        <answer><label><m>r = </m></label>$r2Num/$r2Denom</answer>
       </p>
       <p>
-        <m>a = </m><answer>$a2*($r2Num/$r2Denom)</answer>
+        <answer><label><m>a = </m></label>$a2*($r2Num/$r2Denom)</answer>
       </p>
       <p>
-        This geometric series <choiceInput inline name="S2">
+        <choiceInput inline name="S2"><label>This geometric series </label>
           <choice>?</choice>
           <choice>converges</choice>
           <choice>does not converge</choice>
@@ -90,13 +88,12 @@
       </p>
       <p>
         The exact sum of the series is (enter <q><em>DNC</em></q> if the series does not converge)
-        <m>S = </m><mathInput name="S2sum"/>
       </p>
       <p>
-        <answer><award><when>
+        <answer><mathInput name="S2sum"><label><m>S = </m></label></mathInput><award><when>
           ($S2sum = $a2*($r2Num/$r2Denom)/(1-($r2Num/$r2Denom)) and 1 > ($r2Num/$r2Denom))
           or
-          ($S1sum = DNC and ($r2Num/$r2Denom) >= 1)
+          ($S2sum = DNC and ($r2Num/$r2Denom) >= 1)
         </when></award></answer>
       </p>
     </li>
@@ -105,13 +102,13 @@
         <m> \displaystyle S = \sum_{n=$m}^{\infty} $a3 \cdot \left( \frac{<math simplify>$pm*$r3Num</math>}{$r3Denom} \right)^n</m>
       </p>
       <p>
-        <m>r = </m><answer>$pm*$r3Num/$r3Denom</answer>
+        <answer><label><m>r = </m></label>$pm*$r3Num/$r3Denom</answer>
       </p>
       <p>
-        <m>a = </m><answer>$a3*($pm*$r3Num/$r3Denom)^$m</answer>
+        <answer><label><m>a = </m></label>$a3*($pm*$r3Num/$r3Denom)^$m</answer>
       </p>
       <p>
-        This geometric series <choiceInput inline name="S3">
+        <choiceInput inline name="S3"><label>This geometric series </label>
           <choice>?</choice>
           <choice>converges</choice>
           <choice>does not converge</choice>
@@ -124,10 +121,9 @@
       </p>
       <p>
         The exact sum of the series is (enter <q><em>DNC</em></q> if the series does not converge)
-        <m>S = </m><mathInput name="S3sum"/>
       </p>
       <p>
-        <answer><award><when>
+        <answer><mathInput name="S3sum"><label><m>S = </m></label></mathInput><award><when>
           ($S3sum = $a3*($pm*$r3Num/$r3Denom)^$m/(1-($pm*$r3Num/$r3Denom)) and 1 > ($r3Num/$r3Denom))
           or
           ($S3sum = DNC and ($r3Num/$r3Denom) >= 1)
@@ -136,4 +132,3 @@
     </li>
   </ol>
 </p>
-    

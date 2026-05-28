@@ -17,19 +17,17 @@
   <selectFromSequence name="p" from="-3" to="-1" step="1"/>
   <selectFromSequence name="q" from="2" to="4" step="1"/>
   <selectFromSequence name="r" from="5" to="7" step="1"/>
-  
+
   <function name="f">$p*x^2 + $q*x + $r</function>
   <function name="fP">2*$p*x + $q</function>
   <function name="fPP">2*$p</function>
-  <function name="fPPP">0</function>
-  <function name="fP4">0</function>
-  
+
+
   <math name="c0">$$f($a)</math>
   <math name="c1">$$fP($a)</math>
   <math name="c2">$$fPP($a)/2</math>
-  <math name="c3">$$fPPP($a)/3!</math>
-  <math name="c4">$$fP4($a)/4!</math>
-  
+
+
 <!--
   <selectFromSequence name="c0" from="-2" to="2" step="1" exclude="0"/>
   <selectFromSequence name="c1" from="-3" to="3" step="1" exclude="0 $c0"/>
@@ -37,29 +35,23 @@
   <selectFromSequence name="c3" from="-3" to="3" step="1" exclude="0 $c0 $c1 $c2"/>
   <selectFromSequence name="c4" from="-3" to="3" step="1" exclude="0 $c0 $c1 $c2 $c3"/>
 -->
-  
+
   <selectFromSequence name="a" from="2" to="4" step="1"/>
   <selectFromSequence name="pm" from="-1" to="1" step="2"/>
   <selectFromSequence name="k" from="0.3" to="0.5" step="0.1"/>
 
   <math simplify name="h">$a + $pm*$k</math>
-  
-  <function name="T4">$c0 + $c1*(x-$a) + $c2*(x-$a)^2 + $c3*(x-$a)^3 + $c4*(x-$a)^4</function>
-  <function name="T4Symb">c_0 + c_1*(x-$a) + c_2*(x-$a)^2 + c_3*(x-$a)^3 + c_4*(x-$a)^4</function>
-  
-  <function name="T3">$c0 + $c1*(x-$a) + $c2*(x-$a)^2 + $c3*(x-$a)^3</function>
-  <function name="T3Symb">c_0 + c_1*(x-$a) + c_2*(x-$a)^2 + c_3*(x-$a)^3</function>
 
   <function name="T2">$c0 + $c1*(x-$a) + $c2*(x-$a)^2</function>
   <function name="T2Symb">c_0 + c_1*(x-$a) + c_2*(x-$a)^2</function>
 
   <function name="T1">$c0 + $c1*(x-$a)</function>
   <function name="T1Symb">c_0 + c_1*(x-$a)</function>
-  
+
 </setup>
 
 <p>
-  Consider the quadratic function <m>f(x) = <math simplify>$p x^2 + $q x + $r</math></m>.  Let's find the quadratic Taylor polynomial approximation of <m>f</m> centered at <m>a = $a</m>.
+  Consider the quadratic function <m>f(x) = <math name="fexpress" simplify>$p x^2 + $q x + $r</math></m>.  Let's find the quadratic Taylor polynomial approximation of <m>f</m> centered at <m>a = $a</m>.
 </p>
 
 <!--
@@ -75,57 +67,77 @@
         Find all of the needed derivatives of <m>f(x) = <math simplify>$p x^2 + $q x + $r</math></m> as well as their respective values at <m>a = $a</m>.  Report your results for <m>f''(x)</m> and <m>f''($a)</m> below.
       </p>
       <p>
-        <m>f''(x) = </m><answer>$fPP</answer>
+        <answer><label><m>f''(x) = </m></label>$fPP</answer>
       </p>
       <p>
-        <m>f''($a) = </m><answer allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute>$$fPP($a)</answer>
-      </p>
-    </li>
-    <li>
-      <p>
-          Find and state each of the first two Taylor polynomials of <m>f</m> that are centered at <m>a = $a</m>: <m>T_1(x)</m> and <m>T_2(x)</m>.  
-      </p>    
-      <p>
-        <m>T_1(x) = </m><answer name="T1Entered" allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute>$T1</answer>
-      </p>
-      <p>
-        <m>T_2(x) = </m><answer name="T2Entered" allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute>$T2</answer>
+        <answer allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute><label><m>f''($a) = </m></label>$$fPP($a)</answer>
       </p>
     </li>
     <li>
       <p>
-        Use <m>T_2(x)</m> to estimate the value of <m>f($h)</m>.  Report your result to an accuracy of at least <m>0.000001</m>.
+          Find and state each of the first two Taylor polynomials of <m>f</m> that are centered at <m>a = $a</m>: <m>T_1(x)</m> and <m>T_2(x)</m>.
       </p>
       <p>
-        <m>f($h) \approx T_2(<math simplify>$h</math>) = </m><answer name="fEst" allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute>$$T4($h)</answer>
+        <answer name="T1Entered" allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute><label><m>T_1(x) = </m></label>$T1</answer>
       </p>
       <p>
-        Note that since <m>f(x)</m> is quadratic, its value is straightforward to compute for any <m>x</m>.  Find <m>f($h)</m> exactly and report its result below.
-      </p>
-      <p>
-        <m>f($h) = </m><answer name="fIs" allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute>$$f($h)</answer>
+        <answer name="T2Entered" allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute><label><m>T_2(x) = </m></label>$T2</answer>
       </p>
     </li>
     <li>
       <p>
-        Use a computational device to plot both <m>f(x)</m> and <m>T_2(x)</m> on the same coordinate axes.  Complete the following sentence to summarize what you notice.
+        Use <m>T_2(x)</m> to estimate the value of <m>f($h)</m>.  Report your result to an accuracy of at least <m>0.000001</m>, if applicable.
       </p>
       <p>
-        Since <m>f(x)</m> is itself a <choiceInput inline name="ans1">
+        <answer name="fEst" allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute><label><m>f($h) \approx T_2(<math simplify>$h</math>) = </m></label>$$T2($h)</answer>
+      </p>
+      <p>
+        Note that since <m>f(x)=$fexpress</m> is quadratic, its value is straightforward to compute for any <m>x</m>.  Find <m>f($h)</m> exactly and report its result below.
+      </p>
+      <p>
+        <answer name="fIs" allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute><label><m>f($h) = </m></label>$$f($h)</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        The graph below shows what you entered for <m>T_2(x)</m>, along with whatever is entered in the text box.  Enter <m>f(x)</m> to see both <m>T_2(x)</m> and <m>f(x)</m> graphed together on the same axes. Hit "Enter" or click out of the box once you're done typing to see the graph change.
+      </p>
+      <graph name="Tandfgraph" fixAxes xMin="-8" xMax="6" yMin="-5" yMax="14">
+        <shortDescription>Graph of second degree Taylor polynomial, along with whatever is entered in the box.</shortDescription>
+          <function name="T2graphed">$T2Entered</function>
+        <textInput anchor="(-5,10)" name="functionfent" prefill="x+2" width="150"><shortDescription>enter a math expression to see it graphed</shortDescription></textInput>
+        <function name="functionf" styleNumber="2">$functionfent</function>
+          <legend position="upperLeft">
+            <label forObject="$T2graphed">$T2Entered</label>
+            <label forObject="$functionf"><math name="fentered">$functionfent</math></label>
+          </legend>
+        </graph>
+      <answer><shortDescription>enter f of x in the textbox on the graph and have the degree 2 Taylor polynomial correct</shortDescription><award symbolicEquality simplifyOnCompare="normalizeOrder"><when>$fentered=$fexpress and $T2Entered.creditAchieved=1</when></award></answer>
+      <p>
+        Check your work once you've entered <m>f(x)</m> and you see the graphs of both <m>T_2(x)</m> and <m>f(x)</m>. Then complete the following sentence to summarize what you notice.
+      </p>
+      <p>
+        Since <m>f(x)</m> is itself a <choiceInput inline name="ans1"><shortDescription>kind of function f of x is</shortDescription>
           <choice>?</choice>
           <choice>linear</choice>
           <choice>quadratic</choice>
           <choice>exponential</choice>
         </choiceInput>
-          function, its degree <m>2</m> Taylor polynomial approximation <m>T_2(x)</m> will be <choiceInput inline name="ans2">
+          function, its degree <m>2</m> Taylor polynomial approximation <m>T_2(x)</m> will be <choiceInput inline name="ans2"><shortDescription>relationship of the second degree Taylor polynomial to the function f of x</shortDescription>
           <choice>?</choice>
           <choice>different from <m>f(x)</m> except at <m>a = $a</m></choice>
           <choice>identical to <m>f(x)</m> for every value of <m>x</m></choice>
-        </choiceInput> because knowing the height, slope, and concavity of any quadratic function at a single value of <m>x</m> determines the function uniquely.
+          <choice>a vertical shift of <m>f(x)</m></choice>
+        </choiceInput> because knowing the height, slope, and concavity of any quadratic function at a single value of <m>x</m> determines the function <choiceInput inline name="ans3"><shortDescription>how much we know about a quadratic function from knowing the height, slope, and concavity</shortDescription>
+          <choice>?</choice>
+          <choice>near <m>a</m>.</choice>
+          <choice>up to a constant.</choice>
+          <choice>uniquely.</choice>
+        </choiceInput>
       </p>
       <p>
         <answer><award><when>
-          $ans1.selectedIndices=3 and $ans2.selectedIndices=3
+          $ans1.selectedIndices=3 and $ans2.selectedIndices=3 and $ans3.selectedIndices=4
         </when></award></answer>
       </p>
     </li>
