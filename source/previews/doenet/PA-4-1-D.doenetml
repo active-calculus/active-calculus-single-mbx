@@ -14,52 +14,43 @@
 <!-- **********************************************************************-->
 
 <setup>
-  
+
   <function name="v">3</function>
   <function name="s">3x</function>
-    
+
   <point name="A" styleNumber="1">(0.25,-0.75)
-    <constraints name="c1">
-      <attractTo>$v</attractTo>
-    </constraints>
-  </point> 
+      <attractTo threshold=".1">$v</attractTo>
+  </point>
 
   <point name="B" styleNumber="1">(1,-0.75)
-    <constraints name="c2">
-      <attractTo>$v</attractTo>
-    </constraints>
-  </point> 
+      <attractTo threshold=".1">$v</attractTo>
+  </point>
 
   <point name="C" styleNumber="1">(1.75,-0.75)
-    <constraints name="c3">
-      <attractTo>$v</attractTo>
-    </constraints>
-  </point> 
+      <attractTo threshold=".1">$v</attractTo>
+  </point>
 
-  <function name="vDrag" through="$A $B $C" styleNumber="1" />  
+  <function name="vDrag" through="$A $B $C" styleNumber="1" />
 
     <point name="As" styleNumber="2">(0.25,-0.75)
-    <constraints name="s1">
-      <attractTo>$s</attractTo>
-    </constraints>
-  </point> 
+      <attractToGrid dy="0.001" dx="0.5" xthreshold=".1" />
+      <attractTo threshold=".2">$s</attractTo>
+  </point>
 
   <point name="Bs" styleNumber="2">(1,-0.75)
-    <constraints name="s2">
-      <attractTo>$s</attractTo>
-    </constraints>
-  </point> 
+      <attractToGrid dy="0.001" dx="0.5" xthreshold=".1" />
+      <attractTo threshold=".2">$s</attractTo>
+  </point>
 
   <point name="Cs" styleNumber="2">(1.75,-0.75)
-    <constraints name="s3">
-      <attractTo>$s</attractTo>
-    </constraints>
-  </point> 
+      <attractToGrid dy="0.001" dx="0.5" xthreshold=".1" />
+      <attractTo threshold=".2">$s</attractTo>
+  </point>
 
-  <function name="sDrag" through="$As $Bs $Cs" styleNumber="2" />  
-  
+  <function name="sDrag" through="$As $Bs $Cs" styleNumber="2" />
+
 </setup>
-  
+
 
 
 <p>
@@ -72,16 +63,16 @@
       <p>
         On the provided in the following figure, drag the three given points so they lie on the graph of the velocity function, <m>v(t) = 3</m>.
       </p>
-      <graph grid="true" size="medium" xMin="-0.25" xMax="3" yMin="-2" yMax="8" fixAxes="true" showNavigation="false">  
+      <graph grid="true" size="medium" xMin="-0.25" xMax="3" yMin="-2" yMax="8" fixAxes="true" showNavigation="false">
         $vDrag
-        <label anchor="(0.2,7.5)">mph</label> 
-        <label anchor="(2.75,0.25)">hours</label> 
+        <label fixed anchor="(0.2,7.5)">mph</label>
+        <label fixed anchor="(2.75,0.25)">hours</label>
         $A
         $B
         $C
-      </graph> 
+      </graph>
       <answer><award><when>
-         $c1.constraintUsed and $c2.constraintUsed and $c3.constraintUsed
+         $A.constraintUsed and $B.constraintUsed and $C.constraintUsed
       </when></award></answer>
     </li>
     <li>
@@ -89,14 +80,16 @@
         Complete the following sentence to find how far the person traveled from <m>t = 0</m> to <m>t = 2</m>:
       </p>
       <p>
-        Because the person traveled at a constant velocity of <m>2</m> miles per hour and we know that when velocity is constant, <answer><choiceInput inline>
+        Because the person traveled at a constant velocity of <m>$v</m> miles per hour and we know that when velocity is constant, <answer><choiceInput inline>
           <choice>?</choice>
           <choice>distance = rate/time</choice>
           <choice>rate = distance * time</choice>
           <choice credit="1">distance = rate * time</choice>
         </choiceInput></answer>, it follows that in this setting, their distance traveled, <m>D</m> satisfies
-       <m>D = </m> <answer>3</answer> miles per hour <m>\cdot</m> <answer>2</answer> hours = <answer>6</answer> miles.
-      </p>      
+      </p>
+      <p sectionWideCheckWork forceIndividualAnswerColoring>
+       <m>D = </m> <answer>3</answer> <m>\frac{\text{miles}}{\text{hour}}</m> <m>\cdot</m> <answer>2</answer> hours = <answer>6</answer> miles.
+      </p>
     </li>
     <li>
       <p>
@@ -111,33 +104,33 @@
         </choiceInput></answer> with a base of length
        <answer>2</answer> (with units <q>hours</q>) and a height of length  <answer>3</answer> (with units <q>miles per hour</q>), so the area of this region is <answer>6</answer> (with units <q>miles</q>).
       </p>
-    </li>  
+    </li>
     <li>
         <p>
-          Find an algebraic formula, <m>s(t)</m>, for the position of the person at time <m>t</m>, assuming that <m>s(0) = 0</m>.  Note that you must state your answer as a function of time, <m>t</m>.  
+          Find an algebraic formula, <m>s(t)</m>, for the position of the person at time <m>t</m>, assuming that <m>s(0) = 0</m>.  Note that you must state your answer as a function of time, <m>t</m>.
         </p>
       <p>
         <m>s(t) = </m> <answer>3t</answer>
-      </p>  
-    </li>  
+      </p>
+    </li>
     <li>
        <p>
           On the axes provided in the following figure, drag the three given points so they lie on the graph of the position function, <m>y = s(t)</m>.
         </p>
-        <graph grid="true" size="medium" xMin="-0.25" xMax="3" yMin="-2" yMax="8" fixAxes="true" showNavigation="false">  
+        <graph grid="true" size="medium" xMin="-0.25" xMax="3" yMin="-2" yMax="8" fixAxes="true" showNavigation="false">
         $sDrag
-        <label anchor="(0.2,7.5)">miles</label> 
-        <label anchor="(2.75,0.25)">hours</label> 
+        <label fixed anchor="(0.2,7.5)">miles</label>
+        <label fixed anchor="(2.75,0.25)">hours</label>
         $As
         $Bs
         $Cs
-      </graph> 
+      </graph>
       <answer><award><when>
-         $s1.constraintUsed and $s2.constraintUsed and $s3.constraintUsed
+         $As.constraintUsed and $Bs.constraintUsed and $Cs.constraintUsed
       </when></award></answer>
     </li>
     <li>
-      <p> 
+      <p>
         Finally, complete the following sentence to explain the behavior of <m>s</m> using using relevant information about the velocity function <m>v</m>.
       </p>
       <p>
@@ -152,7 +145,7 @@
           <choice>negative</choice>
           <choice credit="1">positive</choice>
         </choiceInput></answer> on the interval <m>0 \le t \le 2</m>.
-      </p>  
+      </p>
     </li>
-  </ol>  
-</p>  
+  </ol>
+</p>

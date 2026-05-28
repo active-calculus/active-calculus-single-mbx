@@ -16,40 +16,103 @@
 
 <setup>
   <selectFromSequence name="P" from="410" to="620" step="10"/>
-  <select name="h" hide> 3 4 5 6 </select>
-  
-    <rectangle name="r1" center="(0,0)" width="2" height="10" styleNumber="5" fixed/>
-    <rectangle name="r2" center="(-2,0)" width="2" height="10" styleNumber="5" fixed/>
-    <rectangle name="r3" center="(2,0)" width="2" height="10" styleNumber="5" fixed/>
-    <rectangle name="r4" center="(-4,0)" width="2" height="10" styleNumber="5" fixed/>
-    <rectangle name="r5" center="(4,0)" width="2" height="10" styleNumber="5" fixed/>
-    <rectangle name="r6" center="(6,0)" width="2" height="10" styleNumber="5" fixed/> 
-  
-    <function name="A"> $h*x*($P/2 - $h*x) </function>
-    <number name="crNum"> $P/(4*$h) </number>
-    <number name="max"> $$A($crNum) </number>
-    <number name="vert"> $P/2 - $h*$crNum </number>
-  
-</setup>
+  <select name="h"> 3 4 5 6 </select>
 
-<p> 
-  A rancher wants to enclose a rectangular area and then divide it into <m>$h</m> equally-sized individual pens with fencing parallel to one side of the rectangle (see the figure below). There are <m>$P</m> feet of fencing available to complete the job. What is the largest possible total area of the <m>$h</m> pens? 
-</p>
-  <conditionalContent hide name="group1"> 
+    <rectangle name="r1" center="(-4,0)" width="2" height="10" styleNumber="5" fixed/>
+    <rectangle name="r2" center="(-2,0)" width="2" height="10" styleNumber="5" fixed/>
+    <rectangle name="r3" center="(0,0)" width="2" height="10" styleNumber="5" fixed/>
+    <rectangle name="r4" center="(2,0)" width="2" height="10" styleNumber="5" fixed/>
+    <rectangle name="r5" center="(4,0)" width="2" height="10" styleNumber="5" fixed/>
+    <rectangle name="r6" center="(6,0)" width="2" height="10" styleNumber="5" fixed/>
+
+    <function name="A"> x*($P - 2*x)/($h+1) </function>
+    <derivative name="AP"> $A </derivative>
+    <number name="crNum"> $P/4 </number>
+    <number name="max"> $$A($crNum) </number>
+    <number name="vert"> $P/($h+1) - 2/($h+1)*$crNum </number>
+
+
+  <conditionalContent name="group1">
     <case condition="$h = 3"> $r1 $r2 $r3 </case>
     <case condition="$h = 4"> $r1 $r2 $r3 $r4 </case>
-    <case condition="$h = 5"> $r1 $r2 $r3 $r4 $r5</case>
+    <case condition="$h = 5"> $r1 $r2 $r3 $r4 $r5 </case>
     <case condition="$h = 6"> $r1 $r2 $r3 $r4 $r5 $r6 </case>
   </conditionalContent>
-  <graph name="g" aspectRatio="4" displayXAxis="false" displayYAxis="false" showNavigation="false" showBorder="false">
+
+</setup>
+
+<p>
+  A rancher wants to enclose a rectangular area and then divide it into <m>$h</m> equally-sized individual pens with fencing parallel to one side of the rectangle (see the figure below). Call the horizontal length <m>x</m> and the vertical length <m>y</m>.
+</p>
+<p>
+  If there are <m>$P</m> feet of fencing available to complete the job, what is the largest possible total area of the <m>$h</m> pens?
+</p>
+
+  <graph name="g" aspectRatio="4" ymax="12" displayXAxis="false" displayYAxis="false" showNavigation="false" showBorder="false">
+    <shortDescription>an image showing the equally-sized pens</shortDescription>
     $group1
+    <label fixed anchor="(-6,0)"><m>y</m></label>
+    <label fixed anchor="($h-5,9)"><m>x</m></label>
+    <lineSegment fixed endpoints="(-6.5, -5) (-6.5,5)" styleNumber="5" />
+    <lineSegment fixed endpoints="(-6.7, -5) (-6.3,-5)" styleNumber="5" />
+    <lineSegment fixed endpoints="(-6.7, 5) (-6.3,5)" styleNumber="5" />
+    <lineSegment fixed endpoints="(-5, 11) (2*$h-5,11)" styleNumber="5" />
+    <lineSegment fixed endpoints="(-5, 10.2) (-5,11.8)" styleNumber="5" />
+    <lineSegment fixed endpoints="(2*$h-5, 10.2) (2*$h-5,11.8)" styleNumber="5" />
   </graph>
 
-<p> The absolute maximum enclosed area is <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$max</answer> 
-with units <answer><choiceInput inline>
+<p>
+  The total area of the pen in terms of <m>x</m> and <m>y</m> is
+</p>
+<p>
+  <answer><label><m>A=</m></label>x*y</answer>
+  This the function we need to maximize.
+</p>
+<p>
+  The constraint is that we have <m>$P</m> feet of fencing available. Write an expression involving <m>x</m> and <m>y</m> for the total length of fencing needed to construct the pens.
+</p>
+<p>
+  <answer allowedErrorInNumbers="0.001" allowedErrorIsAbsolute><label><m>$P=</m></label>2x+($h+1)y</answer>
+</p>
+<p>
+  We use the constraint to solve for one of the variables in terms of the other one.
+</p>
+<p>
+  <answer allowedErrorInNumbers="0.001" allowedErrorIsAbsolute><label><m>y=</m></label>($P-2x)/($h+1)</answer>
+</p>
+<p>
+  Now we can return to our function to be optimized and use the expression for <m>y</m> to put <m>A</m> in terms of a single variable, <m>x</m>.
+</p>
+<p>
+  <answer allowedErrorInNumbers="0.001" allowedErrorIsAbsolute><label><m>A=</m></label>$A</answer>
+</p>
+<p>
+  Maximums (and minimums) can occur at critical values and at endpoints.  We find critical values by finding where the derivative equals <m>0</m> or is undefined.
+</p>
+<p>
+  <answer allowedErrorInNumbers="0.001" allowedErrorIsAbsolute><label><m>A'=</m></label>$AP</answer>
+</p>
+<p>
+  <answer allowedErrorInNumbers="0.001" allowedErrorIsAbsolute><label>The critical value(s) of <m>A</m> are <m>x=</m></label>$crNum</answer>
+</p>
+<p>
+  Since <m>x</m> and <m>y</m> are lengths, they can't be negative.  That means that <answer name="xmin"><label>the smallest possible value of <m>x</m> is </label>0</answer> and the maximum possible value for <m>x</m> is <answer name="xmax" allowedErrorInNumbers="0.001" allowedErrorIsAbsolute><label>when <m>y=0</m>, which is when <m>x=</m></label>$P/2</answer>, so
+         <mathInput disabled><label>the domain of <m>A</m> in interval notation is</label>[<conditionalContent condition="$xmin.creditAchieved=1">$xmin</conditionalContent>,<conditionalContent condition="$xmax.creditAchieved=1">$xmax</conditionalContent>]</mathInput>.
+      </p>
+<p>
+  In both cases, when either <m>x=0</m> or <m>y=0</m>, the area <answer><label><m>A=</m></label>0</answer>.
+</p>
+
+<p>
+  The absolute maximum of <m>A</m> occurs when <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>x=</m></label>$crNum</answer> and the absolute
+  <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label>maximum enclosed area is </label>$max</answer>
+with <answer><choiceInput inline><label>units</label>
   <choice>?</choice>
   <choice>feet</choice>
   <choice credit="1">square feet</choice>
   <choice>cubic feet</choice>
-</choiceInput></answer>.  This absolute maximum occurs when the vertical length (in the figure above) of one of the individual pens is <answer name="vertEntered">$vert</answer> feet, and the horizontal length of one of the individual pens is <answer name="horizEntered">$crNum</answer> feet.
-</p> 
+</choiceInput></answer>.
+</p>
+<p>
+  <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label>The horizontal length of one of the individual pens is </label>$crNum/$h</answer> feet, and the vertical length of one of the individual pens is <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>y=</m></label>$vert</answer> feet.
+</p>

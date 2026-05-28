@@ -32,6 +32,7 @@
 
   <point name="A" styleNumber="2" showCoordsWhenDragging="false">(0,$$f(0))
     <constrainTo>$f</constrainTo>
+    <attractToGrid dy=".0001" dx="1" xthreshold="0.05"></attractToGrid>
   </point>
 
   <point name="B" styleNumber="1" draggable="false">($crNum1,$$f($crNum1))</point>
@@ -58,23 +59,14 @@
   Consider the function <m>y = f(x)</m> that is given by the following graph.  Note that you can drag the included red point along the graph and see its coordinates.  Our goal is to reason graphically to find absolute minimum and maximum value of <m>f</m> on <m>[$p,$q]</m>.
 </p>
       <graph xmin="-4" xmax="$q+2" ymin="$fextrema.globalMinimum[2]-3" ymax="$fextrema.globalMaximum[2]+3" size="medium" grid="true" showNavigation="false" fixAxes="true">
+        <shortDescription>graph of a function and a point on the graph to drag around</shortDescription>
         $f
         $A
-        <rectangle fixed center="($A.x,$A.y+0.4)" width="2" height="0.4" filled styleNumber="10"></rectangle>
-        <label fixLocation anchor="($A.x,$A.y+0.4)" layer="2">$A.coords</label>
+        <rectangle fixed center="($A.x,$A.y+0.4)" width="2.6" height="0.4" filled styleNumber="10"></rectangle>
+        <label fixLocation anchor="($A.x,$A.y+0.4)" layer="2"><coords displayDecimals="4">($A.x,$A.y)</coords></label>
         <label fixLocation anchor="(0.5,$$f(0.3)+$s*0.2)"><m>f</m></label>
 
-        <!--
-        $B
-        <label fixLocation anchor="($crNum1-0.2,$$f($crNum1)+$s*0.25)"><m>($crNum1, $$f($crNum1))</m></label>
-        $C
-        <label fixLocation anchor="($crNum2+0.2,$$f($crNum2)-$s*0.25)"><m>($crNum2, $$f($crNum2))</m></label>
-        -->
       </graph>
-
-<p>
-
-</p>
 
 <p>
   <ol marker="a.">
@@ -88,11 +80,6 @@
       </p>
     </li>
     <li>
-      <!--
-      <p>
-        It turns out that the formula for the function <m>y = f(x)</m> is <m>f(x) = <math simplify>$fExpanded</math></m>.
-      </p>
-      -->
       <p>
         Remember that you can drag the included red point along the graph to see its coordinates.
       </p>
@@ -108,10 +95,10 @@
     </li>
     <li>
       <p>
-        The absolute minimum value of <m>f</m> on <m>[$p,$q]</m> is <answer allowedErrorInNumbers="0.008" allowedErrorIsAbsolute>$fextrema.globalMinimum[2]</answer>
+        <answer allowedErrorInNumbers="0.008" allowedErrorIsAbsolute><label>The absolute minimum value of <m>f</m> on <m>[$p,$q]</m> is </label>$fextrema.globalMinimum[2]</answer>
       </p>
       <p>
-        The absolute maximum value of <m>f</m> on <m>[$p,$q]</m> is <answer allowedErrorInNumbers="0.008" allowedErrorIsAbsolute>$fextrema.globalMaximum[2]</answer>
+        <answer allowedErrorInNumbers="0.008" allowedErrorIsAbsolute><label>The absolute maximum value of <m>f</m> on <m>[$p,$q]</m> is </label>$fextrema.globalMaximum[2]</answer>
       </p>
     </li>
   </ol>
