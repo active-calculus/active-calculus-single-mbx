@@ -12,7 +12,8 @@
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
 
-<!-- author: Hannah Burson - at the 2024 Doenet workshop -->
+<!-- initial author: Hannah Burson - at the 2024 Doenet workshop -->
+<!-- modified by Matt Boelkins and Chrissy Safranski -->
 
 <setup>
     <function name="f" domain="[0,3]">64-16(x-1)^2</function>
@@ -22,9 +23,9 @@
     <line name="line4">x=3/2</line>
     <line name="line5">x=2</line>
     <line name="line6">x=3</line>
-    <text name="blank"/>    
-  </setup>  
-  
+    <text name="blank"/>
+  </setup>
+
   <p>
     Suppose that the height <m>s</m> of a ball at time <m>t</m>
     (in seconds)
@@ -36,102 +37,85 @@
     <m>y = s(t)</m> on the time interval <m>0 \le t \le 3</m>.
   </p>
 
-  <!-- Interactive Answers -->
 
   <graph name="g"  xmin="-1" xmax="3.5" ymin="-5" ymax="70" showNavigation="false" fixAxes="true">
+    <shortDescription>graph of s of t with points to drag to the correct heights</shortDescription>
     <xLabel><m>t</m></xLabel>
     <point name = "A" > (0,0)
-      <constraints>
         <attractToGrid dx="1/2" dy="1"/>
         <constrainTo>$line1</constrainTo>
-      </constraints>
     </point>
     <point name = "B"> (0.5,0)
-      <constraints>
         <attractToGrid  dx="1/2" dy="1"/>
         <constrainTo>$line2</constrainTo>
-      </constraints>
     </point>
     <point name = "C"> (1,0)
-      <constraints>
         <constrainTo>$line3</constrainTo>
         <attractToGrid  dx="1/2" dy="1"/>
-      </constraints>
     </point>
     <point name = "D"> (1.5,0)
-      <constraints>
         <constrainTo>$line4</constrainTo>
         <attractToGrid  dx="1/2" dy="1"/>
-      </constraints>
     </point>
     <point name = "E"> (2,0)
-      <constraints>
         <constrainTo>$line5</constrainTo>
         <attractToGrid dx="0.5" dy="1"/>
-      </constraints>
     </point>
     <point name = "F"> (3,0)
-      <constraints>
         <constrainTo>$line6</constrainTo>
         <attractToGrid dx="0.5" dy="1"/>
-      </constraints>
     </point>
 
     <curve name="s" through="$A $B $C $D $E $F"/>
   </graph>
 
-  <answer name="ans"> 
+  <answer name="ans">
     <award>
       <when> $$f($A.x) = $A.y and $$f($B.x) = $B.y  and $$f($C.x)=$C.y and $$f($D.x)=$D.y and $$f($E.x)=$E.y and $$f($F.x)=$F.y
       </when>
     </award>
   </answer>
   <feedback condition="$$f($A.x) != $A.y and $ans.justSubmitted">
-    The height of the point whose x-coordinate is <m>0</m> is incorrect.    
+    The height of the point whose x-coordinate is <m>0</m> is incorrect.
   </feedback>
   <feedback condition="$$f($B.x) != $B.y and $ans.justSubmitted">
-    The height of the point whose x-coordinate is <m>\frac{1}{2}</m> is incorrect.    
+    The height of the point whose x-coordinate is <m>\frac{1}{2}</m> is incorrect.
   </feedback>
   <feedback condition="$$f($C.x) != $C.y and $ans.justSubmitted">
-    The height of the point whose x-coordinate is <m>1</m> is incorrect.    
+    The height of the point whose x-coordinate is <m>1</m> is incorrect.
   </feedback>
   <feedback condition="$$f($D.x) != $D.y and $ans.justSubmitted">
-    The height of the point whose x-coordinate is <m>\frac{3}{2}</m> is incorrect.    
+    The height of the point whose x-coordinate is <m>\frac{3}{2}</m> is incorrect.
   </feedback>
   <feedback condition="$$f($E.x) != $E.y and $ans.justSubmitted">
-    The height of the point whose x-coordinate is <m>2</m> is incorrect.    
+    The height of the point whose x-coordinate is <m>2</m> is incorrect.
   </feedback>
   <feedback condition="$$f($F.x) != $F.y and $ans.justSubmitted">
-    The height of the point whose x-coordinate is <m>3</m> is incorrect.    
+    The height of the point whose x-coordinate is <m>3</m> is incorrect.
   </feedback>
-<aside startOpen> <title>(a)</title>
-  <p>
+
+<cascade revealAll>
+  <aside startOpen><title>(a)</title>
+  <p sectionWideCheckWork forceIndividualAnswerColoring>
     State the coordinates <m>(x,y)</m> of the following three important points on the graph:
     <ul>
-      <li>Starting point: <mathInput name="start"/></li>
-      <li>Highest point: <mathInput name="highest"/></li>
-      <li>Landing point: <mathInput name="lands"/></li>
+      <li><answer name="start"><label>Starting point: </label>(0,$$f(0))</answer></li>
+      <li><answer name="highest"><label>Highest point: </label>(1,$$f(1))</answer></li>
+      <li><answer name="lands"><label>Landing point:  </label>(3,$$f(3))</answer></li>
     </ul>
-    <answer> 
-      <award>
-        <when>
-          $start=(0,$$f(0)) and $highest=(1,$$f(1)) and $lands = (3,$$f(3))
-        </when>
-      </award>
-    </answer>
   </p>
-  <!-- End of Interactive Answers -->
-</aside>
-<aside><title>(b)</title>
+
+  </aside>
+  <aside><title>(b)</title>
   <p>
-    What word best describes the behavior of the ball on each of the following time intervals?          
+    What word best describes the behavior of the ball on each of the following time intervals?
   </p>
-   
-  <!-- Interactive Answers -->
+
+
   <ul>
-    <li> <m> 0\lt t \lt 1</m>: 
+    <li> <m> 0\lt t \lt 1</m>:
       <answer name="int1desc">
-        <choiceInput inline>
+        <choiceInput inline><shortDescription>motion on the interval between 0 and 1</shortDescription>
           <choice credit="1">rising</choice>
           <choice>falling</choice>
           <choice>staying still</choice>
@@ -140,7 +124,7 @@
     </li>
     <li><m> 1\lt t\lt 3</m>:
       <answer name="int2desc">
-        <choiceInput inline>
+        <choiceInput inline><shortDescription>motion on the interval between 1 and 3</shortDescription>
           <choice credit="0">rising</choice>
           <choice credit="1">falling</choice>
           <choice>staying still</choice>
@@ -148,72 +132,64 @@
     </li>
   </ul>
   <p>
-    What occurs at the instant <m>t = 1</m>?<textInput name="max"/>
+    <textInput name="max"><label>What occurs at the instant <m>t = 1</m>?</label></textInput>
   </p>
-                    
+
   <conditionalContent condition="$int1desc.creditAchieved=1 and $int2desc.creditAchieved=1 and $max!=$blank">
-    
+
     <aside><title>Check your answers</title>
       <p>
-        The ball is rising when <m>0\lt t\lt 1</m> and falling when <m>1\lt t\lt 3</m>. The ball reaches its maximum height when <m>t=1</m>, and changes direction from rising to falling at that instant. 
+        The ball is rising when <m>0\lt t\lt 1</m> and falling when <m>1\lt t\lt 3</m>. The ball reaches its maximum height when <m>t=1</m>, and changes direction from rising to falling at that instant.
       </p>
     </aside>
   </conditionalContent>
-          
-  <!-- End of Interactive Answers -->
-</aside>
-          
-<aside> <title>(c)</title>
+  </aside>
+  <aside><title>(c)</title>
   <p>
     Consider the expression
     <me>
       AV_{[0.5,1]} = \frac{s(1) - s(0.5)}{1-0.5}.
     </me>
-    Compute the value of           
+    Compute the value of
   </p>
-  <!-- Interactive Answers -->
-  <m>AV_{[0.5,1]}=</m><mathInput name="AV"/>
-  <answer><award><when>$AV=8</when></award></answer>
-  <!-- End of Interactive Answers -->
-          
-  <p> 
+
+  <answer name="AV"><label><m>AV_{[0.5,1]}=</m></label>8</answer>
+
+
+  <p>
     The value of <m>AV_{[0.5,1]}</m> can be thought of as the slope of the line between two points on the graph of <m>s(t) = 64 - 16(t-1)^2</m>.  Drag the two points on the line to the appropriate two points on the graph of <m>s(t)</m> so that the slope of the line between them is the correct value (and representation) of <m>AV_{[0.5,1]}</m>.
   </p>
-  <graph name="g-again"  xmin="-1" xmax="3.5" ymin="-5" ymax="70" showNavigation="false">
-    <xLabel><m>t</m></xLabel> 
-    $f
-    <point name="A1" draggable="false"> (0,48) </point>
-    <point name="B1" draggable="false"> (0.5,60) </point>
-    <point name="C1" draggable="false"> (1,64) </point>
-    <point name="D1" draggable="false"> (1.5,60) </point>
-    <point name="E1" draggable="false"> (2,48) </point>
-    <point name="F1" draggable="false"> (3,0) </point>         
-<!--
-              <curve draggable="false" name="s-again" through="$A1 $B1 $C1 $D1 $E1 $F1"/> -->
+  <graph name="g-again"  xmin="-1" xmax="3.5" ymin="-5" ymax="70" showNavigation="false" fixAxes><shortDescription>graph of s of t with a line representing the average rate of change between two points</shortDescription>
+    <xLabel><m>t</m></xLabel>
+    <curve fixed extend='$s' />
+    <point fixed extend="$A"/>
+    <point fixed extend="$B"/>
+    <point fixed extend="$C"/>
+    <point fixed extend="$D"/>
+    <point fixed extend="$E"/>
+    <point fixed extend="$F"/>
+
+
     <point name = "point1" styleNumber="2"> (1.5,66)
-      <constraints>
-        <attractTo>$A1</attractTo>
-        <attractTo>$B1</attractTo>
-        <attractTo>$C1</attractTo>
-        <attractTo>$D1</attractTo>
-        <attractTo>$E1</attractTo>
-        <attractTo>$F1</attractTo>
-      </constraints>
+        <attractTo>$A</attractTo>
+        <attractTo>$B</attractTo>
+        <attractTo>$C</attractTo>
+        <attractTo>$D</attractTo>
+        <attractTo>$E</attractTo>
+        <attractTo>$F</attractTo>
     </point>
     <point name = "point2" styleNumber="2"> (2.5,66)
-      <constraints>
-        <attractTo>$A1</attractTo>
-        <attractTo>$B1</attractTo>
-        <attractTo>$C1</attractTo>
-        <attractTo>$D1</attractTo>
-        <attractTo>$E1</attractTo>
-        <attractTo>$F1</attractTo>
-      </constraints>
+        <attractTo>$A</attractTo>
+        <attractTo>$B</attractTo>
+        <attractTo>$C</attractTo>
+        <attractTo>$D</attractTo>
+        <attractTo>$E</attractTo>
+        <attractTo>$F</attractTo>
     </point>
     <line name="segment1" through="$point1 $point2" styleNumber="2" draggable="false"/>
   </graph>
 
-  <answer name="ans1"> 
+  <answer name="ans1">
     <award>
       <when> $point1.x = 0.5 and $point1.y=60 and $point2.x = 1 and $point2.y=64
       </when>
@@ -224,23 +200,23 @@
     </award>
   </answer>
   <feedback condition="(($point2.y-$point1.y)/($point2.x-$point1.x))!=8 and $ans1.justSubmitted">
-      The slope of the line segment between your points is <m>\frac{$point2.y-$point1.y}{$point2.x-$point1.x}=$segment1.slope</m>. 
+      The slope of the line segment between your points is <m>\frac{$point2.y-$point1.y}{$point2.x-$point1.x}=$segment1.slope</m>.
 At least one of your two chosen points is incorrect.
   </feedback>
-         
+
   <p>
-    What does the value of <m>AV_{[0.5,1]} = </m><mathInput disabled>$AV</mathInput> tell us about the motion of the ball?
+    What does the value of <m>AV_{[0.5,1]} = </m><mathInput disabled>$AV<shortDescription>average velocity over 0.5 to 1</shortDescription></mathInput> tell us about the motion of the ball?
   </p>
-    <!-- Interactive Answers -->
-  <textInput name="ballMotion" expanded/>
-  <p> Finally, what are the units on <m>AV_{[0.5,1]}</m>?<answer name="units">  
-    <choiceInput inline>
+
+  <textInput name="ballMotion" expanded><shortDescription>describe the motion of the ball</shortDescription></textInput>
+  <p> Finally, what are the units on <m>AV_{[0.5,1]}</m>?<answer name="units">
+    <choiceInput inline><shortDescription>units of average velocity</shortDescription>
       <choice>feet</choice>
       <choice credit="1">feet per second</choice>
       <choice>feet per minute</choice>
       <choice>seconds</choice>
       <choice>minutes</choice>
-    </choiceInput></answer>  
+    </choiceInput></answer>
   </p>
   <conditionalContent condition="$ballMotion!=$blank and $units.creditAchieved=1">
 
@@ -250,7 +226,6 @@ At least one of your two chosen points is incorrect.
             One thing you might notice is that the ball has an average velocity of 8 feet per second on the time interval <m>[0.5,1]</m>.</p>
                 </aside>
   </conditionalContent>
-          
-  <!-- End of Interactive Answers -->
-    
-</aside>
+
+  </aside>
+</cascade>
