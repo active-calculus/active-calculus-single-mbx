@@ -13,6 +13,7 @@
 <!-- **********************************************************************-->
 
 <!-- author: Jon Rogness - at the 2024 Doenet workshop -->
+<!-- Modified by Chrissy Safranski -->
 
   <setup>
     <text name="blank"/>
@@ -35,29 +36,29 @@
 
     <!-- Begin Doenet code to replicate the figure from PreTeXt -->
     <graph name="piecewise" xmin="-2.5" xmax="3.5" ymin="-1.5" ymax="4.5" grid="0.5 0.5"
-      fixaxes size="medium">
+      fixaxes size="medium"><shortDescription>A function g which contains some holes and a jump and a draggable point. The x-value can be entered and the y-value changes correspondingly.</shortDescription>
       <function>$g</function>
       <endpoint name="yAxis1" open draggable="false">(0,4)</endpoint>
       <endpoint name="yAxis2" draggable="false">(0,1)</endpoint>
       <endpoint name="xOne1" draggable="false">(1,3)</endpoint>
       <endpoint name="xOne2" open draggable="false">(1,2)</endpoint>
       <endpoint name="xTwo" open draggable="false">(2,1)  </endpoint>
-      <text anchor="(1.5,4)">
-    x-value:
-  </text>
-  <textInput anchor="(2.75,4)" name="ti" prefill="-1"/>
+      <textInput anchor="(2.3,4)" name="ti" prefill="-1" width="70" draggable="no"><label>x-value:   </label><shortDescription>x value of the draggable point</shortDescription></textInput>
       <point styleNumber="2" hide="$badness">($ti,$gofti)</point>
-      <text anchor="(1.5,3.5)">
+      <text anchor="(1.75,3.5)" fixed>
     y-value:
   </text>
-      <math hide="$badness" anchor="(2.6,3.5)">$gofti</math>
-      <text hide="!$badness" anchor="(2.6,3.5)">undefined</text>
+      <!-- Using a text box allows a screen reader to see a short description. But unlike disabled mathInputs, disabled textInput doesn't look any different, which I think makes it more confusing to sighted readers. I can't figure out how to add a description of what the y-number means in a way that doesn't look bad.-->
+      <!-- <textInput disabled anchor="(-1.5,3.5)" width="60"><shortDescription>y value of the draggable point</shortDescription><conditionalContent><case condition="!$badness"><math>$gofti</math></case><else><text>undefined</text></else></conditionalContent></textInput> -->
+      <math hide="$badness" anchor="(2.6,3.5)" fixed>$gofti</math>
+      <!-- did the below instead of using text so that hitting tab with a keyboard would at least stop on it. -->
+      <m hide="!$badness" anchor="(2.6,3.5)" fixed>\text{undefined}</m>
     </graph>
 
 
-    <!-- End Doenet code to replicate the figure from PreTeXt -->
 
 
+<cascade revealAll>
   <aside startOpen><title>(a)</title>
           <p>
             Determine the values <m>g(-2)</m>, <m>g(-1)</m>,
@@ -66,23 +67,20 @@
 <!--             If the function value is not defined,
             explain what feature of the graph tells you this.
  -->
-          If the function value is not defined, enter <em>undefined</em>, and be
-          ready to explain your answer in class.
+          If the function value is not defined, enter <em>undefined</em>, and make sure you can explain your answer.
           </p>
 
-        <!-- Begin Interactive DoenetML Q&A -->
-        <p><m>g(-2) = </m><answer name="gofneg2">0</answer></p>
-          <feedback condition="$gofneg2 != 0 and $gofneg2.numSubmissions > 1"> <updateValue target="ti" newValue="-2" >
+        <p><answer name="gofneg2"><label><m>g(-2) = </m></label>0</answer></p>
+          <feedback condition="$gofneg2 != 0 and $gofneg2.numSubmissions > 1"> <updateValue target="$ti" newValue="-2" >
   <label>Show point on the graph above</label>
 </updateValue>
-
           </feedback>
 
-        <p><m>g(-1) = </m><answer name="gofneg1">3</answer></p>
-          <feedback condition="$gofneg1 != 3 and $gofneg1.numSubmissions > 1"> <updateValue target="ti" newValue="-1" >
+        <p><answer name="gofneg1"><label><m>g(-1) = </m></label>3</answer></p>
+          <feedback condition="$gofneg1 != 3 and $gofneg1.numSubmissions > 1"> <updateValue target="$ti" newValue="-1" >
   <label>Show point on the graph above</label>
 </updateValue></feedback>
-        <p><m>g(0) = </m><answer name="gof0">1</answer></p>
+        <p><answer name="gof0"><label><m>g(0) = </m></label>1</answer></p>
           <feedback condition="$gof0 != 1 and $gof0.numSubmissions > 1">
 <!--             <callAction actionName="addChildren" target="piecewise">
     <point styleNumber="3" draggable="false" hide="$gof0 = 1 or $gof0.numSubmissions < 1">(0,1)</point>
@@ -90,21 +88,20 @@
     <label>Show on the graph above</label>
   </callAction>
   <p>Which one is the value of the function at <m>x=0</m>?</p> -->
-            <updateValue target="ti" newValue="0" >
+            <updateValue target="$ti" newValue="0" >
   <label>Show point on the graph above</label>
 </updateValue>
           </feedback>
-        <p><m>g(1) = </m><answer name="gof1">3</answer></p>
-          <feedback condition="$gof1 != 3 and $gof1.numSubmissions > 1"> <updateValue target="ti" newValue="1" >
+        <p><answer name="gof1"><label><m>g(1) = </m></label>3</answer></p>
+          <feedback condition="$gof1 != 3 and $gof1.numSubmissions > 1"> <updateValue target="$ti" newValue="1" >
   <label>Show point on the graph above</label>
 </updateValue>
           </feedback>
-        <p><m>g(2) = </m><answer name="gof2" type="text">undefined</answer></p>
-          <feedback condition="$gof2 != undefined and $gof2.numSubmissions > 1"> <updateValue target="ti" newValue="2" >
+        <p><answer name="gof2"><label><m>g(2) = </m></label>undefined</answer></p>
+          <feedback condition="$gof2 != undefined and $gof2.numSubmissions > 1"> <updateValue target="$ti" newValue="2" >
   <label>Show point on the graph above</label>
 </updateValue>
           </feedback>
-        <!-- End Interactive DoenetML Q&A -->
 
   </aside>
 
@@ -115,30 +112,19 @@
             complete the following sentence:
           </p>
 
-        <!-- Begin Interactive DoenetML Q&A -->
-        <p>As <m>x</m> gets closer and closer (but not equal) to <m>a=-1</m>, <m>g(x)</m> gets as close as we want to <answer>3</answer></p>
-        <p>As <m>x</m> gets closer and closer (but not equal) to <m>a=0</m>, <m>g(x)</m> gets as close as we want to <answer>4</answer></p>
-        <p>As <m>x</m> gets closer and closer (but not equal) to <m>a=2</m>, <m>g(x)</m> gets as close as we want to <answer name="limat2">1</answer></p>
-        <!-- End Interactive DoenetML Q&A -->
+        <p>As <m>x</m> gets closer and closer (but not equal) to <m>a=-1</m>, <m>g(x)</m> gets as close as we want to <answer><shortDescription>what g of x approaches as x gets close to -1</shortDescription>3</answer></p>
+        <p>As <m>x</m> gets closer and closer (but not equal) to <m>a=0</m>, <m>g(x)</m> gets as close as we want to <answer><shortDescription>what g of x approaches as x gets close to 0</shortDescription>4</answer></p>
+        <p>As <m>x</m> gets closer and closer (but not equal) to <m>a=2</m>, <m>g(x)</m> gets as close as we want to <answer name="limat2"><shortDescription>what g of x approaches as x gets close to 2</shortDescription>1</answer></p>
 
  </aside>
     <aside><title>(c)</title>
-          <p>
-            What happens as <m>x</m> gets closer and closer
-            (but not equal)
-            to <m>a = 1</m>?
-            Does the function <m>g(x)</m> get as close as we would like to a single value?
-          </p>
-              <textInput name="limitDNE" expanded/>
+      <p>
+        Complete the following sentence to describe what happens as <m>x</m> gets closer and closer (but not equal) to <m>a = 1</m>.
+      </p>
+      <p>
+        The function <choiceInput inline name="c1"><shortDescription>behavior of the function</shortDescription><choice>does</choice><choice>does not</choice></choiceInput> get closer and closer to a single value as the <choiceInput inline name="c2"><shortDescription>input or output</shortDescription><choice>input</choice><choice>output</choice></choiceInput> value approaches 1. From the left side, or for <choiceInput inline name="c3"><shortDescription>what left side means</shortDescription><choice>x-values less than 1,</choice><choice>x-values greater than 1,</choice><choice>x equals 1,</choice></choiceInput> the function is approaching 3, while from the right side, or for <choiceInput inline name="c4"><shortDescription>what right side means</shortDescription><choice>x-values less than 1,</choice><choice>x-values greater than 1,</choice><choice>x equals 1,</choice></choiceInput> the function is approaching 2.  </p>
+      <!-- <p> Note that the function was approaching a single number at <m>x=2</m> from both sides, even though the function was undefined at <m>x=2</m>.</p> -->
+      <answer><award><when>$c1.selectedIndex=2 and $c2.selectedIndex=1 and $c3.selectedIndex=1 and $c4.selectedIndex=2</when></award></answer>
 
-          <conditionalContent condition="$limitDNE.value!=$blank and $limat2.creditAchieved=1">
-
-    <aside>
-  <title>Check your answer</title>
-          <p>
-            The function does not get closer and closer to a single value as the input value approaches 1. From the left side, or for x-values less than 1, the function is approaching 3, while from the right side, or for x-values greater than 1, the function is approaching 2.  </p>
-      <p> Note that the function was approaching a single number at <m>x=2</m> from both sides, even though there was a hole right at <m>x=2</m>.</p>
-                </aside>
-          </conditionalContent>
-
-    </aside>
+</aside>
+</cascade>

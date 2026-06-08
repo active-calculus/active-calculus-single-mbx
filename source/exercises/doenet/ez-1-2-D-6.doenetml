@@ -12,17 +12,12 @@
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
 
-<!-- Author: Christina Safranski                                           -->
-
-<!--
-<section name = "exercise-1-1-d-1"><title>Title here</title>
-  <statement>
--->
+<!-- Author: Chrissy Safranski                                           -->
 
 <setup>
   <selectFromSequence name="a" from="-5" to="5" exclude="0" />
   <selectFromSequence name="b" from="-5" to="5" exclude="0 $a -$a" />
-  <selectFromSequence name="c" from="-8" to="8" exclude="0" />  
+  <selectFromSequence name="c" from="-8" to="8" exclude="0" />
   <number name="asq">$a^2</number>
   <number name="ans1">2*$a*$b/$c</number>
   <math name="num1" simplify>($b x+$a)^2-$asq</math>
@@ -35,26 +30,51 @@
 
 <ol marker="a.">
   <li>
+    <div sectionWideCheckWork forceIndividualAnswerColoring>
     <p>
-      <m>\displaystyle\lim_{x\to 0} \frac{$num1}{$denom1}</m>= <answer>$ans1</answer>
+       <answer symbolicEquality simplifyOnCompare="numbers"><mathInput prefill="/" minWidth="20"><label><m>\displaystyle\lim_{x\to 0} \frac{$num1}{$denom1}= \lim_{x\to 0}</m></label><description>Expand the numerator.</description></mathInput><award>(x^2+2*$a*x)/$denom1</award><award>x(x+2*$a)/$denom1</award><award name="toofar1" credit="0">(x+2*$a)/$c</award></answer>
     </p>
+    <feedback condition="$toofar1">This answer box is asking for what you should have before you divide the <m>x</m>. Use what you entered here in the next answer box. </feedback>
+    <p>
+       <answer symbolicEquality simplifyOnCompare="numbers"><mathInput prefill="/" minWidth="20"><label><m>\displaystyle =\lim_{x\to 0}</m></label><description>Divide the <m>x</m> from the numerator and denominator.</description></mathInput><award>(x+2*$a)/$c</award></answer><m>=</m><answer><shortDescription>Final answer to the limit</shortDescription><description>Final answer to the limit</description>$ans1</answer>
+    </p>
+    </div>
   </li>
 
 <setup>
   <selectFromSequence name="aa" from="2" to="5" />
-  <selectFromSequence name="bb" from="1" to="4" />  
+  <selectFromSequence name="bb" from="1" to="4" />
 
   <number name="bMa">$bb - $aa</number>
-  <number name="ab">$aa*$bb</number> 
+  <number name="ab">$aa*$bb</number>
   <number name="cc">$bb^2-$aa</number>
-  <number name="result">2*$bb</number>    
+  <number name="result">2*$bb</number>
   <math name="denom2">sqrt(x+$cc)-$bb</math>
+  <math name="denom2conj">sqrt(x+$cc)+$bb</math>
   <math name="num2">x-$aa</math>
 </setup>
 
   <li>
     <p>
-      <m>\displaystyle\lim_{x\to $aa} \frac{$num2}{$denom2}</m> = <answer name="ans2">$result</answer>
+      Consider the following limit:
+      <me>\displaystyle\lim_{x\to $aa} \frac{$num2}{$denom2}</me>
+      What expression will rationalize the denominator? <answer><shortDescription>rationalizing expression</shortDescription>$denom2conj</answer>
     </p>
-  </li>  
+    <p>
+      Use that expression to evaluate the limit.
+    </p>
+    <div sectionWideCheckWork forceIndividualAnswerColoring>
+    <p>
+       <answer symbolicEquality simplifyOnCompare="numbers"><mathInput prefill="/" minWidth="20"><label><m>\displaystyle\lim_{x\to $aa} \frac{$num2}{$denom2}=</m></label><description>Multiply both the numerator and denominator by the expression which will rationalize the denominator, but do not simplify.</description></mathInput><award>($num2*$denom2conj)/($denom2*$denom2conj)</award><award name="toofar2" credit="0">($num2*$denom2conj)/$num2</award><award name="toofar3" credit="0">$denom2conj</award></answer>
+    </p>
+    <feedback condition="$toofar2">This answer box is just asking you to multiply, not combine or simplify. Use what you entered here in the next answer box. </feedback>
+    <feedback condition="$toofar3">This answer box is just asking you to multiply, not combine or simplify. You do need to get to what you entered in order to find the final answer.</feedback>
+    <p>
+       <answer symbolicEquality><mathInput prefill="/" minWidth="20"><label><m>\displaystyle\lim_{x\to $aa}</m></label><description>Multiply the terms in the denominator.</description></mathInput><award>($num2*$denom2conj)/$num2</award><award name="toofar4" credit="0">$denom2conj</award><award simplifyOnCompare="numbers" name="addnumbers" credit="0">($num2*$denom2conj)/$num2</award><award expandOnCompare name="expandednum" credit="0">($num2*$denom2conj)/$num2</award></answer><m>=</m><answer><shortDescription>Final answer to the limit</shortDescription><description>Final answer to the limit</description>$result</answer>
+    </p>
+      <feedback condition="$toofar4">This answer box is asking for what you have before you divided the term present in both the numerator and denominator. </feedback>
+      <feedback condition="$expandednum">Do not multiply out the numerator; that makes it harder to see which term appears in both the numerator and denominator.</feedback>
+      <feedback condition="$addnumbers">This is very close!  Add or subtract the numbers in the denominator together.</feedback>
+    </div>
+  </li>
 </ol>
