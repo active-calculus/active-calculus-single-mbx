@@ -15,8 +15,8 @@
 <setup>
   <selectFromSequence name="A" from="18" to="22" step="2"/>
   <selectFromSequence name="B" from="4" to="6" step="1"/>
-  <selectFromSequence name="k" from="0.1" to="0.3" step="0.1"/>  
-  <selectFromSequence name="m" from="24" to="36" step="6"/>  
+  <selectFromSequence name="k" from="0.1" to="0.3" step="0.1"/>
+  <selectFromSequence name="m" from="24" to="36" step="6"/>
   <number name="d">$m/6</number>
   <number name="D">9*$m/6</number>
 
@@ -25,18 +25,15 @@
     <function domain="[$m,infinity)">$A*e^(-$k/3*(x-$m))</function>
   </piecewiseFunction>
 
-  
-  <function name="v">1/$a * (x-$a)^2 - $a/2</function> 
-  <number name="L9">$d * ($$c(0) + $$c($d) + $$c(2*$d) + $$c(3*$d) + $$c(4*$d) + $$c(5*$d) + $$c(6*$d) + $$c(7*$d) + $$c(8*$d))</number>
-  
-  <number name="R5">$d * ($$v($d) + $$v(2*$d) + $$v(3*$d) + $$v(4*$d) + $$v(5*$d))</number>
+  <repeatForSequence from="0" to="8" valueName="n" name="heights">
+    <round numDecimals="2">
+      $$c(0+$n*$d)
+    </round>
+  </repeatForSequence>
+  <sum name="heightsum" displayDecimals="5">$heights</sum>
 
 </setup>
-<!--
-<graph xmin="-5" xmax="$m+20" ymin="-2" ymax="24">
-  $c
-</graph>
--->
+
   <p>
     A person's rate of burning calories during a <m>$D</m>-minute workout is given the function <m>c(t)</m> whose output is measured in calories per minute at time <m>t</m> in minutes.  The following table shows some of the values of <m>c(t)</m>.
   </p>
@@ -47,16 +44,16 @@
           <cell><m><number displayDecimals="2">0</number></m></cell>
           <cell><m><number displayDecimals="2">$d</number></m></cell>
           <cell><m><number displayDecimals="2">2*$d</number></m></cell>
-          <cell><m><number displayDecimals="2">3*$d</number></m></cell> 
-          <cell><m><number displayDecimals="2">4*$d</number></m></cell>  
+          <cell><m><number displayDecimals="2">3*$d</number></m></cell>
+          <cell><m><number displayDecimals="2">4*$d</number></m></cell>
         </row>
         <row halign="center">
-          <cell><m>v(t)</m></cell>
-          <cell><m><number displayDecimals="2">$$c(0)</number></m></cell>
-          <cell><m><number displayDecimals="2">$$c($d)</number></m></cell>
-          <cell><m><number displayDecimals="2">$$c(2*$d)</number></m></cell>
-          <cell><m><number displayDecimals="2">$$c(3*$d)</number></m></cell>
-          <cell><m><number displayDecimals="2">$$c(4*$d)</number></m></cell>
+          <cell><m>c(t)</m></cell>
+          <cell><m>$heights[1]</m></cell>
+          <cell><m>$heights[2]</m></cell>
+          <cell><m>$heights[3]</m></cell>
+          <cell><m>$heights[4]</m></cell>
+          <cell><m>$heights[5]</m></cell>
         </row>
       </tabular>
 
@@ -66,72 +63,72 @@
           <cell><m><number displayDecimals="2">5*$d</number></m></cell>
           <cell><m><number displayDecimals="2">6*$d</number></m></cell>
           <cell><m><number displayDecimals="2">7*$d</number></m></cell>
-          <cell><m><number displayDecimals="2">8*$d</number></m></cell>  
-          <cell><m><number displayDecimals="2">9*$d</number></m></cell>  
+          <cell><m><number displayDecimals="2">8*$d</number></m></cell>
+          <cell><m><number displayDecimals="2">9*$d</number></m></cell>
         </row>
         <row halign="center">
-          <cell><m>v(t)</m></cell>
-          <cell><m><number displayDecimals="2">$$c(5*$d)</number></m></cell>
-          <cell><m><number displayDecimals="2">$$c(6*$d)</number></m></cell>
-          <cell><m><number displayDecimals="2">$$c(7*$d)</number></m></cell>
-          <cell><m><number displayDecimals="2">$$c(8*$d)</number></m></cell>
+          <cell><m>c(t)</m></cell>
+          <cell><m>$heights[6]</m></cell>
+          <cell><m>$heights[7]</m></cell>
+          <cell><m>$heights[8]</m></cell>
+          <cell><m>$heights[9]</m></cell>
           <cell><m><number displayDecimals="2">$$c(9*$d)</number></m></cell>
         </row>
       </tabular>
 
 <p>
-  Our goal is to estimate and interpret the value of 
+  Our goal is to estimate and interpret the value of
   <me>
     \int_0^{$D} c(t) \, dt
   </me>
-</p>  
+</p>
 
 <p>
   <ol marker="a.">
     <li>
       <p>
-        Use a left Riemann sum with <m>9</m> subintervals to estimate the value of <m>\int_0^{$D} c(t) \, dt</m>. 
+        Estimate the value of <m>\int_0^{$D} c(t) \, dt</m> using a left Riemann sum with <m>9</m> subintervals.
       </p>
       <p>
-        <m>\int_0^{$D} c(t) \, dt \approx L_9 = </m><answer allowedErrorInNumbers="0.05" allowedErrorIsAbsolute> $L9</answer>
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>\int_0^{$D} c(t) \, dt \approx L_9 = </m></label>$d*$heightsum</answer>
       </p>
-    </li>     
+    </li>
     <li>
       <p>
         Complete the following sentence to explain the meaning of the definite integral.
-      </p>  
+      </p>
       <p>
-        Since the units on <m>c(t)</m> are <choiceInput inline name="c1">
+        Since the units on <m>c(t)</m> are <choiceInput inline name="c1"><shortDescription>units on c of t</shortDescription>
           <choice>?</choice>
           <choice>minutes</choice>
           <choice>calories</choice>
           <choice>calories per minute</choice>
           <choice>minutes per calorie</choice>
-        </choiceInput>, and the units on <m>\Delta t</m> are <choiceInput inline name="c2">
+        </choiceInput>, and the units on <m>\Delta t</m> are <choiceInput inline name="c2"><shortDescription>units on delta t</shortDescription>
           <choice>?</choice>
           <choice>minutes</choice>
           <choice>calories</choice>
           <choice>calories per minute</choice>
           <choice>minutes per calorie</choice>
-        </choiceInput>, it follows that the units on definite integral <m>\int_0^{$D} c(t) \, dt</m> are <choiceInput inline name="c3">
+        </choiceInput>, it follows that the units on definite integral <m>\int_0^{$D} c(t) \, dt</m> are <choiceInput inline name="c3"><shortDescription>units on the integral of c of t</shortDescription>
           <choice>?</choice>
           <choice>minutes</choice>
           <choice>calories</choice>
           <choice>calories per minute</choice>
           <choice>minutes per calorie</choice>
-        </choiceInput>, and hence the Riemann sum's value estimates <choiceInput inline name="c4">
+        </choiceInput>, and hence the Riemann sum's value estimates <choiceInput inline name="c4"><shortDescription>what quantity the Riemann sum is an estimate of</shortDescription>
           <choice>?</choice>
           <choice>the total time the workout took</choice>
           <choice>the average calories burned per minute in the workout</choice>
           <choice>the total calories burned during the workout</choice>
         </choiceInput>.
-      </p>  
+      </p>
       <p>
           <answer><award><when>
             $c1.selectedIndices=4 and $c2.selectedIndices=2 and $c3.selectedIndices=3 and
-            $c4.selectedIndices=4 
+            $c4.selectedIndices=4
           </when></award></answer>
       </p>
-    </li>  
-  </ol>  
+    </li>
+  </ol>
 </p>

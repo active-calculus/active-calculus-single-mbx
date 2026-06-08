@@ -17,20 +17,20 @@
   <selectFromSequence name="k" from="2" to="5" step="1"/>
   <selectFromSequence name="B" from="15" to="25" step="5"/>
   <selectFromSequence name="S" from="8" to="12" step="2"/>
-  <selectFromSequence name="Vol" from="30" to="45" step="5"/>   
+  <selectFromSequence name="Vol" from="30" to="45" step="5"/>
 
   <selectFromSequence name="p" from="0.5" to="1.5" step="0.5"/>
   <selectFromSequence name="q" from="4" to="5" step="1"/>
-  
+
 
   <math name="volEq2">$Vol/($k*w^2)</math>
   <math name="volEq3">$Vol/$k * 1/w^2</math>
-  <math name="costEq">$B*$k*w^2 + 2*$S*($k+1)*w*h</math> 
-  
+  <math name="costEq">$B*$k*w^2 + 2*$S*($k+1)*w*h</math>
+
   <function name="costFxn" variable="w">$B*$k*w^2 + $S*2*($k+1)*$Vol/($k*w)</function>
-  <function name="CP" variable="w">2*$B*$k*w - $S*2*($k+1)*$Vol/($k*w^2)</function>  
+  <function name="CP" variable="w">2*$B*$k*w - $S*2*($k+1)*$Vol/($k*w^2)</function>
   <function name="H" variable="w">$Vol/($k*w^2)</function>
-  
+
   <number name="crNum">($S*($k+1)*$Vol/($B*$k^2))^(1/3)</number>
 
   <number name="absMin">$$costFxn($crNum)</number>
@@ -39,9 +39,9 @@
   <number name="rightMax">$$costFxn($q)</number>
   <number name="hLeft">$$H($p)</number>
   <number name="hRight">$$H($q)</number>
-  
+
 </setup>
-  
+
 <p>
   An open rectangular storage container is being built to the following specifications:
   <ul>
@@ -54,22 +54,22 @@
       <p>
         the materials for the base cost $<m>$B</m> per square meter;
       </p>
-    </li>  
+    </li>
     <li>
       <p>
         the materials for the sides cost $<m>$S</m> per square meter;
       </p>
-    </li>  
+    </li>
     <li>
       <p>
         the storage container should hold <m>$Vol</m> cubic meters of volume
       </p>
-    </li> 
+    </li>
     <li>
       <p>
         the smallest allowable width of the container is <m>w = $p</m> meters, and the largest allowable width is <m>w = $q</m> meters.
       </p>
-    </li>   
+    </li>
   </ul>
   Our goal is to find the dimensions of the storage container that produce the absolute minimum and absolute maximum cost.
 </p>
@@ -83,7 +83,7 @@
     <li>
       <p>
         Based on the given information, a key relationship between <m>\ell</m> and <m>w</m> is that <m>\ell = </m><answer>$k*w</answer>.
-      </p>  
+      </p>
     </li>
     <li>
       <p>
@@ -91,33 +91,33 @@
       </p>
       <p>
         <m>V=</m><answer>$k*w^2*h</answer>
-      </p>  
-    </li> 
+      </p>
+    </li>
     <li>
       <p>
         State a formula for the cost of the container that involves only the variables <m>w</m> and <m>h</m>.
       </p>
       <p>
         <m>C=</m><answer>$B*$k*w^2 + 2*$S*($k+1)*w*h</answer>
-      </p>  
-    </li>      
+      </p>
+    </li>
     <li>
       <p>
         Use the constraint (that volume is fixed) to find an equation that relates the variables <m>w</m> and <m>h</m>, and solve that equation for <m>h</m>.  State that equation in the provided space below.
-      </p>  
+      </p>
       <p>
         <m>h = </m><mathInput name="constraintEq"/> <answer simplifyOnCompare><award><when>$constraintEq = $volEq2 or $constraintEq = $volEq3</when></award></answer>
       </p>
-      <!-- 
+      <!--
       <p>
         VolEq: <m>$volEq</m>
       </p>
       -->
-    </li>   
+    </li>
     <li>
       <p>
         Use the contraint equation appropriately to find a formula for the container's cost that depends only on <m>w</m>.
-      </p>  
+      </p>
       <p>
         <m>C(w)=</m><mathInput name="costEntered"/><answer simplifyOnCompare allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$costEntered=$costFxn</when></award></answer>
       </p>
@@ -130,69 +130,68 @@
     <li>
       <p>
         Find <m>C'(w)</m> and then find all critical numbers of <m>C</m> that lie in the domain of interest: <m>$p \le w \le $q</m>.  If there's more than one such critical number, separate them with commas; if there are no such critical numbers, enter <em>none</em>.
-      </p>  
+      </p>
       <p>
         <m>C'(w) = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute name="CPEntered">$CP</answer>
-      </p> 
+      </p>
       <p>
-        The critical number(s) within the domain are <m>w = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$crNum</answer>
-      </p>  
-    </li> 
+        The critical number(s) within the domain are <m>w = </m><answer allowedErrorInNumbers="0.001" allowedErrorIsAbsolute>$crNum</answer>
+      </p>
+    </li>
     <li>
       <p>
         Finally, find the absolute maximum and absolute minimum possible cost of the container, along with the dimensions of the container that achieve those respective costs.
       </p>
       <p>
-        The absolute minimum cost of the container is 
-        <m>C = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$absMin</answer> 
-        dollars and this absolute minimum is achieved when the container has dimensions 
-        <m>w = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$crNum</answer>, 
-        <m>\ell = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$k*$crNum</answer>, 
+        The absolute minimum cost of the container is
+        <m>C = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$absMin</answer>
+        dollars and this absolute minimum is achieved when the container has dimensions
+        <m>w = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$crNum</answer>,
+        <m>\ell = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$k*$crNum</answer>,
         and <m>h = </m> <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$hMin</answer>.
-      </p>    
+      </p>
 
       <p>
-        The absolute maximum cost of the container is 
-        <m>C = </m><mathInput name="vMaxEntered"/> 
+        The absolute maximum cost of the container is
+        <m>C = </m><mathInput name="vMaxEntered"/>
         <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
           <award><when>
-            ($vMaxEntered=$leftMax and $leftMax >= $rightMax) or ($vMaxEntered=$rightMax and $rightMax >= $leftMax) 
-          </when></award></answer> 
-        dollars and this absolute maximum is achieved when the container has dimensions 
-        <m>w = </m><mathInput name="wMax"/> 
+            ($vMaxEntered=$leftMax and $leftMax >= $rightMax) or ($vMaxEntered=$rightMax and $rightMax >= $leftMax)
+          </when></award></answer>
+        dollars and this absolute maximum is achieved when the container has dimensions
+        <m>w = </m><mathInput name="wMax"/>
         <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
-          <award><when> 
-            ($wMax=$q and $leftMax <= $rightMax) or ($wMax=$p and $rightMax <= $leftMax) 
-          </when></award></answer>, 
+          <award><when>
+            ($wMax=$q and $leftMax <= $rightMax) or ($wMax=$p and $rightMax <= $leftMax)
+          </when></award></answer>,
         <m>\ell = </m><mathInput name="lMax"/>
         <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
           <award><when>
             ($lMax=$k*$q and $leftMax <= $rightMax) or ($lMax=$k*$p and $rightMax <= $leftMax)
-          </when></award></answer>, 
-        and <m>h = </m><mathInput name="hMax"/> 
+          </when></award></answer>,
+        and <m>h = </m><mathInput name="hMax"/>
         <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
           <award><when>
-            ($hMax=$hRight and $leftMax <= $rightMax) or ($hMax=$hLeft and $rightMax <= $leftMax) 
+            ($hMax=$hRight and $leftMax <= $rightMax) or ($hMax=$hLeft and $rightMax <= $leftMax)
           </when></award></answer>.
-      </p>   
-      
-    </li>  
+      </p>
+
+    </li>
   </ol>
-</p>  
+</p>
 
 
 <!-- testing
 
       <p>
         vFxn: <m>$vFxn</m>, volumeEntered: <m>$volumeEntered</m>, costEq = <m>$costEq</m>, vPrime=<m>$VP</m>, vpEntered: <m>$vPEntered</m>
-        </p>        
+        </p>
 450=60w^2+96wh
 \frac{3w^2\left(450-60w^2\right)}{96w}
 
       <p>
         crNum=$crNum, absMax=$absMax, hMax=$hMax
-      </p>  
+      </p>
 
 -->
 
-  

@@ -17,7 +17,7 @@
   <selectFromSequence name="a" from="40" to="50" step="5"/>
   <selectFromSequence name="b" from="15" to="20" step="5"/>
   <selectFromSequence name="p" from="23" to="27" step="2"/>
-  <selectFromSequence name="q" from="2" to="3" step="1"/>   
+  <selectFromSequence name="q" from="2" to="3" step="1"/>
 
   <math name="distRun">$a-x</math>
   <math name="timeRun">$distRun/$p</math>
@@ -26,18 +26,18 @@
 
   <function name="T">($a-x)/$p + sqrt($b^2+x^2)/$q</function>
   <derivative name="TP">$T</derivative>
-  
+
   <number name="crNum">sqrt($b^2/($p^2/$q^2-1))</number>
-  
+
   <number name="absMin">$$T($crNum)</number>
   <number name="absMax">$$T($a)</number>
 
 </setup>
-  
+
 <p>
   A dog and his human friend are on a beach at the edge of the water.  The human throws a ball into the water, and the dog sits still until told to fetch.  The dog can fetch the ball by running partway along the shore and then swimming the rest of the way.  We want to use calculus to determine how far along the shore the dog should run before entering the water in order to retrieve the ball in the least amount of time, under the following conditions.
 </p>
-<p>  
+<p>
   <ul>
     <li>
       <p>
@@ -48,21 +48,21 @@
       <p>
         the dog can swim <m>$q</m> feet per second in the water;
       </p>
-    </li>  
+    </li>
     <li>
       <p>
         the ball comes to rest in the water at a location that lies <m>$a</m> feet down the beach and then a distance <m>$b</m> feet out into the water, measured perpendicularly from shore;
       </p>
-    </li>  
+    </li>
     <li>
       <p>
         the dog follows a path as pictured: some distance down the beach, and then diagonally to the ball in the water.
       </p>
-    </li>   
+    </li>
   </ul>
 </p>
-<p>
   <graph size="medium" xMin="-1" xMax="5.5" yMin="-1" yMax="3" displayXAxis="false" displayYAxis="false" fixAxes="true" showNavigation="false">
+    <shortDescription>diagram illustrating the situation with the beach, dog, and ball</shortDescription>
     <triangle name="tri1" vertices="(0,0) (4,0) (4,2)" />
     <lineSegment endpoints="(-1,0) (5,0)" styleNumber="6"/>
     <lineSegment endpoints="(0,0) (1,0)" styleNumber="2"/>
@@ -80,7 +80,8 @@
     <lineSegment endpoints="(1,-0.18) (4,-0.18)" styleNumber="5"/>
     <label anchor="(2.5,-0.08)">x</label>
   </graph>
-  In addition to finding the least amount of time it takes for the dog to reach the ball, we'd also like to determine the greatest amount of time it could take. 
+  <p>
+  In addition to finding the least amount of time it takes for the dog to reach the ball, we'd also like to determine the greatest amount of time it could take.
 </p>
 
 <p>
@@ -90,70 +91,68 @@
         Let <m>x</m> denote the distance along the beach from where the dog enters the water to the point on shore that is closest to the ball, as pictured.  In terms of <m>x</m>, how far is it from where the dog starts to where the dog enters the water?
       </p>
       <p>
-        The dog runs <answer>$a - x</answer> feet along the beach before entering the water.
-      </p>  
+        The dog runs <answer><shortDescription>number of the feet the dog runs on the beach before entering the water</shortDescription>$a - x</answer> feet along the beach before entering the water.
+      </p>
     </li>
     <li>
       <p>
         Recall that for an object moving at a constant rate, distance equals rate times time.  Find a function of <m>x</m> that tells us the total time the dog spends running along the beach before entering the water.
       </p>
       <p>
-        The time the dog runs along the beach is <answer simplifyOnCompare>($a-x)/$p</answer>
-      </p>  
-    </li> 
+        <label for="$beachtime">The time the dog runs along the beach is</label> <answer name="beachtime">($a-x)/$p</answer>
+      </p>
+    </li>
     <li>
       <p>
-        Find a function of <m>x</m> that tells us the total time the dog spends swimming from shore to the ball along the noted path. 
+        Find a function of <m>x</m> that tells us the total time the dog spends swimming from shore to the ball along the noted path.
       </p>
       <p>
-        The time the dog swims to the ball is <answer simplifyOnCompare>sqrt($b^2 + x^2)/$q</answer>
-      </p>  
-    </li> 
+        <label for="$swimtime">The time the dog swims to the ball is</label> <answer name="swimtime">sqrt($b^2 + x^2)/$q</answer>
+      </p>
+    </li>
     <li>
       <p>
         Based on your responses to the last two questions, we now have a function of <m>x</m> that represents the total time, <m>T</m>, it takes the dog to reach the ball.
-      </p>  
+      </p>
       <p>
-        <m>T(x) = </m><answer simplifyOnCompare>($a-x)/$p + sqrt($b^2 + x^2)/$q</answer>
+        <answer><label><m>T(x) = </m></label>($a-x)/$p + sqrt($b^2 + x^2)/$q</answer>
       </p>
       <p>
         Observe that based on how <m>x</m> is defined, the domain of <m>T</m> is <m>0 \le x \le $a</m>.
-      </p>  
+      </p>
       <!--
       <p>
         CostEq: <m>$costEq</m>
       </p>
       -->
-    </li>  
+    </li>
     <li>
       <p>
         Find <m>T'(x)</m> and then find all critical numbers of <m>T</m> that lie in the domain of interest: <m>0 \le x \le $a</m>.  If there's more than one such critical number, separate them with commas; if there are no such critical numbers, enter <em>none</em>.
-      </p>  
+      </p>
       <p>
-        <m>T'(x) = </m><answer simplifyOnCompare allowedErrorInNumbers="0.01" allowedErrorIsAbsolute name="TPEntered">$TP</answer> <!--, <m>T'(x) = $TP</m>-->
-      </p> 
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute name="TPEntered"><label><m>T'(x) = </m></label>$TP</answer> <!--, <m>T'(x) = $TP</m>-->
+      </p>
       <p>
-        The critical number(s) within the domain are <m>x = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$crNum</answer>
-      </p>  
-    </li> 
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label>The critical number(s) within the domain are <m>x = </m></label>$crNum</answer>
+      </p>
+    </li>
     <li>
       <p>
         Finally, find the absolute minimum and absolute maximum possible time for the dog to reach the ball.
       </p>
       <p>
-        The absolute minimum time is 
-        <m>T = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$absMin</answer> 
-        seconds and this absolute minimum is achieved when the dog enters the water 
-        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>40-$crNum</answer> feet away from where it started.
-      </p>    
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label>The absolute minimum time is <m>T = </m></label>$absMin</answer>
+        seconds and this absolute minimum is achieved when the dog enters the water
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><shortDescription>distance away from start where dog enters the water to minimize time</shortDescription>$a-$crNum</answer> feet away from where it started.
+      </p>
 
       <p>
-        The absolute maximum time is 
-        <m>T = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$absMax</answer> 
-        seconds and this absolute maximum is achieved when the dog enters the water 
-        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>0</answer> feet away from where it started.
-      </p>     
-      
-    </li>  
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label>The absolute maximum time is <m>T = </m></label>$absMax</answer>
+        seconds and this absolute maximum is achieved when the dog enters the water
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><shortDescription>distance away from start where dog enters the water to maximize time</shortDescription>0</answer> feet away from where it started.
+      </p>
+
+    </li>
   </ol>
 </p> 

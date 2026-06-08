@@ -12,16 +12,16 @@
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
 
-<setup> 
+<setup>
   <selectFromSequence name="a" from="5" to="8" step="1"/>
   <selectFromSequence name="b" from="2" to="4" step="1" exclude="$a-1"/>
 
   <function name="f">x^$b*ln(1+x^$a)</function>
-  
+
 </setup>
 
 <p>
-  Our goal in this exercise is to find the general antiderivative of the function 
+  Our goal in this exercise is to find the general antiderivative of the function
   <me>
     f(x) = x^$b \ln(1+x^$a)
   </me>
@@ -31,35 +31,61 @@
   <ol marker="a.">
     <li>
       <p>
-        Use a familiar Taylor series expansion along with algebraic techniques to find the first four nonzero terms of the Taylor series centered at <m>0</m> for <m>f(x)</m>.  State those four respective terms in the provided blanks below.
-      </p> 
+        Select which of the familiar Taylor series should be used and enter what should be substituted for the <m>x</m>.
+        <choiceInput name="serieschoice" forAnswer="$seriesandsubs">
+          <choice>
+            <m> \sum_{k=0}^{\infty} x^k = 1 + x + x^2 + x^3 + \cdots</m>
+          </choice>
+          <choice>
+            <m> \sum_{k=1}^{\infty} (-1)^{k-1} \frac{x^k}{k}  = x - \frac{1}{2}x^2 + \frac{1}{3}x^3 - \cdots</m>
+          </choice>
+          <choice>
+            <m> \sum_{k=0}^{\infty} (-1)^{k} \frac{x^{2k+1}}{(2k+1)!} = x - \frac{1}{3!}x^3 + \frac{1}{5!}x^5 - \cdots</m>
+          </choice>
+          <choice>
+            <m> \sum_{k=0}^{\infty} (-1)^{k} \frac{x^{2k}}{(2k)!} = 1 - \frac{1}{2!}x^2 + \frac{1}{4!}x^4 - \cdots</m>
+          </choice>
+          <choice>
+            <m> \sum_{k=0}^{\infty} \frac{x^k}{k!} = 1 + x + \frac{1}{2!}x^2 + \frac{1}{3!}x^3 + \cdots</m>
+          </choice>
+        </choiceInput>
+
+        using <mathInput name="subschoice" forAnswer="$seriesandsubs"/> substituted for the <m>x</m>.
+      </p>
       <p>
-        <m>f(x) = </m><answer>x^($a+$b)</answer><m>+</m><answer>-1/2*x^(2*$a+$b)</answer><m>+</m><answer>1/3*x^(3*$a+$b)</answer><m>+</m><answer>-1/4*x^(4*$a+$b)</answer><m>+ \cdots</m>
-      </p> 
+        <answer name="seriesandsubs"><award><when>$serieschoice.selectedIndex=2 and $subschoice=x^$a</when></award></answer>
+      </p>
+      <p>
+        Use the above series and subsitution, along with algebraic techniques if needed, to find the first four nonzero terms of the Taylor series centered at <m>0</m> for <m>f(x)</m>.  State those four respective terms in the provided blanks below.
+      </p>
+      <p sectionWideCheckWork forceIndividualAnswerColoring>
+        <m>f(x) = </m><answer>x^($a+$b)</answer><m>+</m><answer>-1/2*x^(2*$a+$b)</answer><m>+</m><answer>1/3*x^(3*$a+$b)</answer><m>+</m><answer>-1/4*x^(4*$a+$b)</answer><m>+ \cdots \hspace{.1in}</m>
+      </p>
     </li>
     <li>
       <p>
-        Determine the open interval of convergence for the Taylor series of <m>f(x) = x^$b \ln(1+x^$a)</m>.  If the series converges for all real numbers, enter <m>(-INF, INF)</m>.
+        Determine the open interval of convergence for the Taylor series of <m>f(x) = x^$b \ln(1+x^$a)</m>.  If the series converges for all real numbers, enter <m>(-\text{infinity}, \text{infinity})</m>.
       </p>
       <p>
-        The Taylor series of <m>f(x)</m> converges on <answer>(-1,1)</answer>.
+        The Taylor series of <m>f(x)</m> converges on <answer><interval>(-1,1)</interval></answer>.
       </p>
     </li>
     <li>
       <p>
         Use the Power Series Differentiation and Integration Theorem to find the first <em>five</em> nonzero terms of the Taylor series for <m>F(x)</m>, the general antiderivative of <m>f(x)</m>.  Enter those terms in order of increasing degree in the blanks provided; if you need to include a constant of integration, use <q><m>C</m></q>.
       </p>
-      <p>
-        <m>F(x) = </m><answer>C</answer><m>+</m><answer>1/($a+$b+1)*x^($a+$b+1)</answer><m>+</m><answer>-1/(2*(2*$a+$b+1))*x^(2*$a+$b+1)</answer><m>+</m><answer>1/(3*(3*$a+$b+1))*x^(3*$a+$b+1)</answer><m>+</m><answer>-1/(4*(4*$a+$b+1))*x^(4*$a+$b+1)</answer><m>+ \cdots</m>
-      </p> 
+      <p forceIndividualAnswerColoring sectionWideCheckWork>
+        <m>F(x) = </m><answer name="const">C</answer><m>+</m><answer>1/($a+$b+1)*x^($a+$b+1)</answer><m>+</m><answer>-1/(2*(2*$a+$b+1))*x^(2*$a+$b+1)</answer><m>+</m><answer>1/(3*(3*$a+$b+1))*x^(3*$a+$b+1)</answer><m>+</m><answer>-1/(4*(4*$a+$b+1))*x^(4*$a+$b+1)</answer><m>+ \cdots \hspace{.1in}</m>
+      </p>
+      <feedback condition="$const=1/($a+$b+1)*x^($a+$b+1)">The constant of integration needs to come first, and the <math simplify>1/($a+$b+1)*x^($a+$b+1)</math> term will be second.</feedback>
     </li>
     <li>
       <p>
-        Determine the open interval of convergence for the Taylor series of <m>F(x)</m>.  If the series converges for all real numbers, enter <m>(-INF, INF)</m>.
+        Determine the open interval of convergence for the Taylor series of <m>F(x)</m>.  If the series converges for all real numbers, enter <m>(-\text{infinity}, \text{infinity})</m>.
       </p>
       <p>
-        The Taylor series of <m>F(x)</m> converges on <answer>(-1,1)</answer>.
+        The Taylor series of <m>F(x)</m> converges on <answer><interval>(-1,1)</interval></answer>.
       </p>
-    </li>    
+    </li>
   </ol>
 </p>
