@@ -12,8 +12,9 @@
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
 
-<!-- the Riemann sum calculator used in this Preview is due to Peter Keep -->
-<!-- see Peter's original work at https://beta.doenet.org/activityViewer/anvfo1993TKgun9i4sWeLM -->
+<!-- the Riemann sum calculator used in this Preview is heavily due to Peter Keep and Jonathan Rogness -->
+<!-- see Jonathan's work at https://beta.doenet.org/activityViewer/scpnbKvEcyq1VmTdk3mVVk -->
+<!-- see Peter's work at https://beta.doenet.org/activityViewer/anvfo1993TKgun9i4sWeLM -->
 <!-- a rough draft of this ACS Preview was completed by Jacob Levin after the 2024 Doenet workshop -->
 <!-- Significantly rewritten by Chrissy Safranski in Spring 2026 -->
 
@@ -69,31 +70,37 @@
 </p>
 
 <!-- Start by definining the function, a, b, and n (and hence dx), and rule choice -->
-<tabular>
+<!-- <tabular>
     <row>
-      <cell halign="right"><m>f(x) = </m><mathInput prefill="x^2+1" name="fnFormula" /></cell>
-      <cell halign="right"><m>a =</m><mathInput name="a" prefill="0" /></cell>
-      <cell halign="right"><m>b =</m><mathInput name="b" prefill="2" /></cell>
-      <cell halign="right"><m>n =</m><mathInput prefill="6" name="n" /></cell>
+      <cell halign="left"><mathInput prefill="x^2+1" name="fnFormula"><label><m>f(x) = </m></label></mathInput></cell>
+      <cell halign="left"><m>a =</m><mathInput name="a" prefill="0" minWidth="20"/></cell>
+      <cell halign="left"><m>b =</m><mathInput name="b" prefill="2" minWidth="20"/></cell>
+      <cell halign="left"><m>n =</m><mathInput prefill="6" name="n" minWidth="20" /></cell> -->
       <!--<cell halign="right"><m>\Delta x = <math simplify="true" name="dx">($b-$a)/$n</math></m></cell>-->
-    </row>
-</tabular>
-<tabular>
-    <row>
-      <cell halign="left">choice for <m>x_k^*</m>:<choiceInput name="ruleChoice" inline="true" preselectChoice="1">
+    <!-- </row>
+</tabular> -->
+<p>
+<mathInput prefill="x^2+1" name="fnFormula"><label><m>f(x) = </m></label></mathInput>  <m>\hspace{.2in}</m>
+      <mathInput name="a" prefill="0" minWidth="20"><label><m>a =</m></label></mathInput>  <m>\hspace{.2in}</m>
+      <mathInput name="b" prefill="2" minWidth="20"><label><m>b =</m></label></mathInput>  <m>\hspace{.2in}</m>
+      <mathInput prefill="6" name="n" minWidth="20" ><label><m>n =</m></label></mathInput>
+</p>
+
+<p>
+<choiceInput name="ruleChoice" inline="true" preselectChoice="1">
+  <label>choice for <m>x_k^*</m>:</label>
           <choice>Left Riemann Sum</choice>
           <choice>Midpoint Riemann Sum</choice>
           <choice>Right Riemann Sum</choice>
       </choiceInput>
-      </cell>
-    </row>
-</tabular>
+</p>
 
 <!-- I know this activity asks for n=25 and n=100, and moving from n=25 to n=100 takes 10 or so seconds, even with only using 30 rectangles on the graph.  So for the purposes of this activity, I'm going to cheat and not draw any rectangles for n> 29.  It seemed faster to use conditional content on the whole graph than it was to do it within the graph; destroying 25 rectangles must be something that takes a few seconds.   -->
-<sideBySide valigns="middle">
+<sideBySide valigns="middle" widths="50% 45%">
 <conditionalContent>
     <case condition="$smalln">
       <graph size="small" xmin="$a-1.5" xmax="$b+1.5" ymin="$minY-1.5" ymax="$maxY+1" identicalAxisScales="false" showNavigation="false" fixAxes>
+        <shortDescription>graph of f and rectangles for Riemann sum</shortDescription>
         $f
         <regionBetweenCurveXAxis function="$f" boundaryValues="$a $b" />
         <repeat for="$group" valueName="xVal">
@@ -110,6 +117,7 @@
     </case>
     <case condition="$largen">
       <graph size="small" xmin="$a-1.5" xmax="$b+1.5" ymin="$minY-1.5" ymax="$maxY+1" identicalAxisScales="false" showNavigation="false" fixAxes>
+        <shortDescription>graph of f and rectangles for Riemann sum</shortDescription>
         $f
         <regionBetweenCurveXAxis function="$f" boundaryValues="$a $b" styleNumber="5" />
           <!-- The code below would draw 30 rectangles whenever n>29. -->
@@ -123,6 +131,7 @@
     </case>
     <else>
       <graph size="small" xmin="$a-1.5" xmax="$b+1.5" ymin="$minY-1.5" ymax="$maxY+1" identicalAxisScales="false" showNavigation="false" fixAxes>
+        <shortDescription>graph of f and the area between f and the x-axis</shortDescription>
         $f
         <regionBetweenCurveXAxis function="$f" boundaryValues="$a $b" />
       </graph>
@@ -152,6 +161,7 @@
 </sideBySide>
 
 
+<cascade revealAll>
 
 <aside startOpen><title>(a)</title>
 
@@ -231,15 +241,15 @@
       <cell right="minor">5</cell>
 
       <cell right="minor">
-        <m>L_5 =</m><mathInput name="linearL5" disabled forAnswer="$lineartable"/>
+        <mathInput name="linearL5" disabled forAnswer="$lineartable"><label><m>L_5 =</m></label></mathInput>
       </cell>
 
       <cell>
-        <m>M_5=</m> <mathInput name="linearM5" disabled forAnswer="$lineartable"/>
+        <mathInput name="linearM5" disabled forAnswer="$lineartable"><label><m>M_5=</m> </label></mathInput>
       </cell>
 
       <cell>
-        <m>R_5=</m> <mathInput name="linearR5" disabled forAnswer="$lineartable"/>
+         <mathInput name="linearR5" disabled forAnswer="$lineartable"><label><m>R_5=</m></label></mathInput>
       </cell>
 
     </row>
@@ -249,15 +259,15 @@
     <cell right="minor">25</cell>
 
       <cell right="minor">
-        <m>L_{25} =</m><mathInput name="linearL25" disabled forAnswer="$lineartable"/>
+        <mathInput name="linearL25" disabled forAnswer="$lineartable"><label><m>L_{25} =</m></label></mathInput>
       </cell>
 
       <cell>
-        <m>M_{25}=</m> <mathInput name="linearM25" disabled forAnswer="$lineartable"/>
+         <mathInput name="linearM25" disabled forAnswer="$lineartable"><label><m>M_{25}=</m></label></mathInput>
       </cell>
 
       <cell>
-        <m>R_{25}=</m> <mathInput name="linearR25" disabled forAnswer="$lineartable"/>
+         <mathInput name="linearR25" disabled forAnswer="$lineartable"><label><m>R_{25}=</m></label></mathInput>
       </cell>
 
 
@@ -268,15 +278,15 @@
       <cell right="minor"><m>100</m></cell>
 
     <cell right="minor">
-        <m>L_{100} =</m><mathInput name="linearL100" disabled forAnswer="$lineartable"/>
+        <mathInput name="linearL100" disabled forAnswer="$lineartable"><label><m>L_{100} =</m></label></mathInput>
       </cell>
 
       <cell>
-        <m>M_{100}=</m> <mathInput name="linearM100" disabled forAnswer="$lineartable"/>
+         <mathInput name="linearM100" disabled forAnswer="$lineartable"><label><m>M_{100}=</m></label></mathInput>
       </cell>
 
       <cell>
-        <m>R_{100}=</m> <mathInput name="linearR100" disabled forAnswer="$lineartable"/>
+         <mathInput name="linearR100" disabled forAnswer="$lineartable"><label><m>R_{100}=</m></label></mathInput>
       </cell>
 
     </row>
@@ -301,7 +311,7 @@
   </p>
 
   <p>
-    <m>A = </m> <answer>18</answer>
+    <answer><label><m>A = </m></label>18</answer>
   </p>
 </aside>
 
@@ -311,22 +321,22 @@
   </p>
 
   <p>
-    Because <m>f(x) = 2x+1</m> is linear, each midpoint sum <m>M_n</m> results in <choiceInput name="c1" inline>
+    Because <m>f(x) = 2x+1</m> is linear, each midpoint sum <m>M_n</m> results in <choiceInput name="c1" inline><shortDescription>what kind of approximation the midpoint sum is</shortDescription>
       <choice>?</choice>
       <choice>an underestimate of</choice>
       <choice>the exact value of</choice>
       <choice>an overestimate of</choice>
-    </choiceInput> the true area, <m>A</m>, bounded by <m>f(x)</m> on the interval <m>[1,4]</m>.  In addition, while each left Riemann sum <m>L_n</m> is <choiceInput name="c2" inline>
+    </choiceInput> the true area, <m>A</m>, bounded by <m>f(x)</m> on the interval <m>[1,4]</m>.  In addition, while each left Riemann sum <m>L_n</m> is <choiceInput name="c2" inline><shortDescription>what kind of approximation the left Riemann sum is</shortDescription>
       <choice>?</choice>
       <choice>an underestimate of</choice>
       <choice>the exact value of</choice>
       <choice>an overestimate of</choice>
-    </choiceInput> the true area, <m>A</m>, and each right Riemann sum <m>R_n</m> is <choiceInput name="c3" inline>
+    </choiceInput> the true area, <m>A</m>, and each right Riemann sum <m>R_n</m> is <choiceInput name="c3" inline><shortDescription>what kind of approximation the right Riemann sum is</shortDescription>
       <choice>?</choice>
       <choice>an underestimate of</choice>
       <choice>the exact value of</choice>
       <choice>an overestimate of</choice>
-    </choiceInput> the true area, <m>A</m>, as we increase the value of <m>n</m>, we see that the values of both <m>L_n</m> and <m>R_n</m> <choiceInput name="c4" inline>
+    </choiceInput> the true area, <m>A</m>, as we increase the value of <m>n</m>, we see that the values of both <m>L_n</m> and <m>R_n</m> <choiceInput name="c4" inline><shortDescription>behavior of the left and right sums as n increases</shortDescription>
       <choice>?</choice>
       <choice>stay the same distance away from</choice>
       <choice>get closer and closer to</choice>
@@ -416,15 +426,15 @@
       <cell right="minor">5</cell>
 
       <cell right="minor">
-        <m>L_5 =</m><mathInput name="quadraticL5" disabled forAnswer="$quadratictable"/>
+        <mathInput name="quadraticL5" disabled forAnswer="$quadratictable"><label><m>L_5 =</m></label></mathInput>
       </cell>
 
       <cell>
-        <m>M_5=</m> <mathInput name="quadraticM5" disabled forAnswer="$quadratictable"/>
+        <mathInput name="quadraticM5" disabled forAnswer="$quadratictable"><label><m>M_5=</m></label></mathInput>
       </cell>
 
       <cell>
-        <m>R_5=</m> <mathInput name="quadraticR5" disabled forAnswer="$quadratictable"/>
+        <mathInput name="quadraticR5" disabled forAnswer="$quadratictable"><label><m>R_5=</m></label></mathInput>
       </cell>
 
     </row>
@@ -434,15 +444,15 @@
     <cell right="minor">25</cell>
 
       <cell right="minor">
-        <m>L_{25} =</m><mathInput name="quadraticL25" disabled forAnswer="$quadratictable"/>
+        <mathInput name="quadraticL25" disabled forAnswer="$quadratictable"><label><m>L_{25} =</m></label></mathInput>
       </cell>
 
       <cell>
-        <m>M_{25}=</m> <mathInput name="quadraticM25" disabled forAnswer="$quadratictable"/>
+        <mathInput name="quadraticM25" disabled forAnswer="$quadratictable"><label><m>M_{25}=</m></label></mathInput>
       </cell>
 
       <cell>
-        <m>R_{25}=</m> <mathInput name="quadraticR25" disabled forAnswer="$quadratictable"/>
+        <mathInput name="quadraticR25" disabled forAnswer="$quadratictable"><label><m>R_{25}=</m></label></mathInput>
       </cell>
 
 
@@ -453,15 +463,15 @@
       <cell right="minor"><m>100</m></cell>
 
     <cell right="minor">
-        <m>L_{100} =</m><mathInput name="quadraticL100" disabled forAnswer="$quadratictable"/>
+        <mathInput name="quadraticL100" disabled forAnswer="$quadratictable"><label><m>L_{100} =</m></label></mathInput>
       </cell>
 
       <cell>
-        <m>M_{100}=</m> <mathInput name="quadraticM100" disabled forAnswer="$quadratictable"/>
+        <mathInput name="quadraticM100" disabled forAnswer="$quadratictable"><label><m>M_{100}=</m></label></mathInput>
       </cell>
 
       <cell>
-        <m>R_{100}=</m> <mathInput name="quadraticR100" disabled forAnswer="$quadratictable"/>
+        <mathInput name="quadraticR100" disabled forAnswer="$quadratictable"><label><m>R_{100}=</m></label></mathInput>
       </cell>
 
     </row>
@@ -477,7 +487,7 @@
     What do you conjecture is the exact area, <m>A</m> bounded by <math>f(x) = x^2 + 1</math> and the <m>x</m>-axis on <math>[1,4]</math>?
   </p>
   <p>
-    <m>A = </m><answer>24</answer>
+    <answer><label><m>A = </m></label>24</answer>
   </p>
 
 </aside>
@@ -488,15 +498,15 @@
     Why can we not compute the exact value of the area bounded by <math>f(x) = x^2 + 1</math> and the <m>x</m>-axis on <math>[1,4]</math> using a geometric formula like we did in (b)?  Complete the following sentence to explain
   </p>
   <p>
-    Since <m>f(x) = x^2 + 1</m> is <choiceInput name="e1" inline>
+    Since <m>f(x) = x^2 + 1</m> is <choiceInput name="e1" inline><shortDescription>type of function f of x is</shortDescription>
       <choice>?</choice>
       <choice>linear</choice>
       <choice>non-linear</choice>
-    </choiceInput> and its curve does not bound a familiar geometric shape (such as a circle), there <choiceInput name="e2" inline>
+    </choiceInput> and its curve does not bound a familiar geometric shape (such as a circle), there <choiceInput name="e2" inline><shortDescription>the area under f is or is not a familiar geometric shape</shortDescription>
       <choice>?</choice>
       <choice>is</choice>
       <choice>is not</choice>
-    </choiceInput> a known geometric formula to find the area, and thus our best option is to <choiceInput name="e3" inline>
+    </choiceInput> a known geometric formula to find the area, and thus our best option is to <choiceInput name="e3" inline><shortDescription>best option to calculate the area under f</shortDescription>
       <choice>?</choice>
       <choice>estimate the area</choice>
       <choice>determine the area exactly</choice>
@@ -508,3 +518,4 @@
   </p>
 
 </aside>
+</cascade>

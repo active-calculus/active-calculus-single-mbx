@@ -16,29 +16,29 @@
   <selectFromSequence name="m" from="-1" to="1" step="0.5" exclude="0"/>
   <number name="b">-2*$m</number>
   <selectFromSequence name="c" from="3" to="4" step="1"/>
-  
-  <piecewiseFunction symbolic="false" name="f"> 
+
+  <piecewiseFunction symbolic="false" name="f">
     <function domain="(-1,$c)"><math simplify>$m*x + $b</math></function>
     <function domain="[$c, 7)"><math simplify>-$m*(x-$c) + ($m*$c+$b)</math></function>
   </piecewiseFunction>
- 
-  <piecewiseFunction symbolic="false" name="A"> 
+
+  <piecewiseFunction symbolic="false" name="A">
     <function domain="(-1,$c)"><math simplify>$m/2*x^2 + $b*x - (2*$m+2*$b)</math></function>
     <function domain="[$c, 7)"><math simplify>-$m/2*(x-$c)^2 + ($m*$c+$b)*x - ($m*$c+$b)*$c + $m/2*$c^2 + $b*$c - (2*$m+2*$b)</math> </function>
-  </piecewiseFunction>  
+  </piecewiseFunction>
 
-  <piecewiseFunction symbolic="false" name="B"> 
+  <piecewiseFunction symbolic="false" name="B">
     <function domain="(-1,$c)"><math simplify>$m/2*x^2 + $b*x</math></function>
     <function domain="[$c, 7)"><math simplify>-$m/2*(x-$c)^2 + ($m*$c+$b)*x - ($m*$c+$b)*$c + $m/2*$c^2 + $b*$c</math> </function>
-  </piecewiseFunction>  
-  
+  </piecewiseFunction>
+
   <number name="z1">2</number>
   <number name="z2">2*$c + $b/$m</number>
   <mathList name="Ints1">(-1,$z1) ($z2,7)</mathList>
   <math name="Int2">($z1,$z2)</math>
   <math name="Int3">(-1,$c)</math>
   <math name="Int4">($c,7)</math>
-  <boolean name="A0wrong">
+  <!-- <boolean name="A0wrong">
     $A0.creditAchieved != 1 and $A0.responseHasBeenSubmitted
   </boolean>
   <boolean name="A1wrong">
@@ -79,18 +79,20 @@
   </boolean>
   <boolean name="B6wrong">
     $B6.creditAchieved != 1 and $B6.responseHasBeenSubmitted
-  </boolean>
+  </boolean> -->
 </setup>
 
 <graph xmin="-1" xmax="7" ymin="-4" ymax="4" grid="1 1" fixAxes="true" showNavigation="false">
+  <shortDescription>graph of a piecewise linear function</shortDescription>
+  <description>A piecewise linear function, where the first linear piece has domain <m>[-1,$c]</m> and goes through the points <m>(0,$b)</m> and <m>($z1,0)</m>, and the second linear piece has domain <m>[$c,7]</m> goes through the points <math simplify>($c,$m*$c+$b)</math> and <m>($z2,0)</m>.</description>
   $f
   <label anchor="($c,$m*$c+$b + 0.3*($m*$c+$b))"><m>f</m></label>
-</graph>  
+</graph>
 
 
 <p>
   Let <m>A(x) = \int_2^x f(t) \, dt</m>, where <m>f</m> is the piecewise linear function whose graph is given.
-</p>   
+</p>
 
 <p>
   <ol marker="a.">
@@ -99,18 +101,19 @@
         On what intervals within <m>-1 \lt x \lt 7</m> is <m>A</m> increasing? decreasing?  If there is more than one interval, separate them with commas; if there are none, enter <em>none</em>.  Use interval notation: for example, enter <q><m>(2,6)</m></q> for <q><m>2 \lt x \lt 6</m></q>.
       </p>
       <p>
-        <m>A</m> is increasing on <mathInput name="incrAEntered"/> 
         <answer unorderedCompare>
-          <award><when> 
-            ($incrAEntered = $Ints1 and $m < 0) or ($incrAEntered = $Int2 and $m > 0) 
+          <mathInput name="incrAEntered"><label><m>A</m> is increasing on </label></mathInput>
+          <award><when>
+            ($incrAEntered = $Ints1 and $m < 0) or ($incrAEntered = $Int2 and $m > 0)
           </when></award>
         </answer>
-      </p>  
+      </p>
       <p>
-        <m>A</m> is decreasing on <mathInput name="decrAEntered"/> 
+
         <answer unorderedCompare>
-          <award><when> 
-            ($decrAEntered = $Ints1 and $m > 0) or ($decrAEntered = $Int2 and $m < 0) 
+          <mathInput name="decrAEntered"><label><m>A</m> is decreasing on</label></mathInput>
+          <award><when>
+            ($decrAEntered = $Ints1 and $m > 0) or ($decrAEntered = $Int2 and $m < 0)
           </when></award>
         </answer>
       </p>
@@ -120,27 +123,26 @@
         On what intervals within <m>-1 \lt x \lt 7</m> is <m>A</m> concave up? concave down?  If there is more than one interval, separate them with commas; if there are none, enter <em>none</em>.  Use interval notation: for example, enter <q><m>(2,6)</m></q> for <q><m>2 \lt x \lt 6</m></q>.
       </p>
       <p>
-        <m>A</m> is concave up on <mathInput name="CCUAEntered"/> 
         <answer unorderedCompare>
-          <award><when> 
-            ($CCUAEntered = $Int3 and $m > 0) or ($CCUAEntered = $Int4 and $m < 0) 
+          <mathInput name="CCUAEntered"><label><m>A</m> is concave up on</label></mathInput>
+          <award><when>
+            ($CCUAEntered = $Int3 and $m > 0) or ($CCUAEntered = $Int4 and $m < 0)
           </when></award>
         </answer>
-      </p>  
+      </p>
       <p>
-        <m>A</m> is concave down on <mathInput name="CCDAEntered"/> 
         <answer unorderedCompare>
-          <award><when> 
-            ($CCDAEntered = $Int4 and $m > 0) or ($CCDAEntered = $Int3 and $m < 0) 
+          <mathInput name="CCDAEntered"><label><m>A</m> is concave down on </label></mathInput>
+          <award><when>
+            ($CCDAEntered = $Int4 and $m > 0) or ($CCDAEntered = $Int3 and $m < 0)
           </when></award>
         </answer>
       </p>
     </li>
-    <li sectionWideCheckWork>
+    <li sectionWideCheckWork forceIndividualAnswerColoring>
       <p>
         Complete the following table of values for <m>A(x)  = \int_2^x f(t) \, dt</m>.
       </p>
-        <table suppressTableNameInTitle="true"> 
     <tabular left="minor" right="minor" top="minor" bottom="minor" valign="middle" halign="center">
      <row>
       <cell><m>x</m></cell>
@@ -148,23 +150,23 @@
       <cell>1</cell>
       <cell>2</cell>
       <cell>3</cell>
-      <cell>4</cell>  
-      <cell>5</cell>  
-      <cell>6</cell>  
+      <cell>4</cell>
+      <cell>5</cell>
+      <cell>6</cell>
      </row>
-     <row>
+     <row valign="top">
       <cell><m>A(x)</m></cell>
-      <cell><answer name="A0">$$A(0)</answer></cell>
-      <cell><answer name="A1">$$A(1)</answer></cell>
-      <cell><answer name="A2">$$A(2)</answer></cell>
-      <cell><answer name="A3">$$A(3)</answer></cell>  
-      <cell><answer name="A4">$$A(4)</answer></cell>  
-      <cell><answer name="A5">$$A(5)</answer></cell> 
-      <cell><answer name="A6">$$A(6)</answer></cell> 
+      <cell><answer name="A0"><mathInput minwidth="20"><shortDescription>A of 0</shortDescription></mathInput>$$A(0)</answer></cell>
+      <cell><answer name="A1"><mathInput minwidth="20"><shortDescription>A of 1</shortDescription></mathInput>$$A(1)</answer></cell>
+      <cell><answer name="A2"><mathInput minwidth="20"><shortDescription>A of 2</shortDescription></mathInput>$$A(2)</answer></cell>
+      <cell><answer name="A3"><mathInput minwidth="20"><shortDescription>A of 3</shortDescription></mathInput>$$A(3)</answer></cell>
+      <cell><answer name="A4"><mathInput minwidth="20"><shortDescription>A of 4</shortDescription></mathInput>$$A(4)</answer></cell>
+      <cell><answer name="A5"><mathInput minwidth="20"><shortDescription>A of 5</shortDescription></mathInput>$$A(5)</answer></cell>
+      <cell><answer name="A6"><mathInput minwidth="20"><shortDescription>A of 6</shortDescription></mathInput>$$A(6)</answer></cell>
      </row>
     </tabular>
-  </table>
-  <feedback condition="$A0wrong or $A1wrong or $A2wrong or $A3wrong or $A4wrong or $A5wrong or $A6wrong">
+
+  <!-- <feedback condition="$A0wrong or $A1wrong or $A2wrong or $A3wrong or $A4wrong or $A5wrong or $A6wrong">
     Your answer(s) are incorrect for:
     <asList>
       <conditionalContent condition="$A0wrong"><m>A(0)</m></conditionalContent>
@@ -175,37 +177,35 @@
       <conditionalContent condition="$A5wrong"><m>A(5)</m></conditionalContent>
       <conditionalContent condition="$A6wrong"><m>A(6)</m></conditionalContent>
     </asList>
-  </feedback>
+  </feedback> -->
     </li>
-    <li sectionWideCheckWork>
+    <li sectionWideCheckWork forceIndividualAnswerColoring>
       <p>
         Now suppose that <m>B(x)  = \int_0^x f(t) \, dt</m>.  Complete the following table of values for <m>B(x)</m>.
       </p>
-        <table suppressTableNameInTitle="true"> 
-    <tabular left="minor" right="minor" top="minor" bottom="minor" vAlign="middle" hAlign="center">
+    <tabular left="minor" right="minor" top="minor" bottom="minor" valign="middle" halign="center">
      <row>
       <cell><m>x</m></cell>
       <cell>0</cell>
       <cell>1</cell>
       <cell>2</cell>
       <cell>3</cell>
-      <cell>4</cell>  
-      <cell>5</cell>  
-      <cell>6</cell>  
+      <cell>4</cell>
+      <cell>5</cell>
+      <cell>6</cell>
      </row>
      <row>
       <cell><m>B(x)</m></cell>
-      <cell><answer name="B0">$$B(0)</answer></cell>
-      <cell><answer name="B1">$$B(1)</answer></cell>
-      <cell><answer name="B2">$$B(2)</answer></cell>
-      <cell><answer name="B3">$$B(3)</answer></cell>  
-      <cell><answer name="B4">$$B(4)</answer></cell>  
-      <cell><answer name="B5">$$B(5)</answer></cell> 
-      <cell><answer name="B6">$$B(6)</answer></cell> 
+      <cell><answer name="B0"><mathInput minwidth="20"><shortDescription>B of 0</shortDescription></mathInput>$$B(0)</answer></cell>
+      <cell><answer name="B1"><mathInput minwidth="20"><shortDescription>B of 1</shortDescription></mathInput>$$B(1)</answer></cell>
+      <cell><answer name="B2"><mathInput minwidth="20"><shortDescription>B of 2</shortDescription></mathInput>$$B(2)</answer></cell>
+      <cell><answer name="B3"><mathInput minwidth="20"><shortDescription>B of 3</shortDescription></mathInput>$$B(3)</answer></cell>
+      <cell><answer name="B4"><mathInput minwidth="20"><shortDescription>B of 4</shortDescription></mathInput>$$B(4)</answer></cell>
+      <cell><answer name="B5"><mathInput minwidth="20"><shortDescription>B of 5</shortDescription></mathInput>$$B(5)</answer></cell>
+      <cell><answer name="B6"><mathInput minwidth="20"><shortDescription>B of 6</shortDescription></mathInput>$$B(6)</answer></cell>
      </row>
     </tabular>
-  </table> 
-  <feedback condition="$B0wrong or $B1wrong or $B2wrong or $B3wrong or $B4wrong or $B5wrong or $B6wrong">
+  <!-- <feedback condition="$B0wrong or $B1wrong or $B2wrong or $B3wrong or $B4wrong or $B5wrong or $B6wrong">
     Your answer(s) are incorrect for:
     <asList>
       <conditionalContent condition="$B0wrong"><m>B(0)</m></conditionalContent>
@@ -216,21 +216,21 @@
       <conditionalContent condition="$B5wrong"><m>B(5)</m></conditionalContent>
       <conditionalContent condition="$B6wrong"><m>B(6)</m></conditionalContent>
     </asList>
-  </feedback>
+  </feedback> -->
     </li>
     <li>
-      <p>
-        Observe that  
+      <p sectionWideCheckWork forceIndividualAnswerColoring>
+        Observe that
         <me>B(x)  = \int_0^x f(t) \, dt = \int_0^2 f(t) \, dt + \int_2^x f(t) \, dt = \int_0^2 f(t) \, dt + A(x).</me>
-        The value of <m>\int_0^2 f(t) \, dt = </m> <mathInput name="const" /> <answer><award><when>$const = 2*$m + 2*$b</when></award></answer>, and this shows that the difference between <m>A(x)</m> and <m>B(x)</m> is <answer><choiceInput inline>
+        <answer><mathInput name="const"><label>The value of <m>\int_0^2 f(t) \, dt = </m> </label></mathInput><award><when>$const = 2*$m + 2*$b</when></award></answer>, and this shows that the difference between <m>A(x)</m> and <m>B(x)</m> is <answer><choiceInput inline><shortDescription>difference between two integral functions of the same integrand</shortDescription>
           <choice>?</choice>
           <choice credit="1">a constant</choice>
           <choice>zero</choice>
           <choice>their shape</choice>
-        </choiceInput></answer>. 
-          
+        </choiceInput></answer>.
+
       </p>
     </li>
-  </ol>  
+  </ol>
 
-</p>  
+</p>
