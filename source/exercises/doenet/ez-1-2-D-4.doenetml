@@ -12,12 +12,8 @@
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
 
-<!-- Author: Christina Safranski                                           -->
+<!-- Author: Chrissy Safranski                                           -->
 
-<!--
-<section name = "exercise-1-1-d-1"><title>Title here</title>
-  <statement>
--->
 
 <setup>
   <selectFromSequence name="a" from="-10" to="10" exclude="0"/>
@@ -27,45 +23,41 @@
   <number name="ans1">$a2/$b</number>
   <math name="num1" >x^2-$asq</math>
   <math name="denom1" expand>$b(x-$a)</math>
+
+  <selectFromSequence name="aa" from="2" to="5" />
+  <selectFromSequence name="bb" from="6" to="10" />
+
+  <number name="bMa">$bb - $aa</number>
+  <number name="ab">$aa*$bb</number>
+  <number name="result">$aa+$bb</number>
+  <math name="num2">x^2 + $bMa x - $ab</math>
+  <math name="denom2">x-$aa</math>
+
+  <selectFromSequence name="c" from="-3" to="3" exclude="$a"/>
+  <function name="partc">$num2/$denom1</function>
 </setup>
 
-<p> 
+<p>
   Use algebra to evaluate the following limits exactly. If the limit does not exist, enter <em>DNE</em>.
 </p>
 
 <ol marker="a.">
   <li>
+    <p sectionWideCheckWork forceIndividualAnswerColoring>
+       <answer symbolicEquality simplifyOnCompare="normalizeOrder"><mathInput prefill="/" minWidth="20"><label><m>\displaystyle\lim_{x\to $a} \frac{$num1}{$denom1}= \lim_{x\to $a}</m></label><description>Factor the numerator and denominator, if applicable.</description></mathInput>((x+$a)(x-$a))/($b(x-$a))</answer><m>=</m><answer><shortDescription>Final answer to the limit</shortDescription>$ans1</answer>
+    </p>
+  </li>
+
+  <li>
     <p>
-      <m>\displaystyle\lim_{x\to $a} \frac{$num1}{$denom1}</m>= <answer>$ans1</answer>
+      <answer name="ans2"><label><m>\displaystyle\lim_{x\to $aa} \frac{$num2}{$denom2}=</m> </label>$result</answer>
     </p>
   </li>
-
-<setup>
-  <selectFromSequence name="aa" from="2" to="5" />
-  <selectFromSequence name="bb" from="6" to="10" />  
-
-  <number name="bMa">$bb - $aa</number>
-  <number name="ab">$aa*$bb</number>  
-  <number name="result">$aa+$bb</number>    
-  <math name="num2">x^2 + $bMa x - $ab</math>
-  <math name="denom2">x-$aa</math>
-</setup>
 
   <li>
-    <p> 
-      <m>\displaystyle\lim_{x\to $aa} \frac{$num2}{$denom2}</m> = <answer name="ans2">$result</answer>
+    <p>
+      <answer name="ans3"><label><m>\displaystyle\lim_{x\to $c} \frac{$num2}{$denom1}=</m></label>$$partc($c)</answer>
     </p>
+    <feedback condition="$ans3.justSubmitted">Did you try evaluating the limit as <m>x\to $c</m> straightaway, without doing any algebra first?  Sometimes people factor when it's not necessary.</feedback>
   </li>
-    
-<setup>
-  <selectFromSequence name="c" from="-3" to="3" exclude="$a"/>
-  <function name="partc">$num2/$denom1</function>
-</setup>
-
-  <li>
-    <p>  
-      <m>\displaystyle\lim_{x\to $c} \frac{$num2}{$denom1}</m> = <answer name="ans3">$$partc($c)</answer>
-    </p>
-  </li>
-
 </ol>

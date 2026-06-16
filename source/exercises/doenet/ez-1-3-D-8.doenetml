@@ -25,15 +25,15 @@
     <point name="A" styleNumber="2" coords="($c,$$g($c))" showCoordsWhenDragging="false" draggable="false" labelPosition="lowerRight">
       <label><m>A = $A.coords</m></label>
     </point>
-    <point name="B" styleNumber="2" coords="($c+5,$$L($c+5))" showCoordsWhenDragging="false" draggable="false" labelPosition="lowerRight">
+    <point name="B" styleNumber="3" coords="($c+5,$$L($c+5))" showCoordsWhenDragging="false" draggable="false" labelPosition="lowerRight">
       <label><m>B = $B.coords</m></label>
     </point>
-    <point name="C" styleNumber="2" coords="($c+5,$$g($c+5))" showCoordsWhenDragging="false" draggable="false" labelPosition="upperLeft">
+    <point name="C" styleNumber="1" coords="($c+5,$$g($c+5))" showCoordsWhenDragging="false" draggable="false" labelPosition="upperLeft">
       <label><m>C = $C.coords</m></label>
     </point>
 
-  <label name="gLabel" anchor="(14,$$g(14)+0.06)"><m>y = s(t)</m></label>
-  <label name="LLabel" anchor="(16,$$L(16)-0.08)"><m>y = L(t)</m></label>
+  <label name="gLabel" anchor="(14,$$g(14)+0.08)"><m>y = s(t)</m></label>
+  <label name="LLabel" anchor="(16,$$L(16)-0.09)"><m>y = L(t)</m></label>
 
 </setup>
 
@@ -41,19 +41,22 @@
 
 <!--  <p><m>a = $a</m>, <m>b = $b</m>, and <m>c = $c</m>, so <m>g(x) = $$g(x)</m> and <m>L(x) = $$L(x)</m>, plus <m>A = $A</m> and <m>B = $B</m></p> -->
 
-    <figure>
-      <graph xmin="-1" xmax="21" ymin="-0.25" ymax="1.25" size="medium" grid="true" fixAxes="true" showNavigation="false" displayXAxis="true" displayYAxis="true"> $g $A $L $B $C $gLabel $LLabel
+    <!-- <figure> -->
+      <graph xmin="-1" xmax="21" ymin="min($$g(-1),$$L(-1))-.1" ymax="max($$g(21),$$L(21))+.1" size="medium" fixAxes="true" showNavigation="false" displayXAxis="true" displayYAxis="true" fixed>
+        <shortDescription>Graph of a curve and its tangent line at point A, along with a point B on the tangent line and a point C on the curve.</shortDescription>
+        <description>Plot of <m>y = g(x)</m> and its tangent line at the point <m>A</m> which has coordinates <m>$A.coords</m>.  Additionally, the point <m>B</m> on <m>y=L(t)</m> with coordinates <m>$B.coords</m> and the point <m>C</m> on <m>y=s(t)</m> with coordinates <m>$C.coords</m> are labeled.</description>
+        $g $A $L $B $C $gLabel $LLabel
       </graph>
-      <caption>Plot of <m>y = g(x)</m> and its tangent line at the point <m>A</m></caption>
-    </figure>
+      <!-- <caption>Plot of <m>y = g(x)</m> and its tangent line at the point <m>A</m></caption>
+    </figure> -->
 
   <p>Use the given information to complete the following sentences. </p>
-  <p>At the instant when <m>a = $c</m> minutes, we know that the person has walked<answer><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> $$g($c)
-        </award></answer> miles and that their instantaneous velocity at that moment is <answer><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> $$gP($c)
+  <p>At the instant when <m>a = $c</m> minutes, we know that the person has walked<answer><shortDescription>enter distance walked</shortDescription><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> $$g($c)
+        </award></answer> miles and that their instantaneous velocity at that moment is <answer><shortDescription>enter instaneous velocity</shortDescription><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> $$gP($c)
         </award></answer> miles per minute.
   </p>
   <p>
-    Between <m>t = $c</m> and <m>t = <math simplify="numbers">$c+5</math></m>, the person walked <answer><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> $$g($c+5)-$$g($c)
-          </award></answer> miles, and their average velocity was <answer><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> ($$g($c+5)-$$g($c))/5
+    Between <m>t = $c</m> and <m>t = <math simplify="numbers">$c+5</math></m>, the person walked <answer><shortDescription>enter distance walked</shortDescription><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> $$g($c+5)-$$g($c)
+          </award></answer> miles, and their average velocity was <answer><shortDescription>enter average velocity</shortDescription><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> ($$g($c+5)-$$g($c))/5
           </award></answer> miles per minute.
   </p>

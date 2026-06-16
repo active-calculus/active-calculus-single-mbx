@@ -15,15 +15,11 @@
 <!-- Author: Christina Safranski                                           -->
 <!-- technical help: Virginia Mae                                          -->
 
-<!-- Show limit situations and graphs, ask to match which one goes where? multiple select? a hole, a hole with value equals the limit instead, a jump, a vertical asymptote, nothing funny, something funny but not at the right x&#x2D;value. Make two or three the right answer? Jumble order of the graphs?  Then can reuse/modify the setup in 1.7 while asking about continuous or not, which condition fails. 
-
-Make last exercise a "choose your own adventure", where student answers which thing they want to practice, then conditional content with a whole bunch of different practice problems. Do this in every section?-->
-
 <setup>
   <selectFromSequence name="m" from="-1" to="1" exclude="0" />
-  <selectFromSequence name="a" from="-1" to="1" numToSelect="1" />       
+  <selectFromSequence name="a" from="-1" to="1" numToSelect="1" />
   <selectFromSequence name="b" from="-1" to="1" numToSelect="1" />
-  
+
 <!--   <selectFromSequence name="c" from="1" to="4"/> -->
   <selectFromSequence name="upordown" from="-1" to="1" exclude="0" />
 
@@ -33,16 +29,18 @@ Make last exercise a "choose your own adventure", where student answers which th
   <math name="c">0</math>
 
 <!-- Virginia's note - the <select> below replaces the previous <select> which had assignNames. Now, we refer to the boolean of the first selected option as $graphSelect[1][2]. (first index is the first selection made of all the options, second index is the second component defined within that option) -->
-  
+
 <select name="graphSelect" numToSelect="3">
   <option>
-    <graph name="graph1" showNavigation="false" fixAxes="true" xmin="-2.5" xmax="2.5" ymin="-4" ymax="4">
+    <graph name="graph1" showNavigation="false" fixAxes="true" xmin="-2.5" xmax="2.5" ymin="-4" ymax="4" fixed>
+      <shortDescription>graph of a line with no holes or jumps</shortDescription>
     <function> $line </function>
-  </graph> 
+  </graph>
   <boolean>1</boolean>
   </option>
   <option>
-    <graph name="graph2" showNavigation="false" fixAxes="true" xmin="-2.5" xmax="2.5" ymin="-4" ymax="4">
+    <graph name="graph2" showNavigation="false" fixAxes="true" xmin="-2.5" xmax="2.5" ymin="-4" ymax="4" fixed>
+      <shortDescription>graph of a line with a hole at x equals $a</shortDescription>
       <function domain="[-2.5,$a-$c)"> $line </function>
       <function domain="[$a+$c,2.5)"> $line </function>
       <endpoint open="true" draggable="false">($a, $$line($a))</endpoint>
@@ -50,16 +48,18 @@ Make last exercise a "choose your own adventure", where student answers which th
     <boolean>1</boolean>
   </option>
   <option>
-    <graph name="graph3" showNavigation="false" fixAxes="true" xmin="-2.5" xmax="2.5" ymin="-4" ymax="4">
+    <graph name="graph3" showNavigation="false" fixAxes="true" xmin="-2.5" xmax="2.5" ymin="-4" ymax="4" fixed>
+      <shortDescription>graph of a line with a hole and a solid point at a different height from the hole</shortDescription>
       <function domain="[-2.5,$a-$c)"> $line </function>
       <function domain="[$a+$c,2.5)"> $line </function>
       <endpoint open="true" draggable="false">($a, $$line($a))</endpoint>
       <endpoint draggable="false">($a, $$line($a)+$upordown)</endpoint>
-    </graph> 
+    </graph>
     <boolean>1</boolean>
   </option>
   <option>
-    <graph name="graph4" showNavigation="false" fixAxes="true" xmin="-2.5" xmax="2.5" ymin="-4" ymax="4">
+    <graph name="graph4" showNavigation="false" fixAxes="true" xmin="-2.5" xmax="2.5" ymin="-4" ymax="4" fixed>
+      <shortDescription>graph of a function with a jump</shortDescription>
       <function domain="[-2.5,$a-$c)"> $line </function>
       <function domain="[$a+$c,2.5)"> $line2 </function>
       <endpoint open="true" draggable="false">($a, $$line($a))</endpoint>
@@ -68,7 +68,8 @@ Make last exercise a "choose your own adventure", where student answers which th
     <boolean>0</boolean>
   </option>
  <option>
-    <graph name="graph5" showNavigation="false" fixAxes="true" xmin="-2.5" xmax="2.5" ymin="-4" ymax="4">
+    <graph name="graph5" showNavigation="false" fixAxes="true" xmin="-2.5" xmax="2.5" ymin="-4" ymax="4" fixed>
+      <shortDescription>graph of a line with a hole and a solid point at a different height from the hole</shortDescription>
       <function domain="[-2.5,$a-$c)"> $line2 </function>
       <function domain="[$a+$c,2.5)"> $line2 </function>
       <endpoint draggable="false">($a, $$line($a))</endpoint>
@@ -94,13 +95,14 @@ Make last exercise a "choose your own adventure", where student answers which th
 </setup>
 
 
+
 <!-- testing -->
 <!-- <p>correctLabels = $correctLabels</p>
 <p>checkLists = $checkLists</p>
 <p>a = $a</p> -->
 <!-- /testing -->
 
- <p>Which of the following graphs below satisfy the property that <m>\displaystyle \lim_{x\to $a} f(x)= $$line($a) </m>?  Enter the (capital) letters of all such graphs, separated by commas if there is more than one. <mathInput name="mi1" /></p>
+ <p>Which of the following graphs below satisfy the property that <m>\displaystyle \lim_{x\to $a} f(x)= $$line($a) </m>?  Enter the (capital) letters of all such graphs, separated by commas if there is more than one. <mathInput name="mi1"><shortDescription>list of the letters whose graphs satisfy the given condition</shortDescription></mathInput></p>
  <answer>
     <award>
       <when>$checkLists</when>
@@ -112,3 +114,4 @@ Make last exercise a "choose your own adventure", where student answers which th
   <figure suppressFigureNameInCaption="true">$graphSelect[2][1]<caption>B</caption></figure>
   <figure suppressFigureNameInCaption="true">$graphSelect[3][1]<caption>C</caption></figure>
 </sideBySide>
+

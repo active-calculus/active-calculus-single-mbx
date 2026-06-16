@@ -16,7 +16,7 @@
 <!-- TMost of this preview activity was written by Steven Clontz at the 2024 Doenet workshop -->
 
   <p>
-    According to U.S. postal regulations, the size of a parcel sent by mail 
+    According to U.S. postal regulations, the size of a parcel sent by mail
     must satisfy certain constraints. Let's find the largest possible volume
     of a rectangular parcel with a square end that can be sent by U.S. mail.
   </p>
@@ -28,7 +28,7 @@
           Let <m>x</m> represent the length of one side of the square end and <m>y</m> the length of another edge of the box. Assume <m>x\lt y</m>.
           Label these quantities appropriately on the image below.
         </p>
-        <graph displayXAxis="false" displayYAxis="false" showNavigation="false" showBorder="false" aspectRatio="2" xmin="-2" xmax="8" ymin="-1" ymax="4">
+        <graph displayXAxis="false" displayYAxis="false" showNavigation="false" showBorder="false" aspectRatio="2" xmin="-2" xmax="8" ymin="-1" ymax="4"><shortDescription>sketch of the rectangular parcel with text entries for side lengths</shortDescription>
           <lineSegment draggable="false" endpoints="(0,0) (2,0)"/>
           <lineSegment draggable="false" endpoints="(2,0) (2,2)"/>
           <lineSegment draggable="false" endpoints="(2,2) (0,2)"/>
@@ -38,13 +38,13 @@
           <lineSegment draggable="false" endpoints="(0,2) (4,3)"/>
           <lineSegment draggable="false" endpoints="(4,3) (6,3)"/>
           <lineSegment draggable="false" endpoints="(6,1) (6,3)"/>
-          <textInput draggable="false" width="15px" anchor="(1,-0.5)" name="squareLabel"></textInput>
-          <textInput draggable="false" width="15px" anchor="(4,0)" name="depthLabel"></textInput>
+          <textInput draggable="false" width="15px" anchor="(1,-0.5)" name="squareLabel"><shortDescription>length of the shorter side</shortDescription></textInput>
+          <textInput draggable="false" width="15px" anchor="(4,0)" name="depthLabel"><shortDescription>length of the longer side</shortDescription></textInput>
         </graph>
       <p><answer>
    <award>
-     <when>($squareLabel = x or $squareLabel = X) and 
-       ($depthLabel = y or $depthLabel = Y)</when>
+     <when>$squareLabel = x and
+       $depthLabel = y </when>
    </award>
  </answer></p>
       </li>
@@ -54,7 +54,7 @@
           State an expression involving <m>x</m> and <m>y</m> that gives the volume of the box (which is the quantity we wish to optimize).
         </p>
       <p>
-         <m>V = </m> <answer name="toOptimize">x^2y</answer>
+         <answer name="toOptimize"><label><m>V = </m> </label>x^2y</answer>
       </p>
       </li>
 
@@ -68,18 +68,18 @@ other side cannot exceed <m>108</m> inches.
           State an equation involving <m>x</m> and <m>y</m> that is satisfied when the box's girth plus the length of its remaining side equals <m>108</m> inches.
         </p>
       <p>
-        <answer name="girthEq" simplifyOnCompare>4x+y=108</answer>
+        <answer name="girthEq" symbolicEquality simplifyOnCompare><shortDescription>equation for girth</shortDescription>4x+y=108</answer>
       </p>
       </li>
 
       <li>
         <p>
           Solve the equation
-          <mathInput disabled>$girthEq</mathInput>
+          <mathInput disabled><shortDescription>equation from part c</shortDescription><conditionalContent condition="$girthEq.creditAchieved=1">$girthEq</conditionalContent></mathInput>
           that you found in (c) for the variable <m>y</m>.
         </p>
       <p>
-<m>y=</m><answer name="rewrite">108-4x</answer>
+        <answer name="rewrite"><label><m>y=</m></label>108-4x</answer>
       </p>
       </li>
 
@@ -92,32 +92,32 @@ other side cannot exceed <m>108</m> inches.
           according to <m>y=</m><mathInput disabled>$rewrite</mathInput> -->
         </p>
       <p>
-        <m>V(x)=</m><answer>108x^2-4x^3</answer>
+        <answer><label><m>V(x)=</m></label>108x^2-4x^3</answer>
       </p>
       </li>
 
-      <li>
+      <li sectionWideCheckWork forceIndividualAnswerColoring>
         <p>
           Over what domain should we consider this function?
         </p>
-        <p>  
+        <p>
           The smallest value allowed for either <m>x</m> or <m>y</m> is zero;
-          given the constraint <mathInput disabled>$girthEq</mathInput> found in part (c),
+          given the constraint <mathInput disabled><shortDescription>equation from part c</shortDescription><conditionalContent condition="$girthEq.creditAchieved=1">$girthEq</conditionalContent></mathInput> found in part (c),
           what is the largest value possible for <m>x</m>?
         </p>
       <p>
-        The minimum possible value for <m>x</m> is <answer name="min">0</answer> and
-        the maximum possible value for <m>x</m> is <answer name="max">108/4</answer>, so
-        the domain of <m>V</m> in interval notation is <mathInput disabled>[$min,$max]</mathInput>.
+        <answer name="min"><label>The minimum possible value for <m>x</m> is </label>0</answer> and
+         <answer name="max"><label>the maximum possible value for <m>x</m> is</label>108/4</answer>, so
+        the <mathInput disabled minwidth="30"><label>domain of <m>V</m> in interval notation is</label>[<conditionalContent condition="$min.creditAchieved=1">$min</conditionalContent>,<conditionalContent condition="$max.creditAchieved=1">$max</conditionalContent>]</mathInput>.
       </p>
       </li>
 
-      <li>
+      <li sectionWideCheckWork forceIndividualAnswerColoring>
         <p>
-          The function <m>f(x)</m> has exactly one critical number that lies strictly between the endpoints of the domain <mathInput disabled>[$min,$max]</mathInput>. What is that critical numbers?
+          The function <m>f(x)</m> has exactly one critical number that lies strictly between the endpoints of the domain <mathInput disabled minwidth="30"><shortDescription>domain of V in interval notation</shortDescription>[<conditionalContent condition="$min.creditAchieved=1">$min</conditionalContent>,<conditionalContent condition="$max.creditAchieved=1">$max</conditionalContent>]</mathInput>. What is that critical number?
         </p>
         <p>
-          By first finding <m>f'(x)=</m><answer>216x-12x^2</answer>, and then setting <m>f'(x) = </m> <answer>0</answer> and solving for <m>x</m>, we find that the only critical number strictly between the endpoints of the domain is <answer name="critical">18</answer>.
+          By first calculating that <answer><label><m>f'(x)=</m></label>216x-12x^2</answer>, and then setting <answer><label><m>f'(x) = </m> </label>0</answer> and solving for <m>x</m>, we find that the only critical number strictly between the endpoints of the domain is <answer name="critical"><shortDescription>value of the critical number</shortDescription>18</answer>.
         </p>
       </li>
       <li>
@@ -125,18 +125,18 @@ other side cannot exceed <m>108</m> inches.
             Find the value of <m>f(x)</m> at each endpoints of its domain and this critical number.
         </p>
         <p>
-          <m>V(</m> <mathInput disabled>$min</mathInput><m>) =</m><answer>0</answer>.
+          <m>V(</m> <mathInput disabled minWidth="20"><shortDescription>location of minimum</shortDescription><conditionalContent condition="$min.creditAchieved=1">$min</conditionalContent></mathInput><m>) =</m><answer><shortDescription>value of function at its minimum x value</shortDescription>0</answer>.
         </p>
         <p>
-          <m>V(</m> <mathInput disabled>$max</mathInput><m>) =</m><answer>0</answer>.
+          <m>V(</m> <mathInput disabled minWidth="20"><shortDescription>location of maximum</shortDescription><conditionalContent condition="$max.creditAchieved=1">$max</conditionalContent></mathInput><m>) =</m><answer><shortDescription>value of function at its maximum x value</shortDescription>0</answer>.
         </p>
         <p>
-          <m>V(</m> <mathInput disabled>$critical</mathInput><m>) =</m><answer>108*18^2-4*18^3</answer>.
-        </p> 
+          <m>V(</m> <mathInput disabled minWidth="20"><shortDescription>location of critical point</shortDescription><conditionalContent condition="$critical.creditAchieved=1">$critical</conditionalContent></mathInput><m>) =</m><answer><shortDescription>value at the critical point</shortDescription>108*18^2-4*18^3</answer>.
+        </p>
       </li>
-      <li>
-        In conclusion, we find that the box of largest possible volume that can be shipped has a square end where each side has length <m>x = </m><answer>18</answer> inches and the remaining side has length <m>y = </m><answer>36</answer>, and thus the maximum volume is <m>V = </m><answer>11664</answer> cubic inches.
-      </li>  
+      <li sectionWideCheckWork forceIndividualAnswerColoring>
+        In conclusion, we find that the box of largest possible volume that can be shipped has a square end where each side has length <answer><label><m>x = </m></label>18</answer> inches and the remaining side has length <answer><label><m>y = </m></label>36</answer>, and thus the maximum volume is <answer><label><m>V = </m></label>11664</answer> cubic inches.
+      </li>
       <!--
       <li>
         <p>
