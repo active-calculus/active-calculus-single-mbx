@@ -14,12 +14,12 @@
 
 <setup>
 <selectFromSequence name="a" from="-7" to="-3"/>
-<selectFromSequence name="b" from="2" to="6"/>  
-<selectFromSequence name="c" from="-3" to="3" exclude="0"/>  
+<selectFromSequence name="b" from="2" to="6"/>
+<selectFromSequence name="c" from="-3" to="3" exclude="0"/>
 <function name="f">
     $a*x + $b
   </function>
-  <derivative name="fP">$f</derivative>  
+  <derivative name="fP">$f</derivative>
 </setup>
 
   <p>
@@ -33,49 +33,50 @@
           and thus we need to determine expressions for <m>f($c+h)</m> and <m>f($c+h) - f($c)</m>.
         </p>
 
-        <p>Using the given formula <m>f(x) = $f</m>, 
-      which of the following is the simplest possible expression for <m>f($c+h)</m>?</p>
+        <p>Using the given formula <m>f(x) = $f</m>,
+      which of the following is the simplest possible expression for <m>f($c+h)</m>?
             <answer>
-              <choiceInput>
+              <choiceInput><shortDescription>Pick the simplest expression.</shortDescription>
                 <choice><m>f($c+h) = $a($c+h) + $b </m></choice>
                 <choice credit="1"><m>f($c+h)=  <math simplify> $a*$c + $b + $a*h</math></m>  </choice>
                 <choice><m>f($c+h)=  <math simplify> -$a*$c + $b + $a*h</math></m>  </choice>
-                <choice><m>f($c+h)=  <math simplify> $a*$c + $b - $a*h</math></m>  </choice>> 
+                <choice><m>f($c+h)=  <math simplify> $a*$c + $b - $a*h</math></m>  </choice>
               </choiceInput>
-            </answer>  
+            </answer>
+        </p>
       </li>
       <li>
       <p>
         Which of the following is the simplest possible expression for <m>f($c+h) - f($c)</m>?
-      </p>
             <answer>
-              <choiceInput>
+              <choiceInput><shortDescription>Pick the simplest expression.</shortDescription>
                 <choice><m>f($c+h) - f($c) = $a($c+h) + $b - (<math simplify="numbers">$a*$c+$b</math>) </m></choice>
                 <choice><m>f($c+h) - f($c) =  <math simplify>-$a*h </math></m>  </choice>
                 <choice credit="1"><m>f($c+h) - f($c) =  <math simplify>$a*h </math></m>  </choice>
-                <choice><m>f($c+h) - f($c) =  <math simplify>$a*h + 2*$b </math></m>  </choice>  
+                <choice><m>f($c+h) - f($c) =  <math simplify>$a*h + 2*$b </math></m>  </choice>
               </choiceInput>
-            </answer>   
+            </answer>
+      </p>
       </li>
-      <li> 
+      <li>
         <p>
           Next, apply the limit definition of the derivative by substituting the simplest possible expression for <m>f($c+h)-f($c)</m> in the space provided:
         </p>
-        <p><m>f'($c)= \displaystyle \lim_{h \to 0} \frac{f($c+h)-f($c)}{h} = \lim_{h \to 0} </m> <mathInput name="dq_x1" minWidth="50" prefill="/h"></mathInput>
-      <answer><award><when>$dq_x1 = 
+        <p><m>f'($c)= \displaystyle \lim_{h \to 0} \frac{f($c+h)-f($c)}{h}</m>
+      <answer symbolicEquality simplifyOnCompare expandOnCompare><mathInput name="dq_x1" minWidth="20" prefill="/h"><label><m>\displaystyle = \lim_{h \to 0} </m> </label><description>Simplify the numerator.</description></mathInput><award><when>$dq_x1 =
         ($$f($c+h) - $$f($c))/h
       </when></award></answer></p>
       </li>
       <li>
         <p>Simplifying the difference quotient in part (c) as much as possible, we see that</p>
-        <p>  <m>f'($c)= \displaystyle \lim_{h \to 0} </m> <mathInput name="simp_x1"></mathInput>
-      <answer symbolicEquality><award><when>$simp_x1 = 
+        <p>
+      <answer symbolicEquality><mathInput name="simp_x1"><label><m>f'($c)= \displaystyle \lim_{h \to 0} </m></label></mathInput><award><when>$simp_x1 =
         $a
       </when></award></answer></p>
       </li>
       <li>
         <p>Finally, evaluating the limit by letting <m>h \to 0</m>, we determine the value of <m>f'($c)</m>:</p>
-        <p><m>f'($c) = </m> <answer>$$fP($c)</answer></p>
+        <p> <answer><label><m>f'($c) = </m></label>$$fP($c)</answer></p>
       </li>
 
     </ol>

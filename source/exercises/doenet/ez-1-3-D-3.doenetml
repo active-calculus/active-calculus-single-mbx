@@ -16,39 +16,38 @@
 <setup>
 
   <selectFromSequence name="a" from="1.5" to="2.5" step="0.25" />
-  <selectFromSequence name="b" from="0" to="2" step="0.5" />  
-  <selectFromSequence name="c" from="-1.16" to="0.56" step="0.1" /> 
+  <selectFromSequence name="b" from="0" to="2" step="0.5" />
+  <selectFromSequence name="c" from="-1.16" to="0.56" step="0.1" />
 
   <math name="ABSb"><abs>$b</abs></math>
-  
+
   <function name="g" symbolic="false">-1*$a^x + $b</function>
-  <derivative name="gP" symbolic="false">$g</derivative>  
-  <function name="L" symbolic="false" styleNumber="3" labelPosition="lowerRight">$$gP($c)(x-$c) + $$g($c)</function>  
-    <point name="A" styleNumber="2" coords="($c,$$g($c))" showCoordsWhenDragging="false" draggable="false" labelPosition="upperRight"> 
+  <derivative name="gP" symbolic="false">$g</derivative>
+  <function name="L" symbolic="false" styleNumber="3" labelPosition="lowerRight">$$gP($c)(x-$c) + $$g($c)</function>
+    <point name="A" styleNumber="2" coords="($c,$$g($c))" showCoordsWhenDragging="false" draggable="false" labelPosition="upperRight">
       <label><m>A = $A.coords</m></label>
-    </point> 
-    <point name="B" styleNumber="2" coords="($c+0.6*$a,$$L($c+0.6*$a))" showCoordsWhenDragging="false" draggable="false" labelPosition="upperRight"> 
+    </point>
+    <point name="B" styleNumber="2" coords="($c+0.6*$a,$$L($c+0.6*$a))" showCoordsWhenDragging="false" draggable="false" labelPosition="upperRight">
       <label><m>B = $B.coords</m></label>
     </point>
 
   <label name="gLabel" anchor="(-3,$$g(-3)-0.25)"><m>y = g(x)</m></label>
   <label name="LLabel" anchor="(-2.5,$$L(-2.5)+0.5)"><m>y = L(x)</m></label>
-  
+
 </setup>
 
   <p>Let <m>g</m> be the function given by the graph below and <m>L</m> its tangent line at the point <m>A</m>.</p>
 
 <!--  <p><m>a = $a</m>, <m>b = $b</m>, and <m>c = $c</m>, so <m>g(x) = $$g(x)</m> and <m>L(x) = $$L(x)</m>, plus <m>A = $A</m> and <m>B = $B</m></p> -->
 
-      <graph xmin="-4" xmax="4" ymin="-4" ymax="4" size="medium" grid="false" showNavigation="false" displayXAxis="false" displayYAxis="false"  fixAxes="true"> 
+      <graph xmin="-4" xmax="4" ymin="-4" ymax="4" size="medium" grid="false" showNavigation="false" displayXAxis="false" displayYAxis="false"  fixAxes="true"><shortDescription>A graph containing a curve g of x, a tangent line L of x, and two points on the line.</shortDescription><description>The line <m>L(x)</m> is tangent to the curve <m>g(x)</m> at the point <m>A</m> with coordinates <m>$A.coords</m>.  The point <m>B</m> with coordinates <m>$B.coords</m> also lies on the tangent line.</description>
         $g $L $A $B $gLabel $LLabel
       </graph>
 
   <p>
-    Use the given information from the graph to complete the following sentence about the values of <m>a</m>, <m>g(a)</m>, and <m>g'(a)</m>, where we are thinking about <m>L</m> as the tangent line to <m>g</m> at the point where <m>x=a</m>. 
-  </p>  
-  <p>At the point where <m>a = </m><answer><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> $c
-        </award></answer>, we know that <m>g(a) = </m><answer><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> $$g($c)
-        </award></answer> and <m>g'(a) = </m><answer><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> $$gP($c)
+    Use the given information from the graph to complete the following sentence about the values of <m>a</m>, <m>g(a)</m>, and <m>g'(a)</m>, where we are thinking about <m>L</m> as the tangent line to <m>g</m> at the point where <m>x=a</m>.
+  </p>
+  <p>At the point where <answer><label><m>a = </m></label><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> $c
+        </award></answer>, we know that <answer><label><m>g(a) = </m></label><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> $$g($c)
+        </award></answer> and <answer><label><m>g'(a) = </m></label><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> $$gP($c)
         </award></answer>.</p>
-   

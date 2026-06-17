@@ -13,49 +13,50 @@
 <!-- **********************************************************************-->
 
 <setup>
-  <selectFromSequence name="a" from="-0.5" to="0.5" step="0.25" exclude="0"/>
-  <selectFromSequence name="h" from="-1" to="1" step="1" exclude="0"/>
-  <selectFromSequence name="k" from="-1" to="1" step="1" exclude="0"/>
+  <selectFromSequence name="a" from="-0.25" to="0.25" step="2/3"/>
+  <selectFromSequence name="h" from="-0.75" to="0.75" step="1.5" exclude="0"/>
+  <selectFromSequence name="k" from="-0.5" to="0.5" step="1" exclude="0"/>
   <selectFromSequence name="c" from="-1" to="1" step="0.5" exclude="0 $h"/>
+  
   <number name="cplus">$c+$h/(10*$k)</number>
-
+   
   <function name="f" symbolic="false" >
     $a*(x-$h)^2-$k
   </function>
 
   <derivative name="fP" symbolic="false">
     $f
-  </derivative>
+  </derivative>  
 
   <derivative name="fPP" symbolic="false">
     $fP
-  </derivative>
-
+  </derivative>  
+  
   <function name="L" symbolic="false" styleNumber="2">
     $$f($c) + $$fP($c)*(x-$c)
   </function>
 
-  <point name="A" styleNumber="5" draggable="false">
+  <point name="A" styleNumber="5" draggable="false"> 
     ($c,$$f($c))
-    <label><m>(a,f(a))</m></label>
+    <!-- <label><m>(a,f(a))</m></label> -->
   </point>
 
-  <point name="B" styleNumber="5" draggable="false">
+  <point name="B" styleNumber="5" draggable="false"> 
     ($c+1.5,$$f($c+1)-0.25)
   </point>
 
-     <!-- <label name="F" anchor="$B"><m>y = f(x)</m></label> -->
+     <label name="F" anchor="$B"><m>y = f(x)</m></label>
 
 
 </setup>
 
-<p> The graph below shows a quadratic function <m>f</m> (in blue) and its local linearization <m>L</m>  (in red) at <m>x=a</m>.</p>
-  <graph xmin="-5" xmax="5" ymin="$$f($c)-5" ymax="$$f($c)+5" showNavigation="false" fixAxes="true" grid="true">
+<p> The graph below shows a quadratic function <m>f</m> (in blue) and its local linearization <m>L</m>  (in red) at <m>x=a</m>.  The point of tangency, <m>(a,f(a))</m>, is shown in black.</p>
+  <graph xmin="-4" xmax="4" ymin="-4" ymax="4" showNavigation="false" grid="true" fixed>
     $f
     $L
     $A
 
-  </graph>
+  </graph>  
 <p>
   The formula for the pictured tangent line is <m>L(x) = <math simplify>$$f($c) + $$fP($c)*(x-$c)</math></m>
 </p>
@@ -148,5 +149,3 @@ Testing: <m>a = $a</m>,  <m>h = $h</m>, <m>k = $k</m>, <m>c = $c</m>, <m>f(x) = 
     </li>
   </ol>
 </p>
-
-
