@@ -12,6 +12,8 @@
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
 
+<!-- this file should meet accessibility stuff with descriptions and labels -->
+
 <setup>
 
   <selectFromSequence name = "m1" from = "0.25" to = "0.75" step = "0.25"/>
@@ -46,7 +48,7 @@
   </piecewiseFunction>
 
   <selectFromSequence name="a" from="-4" to="4" step="1" exclude="0"/>
-  <selectFromSequence name="b" from="-4" to="4" step="1" exclude="0 $a"/>
+  <selectFromSequence name="b" from="-4" to="4" step="1" exclude="0 $a -$a"/>
   <selectFromSequence name="c" from="-4" to="4" step="1"/>
   <selectFromSequence name="d" from="-4" to="4" step="1" exclude="$c"/> 
   
@@ -62,12 +64,16 @@
 </setup>
 
 <p>
- Let <m>f</m> (in blue) and <m>g</m> (in red) be the piecewise linear functions given by the graphs below.
+ Let <m>f</m> (in blue) and <m>g</m> (in red) be the piecewise linear functions given by the graphs below.  In addition, let <me>p(x) = <math simplify>$a*f(x) - $b*g(x)</math>.</me>
 </p>
 
-      <graph xmin="-5" xmax="5" ymin="-5" ymax="5" size="medium" grid="true" showNavigation="false" fixAxes="true"> $f $g  
+      <graph xmin="-5" xmax="5" ymin="-5" ymax="5" size="medium" grid="true" showNavigation="false" fixAxes="true"> 
+        <shortDescription>Two piecewise linear functions f and g</shortDescription>
+        <description>Two piecewise linear functions, <m>f</m> and <m>g</m>, which each consist of two line segments.  The first linear portion of the graph of <m>f</m> passes through <m>(-5,$$f(-5))</m> and <m>($x1,$$f($x1))</m>; the second linear portion of the graph of  <m>f</m> passes through <m>($x1,$$f($x1))</m> and <m>(5,$$f(5))</m>. The first linear portion of the graph of <m>g</m> passes through <m>(-5,$$g(-5))</m> and <m>($x2,$$g($x2))</m>; the second linear portion of the graph of  <m>g</m> passes through <m>($x2,$$g($x2))</m> and <m>(5,$$g(5))</m>. </description>
+          $f $g  
           <label fixLocation anchor="($x1+0.5,$$f($x1)-0.25)"><m>f</m></label>
           <label fixLocation anchor="($x2+0.25,$$g($x2)-0.25)"><m>g</m></label>
+        
       </graph>
 
    
@@ -87,17 +93,50 @@
   </case>
 </conditionalContent>
 --> 
+
   <p>
-    Let <m>p(x) = <math simplify>$a*f(x) - $b*g(x)</math></m>.
-  </p>
-  <p>
-    Determine <m>p'(a)</m> for each stated value of <m>a</m>; if  <m>p'(a)</m> is not defined, enter <q>undefined</q> (without quotes).
+    Determine each of the following derivative values; if the derivative is not defined, enter <q>undefined</q> (without quotes).
   </p>  
   <ol marker="a.">
 
   <li>
-    <p>    <m> p'($c) = </m> 
+    <p>   
       <answer>
+        <label><m> f'($c) = </m></label>
+        <conditionalContent>
+          <case condition="$c = $x1">
+            undefined
+          </case>  
+          <case>
+            $$fP($c)
+          </case>
+        </conditionalContent>  
+      </answer> 
+    </p>
+  <!--    <p><m>$$f($a)*$$gP($a) + $$g($a)*$$fP($a)  </m></p> -->
+  </li>
+  <li>
+    <p>    
+      <answer>
+        <label><m> g'($c) = </m></label>
+        <conditionalContent>
+          <case condition="$c = $x2">
+            undefined
+          </case>  
+          <case>
+            $$gP($c)
+          </case>
+        </conditionalContent>  
+      </answer> 
+    </p>
+  <!--    <p><m>$$f($a)*$$gP($a) + $$g($a)*$$fP($a)  </m></p> -->
+  </li>
+    
+  <li>
+    <p>     
+      <answer>
+        <label><m> p'($c) = </m></label>
+        <description>Recall that p(x) = <math simplify>$a*f(x) - $b*g(x)</math>.</description>
         <conditionalContent>
           <case condition="$c = $x1">
             undefined
@@ -115,8 +154,9 @@
   </li>
 
   <li>
-    <p>    <m> p'($d) = </m> 
+    <p>    
       <answer>
+        <label><m> p'($d) = </m></label>
         <conditionalContent>
           <case condition="$d = $x1">
             undefined
