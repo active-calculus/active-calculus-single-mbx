@@ -15,11 +15,11 @@
 <setup>
 <selectFromSequence name="a" from="2" to="5"/>
 <selectFromSequence name="b" from="6" to="9"/>
-<selectFromSequence name="c" from="-3" to="3" exclude="0"/>  
+<selectFromSequence name="c" from="-3" to="3" exclude="0"/>
 <function name="f">
     $c + $b/(x-$a)
   </function>
-  <derivative name="fP">$f</derivative>  
+  <derivative name="fP">$f</derivative>
 </setup>
 
   <p>
@@ -33,58 +33,60 @@
           and thus we need to determine expressions for <m>f(x+h)</m> and <m>f(x+h) - f(x)</m>.
         </p>
 
-        <p>Using the given formula, <m>f(x) = $f</m>, 
-      which of the following expressions is equivalent to <m>f(x+h)</m>?</p>
+        <p>Using the given formula, <m>f(x) = $f</m>,
+      which of the following expressions is equivalent to <m>f(x+h)</m>?
             <answer>
-              <choiceInput>
+              <choiceInput><shortDescription>simplest possible expression for f of x plus h</shortDescription>
                 <choice><m>f(x+h) = $f + h </m></choice>
                 <choice credit="1"><m>f(x+h)= $c + \frac{$b}{x+h-$a} </m>  </choice>
-                <choice><m>f(x+h)= <math simplify>$c - $b/$a</math> + \frac{9}{x} + \frac{9}{h} </m>  </choice>          
+                <choice><m>f(x+h)= <math simplify>$c - $b/$a</math> + \frac{9}{x} + \frac{9}{h} </m>  </choice>
                 <choice><m>f(x+h) = $f + \frac1h </m>  </choice>
               </choiceInput>
-            </answer>  
+            </answer>
+        </p>
       </li>
       <li>
-      <p>First, verify that 
+      <p>First, verify that
         <md>
           <mrow>
-            f(x+h) - f(x) \amp = $c + \frac{$b}{x+h-$a} - \left( $f \right) 
+            f(x+h) - f(x) \amp = $c + \frac{$b}{x+h-$a} - \left( $f \right)
           </mrow>
-          <mrow> 
+          <mrow>
             \amp= \frac{$b}{x+h-$a} - \frac{$b}{x-$a}
           </mrow>
         </md>
         Then, get a common denominator to subtract the two fractions and simplify the numerator as much as possible.  Which of the following expression results?
-      </p>
             <answer>
-              <choiceInput>
+              <choiceInput><shortDescription>simplest possible expression for f of x plus h minus f of x</shortDescription>
                 <choice><m>f(x+h) - f(x) = \frac{<math>$b*h</math>}{(x+h-$a)(x-$a)} </m></choice>
                 <choice><m>f(x+h) - f(x) =  \frac{<math simplify>-$b*h - 2*$b*$a</math>}{(x+h-$a)(x-$a)} </m>  </choice>
-                <choice credit="1"><m>f(x+h) - f(x) =  \frac{<math>-$b*h</math>}{(x+h-$a)(x-$a)} </m> </choice>  
-                <choice ><m>f(x+h)  - f(x) =  \frac{-h}{(x+h-$a)^2}</m>  </choice> 
+                <choice credit="1"><m>f(x+h) - f(x) =  \frac{<math>-$b*h</math>}{(x+h-$a)(x-$a)} </m> </choice>
+                <choice ><m>f(x+h)  - f(x) =  \frac{-h}{(x+h-$a)^2}</m>  </choice>
               </choiceInput>
-            </answer>   
+            </answer>
+        </p>
       </li>
-      <li> 
+      <li sectionWideCheckWork forceIndividualAnswerColoring>
         <p>
           Next, use your work from (b) to substitute the simplest possible expression for <m>f(x+h)-f(x)</m> in the space provided:
-        </p>  
+        </p>
 
         <setup>
           <boolean name="exprCorrect">$dq_x1 = (-$b h)/((x + h - $a)(x-$a))</boolean>
-          <matchesPattern name="singleFraction" pattern="-()/()">$dq_x1</matchesPattern>
+          <matchesPattern name="singleFraction" pattern="()/()">$dq_x1</matchesPattern>
         </setup>
-        <p><m>f'(x)= \displaystyle \lim_{h \to 0} \frac{f(x+h)-f(x)}{h} = \lim_{h \to 0} </m> <mathInput name="dq_x1" minwidth="70"></mathInput> <m>\cdot \frac{1}{h}</m>
-      <!-- <answer><award><when>$dq_x1 = 
+        <p>
+      <!-- <answer><award><when>$dq_x1 =
         \frac{<math>-$b*h</math>}{(x+h-$a)(x-$a)}
       </when></award></answer> -->
       <answer>
+        <mathInput name="dq_x1" minwidth="70"><label><m>f'(x)= \displaystyle \lim_{h \to 0} \frac{f(x+h)-f(x)}{h} = \lim_{h \to 0} </m></label></mathInput>
         <award>
           <when>$exprCorrect and $singleFraction</when>
         </award>
-      </answer>
+      </answer><m>\cdot \frac{1}{h}</m>
         </p>
-        <!-- testing 
+        <!-- testing
         <p><math simplify>$$f(x+h) - $$f(x)</math></p>
         <p><math simplify>-$b*h/((x+h-$a)(x-$a))</math></p>
         <p>exprCorrect = $exprCorrect</p>
@@ -93,7 +95,7 @@
       </li>
       <li>
         <p>Finally, evaluating the limit by letting <m>h \to 0</m>, we determine the value of <m>f'(x)</m>:</p>
-        <p><m>f'(x) = </m> <answer>$$fP(x)</answer></p>
+        <p> <answer><label><m>f'(x) = </m></label>$$fP(x)</answer></p>
       </li>
 
     </ol>

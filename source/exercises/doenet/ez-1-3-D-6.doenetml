@@ -19,6 +19,8 @@
     $a*x - x^2
   </function>
   <derivative name="fP">$f</derivative>
+  <number name="coeff">$a-2$c</number>
+<math name="coeffh" simplify>($a-2$c)h</math>
 </setup>
 
   <p>
@@ -61,20 +63,34 @@
           Next, apply the limit definition of the derivative by substituting the simplest possible expression for <m>f($c+h)-f($c)</m> in the space provided:
         </p>
         <p>
-      <answer symbolicEquality simplifyOnCompare expandOnCompare><mathInput name="dq_x1" prefill="/h" minWidth="20"><label><m>f'($c)= \displaystyle \lim_{h \to 0} \frac{f($c+h)-f($c)}{h} = \lim_{h \to 0} </m> </label><description>Simplify the numerator.</description></mathInput><award><when>$dq_x1 =
+      <answer><mathInput name="dq_x1" prefill="/h" minWidth="20"><label><m>f'($c)= \displaystyle \lim_{h \to 0} \frac{f($c+h)-f($c)}{h} = \lim_{h \to 0} </m> </label><description>Simplify the numerator.</description></mathInput>
+        <award symbolicEquality simplifyOnCompare="normalizeOrder">
+          <when>$dq_x1 = (-h^2 +  $coeffh)/h
+      </when></award>
+        <award credit="0" name="notsimplified" symbolicEquality simplifyOnCompare="full" expandOnCompare><when>$dq_x1 =
         ($$f($c+h) - $$f($c))/h
-      </when></award></answer></p>
+      </when></award>
+        <award credit="0" name="toosimplified"><when>$dq_x1 =
+        ($$f($c+h) - $$f($c))/h
+      </when></award>
+      </answer></p>
+        <feedback condition="$notsimplified">Your numerator is not simplified enough, yet.</feedback>
+        <feedback condition="$toosimplified">Don't divide by <m>h</m> until the next answer box. Leave this answer with a numerator divided by <m>h</m>.</feedback>
       </li>
       <li>
         <p>Further, factoring the numerator and simplifying the quotient as much as possible, we see that</p>
         <p>
-      <answer><mathInput name="simp_x1"><label><m>f'($c)= \displaystyle \lim_{h \to 0} </m> </label></mathInput><award><when>$simp_x1 =
+      <answer><mathInput name="simp_x1"><label><m>f'($c)= \displaystyle \lim_{h \to 0} </m> </label></mathInput>
+        <award symbolicEquality simplifyOnCompare="normalizeOrder"><when>$simp_x1 = -h + $coeff
+      </when></award>
+        <award credit="0" name="notsimplified2" symbolicEquality simplifyOnCompare="full" expandOnCompare><when>$simp_x1 =
         ($$f($c+h) - $$f($c))/h
       </when></award></answer></p>
+        <feedback condition="$notsimplified2">Your answer is not simplified enough, yet.</feedback>
       </li>
       <li>
         <p>Finally, evaluating the limit by letting <m>h \to 0</m>, we determine the value of <m>f'($c)</m>:</p>
-        <p><answer><label><m>f'($c) = </m> </label>$$fP($c)</answer></p>
+        <p><answer symbolicEquality><label><m>f'($c) = </m> </label>$$fP($c)</answer></p>
       </li>
 
     </ol>

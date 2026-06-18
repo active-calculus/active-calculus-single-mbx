@@ -19,6 +19,8 @@
     $c + $a*x - x^2
   </function>
   <derivative name="fP">$f</derivative>
+  <function name="numh" simplify>-h^2+$a*h-2*x*h</function>
+  <function name="almostdone" simplify>-h+$a-2*x</function>
 </setup>
 
   <p>
@@ -33,9 +35,9 @@
         </p>
 
         <p>Using the given formula, <m>f(x) = $f</m>,
-      select all of the following expressions which are equivalent to <m>f(x+h)</m>. The correct answer involves selecting more than one of the following items.</p>
+      select all of the following expressions which are equivalent to <m>f(x+h)</m>. The correct answer involves selecting more than one of the following items.
             <answer>
-              <choiceInput selectMultiple>
+              <choiceInput selectMultiple><shortDescription>simplest possible expression for f of x plus h</shortDescription>
                 <choice><m>f(x+h) = $c + <math>$a*x</math> - x^2 + h </m></choice>
                 <choice><m>f(x+h) = $c + $a(x+h) - (x^2 + h^2) </m></choice>
                 <choice credit="1"><m>f(x+h) = $c + $a(x+h) - (x+h)^2 </m></choice>
@@ -44,12 +46,13 @@
                 <choice credit="1"><m>f(x+h)= $c + <math>$a*x-x^2 +$a*h</math> - 2xh - h^2 </m>  </choice>
               </choiceInput>
             </answer>
+        </p>
       </li>
       <li>
       <p>Which of the following is the simplest possible expression for <m>f(x+h) - f(x)</m>?</p>
             <answer>
-              <choiceInput>
-                <choice><m>f(x+h) - f(x) = $a(x+h)-(x+h)^2 + <math simplify>-1*$$f(x)</math> </m></choice>
+              <choiceInput><shortDescription>simplest possible expression for f of x plus h minus f of x</shortDescription>
+                <choice><m>f(x+h) - f(x) = $c+$a(x+h)-(x+h)^2 + <math simplify>-1*$$f(x)</math> </m></choice>
                 <choice><m>f(x+h) - f(x) =  - h^2 + <math simplify>$a*h </math></m>  </choice>
                 <choice><m>f(x+h) - f(x) =  <math>$a*h</math> + h^2 - 2xh</m>  </choice>
                 <choice credit="1"><m>f(x+h)  - f(x) =  <math>$a*h</math> - h^2 - 2xh</m>  </choice>
@@ -60,21 +63,37 @@
         <p>
           Next, apply the limit definition of the derivative by substituting the simplest possible expression for <m>f(x+h)-f(x)</m> in the space provided:
         </p>
-        <p><m>f'(x)= \displaystyle \lim_{h \to 0} \frac{f(x+h)-f(x)}{h} = \lim_{h \to 0} </m> <mathInput name="dq_x1" prefill="/h"></mathInput>
-      <answer><award><when>$dq_x1 =
+        <p>
+      <answer><mathInput name="dq_x1" prefill="/h" minWidth="20"><label><m>f'(x)= \displaystyle \lim_{h \to 0} \frac{f(x+h)-f(x)}{h} = \lim_{h \to 0} </m></label></mathInput>
+        <award symbolicEquality simplifyOnCompare="normalizeOrder"><when>$dq_x1 =
+        ($numh)/h
+      </when></award>
+        <award credit="0" name="notsimplified" symbolicEquality simplifyOnCompare="full" expandOnCompare><when>$dq_x1 =
         ($$f(x+h) - $$f(x))/h
-      </when></award></answer></p>
+      </when></award>
+        <award credit="0" name="toosimplified"><when>$dq_x1 =
+        ($$f(x+h) - $$f(x))/h
+      </when></award>
+      </answer></p>
+        <feedback condition="$notsimplified">Your numerator is not simplified enough, yet.</feedback>
+        <feedback condition="$toosimplified">Don't divide by <m>h</m> until the next answer box. Leave this answer with a numerator divided by <m>h</m>.</feedback>
       </li>
       <li>
         <p>Further, factoring the numerator and simplifying the quotient as much as possible, we see that</p>
-        <p>  <m>f'(x)= \displaystyle \lim_{h \to 0} </m> <mathInput name="simp_x1"></mathInput>
-      <answer><award><when>$simp_x1 =
+        <p>
+      <answer>
+        <mathInput name="simp_x1"><label><m>f'(x)= \displaystyle \lim_{h \to 0} </m></label></mathInput>
+        <award symbolicEquality simplifyOnCompare="normalizeOrder"><when>$simp_x1 =
+          $almostdone
+        </when></award>
+        <award name="notsimplified2" credit="0"><when>$simp_x1 =
         ($$f(x+h) - $$f(x))/h
       </when></award></answer></p>
+        <feedback condition="$notsimplified2">Your answer is not simplified enough, yet.</feedback>
       </li>
       <li>
         <p>Finally, evaluating the limit by letting <m>h \to 0</m>, we determine the value of <m>f'(x)</m>:</p>
-        <p><m>f'(x) = </m> <answer>$$fP(x)</answer></p>
+        <p><answer symbolicEquality simplifyOnCompare="normalizeOrder"><label><m>f'(x) = </m> </label>$$fP(x)</answer></p>
       </li>
 
     </ol>
