@@ -16,16 +16,17 @@
 <setup>
 
   <selectFromSequence name="a" from="-2.5" to="2.5" step="1" exclude="0"/>
-  <selectFromSequence name="b" from="1.2" to="4.2" step="1"/>  
+  <selectFromSequence name="b" from="1.2" to="4.2" step="1"/>
 
   <math name="ABSb"><abs>$b</abs></math>
-  
+
   <function name="r" symbolic="false">-$a/(x^2 + 1)</function>
-  <derivative name="rP" symbolic="false">$r</derivative>  
-  <function name="s" symbolic="false">0.25*$b*cos(x/($a^2+1))</function>  
-  <derivative name="sP" symbolic="false">$s</derivative>   
-  
+  <derivative name="rP" symbolic="false">$r</derivative>
+  <function name="s" symbolic="false">0.25*$b*cos(x/($a^2+1))</function>
+  <derivative name="sP" symbolic="false">$s</derivative>
+
 </setup>
+
 
   <p>Let <m>r</m> and <m>s</m> be functions; some of their values are given by the following table.</p>
    <!--  <p>Note that <m>a = $a</m> and <m>b = $b</m>. </p> -->
@@ -36,40 +37,38 @@
           <cell><math>$a</math></cell>
           <cell><math simplify>$a+0.25*$ABSb</math></cell>
           <cell><math simplify>$a+0.5*$ABSb</math></cell>
-          <cell><math simplify>$a+0.75*$ABSb</math></cell> 
-          <cell><math simplify>$a+1*$ABSb</math></cell>             
+          <cell><math simplify>$a+0.75*$ABSb</math></cell>
+          <cell><math simplify>$a+1*$ABSb</math></cell>
         </row>
         <row>
           <cell><m>r(x)</m></cell>
-          <cell><math displayDecimals="4">$$r($a)</math></cell>
-          <cell><math displayDecimals="4">$$r($a+0.25*$ABSb)</math></cell>
-          <cell><math displayDecimals="4">$$r($a+0.5*$ABSb)</math></cell>
-          <cell><math displayDecimals="4">$$r($a+0.75*$ABSb)</math></cell>
-          <cell><math displayDecimals="4">$$r($a+$ABSb)</math></cell>
+          <cell><math name="r1" displayDecimals="4">$$r($a)</math></cell>
+          <cell><math name="r2" displayDecimals="4">$$r($a+0.25*$ABSb)</math></cell>
+          <cell><math name="r3" displayDecimals="4">$$r($a+0.5*$ABSb)</math></cell>
+          <cell><math name="r4" displayDecimals="4">$$r($a+0.75*$ABSb)</math></cell>
+          <cell><math name="r5" displayDecimals="4">$$r($a+$ABSb)</math></cell>
         </row>
         <row>
           <cell><m>s(x)</m></cell>
-          <cell><math displayDecimals="4">$$s($a)</math></cell>
-          <cell><math displayDecimals="4">$$s($a+0.25*$ABSb)</math></cell>
-          <cell><math displayDecimals="4">$$s($a+0.5*$ABSb)</math></cell>
-          <cell><math displayDecimals="4">$$s($a+0.75*$ABSb)</math></cell>
-          <cell><math displayDecimals="4">$$s($a+$ABSb)</math></cell>
+          <cell><math name="s1" displayDecimals="4">$$s($a)</math></cell>
+          <cell><math name="s2" displayDecimals="4">$$s($a+0.25*$ABSb)</math></cell>
+          <cell><math name="s3" displayDecimals="4">$$s($a+0.5*$ABSb)</math></cell>
+          <cell><math name="s4" displayDecimals="4">$$s($a+0.75*$ABSb)</math></cell>
+          <cell><math name="s5" displayDecimals="4">$$s($a+$ABSb)</math></cell>
         </row>
       </tabular>
-   
+
 <!--   <p>Note that <m>r(x) = <math>$r</math> </m>, <m>r'(x) = <math> $rP</math></m>, <m>s(x) = <math>$s</math></m>, <m>s'(x) = <math>$sP</math></m>.</p> -->
-   
+
    <p>Use central differences appropriately to generate the best estimate you can for each of the following values of <m>r'(x)</m> and <m>s'(x)</m>. </p>
    <ol marker="a.">
     <li>
-      <p> <m>r'(<math simplify>$a+0.25*$ABSb</math>) \approx </m>
-      <setup>  
-        <math simplify name="d1">($$r($a+0.5*$ABSb)-$$r($a + 0.25*$ABSb))/(0.25*$ABSb) </math>
-        <math simplify name="d2">($$r($a+0.25*$ABSb)-$$r($a))/(0.25*$ABSb) </math>  
-        <math simplify name="d3">($$r($a+0.5*$ABSb)-$$r($a))/(0.5*$ABSb) </math>  
-      </setup>  
-        <answer><mathInput name="ans1"/>
-          <award allowedErrorInNumbers="0.05"> 
+      <p>
+      <setup>
+        <math simplify name="d3">($r3-$r1)/(0.5*$ABSb) </math>
+      </setup>
+        <answer><mathInput name="ans1"><label><m>r'(<math simplify>$a+0.25*$ABSb</math>) \approx </m></label></mathInput>
+          <award allowedErrorInNumbers="0.001" allowedErrorIsAbsolute>
             <when>
               $ans1 = $d3 <!-- or $ans1 = $d1 or $ans1 = $d2 -->
             </when>
@@ -79,17 +78,17 @@
         <math> ($$r($a+0.5*$ABSb)-$$r($a + 0.25*$ABSb))/(0.25*$ABSb) , ($$r($a+0.25*$ABSb)-$$r(1*$a))/(0.25*$ABSb),  ($$r($a+0.5*$ABSb)-$$r($a))/(0.5*$ABSb) </math>
         -->
       </p>
-    </li> 
-     
+    </li>
+
     <li>
-      <p> <m>s'(<math simplify>$a+0.75*$ABSb</math>) \approx </m>     
-      <setup>  
-        <math simplify name="e1">($$s($a+1*$ABSb)-$$s($a + 0.75*$ABSb))/(0.25*$ABSb) </math>
-        <math simplify name="e2">($$s($a+0.75*$ABSb)-$$s($a+0.5*$ABSb))/(0.25*$ABSb) </math>  
-        <math simplify name="e3">($$s($a+1*$ABSb)-$$s($a+0.5*$ABSb))/(0.5*$ABSb) </math>  
-      </setup>  
-        <answer><mathInput name="ans2"/>
-          <award allowedErrorInNumbers="0.05"> 
+      <p>
+      <setup>
+        <!-- <math simplify name="e1">($$s($a+1*$ABSb)-$$s($a + 0.75*$ABSb))/(0.25*$ABSb) </math>
+        <math simplify name="e2">($$s($a+0.75*$ABSb)-$$s($a+0.5*$ABSb))/(0.25*$ABSb) </math>   -->
+        <math simplify name="e3">($s5-$s3)/(0.5*$ABSb) </math>
+      </setup>
+        <answer><mathInput name="ans2"><label><m>s'(<math simplify>$a+0.75*$ABSb</math>) \approx </m></label></mathInput>
+          <award allowedErrorInNumbers="0.001" allowedErrorIsAbsolute>
             <when>
               <!-- $ans2 = $e1 or $ans2 = $e2 or --> $ans2 = $e3
             </when>
@@ -97,9 +96,9 @@
         </answer>
       </p>
     </li>
-  </ol>       
+  </ol>
         <!--
         <math> ($$s($a+0.75*$ABSb)-$$s($a+0.5*$ABSb))/(0.25*$ABSb) </math>
 
-        <math> ($$s($a+0.75*$ABSb)-$$s($a + 0.5*$ABSb))/(0.25*$ABSb),  ($$s($a+0.5*$ABSb)-$$s($a+0.25*$ABSb))/(0.25*$ABSb), ($$s($a+0.75*$ABSb)-$$s($a+0.25*$ABSb))/(0.5*$ABSb) </math>  
+        <math> ($$s($a+0.75*$ABSb)-$$s($a + 0.5*$ABSb))/(0.25*$ABSb),  ($$s($a+0.5*$ABSb)-$$s($a+0.25*$ABSb))/(0.25*$ABSb), ($$s($a+0.75*$ABSb)-$$s($a+0.25*$ABSb))/(0.5*$ABSb) </math>
         -->

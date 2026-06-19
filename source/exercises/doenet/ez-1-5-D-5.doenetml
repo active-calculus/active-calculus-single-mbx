@@ -14,16 +14,16 @@
 
  <setup>
   <selectFromSequence name="a" from="50" to="100" step="10"/>
-  <selectFromSequence name="b" from="0.2" to="0.4" step="0.05"/>  
-  <selectFromSequence name="c" from="4" to="7" step="0.5"/>    
-  <function name="v">$a*e^(-$b*x)</function>
-  <derivative name="vP">$v</derivative>  
-  <function name="s">$a/$b - $a/$b*e^(-$b*x)</function>   
-</setup>  
+  <selectFromSequence name="b" from="0.2" to="0.4" step="0.05"/>
+  <selectFromSequence name="c" from="4" to="7" step="0.5"/>
+  <function name="v" displayDecimals="3">$a*e^(-$b*x)</function>
+  <derivative name="vP" displayDecimals="3">$v</derivative>
+  <function name="s" displayDecimals="3">$a/$b - $a/$b*e^(-$b*x)</function>
+</setup>
 
 <p>
   Suppose that the velocity of a braking car is given by the function <m>v(t) = $$v(t)</m>, where <m>t</m> is measured in seconds and <m>v</m> in feet per second.
-</p>  
+</p>
 
 <p>
   <ol marker ="a.">
@@ -31,23 +31,23 @@
       <p>
         Use a central difference with <m>h = 0.1</m> to estimate the value of <m>v'($c)</m> to an accuracy of <m>0.01</m>.
       </p>
-      <p> 
-        <m>v'($c) \approx </m> 
-        <setup>  
+      <p>
+
+        <setup>
           <math simplify name="cd">($$v($c+0.1)-$$v($c-0.1))/(0.2) </math>
-        </setup>  
-          <answer><mathInput name="ans1"/>
-            <award allowedErrorInNumbers="0.01"> 
+        </setup>
+          <answer><mathInput name="ans1"><label><m>v'($c) \approx </m></label></mathInput>
+            <award allowedErrorInNumbers="0.01">
               <when>
-                $ans1 = $cd 
+                $ans1 = $cd
               </when>
             </award>
-          </answer>  
+          </answer>
     <!--    <math>($$v($c+0.1)-$$v($c-0.1))/(0.2)</math> -->
       </p>
     </li>
-    <li>
-        <setup>  
+    <li sectionWideCheckWork forceIndividualAnswerColoring>
+        <setup>
           <math simplify name="inst">$c-1.5</math>
           <math simplify name="vel">$$v($c-1.5)</math>
           <math simplify name="velP">$$vP($c-1.5)</math>
@@ -59,30 +59,30 @@
         Given that <m>v($inst) \approx $vel</m> and <m>v'($inst) \approx $velP</m>, complete the following sentence to explain the meaning of these quantities.
       </p>
       <p>
-        At the instant <m>t = $inst</m>, the car's velocity is <answer><award allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$vel</award></answer> feet per second, and the car's velocity is changing at an instantaneous rate of <answer><award allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$velP</award></answer> <answer><choiceInput inline> 
+        At the instant <m>t = $inst</m>, the car's velocity is <answer><shortDescription>velocity of the car</shortDescription><award allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$vel</award></answer> feet per second, and the car's velocity is changing at an instantaneous rate of <answer><shortDescription>rate of change of velocity</shortDescription><award allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$velP</award></answer> <answer><choiceInput inline><shortDescription>units of rate of change of velocity</shortDescription>
       <choice credit = "0">?</choice>
       <choice credit = "0">feet</choice>
       <choice credit = "0">feet per second</choice>
       <choice credit = "1">feet per second per second</choice>
       <choice credit = "0">seconds per foot</choice>
       <choice credit = "0">seconds</choice>
-    </choiceInput></answer>.  This means that if one more second of time elapsed from <m>t = $inst</m> to <m>t = <math simplify>$inst + 1</math></m>, we'd expect the car's velocity to decrease to approximately <answer><award allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$vel + $velP</award></answer> feet per second.
-      </p>        
-    </li>    
-    <li>
+    </choiceInput></answer>.  This means that if one more second of time elapsed from <m>t = $inst</m> to <m>t = <math simplify>$inst + 1</math></m>, we'd expect the car's velocity to decrease to approximately <answer><shortDescription>velocity after some time</shortDescription><award allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$vel + $velP</award></answer> feet per second.
+      </p>
+    </li>
+    <li sectionWideCheckWork forceIndividualAnswerColoring>
       <p>
         Now let <m>s(t)</m> represent the distance the car has traveled since it started braking at <m>t = 0</m>.
       </p>
       <p>
-        Given that <m>s($inst2) = $pos</m> and <m>v($inst2) = $vel2</m>, this means that at the instant <m>t = $inst2</m>, the distance the car has traveled is increasing at an instantaneous rate of <answer><award allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$vel2</award></answer> <answer><choiceInput inline> 
+        Given that <m>s($inst2) = $pos</m> and <m>v($inst2) = $vel2</m>, this means that at the instant <m>t = $inst2</m>, the distance the car has traveled is increasing at an instantaneous rate of <answer><shortDescription>rate of change of distance</shortDescription><award allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$vel2</award></answer> <answer><choiceInput inline><shortDescription>units on rate of change of distance</shortDescription>
       <choice credit = "0">?</choice>
       <choice credit = "0">feet</choice>
       <choice credit = "1">feet per second</choice>
       <choice credit = "0">feet per second per second</choice>
       <choice credit = "0">seconds per foot</choice>
       <choice credit = "0">seconds</choice>
-    </choiceInput></answer>.  In other words, if one more second of time elapsed from <m>t = $inst2</m> to <m>t = <math simplify>$inst2 + 1</math></m>, we'd expect the car's distance traveled at <m>t = <math simplify>$inst2 + 1</math></m> to be approximately <answer><award allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$pos + $vel2</award></answer> feet.
+    </choiceInput></answer>.  In other words, if one more second of time elapsed from <m>t = $inst2</m> to <m>t = <math simplify>$inst2 + 1</math></m>, we'd expect the car's distance traveled at <m>t = <math simplify>$inst2 + 1</math></m> to be approximately <answer><shortDescription>distance traveled after some time</shortDescription><award allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$pos + $vel2</award></answer> feet.
       </p>
-    </li>     
-  </ol>  
+    </li>
+  </ol>
 </p>

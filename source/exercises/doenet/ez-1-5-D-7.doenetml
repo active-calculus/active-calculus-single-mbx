@@ -12,29 +12,15 @@
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
 
-<!-- **********************************************************************-->
-<!-- Copyright 2012-2025                                                   -->
-<!-- Matthew Boelkins                                                      -->
-<!--                                                                       -->
-<!-- This file is part of Active Calculus.                                 -->
-<!--                                                                       -->
-<!-- Permission is granted to copy, distribute and/or modify this document -->
-<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
-<!-- may be used for free by any party so long as attribution is given to  -->
-<!-- the author(s), the work and its derivatives are used in the spirit of -->
-<!-- "share and share alike".  All trademarks are the registered marks of  -->
-<!-- their respective owners.                                              -->
-<!-- **********************************************************************-->
-
 
 <setup>
 
   <selectFromSequence name="P" from="2500" to="5000" step="500"/>
-  <selectFromSequence name="r" from="0.04" to="0.08" step="0.01"/>  
-  
+  <selectFromSequence name="r" from="0.04" to="0.08" step="0.01"/>
+
   <function name="A">$P*e^($r*x)</function>
-  <derivative name="AP">$A</derivative>  
-  
+  <derivative name="AP">$A</derivative>
+
 </setup>
 
   <p>Let <m>A(t)</m> represent the amount of money in an investment account, in dollars, at time <m>t</m> in years, where <m>t = 0</m> corresponds to <m>2015</m>.  Assume that a single investment was made at <m>t = 0</m> and that the increases are due to interest earnings.  The following table shows some of the values of <m>A(t)</m>.</p>
@@ -46,18 +32,18 @@
           <cell><m>0</m></cell>
           <cell><m>2</m></cell>
           <cell><m>4</m></cell>
-          <cell><m>6</m></cell> 
-          <cell><m>8</m></cell>  
-          <cell><m>10</m></cell>   
+          <cell><m>6</m></cell>
+          <cell><m>8</m></cell>
+          <cell><m>10</m></cell>
         </row>
         <row>
           <cell><m>A(t)</m></cell>
-          <cell><math displayDecimals="2">$$A(0)</math></cell>
-          <cell><math displayDecimals="2">$$A(2)</math></cell>
-          <cell><math displayDecimals="2">$$A(4)</math></cell>
-          <cell><math displayDecimals="2">$$A(6)</math></cell>
-          <cell><math displayDecimals="2">$$A(8)</math></cell>
-          <cell><math displayDecimals="2">$$A(10)</math></cell>
+          <cell><math name="A0" displayDecimals="2">$$A(0)</math></cell>
+          <cell><math name="A2" displayDecimals="2">$$A(2)</math></cell>
+          <cell><math name="A4" displayDecimals="2">$$A(4)</math></cell>
+          <cell><math name="A6" displayDecimals="2">$$A(6)</math></cell>
+          <cell><math name="A8" displayDecimals="2">$$A(8)</math></cell>
+          <cell><math name="A10" displayDecimals="2">$$A(10)</math></cell>
         </row>
       </tabular>
 
@@ -65,16 +51,15 @@
   <ol marker="a.">
     <li>
       <setup>
-        <math simplify name="cd1">($$A(6)-$$A(2))/(4) </math>  
-        <math simplify name="cd2">($$A(10)-$$A(6))/(4) </math>  
-        <math simplify name="A4">$$A(4) </math>  
-        <math simplify name="A8">$$A(8) </math> 
-      </setup>  
+        <math simplify name="cd1">($A6-$A2)/(4) </math>
+        <math simplify name="cd2">($A10-$A6)/(4) </math>
+      </setup>
       <p>
-        Use a central difference to find the best estimate you can for <m>A'(4)</m>. 
+        Use a central difference to find the best estimate you can for <m>A'(4)</m>.
       </p>
-      <p><m>A'(4) \approx</m><answer inline><mathInput name="ans1"/>
-          <award allowedErrorInNumbers="0.01"> 
+      <p>
+        <answer><mathInput name="ans1"><label><m>A'(4) \approx</m></label></mathInput>
+          <award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
             <when>
               $ans1 = $cd1
             </when>
@@ -83,23 +68,23 @@
     </li>
     <li>
       <p>
-        Similarly, use a central difference to find the best estimate you can for <m>A'(8)</m>. 
+        Similarly, use a central difference to find the best estimate you can for <m>A'(8)</m>.
       </p>
-      <p><m>A'(8) \approx</m><answer inline><mathInput name="ans2"/>
-          <award allowedErrorInNumbers="0.01"> 
+      <p><answer><mathInput name="ans2"><label><m>A'(8) \approx</m></label></mathInput>
+          <award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
             <when>
               $ans2 = $cd2
             </when>
           </award>
         </answer></p>
-    </li>  
-    <li>
+    </li>
+    <li sectionWideCheckWork forceIndividualAnswerColoring>
       <p>
         Complete the following sentences to explain the meaning of select data in the table and the derivative values you found in (a) and (b).
-      </p>  
+      </p>
       <p>
-        At the start of the year <answer><award>2019</award></answer>, the value of the money in the account is <answer><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$A4</award></answer> dollars, and its value is changing at an instantaneous rate of <answer><award allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$cd1</award></answer> dollars per year. At the start of the year <answer><award>2023</award></answer>, the value of the money in the account is is <answer><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$A8</award></answer> dollars, and its value is changing at an instantaneous rate of <answer><award allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$cd2</award></answer> dollars per year. 
-      </p>  
-    </li>  
-  </ol>  
+        At the start of the year <answer><shortDescription>year corresponding to t equals 4</shortDescription><award>2019</award></answer>, the value of the money in the account is <answer><shortDescription>value in account at the start of that year</shortDescription><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$A4</award></answer> dollars, and its value is changing at an instantaneous rate of <answer><shortDescription>rate of change of value in the account in that year</shortDescription><award allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$cd1</award></answer> dollars per year. At the start of the year <answer><shortDescription>year corresponding to t equals 8</shortDescription><award>2023</award></answer>, the value of the money in the account is <answer><shortDescription>value in account at the start of that year</shortDescription><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$A8</award></answer> dollars, and its value is changing at an instantaneous rate of <answer><shortDescription>rate of change of money in the account in that year</shortDescription><award allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$cd2</award></answer> dollars per year.
+      </p>
+    </li>
+  </ol>
 </p>
