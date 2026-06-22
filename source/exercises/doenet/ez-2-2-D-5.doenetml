@@ -30,27 +30,57 @@
   <ol marker="a.">
     <li>
       <p>Determine the following derivative formulas: </p>
-      <p><m>f'(x)=</m><answer>$fP</answer></p>
+      <p>
+        <answer>
+          <label><m>f'(x)=</m></label> 
+          $fP
+        </answer>
+      </p>
       <p><m>f''(x)=</m><answer>$fPP</answer></p>
     </li>
     <li>
-      <p>Determine a value of <m>x</m> such that <m>f'(x)=0</m> and <m>0 \lt x \lt 2\pi</m>.  If there are no such values, enter <q>none</q>. </p>
-      <p><m>x = </m><mathInput name="crnum"/>
-        <answer>
-        <award><when>
-          (0 < $crnum < 2*pi) and $$fP($crnum) = 0
-        </when></award>
-      </answer></p>
-<!--      <p>crnum = $crnum, <m>f'($crnum) = $$fP($crnum) </m> </p> -->
+      <p>
+        Determine an exact value of <m>x</m> such that <m>f'(x)=0</m> and <m>0 \lt x \lt 2\pi</m>.  If there are no such values, enter <q>none</q>.  Be sure to use the unit circle to find the exact angle value of <m>x</m> that makes the derivative zero.
+      </p>
+
+      <p>
+        <answer allowedErrorInNumbers="0.00000001" allowedErrorIsAbsolute>
+          <mathInput name="crnum">
+            <label>
+              <m>x = </m>
+            </label>
+          </mathInput>
+          <award matchPartial>
+            <when>
+              (0 < $crnum < 2*pi) and $$fP($crnum) = 0
+            </when>
+          </award>
+        </answer>
+      </p>
+      <feedback condition="(0 > $crnum or $crnum > 2*pi)">
+        Make sure you are entering an answer that lies betweeen <m>0</m> and <m>2\pi</m>.
+      </feedback>
+      <feedback condition="0.00000001 < |$$fP($crnum)| < 5">
+        Make sure you are entering your answer exactly in radians, entered as a fraction times <m>\pi</m> or whole number times <m>\pi</m>.
+      </feedback>
     </li>
     <li>
-      <p>Determine a value of <m>x</m> such that <m>0 \lt x \lt 2\pi</m> and <m>f''(x)</m> changes sign at that <m>x</m>-value.  If there are no such values, enter <q>none</q>. </p>
-      <p><m>x = </m><mathInput name="poi"/>
-        <answer>
-        <award><when>
-          (0 < $poi< 2*pi) and $$fPP($poi) = 0
-        </when></award>
-      </answer></p>
+      <p>Determine an exact value of <m>x</m> such that <m>0 \lt x \lt 2\pi</m> and <m>f''(x)</m> changes sign at that <m>x</m>-value.  If there are no such values, enter <q>none</q>. </p>
+      <answer allowedErrorInNumbers="0.00000001" allowedErrorIsAbsolute>
+          <mathInput name="poi">
+            <label>
+              <m>x = </m>
+            </label>
+          </mathInput>
+          <award matchPartial>
+            <when>
+              (0 < $poi< 2*pi) and $$fPP($poi) = 0
+            </when>
+          </award>
+        </answer>
+      <feedback condition="0.00000001 < |$$fPP($poi)| < 5">
+        Make sure you are entering your answer exactly in radians, entered as a fraction times <m>\pi</m> or whole number times <m>\pi</m>.
+      </feedback>
     </li>
 
   </ol>
