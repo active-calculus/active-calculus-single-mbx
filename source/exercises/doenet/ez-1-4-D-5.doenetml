@@ -14,12 +14,12 @@
 
 <setup>
 <selectFromSequence name="a" from="-7" to="-3"/>
-<selectFromSequence name="b" from="2" to="6"/>  
-<selectFromSequence name="c" from="-3" to="3" exclude="0"/>  
+<selectFromSequence name="b" from="2" to="6"/>
+<selectFromSequence name="c" from="-3" to="3" exclude="0"/>
 <function name="f">
     $a*x + $b
   </function>
-  <derivative name="fP">$f</derivative>  
+  <derivative name="fP">$f</derivative>
 </setup>
 
   <p>
@@ -33,47 +33,65 @@
           and thus we need to determine expressions for <m>f(x+h)</m> and <m>f(x+h) - f(x)</m>.
         </p>
 
-        <p>Using the given formula <m>f(x) = $f</m>, 
-      which of the following is the simplest possible expression for <m>f(x+h)</m>?</p>
+        <p>Using the given formula <m>f(x) = $f</m>,
+      which of the following is the simplest possible expression for <m>f(x+h)</m>?
             <answer>
-              <choiceInput>
+              <choiceInput><shortDescription>simplest possible expression for f of x plus h</shortDescription>
                 <choice><m>f(x+h)=  <math simplify> -$a*x + $b + $a*h</math></m>  </choice>
-                <choice><m>f(x+h)=  <math simplify> $a*x + $b - $a*h</math></m>  </choice>              
+                <choice><m>f(x+h)=  <math simplify> $a*x + $b - $a*h</math></m>  </choice>
                 <choice><m>f(x+h) = $a(x-h) + $b </m></choice>
                 <choice credit="1"><m>f(x+h)=  <math simplify> $a*x + $b + $a*h</math></m>  </choice>
               </choiceInput>
-            </answer>  
+            </answer>
+        </p>
       </li>
       <li>
-      <p>Which of the following is the simplest possible expression for <m>f(x+h) - f(x)</m>?</p>
+      <p>Which of the following is the simplest possible expression for <m>f(x+h) - f(x)</m>?
             <answer>
-              <choiceInput>
+              <choiceInput><shortDescription>simplest possible expression for f of x plus h minus f of x</shortDescription>
                 <choice><m>f(x+h) - f(x) = $a(x+h) + $b - (<math simplify="numbers">$a*x+$b</math>) </m></choice>
                 <choice credit="1"><m>f(x+h) - f(x) =  <math simplify>$a*h </math></m>  </choice>
                 <choice><m>f(x+h) - f(x) =  <math simplify>-$a*h </math></m>  </choice>
-                <choice><m>f(x+h) - f(x) =  <math simplify>$a*h + 2*$b </math></m>  </choice>  
+                <choice><m>f(x+h) - f(x) =  <math simplify>$a*h + 2*$b </math></m>  </choice>
               </choiceInput>
-            </answer>   
+            </answer>
+        </p>
       </li>
-      <li> 
+      <li>
         <p>
           Next, apply the limit definition of the derivative by substituting the simplest possible expression for <m>f(x+h)-f(x)</m> in the space provided:
         </p>
-        <p><m>f'(x)= \displaystyle \lim_{h \to 0} \frac{f(x+h)-f(x)}{h} = \lim_{h \to 0} </m> <mathInput name="dq_x1" minWidth="50" prefill="/h"></mathInput>
-      <answer><award><when>$dq_x1 = 
+        <p>
+      <answer><mathInput name="dq_x1" minWidth="20" prefill="/h"><label><m>f'(x)= \displaystyle \lim_{h \to 0} \frac{f(x+h)-f(x)}{h} = \lim_{h \to 0} </m> </label></mathInput>
+        <award symbolicEquality><when>$dq_x1 =
+        ($a*h)/h
+      </when></award>
+        <award credit="0" name="notsimplified" symbolicEquality simplifyOnCompare="full" expandOnCompare><when>$dq_x1 =
         ($$f(x+h) - $$f(x))/h
-      </when></award></answer></p>
+      </when></award>
+        <award credit="0" name="toosimplified"><when>$dq_x1 =
+        ($$f(x+h) - $$f(x))/h
+      </when></award>
+      </answer></p>
+        <feedback condition="$notsimplified">Your numerator is not simplified enough, yet.</feedback>
+        <feedback condition="$toosimplified">Don't divide by <m>h</m> until the next answer box. Leave this answer with a numerator divided by <m>h</m>.</feedback>
       </li>
       <li>
         <p>Simplifying the difference quotient in part (c) as much as possible, we see that</p>
-        <p>  <m>f'(x)= \displaystyle \lim_{h \to 0} </m> <mathInput name="simp_x1"></mathInput>
-      <answer><award><when>$simp_x1 = 
-        $a
-      </when></award></answer></p>
+        <p>
+      <answer><mathInput name="simp_x1"><label><m>f'(x)= \displaystyle \lim_{h \to 0} </m> </label></mathInput>
+        <award symbolicEquality><when>$simp_x1 =
+          $a
+        </when></award>
+        <award name="notsimplified2" credit="0"><when>$simp_x1 =
+          $a
+        </when></award>
+      </answer></p>
+        <feedback condition="$notsimplified2">Your answer is not simplified enough, yet.</feedback>
       </li>
       <li>
         <p>Finally, evaluating the limit by letting <m>h \to 0</m>, we determine the value of <m>f'(x)</m>:</p>
-        <p><m>f'(x) = </m> <answer>$$fP(x)</answer></p>
+        <p> <answer symbolicEquality><label><m>f'(x) = </m></label>$$fP(x)</answer></p>
       </li>
 
     </ol>
