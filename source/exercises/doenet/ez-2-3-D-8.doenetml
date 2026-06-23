@@ -14,16 +14,16 @@
 
 
 <setup>
-    <math name="a"><selectFromSequence from="-2" to="2" step="0.5" exclude="0"/></math>
+    <math name="a"><selectFromSequence from="3" to="7" step="2" /></math>
     <math name="k"><selectFromSequence from="1" to="2" step="1"/></math>
     <function name="f" symbolic="false" >
-      $a x^2/2^x 
+      -$a x^2/2^x 
     </function>   
     <derivative name="fP">$f</derivative>
 </setup>  
 
 <p>
-  Let <m>f(x) = \displaystyle \frac{$a x^2}{2^x}</m> and suppose that <m>a = $k</m>.  Use the given formula and <m>a</m>-value to respond to the following prompts.
+  Let <m>f(x) = \displaystyle -\frac{$a x^2}{2^x}</m> and suppose that <m>a = $k</m>.  Use the given formula and <m>a</m>-value to respond to the following prompts.
 </p>
 
 <p>
@@ -32,37 +32,43 @@
       <p>
         Use appropriate shortcut rules to find a formula for <m>f'(x)</m>.
       </p>
-      <p><m>f'(x) = </m>     
+      <p>     
         <answer>
-          <award>$fP</award>
+          <label><m>f'(x) = </m></label>
+          $fP
         </answer>
       </p>  
     </li> 
     <li>
       <p>
-        State the values of <m>f($k)</m> and <m>f'($k)</m>.
-      </p>
-      <p><m>f($k) = </m>     
-        <answer>
-          <award>$$f($k)</award>
+        State the values of <m>f($k)</m> and <m>f'($k)</m>, reporting your results to at least 4 decimal places of accuracy.
+      </p>  
+      <p>
+        <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute>
+          <label>
+            <m>f($k) = </m>   
+          </label>
+          $$f($k)
         </answer>
       </p>
-      <p><m>f'($k) = </m>     
-        <answer>
-          <award>$$fP($k)</award>
+      <p>    
+        <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute>
+          <label>
+            <m>f'($k) = </m> 
+          </label>
+          $$fP($k)
         </answer>
       </p>  
     </li> 
     <li>
       <p>
-        State a formula for <m>L(x)</m>, the tangent line approximation to <m>f</m> at <m>x=$k</m>.
+        Using your results from (b), state a formula for <m>L(x)</m>, the tangent line approximation to <m>f</m> at <m>x=$k</m>.
       </p>
       <p><m>L(x) = </m>     
         <answer>
-          <award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$f($k)+$$fP($k)(x-$k)</award>
+          <award allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute>$$f($k)+$$fP($k)(x-$k)</award>
         </answer>
       </p> 
     </li> 
   </ol>
 </p>  
-  
