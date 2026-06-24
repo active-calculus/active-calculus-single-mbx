@@ -39,21 +39,66 @@
 
 <!--  <p><m>a = $a</m>, <m>b = $b</m>, and <m>c = $c</m>, so <m>g(x) = $$g(x)</m> and <m>L(x) = $$L(x)</m>, plus <m>A = $A</m> and <m>B = $B</m></p> -->
 
-      <graph xmin="-4" xmax="4" ymin="-4" ymax="4" size="medium" grid="false" showNavigation="false" displayXAxis="false" displayYAxis="false"> $f $L $A $B $fLabel $LLabel
+      <graph xmin="-4" xmax="4" ymin="-4" ymax="4" size="medium" grid="false" showNavigation="false" displayXAxis="false" displayYAxis="false" fixAxes="true"> 
+        <shortDescription>
+          A plot of a function f and its tangent line at point A, along with another point B that lies on the tangent line
+        </shortDescription>
+        <description>
+          The function <m>f</m> in this plot is always decreasing and concave down.  Its tangent line at the point <m>A = $A</m> is plotted, and a second point <m>B = $B</m> that lies on the tangent line is shown.
+        </description>
+        $f $L $A $B $fLabel $LLabel
       </graph>
 
   <p>
-    Use the given information to complete the following sentence about the values of <m>a</m>, <m>f(a)</m>, and <m>f'(a)</m>. 
+    Use the given information to complete the following sentence about the values of <m>a</m>, <m>f(a)</m>, and <m>f'(a)</m>.  Report your derivative values to 3 decimal places of accuracy. 
   </p>  
-  <p>At the point where <m>a = </m><answer><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> $c
-        </award></answer>, we know that <m>f(a) = </m><answer><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> $$f($c)
-        </award></answer> and <m>f'(a) = </m><answer><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> $$fP($c)
-        </award></answer>.
+  <p>At the point where
+    <answer>
+      <label><m>a = </m></label>
+      <award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> $c
+      </award>
+    </answer>, we know that 
+    <answer>
+      <label>
+        <m>f(a) = </m>
+      </label>
+      <award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> 
+        $$f($c)
+      </award>
+    </answer> 
+    and 
+    <answer name="fPrimeAns">
+      <label>
+        <m>f'(a) = </m>
+      </label>
+      <award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> 
+        $$fP($c)
+      </award>
+    </answer>.
   </p>
   <p>
-    In addition, at the point <m>(b,g(b))</m> on the graph of <m>g</m> where <m>b = $$f($c)</m>, we know that <m>g(b) = </m><answer><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> $c
-        </award></answer> and <m>g'(b) = </m><answer><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> 1/$$fP($c)
-        </award></answer>.
+    In addition, at the point <m>(b,g(b))</m> on the graph of <m>g</m> where <m>b = $$f($c)</m>, we know that 
+    <answer>
+      <label>
+        <m>g(b) = </m>
+      </label>
+      <award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> 
+        $c
+      </award>
+    </answer> 
+    and 
+    <answer>
+      <mathInput name="gPrimeAns">
+        <label>
+          <m>g'(b) = </m>
+        </label>
+      </mathInput>
+        <award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> 
+          <when>
+            $gPrimeAns=1/$$fP($c) or ($fPrimeAns.creditAchieved=1 and $gPrimeAns=1/$fPrimeAns)
+          </when>
+        </award>
+      </answer>.
   </p>  
 
    
