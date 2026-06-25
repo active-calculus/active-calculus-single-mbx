@@ -1,0 +1,95 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2026                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+ 
+<!-- This exercise was developed by Spencer Bagley as part of the PROTEUS grant -->
+
+<setup>
+    <curve name="circle" variable="t">
+        (4*cos(t), 4*sin(t))
+    </curve>
+    <point name="P" styleNumber="2" showCoordsWhenDragging="false">
+        <constrainTo>$circle</constrainTo>
+        <label>($P.x, $P.y)</label>
+    </point>
+    <number name="m">-$P.x/$P.y</number>
+    <vector name="r">$P</vector>
+    <vector name="rP">(-$P.y, $P.x)</vector>
+</setup>
+<p>
+    In the figure below, there is a plot of the circle <m>x^2+y^2=16</m> together with a segment of a tangent line to the circle at a moveable point. You can drag the point around the circle and observe the corresponding slope of the tangent line, which is computed and displayed in the bottom-right corner of the figure.
+</p>
+<graph
+    fixAxes="true" showNavigation="false"
+    xmin="-6" xmax="6"
+    ymin="-6" ymax="6" >
+    <shortDescription>
+        A circle with its tangent line at a point that can be dragged along the circle.
+    </shortDescription>
+    <description>
+        The circle <m>x^2+y^2=16</m> together with a segment of a tangent line to the circle at a moveable point. You can drag the point around the circle and observe the corresponding slope of the tangent line, which is computed and displayed in the bottom-right corner of the figure.
+    </description>
+    $circle
+    $P
+    <lineSegment 
+        endpoints="$r-0.5*$rP $r+0.5*$rP"
+        styleNumber="2">
+    </lineSegment>
+    <label 
+        anchor="(1, -5)"
+        positionFromAnchor="right">Slope of tangent line = $m</label>
+</graph>
+<p>
+    <ol marker="a">
+        <li><answer allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>
+            <mathInput name="flat">
+                <label>A point at which the slope of the tangent line is <m>0</m> is </label>
+            </mathInput>
+            <award>
+                <when>
+                    $flat.x = 0 and $flat.x^2 + $flat.y^2 =16
+                </when>
+            </award>
+        </answer></li>
+        <li><answer allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>
+            <mathInput name="two">
+                <label>A point at which the slope of the tangent line is <m>-2</m> is </label>
+            </mathInput>
+            <award>
+                <when>
+                    $two.x^2 + $two.y^2 =16 and -$two.x/$two.y = -2
+                </when>
+            </award>
+        </answer></li>
+        <li><answer allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>
+            <mathInput name="onethird">
+                <label>A point at which the slope of the tangent line is <m>\frac{1}{3}</m> is </label>
+            </mathInput>
+            <award>
+                <when>
+                    $onethird.x^2 + $onethird.y^2 =16 and -$onethird.x/$onethird.y = 1/3
+                </when>
+            </award>
+        </answer></li>
+        <li><answer allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>
+            <mathInput name="undef">
+                <label>A point at which the slope of the tangent line is undefined is </label>
+            </mathInput>
+            <award>
+                <when>
+                    $undef.x^2 + $undef.y^2 =16 and $undef.y = 0
+                </when>
+            </award>
+        </answer></li>
+    </ol>
+</p>
