@@ -52,6 +52,21 @@
     lineColor="#FFFFFF"
     />
 
+  <mathList name="crNums"> $crNum1 $crNum2 </mathList>
+  <boolean name="Num1in">$crNum1>= $p and $crNum1<= $q</boolean>
+  <boolean name="Num2in">$crNum2>= $p and $crNum2<= $q</boolean>
+
+  <math name="fofcrNums">
+    <conditionalContent>
+      <case condition="!$Num1in and !$Num2in">none</case>
+      <else>
+        <mathList>
+        <conditionalContent condition="$Num1in">$$f($crNum1)</conditionalContent>
+        <conditionalContent condition="$Num2in">$$f($crNum2)</conditionalContent>
+          </mathList>
+      </else>
+    </conditionalContent>
+  </math>
 
 </setup>
 
@@ -83,15 +98,19 @@
       <p>
         Remember that you can drag the included red point along the graph to see its coordinates.
       </p>
+
+      <p>
+        Evaluate the function at any critical numbers that lie in the interval <m>[$p,$q]</m>.  If there is more than one such critical number, enter the function values as a list separated by commas.  If there are no critical numbers in the interval <m>[$p,$q]</m>, enter <em>none</em>.
+      </p>
+      <answer unorderedCompare matchPartial allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label>The value(s) of <m>f</m> at any applicable critical numbers are:</label>$fofcrNums</answer>
+      
       <p>
         The values of the function the respective endpoints of the interval are:
       </p>
       <p>
         <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$f($p)<label><m>f($p) =</m></label></answer> and <answer  allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>f($q) =</m></label>$$f($q)</answer>
       </p>
-      <p>
-        Be sure to also consider any critical number that lies in the interval <m>[$p,$q]</m> and the function's value at such critical numbers.
-      </p>
+
     </li>
     <li>
       <p>

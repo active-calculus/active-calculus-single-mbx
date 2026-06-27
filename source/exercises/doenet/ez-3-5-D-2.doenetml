@@ -21,6 +21,7 @@
   <selectFromSequence name = "q" from = "3" to = "6" step = "1" exclude="abs($p)"/>
 
   <function name="f">$a*x/(x^2 + $b) + $c</function>
+  <derivative name="fP">$f</derivative>
   <function name="fextrema" domain="[$p,$q]">$f</function>
 
   <number name="crNum1" displayDecimals="5">-sqrt($b)</number>
@@ -52,15 +53,29 @@
   <ol marker="a.">
     <li>
       <p>
-        Find all critical numbers of <m>f</m>.  If there is more than one critical number, enter them as a list separated by commas.  If there are none, enter <em>none</em>.
+        For <conditionalContent><case condition="$c<0"><m>f(x) = \frac{$a x}{x^2 + $b} <math simplify>+$c</math></m></case><else><m>f(x) = \frac{$a x}{x^2 + $b} +$c</m></else></conditionalContent>, it follows that 
       </p>
       <p>
-        <answer unorderedCompare><label>The exact critical numbers of <m>f</m> are: <m>x=</m> </label>$crNums</answer>
+        <answer>
+          <label>
+            <m>f'(x)=</m>
+          </label>
+          $fP
+        </answer>
+      </p>
+
+      <p>
+        Find all critical numbers of <m>f</m> exactly.  If there is more than one critical number, enter them as a list separated by commas.  If there are none, enter <em>none</em>.  (<alert>Note</alert>: the exact value may involve a square root, such as <m>\sqrt{2}</m>.  If so, enter <q><m>\sqrt{2}</m></q>, not a decimal approximation such as <m>1.414</m>.)
       </p>
       <p>
-        Evaluate the function at any critical numbers which lie in the interval <m>[$p,$q]</m>.  If there is more than one such critical number, enter the function values as a list separated by commas.  If there are no critical numbers in the interval <m>[$p,$q]</m>, enter <em>none</em>.
+        <answer unorderedCompare matchPartial><label>The exact critical numbers of <m>f</m> are: <m>x=</m> </label>$crNums</answer>
       </p>
-      <answer unorderedCompare allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label>The value(s) of <m>f</m> at any applicable critical numbers are:</label>$fofcrNums
+      <p>
+        Evaluate the function at any critical numbers that lie in the interval <m>[$p,$q]</m>.  If there is more than one such critical number, enter the function values as a list separated by commas.  If there are no critical numbers in the interval <m>[$p,$q]</m>, enter <em>none</em>.
+      </p>
+      <answer unorderedCompare matchPartial allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
+        <label>The value(s) of <m>f</m> at any applicable critical numbers are:</label>
+        $fofcrNums
         <!-- <conditionalContent>
           <case condition="$crNum>= $p and $crNum<= $q">$$f($crNum)</case>
           <else>none</else>
@@ -70,10 +85,10 @@
     </li>
     <li>
       <p>
-        The exact values of the function at the respective endpoints of the interval are:
+        The values of the function at the respective endpoints of the interval are:
       </p>
       <p>
-        <answer><label><m>f($p) =</m></label>$$f($p)</answer> and <answer><label><m>f($q) =</m></label>$$f($q)</answer>
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>f($p) =</m></label>$$f($p)</answer> and <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>f($q) =</m></label>$$f($q)</answer>
       </p>
     </li>
     <li>
@@ -86,5 +101,3 @@
     </li>
   </ol>
 </p>
-
-
