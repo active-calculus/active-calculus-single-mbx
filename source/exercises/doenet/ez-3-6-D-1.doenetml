@@ -13,6 +13,7 @@
 <!-- **********************************************************************-->
 
 <!-- A preliminary version of this exercise was drafted by Weidai Sun after the 2024 Doenet workshop -->
+<!-- Chrissy Safranski provided a major rewrite in spring 2026 -->
 
 <setup>
   <selectFromSequence name="P" from="410" to="620" step="10"/>
@@ -45,7 +46,7 @@
   A rancher wants to enclose a rectangular area and then divide it into <m>$h</m> equally-sized individual pens with fencing parallel to one side of the rectangle (see the figure below). Call the horizontal length <m>x</m> and the vertical length <m>y</m>.
 </p>
 <p>
-  If there are <m>$P</m> feet of fencing available to complete the job, what is the largest possible total area of the <m>$h</m> pens?
+  We want to answer the following question: if there are <m>$P</m> feet of fencing available to complete the job, what is the largest possible combined area of the <m>$h</m> pens?
 </p>
 
   <graph name="g" aspectRatio="4" ymax="12" displayXAxis="false" displayYAxis="false" showNavigation="false" showBorder="false">
@@ -62,45 +63,45 @@
   </graph>
 
 <p>
-  The total area of the pen in terms of <m>x</m> and <m>y</m> is
+  First, express the total area of the pen in terms of <m>x</m> and <m>y</m>.
 </p>
 <p>
   <answer><label><m>A=</m></label>x*y</answer>
-  This the function we need to maximize.
 </p>
+
 <p>
-  The constraint is that we have <m>$P</m> feet of fencing available. Write an expression involving <m>x</m> and <m>y</m> for the total length of fencing needed to construct the pens.
+  The constraint is that we have <m>$P</m> feet of fencing available. Find an expression involving <m>x</m> and <m>y</m> for the total length of fencing needed to construct the pens, and use this to complete the constraint equation below.
 </p>
 <p>
   <answer allowedErrorInNumbers="0.001" allowedErrorIsAbsolute><label><m>$P=</m></label>2x+($h+1)y</answer>
 </p>
 <p>
-  We use the constraint to solve for one of the variables in terms of the other one.
+  Next, solve the constraint equation for <m>y</m> in terms of <m>x</m>.
 </p>
 <p>
   <answer allowedErrorInNumbers="0.001" allowedErrorIsAbsolute><label><m>y=</m></label>($P-2x)/($h+1)</answer>
 </p>
 <p>
-  Now we can return to our function to be optimized and use the expression for <m>y</m> to put <m>A</m> in terms of a single variable, <m>x</m>.
+  Now we can recall that we want to optimize the total area of the pens, so we use the expression for <m>y</m> from the constraint equation to write <m>A</m> as a function of a single variable, <m>x</m>.
 </p>
 <p>
-  <answer allowedErrorInNumbers="0.001" allowedErrorIsAbsolute><label><m>A=</m></label>$A</answer>
+  <answer allowedErrorInNumbers="0.001" allowedErrorIsAbsolute><label><m>A(x)=</m></label>$A</answer>
 </p>
 <p>
-  Maximums (and minimums) can occur at critical values and at endpoints.  We find critical values by finding where the derivative equals <m>0</m> or is undefined.
+  We know that the absolute maximum (and minimum) can only occur at a critical number or an endpoint.  Thus, we find the derivative of <m>A</m> and use it to find the critical number(s); if there is more than one critical number, separate them with commas.  If there are none, enter <q>none</q>.
 </p>
 <p>
-  <answer allowedErrorInNumbers="0.001" allowedErrorIsAbsolute><label><m>A'=</m></label>$AP</answer>
+  <answer allowedErrorInNumbers="0.001" allowedErrorIsAbsolute><label><m>A'(x)=</m></label>$AP</answer>
 </p>
 <p>
-  <answer allowedErrorInNumbers="0.001" allowedErrorIsAbsolute><label>The critical value(s) of <m>A</m> are <m>x=</m></label>$crNum</answer>
+  <answer allowedErrorInNumbers="0.001" allowedErrorIsAbsolute><label>The critical number(s) of <m>A</m> are <m>x=</m></label>$crNum</answer>
 </p>
 <p>
-  Since <m>x</m> and <m>y</m> are lengths, they can't be negative.  That means that <answer name="xmin"><label>the smallest possible value of <m>x</m> is </label>0</answer> and the maximum possible value for <m>x</m> is <answer name="xmax" allowedErrorInNumbers="0.001" allowedErrorIsAbsolute><label>when <m>y=0</m>, which is when <m>x=</m></label>$P/2</answer>, so
+  Since <m>x</m> and <m>y</m> are lengths, they can't be negative.  That means that the smallest possible value of <m>x</m> is <answer name="xmin"><label><m>x=</m> </label>0</answer> and the maximum possible value for <m>x</m> is when <m>y=0</m>, which implies <answer name="xmax" allowedErrorInNumbers="0.001" allowedErrorIsAbsolute><label> <m>x=</m></label>$P/2</answer>, so
          <mathInput disabled><label>the domain of <m>A</m> in interval notation is</label>[<conditionalContent condition="$xmin.creditAchieved=1">$xmin</conditionalContent>,<conditionalContent condition="$xmax.creditAchieved=1">$xmax</conditionalContent>]</mathInput>.
       </p>
 <p>
-  In both cases, when either <m>x=0</m> or <m>y=0</m>, the area <answer><label><m>A=</m></label>0</answer>.
+  In both cases, when either <m>x=0</m> or <m>y=0</m>, the area <answer><label><m>A=</m></label>0</answer>.  This is the absolute minimum area that can be enclosed with the provided fence.
 </p>
 
 <p>

@@ -82,7 +82,7 @@
   <ol marker="a.">
     <li>
       <p>
-        Based on the given information, a key relationship between <m>\ell</m> and <m>w</m> is that <m>\ell = </m><answer>$k*w</answer>.
+        Based on the given information, a key relationship between <m>\ell</m> and <m>w</m> is that <answer><label><m>\ell = </m></label>$k*w</answer>.
       </p>
     </li>
     <li>
@@ -90,7 +90,7 @@
         State a formula for the volume of the container that involves only the variables <m>w</m> and <m>h</m>.
       </p>
       <p>
-        <m>V=</m><answer>$k*w^2*h</answer>
+        <answer><label><m>V=</m></label>$k*w^2*h</answer>
       </p>
     </li>
     <li>
@@ -98,7 +98,7 @@
         State a formula for the cost of the container that involves only the variables <m>w</m> and <m>h</m>.
       </p>
       <p>
-        <m>C=</m><answer>$B*$k*w^2 + 2*$S*($k+1)*w*h</answer>
+        <answer><label><m>C=</m></label>$B*$k*w^2 + 2*$S*($k+1)*w*h</answer>
       </p>
     </li>
     <li>
@@ -106,7 +106,11 @@
         Use the constraint (that volume is fixed) to find an equation that relates the variables <m>w</m> and <m>h</m>, and solve that equation for <m>h</m>.  State that equation in the provided space below.
       </p>
       <p>
-        <m>h = </m><mathInput name="constraintEq"/> <answer simplifyOnCompare><award><when>$constraintEq = $volEq2 or $constraintEq = $volEq3</when></award></answer>
+         <answer simplifyOnCompare symbolicEquality><mathInput name="constraintEq">
+           <label><m>h = </m></label>
+         </mathInput>
+           <award><when>$constraintEq = $volEq2 or $constraintEq = $volEq3</when></award>
+         </answer>
       </p>
       <!--
       <p>
@@ -119,7 +123,12 @@
         Use the contraint equation appropriately to find a formula for the container's cost that depends only on <m>w</m>.
       </p>
       <p>
-        <m>C(w)=</m><mathInput name="costEntered"/><answer simplifyOnCompare allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$costEntered=$costFxn</when></award></answer>
+        <answer simplifyOnCompare symbolicEquality allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
+          <mathInput name="costEntered">
+            <label><m>C(w)=</m></label>
+          </mathInput>
+          <award><when>$costEntered=$costFxn</when></award>
+        </answer>
       </p>
       <!--
       <p>
@@ -132,10 +141,10 @@
         Find <m>C'(w)</m> and then find all critical numbers of <m>C</m> that lie in the domain of interest: <m>$p \le w \le $q</m>.  If there's more than one such critical number, separate them with commas; if there are no such critical numbers, enter <em>none</em>.
       </p>
       <p>
-        <m>C'(w) = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute name="CPEntered">$CP</answer>
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute name="CPEntered"><label><m>C'(w) = </m></label>$CP</answer>
       </p>
       <p>
-        The critical number(s) within the domain are <m>w = </m><answer allowedErrorInNumbers="0.001" allowedErrorIsAbsolute>$crNum</answer>
+        The critical number(s) within the domain are <answer allowedErrorInNumbers="0.001" allowedErrorIsAbsolute><label><m>w = </m></label>$crNum</answer>
       </p>
     </li>
     <li>
@@ -144,33 +153,46 @@
       </p>
       <p>
         The absolute minimum cost of the container is
-        <m>C = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$absMin</answer>
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
+          <label><m>C = </m></label>$absMin</answer>
         dollars and this absolute minimum is achieved when the container has dimensions
-        <m>w = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$crNum</answer>,
-        <m>\ell = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$k*$crNum</answer>,
-        and <m>h = </m> <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$hMin</answer>.
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>w = </m></label>$crNum</answer>,
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>\ell = </m></label>$k*$crNum</answer>,
+        and <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>h = </m></label>$hMin</answer>.
       </p>
 
       <p>
         The absolute maximum cost of the container is
-        <m>C = </m><mathInput name="vMaxEntered"/>
         <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
+          <mathInput name="vMaxEntered">
+            <label><m>C = </m></label>
+          </mathInput>
           <award><when>
             ($vMaxEntered=$leftMax and $leftMax >= $rightMax) or ($vMaxEntered=$rightMax and $rightMax >= $leftMax)
           </when></award></answer>
         dollars and this absolute maximum is achieved when the container has dimensions
-        <m>w = </m><mathInput name="wMax"/>
         <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
+          <mathInput name="wMax">
+            <label><m>w = </m></label>
+          </mathInput>
           <award><when>
             ($wMax=$q and $leftMax <= $rightMax) or ($wMax=$p and $rightMax <= $leftMax)
           </when></award></answer>,
-        <m>\ell = </m><mathInput name="lMax"/>
-        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
-          <award><when>
+          <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
+            <mathInput name="lMax">
+              <label>
+                <m>\ell = </m>
+              </label>
+            </mathInput>
+            <award><when>
             ($lMax=$k*$q and $leftMax <= $rightMax) or ($lMax=$k*$p and $rightMax <= $leftMax)
-          </when></award></answer>,
-        and <m>h = </m><mathInput name="hMax"/>
+          </when></award>
+          </answer>,
+        and 
         <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
+          <mathInput name="hMax">
+            <label><m>h = </m></label>
+          </mathInput>
           <award><when>
             ($hMax=$hRight and $leftMax <= $rightMax) or ($hMax=$hLeft and $rightMax <= $leftMax)
           </when></award></answer>.
@@ -194,4 +216,3 @@
       </p>
 
 -->
-
