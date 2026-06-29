@@ -13,8 +13,8 @@
 <!-- **********************************************************************-->
 
 <setup>
-  <selectFromSequence name="a" from="1/2" to="3/2" step="1"/>
-  <selectFromSequence name="b" from="1" to="3" step="1/2"/>
+  <selectFromSequence name="a" from="1/4" to="1/2" step="1"/>
+  <selectFromSequence name="b" from="1/2" to="3/2" step="1/4" exclude="4*$a"/>
 
   <function name="v" variable="t">$b - $a*t</function>
   <function name="s" variable="t">$b*t - $a*t^2/2</function>
@@ -28,16 +28,20 @@
 </setup>
 
 <p>
-  Suppose that a moving object for times <m>t = 0</m> to <m>t = 8</m> (seconds) has its velocity is given by the function <m>v(t) = $v</m> (feet per second).  A graph of <m>v</m> is provided below; note that the vertical and horizontal scales are different.
+  Suppose that a moving object for times <m>t = 0</m> to <m>t = 8</m> (seconds) has its velocity is given by the function 
+  <me>
+    v(t) = $v
+  </me>
+  with units feet per second.  A graph of <m>v</m> is provided below; note that the vertical and horizontal scales are different.
 </p>
 
       <graph grid="true" size="medium" xMin="-0.25" xMax="8.25" yMin="$b-$a*8-1" yMax="$b+1" fixAxes="true" showNavigation="false">
         <shortDescription>a graph of the function v on the interval t equals 0 to t equals 8</shortDescription>
         $v
         <label fixed anchor="(0.4,$b+0.7)">ft/sec</label>
-        <label fixed anchor="(7.5,0.3)">sec</label>
-        <rectangle fixed center="($b/$a+0.2,0.5)" width="0.5" height="0.4" filled styleNumber="10"></rectangle>
-        <label fixed anchor="($b/$a+0.2,0.5)"><m>v(t)</m></label>
+        <label fixed anchor="(7.5,0.1)">sec</label>
+        <rectangle fixed center="($b/$a+0.2,0.25)" width="0.5" height="0.25" filled styleNumber="10"></rectangle>
+        <label fixed anchor="($b/$a+0.2,0.25)"><m>v(t)</m></label>
       </graph>
 <p>
   Use the graph and the formula for <m>v(t)</m> to determine each of the following quantities.
@@ -46,28 +50,29 @@
   <ul>
     <li>
       <p>
-        The object's change in position on <m>[0, <math simplify>$b/$a</math>]</m> is <answer>$$s($b/$a)</answer>
+        The object's <answer><label>change in position on <m>[0, <math simplify>$b/$a</math>]</m> is</label>$$s($b/$a)</answer>
       </p>
     </li>
     <li>
       <p>
-        The object's change in position on <m>[<math simplify>$b/$a</math>, 8]</m> is <answer>$$s(8)-$$s($b/$a)</answer>
+        The object's <answer><label>change in position on <m>[<math simplify>$b/$a</math>, 8]</m> is </label>$$s(8)-$$s($b/$a)</answer>
       </p>
     </li>
     <li>
       <p>
-        The object's total change in position on <m>[0, 8]</m> is <answer>$$s(8)-$$s(0)</answer>
+        The object's <answer><label>total change in position on <m>[0, 8]</m> is </label>$$s(8)-$$s(0)</answer>
       </p>
     </li>
     <li>
       <p>
-        The object's total distance traveled on <m>[0, 8]</m> is <answer>2*$$s($b/$a) - $$s(8)</answer>
+        The object's <answer><label>total distance traveled on <m>[0, 8]</m> is </label>2*$$s($b/$a) - $$s(8)</answer>
       </p>
     </li>
   </ul>
 </p>
 <p>
-  The units on each of the quantities found above are <answer><choiceInput inline>
+  The units on each of the quantities found above are 
+        <answer><choiceInput inline><shortDescription>options for units</shortDescription>
           <choice>?</choice>
           <choice>feet per second</choice>
           <choice>seconds</choice>
