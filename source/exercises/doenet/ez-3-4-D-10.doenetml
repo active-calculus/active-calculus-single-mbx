@@ -1,0 +1,116 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- this exercise was written by Spencer Bagley as part of the PROTEUS grant-->
+
+<setup>
+    <function name="f">x*exp(2*$b*x)</function>
+    <point name="A" stylenumber="2">
+      <constrainTo>
+        $f
+      </constrainTo>
+    </point>
+</setup>
+
+<p>
+  In the graph below, you can experiment with the graph of the function <m>f(x)=x e^{2 b x}</m> by adjusting the value of the parameter <m>b</m> with the slider.
+</p>
+<graph
+    xMin="-2" xMax="0.5"
+    yMin="-0.5" yMax="0.5"
+    fixAxes="true" showNavigation="false">
+  <shortDescription>A graph of the function f of x equals x times e to the 2 b x</shortDescription>
+  $f
+  $A
+</graph>
+<slider 
+  name="b" showTicks="false"
+  from="0.5" to="2" step="0.01"
+  initialValue="1"
+  labelIsName />
+<ol marker="a">
+  <li>
+    <p>
+      With <m>b=1</m>, estimate
+    </p>
+    <ul>
+      <li>
+        <p>
+          <answer allowedErrorInNumbers="0.05" allowedErrorIsAbsolute>
+            <mathInput>
+              <label>the coordinates of the local minimum.</label>
+            </mathInput>
+            (-1/(2*$b), $$f(-1/(2*$b)))
+          </answer>
+        </p>
+      </li>
+      <li>
+        <p>
+          <answer allowedErrorInNumbers="0.05" allowedErrorIsAbsolute>
+            <mathInput>
+              <label>the coordinates of the inflection point.</label>
+            </mathInput>
+            (-1/$b, $$f(-1/$b))
+          </answer>
+        </p>
+      </li>
+    </ul>
+  </li>
+
+  <li>
+    <p>
+      Now choose a different value for <m>b</m> and estimate:
+      <ul>
+        <li>
+          <p>
+            <answer name="ansMin" allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>
+              <mathInput name="min">
+                <label>the new coordinates of the local minimum:</label>
+              </mathInput>
+              <award><when>
+                $b != 1 and
+                $min=(-1/(2*$b), $$f(-1/(2*$b)))
+              </when></award>
+            </answer>
+          </p>
+          <feedback updateWith="$ansMin" 
+              condition="$b=1 and $ansMin.responseHasBeenSubmitted">Oops, you didn't pick a new <m>b</m> yet!</feedback>
+        </li>
+        <li>
+          <p>
+            <answer name="ansInf" allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>
+              <mathInput name="inflection">
+                <label>the new coordinates of the inflection point:</label>
+              </mathInput>
+              <award><when>
+                $b != 1 and
+                $inflection=(-1/($b), $$f(-1/($b)))
+              </when></award>
+            </answer>
+          </p>
+          <feedback updateWith="$ansInf" 
+              condition="$b=1 and $ansInf.responseHasBeenSubmitted">Oops, you didn't pick a new <m>b</m> yet!</feedback>
+        </li>
+      </ul>
+    </p>
+  </li>
+  <li>
+    <p>In your own words, describe hat happens to the locations of the local minimum and of the inflection point as <m>b</m> increases.</p>
+    <p>
+      <answer type="text" handGraded expanded forceFullCheckWorkButton>
+        <shortDescription>As b increases and decreases, what happens to the location of the local minimum and of the inflection point?</shortDescription>
+      </answer>
+    </p>
+  </li>
+</ol>

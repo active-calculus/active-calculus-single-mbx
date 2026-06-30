@@ -1,0 +1,164 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- this exercise was developed by Jennifer Moorhouse as part of the PROTEUS grant-->
+
+<setup>
+  <math name="m">0.5</math>
+  <math name="h0">244</math>
+  <line name="yAxis">x=0</line>
+  <point name="A" styleNumber="4">(0,0)
+    <constrainToGrid dx="1" dy="2" />
+    <constrainTo>
+      $yAxis
+    </constrainTo>
+  </point>
+  <point name="B" styleNumber="4">(16,0)
+    <constrainToGrid dx="4" dy="2" />
+  </point>
+</setup>
+
+  <p>  Suppose that you are tracking the length of your hair as it grows. It's growth is roughly linear, growing at a constant rate of $m mm per day.  
+  </p>
+
+<ol marker="a.">
+  <li>
+    <p>
+      If your hair is $h0 mm at the start of this tracking experiment, drag the points in the following graph appropriately to plot the function <m>L(t)</m> whose output is the length of your hair after <m>t</m> days.
+    </p>
+    <graph xmin="-10"
+      xmax="120"
+      ymin="-50"
+      ymax="350"
+      size="large" grid="10 50" fixAxes showNavigation="false" aspectRatio="2/1">
+      <shortDescription>graph of a ray whose endpoint is shown and can be moved</shortDescription>
+      <ray endpoint="$A" through="$B" />
+      $A $B
+    </graph>    
+     <answer>
+        <award><when>$A=<point>(0,$h0)</point> and ($B.y-$A.y)/($B.x-$A.x)=$m  </when></award>
+      </answer>
+  </li>
+  <li>
+    <setup>
+      <math name="w">12</math>
+      <math name="t" simplify> $w*7</math>
+        <math name="ansin" simplify> $h0+$m*$t </math>
+      <math  name="ansout" simplify> $ansin-50 </math>
+      <point name="C" styleNumber="4">(20,0)
+        <constrainToGrid dy="2" />
+      </point>
+      <math name="Dx" simplify>$C.x+20</math>
+      <math name="Dy" simplify>$C.y+20*$m</math>  
+      <point name="D" styleNumber="4">($Dx,$Dy)
+        <constrainToGrid dy="2" />
+      </point>
+    </setup>  
+    <p>
+      Now, suppose that after $w weeks ($t days), you decide to get a haircut.  The stylist cuts off 50 mm.
+    </p>
+    <p>
+      <answer><label> 
+          How long was your hair when you walked into the salon?  
+<m> </m> </label> $ansin </answer>
+    </p>
+    <p>
+      <answer><label> 
+           How long is your hair when you walk out of the salon?       
+      <m>  </m></label> $ansout </answer>
+    </p>
+     <p>
+          Drag the line segments in the following figure to create an updated graph that illustrates what happens at the moment when your hair is cut. (For the moment, do not worry about whether the endpoints of the line segments are open or closed.)
+     </p>
+      <graph xmin="-10"
+        xmax="120"
+        ymin="-50"
+        ymax="350"
+        size="large" grid="10 50" fixAxes showNavigation="false" aspectRatio="2/1">
+        <shortDescription>graph of a line segment with its endpoints marked</shortDescription>
+        <lineSegment name="segment1" endpoints="$A $B"/>
+        <pointList styleNumber="2">
+          $segment1.endpoints
+        </pointList>
+        <ray endpoint="$C" through="$D" />
+        $C $D
+      </graph>
+      <answer matchPartial>
+        <award><when>$A=<point>(0,$h0)</point> and $B=<point>($t,$ansin)</point> and $C=<point>($t,$ansout)  </point>  and  ($D.y-$C.y)/($D.x-$C.x)=$m    </when></award>
+      </answer>
+  </li>
+  <li>
+    <p>
+       Finally, use limit notation to explain the situation in the most recent graph.
+    </p>
+    <p>
+       The limit from the left as <m>t</m> approaches <m>$t</m> is
+    </p>      
+    <p>  <answer> <label> <m> \displaystyle \lim_{t \rightarrow $t^-} L(t) = </m></label>  $ansin </answer>
+    </p>
+    <p>
+       The limit from the right as <m>t</m> approaches <m>$t</m> is    
+    </p> 
+        <p>  <answer> <label> <m> \displaystyle \lim_{t \rightarrow $t^+} L(t) = </m></label>  $ansout </answer>
+        </p>
+    <p>
+      The value of <m>L($t)</m> might be <answer> <mathInput name="STUinput"> <label> <m> L($t)= </m></label> </mathInput>
+           <award name="inRange"><when> $ansout <= $STUinput <= $ansin </when></award> 
+           <award name="outRange" credit="0"><when> $STUinput < $ansout or $STUinput>$ansin </when></award>
+          </answer>
+    </p>
+    <feedback condition="$inRange"> 
+      <p>  This question is ambiguous!  It is reasonable to say that <m>L($t)=$ansin </m> or <m> L($t)=$ansout </m>, or one might even choose to average these values.   
+      </p>
+    </feedback>
+    <feedback condition="$outRange"> 
+      <p>Looking back at your graph of hairlength, you might see two possible values at time <m>t=$t</m>.</p> 
+    </feedback>
+  </li>
+  <li sectionWideCheckWork forceIndividualAnswerColoring>
+     <p>
+       Complete the following sentence to describe this situation more generally. 
+     </p>
+     <p>When a graph has a  
+       <answer inline>
+         <shortDescription>properties of a graph</shortDescription>
+         <choice>?</choice>
+         <choice credit="1">jump</choice>
+         <choice>corner</choice>
+         <choice>open circle/hole</choice>
+       </answer>
+      at <m>x=a</m>, then the left limit at <m>x=a</m> is 
+       <answer inline>
+         <shortDescription>options for left and right limits</shortDescription>
+         <choice>?</choice>
+         <choice credit="1">different from</choice> 
+         <choice>the same as</choice>
+       </answer> 
+       the right limit at <m>x=a</m>.</p>
+  </li>
+</ol>
+
+<!--
+  <setup>   <text name="blank"/>
+  </setup>
+
+  <p>
+  <answer name="STUans" type="text">
+    <textInput expanded>
+      <label>Come up with your own real-world examples of functions that have a jump or a break in their graph.</label>
+    </textInput> <award><when>0=0</when></award>
+  </answer>
+</p>
+<feedback condition="$STUans!=$blank"> <p>You might have said something about a lawn growing, and the moment when the grass is cut.  Or you might have mentioned student GPAs and the moment when semester grades are updated.  What these have in common is that there is no gradual change in values, but rather an abrupt change in the state of the variable.</p> </feedback>
+-->

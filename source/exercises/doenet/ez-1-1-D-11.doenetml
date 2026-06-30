@@ -1,0 +1,55 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- this exercise was developed by Spencer Bagley as part of the PROTEUS grant-->
+
+<setup>
+  <selectFromSequence name="c" from="2.1" to="2.6" step="0.1"/>
+  <selectFromSequence name="a" from="16" to="24" step="2"/>
+  <number name="b">$a+2</number>
+  <function name="P" variable="s">$c*s^3</function>
+  <conditionalContent name="AVcor" condition="$AVent.creditAchieved=1">
+    $AVent
+  </conditionalContent>
+  
+</setup>
+<p>
+      Wind turbines are used to generate electricity. The power, <m>P</m>, measured in watts, depends on the windspeed, <m>s</m>, measured in mph. For a particular wind turbine,
+      <me>
+        P(s) = $c s^3.
+      </me>
+</p>
+  <ol marker="a.">
+    <li sectionWideCheckWork forceIndividualAnswerColoring>
+      <p>
+        Calculate the average rate of change of <m>P</m> on the interval <m>[$a, $b]</m>, including units.
+      </p>
+      <p>
+        <answer name="AVent" allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>AV_{[$a, $b]}=</m></label>($$P($b)-$$P($a))/($b-$a)</answer>
+        <answer><choiceInput inline><shortDescription>possible units of average rate of change</shortDescription><choice>watts</choice><choice>watts per hour</choice><choice>mph</choice><choice credit="1">watts per mph</choice><choice>mph per hour</choice></choiceInput></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Complete the sentence below to explain the meaning of the value <m>AV_{[$a, $b]}</m>.
+      </p>
+      <p>
+        As the <choiceInput name="c1" inline><shortDescription>possible quantity</shortDescription><choice>power produced</choice><choice>windspeed</choice></choiceInput> changes from <choiceInput name="c2" inline><shortDescription>possible quantity and units</shortDescription><choice><m>$a</m> watts</choice><choice><m>$a</m> watts per hour</choice><choice><m>$a</m> mph</choice><choice><m>$a</m> watts per mph</choice><choice><m>$a</m> mph per hour</choice></choiceInput> to <choiceInput name="c3" inline><shortDescription>possible units</shortDescription><choice><m>$b</m> watts,</choice><choice><m>$b</m> watts per hour,</choice><choice><m>$b</m> mph,</choice><choice><m>$b</m> watts per mph,</choice><choice><m>$b</m> mph per hour,</choice></choiceInput> the <choiceInput name="c4" inline><shortDescription>possible quantity</shortDescription><choice>power produced</choice><choice>windspeed</choice></choiceInput> increases on average by <mathInput disabled><shortDescription>average value</shortDescription>$AVcor</mathInput> <choiceInput name="c5" inline><shortDescription>possible units</shortDescription><choice>watts.</choice><choice>watts per hour.</choice><choice>mph.</choice><choice>watts per mph.</choice><choice>mph per hour.</choice></choiceInput>
+      </p>
+      <p>
+        <answer><award><when>$c1.selectedIndex=2 and $c2.selectedIndex=3 and $c3.selectedIndex=3 and $c4.selectedIndex=1 and $c5.selectedIndex=4
+        </when></award></answer>
+      </p>
+    </li>
+  </ol>
