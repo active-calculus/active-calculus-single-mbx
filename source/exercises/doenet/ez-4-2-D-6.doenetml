@@ -14,9 +14,9 @@
 
 <setup>
   
-  <selectFromSequence name="a" from="2" to="5" step="1"/>  
-  <number name="c">2*$a</number>
-  <number name="d">2*$a/5</number>
+  <selectFromSequence name="a" from="2" to="6" step="1" exclude="5"/>  
+  <number name="c">$a</number>
+  <number name="d">$a/5</number>
   
   <function name="v">1/$a * (x-$a)^2 - $a/2</function> 
   <number name="L5">$d * ($$v(0) + $$v($d) + $$v(2*$d) + $$v(3*$d) + $$v(4*$d))</number>
@@ -26,7 +26,7 @@
 </setup>
 
   <p>
-    Let <m>v(t)</m> represent the velocity of an object that is moving along a straight line, measured in feet per second at time <m>t</m> in seconds.  The following table shows some of the values of <m>v(t)</m>.
+    Let <m>v(t)</m> represent the velocity of an object that is moving along a straight line, measured in feet per second at time <m>t</m> in seconds.  Our goal is to compute and interpret the values of <m>L_5</m> and <m>R_5</m> for the function <m>v(t)</m> on the interval <m>[0, <math simplify>$c</math>]</m>.    The following table shows some of the values of <m>v(t)</m>.
   </p>
 
       <tabular bottom="minor" top="minor">
@@ -41,18 +41,14 @@
         </row>
         <row halign="center">
           <cell><m>v(t)</m></cell>
-          <cell><m><number displayDecimals="2">$$v(0)</number></m></cell>
-          <cell><m><number displayDecimals="2">$$v($d)</number></m></cell>
-          <cell><m><number displayDecimals="2">$$v(2*$d)</number></m></cell>
-          <cell><m><number displayDecimals="2">$$v(3*$d)</number></m></cell>
-          <cell><m><number displayDecimals="2">$$v(4*$d)</number></m></cell>
-          <cell><m><number displayDecimals="2">$$v(5*$d)</number></m></cell>
+          <cell><m><number displayDecimals="3">$$v(0)</number></m></cell>
+          <cell><m><number displayDecimals="3">$$v($d)</number></m></cell>
+          <cell><m><number displayDecimals="3">$$v(2*$d)</number></m></cell>
+          <cell><m><number displayDecimals="3">$$v(3*$d)</number></m></cell>
+          <cell><m><number displayDecimals="3">$$v(4*$d)</number></m></cell>
+          <cell><m><number displayDecimals="3">$$v(5*$d)</number></m></cell>
         </row>
-      </tabular>
-
-<p>
-  Our goal is to compute and interpret the values of <m>L_5</m> and <m>R_5</m> for the function <m>v(t)</m> on the interval <m>[0, <math simplify>$c</math>]</m>.  
-</p>  
+      </tabular> 
 
 <p>
   <ol marker="a.">
@@ -61,7 +57,12 @@
         Find the value of the left Riemann sum with <m>5</m> subintervals. 
       </p>
       <p>
-        <m>L_5 = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> $L5</answer>
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
+          <label>
+            <m>L_5 = </m>
+          </label>
+          $L5
+        </answer>
       </p>
     </li> 
     <li>
@@ -69,7 +70,10 @@
         Find the value of the right Riemann sum with <m>5</m> subintervals. 
       </p>
       <p>
-        <m>R_5 = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> $R5</answer>
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> 
+          <label><m>R_5 = </m></label>
+          $R5
+        </answer>
       </p>
     </li>      
     <li>
@@ -78,11 +82,12 @@
       </p>  
       <p>
         Since <m>v(t)</m> is sometimes negative on the interval <m>[0,<math simplify>$c</math>]</m> we know that the net-signed area bounded by <m>v(t)</m> and the interval represents the object's <answer><choiceInput inline>
+          <shortDescription>options for meaning</shortDescription>
           <choice>?</choice>
           <choice>total distance traveled</choice>
           <choice>speed</choice>
           <choice credit="1">total change in position</choice>
-        </choiceInput></answer>, and hence the values of <m>L_5</m> and <m>R_5</m> estimate that quantity. 
+        </choiceInput></answer> on <m>[0,<math simplify>$c</math>]</m>, and hence the values of <m>L_5</m> and <m>R_5</m> estimate that quantity. 
       </p>  
     </li>  
   </ol>  
