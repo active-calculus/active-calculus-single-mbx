@@ -11,23 +11,24 @@
 <!-- "share and share alike".  All trademarks are the registered marks of  -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
-
+ 
 <setup>
 
-  <selectFromSequence name="a" from="1/2" to="3/2" step="1/2" exclude="1"/>
-  <selectFromSequence name="h" from="4" to="6" step="1"/>
-  <selectFromSequence name="k" from="2" to="4" step="1"/>
+  <selectFromSequence name="a" from="2" to="3" step="1" exclude="2"/>
+  <selectFromSequence name="p" from="2" to="3" step="1"/>
+  <selectFromSequence name="q" from="7" to="8" step="1"/>
+  <selectFromSequence name="c" from="1" to="2" step="1"/>
   <selectFromSequence name="s0" from="1" to="3" step="1"/>
 
-  <number name="vZero" displayDecimals="5">$h - sqrt($k/$a)</number>
+  <number name="vZero" displayDecimals="5">$p + $c</number>
 
-  <function name="v" variable="t">$a*(t-$h)^2 - $k</function>
-  <function name="s" variable="t">$a/3*(t-$h)^3 - $k*t + $s0 + $a/3*($h)^3 </function>
+  <function name="v" variable="t">$a*(t-$p-$c)(t-$q-$c)</function>
+  <function name="s" variable="t">$a/3*t^3 - $a/2*($p+$q+2*$c)*t^2 + $a*($p+$c)*($q+$c)*t + $s0</function>
 
 </setup>
 
 <p>
-  An object moving along a straight line has its instantaneous velocity at time <m>t</m> given by <me>v(t) = $v,</me>
+  An object moving along a straight line has its instantaneous velocity at time <m>t</m> given by <me>v(t) = <math expand simplify>$v</math>,</me>
   where <m>v</m> is measured in feet per second and <m>t</m> is time in seconds.
 </p>
 
@@ -38,55 +39,62 @@
         If the object's initial position is <m>s(0) = $s0</m>, find a formula for <m>s(t)</m>, the object's position along the straight line at time <m>t</m>.
       </p>
       <p>
-        <m>s(t) = </m> <mathInput name="pos"/> <answer simplifyOnCompare><award><when>$pos=$s</when></award></answer>
+         <answer symbolicEquality simplifyOnCompare allowedErrorInNumbers=".001" allowedErrorIsAbsolute>
+          <mathInput name="pos">
+            <label><m>s(t) = </m></label>
+          </mathInput>
+          <award><when>$pos=$s</when></award></answer>
       </p>
     </li>
     <li>
       <p>
-        At what exact value of <m>t</m> that satisfies <m>t \lt $h</m> is <m>v(t) = 0</m>?
+        At what exact value of <m>t</m> that satisfies <m>$p \lt t \lt $q</m> is <m>v(t) = 0</m>?
       </p>
       <p>
-        <m>t = </m><mathInput name="zeroVel"/> <answer allowedErrorInNumbers="0.001" allowedErrorIsAbsolute><award><when>$zeroVel=$vZero</when></award></answer>
-      </p>
-    </li>
-    <li>
-      <p>
-        Determine the object's total change in position on the time interval <m>[1, $vZero]</m>.
-      </p>
-      <p>
-        Change in position on <m>[1, $vZero]</m> is <mathInput name="coP1"/> feet <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$coP1 = $$s($vZero)-$$s(1)</when></award></answer>
+        <answer allowedErrorInNumbers="0.001" allowedErrorIsAbsolute>
+          <mathInput name="zeroVel">
+            <label><m>t = </m></label>    
+          </mathInput><award><when>$zeroVel=$vZero</when></award></answer>
       </p>
     </li>
     <li>
       <p>
-        Determine the object's total change in position on the time interval <m>[$vZero, $h]</m>.
+        Determine the object's total change in position on the time interval <m>[$p, $vZero]</m>.
       </p>
       <p>
-        Change in position on <m>[$vZero,$h]</m> is <mathInput name="coP2"/> feet <answer allowedErrorInNumbers="0.02" allowedErrorIsAbsolute><award><when>$coP2 = $$s($h) - $$s($vZero)</when></award></answer>
-      </p>
-    </li>
-    <li>
-      <p>
-        Determine the object's total change in position on the time interval <m>[1, $h]</m>.
-      </p>
-      <p>
-        Total change in position on <m>[1, $h]</m> is <mathInput name="dist"/> feet <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$dist = $$s($h)-$$s(1)</when></award></answer>
+        Change in position on <m>[$p, $vZero]</m> is <mathInput name="coP1"/> feet <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$coP1 = $$s($vZero)-$$s($p)</when></award></answer>
       </p>
     </li>
     <li>
       <p>
-        Determine the object's total distance traveled on the time interval <m>[1, $h]</m>.
+        Determine the object's total change in position on the time interval <m>[$vZero, $q]</m>.
       </p>
       <p>
-        Distance traveled on <m>[1, $h]</m> is <mathInput name="dist"/> feet <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$dist = -$$s($h)-$$s(1)+2*$$s($vZero)</when></award></answer>
+        Change in position on <m>[$vZero,$q]</m> is <mathInput name="coP2"/> feet <answer allowedErrorInNumbers="0.02" allowedErrorIsAbsolute><award><when>$coP2 = $$s($q) - $$s($vZero)</when></award></answer>
       </p>
     </li>
     <li>
       <p>
-        Find the object's average velocity on <m>[1, $h]</m>.
+        Determine the object's total change in position on the time interval <m>[$p, $q]</m>.
       </p>
       <p>
-        <m>AV_{[1,$h]} = </m> <mathInput name="avgVel"/> feet per second <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$avgVel = ($$s($h)-$$s(1))/($h-1)</when></award></answer>
+        Total change in position on <m>[$p, $q]</m> is <mathInput name="cop3"/> feet <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$cop3 = $$s($q)-$$s($p)</when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Determine the object's total distance traveled on the time interval <m>[$p, $q]</m>.
+      </p>
+      <p>
+        Distance traveled on <m>[$p, $q]</m> is <mathInput name="dist"/> feet <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$dist = abs($$s($q)-$$s($vZero)) + abs($$s($vZero)-$$s($p))</when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Find the object's average velocity on <m>[$p, $q]</m>.
+      </p>
+      <p>
+        <m>AV_{[$p,$q]} = </m> <mathInput name="avgVel"/> feet per second <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$avgVel = ($$s($q)-$$s($p))/($q-$p)</when></award></answer>
       </p>
     </li>
   </ol>

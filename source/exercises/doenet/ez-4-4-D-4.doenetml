@@ -14,24 +14,22 @@
 
 <setup>
 
-  <selectFromSequence name="p" from="1" to="3"/>
-  <selectFromSequence name="q" from="4" to="7" exclude="$p+1"/>
-  <selectFromSequence name="c" from="0.5" to="2.5" step="1"/>
-  <selectFromSequence name="k" from="0.5" to="2.5" step="1"/>
+  <selectFromSequence name="p" from="1" to="2"/>
+  <selectFromSequence name="q" from="7" to="8"/>
+  <selectFromSequence name="m" from="3" to="5" step="1"/>
+  <selectFromSequence name="k" from="-1" to="1" step="2"/>
   <selectFromSequence name="s0" from="1" to="4"/>
 
-  <number name="AV" displayDecimals="4">($k*$q+$c*$p)/($q-$p)</number>
-  <number name="vZero">$p + $c*$p/$AV</number>
+  <number name="vZero">$p + 2</number>
 
-  <function name="v" variable="t">$AV*(t-$p)-$c*$p</function>
-  <function name="s" variable="t">$AV/2*t^2-$AV*$p*t-$c*$p*t+$s0</function>
+  <function name="v" variable="t">$m*(t-$p-2)</function>
+  <function name="s" variable="t">$m/2*t^2-$m*$p*t-$m*2*t+$s0</function>
   <!-- I thought the above was better for s since in this chapter students should be multiplying out before antidifferentiating.  If we want to use the below as correct, or allow students to not multiply out first, we need expandOnCompare on the answer. Right now, I've given feedback instead.-->
-  <function name="sadvanced" variable="t">$AV/2*(t-$p)^2-$c*$p*t + $s0 - $AV/2*(-$p)^2 </function>
 
 </setup>
 
 <p>
-  An object moving along a straight line has its instantaneous velocity at time <m>t</m> given by <me>v(t) = $AV(t-$p) - <math simplify>$c*$p</math>,</me>
+  An object moving along a straight line has its instantaneous velocity at time <m>t</m> given by <me>v(t) = <math expand simplify>$m*(t-$p-2)</math>,</me>
   where <m>v</m> is measured in feet per second and <m>t</m> is time in seconds.
 </p>
 
@@ -45,12 +43,15 @@
         <answer name="pos" symbolicEquality simplifyOnCompare allowedErrorInNumbers=".001" allowedErrorIsAbsolute><label><m>s(t) = </m> </label>
           <award>$s</award>
           <award name="close" credit=".5">$s-$s0</award>
+          <!--
           <award name="sadvancedEnt1" credit="0">$sadvanced</award>
           <award name="sadvancedEnt2" credit="0">$AV/2*(t-$p)^2-$c*$p*t + $s0</award>
-          <award name="sadvancedEnt3" credit="0">$AV/2*(t-$p)^2-$c*$p*t</award></answer>
+          <award name="sadvancedEnt3" credit="0">$AV/2*(t-$p)^2-$c*$p*t</award>
+          -->
+        </answer>
       </p>
-      <feedback condition="$close">You correctly took an antiderivative of <m>v(t)</m>, but you didn't yet use the information given about the object's initial position.</feedback>
-      <feedback condition="$sadvancedEnt1 or $sadvancedEnt2 or $sadvancedEnt3">Multiply the terms in the velocity function before attempting to take an antiderivative.</feedback>
+      <feedback condition="$close">You correctly found an antiderivative of <m>v(t)</m>, but you didn't yet use the information given about the object's initial position.</feedback>
+      <!-- <feedback condition="$sadvancedEnt1 or $sadvancedEnt2 or $sadvancedEnt3">Distribute the terms in the velocity function before attempting to take an antiderivative.</feedback> -->
     </li>
     <li>
       <p>
@@ -58,6 +59,17 @@
       </p>
       <p>
         Change in position on <m>[$p, $q]</m> is <mathInput name="coP"><shortDescription>change in position over the interval from $p to $q</shortDescription></mathInput> feet <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$coP = $$s($q)-$$s($p)</when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Notice that <m>v(t) = 0</m> when <m>t = $vZero</m>, and that this is the only location where <m>v(t)</m> changes sign.  Determine the object's total change in position on each of the following intervals.
+      </p>
+      <p>
+        Change in position on <m>[$p, $vZero]</m> is <mathInput name="coPa"><shortDescription>change in position over the interval from $p to $vZero</shortDescription></mathInput> feet <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$coPa = $$s($vZero)-$$s($p)</when></award></answer>
+      </p>
+      <p>
+        Change in position on <m>[$vZero, $q]</m> is <mathInput name="coPb"><shortDescription>change in position over the interval from $vZero to $q</shortDescription></mathInput> feet <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$coPb = $$s($q)-$$s($vZero)</when></award></answer>
       </p>
     </li>
     <li>
