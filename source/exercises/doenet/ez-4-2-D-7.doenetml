@@ -1,0 +1,252 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- This exercise was written by Chrissy Safranski -->
+
+<setup>
+  <selectFromSequence name="k" from="8" to="10" step="1"/>
+  <selectFromSequence name="pm" from="-1" to="1" step="2"/>
+  <selectFromSequence name="LorR" from="0" to="1" step="1"/>
+  <selectFromSequence name="n" from="4" to="5" step="1"/>
+  <number name="dx">6/$n</number>
+  <number name="dxdrag">$dx/5</number>
+  <number fixed name="zero">0</number>
+  <math name="c" simplify>$pm*$k</math>
+  <function name="f">$c*e^(-x/4)*sin(pi/2*x)</function>
+
+  <pointList name="mfirst">
+    <point>(0,$zero)<constrainToGrid dx="$dxdrag" dy="0.1"/></point>
+    <point>(1,1)<constrainToGrid dx="$dxdrag" dy="0.1"/></point>
+  </pointList>
+  <pointList name="msecond">
+    <point>(1,$zero)<constrainToGrid dx="$dxdrag" dy="0.1"/></point>
+    <point>(2,1)<constrainToGrid dx="$dxdrag" dy="0.1"/></point>
+  </pointList>
+  <pointList name="mthird">
+    <point>(2,$zero)<constrainToGrid dx="$dxdrag" dy="0.1"/></point>
+    <point>(3,1)<constrainToGrid dx="$dxdrag" dy="0.1"/></point>
+  </pointList>
+  <pointList name="mfourth">
+    <point>(3,$zero)<constrainToGrid dx="$dxdrag" dy="0.1"/></point>
+    <point>(4,1)<constrainToGrid dx="$dxdrag" dy="0.1"/></point>
+  </pointList>
+  <pointList name="mfifth">
+    <point>(4,$zero)<constrainToGrid dx="$dxdrag" dy="0.1"/></point>
+    <point>(5,1)<constrainToGrid dx="$dxdrag" dy="0.1"/></point>
+  </pointList>
+
+  <rectangle name="r1" filled vertices="$mfirst" styleNumber="5" fillOpacity=".3"><label draggable="false"><m>A</m></label></rectangle>
+  <rectangle name="r2" filled vertices="$msecond" styleNumber="5" fillOpacity=".3"><label draggable="false"><m>B</m></label></rectangle>
+  <rectangle name="r3" filled vertices="$mthird" styleNumber="5" fillOpacity=".3"><label draggable="false"><m>C</m></label></rectangle>
+  <rectangle name="r4" filled vertices="$mfourth" styleNumber="5" fillOpacity=".3"><label draggable="false"><m>D</m></label></rectangle>
+  <rectangle name="r5" filled vertices="$mfifth" styleNumber="5" fillOpacity=".3" hide="$n=4"><label draggable="false"><m>E</m></label></rectangle>
+
+  <boolean name="mh1cor">abs($r1.center[2]*2 - $$f($dx/2)) < .4</boolean>
+  <boolean name="mh2cor">abs($r2.center[2]*2 - $$f(3$dx/2)) < .4</boolean>
+  <boolean name="mh3cor">abs($r3.center[2]*2 - $$f(5$dx/2)) < .4</boolean>
+  <boolean name="mh4cor">abs($r4.center[2]*2 - $$f(7$dx/2)) < .4</boolean>
+  <boolean name="mh5cor">abs($r5.center[2]*2 - $$f(9$dx/2)) < .4</boolean>
+
+  <and name="mheightscor"> $mh1cor $mh2cor $mh3cor $mh4cor <conditionalContent condition="$n=5">$mh5cor</conditionalContent></and>
+
+  <boolean name="r1wcor">$r1.center[1]=$dx/2 and $r1.width=$dx</boolean>
+  <boolean name="r2wcor">$r2.center[1]=3$dx/2 and $r2.width=$dx</boolean>
+  <boolean name="r3wcor">$r3.center[1]=5$dx/2 and $r3.width=$dx</boolean>
+  <boolean name="r4wcor">$r4.center[1]=7$dx/2 and $r4.width=$dx</boolean>
+  <boolean name="r5wcor">$r5.center[1]=9$dx/2 and $r5.width=$dx</boolean>
+
+  <and name="mwidthscor"> $r1wcor $r2wcor $r3wcor $r4wcor <conditionalContent condition="$n=5">$r5wcor</conditionalContent></and>
+
+  <pointList name="first">
+    <point>(0,$zero)<constrainToGrid dx="$dxdrag" dy="0.1"/></point>
+    <point>(1,1)<constrainToGrid dx="$dxdrag" dy="0.1"/></point>
+  </pointList>
+  <pointList name="second">
+    <point>(1,$zero)<constrainToGrid dx="$dxdrag" dy="0.1"/></point>
+    <point>(2,1)<constrainToGrid dx="$dxdrag" dy="0.1"/></point>
+  </pointList>
+  <pointList name="third">
+    <point>(2,$zero)<constrainToGrid dx="$dxdrag" dy="0.1"/></point>
+    <point>(3,1)<constrainToGrid dx="$dxdrag" dy="0.1"/></point>
+  </pointList>
+  <pointList name="fourth">
+    <point>(3,$zero)<constrainToGrid dx="$dxdrag" dy="0.1"/></point>
+    <point>(4,1)<constrainToGrid dx="$dxdrag" dy="0.1"/></point>
+  </pointList>
+  <pointList name="fifth">
+    <point>(4,$zero)<constrainToGrid dx="$dxdrag" dy="0.1"/></point>
+    <point>(5,1)<constrainToGrid dx="$dxdrag" dy="0.1"/></point>
+  </pointList>
+
+  <rectangle name="r21" filled vertices="$first" styleNumber="5" fillOpacity=".3"><label draggable="false"><m>A</m></label></rectangle>
+  <rectangle name="r22" filled vertices="$second" styleNumber="5" fillOpacity=".3"><label draggable="false"><m>B</m></label></rectangle>
+  <rectangle name="r23" filled vertices="$third" styleNumber="5" fillOpacity=".3"><label draggable="false"><m>C</m></label></rectangle>
+  <rectangle name="r24" filled vertices="$fourth" styleNumber="5" fillOpacity=".3"><label draggable="false"><m>D</m></label></rectangle>
+  <rectangle name="r25" filled vertices="$fifth" styleNumber="5" fillOpacity=".3" hide="$n=4"><label draggable="false"><m>E</m></label></rectangle>
+
+  <boolean name="lorh1cor">abs($r21.center[2]*2 - $$f($LorR*$dx)) < .2</boolean>
+  <boolean name="lorh2cor">abs($r22.center[2]*2 - $$f((1+$LorR)*$dx)) < .2</boolean>
+  <boolean name="lorh3cor">abs($r23.center[2]*2 - $$f((2+$LorR)*$dx)) < .2</boolean>
+  <boolean name="lorh4cor">abs($r24.center[2]*2 - $$f((3+$LorR)*$dx)) < .2</boolean>
+  <boolean name="lorh5cor">abs($r25.center[2]*2 - $$f((4+$LorR)*$dx)) < .2</boolean>
+
+  <boolean name="r21wcor">$r21.center[1]=$dx/2 and $r21.width=$dx</boolean>
+  <boolean name="r22wcor">$r22.center[1]=3$dx/2 and $r22.width=$dx</boolean>
+  <boolean name="r23wcor">$r23.center[1]=5$dx/2 and $r23.width=$dx</boolean>
+  <boolean name="r24wcor">$r24.center[1]=7$dx/2 and $r24.width=$dx</boolean>
+  <boolean name="r25wcor">$r25.center[1]=9$dx/2 and $r25.width=$dx</boolean>
+  
+
+  <and name="lorheightscor"> $lorh1cor $lorh2cor $lorh3cor $lorh4cor <conditionalContent condition="$n=5">$lorh5cor</conditionalContent></and>
+
+  <and name="lorwidthscor"> $r21wcor $r22wcor $r23wcor $r24wcor <conditionalContent condition="$n=5">$r25wcor</conditionalContent></and>
+
+  <!-- The two triggerSets below mean that as soon as a student has the widths correct on either graph, the other graph will shift the rectangles to the correct horizontal locations. My rationale is that it's tedious to drag horizontally, and so after they show the correct horizontal locations one time I'm fine with focusing on the heights and not the widths on the second one.  -->
+  <triggerSet triggerWhen="$mwidthscor and $LorRsum.creditAchieved!=1">
+    <updateValue target="$r21.width" newValue="$dx"/>
+    <updateValue target="$r21.center[1]" newValue="$dx/2"/>
+    <updateValue target="$r22.width" newValue="$dx"/>
+    <updateValue target="$r22.center[1]" newValue="3$dx/2"/>
+    <updateValue target="$r23.width" newValue="$dx"/>
+    <updateValue target="$r23.center[1]" newValue="5$dx/2"/>
+    <updateValue target="$r24.width" newValue="$dx"/>
+    <updateValue target="$r24.center[1]" newValue="7$dx/2"/>
+    <updateValue target="$r25.width" newValue="$dx"/>
+    <updateValue target="$r25.center[1]" newValue="9$dx/2"/>
+  </triggerSet>
+
+  <triggerSet triggerWhen="$lorwidthscor and $Msum.creditAchieved!=1">
+    <updateValue target="$r1.width" newValue="$dx"/>
+    <updateValue target="$r1.center[1]" newValue="$dx/2"/>
+    <updateValue target="$r2.width" newValue="$dx"/>
+    <updateValue target="$r2.center[1]" newValue="3$dx/2"/>
+    <updateValue target="$r3.width" newValue="$dx"/>
+    <updateValue target="$r3.center[1]" newValue="5$dx/2"/>
+    <updateValue target="$r4.width" newValue="$dx"/>
+    <updateValue target="$r4.center[1]" newValue="7$dx/2"/>
+    <updateValue target="$r5.width" newValue="$dx"/>
+    <updateValue target="$r5.center[1]" newValue="9$dx/2"/>
+  </triggerSet>
+</setup>
+
+<aside><title>Instructions</title>
+  <p>
+  In each of the prompts below, you'll be dragging rectangles to the correct locations to create a Riemann sum.  In order for the answer-checking to work, the rectangles must stay alphabetically in order from left to right, starting with <m>A</m> as the leftmost rectangle. All of the rectangles have one edge fixed along the <m>x</m>-axis, but the other horizontal edge can be dragged above or below the <m>x</m>-axis as needed, and the vertical edges can be dragged from left to right as well.  
+</p>
+</aside>
+
+<ol marker="a.">
+  <li>
+    <p>
+      Below is a graph of a function <m>f(x)</m> and <m>$n</m> rectangles.  Drag the rectangles, changing both the heights and widths, to form the <conditionalContent condition="$LorR=0">left Riemann sum <m>L_{$n}</m></conditionalContent><conditionalContent condition="$LorR=1">right Riemann sum <m>R_{$n}</m></conditionalContent> for <m>f(x)</m> on the interval <m>[0,6]</m>. 
+    </p>
+    <graph size="medium" xmin="-1" xmax="7.5" ymin="-10" ymax="10" showNavigation="false" fixAxes="true"><shortDescription>graph showing a function whose y values are sometimes above and sometimes below the x-axis</shortDescription>
+      $f
+      <label anchor="(3,$$f(3) - $pm)"><m>f(x)</m></label>
+      $r21
+      $r22
+      $r23
+      $r24
+      $r25      
+    </graph>
+    <answer name="LorRsum"><award>
+        <when>
+          $lorheightscor and $lorwidthscor
+        </when>
+      </award>
+    </answer>
+    <conditionalContent condition="$LorRsum.numSubmissions > 4 and !$lorwidthscor">
+        <hint>
+          The width of each rectangle should be <span hide="$lrwidthhint.creditAchieved!=1"> <m>$dx</m>, with the left side of <m>A</m> at <m>x=0</m> and the right side of the last rectangle at <m>x=6</m>.</span><br/> <answer name="lrwidthhint" weight="0" hide="$lrwidthhint.creditAchieved=1">
+            <label><m>dx = \frac{b-a}{n}=</m></label>$dx</answer>
+        </hint>
+      </conditionalContent>
+    <feedback condition="$LorRsum.creditAchieved!=1 and $LorRsum.justSubmitted">
+      <conditionalContent condition="!$lorwidthscor">
+        Let's make sure the rectangles have the right width and location before worrying about the heights. <br/>
+        The following rectangles are not in the right place horizontally: 
+      <asList>
+        <conditionalContent condition="!$r21wcor">A</conditionalContent>
+        <conditionalContent condition="!$r22wcor">B</conditionalContent>
+        <conditionalContent condition="!$r23wcor">C</conditionalContent>
+        <conditionalContent condition="!$r24wcor">D</conditionalContent>
+        <conditionalContent condition="!$r25wcor and $n=5">E</conditionalContent>
+      </asList>
+      </conditionalContent>
+      <conditionalContent condition="$lorwidthscor">
+        All of the rectangles have the correct widths, but the following rectangles' heights are incorrect: 
+      <asList>
+        <conditionalContent condition="!$lorh1cor">A</conditionalContent>
+        <conditionalContent condition="!$lorh2cor">B</conditionalContent>
+        <conditionalContent condition="!$lorh3cor">C</conditionalContent>
+        <conditionalContent condition="!$lorh4cor">D</conditionalContent>
+        <conditionalContent condition="!$lorh5cor and $n=5">E</conditionalContent>
+      </asList>
+      </conditionalContent>
+      
+      
+    </feedback>
+  </li>
+  <li>
+    <p>
+      Below is a graph of the same function <m>f(x)</m> and <m>$n</m> rectangles.  Drag the rectangles, changing both the heights and widths, to form the midpoint Riemann sum <m>M_{$n}</m> for <m>f(x)</m> on the interval <m>[0,6]</m>. 
+    </p>
+    <graph size="medium" xmin="-1" xmax="7.5" ymin="-10" ymax="10" showNavigation="false" fixAxes="true"><shortDescription>graph showing a function whose y values are sometimes above and sometimes below the x-axis</shortDescription>
+      $f
+      <label anchor="(3,$$f(3) - $pm)"><m>f(x)</m></label>
+      $r1
+      $r2
+      $r3
+      $r4
+      $r5
+    </graph>
+    <answer name="Msum"><award>
+        <when>
+          $mheightscor and $mwidthscor
+        </when>
+      </award>
+    </answer>
+    
+      <conditionalContent condition="$Msum.numSubmissions > 4 and !$mwidthscor">
+        <hint>
+          The width of each rectangle should be <span hide="$widthhint.creditAchieved!=1"> <m>$dx</m>, with the left side of <m>A</m> at <m>x=0</m> and the right side of the last rectangle at <m>x=6</m>.</span><br/> <answer name="widthhint" weight="0" hide="$widthhint.creditAchieved=1">
+            <label><m>dx = \frac{b-a}{n}=</m></label>$dx</answer>
+        </hint>
+      </conditionalContent>
+ 
+    <feedback condition="$Msum.creditAchieved!=1 and $Msum.justSubmitted">
+      <conditionalContent condition="!$mwidthscor">
+        Let's make sure the rectangles have the right width and location before worrying about the heights. <br/>
+        The following rectangles are not in the right place horizontally: 
+      <asList>
+        <conditionalContent condition="!$r1wcor">A</conditionalContent>
+        <conditionalContent condition="!$r2wcor">B</conditionalContent>
+        <conditionalContent condition="!$r3wcor">C</conditionalContent>
+        <conditionalContent condition="!$r4wcor">D</conditionalContent>
+        <conditionalContent condition="!$r5wcor and $n=5">E</conditionalContent>
+      </asList>
+      </conditionalContent>
+      <conditionalContent condition="$mwidthscor">
+        All of the rectangles have the correct widths, but the following rectangles' heights are incorrect: 
+      <asList>
+        <conditionalContent condition="!$mh1cor">A</conditionalContent>
+        <conditionalContent condition="!$mh2cor">B</conditionalContent>
+        <conditionalContent condition="!$mh3cor">C</conditionalContent>
+        <conditionalContent condition="!$mh4cor">D</conditionalContent>
+        <conditionalContent condition="!$mh5cor and $n=5">E</conditionalContent>
+      </asList>
+      </conditionalContent>
+    </feedback>
+  </li>
+</ol>

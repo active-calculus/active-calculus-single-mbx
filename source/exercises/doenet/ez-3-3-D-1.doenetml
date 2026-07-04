@@ -17,17 +17,15 @@
   <selectFromSequence name = "b" from = "1" to = "3" step = "1" exclude="$a"/>
   <selectFromSequence name = "c" from = "3" to = "5" step = "1" exclude="$a $b"/> 
 
-  <selectFromSequence name = "k" from = "0.33" to = "0.99" step = "0.33"/> 
+  <selectFromSequence name = "k" from = "0.33" to = "0.66" step = "0.33"/> 
   <selectFromSequence name = "s" from = "-1" to = "1" step = "2"/> 
   
-  <function name="f">$s*$k*1/96*x*(4*x^2*($a-$b-$c) - 6*$a*x*($b+$c)+12*$a*$b*$c + 6*$b*$c*x + 3* x^3)</function>
+  <function name="f">$s*$k*1/96*x*(4*x^2*($a-$b-$c) - 6*$a*x*($b+$c)+12*$a*$b*$c + 6*$b*$c*x + 3* x^3) - 2*$s</function>
   <derivative name="fP">$f</derivative>
   <derivative name="fPP">$fP</derivative>
 
   <point name="A" styleNumber="2">(1,$$f(1))
-    <constraints>
-      <constrainTo>$f</constrainTo>
-    </constraints>
+    <constrainTo>$f</constrainTo>
   </point>
 
   <mathList name="correctCrNum">-$a $b $c</mathList>
@@ -43,6 +41,9 @@
   Consider the function <m>y = f(x)</m> defined by the following graph.  Note that you can drag the included point along the graph and see its coordinates.
 </p>  
       <graph xmin="-8" xmax="8" ymin="-8" ymax="8" size="medium" grid="true" showNavigation="false" fixAxes="true"> 
+        <shortDescription>
+          A graph of a polynomial function f and a point that can be dragged along the curve
+        </shortDescription>
         $f  
         $A
         <label fixLocation anchor="($c+0.2,$$f($c)-$s*0.5)"><m>f</m></label>
@@ -57,15 +58,21 @@
         Use the given graph to estimate the critical numbers of <m>f</m> and report your results below.  If there is more than one critical number, enter them as a list separated by commas.  If there are none, enter <em>none</em>.
       </p>
       <p>
-        The critical numbers of <m>f</m> are approximately  : <mathInput name="crNum" /> <answer unorderedCompare matchPartial allowedErrorInNumbers="0.1" allowedErrorIsAbsolute><award><when> $crNum=$correctCrNum</when></award></answer>.
+        The critical numbers of <m>f</m> are approximately 
       </p>  
+      <p>
+        <answer unorderedCompare matchPartial allowedErrorInNumbers="0.1" allowedErrorIsAbsolute><label><m>x=</m></label>$correctCrNum</answer>
+      </p>
     </li>
     <li>
       <p>
         Use the given graph to estimate the points of inflection of <m>f</m> and report your results below.  If there is more than one inflection point, enter them as a list separated by commas.  If there are none, enter <em>none</em>.
       </p>
       <p>
-        The inflection points of <m>f</m> are approximately: <mathInput name="POI" /> <answer unorderedCompare matchPartial allowedErrorInNumbers="0.25" allowedErrorIsAbsolute><award><when> $POI=$correctPOI</when></award></answer>.
+        The inflection points of <m>f</m> are approximately
+      </p>
+      <p>
+        <answer unorderedCompare matchPartial allowedErrorInNumbers="0.25" allowedErrorIsAbsolute><label><m>x=</m></label>$correctPOI</answer>
       </p> 
 
     </li>
