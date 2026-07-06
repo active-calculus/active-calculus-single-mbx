@@ -40,9 +40,9 @@
   <subsection>
     <title>Units of the derivative function</title>
     <p>As we now know, the derivative of the function <m>f</m> at a fixed value <m>x</m> is given by
-      <me>
+      <md>
         f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h},
-      </me>
+      </md>
       and this value has several different interpretations. If we set <m>x = a</m>, one meaning of <m>f'(a)</m> is the slope of the tangent line at the point <m>(a,f(a))</m>.</p>
 
     <p>In alternate notation, we also sometimes equivalently write <m>\frac{df}{dx}</m> or <m>\frac{dy}{dx}</m> instead of <m>f'(x)</m>, and these notations helps us to further see the units (and thus the meaning) of the derivative as it is viewed as <em>the instantaneous rate of change of <m>f</m> with respect to <m>x</m></em><index><main>instantaneous rate of change</main></index>. Note that the units on the slope of the secant line, <m>\frac{f(x+h)-f(x)}{h}</m>, are <q>units of <m>f</m> per unit of <m>x</m>.</q> Thus, when we take the limit to get <m>f'(x)</m>, we get these same units on the derivative <m>f'(x)</m>: units of <m>f</m> per unit of <m>x</m>. Regardless of the function <m>f</m> under consideration (and regardless of the variables being used), it is helpful to remember that the units on the derivative function are <q>units of output per unit of input,</q> in terms of the input and output of the original function.</p>
@@ -63,21 +63,21 @@
     <p>We know that <m>f'(2) = \lim_{h \to 0} \frac{f(2+h) - f(2)}{h}</m>. But since we don't have a graph for <m>y = f(x)</m> nor a formula for the function, we can neither sketch a tangent line nor evaluate the limit exactly. We can't even use smaller and smaller values of <m>h</m> to estimate the limit. Instead, we have just two choices: using <m>h = -1</m> or <m>h = 1</m>, depending on which point we pair with <m>(2,3.25)</m>.</p>
 
     <p>So, one estimate is
-      <me>
+      <md>
         f'(2) \approx \frac{f(1)-f(2)}{1-2} = \frac{2.5-3.25}{-1} = 0.75.
-      </me>
+      </md>
     </p>
 
     <p>The other is
-      <me>
+      <md>
         f'(2) \approx \frac{f(3)-f(2)}{3-2} = \frac{3.625-3.25}{1} = 0.375.
-      </me>
+      </md>
     </p>
 
     <p>Since the first approximation looks only backward from the point <m>(2,3.25)</m> and the second approximation looks only forward from <m>(2,3.25)</m>, it makes sense to average these two values in order to account for behavior on both sides of the point of interest. Doing so, we find that
-      <me>
+      <md>
         f'(2) \approx \frac{0.75 + 0.375}{2} = 0.5625.
-      </me>
+      </md>
     </p>
 
     <p>The intuitive approach to average the two estimates found in <xref ref="Ex_1.5.1">Example</xref> is in fact the best possible estimate to <m>f'(2)</m> when we have just two function values for <m>f</m> on opposite sides of the point of interest.</p>
@@ -89,17 +89,17 @@
 
     <p>To see why, we think about the diagram in <xref ref="F_1.5.Ex1">Figure</xref>, which shows
       a possible function <m>y = f(x)</m> that satisfies the data given in <xref ref="Ex_1.5.1">Example</xref>. On the left, we see the two secant lines with slopes that come from computing the <em>backward difference</em> <index><main>backward difference</main></index> <m>\frac{f(1)-f(2)}{1-2} = 0.75</m> and from the <em>forward difference</em> <index><main>forward difference</main></index> <m>\frac{f(3)-f(2)}{3-2} = 0.375.</m> Note how the first such line's slope over-estimates the slope of the tangent line at <m>(2,f(2))</m>, while the second line's slope underestimates <m>f'(2)</m>. On the right, however, we see the secant line whose slope is given by the <em>central difference</em> <index><main>central difference</main></index>
-      <me>
+      <md>
         \frac{f(3)-f(1)}{3-1} = \frac{3.625-2.5}{2} = \frac{1.125}{2} = 0.5625.
-      </me>
+      </md>
     </p>
 
     <p>Note that this central difference has the exact same value as the average of the forward difference and backward difference (and it is straightforward to explain why this always holds), and moreover that the central difference yields a very good approximation to the derivative's value, in part because the secant line that uses both a point before and after the point of tangency yields a line that is closer to being parallel to the tangent line.</p>
 
     <p>In general, the central difference approximation to the value of the first derivative is given by
-      <me>
+      <md>
         f'(a) \approx \frac{f(a+h) - f(a-h)}{2h},
-      </me>
+      </md>
       and this quantity measures the slope of the secant line to <m>y = f(x)</m> through the points <m>(a-h, f(a-h))</m> and <m>(a+h, f(a+h))</m>. Anytime we have symmetric data surrounding a point at which we desire to estimate the derivative, the central difference is an ideal choice for so doing.</p>
 
     <p>The following activities will further explore the meaning of the derivative in several different contexts while also viewing the derivative from graphical, numerical, and algebraic perspectives.</p>
@@ -209,15 +209,15 @@
 
         <ol>
           <li><p>Using the central difference, we find that
-              <me>
+              <md>
                 F'(30) \approx \frac{F(45)-F(15)}{45-15} = \frac{296-180.5}{30} = 3.85
-              </me>
+              </md>
               degrees per minute.</p></li>
 
           <li><p>Using the central difference, we find that
-              <me>
+              <md>
                 F'(60) \approx \frac{F(75)-F(45)}{45-15} = \frac{342.8-296}{30} = 1.56
-              </me>
+              </md>
               degrees per minute.</p></li>
 
           <li><p>Over each subsequent time interval, we see that the amount of increase in the potato's temperature gets less and less, thus we expect the value of <m>F'(t)</m> to get smaller and smaller as time goes on.  We therefore expect <m>F'(75) > F'(90)</m>.</p></li>
@@ -279,9 +279,9 @@
           <li><p>The units of <m>C'(r)</m> are <q>dollars per foot.</q></p></li>
 
           <li><p>If <m>C(2000) = 800</m> and <m>C'(2000) = 0.35</m>, then we know once 2000 feet of rope are produced, the total cost function is increasing at <dollar />0.35 per additional foot of rope.  Then, if we manufacture an additional 100 feet of rope, the additional total cost will be approximately
-              <me>
+              <md>
                 100 \ \mbox{feet}  \cdot 0.35 \ \frac{\mbox{dollars} }{\mbox{foot} } = 35 \ \mbox{dollars} .
-              </me>
+              </md>
               Therefore, we find that <m>C(2100) \approx C(2000) + 35 = 835,</m> or that the cost to make 2100 feet of rope is about <dollar />835.</p></li>
 
           <li><p>Either <m>C'(2000) = C'(3000)</m> or <m>C'(2000) > C'(3000)</m>, since we expect the cost per foot of additional rope to either stay constant or to get smaller as the production volume increases.  Said differently, the instantaneous rate of change of the total cost function should either be constant or decrease due to economy of scale.</p></li>
@@ -320,9 +320,9 @@
 
         <ol>
           <li><p>Using a central difference, we have
-              <me>
+              <md>
                 f'(90) = \frac{f(100) - f(80}{100-80} = \frac{0.027 - 0.015}{20} = \frac{0.012}{20} = 0.0006
-              </me>
+              </md>
               which tells us that <m>f'(90) = 0.0006</m> liters per kilometer per kilometer per hour.</p></li>
 
           <li><p>When the car is traveling at 80 kilometers per hour, it is using fuel at a rate of 0.015 liters per kilometer.  That is, at the given speed, for each additional kilometer the car travels, it uses an additional 0.015 liters of fuel.</p></li>
@@ -351,9 +351,9 @@
       <li><p>The units on the derivative function <m>y = f'(x)</m> are units of <m>f</m> per unit of <m>x</m>.  Again, this measures how fast the output of the function <m>f</m> changes when the input of the function changes.</p></li>
 
       <li><p>The central difference approximation to the value of the first derivative is given by
-          <me>
+          <md>
             f'(a) \approx \frac{f(a+h) - f(a-h)}{2h},
-          </me>
+          </md>
           and this quantity measures the slope of the secant line to <m>y = f(x)</m> through the points <m>(a-h, f(a-h))</m> and <m>(a+h, f(a+h))</m>.  The central difference generates a good approximation of the derivative's value any time we have symmetric data surrounding a point of interest.</p></li>
 
       <li><p>Knowing the derivative and function values at a single point enables us to estimate other function values nearby.  If, for example, we know that <m>f'(7) = 2</m>, then we know that at <m>x = 7</m>, the function <m>f</m> is increasing at an instantaneous rate of 2 units of output for every one unit of input.  Thus, we expect <m>f(8)</m> to be approximately 2 units greater than <m>f(7)</m>.  The value is approximate because we don't know that the rate of change stays the same as <m>x</m> changes.</p></li>
