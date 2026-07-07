@@ -10,33 +10,33 @@
       </ul>
     </objectives>
     <p>In addition to learning how to differentiate a variety of basic functions, we have also been developing our ability to understand how to use rules to differentiate certain algebraic combinations of them. For example, we not only know how to take the derivative of <m>f(x) = \sin(x)</m> and <m>g(x) = x^2</m>, but now we can quickly find the derivative of each of the following combinations of <m>f</m> and <m>g</m>:
-      <me>
+      <md>
         s(x) = 3x^2 - 5\sin(x),
-      </me>
-      <me>
+      </md>
+      <md>
         p(x) = x^2 \sin(x), \mbox{and}
-      </me>
-      <me>
+      </md>
+      <md>
         q(x) = \frac{\sin(x)}{x^2}.
-      </me>
+      </md>
     </p>
 
     <p>Finding <m>s'</m> uses the sum and constant multiple rules, determining <m>p'</m> requires the product rule, and <m>q'</m> can be attained with the quotient rule. Again, we note the importance of recognizing the algebraic structure of a given function in order to find its derivative: <m>s(x) = 3g(x) - 5f(x)</m>, <m>p(x) = g(x) \cdot f(x)</m>, and <m>q(x) =\frac{f(x)}{g(x)}.</m></p>
 
     <p>There is one more natural way to algebraically combine basic functions, and that is by <em>composing</em> them. For instance, let's consider the function
-      <me>
+      <md>
         C(x) = \sin(x^2),
-      </me>
+      </md>
       and observe that any input <m>x</m> passes through a <em>chain</em> of functions. In particular, in the process that defines the function <m>C(x)</m>, <m>x</m> is first squared, and then the sine of the result is taken. Using an arrow diagram,
-      <me>
+      <md>
         x \longrightarrow x^2 \longrightarrow \sin(x^2).
-      </me>
+      </md>
     </p>
 
     <p>In terms of the elementary functions <m>f</m> and <m>g</m>, we observe that <m>x</m> is first input in the function <m>g</m>, and then the result is used as the input in <m>f</m>. Said differently, we can write
-      <me>
+      <md>
         C(x) = f(g(x)) = \sin(x^2)
-      </me>
+      </md>
       and say that <m>C</m> is the <em>composition</em> <index><main>composition</main></index> of <m>f</m> and <m>g</m>. We will refer to <m>g</m>, the function that is first applied to <m>x</m>, as the <em>inner</em> function, while <m>f</m>, the function that is applied to the result, is the <em>outer</em> function.</p>
 
     <p>The main question that we answer in the present section is: given a composite function <m>C(x) = f(g(x))</m> that is built from differentiable functions <m>f</m> and <m>g</m>, how do we compute <m>C'(x)</m> in terms of <m>f</m>, <m>g</m>, <m>f'</m>, and <m>g'</m>? In the same way that the rate of change of a product of two functions, <m>p(x) = f(x) \cdot g(x)</m>, depends on the behavior of both <m>f</m> and <m>g</m>, it makes sense intuitively that the rate of change of a composite function <m>C(x) = f(g(x))</m> will also depend on some combination of <m>f</m> and <m>g</m> and their derivatives. The rule that describes how to compute <m>C'</m> in terms of <m>f</m> and <m>g</m> and their derivatives will be called the <em>chain rule</em>.</p>
@@ -95,33 +95,33 @@
     </example>
 
     <p>By the double angle identity for the sine function,
-      <me>
+      <md>
         C(x) = \sin(2x) = 2\sin(x)\cos(x).
-      </me>
+      </md>
     </p>
 
     <p>Applying the product rule and simplifying,
-      <me>
+      <md>
         C'(x) = 2\sin(x)(-\sin(x)) + \cos(x)(2\cos(x)) = 2(\cos^2(x) - \sin^2(x)).
-      </me>
+      </md>
     </p>
 
     <p>Next, we recall that one of the double angle identities for the cosine function tells us that
-      <me>
+      <md>
         \cos(2x) = \cos^2(x) - \sin^2(x).
-      </me>
+      </md>
     </p>
 
     <p>Substituting this result in our expression for <m>C'(x)</m>, we now have that
-      <me>
+      <md>
         C'(x) = 2 \cos(2x).
-      </me>
+      </md>
     </p>
 
     <p>So from <xref ref="Ex_2.5.DoubleAngle">Example</xref>, we see that if <m>C(x) = \sin(2x)</m>, then <m>C'(x) = 2\cos(2x)</m>. Letting <m>g(x) = 2x</m> and <m>f(x) = \sin(x)</m>, we observe that <m>C(x) = f(g(x))</m>. Moreover, with <m>g'(x) = 2</m> and <m>f'(x) = \cos(x)</m>, it follows that we can view the structure of <m>C'(x)</m> as
-      <me>
+      <md>
         C'(x) = 2\cos(2x) = g'(x) f'(g(x)).
-      </me>
+      </md>
     </p>
 
     <p>In this example, we see that for the composite function <m>C(x) = f(g(x))</m>, the derivative <m>C'</m> is (as in the example involving linear functions) constituted by multiplying the derivatives of <m>f</m> and <m>g</m>, but with the special condition that <m>f'</m> is evaluated at <m>g(x)</m>, rather than at <m>x</m>.</p>
@@ -129,17 +129,17 @@
     <p>It makes sense intuitively that these two quantities are involved in understanding the rate of change of a composite function: if we are considering <m>C(x) = f(g(x))</m> and asking how fast <m>C</m> is changing at a given <m>x</m> value as <m>x</m> changes, it clearly matters how fast <m>g</m> is changing at <m>x</m>, as well as how fast <m>f</m> is changing at the value of <m>g(x)</m>. It turns out that this structure holds not only for the functions in <xref ref="Ex_2.5.Linear">Examples</xref> and <xref ref="Ex_2.5.DoubleAngle"></xref>, but indeed for all differentiable functions<fn>Like other differentiation rules, the Chain Rule can be proved formally using the limit definition of the derivative.</fn> as is stated in the Chain Rule.</p>
 
     <p><em>Chain Rule:</em> <index><main>chain rule</main></index> If <m>g</m> is differentiable at <m>x</m> and <m>f</m> is differentiable at <m>g(x)</m>, then the composite function <m>C</m> defined by <m>C(x) = f(g(x))</m> is differentiable at <m>x</m> and
-      <me>
+      <md>
         C'(x) = f'(g(x)) g'(x).
-      </me>
+      </md>
     </p>
 
     <p>As with the product and quotient rules, it is often helpful to think verbally about what the chain rule says: <q>If <m>C</m> is a composite function defined by an outer function <m>f</m> and an inner function <m>g</m>, then <m>C'</m> is given by the derivative of the outer function, evaluated at the inner function, times the derivative of the inner function.</q></p>
 
     <p>At least initially in working particular examples requiring the chain rule, it can also be helpful to clearly identify the inner function <m>g</m> and outer function <m>f</m>, compute their derivatives individually, and then put all of the pieces together to generate the derivative of the overall composite function. To see what we mean by this, consider the function
-      <me>
+      <md>
         r(x) = (\tan(x))^2.
-      </me>
+      </md>
     </p>
 
     <p>The function <m>r</m> is composite, with inner function <m>g(x) = \tan(x)</m> and outer function <m>f(x) = x^2</m>. Organizing the key information involving <m>f</m>, <m>g</m>, and their derivatives, we have</p>
@@ -161,9 +161,9 @@
       </row>
     </tabular>
     <p>Applying the chain rule, which tells us that <m>r'(x) = f'(g(x)) g'(x)</m>, we find that for <m>r(x) = (\tan(x))^2</m>, its derivative is
-      <me>
+      <md>
         r'(x) = 2\tan(x) \sec^2(x).
-      </me>
+      </md>
     </p>
 
     <p>As a side note, we remark that another way to write <m>r(x)</m> is <m>r(x) = \tan^2(x)</m>. Observe that in this format, the composite nature of the function is more implicit, but this is common notation for powers of trigonometric functions: <m>\cos^4(x)</m>, <m>\sin^5(x)</m>, and <m>\sec^2(x)</m> are all composite functions, with the outer function a power function and the inner function a trigonometric one.</p>
@@ -206,53 +206,53 @@
 
         <ol>
           <li><p>The outer function is <m>f(x) = \cos(x)</m>, while the inner function is <m>g(x) = x^4</m>, and we know that
-              <me>
+              <md>
                 f'(x) = -\sin(x), g'(x) = 4x^3, \ \mbox{and}  \ f'(g(x)) = -\sin(x^4).
-              </me>
+              </md>
               Hence, by the chain rule,
-              <me>
+              <md>
                 h'(x) = f'(g(x))g'(x) = -4x^3\sin(x^4).
-              </me>
+              </md>
             </p></li>
 
           <li><p>The outer function is <m>f(x) = \sqrt{x}</m>, while the inner function is <m>g(x) = \tan(x)</m>, and we know that
-              <me>
+              <md>
                 f'(x) = \frac{1}{2\sqrt{x}}, g'(x) = \sec^2(x), \ \mbox{and}  \ f'(g(x)) = \frac{1}{2\sqrt{\tan(x)}}.
-              </me>
+              </md>
               Hence, by the chain rule,
-              <me>
+              <md>
                 h'(x) = f'(g(x))g'(x) = \frac{\sec^2(x)}{2\sqrt{\tan(x)}}.
-              </me>
+              </md>
             </p></li>
 
           <li><p>The outer function is <m>f(x) = 2^x</m>, while the inner function is <m>g(x) = \sin(x)</m>, and we know that
-              <me>
+              <md>
                 f'(x) = 2^x \ln(2), g'(x) = \cos(x), \ \mbox{and}  \ f'(g(x)) = 2^{\sin(x)}\ln(2).
-              </me>
+              </md>
               Hence, by the chain rule,
-              <me>
+              <md>
                 h'(x) = f'(g(x))g'(x) = 2^{\sin(x)}\ln(2)\cos(x).
-              </me>
+              </md>
             </p></li>
 
           <li><p>The outer function is <m>f(x) = x^5</m>, while the inner function is <m>g(x) = \cot(x)</m>, and we know that
-              <me>
+              <md>
                 f'(x) = 5x^4, g'(x) = -\csc^2(x), \ \mbox{and}  \ f'(g(x)) = 5\cot^4(x).
-              </me>
+              </md>
               Hence, by the chain rule,
-              <me>
+              <md>
                 h'(x) = f'(g(x))g'(x) = -5\cot^4(x) \csc^2(x).
-              </me>
+              </md>
             </p></li>
 
           <li><p>The outer function is <m>f(x) = x^9</m>, while the inner function is <m>g(x) = \sec(x) + e^x</m>, and we know that
-              <me>
+              <md>
                 f'(x) = 9x^8, g'(x) = \sec(x)\tan(x) + e^x, \ \mbox{and}  \ f'(g(x)) = 9(\sec(x)+e^x)^8.
-              </me>
+              </md>
               Hence, by the chain rule,
-              <me>
+              <md>
                 h'(x) = f'(g(x))g'(x) = 9(\sec(x)+e^x)^8 (\sec(x)\tan(x) + e^x).
-              </me>
+              </md>
             </p></li>
         </ol>
         </p>
@@ -313,15 +313,15 @@
     <p>By the chain rule, we now know that <m>b'(t) = r'(s(t))s'(t) = 4\sec^3(t)\sec(t)\tan(t) = 4 \sec^4(t) \tan(t).</m></p>
 
     <p>Now we are finally ready to compute the derivative of the overall function <m>h</m>. Recalling that <m>h(t) = 3^{t^2 + 2t}\sec^4(t)</m>, by the product rule we have
-      <me>
+      <md>
         h'(t) = 3^{t^2 + 2t} \frac{d}{dt}[\sec^4(t)] + \sec^4(t) \frac{d}{dt}[3^{t^2 + 2t}].
-      </me>
+      </md>
     </p>
 
     <p>From our work above with <m>a</m> and <m>b</m>, we know the derivatives of <m>3^{t^2 + 2t}</m> and <m>\sec^4(t)</m>, and therefore
-      <me>
+      <md>
         h'(t) = 3^{t^2 + 2t} 4\sec^4(t) \tan(t) + \sec^4(t) 3^{t^2 + 2t}\ln(3) (2t+2).
-      </me>
+      </md>
     </p>
 
     <activity xml:id="A_2.5.2">
@@ -360,41 +360,41 @@
 
         <ol>
           <li><p>By the constant multiple rule, <m>p'(r) = 4\frac{d}{dr}[\sqrt{r^6 + 2e^r}].</m>  Using the chain rule to complete the remaining derivative, we see that
-              <me>
+              <md>
                 p'(r) = 4 \frac{1}{2\sqrt{r^6 + 2e^r}} \frac{d}{dr}[r^6 + 2e^r] = \frac{4(6r^5 + 2e^r)}{2\sqrt{r^6 + 2e^r}}.
-              </me>
+              </md>
             </p></li>
 
           <li><p>Observe that by the product rule, <m>m'(v) = \sin(v^2) \frac{d}{dv}[\cos(v^3)] + \cos(v^3) \frac{d}{dv}[\sin(v^2)].</m>  Applying the chain rule to differentiate <m>\cos(v^3)</m> and <m>\sin(v^2)</m>, we see that
-              <me>
+              <md>
                 m'(v) = \sin(v^2) [-\sin(v^3) \cdot 3v^2] + \cos(v^3) [\cos(v^2) \cdot 2v] = -3v^2 \sin(v^2)\sin(v^3) + 2v \cos(v^3)\cos(v^2).
-              </me>
+              </md>
             </p></li>
 
           <li><p>By the quotient rule,
-              <me>
+              <md>
                 h'(y) = \frac{(e^{4y}+1) \frac{d}{dy}[\cos(10y)] - \cos(10y) \frac{d}{dy}[e^{4y}+1]}{(e^{4y}+1)^2}.
-              </me>
+              </md>
               Applying the chain rule to differentiate <m>\cos(10y)</m> and <m>e^{4y}</m>, it follows
-              <me>
+              <md>
                 h'(y) = \frac{(e^{4y}+1) [-10\sin(10y)] - \cos(10y) [4e^{4y}]}{(e^{4y}+1)^2}.
-              </me>
+              </md>
             </p></li>
 
           <li><p>By the chain rule, <m>s'(z) = 2^{z^2\sec(z)} \ln(2) \frac{d}{dz}[z^2 \sec(z)]</m>.  Then by the product rule, we find that
-              <me>
+              <md>
                 s'(z) = 2^{z^2\sec(z)} \ln(2) [z^2 \sec(z)\tan(z) + \sec(z) \cdot 2z].
-              </me>
+              </md>
             </p></li>
 
           <li><p>If we first apply the chain rule to the outer function (the sine function), note that
-              <me>
+              <md>
                 c'(x) = \cos(e^{x^2}) \frac{d}{dx}[e^{x^2}].
-              </me>
+              </md>
               Next, we again apply the chain rule, but this time to <m>e^{x^2}</m>, and get
-              <me>
+              <md>
                 c'(x) = \cos(e^{x^2}) [e^{x^2}\cdot 2x].
-              </me>
+              </md>
             </p></li>
         </ol>
         </p>
@@ -412,9 +412,9 @@
         <li><p>If <m>\displaystyle s(t) = \frac{1}{(t^2+1)^3}</m> represents the position function of a particle moving horizontally along an axis at time <m>t</m> (where <m>s</m> is measured in inches and <m>t</m> in seconds), find the particle's instantaneous velocity at <m>t=1</m>.  Is the particle moving to the left or right at that instant?</p></li>
 
         <li><p>At sea level, air pressure is 30 inches of mercury.  At an altitude of <m>h</m> feet above sea level, the air pressure, <m>P</m>, in inches of mercury, is given by the function
-            <me>
+            <md>
               P = 30 e^{-0.0000323 h}.
-            </me>
+            </md>
             Compute <m>dP/dh</m> and explain what this derivative function tells you about air pressure, including a discussion of the units on <m>dP/dh</m>.  In addition, determine how fast the air pressure is changing for a pilot of a small plane passing through an altitude of <m>1000</m> feet.</p></li>
 
         <li><p>Suppose that <m>f(x)</m> and <m>g(x)</m> are differentiable functions and that the following information about them is known:
@@ -491,9 +491,9 @@
 
         <ol>
           <li><p>Let <m>f(x) = \sqrt{e^x + 3}.</m> By the chain rule <m>f'(x) = \frac{e^x}{2\sqrt{e^x + 3}}</m>, and thus <m>f'(0) = \frac{1}{4}</m>.  Note further that <m>f(0) = \sqrt{1 + 3} = 2</m>.  The tangent line is therefore the line through <m>(0,2)</m> with slope <m>1/4</m>, which is
-              <me>
+              <md>
                 y - 2 = \frac{1}{4}(x-0).
-              </me>
+              </md>
             </p></li>
 
           <li><p>Observe that <m>s(t) = (t^2 + 1)^{-3}</m>, and thus by the chain rule, <m>s'(t) = -3(t^2 + 1)^{-4}(2t).</m>  We therefore see that <m>s'(1) = -\frac{6}{16} = -\frac{3}{8}</m> inches per second, so the particle is moving left at the instant <m>t = 1</m>.</p></li>
@@ -501,13 +501,13 @@
           <li><p>First, <m>P'(h) = \frac{dP}{dh} = 30 e^{-0.0000323h} (-0.0000323).</m>  Therefore, <m>P'(1000) = 30 e^{-0.0323} (-0.0000323) \approx -0.000938</m> inches of mercury per foot.  This tells us that the barometric pressure is dropping very slightly for each additional foot of elevation gaine.</p></li>
 
           <li><p>Since <m>C(x) = f(g(x)),</m> it follows <m>C'(x) = f'(g(x))g'(x).</m>  Therefore, <m>C'(2) = f'(g(2))g'(2)</m>.  From the given table, <m>g(2) = -1</m>, so applying this result and using additional given information,
-              <me>
+              <md>
                 C'(2) = f'(-1) g'(2) = (-5)(2) = -10.
-              </me>
+              </md>
               For <m>D(x) = f(f(x))</m>, the chain rule tells us that <m>D'(x) = f'(f(x))f'(x)</m>, so <m>D'(-1) = f'(f(-1))f'(-1)</m>.  Using the given table, it follows
-              <me>
+              <md>
                 D'(-1) = f'(2)f'(-1) = (4)(-5) = -20.
-              </me>
+              </md>
             </p></li>
         </ol>
         </p>
@@ -518,31 +518,31 @@
   <subsection>
     <title>The composite version of basic function rules</title>
     <p>As we gain more experience with differentiating complicated functions, we will become more comfortable in the process of simply writing down the derivative without taking multiple steps. We demonstrate part of this perspective here by showing how we can find a composite rule that corresponds to two of our basic functions. For instance, we know that <m>\frac{d}{dx}[\sin(x)] = \cos(x)</m>. If we instead want to know
-      <me>
+      <md>
         \frac{d}{dx}[\sin(u(x))],
-      </me>
+      </md>
       where <m>u</m> is a differentiable function of <m>x</m>, then this requires the chain rule with the sine function as the outer function. Applying the chain rule,
-      <me>
+      <md>
         \frac{d}{dx}[\sin(u(x))] = \cos(u(x)) \cdot u'(x).
-      </me>
+      </md>
     </p>
 
     <p>Similarly, since <m>\frac{d}{dx}[a^x] = a^x \ln(a)</m>, it follows by the chain rule that
-      <me>
+      <md>
         \frac{d}{dx}[a^{u(x)}] = a^{u(x)} \ln(a) \cdot u'(x).
-      </me>
+      </md>
     </p>
 
     <p>In the process of getting comfortable with derivative rules, an excellent exercise is to write down a list of all basic functions whose derivatives are known, list those derivatives, and then write the corresponding chain rule for the composite version with the inner function being an unknown function <m>u(x)</m> and the outer function being the known basic function. These versions of the chain rule are particularly simple when the inner function is linear, since the derivative of a linear function is a constant. For instance,
-      <me>
+      <md>
         \frac{d}{dx} \left[ (5x+7)^{10} \right] = 10(5x+7)^9 \cdot 5,
-      </me>
-      <me>
+      </md>
+      <md>
         \frac{d}{dx} \left[ \tan(17x) \right] = 17\sec^2(17x), \ \mbox{and}
-      </me>
-      <me>
+      </md>
+      <md>
         \frac{d}{dx} \left[ e^{-3x} \right] = -3e^{-3x}.
-      </me>
+      </md>
     </p>
   </subsection>
 
@@ -552,9 +552,9 @@
       <li><p>A composite function is one where the input variable <m>x</m> first passes through one function, and then the resulting output passes through another.  For example, the function <m>h(x) = 2^{\sin(x)}</m> is composite since <m>x \longrightarrow \sin(x) \longrightarrow 2^{\sin(x)}.</m></p></li>
 
       <li><p>Given a composite function <m>C(x) = f(g(x))</m> that is built from differentiable functions <m>f</m> and <m>g</m>, the chain rule tells us that we compute <m>C'(x)</m> in terms of <m>f</m>, <m>g</m>, <m>f'</m>, and <m>g'</m> according to the formula
-          <me>
+          <md>
             C'(x) = f'(g(x)) g'(x).
-          </me>
+          </md>
         </p></li>
     </ul>
     <exercises>
@@ -613,9 +613,9 @@
       <exercise>
         <statement>
           <p>If a spherical tank of radius 4 feet has <m>h</m> feet of water present in the tank, then the volume of water in the tank is given by the formula
-          <me>
+          <md>
             V = \frac{\pi}{3} h^2(12-h).
-          </me>
+          </md>
 
           <ol>
             <li><p>At what instantaneous rate is the volume of water in the tank changing with respect to the <em>height</em> of the water at the instant <m>h = 1</m>?  What are the units on this quantity?</p></li>
