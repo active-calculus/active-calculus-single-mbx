@@ -22,16 +22,23 @@
     <number name="R">($a*$c+$b)/($c^2)</number>
 
     <mathList name="PFdecomp">$P/x $Q/x^2 $R/(x-$c)</mathList>
-    <mathList name="PFdecompEntered">$PF1 $PF2 $PF3</mathList>
+   <!-- <mathList name="PFdecompEntered">$PF1 $PF2 $PF3</mathList> -->
     
     <function name="f" symbolic="false" >
       ($a*x+$b)/(x^2*(x-$c))
     </function> 
 
-    <function name="F" symbolic="false" >
-      $P*ln(abs(x)) - $Q*1/x + $R*ln(abs(x-$c))
+    <function name="F1" symbolic="false" >
+      $P*ln(abs(x))
+    </function>   
+    <function name="F2" symbolic="false" >
+      - $Q*1/x 
+    </function>       
+    <function name="F3" symbolic="false" >
+      $R*ln(abs(x-$c))
     </function>   
 
+    
     <boolean name="correctPFfound">$PFfound.creditAchieved=1</boolean>
     
   </setup>
@@ -54,21 +61,29 @@
 </p>  
 
 <p>
-  <m>A = </m> <mathInput minWidth="40" name="Aentered"/>, <m>B = </m>  <mathInput minWidth="40" name="Bentered"/>, <m>C = </m> <mathInput minWidth="40" name="Centered"/> <answer name="PFfound"><award><when>$Aentered = $P and $Bentered = $Q and $Centered = $R</when></award></answer>
+  <m>A = </m> <mathInput minWidth="40" name="Aentered"/>, <m>B = </m>  <mathInput minWidth="40" name="Bentered"/>, <m>C = </m> <mathInput minWidth="40" name="Centered"/> <answer name="PFfound" matchPartial><award><when>$Aentered = $P and $Bentered = $Q and $Centered = $R</when></award></answer>
 </p>  
 
 <p hide="$correctPFfound">
   (<em>The next steps will appear once you have correctly completed the steps above.</em>)
 </p>
-<p hide="not $correctPFfound">
+<div hide="not $correctPFfound">
   <p>
     Now we are ready to evaluate the original integral, using its partial fraction decomposition.  In particular, evaluate each of the three integrals appropriately and fill in the results below to find the overall result of evaluating the original indefinite integral.
   </p>
   <p>
-    <m>\displaystyle \int \frac{$a x + $b}{x^2(x-$c)} \, dx =  \int \frac{$P}{x} \, dx + \int \frac{$Q}{x^2} \, dx +  \int \frac{$R}{x-$c} \, dx</m>  
+    <m>\displaystyle \int \frac{$a x + $b}{x^2(x-$c)} \, dx =  \int \frac{$Aentered}{x} \, dx + \int \frac{$Bentered}{x^2} \, dx +  \int \frac{$Centered}{x-$c} \, dx</m>  
   </p>   
+
   <p>
-    <m>\displaystyle \int \frac{$a x + $b}{x^2(x-$c)} \, dx = </m>  <mathInput name="int1"/> <m> \displaystyle +  </m> <mathInput name="int2"/> <m> \displaystyle  + </m> <mathInput name="int3"/> <m> + \, C \, </m> <answer><award><when>((<math>$int1 + $int2 + $int3</math>) = $F) or ((<math>$int1 + $int2 + $int3</math>) = $F1)</when></award></answer>
+    <m>\displaystyle \int \frac{$a x + $b}{x^2(x-$c)} \, dx = </m>  <mathInput name="int1"/> <m> \displaystyle +  </m> <mathInput name="int2"/> <m> \displaystyle  + </m> <mathInput name="int3"/> <m> + \, C \, </m> 
+    <answer matchPartial>
+      <award>
+        <when>
+          <math>$int1</math> = $F1 and <math>$int2</math> = $F2 and <math>$int3</math> = $F3
+        </when>
+      </award>
+    </answer>
   </p> 
 
-</p>
+</div>

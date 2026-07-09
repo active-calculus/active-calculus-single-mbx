@@ -25,7 +25,7 @@
     <math name="du">2x</math>
     
     <mathList name="PFdecomp">$P/(x-$a) $Q/(x-$b)</mathList>
-    <mathList name="PFdecompEntered">$PF1 $PF2</mathList>
+
     
     <function name="f" symbolic="false" >
       ($a*x)/(x^2-$c^2))
@@ -34,8 +34,9 @@
     <function name="F" symbolic="false" >
       $a/2*ln(abs(x^2 - $c^2))
     </function>   
-
-    <boolean name="correctSubsFound">$uSubFound.creditAchieved=1 and $PFfound.creditAchieved=1</boolean>
+    <boolean name="correctABFound">$PFfound.creditAchieved=1</boolean>
+    
+    <boolean name="correctSubsFound">$uSubFound.creditAchieved=1</boolean>
     <boolean name="correctIntegralsFound">$uSubResult.creditAchieved=1 and $PFResult.creditAchieved=1</boolean>
     
   </setup>
@@ -45,56 +46,99 @@
   <me>
     \int \frac{$a x}{x^2-<math simplify>$c^2</math>} \, dx
   </me>
-  We will evaluate this integral in two different ways.
+  We will evaluate this integral in two different ways: first by partial fractions, and then by substitution.
 </p>
- 
 
-<p>
-  First, notice that there is a function-derivative pair present, so we can use <m>u</m>-substitution.  Fill in the following blanks to state both <m>u</m> and <m>du</m> as functions of <m>x</m>.
-</p>  
-<p>
-  <m>u = </m><mathInput name="uChoice"/>, <m>du = </m><mathInput name="duChoice"/><m>dx</m> <answer name="uSubFound"><award><when>$uChoice = $u and $duChoice = $du</when></award></answer>
-</p>  
-
-<p>
-  Before we actually evaluate the integral using this substitution, let's consider an alternate approach.
-</p>  
-
-
-<p>
-  Instead, we can recognize that the denominator may be factored and thus use a partial fraction decomposition.  In particular, we could write
-  <me> 
-    \int \frac{$a x}{x^2-<math simplify>$c^2</math>} \, dx = \int \frac{A}{(x-$c)} \, dx + \int \frac{B}{(x+$c)} \, dx 
+<cascade revealAll>
+  <aside startOpen>
+    <title>(a)</title>
+    <p>
+    Notice that the denominator may be factored and thus we can use a partial fraction decomposition.  In particular, we may write
+    <me> 
+      \int \frac{$a x}{x^2-<math simplify>$c^2</math>} \, dx = \int \frac{A}{(x-$c)} \, dx + \int \frac{B}{(x+$c)} \, dx 
+    </me>
+    Find the values of <m>A</m> and <m>B</m> for this decomposition, and enter them in the spaces below.
+    </p>
+    <p>
+      <m>A = </m> <mathInput minWidth="40" name="Aentered"/>, <m>B = </m>  <mathInput minWidth="40" name="Bentered"/> <answer name="PFfound" matchPartial><award><when>$Aentered = $P and $Bentered = $Q</when></award></answer> 
+    </p>  
+    <p hide="$correctABFound">
+    (<em>The next steps will appear as soon as you correctly complete the steps above</em>)
+    </p>
+    <div hide="not $correctABFound">
+    <p>
+      Now, integrate the result of the partial fraction decomposition.  
+    </p>
+    <p>
+      <m>\displaystyle \int \frac{$a x}{x^2-<math simplify>$c^2</math>} \, dx = \int \frac{<math simplify>$a/2</math>}{(x-$c)} \, dx + \int \frac{<math simplify>$a/2</math>}{(x+$c)} \, dx = </m> <mathInput name="xFPIntegrated" minWidth="100" /><m>\, + \, C</m> <answer  name="PFResult"><award><when>$xFPIntegrated = ($a/2)*ln(abs(x+$c)) + ($a/2)*ln(abs(x-$c))</when></award></answer>
+    </p>
+    </div>
+  </aside>
+  <aside>
+    <title>(b)</title>
+    <p>
+    Next, notice that there is a function-derivative pair present in the original integral,
+      <me>
+    \int \frac{$a x}{x^2-<math simplify>$c^2</math>} \, dx
   </me>
-  Find the values of <m>A</m> and <m>B</m> for this decomposition, and enter them in the spaces below.
-</p>
-<p>
-  <m>A = </m> <mathInput minWidth="40" name="Aentered"/>, <m>B = </m>  <mathInput minWidth="40" name="Bentered"/> <answer name="PFfound"><award><when>$Aentered = $P and $Bentered = $Q</when></award></answer> 
-</p>  
-
-<p hide="$correctSubsFound">
-  (<em>The next steps will appear as soon as you correctly complete the steps above</em>)
-</p>
-<p hide="not $correctSubsFound">
-  <p>
-    First, by applying <m>u</m>-substitution, we have 
+      so we can also use <m>u</m>-substitution.  Fill in the following blanks to state both <m>u</m> and <m>du</m> as functions of <m>x</m>.
+    </p>  
+    <p>
+      <m>u = </m><mathInput name="uChoice"/>, <m>du = </m><mathInput name="duChoice"/><m>dx</m> <answer name="uSubFound"><award><when>$uChoice = $u and $duChoice = $du</when></award></answer>
+    </p>  
+    <p hide="$correctSubsFound">
+    (<em>The next steps will appear as soon as you correctly complete the steps above</em>)
   </p>
-  <p>
-    <m>\displaystyle \int \frac{$a x}{x^2-<math simplify>$c^2</math>} \, dx = \int </m> <mathInput name="uInt" /> <m>du</m> <answer><award><when>$uInt = ($a/2)/u</when></award></answer> 
-  </p>  
-  <p>
-    Evaluate your most recent integral in terms of <m>u</m>, and then substitute back to <m>x</m>.  Put the expression in <m>u</m> in the first blank and the expression in <m>x</m> in the second.
+  <div hide="not $correctSubsFound">
+    <p>
+      First, by applying <m>u</m>-substitution, we have 
+    </p>
+    <p>
+      <m>\displaystyle \int \frac{$a x}{x^2-<math simplify>$c^2</math>} \, dx = \int </m> <mathInput name="uInt" /> <m>du</m> <answer><award><when>$uInt = ($a/2)/u</when></award></answer> 
+    </p>  
+    <p>
+      Evaluate your most recent integral in terms of <m>u</m>, and then substitute back to <m>x</m>.  Put the expression in <m>u</m> in the first blank and the expression in <m>x</m> in the second.
+    </p>
+    <p>
+      <m>\displaystyle \int \frac{$a x}{x^2-<math simplify>$c^2</math>} \, dx = </m> <mathInput name="uIntegrated" /> <m>\, + \, C</m> <answer forceSmallCheckWorkButton><award><when>$uIntegrated = ($a/2)*ln(abs(u))</when></award></answer> <m> = </m> <mathInput name="xIntegrated" /><m>\, + \, C</m> <answer name="uSubResult" forceSmallCheckWorkButton><award><when>$xIntegrated = ($a/2)*ln(abs(x^2 - $c^2))</when></award></answer>
+    </p>     
+  </div> 
+  </aside>
+  <aside>
+    <title>(c)</title>
+     <p hide="$correctIntegralsFound">
+    (<em>The final question will appear once you've correctly answered parts (a) and (b) above.</em>)
   </p>
-  <p>
-    <m>\displaystyle \int \frac{$a x}{x^2-<math simplify>$c^2</math>} \, dx = </m> <mathInput name="uIntegrated" /> <m>\, + \, C</m> <answer><award><when>$uIntegrated = ($a/2)*ln(abs(u))</when></award></answer> <m> = </m> <mathInput name="xIntegrated" /><m>\, + \, C</m> <answer name="uSubResult"><award><when>$xIntegrated = ($a/2)*ln(abs(x^2 - $c^2))</when></award></answer>
-  </p>     
-  <p>
-    Second, let's integrate the result of the partial fraction decomposition.  
-  </p>
-  <p>
-    <m>\displaystyle \int \frac{$a x}{x^2-<math simplify>$c^2</math>} \, dx = \int \frac{<math simplify>$a/2</math>}{(x-$c)} \, dx + \int \frac{<math simplify>$a/2</math>}{(x+$c)} \, dx = </m> <mathInput name="xFPIntegrated" minWidth="100" /><m>\, + \, C</m> <answer  name="PFResult"><award><when>$xFPIntegrated = ($a/2)*ln(abs(x+$c)) + ($a/2)*ln(abs(x-$c))</when></award></answer>
-  </p>  
-  <p>
-     The two antiderivatives you've found may look different at first glance, but they are in fact the same function due to the property of logarithms that if <m>p</m> and  <m>q</m> are both positive, then <m>\ln(p \cdot q) = \ln(p) + \ln(q)</m>.
-  </p>
-</p>
+    <div hide="not $correctIntegralsFound">
+      <p>
+        In part (a), you found via partial fractions that
+      </p>
+      <p>
+        <m>\displaystyle \int \frac{$a x}{x^2-<math simplify>$c^2</math>} \, dx = </m> <mathInput disabled>$xFPIntegrated</mathInput>
+      </p>
+      <p>
+        In part (b), you found via substitution that
+      </p>
+      <p>
+        <m>\displaystyle \int \frac{$a x}{x^2-<math simplify>$c^2</math>} \, dx = </m> <mathInput disabled>$xIntegrated</mathInput>
+      </p>
+      <p>
+        Recall a key property of logarithms: if <m>p</m> and  <m>q</m> are both positive, then <m>\ln(p \cdot q) = \ln(p) + \ln(q)</m>.
+      </p>
+      <p>
+        The functions two functions
+        <me>$xFPIntegrated</me> 
+        and <me>$xIntegrated</me> 
+        that arise from the two different approaches to integrating are 
+        <answer>
+          <choiceInput inline>
+            <choice>?</choice>
+            <choice>different for some values of <m>x</m></choice>
+            <choice credit="1">the same for all values of <m>x</m></choice>
+          </choiceInput>
+        </answer>
+      </p>
+    </div>
+  </aside>
+  
+</cascade>
