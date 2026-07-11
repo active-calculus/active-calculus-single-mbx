@@ -48,7 +48,7 @@
 </setup>
 
 <p>
-  As in Preview Activity 4.3.1, the graph provided below includes a Riemann sum calculator: in the boxed windows, you can input your own function <m>f(x)</m>, your own interval from <m>x=a</m> to <m>x=b</m>, and the number of rectangles, <m>n</m>, you'd like to use.  Then, from the drop-down menu choose your strategy for selecting the <m>x</m>-values from each of the subintervals (a Left, Midpoint, or Right Riemann sum).  The resulting value of the Riemann sum will be computed and displayed below the graph. 
+  As in Preview Activity 4.3.1, the graph provided below includes a Riemann sum calculator: in the boxed windows, you can input your own function <m>f(x)</m>, your own interval from <m>x=a</m> to <m>x=b</m>, and the number of rectangles, <m>n</m>, you'd like to use.  Then, from the drop-down menu choose your strategy for selecting the <m>x</m>-values from each of the subintervals (a Left, Midpoint, or Right Riemann sum).  The resulting value of the Riemann sum will be computed and displayed to the right of the graph. 
 </p>
 <p>
   <alert>Note:</alert> you have to hit the <q>enter</q> key after anything you change in one of these boxes in order to update the resulting computations.  Computations involving larger <m>n</m> values can take a few seconds to appear.
@@ -76,46 +76,55 @@
 </tabular>
 
 <!-- Graph the function, points at (a,0) and (b,0), and then the n rectangles -->
-<graph size="medium" xmin="$a-1.5" xmax="$b+1.5" ymin="$minY-1" ymax="$maxY+1" identicalAxisScales="false" showNavigation="false" fixAxes>
-  <function name="f" layer="0" symbolic="true">$fnFormula</function>
-  <regionBetweenCurveXAxis function="$f" boundaryValues="$a $b" />
+<sideBySide widths="60% 35%">
+  <graph size="medium" xmin="$a-1.5" xmax="$b+1.5" ymin="$minY-1" ymax="$maxY+1" identicalAxisScales="false" showNavigation="false" fixAxes>
+    <function name="f" layer="0" symbolic="true">$fnFormula</function>
+    <regionBetweenCurveXAxis function="$f" boundaryValues="$a $b" />
+  
+  <repeatForSequence from="$a" to="$b-$dxN" step="$dxN" valueName="xVal">
+      <polygon stylenumber="6" filled="true" draggable="false" vertices="($xVal,0) 
+                  ($xVal+$dxN,0) 
+                  ($xVal+$dxN, $$f($xVal+$offset)) 
+                  ($xVal,$$f($xVal+$offset))" />
+    </repeatForSequence>  
+  </graph>
 
-<repeatForSequence from="$a" to="$b-$dxN" step="$dxN" valueName="xVal">
-    <polygon stylenumber="6" filled="true" draggable="false" vertices="($xVal,0) 
-                ($xVal+$dxN,0) 
-                ($xVal+$dxN, $$f($xVal+$offset)) 
-                ($xVal,$$f($xVal+$offset))" />
-  </repeatForSequence>  
-</graph>
+  <div>
+    <p>
+      The value of the Riemann sum is 
+    </p>
+    <p>
+      <conditionalContent>
+        <case condition="$ruleChoice=Left Riemann Sum">
+          <m>L_{$n}=</m>
+        </case>
+        <case condition="$ruleChoice=Right Riemann Sum">
+          <m>R_{$n}=</m>
+        </case>
+        <case condition="$ruleChoice=Midpoint Riemann Sum">
+          <m>M_{$n}=</m>
+        </case>
+      </conditionalContent>
+      <sum displaydecimals="6">
+        <setup><group name="group1">$xiValues</group></setup><repeat for="$group1" valueName="xVal"><number>$$f($xVal+$offset)*$dx</number></repeat>
+      </sum>.
+    </p>    
+  </div>
+
+  
+</sideBySide>
 
 
 
-<p>
-  The value of the Riemann sum is: <conditionalContent>
-    <case condition="$ruleChoice=Left Riemann Sum">
-      <m>L_{$n}=</m>
-    </case>
-    <case condition="$ruleChoice=Right Riemann Sum">
-      <m>R_{$n}=</m>
-    </case>
-    <case condition="$ruleChoice=Midpoint Riemann Sum">
-      <m>M_{$n}=</m>
-    </case>
-  </conditionalContent>
-  <sum displaydecimals="6">
-    <setup><group name="group1">$xiValues</group></setup><repeat for="$group1" valueName="xVal"><number>$$f($xVal+$offset)*$dx</number></repeat>
-  </sum>.
-</p>
 
 <p>
   As we begin to investigate ways to approximate definite integrals, it will be insightful to compare results to integrals whose exact values we know. To that end, the following sequence of questions centers on <math>int_0^3 x^2 dx</math>.
 </p>
 
-
 <!-- Interactive Answers -->
 <p>
   
-<ol level = "2">
+<ol marker="a.">
   <li>
     <p>
       Use the Riemann sum calculator with the function <math>f(x) = x^2</math> on the interval <m>[0,3]</m> to compute <math>L_3</math>, the left Riemann sum with three subinvtervals.
@@ -123,7 +132,7 @@
   </li>
 
   <p>
-    <m>L_3 = </m> <answer> 5 </answer>
+    <m>L_3 = </m> <answer name="L3entered"> 5 </answer>
   </p>
 
   <li>
@@ -132,10 +141,10 @@
  the right and middle Riemann sums with three subintervals, respectively.
     </p>
     <p>
-      <m>R_3 = </m> <answer> 14 </answer>
+      <m>R_3 = </m> <answer name="R3entered"> 14 </answer>
     </p>
     <p>
-      <m>M_3 = </m> <answer> 8.75 </answer>
+      <m>M_3 = </m> <answer name="M3entered"> 8.75 </answer>
     </p>
   </li>
 
@@ -146,7 +155,7 @@
       Use the Fundamental Theorem of Calculus to compute the exact value of <m>I = \int_0^3 x^2 dx</m>.
     </p>
     <p>
-      <m>I = \int_0^3 x^2 dx = </m> <answer> 9 </answer>
+      <m>I = \int_0^3 x^2 dx = </m> <answer name="IEntered"> 9 </answer>
     </p>
   </li>
 
@@ -154,10 +163,16 @@
 
   <li>
     <p>
-      We define the <em>error</em> that results from an approximation of a definite integral to be the approximation's value minus the integral's exact value. What is the error that results from using <math>L_3</math>? From <math>R_3</math>? From <math>M_3</math>?
+      We define the <em>error</em> that results from an approximation of a definite integral to be the approximation's value minus the integral's exact value. For example, based on the results you entered above, the error for <m>L_3</m> is
     </p>
     <p>
-       The error for <m>L_3</m> is <answer> 5-9 </answer>
+      <m>L_3 - I = </m><mathInput disabled>$L3entered-$IEntered</mathInput> <m>=</m><mathInput disabled><math simplify>$L3entered-$IEntered</math></mathInput>
+    </p>
+    <p>
+      Notice that the error can be positive or negative depending on whether the approximation is too large or too small.
+    </p>
+    <p>
+      What is the error that results from <math>R_3</math>? From <math>M_3</math>?
     </p>
     <p>
        The error for <m>R_3</m> is <answer> 14-9 </answer>
@@ -198,7 +213,10 @@
   </li>
   <li>
     <p>
-      Order the four approximations (<m>L_3</m>, <m>R_3</m>, <m>M_3</m>,  <m>T_3</m>) from best to worst (that is, from least absolute error to most absolute error), separating your entries with commas.  Remember to enter <q>T_3</q> in order to get the subscript.
+      The <em>absolute error</em> is the absolute value of the error.  For instance, while the error for <m>L_3</m> is <m>-4</m>, the absolute error associated with <m>L_3</m> is <m>4</m>.
+    </p>
+    <p>
+      Order the four approximations (<m>L_3</m>, <m>R_3</m>, <m>M_3</m>,  <m>T_3</m>) from best to worst (that is, from least absolute error to most absolute error), separating your entries with commas.  To get a subscript, enter <q>T_3</q>; after entering a subscript, hit the right arrow key to get back to the main line to enter a comma before entering the next approximation in the list.
     </p>
     <p>
       <mathInput name="ranking" minWidth="100"/><answer><award><when>$ranking=$accOrder</when></award></answer>

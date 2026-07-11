@@ -28,6 +28,7 @@
   <math name="M4">$dx * ($$f($a+$dx/2) + $$f($a+3*$dx/2) + $$f($a+5*$dx/2) + $$f($a+7*$dx/2))</math>
   <math name="T4">($L4 + $R4)/2</math>
   <math name="S8">(2*$M4 + $T4)/3</math>
+  <number name="S8computed" displayDecimals="7">($T4answer + 2*$M4entered)/3</number>
   <math simplify name="exactInt">$$F($b) - $$F($a) </math>
 
 </setup>
@@ -47,27 +48,51 @@
   <ol marker="a.">
     <li>
       <p>
-        Determine the estimates <m>L_4</m>, <m>R_4</m>, <m>T_4</m>, and <m>M_4</m> for the given definite integral.  (Remember that you can use the Riemann sum calculator provided in the Preview Activity for this section to find <m>L_4</m>, <m>R_4</m>, and <m>M_4</m>. Report your results to an accuracy of at least <m>0.000001</m>.)
+        Determine the estimates <m>L_4</m>, <m>R_4</m>, <m>T_4</m>, and <m>M_4</m> for the given definite integral.  Enter each as a single number, accurate to <m>0.000001</m>.  
       </p>
       <p>
-        <m> \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx \approx L_4 = </m><answer allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute> $L4</answer>
+        <m> \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx \approx </m><answer allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute name="L4entered"> 
+          <label><m>\ L_4 = </m></label>
+          $L4</answer>
       </p>
       <p>
-        <m> \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx \approx R_4 = </m><answer allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute> $R4</answer>
+        <m> \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx \approx </m><answer allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute name="R4entered"> 
+          <label><m>\ R_4 = </m></label>
+          $R4</answer>
       </p>
       <p>
-        <m> \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx \approx M_4 = </m><answer allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute> $M4</answer>
+        <m> \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx \approx  </m><answer allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute name="M4entered"> 
+          <label><m>\ M_4 = </m></label>
+          $R4</answer>
       </p>
       <p>
-        <m> \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx \approx T_4 = </m><answer allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute> $T4</answer>
+        <m> \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx \approx </m><answer allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute forceSmallCheckWorkButton name="T4answer"> 
+          <mathInput name="T4entered">
+            <label><m>\ T_4 = </m></label>
+          </mathInput>
+          <award><when>
+            $T4entered = $T4 or ($T4entered = <math>($L4entered + $R4entered)/2</math> and $L4entered.creditAchieved=1 and $R4entered.creditAchieved=1)
+          </when></award>
+        </answer>
       </p>
     </li>  
     <li>
       <p>
-        Find the estimate that results from using Simpson's Rule with <m>8</m> subintervals.
+        Find the estimate that results from using Simpson's Rule with <m>8</m> subintervals, again accurate to <m>0.000001</m>.
       </p>
       <p>
-        <m> \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx \approx S_{8} = </m><answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute> $S8</answer>
+        <m> \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx \approx </m><answer allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute> 
+          <mathInput name="S8entered">
+            <label><m>\ S_{8} = </m>  </label>
+          </mathInput>
+          <!-- <extractMathOperator name="S8Operator">$S8entered</extractMathOperator> -->
+          <award>
+            <when>
+              ($S8entered = $S8 or $S8entered = $S8computed) 
+              <!-- and $S8Operator="" -->
+            </when>
+          </award>
+        </answer>
       </p>
     </li>
     <li>
@@ -79,10 +104,14 @@
         exactly; report your result below and choose the option that fits with your conclusion.
       </p>
       <p>
-        <m>\int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx = </m><answer>$exactInt</answer>
+        <answer>
+          <label><m>\int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx = </m></label>
+          $exactInt
+        </answer>
       </p>
       <p>
         Simpson's Rule therefore <choiceInput name="c1" inline>
+          <shortDescription>over, under, or exact</shortDescription>
           <choice>?</choice>
           <choice>underestimates</choice>
           <choice>overestimates</choice>
