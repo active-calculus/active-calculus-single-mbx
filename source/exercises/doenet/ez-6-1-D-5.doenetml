@@ -43,14 +43,15 @@
   </p>
 
 <graph size="medium" xmin="-1" xmax="5" ymin="-1" ymax="4" showNavigation="false" fixAxes="true" displayXAxis="false" displayYAxis="false">
+  <shortDescription>a plot of the two given curves</shortDescription>
   $f
   $g
   $P
   $Q
-  <label anchor="(2,1.7)"><m>x=y^2</m></label>
-  <label anchor="(3,0.7)"><m>y = \frac{1}{8}x^2</m></label>
-  <line through="(0,0) (0,1)" styleNumber="5"/>
-  <line through="(0,0) (1,0)" styleNumber="5"/>
+  <label anchor="(2,1.7)" fixed><m>x=y^2</m></label>
+  <label anchor="(3,0.7)" fixed><m>y = \frac{1}{8}x^2</m></label>
+  <line through="(0,0) (0,1)" styleNumber="5" fixed/>
+  <line through="(0,0) (1,0)" styleNumber="5" fixed/>
 </graph>  
 
   <p> 
@@ -59,7 +60,7 @@
         <p>
           Use the graph and algebra appropriately to find the exact points of intersection between the curves.  State each intersection point as an ordered pair in the space below; if there is more than one, separate them with commas.  
         </p>
-        <p><answer><mathList unordered>($x1,$y1) ($x2,$y2)</mathList></answer></p>
+        <p><answer><label>the intersection points are:</label><mathList unordered>($x1,$y1) ($x2,$y2)</mathList></answer></p>
       </li>
 
       <li>
@@ -68,9 +69,10 @@
         </p>
         <p> 
           If we use vertical rectangles and integrate with respect to <m>x</m>, the rectangles have height <m>f(x) - g(x)</m> where 
-          <m>f(x) = </m><answer>$fX</answer>,
-          <m>g(x) = </m><answer>$gX</answer>,
+          <answer><label><m>f(x) = </m></label>$fX</answer>,
+          <answer><label><m>g(x) = </m></label>$gX</answer>,
           and the rectangles have width <answer><choiceInput inline>
+            <shortDescription>dx or dy</shortDescription>
             <choice>?</choice>
             <choice credit="1">dx</choice>
             <choice>dy</choice>
@@ -82,12 +84,13 @@
             A = \int_a^b [f(x)-g(x)] \, dx
           </me>
           where 
-          <m>a = </m><mathInput name="aEntered"/>, <m>b = </m><mathInput name="bEntered"/>, and <m>f(x)-g(x) = </m><mathInput name="fmgEntered"/> <answer><award><when>$aEntered=$x1 and $bEntered=$x2 and $fmgEntered=$fX-$gX </when></award></answer>
+          <m>a = </m><mathInput name="aEntered"><shortDescription>a value</shortDescription></mathInput>, <m>b = </m><mathInput name="bEntered"><shortDescription>b value</shortDescription></mathInput>, and <m>f(x)-g(x) = </m><mathInput name="fmgEntered"><shortDescription>f minus g</shortDescription></mathInput> <answer forceSmallCheckWorkButton><shortDescription>check for previous three inputs</shortDescription><award><when>$aEntered=$x1 and $bEntered=$x2 and $fmgEntered=$fX-$gX </when></award></answer>
         </p>
       </li>
       <li>
         <p> 
-          If we instead use horizontal rectangles and integrate with respect to <m>y</m>, the rectangles have height <m>p(y) - q(y)</m> where <m>p(y) = </m><answer>$pY</answer>, <m>q(y) = </m><answer>$qY</answer>, and the rectangles have width <answer><choiceInput inline>
+          If we instead use horizontal rectangles and integrate with respect to <m>y</m>, the rectangles have width <m>p(y) - q(y)</m> where <answer><label><m>p(y) = </m></label>$pY</answer>, <answer><label><m>q(y) = </m></label>$qY</answer>, and the rectangles have width <answer><choiceInput inline>
+            <shortDescription>dx or dy</shortDescription>
             <choice>?</choice>
             <choice>dx</choice>
             <choice credit="1">dy</choice>
@@ -99,15 +102,15 @@
             A = \int_c^d [p(y)-q(y)] \, dy
           </me>
           where 
-          <m>c = </m><mathInput name="cEntered"/>, <m>d = </m><mathInput name="dEntered"/>, and <m>p(y)-q(y) = </m><mathInput name="pmqEntered"/> <answer><award><when>$cEntered=$y1 and $dEntered=$y2 and $pmqEntered=$pY-$qY </when></award></answer>
+          <m>c = </m><mathInput name="cEntered"><shortDescription>c value</shortDescription></mathInput>, <m>d = </m><mathInput name="dEntered"><shortDescription>d value</shortDescription></mathInput>, and <m>p(y)-q(y) = </m><mathInput name="pmqEntered"><shortDescription>p minus q</shortDescription></mathInput> <answer forceSmallCheckWorkButton><shortDescription>check box for previous 3 inputs</shortDescription><award><when>$cEntered=$y1 and $dEntered=$y2 and $pmqEntered=$pY-$qY </when></award></answer>
         </p>
       </li>
       <li>
         <p>
-          Finally, choose one of the two integrals you found above and evaluate it exactly using the Fundamental Theorem of Calculus.  Report the resulting exact value of the area, <m>A</m>, below.
+          Finally, choose one of the two integrals you found above and evaluate it to find the resulting value of the area, <m>A</m>, below.  Report your result to an accuracy of at least <m>0.0001</m>.
         </p>
         <p>
-          <m>A = </m><answer>$intValue</answer>
+          <answer name="AEntered" allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><label><m>A = </m></label>$intValue</answer>
         </p>  
       </li>
     </ol>

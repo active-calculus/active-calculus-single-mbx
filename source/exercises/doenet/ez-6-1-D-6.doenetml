@@ -38,7 +38,7 @@
         <p>
           Find the exact points of intersection between the curves.  State each intersection point as an ordered pair in the space below; if there is more than one, separate them with commas.  
         </p>
-        <p><answer><mathList unordered>($x1,$y1) ($x2,$y2)</mathList></answer></p>
+        <p><answer><label>the intersection points are:</label><mathList unordered>($x1,$y1) ($x2,$y2)</mathList></answer></p>
       </li>
 
       <li>
@@ -49,12 +49,12 @@
           The area, <m>A</m>, between the curves is given by the definite integral 
         </p>
         <p>
-          <m>A = \int_a^b </m> <mathInput name="integrandEntered"/> <m>d</m> <mathInput minWidth="15" name="dWhat"/>
+          <m>A = \int_a^b </m> <mathInput name="integrandEntered"><shortDescription>integrand</shortDescription></mathInput> <m>d</m> <mathInput minWidth="15" name="dWhat"><shortDescription>x or y</shortDescription></mathInput>
         </p>
         <p>
           where 
-          <m>a = </m><mathInput minWidth="30" name="aEntered"/> and <m>b = </m><mathInput minWidth="30" name="bEntered"/>.
-          <answer simplifyOnCompare><award><when>$aEntered=$y1 and $bEntered=$y2 and $dWhat = y and $integrandEntered=$integrand </when></award></answer>
+          <m>a = </m><mathInput minWidth="30" name="aEntered"><shortDescription>a value</shortDescription></mathInput> and <m>b = </m><mathInput minWidth="30" name="bEntered"><shortDescription>b value</shortDescription></mathInput>.
+          <answer simplifyOnCompare symbolicEquality><award><when>$aEntered=$y1 and $bEntered=$y2 and $dWhat = y and $integrandEntered=$integrand </when></award></answer>
         </p>
       </li>
       <li>
@@ -62,8 +62,11 @@
           Finally, evaluate the integral exactly and report the resulting area, <m>A</m>, below.
         </p>
         <p>
-          <m>A = </m><answer>$intValue</answer>
-        </p>  
+          <answer name="AEntered"><label><m>A = </m></label>$intValue</answer>
+        </p> 
+        <feedback condition="$AEntered.creditAchieved!=1 and ($intValue - $AEntered < 0.011) and $AEntered.justSubmitted">
+          You have a very close decimal representation of <m>A</m>, but it's important to use the Fundamental Theorem of Calculus to find the value of <m>A</m> exactly.
+        </feedback>
       </li>
     </ol>
   </p>
