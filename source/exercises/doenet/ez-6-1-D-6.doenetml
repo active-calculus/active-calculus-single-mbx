@@ -24,6 +24,7 @@
   <function name="integrand" variable="y">($m*$n-y^2)/($m-$n) - y</function>
    
   <math name="intValue" simplify>($m*$n^2+$m^2*$n)/($m-$n) - ($n^2-$m^2)/2 - ($n^3+$m^3)/(3*($m-$n))</math>
+  <number name="error">abs($intVal - $intValue)</number>
 
 </setup>  
 
@@ -64,7 +65,7 @@
         <p>
           <answer name="AEntered"><label><m>A = </m></label>$intValue</answer>
         </p> 
-        <feedback condition="$AEntered.creditAchieved!=1 and ($intValue - $AEntered < 0.011) and $AEntered.justSubmitted">
+        <feedback condition="$AEntered.creditAchieved!=1 and ($error < 0.011) and $AEntered.justSubmitted">
           You have a very close decimal representation of <m>A</m>, but it's important to use the Fundamental Theorem of Calculus to find the value of <m>A</m> exactly.
         </feedback>
       </li>

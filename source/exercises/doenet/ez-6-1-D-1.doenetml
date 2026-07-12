@@ -20,6 +20,7 @@
   <function name="f" styleNumber="1"> $a1*(-1*(x-$h1)^2+$k)</function>
   <function name="g" styleNumber="2"> $a1*((x-$h2)^2+($k-5))</function>
   <math name="intValue" simplify>abs(5*$a1*3 - $a1/3*(4-$h1)^3 - $a1/3*(4-$h2)^3 + $a1/3*(1-$h1)^3 + $a1/3*(1-$h2)^3) </math>
+  <number name="error">abs($intVal - $intValue)</number>
 
 </setup>  
 
@@ -73,7 +74,7 @@
         <p>
           <m>A = </m><mathInput name="intVal" minWidth="40" ><shortDescription>exact integral value</shortDescription></mathInput> <answer name="AEntered" forceSmallCheckWorkButton><award><when>$intValue=$intVal </when></award></answer>
         </p>  
-        <feedback condition="$AEntered.creditAchieved!=1 and ($intVal - $intValue < 0.011) and $AEntered.justSubmitted">
+        <feedback condition="$AEntered.creditAchieved!=1 and ($error < 0.011) and $AEntered.justSubmitted">
           You have a very close decimal representation of <m>A</m>, but it's important to use the Fundamental Theorem of Calculus to find the value of <m>A</m> exactly.
         </feedback>
       </li>

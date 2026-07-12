@@ -56,7 +56,7 @@
           Sketch a graph of the region, <m>\mathcal{R}</m>, and find the exact locations of the intersection points of the two curves.  Enter the intersection points as ordered pairs; separate multiple points with commas.
         </p>
         <p>
-          The curves intersect at the points: <answer unorderedCompare simplifyOnCompare>$intPoints</answer>
+          <answer unorderedCompare matchPartial><label>The curves intersect at the points: </label>$intPoints</answer>
         </p>
       </li>
       <li>
@@ -65,24 +65,42 @@
         </p>
 
         <p>
-          lower limit of integration: <m>a = </m> <answer name="lower">$a</answer>
+          lower limit of integration:  <answer name="lower"><label><m>a = </m></label>$a</answer>
         </p>
         <p>
-          upper limit of integration: <m>b = </m> <answer name="upper">$b</answer>
+          upper limit of integration:  <answer name="upper"><label><m>b = </m></label>$b</answer>
         </p>
 
         <p>
           Integral expression for the volume, <m>V</m>, of the solid of revolution when revolved about <m>y = $y</m>: 
         </p>
         <p>
-          <m>V = \displaystyle\int_{$lower}^{$upper}</m><mathInput name="int1" minWidth="100" /><m>d</m><mathInput name="dWhat" minWidth="15"/><answer simplifyOnCompare><award><when>$int1 = $g1 and $dWhat = x</when></award></answer> 
+          <m>V = \displaystyle\int_{$lower}^{$upper}</m><mathInput name="int1" minWidth="200"><shortDescription>integrand</shortDescription></mathInput><m>d</m><mathInput name="dWhat" minWidth="15"><shortDescription>x or y</shortDescription></mathInput>
+          <answer>
+            <award>
+              <when>$int1 = $g1 and $dWhat = x</when>
+            </award>
+            <award credit="0.75">
+              <when>$int1 = $g1 and $dWhat != x</when>
+            </award>
+            <award credit="0.25">
+              <when>$int1 != $g1 and $dWhat = x</when>
+            </award>
+          </answer> 
         </p> 
+        <feedback condition="$int1 = -$g1">
+          <p>
+            It appears that you have <m>R</m> and <m>r</m> reversed in the Washer Method.
+          </p>          
+        </feedback>
+<!--        
         <p>
           Evaluate the integral to find the numerical value of the volume, <m>V</m>, and report the value below.  Report your result to an accuracy within <m>0.0001</m>.
         </p>
         <p>
           <m>V = </m><mathInput name="intVal1" minWidth="40" /> <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><award><when>$intValue1=$intVal1 </when></award></answer>
         </p>  
+-->        
       </li>
       <li>
         <p>
@@ -90,24 +108,43 @@
         </p>
 
         <p>
-          lower limit of integration: <m>c = </m> <answer name="lower">$a</answer>
+          lower limit of integration: <answer name="lower"><label><m>c = </m> </label>$a</answer>
         </p>
         <p>
-          upper limit of integration: <m>d = </m> <answer name="upper">$b</answer>
+          upper limit of integration:  <answer name="upper"><label><m>d = </m></label>$b</answer>
         </p>
 
         <p>
           Integral expression for the volume, <m>W</m>, of the solid of revolution when revolved about <m>y=<math simplify displayDecimals="4">$w</math></m>: 
         </p>
         <p>
-          <m>W = \displaystyle\int_{$lower}^{$upper}</m><mathInput name="int2" minWidth="100" /><m>d</m><mathInput name="dWhat2" minWidth="15"/><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute simplifyOnCompare><award><when>$int2 = $g2 and $dWhat2 = x</when></award></answer> <!--, <m>$$f($h), $$g($h), $f - $g</m> \pi \left(\left(3.375-2.25x\right)^2-\left(3.375+1.5x\left(x-3\right)\right)^2\right) -->
+          <m>W = \displaystyle\int_{$lower}^{$upper}</m><mathInput name="int2" minWidth="200"><shortDescription>integrand</shortDescription></mathInput><m>d</m><mathInput name="dWhat2" minWidth="15"><shortDescription>x or y</shortDescription></mathInput>
+          <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
+            <award>
+              <when>$int2 = $g2 and $dWhat2 = x</when>
+            </award>
+            <award credit="0.75">
+              <when>$int2 = $g2 and $dWhat2 != x</when>
+            </award>
+            <award credit="0.25">
+              <when>$int2 != $g2 and $dWhat2 = x</when>
+            </award>
+          </answer> 
+          <!--, <m>$$f($h), $$g($h), $f - $g</m> \pi \left(\left(3.375-2.25x\right)^2-\left(3.375+1.5x\left(x-3\right)\right)^2\right) -->
         </p> 
+        <feedback condition="$int2 = -$g2">
+          <p>
+            It appears that you have <m>R</m> and <m>r</m> reversed in the Washer Method.
+          </p>          
+        </feedback>
+   <!--     
         <p>
           Evaluate the integral to find the numerical value of the volume, <m>W</m>, and report the value below.  Report your result to an accuracy within <m>0.0001</m>.
         </p>
         <p>
           <m>W = </m><mathInput name="intVal2" minWidth="40" /> <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><award><when>$intValue2=$intVal2 </when></award></answer>
         </p>  
+   -->     
       </li>      
     </ol>
   </p>

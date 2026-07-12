@@ -26,6 +26,7 @@
   <function name="gY" variable="y" styleNumber="2"> (y - $b)/$m</function>
   
   <math name="intValue" simplify>1/(2*$m)*($y2-$b)^2 - 1/3*$y2^3 - 1/(2*$m)*($y1-$b)^2 + 1/3*$y1^3 </math>
+  <number name="error">abs($intVal - $intValue)</number>
 
 </setup>  
 
@@ -106,7 +107,7 @@
         <p>
           <m>A = </m><mathInput name="intVal" minWidth="40"><shortDescription>integral value</shortDescription></mathInput> <answer forceSmallCheckWorkButton name="AEntered"><award><when>$intValue=$intVal </when></award></answer>
         </p> 
-        <feedback condition="$AEntered.creditAchieved!=1 and ($intVal - $intValue < 0.011) and $AEntered.justSubmitted">
+        <feedback condition="$AEntered.creditAchieved!=1 and ($error < 0.011) and $AEntered.justSubmitted">
           You have a very close decimal representation of <m>A</m>, but it's important to use the Fundamental Theorem of Calculus to find the value of <m>A</m> exactly.
         </feedback>
       </li>

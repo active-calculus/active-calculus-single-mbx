@@ -13,8 +13,9 @@
 <!-- **********************************************************************-->
 
 <setup>
-  <selectFromSequence name="k" from="0.5" to="2" step="0.5"/>
-  <selectFromSequence name="m" from="2" to="4" step="1" exclude="$k"/>
+  <selectFromSequence name="n" from="1" to="2" step="1"/>
+  <selectFromSequence name="m" from="2" to="4" step="1"/>
+  <math name="k">$n/3</math>
   
   <function name="r1x"> $m*x </function>
   <function name="r2x"> $k*x^2 </function>
@@ -42,7 +43,7 @@
 
   <p>
     Consider the finite region, <m>\mathcal{R}</m>, that is bounded by the curves 
-    <me>y = $m x, \ y = $k x^2</me>    
+    <me>y = $m x, \ y = \frac{$n}{3} x^2</me>    
   </p>
 
   <p> 
@@ -52,7 +53,7 @@
           Sketch a graph of the region, <m>\mathcal{R}</m>, and find the exact locations of the intersection points of the two curves.  Enter the intersection points as ordered pairs; separate multiple points with commas.
         </p>
         <p>
-          The curves intersect at the points: <answer unorderedCompare simplifyOnCompare>$intPoints</answer>
+          The curves intersect at the points: <answer unorderedCompare matchPartial>$intPoints</answer>
         </p>
       </li>
       <li>
@@ -71,14 +72,28 @@
           Integral expression for the volume, <m>V</m>, of the solid of revolution when revolved about the <m>x</m>-axis: 
         </p>
         <p>
-          <m>V = \displaystyle\int_{$lower}^{$upper}</m><mathInput name="int1" minWidth="100" /><m>d</m><mathInput name="dWhat" minWidth="15"/><answer simplifyOnCompare><award><when>$int1 = $gx and $dWhat = x</when></award></answer> <!--, <m>$$f($h), $$g($h), $f - $g</m> -->
+          <m>V = \displaystyle\int_{$lower}^{$upper}</m><mathInput name="int1" minWidth="100" ><shortDescription>integrand</shortDescription></mathInput><m>d</m><mathInput name="dWhat" minWidth="15"><shortDescription>x or y</shortDescription></mathInput>
+          <answer>
+            <award>
+              <when>$int1 = $gx and $dWhat = x</when>
+            </award>
+            <award credit="0.75">
+              <when>$int1 = $gx and $dWhat != x</when>
+            </award>
+            <award credit="0.25">
+              <when>$int1 != $gx and $dWhat = x</when>
+            </award>
+          </answer> <!--, <m>$$f($h), $$g($h), $f - $g</m> -->
         </p> 
+  <!--
         <p>
           Evaluate the integral to find the numerical value of the volume, <m>V</m>, and report the value below.  Report your result to an accuracy within <m>0.0001</m>.
         </p>
+
         <p>
           <m>V = </m><mathInput name="intValx" minWidth="40" /> <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><award><when>$intValueX=$intValx </when></award></answer>
         </p>  
+  -->
       </li>
       <li>
         <p>
@@ -86,24 +101,37 @@
         </p>
 
         <p>
-          lower limit of integration: <m>c = </m> <answer name="lower">$c</answer>
+          lower limit of integration:  <answer name="lower"><label><m>c = </m></label>$c</answer>
         </p>
         <p>
-          upper limit of integration: <m>d = </m> <answer name="upper">$d</answer>
+          upper limit of integration:  <answer name="upper"><label><m>d = </m></label>$d</answer>
         </p>
 
         <p>
           Integral expression for the volume, <m>W</m>, of the solid of revolution when revolved about the <m>y</m>-axis: 
         </p>
         <p>
-          <m>W = \displaystyle\int_{$lower}^{$upper}</m><mathInput name="int2" minWidth="100" /><m>d</m><mathInput name="dWhat2" minWidth="15"/><answer simplifyOnCompare><award><when>$int2 = $gy and $dWhat2 = y</when></award></answer> <!--, <m>$$f($h), $$g($h), $f - $g</m> -->
-        </p> 
+          <m>W = \displaystyle\int_{$lower}^{$upper}</m><mathInput name="int2" minWidth="100" ><shortDescription>integrand</shortDescription></mathInput><m>d</m><mathInput name="dWhat2" minWidth="15"><shortDescription>x or y</shortDescription></mathInput>
+          <answer>
+            <award>
+              <when>$int2 = $gy and $dWhat2 = y</when>
+            </award>
+            <award credit="0.75">
+              <when>$int2 = $gy and $dWhat2 != y</when>
+            </award>
+            <award credit="0.25">
+              <when>$int2 != $gy and $dWhat2 = y</when>
+            </award>
+          </answer> <!--, <m>$$f($h), $$g($h), $f - $g</m> -->
+        </p>
+<!--
         <p>
           Evaluate the integral to find the numerical value of the volume, <m>W</m>, and report the value below.  Report your result to an accuracy within <m>0.0001</m>.
         </p>
         <p>
           <m>W = </m><mathInput name="intValy" minWidth="40" /> <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><award><when>$intValueY=$intValy </when></award></answer>
-        </p>  
+        </p>
+-->        
       </li>      
     </ol>
   </p>
