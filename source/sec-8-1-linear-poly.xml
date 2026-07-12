@@ -41,9 +41,9 @@
     
     <p>
       Early in our study of calculus in <xref ref="sec-1-8-tan-line-approx">Section</xref>, we learned that if a function <m>f</m> has a derivative at a fixed value <m>x=a</m>, when we zoom in on its graph near <m>(a,f(a))</m>, the function looks linear.  Indeed, such a function is differentiable, and we know that near a fixed input value <m>a</m>, 
-      <me>
+      <md>
         f(x) \approx L(x) = f(a) + f'(a)(x-a),
-      </me>
+      </md>
       where <m>L</m> is the tangent line approximation to <m>f</m> at <m>a</m>.
     </p>
 
@@ -70,9 +70,9 @@
 
     <p>
       Recall that for any function <m>f</m> that has a derivative at <m>a=0</m>, its tangent line approximation at <m>a=0</m> is 
-      <me>
+      <md>
         T_1(x) = f(0) + f'(0)(x - 0)
-      </me>.
+      </md>.
       Moreover, the functions <m>T_1</m> and <m>f</m> have two exact values in common.  First, their function values agree at the point of tangency: <m>T_1(0) = f(0)</m>.  And second, since <m>T_1(x)</m> is a linear function whose slope is <m>f'(0)</m>, it is also true that their derivative values agree at the point of tangency: <m>T_1'(0) = f'(0)</m>.
     </p>
 
@@ -90,9 +90,9 @@
         <p>
           To extend the linear approximation of <m>f(x) = e^x</m> to a quadratic approximation,
           we seek a function <m>T_2(x)</m> of the form
-          <me>
+          <md>
             T_2(x) = b_0 + b_1 x + b_2 x^2
-          </me>
+          </md>
           that satisfies 
           <ul>
             <li>
@@ -139,22 +139,22 @@
 
     <p>
       To investigate, we seek a degree <m>3</m> polynomial <m>T_3(x)</m> of the form
-      <me>
+      <md>
         T_3(x) = c_0 + c_1 x + c_2 x^2 + c_3 x^3
-      </me>
+      </md>
       that satisfies 
       <ul>
         <li>
           <p>
             the same conditions we imposed on <m>T_2(x)</m>: 
-            <me>T_3(0) = f(0), T_3'(0) = f'(0), \text{ and } T_3''(0) = f''(0)</me> 
+            <md>T_3(0) = f(0), T_3'(0) = f'(0), \text{ and } T_3''(0) = f''(0)</md> 
             so that <m>T_3</m> and <m>f</m> share the same function value, first derivative value, and second derivative value at <m>a = 0</m>,
           </p>
         </li>
         <li>
           <p>
             plus the additional condition that 
-            <me>T_3'''(0) = f'''(0)</me>, 
+            <md>T_3'''(0) = f'''(0)</md>, 
             so <m>T_3</m> and <m>f</m> share the same third derivative value<fn>Here we are assuming that the original function <m>f</m> has a third derivative at <m>a = 0</m>, which is valid since <m>f'''(x) = e^x</m>.</fn> at <m>a = 0</m>.
           </p>
         </li>
@@ -164,7 +164,7 @@
 
     <p>
       Like in our work with <m>T_2</m>, we observe that since <m>T_3</m> is a polynomial, its derivatives are straightforward to compute.  For instance, 
-        <me>T_3'(x) = c_1 + 2c_2 x + 3c_3 x^2.</me>
+        <md>T_3'(x) = c_1 + 2c_2 x + 3c_3 x^2.</md>
       We continue our investigation of this new approximation of <m>f(x) = e^x</m> in <xref ref="act-8-1-2">Activity</xref>, where we work to determine the values of <m>c_0</m>, <m>c_1</m>, <m>c_2</m>, and <m>c_3</m> plus explore how well <m>T_3(x)</m> approximates <m>f(x)</m> near <m>a = 0</m>.
     </p>  
 
@@ -182,7 +182,7 @@
     <title>As the degree of the approximation increases</title>
     <p>
       Our work so far with the case study function <m>f(x) = e^x</m> suggests that as we find degree <m>n</m> polynomial approximations, <m>T_n</m>, that satisfy 
-      <me>T_n(0) = f(0), T_n'(0) = f'(0), T_n''(0) = f_n''(0), \ldots, T_n^{(n)}(0) = f^{(n)}(0)</me>, increasing the value of <m>n</m> improves the accuracy of the approximation.
+      <md>T_n(0) = f(0), T_n'(0) = f'(0), T_n''(0) = f_n''(0), \ldots, T_n^{(n)}(0) = f^{(n)}(0)</md>, increasing the value of <m>n</m> improves the accuracy of the approximation.
     </p>
 
 
@@ -194,13 +194,13 @@
 
     <p>
       One important application of our work so far is that these polynomial approximations provide a way to approximate values of the function <m>f(x) = e^x</m>.  For example, since we've shown that 
-      <me>
+      <md>
         e^x \approx 1 + x + \frac{1}{2}x^2 + \frac{1}{6}x^3 + \frac{1}{24}x^4
-      </me>,
+      </md>,
       it follows that
-      <me>
+      <md>
         e^{\frac{1}{2}} \approx 1 + \frac{1}{2} + \frac{1}{2}\left( \frac{1}{2} \right)^2 + \frac{1}{6}\left( \frac{1}{2} \right)^3  + \frac{1}{24}\left( \frac{1}{2} \right)^4 = \frac{211}{128} = 1.6484375
-      </me>.
+      </md>.
       In fact, this approach through polynomial approximation is one way that computers determine the value of <m>e^{\frac{1}{2}}</m>, which is approximately <m>1.64872127</m>, to whatever accuracy is needed: by using even better polynomial approximations than the degree-<m>4</m> one that we found, computers are able to generate the approximate value <m>1.64872127</m> simply by the basic computations of addition and multiplication with enough terms.
     </p>
       
