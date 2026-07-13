@@ -23,6 +23,7 @@
   <selectFromSequence name="d" from="1" to="6" exclude="3 4 $a $b $c"/>  
   <selectFromSequence name="k" from="1" to="2"/>
   <selectFromSequence name="y0" from="3" to="4"/>
+  <boolean name="correctEqSols">$enteredEqSols1.creditAchieved=1 and $enteredEqSols2.creditAchieved=1</boolean>
 </setup>
 <p>
   Consider the two slope fields for the respective differential equations (1), at left, and (2), at right, that are given in the images above.
@@ -35,7 +36,9 @@
         For differential equation (1), identify all equilibrium solutions.  If there's more than one, separate your answers with commas; if there are none, enter <q>none</q>.
       </p>
       <p>
-        Equilibrium solutions: <m>y = </m><mathInput name="enteredEq1"/><answer unorderedCompare><award><when>$enteredEq1=$eqSols1</when></award></answer>
+        Equilibrium solutions: <answer unorderedCompare name="enteredEqSols1">
+          <label><m>y = </m></label>
+          $eqSols1</answer>
       </p>
     </li>
     <li>
@@ -43,60 +46,60 @@
         For differential equation (2), identify all equilibrium solutions.  If there's more than one, separate your answers with commas; if there are none, enter <q>none</q>.
       </p>
       <p>
-        Equilibrium solutions: <m>y = </m><mathInput name="enteredEq2"/><answer unorderedCompare><award><when>$enteredEq2=$eqSols2</when></award></answer>
+        Equilibrium solutions: <answer unorderedCompare name="enteredEqSols2">
+          <label><m>y = </m></label>
+          $eqSols2</answer>
       </p>
     </li>
     <li>
       <p>
-        Classify the stability of each of the equilibrium solutions from the two given differential equations' slope fields.
+        Classify the stability of each of the equilibrium solutions from the two given differential equations' slope fields.  (Specific prompts will appear after you correctly identify the equilibrium solutions above)
       </p>
-      <p>
-        The equilibrium solution <m>y = $a</m> is <choiceInput inline name="ans1">
-          <choice>?</choice>
-          <choice>stable</choice>
-          <choice>unstable</choice>
-          <choice>semi-stable</choice>
-        </choiceInput>
-      </p>
-      <p>
-        The equilibrium solution <m>y = $b</m> is <choiceInput inline name="ans2">
-          <choice>?</choice>
-          <choice>stable</choice>
-          <choice>unstable</choice>
-          <choice>semi-stable</choice>
-        </choiceInput>
-      </p>
-      <p>
-        The equilibrium solution <m>y = $c</m> is <choiceInput inline name="ans3">
-          <choice>?</choice>
-          <choice>stable</choice>
-          <choice>unstable</choice>
-          <choice>semi-stable</choice>
-        </choiceInput>
-      </p>
-      <p>
-        The equilibrium solution <m>y = $d</m> is <choiceInput inline name="ans4">
-          <choice>?</choice>
-          <choice>stable</choice>
-          <choice>unstable</choice>
-          <choice>semi-stable</choice>
-        </choiceInput>
-      </p>
-      <p>
-        <answer><award><when>
-          (($a=1 or $a=6) and ($ans1.selectedIndices=2) or 
-           ($a=2 or $a=5) and ($ans1.selectedIndices=3))
-          and
-          (($b=1 or $b=6) and ($ans2.selectedIndices=2) or 
-           ($b=2 or $b=5) and ($ans2.selectedIndices=3))
-          and
-          (($c=1 or $c=6) and ($ans3.selectedIndices=2) or 
-           ($c=2 or $c=5) and ($ans3.selectedIndices=3))
-          and
-          (($d=1 or $d=6) and ($ans4.selectedIndices=2) or 
-           ($d=2 or $d=5) and ($ans4.selectedIndices=3))
-        </when></award></answer>
-      </p>
+      <div hide="not($correctEqSols)">
+        <p>
+          The equilibrium solution <m>y = $a</m> is <choiceInput inline name="ans1">
+            <choice>?</choice>
+            <choice>stable</choice>
+            <choice>unstable</choice>
+          </choiceInput>
+        </p>
+        <p>
+          The equilibrium solution <m>y = $b</m> is <choiceInput inline name="ans2">
+            <choice>?</choice>
+            <choice>stable</choice>
+            <choice>unstable</choice>
+          </choiceInput>
+        </p>
+        <p>
+          The equilibrium solution <m>y = $c</m> is <choiceInput inline name="ans3">
+            <choice>?</choice>
+            <choice>stable</choice>
+            <choice>unstable</choice>
+          </choiceInput>
+        </p>
+        <p>
+          The equilibrium solution <m>y = $d</m> is <choiceInput inline name="ans4">
+            <choice>?</choice>
+            <choice>stable</choice>
+            <choice>unstable</choice>
+          </choiceInput>
+        </p>
+        <p>
+          <answer><award><when>
+            (($a=1 or $a=6) and ($ans1.selectedIndices=2) or 
+             ($a=2 or $a=5) and ($ans1.selectedIndices=3))
+            and
+            (($b=1 or $b=6) and ($ans2.selectedIndices=2) or 
+             ($b=2 or $b=5) and ($ans2.selectedIndices=3))
+            and
+            (($c=1 or $c=6) and ($ans3.selectedIndices=2) or 
+             ($c=2 or $c=5) and ($ans3.selectedIndices=3))
+            and
+            (($d=1 or $d=6) and ($ans4.selectedIndices=2) or 
+             ($d=2 or $d=5) and ($ans4.selectedIndices=3))
+          </when></award></answer>
+        </p>
+      </div>
     </li>
     <li>
       <p>
