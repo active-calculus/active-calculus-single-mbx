@@ -22,8 +22,29 @@
   <function name = "G" variable="y">ln(abs(y))</function>
   <function name = "H" variable="t">1/($k+1)t^($k+1) + C</function>
   <function name = "soln" variable="t">-$c*e^(1/($k+1)t^($k+1))</function>
+
+    <boolean name="missingC">
+      $solnEntered != $soln and (<derivative variable="t">$solnEntered</derivative> = t^$k*$solnEntered)
+    </boolean>
    
 </setup>
+
+<!-- 
+
+<div hide="not $g1Found">
+                <p>
+                  Write the equation in revised form, <m>g(y) \frac{dy}{dt} = h(t)</m>, to separate the variables.
+                </p>
+                <p>
+                  <mathInput name="g1yEntered" minWidth="40"/><m>\frac{dy}{dt} = </m><mathInput minWidth="40" name="g1tEntered"/> <answer>
+                    <award>
+                      <when>
+                        <derivative derivVariables="t">$g1yEntered</derivative> = 0 and <derivative derivVariables="y">$g1tEntered</derivative> = 0 and $g1tEntered/$g1yEntered=-3y
+                      </when>
+                    </award></answer>
+                </p>
+              </div>
+-->
 
 <p>
   Consider the separable differential equation that's part of the following initial value problem:
@@ -39,11 +60,14 @@
         First, separate the variables and fill in the blanks below to rewrite the equation in the form <m>g(y) \frac{dy}{dt} = h(t)</m>.
       </p>  
       <p>
-        <mathInput minWidth="40" name="gEntered"/><m>\frac{dy}{dt} = </m><mathInput minWidth="40" name="hEntered"/> <answer simplifyOnCompare>
-                          <award>
-                            <when> ($gEntered=$g1 and $hEntered=$h1) 
-                            </when>
-                          </award></answer> 
+        <mathInput minWidth="40" name="gEntered"> <shortDescription>a function of y only</shortDescription> </mathInput><m>\frac{dy}{dt} = </m><mathInput minWidth="40" name="hEntered"><shortDescription>a function of t only</shortDescription> </mathInput> 
+        <answer>
+          <award>
+             <when> 
+                <derivative derivVariables="t">$gEntered</derivative> = 0 and <derivative derivVariables="y">$hEntered</derivative> = 0 and $hEntered/$gEntered=t^$k y
+             </when>
+          </award>
+        </answer> 
       </p>
     </li>
     <li>
@@ -52,7 +76,7 @@
       </p>  
       
       <p>
-        <mathInput minWidth="70" name="GEntered"/><m> = </m><mathInput minWidth="70" name="HEntered"/> <answer simplifyOnCompare>
+        <mathInput minWidth="70" name="GEntered"><shortDescription>an antiderivative of the function of y only</shortDescription> </mathInput><m> = </m><mathInput minWidth="70" name="HEntered"><shortDescription>an antiderivative of the function of t only</shortDescription> </mathInput> <answer simplifyOnCompare symbolicEquality>
                           <award>
                             <when> ($GEntered=$G and $HEntered=$H) 
                             </when>
@@ -65,8 +89,11 @@
       </p>  
       
       <p>
-        <m>y(t) =</m><mathInput name="solnEntered" minWidth="70"/><answer simplifyOnCompare><award><when>$solnEntered=$soln</when></award></answer>
+        <answer simplifyOnCompare symbolicEquality name="solnEntered"><label><m>y(t) =</m></label>$soln</answer>
       </p>
+      <feedback condition="$missingC">
+        You have the right structure of the solution to the differential equation, but not the correct constant that comes from the initial condition.
+      </feedback>
     </li>
   </ol>
 </p>
