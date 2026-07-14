@@ -20,17 +20,16 @@
   <function name="fPP">-sin(x)</function>
   <function name="fPPP">-cos(x)</function>
 
-  <function name="T3">$b0 + $b1*x + $b2*x^2 + $b3*x^3</function>
   <function name="T1" styleNumber="2">$b0 + $b1*x</function>
-
-
-  <function name="T2">$b0 + $b1*x + $b2*x^2</function>
-  <function name="T2P">$b1 + 2*$b2*x</function>
-  <function name="T2PP">2*$b2</function>
-  <function name="T2Symb">b_0 + b_1*x + b_2*x^2</function>
-  <function name="T2PSymb">b_1 + 2*b_2*x</function>
-  <function name="T2PPSymb">2b_2</function>
-
+  <function name="T3" styleNumber="5">$b0 + $b1*x + $b2*x^2 + $b3*x^3</function>
+  <function name="T3P">$b1 + 2*$b2*x + 3*$b3*x^2</function>
+  <function name="T3PP">2*$b2 + 6*$b3*x</function>
+  <function name="T3PPP">6*$b3</function>
+  <function name="T3Symb">c_0 + c_1*x + c_2*x^2 + c_3*x^3</function>
+  <function name="T3PSymb">c_1 + 2*c_2*x + 3*c_3*x^2</function>
+  <function name="T3PPSymb">2c_2 + 6*c_3*x</function>
+  <function name="T3PPPSymb">6*c_3</function>
+  
   <math name="a">0</math>
   <math name="b0">$$f($a)</math>
   <math name="b1">$$fP($a)</math>
@@ -51,8 +50,48 @@
       </p>
 
       <p>
-        Complete the table below by computing derivatives of <m>f(x)</m> and <m>T_2(x)</m> and evaluating them at <m>x = 0</m> as directed.  Initially, several of your responses will involve the unknown coefficients <m>b_0</m>, <m>b_1</m>, and <m>b_2</m>.  Where needed, use underscores to enter the coefficients. For example, to enter <m>b_1</m> type <q>b_1</q>.
+        Complete the table below by computing derivatives of <m>f(x)</m> and <m>T_2(x)</m> and evaluating them at <m>x = 0</m> as directed.  Initially, several of your responses will involve the unknown coefficients <m>c_0</m>, <m>c_1</m>, and <m>c_2</m>.  Where needed, use underscores to enter the coefficients. For example, to enter <m>c_1</m> type <q>c_1</q>.
       </p>
+
+      <tabular>
+        <row>
+          <cell><m>f(x) = $f</m></cell>
+          <cell><m>T_3(x) = c_0 + c_1x + c_2x^2 + c_3x^3</m></cell>
+        </row>
+        <row>
+          <cell><answer name="f1"><label><m>f'(x) = </m></label>$fP</answer></cell>
+          <cell><answer name="T31"><label><m>T_3'(x) = </m></label>$T3PSymb</answer></cell>
+        </row>
+        <row>
+          <cell><answer name="f2"><label><m>f''(x) = </m></label>$fPP</answer></cell>
+          <cell><answer name="T32"><label><m>T_3''(x) = </m></label>$T3PPSymb</answer></cell>
+        </row>
+        <row>
+          <cell><answer name="f3"><label><m>f''''(x) = </m></label>$fPPP</answer></cell>
+          <cell><answer name="T33"><label><m>T_3'''(x) = </m></label>$T3PPPSymb</answer></cell>
+        </row>
+      </tabular>
+      <tabular>
+        <row>
+          <cell><answer name="fa"><label><m>f($a) = </m></label>$$f($a)</answer></cell>
+          <cell><answer name="T3a"><label><m>T_3($a) = </m></label>$$T3Symb($a)</answer></cell>
+        </row>
+        <row>
+          <cell><answer name="f1a"><label><m>f'($a) = </m></label>$$fP($a)</answer></cell>
+          <cell><answer name="T31a"><label><m>T_3'($a) = </m></label>$$T3PSymb($a)</answer></cell>
+        </row>
+        <row>
+          <cell><answer name="f2a"><label><m>f''($a) = </m></label>$$fPP($a)</answer></cell>
+          <cell><answer name="T32a"><label><m>T_3''($a) = </m></label>$$T3PPSymb($a)</answer></cell>
+        </row>
+        <row>
+          <cell><answer name="f3a"><label><m>f''($a) = </m></label>$$fPPP($a)</answer></cell>
+          <cell><answer name="T33a"><label><m>T_3'''($a) = </m></label>$$T3PPPSymb($a)</answer></cell>
+        </row>
+      </tabular>
+      
+      
+<!--      
               <tabular>
                 <row>
                   <cell halign="right"><m>f(x) = </m></cell>
@@ -106,48 +145,55 @@
                   <cell><m>6c_3</m></cell>
                 </row>
               </tabular>
-
+-->
     </li>
     <li>
         <p>
-          Now, set <m>T_3(0) = f(0)</m>.  This means that <m>c_0 = </m><answer name="c0Entered">$b0</answer>.
+          Now, set <m>T_3(0) = f(0)</m>.  This means that <answer name="c0Entered"><label><m>c_0 = </m></label>$b0</answer>.
         </p>
         <p>
-          Next, set <m>T_3'(0) = f'(0)</m>.  This means that <m>c_1 = </m><answer name="c1Entered">$b1</answer>.
+          Next, set <m>T_3'(0) = f'(0)</m>.  This means that <answer name="c1Entered"><label><m>c_1 = </m></label>$b1</answer>.
         </p>
         <p>
-        Then, set <m>T_3''(0) = f''(0)</m>.  This means that <m>c_2=</m><answer name="c2Entered">$b2</answer>.
+        Then, set <m>T_3''(0) = f''(0)</m>.  This means that <answer name="c2Entered"><label><m>c_2=</m></label>$b2</answer>.
         </p>
         <p>
-          Finally, set <m>T_3'''(0) = f'''(0)</m>. This means that <m>c_3=</m><answer name="c3Entered">$b3</answer>
+          Finally, set <m>T_3'''(0) = f'''(0)</m>. This means that <answer name="c3Entered"><label><m>c_3=</m></label>$b3</answer>
         </p>
       <p>
         Putting it all together, what is the resulting formula for <m>T_3(x)</m>?
       </p>
       <p>
-        <m>T_3(x) = </m><mathInput name="T3Entered" minWidth="100"/><answer><award><when>$T3Entered=$T3</when></award></answer>
+        <answer name="T3Entered"><label><m>T_3(x) = </m></label>$T3</answer>
       </p>
     </li>
     <li>
       <p>
-          Recall that the tangent line approximation <m>T_1</m> to <m>f(x) = \sin(x)</m> at <m>a = 0</m> is <m>T_1(x) = x</m>.  Use appropriate computing technology to plot the cubic approximation <m>T_3(x)</m> you found in (b) along with <m>f(x)</m> and <m>T_1(x)</m> in the same window shown in the following figure.
+          Recall that the tangent line approximation <m>T_1</m> to <m>f(x) = \sin(x)</m> at <m>a = 0</m> is <m>T_1(x) = x</m>.  In the following figure, we plot <m>f(x)</m> and <m>T_1(x)</m>;  the cubic approximation <m>T_3(x)</m> you found in (b) is included once you have the correct answer in (b).  Note that <m>T_1</m> is in red, <m>f(x)</m> is in blue, and <m>T_3</m> is in black.
       </p>
       <graph size="medium" xMin="-2" xMax="2" yMin="-2" yMax="2" showNavigation="false" fixAxes="true">
+        <shortDescription>a plot of the sine function, its tangent line at x = 0, and its degree 3 polynomial approximation</shortDescription>
         $f
         $T1
+        <conditionalContent condition="$T3Entered.creditAchieved=1">
+          $T3
+          <label anchor="(-1.27,-0.6)"><m>T_3(x) = x - \frac{1}{6}x^3</m></label>
+        </conditionalContent>
         <label anchor="(1,1.5)"><m>T_1(x) = x</m></label>
-        <label anchor="(1.2,0.5)"><m>f(x) = \sin(x)</m></label>
+        <label anchor="(1.55,1.1)"><m>f(x) = \sin(x)</m></label>
       </graph>
       <p>
         What do you observe about the approximation of <m>f(x)</m> by <m>T_3(x)</m> compared to the approximation of <m>f(x)</m> by <m>T_1(x)</m>?  Complete the following sentence to explain.
       </p>
       <p>
         The approximation of <m>f(x)</m> by <m>T_3(x)</m> is <choiceInput inline name="ans1">
+          <shortDescription>worse, same, better</shortDescription>
           <choice>?</choice>
           <choice>worse than</choice>
           <choice>about the same as</choice>
           <choice>better than</choice>
         </choiceInput> the approximation by <m>T_1(x)</m> and this comparison holds on <choiceInput inline name="ans2">
+          <shortDescription>smaller, same, wider</shortDescription>
           <choice>?</choice>
           <choice>a smaller interval</choice>
           <choice>about the same interval as</choice>
@@ -168,34 +214,24 @@
       </p>
               <tabular>
                 <row>
-                  <cell halign="right"><m>f(x) = </m></cell>
-                  <cell><m>$f</m></cell>
-                  <cell halign="right"><m>f^{(5)}(x) = </m></cell>
-                  <cell><answer>$fP</answer></cell>
+                  <cell><m>f(x) = $f</m></cell>
+                  <cell><answer><label><m>f^{(5)}(x) = </m></label>$fP</answer></cell>
                 </row>
                <row>
-                  <cell halign="right"><m>f'(x) = </m></cell>
-                  <cell><m>$fP</m></cell>
-                  <cell halign="right"><m>f^{(6)}(x) = </m></cell>
-                  <cell><answer>$fPP</answer></cell>
+                  <cell><m>f'(x) = $fP</m></cell>
+                  <cell><answer><label><m>f^{(6)}(x) = </m></label>$fPP</answer></cell>
                 </row>
                 <row>
-                  <cell halign="right"><m>f''(x) = </m></cell>
-                  <cell><m>$fPP</m></cell>
-                  <cell halign="right"><m>f^{(7)}(x) = </m></cell>
-                  <cell><answer>$fPPP</answer></cell>
+                  <cell><m>f''(x) = $fPP</m></cell>
+                  <cell><answer><label><m>f^{(7)}(x) = </m></label>$fPPP</answer></cell>
                 </row>
                 <row>
-                  <cell halign="right"><m>f'''(x) = </m></cell>
-                  <cell><m>$fPPP</m></cell>
-                  <cell halign="right"><m>f^{(8)}(x) = </m></cell>
-                  <cell><answer>$f</answer></cell>
+                  <cell><m>f'''(x) = $fPPP</m></cell>
+                  <cell><answer><label><m>f^{(8)}(x) = </m></label>$f</answer></cell>
                 </row>
                 <row>
-                  <cell halign="right"><m>f^{(4)}(x) = </m></cell>
-                  <cell><answer>$f</answer></cell>
-                  <cell halign="right"><m>f^{(9)}(x) = </m></cell>
-                  <cell><answer>$fP</answer></cell>
+                  <cell><answer><label><m>f^{(4)}(x) = </m></label>$f</answer></cell>
+                  <cell><answer><label><m>f^{(9)}(x) = </m></label>$fP</answer></cell>
                 </row>
               </tabular>
        <p>
