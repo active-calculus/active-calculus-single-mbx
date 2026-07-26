@@ -23,28 +23,173 @@
   <math name="int1Value">1/($p-1)*$a^(1-$p)</math>
   <math name="int2Value">1/(1-$r/3)*$b^(1-$r/3)</math>
   <math name="int3Value">1/(1-$q)*$c^(1-$q)</math>
+
+  <boolean name="part1a">$reason1a.creditAchieved=1</boolean>
+  <boolean name="part1b">$reason1b.creditAchieved=1</boolean>
+
+  <boolean name="part2a">$reason2a.creditAchieved=1</boolean>
+  <boolean name="part2b">$reason2b.creditAchieved=1</boolean>
+
+  <boolean name="part3a">$reason3a.creditAchieved=1</boolean>
+  <boolean name="part3b">$reason3b.creditAchieved=1</boolean>
+  
 </setup>  
 
 <p>
-  Each of the following integrals is improper and convergent.  Use limit notation appropriately along with the first FTC to find the exact value of each integral. 
+  Each of the following three integrals is improper and converges.  Follow the prompts below that lead you to write each improper integral as a limit of proper integrals and then evaluate the resulting proper integral and limit, finding the limit value exactly. 
+</p>
+<p>
+  <alert>Note</alert>: In each part, additional prompts will appear once you correctly identify the reason the integral is improper and subsequently identify the required limit.
 </p>
 
 <p>
   <ol marker="a.">
     <li>
       <p>
-        <m>\displaystyle \int_$a^\infty \frac{1}{x^$p} \, dx = </m><mathInput name="int1"/><answer><award><when>$int1 = $int1Value</when></award></answer>
+        <m>\displaystyle \int_$a^\infty \frac{1}{x^$p} \, dx</m>
       </p>
+
+    <p>
+      The given integral is improper because
+      <answer name="reason1a">
+        <choiceInput inline>
+          <shortDescription>possible reason(s)</shortDescription>
+          <choice>?</choice>
+          <choice>the interval is unbounded at the lower limit of integration</choice>
+          <choice credit="1">the interval is unbounded at the upper limit of integraion</choice>
+          <choice>the integrand is unbounded at the lower endpoint</choice>
+          <choice>the integrand is unbounded at the upper endpoint</choice>
+          <choice>the integrand is unbounded at a point between the endpoints</choice>
+        </choiceInput>
+      </answer>.
+    </p>
+      <p hide="!$part1a">
+        We now rewrite the original improper integral as a limit of proper integrals, using the variable <m>a</m> to address the upper limit of integration.  In particular, we need to take the limit as <m>a \to</m> <mathInput name="limit1"></mathInput> <answer name="reason1b" forceSmallCheckWorkButton><award><when>$limit1=INF</when></award></answer> (if your response involves <m>\infty</m>, enter <q>INF</q>; if a left- or right-hand limit is needed, enter <m>-</m> or <m>+</m> following the finite numerical value you choose).
+      </p>
+      <div hide="!$part1b">
+        <p>
+          Thus, we now have
+        </p>
+        <p>
+          <m>\displaystyle  \int_$a^\infty \frac{1}{x^$p} \, dx = \lim_{a \to \infty} \int_$a^a\frac{1}{x^$p} \, dx</m>
+        </p>
+        <p>
+          Applying the FTC to the proper integral on the right (to find an appropriate expression involving <m>a</m>, we find that 
+        </p>
+        <p>
+          <m>\displaystyle  \int_$a^\infty \frac{1}{x^$p} \, dx = \lim_{a \to \infty}</m>
+          <answer>
+            -1/(($p-1)*a^($p-1))+1/(($p-1)*$a^($p-1))
+          </answer>
+        </p>
+        <p>
+          and then evaluating the limit, it follows
+        </p>
+        <p>
+          <m>\displaystyle  \int_$a^\infty \frac{1}{x^$p} \, dx = </m>
+          <answer>
+            $int1Value
+          </answer>
+        </p>
+      </div> 
     </li>
     <li>
       <p>
-        <m>\displaystyle \int_0^$b \frac{1}{x^\frac{$r}{3}} \, dx = </m><mathInput name="int2"/><answer><award><when>$int2 = $int2Value</when></award></answer>
+        <m>\displaystyle \int_0^$b \frac{1}{x^\frac{$r}{3}} \, dx </m>
       </p>
+      <p>
+        The given integral is improper because
+        <answer name="reason2a">
+          <choiceInput inline>
+            <shortDescription>possible reason(s)</shortDescription>
+            <choice>?</choice>
+            <choice>the interval is unbounded at the lower limit of integration</choice>
+            <choice>the interval is unbounded at the upper limit of integraion</choice>
+            <choice credit="1">the integrand is unbounded at the lower endpoint</choice>
+            <choice>the integrand is unbounded at the upper endpoint</choice>
+            <choice>the integrand is unbounded at a point between the endpoints</choice>
+          </choiceInput>
+        </answer>.
+      </p>
+      <p hide="!$part2a">
+        We now rewrite the original improper integral as a limit of proper integrals, using the variable <m>b</m> to address the lower limit of integration.  In particular, we need to take the limit as <m>b \to</m> <mathInput name="limit2"></mathInput> <answer name="reason2b" forceSmallCheckWorkButton><award><when>$limit2=0+</when></award></answer> (if your response involves <m>\infty</m>, enter <q>INF</q>; if a left- or right-hand limit is needed, enter <m>-</m> or <m>+</m> following the finite numerical value you choose).
+      </p>
+      <div hide="!$part2b">
+        <p>
+          Thus, we now have
+        </p>
+        <p>
+          <m>\displaystyle \int_0^$b \frac{1}{x^\frac{$r}{3}} \, dx = \lim_{b \to 0^+} \int_b^$b \frac{1}{x^\frac{$r}{3}} \, dx</m>
+        </p>
+        <p>
+          Applying the FTC to the proper integral on the right (to find an appropriate expression involving <m>b</m>, we find that 
+        </p>
+        <p>
+          <m>\displaystyle \int_0^$b \frac{1}{x^\frac{$r}{3}} \, dx = \lim_{b \to 0^+}</m>
+          <answer>
+            1/(1-$r/3)*$b^(1-$r/3) - 1/(1-$r/3)*b^(1-$r/3)
+          </answer>
+        </p>
+        <p>
+          and then evaluating the limit, it follows
+        </p>
+        <p>
+          <m>\displaystyle \int_0^$b \frac{1}{x^\frac{$r}{3}} \, dx = </m>
+          <answer>
+            $int2Value
+          </answer>
+        </p>
+      </div>
+      <!-- = </m><mathInput name="int2"/><answer><award><when>$int2 = $int2Value</when></award></answer> -->
     </li>    
     <li>
       <p>
-        <m>\displaystyle \int_{-\infty}^{$c} \frac{1}{x^$q} \, dx = </m><mathInput name="int3"/><answer><award><when>$int3 = $int3Value</when></award></answer>
+        <m>\displaystyle \int_{-\infty}^{$c} \frac{1}{x^$q} \, dx </m>
       </p>
+      <p>
+        The given integral is improper because
+        <answer name="reason3a">
+          <choiceInput inline>
+            <shortDescription>possible reason(s)</shortDescription>
+            <choice>?</choice>
+            <choice credit="1">the interval is unbounded at the lower limit of integration</choice>
+            <choice>the interval is unbounded at the upper limit of integraion</choice>
+            <choice>the integrand is unbounded at the lower endpoint</choice>
+            <choice>the integrand is unbounded at the upper endpoint</choice>
+            <choice>the integrand is unbounded at a point between the endpoints</choice>
+          </choiceInput>
+        </answer>.
+      </p>
+      <p hide="!$part3a">
+        We now rewrite the original improper integral as a limit of proper integrals, using the variable <m>c</m> to address the lower limit of integration.  In particular, we need to take the limit as <m>c \to</m> <mathInput name="limit3"></mathInput> <answer name="reason3b" forceSmallCheckWorkButton><award><when>$limit3=-INF</when></award></answer> (if your response involves <m>\infty</m>, enter <q>INF</q>; if a left- or right-hand limit is needed, enter <m>-</m> or <m>+</m> following the finite numerical value you choose).
+      </p>
+      <div hide="!$part3b">
+        <p>
+          Thus, we now have
+        </p>
+        <p>
+          <m>\displaystyle \int_{-\infty}^{$c} \frac{1}{x^$q} \, dx = \lim_{c \to -\infty} \int_{c}^{$c} \frac{1}{x^$q} \, dx</m>
+        </p>
+        <p>
+          Applying the FTC to the proper integral on the right (to find an appropriate expression involving <m>c</m>, we find that 
+        </p>
+        <p>
+          <m>\displaystyle \int_{-\infty}^{$c} \frac{1}{x^$q} \, dx = \lim_{c \to -\infty}</m>
+          <answer>
+            1/(-$q+1)*$c^(-$q+1) - 1/(-$q+1)*c^(-$q+1)
+          </answer>
+        </p>
+        <p>
+          and then evaluating the limit, it follows
+        </p>
+        <p>
+          <m>\displaystyle  \displaystyle \int_{-\infty}^{$c} \frac{1}{x^$q} \, dx = </m>
+          <answer>
+            $int3Value
+          </answer>
+        </p>
+      </div>      
+      <!-- <mathInput name="int3"/><answer><award><when>$int3 = $int3Value</when></award></answer> -->
     </li>
   </ol>
 </p>

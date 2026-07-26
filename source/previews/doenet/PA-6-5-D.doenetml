@@ -16,6 +16,13 @@
 
   <setup>
     <function name="p" variable="t">0.25*e^(-0.25t)</function>
+    <function name="P" variable="t">-e^(-0.25t)</function>
+    <number name="ans1">$$P(10)-$$P(5)</number>
+    <number name="ans2">$$P(20)-$$P(10)</number>
+    <number name="ans3">$$P(5)-$$P(0)</number>
+    <number name="ans4">$$P(10)-$$P(0)</number>
+    <number name="ans5">$$P(15)-$$P(0)</number>
+    <number name="ans6">$$P(20)-$$P(0)</number>
   </setup>
 
   <p>
@@ -23,7 +30,7 @@
     After studying the data that represents how long callers wait for assistance,
     they find that the function
     <m>p(t) = 0.25e^{-0.25t}</m> models the time customers wait in the following way:
-    the fraction of customers who wait between <m>t = a</m> and <m>t = b</m> minutes is given by
+    the fraction of customers who waited at least <m>a</m> minutes but not more than <m>b</m> minutes is given by
     <me>
       \int_a^b p(t) \, dt.
     </me>
@@ -37,91 +44,87 @@
     <ol marker="a.">
       <li>
         <p>
-          Determine the fraction of callers who wait between <m>5</m> and <m>10</m> minutes.  You can enter your result in decimal form, provided it's accurate to within <m>0.01</m>.
+          Determine the fraction of callers who wait at least <m>5</m> minutes but less than <m>10</m> minutes.  Enter your result as a single number in decimal form, accurate to within <m>0.001</m>.
         </p>
-        <mathInput name = "a1"></mathInput>
-        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$a1=-e^(-10/4)+e^(-5/4)
-        </when></award></answer>
+        <p>
+          The fraction waiting between <m>5</m> and <m>10</m> minutes: 
+          <mathInput name = "a1"><shortDescription>waiting 5 to 10 minutes</shortDescription></mathInput>
+          <answer symbolicEquality allowedErrorInNumbers="0.001" allowedErrorIsAbsolute forceSmallCheckWorkButton><award><when>$a1=$ans1
+          </when></award></answer>
+        </p>
+        
       </li>
 
       <li>
         <p>
-          Determine the fraction of callers who wait between <m>10</m> and <m>20</m> minutes.
+          Determine the fraction of callers who wait at least <m>10</m> minutes but at most <m>20</m> minutes. Enter your result as a single number in decimal form, accurate to within <m>0.001</m>.
         </p>
-        <mathInput name = "a2"></mathInput>
-        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$a2=-e^(-20/4)+e^(-10/4)
-        </when></award></answer>
-      </li>
-
-      <li>
         <p>
-          Next, let's study the fraction who wait <em>up to</em> a certain number of minutes:
-
-          <ol marker="i.">
-            <li>
-              <p>
-                What is the fraction of callers who wait between 0 and 5 minutes?
-              </p>
-              <mathInput name = "a3"></mathInput>
-              <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$a3=-e^(-5/4)+1
-              </when></award></answer>
-            </li>
-
-            <li>
-              <p>
-                What is the fraction of callers who wait between 0 and 10 minutes?
-              </p>
-              <mathInput name = "a4"></mathInput>
-              <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$a4=-e^(-10/4)+1
-              </when></award></answer>
-            </li>
-
-            <li>
-              <p>
-                Between 0 and 15 minutes?
-              </p>
-              <mathInput name = "a5"></mathInput>
-              <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$a5=-e^(-15/4)+1
-              </when></award></answer>
-            </li>
-            <li>
-              <p>
-                Between 0 and 20?
-              </p>
-              <mathInput name = "a6"></mathInput>
-              <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$a6=-e^(-20/4)+1
-              </when></award></answer>
-            </li>
-          </ol>
+          The fraction waiting between <m>10</m> and <m>20</m> minutes: 
+          <mathInput name = "a2"><shortDescription>waiting 10 to 20 minutes</shortDescription></mathInput>
+          <answer symbolicEquality allowedErrorInNumbers="0.001" allowedErrorIsAbsolute forceSmallCheckWorkButton><award><when>$a2=$ans2
+          </when></award></answer>
         </p>
       </li>
 
       <li>
         <p>
-          Let <m>F(b)</m> represent the fraction of callers who wait between <m>0</m> and <m>b</m> minutes.
+          Next, let's study the fraction who wait <em>up to</em> (that is, <em>at most</em>) a certain number of minutes.  For each of the following prompts, again enter a single decimal value, accurate to within <m>0.001</m>.
+        </p>
+        <p>
+          <answer symbolicEquality allowedErrorInNumbers="0.001" allowedErrorIsAbsolute>
+            <label>The fraction waiting at most <m>5</m> minutes is:</label>
+            $ans3
+          </answer>
+        </p>
+        <p>
+          <answer symbolicEquality allowedErrorInNumbers="0.001" allowedErrorIsAbsolute>
+            <label>The fraction waiting at most <m>10</m> minutes is:</label>
+            $ans4
+          </answer>
+        </p>
+        <p>
+          <answer symbolicEquality allowedErrorInNumbers="0.001" allowedErrorIsAbsolute>
+            <label>The fraction waiting at most <m>15</m> minutes is:</label>
+            $ans5
+          </answer>
+        </p>
+        <p>
+          <answer symbolicEquality allowedErrorInNumbers="0.001" allowedErrorIsAbsolute>
+            <label>The fraction waiting at most <m>20</m> minutes is:</label>
+            $ans6
+          </answer>
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Let <m>F(b)</m> represent the fraction of callers who wait at most <m>b</m> minutes.
           Fill in the appropriate blanks below to state a formula for <m>F(b)</m> that involves a definite integral.
         </p>
               
           <p>
-            lower limit of integration: <answer name="lower">0</answer>
+            <answer name="lower"><label>lower limit of integration: </label>0</answer>
           </p>
           <p>
-            upper limit of integration: <answer name="upper">b</answer>
+            <answer name="upper"><label>upper limit of integration: </label>b</answer>
           </p>
   
           <p>
-            Integral expression for <m>F(b)</m>, the fraction of people who wait up to <m>b</m> minutes: 
+            Integral expression for <m>F(b)</m>, the fraction of people who wait at most <m>b</m> minutes: 
           </p>
           <p>
-            <m>F(b) = \displaystyle\int_{$lower}^{$upper}</m><mathInput name="int1" minWidth="100" /><m>dt \, </m><answer><award><when>$int1 = $p</when></award></answer>
+            <m>F(b) = \displaystyle\int_{$lower}^{$upper}</m><mathInput name="int1" minWidth="100" ><shortDescription>integrand</shortDescription></mathInput><m>dt \, </m><answer forceSmallCheckWorkButton><award><when>$int1 = $p</when></award></answer>
           </p>        
           <p>
             Now apply the First FTC to evaluate the integral above to find a different, equivalent formula for <m>F(b)</m> that does not involve a definite integral. 
           </p>
           <p>  
             <m>F(b) = </m>
-            <mathInput minWidth="100" name = "a8"></mathInput>
-              <answer>
+            <mathInput minWidth="125" name = "a8">
+              <shortDescription>result of FTC</shortDescription>
+            </mathInput>
+              <answer forceSmallCheckWorkButton>
               <award>
                 <when>
                   $a8=-e^(-b/4)+1
@@ -137,8 +140,10 @@
         </p>
         <p>
           <m>\displaystyle \lim_{b \to \infty} F(b) = </m>
-          <mathInput name = "a9"></mathInput>
-          <answer name="a9ANS" allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
+          <mathInput name = "a9">
+            <shortDescription>limit value</shortDescription>
+          </mathInput>
+          <answer forceSmallCheckWorkButton name="a9ANS" allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
             <award>
               <when>
                 $a9=1
@@ -156,11 +161,13 @@
         </setup>
         <p>
           Our work in (c) shows that as the end of the wait time, <m>b</m>, increases, the fraction of customers who have waited for <m>b</m> minutes <choiceInput inline name="c1">
+            <shortDescription>increases, decreases, stays same</shortDescription>
             <choice>?</choice>
             <choice>increases</choice>
             <choice>decreases</choice>
             <choice>stays the same</choice>
-          </choiceInput>, and since <m>\displaystyle \lim_{b \to \infty} F(b) = </m><mathInput minWidth="25" name="a10" prefill="$nextStep.math_a9"/>, this means that <choiceInput inline name="c2">
+          </choiceInput>, and since <m>\displaystyle \lim_{b \to \infty} F(b) = </m><mathInput minWidth="25" name="a10" prefill="$nextStep.math_a9"><shortDescription>limit value from prior question, input automatically</shortDescription></mathInput>, this means that <choiceInput inline name="c2">
+            <shortDescription>possible explanations</shortDescription>
             <choice>?</choice>
             <choice>1 person didn't have to wait at all</choice>
             <choice>eventually every call is answered</choice>
