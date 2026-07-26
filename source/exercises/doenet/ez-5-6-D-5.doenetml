@@ -21,11 +21,11 @@
 
   <function name="v">$c*($a-x)^2</function>
 
-  <math name="L4">$dx * ($$v(0) + $$v($dx) + $$v(2*$dx) + $$v(3*$dx))</math>
-  <math name="R4">$dx * ($$v($dx) + $$v(2*$dx) + $$v(3*$dx) + $$v(4*$dx))</math>
-  <math name="T4">($L4 + $R4)/2</math>
-  <math name="M4">$dx * ($$v($a+$dx/2) + $$v($a+3*$dx/2) + $$v($a+5*$dx/2) + $$v($a+7*$dx/2))</math>
-  <math name="S8">(2*$M4 + $T4)/3</math>
+  <number name="L4">$dx * ($$v(0) + $$v($dx) + $$v(2*$dx) + $$v(3*$dx))</number>
+  <number name="R4">$dx * ($$v($dx) + $$v(2*$dx) + $$v(3*$dx) + $$v(4*$dx))</number>
+  <number name="T4">($L4 + $R4)/2</number>
+  <number name="M4">$dx * ($$v($a+$dx/2) + $$v($a+3*$dx/2) + $$v($a+5*$dx/2) + $$v($a+7*$dx/2))</number>
+  <number name="S8">(2*$M4 + $T4)/3</number>
 
 </setup>
 
@@ -86,35 +86,35 @@
         For this data, fill in the following blanks to identify the values of <m>\Delta t</m> and <m>t_i</m> for <m>i = 0</m> to <m>i = 4</m>.
       </p>
       <p>
-        <m>\Delta t = </m><answer>$dx</answer>
+        <answer><label><m>\Delta t = </m></label>$dx</answer>
       </p>
       <p>
-        <m>t_0 = </m><answer>0</answer>, <m>t_1 = </m><answer>$dx</answer>, <m>t_2 = </m><answer>2*$dx</answer>,
+        <answer><label><m>t_0 = </m></label>0</answer>, <answer><label><m>t_1 = </m></label>$dx</answer>, <answer><label><m>t_2 = </m></label>2*$dx</answer>,
       </p>
       <p>
-        <m>t_3 = </m><answer>3*$dx</answer>, <m>t_4 = </m><answer>4*$dx</answer>
-      </p>
-    </li>
-    <li>
-      <p>
-        Compute the left and right Riemann sums on <m>[0,$a]</m> with <m>4</m> subintervals, as well as the Trapezoid Rule for <m>4</m> subintervals.
-      </p>
-      <p>
-        <m>L_4 = </m><answer allowedErrorInNumbers="0.2" allowedErrorIsAbsolute> $L4</answer>
-      </p>
-      <p>
-        <m>R_4 = </m><answer allowedErrorInNumbers="0.2" allowedErrorIsAbsolute> $R4</answer>
-      </p>
-      <p>
-        <m>T_4 = </m><answer allowedErrorInNumbers="0.2" allowedErrorIsAbsolute> $T4</answer>
+        <answer><label><m>t_3 = </m></label>3*$dx</answer>, <answer><label><m>t_4 = </m></label>4*$dx</answer>
       </p>
     </li>
     <li>
       <p>
-        Find the value of the midpoint Riemann sum on <m>[0,$a]</m> with <m>4</m> subintervals.
+        Compute the left and right Riemann sums on <m>[0,$a]</m> with <m>4</m> subintervals, as well as the Trapezoid Rule for <m>4</m> subintervals.  Report each answer a single decimal, accurate to <m>0.01</m>.
       </p>
       <p>
-        <m>M_4 = </m><answer allowedErrorInNumbers="0.2" allowedErrorIsAbsolute> $M4</answer>
+        <answer symbolicEquality allowedErrorInNumbers="0.2" allowedErrorIsAbsolute> <label><m>L_4 = </m></label>$L4</answer>
+      </p>
+      <p>
+        <answer symbolicEquality allowedErrorInNumbers="0.2" allowedErrorIsAbsolute> <label><m>R_4 = </m></label>$R4</answer>
+      </p>
+      <p>
+        <answer symbolicEquality allowedErrorInNumbers="0.2" allowedErrorIsAbsolute> <label><m>T_4 = </m></label>$T4</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Find the value of the midpoint Riemann sum on <m>[0,$a]</m> with <m>4</m> subintervals.  Report your answer a single decimal, accurate to <m>0.01</m>.
+      </p>
+      <p>
+        <answer symbolicEquality allowedErrorInNumbers="0.2" allowedErrorIsAbsolute> <label><m>M_4 = </m></label>$M4</answer>
       </p>
     </li>
     <li>
@@ -122,7 +122,7 @@
         Finally, determine the value of the Simpson's Rule estimate for <m>\int_{0}^{$a} r(t) \, dt</m> with <m>8</m> subintervals.
       </p>
       <p>
-        <m>S_8 = </m><answer name="enteredS8" allowedErrorInNumbers="0.2" allowedErrorIsAbsolute> $S8</answer>
+        <answer symbolicEquality name="enteredS8" allowedErrorInNumbers="0.2" allowedErrorIsAbsolute><label><m>S_8 = </m></label> $S8</answer>
       </p>
     </li>
 
@@ -132,22 +132,26 @@
       </p>
       <p>
         Since the units on <m>r(t)</m> are <choiceInput inline name="c1">
+          <shortDescription>liters, liters per minute, or minutes</shortDescription>
           <choice>?</choice>
           <choice>liters</choice>
           <choice>liters per minute</choice>
           <choice>minutes</choice>
         </choiceInput> and the units on <m>\Delta t</m> are <choiceInput inline name="c2">
+          <shortDescription>liters, liters per minute, or minutes</shortDescription>
           <choice>?</choice>
           <choice>liters</choice>
           <choice>liters per minute</choice>
           <choice>minutes</choice>
         </choiceInput>, when we compute a product such as <m>r(t_2) \cdot \Delta t</m> in a Riemann sum, the units on <m>r(t_2) \cdot \Delta t</m> are
         <choiceInput inline name="c3">
+          <shortDescription>liters, liters per minute, or minutes</shortDescription>
           <choice>?</choice>
           <choice>liters</choice>
           <choice>liters per minute</choice>
           <choice>minutes</choice>
-        </choiceInput>.  This means that <m>\int_{0}^{$a} r(t) \, dt \approx</m><mathInput disabled>$enteredS8</mathInput> estimates the <choiceInput inline name="c4">
+        </choiceInput>.  This means that <m>\int_{0}^{$a} r(t) \, dt \approx</m><mathInput disabled><shortDescription>the already-entered value of S 8</shortDescription>$enteredS8</mathInput> estimates the <choiceInput inline name="c4">
+          <shortDescription>total volume, total time, or average rate</shortDescription>
           <choice>?</choice>
           <choice>total water (in liters) that drained from the tank on <m>[0, <math simplify>$a</math>]</m></choice>
           <choice>total time (in minutes) it took the tank to drain <math simplify>$a</math> liters</choice>
