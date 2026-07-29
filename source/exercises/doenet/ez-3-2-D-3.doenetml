@@ -1,0 +1,72 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name = "a1" from = "-0.5" to = "0.5" step = "0.25" exclude="0"/>
+  <selectFromSequence name = "a2" from = "-1.5" to = "1.5" step = "1.5" exclude="0"/>
+  <selectFromSequence name = "z1" from = "-3" to = "3" step = "1" exclude="0"/>
+  <selectFromSequence name = "z2" from = "-3" to = "3" step = "1" exclude="0 $z1"/>
+  <selectFromSequence name = "y2" from = "-3" to = "3" step = "1" exclude="0 $z1 $z2"/>
+  <selectFromSequence name = "c" from = "-3" to = "3" step = "1" exclude="$0 $z1 $z2 $y2"/>  
+  
+  <number name="y1">$z1</number>
+  
+  <function name="f" symbolic="false" styleNumber="1">
+    $a1*(x-$z1)*(x-$z2)
+  </function>
+  <derivative name="fP">$f</derivative>
+  <function name="g" symbolic="false" styleNumber="2">
+    $a2*(x-$y1)*(x-$y2)
+  </function>
+  <derivative name="gP">$g</derivative>
+
+   
+</setup>
+
+  <p>Let <m>f(x) = <math expand="true">$a1*(x-$z1)*(x-$z2)</math></m> and <m>g(x) = <math expand="true">$a2*(x-$y1)*(x-$y2)</math></m>.  Consider <m>h(x) = \displaystyle \frac{f(x)}{g(x)} = \frac{<math expand="true">$a1*(x-$z1)*(x-$z2)</math>}{<math expand="true">$a2*(x-$y1)*(x-$y2)</math>}</m>. </p>  
+
+<p>
+<ol marker="a.">
+
+  <li>
+    <p>Determine each of the following values:</p>
+    <p>
+      <m>f($z1) = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$f($z1)</answer> 
+    </p>
+    <p>
+      <m>g($z1) = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$g($z1)</answer> 
+    </p>
+    <p>
+      <m>f($c) = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$f($c)</answer> 
+    </p>
+    <p>
+      <m>g($c) = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$g($c)</answer> 
+    </p>    
+  </li>
+  
+  <li>
+    <p>Determine the value of each of the following limits.  Think carefully about whether or not L'Hopital's Rule applies. </p>
+    <p>
+     <m>\displaystyle \lim_{x \to $z1} h(x) = \lim_{x \to $z1} \frac{f(x)}{g(x)} = \lim_{x \to $z1} \frac{<math expand="true">$a1*(x-$z1)*(x-$z2)</math>}{<math expand="true">$a2*(x-$y1)*(x-$y2)</math>}=</m> 
+      <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>($a1*($z1-$z2))/($a2*($z1-$y2))</answer>
+    </p>
+    <p>
+     <m>\displaystyle \lim_{x \to $c} h(x) = \lim_{x \to $c} \frac{f(x)}{g(x)} = \lim_{x \to $c} \frac{<math expand="true">$a1*(x-$z1)*(x-$z2)</math>}{<math expand="true">$a2*(x-$y1)*(x-$y2)</math>}=</m> 
+      <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>($a1*($c-$z1)*($c-$z2))/($a2*($c-$y1)*($c-$y2))</answer>
+    </p>    
+ <!--     <p><m>$$f($b)*$$gP($b) + $$g($b)*$$fP($b)  </m></p>. -->
+  </li>
+  
+</ol>
+</p>

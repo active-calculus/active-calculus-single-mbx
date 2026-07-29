@@ -1,0 +1,206 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- a first draft of this preview was written by Dimitrios Nerantzinis after the 2024 Doenet workshop -->
+<!-- major revisions and additions by MB in Fall 2025 -->
+
+
+  <p>
+    Any time that the rate of change of a quantity is related to the amount of a quantity,
+    a differential equation naturally arises.
+    In the following two scenarios, we develop a differential equation whose solution is the quantity of interest.
+  </p>
+  <p>
+    <ol marker="a.">
+      <li>
+        <p>
+          Suppose you have a bank account in which money grows at an
+          annual rate of <m>3</m>%.
+        </p>
+        <p>
+          <ol marker="i.">
+            <li>
+              <p>
+                If you have $<m>10,000</m> in the account,
+                at what rate is your money currently growing?  What are the units on that quantity?
+              </p>
+              <p>
+                When there is $<m>10,000</m> in the account, the amount of money is growing at a rate of
+               <mathInput name="a1"></mathInput> <choiceInput inline name="a2">
+                 <choice>?</choice>
+                 <choice>dollars</choice>
+                 <choice>dollars per year</choice>
+                 <choice>years per dollar</choice>
+                 <choice>years</choice>
+               </choiceInput>
+               <answer><award><when>$a1 = 300 and $a2.selectedIndices=3</when></award> </answer>.  (Enter the numerical rate in the first blank, and choose the units from the second.)
+              </p>
+              <p>
+                <hint>
+                  For the rate at which the money is growing, what is <m>3</m>% of $<m>10,000</m>?  For the units, think about how a quantity's rate of change has units of <q>units of output per unit of input</q>.
+                </hint>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Suppose that for the account with $<m>10,000</m> in it, you also decide to withdraw $<m>1000</m> per year. What rate of change results from combining the gains from interest and the loss from withdrawal when there is $<m>10,000</m> in the account?  What are the overall units on this rate?
+              </p>                
+              <p>
+                <answer>
+                 <choiceInput name="a3"> 
+                   <choice credit = "1"><m>(300 - 1000)</m> dollars per year</choice>
+                   <choice><m>(3 </m>% <m> - 1000)</m> dollars</choice>
+                   <choice><m>(1000 - 300)</m> dollars per year</choice>
+                   <choice><m>-0.03 \cdot 1000</m> dollars per year</choice>  
+                 </choiceInput>
+                </answer>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Now suppose that there are $<m>P</m> in the account at time <m>t</m> in years.  Assume the account is earning <m>3</m>% interest per year and you are withdrawing $<m>1000</m> per year.  What differential equation does <m>P</m> satisfy?  Complete the following sentence to explain.
+              </p>
+              <p>
+                Because interest adds <choiceInput inline name="a4">
+                 <choice>?</choice>
+                 <choice>0.03 dollars</choice>
+                 <choice>0.03 dollars per year</choice>
+                 <choice>0.03P dollars</choice>
+                 <choice>0.03P dollars per year</choice>
+               </choiceInput> and withdrawals remove <m>1000</m> dollars per year, and the units on <m>\frac{dP}{dt}</m> are <choiceInput inline name="a5">
+                 <choice>?</choice>
+                 <choice>dollars</choice>
+                 <choice>dollars per year</choice>
+                 <choice>years per dollar</choice>
+                 <choice>years</choice>
+               </choiceInput>, the total rate of change of <m>P</m> with respect to <m>t</m> is represented by the differential equation
+                <choiceInput name="a6">
+                 <choice><m>\frac{dP}{dt} = 3P - 1000</m></choice>
+                 <choice><m>\frac{dP}{dt} = \frac{3P - 1000}{10000}</m></choice>
+                 <choice><m>\frac{dP}{dt} = 0.03P - 1000</m></choice>
+                 <choice><m>\frac{dP}{dt} = -0.03P \cdot 1000</m></choice>
+               </choiceInput>
+              </p>
+              <p>
+                <answer><award><when>
+                  $a4.selectedIndices=5 and $a5.selectedIndices=3 and $a6.selectedIndices=3
+                </when></award></answer>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Suppose that a water tank holds 100 gallons and a salty
+          solution that contains 20 grams of salt in every gallon
+          enters the tank at a rate of 2 gallons per minute.  In addition, suppose that evenly mixed solution is pumped out of the tank at a rate of 2 gallons per minute.  
+        </p>
+        <p>
+          We are interested in understanding the amount of salt, <m>A(t)</m> (in grams), in the tank at time <m>t</m> (in minutes).
+        </p>
+        <p>
+          <ol marker="i.">
+            <li>
+              <p>
+                At what rate is salt entering the tank as a result of the inflow solution?  What are the units on this quantity? (Enter the numerical rate in the first blank, and choose the units from the second.)
+              </p>
+              <p> 
+                 <mathInput name="b1"></mathInput><choiceInput name="b1units"inline>
+                   <choice>?</choice>
+                   <choice>grams</choice>
+                   <choice>minutes</choice>
+                   <choice>grams per minute</choice>
+                   <choice>minutes per gram</choice>
+                 </choiceInput>
+               <answer><award><when>$b1 = 40 and $b1units.selectedIndices=4</when></award> </answer>
+              </p>
+              <p>
+                <hint>
+                  Think about the units on the inflow:  solution enters at a rate of 2 gal/min, and that solution carries salt at a concentration of 20 grams/gal.  How do those two quantities combine to generate the rate salt enters the tank in grams/min?
+                </hint>
+              </p>
+            </li>
+
+
+            <li>
+              <p>
+                Suppose that initially there are 300 total grams of salt in the tank.
+                What is the concentration of salt in the solution at this time?  Complete the following sentence to explain.
+              </p>
+              <p>
+                Because there are 300 total grams of salt in the tank and the tank holds <choiceInput name="b2" inline>
+                  <choice>?</choice>
+                  <choice>100 gallons</choice>
+                  <choice>300 grams</choice>
+                  <choice>2 gallons per minute</choice>
+                </choiceInput>, there are 300 grams of salt contained in 100 gallons of solution, which results in a concentration of <choiceInput name="b3" inline>
+                  <choice>?</choice>
+                  <choice>1/3 gallons per gram</choice>
+                  <choice>3 grams per gallon</choice>
+                  <choice>6 grams per minute</choice>
+                </choiceInput>.
+              </p>
+              <p>
+                <answer><award><when>$b2.selectedIndices=2 and $b3.selectedIndices=3
+                </when></award></answer>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Now, consider the general sitution where there are <m>A(t)</m> grams of salt in the tank at time <m>t</m>.  What is the concentration of salt in the tank at time <m>t</m>?  As evenly mixed solution leaves the tank at 2 gallons per minute, what is the rate at which salt is leaving the tank?  Complete the following sentence to explain.
+              </p>
+              <p>
+                Since there are <m>A(t)</m> grams of salt in the tank, and the tank holds 100 gallons of solution, this means that the concentration of salt in the tank at time <m>t</m> is <choiceInput name="b4">
+                  <choice><m>100 A(t)</m> grams per gallon</choice>
+                  <choice><m>\frac{100}{A(t)}</m> grams per gallon</choice>
+                  <choice><m>\frac{A(t)}{100}</m> grams per gallon</choice>
+                </choiceInput> and since solution with that concentration is leaving the tank at a rate of 2 gallons per minute, the rate at which salt is leaving the tank is  <choiceInput name="b5">
+                  <choice><m>2 \cdot 100 A(t)</m> grams per minute</choice>
+                  <choice><m>2 \cdot\frac{100}{A(t)}</m> grams per minute</choice>
+                  <choice><m>2 \cdot\frac{A(t)}{100}</m> grams per minute</choice>
+                </choiceInput>
+              </p>
+              <p>
+                <answer><award><when>$b4.selectedIndices=3 and $b5.selectedIndices=3
+                </when></award></answer>
+              </p>
+              <p>
+                <hint>
+                  Think about the units:  solution leaves at a rate measured in gal/min, and that solution carries salt at a concentration measured in grams/gal.  How do those two quantities combine to generate the rate salt exits the tank in grams/min?
+                </hint>   
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Finally, since <m>A(t)</m> is the total amount of salt in the tank at time <m>t</m>, we know that <m>\frac{dA}{dt}</m> captures the total rate at which the amount of salt in the tank is changing.  We thus note that the rate of change of salt in the tank will be <q>(rate in) <m>-</m> (rate out)</q>.  Based on our recent work in (b-i) and (b-iii), what differential equation must <m>A(t)</m> satisfy?
+              </p>
+                
+              <p> 
+               <m>\displaystyle \frac{dA}{dt} = </m>
+                 <mathInput name="b6" minWidth="100"></mathInput>
+               <answer><award><when>($b6=40 - 0.02 A) or ($b6=40 - 0.02 A(t))</when></award></answer>
+              </p>
+
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </p>

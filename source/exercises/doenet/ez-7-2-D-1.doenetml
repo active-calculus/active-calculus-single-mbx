@@ -1,0 +1,82 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="a" from="1" to="5"/>
+  <selectFromSequence name="b" from="1" to="5" exclude="$a"/>
+  <selectFromSequence name="c" from="1" to="5" exclude="$a $b"/>
+  <selectFromSequence name="d" from="1" to="5" exclude="$a $b $c"/>
+  <selectFromSequence name="k" from="2" to="4" />
+  <selectFromSequence name="m" from="2" to="4" exclude="$k"/>
+  <mathList name="twoSols">$b -$c</mathList>
+  <mathList name="twoSolsRep">0 -$a</mathList>
+  <mathList name="threeSols">0 $d -$d</mathList>
+</setup>
+
+<p>
+  For each of the following autonomous differential equations, find all of the equilibrium solutions and report them in the blank provided.  If there is more than one equilibrium solution, separate your answers with commas; if there are none, enter <q>none</q>.
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        <m>\displaystyle \frac{dy}{dt} = -\frac{1}{$k}($a-y)</m>
+      </p>
+      <p>
+        equilibrium solution(s): <m>y = </m><mathInput name="ans1"/><answer><award><when>$ans1=$a</when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        <m>\displaystyle \frac{dy}{dt} = <math simplify expand>(y-$b)*(y+$c)</math></m>
+      </p>
+      <p>
+        equilibrium solution(s): <m>y = </m><mathInput name="ans2"/><answer unorderedCompare><award><when>$ans2=$twoSols</when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        <m>\displaystyle \frac{dy}{dt} = y^2 + $d</m>
+      </p>
+      <p>
+        equilibrium solution(s): <m>y = </m><mathInput name="ans3"/><answer><award><when>$ans3=none</when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        <m>\displaystyle \frac{dy}{dt} = -$k y</m>
+      </p>
+      <p>
+        equilibrium solution(s): <m>y = </m><mathInput name="ans4"/><answer><award><when>$ans4=0</when></award></answer>
+      </p>
+    </li> 
+    <li>
+      <p>
+        <m>\displaystyle \frac{dy}{dt} = \frac{1}{$m} y (y+$d)(y-$d)</m>
+      </p>
+      <p>
+        equilibrium solution(s): <m>y = </m><mathInput name="ans5"/><answer unorderedCompare><award><when>$ans5=$threeSols</when></award></answer>
+      </p>
+    </li>    
+    <li>
+      <p>
+        <m>\displaystyle \frac{dy}{dt} = y^3 + $a y^2</m>
+      </p>
+      <p>
+        equilibrium solution(s): <m>y = </m><mathInput name="ans6"/><answer unorderedCompare><award><when>$ans6=$twoSolsRep</when></award></answer>
+      </p>
+    </li> 
+  </ol>
+</p>

@@ -1,0 +1,89 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+
+  <selectFromSequence name="a" from="18" to="24" step="1"/>
+  <selectFromSequence name="k" from="0.04" to="0.06" step="0.01"/>
+  <selectFromSequence name="t" from="15" to="30" step="5"/>
+  <selectFromSequence name="tplus" from="1.5" to="4.5" step="1"/>
+
+  <function name="C" symbolic="false" >
+    $a + (99-$a)*exp(-$k*x)
+  </function>  
+  <derivative name="CP">$C</derivative>
+  <derivative name="CPP">$CP</derivative>
+  
+</setup>  
+
+
+<p>The temperature, <m>C</m>, in degrees Celsius, of a hot cup of coffee placed on a kitchen counter is given by <m>C=f(t)</m>, where  <m>t</m> is in minutes since the coffee was put on the counter.  Suppose we know that <m>C($t) = $$C($t)</m>, <m>C'($t) = $$CP($t)</m>, and <m>C''($t) = $$CPP($t)</m>.
+</p>
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Fill in the blanks (including units where appropriate) to explain the meaning of the given data.
+      </p>
+      <p> 
+        At <answer>$t</answer> minutes after the coffee was put on the counter, its 
+        <answer> 
+          <choiceInput inline>
+            <choice>?</choice>
+            <choice>derivative</choice>
+            <choice credit="1">temperature</choice>
+            <choice>change in temperature</choice>
+          </choiceInput>
+        </answer>
+        is <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$C($t)</answer> degrees C.  In addition, the coffee's temperature is changing at an instantaneous rate of <answer  allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$CP($t)</answer> 
+        <answer> 
+          <choiceInput inline>
+            <choice>?</choice>
+            <choice>degrees C</choice>
+            <choice>minutes</choice>
+            <choice credit="1">degrees C per minute</choice>
+            <choice>minutes per degree C</choice>
+          </choiceInput>
+        </answer>. 
+      </p>
+    </li>
+    <li>
+      <p>We can find the local linearization to <m>C</m> at <m>a = $t</m>, which is
+        <me>
+          L(t) = C($t) + C'($t)(t-$t) = $$C($t) - <math simplify>|$$CP($t)|</math>(t-$t).
+        </me>
+        Using the local linearization, we find that <m>f(<math simplify>$t + $tplus</math>) \approx L(<math simplify>$t + $tplus</math>) = </m><answer  allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$C($t) + $tplus*$$CP($t)</answer>.  Thus, if $tplus more minutes elapse after <m>t=$t</m>, we expect that the coffee's temperature will drop by about <answer  allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>-1*$tplus*$$CP($t)</answer> degrees C. 
+      </p>
+    </li>
+    <li>
+      <p>
+        Finally, since we know that <m>C''($t) = $$CPP($t)</m>, it follows that the temperature function <m>C</m> is <answer> 
+          <choiceInput inline>
+            <choice>?</choice>
+            <choice credit="1">concave up</choice>
+            <choice>linear</choice>
+            <choice>concave down</choice>
+          </choiceInput>
+        </answer> near <m>t = $t</m>, and therefore the estimate of <m>f(<math simplify>$t + $tplus</math>)</m> that we found in (b) from the local linearization is <answer> 
+          <choiceInput inline>
+            <choice>?</choice>
+            <choice>too large</choice>
+            <choice>exactly right</choice>
+            <choice credit="1">too small</choice>
+          </choiceInput>
+        </answer>.
+      </p>  
+    </li>  
+  </ol>
+</p>  

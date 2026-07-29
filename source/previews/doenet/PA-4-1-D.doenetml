@@ -1,0 +1,152 @@
+
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+
+  <function name="v">3</function>
+  <function name="s">3x</function>
+
+  <point name="A" styleNumber="1">(0.25,-0.75)
+      <attractTo threshold=".1">$v</attractTo>
+  </point>
+
+  <point name="B" styleNumber="1">(1,-0.75)
+      <attractTo threshold=".1">$v</attractTo>
+  </point>
+
+  <point name="C" styleNumber="1">(1.75,-0.75)
+      <attractTo threshold=".1">$v</attractTo>
+  </point>
+
+  <function name="vDrag" through="$A $B $C" styleNumber="1" />
+
+    <point name="As" styleNumber="2">(0.25,-0.75)
+      <attractToGrid dy="0.001" dx="0.5" xthreshold=".1" />
+      <attractTo threshold=".2">$s</attractTo>
+  </point>
+
+  <point name="Bs" styleNumber="2">(1,-0.75)
+      <attractToGrid dy="0.001" dx="0.5" xthreshold=".1" />
+      <attractTo threshold=".2">$s</attractTo>
+  </point>
+
+  <point name="Cs" styleNumber="2">(1.75,-0.75)
+      <attractToGrid dy="0.001" dx="0.5" xthreshold=".1" />
+      <attractTo threshold=".2">$s</attractTo>
+  </point>
+
+  <function name="sDrag" through="$As $Bs $Cs" styleNumber="2" />
+
+</setup>
+
+
+
+<p>
+   Suppose that a person is taking a walk along a long straight path and walks at a constant rate of 3 miles per hour.
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        On the provided in the following figure, drag the three given points so they lie on the graph of the velocity function, <m>v(t) = 3</m>.
+      </p>
+      <graph grid="true" size="medium" xMin="-0.25" xMax="3" yMin="-2" yMax="8" fixAxes="true" showNavigation="false"><shortDescription>draggable points on a line for the reader to create the function v of t equals 3</shortDescription>
+        $vDrag
+        <label fixed anchor="(0.2,7.5)">mph</label>
+        <label fixed anchor="(2.75,0.25)">hours</label>
+        $A
+        $B
+        $C
+      </graph>
+      <answer><award><when>
+         $A.constraintUsed and $B.constraintUsed and $C.constraintUsed
+      </when></award></answer>
+    </li>
+    <li>
+      <p>
+        Complete the following sentence to find how far the person traveled from <m>t = 0</m> to <m>t = 2</m>:
+      </p>
+      <p>
+        Because the person traveled at a constant velocity of <m>$v</m> miles per hour and we know that when velocity is constant, <answer><choiceInput inline><shortDescription>relationship of distance, rate of travel, and time</shortDescription>
+          <choice>?</choice>
+          <choice>distance = rate/time</choice>
+          <choice>rate = distance * time</choice>
+          <choice credit="1">distance = rate * time</choice>
+        </choiceInput></answer> it follows that in this setting, their distance traveled, <m>D</m> satisfies
+      </p>
+      <p sectionWideCheckWork colorAnswersSeparately>
+       <m>D = </m> <answer><shortDescription>number of miles per hour</shortDescription>3</answer> <m>\frac{\text{miles}}{\text{hour}}</m> <m>\cdot</m> <answer><shortDescription>number of hours</shortDescription>2</answer> hours = <answer><shortDescription>number of miles</shortDescription>6</answer> miles.
+      </p>
+    </li>
+    <li sectionWideCheckWork colorAnswersSeparately>
+      <p>
+          How is the distance found in part (b) related to the area of a certain region under the graph of <m>y = v(t)</m> from part (a)?  Complete the following sentence to explain.
+      </p>
+      <p>
+        Because <m>y = v(t)</m> is a horizontal line, the region formed by <m>y = v(t)</m>, <m>t = 0</m>, <m>t = 2</m>, and the <m>t</m>-axis is a <answer><choiceInput inline><shortDescription>shape of the region</shortDescription>
+          <choice>?</choice>
+          <choice>triangle</choice>
+          <choice credit="1">rectangle</choice>
+          <choice>circle</choice>
+        </choiceInput></answer> with a base of length
+       <answer><shortDescription>length of the base</shortDescription>2</answer> (with units <q>hours</q>) and a height of length  <answer><shortDescription>length of the height</shortDescription>3</answer> (with units <q>miles per hour</q>), so the area of this region is <answer><shortDescription>value of the area of the region</shortDescription>6</answer> (with units <q>miles</q>).
+      </p>
+    </li>
+    <li>
+        <p>
+          Find an algebraic formula, <m>s(t)</m>, for the position of the person at time <m>t</m>, assuming that <m>s(0) = 0</m>.  Note that you must state your answer as a function of time, <m>t</m>.
+        </p>
+      <p>
+        <answer><label><m>s(t) = </m> </label>3t</answer>
+      </p>
+    </li>
+
+    <li>
+       <p>
+          On the axes provided in the following figure, drag the three given points so they lie on the graph of the position function, <m>y = s(t)</m>.
+        </p>
+        <graph grid="true" size="medium" xMin="-0.25" xMax="3" yMin="-2" yMax="8" fixAxes="true" showNavigation="false"><shortDescription>draggable points on a line for the reader to create the function s of t</shortDescription>
+        $sDrag
+        <label fixed anchor="(0.2,7.5)">miles</label>
+        <label fixed anchor="(2.75,0.25)">hours</label>
+        $As
+        $Bs
+        $Cs
+      </graph>
+      <answer><award><when>
+         $As.y=3*$As.x and $Bs.y=3*$Bs.x and $Cs.y=3*$Cs.x
+      </when></award></answer>
+    </li>
+    <li sectionWideCheckWork colorAnswersSeparately>
+      <p>
+        Finally, complete the following sentence to explain the behavior of <m>s</m> using using relevant information about the velocity function <m>v</m>.
+      </p>
+      <p>
+        We observe that the function <m>s(t)</m> is always <answer><choiceInput inline><shortDescription>behavior of s of t</shortDescription>
+          <choice>?</choice>
+          <choice>constant</choice>
+          <choice credit="1">increasing</choice>
+          <choice>decreasing</choice>
+        </choiceInput></answer> on the interval <m>0 \le t \le 2</m> because <m>v(t)</m> satisfies <m>s'(t) = v(t)</m> and we know <m>v(t)</m> is always <answer><choiceInput inline><shortDescription>behavior of the derivative of s of t, which is v of t</shortDescription>
+          <choice>?</choice>
+          <choice>zero</choice>
+          <choice>negative</choice>
+          <choice credit="1">positive</choice>
+        </choiceInput></answer> on the interval <m>0 \le t \le 2</m>.
+      </p>
+    </li>
+  </ol>
+</p>

@@ -1,0 +1,170 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+ <setup>
+  <selectFromSequence name = "r" from = "0.04" to = "0.05" step = "0.01"/>
+  <selectFromSequence name = "w" from = "30000" to = "35000" step = "5000" />
+  <selectFromSequence name = "c" from = "1" to = "2" step = "1" />
+  <selectFromSequence name = "pm" from = "-1" to = "1" step = "2" />
+
+  <math simplify name="rate">100*$r</math>
+  <math simplify name="A0">$w/$r + $pm*$c*50000</math>
+  <math simplify name="A1">$w/$r - $pm*$c*50000</math>
+  <math simplify name="eqSol">$w/$r</math>
+
+  <function name = "soln" variable="t">$w/$r + ($A0-$w/$r)*e^($r*t)</function>
+  <function name = "solnP" variable="t">$r*($A0-$w/$r)*e^($r*t)</function>
+  <function name = "soln2" variable="t">$w/$r + ($A1-$w/$r)*e^($r*t)</function>
+  <function name = "soln2P" variable="t">$r*($A1-$w/$r)*e^($r*t)</function>
+
+</setup>
+
+<p>
+  Suppose that you have invested and saved for retirement and that you have an account with <m>A(t)</m> dollars in it that earns an annual return of <m>$rate</m>%.  In addition, assume that for living expenses you need to withdraw $<m>$w</m> each year from this account.  Because <m>$r A</m> represents the amount of money being added to the account each year through interest and <m>$w</m> is the amount of money being removed from the account each year, the total amount of money in the account is modeled by the initial value problem
+  <me>
+    \frac{dA}{dt} = $r A - $w, \ \ A(0) = A_0
+  </me>
+  where <m>A_0</m> is the amount of money you have in the account when retirement begins.
+  In what follows, we solve this IVP and analyze whether or not we have saved enough money to meet our retirement needs.
+</p>
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Suppose that <m>A_0 = $A0</m>, which is the amount you've saved for retirement nest egg.  Use separation of variables to solve the given initial value problem and find its unique solution.  <alert>Note</alert>: you will likely find it helpful to write the righthand side of the differential equation in the form <m>$r(A - <math simplify>$w/$r</math>)</m>.
+      </p>
+      <p>
+        <m>A(t) =</m><mathInput name="solnEntered" minWidth="100"/><answer><award><when>$solnEntered=$soln</when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Complete the following sentence to analyze the long-term behavior of the solution function, <m>A(t)</m>.  Notice that the second prompt requires you to enter the correct derivative of the solution function.
+      </p>
+      <p>
+        The solution <m>A(t)</m> is always <choiceInput name="a1" inline>
+          <choice>?</choice>
+          <choice>increasing</choice>
+          <choice>decreasing</choice>
+          <choice>constant</choice>
+        </choiceInput> because <m>A'(t) = </m><mathInput name="a2" minWidth="100"/> is always <choiceInput name="a3" inline>
+          <choice>?</choice>
+          <choice>positive</choice>
+          <choice>negative</choice>
+          <choice>zero</choice>
+        </choiceInput>.  This means that our retirement account will <choiceInput name="a4" inline>
+          <choice>?</choice>
+          <choice>always have the same amount of money in it</choice>
+          <choice>always increase in value, even though we withdraw money annually</choice>
+          <choice>always decrease in value, and eventually run out of money</choice>
+        </choiceInput> since the quantity <m>e^{$r t}</m> in the solution <choiceInput name="a5" inline>
+          <choice>?</choice>
+          <choice>is always constant</choice>
+          <choice>is always getting larger</choice>
+          <choice>is always getting smaller</choice>
+        </choiceInput>.
+      </p>
+      <p>
+        <answer><award><when>
+          (
+          ($a1.selectedIndices=2 and ($A0 > $eqSol)) and $solnP = $a2 and ($a3.selectedIndices=2 and ($A0 > $eqSol)) and ($a4.selectedIndices=3 and ($A0 > $eqSol)) and ($a5.selectedIndices=3)
+          )
+          or
+          (
+          ($a1.selectedIndices=3 and ($eqSol > $A0)) and $solnP = $a2 and ($a3.selectedIndices=3 and ($eqSol > $A0)) and ($a4.selectedIndices=4 and ($eqSol > $A0)) and ($a5.selectedIndices=3)
+          )
+        </when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Now suppose that you had a different initial amount in your retirement account, <m>A_0 = $A1</m>.  Update your earlier work to find the unique solution to the corresponding initial value problem.
+      </p>
+      <p>
+        <m>A(t) =</m><mathInput name="soln2Entered" minWidth="100"/><answer><award><when>$soln2Entered=$soln2</when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Complete the following sentence to analyze the long-term behavior of the updated solution function, <m>A(t)</m>.  Notice that the second prompt requires you to enter the correct derivative of the solution function.
+      </p>
+      <p>
+        The updated solution <m>A(t)</m> is always <choiceInput name="b1" inline>
+          <choice>?</choice>
+          <choice>increasing</choice>
+          <choice>decreasing</choice>
+          <choice>constant</choice>
+        </choiceInput> because <m>A'(t) = </m><mathInput name="b2" minWidth="100"/> is always <choiceInput name="b3" inline>
+          <choice>?</choice>
+          <choice>positive</choice>
+          <choice>negative</choice>
+          <choice>zero</choice>
+        </choiceInput>.  This means that our retirement account will <choiceInput name="b4" inline>
+          <choice>?</choice>
+          <choice>always have the same amount of money in it</choice>
+          <choice>always increase in value, even though we withdraw money annually</choice>
+          <choice>always decrease in value, and eventually run out of money</choice>
+        </choiceInput> since the quantity <m>e^{$r t}</m> in the solution <choiceInput name="b5" inline>
+          <choice>?</choice>
+          <choice>is always constant</choice>
+          <choice>is always getting larger</choice>
+          <choice>is always getting smaller</choice>
+        </choiceInput>.
+      </p>
+      <p>
+        <answer><award><when>
+          (
+          ($b1.selectedIndices=2 and ($A1 > $eqSol)) and $soln2P = $b2 and ($b3.selectedIndices=2 and ($A1 > $eqSol)) and ($b4.selectedIndices=3 and ($A1 > $eqSol)) and ($b5.selectedIndices=3)
+          )
+          or
+          (
+          ($b1.selectedIndices=3 and ($eqSol > $A1)) and $soln2P = $b2 and ($b3.selectedIndices=3 and ($eqSol > $A1)) and ($b4.selectedIndices=4 and ($eqSol > $A1)) and ($b5.selectedIndices=3)
+          )
+        </when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Finally, observe that the original differential equation, <me>\frac{dA}{dt} = $r A - $w,</me> is autonomous and that it has an equilibrium solution.  State the equilibrium solution and then complete the sentence below to analyze how the equilibrium solution relates to how our retirement investment account behaves over time.
+      </p>
+      <p>
+        The equilibrium solution is <m>y = </m><mathInput name="eqSolEntered"/>
+        <answer><award><when>
+          $eqSolEntered=$eqSol
+        </when></award></answer>.
+      </p>
+      <p>
+        Our work in parts (a)-(d) shows that if the initial amount of money in our retirement account is greater than the equilibrium solution to the differential equation, then the amount of money in the retirement account will always <choiceInput name="c1" inline>
+          <choice>?</choice>
+          <choice>increase</choice>
+          <choice>decrease</choice>
+          <choice>stay constant</choice>
+        </choiceInput>, while if the initial amount of money in our retirement account is less than equilibrium solution to the differential equation, then the amount of money in the retirement account will always <choiceInput name="c2" inline>
+          <choice>?</choice>
+          <choice>increase</choice>
+          <choice>decrease</choice>
+          <choice>stay constant</choice>
+        </choiceInput>,
+        and this shows that the equilibrium solution is <choiceInput name="stability" inline>
+          <choice>?</choice>
+          <choice>stable</choice>
+          <choice>unstable</choice>
+        </choiceInput>.  Notice that knowing the value of the equilibrium solution is crucial to understanding whether or not our retirement funds are sustainable.
+      </p>
+      <p>
+        <answer><award><when>$c1.selectedIndices=2 and $c2.selectedIndices=3 and $stability.selectedIndices=3</when></award></answer>
+      </p>
+    </li>
+  </ol>
+</p>

@@ -1,0 +1,115 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- this exercise was developed by Spencer Bagley as part of the PROTEUS grant-->
+
+<setup>
+    <function name="f">-0.25*x^3+1.5*x+1</function>
+    <derivative name="fprime">$f</derivative>
+    <derivative name="fPP">$fprime</derivative>
+    <point name="P" labelIsName labelPosition="lowerRight">
+        <constrainTo>$f</constrainTo>
+    </point>
+    <point 
+        name="sd" 
+        labelPosition="lowerRight"
+        styleNumber="4"> 
+        ($P.x, $$fPP($P.x))
+        <label>2nd der.</label>
+    </point>
+    <number name="m">$$fprime($P.x)</number>
+    <point name="left">
+        ($P.x-1/sqrt(1+$m^2), $P.y-$m/sqrt(1+$m^2))
+    </point>
+    <point name="right">
+        ($P.x+1/sqrt(1+$m^2), $P.y+$m/sqrt(1+$m^2))
+    </point>
+    <lineSegment name="hi" stylenumber="2" endpoints="$left $right"/>
+</setup>
+<p>
+    On the following graph of the function <m>f</m>, you can drag the point <m>P</m> along the graph of <m>f</m>.  As you do so, you will also see a a purple diamond point whose height represents the value of the second derivative of <m>f</m> at the same <m>x</m>-value as point <m>P</m>.  As you move the point <m>P</m>, note that the tangent line to <m>f</m> moves along with the point; remember that the second derivative of <m>f</m> measures how the slope of the tangent line to <m>f</m> changes as <m>x</m> changes.  
+</p>
+<graph
+    fixAxes="true" showNavigation="false"
+    xmin="-3" xmax="3"
+    ymin="-3" ymax="3" >
+  <shortDescription>
+    graph of a cubic function f, its tangent line at a movable point, and the value of the second derivative at that point
+  </shortDescription>
+    $f
+    $P
+    $sd
+    $hi
+</graph>
+<p>
+    When the purple diamond point is <alert>above</alert> the horizontal axis,
+    the second derivative of <m>f</m> is <!-- positive -->
+    <answer>
+        <choiceInput inline>
+          <shortDescription>sign options</shortDescription>
+            <choice credit = "0"><math>?</math></choice>
+            <choice credit = "1">positive</choice>
+            <choice credit = "0">negative</choice>
+        </choiceInput> 
+    </answer>, the tangent line near <m>P</m> is <!-- below -->
+    <answer>
+        <choiceInput inline>
+          <shortDescription>above or below options</shortDescription>
+            <choice credit = "0"><math>?</math></choice>
+            <choice credit = "0">above</choice>
+            <choice credit = "1">below</choice>
+        </choiceInput>
+        </answer>
+    the graph of <m>f</m>, 
+    and the graph of <m>f</m> opens <!-- upward -->
+    <answer>
+        <choiceInput inline>
+          <shortDescription>upward or downward options</shortDescription>
+            <choice credit = "0"><math>?</math></choice>
+            <choice credit = "1">upward</choice>
+            <choice credit = "0">downward</choice>
+        </choiceInput>
+    </answer>.
+</p>
+<p>
+    When the purple diamond point <alert>below</alert> the horizontal axis,
+    the second derivative of <m>f</m> is <!-- negative -->
+    <answer>
+        <choiceInput inline>
+          <shortDescription>sign options</shortDescription>
+            <choice credit = "0"><math>?</math></choice>
+            <choice credit = "0">positive</choice>
+            <choice credit = "1">negative</choice>
+        </choiceInput>
+    </answer>
+    below the horizontal axis, 
+    the tangent line near <m>P</m> is <!-- above -->
+    <answer>
+        <choiceInput inline>
+          <shortDescription>sign options</shortDescription>
+            <choice credit = "0"><math>?</math></choice>
+            <choice credit = "1">above</choice>
+            <choice credit = "0">below</choice>
+        </choiceInput>
+    </answer>
+    the graph of <m>f</m>, and the graph of <m>f</m> opens <!-- downward-->
+    <answer>
+        <choiceInput inline>
+          <shortDescription>upward or downward options</shortDescription>
+            <choice credit = "0"><math>?</math></choice>
+            <choice credit = "0">upward</choice>
+            <choice credit = "1">downward</choice>
+        </choiceInput>
+    </answer>.
+</p>

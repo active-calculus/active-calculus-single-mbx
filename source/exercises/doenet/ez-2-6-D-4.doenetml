@@ -1,0 +1,104 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+  
+<setup>
+
+  <selectFromSequence name="a" from="1.5" to="2.5" step="0.25" />
+  <selectFromSequence name="b" from="0" to="2" step="0.5" />  
+  <selectFromSequence name="c" from="-1.16" to="0.56" step="0.1" /> 
+
+  <math name="ABSb"><abs>$b</abs></math>
+  
+  <function name="f" symbolic="false">-1*$a^x + $b</function>
+  <derivative name="fP" symbolic="false">$f</derivative>  
+  <function name="L" symbolic="false" styleNumber="3" labelPosition="lowerRight">$$fP($c)(x-$c) + $$f($c)</function>  
+    <point name="A" styleNumber="2" coords="($c,$$f($c))" showCoordsWhenDragging="false" draggable="false" labelPosition="upperRight"> 
+      <label><m>A = $A.coords</m></label>
+    </point> 
+    <point name="B" styleNumber="2" coords="($c+0.6*$a,$$L($c+0.6*$a))" showCoordsWhenDragging="false" draggable="false" labelPosition="upperRight"> 
+      <label><m>B = $B.coords</m></label>
+    </point>
+
+  <label name="fLabel" anchor="(-3,$$f(-3)-0.25)"><m>y = f(x)</m></label>
+  <label name="LLabel" anchor="(-2.5,$$L(-2.5)+0.5)"><m>y = L(x)</m></label>
+  
+</setup>
+
+  <p>Let <m>f</m> be the function given by the graph below and <m>L</m> its tangent line at the point <m>A</m>.  Note that since <m>f</m> is always decreasing, <m>f</m> has an inverse function; let <m>g(x) = f^{-1}(x)</m>.</p>
+
+<!--  <p><m>a = $a</m>, <m>b = $b</m>, and <m>c = $c</m>, so <m>g(x) = $$g(x)</m> and <m>L(x) = $$L(x)</m>, plus <m>A = $A</m> and <m>B = $B</m></p> -->
+
+      <graph xmin="-4" xmax="4" ymin="-4" ymax="4" size="medium" grid="false" showNavigation="false" displayXAxis="false" displayYAxis="false" fixAxes="true"> 
+        <shortDescription>
+          A plot of a function f and its tangent line at point A, along with another point B that lies on the tangent line
+        </shortDescription>
+        <description>
+          The function <m>f</m> in this plot is always decreasing and concave down.  Its tangent line at the point <m>A = $A</m> is plotted, and a second point <m>B = $B</m> that lies on the tangent line is shown.
+        </description>
+        $f $L $A $B $fLabel $LLabel
+      </graph>
+
+  <p>
+    Use the given information to complete the following sentence about the values of <m>a</m>, <m>f(a)</m>, and <m>f'(a)</m>.  Report your derivative values to 3 decimal places of accuracy. 
+  </p>  
+  <p>At the point where
+    <answer>
+      <label><m>a = </m></label>
+      <award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> $c
+      </award>
+    </answer>, we know that 
+    <answer>
+      <label>
+        <m>f(a) = </m>
+      </label>
+      <award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> 
+        $$f($c)
+      </award>
+    </answer> 
+    and 
+    <answer name="fPrimeAns">
+      <label>
+        <m>f'(a) = </m>
+      </label>
+      <award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> 
+        $$fP($c)
+      </award>
+    </answer>.
+  </p>
+  <p>
+    In addition, at the point <m>(b,g(b))</m> on the graph of <m>g</m> where <m>b = $$f($c)</m>, we know that 
+    <answer>
+      <label>
+        <m>g(b) = </m>
+      </label>
+      <award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> 
+        $c
+      </award>
+    </answer> 
+    and 
+    <answer>
+      <mathInput name="gPrimeAns">
+        <label>
+          <m>g'(b) = </m>
+        </label>
+      </mathInput>
+        <award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> 
+          <when>
+            $gPrimeAns=1/$$fP($c) or ($fPrimeAns.creditAchieved=1 and $gPrimeAns=1/$fPrimeAns)
+          </when>
+        </award>
+      </answer>.
+  </p>  
+
+   

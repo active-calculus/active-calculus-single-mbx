@@ -1,0 +1,63 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name = "num1" from = "5" to = "8" step = "1"/>
+  <selectFromSequence name = "num2" from = "3" to = "8" step = "1"/>
+  <selectFromSequence name = "num3" from = "9" to = "17" step = "1"/>
+
+  <selectFromSequence name = "num4" from = "2" to = "9" step="1" exclude="$num2"/>
+  <selectRandomNumbers type = "discreteuniform" name = "num5" from = "1" to = "15"/>
+  
+  <selectFromSequence name = "num6" from = "4" to = "9" step = "1" exclude="$num1$"/>
+  <selectRandomNumbers name = "num7" from = "2" to = "7" type = "discreteuniform"/>
+  <selectRandomNumbers name = "num8" from = "2" to = "7" type = "discreteuniform"/>
+  <selectRandomNumbers name = "num9" from = "2" to = "7" type = "discreteuniform"/>
+  <selectRandomNumbers name = "num10" from = "1" to = "7" type = "discreteuniform"/>
+  <selectFromSequence name = "num11" from = "2" to = "8" step = "1"/>
+  
+  <function name="f">$num2*x^($num1) - $num4*x^($num6) + $num3*1/x</function>
+  <derivative name="fP">$f</derivative>
+  
+  <function name="g">$num1*$num2^x - $num6*$num4^x + e^2</function>
+  <derivative name="gP">$g</derivative>
+
+  <function name="h">$num7*x^($num6/$num1) - $num11*$num10^x + sqrt($num9)</function> 
+  <derivative name="hP">$h</derivative>
+
+</setup>
+
+<p>
+  For each of the following functions, use sum and constant multiple rules appropriately along with  the power rule and exponential function rule to find a formula for the function's derivative.
+</p>  
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        If <m>f(x) = $$f(x)</m>, then <m>f'(x)=</m><answer>$fP</answer>.
+      </p>
+    </li>
+    <li>
+      <p>
+        If <m>g(x) = $$g(x)</m>, then <m>g'(x)= </m><answer>$gP</answer>.
+      </p>
+    </li>
+    <li>
+      <p>
+        If <m>h(x)= $$h(x)</m>, then <m>h'(x)= </m><answer>$hP</answer>.
+      </p>
+    </li>
+  </ol>  
+</p> 

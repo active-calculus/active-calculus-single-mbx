@@ -1,0 +1,98 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+  <setup>
+    <math name="P"><selectFromSequence from="500" to="2000" step="500"/></math>
+    <math name="b"><selectFromSequence from="1.05" to="1.09" step="0.01"/></math>
+    <math name="c"><selectFromSequence from="10" to="30" step="10"/></math>
+    <function name="A" symbolic="false" variable="t">
+      $P*($b)^t
+    </function>
+    <derivative name="AP">$A</derivative>
+    <derivative name="APP">$AP</derivative>
+
+   <round name="roundAofc0" numDecimals="0">$$A($c)</round>
+   <round name="roundAofc1" numDecimals="1">$$A($c)</round>
+   <round name="roundAPofc0" numDecimals="0">$$AP($c)</round>
+   <round name="roundAPofc1" numDecimals="1">$$AP($c)</round>
+
+  <boolean name="rounded">
+    $Aofc = $roundAofc0 or $Aofc = $roundAofc1 or $APofc = $roundAPofc0 or $APofc = $roundAPofc1 or $APofcagain = $roundAPofc0 or $APofcagain = $roundAPofc1
+  </boolean>
+
+  <round name="roundAofc0p25" numDecimals="0">$$A($c+25)</round>
+   <round name="roundAofc1p25" numDecimals="1">$$A($c+25)</round>
+   <round name="roundAPofc0p25" numDecimals="0">$$AP($c+25)</round>
+   <round name="roundAPofc1p25" numDecimals="1">$$AP($c+25)</round>
+
+  <boolean name="rounded2">
+    $Aofcp25 = $roundAofc0p25 or $Aofcp25 = $roundAofc1p25 or $APofcp25 = $roundAPofc0p25 or $APofcp25 = $roundAPofc1p25 or $APofcp25again = $roundAPofc0p25 or $APofcp25again = $roundAPofc1p25
+  </boolean>
+
+
+  </setup>
+  <p>
+    Suppose you make an investment of $<m>$P</m> in a mutual fund in the year 2025 (which we will view as <m>t = 0</m>), and the fund earns average annual interest of <m><math simplify>($b-1)*100</math></m>%.  The total amount of money in your account <m>t</m> years after your initial investment is given by the function <m>A(t) = $A</m>.
+  </p>
+
+
+
+  <ol marker="a">
+      <li>
+        <p>
+          Use appropriate derivative shortcut rules to find a formula for <m>A'(t)</m>.
+        </p>
+        <p>
+            <m>A'(t)=</m><answer><award>$AP</award></answer>
+        </p>
+      </li>
+    <li>
+      <p>
+        Use <m>A(t)</m> and <m>A'(t)</m> appropriately to complete the following sentence with values and units.
+      </p>
+      <p>
+        After <m>$c</m> years, the total amount of money in the investment account is $<answer name="Aofc" allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award>$$A($c)</award></answer>, and at this time the instantaneous rate at which the amount of money is growing is <answer name="APofc" allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award>$$AP($c)</award></answer> with units <answer>
+            <choiceInput name="choice1" inline>
+              <choice>dollars per day</choice>
+              <choice>dollars</choice>
+              <choice>years</choice>
+              <choice credit="1">dollars per year</choice>
+              <choice>years per dollar</choice>
+            </choiceInput>
+          </answer>.  This means that in the year that elapses from <m><math simplify>2025+$c</math></m> to <m><math simplify>2025+$c+1</math></m>, we expect the amount of money in the investment account to grow by approximately <answer name="APofcagain" allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award>$$AP($c)</award></answer> dollars.
+      </p>
+      <feedback condition="$rounded">Make sure to use at least 2 places after the decimal point.</feedback>
+    </li>
+    <li>
+      <p>
+        The billionaire investor Warren Buffett famously bought his first mutual fund when he was just 11 years old. Buffett is also well-known for understanding the time value of money:  it matters not just how much interest your money returns, but even more for how long that interest compounds.
+      </p>
+      <p>
+        In part (b), we saw how much money had accumulated in our mutual fund after  <m>$c</m> years, as well as how fast it was growing at that time.  How do those results change after <m>25</m> more years, at <m>t = <math simplify>$c + 25</math></m>?  Use <m>A(t)</m> and <m>A'(t)</m> appropriately to complete the following sentence with values and units.
+      </p>
+      <p>
+        After <m><math simplify>$c+25</math></m> years, the total amount of money in the investment account is $<answer name="Aofcp25" allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award>$$A($c+25)</award></answer>, and at this time the instantaneous rate at which the amount of money is growing is <answer name="APofcp25" allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award>$$AP($c+25)</award></answer> with units <answer>
+            <choiceInput name="choice1" inline>
+              <choice>dollars per day</choice>
+              <choice>dollars</choice>
+              <choice>years</choice>
+              <choice credit="1">dollars per year</choice>
+              <choice>years per dollar</choice>
+            </choiceInput>
+          </answer>.  This means that in the year that elapses from <m><math simplify>2025+$c+25</math></m> to <m><math simplify>2025+$c+26</math></m>, we expect the amount of money in the investment account to grow by approximately <answer name="APofcp25again" allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award>$$AP($c+25)</award></answer> dollars.
+      </p>
+      <feedback condition="$rounded2">Make sure to use at least 2 places after the decimal point.</feedback>
+    </li>
+
+  </ol>

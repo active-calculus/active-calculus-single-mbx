@@ -1,0 +1,74 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="a" from = "300" to = "500" step = "50"/>
+  <selectFromSequence name="b" from = "25" to = "45" step = "5"/>
+  <selectFromSequence name="c" from = "475" to = "625" step = "25" exclude="$a"/>
+
+  <math name="correctAns1"> L^2 = $a^2 + h^2 </math>
+  <math name="correctAns1a"> L^2 - $a^2 = h^2 </math> 
+  <math name="correctAns2"> 2*L*dL/dt = 2*h*dh/dt </math>
+  <math name="correctAns2a"> L*dL/dt = h*dh/dt </math>
+  <math name="correctAns3"> sqrt($c^2-$a^2)/$c * $b </math>
+  
+</setup>
+
+<p> 
+  A rocket is launched and a laser range finder follows the path of the rocket. The range finder is located on the ground $a feet from the point where the rocket was launched. The rocket rises vertically and does so at a constant rate of $b feet per second. We want to find the instantaneous rate at which the distance between the laser range finder and the rocket is changing at the instant the laser range finder reads <q>$c feet</q>.
+</p>
+
+<p>
+  Draw several pictures that show the rocket at different points in time.
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Let <m>L</m> represent the distance from the laser finder to the rocket and <m>h</m> the height of the rocket.  Find an equation that relates <m>L</m> and <m>h</m>.
+      </p>  
+      <p>
+        An equation (not involving any square roots) that relates <m>L</m> and <m>h</m> is <mathInput name="ans1"/><answer symbolicEquality simplifyOnCompare ><award><when> $ans1=$correctAns1 or $ans1=$correctAns1a </when> </award></answer>.
+      </p>  
+    </li>
+    <li>
+      <p>
+        Now that we have related <m>L</m> and <m>h</m>, we can determine how the rate at which <m>L</m> is changing, <m>\frac{dL}{dt}</m>, is related to the rate at which <m>h</m> is changing, along with <m>L</m> and <m>h</m> themselves.  
+      </p>
+      <p>
+        Differentiate with respect to <m>t</m> on both sides of the equation you found in (a) to find a new equation that relates <m>\frac{dL}{dt}</m> and <m>\frac{dh}{dt}</m>, along with possibly <m>L</m> and <m>h</m>.
+      </p>
+      <p>
+        An equation that relates <m>\frac{dL}{dt}</m> and <m>\frac{dh}{dt}</m> is <mathInput name="ans2"/><answer symbolicEquality simplifyOnCompare ><award><when> $ans2=$correctAns2 or $ans2=$correctAns2a </when> </award></answer>.
+      </p>  
+    </li>
+    <li>
+      <p>
+        Use your work so far to determine the instantaneous rate at which the distance between the laser range finder and the rocket is changing at the instant the laser range finder reads <q>$c feet</q>
+      </p>
+      <p>
+        <m>\left.\frac{dL}{dt}\right|_{L = $c} = </m> <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award> $correctAns3 </award></answer>, and the units on this quantity are <answer><choiceInput inline>
+            <choice>?</choice>
+            <choice>feet</choice>
+            <choice credit="1">feet per second</choice>
+            <choice>feet per second per second</choice>
+            <choice>seconds</choice>
+          </choiceInput></answer>.
+      </p>  
+    </li>  
+  </ol>
+</p>  
+    
+  

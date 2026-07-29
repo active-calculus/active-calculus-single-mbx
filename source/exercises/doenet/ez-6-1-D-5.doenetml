@@ -1,0 +1,117 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+
+  <math name="x1">0</math>
+  <math name="x2">4</math>
+  <math name="y1">0</math>
+  <math name="y2">2</math>
+  
+  <function name="f" styleNumber="1"> 1/8 * x^2</function>
+  <curve name="g" styleNumber="2">
+    <function variable="t">t^2</function>
+    <function variable="t">t</function>
+  </curve>
+  <point name="P" draggable="false" styleNumber="5">(4,2)</point>
+  <point name="Q" draggable="false" styleNumber="5">(0,0)</point>
+
+  <function name="fX">sqrt(x)</function>
+  <function name="gX">x^2/8</function>
+  <function name="pY" variable="y">sqrt(8*y)</function>
+  <function name="qY" variable="y">y^2</function>  
+  
+  <math name="intValue">8/3</math>
+
+</setup>  
+
+  <p>
+    Consider the curves given by
+    <me>x = y^2, \ y = \frac{1}{8}x^2</me>
+    which are shown in the following graph.
+  </p>
+
+<graph size="medium" xmin="-1" xmax="5" ymin="-1" ymax="4" showNavigation="false" fixAxes="true" displayXAxis="false" displayYAxis="false">
+  <shortDescription>a plot of the two given curves</shortDescription>
+  $f
+  $g
+  $P
+  $Q
+  <label anchor="(2,1.7)" fixed><m>x=y^2</m></label>
+  <label anchor="(3,0.7)" fixed><m>y = \frac{1}{8}x^2</m></label>
+  <line through="(0,0) (0,1)" styleNumber="5" fixed/>
+  <line through="(0,0) (1,0)" styleNumber="5" fixed/>
+</graph>  
+
+  <p> 
+    <ol marker="a.">
+      <li>
+        <p>
+          Use the graph and algebra appropriately to find the exact points of intersection between the curves.  State each intersection point as an ordered pair in the space below; if there is more than one, separate them with commas.  
+        </p>
+        <p><answer><label>the intersection points are:</label><mathList unordered>($x1,$y1) ($x2,$y2)</mathList></answer></p>
+      </li>
+
+      <li>
+        <p>
+          Observe that it is possible to find the exact area between the two curves in two different ways:  one that uses an integral with respect to <m>x</m>, and another that uses an integral with respect to <m>y</m>.
+        </p>
+        <p> 
+          If we use vertical rectangles and integrate with respect to <m>x</m>, the rectangles have height <m>f(x) - g(x)</m> where 
+          <answer><label><m>f(x) = </m></label>$fX</answer>,
+          <answer><label><m>g(x) = </m></label>$gX</answer>,
+          and the rectangles have width <answer><choiceInput inline>
+            <shortDescription>dx or dy</shortDescription>
+            <choice>?</choice>
+            <choice credit="1">dx</choice>
+            <choice>dy</choice>
+          </choiceInput></answer>
+        </p>
+        <p>
+          Thus, the area, <m>A</m>, between the curves is given by the integral 
+          <me>
+            A = \int_a^b [f(x)-g(x)] \, dx
+          </me>
+          where 
+          <m>a = </m><mathInput name="aEntered"><shortDescription>a value</shortDescription></mathInput>, <m>b = </m><mathInput name="bEntered"><shortDescription>b value</shortDescription></mathInput>, and <m>f(x)-g(x) = </m><mathInput name="fmgEntered"><shortDescription>f minus g</shortDescription></mathInput> <answer forceSmallCheckWorkButton><shortDescription>check for previous three inputs</shortDescription><award><when>$aEntered=$x1 and $bEntered=$x2 and $fmgEntered=$fX-$gX </when></award></answer>
+        </p>
+      </li>
+      <li>
+        <p> 
+          If we instead use horizontal rectangles and integrate with respect to <m>y</m>, the rectangles have width <m>p(y) - q(y)</m> where <answer><label><m>p(y) = </m></label>$pY</answer>, <answer><label><m>q(y) = </m></label>$qY</answer>, and the rectangles have width <answer><choiceInput inline>
+            <shortDescription>dx or dy</shortDescription>
+            <choice>?</choice>
+            <choice>dx</choice>
+            <choice credit="1">dy</choice>
+          </choiceInput></answer>
+        </p>
+        <p>
+          Thus, the area, <m>A</m>, between the curves is also given by the integral 
+          <me>
+            A = \int_c^d [p(y)-q(y)] \, dy
+          </me>
+          where 
+          <m>c = </m><mathInput name="cEntered"><shortDescription>c value</shortDescription></mathInput>, <m>d = </m><mathInput name="dEntered"><shortDescription>d value</shortDescription></mathInput>, and <m>p(y)-q(y) = </m><mathInput name="pmqEntered"><shortDescription>p minus q</shortDescription></mathInput> <answer forceSmallCheckWorkButton><shortDescription>check box for previous 3 inputs</shortDescription><award><when>$cEntered=$y1 and $dEntered=$y2 and $pmqEntered=$pY-$qY </when></award></answer>
+        </p>
+      </li>
+      <li>
+        <p>
+          Finally, choose one of the two integrals you found above and evaluate it to find the resulting value of the area, <m>A</m>, below.  Report your result to an accuracy of at least <m>0.0001</m>.
+        </p>
+        <p>
+          <answer name="AEntered" allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><label><m>A = </m></label>$intValue</answer>
+        </p>  
+      </li>
+    </ol>
+  </p>

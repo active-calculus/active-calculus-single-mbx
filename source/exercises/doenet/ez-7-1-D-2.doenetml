@@ -1,0 +1,61 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+ <setup>
+  <selectFromSequence name = "a" from = "2" to = "8" step = "2"/>
+  <selectFromSequence name = "C" from = "2" to = "8" step = "1" exclude="$a/2"/>
+  <selectFromSequence name = "b" from = "2" to = "8" step = "1" exclude="$a/2 $C"/>
+  <selectFromSequence name = "d" from = "2" to = "8" step = "1" exclude="$a/2 $b $C"/>
+  <selectFromSequence name = "r" from = "2" to = "8" step = "1" exclude="$a/2 $b $C $d"/>
+ </setup>
+
+<p>
+  Consider the differential equation
+  <me>
+    \frac{dy}{dt} = $a t y
+  </me>
+</p>
+<p>  
+  <ol marker="a.">
+    <li>
+      <p>
+        For each of the following functions, use substitution into the differential equation to determine whether the function is or is not a solution to <m>\frac{dy}{dt} = $a t y.</m>  Then, check all of the boxes that correspond to solutions.
+      </p>
+      <answer selectMultiple><choiceInput>
+        <choice><m>y = <math simplify>$a/2*t^2</math>+$C</m></choice>
+        <choice><m>y = e^{$a t^2}</m></choice>
+        <choice credit="1"><m>y = $b e^{<math simplify>$a/2*t^2</math>}</m></choice>
+        <choice><m>y = $b e^{<math simplify>$a/2*t^2</math>}+$C</m></choice>
+        <choice><m>y = <math simplify>$a/2*t^2</math>-$d</m></choice>
+        <choice credit="1"><m>y = -$d e^{<math simplify>$a/2*t^2</math>}</m></choice>
+        <choice><m>y = -$d e^{<math simplify>$a/2*t^2</math>} - $C</m></choice>
+      </choiceInput>
+      </answer>
+    </li>
+    <li>
+      <p>
+        Determine the value(s) of <m>C</m> for which <m>y = C e^{<math simplify>$a/2*t^2</math>}</m> is a solution to the initial value problem
+        <me>
+          \frac{dy}{dt}  = $a t y, \ \ y(0) = $r
+        </me>
+      </p>
+      <p>
+        If there is more than one such value of <m>C</m>, separate your answers with commas; if there are no values of <m>C</m>, enter <q>none</q>.
+      </p>
+      <p>
+        <m>C = </m> <mathInput name="IVPsolnConst" /><answer><award><when>$IVPsolnConst=$r</when></award></answer>
+      </p>
+    </li>
+  </ol>
+</p>

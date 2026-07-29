@@ -1,0 +1,217 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- initial draft by Hannah Burson - at the 2024 Doenet workshop -->
+<!-- modified by Matt Boelkins and Chrissy Safranski -->
+
+  <p>
+    Suppose that <m>f</m> is the function given by the graph below and that <m>a</m> and <m>a+h</m> are the input values as labeled on the <m>x</m>-axis.
+    Use the provided graph to answer the following questions.
+  </p>
+
+  <setup>
+    <function name="f"> 0.1*x*(x+2)*(x-3) + 2</function>
+    <boolean name="showLabels">True</boolean>
+    <boolean name="showTriangle">False</boolean>
+
+    <function name="fhack">1</function>
+  </setup>
+
+
+  <graph name="g" showNavigation="false" xmin="-1" xmax="5" ymin="-2" ymax="6" displayXAxis="false" displayYAxis="false" showBorder="false" fixAxes="true">
+    <shortDescription>graph of a function with two points to drag onto the specified locations</shortDescription>
+    $f
+    <label anchor="(4,$$f(4)-0.5)" fixed><m>f</m></label>
+    <lineSegment name="tickmarka" endpoints="(1,0.12) (1,-0.12)" styleNumber="5" draggable="false" endpointsDraggable="false" />
+    <label anchor="(1,-0.3)" draggable="false"><m>a</m></label>
+    <lineSegment name="tickmarkaph" endpoints="(3.5,0.12) (3.5,-0.12)" styleNumber="5" draggable="false" endpointsDraggable="false" />
+    <label anchor="(3.5,-0.3)" draggable="false"><m>a+h</m></label>
+    <line name="xAxis" draggable="false" styleNumber="5">y = 0</line>
+    <lineSegment name="yAxis" draggable="false" styleNumber="5" endpoints="(0,6) (0,-1)" />
+
+
+    <point styleNumber="2" coords="(1.5,-1)" name="fa" showCoordsWhenDragging="false" draggable="$showLabels" labelPosition="lowerLeft">
+        <attractTo threshold="0.15"><point>(1,$$f(1))</point><point>(3.5,$$f(3.5))</point></attractTo>
+      <!-- <label name="fa1" hide="$showLabels"> (a,f(a)) </label> -->
+      <!-- I think adding the line segment shows it better, plus hiding the label doesn't work with rendering math, so the text looks small and odd. I reported a similar issue on the forum). ConditionalContent would likely work if we wanted to go back to just the label. -->
+    </point>
+
+    <point styleNumber="2" coords="(2.5,-1)" name="faph" showCoordsWhenDragging="false" draggable="$showLabels" labelPosition="lowerRight">
+        <attractTo threshold="0.15"><point>(1,$$f(1))</point><point>(3.5,$$f(3.5))</point></attractTo>
+      <!-- <label name="fa2" hide="$showLabels"> (a+h,f(a+h)) </label> -->
+      <!-- I think adding the line segment shows it better, plus the label doesn't work in math (because of the hide? I reported a similar issue on the forum), so the text looks small and odd. -->
+    </point>
+
+
+      <group name="Triangle" hide="not $showTriangle">
+        <point name="P1" showCoordsWhenDragging="false" styleNumber="3">(-0.75,-0.5)
+            <attractTo threshold="0.15"> $fa $faph <point>(3.5,$$f(1))</point> <point>(1,$$f(3.5))</point> </attractTo>
+        </point>
+        <point name="P2" showCoordsWhenDragging="false" styleNumber="3"> (-0.5,-0.1)
+            <attractTo threshold="0.15">  $fa $faph <point>(3.5,$$f(1))</point> <point>(1,$$f(3.5))</point> </attractTo>
+        </point>
+        <point name="P3" showCoordsWhenDragging="false" styleNumber="3"> (-0.25, -0.5)
+            <attractTo threshold="0.15">  $fa $faph <point>(3.5,$$f(1))</point> <point>(1,$$f(3.5))</point> </attractTo>
+        </point>
+      <triangle name="T1" vertices="$P1 $P2 $P3" styleNumber="3" showCoordsWhenDragging="false" />
+        <lineSegment name="tickmarkfa" endpoints="(-0.12,$$f(1)) (0.12,$$f(1))" styleNumber="5" draggable="false" endpointsDraggable="false" />
+        <lineSegment name="heightfa" endpoints="(0, $$f(1)) (5, $$f(1))" styleNumber="5" lineStyle="dashed" draggable="false" endpointsDraggable="false" />
+    <label anchor="(-0.5, $$f(1))" draggable="false"><m>f(a)</m></label>
+    <lineSegment name="tickmarkfaph" endpoints="(-0.12, $$f(3.5)) (0.12, $$f(3.5))" styleNumber="5" draggable="false" endpointsDraggable="false" />
+    <lineSegment name="heightfaph" endpoints="(0, $$f(3.5)) (5, $$f(3.5))" styleNumber="5" lineStyle="dashed" draggable="false" endpointsDraggable="false" />
+    <label anchor="(-0.5,$$f(3.5))" draggable="false"><m>f(a+h)</m></label>
+    </group>
+
+    <group name="segments" hide="not $triangleRight.creditAchieved=1">
+      <lineSegment name="segment1" endpoints="(0,$$f(1)) (0,$$f(3.5))" styleNumber="5" endpointsDraggable="false" showCoordsWhenDragging="false" lineWidth="4"/>
+      <lineSegment name="segment2" endpoints="($$fhack(1),0) (3.5,0)" styleNumber="5" endpointsDraggable="false" showCoordsWhenDragging="false" lineWidth="4"/>
+      <lineSegment name="widtha" endpoints="(1,0) (1, 6)" styleNumber="5" lineStyle="dashed" draggable="false" endpointsDraggable="false" />
+      <lineSegment name="widthaph" endpoints="(3.5,0) (3.5, 6)" styleNumber="5" lineStyle="dashed" draggable="false" endpointsDraggable="false" />
+    </group>
+
+  </graph>
+
+
+
+  <p>
+    <ol marker="a.">
+      <li>
+        <p>
+          Drag the two red points so that they are located at
+          <m>(a,f(a))</m> and <m>(a+h, f(a+h))</m> on the graph of <m>f</m>.
+        </p>
+
+        <answer name="doneDragging" matchPartial="true" unorderedCompare>
+          <award>
+            <when>
+              <pointList>$fa $faph</pointList>
+              = <pointList>(1,$$f(1)) (3.5 ,$$f(3.5))</pointList>
+            </when>
+          </award>
+        </answer>
+
+        <triggerSet triggerWhen="$doneDragging.creditAchieved=1">
+          <updateValue type="boolean" target="$showTriangle" newValue="True" />
+          <updateValue type="boolean"  target="$showLabels" newValue="False" />
+        </triggerSet>
+
+      </li>
+
+
+      <li>
+        <p>
+          Notice that a small draggable triangle has appeared in Quadrant III. Drag the three vertices of this triangle to construct a right triangle whose hypotenuse is the line segment from
+          <m>(a,f(a))</m> to <m>(a+h,f(a+h))</m>.
+        </p>
+
+        <setup>
+          <point name="V1">(1,$$f(1))</point>
+          <point name="V2">(3.5,$$f(3.5))</point>
+          <point name="V3">(3.5,$$f(1))</point>
+          <point name="V4">(1,$$f(3.5))</point>
+          <boolean name="triangleLower"><mathList unordered>$T1.vertices</mathList>=<mathList unordered>$V1 $V2 $V3</mathList> </boolean>
+          <boolean name="triangleUpper"><mathList unordered>$T1.vertices</mathList>=<mathList unordered>$V1 $V2 $V4</mathList> </boolean>
+        </setup>
+
+
+        <answer name="triangleRight">
+          <award>
+            <when> $triangleLower or $triangleUpper</when>
+          </award>
+        </answer>
+
+
+
+
+        <p>
+          What are the lengths of the legs of this triangle (in either order)?</p>
+        <p>
+        <mathInput name="leg1" minWidth="50" forAnswer="$legs"><shortDescription>length of the first leg</shortDescription></mathInput> and <mathInput name="leg2" minWidth="50" forAnswer="$legs"><shortDescription>length of the first leg</shortDescription></mathInput>
+        <answer name="legs" unorderedCompare matchPartial>
+          <award>
+            <when><mathList>$leg1 $leg2</mathList> = <mathList>h f(a+h)-f(a)</mathList></when>
+          </award>
+        </answer>
+</p>
+
+
+      </li>
+
+      <li>
+        <p>
+          What is the slope of the line that connects the points
+          <m>(a,f(a))</m> and <m>(a+h, f(a+h))</m>?
+        </p>
+
+
+        <answer name="slopevalue">
+          <mathInput name="slope" minWidth="30" prefill="/"><shortDescription>formula for slope connecting the two points</shortDescription></mathInput>
+          (f(a+h)-f(a))/h
+        </answer>
+
+
+      </li>
+      <li>
+        <p>
+          In the algebraic expression for <m>AV_{[a,a+h]} </m>, what does <m>h</m> represent?
+        </p>
+        <answer>
+          <choiceInput inline="true"><shortDescription>meaning of h in the formula for average rate of change</shortDescription>
+            <choice>the change in <m>f</m> on the interval <m>[a, a+h]</m></choice>
+            <choice>the height of the function at <m>x = a</m></choice>
+            <choice credit="1">the change in <m>x</m> on the interval <m>[a, a+h]</m></choice>
+            <choice>the average rate of change of the function on the interval <m>[a, a+h]</m></choice>
+          </choiceInput></answer>
+
+      </li>
+
+      <li>
+        <p>
+          By choosing appropriate words from the drop-down menus, complete the following sentence to explain how the average rate of change of the function on a given interval and the slope of a related line are connected.
+        </p>
+        <p>
+          The average rate of change of a function <m>f</m> on an interval <m>[a,a + h]</m> is defined to be
+          <choiceInput name="r1" inline><shortDescription>notation that means average rate of change</shortDescription>
+            <choice>?</choice>
+            <choice><m>\Delta x</m></choice>
+            <choice><m>\Delta f</m></choice>
+            <choice><m>\frac{\Delta x}{\Delta f}</m></choice>
+            <choice><m>\frac{\Delta f}{\Delta x}</m></choice>
+          </choiceInput>
+          on the interval, which is measured by the quantity
+          <choiceInput name="r2" inline><shortDescription>formula calculating the average rate of change</shortDescription>
+            <choice>?</choice>
+            <choice><m>f(a+h)-f(a)</m></choice>
+            <choice><m>(a+h) - a</m></choice>
+            <choice><m>\frac{f(a+h)-f(a)}{(a+h) - a}</m></choice>
+            <choice><m>\frac{(a+h) - a}{f(a+h)-f(a)}</m></choice>
+          </choiceInput>, which is the same as
+          <choiceInput name="r3" inline>
+            <shortDescription>meaning of the formula calculating the average rate of change</shortDescription>
+            <choice>?</choice>
+            <choice>the distance</choice>
+            <choice>the slope of the line</choice>
+            <choice>the vertical change</choice>
+            <choice>the horizontal change</choice>
+          </choiceInput>
+          between the points <m>(a,f(a))</m> and <m>(a+h,f(a+h))</m>.
+        </p>
+        <p>
+          <answer><award><when>
+            $r1.selectedIndices=5 and $r2.selectedIndices=4 and $r3.selectedIndices=3
+          </when></award></answer>
+        </p>
+      </li>
+    </ol>
+  </p>

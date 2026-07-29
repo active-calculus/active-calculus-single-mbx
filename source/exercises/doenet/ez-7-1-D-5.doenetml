@@ -1,0 +1,97 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name = "k" from = "0.1" to = "0.2" step = "0.1"/>
+  <selectFromSequence name = "A" from = "110" to = "130" step = "10"/>
+  <selectFromSequence name = "C" from = "25" to = "35" step = "5"/>
+  <selectFromSequence name = "eq" from = "65" to = "75" step = "5"/>
+  <selectFromSequence name = "d" from = "5" to = "8" step = "1"/>
+</setup>
+
+<p>
+  For an object in a room with surrounding temperature <m>$eq</m> degrees Fahrenheit, it turns out that the object's temperature at time <m>t</m> (in minutes) is modeled by the differential equation
+  <me>
+    \frac{dF}{dt} = -$k (F - $eq)
+  </me>
+  Use this differential equation to respond to the following prompts
+</p>
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        For each of the following functions, use substitution into the differential equation to determine whether the function is or is not a solution to <m>\frac{dF}{dt} = -$k (F - $eq)</m>.  Then, check all of the boxes that correspond to solutions.
+      </p>
+      <answer selectMultiple matchPartial><choiceInput>
+        <shortDescription>several possible solution formulas</shortDescription>
+        <choice><m>F(t) = $k t^2 - <math simplify>$k * $eq</math>t</m></choice>
+        <choice credit="1"><m>F(t) = $eq</m></choice>
+        <choice><m>F(t) = -$C e^{-$k t} + $d</m></choice>
+        <choice credit="1"><m>F(t) = -$C e^{-$k t} + $eq</m></choice>
+        <choice credit="1"><m>F(t) = $A e^{-$k t} + $eq</m></choice>
+        <choice><m>F(t) = $A e^{-$k t} - $d</m></choice>
+        <choice><m>F(t) = $C e^{$k t} + $eq</m></choice>
+      </choiceInput>
+      </answer>
+    </li>
+    <li>
+      <p>
+        Look at each of the correct answers to part (a) and think about what they have in common.  Complete the following sentence to explain why one common feature of the solutions to the differential equation makes sense.
+      </p>
+      <p>
+        Since <m>e^{-$k t}</m> approaches <choiceInput name="b1" inline>
+          <shortDescription>0, 1, or inf</shortDescription>
+          <choice>?</choice>
+          <choice>0</choice>
+          <choice>1</choice>
+          <choice>infinity</choice>
+        </choiceInput>
+        as <m>t</m> increases without bound, it follows that each of the three correct solutions from (a) approaches <choiceInput name="b2" inline>
+          <shortDescription>0, room temp, or inf</shortDescription>
+          <choice>?</choice>
+          <choice>0</choice>
+          <choice>$eq</choice>
+          <choice>infinity</choice>
+        </choiceInput> as time goes on, and this makes sense because the room temperature being modeled is <choiceInput name="b3" inline>
+          <shortDescription>0, room temp, or a value less than room temp</shortDescription>
+          <choice>?</choice>
+          <choice>$eq</choice>
+          <choice>0</choice>
+          <choice>$C</choice>
+        </choiceInput> degrees Fahrenheit.
+      </p>
+      <p>
+        <answer matchPartial><award><when>$b1.selectedIndices=2 and $b2.selectedIndices=3 and $b3.selectedIndices=2</when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Determine the value(s) of <m>C</m> for which <m>F = C e^{-$k t} + $eq</m> is a solution to the initial value problem
+        <me>
+          \frac{dF}{dt} = -$k (F - $eq), \ \ F(0) = <math simplify>$eq - $d</math>
+        </me>
+      </p>
+      <p>
+        If there is more than one such value of <m>C</m>, separate your answers with commas; if there are no values of <m>C</m>, enter <q>none</q>.
+      </p>
+      <p>
+        <m>C = </m> <mathInput name="IVPsolnConst" >
+          <shortDescription>
+            value of C
+          </shortDescription>
+        </mathInput><answer forceSmallCheckWorkButton><award><when>$IVPsolnConst=-$d</when></award></answer>
+      </p>
+    </li>
+  </ol>
+</p>

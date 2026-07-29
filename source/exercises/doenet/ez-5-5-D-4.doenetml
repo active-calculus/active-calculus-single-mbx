@@ -1,0 +1,82 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+  <setup>
+    <selectFromSequence name="a" from="2" to="5" step="1"/>
+    <selectFromSequence name="b" from="2" to="5" step="1" exclude="$a"/>
+    <selectFromSequence name="c" from="4" to="7" step="1" exclude="$a $b"/>
+    <selectFromSequence name="d" from="4" to="7" step="1" exclude="$a $b $c"/>
+
+    <number name="P">($a^2-$c*$a+$d)/($a^2+$b^2)</number>
+    <number name="Q">($d-$P*($c^2+$b^2))/($c*($c-$a)) - $R/$c</number>   
+    <number name="R">($d-$P*$b^2)/(-$a)</number>
+
+    <mathList name="PFdecomp">$P/(x-$a) $Q/(x-$b)</mathList>
+    <mathList name="PFdecompEntered">$PF1 $PF2</mathList>
+    
+    <function name="f" symbolic="false" >
+      (x^2 - $c*x+$d)/((x-$a)*(x^2+$b^2))
+    </function> 
+
+    <function name="F" symbolic="false" >
+      $P*ln(abs(x-$a)) + $Q/2*ln(abs(x^2+$b^2)) + $R/$b*atan(x/$b)
+    </function>   
+
+    <function name="F1" symbolic="false" >
+      $P*ln(abs(x-$a)) + $Q/2*ln(x^2+$b^2) + $R/$b*atan(x/$b)
+    </function>  
+
+    <boolean name="correctPFfound">$PFfound.creditAchieved=1</boolean>
+    
+  </setup>
+
+<p>
+  Consider the indefinite integral
+  <me>
+    \int \frac{x^2 - $c x + $d}{(x-$a)(x^2+<math simplify>$b^2</math>)} \, dx
+  </me>
+  We want to evaluate this integral using the method of partial fractions.
+</p>
+ 
+
+<p>
+  First, the partial fraction decomposition of the integrand has the following form:
+  <me>
+    \frac{x^2 - $c x + $d}{(x-$a)(x^2+<math simplify>$b^2</math>)} = \frac{A}{x-$a} + \frac{Bx+C}{x^2 + <math simplify>$b^2</math>}
+  </me>
+  Determine the values of <m>A</m>, <m>B</m>, and <m>C</m> and enter them in the spaces provided
+</p>  
+
+<p>
+  <m>A = </m> <mathInput minWidth="40" name="Aentered"/>, <m>B = </m>  <mathInput minWidth="40" name="Bentered"/>, <m>C = </m> <mathInput minWidth="40" name="Centered"/> <answer name="PFfound" matchPartial><award><when>$Aentered = $P and $Bentered = $Q and $Centered = $R</when></award></answer>
+</p>  
+
+<p hide="$correctPFfound">
+  (<em>Once you have the correct values of <m>A</m>, <m>B</m>, and <m>C</m> above, additional prompts will appear.</em>)
+</p>
+<p hide="not $correctPFfound">
+  <p>
+    By writing <m>\frac{Bx+C}{x^2 + <math simplify>$b^2</math>} = \frac{Bx}{x^2 + <math simplify>$b^2</math>} + \frac{C}{x^2 + <math simplify>$b^2</math>}</m> and using the numerical values for <m>A</m>, <m>B</m>, and <m>C</m> from above, we now have three integrals to evaluate in order to evaluate the full original integral.  That is,
+  </p>
+  <p>
+    <m>\displaystyle \int \frac{x^2 - $c x + $d}{(x-$a)(x^2+<math simplify>$b^2</math>)} dx = \int \frac{$P}{x-$a} dx + \int \frac{$Q x}{x^2 + <math simplify>$b^2</math>} dx + \int \frac{$R}{x^2 + <math simplify>$b^2</math>}  </m>
+  </p>  
+  <p>
+    Evaluate each of the three integrals appropriately and fill in the results below to find the overall result of evaluating the original indefinite integral.
+  </p>
+  <p>
+    <m>\displaystyle \int \frac{x^2 - $c x + $d}{(x-$a)(x^2+<math simplify>$b^2</math>)} dx = </m>  <mathInput name="int1"/> <m> \displaystyle +  </m> <mathInput name="int2"/> <m> \displaystyle  + </m> <mathInput name="int3"/> <m> + \, C \, </m> <answer><award><when>((<math>$int1 + $int2 + $int3</math>) = $F) or ((<math>$int1 + $int2 + $int3</math>) = $F1)</when></award></answer>
+  </p> 
+
+</p>

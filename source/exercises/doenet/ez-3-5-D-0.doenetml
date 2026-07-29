@@ -1,0 +1,92 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+
+  <selectFromSequence name = "p" from = "-2" to = "0" step = "1" exclude="0"/>
+  <selectFromSequence name = "q" from = "2" to = "4" step = "1" exclude="abs($p)"/>
+
+  <selectFromSequence name = "m1" from = "-0.75" to = "0.75" step = "0.25" exclude="-0.25 0 0.25"/>
+  <selectFromSequence name = "x1" from = "$p" to = "2" step = "1" exclude="0 $p $q"/>
+  <selectFromSequence name = "x2" from = "-2" to = "-1" step = "1"/>
+  <selectFromSequence name = "y1" from = "-1" to = "1" step = "1"/>
+
+  <number name="m2">-$m1-0.25</number>
+
+  <piecewiseFunction name="f" symbolic="false" styleNumber="1">
+    <function domain="(-infinity,$x1)">$m1*(x-$x1)+$y1</function>
+    <function domain="[$x1,infinity)">$m2*(x-$x1)+$y1</function>
+  </piecewiseFunction>
+
+  <function name="fextrema" domain="[$p,$q]">$f</function>
+
+  <piecewiseFunction name="fP" symbolic="false"  styleNumber="3">
+    <function domain="(-infinity,$x1)">$m1</function>
+    <function domain="[$x1,$x1]">undefined</function>
+    <function domain="($x1,infinity)">$m2</function>
+  </piecewiseFunction>
+
+  <math name="crNum">$x1</math>
+
+</setup>
+
+<p>
+    Let <m>f</m> be the piecewise linear function given by the graph below.
+</p>
+      <graph xmin="-5" xmax="5" ymin="-5" ymax="5" size="medium" grid="true" showNavigation="false" fixAxes="true"> $f
+          <label fixLocation anchor="($x1+0.5,$$f($x1)-0.25)"><m>f</m></label>
+      </graph>
+
+<p>
+  Consider the function <m>f</m> on the interval <m>[$p,$q]</m>. Reasoning graphically, use calculus to find the exact absolute minimum and absolute maximum of <m>f</m> on this interval.
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Find all critical numbers of <m>f</m>.  If there is more than one critical number, enter them as a list separated by commas.  If there are none, enter <em>none</em>.
+      </p>
+      <p>
+        The critical number(s) of <m>f</m> are: <answer name="critnum"><label><m>x=</m></label> $crNum</answer>
+      </p>
+      <p>
+        The value of the function at the critical number is:
+      </p>
+      <p>
+        <m>f\big(</m><mathInput disabled minWidth="15"><conditionalContent condition="$critnum.creditAchieved=1">$x1</conditionalContent></mathInput><m>\big) =</m><answer allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$$f($x1)</answer>
+      </p>
+        <!-- </div> -->
+    </li>
+    <li>
+      <p>
+        The values of the function at the respective endpoints of the interval are:
+      </p>
+      <p>
+        <m>f($p) =</m><answer allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$$f($p)</answer> and <m>f($q) =</m><answer allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$$f($q)</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        The absolute minimum value of <m>f</m> on <m>[$p,$q]</m> is <answer allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$fextrema.globalMinimum[2]</answer>
+      </p>
+      <p>
+        The absolute maximum value of <m>f</m> on <m>[$p,$q]</m> is <answer allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$fextrema.globalMaximum[2]</answer>
+      </p>
+    </li>
+  </ol>
+</p>
+
+
+  

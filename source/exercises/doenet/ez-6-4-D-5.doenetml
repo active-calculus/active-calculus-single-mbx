@@ -1,0 +1,115 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="r" from="4" to="6" step="1"/>
+  <selectFromSequence name="h" from="5" to="8" step="1" exclude="$r"/>
+  <selectFromSequence name="drop" from="0.5" to="2.5" step="1"/>
+
+  <math simplify name="d">$h - $drop</math>
+  
+  <number name="a">9.81</number>
+
+  <function name="w">$r - $r/$h*x</function>
+  
+  <function name="depth">x-$drop</function>
+  <function name="A">$w*Dx</function>
+  <function name="P">9.81*1000*$depth</function>
+  <function name="f">$P*$A</function>
+  <function name="fNoDx">9.81*1000*($r - $r/$h*x)*(x-$drop)</function>
+  
+  <function name="F">9.81*1000*(-$r/(3*$h)*x^3 + ($h*$r+$r*$drop)/(2*$h)*x^2 - $r*$drop*x)</function>
+
+  <math name="Force" simplify>$$F($h)-$$F($drop)</math>
+
+
+</setup>  
+  
+    <p>
+      A water tank that is a trough with triangular ends (as pictured below) has its top level with the surface of the ground.  Assume that the width of the top of the triangle is <m>$r</m> meters, the tank's depth is <m>$h</m> meters, and the length of the tank (perpendicular to the triangular ends) is <m>$L</m> meters.  Suppose the tank is filled with water to a depth of <m>$d</m> meters. Recall that the mass density of water is <m>1000</m> kg per cubic meter and that the gravitational constant is <m>g = 9.81</m> N/kg.
+    </p>
+    <image width="350px" source="https://activecalculus.org/single2e/external/images/6_4_Act2Trough.svg"/>
+    <p>
+      Respond to the following prompts in order to ultimately determine how much hydrostatic force is exerted against one of the triangular ends.
+    </p>
+
+    <p>
+      <ol marker="a.">
+        <li>
+          <p>
+            Construct a labeled a picture of the tank, positioned on coordinate axes as shown in the figure above.  Sketch a representative slice of the water along one end of the tank, labeling its location along the <m>x</m>-axis and its thickness.
+          </p>
+          <p>
+            Notice that each slice is rectangular and that as the surface level of the water drops, the width of each slice changes.  Find a function <m>w(x)</m> whose value is the width of slice located at depth <m>x</m>.
+          </p>
+          <p>
+            <m>w(x) = </m><mathInput name="wEntered"/> 
+            <answer><award><when>$wEntered=$w</when>
+            </award></answer>
+          </p>
+        </li>
+        <li>
+          <p>
+            Find formulas for each of the following quantities:  <m>d(x)</m>, the depth of a representative slice below the surface of the water at location <m>x</m>; <m>A(x)</m>, the area of the corresponding representative slice on one of the smaller triangular ends; and <m>P(x)</m>, the pressure that the water exerts on the representative slice.   Wherever you need the notation <q><m>\Delta x</m></q>, enter <q><m>Dx</m></q> instead.
+          </p>
+          <p>
+            <m>d(x) = </m><mathInput name="dEntered"/> 
+            <answer><award><when>$dEntered=$depth</when>
+            </award></answer>
+          </p>
+          <p>
+            <m>A(x) = </m><mathInput name="AEntered"/> 
+            <answer><award><when>$AEntered=$A</when>
+            </award></answer>
+          </p>
+          <p>
+            <m>P(x) = </m><mathInput name="PEntered"/> 
+            <answer><award><when>$PEntered=$P</when>
+            </award></answer>
+          </p>
+          <p>
+            Finally, recall that a fixed depth, force is the product of pressure and area.  State a formula for the force exerted on the representative slice.
+          </p>
+          <p>
+            <m>F(x) = </m><mathInput name="fEntered"/> 
+            <answer><award><when>$fEntered=$f</when>
+            </award></answer>
+          </p>
+        </li>
+        <li>                 
+          <p>
+            State a definite integral whose value is the total force due to hydrostatic pressure that's exerted on one of the triangular ends of the tank.
+          </p>
+          <p>
+            lower limit of integration: <m>a = </m> <answer name="lower">$drop</answer>
+          </p>
+          <p>
+            upper limit of integration: <m>b = </m> <answer name="upper">$h</answer>
+          </p>
+  
+          <p>
+            Integral expression for the total force, <m>F</m>, on an end: 
+          </p>
+          <p>
+            <m>F = \displaystyle\int_{$lower}^{$upper}</m><mathInput name="int1" minWidth="100" /><m>dx \, </m><answer><award><when>$int1 = $fNoDx</when></award></answer> 
+          </p> 
+          <p>
+            Evaluating the integral to an accuracy of at least <m>0.0001</m>, the total force on one of end, <m>F</m>, is 
+          </p>     
+          <p>
+            <m>F = </m><mathInput name="intVal" minWidth="40" /> <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><award><when>$Force=$intVal </when></award></answer>
+          </p>
+        </li>
+      </ol>
+    </p>

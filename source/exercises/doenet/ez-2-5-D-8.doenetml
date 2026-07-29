@@ -1,0 +1,253 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+
+  <number name="x1">-3</number>
+  <number name="x2">-2</number>
+  <number name="x3">-1</number>
+  <number name="x4">0</number>
+  <number name="x5">1</number>
+  <number name="x6">2</number>
+  <number name="x7">3</number>
+
+  <selectFromSequence name="n1" from="-3" to="3"/>
+  <selectFromSequence name="n2" from="-3" to="3" exclude="$n1"/>
+  <selectFromSequence name="n3" from="-3" to="3" exclude="$n1 $n2"/>
+  <selectFromSequence name="n4" from="-3" to="3" exclude="$n1 $n2 $n3"/>
+  <selectFromSequence name="n5" from="-3" to="3" exclude="$n1 $n2 $n3 $n4"/>
+  <selectFromSequence name="n6" from="-3" to="3" exclude="$n1 $n2 $n3 $n4 $n5"/>
+  <selectFromSequence name="n7" from="-3" to="3" exclude="$n1 $n2 $n3 $n4 $n5 $n6"/>
+
+  <selectFromSequence name="q1" from="-3" to="3"/>
+  <selectFromSequence name="q2" from="-3" to="3" exclude="$q1"/>
+  <selectFromSequence name="q3" from="-3" to="3" exclude="$q1 $q2"/>
+  <selectFromSequence name="q4" from="-3" to="3" exclude="$q1 $q2 $q3"/>
+  <selectFromSequence name="q5" from="-3" to="3" exclude="$q1 $q2 $q3 $q4"/>
+  <selectFromSequence name="q6" from="-3" to="3" exclude="$q1 $q2 $q3 $q4 $q5"/>
+  <selectFromSequence name="q7" from="-3" to="3" exclude="$q1 $q2 $q3 $q4 $q5 $q6"/>
+
+<!--
+  <number name="z1">2*$n1+3</number>
+  <number name="z2">2*$n2+3</number>
+  <number name="z3">2*$n3+3</number>
+  <number name="z4">2*$n4+3</number>
+  <number name="z5">2*$n5+3</number>
+  <number name="z6">2*$n6+3</number>
+  <number name="z7">2*$n7+3</number>
+
+  <math name="q1" simplify><mod>$z1 7</mod>+1</math>
+  <math name="q2" simplify><mod>$z2 7</mod>+1</math>
+  <math name="q3" simplify><mod>$z3 7</mod>+1</math>
+  <math name="q4" simplify><mod>$z4 7</mod>+1</math>
+  <math name="q5" simplify><mod>$z5 7</mod>+1</math>
+  <math name="q6" simplify><mod>$z6 7</mod>+1</math>
+  <math name="q7" simplify><mod>$z7 7</mod>+1</math>
+ -->
+
+  <selectFromSequence name="k" from="2" to="6"/>
+  <selectFromSequence name="b" from="2" to="4" exclude="$k"/>
+
+  <number name="scalar">$b*pi/12</number>
+
+  <function name="fP">$k*x-x^2</function>
+  <function name="gP">$k*cos($scalar*x)</function>
+
+</setup>
+<!--
+<p>
+n: $n1, $n2, $n3, $n4, $n5, $n6, $n7
+</p>
+
+<p>
+  q: $q1, $q2, $q3, $q4, $q5, $q6, $q7
+</p>
+-->
+
+<p>
+  Let <m>f</m> and <m>g</m> be differentiable functions whose values and first derivative values are given by the following table.
+</p>
+
+<tabular>
+  <row bottom="major">
+    <cell halign="center">
+      <m>x</m>
+    </cell>
+    <cell halign="center">
+      <m>$x1</m>
+    </cell>
+    <cell halign="center">
+      <m>$x2</m>
+    </cell>
+    <cell halign="center">
+      <m>$x3</m>
+    </cell>
+    <cell halign="center">
+      <m>$x4</m>
+    </cell>
+    <cell halign="center">
+      <m>$x5</m>
+    </cell>
+    <cell halign="center">
+      <m>$x6</m>
+    </cell>
+    <cell halign="center">
+      <m>$x7</m>
+    </cell>
+  </row>
+  <row bottom="minor">
+    <cell halign="center">
+      <m>f(x)</m>
+    </cell>
+    <cell halign="center">
+      <m>$n1</m>
+    </cell>
+    <cell halign="center">
+      <m>$n2</m>
+    </cell>
+    <cell halign="center">
+      <m>$n3</m>
+    </cell>
+    <cell halign="center">
+      <m>$n4</m>
+    </cell>
+    <cell halign="center">
+      <m>$n5</m>
+    </cell>
+    <cell halign="center">
+      <m>$n6</m>
+    </cell>
+    <cell halign="center">
+      <m>$n7</m>
+    </cell>
+  </row>
+  <row bottom="minor">
+    <cell halign="center">
+      <m>f'(x)</m>
+    </cell>
+    <cell halign="center">
+      <m>$$fP($x1)</m>
+    </cell>
+    <cell halign="center">
+      <m>$$fP($x2)</m>
+    </cell>
+    <cell halign="center">
+      <m>$$fP($x3)</m>
+    </cell>
+    <cell halign="center">
+      <m>$$fP($x4)</m>
+    </cell>
+    <cell halign="center">
+      <m>$$fP($x5)</m>
+    </cell>
+    <cell halign="center">
+      <m>$$fP($x6)</m>
+    </cell>
+    <cell halign="center">
+      <m>$$fP($x7)</m>
+    </cell>
+  </row>
+  <row bottom="minor">
+    <cell halign="center">
+      <m>g(x)</m>
+    </cell>
+    <cell halign="center">
+      <m>$q1</m>
+    </cell>
+    <cell halign="center">
+      <m>$q2</m>
+    </cell>
+    <cell halign="center">
+      <m>$q3</m>
+    </cell>
+    <cell halign="center">
+      <m>$q4</m>
+    </cell>
+    <cell halign="center">
+      <m>$q5</m>
+    </cell>
+    <cell halign="center">
+      <m>$q6</m>
+    </cell>
+    <cell halign="center">
+      <m>$q7</m>
+    </cell>
+  </row>
+  <row bottom="minor">
+    <cell halign="center">
+      <m>g'(x)</m>
+    </cell>
+    <cell halign="center">
+      <math displayDecimals="2">$$gP($x1)</math>
+    </cell>
+    <cell halign="center">
+      <math displayDecimals="2">$$gP($x2)</math>
+    </cell>
+    <cell halign="center">
+      <math displayDecimals="2">$$gP($x3)</math>
+    </cell>
+    <cell halign="center">
+      <math displayDecimals="2">$$gP($x4)</math>
+    </cell>
+    <cell halign="center">
+      <math displayDecimals="2">$$gP($x5)</math>
+    </cell>
+    <cell halign="center">
+      <math displayDecimals="2">$$gP($x6)</math>
+    </cell>
+    <cell halign="center">
+      <math displayDecimals="2">$$gP($x7)</math>
+    </cell>
+  </row>
+</tabular>
+
+<!-- I cut the function P from this exercise in S26 because the exercise was a bit tedious otherwise -->
+
+<p>
+  Let <m>M(x) = f(g(x))</m> <!-- , <m>P(x) = g(f(x))</m>, --> and <m>S(x) = g(g(x))</m>.  Determine each of the following derivative values.
+</p>
+  <ol marker="a.">
+    <li>
+      <p>
+        <m>M'($x3) = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award>$$fP($q3)*<round numDecimals="2">$$gP($x3)</round></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        <m>M'($x6) = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award>$$fP($q6)*<round numDecimals="2">$$gP($x6)</round></award></answer>
+      </p>
+    </li>
+<!-- 
+    <li>
+      <p>
+        <m>P'($x5) = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><round numDecimals="2">$$gP($n5)</round>*$$fP($x5)</award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        <m>P'($x2) = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><round numDecimals="2">$$gP($n2)</round>*$$fP($x2)</award></answer>
+      </p>
+    </li>
+-->
+    <li>
+      <p>
+        <m>S'($x1) = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><round numDecimals="2">$$gP($q1)</round>*<round numDecimals="2">$$gP($x1)</round></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        <m>S'($x4) = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><round numDecimals="2">$$gP($q4)</round>*<round numDecimals="2">$$gP($x4)</round></award></answer>
+      </p>
+    </li>
+  </ol>

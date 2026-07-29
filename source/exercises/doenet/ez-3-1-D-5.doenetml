@@ -1,0 +1,124 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  
+  <selectFromSequence name="a" from = "10000" to = "20000" step = "5000"/>
+  <selectFromSequence name="b" from = "500" to = "700" step = "35"/>
+  <selectFromSequence name="c" from = "12" to = "18" step = "2"/>
+
+  <math name="correctAns1"> A = pi * r^2 </math>
+  <math name="correctAns2"> dA/dt = 2*pi*r*dr/dt </math>
+  <math name="correctAns3"> 2*pi*$b*$c </math>
+
+  <math name="correctAns4"> h = 1/$a * r </math>
+  <math name="correctAns4a"> r = $a * h </math>
+  <math name="correctAns5"> dh/dt = 1/$a * dr/dt </math>
+  <math name="correctAns5a"> $a*dh/dt = dr/dt </math>
+  <math name="correctAns6"> 1/$a * $c </math>
+
+  <math name="correctAns7"> 3*pi/$a * $b^2 * $c </math>
+  
+</setup>
+
+<p>
+  An oil slick in the ocean is forming as the result of a leak from an oil tanker; scientists monitor the changing oil slick from a helicopter and use digital technology to measure its radius at diﬀerent points in time. The slick is in the shape of a thin cylinder with radius <m>r</m> and height <m>h</m> and the top of the thin cylinder sits on the surface of the ocean.
+</p>  
+
+<p>
+  First, draw 2-3 diﬀerent pictures of the slick as viewed at diﬀerent points in time, showing how different aspects of the slick might change.
+</p>
+
+<p>
+  Suppose we know the following information:
+  <ul>
+    <li>
+      <p> 
+        the radius of the oil slick is always $a times the thickness of the oil slick;
+      </p>
+    </li>
+    <li>
+      <p>
+        at the instant the radius is $b meters, the radius is increasing at an instantaneous rate of $c meters per hour.
+      </p>  
+    </li>
+  </ul>  
+  Respond to the following prompts to investigate how different aspects of the oil slick are changing.  In the equations you determine, use the symbol <m>\pi</m> in your responses, not a decimal approximation.
+</p>  
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p> 
+        At the instant <m>r = $b</m> meters, find the instantaneous rate at which the area, <m>A</m>, of the top of the oil slick that sits on the surface of the ocean is changing.
+      </p>
+      <p>
+        The equation that relates <m>A</m> and <m>r</m> is <answer symbolicEquality simplifyOnCompare ><award> $correctAns1 </award></answer>.
+      </p>  
+      <p>
+        The equation that relates <m>\frac{dA}{dt}</m> and <m>\frac{dr}{dt}</m> is <answer  symbolicEquality simplifyOnCompare ><award> $correctAns2 </award></answer>.
+      </p> 
+      <p> 
+        At the instant <m>r = $b</m> meters, <m>\left. \frac{dA}{dt} \right|_{r = $b} =</m> <answer><award> $correctAns3 </award></answer>, and the units on this quantity are <answer><choiceInput inline>
+            <choice>?</choice>
+            <choice>meters</choice>
+            <choice>meters per hour</choice>
+            <choice credit="1">square meters per hour</choice>
+            <choice>square meters</choice>
+            <choice>cubic meters</choice>
+            <choice>cubic meters per hour</choice>
+          </choiceInput></answer>.
+      </p>
+    </li>
+    
+    <li>
+      <p> 
+        At the instant <m>r = $b</m> meters, find the instantaneous rate at which the thickness, <m>h</m>, of the oil slick is changing.
+      </p>
+      <p>
+        An equation that relates <m>h</m> and <m>r</m> is <mathInput name="ans4"/><answer symbolicEquality simplifyOnCompare ><award><when> $ans4=$correctAns4 or $ans4=$correctAns4a </when> </award></answer>.
+      </p>  
+      <p>
+        An equation that relates <m>\frac{dh}{dt}</m> and <m>\frac{dr}{dt}</m> is <mathInput name="ans5"/><answer symbolicEquality simplifyOnCompare ><award><when> $ans5=$correctAns5 or $ans5=$correctAns5a </when> </award></answer>.
+      </p> 
+      <p> 
+        At the instant <m>r = $b</m> meters, <m>\left. \frac{dh}{dt} \right|_{r = $b} =</m> <answer><award> $correctAns6 </award></answer>, and the units on this quantity are <answer><choiceInput inline>
+            <choice>?</choice>
+            <choice>meters</choice>
+            <choice credit="1">meters per hour</choice>
+            <choice>square meters per hour</choice>
+            <choice>square meters</choice>
+            <choice>cubic meters</choice>
+            <choice>cubic meters per hour</choice>
+          </choiceInput></answer>.
+      </p>
+    </li>  
+    <li>
+      <p> 
+        At the instant <m>r = $b</m> meters, find the instantaneous rate at which the volume, <m>V</m>, of the oil slick is changing.  Remember that the volume of a cylinder is <m>V = \pi r^2 h</m>.
+      </p>
+      <p> 
+        At the instant <m>r = $b</m> meters, <m>\left. \frac{dV}{dt} \right|_{r = $b} =</m> <answer><award> $correctAns7 </award></answer>, and the units on this quantity are <answer><choiceInput inline>
+            <choice>?</choice>
+            <choice>meters</choice>
+            <choice>meters per hour</choice>
+            <choice>square meters per hour</choice>
+            <choice>square meters</choice>
+            <choice>cubic meters</choice>
+            <choice credit="1">cubic meters per hour</choice>
+          </choiceInput></answer>.
+      </p>
+    </li>      
+  </ol>  
+</p>

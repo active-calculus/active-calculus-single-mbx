@@ -1,0 +1,115 @@
+<setup>
+  <math name="t0">0</math>
+  <selectFromSequence name="A" from="0.2" to="0.6" step="0.2"/>
+  <selectFromSequence name="B" from="-0.7" to="0.7" step="0.2" exclude="-0.5 -0.1 0.1 0.5"/>
+  <selectFromSequence name="C" from="-1.8" to="1.8" step="0.6" exclude="0 $A"/>
+  <selectFromSequence name="k" from="-1" to="1" step="2"/>
+
+  <function name="f" variable="t">$k*$A*t + $B</function>
+  <function name="sol" variable="t">$k*$A/2*t^2 + $B*t + $C</function>
+  <math name="yOf1" simplify>$k*$A/2 + $B + $C</math>
+  <math name="y0a" simplify>$C</math>
+  <math name="y0b" simplify>$C</math>
+
+  <math name="Dta">0.5</math>
+  <math name="Dtb">0.25</math>
+
+  <math name="t1a" simplify>$t0 + 1*$Dta</math>
+  <math name="t2a" simplify>$t0 + 2*$Dta</math>
+
+  <math name="t1b" simplify>$t0 + 1*$Dtb</math>
+  <math name="t2b" simplify>$t0 + 2*$Dtb</math>
+  <math name="t3b" simplify>$t0 + 3*$Dtb</math>
+  <math name="t4b" simplify>$t0 + 4*$Dtb</math>
+
+  <math name="y1a" simplify>$y0a + $$f($t0)*$Dta</math>
+  <math name="y2a" simplify>$y1a + $$f($t1a)*$Dta</math>
+
+  <math name="y1b" simplify>$y0b + $$f($t0)*$Dtb</math>
+  <math name="y2b" simplify>$y1b + $$f($t1b)*$Dtb</math>
+  <math name="y3b" simplify>$y2b + $$f($t2b)*$Dtb</math>
+  <math name="y4b" simplify>$y3b + $$f($t3b)*$Dtb</math>
+
+</setup>
+
+<p>
+  Consider the initial value problem
+  <me>
+    \frac{dy}{dt} = <math simplify>$k*$A*t + $B</math>, \ \ y($t0) = $C
+  </me>
+  We are going to apply Euler's Method with two different values for <m>\Delta t</m> to estimate <m>y(1)</m> and then compare the results to the exact solution.
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Apply Euler's Method with two steps to estimate <m>y(1)</m>.  Fill in each of the provided blanks below accordingly.
+      </p>
+      <p>
+        <answer><label><m>\Delta t = </m></label>$Dta</answer>
+      </p>
+      <p>
+        <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><label><m>y_1 = </m></label>$y1a</answer>
+      </p>
+      <p>
+        <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><label><m>y_2 = </m></label>$y2a</answer>
+      </p>
+      <p>
+        With this <m>\Delta t</m>, <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><label><m>y(1) \approx </m></label>$y2a</answer>.
+      </p>
+    </li>
+    <li>
+      <p>
+        Next, apply Euler's Method with four steps to estimate <m>y(1)</m>.  Fill in each of the provided blanks below accordingly.
+      </p>
+      <p>
+        <answer>$Dtb<label><m>\Delta t = </m></label></answer>
+      </p>
+      <p>
+        <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><label><m>y_1 = </m></label>$y1b</answer>
+      </p>
+      <p>
+        <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><label><m>y_2 = </m></label>$y2b</answer>
+      </p>
+      <p>
+        <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><label><m>y_3 = </m></label>$y3b</answer>
+      </p>
+      <p>
+        <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><label><m>y_4 = </m></label>$y4b</answer>
+      </p>
+      <p>
+        With this <m>\Delta t</m>, <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><label><m>y(1) \approx </m></label>$y4b</answer>.
+      </p>
+    </li>
+    <li>
+      <p>
+        Solve the initial value problem
+        <me>
+          \frac{dy}{dt} = <math simplify>$k*$A*t + $B</math>, \ \ y($t0) = $C
+        </me>
+        to find a formula for the function <m>y(t)</m> that satisfies these conditions.
+      </p>
+      <p>
+        <answer><label><m>y(t) = </m></label>$sol</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Compare the errors that result from the approximations in (a) and (b) to the true value of <m>y(1)</m> by completing the blanks below.
+      </p>
+      <p>
+        The true value of <m>y(1)</m> is <answer><label><m>y(1) = </m></label>$yOf1</answer>.  If we use the estimate from (a) with two steps of Euler's Method, the resulting absolute error is <answer><label><m>|y(1) - y_2| =</m></label>abs($yOf1-$y2a)</answer>.  If instead we use the estimate from (b) with four steps of Euler's Method, the resulting absolute error is <answer><label><m>|y(1) - y_4| =</m></label>abs($yOf1-$y4b)</answer>.
+      </p>
+    </li>
+    <li>
+      <p>
+        It can be shown that a property of Euler's Method is that whenever <m>\Delta t</m> is halved, the resulting absolute error of the end approximation is also halved.  If we were to use Euler's Method with <m>8</m> steps (without doing the actual computations), what do we expect the resulting absolute error would be for <m>|y(1) - y_8|</m>?  What do we expect that the value of <m>y_8</m> would be?
+      </p>
+      <p>
+        We expect that <answer><label><m>|y(1) - y_8| \approx</m></label>0.5*abs($yOf1-$y4b)</answer>, and thus <answer><label><m>y_8 = </m></label>$y4b + 0.5*($yOf1-$y4b)</answer>
+      </p>
+    </li>
+
+  </ol>
+</p>

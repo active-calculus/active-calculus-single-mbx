@@ -1,0 +1,91 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- parts (b) and (c) of this exercise were first drafted by Weidai Sun in 2024 -->
+<setup>
+
+  <selectFromSequence name = "a" from = "3" to = "7" step = "1"/>
+  <selectFromSequence name = "b" from = "3" to = "7" step = "1" exclude="$a"/>  
+  <selectFromSequence name = "c" from = "3" to = "7" step = "1" exclude="$a $b"/>  
+  <selectFromSequence name = "d" from = "3" to = "7" step = "1" exclude="$a $b $c"/>  
+  
+  <select name="q4" hide> 2 3 4 5 6 7 8 9</select>
+  <select name="q5" hide> 2 3 4 5 6 7 8 9 </select> 
+  <select name="q6" hide> 2 3 4 5 6 7 8 9</select> 
+  <select name="q7" hide> arcsin(x^($q6)y)  arctan(x^($q6) y) </select>
+  
+  <function name="g5" variables="y" hide> y^($q4)</function> 
+  <derivative name="d5" hide> $g5 </derivative> 
+  <function name="g6" variables="x" hide> $q5 ln(x)</function> 
+  <derivative name="d6" hide> $g6 </derivative> 
+
+  <function name="g1" variables="x" hide>$q7 </function> 
+  <derivative name="d1" hide> $g1 </derivative> 
+  <function name="g2" variables="y" hide>$q7 </function> 
+  <derivative name="d2" hide> $g2 </derivative> 
+  <function name="g3" variables="x" hide>xy^($q6) </function> 
+  <derivative name="d3" hide> $g3 </derivative> 
+  <function name="g4" variables="y" hide>xy^($q6) </function> 
+  <derivative name="d4" hide> $g4 </derivative> 
+  
+</setup>
+
+<p> 
+  For each of the following prompts, let <m>y</m> be the function of <m>x</m> that is implicitly defined by the given equation  
+        <!--<function name="f2" variables="x"> x ln(y)+y^($q4) = $q5 ln(x) </function>-->
+</p>
+<p>
+  Use implicit differentiation to find <m>\frac{dy}{dx}</m> in terms of <m>x</m> and <m>y</m>.
+</p>  
+<p>
+    <ol marker="a.">
+        <li>
+            <p>
+                <m>x^$a y - x y^$b + $c x - y = $d</m>
+            </p>
+            <p>
+                <m> \frac{dy}{dx}= </m> 
+                    <mathInput name="mp1"></mathInput>
+                    <answer><award><when>
+                        $mp1 = (y^$b - $c - $a*x^($a-1)*y)/(x^$a - $b*x*y^($b-1)-1)
+                    </when></award></answer>
+            </p>
+        </li>
+        <li>
+            <p>
+                <m>x \ln(y)+y^$q4 = $q5 \ln(x)</m>
+            </p>
+            <p>
+                <m> \frac{dy}{dx}= </m> 
+                    <mathInput name="mp2"></mathInput>
+                    <answer><award><when>
+                        $mp2 = ($d6-ln(y))/(x/y + $d5)
+                    </when></award></answer>
+            </p>
+        </li>
+      <li>
+        <p>
+          <m>$q7=xy^{$q6}</m>
+        </p>
+
+        <p>
+          <m> \frac{dy}{dx}= </m> 
+            <mathInput name="mp3"></mathInput>
+            <answer><award><when>
+              $mp3 = ($d1-$d3)/($d4-$d2)
+            </when></award></answer>
+        </p>
+      </li>  
+    </ol>
+</p>

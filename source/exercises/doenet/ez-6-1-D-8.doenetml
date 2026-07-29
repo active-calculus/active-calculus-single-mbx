@@ -1,0 +1,52 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="m" from ="2" to="6"/>
+  <selectFromSequence name="n" from ="2" to="5" exclude="$m"/>
+  <selectFromSequence name="a" from ="1" to="3"/>
+  <selectFromSequence name="b" from ="4" to="6"/>
+
+  <function name="f">$m + $n*x^(3/2)</function>
+  <derivative name="fP">$f</derivative>
+  
+  <function name="integrand" variable="y">sqrt(1 + $fP^2)</function>
+   
+  <math name="intValue" simplify>8/(27*$n^2)*(1 + 9*$n^2*$b/4)^(3/2) - 8/(27*$n^2)*(1 + 9*$n^2*$a/4)^(3/2)</math>
+
+</setup>  
+
+  <p>
+    Consider the curve defined by the function
+    <me>f(x) = $m + $n x^{3/2}</me>
+  </p> 
+
+  <p> 
+    Let <m>L</m> be the arc length of the curve between the points <m>($a,f($a))</m> and <m>($b,f($b))</m>.  Set up, and then evaluate exactly, a definite integral whose value is <m>L</m>.  Enter either <q><m>x</m></q> or <q><m>y</m></q> in the box adjacent to <q><m>d</m></q> to indicate either <q><m>dx</m></q> or <q><m>dy</m></q>.
+  </p>
+        <p>
+          <m>L = \int_a^b </m> <mathInput minWidth="75" name="integrandEntered"><shortDescription>integrand</shortDescription></mathInput> <m>d</m> <mathInput minWidth="15" name="dWhat"><shortDescription>x or y</shortDescription></mathInput>
+        </p>
+        <p>
+          where 
+          <m>a = </m><mathInput minWidth="30" name="aEntered"><shortDescription>a value</shortDescription></mathInput> and <m>b = </m><mathInput minWidth="30" name="bEntered"><shortDescription>b value</shortDescription></mathInput>.
+          <answer simplifyOnCompare symbolicEquality><award><when>$aEntered=$a and $bEntered=$b and $dWhat = x and $integrandEntered=$integrand </when></award></answer>
+        </p>
+
+  <p> 
+    Evaluate the definite integral and report the resulting value of <m>L</m> accurate to within <m>0.0001</m>.
+  </p>
+  <p>
+    <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><label><m>L = </m></label>$intValue</answer>
+  </p>

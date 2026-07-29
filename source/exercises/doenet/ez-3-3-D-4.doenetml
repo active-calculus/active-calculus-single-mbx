@@ -1,0 +1,91 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name = "a" from = "-7" to = "7" step = "2" exclude="-1 1"/>
+  <selectFromSequence name = "b" from = "8" to = "12" step = "1"/>
+  <selectFromSequence name = "c" from = "2" to = "3" step = "1" exclude="$a"/> 
+
+  <selectFromSequence name = "s" from = "-1" to = "1" step = "2"/> 
+  
+  <function name="f">$s*$b*x + $a*sin(x)</function>
+  <derivative name="fP">$f</derivative>
+  <derivative name="fPP">$fP</derivative>
+  
+</setup>  
+
+<p>
+  Consider the function <m>f(x) = <math simplify>$s*$b*x + $a*sin(x)</math></m>.
+</p>  
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Find <m>f'(x)</m> and <m>f''(x)</m>. 
+      </p> 
+      <p>
+        <answer><label><m>f'(x) = </m></label>$fP</answer>
+      </p>
+      <p>
+        <answer><label><m>f''(x) = </m></label>$fPP</answer>
+      </p>  
+    </li>  
+    <li>
+      <p>Recall that for any value of <m>x</m>, <m>-1 \le \cos(x) \le 1</m>.  This tells us that 
+      </p>
+      <p>
+        <answer><shortDescription>lower bound</shortDescription>-abs($a)</answer> <m>\le <math simplify>abs($a)</math> \cos(x) \le </m> <answer><shortDescription>upper bound</shortDescription>abs($a)</answer>.
+      </p>  
+      <p>
+        Using this fact along with our formula for <m>f'(x)</m>, we see that 
+        <m>f'(x)</m> is <answer><choiceInput inline>
+          <shortDescription>sign options</shortDescription>
+          <choice>?</choice>
+          <choice credit="$$fP(0) > 0">always positive</choice>
+          <choice credit="$$fP(0) < 0">always negative</choice>
+          <choice credit="0">sometimes negative and sometimes positive</choice>
+          <choice credit="0">always zero</choice>
+        </choiceInput></answer>, 
+        which implies that <m>f(x)</m> is <answer><choiceInput inline>
+          <shortDescription>behavior options</shortDescription>
+          <choice>?</choice>
+          <choice credit="$$fP(0) > 0">always increasing</choice>
+          <choice credit="$$fP(0) < 0">always decreasing</choice>
+          <choice credit="0">sometimes increasing and sometimes decreasing</choice>
+          <choice credit="0">constant</choice>
+        </choiceInput></answer>.
+      </p>  
+    </li> 
+    <li sectionWideCheckWork>
+      <p>
+        Look at your formula for <m>f''(x)</m> from (a), and think about the behavior of this function.  Because <m>f''(x)</m> <answer><choiceInput inline>
+          <shortDescription>sign options</shortDescription>
+          <choice>?</choice>
+          <choice credit="0">is always positive</choice>
+          <choice credit="0">is always negative</choice>
+          <choice credit="1">changes sign infinitely many times</choice>
+          <choice credit="0">is always zero</choice>
+        </choiceInput></answer>, it follows that <m>f(x)</m> <answer><choiceInput inline>
+          <choice>?</choice>
+          <shortDescription>behavior options</shortDescription>
+          <choice credit="0">has infinitely many relative maxima</choice>
+          <choice credit="0">has infinitely many relative mimima</choice>
+          <choice credit="0">is linear</choice>
+          <choice credit="1">has infinitely many inflection points</choice>
+        </choiceInput></answer>.
+      </p>        
+    </li>
+  </ol>  
+</p>

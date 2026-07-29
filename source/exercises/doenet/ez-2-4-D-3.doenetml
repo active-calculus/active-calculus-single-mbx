@@ -1,0 +1,137 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+
+    <function name="f">
+      tan(x)
+    </function>  
+    <derivative name="fP"> $f </derivative>
+    <derivative name="fPP"> $fP </derivative>
+  
+    <function name="g">
+      cot(x)
+    </function>  
+    <derivative name="gP"> $g </derivative>  
+    <derivative name="gPP"> $gP </derivative>  
+</setup>
+
+<p>
+  In this exercise, we analyze the signs of the first derivatives of <m>f(x) = $f</m> and <m>g(x) = $g</m>, plus we learn how to find their respective second derivatives and to see some of the information the second derivative reveals.
+</p>  
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        We recently learned that for <m>f(x) = $f</m>, the simplest form of its derivative is <m>f'(x) = </m><mathInput name="fPsimplest" />
+              <answer name="fPentered" symbolicEquality forceSmallCheckWorkButton>
+                <award><when>$fPsimplest=sec^2(x) or $fPsimplest=(sec(x))^2 or $fPsimplest=sec(x)^2</when></award>
+              </answer>, and similarly that for <m>g(x) = $g</m>, the simplest form of its derivative is <m>f'(x) = </m><mathInput name="gPsimplest" />
+              <answer name="gPentered" symbolicEquality forceSmallCheckWorkButton>
+                <award><when>$gPsimplest=-csc^2(x) or $gPsimplest=-(csc(x))^2 or $gPsimplest=-csc(x)^2 or $gPsimplest=-1*csc^2(x) or $gPsimplest=-1*(csc(x))^2 or $gPsimplest=-1*csc(x)^2</when></award>
+              </answer>.
+      </p>  
+    </li>  
+  
+    <li>
+      <p>
+        Observe that for <m>f(x) = $f</m>, while <m>f'(x)</m> is not defined for every <m>x</m> (for example, <m>\sec^2(\frac{\pi}{2})</m> is undefined, just like <m>\tan(\frac{\pi}{2})</m> is undefined), but because of the algebraic form of <m>f'(x)</m> that you noted in (a), it follows that <m>f'(x)</m> is <answer>
+            <choiceInput inline name="fPposneg">    
+              <choice>?</choice>
+              <choice credit="1">positive</choice>
+              <choice>zero</choice>
+              <choice>negative</choice>
+            </choiceInput>
+          </answer>
+        for every <m>x</m> value for which <m>f'(x)</m> is defined, and therefore 
+        <m>f(x)</m> is <answer>
+            <choiceInput inline name="fincdec">
+              <choice>?</choice>
+              <choice credit="1">increasing</choice>
+              <choice>constant</choice>
+              <choice>decreasing</choice>
+            </choiceInput>
+        </answer> on every interval <m>(a,b)</m> where <m>f(x)</m> and <m>f'(x)</m> are defined at every point in the interval.
+      </p>  
+      
+      <p>
+        Reasoning similarly for <m>g(x) = $g</m>, while <m>g'(x)</m> is not defined for every <m>x</m> (for example, <m>-\csc^2(\pi)</m> is undefined, just like <m>\cot(\pi)</m> is undefined), but because of the algebraic form of <m>g'(x)</m> that you noted in (a), it follows that <m>g'(x)</m> is <answer>
+            <choiceInput inline name="gPposneg">    
+              <choice>?</choice>
+              <choice>positive</choice>
+              <choice>zero</choice>
+              <choice credit="1">negative</choice>
+            </choiceInput>
+          </answer>
+        for every <m>x</m> value for which <m>g'(x)</m> is defined, and therefore 
+        <m>g(x)</m> is <answer>
+            <choiceInput inline name="fincdec">
+              <choice>?</choice>
+              <choice>increasing</choice>
+              <choice>constant</choice>
+              <choice credit="1">decreasing</choice>
+            </choiceInput>
+        </answer> on every interval <m>(a,b)</m> where <m>g(x)</m> and <m>g'(x)</m> are defined at every point in the interval.
+      </p>      
+      <p>
+        (These results should make sense to you in comparison to the familiar graphs of <m>f(x) = $f</m> and <m>g(x) = $g</m>; if you don't know those graphs by heart, use a graphing utility to plot them and compare how they look to your observations above.)
+      </p>  
+    </li>  
+    <li>
+      <p>
+        Now, for <m>f(x) = $f</m>, write <m>f'(x) = \sec(x) \cdot \sec(x)</m>.  Use the product rule to find a formula for <m>f''(x)</m> and then find the requested values of <m>f''(-\frac{\pi}{3})</m> and <m>f''(\frac{\pi}{3})</m> below.
+      </p>  
+      <p>
+        <m>f''(x) = </m><answer><award>$fPP</award></answer>
+      </p>  
+      <p>
+        <m>f''(-\frac{\pi}{3}) = </m><answer><award>$$fPP(-pi/3)</award></answer>
+      </p>      
+      <p>
+        <m>f''(\frac{\pi}{3}) = </m><answer><award>$$fPP(pi/3)</award></answer>
+      </p> 
+      <p>
+        We can use the formula for <m>f''(x)</m> to show that for all <m>x</m> in the interval <m>-\frac{\pi}{2} < x < 0</m>, <m>f''(x) < 0</m> and thus on this interval, <m>f(x) = $f</m> is <answer>
+            <choiceInput inline name="fCUCD1">
+              <choice>?</choice>
+              <choice>concave up</choice>
+              <choice>linear</choice>
+              <choice credit="1">concave down</choice>
+            </choiceInput>
+        </answer>, and for all <m>x</m> in the interval <m>0 < x < \frac{\pi}{2}</m>, <m>f''(x) > 0</m> and thus on this interval, <m>f(x) = $f</m> is <answer>
+            <choiceInput inline name="fCUCD2">
+              <choice>?</choice>
+              <choice credit="1">concave up</choice>
+              <choice>linear</choice>
+              <choice>concave down</choice>
+            </choiceInput>
+        </answer>.
+      </p>  
+      <p>
+        (Like in part (b), you should confirm that this result aligns with  your understanding of how the graph of <m>f(x) = $f</m> appears.)
+      </p>  
+    </li>  
+    <!-- Either omit this part or elaborate on it ... not sure there's much to gain by elaborating
+    <li>
+      <p>
+        Finally, for <m>g(x) = $g</m>, write <m>g'(x) = -\csc(x) \cdot \csc(x)</m>.  Find a formula for <m>g''(x)</m>.
+      </p>
+      <p>
+        <m>g''(x) = </m><answer><award>$gPP</award></answer>
+      </p> 
+    </li>
+    -->  
+  </ol>  
+</p>

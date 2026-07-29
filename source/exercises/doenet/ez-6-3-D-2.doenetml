@@ -1,0 +1,142 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="a" from="8" to="16" step="4"/>
+  <selectFromSequence name="c" from="2" to="5" step="1"/>
+  <selectFromSequence name="k" from="1.5" to="2.5" step="0.5"/>
+  
+  <function name="r">$c + $k*sin(pi*x/$a)</function>
+  <function name="R">$c*x - $k*$a/pi*cos(pi*x/$a)</function>
+  <function name="s">$c*x + $k*x*sin(pi*x/$a)</function>
+  <function name="S">($c*x^2)/2 - ($a*$k*x*cos((pi*x)/$a))/pi + ($a^2*$k*sin((pi*x)/$a))/pi^2</function>
+
+  <math name="b" simplify>$a/2</math>
+  
+  <math name="intValue" simplify>$$R($b)-$$R(0)</math>
+  <math name="intValue2" simplify>1/($$R($b)-$$R(0))*$$S($b)-$$S(0)</math>
+  <math name="intValue3" simplify>1/($b)*($$R($b)-$$R(0))</math>
+</setup>  
+  
+    <p>
+      Consider a thin bar of length $b cm whose density is distributed according to the function <m>\rho(x) = $r</m>,
+      where <m>x = 0</m> represents the left end of the bar.
+      Assume that <m>\rho</m> is measured in g/cm and <m>x</m> is measured in cm.
+    </p>
+
+    <p>
+      <ol marker="a.">
+        <li>
+          <p>
+            State and evaluate a definite integral whose value is <m>M</m>, the total mass of the bar.  Once you identify the lower and upper limits of integration, those values will appear in the integral expression below.
+          </p>
+          <p>
+            lower limit of integration: <m>a = </m> <answer name="lower">0</answer>
+          </p>
+          <p>
+            upper limit of integration: <m>b = </m> <answer name="upper">$b</answer>
+          </p>
+  
+          <p>
+            Integral expression for the total mass, <m>M</m>, of the bar: 
+          </p>
+          <p>
+            <m>M = \displaystyle\int_{$lower}^{$upper}</m><mathInput name="int1" minWidth="100" /><m>d</m><mathInput name="dWhat" minWidth="15"/><answer><award><when>$int1 = $r and $dWhat = x</when></award></answer> <!--, <m>$$f($h), $$g($h), $f - $g</m> -->
+          </p> 
+          <p>
+            Evaluating the integral to an accuracy of at least <m>0.0001</m>, the total mass, <m>M</m>, of the bar is 
+          </p>     
+          <p>
+            <m>M = </m><mathInput name="intVal" minWidth="40" /> <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><award><when>$intValue=$intVal </when></award></answer>, and the units on this quantity are <answer><choiceInput inline>
+              <choice>?</choice>
+              <choice credit="1">grams</choice>
+              <choice>grams per cm</choice>              
+              <choice>cm</choice>
+            </choiceInput></answer>
+          </p>
+        </li>
+        <li>
+          <p>
+            Complete the following sentence to explain where you expect the center of mass of the bar to lie relative to its midpoint, with justification.
+          </p>
+          <p>
+            Because the mass density distribution function <m>\rho(x) = $r</m> is a <choiceInput name="c1" inline>
+              <choice>?</choice>
+              <choice>decreasing</choice>
+              <choice>constant</choice>
+              <choice>increasing</choice>
+            </choiceInput> function on the interval <m>[0,$a]</m>, this means that there is <choiceInput name="c2" inline>
+              <choice>?</choice>
+              <choice>less</choice>
+              <choice>more</choice>
+              <choice>the same amount of</choice>
+            </choiceInput> mass concentrated in the left half of the bar, and therefore we expect the center of mass, <m>\overline{x}</m>, will lie <choiceInput name="c3" inline>
+              <choice>?</choice>
+              <choice>at the center of</choice>
+              <choice>to the right of</choice>  
+              <choice>to the left of</choice> 
+            </choiceInput> the bar's midpoint, <m>m = <math simplify>$a/4</math></m>.
+          </p>
+          <p>
+            <answer>
+              <award><when> 
+                $c1.selectedIndices=4 and $c2.selectedIndices=2 and $c3.selectedIndices=3
+              </when></award>
+            </answer>
+          </p>
+        </li>
+        <li>
+          <p>
+            State and evaluate the definite integral whose value is <m>\overline{x}</m>, the center of mass of the bar.  Once you identify the lower and upper limits of integration, those values will appear in the integral expression below; notice that the integral expression for <m>\overline{x}</m> involves the mass, <m>M</m>, that we found in (a).
+          </p>
+          <p>
+            lower limit of integration: <m>a = </m> <answer name="lower">0</answer>
+          </p>
+          <p>
+            upper limit of integration: <m>b = </m> <answer name="upper">$b</answer>
+          </p>
+  
+          <p>
+            Integral expression for the center of mass, <m>\overline{x}</m>, of the bar: 
+          </p>
+          <p>
+            <m>\overline{x} = \displaystyle \frac{1}{M} \int_{$lower}^{$upper}</m><mathInput name="int2" minWidth="100" /><m>d</m><mathInput name="dWhat2" minWidth="15"/><answer><award><when>$int2 = $s and $dWhat2 = x</when></award></answer> <!--, <m>$$f($h), $$g($h), $f - $g</m> -->
+          </p> 
+          <p>
+            Evaluating the integral to an accuracy of at least <m>0.0001</m>, the bar's center of mass, <m>\overline{x}</m>, is 
+          </p>
+          <p>
+            <m>\overline{x} = </m><mathInput name="intVal2" minWidth="40" /> <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><award><when>$intValue2=$intVal2 </when></award></answer>, and the units on this quantity are <answer><choiceInput inline>
+              <choice>?</choice>
+              <choice credit="1">cm</choice>
+              <choice>grams</choice>
+              <choice>grams per cm</choice>
+            </choiceInput></answer>
+          </p>          
+        </li>
+        <li>
+          <p>
+            Finally, determine the average density of the bar, <m>\rho_{\text{AVG}}</m>.
+          </p>
+          <p>
+            <m>\rho_{\text{AVG}} = </m><mathInput name="intVal3" minWidth="40" /> <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><award><when>$intValue3=$intVal3 </when></award></answer>, and the units on this quantity are <answer><choiceInput inline>
+              <choice>?</choice>
+              <choice>cm</choice>
+              <choice>grams</choice>
+              <choice credit="1">grams per cm</choice>
+            </choiceInput></answer>
+          </p>
+        </li>
+      </ol>
+    </p>

@@ -1,0 +1,135 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+ <setup>
+  <selectFromSequence name = "k" from = "0.25" to = "0.75" step = "0.25"/>
+  <selectFromSequence name = "R" from = "3" to = "6" step = "1" />
+  <selectFromSequence name = "c" from = "1" to = "2" step = "1" />
+  <selectFromSequence name = "pm" from = "-1" to = "1" step = "2" />
+
+  <math simplify name="y0">$R + $pm*$c</math>
+   
+  <function name = "g1" variable="y">1/(y-$R)</function>
+  <function name = "h1" variable="t">-$k</function>
+
+  <function name = "G" variable="y">ln(abs(y-$R))</function>
+  <function name = "H" variable="t">-$k*t + C</function>
+  <function name = "soln" variable="t">$R + ($y0-$R)*e^(-$k*t)</function>
+  <function name = "solnP" variable="t">-$k*($y0-$R)*e^(-$k*t)</function>
+   
+</setup>
+
+<p>
+  Consider the intial value problem given by
+  <me>
+    \frac{dy}{dt} = -$k(y - $R), \ \ y(0) = $y0
+  </me>
+  Complete the following steps to solve the IVP and analyze its solution.
+</p>
+<p>
+  <ol marker="a.">
+    <li>
+      <p>  
+        First, separate the variables and fill in the blanks below to rewrite the equation in the form <m>g(y) \frac{dy}{dt} = h(t)</m>.  Do so using algebra that keeps <q><m>-$k</m></q> on the righthand side of the equation (this will make it easier to integrate in the next step and eventually solve for <m>y(t)</m>).
+      </p>  
+      <p>
+        <mathInput minWidth="40" name="gEntered"/><m>\frac{dy}{dt} = </m><mathInput minWidth="40" name="hEntered"/> <answer simplifyOnCompare>
+                          <award>
+                            <when> ($gEntered=$g1 and $hEntered=$h1) 
+                            </when>
+                          </award></answer> 
+      </p>
+    </li>
+    <li>
+      <p>
+        Next, integrate both sides with respect to <m>t</m>.  Write the next step that results without integral signs, and be sure to include the arbitrary constant <m>+C</m> on the right.
+      </p>  
+      
+      <p>
+        <mathInput minWidth="70" name="GEntered"/><m> = </m><mathInput minWidth="70" name="HEntered"/> <answer simplifyOnCompare>
+                          <award>
+                            <when> ($GEntered=$G and $HEntered=$H) 
+                            </when>
+                          </award></answer> 
+      </p>
+    </li>
+    <li>
+      <p>
+        Now, solve your most recent equation for <m>y</m> and find the value of the constant that makes the function the unique solution to the original initial value problem.
+      </p>  
+      
+      <p>
+        <m>y(t) =</m><mathInput name="solnEntered" minWidth="70"/><answer simplifyOnCompare><award><when>$solnEntered=$soln</when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Complete the following sentence to analyze the long-term behavior of the solution function, <m>y(t)</m>.  Notice that the second prompt requires you to enter the correct derivative of the solution function.
+      </p>
+      <p>
+        The solution <m>y(t)</m> is always <choiceInput name="a1" inline>
+          <choice>?</choice>
+          <choice>increasing</choice>
+          <choice>decreasing</choice>
+          <choice>constant</choice>
+        </choiceInput> because <m>y'(t) = </m><mathInput name="a2" minWidth="100"/> is always <choiceInput name="a3" inline>
+          <choice>?</choice>
+          <choice>positive</choice>
+          <choice>negative</choice>
+          <choice>zero</choice>
+        </choiceInput>, and as <m>t</m> increases without bound, we observe that <m>y(t)</m> approaches <choiceInput name="a4" inline>
+          <choice>?</choice>
+          <choice>-$k</choice>
+          <choice>$y0</choice>
+          <choice>$R</choice>
+          <choice>0</choice>
+        </choiceInput> since the quantity <m>e^{-$k t}</m> approaches <choiceInput name="a5" inline>
+          <choice>?</choice>
+          <choice>-$k</choice>
+          <choice>$y0</choice>
+          <choice>$R</choice>
+          <choice>0</choice>
+        </choiceInput>.
+      </p>
+      <p>
+        <answer><award><when>
+          (
+          ($a1.selectedIndices=2 and ($R > $y0)) and $solnP = $a2 and ($a3.selectedIndices=2 and ($R > $y0)) and ($a4.selectedIndices=4) and ($a5.selectedIndices=5)
+          )
+          or
+          (
+          ($a1.selectedIndices=3 and ($y0 > $R)) and $solnP = $a2 and ($a3.selectedIndices=3 and ($y0 > $R)) and ($a4.selectedIndices=4) and ($a5.selectedIndices=5)
+          )
+        </when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Finally, observe that the original differential equation, <me>\frac{dy}{dt} = -$k(y - $R),</me> is autonomous and that it has an equilibrium solution.  State the equilibrium solution and classify its stability.
+      </p>
+      <p>
+        The equilibrium solution is <m>y = </m><mathInput name="eqSol"/> and this solution is <choiceInput name="stability" inline>
+          <choice>?</choice>
+          <choice>stable</choice>
+          <choice>unstable</choice>
+        </choiceInput>
+      </p>
+      <p>
+        <answer><award><when>
+          $eqSol=$R and $stability.selectedIndices=2
+        </when></award></answer>
+      </p>
+    </li>
+  </ol>
+</p>

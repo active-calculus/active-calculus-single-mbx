@@ -1,0 +1,129 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  
+  <function name="f">(x-a)^3(x-b)</function>
+  <derivative name="fP">$f</derivative>
+  <derivative name="fPP">$fP</derivative>
+
+  <math name="fP1symbolic">(x-a)^2*(4x-a-3b)</math>
+  <math name="fP2symbolic">(4x-a-3b)*(x-a)^2</math>
+  <math name="fP3symbolic">(x-a)^2*(4x-3b-a)</math>
+  <math name="fP4symbolic">(4x-3b-a)*(x-a)^2</math>
+  <math name="fP5symbolic">(x-a)^2*(-a-3b+4x)</math>
+  <math name="fP6symbolic">(-a-3b+4x)*(x-a)^2</math>
+  <math name="fP7symbolic">(x-a)^2*(-a+4x-3b)</math>
+  <math name="fP8symbolic">(-a+4x-3b)*(x-a)^2</math>  
+  <math name="fP9symbolic">(x-a)^2*(-3b-a+4x)</math>
+  <math name="fP10symbolic">(-3b-a+4x)*(x-a)^2</math>
+  <math name="fP11symbolic">(x-a)^2*(-3b+4x-a)</math>
+  <math name="fP12symbolic">(-3b+4x-a)*(x-a)^2</math>    
+
+  <math name="crNum1">a</math>
+  <math name="crNum2">(a+3b)/4</math>  
+  <mathList name="correctCrNums"> $crNum1 $crNum2 </mathList>
+
+  <math name="POI1">a</math>
+  <math name="POI2">(a+b)/2</math>  
+  <mathList name="correctPOIs"> $POI1 $POI2 </mathList>
+  
+</setup>  
+
+<p>
+  Consider the function <m>f(x) = (x-a)^3(x-b)</m>, where <m>a</m> and <m>b</m> are arbitrary constants that satisfy <m>a \lt b</m>.
+</p>  
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Find <m>f'(x)</m> by using the product rule.  Then, factor and simplify your result to write <m>f'(x)</m> as a product of two terms, one of which has form <m>(x-a)^k</m> for some number <m>k</m>, and the other of which is linear.
+      </p> 
+      <p>
+        <m>f'(x) = </m><mathInput name="fPfactored"/>
+        <answer symbolicEquality>
+          <award><when>
+          $fPfactored = $fP1symbolic or $fPfactored = $fP2symbolic or
+            $fPfactored = $fP3symbolic or $fPfactored = $fP4symbolic or 
+            $fPfactored = $fP5symbolic or $fPfactored = $fP6symbolic or
+            $fPfactored = $fP7symbolic or $fPfactored = $fP8symbolic or
+            $fPfactored = $fP9symbolic or $fPfactored = $fP10symbolic or 
+            $fPfactored = $fP11symbolic or $fPfactored = $fP12symbolic
+          </when></award>
+        </answer>
+      </p>
+<!--      
+      <p>
+        <m>f''(x) = </m><answer>$fPP</answer>
+      </p>  
+-->      
+    </li>  
+    <li>
+      <p>
+        Use your work in (a) to determine the critical numbers of <m>f</m> (which may depend on the arbitrary constants <m>a</m> and/or <m>b</m>).  If there is more than one, enter them as a list separated by commas.  If there are none, enter <em>none</em>.
+      </p>
+      <p>
+        The critical numbers of <m>f</m> occur at <m>x = </m> <mathInput name="crNums" /> <answer unorderedCompare><award><when> $crNums=$correctCrNums</when></award></answer>.
+      </p>  
+    </li>
+
+    <li>
+      <p>
+        Construct a first derivative sign chart for <m>f</m>.  Use the sign chart to respond to each of the following prompts, checking all statements that are true for each.
+      </p>
+      <ul>
+        <li>
+          <p>
+            At <m>x = $crNum1</m>, <m>f</m> has <answer matchPartial selectMultiple>
+            <choice credit="$$fP($crNum1) = 0">a horizontal tangent line</choice>
+            <choice credit="0">a relative maximum</choice>
+            <choice credit="0">a relative minimum</choice>
+            <choice credit="0">a global maximum</choice>
+            <choice credit="0">a global minimum</choice>  
+            <choice credit="$$fPP($crNum1) = 0">neither a relative max nor min</choice>
+            </answer>
+          </p> 
+        </li>
+        <li>
+            <p>
+                At <m>x = $crNum2</m>, <m>f</m> has <answer matchPartial selectMultiple>
+                <choice credit="$$fP($crNum2) = 0">a horizontal tangent line</choice>
+                <choice credit="0">a relative maximum</choice>
+                <choice credit="1">a relative minimum</choice>
+                <choice credit="0">a global maximum</choice>
+                <choice credit="1">a global minimum</choice>  
+                <choice credit="0">neither a relative max nor min</choice>
+                </answer>
+            </p>  
+        </li>   
+      </ul>    
+    </li>
+    <li>
+      <p>
+        If we find <m>f''(x)</m> using the product rule and then factor and simplify, it turns out that 
+        <me>
+          f''(x) = 6(x-a)(2x-a-b).
+        </me> 
+        Construct a second derivative sign chart for <m>f</m>.
+      </p>
+      <p>    
+        State the inflection points of <m>f</m> (which may depend on the arbitrary constants <m>a</m> and/or <m>b</m>).  If there is more than one, enter them as a list separated by commas.  If there are none, enter <em>none</em>.
+      </p>
+      <p>
+        The inflection points of <m>f</m> occur at <m>x = </m> <mathInput name="POIs" /> <answer unorderedCompare><award><when> $POIs=$correctPOIs</when></award></answer>.
+      </p>  
+    </li>  
+  </ol>  
+</p>

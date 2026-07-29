@@ -1,0 +1,103 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="a" from="1" to="2" step="1"/>
+  <selectFromSequence name="b" from="4" to="5" step="1"/>
+  <selectFromSequence name="k" from="0.2" to="0.4" step="0.1"/>
+  <selectFromSequence name="c" from="-1" to="1" step="2"/>
+  
+  <math name="m">($a+$b)/2</math>
+  <function name="f">$c*$k*(x-$a)*(x-$b)</function>
+  <mathList name="eqSols">$a $b</mathList>
+  <mathList name="Int2">(-1,$a) ($b,7)</mathList>
+  <mathList name="Int1">($a,$b)</mathList>
+  
+</setup>
+
+<p>
+  Consider an autonomous differential equation of the form 
+  <me>
+    \frac{dy}{dt} = f(y)
+  </me>
+  for which a plot of <m>\frac{dy}{dt}</m> as a function of <m>y</m> is given by the following graph.
+</p>
+    
+
+<graph size="medium" xMin="-1" xMax="7" yMin="-4" yMax="4" showNavigation="false" fixAxes="true">
+  $f
+  <label anchor="(6.25,0.25)"><m>y</m></label>
+  <label anchor="(0.4,3.5)"><m>\frac{dy}{dt}</m></label>
+</graph>
+
+<p>
+  Use the graph to respond to the following questions.
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Determine all equilibrium solutions of the differential equation <m>\frac{dy}{dt} = f(y)</m>.  If there is more than one, separate them with commas; if there are none, enter <q>none</q>.
+      </p>
+      <p>
+        equilibrium solutions <m>y = </m><mathInput name="eqSolsEntered"/><answer unorderedCompare><award><when>$eqSolsEntered=$eqSols</when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        For what intervals(s) of <m>y</m>-values for <m>-1 < y < 7</m> will the solution to the differential equation be an increasing function of <m>t</m>?  State your answer(s) in interval notation, separating more than one interval with commas.  For example, if you find that the solution function is increasing for <m>2< y < 4</m> and <m>5 < y < 6</m>, enter <q><m>(2,4),(5,6)</m></q>.  If there is no such interval, enter <q>none</q>.
+      </p>
+      <p>
+        The solution increases on the <m>y</m>-interval(s) 
+        <mathInput name="ans1"/>
+        <answer unorderedCompare><award><when>
+          ( $$f($m) > 0 and $ans1=$Int1 ) or ( 0 > $$f($m) and $ans1=$Int2 )
+          </when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        For what intervals(s) of <m>y</m>-values for <m>-1 < y < 7</m> will the solution to the differential equation be a decreasing function of <m>t</m>?  State your answer(s) in interval notation, separating more than one interval with commas.  For example, if you find that the solution function is decreasing for <m>2< y < 4</m> and <m>5 < y < 6</m>, enter <q><m>(2,4),(5,6)</m></q>. If there is no such interval, enter <q>none</q>.
+      </p>
+      <p>
+        The solution decreases on the <m>y</m>-interval(s) 
+        <mathInput name="ans2"/>
+        <answer unorderedCompare><award><when>
+          ( $$f($m) > 0 and $ans2=$Int2 ) or ( 0 > $$f($m) and $ans2=$Int1 )
+          </when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Finally, classify the stability of each of the equilibrium solutions.  The equilibrium solution <m>y = $a</m> is <choiceInput name="d1" inline>
+          <choice>?</choice>
+          <choice>stable</choice>
+          <choice>unstable</choice>
+        </choiceInput>, and the equilibrium solution <m>y = $b</m> is <choiceInput name="d2" inline>
+          <choice>?</choice>
+          <choice>stable</choice>
+          <choice>unstable</choice>
+        </choiceInput>.
+      </p>
+      <p>
+        <answer><award><when>
+          (($d1.selectedIndices=3 and $$f($m) > 0) and ($d2.selectedIndices=2 and $$f($m) > 0)) 
+          or 
+          (($d1.selectedIndices=2 and 0 > $$f($m)) and ($d2.selectedIndices=3 and 0 > $$f($m))) 
+        </when></award></answer>
+      </p>
+    </li>
+  </ol>
+</p>

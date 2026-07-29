@@ -1,0 +1,128 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+ <setup>
+  <selectFromSequence name = "k" from = "3" to = "7" step = "1"/>
+  <selectFromSequence name = "a" from = "3" to = "7" step = "1" exclude="$k"/>
+
+  <function name="c">e^($k*x)/(e^($k*x) + 1)^$a</function>
+  <function name="antiDx">-1/($k*($a-1)*(e^($k*x) + 1)^($a-1))</function>
+
+  <function name="u">e^($k*x) + 1</function>
+  <function name="du">$k*e^($k*x)</function>
+
+  <function name="uSubs" variable="u">1/$k * 1/(u^$a)</function>
+  <function name="antiDu" variable="u">-1/$k *1/($a-1) * 1/u^($a-1)</function>
+
+  <!-- <boolean name="uSubsFound">$uSubs = $uSubsChoice</boolean> -->
+  <boolean name="uSubsFound">$usubsequals.creditAchieved</boolean>
+  <boolean name="choseduordx1">$duordx1.selectedIndices=2 or $duordx1.selectedIndices=3</boolean>
+  <boolean name="choseduordx2">$duordx2.selectedIndices=2 or $duordx2.selectedIndices=3</boolean>
+  <boolean name="choseduordx3">$duordx3.selectedIndices=2 or $duordx3.selectedIndices=3</boolean>
+
+</setup>
+
+<p>
+  Consider the indefinite integral <m>\displaystyle \int \frac{e^{$k x}}{(e^{$k x} + 1)^$a} \, dx</m>.
+</p>
+<p>
+  In the integrand, we notice that at least one composite function is present, and this suggests that we try to use <m>u</m>-substitution as a way to evaluate the integral by finding an antiderivative.  In what follows, we work to identify key algebraic structure that makes <m>u</m>-substitution possible.
+</p>
+
+<p>
+  The most complicated composite function that is present in the integrand is
+</p>
+<p>
+  <answer><choiceInput>
+    <choice><m>e^{$k x}</m></choice>
+    <choice><m>e^{$k x} + 1</m></choice>
+    <choice credit="1"><m>\frac{1}{(e^{$k x} + 1)^$a}</m></choice>
+  </choiceInput></answer>
+</p>
+
+<p>
+  Next, we choose the inner function in the most complicated composite function to be <m>u</m>.  Fill in the following blank to state <m>u</m> as a function of <m>x</m> and then calculate <m>du</m>. Note that the dropdown is part of your answer.
+</p>
+<p>
+  <answer forceSmallCheckWorkButton>
+    <mathInput name="uChoice">
+      <label><m>u = </m></label>
+    </mathInput>
+    <award><when>$uChoice = $u</when></award>
+  </answer>
+</p>
+<p>
+  <m>du = </m><mathInput name="duChoice"/><choiceInput name="duordx1" inline>
+            <choice>?</choice>
+            <choice><m>dx</m></choice>
+            <choice><m>du</m></choice>
+          </choiceInput>
+    <m> =</m> <mathInput disabled> $duChoice $duordx1 </mathInput>
+  <answer name="duequals" forceSmallCheckWorkButton><award><when>$duChoice = $du and $duordx1.selectedIndices=2</when></award></answer>
+</p>
+<feedback condition = "$duChoice != $du and $duChoice.responseHasBeenSubmitted">Take the derivative of what <m>u</m> equals.</feedback>
+<feedback condition = "$duequals.justSubmitted and !$choseduordx1">You must pick <m>du</m> or <m>dx</m>.</feedback>
+<feedback condition = "$duChoice = $du and $duordx1.selectedIndices!=2 and $duequals.justSubmitted and $choseduordx1">You still need to correctly pick <m>du</m> or <m>dx</m>.</feedback>
+<feedback condition = "$duChoice != $du and $duordx1.selectedIndices=2 and $duequals.justSubmitted">You have the incorrect derivative, but <m>dx</m> is correct.</feedback>
+
+<p>
+  Now, notice that <m>du</m> is almost present in the integrand, up to a constant.  To see how to make the substitution from the variable <m>x</m> to the variable <m>u</m>, we next write <m>e^{$k x} \, dx</m> in terms of <m>u</m>, <m>du</m>, and a constant.  Solve <conditionalContent condition="$duequals.creditAchieved"><me>du=$duChoice $duordx1</me></conditionalContent> for <m>e^{$k x} \, dx</m> and complete the answer below. Note that the dropdown is part of your answer.
+</p>
+<p>
+  <m>e^{$k x} \, dx = </m><mathInput name="expkxdxChoice"/><choiceInput name="duordx2" inline>
+            <choice>?</choice>
+            <choice><m>dx</m></choice>
+            <choice><m>du</m></choice>
+          </choiceInput>
+    <m> =</m> <mathInput disabled> $expkxdxChoice $duordx2 </mathInput>
+  <answer name="expkxdxequals" forceSmallCheckWorkButton><award><when>$expkxdxChoice = 1/$k and $duordx2.selectedIndices=3</when></award></answer>
+</p>
+
+<feedback condition = "$expkxdxequals.justSubmitted and !$choseduordx2">You must pick <m>du</m> or <m>dx</m>.</feedback>
+<feedback condition = "$expkxdxChoice = 1/$k and $duordx2.selectedIndices!=3 and $expkxdxequals.justSubmitted and $choseduordx2">You still need to correctly pick <m>du</m> or <m>dx</m>.</feedback>
+<feedback condition = "$expkxdxChoice != 1/$k and $duordx2.selectedIndices=3 and $expkxdxequals.justSubmitted">You have the incorrect formula, but <m>du</m> is correct.</feedback>
+
+<p>
+    Now we can apply <m>u</m>-substitution to convert the original integral in <m>x</m> to a simpler integral in <m>u</m>.  Using our work above, we have
+</p>
+<p>
+  <m>\displaystyle \int $c \, dx = \int </m>  <mathInput name="uSubsChoice"/><choiceInput name="duordx3" inline>
+            <choice>?</choice>
+            <choice><m>dx</m></choice>
+            <choice><m>du</m></choice>
+          </choiceInput>
+    <m> = \displaystyle \int</m><mathInput disabled> $uSubsChoice $duordx3 </mathInput>
+  <answer name="usubsequals" forceSmallCheckWorkButton><award><when> $uSubs = $uSubsChoice and $duordx3.selectedIndices=3</when></award></answer>
+</p>
+<feedback condition = "$usubsequals.justSubmitted and !$choseduordx3">You must pick <m>du</m> or <m>dx</m>.</feedback>
+<feedback condition = "$uSubs = $uSubsChoice and $duordx3.selectedIndices!=3 and $usubsequals.justSubmitted and $choseduordx3">You still need to correctly pick <m>du</m> or <m>dx</m>.</feedback>
+<feedback condition = "$uSubs != $uSubsChoice and $duordx3.selectedIndices=3 and $usubsequals.justSubmitted">You have the incorrect formula, but <m>du</m> is correct.</feedback>
+
+<p hide="$uSubsFound">
+  (<em>A final sequence of prompts will appear here after you correctly execute the <m>u</m>-substitution in the last step above.</em>)
+</p>
+<div hide="not $uSubsFound">
+  <p>
+    Finally, we evaluate the simpler integral in <m>u</m>
+  </p>
+  <p>
+  <m>\displaystyle \int $c \, dx = \int $uSubsChoice \, du =</m> <mathInput name="antiDuChoice"/> <m>+ C</m> <answer symbolicEquality simplifyOnCompare forceSmallCheckWorkButton><award><when> $antiDu = $antiDuChoice</when></award></answer>
+  </p>
+  <p>
+     and then substitute back to write our final result in terms of <m>x</m>.
+  </p>
+  <p>
+    <m> \displaystyle \int $c \, dx = </m> <mathInput name="antiDxChoice"/> <m>+ C</m> <answer symbolicEquality simplifyOnCompare forceSmallCheckWorkButton><award><when> $antiDx = $antiDxChoice</when></award></answer>.
+</p>
+</div>

@@ -1,0 +1,161 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="m" from="-1" to="1" step="2"/>
+  <selectFromSequence name="c" from="1.5" to="3" step="0.5"/>
+  
+  <function name="f">$m*$c*sin(x)</function>
+  <function name="A">-$m*$c*cos(x) + $m*$c</function>
+  <function name="B">-$m*$c*cos(x)</function>
+ 
+
+  
+  <number name="area">2*$c</number>
+  
+  <number name="z2">2*$c + $b/$m</number>
+  <mathList name="Ints1">(-1,$z1) ($z2,7)</mathList>
+  <math name="Int2">($z1,$z2)</math>
+  <math name="Int3">(-1,$c)</math>
+  <math name="Int4">($c,7)</math>
+</setup>
+
+<graph xmin="-pi" xmax="3pi" ymin="-4" ymax="4" fixAxes="true" showNavigation="false" xTickScaleFactor="pi">
+  $f
+  <label anchor="(3pi/2,$$f(3pi/2) - $m*0.25)"><m>f</m></label>
+</graph>  
+
+
+<p>
+  Let <m>A(x) = \int_0^x f(t) \, dt</m>, where <m>f</m> is the periodic function whose graph is given.  The area of one <q>hump</q> of the graph is <m>$area</m>.  For example, <m>\int_0^\pi |f(t)| \, dt = $area</m>.
+</p>   
+
+<p>
+  <ol marker="a.">
+
+    <li sectionWideCheckWork colorAnswersSeparately>
+      <p>
+        Complete the following table of values for <m>A(x)  = \int_0^x f(t) \, dt</m>.
+      </p>
+        <table suppressTableNameInTitle="true"> 
+    <tabular left="minor" right="minor" top="minor" bottom="minor" valign="middle" halign="center">
+     <row>
+      <cell><m>x</m></cell>
+      <cell><m>0</m></cell>
+      <cell><m>\frac{\pi}{2}</m></cell>
+      <cell><m>\pi</m></cell>
+      <cell><m>\frac{3\pi}{2}</m></cell>
+      <cell><m>2\pi</m></cell>   
+     </row>
+     <row>
+      <cell><m>A(x)</m></cell>
+      <cell><answer>$$A(0)</answer></cell>
+      <cell><answer>$$A(pi/2)</answer></cell>
+      <cell><answer>$$A(pi)</answer></cell>
+      <cell><answer>$$A(3pi/2)</answer></cell>  
+      <cell><answer>$$A(2pi)</answer></cell>  
+     </row>
+    </tabular>
+  </table> 
+    </li>
+    <li sectionWideCheckWork colorAnswersSeparately>
+      <p>
+        Now suppose that <m>B(x)  = \int_{\frac{\pi}{2}}^x f(t) \, dt</m>.  Complete the following table of values for <m>B(x)</m>. 
+      </p>
+        <table suppressTableNameInTitle="true"> 
+    <tabular left="minor" right="minor" top="minor" bottom="minor" valign="middle" halign="center">
+     <row>
+      <cell><m>x</m></cell>
+      <cell><m>0</m></cell>
+      <cell><m>\frac{\pi}{2}</m></cell>
+      <cell><m>\pi</m></cell>
+      <cell><m>\frac{3\pi}{2}</m></cell>
+      <cell><m>2\pi</m></cell>   
+     </row>
+     <row>
+      <cell><m>B(x)</m></cell>
+      <cell><answer>$$B(0)</answer></cell>
+      <cell><answer>$$B(pi/2)</answer></cell>
+      <cell><answer>$$B(pi)</answer></cell>
+      <cell><answer>$$B(3pi/2)</answer></cell>  
+      <cell><answer>$$B(2pi)</answer></cell>  
+     </row>
+    </tabular>
+  </table> 
+    </li>
+
+  </ol>  
+
+</p>  
+
+<!--
+
+    <li>
+      <p>
+        On what intervals within <m>-1 \lt x \lt 7</m> is <m>A</m> increasing? decreasing?  If there is more than one interval, separate them with commas; if there are none, enter <em>none</em>.  Use interval notation: for example, enter <q><m>(2,6)</m></q> for <q><m>2 \lt x \lt 6</m></q>.
+      </p>
+      <p>
+        <m>A</m> is increasing on <mathInput name="incrAEntered"/> 
+        <answer unorderedCompare>
+          <award><when> 
+            ($incrAEntered = $Ints1 and $m < 0) or ($incrAEntered = $Int2 and $m > 0) 
+          </when></award>
+        </answer>
+      </p>  
+      <p>
+        <m>A</m> is decreasing on <mathInput name="decrAEntered"/> 
+        <answer unorderedCompare>
+          <award><when> 
+            ($decrAEntered = $Ints1 and $m > 0) or ($decrAEntered = $Int2 and $m < 0) 
+          </when></award>
+        </answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        On what intervals within <m>-1 \lt x \lt 7</m> is <m>A</m> concave up? concave down?  If there is more than one interval, separate them with commas; if there are none, enter <em>none</em>.  Use interval notation: for example, enter <q><m>(2,6)</m></q> for <q><m>2 \lt x \lt 6</m></q>.
+      </p>
+      <p>
+        <m>A</m> is concave up on <mathInput name="CCUAEntered"/> 
+        <answer unorderedCompare>
+          <award><when> 
+            ($CCUAEntered = $Int3 and $m > 0) or ($CCUAEntered = $Int4 and $m < 0) 
+          </when></award>
+        </answer>
+      </p>  
+      <p>
+        <m>A</m> is concave down on <mathInput name="CCDAEntered"/> 
+        <answer unorderedCompare>
+          <award><when> 
+            ($CCDAEntered = $Int4 and $m > 0) or ($CCDAEntered = $Int3 and $m < 0) 
+          </when></award>
+        </answer>
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Observe that  
+        <me>B(x)  = \int_0^x f(t) \, dt = \int_0^2 f(t) \, dt + \int_2^x f(t) \, dt = \int_0^2 f(t) \, dt + A(x).</me>
+        The value of <m>\int_0^2 f(t) \, dt = </m> <mathInput name="const" /> <answer><award><when>$const = 2*$m + 2*$b</when></award></answer>, and this shows that the difference between <m>A(x)</m> and <m>B(x)</m> is <answer><choiceInput inline>
+          <choice>?</choice>
+          <choice credit="1">a constant</choice>
+          <choice>zero</choice>
+          <choice>their shape</choice>
+        </choiceInput></answer>. 
+          
+      </p>
+    </li>
+
+-->

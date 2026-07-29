@@ -1,0 +1,188 @@
+
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- this preview activity was drafted by Steven Clontz at the 2024 Doenet workshop -->
+<!-- significant changes and updates from MB in Fall 2025 -->
+
+
+<setup>
+  <function name="approx0" variable="t" domain="[0,2]">$approx0Exp</function>
+  <function name="approx1" variable="t" domain="[2,4]">$approx1Exp</function>
+  <function name="approx2" variable="t" domain="[4,6]">$approx2Exp</function>
+  <function name="k">$kEntered</function>
+</setup>
+
+  <p>
+    Consider the initial value problem
+    <me>
+      \frac{dy}{dt} = \frac12 (y + 1), \ y(0) = 0
+    </me>
+  </p>
+
+  <p>
+    <ol marker="a.">
+      <li>
+        <p>
+          Use the initial value to find the point on the solution <m>y(t)</m>
+          where <m>t=0</m>.
+        </p>
+        <p>
+          Point <m>=\left(0,y(0)\right)=</m><answer name="point">(0,0)</answer>
+        </p>
+      </li>
+      <li>
+        <p>
+          Use the differential equation to find the slope of the line tangent to the solution <m>y(t)</m> where <m>t=0</m>.
+        </p>
+        <p>
+          Slope <m>=\displaystyle\frac{dy}{dt}=</m><answer name="slope">1/2</answer>
+        </p>
+      </li>
+      <li>
+        <p>
+          Use the point <mathInput disabled><conditionalContent condition="$point.creditAchieved=1">$point</conditionalContent></mathInput> and
+          slope <mathInput minWidth="30" disabled><conditionalContent condition="$slope.creditAchieved=1">$slope</conditionalContent></mathInput> that you've found above to write the equation
+          of the line tangent to the solution <m>y(t)</m> at <m>t=0</m>.  Be sure to write the tangent line equation as a function of <m>t</m>.
+        </p>
+        <p>
+          <m>y=</m><answer name="approx0Exp">t/2</answer>
+
+        </p>
+        <graph size="small" xmin="-2" ymin="-2" xmax="8" ymax="8" fixAxes="true" showNavigation="false" grid="true">
+          $approx0
+        </graph>
+      </li>
+
+      <li>
+        <p>
+          Notice that in the figure above we see a plot of the approximating tangent line you found in (b),
+          <mathInput disabled>y= $approx0Exp</mathInput>, on the domain
+          <m>[0,2]</m>.
+        </p>
+        <p>
+          Now we are going to use the point <m>(2,y(2))</m> from the tangent line above along with the differential
+          equation <m>\frac{dy}{dt}=\frac{1}{2}(y+1)</m> to find the equation
+          of a corresponding tangent line on the domain <m>[2,4]</m>. Again, be sure to write the tangent line equation as a function of <m>t</m>.
+        </p>
+        <p>
+          Point <m>=(2,y(2))=</m><answer>(2,1)</answer>
+        </p>
+        <p>
+          Slope <m>=</m><answer>1</answer>
+        </p>
+        <p>
+          Tangent line equation: <m>y=</m><answer name="approx1Exp">t-1</answer>
+        <graph size="small" xmin="-2" ymin="-2" xmax="8" ymax="8"  fixAxes="true" showNavigation="false" grid="true">
+          $approx0
+          $approx1
+        </graph>
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Repeat this process to find another approximating tangent line
+          for the domain <m>[4,6]</m>.
+        </p>
+        <p>
+          Point <m>=</m><answer>(4,3)</answer>
+        </p>
+        <p>
+          Slope <m>=</m><answer>2</answer>
+        </p>
+        <p>
+          <m>y=</m><answer name="approx2Exp">2t-5</answer>
+
+        <graph size="small" xmin="-2" ymin="-2" xmax="8" ymax="8" fixAxes="true" showNavigation="false" grid="true">
+          $approx0
+          $approx1
+          $approx2
+        </graph>
+        </p>
+      </li>
+
+      <li>
+        <p>
+          It turns out that the given initial value problem,
+          <me>
+            \frac{dy}{dt} = \frac12 (y + 1), \ y(0) = 0,
+          </me>
+          has a solution
+          of the form <m>y=ke^{t/2} - 1</m>.
+        </p>
+        <p>
+          If the initial value is <m>y(0)=0</m>, what must be the value of
+          <m>k</m>?
+        </p>
+        <p>
+          <answer name="kEntered"><label><m>k=</m></label>1</answer>
+        </p>
+
+      </li>
+
+      <!--
+      <li>
+        <setup>
+          <conditionalContent name="nextStep" condition="$kExp.creditAchieved = 1">
+            <math name="correctkEntered" extend="$kEntered.value"/>
+            <math name="IVPsoln" simplify>$correctkEntered.value*e^(t/2) - 1</math>
+          </conditionalContent>
+        </setup>
+        <p>
+          Then verify that
+          <m>y=</m><mathInput disabled><math simplify>$k e^(t/2) - 1</math></mathInput>
+          is in fact a solution by substituting it into both sides of the
+          differential equation.
+        </p>
+        <p><m>\frac{dy}{dt}=</m><answer>1/2 e^(t/2)</answer></p>
+        <p><m>\frac{1}{2}(y+1)=</m><answer>1/2 e^(t/2)</answer></p>
+      </li>
+      -->
+
+      <li>
+        <p>
+          Finally, by completing the sentences that follow the figure, discuss how the graph of the three approximating line segments compares with the graph of the solution.
+        </p>
+        <graph xmin="-2" ymin="-2" xmax="8" ymax="8" fixAxes="true" showNavigation="false" grid="true">
+          $approx0
+          $approx1
+          $approx2
+          <function styleNumber="2" variable="t" domain="[0,6]" name="SolnFxn">$k e^(t/2) - 1</function>
+          <label anchor="(2.5,5.75)"><m><math simplify>y=$k e^(t/2) - 1</math></m></label>
+        </graph>
+        <p>
+          We see at the initial point, <m>(0,0)</m>, the tangent line <choiceInput inline name="a1">
+            <choice>?</choice>
+            <choice>shares the same <m>y</m>-value as</choice>
+            <choice>has a larger <m>y</m>-value than</choice>
+            <choice>has a smaller <m>y</m>-value than</choice>
+          </choiceInput> the solution curve <m><math simplify>y = $SolnFxn</math></m>, and as we let <m>t</m> increase in value, the first tangent line aproximation's <m>y</m>-values <choiceInput inline name="a2">
+            <choice>?</choice>
+            <choice>overestimate</choice>
+            <choice>underestimate</choice>
+            <choice>exactly match</choice>
+          </choiceInput> the <m>y</m>-values of the solution curve.  This leads to the second and third tangent line approximations also <choiceInput inline name="a3">
+            <choice>?</choice>
+            <choice>overestimating</choice>
+            <choice>underestimating</choice>
+            <choice>exactly matching</choice>
+          </choiceInput> the true values of the solution curve and doing so with increasing error as <m>t</m> increases.
+        </p>
+        <p>
+          <answer><award><when>$a1.selectedIndices=2 and $a2.selectedIndices=3 and $a3.selectedIndices=3</when></award></answer>
+        </p>
+      </li>
+    </ol>
+  </p>

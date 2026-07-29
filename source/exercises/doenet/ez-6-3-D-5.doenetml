@@ -1,0 +1,101 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="w" from="8" to="12" step="1"/>
+  <selectFromSequence name="a" from="1" to="3" step="1"/>
+  <selectFromSequence name="b" from="4" to="6" step="1"/>
+  <math name="k" simplify>2/$w</math>
+  <function name="p" variable="t">$k - $k/$w*t</function>
+  <function name="P" variable="t">$k*t - $k/(2*$w)*t^2</function>
+  <function name="s" variable="t">$k*t - $k/w*t^2</function>
+  <function name="S" variable="t">$k/2*t^2 - $k/(3*$w)*t^3</function>
+  <math name="mass" simplify>$$P($w)-$$P(0)</math>
+  <math name="mean" simplify>1/($mass)*$$S($w)-$$S(0)</math>
+  <math name="wait" simplify>$$P($b)-$$P($a)</math>
+  <number name="median" displayDecimals="4">$w*(1-sqrt(2)/2)</number>
+</setup>  
+  
+    <p>
+      The probability of a random event whose outcomes are continuously distributed is analogous to how mass is distributed along a bar. 
+    </p>
+    <p>
+      For example, certain events that involving waiting times can have the probability of waiting a given period of time be modeled by a definite integral.  In particular, if <m>p(t)</m> is a nonnegative function called a <term>probability density function</term>, the probability of waiting between <m>t = a</m> to <m>t = b</m> is modeled by 
+      <me>\int_a^b p(t) \, dt</me>
+    </p>  
+    <p> 
+      Suppose that we are studying the time a person waits for the next bus to arrive, for which the maximum wait time is <m>$w</m> minutes, and the corresponding probability density function is 
+      <me>p(t) = $k - <math simplify>$k/$w</math> t</me>
+      Assume that this formula is valid for <m>0 \le t \le $w</m>, and that for every other value of <m>t</m>,  <m>p(t) = 0</m>.
+    </p>
+
+    <p>
+      <ol marker="a.">
+        <li>
+          <p>
+            Find the probability that a person waits between <m>$a</m> and <m>$b</m> minutes by evaluating the following definite integral. 
+          </p>
+          <p>
+            <m>\int_$a^$b ($k - <math simplify>$k/$w</math> t) \, dt = </m><mathInput name="enteredWait"/> <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$enteredWait = $wait</when></award></answer>
+          </p>  
+        </li>        
+        <li>
+          <p>
+            The <term>mean</term> of a probability density function (in this setting, the mean is the average wait time) is analogous to center of mass of a bar.  In particular, the mean <m>M</m> of <m>p(t) = $k - <math simplify>$k/$w</math></m> is defined by 
+            <me>M = \frac{\int_0^$w t ($k - <math simplify>$k/$w</math> t) \, dt}{\int_0^$w  ($k - <math simplify>$k/$w</math> t) \, dt}</me>
+          </p>
+          <p>
+            Find the mean wait time for the given probability density function.
+          </p>
+          <p>
+            <m>M = </m><mathInput name="enteredMean"/>
+            <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
+              <award><when> 
+                $enteredMean = $mean
+              </when></award>
+            </answer>
+          </p>
+        </li>
+        <li>
+          <p>
+            The <term>median</term> of a probability density function is the value for which half of all of the outcomes lie below the median, and half lie above.  In particular, the median <m>m</m> of <m>p(t) = $k - <math simplify>$k/$w</math></m> is the value of <m>m</m> for which
+            <me>\int_0^m t \left($k - <math simplify>$k/$w</math> t \right) \, dt = \frac{1}{2}</me>
+          </p>
+          <p>
+            Find the median wait time for the given probability density function.
+          </p>
+          <p>
+            <m>m = </m><mathInput name="enteredMedian"/>
+            <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
+              <award><when> 
+                $enteredMedian = $median
+              </when></award>
+            </answer>
+          </p>
+        </li>
+        <li>
+          <p>
+            Which of the following statements is true?  Check all that apply.
+          </p>
+          <p>
+            <answer><choiceInput selectMultiple matchPartial>
+              <choice>Half of the times a person waits for the bus, they wait for <m>$mean</m> minutes or less</choice>
+              <choice credit="1">Half of the times a person waits for the bus, they wait for <m>$median</m> minutes or more</choice>
+              <choice>The mean and median wait times are the same</choice>
+              <choice credit="1">More than half of the times a person waits for the bus, they wait for <m>$mean</m> minutes or less</choice>
+            </choiceInput></answer>
+          </p>
+        </li>
+      </ol>
+    </p>

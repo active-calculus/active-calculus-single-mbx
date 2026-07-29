@@ -1,0 +1,127 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  
+  <function name="f">(a*x)/(x^2+b)</function>
+  <derivative name="fP">$f</derivative>
+  <derivative name="fPP">$fP</derivative>
+
+  <math name="fP1symbolic">(a*b-a*x^2)/(x^2 + b)^2</math>
+  <math name="fP2symbolic">(-a*x^2+ab)/(x^2 + b)^2</math>
+  <math name="fP3symbolic">(a*(b-x^2))/(x^2 + b)^2</math>
+  <math name="fP4symbolic">(a*(-x^2+b))/(x^2 + b)^2</math>
+  
+  <math name="fP5symbolic">(x-a)^2*(-a-3b+4x)</math>
+  <math name="fP6symbolic">(-a-3b+4x)*(x-a)^2</math>
+  <math name="fP7symbolic">(x-a)^2*(-a+4x-3b)</math>
+  <math name="fP8symbolic">(-a+4x-3b)*(x-a)^2</math>  
+  <math name="fP9symbolic">(x-a)^2*(-3b-a+4x)</math>
+  <math name="fP10symbolic">(-3b-a+4x)*(x-a)^2</math>
+  <math name="fP11symbolic">(x-a)^2*(-3b+4x-a)</math>
+  <math name="fP12symbolic">(-3b+4x-a)*(x-a)^2</math>    
+
+  <math name="crNum1">-sqrt(b)</math>
+  <math name="crNum2">sqrt(b)</math>  
+  <mathList name="correctCrNums"> $crNum1 $crNum2 </mathList>
+
+  <math name="POI1">-sqrt(3b)</math>
+  <math name="POI2">0</math>
+  <math name="POI3">sqrt(3b)</math>  
+  <mathList name="correctPOIs"> $POI1 $POI2 $POI3 </mathList>
+  
+</setup>  
+
+<p>
+  Consider the function <m>f(x) = \displaystyle \frac{ax}{x^2+b}</m>, where <m>a</m> and <m>b</m> are arbitrary constants that satisfy <m>b \gt 0</m>.
+</p>  
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Find <m>f'(x)</m> by using the quotient rule; don't expand the denominator.  State your result as a single fraction in the space provided below.
+      </p> 
+      <p>
+        <m>f'(x) = </m><mathInput name="fPfactored"/>
+        <answer symbolicEquality simplifyOnCompare>
+          <award><when>
+            $fPfactored = $fP1symbolic or $fPfactored = $fP2symbolic or
+            $fPfactored = $fP3symbolic or $fPfactored = $fP4symbolic or 
+<!--            $fPfactored = $fP5symbolic or $fPfactored = $fP6symbolic or
+            $fPfactored = $fP7symbolic or $fPfactored = $fP8symbolic or
+            $fPfactored = $fP9symbolic or $fPfactored = $fP10symbolic or 
+            $fPfactored = $fP11symbolic or $fPfactored = $fP12symbolic-->
+          </when></award>
+        </answer>
+      </p>
+<!--      
+      <p>
+        <m>f''(x) = </m><answer>$fPP</answer>
+      </p>  
+-->      
+    </li>  
+    <li>
+      <p>
+        Use your work in (a) to determine the critical numbers of <m>f</m> (which may depend on the arbitrary constants <m>a</m> and/or <m>b</m>).  If there is more than one, enter them as a list separated by commas.  If there are none, enter <em>none</em>.
+      </p>
+      <p>
+        The critical numbers of <m>f</m> occur at <m>x = </m> <mathInput name="crNums" /> <answer unorderedCompare><award><when> $crNums=$correctCrNums</when></award></answer>.
+      </p>  
+    </li>
+
+    <li>
+      <p>
+        Assume that <m>a \lt 0</m>.  Construct a first derivative sign chart for <m>f</m>.  Use the sign chart to respond to each of the following prompts, checking all statements that are true for each.
+      </p>
+      <ul>
+        <li>
+          <p>
+            At <m>x = $crNum1</m>, <m>f</m> has <answer matchPartial selectMultiple>
+            <choice credit="1">a horizontal tangent line</choice>
+            <choice credit="1">a relative maximum</choice>
+            <choice credit="0">a relative minimum</choice> 
+            <choice credit="0">neither a relative max nor min</choice>
+            </answer>
+          </p> 
+        </li>
+        <li>
+            <p>
+                At <m>x = $crNum2</m>, <m>f</m> has <answer matchPartial selectMultiple>
+                <choice credit="1">a horizontal tangent line</choice>
+                <choice credit="0">a relative maximum</choice>
+                <choice credit="1">a relative minimum</choice>
+                <choice credit="0">neither a relative max nor min</choice>
+                </answer>
+            </p>  
+        </li>   
+      </ul>    
+    </li>
+    <li>
+      <p>
+        If we find <m>f''(x)</m> using the quotient rule and then factor the numerator and simplify, it turns out that 
+        <me>
+          f''(x) = \frac{2 a x (x^2 - 3 b)}{(x^2+b)^3}.
+        </me> 
+        Construct a second derivative sign chart for <m>f</m>.
+      </p>
+      <p>    
+        State the inflection points of <m>f</m> (which may depend on the arbitrary constants <m>a</m> and/or <m>b</m>).  If there is more than one, enter them as a list separated by commas.  If there are none, enter <em>none</em>.
+      </p>
+      <p>
+        The inflection points of <m>f</m> occur at <m>x = </m> <mathInput name="POIs" /> <answer unorderedCompare><award><when> $POIs=$correctPOIs</when></award></answer>.
+      </p>  
+    </li>  
+  </ol>  
+</p>

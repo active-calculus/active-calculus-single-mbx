@@ -1,0 +1,178 @@
+
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- this preview was originally authored by Keith Gallagher at the 2024 Doenet workshop -->
+
+<setup>
+
+  <function name="f">tan(x)</function>
+  <derivative name="fP">$f</derivative>
+
+  <function name="T">sin(x)</function>
+  <derivative name="TP">$T</derivative>
+
+  <function name="B">cos(x)</function>
+  <derivative name="BP">$B</derivative>
+
+  <boolean name="correctQR">$bot=$B and $Dtop=$TP and $top=$T and $Dbot=$BP and $bot2=$B</boolean>
+  <boolean name="correctFinal">$fPfinal=sec^2(x) or $fPfinal=(sec(x))^2 or $fPfinal=sec(x)^2</boolean>
+
+</setup>
+
+<p>
+    Consider the function <m>f(x) = \tan(x)</m>, and remember that
+    <me>\tan(x) = \frac{\sin(x)}{\cos(x)}.</me>
+
+    <ol marker="a." >
+      <li >
+        <p >
+          Recall that <m>\tan(x)</m> is undefined at any value of <m>x</m> for which <m>\cos(x) = 0</m>. Therefore, the domain of <m>f</m> is all real numbers <m>x</m> such that
+        </p>
+         <answer>
+          <choiceInput>
+            <choice><m> x \neq \dots \, , \, -\frac{\pi}{2}, \, -\frac{\pi}{4}, \, 0, \, \frac{\pi}{4}, \, \frac{\pi}{2}, \, ...</m></choice>
+
+            <choice credit="1"><m>x \neq \dots , \, -\frac{3\pi}{2}, \, -\frac{\pi}{2}, \, \frac{\pi}{2}, \, \frac{3\pi}{2}, \, ...</m></choice>
+
+            <choice><m>x \neq \dots \, , \, -\pi, \, -\frac{\pi}{2}, \, 0, \, \frac{\pi}{2}, \, \pi, \, ...</m></choice>
+
+            <choice><m>x \neq \dots \, , \, -2\pi, \, -\pi, \, 0, \, \pi, \, 2\pi, \, ...</m></choice>
+          </choiceInput>
+         </answer>
+      </li>
+
+      <li>
+        <p>
+          Apply the quotient rule to <m>f(x) = \frac{\sin(x)}{\cos(x)}</m> in order to fill in the following blanks in the structure of <m>f'(x)</m>:
+        </p>
+        <sideBySide widths="15% 82%">
+          <p>
+              <p>
+                <m>\hspace{0.1in}</m>
+              </p>
+              <p>
+                <m>f'(x) = </m>
+              </p>
+              <p>
+                <m>\hspace{0.1in}</m>
+              </p>
+          </p>
+          <p>
+            <stack>
+              <answer name="bot"><award>$B</award></answer><m>\cdot</m><answer name="Dtop"><award>$TP</award></answer><m>-</m><answer name="top"><award>$T</award></answer><m>\cdot</m><answer name="Dbot"><award>$BP</award></answer>
+            </stack>
+            <stack>
+              <m>\overline{\hspace{4in}}</m>
+            </stack>
+            <stack>
+              <m>\hspace{1.2in}\Big(</m> <mathInput name="bot2"/><m>\Big)^2</m> <answer forceSmallCheckWorkButton><award><when>$bot2=$B</when></award></answer>
+            </stack>
+          </p>
+        </sideBySide>
+
+      </li>
+
+      <li >
+        <p >
+          The Fundamental Trigonometric Identity states that
+          <p>
+            <me>
+              \sin^2(x)+\cos^2(x) = 1
+            </me>
+          </p>
+
+        </p>
+        <conditionalContent>
+          <case condition="$correctQR = false">
+            <p>
+              (<em>A prompt will appear here once part (b) is answered correctly.</em>)
+            </p>
+          </case>
+          <case condition="$correctQR = true">
+            <p>
+              Use the Fundamental Trigonometric Identity to generate a simpler form for <m>f'(x)</m> in the provided space below:
+            </p>
+            <p>
+              <m>
+                f'(x) = \frac{\cos(x) \cos(x) + \sin(x) \sin(x)}{\cos^2(x)} =
+              </m> <mathInput name="dq_simp" minWidth="50" prefill="/(cos(x))^2"></mathInput>
+      <answer symbolicEquality><award><when>$dq_simp =
+        (1)/(cos(x))^2
+      </when></award></answer>
+            </p>
+         </case>
+<!--
+<answer name= "PA_2-3-1_ans2" matchPartial symbolicEquality><award> <when> $expandedp=2t^5+8t^3 or $expandedp=8t^3+2t^5 </when></award> </answer>
+-->
+      </conditionalContent>
+      </li>
+
+      <li>
+        <p>
+          Recall that <m>\sec(x) = \frac{1}{\cos(x)}</m>.
+          How can we now express <m>f'(x)</m> in an even simpler way in terms of the secant function?
+          <p>
+            <m>
+              f'(x) =
+            </m>
+            <mathInput name="fPfinal" />
+            <answer name="fPsimplest" symbolicEquality>
+              <award><when>$fPfinal=sec^2(x) or $fPfinal=(sec(x))^2 or $fPfinal=sec(x)^2</when></award>
+            </answer>
+          </p>
+          <conditionalContent>
+          <case condition="$correctFinal= false">
+            <p>
+
+            </p>
+          </case>
+          <case condition="$correctFinal = true">
+            <p>
+              You've now correctly found the simplest form of the derivative of the tangent function:
+              <me>
+                f'(x) = \frac{d}{dx}[\tan(x)] = \sec^2(x).
+              </me>
+            </p>
+         </case>
+      </conditionalContent>
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Because <m>\sec(x) = \frac{1}{\cos(x)}</m>, it follows that <m>f'(x)</m> is defined for all real numbers <m>x</m> such that
+              <answer>
+                <choiceInput>
+                  <choice><m>x \neq \dots \, , \, -\frac{\pi}{2}, \, -\frac{\pi}{4}, \, 0, \, \frac{\pi}{4}, \, \frac{\pi}{2}, \, ...</m></choice>
+
+                  <choice credit="1"><m>x \neq \dots , \, -\frac{3\pi}{2}, \, -\frac{\pi}{2}, \, \frac{\pi}{2}, \, \frac{3\pi}{2}, \, ...</m></choice>
+
+                  <choice><m>x \neq \dots \, , \, -\pi, \, -\frac{\pi}{2}, \, 0, \, \frac{\pi}{2}, \, \pi, \, ...</m></choice>
+
+                  <choice><m>x \neq \dots \, , \, -2\pi, \, -\pi, \, 0, \, \pi, \, 2\pi, \, ...</m></choice>
+                </choiceInput>
+              </answer>
+          In particular, we notice that the domain of <m>f'(x)</m> is <answer>
+                <choiceInput inline>
+                  <choice>?</choice>
+                  <choice>different from</choice>
+                  <choice credit="1">the same as</choice>
+                  <choice>unrelated to</choice>
+                </choiceInput>
+              </answer> the domain of <m>f</m>.
+        </p>
+      </li>
+    </ol>
+  </p>

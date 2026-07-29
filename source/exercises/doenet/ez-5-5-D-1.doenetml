@@ -1,0 +1,59 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+  <setup>
+    <selectFromSequence name="a" from="3" to="7" step="1"/>
+    <selectFromSequence name="b" from="3" to="7" step="1" exclude="$a"/>
+
+    <math name="P">1/($b-$a)</math>
+    <math name="Q">1/($a-$b)</math>    
+
+    <mathList name="PFdecomp">$P/(x+$a) $Q/(x+$b)</mathList>
+    <mathList name="PFdecompEntered">$PF1 $PF2</mathList>
+    
+    <function name="f" symbolic="false" >
+      1/((x+$a)*(x+$b))
+    </function> 
+
+    <function name="F" symbolic="false" >
+      $P*ln(abs(x+$a)) + $Q*ln(abs(x+$b))
+    </function>   
+    
+  </setup>
+
+<p>
+  Consider the indefinite integral
+  <me>
+    \int \frac{1}{(x+$a)(x+$b)} \, dx
+  </me>
+  We want to evaluate this integral using the method of partial fractions.
+</p>
+
+<p>
+  First, find the partial fraction decomposition of the integrand, and enter the result in the following blanks accordingly.
+</p>  
+
+<p>
+  <m>\displaystyle \frac{1}{(x+$a)(x+$b)} = </m><mathInput minWidth="75" name="PF1"/> <m>+</m> <mathInput minWidth="75" name="PF2"/> <answer unorderedCompare matchPartial><award><when>$PFdecomp = $PFdecompEntered</when></award></answer>
+</p>  
+
+<p>
+  Once you have a correct partial fraction decomposition, evaluate the original integral accordingly by integrating the two simpler fractions found above.  Fill in the following blanks appropriately to complete your work.  (<alert>Note:</alert> remember that the absolute value signs are necessary in <m>\int \frac{1}{u} \, du = \ln(|u|) + C</m>.)
+</p>
+<p>
+  <m>\displaystyle \int \frac{1}{(x+$a)(x+$b)} \, dx = \int </m><mathInput minWidth="75" disabled>$PF1</mathInput> <m> \displaystyle dx + \int</m> <mathInput minWidth="75" disabled>$PF2</mathInput> <m> dx </m>
+</p>
+<p>  
+    <m> = </m><mathInput minWidth="150" name="Fentered"/> <m>+ \, C \,</m><answer><award><when>$F = $Fentered</when></award></answer>
+</p>

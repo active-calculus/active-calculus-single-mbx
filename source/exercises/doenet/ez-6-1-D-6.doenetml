@@ -1,0 +1,73 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="m" from ="2" to="6"/>
+  <selectFromSequence name="n" from ="2" to="5" exclude="$m $m-1 $m+1"/>
+  
+  <math name="x1">-$m</math>
+  <math name="x2">$n</math>
+  <math name="y1">-$m</math>
+  <math name="y2">$n</math>
+
+  <function name="integrand" variable="y">($m*$n-y^2)/($m-$n) - y</function>
+   
+  <math name="intValue" simplify>($m*$n^2+$m^2*$n)/($m-$n) - ($n^2-$m^2)/2 - ($n^3+$m^3)/(3*($m-$n))</math>
+  <number name="error">abs($intVal - $intValue)</number>
+
+</setup>  
+
+  <p>
+    Consider the curves given by
+    <me><math simplify>$m-$n</math>x + y^2 = <math simplify>$m*$n</math>, \ y = x</me>
+  </p> 
+
+  <p> 
+    <ol marker="a.">
+      <li>
+        <p>
+          Find the exact points of intersection between the curves.  State each intersection point as an ordered pair in the space below; if there is more than one, separate them with commas.  
+        </p>
+        <p><answer><label>the intersection points are:</label><mathList unordered>($x1,$y1) ($x2,$y2)</mathList></answer></p>
+      </li>
+
+      <li>
+        <p>
+          State a definite integral whose value is the exact area between the curves.  Note particularly that you need to choose whether to integrate with respect to <m>x</m> or with respect to <m>y</m>; in either case, all of the expressions you enter below should be in a single variable. Enter either <q><m>x</m></q> or <q><m>y</m></q> in the box adjacent to <q><m>d</m></q> to indicate either <q><m>dx</m></q> or <q><m>dy</m></q>.
+        </p>
+        <p> 
+          The area, <m>A</m>, between the curves is given by the definite integral 
+        </p>
+        <p>
+          <m>A = \int_a^b </m> <mathInput name="integrandEntered"><shortDescription>integrand</shortDescription></mathInput> <m>d</m> <mathInput minWidth="15" name="dWhat"><shortDescription>x or y</shortDescription></mathInput>
+        </p>
+        <p>
+          where 
+          <m>a = </m><mathInput minWidth="30" name="aEntered"><shortDescription>a value</shortDescription></mathInput> and <m>b = </m><mathInput minWidth="30" name="bEntered"><shortDescription>b value</shortDescription></mathInput>.
+          <answer simplifyOnCompare symbolicEquality><award><when>$aEntered=$y1 and $bEntered=$y2 and $dWhat = y and $integrandEntered=$integrand </when></award></answer>
+        </p>
+      </li>
+      <li>
+        <p>
+          Finally, evaluate the integral exactly and report the resulting area, <m>A</m>, below.
+        </p>
+        <p>
+          <answer name="AEntered"><label><m>A = </m></label>$intValue</answer>
+        </p> 
+        <feedback condition="$AEntered.creditAchieved!=1 and ($error < 0.011) and $AEntered.justSubmitted">
+          You have a very close decimal representation of <m>A</m>, but it's important to use the Fundamental Theorem of Calculus to find the value of <m>A</m> exactly.
+        </feedback>
+      </li>
+    </ol>
+  </p>

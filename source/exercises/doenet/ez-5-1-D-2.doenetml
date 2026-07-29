@@ -1,0 +1,69 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- This exercise was written by Weidai Sun after the 2024 Doenet workshop -->
+
+<setup>
+  <selectFromSequence hide name="q1" from="-3" to="3" step="1" exclude="0"/>
+  <selectFromSequence hide name="q2" from="-3" to="3" step="1" exclude="0 $q1"/>
+  <selectFromSequence hide name="q3" from="-3" to="3" step="1" exclude="0 $q1 $q2"/>
+  <selectFromSequence hide name="q4" from="-3" to="3" step="1" exclude="0 $q1 $q2 $q3"/>
+  <selectFromSequence hide name="q5" from="-3" to="3" step="1" exclude="0 $q1 $q2 $q3 $q4"/>
+  <selectFromSequence hide name="k1" from="1" to="2" step="1"/>
+  <selectFromSequence hide name="k2" from="1" to="2" step="1" exclude="$k1"/>
+  <number name="k3">1</number>
+  <selectFromSequence hide name="k4" from="1" to="2" step="1"/>
+  <selectFromSequence hide name="k5" from="1" to="2" step="1" exclude="$k4"/>
+</setup>  
+<p> 
+  Suppose <m>f(x)</m> is a continuous function that satisfies  <m>f(3)=0</m> and that its derivative, <m>f'(x)</m>, is given by the graph below.
+</p>
+
+<graph xmin="-0.5" xmax="7.5" ymin="-4" ymax="4" grid="1 1" fixAxes="true" showNavigation="false">
+  <lineSegment endpoints="(3,$q1) (3+$k1,$q1)" draggable="false"/>
+  <lineSegment endpoints="(3+$k1,$q2) (3+$k1+$k2,$q2)" draggable="false"/>
+  <lineSegment endpoints="(3+$k1+$k2, $q3) (3+$k1+$k2+$k3, $q3)" draggable="false" />
+  <lineSegment endpoints="(3, $q4) (3-$k4, $q4)" draggable="false"/> 
+  <lineSegment endpoints="(3-$k4, $q5) (3-$k4-$k5, $q5)" draggable="false" />
+  <label anchor="(3.5,3.8)"><m>y = f'(x)</m></label>
+  <endpoint styleNumber="1" open fixed coords="(3,$q1)"> </endpoint>
+  <endpoint styleNumber="1" open fixed coords="(3+$k1,$q1)"> </endpoint>
+  <endpoint styleNumber="1" open fixed coords="(3+$k1,$q2)"> </endpoint>
+  <endpoint styleNumber="1" open fixed coords="(3+$k1+$k2,$q2)"> </endpoint>
+  <endpoint styleNumber="1" open fixed coords="(3+$k1+$k2, $q3)"> </endpoint>
+  <endpoint styleNumber="1" open fixed coords="(3+$k1+$k2+$k3, $q3)"> </endpoint>
+  <endpoint styleNumber="1" open fixed coords="(3, $q4)"> </endpoint>
+  <endpoint styleNumber="1" open fixed coords="(3-$k4, $q4)"> </endpoint>
+  <endpoint styleNumber="1" open fixed coords="(3-$k4, $q5)"> </endpoint>
+  <endpoint styleNumber="1" open fixed coords="(3-$k4-$k5, $q5)"> </endpoint>
+</graph>
+<p> 
+  Use the provided graph to determine the values of <m>f(0)</m> and <m>f(7)</m>. 
+</p>
+<p><m>f(0)=</m><mathInput name="mp3" /> 
+  <answer><award><when>
+    $mp3=-$k4*$q4-$k5*$q5
+  </when></award></answer>
+</p> 
+<p><m>f(7)=</m><mathInput name="mp4" />
+<answer><award><when>
+    $mp4=$k1*$q1+$k2*$q2+$k3*$q3
+  </when></award></answer> </p>
+<p>Finally, evaluate the given definite integral. </p>
+<p>
+  <m>\int_{0}^{7} f'(x) dx = </m> <mathInput name="mp7" />
+  <answer><award><when>
+    $mp7=$k1*$q1+$k2*$q2+$k3*$q3+$k4*$q4+$k5*$q5
+  </when></award></answer>  
+</p>

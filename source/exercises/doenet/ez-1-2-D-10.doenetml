@@ -1,0 +1,99 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- this exercise was developed by Jennifer Moorhouse as part of the PROTEUS grant-->
+<!-- Chrissy Safranski wrote the Doenet implementation at the 2026 PROTEUS workshop -->
+
+  <setup>
+    <text name="blank"/>
+    <math name ="c">0</math>
+    <number name ="numti" displayDecimals="6">$ti</number>
+    <piecewiseFunction name="g" symbolic="false" simplify="numberspreserveorder">
+      <function domain="[-5,-1]">3-(x+2)^2 </function>
+      <function domain="(-1,2)">x+1</function>
+      <function domain="(2,5]">5-x</function>
+    </piecewiseFunction>
+    <number valueOnNaN="200" name="gofti" displayDecimals="6">$$g($ti)</number>
+      <boolean name="badness">$gofti=200</boolean>
+  </setup>
+
+    <p>
+        We are interested in studying the behavior of the output of a function as the input value gets closer and closer to a specified chosen number.  One way to visualize this process is to think about a tiny ant walking along the graph of a function.  Consider that the ant is the movable, red, square point as pictured below. 
+    </p>
+    <p>
+      Note that you can drag the point and watch the values of <m>x</m> and <m>y</m> change, and you can also enter an exact <m>x</m>-value in the textbox in the lower right corner of the graph, which allows you learn the corresponding <m>y</m>-value.
+    </p>
+
+    <graph name="piecewise" xmin="-5" xmax="5" ymin="-4" ymax="4" grid="1 1"
+      fixaxes size="medium" aspectRatio="5/4" displayXAxisTickLabels="false" displayYAxisTickLabels="false"><shortDescription>A function g which contains a hole and a jump and a draggable point. The x-value can be entered and the y-value changes correspondingly.</shortDescription>
+      <function>$g</function>
+      <point name="P" styleNumber="2" hide="$badness" showCoordsWhenDragging="false">($ti,$gofti)</point>
+      <endpoint open fixed>(2,3)</endpoint>
+      <endpoint fixed>(-1,2)</endpoint>
+      <endpoint open fixed>(-1,0)</endpoint>
+      <lineSegment endpoints="$P (0, $P.y)" showCoordsWhenDragging="false" lineStyle="dashed" styleNumber="2" draggable="false"/>
+      <lineSegment endpoints="$P ($P.x, 0)" draggable="false" showCoordsWhenDragging="false" lineStyle="dashed" styleNumber="2"/>
+      <label anchor="(.8,$P.y)" hide="$P.x > 0" styleNumber="2" draggable="false"><m>$gofti</m></label>
+      <label anchor="(-.7,$P.y)" hide="$P.x < 0" styleNumber="2" draggable="false"><m>$gofti</m></label>
+      <label anchor="($P.x,-0.4)" hide="$P.y < 0" styleNumber="2" draggable="false"><m>$numti</m></label>
+      <label anchor="($P.x,0.4)" hide="$P.y > 0" styleNumber="2" draggable="false"><m>$numti</m></label>
+      <textInput anchor="(2.6,-1.5)" name="ti" prefill="1.6" width="70" draggable="false"><label>x-value:   </label><shortDescription>x value of the draggable point</shortDescription></textInput>
+      <text anchor="(1.75,-2)" fixed>
+    y-value:
+  </text>
+      <!-- Using a text box may or may not allow a screen reader to see a short description. But unlike disabled mathInputs, disabled textInput doesn't look any different, which I think makes it more confusing to sighted readers. I can't figure out how to add a description of what the y-number means in a way that doesn't look bad.-->
+      <!-- <textInput disabled anchor="(-1.5,3.5)" width="60"><shortDescription>y value of the draggable point</shortDescription><conditionalContent><case condition="!$badness"><math>$gofti</math></case><else><text>undefined</text></else></conditionalContent></textInput> -->
+      <math hide="$badness" anchor="(3.2,-2)" fixed>$gofti</math>
+      <!-- did the below instead of using text so that hitting tab with a keyboard would at least stop on it. -->
+      <m hide="!$badness" anchor="(3.2,-2)" fixed>\text{undefined}</m>
+    </graph>
+
+<!-- I think the paragraph below is now redundant, especially since the "current" position can change, but I'll leave it here just in case. -->
+<!-- <p>
+      Focusing on the ant, the <m>x</m>-value that the ant is directly above is the input value to the function, and the <m>y</m>-value at the ant's height (directly across from the ant) is the corresponding output value of the function.  In the figure here, the current ant's position corresponds approximately to the point <m>(1.6, f(1.6)) = (1.6, 2.6).</m>
+    </p> -->
+<ol marker="a">
+  <li>
+    <p>
+      If the ant is at the point on the graph directly above <m>x=3</m> what is the ant's height?  In other words, if the function shown is <m>f(x)</m>, what is the corresponding <m>y</m>-value, <m>y = f(3)</m>?
+    </p>
+    <answer><label><m>f(3)=</m></label>$$g(3)</answer>
+  </li>
+  <li>
+    <p>
+      Fill in the blanks in the following sentence to describe what happens to the <m>y</m>-value that corresponds to the ant's height if the ant walks along the curve so that it gets closer and closer to the location where <m> x = 2 </m>.   
+    </p>
+    <p>
+      As the ant gets closer and closer to <m>x=2</m> from the left side, the <m>y</m>-value is <choiceInput name="c1" inline><shortDescription>behavior from the left</shortDescription><choice>equal to 3</choice><choice>undefined</choice><choice>approaching 3</choice><choice>approaching 2</choice></choiceInput>. As the ant gets closer and closer to <m>x=2</m> from the right side, the <m>y</m>-value is <choiceInput name="c2" inline><shortDescription>behavior from the right</shortDescription><choice>equal to 3</choice><choice>undefined</choice><choice>approaching 3</choice><choice>approaching 2</choice></choiceInput>.  There is a <choiceInput name="c3" inline><shortDescription>behavior at the point</shortDescription><choice>hole</choice><choice>jump</choice><choice>unbroken curve</choice><choice>vertical asymptote</choice></choiceInput> in the graph of <m>f(x)</m> at <m>x=2</m>, and <choiceInput name="c4" inline><shortDescription>limit at the point</shortDescription><choice><m>\displaystyle \lim_{x\to 2} f(x) = 2</m></choice><choice><m>\displaystyle \lim_{x\to 2} f(x) = 3</m></choice><choice><m>\displaystyle \lim_{x\to 2} f(x) = DNE</m></choice></choiceInput>.
+    </p>
+    <p>
+      <answer>
+        <award><when>$c1.selectedIndex=3 and $c2.selectedIndex=3 and $c3.selectedIndex=1 and $c4.selectedIndex=2</when></award>
+      </answer>
+    </p>
+  </li>
+  <li>
+    <p>
+      Similarly, explain what happens to the <m>y</m>-value that corresponds to the ant's height if the ant walks along the curve so that it gets closer and closer to the location where <m> x = -1 </m>.  
+    </p>
+    <p>
+      As the ant gets closer and closer to <m>x=-1</m> from the left side, the  <m>y</m>-value is <choiceInput name="cc1" inline><shortDescription>behavior from the left</shortDescription><choice>equal to 2</choice><choice>undefined</choice><choice>approaching 2</choice><choice>approaching 0</choice></choiceInput>. As the ant gets closer and closer to <m>x=-1</m> from the right side, the  <m>y</m>-value is <choiceInput name="cc2" inline><shortDescription>behavior from the right</shortDescription><choice>equal to 2</choice><choice>undefined</choice><choice>approaching 2</choice><choice>approaching 0</choice><choice>equal to 0</choice></choiceInput>.  There is a <choiceInput name="cc3" inline><shortDescription>behavior at the point</shortDescription><choice>hole</choice><choice>jump</choice><choice>unbroken curve</choice><choice>vertical asymptote</choice></choiceInput> in the graph of <m>f(x)</m> at <m>x=-1</m>, and <choiceInput name="cc4" inline><shortDescription>limit at the point</shortDescription><choice><m>\displaystyle \lim_{x\to -1} f(x) = 2</m></choice><choice><m>\displaystyle \lim_{x\to -1} f(x) = 0</m></choice><choice><m>\displaystyle \lim_{x\to -1} f(x) \ \ DNE</m></choice></choiceInput>.
+    </p>
+    <p>
+      <answer>
+        <award><when>$cc1.selectedIndex=3 and $cc2.selectedIndex=4 and $cc3.selectedIndex=2 and $cc4.selectedIndex=3</when></award>
+      </answer>
+    </p>
+  </li>
+</ol>

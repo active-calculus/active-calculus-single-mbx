@@ -1,0 +1,85 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+ <setup>
+  <selectFromSequence name = "a" from = "2" to = "5" step = "1"/>
+  <selectFromSequence name = "b" from = "2" to = "5" step = "1" exclude="$a"/>
+  <selectFromSequence name = "y0" from = "-3" to = "3" step = "1" exclude="$a $b 0"/>
+
+  <function name = "g1" variable="y">1/y^2</function>
+  <function name = "h1" variable="t">$a + $b*t</function>
+
+  <function name = "G" variable="y">-1/y</function>
+  <function name = "H" variable="t">$a*t + $b/2*t^2 + C</function>
+  <function name = "soln" variable="t">1/(-$a*t - $b/2*t^2 + 1/$y0)</function>
+   
+</setup>
+
+<p>
+  Consider the differential equation
+  <me>
+    \frac{dy}{dt} = $a y^2 + $b t y^2
+  </me>
+</p>
+<p>
+  <ol marker="a.">
+    <li>
+      <p>  
+        First, observe that this differential equation is separable.  Fill in the blank below to show how the righthand side may be factored.
+      </p>
+      <p>
+        <m>\displaystyle \frac{dy}{dt} = y^2( </m><mathInput name="factor"/><m>)</m>
+      </p>
+      <p>
+        <answer><award><when>$factor=$a+$b*t</when></award></answer>
+      </p>
+      <p>
+        Next, separate the variables and fill in the blanks below to rewrite the equation in the form <m>g(y) \frac{dy}{dt} = h(t)</m>.
+      </p>  
+      <p>
+        <mathInput minWidth="40" name="gEntered"/><m>\frac{dy}{dt} = </m><mathInput minWidth="40" name="hEntered"/> <answer simplifyOnCompare>
+                          <award>
+                            <when> ($gEntered=$g1 and $hEntered=$h1) 
+                            </when>
+                          </award></answer> 
+      </p>
+    </li>
+    <li>
+      <p>
+        Integrate both sides with respect to <m>t</m>.  Write the next step that results without integral signs, being sure to include the arbitrary constant on the right.
+      </p>  
+      
+      <p>
+        <mathInput minWidth="70" name="GEntered"/><m> = </m><mathInput minWidth="70" name="HEntered"/> <answer simplifyOnCompare>
+                          <award>
+                            <when> ($GEntered=$G and $HEntered=$H) 
+                            </when>
+                          </award></answer> 
+      </p>
+    </li>
+    <li>
+      <p>
+        Now consider the initial value problem 
+        <me>
+          \frac{dy}{dt} = $a y^2 + $b t y^2, \ \ y(0) = $y0.
+        </me>
+        Use your work from (b) to determine the unique solution to the IVP.
+      </p>  
+      
+      <p>
+        <m>y(t) =</m><mathInput name="solnEntered" minWidth="70"/><answer simplifyOnCompare><award><when>$solnEntered=$soln</when></award></answer>
+      </p>
+    </li>
+  </ol>
+</p>

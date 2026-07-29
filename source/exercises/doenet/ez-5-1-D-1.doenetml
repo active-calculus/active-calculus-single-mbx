@@ -1,0 +1,164 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- This exercise was written by Weidai Sun after the 2024 Doenet workshop -->
+
+<setup>
+
+  <selectFromSequence name="m1" from="1" to="2" step="1"/>
+  <selectFromSequence name="m2" from="1" to="2" step="1" exclude="$m1"/>
+  <selectFromSequence name="m3" from="-1" to="1" step="2"/>
+  <selectFromSequence name="m4" from="-1" to="1" step="2" exclude="$m3"/>
+  <selectFromSequence name="a" from="100" to="200" step="100"/>
+  
+  <conditionalContent name="group6" hide> 
+    <case condition="$a=100"> 
+    <piecewiseFunction name="trape" fixed> 
+      <function domain="(0,$m1)">$m3</function>
+      <function domain="[$m1,$m1+2)">$m4*x-$m4*($m1+1)</function>
+      <function domain="[$m1+2, $m1+2+$m2)">$m4</function>
+      <function domain="[$m1+2+$m2, 6]"> $m3*x-$m3*6 </function> </piecewiseFunction>
+      <label anchor="($m1,$m3 - 0.25)"><m>f</m></label>
+    </case>
+    <case condition="$a=200"> 
+      <lineSegment endpoints="(0,$m3) (1+$m1, $m3)" />
+      <label anchor="(1+$m1,$m3+0.25)"><m>f</m></label>
+      <lineSegment endpoints="(1+$m1, $m3) (1+$m1+2, $m4)" />
+      <lineSegment endpoints="(1+$m1+2, $m4) (6,0)" />     
+    </case>
+  </conditionalContent>
+
+  <conditionalContent name="group7" hide> 
+    <case condition="$a=100">
+      <conditionalContent hide>
+        <case condition="$m1=1"> 1.5*$m3 </case>
+        <case condition="$m1=2"> 2*$m3 </case>
+      </conditionalContent> </case>
+    <case condition="$a=200"> 2*$m3 </case>
+  </conditionalContent>
+  <conditionalContent name="group8" hide> 
+    <case condition="$a=100">
+      <conditionalContent hide>
+        <case condition="$m1=1"> $m3 </case>
+        <case condition="$m1=2"> 2.5*$m3 </case>
+      </conditionalContent> </case>
+    <case condition="$a=200"> 
+      <conditionalContent hide>
+        <case condition="$m1=1"> 2.5*$m3 </case>
+        <case condition="$m1=2"> 3*$m3 </case>
+      </conditionalContent> </case>
+  </conditionalContent>
+  <conditionalContent name="group9" hide> 
+    <case condition="$a=100">
+      <conditionalContent hide>
+        <case condition="$m1=1"> 0 </case>
+        <case condition="$m1=2"> 2*$m3 </case>
+      </conditionalContent> </case>
+    <case condition="$a=200"> 
+      <conditionalContent hide>
+        <case condition="$m1=1"> 2*$m3 </case>
+        <case condition="$m1=2"> 3.5*$m3 </case>
+      </conditionalContent> </case>
+  </conditionalContent>
+  <conditionalContent name="group10" hide> 
+    <case condition="$a=100">
+      <conditionalContent hide>
+        <case condition="$m1=1"> $m4 </case>
+        <case condition="$m1=2"> $m3 </case>
+      </conditionalContent> </case>
+    <case condition="$a=200"> 
+      <conditionalContent hide>
+        <case condition="$m1=1"> 1.25*$m3 </case>
+        <case condition="$m1=2"> 3*$m3 </case>
+      </conditionalContent> </case>
+  </conditionalContent>
+  <conditionalContent name="group11" hide> 
+    <case condition="$a=100">
+      <conditionalContent hide>
+        <case condition="$m1=1"> 1.5*$m4 </case>
+        <case condition="$m1=2"> 0.5*$m3 </case>
+      </conditionalContent> </case>
+    <case condition="$a=200"> 
+      <conditionalContent hide>
+        <case condition="$m1=1"> $m3 </case>
+        <case condition="$m1=2"> 2.5*$m3 </case>
+      </conditionalContent> </case>
+  </conditionalContent>
+
+  <boolean name="F1wrong">
+    $F1 != $m3 and $ans.responseHasBeenSubmitted
+  </boolean>
+  <boolean name="F2wrong">
+    $F2 != $group7 and $ans.responseHasBeenSubmitted
+  </boolean>
+  <boolean name="F3wrong">
+    $F3 != $group8 and $ans.responseHasBeenSubmitted
+  </boolean>
+  <boolean name="F4wrong">
+    $F4 != $group9 and $ans.responseHasBeenSubmitted
+  </boolean>
+  <boolean name="F5wrong">
+    $F5 != $group10 and $ans.responseHasBeenSubmitted
+  </boolean>
+  <boolean name="F6wrong">
+    $F6 != $group11 and $ans.responseHasBeenSubmitted
+  </boolean>
+  
+</setup>  
+
+<p> The following figure below shows the graph of <m>y = f(x)</m>.</p>
+
+<graph name="g4" xmin="-1" xmax="7" ymin="-4" ymax="4" grid="1 1" fixAxes="true">
+  $group6
+</graph>
+  
+<p> Let <m>F</m> be the function that satisfies <m>F'(x)=f(x)</m> and <m>F(0)=0</m>.  Determine <m>F(b)</m> for <m>b=1, 2, 3, 4, 5, 6</m>, and enter these values in the following table. </p>
+  <table suppressTableNameInTitle="true"> 
+    <tabular left="minor" right="minor" top="minor" bottom="minor" vAlign="middle" hAlign="center" >
+     <row>
+      <cell><m>b</m></cell>
+      <cell>1</cell>
+      <cell>2</cell>
+      <cell>3</cell>
+      <cell>4</cell>  
+      <cell>5</cell>  
+      <cell>6</cell>  
+     </row>
+     <row>
+      <cell><m>F(b)</m></cell>
+      <cell><mathInput name="F1"/></cell>
+      <cell><mathInput name="F2"/></cell>
+      <cell><mathInput name="F3"/></cell>
+      <cell><mathInput name="F4"/></cell>
+      <cell><mathInput name="F5"/></cell>
+      <cell><mathInput name="F6"/></cell>  
+     </row>
+    </tabular>
+  </table> 
+  <answer name="ans">
+    <award matchPartial>
+      <when> $F1 = $m3 and $F2 = $group7 and $F3 = $group8 and $F4 = $group9 and $F5 = $group10 and $F6 = $group11 </when>
+    </award>
+  </answer>
+<feedback condition="$F1wrong or $F2wrong or $F3wrong or $F4wrong or $F5wrong or $F6wrong">
+    Your answer(s) are incorrect for:
+    <asList>
+      <conditionalContent condition="$F1wrong"><m>F(1)</m></conditionalContent>
+      <conditionalContent condition="$F2wrong"><m>F(2)</m></conditionalContent>
+      <conditionalContent condition="$F3wrong"><m>F(3)</m></conditionalContent>
+      <conditionalContent condition="$F4wrong"><m>F(4)</m></conditionalContent>
+      <conditionalContent condition="$F5wrong"><m>F(5)</m></conditionalContent>
+      <conditionalContent condition="$F6wrong"><m>F(6)</m></conditionalContent>
+    </asList>
+  </feedback>

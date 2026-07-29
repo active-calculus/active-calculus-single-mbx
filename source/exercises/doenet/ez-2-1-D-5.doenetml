@@ -1,0 +1,106 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+
+  <selectFromSequence name="a" from="-4" to="-2" step="1" />
+  <selectFromSequence name="b" from="2" to="4" step="1" />
+  <selectFromSequence name="c" from="0" to="3" step="1" />
+  <selectFromSequence name="d" from="0" to="3" step="1" exclude="$c" />
+
+  <math name="ABSb"><abs>$b</abs></math>
+
+  <function name="r" symbolic="false">x^2 + 3x - 2</function>
+  <derivative name="rP" symbolic="false">$r</derivative>
+  <function name="s" symbolic="false">$a - x^2/$b</function>
+  <!-- need to fix the possibility that b = 0 here -->
+  <derivative name="sP" symbolic="false">$s</derivative>
+</setup>
+
+  <p>Let <m>r</m> and <m>s</m> be differentiable functions whose values and derivative values are given by the following table.</p>
+<!--   <p>Note that <m>a = $a</m> and <m>b = $b</m>. </p> -->
+
+      <tabular bottom="minor">
+        <row bottom="major">
+          <cell><m>x</m></cell>
+          <cell><math>$a</math></cell>
+          <cell><math simplify>$a+$ABSb</math></cell>
+          <cell><math simplify>$a+2*$ABSb</math></cell>
+          <cell><math simplify>$a+3*$ABSb</math></cell>
+        </row>
+        <row>
+          <cell><m>r(x)</m></cell>
+          <cell><math>$$r($a)</math></cell>
+          <cell><math>$$r($a+$ABSb)</math></cell>
+          <cell><math>$$r($a+2*$ABSb)</math></cell>
+          <cell><math>$$r($a+3*$ABSb)</math></cell>
+        </row>
+        <row>
+          <cell><m>r'(x)</m></cell>
+          <cell><math>$$rP($a)</math></cell>
+          <cell><math>$$rP($a+$ABSb)</math></cell>
+          <cell><math>$$rP($a+2*$ABSb)</math></cell>
+          <cell><math>$$rP($a+3*$ABSb)</math></cell>
+        </row>
+        <row>
+          <cell><m>s(x)</m></cell>
+          <cell><math>$$s($a)</math></cell>
+          <cell><math>$$s($a+$ABSb)</math></cell>
+          <cell><math>$$s($a+2*$ABSb)</math></cell>
+          <cell><math>$$s($a+3*$ABSb)</math></cell>
+        </row>
+        <row>
+          <cell><m>s'(x)</m></cell>
+          <cell><math>$$sP($a)</math></cell>
+          <cell><math>$$sP($a+$ABSb)</math></cell>
+          <cell><math>$$sP($a+2*$ABSb)</math></cell>
+          <cell><math>$$sP($a+3*$ABSb)</math></cell>
+        </row>
+      </tabular>
+
+
+   <p>
+     Let <m>M(x) = $a r(x) + $b s(x)</m>.
+   </p>
+   <p>
+     Determine <m>M'(a)</m> for each stated value of <m>a</m>.
+   </p>
+
+   <ol marker="a.">
+    <li>
+      <p> <m>M'(<math simplify>$a+$c*$ABSb</math>)</m> =
+        <answer allowedErrorInNumbers="0.1">
+          $a*$$rP($a+$c*$ABSb) + $b*$$sP($a+$c*$ABSb)
+        </answer>
+      </p>
+<!--      <p>
+        <math>$$r($a+2*$ABSb)*$$sP($a+2*$ABSb) + $$s($a+2*$ABSb)*$$rP($a+2*$ABSb)
+        </math>
+      </p> -->
+    </li>
+    <li>
+      <p> <m>M'(<math simplify>$a+$d*$ABSb</math>)</m> =
+        <answer allowedErrorInNumbers="0.1">
+           $a*$$rP($a+$d*$ABSb) + $b*$$sP($a+$d*$ABSb)
+        </answer>
+      </p>
+     <p>
+
+<!--
+       <math simplify>($$r($a+$ABSb)*$$sP($a+$ABSb) - $$s($a+$ABSb)*$$rP($a+$ABSb))/($$r($a+$ABSb))^2
+        </math>
+-->
+     </p>
+    </li>
+   </ol>

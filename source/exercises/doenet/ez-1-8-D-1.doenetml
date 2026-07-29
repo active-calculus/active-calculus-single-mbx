@@ -1,0 +1,192 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="a" from="1" to="3" step="1" exclude="$b"/>
+  <selectFromSequence name="b" from="1" to="3" step="1"/>
+  <selectFromSequence name="c" from="1" to="3" step="1"/>
+
+  <function name="gprime" symbolic="false" >
+    1/4*(x-$b)^2-$c
+  </function>
+
+  <!-- <function name="L" symbolic="false" >
+    $$g($a) + $$gprime($a)*(x-$a)
+    <label><m>L</m></label>
+  </function> -->
+
+  <derivative name="gPP" symbolic="false">
+    $gprime
+  </derivative>
+
+
+
+  <point labelPosition="top" name="A" styleNumber="2" labelIsName showCoordsWhenDragging="false">
+      (4,$$gprime(4))
+      <!-- <attractToGrid dx="1" /> -->
+      <attractToGrid dy="0.01" dx="1" xthreshold="0.1" />
+      <constrainTo>$gprime</constrainTo>
+    <!-- <label>A</label> -->
+  </point>
+
+</setup>
+
+    <p>
+      Let <m>g</m> be a differentiable function whose <em>derivative</em>, <m>g'</m>, is given  in the figure below.
+    </p>
+
+      <graph size="medium" xmin="-1" xmax="5" ymin="-5" ymax="5" size="medium" grid="false" showNavigation="false" fixAxes="true">
+        $gprime
+        $A
+        <label anchor="($A.x, $A.y-.75)"><m>($A.x,$A.y)</m></label>
+        <label fixed anchor="(2,2)"><m>y = g'(x)</m> </label>
+      </graph>
+
+    <p>
+      Again, note that the given graph is <m>y = g'(x)</m>. You can drag point <m>A</m> along the graph of <m>y = g'(x)</m> and see the point's coordinates as you move it.
+    </p>
+    <p>
+      Suppose we are interested in approximating values of <m>g(x)</m> near <m>x = $a</m>, and we know that <m>g($a) = $b</m>.
+    </p>
+
+
+<!--
+  <p>
+    Testing: <m>a = $a, b = $b, c = $c, g(a) = $b, g'(a) = $$gprime($a)</m>
+  </p>
+-->
+
+    <ol marker="a.">
+      <li>
+        <p>Based on the given graph, what is the value of <m>g'($a)</m>?</p>
+        <p><m>g'($a) = </m>
+          <answer>
+            <award allowedErrorInNumbers="0.02" allowedErrorIsAbsolute> $$gprime($a)
+            </award>
+          </answer>
+        </p>
+          <hint>
+            Remember that the given graph above is <m>y = g'(x)</m>, not <m>y = g(x)</m>.  For the value of <m>g'($a)</m>, do you want the <em>height</em> of the given graph or its <em>slope</em> at the value <m>x=a</m>?
+          </hint>
+      </li>
+      <li>
+        <p>
+          Determine a formula for the tangent line approximation to <m>y = g(x)</m> at the point <m>($a, g($a))</m>.
+        </p>
+        <p>
+          <m>L(x) = </m>
+          <answer  allowedErrorInNumbers="0.02" allowedErrorIsAbsolute>($b + $$gprime($a)*(x-$a))</answer>
+        </p>
+
+    <!--  <mathInput minWidth="100" name="Lx"></mathInput>  Testing:  <m>L(x) = <math>$b + $$gprime($a)*(x-$a)</math></m> -->
+
+      </li>
+      <li>
+        <p>
+          Use the tangent line approximation you found in (b) to estimate <math simplify>g($a+0.05*$c)</math>.
+        </p>
+        <p>
+          <m><math simplify>g($a+0.05*$c)</math> \approx</m> <answer allowedErrorInNumbers="0.02" allowedErrorIsAbsolute>$b + $$gprime($a)*(0.05*$c) </answer>
+        </p>
+      </li>
+      <li>
+        <p>
+          How is the estimate of <math simplify>g($a+0.05*$c)</math> that you found in (c) related to the true value of <math simplify>g($a+0.05*$c)</math>?
+          <choiceInput name="menu">
+            <choice>greater than</choice>
+            <choice>less than</choice>
+            <choice>equal to</choice>
+            <choice>not enough information to say</choice>
+          </choiceInput>
+          <answer>
+            <award>
+              <when>$menu.selectedIndices=1 and $$gPP($a) < 0 </when>
+            </award>
+            <award>
+              <when>$menu.selectedIndices=2 and $$gPP($a) > 0 </when>
+            </award>
+            <award>
+              <when>$menu.selectedIndices=4 and $$gPP($a) = 0 </when>
+            </award>
+          </answer>
+
+        </p>
+      </li>
+      <li>
+        <p>
+          Complete the following sentence to justify your choice in (d).
+        </p>
+        <p>
+          An explanation for why the estimate the tangent line approximation provides for <math simplify>g($a+0.05*$c)</math> is
+          <choiceInput name="choice1" inline>
+            <choice>?</choice>
+            <choice>greater than</choice>
+            <choice>less than</choice>
+            <choice>equal to</choice>
+            <choice>insufficient to determine</choice>
+          </choiceInput>
+
+    the true value of  <math simplify>g($a+0.05*$c)</math> is because
+
+          <choiceInput name="choice2" inline>
+            <choice>?</choice>
+            <choice>g($a)</choice>
+            <choice>g'($a)</choice>
+            <choice>g''($a)</choice>
+            <choice>L($a)</choice>
+          </choiceInput>
+
+    is
+
+          <choiceInput name="choice3" inline>
+            <choice>?</choice>
+            <choice>negative</choice>
+            <choice>zero</choice>
+            <choice>positive</choice>
+          </choiceInput>
+
+    which means that near <m>x = $a</m>, the original function <m>g</m> is
+
+          <choiceInput name="choice4" inline>
+            <choice>?</choice>
+            <choice>concave up</choice>
+            <choice>linear</choice>
+            <choice>concave down</choice>
+          </choiceInput>
+
+    and this means that the tangent line to <m>g</m> at the point <m>($a,g($a))</m> lies
+
+          <choiceInput name="choice5" inline>
+            <choice>?</choice>
+            <choice>below</choice>
+            <choice>above</choice>
+          </choiceInput>
+
+
+    the curve.
+        </p>
+        <p>
+          <answer>
+            <award>
+              <when>
+                ($$gPP($a) < 0 and $choice1.selectedIndices=2 and $choice2.selectedIndices=4 and $choice3.selectedIndices=2 and $choice4.selectedIndices=4 and $choice5.selectedIndices=3)
+                or
+                ($$gPP($a) > 0 and $choice1.selectedIndices=3 and $choice2.selectedIndices=4 and $choice3.selectedIndices=4 and $choice4.selectedIndices=2 and $choice5.selectedIndices=2)
+              </when>
+            </award>
+          </answer>
+        </p>
+      </li>
+    </ol>
+  

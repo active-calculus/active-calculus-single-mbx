@@ -1,0 +1,53 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <math name="t0">0</math>
+  <selectFromSequence name="y0" from="2" to="3" step="0.5"/>
+  <selectFromSequence name="n" from="3" to="5" step="1"/>
+  <selectFromSequence name="r" from="-0.48" to="-0.16" step="0.16"/>
+  <selectFromSequence name="yn" from="-2.4" to="-1.2" step="0.6"/>
+  <selectFromSequence name="Dt" from="0.25" to="0.75" step="0.25"/>
+
+  <math name="p" simplify>$n+1</math>
+  <math name="tn" simplify>$n*$Dt</math>
+  <math name="tnPlus1" simplify>($n+1)*$Dt</math>
+
+  <math name="sol">$yn + $r*$Dt</math>
+
+</setup>
+
+<p>
+  Suppose that for some given initial value problem of the form 
+  <me>
+    \frac{dy}{dt} = f(t,y), \ \ y(0) = $y0
+  </me>
+  we've applied Euler's Method using <m>\Delta t = $Dt</m> for <m>$n</m> steps, and we now know the following information:
+  <me>
+    t_$n = $tn, \ \ y_$n = $yn, \ \ \text{and} \ \ \left.\frac{dy}{dt}\right \rvert_{(t_$n,y_$n)}=$r
+  </me>
+  Use this information to determine the value of <m>y_$p</m> and identify the value of the solution function that this quantity approximates.
+</p>
+<p>
+  <m>y_$p = </m><mathInput name="yP"/>, and this value approximates
+  <choiceInput name="trueValue">
+    <choice><m>y($t0)</m></choice>
+    <choice><m>y($tn)</m></choice>
+    <choice><m>y($tnPlus1)</m></choice>
+    <choice><m>y(<math simplify>10*$Dt</math>)</m></choice>
+  </choiceInput>
+</p>
+<p>
+  <answer><award><when>$yP=$sol and $trueValue.selectedIndices=3</when></award></answer>
+</p>

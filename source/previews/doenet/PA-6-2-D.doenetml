@@ -1,0 +1,137 @@
+
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- a rough draft of this preview activity was originally drafted by Jacob Levin at the 2024 Doenet workshop -->
+
+<setup>
+  <number name="a">0</number>
+  <number name="b">5</number>
+  <function name="f">-3/5*(x-5)</function>
+  <math name="VolSlice">pi*($f)^2*dx</math>
+  <math name="integrand">pi*($f)^2</math>
+  <math name="vol">15*pi</math>
+  <number name="difference">abs($VEntered - $vol)</number>
+  <boolean name="tolerance">$difference < 0.011</boolean>
+</setup>  
+
+<p>
+  Consider a circular cone of radius 3 and height 5, which we view horizontally as pictured in the following figure. Our goal in this activity is to use a definite integral to determine the volume of the cone.
+</p>
+
+<image source="https://activecalculus.org/single2e/external/images/6_2_PA1.svg" description="The circular cone described in Preview Activity 6.2.1"/>
+
+<!-- Interactive Answers -->
+<ol marker="a.">
+  <li>
+    <p>
+      Find a formula for the linear function <math>y = f(x)</math> that bounds the top edge of the cone pictured in the figure.
+    </p>
+    <p>
+      <answer>
+        <label><m>f(x) = </m></label>
+        $f
+      </answer>
+    </p>
+  
+    <hint>
+    The function <m>f(x)</m> generates the line that passes through <m>(0,3)</m> and <m>(5,0)</m>.
+  </hint>     
+  </li>
+
+
+  
+  <li>
+    <p>
+      For a representative slice of thickness <m>\Delta x</m> that is horizontally located at <m>x</m> (somewhere between <m>x = 0</m> and <m>x = 5</m>), what is the radius, <m>r</m>, of a representative slice? Note that the radius depends on the value of <math> x</math>.
+    </p>
+    <p>
+      <answer>
+        <label><m>r = </m></label>
+        $f
+      </answer>
+    </p>
+  </li>
+  
+
+
+  <!--
+<hint>
+  The answer should include the pie symbol <math>π</math>.
+</hint> 
+  -->
+  
+  <li>
+    <p>
+      What is the volume of a representative slice, <m>V_{\text{slice}}</m>?  When you enter your volume formula, use the notation <q><m>dx</m></q> to represent <m>\Delta x</m> as the thickness of a representative slice.
+    </p>
+    <p>
+      <answer>
+        <label>
+          <m>V_{\text{slice}} =</m>
+        </label>
+        $VolSlice
+      </answer>
+    </p>
+  
+    <hint>
+      Remember that the volume of a cylinder of radius <m>r</m> and height <m>h</m> is <m>\pi r^2 h</m>.
+    </hint> 
+  </li>
+
+
+  
+  <li>
+    <p>
+      State the definite integral that sums the volumes of the thin slices across the full horizontal span of the cone in order to find its entire volume, <m>V</m>.
+    </p>
+    <p>
+          <m>V = \int_a^b </m> <mathInput minWidth="75" name="integrandEntered"><shortDescription>integrand</shortDescription></mathInput> <m>d</m> <mathInput minWidth="15" name="dWhat"><shortDescription>x or r or y</shortDescription></mathInput>
+        </p>
+        <p>
+          where 
+          <m>a = </m><mathInput minWidth="30" name="aEntered"><shortDescription>a value</shortDescription></mathInput> and <m>b = </m><mathInput minWidth="30" name="bEntered"><shortDescription>b value</shortDescription></mathInput>
+          <answer matchPartial><award><when>$aEntered=$a and $bEntered=$b and $dWhat = x and $integrandEntered=$integrand </when></award></answer>
+        </p>
+  </li>
+  <li>
+    <p>
+      Use the Fundamental Theorem of Calculus to find the exact value of the definite integral you found in (d), and state its value in the blank below.
+    </p>
+    <p>
+      <answer name="VEntered">
+        <label>
+          <m>V = </m>
+        </label>
+        $vol
+      </answer>
+    </p>
+      <feedback condition="$VEntered.creditAchieved!=1 and $tolerance and $VEntered.justSubmitted">
+          You have a close decimal representation of <m>V</m>, but it's important to use the Fundamental Theorem of Calculus to find and the value of <m>V</m> exactly.  Your answer should be a whole number times <m>\pi</m>.
+        </feedback>
+  </li>
+
+  <li>
+    <p>
+      Recall the formula for the volume of a cone whose base radius is <m>r</m> and whose height is <m>h</m>: <m>V_{\text{cone}} = \frac{\pi}{3}r^2 h</m>.  Apply this formula to the given figure, and state your result below.
+    </p>
+  <p>
+    <answer>
+      <label><m>V_{\text{cone}} = </m></label>
+      $vol
+    </answer>
+  </p>    
+  </li>
+  
+</ol>

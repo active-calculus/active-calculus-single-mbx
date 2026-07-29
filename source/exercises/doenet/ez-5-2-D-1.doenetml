@@ -1,0 +1,117 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+
+  <selectFromSequence name="a" from="-0.5" to="0.5" step="0.25" exclude="0"/>
+  <selectFromSequence name="h" from="2" to="4" step="1" exclude="0"/>
+  <selectFromSequence name="k" from="1" to="2" step="1"/>
+  <selectFromSequence name="c" from="1" to="3" step="1" exclude="0"/>
+  
+  <function name="f">$a*(x-$h)^2 - abs($a)/$a*$k</function>
+  <function name="A">$a/3*(x-$h)^3 - abs($a)/$a*$k*x - $a/3*($c-$h)^3 + abs($a)/$a*$k*$c</function>
+  
+  <math name="z1">$h - sqrt($k/abs($a))</math>
+  <math name="z2">$h + sqrt($k/abs($a))</math>
+  <math name="int1">(-1,$z1)</math>
+  <math name="int2">($z1,$z2)</math>
+  <math name="int3">($z2,7)</math>
+  <mathList name="outer">$int1 $int3</mathList>
+  <math name="CC1">(-1,$h)</math> 
+  <math name="CC2">($h,7)</math>  
+
+<!--
+    <selectFromSequence name="a" from="-2" to="2" step="0.5" exclude="0"/>
+    <function name="f">$a*sin(pi/2 * x) + $a</function>
+--> 
+  
+</setup>  
+
+<p>
+  Let <m>A(x) = \int_{$c}^x f(t) \, dt</m> where <m>f</m> is the function pictured in the graph below.  Use the definition of <m>A</m> and the graph of <m>f</m> to respond to the following questions.  Note that there's a draggable point on the graph of <m>f</m> that can be used to help you estimate the location of key points.
+</p>
+
+<graph xmin="-1" xmax="7" ymin="-4" ymax="4" grid="1 1" fixAxes="true" showNavigation="false">
+  $f
+  <label anchor="($h + 0.2,$$f($h) - 0.7*$a)"><m>f</m></label>
+  <point name="P" styleNumber="2" >(1,$$f(1))
+    <constraints>
+      <constrainTo>$f</constrainTo>
+    </constraints>
+  </point>
+</graph>  
+
+<p>
+  Again, <m>A(x) = \int_{$c}^x f(t) \, dt</m>.
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Determine each of the following values, accurate to within <m>0.1</m>.
+      </p>
+      <p>
+        <m>A($c) = </m><answer allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$$A($c)</answer>
+      </p>
+      <p>
+        <m>A'(<math simplify>$c</math>) = </m><answer allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$$f($c)</answer>
+      </p>        
+      <p>
+        <m>A'(<math simplify>$c-1</math>) = </m><answer allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$$f($c-1)</answer>
+      </p>
+      <p>
+        <m>A'(<math simplify>$c+2</math>) = </m><answer allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$$f($c+2)</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Notice that <m>f(<math simplify>$z1</math>) = 0</m> and <m>f(<math simplify>$z2</math>) = 0</m>.  On what intervals within <m>-1 \lt x \lt 7</m> is <m>A</m> increasing?  on what intervals is <m>A</m> decreasing?  For instance, if you find <m>A</m> is increasing for <m>5 \lt x \lt 7</m>, enter <q><m>(5,7)</m></q>; if there's more than one interval, separate them with commas, and if there's no such interval, enter <q>none</q>.
+      </p>
+      <p>
+        <m>A</m> is increasing on <mathInput name="Aincr"/>
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute unorderedCompare>
+          <award><when>($$f($z1-1) > 0 and $Aincr=$outer) or ($$f($z1-1) < 0 and $Aincr=$int2)
+          </when></award>
+        </answer>
+      </p>
+      <p>
+        <m>A</m> is decreasing on <mathInput name="Adecr"/>
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute unorderedCompare>
+          <award><when>($$f($z1-1) < 0 and $Adecr=$outer) or ($$f($z1-1) > 0 and $Adecr=$int2)
+          </when></award>
+        </answer>
+      </p>      
+    </li> 
+    <li>
+      <p>
+        On what intervals within <m>-1 \lt x \lt 7</m> is <m>A</m> concave up?  on what intervals is <m>A</m> concave down?  For instance, if you find <m>A</m> is concave up for <m>5 \lt x \lt 7</m>, enter <q><m>(5,7)</m></q>; if there's more than one interval, separate them with commas, and if there's no such interval, enter <q>none</q>.
+      </p>
+      <p>
+        <m>A</m> is concave up on <mathInput name="ACCU"/>
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
+          <award><when>($a > 0 and $ACCU=$CC2) or ($a < 0 and $ACCU=$CC1)
+          </when></award>
+        </answer>
+      </p>
+      <p>
+        <m>A</m> is concave down on <mathInput name="ACCD"/>
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
+          <award><when>($a > 0 and $ACCD=$CC1) or ($a < 0 and $ACCD=$CC2)
+          </when></award>
+        </answer>
+      </p>  
+    </li> 
+  </ol>  
+</p> 

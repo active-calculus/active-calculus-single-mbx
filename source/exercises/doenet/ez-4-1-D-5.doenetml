@@ -1,0 +1,75 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+
+  <selectFromSequence name = "b" from = "4" to = "6" step = "1"/>
+  <selectFromSequence name = "m" from = "1/2" to = "1" step = "1/2"/>
+    
+  
+  <piecewiseFunction name="f" symbolic="false" styleNumber="1">
+    <function domain="(-infinity,2)">$b</function>
+    <function domain="[2,4)">-1*$m*(x-2)+$b</function>
+    <function domain="[4,8)">1/2*$m*(x-4)+$b-2*$m</function>
+    <function domain="[8,infinity)">$b</function>
+  </piecewiseFunction>
+
+  <piecewiseFunction name="F" symbolic="false"  styleNumber="3">
+    <function domain="(-infinity,2)">$b*x</function>
+    <function domain="[2,4)">$b*x - $m*(x-2)^2/2</function>
+    <function domain="[4,8]">1/4*$m*(x-4)^2 + ($b-2*$m)*x + 6*$m</function>
+  </piecewiseFunction>
+
+
+</setup>
+
+<p>
+    Let the velocity, <m>v</m>, of a moving object be the piecewise linear function given by the graph below.  Assume that <m>t</m> is measured in seconds and <m>v(t)</m> in feet per second.
+</p>
+      <graph xmin="-1" xmax="9" ymin="-2" ymax="8" size="medium" grid="true" showNavigation="false" fixAxes="true"> 
+        $f   
+        <label fixLocation anchor="(2.25,$$f(2)+0.25)"><m>v</m></label>
+        <label fixLocation anchor="(0.75,7.5)">ft/sec</label>
+        <label fixLocation anchor="(8.5,0.25)">sec</label>
+      </graph>
+
+<p>
+  Find the total distance traveled by the moving object on each of the following intervals.
+</p>  
+
+<p>
+  <ul>
+    <li>
+      <p>
+        The distance traveled on <m>[0,2]</m> is <answer>$$F(2)</answer> feet. 
+      </p>
+    </li> 
+    <li>
+      <p>
+        The distance traveled on <m>[2,4]</m> is <answer>$$F(4)-$$F(2)</answer> feet.
+      </p> 
+      <!-- <m>F(4) = $$F(4)</m>, <m>F(2) = $$F(2)</m> -->
+    </li>      
+    <li>
+      <p>
+        The distance traveled on <m>[4,8]</m> is <answer>$$F(8)-$$F(4)</answer> feet.
+      </p>
+    </li>  
+    <li>
+      <p>
+        The distance traveled on <m>[0,8]</m> is <answer>$$F(8)</answer> feet.
+      </p>
+    </li>  
+  </ul>  
+</p>  

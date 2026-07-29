@@ -1,0 +1,82 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name = "a" from = "-2" to = "2" step = "1" exclude="0"/>
+  <selectFromSequence name = "b" from = "2" to = "5" step = "1" exclude="0 $a"/>
+  <selectFromSequence name = "c" from = "-3" to = "3" step = "1" exclude="0 $a $b"/>
+
+  <selectFromSequence name = "p" from = "0" to = "1" step = "0.2" exclude="0"/>
+  <selectFromSequence name = "q" from = "2" to = "4" step = "1"/>
+
+  <function name="f" symbolic="false">$a*x*e^(-$b*x) + $c</function>
+  <derivative name="fP">$f</derivative>
+  <function name="fextrema" domain="[$p,$q]">$f</function>
+
+  <number name="crNum">1/$b</number>
+
+</setup>
+
+<p>
+  Consider the function <m>f(x) = <math simplify="numberspreserveorder">$a x e^(-$b x) + $c</math></m> on the interval <m>[$p,$q]</m>. Use calculus to find the exact absolute minimum and absolute maximum of <m>f</m> on this interval.
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        For <m>f(x) = <math simplify="numberspreserveorder">$a x e^(-$b x) + $c</math></m>, it follows that 
+      </p>
+      <p>
+        <answer>
+          <label>
+            <m>f'(x)=</m>
+          </label>
+          $fP
+        </answer>
+      </p>
+      <p>
+        Find all critical numbers of <m>f</m>.  If there is more than one critical number, enter them as a list separated by commas.  If there are none, enter <em>none</em>.
+      </p>
+      <p>
+        <answer><label>The exact critical numbers of <m>f</m> are: <m>x = </m></label>$crNum</answer>
+      </p>
+      <p>
+        Evaluate the function at any critical numbers that lie in the interval <m>[$p,$q]</m>.  If there is more than one such critical number, enter the function values as a list separated by commas.  If there are no critical numbers in the interval <m>[$p,$q]</m>, enter <em>none</em>. (<alert>Note</alert>: to enter exact function values, use notation such as <m>e^{-1}</m>.  If you enter a decimal representation, report your result accurate to 3 decimal places.)
+      </p>
+      <answer allowedErrorInNumbers="0.001" allowedErrorIsAbsolute><label>The value(s) of <m>f</m> at any applicable critical numbers are:</label>
+        <conditionalContent>
+          <case condition="$crNum>= $p and $crNum<= $q">$$f($crNum)</case>
+          <else>none</else>
+        </conditionalContent>
+      </answer>
+    </li>
+    <li>
+      <p>
+        The values of the function at the respective endpoints of the interval are:
+      </p>
+      <p>
+        <answer allowedErrorInNumbers="0.001" allowedErrorIsAbsolute><label><m>f($p) =</m></label>$$f($p)</answer> and <answer allowedErrorInNumbers="0.001" allowedErrorIsAbsolute><label><m>f($q) =</m></label>$$f($q)</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        <answer allowedErrorInNumbers="0.001" allowedErrorIsAbsolute><label>The absolute minimum value of <m>f</m> on <m>[$p,$q]</m> is </label>$fextrema.globalMinimum[2]</answer>
+      </p>
+      <p>
+        <answer allowedErrorInNumbers="0.001" allowedErrorIsAbsolute><label>The absolute maximum value of <m>f</m> on <m>[$p,$q]</m> is </label>$fextrema.globalMaximum[2]</answer>
+      </p>
+    </li>
+  </ol>
+</p>

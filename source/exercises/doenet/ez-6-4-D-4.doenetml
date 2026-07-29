@@ -1,0 +1,147 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="L" from="6" to="10" step="1"/>
+  <selectFromSequence name="W" from="3" to="5" step="1"/>
+  <selectFromSequence name="H" from="2" to="4" step="1"/>
+  <selectFromSequence name="drop" from="0.5" to="1.5" step="0.5"/>
+
+  <math simplify name="d">$H - $drop</math>
+  
+  <number name="a">9.81</number>
+  
+  <function name="depth">x-$drop</function>
+  <function name="A">$W*Dx</function>
+  <function name="P">9.81*1000*$depth</function>
+  <function name="f">$P*$A</function>
+  <function name="fNoDx">9.81*1000*$W*$depth</function>
+  <function name="fNoDxL">9.81*1000*$L*$depth</function>
+  
+  <function name="F">9.81*1000*$W*(x-$drop)^2/2</function>
+
+  <math name="Force" simplify>$$F($H)-$$F($drop)</math>
+  <math name="Force2" simplify>$Force*$L/$W</math>
+
+</setup>  
+  
+    <p>
+      A rectangular water tank has the following dimensions: the smaller rectangular ends are <m>$W</m> meters wide by <m>$H</m> meters deep, and larger rectangular sides are <m>$L</m> meters long by <m>$H</m> meters deep.  Assume that the tank is full of water to a depth of <m>$d</m> meters.   Recall that the mass density of water is <m>1000</m> kg per cubic meter and that the gravitational constant is <m>g = 9.81</m> N/kg.
+    </p>
+    <p>
+      Respond to the following prompts in order to ultimately determine how much force due to hydrostatic pressure is exerted on the sides of the tank.
+    </p>
+
+    <p>
+      <ol marker="a.">
+        <li>
+          <p>
+            Draw a picture of the tank, viewing the positive <m>y</m>-axis as lying across the top of the tank, and the positive <m>x</m>-axis as pointing down the vertical height of the tank (through the center of one of the smaller rectangular ends).  Sketch a representative slice of the water against one of the smaller rectangular ends, labeling its location along the <m>x</m>-axis and its thickness.
+          </p>
+          <p>
+            Find formulas for each of the following quantities:  <m>d(x)</m>, the depth of a representative slice below the surface of the water at location <m>x</m>; <m>A(x)</m>, the area of the corresponding representative slice on one of the smaller triangular ends; and <m>P(x)</m>, the pressure that the water exerts on the representative slice.   Wherever you need the notation <q><m>\Delta x</m></q>, enter <q><m>Dx</m></q> instead.
+          </p>
+          <p>
+            <m>d(x) = </m><mathInput name="dEntered"/> 
+            <answer><award><when>$dEntered=$depth</when>
+            </award></answer>
+          </p>
+          <p>
+            <m>A(x) = </m><mathInput name="AEntered"/> 
+            <answer><award><when>$AEntered=$A</when>
+            </award></answer>
+          </p>
+          <p>
+            <m>P(x) = </m><mathInput name="PEntered"/> 
+            <answer><award><when>$PEntered=$P</when>
+            </award></answer>
+          </p>
+          <p>
+            Finally, recall that a fixed depth, force is the product of pressure and area.  State a formula for the force exerted on the representative slice.
+          </p>
+          <p>
+            <m>F(x) = </m><mathInput name="fEntered"/> 
+            <answer><award><when>$fEntered=$f</when>
+            </award></answer>
+          </p>
+        </li>
+        <li>                 
+          <p>
+            State a definite integral whose value is the total force due to hydrostatic pressure that's exerted on one of the smaller ends of the tank.
+          </p>
+          <p>
+            lower limit of integration: <m>a = </m> <answer name="lower">$drop</answer>
+          </p>
+          <p>
+            upper limit of integration: <m>b = </m> <answer name="upper">$H</answer>
+          </p>
+  
+          <p>
+            Integral expression for the total force, <m>F_S</m>, on a smaller end: 
+          </p>
+          <p>
+            <m>F_S = \displaystyle\int_{$lower}^{$upper}</m><mathInput name="int1" minWidth="100" /><m>dx \, </m><answer><award><when>$int1 = $fNoDx</when></award></answer> 
+          </p> 
+          <p>
+            Evaluating the integral to an accuracy of at least <m>0.0001</m>, the total force on one of the smaller ends, <m>F_S</m>, is 
+          </p>     
+          <p>
+            <m>F_S = </m><mathInput name="intVal" minWidth="40" /> <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><award><when>$Force=$intVal </when></award></answer>
+          </p>
+        </li>
+        <li>
+          <p>
+            How does your work change if you instead want to compute the total force due to hydrostatic pressure on one of the longer ends?  State an evaluate a definite integral that represents this quantity.
+          </p>
+          <p>
+            lower limit of integration: <m>a = </m> <answer name="lower">$drop</answer>
+          </p>
+          <p>
+            upper limit of integration: <m>b = </m> <answer name="upper">$H</answer>
+          </p>
+  
+          <p>
+            Integral expression for the total force, <m>F_L</m>, on a larger end: 
+          </p>
+          <p>
+            <m>F_L = \displaystyle\int_{$lower}^{$upper}</m><mathInput name="int2" minWidth="100" /><m>dx \, </m><answer><award><when>$int2 = $fNoDxL</when></award></answer> 
+          </p> 
+          <p>
+            Evaluating the integral to an accuracy of at least <m>0.0001</m>, the total force on one of the larger ends, <m>F_L</m>, is 
+          </p>     
+          <p>
+            <m>F_L = </m><mathInput name="intVal2" minWidth="40" /> <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><award><when>$Force2=$intVal2 </when></award></answer>
+          </p>          
+        </li>
+        <li>
+          <p>
+            Finally, determine the total force, <m>F</m>, due to hydrostatic pressure that's exerted on all four sides of the tank combined.
+          </p>
+          <p>
+            The total force on all four sides, <m>F</m>, is 
+          </p>     
+          <p>
+            <m>F = </m><mathInput name="totalForce" minWidth="40" /> <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><award><when>$totalForce=2*($Force+$Force2) </when></award></answer>
+          and the units on this quantity are <answer><choiceInput inline>
+              <choice>?</choice>
+              <choice>Newton-meters</choice>
+              <choice>meters</choice>
+              <choice credit="1">Newtons</choice>
+              <choice>kilograms</choice>
+              <choice>kilogram-meters</choice>
+            </choiceInput></answer>
+          </p>
+        </li>
+      </ol>
+    </p>

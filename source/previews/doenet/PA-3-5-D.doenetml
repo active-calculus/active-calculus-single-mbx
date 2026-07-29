@@ -1,0 +1,156 @@
+<!-- <?xml version="1.0" encoding="UTF-8" ?> -->
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+
+  <function name="f">2+3/(1+(x+1)^2)</function>
+  <derivative name="fP">$f</derivative>
+  <derivative name="fPP">$fP</derivative>
+
+  <!-- <math name="fP1symbolic">(-6*(x+1))/(1+(x+1)^2)^2</math>
+  <math name="fP2symbolic">-6*(x+1))*(1+(x+1)^2)^(-2)</math>    -->
+
+  <math name="crNum1">-1</math>
+  <mathList name="correctCrNums"> $crNum1 </mathList>
+
+  <interval name="correctfINCR">(-infinity,-1)</interval>
+  <interval name="correctfDECR">(-1, infinity)</interval>
+
+  <!-- <text name="correctfINCR1">(-INF, -1)</text>
+  <text name="correctfINCR2">(-INF,-1)</text>
+  <text name="correctfDECR1">(-1, INF)</text>
+  <text name="correctfDECR2">(-1,INF)</text> -->
+
+
+  <!--
+  <math name="POI1">a</math>
+  <math name="POI2">(a+b)/2</math>
+  <mathList name="correctPOIs"> $POI1 $POI2 </mathList>
+  -->
+
+</setup>
+
+
+<p>
+  Let <m>f(x) = 2 + \frac{3}{1+(x+1)^2}</m>.
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Find <m>f'(x)</m> and use it to determine all of the critical numbers of <m>f</m>.  If there is more than one critical number, enter them as a list separated by commas.  If there are none, enter <em>none</em>.
+      </p>
+      <p>
+        <answer name="fPentered">
+          <label><m>f'(x) = </m></label>
+          $fP
+        </answer>
+      </p>
+      <p>
+        The critical numbers of <m>f</m> occur at <m>x = </m> <answer unorderedCompare><mathInput name="crNums"><shortDescription>locations of critical numbers</shortDescription></mathInput> <award><when> $crNums=$correctCrNums</when></award></answer>.
+      </p>
+    </li>
+    <li>
+      <p>
+        Construct a first derivative sign chart for <m>f</m> and thus determine all intervals on which <m>f</m> is increasing or decreasing.  State your results in the following blanks.  For example, if <m>f</m> is increasing on the intervals <m>(-\infty, 2)</m> and <m>(5,\infty)</m>, enter <q>(-infinity, 2), (5, infinity)</q> (that is, separate the intervals with commas).  If <m>f</m> is never increasing, enter <q>never</q>.
+      </p>
+      <p>
+        <answer><label>The function <m>f</m> is increasing for </label>$correctfINCR</answer>.
+      </p>
+      <p>
+        <answer><label>The function <m>f</m> is decreasing for </label>$correctfDECR</answer>.
+      </p>
+    </li>
+    <li>
+      <p>
+        Explain why <m>f(x) \gt 2</m> for every value of <m>x</m> by completing the following sentence.
+      </p>
+      <p>
+        Since <m>(x+1)^2</m> is always <answer><choiceInput inline><shortDescription>sign of the term</shortDescription>
+          <choice>?</choice>
+          <choice>positive</choice>
+          <choice credit="1">non-negative</choice>
+          <choice>not positive</choice>
+          <choice>negative</choice>
+        </choiceInput></answer>, it follows that <m>1 + (x+1)^2</m> is always <answer><choiceInput inline><shortDescription>sign of the term in the denominator</shortDescription>
+          <choice>?</choice>
+          <choice>negative</choice>
+          <choice credit="1">positive</choice>
+        </choiceInput></answer>, and therefore <m>\frac{3}{1 + (x+1)^2}</m> is also always <answer><choiceInput inline><shortDescription>sign of the fractional term of the function</shortDescription>
+          <choice>?</choice>
+          <choice>negative</choice>
+          <choice credit="1">positive</choice>
+        </choiceInput></answer>.  These observations imply that  <m>f(x) = 2 + \frac{3}{1 + (x+1)^2}</m> is always <answer><choiceInput inline><shortDescription>possible values of the function</shortDescription>
+          <choice>?</choice>
+          <choice>less than 2</choice>
+          <choice>less than or equal to 2</choice>
+          <choice>greater than or equal to 2</choice>
+          <choice credit="1">greater than 2</choice>
+        </choiceInput></answer>.
+      </p>
+    </li>
+    <li>
+      <p>
+        Determine <m>\displaystyle \lim_{x \to \infty} f(x)</m> and <m>\displaystyle \lim_{x \to -\infty} f(x)</m>.
+      </p>
+      <p>
+        <answer><label><m>\displaystyle \lim_{x \to \infty} f(x) = \lim_{x \to \infty} 2 + \frac{3}{1 + (x+1)^2} = </m></label>2</answer>
+      </p>
+      <p>
+        <answer><label><m>\displaystyle \lim_{x \to -\infty} f(x) = \lim_{x \to -\infty} 2 + \frac{3}{1 + (x+1)^2} = </m></label>2</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Complete the following sentence to explain why <m>f</m> has a global maximum and to state its value (as an ordered pair of the form <m>(a,b)</m>, where <m>b = f(a)</m>).
+      </p>
+      <p>
+        Based on our work in (a) and (b), the function <m>f</m> has a global maximum because for <m>x \lt -1</m>, <m>f</m> is <answer><choiceInput inline><shortDescription>behavior of the function before x equals -1 </shortDescription>
+          <choice>?</choice>
+          <choice>always decreasing</choice>
+          <choice>always concave down</choice>
+          <choice credit="1">always increasing</choice>
+          <choice>always concave up</choice>
+        </choiceInput></answer>, and for <m>x \gt -1</m>, <m>f</m> is <answer><choiceInput inline><shortDescription>behavior of the function after x equals -1</shortDescription>
+          <choice>?</choice>
+          <choice credit="1">always decreasing</choice>
+          <choice>always concave down</choice>
+          <choice>always increasing</choice>
+          <choice>always concave up</choice>
+        </choiceInput></answer>; the global maximum occurs at the point (enter your answer as an ordered pair) <answer><shortDescription>location of the global maximum</shortDescription>($crNum1,$$f($crNum1))</answer>.
+      </p>
+    </li>
+    <li>
+      <p>
+        Finally, complete the following sentence to explain why <m>f</m> does not have a global minimum.
+      </p>
+      <p>
+        Based on our work in (c) and (d), the function <m>f</m> does not have a global minimum because while <m>f(x)</m> is <answer><choiceInput inline><shortDescription>possible values of the function</shortDescription>
+          <choice>?</choice>
+          <choice>always less than 2</choice>
+          <choice>always equal to 2</choice>
+          <choice credit="1">always greater than 2</choice>
+        </choiceInput></answer>, since <answer><label><m>\displaystyle \lim_{x \to \pm \infty} f(x) = </m></label>2</answer>, for any value of <m>f(x)</m> that we find, no matter how close that number is to <m>2</m>, we can always find another value of <m>f(x)</m> that is <answer><choiceInput inline><shortDescription>behavior of the function</shortDescription>
+          <choice>?</choice>
+          <choice>larger, but still less than 2</choice>
+          <choice credit="1">smaller, but still larger than 2</choice>
+          <choice>smaller, but still less than 2</choice>
+          <choice>larger, but still greater than 2</choice>
+        </choiceInput></answer>, so there is no output of <m>f(x)</m> that is less than or equal to every possible output of the function.
+      </p>
+    </li>
+  </ol>
+</p>

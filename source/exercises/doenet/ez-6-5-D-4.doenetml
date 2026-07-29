@@ -1,0 +1,90 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="k" from="0.1" to="0.5" step="0.1"/>
+  <selectFromSequence name="m" from="3" to="5" step="1" exclude="$z"/>
+  <function name="f" variable="t">$k*t*e^(-$k*t)</function>
+  <function name="u" variable="t">$k*t</function>
+  <function name="du" variable="t">$k</function>
+  <function name="dv" variable="t">e^(-$k*t)</function>
+  <function name="v" variable="t">-1/$k*e^(-$k*t)</function>
+  <function name="F" variable="t">-t*e^(-$k*t)-1/$k*e^(-$k*t)</function>
+  <math name="mu">1/$k</math>
+  <math name="meanwait">1 - e^(-1)</math>
+</setup>
+
+<p>
+  At a customer support call center, the fraction of people who wait between time <m>t = a</m> and <m>t = b</m> (in minutes) to have their call answered is given by the definite integral
+  <me>
+    \int_a^b $k \, e^{-$k t} \, dt.
+  </me>
+  Note that the function <m>p(t) = $k e^{-$k t}</m> has the property that <m>\int_0^\infty $k \, e^{-$k t}  \, dt = 1</m>.
+</p>
+
+<p>
+  It turns out that the average (or <term>mean</term>) wait time, <m>\mu</m> is given by the improper integral
+  <me>
+    \mu = \int_0^\infty $k t \cdot e^{-$k t}  \, dt.
+  </me>
+  Through the steps below, we find the exact value of <m>\mu</m>.
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        First, we instead consider
+        <me>
+          \lim_{b\to \infty} \int_0^b $k t \cdot e^{-$k t}  \, dt
+        </me>
+        and find an antiderivative for <m>f(t) = $k t \cdot e^{-$k t}</m> using integration by parts.  Letting <m>u = $k t</m> and <m>dv =  e^{-$k t} \, dt</m>, it follows (applying the integration by parts formula) that
+      </p>
+      <p>
+        <m>\displaystyle \int_0^b $k t \cdot e^{-$k t} \, dt =</m><mathInput name="uv"><shortDescription>u v</shortDescription></mathInput><m>\displaystyle \Bigg|_0^b - \int_0^b</m><mathInput name="vdu"><shortDescription>v du</shortDescription></mathInput><m>dt</m> <answer matchPartial><award><when>$uv = $u*$v and $vdu = $v*$du</when></award></answer>,
+      </p>
+      <p>
+        and evaluate the righthand integral above and state the full antiderivative of the integrand:
+      </p>
+      <p>
+        <m>\displaystyle \int_0^b $k t \cdot e^{-$k t} \, dt =</m><mathInput name="int"><shortDescription>full integrand</shortDescription></mathInput><m>\displaystyle \Bigg|_0^b</m><answer><award><when>$int=$F</when></award></answer>
+      </p>
+      <p>
+        Finally, evaluate the integral to determine the resulting expression involving <m>b</m>.
+      </p>
+      <p>
+        <m>\displaystyle \int_0^b $k t \cdot e^{-$k t} \, dt =</m><mathInput name="intEvaluated"><shortDescription>integral expression in terms of b</shortDescription></mathInput><answer><award><when>$intEvaluated=$$F(b)-$$F(0)</when></award></answer>
+      </p>      
+    </li>
+    <li>
+      <p>
+        Next, use your work in (a) along with appropriate limit notation to find the exact value of
+        <me>
+          \mu = \int_0^\infty $k t \cdot e^{-$k t}  \, dt.
+        </me>
+      </p>
+      <p>
+        <m>\mu = </m><mathInput name="mean"><shortDescription>mean value</shortDescription></mathInput><answer><award><when>$mean=$mu</when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Finally, find the fraction, <m>K</m>, of customers who wait <m>\mu</m> minutes or fewer.  
+      </p>
+      <p>
+        <m>K = </m><mathInput name="half"><shortDescription>K value</shortDescription></mathInput><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$half=$meanwait</when></award></answer>
+      </p>
+    </li>
+  </ol>
+</p>

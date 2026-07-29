@@ -1,0 +1,112 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name = "a1" from = "-0.5" to = "0.5" step = "0.25" exclude="0"/>
+  <selectFromSequence name = "a2" from = "-1.5" to = "1.5" step = "1.5" exclude="0"/>
+  <selectFromSequence name = "z1" from = "-2" to = "2" step = "1" exclude="0"/>
+  <selectFromSequence name = "z2" from = "-2" to = "2" step = "1" exclude="$z1"/>
+  <selectFromSequence name = "y2" from = "-2" to = "2" step = "1" exclude="$z1 $z2"/>
+  
+  <number name="y1">$z1</number>
+  
+  <function name="f" symbolic="false" styleNumber="1">
+    $a1*(x-$z1)*(x-$z2)
+  </function>
+  <derivative name="fP">$f</derivative>
+  <function name="g" symbolic="false" styleNumber="2">
+    $a2*(x-$y1)*(x-$y2)
+  </function>
+  <derivative name="gP">$g</derivative>
+
+   
+</setup>
+
+<p>
+    Let <m>f</m> and <m>g</m> be the quadratic functions given by the graphs below (<m>f</m> is the function in blue; <m>g</m> is the function in red).
+</p>
+      <graph xmin="-4" xmax="4" ymin="-4" ymax="4" size="medium" grid="true" showNavigation="false" fixAxes="true"> $f $g  
+          <label fixLocation anchor="($z1-0.5,$$f($z1-0.5)-0.25)"><m>f</m></label>
+          <label fixLocation anchor="($z1+0.35,$$g($z1+0.5)+0.25)"><m>g</m></label>
+      </graph>
+   
+<!-- 
+<p>If <m>a = $a</m>, and <m>h(x) = f(x) \cdot g(x)</m>, then
+<m> h'($a) = $$f($a) \cdot $$gP($a) + $$g($a) \cdot $$fP($a) </m>
+</p> 
+-->
+
+<!--
+<conditionalContent>
+  <case condition="$a = 1">
+    <p><m>f'($a)</m> is undefined, <m>p'($a)</m> is undefined, and <m>q'($a)</m> is undefined.</p>
+  </case>
+  <case condition="$a = -2">
+    <p><m>g'($a)</m> is undefined, <m>p'($a)</m> is undefined, and <m>q'($a)</m> is undefined.</p>
+  </case>
+</conditionalContent>
+--> 
+  <p>Let <m>h(x) = \frac{f(x)}{g(x)}</m>. </p>  
+
+<p>
+<ol marker="a.">
+
+  <li>
+    <p>Determine each of the following values:</p>
+    <p>
+      <m>f($z1) = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$f($z1)</answer> 
+    </p>
+    <p>
+      <m>g($z1) = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$g($z1)</answer> 
+    </p>
+  </li>
+
+  <li>
+    <p>
+      Determine the sign of each of the following values:
+    </p>  
+    <p>
+      <m>f'($z1)</m> is 
+      <answer><choiceInput>
+        <choice credit="$$fP($z1)<0">negative</choice>
+        <choice credit="$$fP($z1)=0">zero</choice>
+        <choice credit="$$fP($z1)>0">positive</choice>
+      </choiceInput></answer>
+    </p>    
+    <p>
+      <m>g'($z1)</m> is 
+      <answer><choiceInput>
+        <choice credit="$$gP($z1)<0">negative</choice>
+        <choice credit="$$gP($z1)=0">zero</choice>
+        <choice credit="$$gP($z1)>0">positive</choice>
+      </choiceInput></answer>
+    </p>
+  </li> 
+  
+  <li>
+    <p>By our work in (a), we see that <m>\displaystyle \lim_{x \to $z1} h(x) = \lim_{x \to $z1} \frac{f(x)}{g(x)}</m> is indeterminate with form <m>\frac{0}{0}</m>. By L'Hopital's Rule and our work in (b), we can conclude that </p>
+    <p>
+     <m>\displaystyle \lim_{x \to $z1} h(x) = \lim_{x \to $z1} \frac{f(x)}{g(x)}</m> is 
+      <answer><choiceInput>
+        <choice credit="($$gP($z1)<0 and $$fP($z1)>0) or ($$gP($z1)>0 and $$fP($z1)<0)">negative</choice>
+        <choice credit="$$fP($z1)=0 and $$gP($z1)!=0">zero</choice>
+        <choice credit="($$gP($z1)<0 and $$fP($z1)<0) or ($$gP($z1)>0 and $$fP($z1)>0)">positive</choice>
+        <choice>not enough information to say</choice>
+      </choiceInput></answer>
+      </p>
+ <!--     <p><m>$$f($b)*$$gP($b) + $$g($b)*$$fP($b)  </m></p>. -->
+  </li>
+  
+</ol>
+</p>

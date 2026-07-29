@@ -1,0 +1,70 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+ <setup>
+  <selectFromSequence name = "r" from = "0.25" to = "0.75" step = "0.25"/>
+  <selectFromSequence name = "S0" from = "60" to = "80" step = "10"/>
+  <selectFromSequence name = "L" from = "25" to = "35" step = "5"/>
+
+  <math name = "DE">0 - $r*S/$L</math>
+  <math name = "DE1">0 - $r*S(t)/$L</math>
+
+  <math name = "tsoln">-$L/$r*ln(1/$S0)</math>
+
+  <function name = "S" variable="t">$S0*e^(-$r/$L*t)</function>
+
+   
+</setup>
+
+<p>
+  Consider a tank that holds <m>$L</m> liters of solution and that initially <m>$S0</m> grams of salt are present in evenly mixed solution.  Suppose that evenly mixed solution is pumped from the tank at a rate of <m>$r</m> L/min and that pure water is pumped into the tank, also at a rate of <m>$r</m> L/min.  
+</p>
+<p>
+  Let <m>S(t)</m> represent the number of grams of salt in the tank at time <m>t</m> (in minutes).
+</p>
+<p>
+  <ol marker="a.">
+    <li>
+      <p>  
+        Fill in the blanks below to state an initial value problem that the function <m>S(t)</m> satisfies.
+      </p>  
+      <p>
+        <m>\frac{dS}{dt} = </m><mathInput minWidth="75" name="deEntered"/>, <m>S(0) = </m><mathInput minWidth="40" name="S0Entered"/>
+        <answer simplifyOnCompare><award><when> 
+          ($deEntered=$DE and $S0Entered=$S0) or ($deEntered=$DE1 and $S0Entered=$S0) 
+        </when></award></answer> 
+      </p>
+    </li>
+    <li>
+      <p>
+        Solve the initial value problem you determined in (a).
+      </p>  
+      
+      <p>
+        <m>S(t) = </m><mathInput minWidth="70" name="SEntered"/>
+          <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><award><when> ($SEntered=$S) 
+          </when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        What is the least amount of time it will take for there to be <m>1</m> gram or less of salt in the tank?  Report your answer to an accuracy of at least <m>0.01</m>.
+      </p>  
+      
+      <p>
+        <m>t =</m><mathInput name="tEntered" minWidth="60"/> minutes <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute simplifyOnCompare><award><when>$tEntered=$tsoln</when></award></answer>
+      </p>
+    </li>
+  </ol>
+</p>

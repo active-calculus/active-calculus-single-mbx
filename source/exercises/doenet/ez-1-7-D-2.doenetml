@@ -1,0 +1,174 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+
+    <math name="a"><selectFromSequence from="0" to="3" step="1"/></math>
+    <math name="b"><selectFromSequence from="3" to="6" step="1" exclude="$a"/></math>
+    <math name="c"><selectFromSequence from="-2" to="1" step="1" exclude="$a $b"/></math>
+    <math name="d"><selectFromSequence from="2" to="5" step="1" exclude="$a $b $c"/></math>  
+    <math name="d2" simplify>$d+1</math> 
+    <math name="m"><selectFromSequence from="-2" to="-1" step="1"/></math>
+    <math name="n"><selectFromSequence from="1" to="2" step="1"/></math>
+    <math name="p"><selectFromSequence from="4" to="5" step="1"/></math>  
+
+<math fixed name="x1">-3</math>
+<math fixed name="x2"> 0</math>
+<math fixed name="x3"> 3</math>
+<math fixed name="x4"> 6</math>
+
+</setup>
+
+<p>
+  The six open endpoints of the three line segments in the following graph can be dragged vertically.  Move the endpoints in order to construct the graph of a piecewise linear function <m>y = f(x)</m> with the following properties:
+  <ul>
+    <li>
+      <m>\displaystyle \lim_{x \to -3^+} f(x) = $a</m>
+    </li>  
+    <li>
+      <m>\displaystyle \lim_{x \to 0^-} f(x) = $b;  \displaystyle \lim_{x \to 0^+} f(x) = $b</m>
+    </li>  
+    <li>
+      <m>\displaystyle \lim_{x \to 3^-} f(x) = $c</m>;  <m>\displaystyle \lim_{x \to 3^+} f(x) = $d</m>
+    </li>      
+    <li>
+      <m>\displaystyle \lim_{x \to 6^-} f(x) = <math simplify>$d+1</math></m>
+    </li>      
+  </ul>
+</p>
+
+    <graph xmin="-3.5" xmax="7" ymin="-3" ymax="8" showNavigation="false" fixAxes="true" grid>
+    
+    
+    <endpoint styleNumber="6" open name="p1" x="$x1" y="6">
+      <constraints>
+        <constrainToGrid dy="0.5"/>
+      </constraints>
+    </endpoint>
+    
+    <endpoint styleNumber="6" open name="p2" x="$x2" y="6">
+      <constraints>
+        <constrainToGrid dy="0.5"/>
+      </constraints>
+    </endpoint>
+    
+    <lineSegment name="Seg1" styleNumber="2" endpoints="$p1 $p2" />
+        
+    <endpoint styleNumber="6" open name="p3" x="$x2" y="7">
+      <constraints>
+        <constrainToGrid dy="0.5"/>
+      </constraints>
+    </endpoint>
+    
+    <endpoint styleNumber="6" open name="p4" x="$x3" y="7">
+      <constraints>
+        <constrainToGrid dy="0.5"/>
+      </constraints>
+    </endpoint>
+    
+    <lineSegment styleNumber="2" endpoints="$p3 $p4" />
+    
+    
+    <endpoint styleNumber="6" open name="p5" x="$x3" y="6">
+      <constraints>
+        <constrainToGrid dy="0.5"/>
+      </constraints>
+    </endpoint>
+    
+    <endpoint styleNumber="6" open name="p6" x="$x4" y="6">
+      <constraints>
+        <constrainToGrid dy="0.5"/>
+      </constraints>
+    </endpoint>
+    
+    <lineSegment stylenumber="2" endpoints="$p5 $p6" />
+    
+  </graph>
+
+<p> When your graph is ready, check your work: 
+        <answer matchPartial>
+          <award>
+            <when><mathList>$p1.y $p2.y $p3.y $p4.y $p5.y $p6.y</mathList> = <mathList>$a $b $b $c $d $d2</mathList></when>
+          </award> 
+        </answer>  
+</p>
+  
+<ol marker="a.">
+
+  <li>
+    <p>
+      Complete the following sentence to explain why <m>\displaystyle \lim_{x \to 3} f(x)</m> doesn't exist.  Since the left-hand limit <m>\displaystyle \lim_{x \to 3^-} f(x) = </m><answer><award>$c</award></answer> and the right-hand limit <m>\displaystyle \lim_{x \to 3^+} f(x) = </m><answer><award>$d</award></answer> and these two values are <answer><choiceInput inline> 
+      <choice credit = "0">?</choice>
+      <choice credit = "0">the same</choice>
+      <choice credit = "1">different</choice>
+    </choiceInput></answer>,
+      the overall limit, <m>\displaystyle \lim_{x \to 3} f(x)</m>, <answer><choiceInput inline> 
+      <choice credit = "0">?</choice>
+      <choice credit = "0">exists and equals $c</choice>
+      <choice credit = "0">exists and equals $d</choice>
+      <choice credit = "1">does not exist</choice>
+    </choiceInput></answer>.
+    </p>
+
+  </li>
+
+  <li>
+    <p>
+        List all values of <m>a</m> such that <m>-2.5 \lt a \lt 5.5</m> and for which <m>f'(a)</m> does not exist.  <mathInput name="notDiff"/>  
+        <answer matchPartial>
+          <award unorderedCompare>
+            <when>$notDiff = <mathList>0 3</mathList></when>
+          </award> 
+        </answer> 
+    </p>  
+
+  </li>
+
+  <li>
+    <p>
+      For the graph of <m>y = f(x)</m> that you constructed, find the following derivative values:
+    </p>
+    <p>
+      <m>f'($m) = </m><answer name="fPm">
+          <award allowedErrorInNumbers="0.1" allowedErrorIsAbsolute><math simplify>($b-$a)/3</math></award></answer>
+    </p>  
+    <p>
+      <m>f'($n) = </m><answer name="fPn">
+          <award allowedErrorInNumbers="0.1" allowedErrorIsAbsolute><math simplify>($c-$b)/3</math></award></answer>
+    </p>  
+    <p>
+      <m>f'($p) = </m><answer name="fPp">
+          <award allowedErrorInNumbers="0.1" allowedErrorIsAbsolute><math simplify>($d2-$d)/3</math></award> </answer>
+    </p>   
+  
+  <hint>
+    <p>Remember that for a linear function, its slope is the same as the value of its derivative
+    </p>
+  </hint>
+    
+  </li>
+
+  <li>
+    <p>
+      Which of the following statments is true?
+      <answer>
+        <choiceInput>
+          <choice><m>f'(0)=<math simplify>($b-$a)/3</math></m></choice>
+          <choice credit="1"><m>f'(0)</m> is undefined</choice>
+          <choice><m>f'(0)=<math simplify>($c-$b)/3</math></m></choice>
+    </choiceInput></answer>
+    </p>
+  </li>  
+  
+</ol>

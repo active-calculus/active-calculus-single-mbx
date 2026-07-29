@@ -1,0 +1,124 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name = "a" from = "2" to = "3" step = "1"/>
+  <selectFromSequence name = "b" from = "0" to = "2" step = "1"/>
+  <selectFromSequence name = "c" from = "2" to = "3" step = "1" exclude="$a"/>
+  <selectFromSequence name = "d" from = "-0.75" to = "0.75" step = "0.5" exclude="0"/>
+
+  <selectFromSequence name = "k" from = "0.33" to = "0.99" step = "0.33"/>
+  <selectFromSequence name = "s" from = "-1" to = "1" step = "2"/>
+
+  <selectFromSequence name = "p" from = "-2" to = "1" step = "1" exclude="0"/>
+  <selectFromSequence name = "q" from = "2" to = "4" step = "1" exclude="abs($p)"/>
+
+  <function name="f">$s*$k*1/4*(x+$a)*x*(x-$c) + $d</function>
+  <function name="fextrema" domain="[$p,$q]">$f</function>
+  <derivative name="fP">$f</derivative>
+
+  <function name="fExpanded">-1/4*$a*$c*$k*$s*x + 1/4*$a*$k*$s*x^2 - 1/4*$c*$k*$s*x^2 + 1/4*$k*$s*x^3 + $d </function>
+
+  <point name="A" styleNumber="2" showCoordsWhenDragging="false">(0,$$f(0))
+    <constrainTo>$f</constrainTo>
+    <attractToGrid dy=".0001" dx="1" xthreshold="0.05"></attractToGrid>
+  </point>
+
+  <point name="B" styleNumber="1" draggable="false">($crNum1,$$f($crNum1))</point>
+  <point name="C" styleNumber="1" draggable="false">($crNum2,$$f($crNum2))</point>
+
+  <mathList name="correctCrNum">$crNum1 $crNum2</mathList>
+
+  <number name="crNum1"> 1/3 * (-sqrt($a^2 + $a*$c + $c^2) - $a + $c)</number>
+  <number name="crNum2"> 1/3 * (sqrt($a^2 + $a*$c + $c^2) - $a + $c)</number>
+  <!-- might want to use $f.extremumLocations instead? -->
+
+  <number name="midCrNum">($crNum1 + $crNum2)/2</number>
+
+  <styleDefinition styleNumber="10"
+    fillColor="#FFFFFF"
+    fillOpacity="1"
+    lineColor="#FFFFFF"
+    />
+
+  <mathList name="crNums"> $crNum1 $crNum2 </mathList>
+  <boolean name="Num1in">$crNum1>= $p and $crNum1<= $q</boolean>
+  <boolean name="Num2in">$crNum2>= $p and $crNum2<= $q</boolean>
+
+  <math name="fofcrNums">
+    <conditionalContent>
+      <case condition="!$Num1in and !$Num2in">none</case>
+      <else>
+        <mathList>
+        <conditionalContent condition="$Num1in">$$f($crNum1)</conditionalContent>
+        <conditionalContent condition="$Num2in">$$f($crNum2)</conditionalContent>
+          </mathList>
+      </else>
+    </conditionalContent>
+  </math>
+
+</setup>
+
+<p>
+  Consider the function <m>y = f(x)</m> that is given by the following graph.  Note that you can drag the included red point along the graph and see its coordinates.  Our goal is to reason graphically to find absolute minimum and maximum value of <m>f</m> on <m>[$p,$q]</m>.
+</p>
+      <graph xmin="-4" xmax="$q+2" ymin="$fextrema.globalMinimum[2]-3" ymax="$fextrema.globalMaximum[2]+3" size="medium" grid="true" showNavigation="false" fixAxes="true">
+        <shortDescription>graph of a function and a point on the graph to drag around</shortDescription>
+        $f
+        $A
+        <rectangle fixed center="($A.x,$A.y+0.4)" width="2.6" height="0.4" filled styleNumber="10"></rectangle>
+        <label fixLocation anchor="($A.x,$A.y+0.4)" layer="2"><coords displayDecimals="4">($A.x,$A.y)</coords></label>
+        <label fixLocation anchor="(0.5,$$f(0.3)+$s*0.2)"><m>f</m></label>
+
+      </graph>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Use the given graph of <m>y = f(x)</m> to estimate the critical numbers of <m>f</m> and report your results below.  If there is more than one critical number, enter them as a list separated by commas.  If there are none, enter <em>none</em>.
+      </p>
+      <p>
+        <answer name="crNum" unorderedCompare matchPartial allowedErrorInNumbers="0.1" allowedErrorIsAbsolute><label>The critical numbers of <m>f</m> are: </label>$correctCrNum</answer>
+
+      </p>
+    </li>
+    <li>
+      <p>
+        Remember that you can drag the included red point along the graph to see its coordinates.
+      </p>
+
+      <p>
+        Evaluate the function at any critical numbers that lie in the interval <m>[$p,$q]</m>.  If there is more than one such critical number, enter the function values as a list separated by commas.  If there are no critical numbers in the interval <m>[$p,$q]</m>, enter <em>none</em>.
+      </p>
+      <answer unorderedCompare matchPartial allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label>The value(s) of <m>f</m> at any applicable critical numbers are:</label>$fofcrNums</answer>
+      
+      <p>
+        The values of the function the respective endpoints of the interval are:
+      </p>
+      <p>
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$f($p)<label><m>f($p) =</m></label></answer> and <answer  allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>f($q) =</m></label>$$f($q)</answer>
+      </p>
+
+    </li>
+    <li>
+      <p>
+        <answer allowedErrorInNumbers="0.008" allowedErrorIsAbsolute><label>The absolute minimum value of <m>f</m> on <m>[$p,$q]</m> is </label>$fextrema.globalMinimum[2]</answer>
+      </p>
+      <p>
+        <answer allowedErrorInNumbers="0.008" allowedErrorIsAbsolute><label>The absolute maximum value of <m>f</m> on <m>[$p,$q]</m> is </label>$fextrema.globalMaximum[2]</answer>
+      </p>
+    </li>
+  </ol>
+</p>
