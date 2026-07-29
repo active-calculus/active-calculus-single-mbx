@@ -1,0 +1,149 @@
+<!-- <?xml version="1.0" encoding="UTF-8" ?> -->
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- TMost of this preview activity was written by Steven Clontz at the 2024 Doenet workshop -->
+
+  <p>
+    According to U.S. postal regulations, the size of a parcel sent by mail
+    must satisfy certain constraints. Let's find the largest possible volume
+    of a rectangular parcel with a square end that can be sent by U.S. mail.
+  </p>
+
+  <p>
+    <ol marker="a.">
+      <li>
+        <p>
+          Let <m>x</m> represent the length of one side of the square end and <m>y</m> the length of another edge of the box. Assume <m>x\lt y</m>.
+          Label these quantities appropriately on the image below, and then check your work using the provided button.
+        </p>
+        <graph displayXAxis="false" displayYAxis="false" showNavigation="false" showBorder="false" aspectRatio="2" xmin="-2" xmax="8" ymin="-1" ymax="4" fixAxes="true"><shortDescription>sketch of the rectangular parcel with text entries for side lengths</shortDescription>
+          <lineSegment draggable="false" endpoints="(0,0) (2,0)"/>
+          <lineSegment draggable="false" endpoints="(2,0) (2,2)"/>
+          <lineSegment draggable="false" endpoints="(2,2) (0,2)"/>
+          <lineSegment draggable="false" endpoints="(0,2) (0,0)"/>
+          <lineSegment draggable="false" endpoints="(2,0) (6,1)"/>
+          <lineSegment draggable="false" endpoints="(2,2) (6,3)"/>
+          <lineSegment draggable="false" endpoints="(0,2) (4,3)"/>
+          <lineSegment draggable="false" endpoints="(4,3) (6,3)"/>
+          <lineSegment draggable="false" endpoints="(6,1) (6,3)"/>
+          <textInput draggable="false" width="15px" anchor="(1,-0.5)" name="squareLabel"><shortDescription>length of the shorter side</shortDescription></textInput>
+          <textInput draggable="false" width="15px" anchor="(4,0)" name="depthLabel"><shortDescription>length of the longer side</shortDescription></textInput>
+        </graph>
+      <p><answer>
+   <award>
+     <when>$squareLabel = x and
+       $depthLabel = y </when>
+   </award>
+ </answer></p>
+      </li>
+
+      <li>
+        <p>
+          State an expression involving <m>x</m> and <m>y</m> that gives the volume of the box (which is the quantity we wish to optimize).
+        </p>
+      <p>
+         <answer name="toOptimize"><label><m>V = </m> </label>x^2y</answer>
+      </p>
+      </li>
+
+      <li>
+        <p>
+          The <q>girth</q> of the box is defined to be the perimeter of its square
+side of the box.  According to U.S. mail regulations, the box's girth plus the length of its
+other side cannot exceed <m>108</m> inches.
+        </p>
+        <p>
+          State an equation involving <m>x</m> and <m>y</m> that is satisfied when the box's girth plus the length of its remaining side equals <m>108</m> inches.
+        </p>
+      <p>
+        <answer name="girthEq" symbolicEquality simplifyOnCompare><shortDescription>equation for girth</shortDescription>4x+y=108</answer>
+      </p>
+      </li>
+
+      <li>
+        <p>
+          Solve the equation
+          <mathInput disabled><shortDescription>equation from part c</shortDescription><conditionalContent condition="$girthEq.creditAchieved=1">$girthEq</conditionalContent></mathInput>
+          that you found in (c) for the variable <m>y</m>.
+        </p>
+      <p>
+        <answer name="rewrite"><label><m>y=</m></label>108-4x</answer>
+      </p>
+      </li>
+
+      <li>
+        <p>
+          Now, use your results from (a) and (d) to find a function
+          <m>V(x)</m> of only the variable <m>x</m> whose output is the quantity
+          to be optimized.
+          <!--  where <m>y</m> is rewritten in terms of <m>x</m>
+          according to <m>y=</m><mathInput disabled>$rewrite</mathInput> -->
+        </p>
+      <p>
+        <answer><label><m>V(x)=</m></label>108x^2-4x^3</answer>
+      </p>
+      </li>
+
+      <li sectionWideCheckWork colorAnswersSeparately>
+        <p>
+          Next, we identify the domain on which to consider the volume function <m>V(x)</m> in the context of the model.
+        </p>
+        <p>
+          The smallest value allowed for either <m>x</m> or <m>y</m> is zero;
+          given the constraint <mathInput disabled><shortDescription>equation from part c</shortDescription><conditionalContent condition="$girthEq.creditAchieved=1">$girthEq</conditionalContent></mathInput> found in part (c),
+          what is the largest value possible for <m>x</m>?
+        </p>
+      <p>
+        <answer name="min"><label>The minimum possible value for <m>x</m> is </label>0</answer> and
+         <answer name="max"><label>the maximum possible value for <m>x</m> is</label>108/4</answer>, so
+        the <mathInput disabled minwidth="30"><label>domain of <m>V</m> in interval notation is</label>[<conditionalContent condition="$min.creditAchieved=1">$min</conditionalContent>,<conditionalContent condition="$max.creditAchieved=1">$max</conditionalContent>]</mathInput>.
+      </p>
+      </li>
+
+      <li sectionWideCheckWork colorAnswersSeparately>
+        <p>
+          The function <m>f(x)</m> has exactly one critical number that lies strictly between the endpoints of the domain <mathInput disabled minwidth="30"><shortDescription>domain of V in interval notation</shortDescription>[<conditionalContent condition="$min.creditAchieved=1">$min</conditionalContent>,<conditionalContent condition="$max.creditAchieved=1">$max</conditionalContent>]</mathInput>. We now find that critical number.
+        </p>
+        <p>
+          By first finding that <answer><label><m>f'(x)=</m></label>216x-12x^2</answer>, and then setting <answer><label><m>f'(x) = </m> </label>0</answer> and solving for <m>x</m>, we find that the only critical number strictly between the endpoints of the domain is <answer name="critical"><label><m>x = </m></label>18</answer>.
+        </p>
+      </li>
+      <li>
+        <p>
+            Find the value of <m>f(x)</m> at each endpoints of its domain and this critical number.
+        </p>
+        <p>
+          <m>V(</m> <mathInput disabled minWidth="20"><shortDescription>location of minimum</shortDescription><conditionalContent condition="$min.creditAchieved=1">$min</conditionalContent></mathInput><m>) =</m><answer><shortDescription>value of function at its minimum x value</shortDescription>0</answer>
+        </p>
+        <p>
+          <m>V(</m> <mathInput disabled minWidth="20"><shortDescription>location of maximum</shortDescription><conditionalContent condition="$max.creditAchieved=1">$max</conditionalContent></mathInput><m>) =</m><answer><shortDescription>value of function at its maximum x value</shortDescription>0</answer>
+        </p>
+        <p>
+          <m>V(</m> <mathInput disabled minWidth="20"><shortDescription>location of critical point</shortDescription><conditionalContent condition="$critical.creditAchieved=1">$critical</conditionalContent></mathInput><m>) =</m><answer><shortDescription>value at the critical point</shortDescription>108*18^2-4*18^3</answer>
+        </p>
+      </li>
+      <li sectionWideCheckWork colorAnswersSeparately>
+        In conclusion, we find that the box of largest possible volume that can be shipped has a square end where each side has length <answer><label><m>x = </m></label>18</answer> inches and the remaining side has length <answer><label><m>y = </m></label>36</answer>, and thus the maximum volume is <answer><label><m>V = </m></label>11664</answer> cubic inches.
+      </li>
+      <!--
+      <li>
+        <p>
+          Describe the dimensions length <m>\times</m> width <m>\times</m> height, and overall volume, of the largest box that can be shipped via U.S. mail.  Then write a sentence or two explaining the calculus used to ensure that this value is optimized.
+        </p>
+        <p><answer type="text" handGraded expanded forceFullCheckworkButton /></p>
+      </li>
+      -->
+    </ol>
+  </p>

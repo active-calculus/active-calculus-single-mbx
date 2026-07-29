@@ -1,0 +1,190 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name = "m1" from = "0.25" to = "0.75" step = "0.25"/>
+  <selectFromSequence name = "m2" from = "-1.5" to = "-0.5" step = "0.5"/>
+  <selectFromSequence name = "n1" from = "-2" to = "-1" step = "0.5"/>
+  <selectFromSequence name = "n2" from = "0.5" to = "1" step = "0.25"/>
+  <selectFromSequence name = "x1" from = "1" to = "2" step = "1"/>
+  <selectFromSequence name = "x2" from = "-2" to = "-1" step = "1"/>
+  <selectFromSequence name = "y1" from = "2" to = "3" step = "1"/>
+  <selectFromSequence name = "y2" from = "-3" to = "-2" step = "1"/>
+
+  <piecewiseFunction name="f" symbolic="false" styleNumber="1">
+    <function domain="(-infinity,$x1)">$m1*(x-$x1)+$y1</function>
+    <function domain="[$x1,infinity)">$m2*(x-$x1)+$y1</function>
+  </piecewiseFunction>
+
+  <piecewiseFunction name="fP" symbolic="false"  styleNumber="3">
+    <function domain="(-infinity,$x1)">$m1</function>
+    <function domain="[$x1,$x1]">undefined</function>
+    <function domain="($x1,infinity)">$m2</function>
+  </piecewiseFunction>
+
+  <piecewiseFunction name="g" symbolic="false" styleNumber="2">
+    <function domain="(-infinity,$x2)">$n1*(x-$x2)+$y2</function>
+    <function domain="[$x2,infinity)">$n2*(x-$x2)+$y2</function>
+  </piecewiseFunction>
+
+  <piecewiseFunction name="gP" symbolic="false"  styleNumber="4">
+    <function domain="(-infinity,$x2)">$n1</function>
+    <function domain="[$x2,$x2]">undefined</function>
+    <function domain="($x2,infinity)">$n2</function>
+  </piecewiseFunction>
+
+  <selectFromSequence name="a" from="-4" to="4" step="1" exclude="$x1 $x2"/>
+  <selectFromSequence name="b" from="-4" to="4" step="1" exclude="$x1 $x2 $a"/>
+  <selectFromSequence name="c" from="-4" to="4" step="1" exclude="$x1 $x2"/>
+  <selectFromSequence name="d" from="-4" to="4" step="1" exclude="$x1 $x2 $c"/>
+
+</setup>
+
+<p>
+    Let <m>f</m> and <m>g</m> be the piecewise linear functions given by the graphs below.
+</p>
+      <graph xmin="-5" xmax="5" ymin="-5" ymax="5" size="medium" grid="true" showNavigation="false" fixAxes="true">
+        <shortDescription>Two piecewise linear functions f and g</shortDescription>
+        <description>Two piecewise linear functions, <m>f</m> and <m>g</m>, which each consist of two line segments.  The first linear portion of the graph of <m>f</m> passes through <m>(-5,$$f(-5))</m> and <m>($x1,$$f($x1))</m>; the second linear portion of the graph of  <m>f</m> passes through <m>($x1,$$f($x1))</m> and <m>(5,$$f(5))</m>. The first linear portion of the graph of <m>g</m> passes through <m>(-5,$$g(-5))</m> and <m>($x2,$$g($x2))</m>; the second linear portion of the graph of  <m>g</m> passes through <m>($x2,$$g($x2))</m> and <m>(5,$$g(5))</m>. </description> 
+          $f $g
+          <label fixLocation anchor="($x1+0.5,$$f($x1)-0.25)"><m>f</m></label>
+          <label fixLocation anchor="($x2+0.25,$$g($x2)-0.25)"><m>g</m></label>
+      </graph>
+
+<!--
+<p>If <m>a = $a</m>, and <m>h(x) = f(x) \cdot g(x)</m>, then
+<m> h'($a) = $$f($a) \cdot $$gP($a) + $$g($a) \cdot $$fP($a) </m>
+</p>
+-->
+
+<!--
+<conditionalContent>
+  <case condition="$a = 1">
+    <p><m>f'($a)</m> is undefined, <m>p'($a)</m> is undefined, and <m>q'($a)</m> is undefined.</p>
+  </case>
+  <case condition="$a = -2">
+    <p><m>g'($a)</m> is undefined, <m>p'($a)</m> is undefined, and <m>q'($a)</m> is undefined.</p>
+  </case>
+</conditionalContent>
+-->
+
+<!-- in S26, I cut out the function R for "being tedious" ... can always restore -->
+
+  <p>Let <m>P(x) = f(g(x))</m> and <m>Q(x) = g(f(x))</m><!--, and <m>R(x) = f(f(x))</m>-->. Determine each of the following derivative values. If a derivative is not defined at the value specified, enter <q>undefined</q> (without quotes).  <alert>Note:</alert> by finding points that lie on portions of each line that also lie on intersection points on the grid, you can find the exact slope of each relevant segment. </p>
+
+<p>
+<ol marker="a.">
+
+  <li>
+<p>
+    <m> P'($c) = </m>
+      <answer>
+        <conditionalContent>
+          <case condition="$c = $x2 or $$g($c)=$x1">
+            undefined
+          </case>
+          <case>
+            $$fP($$g($c))*$$gP($c)
+          </case>
+        </conditionalContent>
+      </answer>
+    </p>
+  <!--    <p><m>$$f($a)*$$gP($a) + $$g($a)*$$fP($a)  </m></p> -->
+  </li>
+
+  <li>
+    <p>
+    <m> P'($d) = </m>
+      <answer>
+        <conditionalContent>
+          <case condition="$d = $x2 or $$g($d)=$x1">
+            undefined
+          </case>
+          <case>
+            $$fP($$g($d))*$$gP($d)
+          </case>
+        </conditionalContent>
+      </answer>
+      </p>
+ <!--     <p><m>$$f($b)*$$gP($b) + $$g($b)*$$fP($b)  </m></p>. -->
+  </li>
+
+  <li>
+    <p>
+    <m> Q'($c) = </m>
+      <answer>
+        <conditionalContent>
+          <case condition="$c = $x1 or $$f($c)=$x2">
+            undefined
+          </case>
+          <case>
+            $$gP($$f($c))*$$fP($c)
+          </case>
+        </conditionalContent>
+      </answer>
+    </p>
+  </li>
+
+  <li>
+    <p>
+    <m> Q'($d) = </m>
+      <answer>
+        <conditionalContent>
+          <case condition="$d = $x1 or $$f($d)=$x2">
+            undefined
+          </case>
+          <case>
+            $$gP($$f($d))*$$fP($d)
+          </case>
+        </conditionalContent>
+      </answer>
+    </p>
+  </li>
+
+  <!-- 
+  <li>
+    <p>
+    <m> R'($c) = </m>
+      <answer>
+        <conditionalContent>
+          <case condition="$c = $x1 or $$f($c)=$x1">
+            undefined
+          </case>
+          <case>
+            $$fP($$f($c))*$$fP($c)
+          </case>
+        </conditionalContent>
+      </answer>
+    </p>
+  </li>
+
+  <li>
+    <p>
+    <m> R'($d) = </m>
+      <answer>
+        <conditionalContent>
+          <case condition="$d = $x1 or $$f($d)=$x1">
+            undefined
+          </case>
+          <case>
+            $$fP($$f($d))*$$fP($d)
+          </case>
+        </conditionalContent>
+      </answer>
+    </p>
+  </li>
+-->
+
+</ol>
+</p>

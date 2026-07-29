@@ -1,0 +1,69 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+
+  <selectFromSequence name="a" from="-5" to="5" exclude="-2 -1 0 1 2"/>
+  <selectFromSequence name="b" from="-6" to="6" exclude="-2 -1 0 1 2 $a$"/>
+  <selectFromSequence name="c" from="-9" to="9" step="2" exclude="-1 1 $a$ $b$"/>
+  <selectFromSequence name="d" from="3" to="5"/>
+
+  <function name="F" symbolic="true">$a/2*x^2 + $b*x</function>
+  <function name="f">$a*x + $b</function>
+
+  <function name="G" symbolic="true">3*$b*x^3 - $c*x^2</function>
+  <function name="g">9*$b*x^2 - 2*$c*x</function>
+
+  <function name="H" symbolic="true">$c/(-$d+1)/x^($d-1)</function>
+  <function name="h">$c/x^$d</function>
+
+  <selectFromSequence name="p" from="1" to="3"/>
+  <number name="q">$p + 1</number>
+  <number name="y">$p - 1</number>
+ 
+  
+</setup>  
+
+<p>
+  For each of the following integral functions, find a formula for the function that does not involve an integral by applying the First Fundamental Theorem of Calculus.  Then, find a formula for the integral function's derivative.
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        <m>A(x) = \int_$p^x <math simplify>$$f(t)</math> \, dt = </m> <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$F(x)-$$F($p)</answer>
+      </p>  
+      <p>
+        <m>A'(x) = </m> <answer>$f</answer>
+      </p>  
+    </li>
+    <li>
+      <p>
+        <m>B(x) = \int_$y^x <math simplify>$$g(t)</math> \, dx = </m> <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$G(x)-$$G($y)</answer> 
+      </p> 
+      <p>
+        <m>B'(x) = </m> <answer>$g</answer>
+      </p>
+    </li> 
+    <li>
+      <p>
+        <m>C(x) = \int_{$q}^x <math simplify>$$h(t)</math> \, dx = </m> <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$H(x)-$$H($q)</answer> 
+      </p> 
+      <p>
+        <m>C'(x) = </m> <answer>$h</answer>
+      </p>
+    </li>     
+  </ol>   
+</p>  

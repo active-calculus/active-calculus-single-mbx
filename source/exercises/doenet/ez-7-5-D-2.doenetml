@@ -1,0 +1,115 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+ <setup>
+  <selectFromSequence name = "r" from = "5" to = "15" step = "5" />
+  <selectFromSequence name = "pm" from = "50000" to = "100000" step = "50000"/>
+  <selectFromSequence name = "A" from = "30000" to = "40000" step = "5000"/>
+
+  <math name="k" simplify>0.01*$r</math>
+  <math name="eqSoln" simplify>$A/$k</math>
+  <math name="W0" simplify>$eqSoln-$pm</math>
+  <math name="W1" simplify>$eqSoln+$pm</math>
+  <math name = "DE">$k*W - $A</math>
+  <math name = "DE1">$k*W(t) - $A</math>
+  <math name = "DE2">$k*(W - $A/$k)</math>
+  <math name = "DE3">$k*(W(t) - $A/$k)</math>
+   
+  <math name = "tsoln">100/$r*ln($eqSoln/($eqSoln-$W0))</math>
+  <math name = "tDouble">100/$r*ln((2*$W1-$eqSoln)/($W1-$eqSoln))</math>
+
+  <function name = "W" variable="t">$eqSoln - $pm*e^($k*t)</function>
+  <function name = "Wupdate" variable="t">$eqSoln + $pm*e^($k*t)</function>
+
+   
+</setup>
+
+<p>
+  In a large lake, a population of walleye grows at <m>$r</m>% per year and fishermen harvest <m>$A</m> fish per year.  Suppose that there are initially <m>$W0</m> walleye present.
+   Let <m>W(t)</m> represent the number of walleye in the lake in year <m>t</m>.
+</p>
+<p>
+  <ol marker="a.">
+    <li>
+      <p>  
+        Fill in the blanks below to state an initial value problem that the function <m>W(t)</m> satisfies.
+      </p>  
+      <p>
+        <m>\frac{dW}{dt} = </m><mathInput minWidth="100" name="deEntered"/>, <m>W(0) = </m><mathInput minWidth="75" name="W0Entered"/>
+        <answer simplifyOnCompare><award><when> 
+          ($deEntered=$DE and $W0Entered=$W0) or ($deEntered=$DE1 and $W0Entered=$W0) or
+          ($deEntered=$DE2 and $W0Entered=$W0) or ($deEntered=$DE3 and $W0Entered=$W0) 
+        </when></award></answer> 
+      </p>
+    </li>
+    <li>
+      <p>
+        Solve the initial value problem you determined in (a).
+      </p>  
+      
+      <p>
+        <m>W(t) = </m><mathInput minWidth="70" name="WEntered"/>
+          <answer simplifyOnCompare><award><when> 
+            $WEntered=$W 
+          </when></award></answer> 
+      </p>
+    </li>
+    <li>
+      <p>
+        Notice from your solution in (b) that the function <m>W(t)</m> is decreasing.  About how many years will it take for there to be zero fish in the lake?  Report your answer to an accuracy of at least <m>0.01</m>.
+      </p>  
+      
+      <p>
+        <m>t =</m><mathInput name="tEntered" minWidth="60"/> years <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute simplifyOnCompare><award><when>$tEntered=$tsoln</when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Now suppose instead that <m>W(0) = $W1</m>.  Update your solution to the corresponding IVP and state the result below.  In addition, determine how long it will take for the fish population to double from its initial value.  Report your answer to an accuracy of at least <m>0.01</m>.
+      </p>
+      <p>
+        <m>W(t) = </m><mathInput minWidth="70" name="W1Entered"/>
+          <answer simplifyOnCompare><award><when> 
+            $W1Entered=$Wupdate 
+          </when></award></answer> 
+      </p>
+      <p>
+        time for fish population to double is <m>t = </m><mathInput name="doubleEntered" minWidth="60"/> years <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute simplifyOnCompare><award><when>$doubleEntered=$tDouble</when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Finally, state the equilibrium solution to the original differential equation and complete the sentence below to explain the role the equilibirum solution plays in the behavior of solutions for different initial values for <m>W(0)</m>. 
+      </p>
+      <p>
+        The equilibrium solution is <m>W = </m><mathInput name="a1" minWidth="50"/>.  If the initial value, <m>W(0)</m>, is less than the equilibrium solution, then the fish population will <choiceInput name="a2" inline>
+          <choice>?</choice>
+          <choice>stay constant</choice>
+          <choice>increase without bound</choice>
+          <choice>decrease and eventually go extinct</choice>
+        </choiceInput>, whereas if <m>W(0)</m> is greater than the equilibrium solution, then the fish population will <choiceInput name="a3" inline>
+          <choice>?</choice>
+          <choice>stay constant</choice>
+          <choice>increase without bound</choice>
+          <choice>decrease and eventually go extinct</choice>
+        </choiceInput>.
+      </p>
+      <p>
+        <answer><award><when>
+          $a1 = $eqSoln and $a2.selectedIndices=4 and $a3.selectedIndices=3
+        </when></award></answer>
+      </p>
+    </li>
+  </ol>
+</p>

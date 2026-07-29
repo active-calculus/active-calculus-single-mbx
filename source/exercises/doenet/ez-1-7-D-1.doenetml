@@ -1,0 +1,125 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- this is a substantially modified version of an exercise Chrissy Safranski originally authored      -->
+
+ <setup>
+<!--   <selectFromSequence assignNames="a b c" from="1" to="4" step="1" numToSelect="3"/>
+  <selectFromSequence name="a" from="5" to="10" exclude="0 $b"/> -->
+  <selectFromSequence name="a" from="5" to="10"/>
+  <selectFromSequence name="b" from="1" to="2"/>
+  <selectFromSequence name="c" from="3" to="4"/>
+  <selectFromSequence name="upordown" from="-1" to="1" exclude="0"/>
+  <selectFromSequence name="m" from="2" to="4"/>
+
+  <math name="k">0</math>
+
+  <function name="quad">$a-x^2 </function>
+  <function name="line"> $m*(x-$b)+$$quad($c)+$upordown</function>
+  <number name="yminim"><min>$$quad(-3) $$line($b)</min>-1</number>
+  <number name="ymaxim"><max>$$quad(0) $$line(5)</max>+1</number>
+</setup>
+
+<graph showNavigation="false" fixAxes="true" xmin="-3" xmax="5" ymin="$yminim-2" ymax="$ymaxim+2" >
+  <label fixed anchor="(1.5,$ymaxim-0.5)"> <m>y=f(x)</m> </label>
+  <function domain="[-3,0-$k-0.1)">$quad</function>
+  <endpoint name="xis0" open draggable="false">(0,$$quad(0))</endpoint>
+  <function domain="(0+$k+0.1,$b-0.03]">$quad</function>
+  <endpoint name="xisb" draggable="false">($b,$$quad($b))</endpoint>
+  <endpoint name="xisb2" open draggable="false">($b,$$line($b))</endpoint>
+  <function domain="($b+0.07+$k,$c-0.07-$k)">$line</function>
+  <endpoint name="xisc" open draggable="false">($c,$$line($c))</endpoint>
+  <endpoint name="xisc2"  draggable="false">($c,$$line($c)+$c*$upordown)</endpoint>
+  <function domain="($c+0.07+$k,5)">$line</function>
+</graph>
+
+<p>
+  Use the given graph of <m>f</m> to respond to the following prompts.  An open circle on the graph indicates a <q>hole</q> at that location.  If a limit does not exist, enter <q>DNE</q>; if a function is not defined at a point, enter <q>undefined</q>.
+</p>
+
+<p>
+
+  <ol marker="a.">
+    <li>
+      <p>
+        <m>\displaystyle\lim_{x \to 0^-} f(x)=</m>
+        <answer name="ansL1">
+          <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$$quad(0)</award></answer>
+        <m>\qquad \displaystyle\lim_{x \to 0^+} f(x)=</m>
+        <answer name="ansR1">
+          <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$$quad(0)</award></answer>
+      </p>
+      <p>
+        <m>\displaystyle\lim_{x \to 0} f(x)=</m>
+        <answer name="ans1">
+          <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$$quad(0)</award></answer>
+        <m>\qquad \ f(0)=</m>
+        <answer name="ansf1">
+          <award>undefined</award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        <m>\displaystyle\lim_{x \to $b^-} f(x)=</m>
+        <answer name="ansLb">
+          <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$$quad($b)</award></answer>
+        <m>\qquad \displaystyle\lim_{x \to $b^+} f(x)=</m>
+        <answer name="ansRb">
+          <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$$line($b)</award></answer>
+      </p>
+      <p>
+        <m>\displaystyle\lim_{x \to $b} f(x)=</m>
+        <answer name="ansb">DNE</answer>
+        <m>\qquad \ f($b)=</m>
+        <answer name="ansfb">
+          <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$$quad($b)</award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        <m>\displaystyle\lim_{x \to $c^-} f(x)=</m>
+        <answer name="ansLc">
+          <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$$line($c)</award></answer>
+        <m>\qquad\displaystyle\lim_{x \to $c^+} f(x)=</m>
+        <answer name="ansRc">
+          <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$$line($c)</award></answer>
+      </p>
+      <p>
+          <m>\displaystyle\lim_{x \to $c} f(x)=</m>
+        <answer name="ansc">
+          <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$$line($c)</award></answer>
+        <m>\qquad \ f($c)=</m>
+        <answer name="ansfc">
+          <award allowedErrorInNumbers="0.2" allowedErrorIsAbsolute>$xisc2.y</award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        List all values of <m>a</m> for which <m>\displaystyle\lim_{x \to a} f(x)</m> does not exist, separating your list with commas if needed: <answer name="noLim">
+          <award allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$b</award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        List all values of <m>a</m> for which <m>f</m> is not continuous, separating your list with commas if needed:
+        <answer matchPartial>
+          <mathInput name="notCont"/>
+          <award unorderedCompare>
+            <when>$notCont = <mathList>0 $b $c</mathList></when>
+          </award>
+        </answer>
+      </p>
+    </li>
+  </ol>
+</p>

@@ -1,0 +1,70 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+
+    <math name="a"><selectFromSequence from="-4" to="4" step="1" exclude="0 1 -1"/></math>
+    <math name="b"><selectFromSequence from="-4" to="4" step="1" exclude="0 1 -1 $a"/></math>
+      <math name="c"><selectFromSequence from="-4" to="4" step="1" exclude="0 1 -1"/></math>
+    <math name="k">$c*pi/12</math>
+    <function name="f" symbolic="false" >
+      $a*sin(x)+$b*cos(x)
+    </function>
+    <derivative name="fP"> $f </derivative>
+</setup>
+
+<p>
+  Let <m>f(x) = $f</m> and suppose that <m>a = <math simplify>$c/12 * pi</math></m>.  Use the given formula and <m>a</m>-value to respond to the following prompts.
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Use appropriate shortcut rules to find a formula for <m>f'(x)</m>.
+      </p>
+      <p><m>f'(x) = </m>
+        <answer>
+          <award>$fP</award>
+        </answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        State the exact values of <m>f(<math simplify>$c/12 * pi</math>)</m> and <m>f'(<math simplify>$c/12 * pi</math>)</m>.  <alert>Note</alert>: exact values might involve quantities such as <m>\sqrt{2}</m> or <m>\sqrt{3}</m>, and should not be expressed as a decimal approximation.
+      </p>
+      <p><m>f(<math simplify>$c/12 * pi</math>) = </m>
+        <answer>
+          <award>$$f($k)</award>
+        </answer>
+      </p>
+      <p><m>f'(<math simplify>$c/12 * pi</math>) = </m>
+        <answer>
+          <award>$$fP($k)</award>
+        </answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        State a formula for <m>L(x)</m>, the tangent line approximation to <m>f</m> at <m>x=<math simplify>$c/12 * pi</math></m>.
+        Here you may use decimals (accurate to two decimal places) instead of exact values here.
+      </p>
+      <p><m>L(x) = </m>
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
+          <award>$$f($k)+$$fP($k)(x-$k)</award>
+        </answer>
+      </p>
+    </li>
+  </ol>
+</p>

@@ -1,0 +1,137 @@
+<!-- <?xml version="1.0" encoding="UTF-8" ?> -->
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- this preview was written by Steven Clontz at the 2024 Doenet workshop --> 
+
+<setup>
+  <function name="F" variable="y">$Fexp</function>
+  <function name="C" variable="x">5/9(x-32)</function>
+  <math name="Cx" functionSymbols="C">C(x)</math>
+  <math name="CorrectFexp">9*y/5+32</math>
+  <boolean name="Asolved">$Yexp = $CorrectFexp</boolean>
+  <boolean name="Bsolved">$Fexp = $CorrectFexp</boolean>
+</setup>
+
+<p>
+    The equation <m>y = \frac{5}{9}(x-32)</m> relates a temperature given in <m>x</m> degrees Fahrenheit to the corresponding temperature <m>y</m> measured in degrees Celsius.
+
+    <ol marker="a.">
+      <li>
+        <p>
+          Solve the equation <m>y = \frac{5}{9}(x-32)</m> for <m>x</m> to write <m>x</m> (Fahrenheit temperature) in terms of <m>y</m> (Celsius temperature).
+        </p>
+        <p>
+          <m>x=</m><answer name="Yexp">$CorrectFexp</answer>
+        </p>
+        <!-- answer testing
+        <p>
+          $Yexp, $Yexp.numResponses
+        </p>  
+        -->
+          <feedback condition="$Yexp.numResponses > 3 && !$Yexp.creditAchieved">
+    <p><alert>Hint:</alert> If we multiply both sides by <m>\frac{9}{5}</m>, we have <m>\frac{9}{5}y = x - 32</m>.  Now solve for <m>x</m>.</p>
+  </feedback>
+      </li>
+
+      <li>
+        <p>
+          Let <m>C(x) = \frac{5}{9}(x-32)</m> be the function that takes a Fahrenheit temperature as input and produces the Celsius temperature as output.
+          In addition,
+          let <m>F(y)</m> be the function that converts a temperature given in <m>y</m> degrees Celsius to the temperature <m>F(y)</m> measured in degrees Fahrenheit.
+          Use your work in (a) to write a formula for <m>F(y)</m>.
+        </p>
+        <p hide="$Asolved">
+          (<em>A prompt will appear here after you correctly respond to part a.</em>)
+        </p>
+        <p hide="not $Asolved">
+          <m>F(y)=</m><answer name="Fexp">$CorrectFexp</answer>
+        </p>
+      </li>
+      <li>
+        <p>
+          Next consider the new function defined by <m>p(x) = F(C(x))</m>.
+        </p>
+        <p hide="$Bsolved">
+          (<em>A prompt will appear here after you correctly respond to part b.</em>)
+        </p>
+        <p hide="not $Bsolved">
+          Use the formulas for <m>C</m> and <m>F</m>, 
+          <me>C(x) = \frac{5}{9}(x-32), \ F(y) = \frac{9}{5}y+32</me>
+          to determine the simplest expression you can find for <m>p(x)</m>: 
+        </p>
+        <p hide="not $Bsolved">
+          <m>p(x)=F(C(x))=F\left(\frac{5}{9}(x-32)\right)=</m><answer>x</answer>
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Now, let <m>r(y) = C(F(y))</m>.
+        </p>
+        <p hide="$Bsolved">
+          (<em>A prompt will appear here after you correctly respond to part b.</em>)
+        </p>
+        <p hide="not $Bsolved">
+          Use the formulas for <m>C</m> and <m>F</m>, 
+          <me>C(x) = \frac{5}{9}(x-32), \ F(y) = \frac{9}{5}y+32</me>
+          to determine the simplest expression you can find for <m>r(y)</m>: 
+        </p>
+        <p hide="not $Bsolved">
+          <m>r(y)=C(F(y))=C\left(\frac{9}{5}y+32\right)=</m><answer>y</answer>
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Our work in parts (c) and (d) verifies that the functions <m>C</m> and <m>F</m> are
+          <answer>
+            <choiceInput name="fxnInverse" inline>
+              <choice>?</choice>
+              <choice>equal</choice>
+              <choice credit="1">inverses</choice>
+              <choice>opposites</choice>
+              <choice>reciprocals</choice>
+            </choiceInput> 
+          </answer>  
+        </p>  
+      </li>  
+      
+      <li>
+        <p>
+          Finally, let's fine <m>C'(x)</m> and <m>F'(y)</m> and examine how these values appear to be related.
+        </p>
+        <p hide="$Bsolved">
+          (<em>A prompt will appear here after you correctly respond to part b.</em>)
+        </p>
+        <p hide="not $Bsolved">
+          Since <m>C(x) = \frac{5}{9}(x-32)</m>, we see <m>C'(x)=</m><answer>5/9</answer>
+        </p>
+        <p hide="not $Bsolved">
+          Since <m> F(y) = \frac{9}{5}y+32</m>, we see <m>F'(y)=</m><answer>9/5</answer>
+        </p>
+        <p>
+          Finally, we observe that the values of <m>C'(x)</m> and <m>F'(y)</m> are
+          <answer>
+            <choiceInput name="derivInverse" inline>
+              <choice>?</choice>
+              <choice>equal</choice>
+              <choice>opposites</choice>
+              <choice credit="1">reciprocals</choice>
+            </choiceInput> 
+          </answer>  
+        </p>  
+      </li>
+    </ol>
+  </p>

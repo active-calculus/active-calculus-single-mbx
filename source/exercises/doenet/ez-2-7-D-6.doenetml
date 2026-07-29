@@ -1,0 +1,71 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+ 
+<!-- part of this exercise was first drafted by Weidai Sun in 2024 -->
+
+<setup>
+  <selectFromSequence name="a" from = "2" to = "6" step = "1"/>
+  <selectFromSequence name="b" from = "2" to = "9" step = "1" exclude="$s1"/>
+  <selectFromSequence name="c" from = "10" to = "16" step = "1"/>
+  <selectFromSequence name="d" from = "2" to = "4" step = "1" exclude="$s1"/>
+  <selectFromSequence name="x1" from = "1" to = "4" step = "1"/>
+  <selectFromSequence name="y1" from = "1" to = "4" step = "1" exclude="$x1"/>
+  <number name="k">$a*$x1*$y1^$b + $c*$x1^$d*$y1</number>
+</setup>
+  
+<p> Consider the curve given by the equation
+  
+  <me>$a xy^$b + $c x^$d y = $k.</me>
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Use implicit differentiation to find <m>\frac{dy}{dx}</m>.
+      </p>
+            <p>
+                <m> \frac{dy}{dx}= </m> 
+                    <mathInput name="ans1"></mathInput>
+                    <answer><award><when>
+                        $ans1 = (-$a*y^$b - $c*$d*x^($d-1)*y)/($a*x*$b*y^($b-1) + $c*x^$d)
+                    </when></award></answer>
+            </p>
+    </li>  
+    <li>
+      <p>
+        Find the slope of the tangent line, <m>m</m>, to the curve at the point <m> ($x1,$y1) </m>.
+      </p>
+            <p>
+                <m> m = </m> 
+                    <mathInput name="ans2"></mathInput>
+                    <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>
+                        $ans2 = (-$a*$y1^$b - $c*$d*$x1^($d-1)*$y1)/($a*$x1*$b*$y1^($b-1) + $c*$x1^$d)
+                    </when></award></answer>
+            </p>
+    </li> 
+    <li>
+      <p>
+        Find the equation of the tangent line, <m>m</m>, to the curve at the point <m> ($x1,$y1) </m>, written in the form <q><m> y = \cdots </m></q>.
+      </p>
+            <p>
+                The line's equation is <m>y = </m>
+                    <mathInput name="ans3"></mathInput>
+                    <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>
+                        $ans3 = $y1 + (-$a*$y1^$b - $c*$d*$x1^($d-1)*$y1)/($a*$x1*$b*$y1^($b-1) + $c*$x1^$d)*(x-$x1)
+                    </when></award></answer>
+            </p>
+    </li>     
+  </ol>
+</p>

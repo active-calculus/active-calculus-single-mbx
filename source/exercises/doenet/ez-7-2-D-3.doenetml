@@ -1,0 +1,121 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <function name="EQ1" variable="y">0.1*(y-1)*(y-5)</function>
+  <function name="EQ2" variable="y">-0.1*(y-2)*(y-6)</function>
+  <mathList name="eqSols1">1 5</mathList>
+  <mathList name="eqSols2">2 6</mathList>
+  <selectFromSequence name="a" from="1" to="6" exclude="3 4"/>
+  <selectFromSequence name="b" from="1" to="6" exclude="3 4 $a"/>  
+  <selectFromSequence name="c" from="1" to="6" exclude="3 4 $a $b"/>  
+  <selectFromSequence name="d" from="1" to="6" exclude="3 4 $a $b $c"/>  
+  <selectFromSequence name="k" from="1" to="2"/>
+  <selectFromSequence name="y0" from="3" to="4"/>
+  <boolean name="correctEqSols">$enteredEqSols1.creditAchieved=1 and $enteredEqSols2.creditAchieved=1</boolean>
+</setup>
+<p>
+  Consider the two slope fields for the respective differential equations (1), at left, and (2), at right, that are given in the images above.
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        For differential equation (1), identify all equilibrium solutions.  If there's more than one, separate your answers with commas; if there are none, enter <q>none</q>.
+      </p>
+      <p>
+        Equilibrium solutions: <answer unorderedCompare name="enteredEqSols1">
+          <label><m>y = </m></label>
+          $eqSols1</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        For differential equation (2), identify all equilibrium solutions.  If there's more than one, separate your answers with commas; if there are none, enter <q>none</q>.
+      </p>
+      <p>
+        Equilibrium solutions: <answer unorderedCompare name="enteredEqSols2">
+          <label><m>y = </m></label>
+          $eqSols2</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Classify the stability of each of the equilibrium solutions from the two given differential equations' slope fields.  (Specific prompts will appear after you correctly identify the equilibrium solutions above)
+      </p>
+      <div hide="not($correctEqSols)">
+        <p>
+          The equilibrium solution <m>y = $a</m> is <choiceInput inline name="ans1">
+            <choice>?</choice>
+            <choice>stable</choice>
+            <choice>unstable</choice>
+          </choiceInput>
+        </p>
+        <p>
+          The equilibrium solution <m>y = $b</m> is <choiceInput inline name="ans2">
+            <choice>?</choice>
+            <choice>stable</choice>
+            <choice>unstable</choice>
+          </choiceInput>
+        </p>
+        <p>
+          The equilibrium solution <m>y = $c</m> is <choiceInput inline name="ans3">
+            <choice>?</choice>
+            <choice>stable</choice>
+            <choice>unstable</choice>
+          </choiceInput>
+        </p>
+        <p>
+          The equilibrium solution <m>y = $d</m> is <choiceInput inline name="ans4">
+            <choice>?</choice>
+            <choice>stable</choice>
+            <choice>unstable</choice>
+          </choiceInput>
+        </p>
+        <p>
+          <answer><award><when>
+            (($a=1 or $a=6) and ($ans1.selectedIndices=2) or 
+             ($a=2 or $a=5) and ($ans1.selectedIndices=3))
+            and
+            (($b=1 or $b=6) and ($ans2.selectedIndices=2) or 
+             ($b=2 or $b=5) and ($ans2.selectedIndices=3))
+            and
+            (($c=1 or $c=6) and ($ans3.selectedIndices=2) or 
+             ($c=2 or $c=5) and ($ans3.selectedIndices=3))
+            and
+            (($d=1 or $d=6) and ($ans4.selectedIndices=2) or 
+             ($d=2 or $d=5) and ($ans4.selectedIndices=3))
+          </when></award></answer>
+        </p>
+      </div>
+    </li>
+    <li>
+      <p>
+        Consider a function that is a solution to differential equation <m>($k)</m> and that satisfies <m>y(0) = $y0</m>.  Based on the relevant slope field, we expect that the solution function <m>y(t)</m> will be 
+        <choiceInput name="incdec">
+          <choice>always increasing</choice>
+          <choice>always decreasing</choice>
+          <choice>sometimes increasing, sometimes decreasing</choice>
+          <choice>always constant</choice>
+        </choiceInput>
+      </p>
+      <p>
+        <answer><award><when>
+          ($k=1 and $incdec.selectedIndices=2) or ($k=2 and $incdec.selectedIndices=1)
+        </when></award></answer>
+      </p>
+    </li>
+  </ol>
+</p>

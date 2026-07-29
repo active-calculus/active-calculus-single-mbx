@@ -1,0 +1,71 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="a" from="0.4" to="0.7" step="0.1"/>
+  <function name="f">ln(1+x)</function>
+  <function name="asubk" variable="j">(-1)^(j+1) $a^j/j</function>
+  <number name="tolerance" displayDecimals="4">0.001</number>
+  <number name="nEntminus1">$nEnt-1</number>
+
+  <!-- <number name="n">
+    <conditionalContent condition="$a=0.3">7</conditionalContent>
+    <conditionalContent condition="$a=0.4 or $a=0.5">8</conditionalContent>
+    <conditionalContent condition="$a=0.6">9</conditionalContent>
+  </number> -->
+
+  <repeatForSequence from="1" to="$nEntminus1" valueName="k" name="terms">
+      <number>(-1)^($k+1) $a^$k/($k)</number>
+    </repeatForSequence>
+  <sum name="partialsum" displayDecimals="9">$terms</sum>
+</setup>
+
+<p>
+  Consider the convergent infinite alternating series
+  <me>
+    S = \sum_{k=1}^{\infty}(-1)^{k+1} \frac{($a)^k}{k} = $a - \frac{$a^2}{2} + \frac{$a^3}{3} - \cdots
+  </me>
+</p>
+
+<p>
+  Let <m>a_n</m> be the general term of the series <m>S</m>. What is the smallest <m>n</m> for which <m>a_n \lt $tolerance</m>?
+</p>
+<p>
+  <answer name="correctn"><mathInput name="nEnt"><label><m>n = </m></label></mathInput><award>
+    <when>
+      <isInteger>$nEnt</isInteger> and $tolerance > $a^$nEnt/($nEnt) and $tolerance <= $a^($nEnt-1)/(($nEnt-1))
+    </when></award></answer>
+</p>
+<!-- <p>
+  State the estimate, <m>S_n</m>, that corresponds to the value of <m>n</m> that you identified above, and hence approximate the infinite sum, <m>S</m>, to within <m>0.0000001</m>.  Enter <m>S_n</m> using least 8 digits after the decimal point.
+</p> -->
+<!-- The above paragraph works well when the sum starts at k=0, but less so when it starts at k=1. -->
+<p>
+  State the estimate that is guaranteed by the Alternating Series Estimation Theorem and your answer above to be within <m>$tolerance</m> of the exact value of <m>S</m>.  Use at least 6 digits after the decimal point.
+</p>
+<p>
+  <answer allowedErrorInNumbers="$tolerance/5" allowedErrorIsAbsolute><mathInput name="SnEnt"><label>The approximate sum is <m>S \approx</m></label></mathInput>
+    <award><when>$SnEnt = $partialsum and $correctn.creditAchieved=1</when></award>
+  </answer>
+</p>
+<p sectionWideCheckWork colorAnswersSeparately>
+  We can also recognize <m>S</m> as being related to the Taylor series for a familiar function <answer><choiceInput inline name="seriesfunction"><shortDescription>which function is S the Taylor Series for</shortDescription>
+  <choice><m>\frac{1}{1-x}</m></choice>
+  <choice credit="1"><m>\ln(1+x)</m></choice>
+  <choice><m>\sin(x)</m></choice>
+  <choice><m>\cos(x)</m></choice>
+  <choice><m>e^x</m></choice>
+  </choiceInput></answer> and thus the true value of <m>S</m>, accurate to at least 6 decimal places, is
+  <answer allowedErrorInNumbers=".000001" allowedErrorIsAbsolute><label><m>S=</m></label>$$f($a)</answer>
+</p>

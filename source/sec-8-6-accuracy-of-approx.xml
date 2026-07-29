@@ -38,20 +38,20 @@
     <title>Introduction</title>
     <p>
       This section is all about understanding precisely how accurate certain approximations are.  Through Taylor series, we now know that we can represent certain functions and their values exactly through infinite sums.  For example, we know that for any value of <m>x</m>, 
-      <me>
+      <md>
         e^x = 1 + x + \frac{1}{2!}x^2 + \frac{1}{3!}x^3 + \cdots + \frac{1}{n!}x^n + \cdots
-      </me>
+      </md>
       so it follows that 
-      <men xml:id="eq-8a-5x-exp-1-2">
+      <md number="yes" xml:id="eq-8a-5x-exp-1-2">
         e^{-1/2} = 1 + \left(\frac{-1}{2}\right) + \frac{1}{2!} \left(\frac{-1}{2}\right)^2 + \cdots + \frac{1}{n!} \left(\frac{-1}{2}\right)^n + \cdots
-      </men>. 
+      </md>. 
       In fact, <xref ref="eq-8a-5x-exp-1-2">Equation</xref> is one way<fn>Mathematicians have devised other clever and efficient methods for computing values of transcendental functions, such as <m>\sin(1)</m> and <m>\ln(2)</m>. For example, a method known as <url href="https://www.tandfonline.com/doi/abs/10.1080/07468342.2009.11922342" visual="tandfonline.com">CORDIC</url> (that remarkably doesn't even use multiplication) is employed by many calculating devices to compute values of trigonometric functions, such as <m>\sin(1)</m>.</fn> that a calculator or computer can respond to the human prompt <q><m>e^{-1/2}</m></q>.  Note that the right-hand side of the equation only uses addition and multiplication, and that the special number <m>e</m> makes no appearance on the right.  A natural question is: how does a calculator or computer know that the decimal value it returns is as accurate as the decimal representation it displays?
     </p>
     <p>  
       For instance, if we decide to estimate the exact value of <m>e^{-1/2}</m> using the first <m>5</m> terms of this infinite sum, it turns out to be possible to use both the fact that we chose <q><m>5</m></q> and properties of <m>f(x) = e^x</m> to quantify the maximum error in the estimate
-      <me>
+      <md>
         e^{-1/2} \approx 1 + \left(\frac{-1}{2}\right) + \frac{1}{2!} \left(\frac{-1}{2}\right)^2 + \frac{1}{3!} \left(\frac{-1}{2}\right)^3 + \frac{1}{4!} \left(\frac{-1}{2}\right)^4
-      </me>.
+      </md>.
       It also turns out to be possible to determine how many terms are needed in order to find an approximation that meets a desired level of accuracy.  These questions and issues are what this section is about.
     </p>
 
@@ -59,8 +59,9 @@
       As we have seen, most of the infinite series that arise (such as the one in <xref ref="eq-8a-5x-exp-1-2">Equation</xref>) are not geometric.  But since geometric series are among the easiest infinite series to understand and evaluate, we use a geometric series as the starting point for our analysis of approximation errors.  In <xref ref="PA-8-6">Preview Activity</xref>, we investigate an example of a convergent geometric series and explore certain patterns that arise when we compare partial sums the exact sum of the series.
     </p>
 
-  <xi:include href="./previews/PA-8-6-WW.xml"/>
-  <xi:include href="./previews/PA-8-6.xml"/> 
+  <xi:include href="./previews/PA-8-6-WW.xml" />
+  <xi:include href="./previews/PA-8-6-D.xml" /> 
+  <xi:include href="./previews/PA-8-6.xml" /> 
 
   </subsection>
 
@@ -72,18 +73,18 @@
 
     <p>
       In several situations we've encountered, series whose terms alternate in sign arise naturally.  For instance, consider the definite integral
-      <me>
+      <md>
         \int_0^1 e^{-x^2} \, dx
-      </me>,
+      </md>,
       which is related to the well-known error function, <m>\erf(x)</m>.  
       While we are unable to find an elementary algebraic antiderivative of <m>e^{-x^2}</m>, if we use the Taylor series 
-      <me>
+      <md>
         e^{-x^2} = 1 - x^2 + \frac{1}{2!}x^4 - \frac{1}{3!}x^6 + \cdots + (-1)^n \frac{1}{n!} x^{2n} + \cdots
-      </me>
+      </md>
       and apply the Fundamental Theorem of Calculus to the series representation of <m>e^{-x^2}</m>, it turns out that
-      <men xml:id="eq-8a-5x-alt-sum-ex2">
+      <md number="yes" xml:id="eq-8a-5x-alt-sum-ex2">
         \int_0^1 e^{-x^2} \, dx = 1 - \frac{1}{3} + \frac{1}{2! \cdot 5} - \frac{1}{3! \cdot 7} + \cdots + \frac{(-1)^n}{n! \cdot (2n+1)} + \cdots
-      </men>   
+      </md>   
       Like the geometric series <m>\sum_{k=0}^{\infty} (-1)^k \left( \frac{4}{5} \right)^k </m> that we encountered in <xref ref="PA-8-6">Preview Activity</xref>, the infinite series in <xref ref="eq-8a-5x-alt-sum-ex2">Equation</xref> is an example of an <term>alternating series</term> of real numbers.  It turns out to be straightforward to determine whether or not an alternating series converges and to estimate the value of a convergent alternating series. 
 
     </p>
@@ -91,9 +92,9 @@
         <statement>
           <p>
             An <term>alternating series</term> is a series of the form
-            <me>
+            <md>
               \sum_{k=0}^{\infty} (-1)^k a_k
-            </me>,
+            </md>,
             where <m>a_k \gt 0</m> for each <m>k</m>.
           </p>
         </statement>
@@ -101,9 +102,9 @@
 
     <p>
       Note that <m>a_k</m> just represents the non-alternating part of the series.  For example, using the series from <xref ref="PA-8-6">Preview Activity</xref>, 
-      <me>
+      <md>
         \sum_{k=0}^{\infty} (-1)^k \left( \frac{4}{5} \right)^k = 1 - \frac45 + \frac{16}{25} - \frac{64}{125} + \cdots
-      </me>, 
+      </md>, 
       the expression <m>a_k</m> corresponds to <m>a_k = \left( \frac{4}{5} \right)^k</m>.
     </p>
 
@@ -232,27 +233,27 @@
         </p>
         <p>
           The quantity <m>|S - S_n|</m> is the error in the partial sum approximation of the infinite series; we can study how this error compares to terms in the series itself.  For instance, 
-          <men xml:id="eq-8a-5x-S5">
+          <md number="yes" xml:id="eq-8a-5x-S5">
             \left| S - S_5 \right| = \left| \frac{5}{9} - S_5 \right| \approx 0.1820
-          </men>.
+          </md>.
           <!--
           but 
-          <me>
+          <md>
             \left| \frac{5}{9} - S_6  \right| \approx 0.1456
-          </me>.-->
+          </md>.-->
           Observe that while <m>S_5</m> is greater than <m>S</m>, <m>S_6</m> falls below <m>S</m>, so
-          <men xml:id="ineq-8a-5x-S5">
+          <md number="yes" xml:id="ineq-8a-5x-S5">
             \left| S - S_5 \right| \lt \left| S_6 - S_5 \right|
-          </men>.
+          </md>.
           Remember that <m>S_5</m> is the partial sum of the first <m>5</m> terms of the series, and likewise <m>S_6</m> is simply the sum of the first <m>6</m> terms.  This means that <m>\left| S_6 - S_5 \right|</m> is the absolute value of the <m>6^{\text{th}}</m> term of the series, or <m>\left| S_6 - S_5 \right| = \left( \frac{4}{5} \right)^5 = 0.32768</m>.  Combining <xref ref="eq-8a-5x-S5"/> and <xref ref="ineq-8a-5x-S5"/>, we have
-          <me>
+          <md>
             \left| \frac{5}{9} - S_5 \right| \approx 0.1820 \lt \left( \frac{4}{5} \right)^5 = 0.32768
-          </me>
+          </md>
           Making this argument for an arbitrary value of <m>n</m> shows that the next term in the alternating sum always provides a bound on the error that arises from a given partial sum.       
 <!--          Moreover, since <m>S_6 = S_5 - \left( \frac{4}{5} \right)^5</m>, and <m>-\left( \frac{4}{5} \right)^5 = -0.32768</m> is the last and smallest term (in absolute value) in <m>S_6</m>, <m>\left( \frac{4}{5} \right)^5 = 0.32768</m> is the total vertical distance from the point <m>(5, S_5)</m> to <m>(6, S_6)</m> in <xref ref="F-8a-5x-alt-partial-sums">Figure</xref>.  This implies that <m>\left( \frac{4}{5} \right)^5 = 0.32768</m> is more than the error in comparing <m>S</m> and <m>S_5</m>.  Said differently, we are guaranteed that
-          <me>
+          <md>
             \left| S - S_5 \right| \lt \left( \frac{4}{5} \right)^5
-          </me>.
+          </md>.
  -->
         </p>
 
@@ -264,9 +265,9 @@
       <title>The Alternating Series Test</title>
       <p>
         Given an alternating series
-        <me>
+        <md>
         \sum_{k=0}^{\infty} (-1)^k a_k
-        </me>,
+        </md>,
         if the positive terms <m>a_k</m> decrease to 0 as <m>k \to \infty</m>,
         then the alternating series converges.
       </p>
@@ -288,9 +289,9 @@
         S_n = \sum_{k=0}^{n-1} (-1)^{k}a_k
         </m>
         is the <m>n</m>th partial sum of the alternating series, then
-        <me>
+        <md>
           \left| S - S_n \right| = \left|  \sum_{k=0}^{\infty} (-1)^{k}a_k - S_n \right| \lt a_{n}
-        </me>.
+        </md>.
       </p>
     </assemblage>
 
@@ -302,9 +303,9 @@
       <statement>
         <p>
           Determine how well the <m>100^{\text{th}}</m> partial sum <m>S_{100}</m> of
-          <me>
+          <md>
             \sum_{k=0}^{\infty} \frac{(-1)^{k}}{k+1}
-          </me>
+          </md>
           approximates the value of the converging alternating series.
         </p>
       </statement>
@@ -312,20 +313,20 @@
         <p>
           If we let <m>S</m> be the value of the series <m>\sum_{k=0}^{\infty} \frac{(-1)^{k}}{k+1}</m>,
           then we know that
-          <me>
+          <md>
             \left| S - S_{100} \right| \lt  a_{100}
-          </me>.
+          </md>.
         </p>
 
         <p>
           Now
-          <me>
+          <md>
             a_{100} = \frac{1}{101} \approx 0.0099
-          </me>,
+          </md>,
           so the <m>100^{\text{th}}</m> partial sum is within <m>0.0099</m> of the exact value of the series.  In addition, it turns out that <m>S_{100} \approx 0.688172</m> and <m>S = \ln(2) \approx 0.69314</m>, so we see that the actual difference between <m>S_{100}</m> and <m>S</m> is
-          <me>
+          <md>
             \left| S - S_{100} \right| \approx \left| \ln(2) - 0.688172 \right| \approx 0.004975
-          </me>,
+          </md>,
           which is indeed less than the error bound of <m>0.0099</m> provided by the Alternating Series Estimation Theorem.
         </p>  
       </solution>
@@ -344,9 +345,9 @@
 
     <p>
       Throughout what follows, we assume that <m>f(x)</m> is a function with at least <m>n+1</m> derivatives at <m>a = 0</m>, and let <m>T_n(x)</m> be its degree <m>n</m> Taylor polynomial centered at <m>a = 0</m>.  We define the error function of the degree <m>n</m> approximation, <m>E_n(x)</m>, by
-      <me>
+      <md>
         E_n(x) =  f(x) - T_n(x)
-      </me>.
+      </md>.
     </p>
 
     <p>
@@ -369,9 +370,9 @@
           <p>
             If we assume that <m>|f^{(n+1)}(x)| \leq M</m> for some positive real number <m>M</m> for every <m>x</m> in the interval <m>[0,c]</m>,
             then 
-            <men xml:id="eq-8a-5x-error-nth-derivative">
+            <md number="yes" xml:id="eq-8a-5x-error-nth-derivative">
               \left| E^{(n+1)}_n(x) \right| \leq M
-            </men>
+            </md>
             since <m>f^{(n+1)}(x) = E^{(n+1)}_n(x)</m>.
           </p>
         </li>
@@ -380,13 +381,13 @@
 
     <p>
       Taking <xref ref="eq-8a-5x-error-nth-derivative">Inequality</xref>, writing it in the form <m>-M \lt E^{(n+1)}_n(t) \leq M</m>, and integrating all three terms in the inequality from <m>t = 0</m> to <m>t = x</m> and doing so <m>n+1</m> times, it can be shown that
-      <me>
+      <md>
          -M \frac{x^{n+1}}{(n+1)!} \leq E_n(x) \leq M \frac{x^{n+1}}{(n+1)!}
-      </me>
+      </md>
       It follows that 
-      <me>
+      <md>
         | E_n(x) | \leq M \frac{|x|^{n+1}}{(n+1)!} \leq M \frac{|c|^{n+1}}{(n+1)!}
-      </me>
+      </md>
       since <m>|c|</m> is the maximum value of <m>|x|</m> on the interval <m>0 \leq x \leq c</m>.   
     </p>
 
@@ -402,9 +403,9 @@
           Suppose that <m>M</m> is a positive real number such that
           <m>\left|f^{(n+1)}(x)\right| \le M</m> on the interval <m>[a, c]</m>.
           If <m>T_n(x)</m> is the degree <m>n</m> Taylor polynomial for <m>f(x)</m> centered at <m>x=a</m>, then
-          <me>
+          <md>
             \left| f(c) - T_n(c) \right| \leq M\frac{|c-a|^{n+1}}{(n+1)!}
-          </me>.
+          </md>.
         </p>
       </assemblage> 
     </p>
@@ -446,23 +447,23 @@
         <p>  
           Since the derivatives of <m>f(x) = \sin(x)</m> are all one of
           <m>\pm \sin(x)</m> or <m>\pm \cos(x)</m>, and the maximum absolute values of these functions on any interval is <m>1</m>, we have
-          <me>
+          <md>
             \left| f^{(n+1)}(x) \right| \leq 1
-          </me>
+          </md>
           for any <m>n</m> and any <m>x</m>.
           Therefore, we let <m>M = 1</m>.
           By the Lagrange Error Bound formula, we find that
-          <me>
+          <md>
             \left| f(2) - T_{10}(2) \right| \leq 1 \cdot \frac{|2-0|^{11}}{(11)!} = \frac{2^{11}}{(11)!} \approx 0.00005130671797
-          </me>.
+          </md>.
         </p>
 
         <p>
           So <m>T_{10}(2)</m> approximates <m>\sin(2)</m> to within at most <m>0.00005130671797</m>.
           Using a computer algebra system, we can find that
-          <me>
+          <md>
             T_{10}(2) \approx 0.9093474427 \ \ \text{ and }  \ \ \sin(2) \approx 0.9092974268
-          </me>
+          </md>
           with an actual difference of about <m>0.0000500159</m>.  Note that the computer algebra system itself is using a related approach (possibly with more terms) to generate the fact that <m> \sin(2) \approx 0.9092974268</m> in such a way that every decimal the computer reports is accurate.
         </p>
       </solution>
@@ -484,13 +485,13 @@
       <li>
         <p>
           An alternating series is one whose terms alternate in sign, often represented by 
-          <me>
+          <md>
             \sum_{k=0}^{\infty} (-1)^{k}a_k
-          </me> 
+          </md> 
           where <m>a_k \gt 0</m> for all values of <m>k</m>.  Any alternating series whose terms <m>a_k</m> approach zero as <m>k \to \infty</m> is guaranteed to converge.  Moreover, the Alternating Series Estimation Theorem tells us that we can estimate the exact value of a converging alternating series by using a partial sum, and the error of that approximation is at most the next term in the series.  That is,
-          <me>
+          <md>
             \left| \sum_{k=0}^{\infty} (-1)^{k}a_k - \left(a_0 - a_1 + a_2 - a_3 + \cdots + (-1)^{n-1} a_{n-1} \right) \right| \lt a_{n}
-          </me>.
+          </md>.
         </p>
       </li>
       <li>
@@ -498,15 +499,16 @@
             The Lagrange Error Bound quantifies the accuracy when we a Taylor polynomial to approximate a function.
             Specifically,
             if <m>T_n(x)</m> is the degree <m>n</m> order Taylor polynomial for <m>f</m> centered at <m>x=a</m> and if <m>\left|f^{(n+1)}(x)\right| \leq M</m> for some real number <m>M</m> on the interval <m>[a, c]</m>, then
-            <me>
+            <md>
               \left| f(c) - T_n(c) \right| \leq M\frac{|c-a|^{n+1}}{(n+1)!}
-            </me>.
+            </md>.
         </p>
       </li>
     </ul>
     </p>
   </subsection>
 
-<xi:include href="./exercises/ez-8-6.xml"/>
+<xi:include href="./exercises/ez-8-6.xml" />
+<xi:include href="./exercises/ez-8-6-D.xml" />
 
 </section>

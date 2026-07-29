@@ -1,0 +1,78 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+ <setup>
+  <selectFromSequence name = "c" from = "3" to = "5" step = "2"/>
+  <selectFromSequence name = "k" from = "2" to = "5" step = "1" exclude="$c"/>
+  <selectFromSequence name = "y0" from = "2" to = "6" step = "1" exclude="$c $k"/>
+
+  <function name = "g1" variable="y">y</function>
+  <function name = "h1" variable="t">$k*t^$c</function>
+  <function name = "g2" variable="y">y/$k</function>
+  <function name = "h2" variable="t">t^$c</function>
+   
+  <function name = "G1" variable="y">y^2/2</function>
+  <function name = "G2" variable="y">y^2/(2*$k)</function>
+  <function name = "H1" variable="t">$k/($c+1)t^($c+1) + C</function>
+  <function name = "H2" variable="t">1/($c+1)t^($c+1) + C</function>
+   
+  <function name = "soln" variable="t">sqrt(2*$k/($c+1)*t^($c+1)+$y0^2)</function>
+   
+</setup>
+
+<p>
+  Consider the separable differential equation that's part of the following initial value problem:
+  <me>
+    \frac{dy}{dt} = \frac{$k t^$c}{y}, \ \ y(0) = $y0
+  </me>
+  Complete the following steps to solve the IVP.
+</p>
+<p>
+  <ol marker="a.">
+    <li>
+      <p>  
+        First, separate the variables and fill in the blanks below to rewrite the equation in the form <m>g(y) \frac{dy}{dt} = h(t)</m>.
+      </p>  
+      <p>
+        <mathInput minWidth="40" name="gEntered"/><m>\frac{dy}{dt} = </m><mathInput minWidth="40" name="hEntered"/> <answer simplifyOnCompare>
+                          <award>
+                            <when> ($gEntered=$g1 and $hEntered=$h1) or ($gEntered=$g2 and $hEntered=$h2) 
+                            </when>
+                          </award></answer> 
+      </p>
+    </li>
+    <li>
+      <p>
+        Next, integrate both sides with respect to <m>t</m>.  Write the next step that results without integral signs, and be sure to include the arbitrary constant on the right.
+      </p>  
+      
+      <p>
+        <mathInput minWidth="70" name="GEntered"/><m> = </m><mathInput minWidth="70" name="HEntered"/> <answer simplifyOnCompare>
+                          <award>
+                            <when> ($GEntered=$G1 and $HEntered=$H1) or ($GEntered=$G2 and $HEntered=$H2)
+                            </when>
+                          </award></answer> 
+      </p>
+    </li>
+    <li>
+      <p>
+        Now, solve your most recent equation for <m>y</m> and find the value of the constant that makes the function the unique solution to the original initial value problem.
+      </p>  
+      
+      <p>
+        <m>y(t) =</m><mathInput name="solnEntered" minWidth="70"/><answer simplifyOnCompare><award><when>$solnEntered=$soln</when></award></answer>
+      </p>
+    </li>
+  </ol>
+</p>

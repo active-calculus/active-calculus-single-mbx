@@ -1,0 +1,92 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="r" from="5" to="7" step="1"/>
+  <selectFromSequence name="k" from="0.1" to="0.2" step="0.05"/>
+  <selectFromSequence name="R" from="68" to="72" step="1"/>
+  <selectFromSequence name="W" from="1000" to="2000" step="500"/>
+  <math name="Eq1">$R</math>
+  <math name="Eq2">$W/(0.01*$r)</math>
+</setup>
+
+<p> 
+  In the following prompts, we consider two autonomous differential equations that model physical phenomena and interpret the meaning of their respective equilibrium solutions.
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        For an object in a room with ambient temperature <m>$R</m>, the object's temperature, <m>F</m> is a function of time that satisfies the differential equation 
+        <me>
+          \frac{dF}{dt} = -$k(F-$R)
+        </me>
+      </p>
+      <p>
+        The equilibrium solution to the temperature differential equation, <m>\frac{dF}{dt} = -$k(F-$R)</m>, is <answer><label><m>F = </m></label>R</answer>.  In addition, this equilibrium is <choiceInput inline name="a1"><shortDescription>stable or unstable</shortDescription>
+          <choice>?</choice>
+          <choice>stable</choice>
+          <choice>unstable</choice>
+        </choiceInput> because if the object's initial temperature is greater than <m>$R</m>, then its temperature will <choiceInput inline name="a2">
+          <shortDescription>increase or decrease</shortDescription>
+          <choice>?</choice>
+          <choice>increase</choice>
+          <choice>decrease</choice>
+        </choiceInput> toward room temperature, while if the object's initial temperature is less than <m>$R</m>, then its temperature will <choiceInput inline name="a3">
+          <shortDescription>increase or decrease</shortDescription>
+          <choice>?</choice>
+          <choice>increase</choice>
+          <choice>decrease</choice>
+        </choiceInput> toward room temperature.
+      </p>
+      <p>
+        <answer><award><when>
+          $a1.selectedIndices=2 and $a2.selectedIndices=3 and $a3.selectedIndices=2
+        </when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        For a bank account that earns <m>$r</m>% interest per year and from which the owner withdraws $<m>$W</m> per year, the amount of money in the account, <m>A</m>, is a function of time that satisfies the differential equation 
+        <me>
+          \frac{dA}{dt} = <math simplify>0.01*$r</math>A - $W
+        </me>
+      </p>
+      <p>
+        The equilibrium solution to the bank account differential equation, <m>\frac{dA}{dt} = <math simplify>0.01*$r</math>A - $W</m>, is <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>A = </m></label>$W/(0.01*$r)</answer>.  In addition, this equilibrium is <choiceInput inline name="b1">
+          <shortDescription>stable or unstable</shortDescription>
+          <choice>?</choice>
+          <choice>stable</choice>
+          <choice>unstable</choice>
+        </choiceInput> because if the account's initial balance is greater than the equilibrium solution, the account balance will <choiceInput inline name="b2">
+          <shortDescription>increase or decrease</shortDescription>
+          <choice>?</choice>
+          <choice>decrease toward 0</choice>
+          <choice>increase without bound</choice>
+        </choiceInput>, while if the account's initial balance is less than the equilibrium solution, then the account balance will <choiceInput inline name="b3">
+          <shortDescription>increase or decrease</shortDescription>
+          <choice>?</choice>
+          <choice>decrease toward 0</choice>
+          <choice>increase without bound</choice>
+        </choiceInput>.  This shows that for this differential equation, the equilibrium solution represents the minimum initial account balance for which the annual interest earned is at least as much as the amount being withdrawn annually.
+      </p>
+      <p>
+        <answer><award><when>
+          $b1.selectedIndices=3 and $b2.selectedIndices=3 and $b3.selectedIndices=2
+        </when></award></answer>
+      </p>
+    </li>
+  </ol>
+</p>

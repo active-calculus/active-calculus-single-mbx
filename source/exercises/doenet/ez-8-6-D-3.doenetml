@@ -1,0 +1,91 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+
+  <selectFromSequence name="a" from="1" to="1" step="1"/>
+  <selectFromSequence name="k" from="0.1" to="0.4" step="0.1"/>
+
+  <function name="f">ln(x)</function>
+  <derivative name="fP">$f</derivative>
+  <derivative name="fPP">$fP</derivative>
+  <derivative name="fPPP">$fPP</derivative>
+  <derivative name="fP4">$fPPP</derivative>
+
+  <math name="c0">$$f($a)</math>
+  <math name="c1">$$fP($a)</math>
+  <math name="c2">$$fPP($a)/2</math>
+  <math name="c3">$$fPPP($a)/3!</math>
+  <math name="c4">$$fP4($a)/4!</math>
+
+  <math simplify name="c">$a + $k</math>
+
+  <function name="T3">$c0 + $c1*(x-$a) + $c2*(x-$a)^2 + $c3*(x-$a)^3</function>
+
+  <!-- I tried using $f throughout the following problem to display the function, and even tried defining a math element with format=latex, but Doenet always replaced regular parentheses with \left( and \right), which made the spacing look weird. -->
+
+</setup>
+
+<p>
+  Consider the function <m>f(x) = \ln(x)</m>. We will analyze the error that results from using a Taylor polynomial to approximate the value of <m>\ln(x)</m> near <m>a = $a</m>.
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+         Find and state the degree <m>3</m> Taylor polynomial of <m>f</m>  centered at <m>a = $a</m>.
+      </p>
+      <p>
+        <answer name="T3Entered" symbolicEquality simplifyOnCompare><label><m>T_3(x) = </m></label>$T3</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Use <m>T_3(x)</m> to estimate the value of <m>f($c) = \ln($c)</m>.  Report your result to an accuracy of at least <m>0.000001</m>.
+      </p>
+      <p>
+        <answer name="fEst" allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute><label><m>\ln($c) = f($c) \approx T_3($c) = </m></label>$$T3($c)</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Finally, we use the Lagrange Error Bound to quantify the error in our approximation in part (b).  Fill in the blanks below appropriately; report any decimal values to an accuracy of at least <m>0.000001</m>.
+      </p>
+      <p>
+        Note that we used the degree <m>3</m> Taylor polynomial of <m>f</m> centered at <m>a=$a</m> to approximate <m>f($c)</m>, which means that in the Lagrange Error Bound formula
+      </p>
+      <div sectionWideCheckWork colorAnswersSeparately>
+      <p>
+        <answer><label><m>n + 1 = </m></label>4</answer> and
+      </p>
+      <p>
+        <answer><label><m>c-a = </m></label>$k</answer>.
+      </p>
+      </div>
+      <p>
+        Observe that the fourth derivative of <m>f(x)</m> is <m>f^{(4)}(x) = -\frac{6}{x^4}</m>, and on the interval <m>[$a, $c]</m>, the absolute maximum value of <m>|f^{(4)}(x)| = \left|\frac{6}{x^4}\right|</m> is
+      </p>
+      <p>
+        <answer><label><m>M = </m></label>abs($$fP4($a))</answer>
+      </p>
+      <p>
+        Using the values of <m>M</m>, <m>|c - a|</m>, and <m>(n+1)</m> in the Lagrange Error Bound formula, it follows that
+      </p>
+      <p>
+        <answer allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute><label><m>|f($c) - T_3($c)| \le </m></label>abs($$fP4($a))*$k^4/4!</answer>
+      </p>
+    </li>
+  </ol>
+</p>

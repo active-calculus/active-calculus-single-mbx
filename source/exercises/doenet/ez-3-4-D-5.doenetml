@@ -1,0 +1,73 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <function name="T" variable="D">(C/2 - D/3)*D^2</function>
+  <function name="TP" variable="D">C*D-D^2</function>
+  <function name="TPP" variable="D">C*-2*D</function>
+
+  <math name="crNum1">0</math>
+  <math name="crNum2">C</math>  
+  <mathList name="correctCrNums"> $crNum1 $crNum2 </mathList>
+
+  <math name="POI1">C/2</math>
+  <mathList name="correctPOIs"> $POI1 </mathList>
+  
+</setup>  
+
+<p> 
+  For some positive constant <m>C</m>, a patient's temperature change, <m>T</m>, due to a dose, <m>D</m>, of a drug is given by 
+  <me>T(D)=\left( \frac{C}{2}-\frac{D}{3} \right)D^2, </me>
+  which is valid for dosages <m>D</m> that satisfy <m>0 \le D \le 2C</m>. 
+</p>
+
+<ol marker="a.">
+  <li>
+    <p>
+      Find <m>T'(D)</m> and state your result in the blank below.
+      </p> 
+      <p>
+        <m>T'(D) = </m><mathInput name="TPentered"/>
+        <answer simplifyOnCompare>
+          <award><when>
+          $TPentered = $TP
+          </when></award>
+        </answer>
+      </p>
+  </li>
+  <li>
+      <p>
+        Use your work in (a) to determine the critical numbers of <m>T</m> (which may depend on the arbitrary constant <m>C</m>).  If there is more than one, enter them as a list separated by commas.  If there are none, enter <em>none</em>.
+      </p>
+      <p>
+        The critical numbers of <m>T</m> occur at <m>D = </m> <mathInput name="crNums" /> <answer unorderedCompare><award><when> $crNums=$correctCrNums</when></award></answer>.
+      </p>  
+  </li>
+  <li>
+    <p>
+      Construct a first derivative sign chart for <m>T</m>.  What dosage, <m>D</m> maximizes the patient's temperature change?
+    </p>  
+      <p>
+        The maximum temperature change occurs at <m>D = </m>  <answer>$crNum2</answer>.
+      </p>      
+  </li>  
+  <li>
+    <p>
+      The patient's sensitivity to the drug is defined by the function <m> \frac{dT}{dt} </m>.  At what dosage, <m>D</m>, is the patient's sensitivity maximized?
+    </p>  
+      <p>
+        The maximum sensitivity occurs at <m>D = </m>  <answer>$crNum2/2</answer>.
+      </p>      
+  </li>    
+</ol>

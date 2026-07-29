@@ -1,0 +1,61 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="k" from="7" to="9" step="1"/>
+  <selectFromSequence name="b" from="75" to="90" step="5"/>
+
+  <function name="v" variable="t">$b-$k*t</function>
+  <function name="s" variable="t">$b*t-$k*t^2/2</function>
+
+</setup>
+
+<p>
+  Suppose that a car is braking to a stop.  When it starts braking, its velocity is <m>$b</m> feet per second, and it brakes in such a way that its velocity decreases at a constant rate of <m>$k</m> feet per second per second.
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Find a formula for the car's velocity at an arbitrary time <m>t</m> between the time it starts braking and when its velocity reaches <m>0</m>.
+      </p>
+      <p>
+        <answer><label><m>v(t) = </m> </label>$v</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        How long does it take for the car to come to a complete stop?
+      </p>
+      <p>
+        The car stops when <answer name="tEntered" allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><label><m>t = </m> </label>$b/$k</answer> seconds.
+      </p>
+    </li>
+    <li>
+      <p>
+        How far does the car travel between the time it starts braking and when it stops?  Report your result accurate to at least 4 decimal places.
+      </p>
+      <p>
+        The <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><mathInput name="dEntered"><label>distance traveled while braking is </label></mathInput><award><when>$dEntered=$$s($tEntered) and $tEntered.creditAchieved=1</when></award></answer> with units <answer><choiceInput inline>
+          <shortDescription>options for units</shortDescription>
+          <choice>?</choice>
+          <choice>feet per second</choice>
+          <choice credit="1">feet</choice>
+          <choice>seconds</choice>
+        </choiceInput></answer>.
+      </p>
+    </li>
+  </ol>
+</p>

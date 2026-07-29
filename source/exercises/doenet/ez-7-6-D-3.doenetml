@@ -1,0 +1,117 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+
+  <selectFromSequence name="N" from="3000" to="5000" step="1000"/>  
+  <selectFromSequence name="S0" from="6" to="8" step="1"/> 
+  <selectFromSequence name="S3" from="45" to="55" step="5"/> 
+
+  <math name="k">-1/(3*$N)*ln( ($N/$S3 - 1)/(($N-$S0)/$S0) )</math>
+  
+  <function name="DEQ" variable="P">$k*S*($N - S)</function>
+  <mathList name="eqSols">0 $N</mathList>
+  <function name="S" variable="t">$N/( 1+($N-$S0)/$S0*e^(-$k*$N*t) )</function>
+
+  <function name="f">$k*x*($N - x)</function>
+  
+  <math name="fastP" simplify>$N/2</math>
+  <math name="fastT"><round numDigits="1">-1/($k*$N)*ln($S0/($N-$S0))</round></math>
+  <point name="vert" styleNumber="5">($N/2, $$f($N/2))</point>
+  <math name="verty">$$f($N/2)</math>
+  
+</setup>
+<p>
+  In a closed population, illness often spreads according to a logistic model.  On a large cruise ship that will be at sea for <m>14</m> days, suppose we know the following information:
+  <ul>
+    <li>
+      <p>
+        there are <m>$N</m> passengers and crew on board;
+      </p>
+    </li>
+    <li>
+      <p>
+        on the day they board, <m>$S0</m> of those passengers are sick with a highly contagious flu virus;
+      </p>
+    </li>
+    <li>
+      <p>
+        at the start of day <m>t = 3</m>, there are <m>$S3</m> passengers who are or have been sick with the flu.
+      </p>
+    </li>
+  </ul>
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Let <m>S(t)</m> denote the number of people on the cruise ship who are or have been sick with the virus since the cruise began.  Assume that <m>S(t)</m> is modeled by the logistic differential equation, so we know that if 
+        <me>
+          \frac{dS}{dt} = kS(N-S)
+        </me>
+        where <m>N</m> is the carrying capacity (i.e., the total number of people who could possibly get sick), and <m>S_0</m> is the number of people who were sick when <m>t = 0</m>, then it follows that 
+        <me>
+          S(t) = \frac{N}{1 + \frac{N-S_0}{S_0}e^{-kNt}}
+        </me>
+      </p>
+      <p>
+        Use the given information to determine both <m>N</m> and <m>S_0</m>, and state those results in the blanks provided below.
+      </p>
+      <p>
+        <m>N = </m><mathInput name="Nentered"/> and <m>S_0 = </m><mathInput name="S0entered"/>
+      </p>
+      <p>
+        <answer><award><when>$Nentered=$N and $S0entered=$S0</when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Observe that in the formula for <m>S(t)</m> there are three parameters: <m>N</m>, <m>S_0</m>, and <m>k</m>.  You have already determined the first two of those values in (a); the information about the value of <m>S(3)</m> is sufficient to determine <m>k</m>.  Find <m>k</m> and report its value accurate to within <m>0.0000001</m>.
+      </p>
+      <p>
+        <m>k = </m><mathInput name="kentered"/>
+      </p>
+      <p>
+        <answer allowedErrorInNumbers="0.0000001" allowedErrorIsAbsolute><award><when>$kentered=$k</when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        For what value of <m>S</m> is the number of people who are or have been sick increasing most rapidly?  What day of the cruise is this occurring?  (Round to the nearest whole day) 
+      </p>
+      <p>
+        The number of people who are or have been sick is growing most rapidly when <m>S = </m><mathInput name="enteredFastP"/>, which is when <m>t = </m><mathInput name="enteredFastT"/>.
+      </p>
+      <p>
+        <answer allowedErrorInNumbers="0.5" allowedErrorIsAbsolute><award><when>
+          $enteredFastT=$fastT and $enteredFastP=$fastP
+        </when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        How many people are or have been sick when the cruise ends after <m>14</m> days?  (Round to the nearest whole number) 
+      </p>
+      <p>
+        <m>S(14) = </m><mathInput name="S14"/>
+      </p>
+      <p>
+        <answer allowedErrorInNumbers="0.5" allowedErrorIsAbsolute><award><when>
+          $S14=$$S(14)
+        </when></award></answer>
+      </p>
+    </li>
+  </ol>
+</p>

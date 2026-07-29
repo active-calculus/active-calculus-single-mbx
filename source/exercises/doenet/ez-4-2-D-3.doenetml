@@ -1,0 +1,289 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- this exercise builds on a related one that was first drafted by Weidai Sun in 2024 -->
+
+<setup>
+  <select name="s1" hide> 0 1 2 </select>
+  <select name="s2" hide> 6 7 8</select>
+  <function name="f1"> 1/$s2 * x^2 </function>
+  <function name="f2"> $s2-1/$s2*x^2 </function>
+
+  <number name="n1">$s1+4</number>
+  <number name="a1"> 0.5*$$f1($s1)+0.5*$$f1($s1+0.5)+0.5*$$f1($s1+1)+0.5*$$f1($s1+1.5)+0.5*$$f1($s1+2)+0.5*$$f1($s1+2.5)+0.5*$$f1($s1+3)+0.5*$$f1($s1+3.5)
+  </number>
+  <number name="a2"> 0.5*$$f1($s1+0.5)+0.5*$$f1($s1+1)+0.5*$$f1($s1+1.5)+0.5*$$f1($s1+2)+0.5*$$f1($s1+2.5)+0.5*$$f1($s1+3)+0.5*$$f1($s1+3.5)+0.5*$$f1($s1+4) </number>
+  <number name="A">1/(3*$s2)*( ($s1+4)^3 - $s1^3 )</number>
+  <number name="diff1">abs($A-$a1)</number>
+  <number name="diff2">abs($A-$a2)</number>
+
+  <number name="a3"> 0.5*$$f2($s1)+0.5*$$f2($s1+0.5)+0.5*$$f2($s1+1)+0.5*$$f2($s1+1.5)+0.5*$$f2($s1+2)+0.5*$$f2($s1+2.5)+0.5*$$f2($s1+3)+0.5*$$f2($s1+3.5)
+  </number>
+  <number name="a4"> 0.5*$$f2($s1+0.5)+0.5*$$f2($s1+1)+0.5*$$f2($s1+1.5)+0.5*$$f2($s1+2)+0.5*$$f2($s1+2.5)+0.5*$$f2($s1+3)+0.5*$$f2($s1+3.5)+0.5*$$f2($s1+4) </number>
+  <number name="B">$s2*4 - 1/(3*$s2)*( ($s1+4)^3 - $s1^3 )</number>
+  <number name="diff3">abs($B-$a3)</number>
+  <number name="diff4">abs($B-$a4)</number>
+
+  <conditionalContent name="group1">
+      <case condition="$diff1 < 1"> not obviously greater, less, or equal to the exact area </case>
+      <case condition="$a1 >= $A + 1"> an overestimate of the exact area </case>
+      <case condition="$a1 <= $A - 1"> an underestimate of the exact area </case>
+  </conditionalContent>
+
+  <conditionalContent name="group2">
+      <case condition="$diff2 < 1"> not obviously greater, less, or equal to the exact area </case>
+      <case condition="$a2 >= $A + 1"> an overestimate of the exact area </case>
+      <case condition="$a2 <= $A - 1"> an underestimate of the exact area </case>
+  </conditionalContent>
+
+</setup>
+
+<p>
+  This exercise asks you to reason graphically to make conclusions about whether left or right Riemann sums under- or over-estimate the true area under a function whose value is positive throughout the interval of interest.  You need not compute the numerical value of any Riemann sum that follows.
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+<p>
+  The rectangles in the first graph below illustrate a left endpoint Riemann sum for <m>f(x)=$f1</m> on the interval <m>[$s1, $n1]</m>.
+</p>
+
+  <graph name="g1" xmin="-1" xmax="9" ymin="-1" ymax="9" showNavigation="false" fixAxes="true" size="small">
+    <shortDescription>
+      A plot of the function f and a left Riemann sum
+    </shortDescription>
+    $f1
+<!--  <label fixed anchor="(4.5,8)"> Left endpoint Riemann sum for <m>f(x)=$f1</m> on <m>[$s1,$n1]</m> </label> -->
+  <rectangle fixed name="rt1" vertices="($s1,0) ($s1+0.5,$$f1($s1))" styleNumber="3" filled/>
+  <rectangle fixed name="rt2" vertices="($s1+0.5,0) ($s1+1,$$f1($s1+0.5))" styleNumber="3" filled/>
+  <rectangle fixed name="rt3" vertices="($s1+1,0) ($s1+1.5,$$f1($s1+1))" styleNumber="3" filled/>
+  <rectangle fixed name="rt4" vertices="($s1+1.5,0) ($s1+2,$$f1($s1+1.5))" styleNumber="3" filled/>
+  <rectangle fixed name="rt5" vertices="($s1+2,0) ($s1+2.5,$$f1($s1+2))" styleNumber="3" filled/>
+  <rectangle fixed name="rt6" vertices="($s1+2.5,0) ($s1+3,$$f1($s1+2.5))" styleNumber="3" filled/>
+  <rectangle fixed name="rt7" vertices="($s1+3,0) ($s1+3.5,$$f1($s1+3))" styleNumber="3" filled/>
+  <rectangle fixed name="rt8" vertices="($s1+3.5,0) ($s1+4,$$f1($s1+3.5))" styleNumber="3" filled/>
+  </graph>
+
+<p>
+  Compared to the exact area under the curve on <m>[$s1, $n1]</m>, the left Riemann sum's value is <answer><choiceInput inline name="c1">
+    <shortDescription>comparison options</shortDescription>
+    <choice credit="$a1 > $A + 0.25"> an overestimate of the exact area </choice>
+    <choice credit="$a1 = $A"> equal to the exact area </choice>
+    <choice credit="$a1 < $A - 0.25"> an underestimate of the exact area </choice>
+    <choice credit="$diff1 <= 0.25"> not obviously greater, less, or equal to the exact area </choice>
+  </choiceInput></answer>
+  <!--
+  area = $A, left=$a1, diff1=<math>$diff1</math>
+  <answer><award><when>
+    $c1=$group1
+  </when></award></answer>.
+  -->
+</p>
+    </li>
+    <li>
+
+<p> The rectangles in the second graph below illustrate a right endpoint Riemann sum for <m>f(x)=$f1</m> on the interval <m>[$s1, $n1]</m>. </p>
+
+
+  <graph name="g2" xmin="-1" xmax="9" ymin="-1" ymax="9" showNavigation="false" fixAxes="true" size="small">
+    <shortDescription>
+      A plot of the function f and a right Riemann sum
+    </shortDescription>
+    $f1
+<!--  <label fixed anchor="(4.5,8)"> Left endpoint Riemann sum for <m>f(x)=$f1</m> on <m>[$s1,$n1]</m> </label> -->
+  <rectangle fixed name="rt11" vertices="($s1,0) ($s1+0.5,$$f1($s1+0.5))" styleNumber="3" filled/>
+  <rectangle fixed name="rt21" vertices="($s1+0.5,0) ($s1+1,$$f1($s1+1))" styleNumber="3" filled/>
+  <rectangle fixed name="rt31" vertices="($s1+1,0) ($s1+1.5,$$f1($s1+1.5))" styleNumber="3" filled/>
+  <rectangle fixed name="rt41" vertices="($s1+1.5,0) ($s1+2,$$f1($s1+2))" styleNumber="3" filled/>
+  <rectangle fixed name="rt51" vertices="($s1+2,0) ($s1+2.5,$$f1($s1+2.5))" styleNumber="3" filled/>
+  <rectangle fixed name="rt61" vertices="($s1+2.5,0) ($s1+3,$$f1($s1+3))" styleNumber="3" filled/>
+  <rectangle fixed name="rt71" vertices="($s1+3,0) ($s1+3.5,$$f1($s1+3.5))" styleNumber="3" filled/>
+  <rectangle fixed name="rt81" vertices="($s1+3.5,0) ($s1+4,$$f1($s1+4))" styleNumber="3" filled/>
+  </graph>
+
+<p> Compared to the exact area under the curve on <m>[$s1, $n1]</m>, the right Riemann sum's value is <answer><choiceInput inline name="c2">
+  <shortDescription>comparison options</shortDescription>
+    <choice credit="$a2 > $A + 0.25"> an overestimate of the exact area </choice>
+    <choice credit="$a2 = $A"> equal to the exact area </choice>
+    <choice credit="$a2 < $A - 0.25"> an underestimate of the exact area </choice>
+    <choice credit="$diff2 <= 0.25"> not obviously greater, less, or equal to the exact area </choice>
+  </choiceInput></answer>
+</p>
+    </li>
+    <li>
+<p>
+  The rectangles in the third graph below illustrate a left endpoint Riemann sum for <m>g(x)=$f2</m> on the interval <m>[$s1, $n1]</m>.
+</p>
+
+  <graph name="g3" xmin="-1" xmax="9" ymin="-1" ymax="9" showNavigation="false" fixAxes="true" size="small">
+    <shortDescription>
+      A plot of the function g and a left Riemann sum
+    </shortDescription>
+    $f2
+<!--  <label fixed anchor="(4.5,8)"> Left endpoint Riemann sum for <m>f(x)=$f1</m> on <m>[$s1,$n1]</m> </label> -->
+  <rectangle fixed name="rt1" vertices="($s1,0) ($s1+0.5,$$f2($s1))" styleNumber="3" filled/>
+  <rectangle fixed name="rt2" vertices="($s1+0.5,0) ($s1+1,$$f2($s1+0.5))" styleNumber="3" filled/>
+  <rectangle fixed name="rt3" vertices="($s1+1,0) ($s1+1.5,$$f2($s1+1))" styleNumber="3" filled/>
+  <rectangle fixed name="rt4" vertices="($s1+1.5,0) ($s1+2,$$f2($s1+1.5))" styleNumber="3" filled/>
+  <rectangle fixed name="rt5" vertices="($s1+2,0) ($s1+2.5,$$f2($s1+2))" styleNumber="3" filled/>
+  <rectangle fixed name="rt6" vertices="($s1+2.5,0) ($s1+3,$$f2($s1+2.5))" styleNumber="3" filled/>
+  <rectangle fixed name="rt7" vertices="($s1+3,0) ($s1+3.5,$$f2($s1+3))" styleNumber="3" filled/>
+  <rectangle fixed name="rt8" vertices="($s1+3.5,0) ($s1+4,$$f2($s1+3.5))" styleNumber="3" filled/>
+  </graph>
+
+<p>
+  Compared to the exact area under the curve on <m>[$s1, $n1]</m>, the left Riemann sum's value is <answer><choiceInput inline name="c3">
+    <shortDescription>comparison options</shortDescription>
+    <choice credit="$a3 > $B + 0.25"> an overestimate of the exact area </choice>
+    <choice credit="$a3 = $B"> equal to the exact area </choice>
+    <choice credit="$a3 < $B - 0.25"> an underestimate of the exact area </choice>
+    <choice credit="$diff3 <= 0.25"> not obviously greater, less, or equal to the exact area </choice>
+  </choiceInput></answer>
+  <!--
+  area = $A, left=$a1, diff1=<math>$diff1</math>
+  <answer><award><when>
+    $c1=$group1
+  </when></award></answer>.
+  -->
+</p>
+
+  </li>
+  <li>
+
+<p>
+  The rectangles in the fourth graph below illustrate a right endpoint Riemann sum for <m>g(x)=$f2</m> on the interval <m>[$s1, $n1]</m>.
+</p>
+
+  <graph name="g2" xmin="-1" xmax="9" ymin="-1" ymax="9" showNavigation="false" fixAxes="true" size="small">
+    <shortDescription>
+      A plot of the function g and a right Riemann sum
+    </shortDescription>
+    $f2
+<!--  <label fixed anchor="(4.5,8)"> Left endpoint Riemann sum for <m>f(x)=$f1</m> on <m>[$s1,$n1]</m> </label> -->
+  <rectangle fixed name="rt11" vertices="($s1,0) ($s1+0.5,$$f2($s1+0.5))" styleNumber="3" filled/>
+  <rectangle fixed name="rt21" vertices="($s1+0.5,0) ($s1+1,$$f2($s1+1))" styleNumber="3" filled/>
+  <rectangle fixed name="rt31" vertices="($s1+1,0) ($s1+1.5,$$f2($s1+1.5))" styleNumber="3" filled/>
+  <rectangle fixed name="rt41" vertices="($s1+1.5,0) ($s1+2,$$f2($s1+2))" styleNumber="3" filled/>
+  <rectangle fixed name="rt51" vertices="($s1+2,0) ($s1+2.5,$$f2($s1+2.5))" styleNumber="3" filled/>
+  <rectangle fixed name="rt61" vertices="($s1+2.5,0) ($s1+3,$$f2($s1+3))" styleNumber="3" filled/>
+  <rectangle fixed name="rt71" vertices="($s1+3,0) ($s1+3.5,$$f2($s1+3.5))" styleNumber="3" filled/>
+  <rectangle fixed name="rt81" vertices="($s1+3.5,0) ($s1+4,$$f2($s1+4))" styleNumber="3" filled/>
+  </graph>
+
+<p>
+  Compared to the exact area under the curve on <m>[$s1, $n1]</m>, the right Riemann sum's value is <answer><choiceInput inline name="c4">
+    <shortDescription>comparison options</shortDescription>
+    <choice credit="$a4 > $B + 0.25"> an overestimate of the exact area </choice>
+    <choice credit="$a4 = $B"> equal to the exact area </choice>
+    <choice credit="$a4 < $B - 0.25"> an underestimate of the exact area </choice>
+    <choice credit="$diff4 <= 0.25"> not obviously greater, less, or equal to the exact area </choice>
+  </choiceInput></answer>
+</p>
+
+    </li>
+    <li>
+      <p>
+        The ideas in the four examples above can be generalized based on important characteristics of a function <m>f</m> that is positive and continuous on the interval <m>[a,b]</m>: in particular, if the function is either always decreasing or always increasing on the interval, we can be sure about which Riemann sums are under- or over-estimates of the true area bounded by <m>f</m>.  Assume that <m>A</m> represents the exact area between <m>f(x)</m> and the <m>x</m>-axis on <m>[a,b]</m>, and that <m>L_n</m> and <m>R_n</m> are left and right Riemann sums of <m>f</m> on that same interval.  
+      </p>
+      <p>
+        For such a function, complete the following sentences to make conclusions about how left and right Riemann sums compare to the value of the true area under the curve.
+      </p>
+      <p>
+        When <m>f</m> is an increasing function on <m>[a,b]</m>, then <m>L_n</m> will always 
+          <choiceInput inline name="c5">
+            <shortDescription>over or under options</shortDescription>
+            <choice>?</choice>
+            <choice>overestimate</choice>
+            <choice>underestimate</choice>
+            <choice>equal</choice>
+          </choiceInput>
+        the exact value of <m>A</m> because every rectangle will lie 
+          <choiceInput inline name="c55">
+            <shortDescription>above or below options</shortDescription>
+            <choice>?</choice>
+            <choice>completely above</choice>
+            <choice>completely below</choice>
+            <choice>partly above and partly below</choice>
+          </choiceInput> 
+        the curve.  Alternatively, if <m>f</m> is a decreasing function on <m>[a,b]</m>, then <m>L_n</m> will always 
+        <choiceInput inline name="c6">
+          <shortDescription>over or under options</shortDescription>
+          <choice>?</choice>
+          <choice>overestimate</choice>
+          <choice>underestimate</choice>
+          <choice>equal</choice>
+        </choiceInput> 
+        the exact value of <m>A</m>, because every rectangle will lie 
+        <choiceInput inline name="c65">
+          <shortDescription>above or below options</shortDescription>
+          <choice>?</choice>
+          <choice>completely above</choice>
+          <choice>completely below</choice>
+          <choice>partly above and partly below</choice>
+        </choiceInput> the curve.
+  </p>
+      <answer>
+        <award>
+          <when>
+            $c5.selectedIndices=3 and $c55.selectedIndices=3 and $c6.selectedIndices=2 and $c65.selectedIndices=2
+          </when>
+        </award>
+      </answer>
+
+      <p>
+        When <m>f</m> is an increasing function on <m>[a,b]</m>, then <m>R_n</m> will always 
+          <choiceInput inline name="d5">
+            <shortDescription>over or under options</shortDescription>
+            <choice>?</choice>
+            <choice>overestimate</choice>
+            <choice>underestimate</choice>
+            <choice>equal</choice>
+          </choiceInput>
+        the exact value of <m>A</m> because every rectangle will lie 
+          <choiceInput inline name="d55">
+            <shortDescription>above or below options</shortDescription>
+            <choice>?</choice>
+            <choice>completely above</choice>
+            <choice>completely below</choice>
+            <choice>partly above and partly below</choice>
+          </choiceInput> 
+        the curve.  Alternatively, if <m>f</m> is a decreasing function on <m>[a,b]</m>, then <m>R_n</m> will always 
+        <choiceInput inline name="d6">
+          <shortDescription>over or under options</shortDescription>
+          <choice>?</choice>
+          <choice>overestimate</choice>
+          <choice>underestimate</choice>
+          <choice>equal</choice>
+        </choiceInput> 
+        the exact value of <m>A</m>, because every rectangle will lie 
+        <choiceInput inline name="d65">
+          <shortDescription>above or below options</shortDescription>
+          <choice>?</choice>
+          <choice>completely above</choice>
+          <choice>completely below</choice>
+          <choice>partly above and partly below</choice>
+        </choiceInput> the curve.
+  </p>
+      <answer>
+        <award>
+          <when>
+            $d5.selectedIndices=2 and $d55.selectedIndices=2 and $d6.selectedIndices=3 and $d65.selectedIndices=3
+          </when>
+        </award>
+      </answer>
+      
+    </li>
+  </ol>
+</p>

@@ -1,0 +1,105 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <math name="t0">0</math>
+  <selectFromSequence name="y0" from="0.8" to="1.2" step="0.2"/>
+  <selectFromSequence name="k" from="0.2" to="0.4" step="0.2" exclude="$Dt"/>
+  <selectFromSequence name="Dt" from="0.4" to="0.6" step="0.2"/>
+  <math name="n">4</math>
+  <math name="tn" simplify>$n*$Dt</math>
+  <function name="f" variables="t y">$k*(y-t)</function>
+  <math name="y1">$y0 + $$f($t0,$y0)*$Dt</math>
+  <math name="y2">$y1 + $$f($t1,$y1)*$Dt</math>
+  <math name="y3">$y2 + $$f($t2,$y2)*$Dt</math>
+  <math name="y4">$y3 + $$f($t3,$y3)*$Dt</math>
+  <math name="t1" simplify>$t0 + 1*$Dt</math>
+  <math name="t2" simplify>$t0 + 2*$Dt</math>
+  <math name="t3" simplify>$t0 + 3*$Dt</math>
+  <math name="t4" simplify>$t0 + 4*$Dt</math>  
+  <math name="A">1</math>
+  <math name="B">1/$k</math>
+  <function name="sol" variable="t"><math simplify>Ce^($k*t) + $A*t + $B</math></function>
+</setup>
+
+<p>
+  Consider the initial value problem
+  <me>
+    \frac{dy}{dt} = $k(y-t), \ \ y($t0) = $y0
+  </me>
+  Apply Euler's Method with <m>\Delta t = $Dt</m> to estimate <m>y($tn)</m> by filling in the table of values below.  Report each of your values to an accuracy of <m>0.00001</m>.
+</p>
+<p>
+  <tabular top="minor" bottom="minor">
+   <row left="minor">
+    <cell right="minor">Step</cell>
+    <cell right="minor"><m>t_i</m></cell>
+    <cell right="minor"><m>y_i</m></cell>
+    <cell right="minor"><m>\frac{dy}{dt}</m></cell>
+    <cell right="minor"><m>\Delta y</m></cell>
+   </row>
+   <row left="minor">
+    <cell right="minor"><m>0</m></cell>
+    <cell right="minor">$t0</cell>
+    <cell right="minor">$y0</cell>
+    <cell right="minor"><answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute>$$f($t0,$y0)</answer></cell>
+    <cell right="minor"><answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute>$$f($t0,$y0)*$Dt</answer></cell>
+   </row>
+   <row left="minor">
+    <cell right="minor"><m>1</m></cell>
+    <cell right="minor"><answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute>$t0+1*$Dt</answer></cell>
+    <cell right="minor"><answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute>$y1</answer></cell>
+    <cell right="minor"><answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute>$$f($t1,$y1)</answer></cell>
+    <cell right="minor"><answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute>$$f($t1,$y1)*$Dt</answer></cell>
+   </row>
+   <row left="minor">
+    <cell right="minor"><m>2</m></cell>
+    <cell right="minor"><answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute>$t0+2*$Dt</answer></cell>
+    <cell right="minor"><answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute>$y2</answer></cell>
+    <cell right="minor"><answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute>$$f($t2,$y2)</answer></cell>
+    <cell right="minor"><answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute>$$f($t2,$y2)*$Dt</answer></cell>
+   </row>
+   <row left="minor">
+    <cell right="minor"><m>3</m></cell>
+    <cell right="minor"><answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute>$t0+3*$Dt</answer></cell>
+    <cell right="minor"><answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute>$y3</answer></cell>
+    <cell right="minor"><answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute>$$f($t3,$y3)</answer></cell>
+    <cell right="minor"><answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute>$$f($t3,$y3)*$Dt</answer></cell>
+   </row>
+   <row left="minor">
+    <cell right="minor"><m>4</m></cell>
+    <cell right="minor"><answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute>$t0+4*$Dt</answer></cell>
+    <cell right="minor"><answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute>$y4</answer></cell>
+    <cell right="minor"><answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute>$$f($t4,$y4)</answer></cell>
+    <cell right="minor"><answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute>$$f($t4,$y4)*$Dt</answer></cell>
+   </row>
+  </tabular>
+</p>
+<p>
+  Our work shows that <m>y($tn) \approx</m><answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute>$y4</answer>
+</p>
+<p>
+  It turns out that any solution to the differential equation <m>\frac{dy}{dt} = $k(y-t)</m> has form <me>y(t) = $sol.</me>  Find the value of <m>C</m> that makes the solution satisfy the initial condition that <m>y($t0) = $y0</m>.
+</p>
+<p>
+  <m>C = </m><answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute>$y0-$B</answer>
+</p>
+<p>
+  Finally, plot the points <m>(t_i,y_i)</m> from your application of Euler's Method along with the graph of the exact solution function on the same axes.  We see that the values of <m>y_1, y_2, y_3</m>, and <m>y_4</m> <answer><choiceInput inline>
+    <choice>?</choice>
+    <choice credit="1">overestimate</choice>
+    <choice>underestimate</choice>
+    <choice>exactly match</choice>
+  </choiceInput></answer> the true values of the solution <m>y($t1), y($t2), y($t3)</m>, and <m>y($t4)</m>.
+</p>

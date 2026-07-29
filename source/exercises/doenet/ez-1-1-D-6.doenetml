@@ -1,0 +1,92 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+
+  <selectFromSequence name="k" from="1.25" to="1.75" step="0.25" numToSelect="1"/>
+  <selectFromSequence name="m" from="2" to="5" step="1" numToSelect="1"/>
+  <selectFromSequence name="n" from="3" to="6" step="1" numToSelect="1"/>
+
+  <math name="z" simplify>$n-1</math>
+
+  <function name="s" symbolic="true">$m * $k^x - $n</function>
+
+  <number name="AV1" displayDecimals="5">($$s($z+0.1)-$$s($z))/0.1</number>
+  <number name="AV2" displayDecimals="5">($$s($z+0.01)-$$s($z))/0.01</number>
+  <number name="AV3" displayDecimals="5">($$s($z+0.001)-$$s($z))/0.001</number>
+  <number name="AV4" displayDecimals="5">($$s($z)-$$s($z-0.1))/0.1</number>
+  <number name="AV5" displayDecimals="5">($$s($z)-$$s($z-0.01))/0.01</number>
+  <number name="AV6" displayDecimals="5">($$s($z)-$$s($z-0.001))/0.001</number>
+  <number name="instvel" displayDecimals="5">($$s($z+0.001)-$$s($z-0.001))/0.002</number>
+
+  <boolean name="betweenavs">
+    <isBetween limits="$AV3 $AV6" strict>$instvelresp</isBetween>
+  </boolean>
+
+
+
+</setup>
+
+  <p>
+    Suppose that <m>s(t) = $m \cdot $k^x - $n</m> tells us the position (in feet) away from <m>s = 0</m> of an object moving along a straight line at time <m>t</m> (in minutes).  To estimate the instantaneous velocity of the object at <m>t = <math simplify>$z</math></m>, compute the following average velocities and report each of your results to at least 4 decimal places of accuracy.
+  </p>
+  <p>
+    <ul>
+      <li>
+        <p><answer name="AV1resp" allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute symbolicEquality><label><m>AV_{<math simplify>[$z,$z+0.1]</math>} = </m></label><award>$AV1</award></answer></p>
+        <feedback condition="$AV1resp.creditAchieved!=1 and |$AV1resp - $AV1|<0.0001">Make sure you're entering your answer as a single decimal, not an expression.</feedback>
+          <feedback condition="$AV1resp.creditAchieved!=1 and |$AV1resp - $AV1| < 0.01 and |$AV1resp - $AV1|>0.0001">Your answer is close.  Make sure your answer uses at least 4 digits after the decimal point, and if it already does, try using more places after the decimal point throughout your calculations.</feedback>
+      </li>
+      <li>
+        <p><answer name="AV2resp" allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute symbolicEquality><label><m>AV_{<math simplify>[$z,$z+0.01]</math>} = </m></label><award> $AV2</award></answer></p>
+        <feedback condition="$AV2resp.creditAchieved!=1 and |$AV2resp - $AV2|<0.0001">Make sure you're entering your answer as a decimal, not an expression.</feedback>
+          <feedback condition="$AV2resp.creditAchieved!=1 and |$AV2resp - $AV2| < 0.01 and |$AV2resp - $AV2|>0.0001">Your answer is close.  Make sure your answer uses at least 4 digits after the decimal point, and if it already does, try using more places after the decimal point throughout your calculations.</feedback>
+      </li>
+      <li>
+        <p><answer name="AV3resp" allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute symbolicEquality><label><m>AV_{<math displayDigits="5" simplify>[$z,$z+0.001]</math>} = </m></label><award> $AV3</award></answer></p>
+        <feedback condition="$AV3resp.creditAchieved!=1 and |$AV3resp - $AV3|<0.0001">Make sure you're entering your answer as a decimal, not an expression.</feedback>
+          <feedback condition="$AV3resp.creditAchieved!=1 and |$AV3resp - $AV3| < 0.01 and |$AV3resp - $AV3|>0.0001">Your answer is close.  Make sure your answer uses at least 4 digits after the decimal point, and if it already does, try using more places after the decimal point throughout your calculations.</feedback>
+      </li>
+      <li>
+        <p><answer name="AV4resp" allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute symbolicEquality><label><m>AV_{<math simplify>[$z-.1,$z]</math>} = </m></label><award> $AV4</award></answer></p>
+        <feedback condition="$AV4resp.creditAchieved!=1 and |$AV4resp - $AV4|<0.0001">Make sure you're entering your answer as a decimal, not an expression.</feedback>
+          <feedback condition="$AV4resp.creditAchieved!=1 and |$AV4resp - $AV4| < 0.01 and |$AV4resp - $AV4|>0.0001">Your answer is close.  Make sure your answer uses at least 4 digits after the decimal point, and if it already does, try using more places after the decimal point throughout your calculations.</feedback>
+      </li>
+      <li>
+        <p><answer name="AV5resp" allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute symbolicEquality><label><m>AV_{<math simplify>[$z-0.01,$z]</math>} = </m></label><award> $AV5</award></answer></p>
+        <feedback condition="$AV5resp.creditAchieved!=1 and |$AV5resp - $AV5|<0.0001">Make sure you're entering your answer as a decimal, not an expression.</feedback>
+          <feedback condition="$AV5resp.creditAchieved!=1 and |$AV5resp - $AV5| < 0.01 and |$AV5resp - $AV5|>0.0001">Your answer is close.  Make sure your answer uses at least 4 digits after the decimal point, and if it already does, try using more places after the decimal point throughout your calculations.</feedback>
+      </li>
+      <li>
+        <p><answer name="AV6resp" allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute symbolicEquality><label><m>AV_{<math displayDigits="5" simplify>[$z-0.001,$z]</math>} = </m></label><award> $AV6</award></answer></p>
+        <feedback condition="$AV6resp.creditAchieved!=1 and |$AV6resp - $AV6|<0.0001">Make sure you're entering your answer as a decimal, not an expression.</feedback>
+          <feedback condition="$AV6resp.creditAchieved!=1 and |$AV6resp - $AV6| < 0.01 and |$AV6resp - $AV6|>0.0001">Your answer is close.  Make sure your answer uses at least 4 digits after the decimal point, and if it already does, try using more places after the decimal point throughout your calculations.</feedback>
+      </li>
+    </ul>
+  </p>
+  <p>
+    Based on these average velocities, a good estimate of the object's instantaneous velocity at <m>t = <math simplify>$z</math></m> is <answer name="instvelresp" allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><shortDescription>estimate of instaneous velocity</shortDescription><award> $instvel</award></answer>, and the units on the instantaneous velocity are
+        <answer>
+          <choiceInput name="choice2" inline><shortDescription>units of instantaneous velocity</shortDescription>
+            <choice>feet per hour.</choice>
+            <choice>feet.</choice>
+            <choice>feet per second.</choice>
+            <choice credit="1">feet per minute.</choice>
+            <choice>minutes.</choice>
+          </choiceInput>
+        </answer>
+  </p>
+  <feedback condition="$betweenavs and $instvelresp.creditAchieved != 1">
+    To find the best estimate, calculate the value exactly in the middle of your two most accurate average velocities.  Take the average of <m>AV_{<math displayDigits="5" simplify>[$z, $z+0.001]</math>}</m> and <m>AV_{<math displayDigits="5" simplify>[$z-0.001,$z]</math>}</m>.
+  </feedback>

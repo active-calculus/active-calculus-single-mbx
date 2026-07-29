@@ -1,0 +1,119 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="A" from="20" to="25" step="1" />
+  <selectFromSequence name="b" from="1" to="3" step="1"/>
+  <selectFromSequence name="c" from="3.25" to="6" step="0.5"/>
+  <number name="hline">$A + $c</number>
+
+  <function name="h" symbolic="false" variable="t">
+    -$A*cos(t)+$hline
+  </function>
+  <derivative name="hP">$h</derivative>
+  <derivative name="hPP">$hP</derivative>
+
+</setup>
+
+<p>
+  The height of one of the car's on a ferris wheel, <m>h</m>, measured in meters above the ground at time <m>t</m> in minutes, is given by the function <me>h(t)=$h.</me>
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Determine formulas for both <m>h'(t)</m> and <m>h''(t)</m>.
+      </p>
+      <p>
+        <m>h'(t) = </m><answer><award>$hP</award></answer>
+      </p>
+      <p>
+        <m>h''(t) = </m><answer><award>$hPP</award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Since <m>h(t)</m> tracks the height of the car at time <m>t</m>, <m>h'(t)</m> tells us the instantaneous rate of change of the height of the car at time <m>t</m>; that is, <m>h'(t)</m> gives the instantaneous vertical velocity of the car at time <m>t</m>.  Similarly, <m>h''(t)</m> determines the car's instantaneous vertical acceleration.
+      </p>
+      <p>
+        Find the instantaneous vertical velocity and acceleration of the car at instant <m>t = $c</m>, with units.
+      </p>
+      <p>
+        The car's instantaneous vertical velocity at <m>t = $c</m> is <answer><award allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$$hP($c)</award></answer>
+        <answer><choiceInput inline name="units">
+            <choice>?</choice>
+            <choice>meters</choice>
+            <choice>minutes</choice>
+            <choice credit="1">meters per minute</choice>
+            <choice>minutes per meter</choice>
+            <choice>(meters per minute) per minute</choice>
+          </choiceInput></answer>.
+      </p>
+      <p>
+        The car's instantaneous vertical acceleration at <m>t = $c</m> is <answer><award allowedErrorInNumbers="0.1" allowedErrorIsAbsolute>$$hPP($c)</award></answer>
+        <answer><choiceInput inline name="units">
+            <choice>?</choice>
+            <choice>meters</choice>
+            <choice>minutes</choice>
+            <choice>meters per minute</choice>
+            <choice>minutes per meter</choice>
+            <choice credit="1">(meters per minute) per minute</choice>
+          </choiceInput></answer>.
+      </p>
+    </li>
+    <li>
+      <p>
+        Finally, describe the vertical motion of the car at time <m>t = $c</m> as rising or falling and as speeding up or slowing down, based on your results in part (b).
+      </p>
+      <p>
+        At the instant <m>t = $c</m>, the car's height is <answer>
+          <choiceInput inline name="riseorfall">
+            <choice>?</choice>
+            <choice credit="$$hP($c)>0">rising</choice>
+            <choice credit="$$hP($c)=0">staying the same</choice>
+            <choice credit="$$hP($c)<0">falling</choice>
+          </choiceInput>
+
+        </answer>
+      since the value of <m>h'($c)</m> is <answer>
+          <choiceInput inline name="derivsign">
+            <choice>?</choice>
+            <choice credit="$$hP($c)>0">positive</choice>
+            <choice credit="$$hP($c)=0">zero</choice>
+            <choice credit="$$hP($c)<0">negative</choice>
+          </choiceInput>
+      </answer>,
+      and the car is <answer>
+          <choiceInput inline name="speedingorslowing">
+            <choice>?</choice>
+            <choice credit="($$hP($c)>0 and $$hPP($c)>0)">rising more quickly</choice>
+            <choice credit="($$hP($c)<0 and $$hPP($c)<0)">falling more quickly</choice>
+            <choice credit="$$hP($c)>0 and $$hPP($c)=0">rising at a constant rate</choice>
+            <choice credit="$$hP($c)<0 and $$hPP($c)=0">falling at a constant rate</choice>
+            <choice credit="($$hP($c)<0 and $$hPP($c)>0)">falling more slowly</choice>
+            <choice credit="($$hP($c)>0 and $$hPP($c)<0)">rising more slowly</choice>
+          </choiceInput>
+        </answer>
+      since the value of <m>h''($c)</m> is <answer>
+          <choiceInput inline name="secderivsign">
+          <choice>?</choice>
+          <choice credit="$$hPP($c)>0">positive</choice>
+          <choice credit="$$hPP($c)=0">zero</choice>
+          <choice credit="$$hPP($c)<0">negative</choice></choiceInput>
+        </answer>.
+      </p>
+    </li>
+  </ol>
+</p>

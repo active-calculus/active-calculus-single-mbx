@@ -1,0 +1,76 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+ <setup>
+  <selectFromSequence name = "a" from = "2" to = "4" step = "1"/>
+  <selectFromSequence name = "b" from = "2" to = "4" step = "1" exclude="$a"/>
+  <selectFromSequence name = "y0" from = "1" to = "5" step = "1" exclude="$a $b"/>
+
+  <function name = "g1" variable="y">e^($b*y)</function>
+  <function name = "h1" variable="t">e^($a*t)</function>
+   
+  <function name = "G1" variable="y">1/$b*e^($b*y)</function>
+  <function name = "H1" variable="t">1/$a*e^($a*t) + C</function>
+
+  <math name="bigC">e^($b*$y0)-$b/$a</math>
+   
+  <function name = "soln" variable="t">1/$b*ln($bigC + $b/$a*e^($a*t))</function>
+   
+</setup>
+
+<p>
+  Consider the separable differential equation that's part of the following initial value problem:
+  <me>
+    \frac{dy}{dt} = e^{$a t - $b y}, \ \ y(0) = $y0
+  </me>
+  Complete the following steps to solve the IVP.
+</p>
+<p>
+  <ol marker="a.">
+    <li>
+      <p>  
+        First, separate the variables and fill in the blanks below to rewrite the equation in the form <m>g(y) \frac{dy}{dt} = h(t)</m>.  <alert>Note</alert>: use the exponent law that <m>x^a \cdot x^b = x^{a+b}</m> to write the right side of the given differential equation as a product.
+      </p>  
+      <p>
+        <mathInput minWidth="40" name="gEntered"/><m>\frac{dy}{dt} = </m><mathInput minWidth="40" name="hEntered"/> <answer simplifyOnCompare>
+                          <award>
+                            <when> ($gEntered=$g1 and $hEntered=$h1) or ($gEntered=$g2 and $hEntered=$h2) 
+                            </when>
+                          </award></answer> 
+      </p>
+    </li>
+    <li>
+      <p>
+        Next, integrate both sides with respect to <m>t</m>.  Write the next step that results without integral signs, and be sure to include the arbitrary constant on the right.
+      </p>  
+      
+      <p>
+        <mathInput minWidth="70" name="GEntered"/><m> = </m><mathInput minWidth="70" name="HEntered"/> <answer simplifyOnCompare>
+                          <award>
+                            <when> ($GEntered=$G1 and $HEntered=$H1) 
+                            </when>
+                          </award></answer> 
+      </p>
+    </li>
+    <li>
+      <p>
+        Now, solve your most recent equation for <m>y</m> and find the value of the constant that makes the function the unique solution to the original initial value problem.
+      </p>  
+      
+      <p>
+        <m>y(t) =</m><mathInput name="solnEntered" minWidth="70"/><answer simplifyOnCompare allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$solnEntered=$soln</when></award></answer>
+      </p>
+    </li>
+  </ol>
+</p>

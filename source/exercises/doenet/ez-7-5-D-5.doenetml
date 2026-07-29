@@ -1,0 +1,114 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+ <setup>
+  <selectFromSequence name = "r" from = "5" to = "7" step = "1"/>
+  <selectFromSequence name = "M" from = "1500" to = "2500" step = "500"/>
+
+  <math name = "A0">$M</math> 
+  <math name = "k">0.01*$r</math> 
+  <math name = "DE">$k*A + $M</math>
+  <math name = "DE1">$k*A(t) + $M</math>
+  <math name = "retR" simplify>$r-2</math> 
+  <math name = "retK">0.01*$retR</math> 
+
+  <function name = "A" variable="t">-$M/$k + ($M + $M/$k)*e^($k*t)</function>
+  <math name = "ret">$$A(45)</math> 
+  <math name = "inv">$M*(46)</math> 
+  <math name="R0"><round numDigits="1">$ret</round></math>
+
+  <math name = "DE2">$retK*R - k</math>
+  <math name = "DE3">$retK*R(t) - k</math>
+  <math name = "eqSol">k/$retK</math>
+   
+</setup>
+
+<p>
+  A 19-year-old is making plans to save for their retirement.  By their 20th birthday, they have saved $<m>$M</m> and they make a commitment to save and invest an additional $<m>$M</m> per year every year going forward.  Assume they do so in an investment account that earns an average of <m>$r</m>% annual interest.
+</p>
+<p>
+  Let <m>A(t)</m> represent the total dollar amount in their retirement account <m>t</m> years after their 20th birthday.
+</p>
+<p>
+  <ol marker="a.">
+    <li>
+      <p>  
+        Fill in the blanks below to state an initial value problem that the function <m>A(t)</m> satisfies.
+      </p>  
+      <p>
+        <m>\frac{dA}{dt} = </m><mathInput minWidth="75" name="deEntered"/>, <m>A(0) = </m><mathInput minWidth="40" name="A0Entered"/>
+        <answer simplifyOnCompare><award><when> 
+          ($deEntered=$DE and $A0Entered=$A0) or ($deEntered=$DE1 and $A0Entered=$A0) 
+        </when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Solve the initial value problem you determined in (a).
+      </p>  
+      
+      <p>
+        <m>A(t) = </m><mathInput minWidth="70" name="AEntered"/>
+          <answer simplifyOnCompare allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when> ($AEntered=$A) 
+          </when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        How much total money did the person invest? (<alert>Note</alert> be sure to include their initial investment along with their annual ones.)
+        How much money will be in the account when the person investing turns 65? 
+      </p>  
+      <p>
+        total invested: $<mathInput name="invEntered" minWidth="60"/>  <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute simplifyOnCompare><award><when>$invEntered=$inv</when></award></answer>
+      </p>      
+      <p>
+        total retirement holdings: $<mathInput name="retEntered" minWidth="60"/>  <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute simplifyOnCompare><award><when>$retEntered=$ret</when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        After the person turns 65, they stop saving for retirement and start withdrawing money annually.  Rounding their retirement holdings to the nearest hundred thousand, let's assume they start with $<m>$R0</m> in their account.  In addition, in order to be more conservative with their saved investment, they move this money to an account that returns <m>$retR</m>% interest annually.  Assume that they withdraw <m>k</m> dollars per year, where <m>k</m> is a not-yet-known number.  Let <m>R(t)</m> denote the amount of money in their retirement account where <m>t = 0</m> corresponds to their 65th birthday.
+      </p>
+      <p>  
+        Fill in the blanks below to state an initial value problem that the function <m>R(t)</m> satisfies.  Your answer will involve the arbitrary constant <m>k</m>.
+      </p>  
+      <p>
+        <m>\frac{dR}{dt} = </m><mathInput minWidth="75" name="de2Entered"/>, <m>R(0) = </m><mathInput minWidth="40" name="R0Entered"/>
+        <answer simplifyOnCompare><award><when> 
+          ($de2Entered=$DE2 and $R0Entered=$R0) or ($de2Entered=$DE3 and $R0Entered=$R0) 
+        </when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        What is the equilibrium solution to the differential equation you stated in (d)?  Your answer will involve the arbitrary constant <m>k</m>.
+      </p>
+      <p>
+        <m>R = </m><mathInput minWidth="75" name="eqEntered"/> <answer><award><when>$eqEntered=$eqSol</when></award></answer>
+      </p>
+      <p>
+        How much interest income does the initial retirement nest egg of $<m>$R0</m> earn at the stated interest rate?
+      </p>
+      <p>
+        annual interest earned: <mathInput minWidth="75" name="intEntered"/> <answer><award><when>$intEntered=$retK*$R0</when></award></answer>
+      </p>
+      <p>
+        Finally, what is the largest value the person can choose for <m>k</m> to ensure that they don't eventually deplete their retirement savings to $<m>0</m>?
+      </p>
+      <p>
+        maximum annual withdrawal: <mathInput minWidth="75" name="wEntered"/> <answer><award><when>$wEntered=$retK*$R0</when></award></answer>
+      </p>
+    </li>
+  </ol>
+</p>

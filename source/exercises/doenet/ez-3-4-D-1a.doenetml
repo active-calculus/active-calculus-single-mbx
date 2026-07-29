@@ -1,0 +1,159 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  
+  <function name="f">x^2*(a-x)</function>
+  <derivative name="fP">$f</derivative>
+  <derivative name="fPP">$fP</derivative>
+
+  <math name="fP1symbolic">2*x*a-3*x^2</math>
+
+  <math name="fPP1symbolic">2*a-6*x</math>
+
+  <math name="crNum1">0</math>
+  <math name="crNum2">(2a)/3</math>  
+  <mathList name="correctCrNums"> $crNum1 $crNum2 </mathList>
+
+  <math name="POI1">a/3</math>
+  <mathList name="correctPOIs"> $POI1 </mathList>
+  
+</setup>  
+
+<p>
+  Consider the function <m>f(x) = x^2(a-x)</m>, where <m>a</m> is arbitrary constants that satisfies <m>a \gt 0</m>.
+</p>  
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Find <m>f'(x)</m> and state your result below.
+      </p> 
+      <p>
+        <m>f'(x) = </m><mathInput name="fPfactored"/>
+        <answer simplifyOnCompare>
+          <award><when>
+          $fPfactored = $fP1symbolic
+          </when></award>
+        </answer>
+      </p>
+<!--      
+      <p>
+        <m>f''(x) = </m><answer>$fPP</answer>
+      </p>  
+-->      
+    </li>  
+    <li>
+      <p>
+        Use your work in (a) to determine the critical numbers of <m>f</m> (which may depend on the arbitrary constant <m>a</m>).  If there is more than one, enter them as a list separated by commas.  If there are none, enter <em>none</em>.
+      </p>
+      <p>
+        The critical numbers of <m>f</m> are given by <m>x = </m> <mathInput name="crNums" /> <answer unorderedCompare><award><when> $crNums=$correctCrNums</when></award></answer>.
+      </p>  
+    </li>
+
+    <li>
+      <p>
+        Construct a first derivative sign chart for <m>f</m>.  Use the sign chart to respond to each of the following prompts, checking all statements that are true for each.
+      </p>
+      <ul>
+        <li>
+          <p>
+        At <m>x = $crNum1</m>, <m>f</m> has <answer matchPartial selectMultiple>
+          <choice credit="$$fP($crNum1) = 0">a horizontal tangent line</choice>
+          <choice credit="0">a relative maximum</choice>
+          <choice credit="1">a relative minimum</choice>
+          <choice credit="0">a global maximum</choice>
+          <choice credit="0">a global minimum</choice>  
+          <choice credit="0">neither a relative max nor min</choice>
+        </answer>
+      </p> 
+      <!--
+      <p>
+        $crNum1, $crNum2, $crNum1Less, $crNum1More, $$fP($crNum1), $$fP($crNum1Less), $$fP($crNum1More), $$fP($crNum1Less)*$$fP($crNum1More)
+      </p>  
+      -->
+    </li>
+    <li>
+      <p>
+        At <m>x = $crNum2</m>, <m>f</m> has <answer matchPartial selectMultiple>
+          <choice credit="$$fP($crNum2) = 0">a horizontal tangent line</choice>
+          <choice credit="1">a relative maximum</choice>
+          <choice credit="0">a relative minimum</choice>
+          <choice credit="0">a global maximum</choice>
+          <choice credit="0">a global minimum</choice>  
+          <choice credit="0">neither a relative max nor min</choice>
+        </answer>
+      </p>  
+    </li>   
+      </ul>    
+    </li>
+    <li>
+      <p>
+        Find <m>f''(x)</m> and state your result below.
+      </p> 
+      <p>
+        <m>f''(x) = </m><mathInput name="fPPfactored"/>
+        <answer simplifyOnCompare>
+          <award><when>
+          $fPPfactored = $fPP1symbolic
+          </when></award>
+        </answer>
+      </p>
+<!--      
+      <p>
+        <m>f''(x) = </m><answer>$fPP</answer>
+      </p>  
+-->      
+    </li>   
+    <li>
+      <p>
+        Construct a second derivative sign chart for <m>f</m>.  State the inflection points of <m>f</m> (which may depend on the arbitrary constant <m>a</m>).  If there is more than one, enter them as a list separated by commas.  If there are none, enter <em>none</em>.
+      </p>
+      <p>
+        The inflection points of <m>f</m> are given by <m>x = </m> <mathInput name="POIs" /> <answer unorderedCompare><award><when> $POIs=$correctPOIs</when></award></answer>.
+      </p>  
+    </li>  
+    <li>
+      <p>
+        Complete the following prompts to explain the effect that changing the value of <m>a</m> has on the behavior of the function <m>f</m>.
+      </p> 
+      <p> 
+        If we increase the value of <m>a</m>, then the horizontal location of the relative minimum of <m>f</m> <answer><choiceInput inline>
+          <choice>?</choice>
+          <choice>moves to the left</choice>
+          <choice>moves to the right</choice>
+          <choice credit="1">stays the same</choice>
+        </choiceInput></answer>.
+      </p> 
+      <p> 
+        If we increase the value of <m>a</m>, then the horizontal location of the relative maximum of <m>f</m> <answer><choiceInput inline>
+          <choice>?</choice>
+          <choice>moves to the left</choice>
+          <choice credit="1">moves to the right</choice>
+          <choice>stays the same</choice>
+        </choiceInput></answer>.
+      </p> 
+      <p> 
+        If we increase the value of <m>a</m>, then the horizontal location of the inflection point of <m>f</m> <answer><choiceInput inline>
+          <choice>?</choice>
+          <choice>moves to the left</choice>
+          <choice credit="1">moves to the right</choice>
+          <choice>stays the same</choice>
+        </choiceInput></answer>.
+      </p>        
+    </li>  
+  </ol>  
+</p>

@@ -1,0 +1,104 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name = "a" from = "2" to = "3" step = "1"/>
+  <selectFromSequence name = "b" from = "0" to = "2" step = "1"/>
+  <selectFromSequence name = "c" from = "2" to = "3" step = "1" exclude="$a"/>
+  <selectFromSequence name = "d" from = "-2" to = "1" step = "1" exclude="0"/>
+
+  <selectFromSequence name = "k" from = "2" to = "4" step = "1"/>
+  <selectFromSequence name = "s" from = "-1" to = "1" step = "2"/>
+
+  <selectFromSequence name = "p" from = "-2" to = "1" step = "1" exclude="0"/>
+  <selectFromSequence name = "q" from = "2" to = "4" step = "1" exclude="abs($p)"/>
+
+  <function name="f">$s*$k*1/4*(x+$a)*x*(x-$c) + $d</function>
+  <derivative name="fP">$f</derivative>
+  <function name="fextrema" domain="[$p,$q]">$f</function>
+
+
+  <function name="fExpanded">-1/4*$a*$c*$k*$s*x + 1/4*$a*$k*$s*x^2 - 1/4*$c*$k*$s*x^2 + 1/4*$k*$s*x^3 + $d </function>
+
+
+  <number name="crNum1"> 1/3 * (-sqrt($a^2 + $a*$c + $c^2) - $a + $c)</number>
+  <number name="crNum2"> 1/3 * (sqrt($a^2 + $a*$c + $c^2) - $a + $c)</number>
+  <!-- could use built in functionality for these? -->
+
+  <mathList name="crNums"> $crNum1 $crNum2 </mathList>
+  <boolean name="Num1in">$crNum1>= $p and $crNum1<= $q</boolean>
+  <boolean name="Num2in">$crNum2>= $p and $crNum2<= $q</boolean>
+
+  <math name="fofcrNums">
+    <conditionalContent>
+      <case condition="!$Num1in and !$Num2in">none</case>
+      <else>
+        <mathList>
+        <conditionalContent condition="$Num1in">$$f($crNum1)</conditionalContent>
+        <conditionalContent condition="$Num2in">$$f($crNum2)</conditionalContent>
+          </mathList>
+      </else>
+    </conditionalContent>
+  </math>
+
+</setup>
+
+<p>
+  Consider the function <m>y = f(x)</m> that is given by <me>f(x) = <math simplify>$fExpanded</math>.</me>  Our goal is to use calculus to find absolute minimum and maximum value of <m>f</m> on <m>[$p,$q]</m>.
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        For <m>f(x) = <math simplify>$fExpanded</math></m>, it follows that 
+      </p>
+      <p>
+        <answer>
+          <label>
+            <m>f'(x)=</m>
+          </label>
+          $fP
+        </answer>
+      </p>
+      <p>
+         Determine the critical numbers of <m>f</m> and report your results below.  If there is more than one critical number, enter them as a list separated by commas.  If there are none, enter <em>none</em>.
+      </p>
+      <p>
+        <answer unorderedCompare matchPartial allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label>The critical numbers of <m>f</m> are:</label>$crNums</answer>
+      </p>
+      <p>
+        Evaluate the function at any critical numbers that lie in the interval <m>[$p,$q]</m>.  If there is more than one such critical number, enter the function values as a list separated by commas.  If there are no critical numbers in the interval <m>[$p,$q]</m>, enter <em>none</em>.
+      </p>
+      <answer unorderedCompare matchPartial allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label>The value(s) of <m>f</m> at any applicable critical numbers are:</label>$fofcrNums</answer> 
+    </li>
+    <li>
+      <p>
+        The values of the function at each of the respective endpoints of the interval are:
+      </p>
+      <p>
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>f($p) =</m></label>$$f($p)</answer> and <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>f($q) =</m></label>$$f($q)</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label>The absolute minimum value of <m>f</m> on <m>[$p,$q]</m> is </label>$fextrema.globalMinimum[2]</answer>
+      </p>
+      <p>
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label>The absolute maximum value of <m>f</m> on <m>[$p,$q]</m> is </label>$fextrema.globalMaximum[2]</answer>
+      </p>
+    </li>
+  </ol>
+</p>
+    

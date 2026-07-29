@@ -1,0 +1,92 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="k" from="0.004" to="0.006" step="0.001"/>
+  <selectFromSequence name="N" from="12" to="16" step="1"/>  
+  <selectFromSequence name="P01" from="2" to="5" step="1"/> 
+  <math name="P02" simplify>$N + $P01 + 1</math>
+ 
+  <function name="DEQ" variable="P">$k*P*($N - P)</function>
+  <mathList name="eqSols">0 $N</mathList>
+  <function name="sol1" variable="t">$N/( 1+($N-$P01)/$P01*e^(-$k*$N*t) )</function>
+  <function name="sol2" variable="t">$N/( 1+($N-$P02)/$P02*e^(-$k*$N*t) )</function>
+
+  <math name="fastP" simplify>$N/2</math>
+  <math name="fastT">-1/($k*$N)*ln($P01/($N-$P01))</math>
+  
+</setup>
+<p>
+  Consider the logistic differential equation given by 
+  <me>
+    \frac{dP}{dt} = $k P ($N - P)
+  </me>
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        For the given differential equation, identify all equilibrium solutions.  If there's more than one, separate your answers with commas; if there are none, enter <q>none</q>.
+      </p>
+      <p>
+        Equilibrium solutions: <m>P = </m><mathInput name="enteredEq1"/><answer unorderedCompare><award><when>$enteredEq1=$eqSols</when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Solve the initial value problem   
+        <me>
+          \frac{dP}{dt} = $k P ($N - P), \ \ P(0) = $P01
+        </me>
+        and state the resulting formula for <m>P(t)</m> below.
+      </p>
+      <p>
+        <m>P(t) = </m><mathInput name="enteredSol1" minWidth="100"/><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$enteredSol1 = $sol1</when></award></answer>
+      </p>  
+    </li>
+    <li>
+      <p>
+        For what value of <m>P</m> is the population you found in (b) growing most rapidly?  What is the value of <m>t</m> when this situation occurs?
+      </p>
+      <p>
+        The population is growing most rapidly when <m>P = </m><mathInput name="enteredFastP"/>, which is when <m>t = </m><mathInput name="enteredFastT"/>.
+      </p>
+      <p>
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$enteredFastT=$fastT and $enteredFastP=$fastP
+        </when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Now solve the different initial value problem (due to the different initial condition) 
+        <me>
+          \frac{dP}{dt} = $k P ($N - P), \ \ P(0) = $P02
+        </me>
+        and state the resulting formula for <m>P(t)</m> below.
+      </p>
+      <p>
+        <m>P(t) = </m><mathInput name="enteredSol2" minWidth="100"/><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$enteredSol2 = $sol2</when></award></answer>
+      </p>  
+    </li>
+    <li>
+      <p>
+        Finally, complete the statement below to identify the long-term behavior of <m>P(t)</m> for any solution to the IVP that satisfies <m>P(0) > 0</m>.
+      </p>
+      <p>
+        <m>\displaystyle \lim_{t \to \infty} P(t) = </m><mathInput name="limit"/><answer><award><when>$limit = $N</when></award></answer>
+      </p>
+    </li>
+  </ol>
+</p>

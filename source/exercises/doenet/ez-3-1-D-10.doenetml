@@ -1,0 +1,197 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- this exercise was written by Chrissy Safranski as part of the PROTEUS grant-->
+
+<setup>
+  <selectFromSequence name="r" from="6" to="9"/>
+  <selectFromSequence name="offset" from="0" to="2"/>
+  <number name="h">2*$r-$offset</number>
+  <number name="Phcent" fixed>0</number>
+  <function name="waterlevelneg">-sqrt(4-x^2)+$P.y</function>
+  <function name="bottompos">sqrt(4-x^2)-4</function>
+  <point name="P">($Phcent,0)<constrainToInterior>$vertbounds</constrainToInterior></point>
+  <rectangle name="vertbounds" center="(0,0)" height="8" width="4" hide></rectangle>
+  <number name="secondlevelheight">0</number>
+  <number name="thirdlevelheight">5</number>
+  <number name="fourthlevelheight">5</number>
+  <number name="fifthlevelheight">5</number>
+</setup>
+
+    <p>
+      A cylindrical water tank on top of a city water tower has a radius of <m>$r</m> meters and a height of <m>$h</m> meters.  The amount of water in the tank changes as water is being pumped in or out, depending on the time of day and the local water usage. In the image of the cylinder below, you can click and drag on the water level to drag it up or down to model the changing height of the water.
+    </p>
+
+<graph xmin="-3.2" xmax="3.2" ymin="-6.5" ymax="6.5" displayXAxis="false" displayYAxis="false" size="medium" fixAxes showBorder="false" aspectRatio="1.5/1">
+  <shortDescription>A cyclindrical tank with draggable water level</shortDescription>
+
+  <!-- Water level -->
+   <circle name="waterlevel" center="$P" radius="2" filled />
+  <regionBetweenCurves boundaryValues="-2 2"> $waterlevelneg $bottompos</regionBetweenCurves>
+
+  <!-- Tank outline -->
+  <circle name="bottom" center="(0,-4)" filled radius="2" draggable="false"/>
+  <circle name="bottom" center="(0,-4)" radius="2" styleNumber="5" lineWidth="3" draggable="false"/>
+  <circle name="top" center="(0,4)" radius="2" styleNumber="5" lineWidth="3" draggable="false" />
+  
+  <lineSegment endpoints="(2,-4) (2,4)" styleNumber="5" lineWidth="3" draggable="false" />
+  <lineSegment endpoints="(-2,-4) (-2,4)" styleNumber="5" lineWidth="3" draggable="false"/>
+
+  <label anchor="(-2.65,4)" hide="!$firstlevel" fixed>3am level</label>
+  <lineSegment endpoints="(-2.2,4) (-2,4)" fixed hide="!$firstlevel" styleNumber="2"/>
+  <label anchor="(-2.65,$secondlevelheight)" hide="!$secondlevel" fixed>10am level</label>
+  <lineSegment endpoints="(-2.2,$secondlevelheight) (-2,$secondlevelheight)" fixed hide="!$secondlevel" styleNumber="2"/>
+  <label anchor="(-2.65,$thirdlevelheight)" hide="!$thirdlevel" fixed>12pm level</label>
+  <lineSegment endpoints="(-2.2,$thirdlevelheight) (-2,$thirdlevelheight)" fixed hide="!$thirdlevel" styleNumber="2"/>
+  <label anchor="(2.6,$fourthlevelheight)" hide="!$fourthlevel" fixed>9pm level</label>
+  <lineSegment endpoints="(2,$fourthlevelheight) (2.2,$fourthlevelheight)" fixed hide="!$fourthlevel" styleNumber="2"/>
+  <label anchor="(2.6,$fifthlevelheight)" hide="!$fifthlevel" fixed>1am level</label>
+  <lineSegment endpoints="(2,$fifthlevelheight) (2.2,$fifthlevelheight)" fixed hide="!$fifthlevel" styleNumber="2"/>
+</graph>
+    <p>
+      <ol marker="a">
+        <!-- I thought this first part was out of place now for making the exercise after-class and about the things changing. I'm leaving it in comments though. -->
+        <!-- <li>
+          <p>
+            What is the maximum amount of water the tank can hold? Note: the formula for the volume of a cylinder is <m>V = \pi r^2 h</m>.
+          </p>
+          <p>
+            <answer allowedErrorInNumbers=".01" allowedErrorIsAbsolute><label><m>V_{max}=</m></label>pi*$r^2*$h</answer>
+          </p>
+        </li> -->
+        <li>
+          <!-- Source for my choices of times and narrative: https://youtu.be/xdYyAnYamVM?si=fpwFfiX7Zl2QiWld&t=502 -->
+          <p>
+            Note that on a typical day, the tank is usually completely refilled by about 3am, and then starts to drain around 7am as people wake up and do morning routines such as showering and cooking. 
+          </p>
+          <p>
+            Drag the water level to where it would be at 3am.
+            <answer disableAfterCorrect><award name="firstlevel"><when>$P.y=4</when></award></answer>
+          </p>
+          <p>
+            From 7am until around 11am, the water level drops until the tank is about half-full before refilling a little between 11am and 3pm as people often use less water during these times.  
+          </p>
+          <p>
+            Drag the water level to where you think it would be at 10am.
+            <answer disableAfterCorrect><award name="secondlevel"><when>$P.y< 3 and $P.y > 0</when></award></answer>
+          </p>
+          <updateValue 
+            triggerWhen="$secondlevel"
+            target="$secondlevelheight" 
+            newValue="$P.y"
+          />
+          <p>
+            Drag the water level to where you think it would be at 12pm.
+            <answer disableAfterCorrect><award name="thirdlevel"><when>$P.y< 3.5 and $P.y > $secondlevelheight</when></award></answer>
+          </p>
+          <updateValue 
+            triggerWhen="$thirdlevel"
+            target="$thirdlevelheight" 
+            newValue="$P.y"
+          />
+          <p>
+            From 4pm through 10pm is when water usage is typically highest, and so the water levels in the tank will be lowest in the late evening.  Then the water tank refills to full by 3am as usage in the late evening is low, and the cycle begins again.
+          </p>
+          <p>
+            Drag the water level to where you think it would be at 9pm.
+            <answer disableAfterCorrect><award name="fourthlevel"><when>$P.y< 0 and $P.y > -3.5</when></award></answer>
+          </p>
+          <updateValue 
+            triggerWhen="$fourthlevel"
+            target="$fourthlevelheight" 
+            newValue="$P.y"
+          />
+          <p>
+            Drag the water level to where you think it would be at 1am.
+            <answer disableAfterCorrect><award name="fifthlevel"><when>$P.y > $fourthlevelheight</when></award></answer>
+          </p>
+          <updateValue 
+            triggerWhen="$fifthlevel"
+            target="$fifthlevelheight" 
+            newValue="$P.y"
+          />
+          
+        </li>
+        <li>
+          <p>
+            Now think about the water in the tank at various times.  Which measurements of the water are different at the various times? (The measurements you don't select are the ones that are not changing as time changes.)
+            <answer selectMultiple>
+            <shortDescription>various quantities of the water that might be changing</shortDescription>
+              <choice>the radius of the water, <m>r</m></choice>
+              <choice credit="1">the height of the water, <m>h</m></choice>
+              <choice>the circumference of the water, <m>c</m></choice>
+              <choice>the diameter of the water, <m>d</m></choice>
+              <choice credit="1">the volume of the water, <m>V</m></choice>
+          </answer>
+          </p>
+        </li>
+        <li>
+          <p>
+            Recall that the tank has a radius of <m>$r</m> meters and a height of <m>$h</m> meters. In addition, the formula for the volume of a cylinder is <m>V = \pi r^2 h</m>.  Use this and your answer to part (b) to determine a formula for the volume of water in the tank as a function of only one variable.
+          </p>
+          <p>
+            <answer symbolicEquality simplifyOnCompare allowedErrorInNumbers=".01" allowedErrorIsAbsolute><label><m>V=</m></label>pi*$r^2*h</answer>
+          </p>
+        </li>
+        <li>
+          <!-- <p>
+            Draw a graph relating the volume of water to the water level, and a second graph relating the volume of water to time.
+          </p> -->
+          <p>
+            Differentiate both sides of your preceding equation appropriately to determine a formula for the rate of change of volume of water in the tank with respect to time.
+          </p>
+          <p>
+            <answer symbolicEquality simplifyOnCompare allowedErrorInNumbers=".01" allowedErrorIsAbsolute><label><m>\displaystyle \frac{dV}{dt}=</m></label>pi*$r^2*(dh/dt)</answer>
+          </p>
+        </li>
+        <li>
+          <p>
+            Complete the sentences below to describe the behavior of the water at different times.
+          </p>
+          <p>
+            We expect <m>\displaystyle \frac{dV}{dt}</m> to be negative at 
+            <choiceInput name="c1" inline>
+              <shortDescription>time when change in volume is negative</shortDescription>
+              <choice>3am</choice>
+              <choice>10am</choice>
+              <choice>12pm</choice>
+              <choice>9pm</choice>
+              <choice>1am</choice>
+            </choiceInput> because the water level is 
+            <choiceInput name="c2" inline><shortDescription>behavior of water level</shortDescription>
+              <choice>rising</choice>
+              <choice>falling</choice>
+              <choice>staying about the same</choice>
+            </choiceInput> and thus the volume is 
+            <choiceInput name="c3" inline>
+              <shortDescription>behavior of water volume</shortDescription>
+              <choice>increasing.</choice>
+              <choice>decreasing.</choice>
+              <choice>staying about the same.</choice></choiceInput>
+
+          We expect <m>\displaystyle \frac{dV}{dt}</m> to be positive at <choiceInput name="cc1" inline><shortDescription>time when change in volume is negative</shortDescription><choice>3am</choice><choice>10am</choice><choice>12pm</choice><choice>9pm</choice><choice>1am</choice></choiceInput> because the water level is <choiceInput name="cc2" inline><shortDescription>behavior of water level</shortDescription><choice>rising</choice><choice>falling</choice><choice>staying about the same</choice></choiceInput> and thus the volume is <choiceInput name="cc3" inline><shortDescription>behavior of water volume</shortDescription><choice>increasing.</choice><choice>decreasing.</choice><choice>staying about the same.</choice></choiceInput>
+          </p>
+          <p>
+            <answer>
+              <award><when>
+                <boolean>$c1.selectedIndex=2 or $c1.selectedIndex=4</boolean> 
+                and $c2.selectedIndex=2 and $c3.selectedIndex=2 and
+                <boolean>$cc1.selectedIndex=3 or $cc1.selectedIndex=5</boolean> 
+                and $cc2.selectedIndex=1 and $cc3.selectedIndex=1 </when></award>
+            </answer>
+          </p>
+        </li>
+      </ol>
+    </p>
+    

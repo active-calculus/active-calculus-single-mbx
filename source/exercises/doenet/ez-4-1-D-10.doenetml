@@ -1,0 +1,120 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- this exercise was written by Spencer Bagley as part of the PROTEUS grant-->
+
+<setup>
+<function name="c">200 + 100 exp(-0.1*x)</function>
+</setup>
+<p>
+Suppose that the function
+<m>c(x) = 200 + 100 e^{-0.1x}</m> models the density of traffic on a straight road,
+measured in cars per mile,
+where <m>x</m> is the number of miles east of a major interchange.
+
+The graph below shows <m>c(x)</m> together with a shaded region <m>A</m>.
+</p>
+<graph fixAxes showNavigation="false"
+    xmin="-1" xmax="20"
+    ymin="-20" ymax="330" 
+    yLabelAlignment="right"
+    displayXAxisTickLabels="false"
+    displayYAxisTickLabels="false">
+    <shortDescription>
+        A graph of a traffic density function, with a rectangular region whose top-left corner touches the curve.
+    </shortDescription>
+    <xLabel>miles</xLabel>
+    <yLabel>cars per mile</yLabel>
+    $c
+    <polygon
+        name="A"
+        applyStyleToLabel
+        labelIsName
+        styleNumber="3"
+        filled
+        draggable="false"
+        vertices="
+            (6,$$c(6))
+            (8,$$c(6))
+            (8,0)
+            (6,0)"/>
+</graph>
+
+<ol marker="a">
+<li>
+    <p>
+    What are the units on the <em>height</em> of <m>A</m>?
+    <answer>
+        <choiceInput inline name="c1">
+            <shortDescription>What are the units on the height of A?</shortDescription>
+            <choice>cars</choice>
+            <choice>miles</choice>
+            <choice credit="1">cars per mile</choice>
+            <choice>miles per car</choice>
+        </choiceInput>
+    </answer> 
+    </p>
+</li>
+<li>
+    <p>
+    What are the units on the <em>width</em> of <m>A</m>?
+    <answer>
+        <choiceInput inline name="c2">
+            <shortDescription>What are the units on the width of A?</shortDescription>
+            <choice>cars</choice>
+            <choice credit="1">miles</choice>
+            <choice>cars per mile</choice>
+            <choice>miles per car</choice>
+        </choiceInput>
+    </answer>
+    </p>
+</li>
+<li>
+    <p>
+    Say that the height of <m>A</m> is $$c(6), and that the width of <m>A</m> is <m>2</m>.
+    </p>
+    <p>
+    It follows that the area of the shaded region is
+    <answer forceSmallCheckWorkButton matchPartial allowedErrorInNumbers="1" allowedErrorIsAbsolute>
+        <mathInput name="product">
+            <label><m>A=</m></label>
+        </mathInput>
+        <choiceInput inline name="c3">
+            <label>with units</label>
+            <choice>cars</choice>
+            <choice>miles</choice>
+            <choice>cars per mile</choice>
+            <choice>miles per car</choice>
+        </choiceInput>
+        <award><when>
+            $product = $$c(6)*2 and
+            $c3.selectedValues = <text>cars</text>
+        </when></award>
+    </answer>
+    </p>
+    <p>
+      Complete the following sentence to explain the meaning of important numerical information in context.
+    </p>
+  <p>
+    Over the <m>2</m> miles that correspond to the width of <m>A</m>, there are approximately <mathInput name="carspermile"><shortDescription>cars per mile</shortDescription></mathInput> cars per mile, and thus approximately <mathInput name="totalcars"><shortDescription>total cars</shortDescription></mathInput> total cars in that portion of the freeway.
+  </p>
+  <answer allowedErrorInNumbers="2" allowedErrorIsAbsolute>
+    <award>
+      <when>
+        $carspermile=$$c(6) and $totalcars=$$c(6)*2
+      </when>
+    </award>
+  </answer>
+</li>
+</ol>

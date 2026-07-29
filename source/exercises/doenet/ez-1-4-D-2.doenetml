@@ -1,0 +1,203 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- This exercise was written/shared at the May 2022 Doenet workshop -->
+<!-- https://www.doenet.org/publiceditor/_MXwYH1UrrsIZtr6TcpiNo/_BUfDyNPeg2QePPLqJc7cK -->
+
+
+<setup>
+
+<function name="g1" variables="x">-x</function>
+<function name="g2" variables="x">x</function>
+<function name="g3" variables="x">6-2*x</function>
+
+<math name="m1">0.5</math>
+<math name="m2">-1.5</math>
+<math name="m3">3</math>
+
+<math fixed name="x1">-3</math>
+<math fixed name="x2"> 0</math>
+<math fixed name="x3"> 3</math>
+<math fixed name="x4"> 6</math>
+
+</setup>
+
+
+The graph of a piecewise function  <m>f(x)</m> with three linear pieces is given by the following graph.
+
+<graph xmin="-3.5" xmax="7" ymin="-3" ymax="8"  showNavigation="false" fixAxes="true" grid>
+  <shortDescription>graph of a piecewise function with three linear pieces and a movable point</shortDescription>
+  <description>The first piece goes from <m>(-3,1)</m> to <m>(0,2.5)</m>.  THe second piece goes from <m>(0,2.5)</m> to <m>(3,-2)</m>. The third piece goes from <m>(3,-2)</m> to <m>(6,7)</m>. </description>
+
+  <polyline name="polyline1" fixed vertices="(-3,1) (0,2.5) (3,-2) (6,7)" />
+
+  <label anchor="(5.5,2.7)">
+    <m>y=f(x)</m>
+  </label>
+
+  <point styleNumber="2">(0,0)
+    <constrainTo>$polyline1</constrainTo>
+  </point>
+
+</graph>
+
+
+<ol marker="a.">
+
+  <li>
+    <p>
+      For each of the three linear pieces, pick two points on the graph, estimate their coordinates, and from those coordinates estimate the slope of that line.  Note that you can drag the moveable point on the graph to see estimates of the coordinates of different points on each segment.  Report your three slopes in the provided spaces below, doing so to an accuracy of at least 0.1.
+    </p>
+
+    <p>
+      <answer>
+        <label>Slope of left segment:</label>
+      <award symbolicEquality='true' allowedErrorInNumbers='0.1' allowedErrorIsAbsolute="true" simplifyOnCompare='numbers'>$m1 </award>
+      </answer>
+    </p>
+    <p>
+      <answer>
+        <label>Slope of middle segment:</label>
+      <award symbolicEquality='true' simplifyOnCompare='numbers' allowedErrorInNumbers='0.1' allowedErrorIsAbsolute="true">$m2 </award>
+      </answer>
+    </p>
+    <p>
+      <answer>
+        <label>Slope of right segment:</label>
+      <award simplifyOnCompare='numbers' symbolicEquality='true' allowedErrorInNumbers='0.1' allowedErrorIsAbsolute="true">$m3 </award>
+      </answer>
+    </p>
+
+<!--
+<p>Should your estimate of the slope depend on your choice of points?
+<answer inline='true'>
+<choiceInput>
+<choice credit='1'>no</choice>
+<choice>yes</choice>
+</choiceInput>
+</answer>
+</p>
+-->
+
+  </li>
+
+  <li>
+    <p>
+        Remember that the derivative of any linear function is precisely the value of the linear function's slope.  For each linear piece of the function that you considered in (a), what is the derivative of <m>f(x)</m>?  Report your answers to an accuracy of at least 0.1.
+    </p>
+    <p>
+        <answer>
+          <label><m>f'(x)</m> for left segment:</label>
+          <award symbolicEquality='true' simplifyOnCompare='numbers' allowedErrorInNumbers='0.1' allowedErrorIsAbsolute="true">$m1 </award>
+        </answer>
+    </p>
+    <p>
+      <answer>
+        <label><m>f'(x)</m> for middle segment:</label>
+        <award symbolicEquality='true' simplifyOnCompare='numbers' allowedErrorInNumbers='0.1' allowedErrorIsAbsolute="true">$m2 </award>
+      </answer>
+    </p>
+    <p>
+      <answer>
+        <label><m>f'(x)</m> for right segment:</label>
+        <award symbolicEquality='true' simplifyOnCompare='numbers' allowedErrorInNumbers='0.1' allowedErrorIsAbsolute="true">$m3 </award>
+      </answer>
+
+    </p>
+  </li>
+
+  <li>
+    <p>
+      Sketch the derivative of <m>f</m>.  Drag the points so that each <!-- <copy prop="styleDescription" tname="derivSeg1" /> --> line segment corresponds to the corresponding segment of the original function.
+    </p>
+
+    <graph xmin="-3.5" xmax="7" ymin="-3" ymax="8" showNavigation="false" fixAxes="true" grid><shortDescription>Three lines which should be dragged so that each is the derivative of a piece of the function.</shortDescription>
+
+<!--  <copy tname='polyline1' /> -->
+      $polyline1
+
+    <point styleNumber="6" name="p1" x="$x1" y="2">
+        <constrainToGrid dy="0.5"/>
+    </point>
+
+    <point styleNumber="6" name="p2" x="$x2" y="3">
+        <constrainToGrid dy="0.5"/>
+    </point>
+
+    <lineSegment name="derivSeg1" styleNumber="2" endpoints="$p1 $p2" />
+
+    <point styleNumber="6" name="p3" x="$x2" y="-1">
+        <constrainToGrid dy="0.5"/>
+    </point>
+
+    <point styleNumber="6" name="p4" x="$x3" y="1">
+        <constrainToGrid dy="0.5"/>
+    </point>
+
+    <lineSegment styleNumber="2" endpoints="$p3 $p4" />
+
+
+    <point styleNumber="6" name="p5" x="$x3" y="4">
+        <constrainToGrid dy="0.5"/>
+    </point>
+
+    <point styleNumber="6" name="p6" x="$x4" y="4">
+        <constrainToGrid dy="0.5"/>
+    </point>
+
+    <lineSegment stylenumber="2" endpoints="$p5 $p6" />
+
+  </graph>
+
+
+  <answer name="derivpiecewise">
+    <award><when matchPartial>
+        <boolean>$p1.y = $m1 and $p2.y = $m1</boolean>
+        and
+        <boolean>$p3.y = $m2 and $p4.y = $m2</boolean>
+        and
+        <boolean>$p5.y = $m3 and $p6.y = $m3</boolean>
+    </when></award>
+  </answer>
+
+
+<p>
+  Complete the following sentence using drop-down menus to explain the behavior of the graph of the derivative function.
+</p>
+<p>Because the original function is piecewise linear, on corresponding intervals the slope of the tangent line to <m>f</m> <choiceInput name="r1" inline><shortDescription>behavior of the slope of the tangent line</shortDescription>
+      <choice>is changing</choice>
+      <choice credit="1">is not changing</choice>
+    </choiceInput>, which means that on those same intervals, the graph of the derivative function consists of <choiceInput name="r2" inline><shortDescription>description of the pieces of the derivative</shortDescription>
+      <choice credit="1">horizontal line segments.</choice>
+      <choice>line segments that are rising or falling.</choice>
+      <choice>curved pieces.</choice>
+    </choiceInput><answer><award><when>$r1.selectedIndices=2 and $r2.selectedIndices=1</when></award></answer>
+
+    </p>
+
+  </li>
+
+  <li>
+    <p>
+      Which of the following statments is true?
+      <answer>
+        <choiceInput><shortDescription>value of the derivative at x equals 0</shortDescription>
+          <choice><m>f'(0)=0.5</m></choice>
+          <choice credit="1"><m>f'(0)</m> is undefined</choice>
+          <choice><m>f'(0)=-1.5</m></choice>
+    </choiceInput></answer>
+    </p>
+  </li>
+
+</ol>

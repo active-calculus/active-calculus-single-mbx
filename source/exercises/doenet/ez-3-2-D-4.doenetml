@@ -1,0 +1,69 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name = "a" from = "2" to = "8" step = "1"/>
+  <selectFromSequence name = "b" from = "2" to = "8" step = "1" exclude="$a"/>
+  <selectFromSequence name = "c" from = "2" to = "8" step = "1" exclude="$a $b"/>
+  <selectFromSequence name = "d" from = "2" to = "8" step = "1" exclude="$a $b $c"/>
+  <selectFromSequence name = "k" from = "2" to = "8" step = "1" exclude="$a $b $c $d"/>
+
+  <function name="f" symbolic="false" styleNumber="1">
+    sin($a*x)
+  </function>
+  <derivative name="fP">$f</derivative>
+  <function name="g" symbolic="false" styleNumber="2">
+    tan($b*x)
+  </function>
+  <derivative name="gP">$g</derivative>
+  <function name="h" symbolic="false" styleNumber="2">
+    cos($c*x)
+  </function>
+  <derivative name="hP">$h</derivative>
+
+</setup>
+
+<p>
+  Evaluate each of the following limits.  Think carefully about whether or not L'Hopital's Rule applies.
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        <m>\displaystyle \lim_{x \to 0} \frac{\sin($a x)}{$d x} = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$a/$d</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        <m>\displaystyle \lim_{x \to 0} \frac{\cos($c x)}{$d x + $b} = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>1/$b</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        <m>\displaystyle \lim_{x \to 0} \frac{\sin($a x)}{\tan($b x)} = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$a/$b</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        <m>\displaystyle \lim_{x \to 0} \frac{\cos($k x) - 1}{$b x} = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>0</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        <m>\displaystyle \lim_{x \to 0} \frac{\sin($k x) - $k x}{$c x^3} = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>-1*$k^3/(6*$c)</answer>
+      </p>
+    </li>
+  </ol>
+</p>  

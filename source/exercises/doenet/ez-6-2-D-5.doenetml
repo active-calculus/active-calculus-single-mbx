@@ -1,0 +1,163 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="k" from="1" to="4" step="1" exclude="3"/>
+  <selectFromSequence name="p" from="2" to="5" step="1" exclude="3"/>
+
+  <math name="K">$k/3</math>
+  
+  <number name="w">3</number>
+
+  <function name="fx">$K*x^2</function>
+  <function name="gx">4*$K*x-3*$K</function>
+
+  <function name="fy" variable="y" symbolic="false">sqrt(y/$K)</function>
+  <function name="gy" variable="y" symbolic="false">(y + 3*$K)/(4*$K)</function>
+  
+  <function name="R1" variable="y" symbolic="false">$fy + $p</function>
+  <function name="r1" variable="y" symbolic="false">$gy + $p</function>
+  <function name="R2" variable="y" symbolic="false">$w - $gy</function>
+  <function name="r2" variable="y" symbolic="false">$w - $fy</function>
+  
+  <function name="g1" variable="y" symbolic="false"> pi*(($R1)^2 - ($r1)^2)</function>
+  <function name="G1" variable="y" symbolic="false"> 
+    pi*( $p^2*y + 4*$p/(3*sqrt($K))*y^(3/2) + y^2/(2*$K) - 4*$K/3*($p + 3/4 + y/(4*$K))^3  )
+  </function>
+
+
+  <function name="g2" variable="y"> pi*(($R2)^2 - ($r2)^2)</function>
+  <function name="G2" variable="y" symbolic="false">
+    -(pi*((9*$K - y)^3 + 24*$K*y*($K*(18 - 8*sqrt(y/$K)) + y)))/(48*$K^2)
+  </function>
+
+
+
+  
+  <math name="a">$K</math>
+  <math name="b">9*$K</math>
+  
+  <math name="intValue1" simplify>$$G1($b)-$$G1($a)</math>
+  <math name="intValue2" simplify>$$G2($b)-$$G2($a)</math>
+
+  <mathList name="intPoints">(1,$K) (3, 9*$K)</mathList>
+
+</setup>  
+
+  <p>
+    Consider the finite region, <m>\mathcal{R}</m>, that is bounded by the curves 
+    <me>y = \frac{$k}{3}x^2, \ y = \frac{<math simplify>4*$k</math>}{3}x - $k</me>  
+  </p>
+
+  <p> 
+    <ol marker="a.">
+      <li>
+        <p>
+          Sketch a graph of the region, <m>\mathcal{R}</m>, and find the exact locations of the intersection points of the two curves.  Enter the intersection points as ordered pairs; separate multiple points with commas.
+        </p>
+        <p>
+          <answer unorderedCompare matchPartial><label>The curves intersect at the points: </label>$intPoints</answer>
+        </p>
+      </li>
+      <li>
+        <p>
+          Find an integral expression that represents the volume of the resulting solid of revolution when <m>\mathcal{R}</m> is revolved about the line <m>x = -$p</m>.  Do so by filling in the blanks below; once you identify the lower and upper limits of integration, those numbers will appear in the integral expression below.
+        </p>
+
+        <p>
+          lower limit of integration:  <answer name="lower"><label><m>a = </m></label>$a</answer>
+        </p>
+        <p>
+          upper limit of integration:  <answer name="upper"><label><m>b = </m></label>$b</answer>
+        </p>
+
+        <p>
+          Integral expression for the volume, <m>V</m>, of the solid of revolution when revolved about <m>x = -$p</m>: 
+        </p>
+        <p>
+          <m>V = \displaystyle\int_{$lower}^{$upper}</m><mathInput name="int1" minWidth="200"><shortDescription>integrand</shortDescription></mathInput><m>d</m><mathInput name="dWhat" minWidth="15"><shortDescription>x or y</shortDescription></mathInput>
+          <answer>
+            <award>
+              <when>$int1 = $g1 and $dWhat = y</when>
+            </award>
+            <award credit="0.75">
+              <when>$int1 = $g1 and $dWhat != y</when>
+            </award>
+            <award credit="0.25">
+              <when>$int1 != $g1 and $dWhat = y</when>
+            </award>
+          </answer>
+        </p> 
+        <feedback condition="$int1 = -$g1">
+          <p>
+            It appears that you have <m>R</m> and <m>r</m> reversed in the Washer Method.
+          </p>          
+        </feedback>
+
+<!--        
+        <p>
+          Evaluate the integral to find the numerical value of the volume, <m>V</m>, and report the value below.  Report your result to an accuracy within <m>0.0001</m>.
+        </p>
+        <p>
+          <m>V = </m><mathInput name="intVal1" minWidth="40" /> <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><award><when>$intValue1=$intVal1 </when></award></answer>
+        </p>  
+-->
+        
+      </li>
+      <li>
+        <p>
+          Now find an integral expression that represents the volume of the resulting solid of revolution when <m>\mathcal{R}</m> is instead revolved about the line <m>x = 3</m>.  Do so by filling in the blanks below; once you identify the lower and upper limits of integration, those numbers will appear in the integral expression below.
+        </p>
+
+        <p>
+          lower limit of integration: <answer name="lower"><label><m>c = </m> </label>$a</answer>
+        </p>
+        <p>
+          upper limit of integration:  <answer name="upper"><label><m>d = </m></label>$b</answer>
+        </p>
+
+        <p>
+          Integral expression for the volume, <m>W</m>, of the solid of revolution when revolved about <m>x=3</m>: 
+        </p>
+        <p>
+          <m>W = \displaystyle\int_{$lower}^{$upper}</m><mathInput name="int2" minWidth="200"><shortDescription>integrand</shortDescription></mathInput><m>d</m><mathInput name="dWhat2" minWidth="15"><shortDescription>x or y</shortDescription></mathInput>
+          <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
+            <award>
+              <when>$int2 = $g2 and $dWhat2 = y</when>
+            </award>
+            <award credit="0.75">
+              <when>$int2 = $g2 and $dWhat2 != y</when>
+            </award>
+            <award credit="0.25">
+              <when>$int2 != $g2 and $dWhat2 = y</when>
+            </award>
+          </answer>
+        </p> 
+        <feedback condition="$int2 = -$g2">
+          <p>
+            It appears that you have <m>R</m> and <m>r</m> reversed in the Washer Method.
+          </p>          
+        </feedback>
+
+  <!--
+        <p>
+          Evaluate the integral to find the numerical value of the volume, <m>W</m>, and report the value below.  Report your result to an accuracy within <m>0.0001</m>.
+        </p>
+        <p>
+          <m>W = </m><mathInput name="intVal2" minWidth="40" /> <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><award><when>$intValue2=$intVal2 </when></award></answer>
+        </p>  
+   -->     
+      </li>      
+    </ol>
+  </p>

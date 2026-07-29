@@ -1,0 +1,82 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name = "a" from = "3" to = "9" step = "1"/>
+  <selectFromSequence name = "c" from = "3" to = "9" step = "1" exclude="$a"/>
+
+  <function name="q">x^$c/($a)^x</function>
+  <derivative name="qP">$p</derivative>
+
+  <function name="T">x^$c</function>
+  <derivative name="TP">$T</derivative>
+
+  <function name="B">($a)^x</function>
+  <derivative name="BP">$B</derivative>
+  
+</setup>
+
+<p>
+  Suppose that <m>q(x) = \frac{$T}{$B}</m>.  
+</p>
+<p>  
+  Since the algebraic structure of <m>q</m> is that <m>q(x)</m> is the quotient of two basic functions, to find <m>q'(x)</m> we need to use the qroduct rule.  Let's say that <m>q(x) = \frac{T(x)}{B(x)}</m>, where <m>T(x)</m> is the top function in the quotient (the numerator) and <m>B(x)</m> is the bottom function (the denominator).
+</p>  
+
+<p>
+  Fill in the following blanks to identify  <m>T(x)</m> and <m>B(x)</m> and their derivatives.
+</p>  
+
+<tabular>
+  <row>
+    <cell><m>T(x)=</m><answer><award>$T</award></answer></cell>
+    <cell><m>T'(x)=</m><answer><award>$TP</award></answer></cell>
+  </row>  
+  <row>
+    <cell><m>B(x)=</m><answer><award>$B</award></answer></cell>
+    <cell><m>B'(x)=</m><answer><award>$BP</award></answer></cell>
+  </row>    
+</tabular>  
+
+<p>
+Now we can apply the quotient rule to find the derivative of <m>q(x) = \frac{$T}{$B}</m>.  The quotient rule tells us that the derivative of the quotient of two functions <m>T</m> (the top) and <m>B</m> (the bottom) is 
+    <q><em>the bottom times the derivative of the top, minus the top times the derivative of the bottom, all over the bottom function squared</em>.</q> 
+    Applying this structure, we see that 
+</p>
+<p>
+        <sideBySide widths="15% 82%">
+          <p>
+              <p>
+                <m>\hspace{0.1in}</m>
+              </p>
+              <p>
+                <m>q'(x) = </m>
+              </p>
+              <p>
+                <m>\hspace{0.1in}</m>
+              </p>
+          </p>
+          <p>
+            <stack>
+              <answer name="bot"><award>$B</award></answer><m>\cdot</m><answer name="Dtop"><award>$TP</award></answer><m>-</m><answer name="top"><award>$T</award></answer><m>\cdot</m><answer name="Dbot"><award>$BP</award></answer>
+            </stack>
+            <stack>
+              <m>\overline{\hspace{4in}}</m>
+            </stack>
+            <stack>
+              <m>\hspace{1.2in}\Big(</m> <mathInput name="bot2"/><m>\Big)^2</m> <answer forceSmallCheckWorkButton><award><when>$bot2=$B</when></award></answer>
+            </stack>
+          </p>
+        </sideBySide>
+</p>

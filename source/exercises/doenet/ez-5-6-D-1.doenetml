@@ -1,0 +1,119 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+ 
+<setup>
+  <selectFromSequence name="k" from="2" to="4" step="1"/>  
+  <selectFromSequence name="a" from="1" to="3" step="1" exclude="$k"/>  
+ 
+  <number name="n">5</number>
+  <math name="b" simplify>$a + 2*$n</math>
+  <math name="dx" simplify>2</math>
+  <number name="S10computed" displayDecimals="7">($T5entered + 2*$M5entered)/3</number>
+
+  <function name="f">$k/x</function>
+
+  <number displayDecimals="6" name="L5">$dx * ($$f($a) + $$f($a+$dx) + $$f($a+2*$dx) + $$f($a+3*$dx) + $$f($a+4*$dx) )</number>
+  <number displayDecimals="6" name="R5">$dx * ($$f($a+$dx) + $$f($a+2*$dx) + $$f($a+3*$dx) + $$f($a+4*$dx) + $$f($a+5*$dx) )</number>>
+  <number displayDecimals="6" name="M5">$dx * ($$f($a+$dx/2) + $$f($a+3*$dx/2) + $$f($a+5*$dx/2) + $$f($a+7*$dx/2) + $$f($a+9*$dx/2) )</number>>
+  <number displayDecimals="6" name="T5">($L5 + $R5)/2</number>>
+  <number displayDecimals="6" name="S10">(2*$M5 + $T5)/3</number>>
+  <math simplify name="exactInt">$k*ln($b) - $k*ln($a) </math>
+
+</setup>
+<!--
+<graph xmin="-5" xmax="$m+20" ymin="-2" ymax="24">
+  $c
+</graph>
+-->
+  <p>
+    Consider the definite integral 
+    <me>
+      \int_$a^{$b} \frac{$k}{x} \, dx
+    </me>
+  </p> 
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Determine the estimates <m>L_5</m>, <m>R_5</m>, <m>T_5</m>, and <m>M_5</m> for the given definite integral.  Report each result as a single decimal number, accurate to <m>0.000001</m>.
+      </p>
+      <p>
+        <answer symbolicEquality allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute name="L5entered"><label><m> \int_$a^{$b} \frac{$k}{x} \, dx \approx L_5 = </m></label> $L5</answer>
+      </p>
+      <p>
+        <answer symbolicEquality allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute name="R5entered"> <label><m> \int_$a^{$b} \frac{$k}{x} \, dx \approx R_5 = </m></label>$R5</answer>
+      </p>
+      <p>
+        <answer symbolicEquality allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute name="M5entered"><label><m> \int_$a^{$b} \frac{$k}{x} \, dx \approx M_5 = </m></label> $M5</answer>
+      </p>
+      <p>
+        <m> \int_$a^{$b} \frac{$k}{x} \, dx \approx T_5 = </m>
+        <answer allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute forceSmallCheckWorkButton> 
+          <mathInput name="T5entered">
+            <shortDescription>T 5 value</shortDescription>
+          </mathInput>
+          <award><when>
+            $T5entered = $T5 or $T5entered = <math>($L5entered + $R5entered)/2</math>
+          </when></award>
+        </answer>
+      </p>
+    </li>  
+    <li>
+      <p>
+        Find the estimate that results from using Simpson's Rule with <m>10</m> subintervals.  Report your result as a single decimal number, accurate to <m>0.000001</m>.
+      </p>
+      <p>
+        <m> \int_$a^{$b} \frac{$k}{x} \, dx \approx S_{10} = </m>
+        <answer symbolicEquality allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute> 
+          <mathInput name="S10entered">
+            <shortDescription>S 10 value</shortDescription>
+          </mathInput>
+          <award>
+            <when>
+              $S10entered = $S10 or $S10entered = $S10computed
+            </when>
+          </award>
+        </answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        The exact value of the integral turns out to be 
+        <me>
+          \int_$a^{$b} \frac{$k}{x} \, dx = <math simplify>$k*ln($b) - $k*ln($a) 
+          </math>
+        </me>
+        Simpson's Rule therefore <choiceInput name="c1" inline>
+          <shortDescription>under, over, or equal</shortDescription>
+          <choice>?</choice>
+          <choice>underestimates</choice>
+          <choice>overestimates</choice>
+          <choice>exactly matches</choice>
+        </choiceInput> the value of the definite integral.
+      </p>
+      <p>
+        <answer><award><when>
+          ($c1.selectedIndices=2 and $exactInt>$S10)
+          or
+          ($c1.selectedIndices=3 and $S10>$exactInt)
+          or
+          ($c1.selectedIndices=4 and $S10=$exactInt)
+        </when></award></answer>
+      </p>
+          
+    </li>
+
+  </ol>  
+</p>

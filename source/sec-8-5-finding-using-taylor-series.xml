@@ -39,8 +39,9 @@
       In <xref ref="PA-8-5">Preview Activity</xref>, we explore this issue and investigate a different approach to finding the Taylor series of a given function. 
     </p>
 
-  <xi:include href="./previews/PA-8-5-WW.xml"/> 
-  <xi:include href="./previews/PA-8-5.xml"/>
+  <xi:include href="./previews/PA-8-5-WW.xml" /> 
+  <xi:include href="./previews/PA-8-5-D.xml" /> 
+  <xi:include href="./previews/PA-8-5.xml" />
 
   </subsection>  
 
@@ -59,25 +60,25 @@
       <solution>
         <p>
           Because <m>\cos(x^3)</m> is part of the function whose Taylor series we seek, we start with the familiar series for <m>\cos(x)</m>.  We know that 
-          <men xml:id="eq-8a-5-cosu">
+          <md number="yes" xml:id="eq-8a-5-cosu">
             f(u) = \cos(u) = 1 - \frac{1}{2!}u^2 + \frac{1}{4!}u^4 - \cdots + (-1)^n \frac{1}{(2n)!} u^{2n} + \cdots
-          </men>
+          </md>
           for all real numbers <m>u</m>. 
         </p>
 
         <p>
           By letting <m>u = x^3</m> in <xref ref="eq-8a-5-cosu">Equation</xref>, it follows that
-          <me>
+          <md>
             \cos(x^3) = 1 - \frac{1}{2!}(x^3)^2 + \frac{1}{4!}(x^3)^4 - \cdots + (-1)^n \frac{1}{(2n)!} (x^3)^{2n} + \cdots
-          </me>, 
+          </md>, 
           so
-          <men xml:id="eq-8a-5-cosx3">
+          <md number="yes" xml:id="eq-8a-5-cosx3">
             \cos(x^3) = 1 - \frac{1}{2!}x^6 + \frac{1}{4!}x^{12} - \cdots + (-1)^n \frac{1}{(2n)!} x^{6n} + \cdots
-          </men>.      
+          </md>.      
           Then, multiplying both sides of <xref ref="eq-8a-5-cosx3">Equation</xref> by <m>x^4</m>, we find that 
-          <me>
+          <md>
             g(x) = x^4 \cos(x^3) = x^4 - \frac{1}{2!}x^{10} + \frac{1}{4!}x^{16} - \cdots + (-1)^n \frac{1}{(2n)!} x^{6n+4} + \cdots
-          </me>.
+          </md>.
           Since <xref ref="eq-8a-5-cosu">Equation</xref> is valid for every real number <m>u</m>, letting <m>u = x^3</m> tells us that <xref ref="eq-8a-5-cosx3">Equation</xref> is valid for every real number <m>x</m>.  The Ratio Test can be used to show that multiplying every term of a Taylor series by the same power of <m>x</m> does not change the set of <m>x</m>-values for which the series converges, so the Taylor series for <m>g(x)</m> also converges for every value of <m>x</m>.
         </p>          
       </solution>
@@ -142,20 +143,20 @@
 
     <p>
       In <xref ref="C-5">Chapter</xref>, we discussed the challenge posed by definite integrals such as
-      <me>
+      <md>
         \int_0^1 \sin(x^2) \, dx
-      </me>.
+      </md>.
       Because we are unable to find a simple algebraic antiderivative for the function <m>\sin(x^2)</m>, we cannot use the First Fundamental Theorem of Calculus to evaluate the integral exactly.  We learned in <xref ref="sec-5-2-FTC2">Section</xref> that the Second Fundamental Theorem of Calculus provides us with an antiderivative of a given function by using an integral function: one antiderivative of <m>f(x) = \sin(x^2)</m> is 
-      <me>
+      <md>
         F(x) = \int_0^x \sin(u^2) \, du
-      </me>. 
+      </md>. 
     </p>
 
     <p>
       Our recent work with Taylor series now suggests another way to find an antiderivative <m>F(x)</m> for <m>f(x) = \sin(x^2)</m>, and this approach also provides new options for finding additional Taylor series.  In <xref ref="act-8-5-1">Activity</xref>, as part of our work in finding a Taylor series for <m>x^3 \sin(x^2)</m> we found that
-      <men xml:id="eq-8a-5-ex2">
+      <md number="yes" xml:id="eq-8a-5-ex2">
         \sin(x^2) = x^2 - \frac{1}{3!}x^6 + \frac{1}{5!}x^{10} - \cdots + (-1)^{n-1} \frac{1}{(2n-1)!} x^{4n-2} + \cdots
-      </men>
+      </md>
       and that this representation of <m>\sin(x^2)</m> is valid for every value of <m>x</m>.  This infinite series representation suggests that we could find an antiderivative <m>F(x)</m> of <m>\sin(x^2)</m> by using <xref ref="eq-8a-5-ex2">Equation</xref> to actually evaluate the integral <m> \int_0^x \sin(u^2) \, du</m>.  Doing so, we see
       <md>
         <mrow>F(x) \amp= \int_0^x \sin(u^2) \, du</mrow>
@@ -168,15 +169,15 @@
 
     <p>
       Hence we have found that 
-      <me>
+      <md>
         F(x) = \frac{1}{3}x^3 - \frac{1}{7 \cdot 3!} x^7 + \frac{1}{11 \cdot 5!}x^{11} + \cdots + \frac{(-1)^{n+1}}{(4n-1)(2n-1)!} x^{4n-1} + \cdots
-      </me>
+      </md>
       is an antiderivative of <m>f(x) = \sin(x^2)</m>.
     </p>
 
     <p>
       It turns out that integrating a Taylor series has no effect on the open<fn>It is possible for the convergence status at the endpoints of the interval to change, but we are normally not concerned with those specific <m>x</m>-values.</fn> interval of convergence of a Taylor series, nor does differentiating such a series.  This fact is stated formally in a result called The Power Series Differentiation and Integration Theorem.  A <term>power series</term> is any series of the form 
-      <me>f(x) = \sum_{k=0}^{\infty} c_k (x-a)^k</me>.
+      <md>f(x) = \sum_{k=0}^{\infty} c_k (x-a)^k</md>.
       Every Taylor series is a power series, and a famous result called Borel's Theorem tells us that every power series is in fact the Taylor series of a related function.
     </p>
 
@@ -184,26 +185,26 @@
       <title>The Power Series Differentiation and Integration Theorem</title>
       <p>
         If <m>f(x) = \sum_{k=0}^{\infty} c_k (x-a)^k</m> converges on the open interval <m>|x-a| \lt R</m> for a positive real number <m>R</m>, then
-        <me>
+        <md>
           f'(x) = \sum_{k=1}^{\infty} k \cdot c_k (x-a)^{k-1}
-        </me>
+        </md>
         and 
-        <me>
+        <md>
           \int f(x) \, dx = C + \sum_{k=0}^{\infty} \frac{c_k}{k+1} (x-a)^{k+1}
-        </me>
+        </md>
         and both of these series converge on the same open interval, <m>|x-a| \lt R</m>.
       </p>
     </assemblage>
 
     <p>
       Note how the index of representation of <m>f'(x)</m> in sigma notation changes.  This is because if we originally have 
-      <me>
+      <md>
         f(x) = c_0 + c_1(x-1) + c_2(x-a)^2 + c_3(x-a)^3 + \cdots + c_k(x-a)^k + \cdots
-      </me>
+      </md>
       and we differentiate, we get
-      <me>
+      <md>
         f'(x) = c_1 + 2c_2(x-a) + 3c_3(x_a)^2 + \cdots + k \cdot c_k(x-a)^{k-1} + \cdots
-      </me>
+      </md>
       and so to have sigma notation for <m>f'(x)</m>, we start with <m>k=1</m> to accommodate the fact that the general term is <m>k \cdot c_k(x-a)^{k-1}</m> in order to ensure all powers of <m>x</m> are nonnegative.
     </p>
 
@@ -227,21 +228,21 @@
 
         <p>
           The key insight in this approach is the fact that 
-          <me>
+          <md>
             \frac{d}{dx}\left[ \ln(1+x) \right] = \frac{1}{1+x}
-          </me>.
+          </md>.
           We thus first find a Taylor series representation for <m>\frac{1}{1+x}</m>, and then integrate to find the Taylor series for <m>\ln(1+x)</m>.          
         </p>
 
         <p>
           We know that for <m>|x| \lt 1</m>, 
-          <me>
+          <md>
             g(x) = \frac{1}{1-x} = 1 + x + x^2 + x^3 + \cdots + x^n + \cdots
-          </me>.
+          </md>.
           Using the variable <m>u</m> instead (in anticipation of a change of variables), we have
-          <me>
+          <md>
             g(u) = \frac{1}{1-u} = 1 + u + u^2 + u^3 + \cdots + u^n + \cdots
-          </me>.
+          </md>.
           Next, letting <m>u = -x</m>, it follows that 
           <md>
             <mrow> g(-x) = \frac{1}{1+x} \amp= 1 + (-x) + (-x)^2 + (-x)^3 + \cdots + (-x)^n + \cdots </mrow>
@@ -251,9 +252,9 @@
         </p>
         <p>
           Now, since <m>\frac{1}{1+x}</m> is the derivative of <m>\ln(1+x)</m> and <m>\ln(1) = 0</m>, we can use the Second FTC to write
-                <me>
+                <md>
                   \ln(1 + x) = \int_0^x \frac{1}{1+t} \, dt
-                </me>,
+                </md>,
                 which combined with our earlier series representation for <m>\frac{1}{1+x}</m> shows that
                 <md>
                   <mrow>\ln(1 + x) \amp= \int_0^x \frac{1}{1+t} \, dt</mrow>
@@ -273,9 +274,9 @@
 
     <p>
       Near the end of <xref ref="sec-8-4-taylor-series">Section</xref>, we noted the important big-picture perspective that for familiar basic functions that are infinitely differentiable, such as <m>f(x) = \sin(x)</m>, not only can we find the function's Taylor series and determine the open interval of <m>x</m>-values for which the Taylor series converges, but <em>the Taylor series converges to the function itself</em>.  Furthermore, we noted that these representations play a key role in how computers provide decimal approximations to quantities such as <m>e^1</m>, which can be represented as 
-      <me>
+      <md>
         e^1 = 1 + 1 + \frac{1}{2!} + \frac{1}{3!} + \frac{1}{4!} + \cdots
-      </me>.
+      </md>.
       Our most recent work with Taylor series shows that the news is better still:  now we can easily represent even more complicated functions with Taylor series, such as <m>f(x) = e^{-x^2}</m> and <m>g(x) = \sin(x^2)</m>, and determine their antiderivatives using their infinite Taylor series and treating that representation just like a polynomial.  In  
       <xref ref="sec-8-6-accuracy-of-approx">Section</xref>, we investigate further how certain infinite series of numbers can  be easily and accurately approximated using partial sums that result from evaluating Taylor series, and how we can even quantify how much error is present in certain partial sum approximations.
     </p>
@@ -291,22 +292,22 @@
       <li>
         <p>
           Through substitution, we can use any known Taylor series to find the Taylor series of a related function.  For example, we know that if <m>|u| \lt 1</m>, 
-          <me>
+          <md>
             \ln(1+u) = u - \frac{1}{2}u^2 + \frac{1}{3}u^3 - \frac{1}{4}u^4 + \cdots
-          </me>
+          </md>
           Letting <m>u = 4x^2</m>, it follows that 
-          <me>
+          <md>
             \ln(1+4x^2) = 4x^2 - \frac{1}{2} \cdot 16x^4 + \frac{1}{3} \cdot 64x^6  - \frac{1}{4} \cdot 256x^8 + \cdots
-          </me>
+          </md>
           and that this representation converges if <m>|4x^2| \lt 1</m>, so for <m>x</m> such that <m>|x| \lt \frac{1}{2}</m>.
         </p>
       </li>
       <li>
         <p>
           The Power Series Differentation and Integration Theorem tells us that we can differentiate or integrate a Taylor series in the natural way and that doing so has essentially no impact on the set of <m>x</m>-values for which the series converges.  For instance, we might note that if we first found the Taylor series for <m>\sin(x)</m>, which is
-          <me>
+          <md>
             \sin(x) = x - \frac{1}{3!}x^3 + \frac{1}{5!}x^5 - \frac{1}{7!}x^7 + \cdots
-          </me>
+          </md>
           and converges for every value of <m>x</m>, it follows by differentating that
           <md>
             <mrow>\cos(x) \amp= \frac{d}{dx}[\sin(x)]</mrow>
@@ -321,6 +322,7 @@
     </p>
   </subsection>
 
-  <xi:include href="./exercises/ez-8-5.xml"/> 
+  <xi:include href="./exercises/ez-8-5.xml" /> 
+  <xi:include href="./exercises/ez-8-5-D.xml" /> 
 
 </section>

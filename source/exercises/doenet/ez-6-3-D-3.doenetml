@@ -1,0 +1,99 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="a" from="10" to="18" step="4"/>
+  <selectFromSequence name="c" from="3" to="5" step="1"/>
+  <selectFromSequence name="k" from="0.1" to="0.4" step="0.1"/>
+  <function name="r">$c + $k*x</function>
+  <function name="R">$c*x + $k/2*x^2</function>
+  <function name="s">$c*x + $k*x^2</function>
+  <function name="S">$c/2*x^2 + $k/3*x^3</function>
+  
+  <math name="half" displayDecimals="4">-$c/$k + 1/2*sqrt(4*$c^2/$k^2 + 4*$M/$k)</math>
+
+  <math name="M" simplify>$$R($a)-$$R(0)</math>
+  <math name="intValue2" simplify>1/($$R($a)-$$R(0))*$$S($a)-$$S(0)</math>
+  <math name="intValue3" simplify>1/($a)*($$R($a)-$$R(0))</math>
+</setup>  
+  
+    <p>
+      Consider a thin bar of length $a cm whose density is distributed according to the function <m>\rho(x) = $r</m>,
+      where <m>x = 0</m> represents the left end of the bar.
+      Assume that <m>\rho</m> is measured in g/cm and <m>x</m> is measured in cm.
+    </p>
+
+    <p>
+      <ol marker="a.">
+        <li>
+          <p>
+            It turns out that the mass of the bar is <m>M = $M</m>.   
+      Find the value of <m>m</m> for which half of the total mass lies to the left of <m>x = m</m> and the other half of the total mass is to the right of <m>x = m</m>.
+          </p>
+          <p>
+            Which of the following equations could we solve in order to find the value of <m>m</m> that we seek?
+            <answer>
+              <choiceInput>
+                <choice><m>\int_{0}^{m/2} \rho(x) \, dx = <math simplify>$M/2</math></m></choice>
+                <choice><m>\int_{0}^{$a} \rho(x) \, dx = m</m></choice>
+                <choice credit="1"><m>\int_{0}^{m} \rho(x) \, dx = <math simplify>$M/2</math></m></choice>
+                <choice><m>\int_{0}^{m} \rho(x) \, dx = $M</m></choice>
+              </choiceInput>
+            </answer>
+          </p>
+          <p>
+            Solve the equation you identified and report the value of <m>m</m> in the space below.
+          </p>
+          <p>
+            <m>m = </m><mathInput name="mEntered"/><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$mEntered=$half</when></award></answer>
+          </p>
+        </li>
+        <li>
+          <p>
+            State and evaluate a definite integral whose value is <m>\overline{x}</m>, the center of mass of the bar.  Once you identify the lower and upper limits of integration, those values will appear in the integral expression below; notice that the integral expression for <m>\overline{x}</m> involves the mass, <m>M</m>, that we stated in (a).
+          </p>
+          <p>
+            lower limit of integration: <m>a = </m> <answer name="lower">0</answer>
+          </p>
+          <p>
+            upper limit of integration: <m>b = </m> <answer name="upper">$a</answer>
+          </p>
+  
+          <p>
+            Integral expression for the center of mass, <m>\overline{x}</m>, of the bar: 
+          </p>
+          <p>
+            <m>\overline{x} = \displaystyle \frac{1}{$M} \int_{$lower}^{$upper}</m><mathInput name="int2" minWidth="100" /><m>d</m><mathInput name="dWhat2" minWidth="15"/><answer><award><when>$int2 = $s and $dWhat2 = x</when></award></answer> <!--, <m>$$f($h), $$g($h), $f - $g</m> -->
+          </p> 
+          <p>
+            Evaluating the integral to an accuracy of at least <m>0.0001</m>, the bar's center of mass, <m>\overline{x}</m>, is 
+          </p>
+          <p>
+            <m>\overline{x} = </m><mathInput name="intVal2" minWidth="40" /> <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><award><when>$intValue2=$intVal2 </when></award></answer>
+          </p>          
+        </li>
+        <li>
+          <p>
+            True or false: <em>the center of mass of the bar is the location where half of the bar's mass lies to the left, and half of the bar's mass lies to the right</em>.
+          </p>
+          <p>
+            <answer><choiceInput>
+              <choice>true</choice>
+              <choice credit="1">false</choice>
+              <choice>not enough information to determine</choice>
+            </choiceInput></answer>
+          </p>
+        </li>
+      </ol>
+    </p>

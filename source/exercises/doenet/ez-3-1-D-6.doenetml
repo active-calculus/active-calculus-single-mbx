@@ -1,0 +1,90 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="r" from = "4" to = "8" step = "1"/>
+  <selectFromSequence name="c" from = "3" to = "9" step = "1" exclude="$r"/>
+  <math simplify name="maxHeight">2*$r</math>
+
+  <math name="correctAns1"> dV/dt = $r*pi*2*h*dh/dt - pi*h^2*dh/dt </math>
+  <math name="correctAns1a"> dV/dt = ($r*pi*2*h - pi*h^2)dh/dt </math>
+
+  <math name = "h1" simplify>0.25*$r</math>
+  <math name = "h2" simplify>0.5*$r</math>
+  <math name = "h3" simplify>0.75*$r</math>
+  
+</setup>
+
+<p>
+  Consider a spherical tank of radius <m>$r</m> meters.  When water in the tank is <m>h</m> meters deep, the total volume of water in the tank is given by the relationship
+  <me>V = $r\pi h^2 - \frac{\pi}{3}h^3,</me>
+which is valid for <m>0 \le h \le $maxHeight</m>.
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Draw several pictures of the tank filled to different water levels, imagining that the tank is initially empty and then filling as time goes on.
+      </p>  
+      <p>
+        Suppose that a hose is used to fill the tank at a constant rate of flow.  For what value(s) of <m>h</m> do you expect that <m>h</m> will be changing fastest?
+      </p>
+      <p>
+        We expect that <m>h</m> will be changing fastest when <answer><choiceInput inline>
+          <choice>?</choice>
+          <choice>when <m>h = $r</m> (around the middle of the tank)</choice>
+          <choice credit="1">when <m>h</m> is close to <m>0</m> or close to <m>$maxHeight</m></choice>
+          <choice><m>h</m> will change at the same rate for all values of <m>h</m></choice>
+          </choiceInput></answer>.
+      </p>
+    </li>
+    <li>
+      <p>
+        By implicitly differentiating the equation <m>V = $r\pi h^2 - \frac{\pi}{3}h^3,</m> find an equation that relates <m>\frac{dV}{dt}</m> and <m>\frac{dh}{dt}</m>.  Use the symbol <m>\pi</m> in your response, not a decimal approximation.
+      </p>
+      <p>
+        An equation that relates  <m>\frac{dV}{dt}</m> and <m>\frac{dh}{dt}</m> is <mathInput name="ans1"/><answer symbolicEquality simplifyOnCompare ><award><when> $ans1=$correctAns1 or $ans1=$correctAns1a </when> </award></answer>.
+      </p>  
+    </li>
+    <li>
+      <p>
+        Now suppose that the tank is being filled at a constant rate of <m>$c</m> cubic meters per minute.  Determine the instantaneous rate at which the height of the water in the tank is changing at each of the following heights:
+      </p>
+      <p>
+        When <m>h = $h1</m>, <m>\left. \frac{dh}{dt} \right|_{h = $h1}=</m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$c/(2*$r*pi*$h1-pi*$h1^2)</answer>.
+      </p>
+      <p>
+        When <m>h = $h2</m>, <m>\left. \frac{dh}{dt} \right|_{h = $h2}=</m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$c/(2*$r*pi*$h2-pi*$h2^2)</answer>.
+      </p>  
+      <p>
+        When <m>h = $h3</m>, <m>\left. \frac{dh}{dt} \right|_{h = $h3}=</m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$c/(2*$r*pi*$h3-pi*$h3^2)</answer>.
+      </p> 
+      <p>
+        The units on each of these values of <m>\frac{dh}{dt}</m> are <answer><choiceInput inline>
+          <choice>?</choice>
+          <choice>meters</choice>
+          <choice credit="1">meters per minute</choice>
+          <choice><m>h</m>minutes</choice>
+          <choice><m>h</m>minutes per meter</choice>
+          </choiceInput></answer>, and we see that among these values of <m>\frac{dh}{dt}</m>, for <m>h</m>-values for which the tank is less than half full, it appears that as <m>h</m> increases, <m>\frac{dh}{dt}</m> <answer><choiceInput inline>
+          <choice>?</choice>
+          <choice>stays the same</choice>
+          <choice credit="1">decreases</choice>
+          <choice>increases</choice>
+          </choiceInput></answer>.
+      </p>  
+    </li>
+  </ol>
+</p>  

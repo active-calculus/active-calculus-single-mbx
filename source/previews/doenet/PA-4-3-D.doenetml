@@ -1,0 +1,521 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- the Riemann sum calculator used in this Preview is heavily due to Peter Keep and Jonathan Rogness -->
+<!-- see Jonathan's work at https://beta.doenet.org/activityViewer/scpnbKvEcyq1VmTdk3mVVk -->
+<!-- see Peter's work at https://beta.doenet.org/activityViewer/anvfo1993TKgun9i4sWeLM -->
+<!-- a rough draft of this ACS Preview was completed by Jacob Levin after the 2024 Doenet workshop -->
+<!-- Significantly rewritten by Chrissy Safranski in Spring 2026 -->
+
+<setup>
+  <!-- Calculate the offset: sample point x_i^* = x_i + offset -->
+  <!-- Left, Mid and Right Endpoint Rule corresponds to 0, 1, 2 in following computation -->
+
+  <number name="offset">$dxN*($ruleChoice.selectedIndex-1) / 2</number>
+  <!-- use a numeric version of dx in computations, but compute a symbolic version if it's desired to display the dx to the user. -->
+  <math simplify="true" name="dx">($b-$a)/$n</math>
+  <number name="dxN">$dx</number>
+
+  <function name="f">$fnFormula</function>
+
+  <!-- Compute the x_i's here, instead of within the graph -->
+  <sequence from="$a" to="$b-$dxN" step="$dxN" name="xiValues" />
+
+  <group name="group">$xiValues</group>
+  <!-- I'm not sure why using the above seems to help with indices not existing when the value of n changes, but it seems to? -->
+
+  <!-- compute the minimum y and maximum y values for the range on the graph -->
+  <function name="fforrange" domain="($a,$b)">$f</function>
+  <min name="minY">$fforrange.minimumValues 0 $$f($a) $$f($b)</min>
+  <max name="maxY">$fforrange.maximumValues 0 $$f($a) $$f($b)</max>
+
+
+<number name="RiemannSum" displaydecimals="6">
+  <sum>
+    <mathList name="fValues"><repeat for="$group" valueName="xVal">
+      <number>$$f($xVal+$offset)</number>
+    </repeat></mathList>
+  </sum>*$dxN
+  </number>
+  <!-- Using $xiValues instead of $group leads to weird warnings when the value of n changes. -->
+  <!-- Seems like multiplying once by $dxN at the end instead of inside every computation might help when the n is large.  -->
+
+  <boolean name="smalln">
+    <isBetween limits="1 29">$n</isBetween> and <isInteger>$n</isInteger>
+  </boolean>
+  <boolean name="largen">
+    $n>29 and <isInteger>$n</isInteger>
+  </boolean>
+
+  <isInteger name="nisInt">$n</isInteger>
+
+</setup>
+
+<p>
+  The graph provided below includes a Riemann sum calculator: in the boxes above the graph, you can input your choices of function <m>f(x)</m>,  interval endpoints <m>x=a</m> and <m>x=b</m>, and the number of rectangles, <m>n</m>.  Then, from the drop-down menu, you may choose your strategy for selecting the <m>x</m>-values from each of the subintervals (a Left, Midpoint, or Right Riemann sum).  The resulting value of the Riemann sum will be computed and displayed below the graph.
+</p>
+<p>
+  <alert>Note:</alert> you have to hit the <q>enter</q> key or click outside of the box after anything you change in one of the boxes in order to update the resulting computations.  Computations involving larger <m>n</m> values can take several seconds to appear.
+</p>
+
+<!-- Start by definining the function, a, b, and n (and hence dx), and rule choice -->
+<!-- <tabular>
+    <row>
+      <cell halign="left"><mathInput prefill="x^2+1" name="fnFormula"><label><m>f(x) = </m></label></mathInput></cell>
+      <cell halign="left"><m>a =</m><mathInput name="a" prefill="0" minWidth="20"/></cell>
+      <cell halign="left"><m>b =</m><mathInput name="b" prefill="2" minWidth="20"/></cell>
+      <cell halign="left"><m>n =</m><mathInput prefill="6" name="n" minWidth="20" /></cell> -->
+      <!--<cell halign="right"><m>\Delta x = <math simplify="true" name="dx">($b-$a)/$n</math></m></cell>-->
+    <!-- </row>
+</tabular> -->
+<p>
+<mathInput prefill="x^2+1" name="fnFormula"><label><m>f(x) = </m></label></mathInput>  <m>\hspace{.2in}</m>
+      <mathInput name="a" prefill="0" minWidth="20"><label><m>a =</m></label></mathInput>  <m>\hspace{.2in}</m>
+      <mathInput name="b" prefill="2" minWidth="20"><label><m>b =</m></label></mathInput>  <m>\hspace{.2in}</m>
+      <mathInput prefill="6" name="n" minWidth="20" ><label><m>n =</m></label></mathInput>
+</p>
+
+<p>
+<choiceInput name="ruleChoice" inline="true" preselectChoice="1">
+  <label>choice for <m>x_k^*</m>:</label>
+          <choice>Left Riemann Sum</choice>
+          <choice>Midpoint Riemann Sum</choice>
+          <choice>Right Riemann Sum</choice>
+      </choiceInput>
+</p>
+
+<!-- I know this activity asks for n=25 and n=100, and moving from n=25 to n=100 takes 10 or so seconds, even with only using 30 rectangles on the graph.  So for the purposes of this activity, I'm going to cheat and not draw any rectangles for n> 29.  It seemed faster to use conditional content on the whole graph than it was to do it within the graph; destroying 25 rectangles must be something that takes a few seconds.   -->
+<sideBySide valigns="middle" widths="50% 45%">
+<conditionalContent>
+    <case condition="$smalln">
+      <graph size="small" xmin="$a-1.5" xmax="$b+1.5" ymin="$minY-1.5" ymax="$maxY+1" identicalAxisScales="false" showNavigation="false" fixAxes>
+        <shortDescription>graph of f and rectangles for Riemann sum</shortDescription>
+        $f
+        <regionBetweenCurveXAxis function="$f" boundaryValues="$a $b" />
+        <repeat for="$group" valueName="xVal">
+          <rectangle stylenumber="6" filled="true" draggable="false"
+            vertices="($xVal,0)
+                      ($xVal+$dxN, $$f($xVal+$offset))" />
+        </repeat>
+        <!-- <repeatForSequence from="1" to="$n" step="1" valueName="index">
+          <rectangle stylenumber="6" filled="true" draggable="false"
+            vertices="($xiValues[$index],0)
+                      ($xiValues[$index]+$dxN, $fValues[$index])" />
+        </repeatForSequence> -->
+      </graph>
+    </case>
+    <case condition="$largen">
+      <graph size="small" xmin="$a-1.5" xmax="$b+1.5" ymin="$minY-1.5" ymax="$maxY+1" identicalAxisScales="false" showNavigation="false" fixAxes>
+        <shortDescription>graph of f and rectangles for Riemann sum</shortDescription>
+        $f
+        <regionBetweenCurveXAxis function="$f" boundaryValues="$a $b" styleNumber="5" />
+          <!-- The code below would draw 30 rectangles whenever n>29. -->
+            <!-- <sequence from="$a" to="$b-($b-$a)/30" step="($b-$a)/30" name="xiValueslargen" hide/>
+            <repeat for="$xiValueslargen" valueName="xVal" name="largenrectangles">
+              <rectangle stylenumber="6" filled="true" draggable="false"
+                vertices="($xVal,0)
+                          ($xVal+($b-$a)/30, $$f($xVal))" />
+            </repeat>   -->
+      </graph>
+    </case>
+    <else>
+      <graph size="small" xmin="$a-1.5" xmax="$b+1.5" ymin="$minY-1.5" ymax="$maxY+1" identicalAxisScales="false" showNavigation="false" fixAxes>
+        <shortDescription>graph of f and the area between f and the x-axis</shortDescription>
+        $f
+        <regionBetweenCurveXAxis function="$f" boundaryValues="$a $b" />
+      </graph>
+    </else>
+  </conditionalContent>
+  <div>
+  <conditionalContent>
+    <case condition="$nisInt">
+      <p>
+      The value of the Riemann sum is:
+      </p>
+      <conditionalContent>
+        <case condition="$ruleChoice.selectedIndex=1">
+          <me>L_{$n}=$RiemannSum</me>
+        </case>
+        <case condition="$ruleChoice.selectedIndex=3">
+          <me>R_{$n}=$RiemannSum</me>
+        </case>
+        <case condition="$ruleChoice.selectedIndex=2">
+          <me>M_{$n}=$RiemannSum</me>
+        </case>
+      </conditionalContent>
+    </case>
+    <else>The value of n needs to be an integer.</else>
+  </conditionalContent>
+  </div>
+</sideBySide>
+
+
+<cascade revealAll>
+
+<aside startOpen><title>(a)</title>
+
+<p>
+  In the boxes provided above the graph, update the entries to compute a left Riemann sum with <m>n = 5</m> subintervals for the function <m>f(x) = 2x+1</m> on the interval <m>[1,4]</m>.  Once you do, you'll see the value of <m>L_5</m> populate automatically in the table below.
+</p>
+
+  <p>
+    Then, for this same function and interval, <m>f(x) = 2x+1</m> on <m>[1,4]</m>, update the boxes above appropriately to compute each of <math>L_n, M_n, R_n</math> for <math> n = 5, n = 25</math>, and <math>n = 100</math> so that all of the values in the table below are filled in.  Click the <q>Check Work</q> button to get a score for having done so.
+  </p>
+
+  <updateValue
+  triggerWhen="$fnFormula = 2x+1 and $a=1 and $b=4 and $n=5 and $ruleChoice.selectedIndex=1"
+  target="$linearL5"
+  newValue="$RiemannSum"
+/>
+
+  <updateValue
+  triggerWhen="$fnFormula = 2x+1 and $a=1 and $b=4 and $n=5 and $ruleChoice.selectedIndex=2"
+  target="$linearM5"
+  newValue="$RiemannSum"
+/>
+
+  <updateValue
+  triggerWhen="$fnFormula = 2x+1 and $a=1 and $b=4 and $n=5 and $ruleChoice.selectedIndex=3"
+  target="$linearR5"
+  newValue="$RiemannSum"
+/>
+
+  <updateValue
+  triggerWhen="$fnFormula = 2x+1 and $a=1 and $b=4 and $n=25 and $ruleChoice.selectedIndex=1"
+  target="$linearL25"
+  newValue="$RiemannSum"
+/>
+
+  <updateValue
+  triggerWhen="$fnFormula = 2x+1 and $a=1 and $b=4 and $n=25 and $ruleChoice.selectedIndex=2"
+  target="$linearM25"
+  newValue="$RiemannSum"
+/>
+
+  <updateValue
+  triggerWhen="$fnFormula = 2x+1 and $a=1 and $b=4 and $n=25 and $ruleChoice.selectedIndex=3"
+  target="$linearR25"
+  newValue="$RiemannSum"
+/>
+
+  <updateValue
+  triggerWhen="$fnFormula = 2x+1 and $a=1 and $b=4 and $n=100 and $ruleChoice.selectedIndex=1"
+  target="$linearL100"
+  newValue="$RiemannSum"
+/>
+
+  <updateValue
+  triggerWhen="$fnFormula = 2x+1 and $a=1 and $b=4 and $n=100 and $ruleChoice.selectedIndex=2"
+  target="$linearM100"
+  newValue="$RiemannSum"
+/>
+
+  <updateValue
+  triggerWhen="$fnFormula = 2x+1 and $a=1 and $b=4 and $n=100 and $ruleChoice.selectedIndex=3"
+  target="$linearR100"
+  newValue="$RiemannSum"
+/>
+
+
+  <tabular top="minor" bottom="minor" left="minor" right="minor">
+    <row bottom="minor">
+      <cell right="minor"><m>n</m></cell>
+      <cell right="minor"><math>L_n</math></cell>
+      <cell right="minor"><math>M_n</math></cell>
+      <cell right="minor"><math>R_n</math></cell>
+    </row>
+
+    <row>
+
+      <cell right="minor">5</cell>
+
+      <cell right="minor">
+        <mathInput name="linearL5" disabled forAnswer="$lineartable"><label><m>L_5 =</m></label></mathInput>
+      </cell>
+
+      <cell>
+        <mathInput name="linearM5" disabled forAnswer="$lineartable"><label><m>M_5=</m> </label></mathInput>
+      </cell>
+
+      <cell>
+         <mathInput name="linearR5" disabled forAnswer="$lineartable"><label><m>R_5=</m></label></mathInput>
+      </cell>
+
+    </row>
+
+    <row>
+
+    <cell right="minor">25</cell>
+
+      <cell right="minor">
+        <mathInput name="linearL25" disabled forAnswer="$lineartable"><label><m>L_{25} =</m></label></mathInput>
+      </cell>
+
+      <cell>
+         <mathInput name="linearM25" disabled forAnswer="$lineartable"><label><m>M_{25}=</m></label></mathInput>
+      </cell>
+
+      <cell>
+         <mathInput name="linearR25" disabled forAnswer="$lineartable"><label><m>R_{25}=</m></label></mathInput>
+      </cell>
+
+
+  </row>
+
+  <row>
+
+      <cell right="minor"><m>100</m></cell>
+
+    <cell right="minor">
+        <mathInput name="linearL100" disabled forAnswer="$lineartable"><label><m>L_{100} =</m></label></mathInput>
+      </cell>
+
+      <cell>
+         <mathInput name="linearM100" disabled forAnswer="$lineartable"><label><m>M_{100}=</m></label></mathInput>
+      </cell>
+
+      <cell>
+         <mathInput name="linearR100" disabled forAnswer="$lineartable"><label><m>R_{100}=</m></label></mathInput>
+      </cell>
+
+    </row>
+  </tabular>
+  <answer matchPartial name="lineartable" colorCorrectness="false"><award><when>
+    $linearL5=16.2 and $linearM5=18 and $linearR5=19.8 and
+    $linearL25=17.64 and $linearM25=18 and $linearR25=18.36 and
+    $linearL100=17.91 and $linearM100=18 and $linearR100=18.09
+  </when></award></answer>
+
+</aside>
+<aside><title>(b)</title>
+<p>
+  Observe that the region bounded by <m>f(x) = 2x+1</m> and the <m>x</m>-axis on <m>[1,4]</m> is a trapezoid. The area of a trapezoid of a trapezoid with bases <m>b_1</m> and <m>b_2</m> and height <m>h</m> is <m>\frac{1}{2}(b_1+b_2)h</m>. Find the values of <m>b_1, b_2, h</m>, and the exact area, <m>A</m>, of this trapezoid.
+</p>
+   <p>
+    <answer><mathInput name="b1"><label><m>b_1=</m></label></mathInput><mathInput name="b2"><label><m>b_2=</m></label></mathInput>
+    <award><when>$b1=3 and $b2=9</when></award>
+    <award><when>$b2=3 and $b1=9</when></award>
+    </answer>
+     and <answer><label><m>h=</m></label>3</answer>, which means that
+  </p>
+
+  <p>
+    <answer><label><m>A = </m></label>18</answer>
+  </p>
+</aside>
+
+<aside><title>(c)</title>
+  <p>
+    Based on your work in (a) and (b), complete the following sentences to summarize what we can observe as we increase the number of subintervals used in the Riemann sum.
+  </p>
+
+  <p>
+    Because <m>f(x) = 2x+1</m> is linear, each midpoint sum <m>M_n</m> results in <choiceInput name="c1" inline><shortDescription>what kind of approximation the midpoint sum is</shortDescription>
+      <choice>?</choice>
+      <choice>an underestimate of</choice>
+      <choice>the exact value of</choice>
+      <choice>an overestimate of</choice>
+    </choiceInput> the true area, <m>A</m>, bounded by <m>f(x)</m> on the interval <m>[1,4]</m>.  In addition, while each left Riemann sum <m>L_n</m> is <choiceInput name="c2" inline><shortDescription>what kind of approximation the left Riemann sum is</shortDescription>
+      <choice>?</choice>
+      <choice>an underestimate of</choice>
+      <choice>the exact value of</choice>
+      <choice>an overestimate of</choice>
+    </choiceInput> the true area, <m>A</m>, and each right Riemann sum <m>R_n</m> is <choiceInput name="c3" inline><shortDescription>what kind of approximation the right Riemann sum is</shortDescription>
+      <choice>?</choice>
+      <choice>an underestimate of</choice>
+      <choice>the exact value of</choice>
+      <choice>an overestimate of</choice>
+    </choiceInput> the true area, <m>A</m>, as we increase the value of <m>n</m>, we see that the values of both <m>L_n</m> and <m>R_n</m> <choiceInput name="c4" inline><shortDescription>behavior of the left and right sums as n increases</shortDescription>
+      <choice>?</choice>
+      <choice>stay the same distance away from</choice>
+      <choice>get closer and closer to</choice>
+      <choice>change without an obvious pattern relative to</choice>
+    </choiceInput> the true area, <m>A</m>.
+  </p>
+<p>
+  <answer><award><when>
+    $c1.selectedIndices=3 and $c2.selectedIndices=2 and $c3.selectedIndices=4 and $c4.selectedIndices=3
+  </when></award></answer>
+</p>
+
+</aside>
+<aside><title>(d)</title>
+
+  <p>
+    Use the box above the graph to update the function to be <math>f(x) = x^2 + 1</math>, still using the interval <math>[1, 4]</math>. Use the interactive to compute <math>L_n, M_n, R_n</math> for <math> n = 5, n = 25</math>, and <math>n = 100</math> for <math>f(x) = x^2 + 1</math> on <math>[1, 4]</math>.
+  </p>
+  <p>
+     The values in the table below populate automatically as you use the interactive to compute them. Click the "Check Work" button to get a score for having done so.
+</p>
+
+   <updateValue
+  triggerWhen="$fnFormula = x^2+1 and $a=1 and $b=4 and $n=5 and $ruleChoice.selectedIndex=1"
+  target="$quadraticL5"
+  newValue="$RiemannSum"
+/>
+
+  <updateValue
+  triggerWhen="$fnFormula = x^2+1 and $a=1 and $b=4 and $n=5 and $ruleChoice.selectedIndex=2"
+  target="$quadraticM5"
+  newValue="$RiemannSum"
+/>
+
+  <updateValue
+  triggerWhen="$fnFormula = x^2+1 and $a=1 and $b=4 and $n=5 and $ruleChoice.selectedIndex=3"
+  target="$quadraticR5"
+  newValue="$RiemannSum"
+/>
+
+  <updateValue
+  triggerWhen="$fnFormula = x^2+1 and $a=1 and $b=4 and $n=25 and $ruleChoice.selectedIndex=1"
+  target="$quadraticL25"
+  newValue="$RiemannSum"
+/>
+
+  <updateValue
+  triggerWhen="$fnFormula = x^2+1 and $a=1 and $b=4 and $n=25 and $ruleChoice.selectedIndex=2"
+  target="$quadraticM25"
+  newValue="$RiemannSum"
+/>
+
+  <updateValue
+  triggerWhen="$fnFormula = x^2+1 and $a=1 and $b=4 and $n=25 and $ruleChoice.selectedIndex=3"
+  target="$quadraticR25"
+  newValue="$RiemannSum"
+/>
+
+  <updateValue
+  triggerWhen="$fnFormula = x^2+1 and $a=1 and $b=4 and $n=100 and $ruleChoice.selectedIndex=1"
+  target="$quadraticL100"
+  newValue="$RiemannSum"
+/>
+
+  <updateValue
+  triggerWhen="$fnFormula = x^2+1 and $a=1 and $b=4 and $n=100 and $ruleChoice.selectedIndex=2"
+  target="$quadraticM100"
+  newValue="$RiemannSum"
+/>
+
+  <updateValue
+  triggerWhen="$fnFormula = x^2+1 and $a=1 and $b=4 and $n=100 and $ruleChoice.selectedIndex=3"
+  target="$quadraticR100"
+  newValue="$RiemannSum"
+/>
+
+  <tabular top="minor" bottom="minor" left="minor" right="minor">
+    <row bottom="minor">
+      <cell right="minor"><m>n</m></cell>
+      <cell right="minor"><math>L_n</math></cell>
+      <cell right="minor"><math>M_n</math></cell>
+      <cell right="minor"><math>R_n</math></cell>
+    </row>
+
+    <row>
+
+      <cell right="minor">5</cell>
+
+      <cell right="minor">
+        <mathInput name="quadraticL5" disabled forAnswer="$quadratictable"><label><m>L_5 =</m></label></mathInput>
+      </cell>
+
+      <cell>
+        <mathInput name="quadraticM5" disabled forAnswer="$quadratictable"><label><m>M_5=</m></label></mathInput>
+      </cell>
+
+      <cell>
+        <mathInput name="quadraticR5" disabled forAnswer="$quadratictable"><label><m>R_5=</m></label></mathInput>
+      </cell>
+
+    </row>
+
+    <row>
+
+    <cell right="minor">25</cell>
+
+      <cell right="minor">
+        <mathInput name="quadraticL25" disabled forAnswer="$quadratictable"><label><m>L_{25} =</m></label></mathInput>
+      </cell>
+
+      <cell>
+        <mathInput name="quadraticM25" disabled forAnswer="$quadratictable"><label><m>M_{25}=</m></label></mathInput>
+      </cell>
+
+      <cell>
+        <mathInput name="quadraticR25" disabled forAnswer="$quadratictable"><label><m>R_{25}=</m></label></mathInput>
+      </cell>
+
+
+  </row>
+
+  <row>
+
+      <cell right="minor"><m>100</m></cell>
+
+    <cell right="minor">
+        <mathInput name="quadraticL100" disabled forAnswer="$quadratictable"><label><m>L_{100} =</m></label></mathInput>
+      </cell>
+
+      <cell>
+        <mathInput name="quadraticM100" disabled forAnswer="$quadratictable"><label><m>M_{100}=</m></label></mathInput>
+      </cell>
+
+      <cell>
+        <mathInput name="quadraticR100" disabled forAnswer="$quadratictable"><label><m>R_{100}=</m></label></mathInput>
+      </cell>
+
+    </row>
+  </tabular>
+  <answer matchPartial name="quadratictable" colorCorrectness="false"><award><when>
+    $quadraticL5=19.68 and $quadraticM5=23.91 and $quadraticR5=28.68 and
+    $quadraticL25=23.1072 and $quadraticM25=23.9964 and $quadraticR25=24.9072 and
+    $quadraticL100=23.77545 and $quadraticM100=23.999775 and $quadraticR100=24.22545
+  </when></award></answer>
+
+
+  <p>
+    What do you conjecture is the exact area, <m>A</m> bounded by <math>f(x) = x^2 + 1</math> and the <m>x</m>-axis on <math>[1,4]</math>?
+  </p>
+  <p>
+    <answer><label><m>A = </m></label>24</answer>
+  </p>
+
+</aside>
+
+<aside><title>(e)</title>
+
+  <p>
+    Why can we not compute the exact value of the area bounded by <math>f(x) = x^2 + 1</math> and the <m>x</m>-axis on <math>[1,4]</math> using a geometric formula like we did in (b)?  Complete the following sentence to explain.
+  </p>
+  <p>
+    Since <m>f(x) = x^2 + 1</m> is <choiceInput name="e1" inline><shortDescription>type of function f of x is</shortDescription>
+      <choice>?</choice>
+      <choice>linear</choice>
+      <choice>non-linear</choice>
+    </choiceInput> and its curve does not bound a familiar geometric shape (such as a circle), there <choiceInput name="e2" inline><shortDescription>the area under f is or is not a familiar geometric shape</shortDescription>
+      <choice>?</choice>
+      <choice>is</choice>
+      <choice>is not</choice>
+    </choiceInput> a known geometric formula to find the area, and thus our best option is to <choiceInput name="e3" inline><shortDescription>best option to calculate the area under f</shortDescription>
+      <choice>?</choice>
+      <choice>estimate the area</choice>
+      <choice>determine the area exactly</choice>
+    </choiceInput>
+    by using Riemann sums.
+  </p>
+  <p>
+    <answer><award><when>$e1.selectedIndices=3 and $e2.selectedIndices=3 and $e3.selectedIndices=2</when></award></answer>
+  </p>
+
+</aside>
+</cascade>

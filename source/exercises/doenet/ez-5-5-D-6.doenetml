@@ -1,0 +1,89 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+  <setup>
+    <selectFromSequence name="a" from="3" to="6" step="1"/>
+    <selectFromSequence name="b" from="3" to="6" step="1" exclude="$a"/>
+    <selectFromSequence name="c" from="1" to="5" step="1" exclude="$a $b"/>
+
+    <number name="P">(2*$a*$c + $b - $Q*$c - 4*$R*$c^2)/(2*$c^2)</number>
+    <number name="Q">-$b/$c</number>   
+    <number name="R">($a*$c+$b)/($c^2)</number>
+
+    <mathList name="PFdecomp">$P/x $Q/x^2 $R/(x-$c)</mathList>
+   <!-- <mathList name="PFdecompEntered">$PF1 $PF2 $PF3</mathList> -->
+    
+    <function name="f" symbolic="false" >
+      ($a*x+$b)/(x^2*(x-$c))
+    </function> 
+
+    <function name="F1" symbolic="false" >
+      $P*ln(abs(x))
+    </function>   
+    <function name="F2" symbolic="false" >
+      - $Q*1/x 
+    </function>       
+    <function name="F3" symbolic="false" >
+      $R*ln(abs(x-$c))
+    </function>   
+
+    
+    <boolean name="correctPFfound">$PFfound.creditAchieved=1</boolean>
+    
+  </setup>
+
+<p>
+  Consider the indefinite integral
+  <me>
+    \int \frac{$a x + $b}{x^2(x-$c)} \, dx
+  </me>
+  We want to evaluate this integral using the method of partial fractions.
+</p>
+ 
+
+<p>
+  First, the partial fraction decomposition of the integrand has the following form:
+  <me>
+    \frac{$a x + $b}{x^2(x-$c)} = \frac{A}{x} + \frac{B}{x^2} + \frac{C}{x-$c}
+  </me>
+  Determine the values of <m>A</m>, <m>B</m>, and <m>C</m> and enter them in the spaces provided.
+</p>  
+
+<p>
+  <m>A = </m> <mathInput minWidth="40" name="Aentered"/>, <m>B = </m>  <mathInput minWidth="40" name="Bentered"/>, <m>C = </m> <mathInput minWidth="40" name="Centered"/> <answer name="PFfound" matchPartial><award><when>$Aentered = $P and $Bentered = $Q and $Centered = $R</when></award></answer>
+</p>  
+
+<p hide="$correctPFfound">
+  (<em>The next steps will appear once you have correctly completed the steps above.</em>)
+</p>
+<div hide="not $correctPFfound">
+  <p>
+    Now we are ready to evaluate the original integral, using its partial fraction decomposition.  In particular, evaluate each of the three integrals appropriately and fill in the results below to find the overall result of evaluating the original indefinite integral.
+  </p>
+  <p>
+    <m>\displaystyle \int \frac{$a x + $b}{x^2(x-$c)} \, dx =  \int \frac{$Aentered}{x} \, dx + \int \frac{$Bentered}{x^2} \, dx +  \int \frac{$Centered}{x-$c} \, dx</m>  
+  </p>   
+
+  <p>
+    <m>\displaystyle \int \frac{$a x + $b}{x^2(x-$c)} \, dx = </m>  <mathInput name="int1"/> <m> \displaystyle +  </m> <mathInput name="int2"/> <m> \displaystyle  + </m> <mathInput name="int3"/> <m> + \, C \, </m> 
+    <answer matchPartial>
+      <award>
+        <when>
+          <math>$int1</math> = $F1 and <math>$int2</math> = $F2 and <math>$int3</math> = $F3
+        </when>
+      </award>
+    </answer>
+  </p> 
+
+</div>

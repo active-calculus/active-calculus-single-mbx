@@ -1,0 +1,80 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+ <setup>
+  <selectFromSequence name = "r" from = "3" to = "5" step = "1"/>
+  <selectFromSequence name = "F0" from = "1000" to = "2000" step = "500"/>
+  <selectFromSequence name = "p" from = "25000" to = "35000" step = "5000"/>
+
+  <math name = "DE">0.01*$r*F</math>
+  <math name = "DE1">0.01*$r*F(t)</math>
+
+  <math name = "tsoln">100/$r*ln($p/$F0)</math>
+
+  <function name = "F" variable="t">$F0*e^(0.01*$r*t)</function>
+
+   
+</setup>
+
+<p>
+  In a small lake, a new type of fish is stocked, and biologists study its growth.  Suppose the following information is known:
+  <ul>
+    <li>
+      <p>
+        the initial number of fish planted in the lake is <m>$F0</m>;
+      </p>
+    </li>
+    <li>
+      <p>
+        biologists estimate that the fish population is growing at a rate of <m>$r</m> percent per year
+      </p>
+    </li>
+  </ul>
+   Let <m>F(t)</m> represent the number of fish in the lake in year <m>t</m>.
+</p>
+<p>
+  <ol marker="a.">
+    <li>
+      <p>  
+        Fill in the blanks below to state an initial value problem that the function <m>F(t)</m> satisfies.
+      </p>  
+      <p>
+        <m>\frac{dF}{dt} = </m><mathInput minWidth="75" name="deEntered"/>, <m>F(0) = </m><mathInput minWidth="40" name="F0Entered"/>
+        <answer simplifyOnCompare><award><when> 
+          ($deEntered=$DE and $F0Entered=$F0) or ($deEntered=$DE1 and $F0Entered=$F0) 
+        </when></award></answer> 
+      </p>
+    </li>
+    <li>
+      <p>
+        Solve the initial value problem you determined in (a).
+      </p>  
+      
+      <p>
+        <m>F(t) = </m><mathInput minWidth="70" name="FEntered"/>
+          <answer><award><when> ($FEntered=$F) 
+          </when></award></answer> 
+      </p>
+    </li>
+    <li>
+      <p>
+        About how many years will it take for there to be <m>$p</m> fish in the lake?  Report your answer to an accuracy of at least <m>0.01</m>.
+      </p>  
+      
+      <p>
+        <m>t =</m><mathInput name="tEntered" minWidth="60"/> years <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute simplifyOnCompare><award><when>$tEntered=$tsoln</when></award></answer>
+      </p>
+    </li>
+  </ol>
+</p>

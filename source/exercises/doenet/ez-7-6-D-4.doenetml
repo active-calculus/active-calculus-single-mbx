@@ -1,0 +1,152 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+
+  <selectFromSequence name="k" from="0.0009" to="0.0011" step="0.0001"/>
+  <selectFromSequence name="N" from="250" to="350" step="50"/>  
+  <selectFromSequence name="W0" from="20" to="30" step="5"/> 
+  <selectFromSequence name="H" from="15" to="25" step="5" exclude="$W0"/> 
+ 
+  <function name="DEQ" variable="W">$k*W*($N - W)</function>
+
+  <math name = "DE2">$k*W*($N-W) - $H</math>
+  <math name = "DE2a">$k*W(t)*($N-W(t)) - $H</math>
+  
+  <mathList name="eqSols">0 $N</mathList>
+  <function name="sol" variable="t">$N/( 1+($N-$W0)/$W0*e^(-$k*$N*t) )</function>
+
+  <mathList name="eqSols2">($k*$N + sqrt($k^2*$N^2-4*$k*$H))/(2*$k) ($k*$N - sqrt($k^2*$N^2-4*$k*$H))/(2*$k)</mathList>
+  <math name="stableEq2">($k*$N + sqrt($k^2*$N^2-4*$k*$H))/(2*$k)</math>
+  <math name="unstableEq2">($k*$N - sqrt($k^2*$N^2-4*$k*$H))/(2*$k)</math>
+
+  <math name="upper"><round numDigits="5">$stableEq2</round></math>
+  <math name="lower"><round numDigits="4">$unstableEq2</round></math>
+
+  <math name="fastP" simplify>$N/2</math>
+  <math name="fastT">-1/($k*$N)*ln($W0/($N-$W0))</math>
+
+  
+</setup>
+
+<p>
+  In a large remote lake, a population of walleye grows according to the logistic model.  Biologists estimate that based on initial stocking data and annual surveys, the total number of walleye in the lake (in thousands), <m>W(t)</m>, satisfies
+  <me>
+    \frac{dW}{dt} = $k W($N - W), \ \ W(0) = $W0
+  </me>
+</p>
+<p>
+  <ol marker="a.">
+    <li>
+      <p>  
+        Determine the lake's carrying capacity and solve the given IVP to find a formula for the number of walleye (in thousands) in an arbitrary year, <m>t</m>.
+      </p>  
+      <p>
+        The carrying capacity is <m>N = </m><mathInput name="enteredCC"/> thousand walleye <answer><award><when>$enteredCC=$N</when></award></answer>.
+      </p>
+      <p> 
+        The number of walleye (in thousands) in year <m>t</m> is <m>W(t) = </m><mathInput name="enteredW"/><answer><award><when>$enteredW=$sol</when></award></answer>.
+      </p>
+    </li>
+    <li>
+      <p>
+        The long-term behavior of the walleye population is given by 
+      </p>  
+          
+      <p>
+        <m>\displaystyle \lim_{t \to \infty} W(t) = </m><mathInput minWidth="70" name="WLimitEntered"/>
+          <answer><award><when> 
+            $WLimitEntered=$N 
+          </when></award></answer> 
+      </p>
+    </li>
+    <li>
+      <p>
+        Now suppose that humans build a fishing lodge on the remote lake, and fishermen start harvesting <m>$H</m> thousand walleye from the lake each year.  State an updated differential equation that the walleye population satisfies.
+      </p>  
+      <p>
+        <m>\frac{dW}{dt} = </m><mathInput minWidth="120" name="deEntered"/>
+        <answer simplifyOnCompare><award><when> 
+          $deEntered=$DE2 or $deEntered=$DE2a
+        </when></award></answer> 
+      </p>
+    </li>
+    <li>
+      <p>
+        Notice that like the original logistic differential equation, your updated differential equation in (c) is an autonomous equation where the function on the right is a quadratic function of <m>W</m>, now with the form 
+        <me>
+          \frac{dW}{dt} = kW(N-W) - H = -kW^2 + kNW - H
+        </me>
+        where <m>k</m>, <m>N</m>, and <m>H</m> are known constants.
+      </p>
+      <p>
+        Find all equilibrium solutions to the updated differential equation that includes fish being harvested.  
+      </p>
+      <p>
+        <alert>Note</alert>: You can do this algebraically, or you can use technology to investigate the function <m>f(x) = -kx^2 + kNx - H</m>.  
+      </p>
+      <p>
+        Enter the equilibrium solutions as a list separated with commas if there's more than one; enter <q>none</q> if there are none.  Report solutions accurate to within <m>0.01</m>.
+      </p>
+      <p>
+        The equilibrium solutions are <m>W = </m><mathInput minWidth="70" name="eqSols2Entered"/>
+          <answer unorderedCompare allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when> 
+            $eqSols2Entered=$eqSols2 
+          </when></award></answer> 
+      </p>
+    </li>
+    <li>
+      <p>
+        Finally, analyze the long-term behavior of the walleye population in the presence of harvesting. 
+      </p>
+      <p>
+        If <m>W(0)</m> satisfies <m>$lower < W(0) < $upper</m>, then 
+      </p>
+      <p>
+        <m>\displaystyle \lim_{t \to \infty} W(t) = </m><mathInput minWidth="70" name="W2LimitEntered"/> thousand walleye
+          <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when> 
+            $W2LimitEntered=$stableEq2 
+          </when></award></answer> 
+      </p>
+      <p>
+        If <m>W(0)</m> satisfies <m>0 < W(0) < $lower</m>, then <m>W(t)</m> will
+          <answer>
+            <choiceInput name="a3">
+              <choice>stay constant</choice>
+              <choice>increase without bound</choice>
+              <choice credit="1">decrease and eventually go extinct</choice>
+            </choiceInput>
+          </answer>
+      </p>
+      <p>
+        Our work shows that if a reasonable amount of harvesting is introduced, the population's carrying capacity will <choiceInput inline name="a4">
+          <choice>?</choice>
+          <choice>be larger</choice>
+          <choice>be smaller</choice>
+          <choice>stay the same</choice>
+        </choiceInput>, plus there is anoter positive equilibrium for which an initial population less than that equilibrium will <choiceInput inline name="a5">
+          <choice>?</choice>
+          <choice>grow toward the stable equilibrium</choice>
+          <choice>decrease and eventually go extinct</choice>
+          <choice>stay constant</choice>
+        </choiceInput>.
+      </p>
+      <p>
+        <answer><award><when>$a4.selectedIndices=3 and $a5.selectedIndices=3</when></award></answer>
+      </p>
+          
+
+    </li>
+  </ol>
+</p>

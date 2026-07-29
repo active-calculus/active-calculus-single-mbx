@@ -1,0 +1,74 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="a" from="2" to="5" step="1"/>
+  <selectFromSequence name="b" from="2" to="4" step="1" exclude="$a"/>
+  <function name="f">$a*ln(x)</function>
+  <number name="L3">$b*($$f($b) + $$f(2*$b) + $$f(3*$b))</number>
+  <number name="R3">$b*($$f(2*$b) + $$f(3*$b) + $$f(4*$b))</number>
+</setup>
+
+<p>
+  This exercise asks you to develop the structure of <m>L_3</m> and <m>R_3</m>, the left and right Riemann sums with <m>3</m> subintervals, for <m>f(x) = $f</m> on the interval <m>[$b, <math simplify>4*$b</math>]</m>.
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        For the given information, fill in the following blanks to identify the values of <m>\Delta x</m> and <m>x_i</m> for <m>i = 0</m> to <m>i = 3</m>.
+      </p>
+      <p>
+        <m>\Delta x = </m><answer>$b</answer>
+      </p>
+      <p>
+        <m>x_0 = </m><answer>$b</answer>, <m>x_1 = </m><answer>2*$b</answer>, <m>x_2 = </m><answer>3*$b</answer>, <m>x_3 = </m><answer>4*$b</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Now use your work in (a) to state the general structure of <m>L_3</m> and <m>R_3</m> in terms of the function <m>f</m> by filling in the blanks below.  When you do so, order the function evaluations from left to right:  for instance, if you need to include both <m>f($b)</m> and <m>f(<math simplify>$b+1</math>)</m> in your computation, you'd put <m>f($b)</m> in the first term in the sum and <m>f(<math simplify>$b+1</math>)</m> in the second term.
+      </p>
+      <p sectionWideCheckWork colorAnswersSeparately>
+        <m>L_3 = f\bigg(</m><answer><mathInput minWidth="20"></mathInput>$b</answer><m>\bigg) \cdot </m><answer><mathInput minWidth="20"></mathInput>$b</answer><m> + f\bigg(</m><answer><mathInput minWidth="20"></mathInput>2*$b</answer><m>\bigg) \cdot </m><answer><mathInput minWidth="20"></mathInput>$b</answer><m> + f\bigg(</m><answer><mathInput minWidth="20"></mathInput>3*$b</answer><m>\bigg) \cdot </m><answer><mathInput minWidth="20"></mathInput>$b</answer>
+      </p>
+      <p sectionWideCheckWork colorAnswersSeparately>
+        <m>R_3 = f\bigg(</m><answer><mathInput minWidth="20"></mathInput>2$b</answer><m>\bigg) \cdot </m><answer><mathInput minWidth="20"></mathInput>$b</answer><m> + f\bigg(</m><answer><mathInput minWidth="20"></mathInput>3*$b</answer><m>\bigg) \cdot </m><answer><mathInput minWidth="20"></mathInput>$b</answer><m> + f\bigg(</m><answer><mathInput minWidth="20"></mathInput>4*$b</answer><m>\bigg) \cdot </m><answer><mathInput minWidth="20"/>$b</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Finally, use the fact that <m>f(x) = $f</m> to update your Riemann sums using the rule for the function, entering exact function values.  For example, if one of the terms in (b) was <q><m>f(3) \cdot 1.5</m></q>, below you'd now enter  <q><m>$$f(3) \cdot 1.5</m></q>.
+      </p>
+      <p sectionWideCheckWork colorAnswersSeparately>
+        <m>L_3 = </m><answer symbolicEquality>$$f($b)</answer><m> \cdot </m><answer><mathInput minWidth="20"/>$b</answer><m> + </m><answer symbolicEquality>$$f(2*$b)</answer><m> \cdot </m><answer><mathInput minWidth="20"/>$b</answer><m> + </m><answer symbolicEquality>$$f(3*$b)</answer><m> \cdot </m><answer><mathInput minWidth="20"/>$b</answer>
+      </p>
+      <p sectionWideCheckWork colorAnswersSeparately>
+        <m>R_3 = </m><answer symbolicEquality>$$f(2*$b)</answer><m> \cdot </m><answer><mathInput minWidth="20"/>$b</answer><m> + </m><answer symbolicEquality>$$f(3*$b)</answer><m> \cdot </m><answer><mathInput minWidth="20"/>$b</answer><m> + </m><answer symbolicEquality>$$f(4*$b)</answer><m> \cdot </m><answer><mathInput minWidth="20"/>$b</answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Finally, use a computational device to numerically evaluate the Riemann sums in (c) and report them to at least 2 decimal places of accuracy in the blanks below.
+      </p>
+      <p>
+        <m>L_3 = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$L3</answer>
+      </p>
+      <p>
+        <m>R_3 = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$R3</answer>
+      </p>
+    </li>
+  </ol>
+</p>  

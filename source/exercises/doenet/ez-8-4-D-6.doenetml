@@ -1,0 +1,95 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="a" from="2" to="4" step="1"/>
+  <selectFromSequence name="k" from="2" to="5" step="1" exclude="$a"/>
+
+  <function name="fgenTerm" variables="n">n(x-$a)^n/$k^n</function>
+</setup>
+
+<p>
+  In this exercise, we use the ratio test to determine the open interval of convergence for two different series, and report the results in interval notation.
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Consider a function <m>f</m> whose Taylor series is
+        <md>
+          <mrow>
+          T_f(x) \amp= \sum_{n=1}^{\infty} \frac{n(x-$a)^n}{$k^n}
+          </mrow>
+          <mrow>
+            \amp= \frac{x-$a}{$k} + \frac{2(x-$a)^2}{$k^2} + \frac{3(x-$a)^3}{$k^3} + \cdots
+          </mrow>
+        </md>
+        Let <m>r_n(x)</m> be the ratio of the <m>(n+1)^{\text{st}}</m> term to the <m>n^{\text{th}} </m> term. Enter the simplest expression you can for <m>r_n(x)</m>, making sure your answer is in the form of a single fraction.
+      </p>
+      <p>
+        <answer name="fratio" symbolicEquality simplifyOnCompare="normalizeOrder"><label><m>r_n(x)=</m></label>(n+1)(x-$a)/($k*n)</answer>
+      </p>
+      <!-- <feedback condition="$fratio = <math expandonCompare>(n+1)(x-$a)/($k*n)</math> and $fratio.responseHasBeenSubmitted and $fratio.creditAchieved!=1">You are close, but enter your answer as a single fraction in the simplest terms, and do not multiply terms out. </feedback> had trouble getting this to work, gave up for now. -->
+      <p>
+        Let <m>\displaystyle r(x)=\lim_{n\to\infty}r_n(x)</m>.  Evaluate this limit.
+      </p>
+      <p>
+        <answer symbolicEquality simplifyOnCompare="full"><label><m>r(x)=</m></label>(x-$a)/($k)</answer>
+      </p>
+      <p>
+        <answer><label>The open interval of convergence is: </label><interval>(-$k+$a, $k+$a)</interval></answer>
+      </p>
+      <p>
+        <alert>Reminder:</alert> if the interval has form <m>a \lt x \lt b</m>, enter <q><m>(a,b)</m></q>.
+      </p>
+    </li>
+    <li>
+      <p>
+        For a function <m>g</m> whose Taylor series is
+        <md>
+          <mrow>
+          T_g(x) \amp= \sum_{n=1}^{\infty} \frac{$a^{2n}(x+$k)^n}{n^2}
+          </mrow>
+          <mrow>
+            \amp= $a^2(x+$k) + \frac{$a^4(x+$k)^2}{4} + \frac{$a^6(x+$k)^3}{9} + \cdots
+            </mrow>
+        </md>
+        Let <m>r_n(x)</m> be the ratio of the <m>(n+1)^{\text{st}}</m> term to the <m>n^{\text{th}} </m> term. Enter the simplest expression you can for <m>r_n(x)</m>, making sure your answer is in the form of a single fraction.
+      </p>
+      <p>
+        <answer symbolicEquality simplifyOnCompare="normalizeOrder"><label><m>r_n(x)=</m></label>
+        <award>$a^2*n^2(x+$k)/(n+1)^2</award>
+        <award><number>$a^2</number>*n^2(x+$k)/(n+1)^2</award></answer>
+      </p>
+      <p>
+        Let <m>\displaystyle r(x)=\lim_{n\to\infty}r_n(x)</m>.  Evaluate this limit.
+      </p>
+      <p>
+        <m>r(x)=</m>
+        <answer  symbolicEquality simplifyOnCompare="full">
+          <mathInput name="radiusx2"></mathInput>
+          <award>
+            <when>
+              $radiusx2 = $a^2*(x+$k) or $radiusx2 = $a^2*x+$a^2*$k
+            </when>
+          </award>
+        </answer>
+      </p>
+      <p>
+        <answer allowedErrorInNumbers=".001" allowedErrorIsAbsolute><label>The open interval of convergence is: </label><interval>(-$k-1/$a^2, -$k+1/$a^2)</interval></answer>
+      </p>
+    </li>
+  </ol>
+</p> 

@@ -1,0 +1,221 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- a first draft of this preview was written by Siddhi Wakdikar after the 2024 Doenet workshop -->
+
+<setup>
+  <boolean name="g1Found">$a1.creditAchieved=1</boolean>
+
+  <function name = "g2ya" variable="y">1/y</function>
+  <function name = "g2ta" variable="t">t-1</function>
+
+  <boolean name="g2Found">$a2.creditAchieved=1</boolean>
+
+  <function name = "g3ya" variable="y">1</function>
+  <function name = "g3ta" variable="t">t+1</function>
+
+  <boolean name="g3Found">$a3.creditAchieved=1</boolean>
+  <boolean name="g4Found">$a4.creditAchieved=1</boolean>
+
+  <function name = "f">1/2*x^2+C</function>
+
+</setup>
+
+  <p>
+    In this preview activity,
+    we explore whether certain differential equations are separable or not,
+    and then revisit some key ideas from earlier work in integral calculus.
+  </p>
+
+  <p>
+    <ol marker="a.">
+      <li>
+        <p>
+          For each of the following differential equations, determine whether the equation is separable or not separable.  If the equation is separable, you'll be prompted to write the equation in the revised form <m>g(y) \frac{dy}{dt} = h(t)</m> by completing the input box for <m>g(y)</m> on the left, and <m>h(t)</m> on the right.
+        </p>
+
+        <p>
+          <ol marker="i.">
+            <li>
+              <p>
+                <m>\displaystyle \frac{dy}{dt} = -3y</m>.
+
+              <answer name="a1">
+                <choiceInput>
+                  <shortDescription>separable or not separable</shortDescription>
+                  <choice name = "choice1" credit = "1">separable
+                  </choice>
+                <choice>not separable</choice>
+              </choiceInput>
+              </answer>
+              </p>
+              <div hide="not $g1Found">
+                <p>
+                  Write the equation in revised form, <m>g(y) \frac{dy}{dt} = h(t)</m>, to separate the variables.
+                </p>
+                <p>
+                  <mathInput name="g1yEntered" minWidth="40"/><m>\frac{dy}{dt} = </m><mathInput minWidth="40" name="g1tEntered"/> <answer>
+                    <award>
+                      <when>
+                        <derivative derivVariables="t">$g1yEntered</derivative> = 0 and <derivative derivVariables="y">$g1tEntered</derivative> = 0 and $g1tEntered/$g1yEntered=-3y
+                      </when>
+                      <!-- <when> ($g1yEntered=$g1ya and $g1tEntered=$g1ta) or ($g1yEntered=$g1yb and $g1tEntered=$g1tb) or ($g1yEntered=$g1yc and $g1tEntered=$g1tc)
+                      </when> -->
+                    </award></answer>
+                </p>
+              </div>
+            </li>
+
+            <li>
+              <p>
+                <m>\displaystyle \frac{dy}{dt} = ty - y</m>.
+              <answer name="a2">
+                <choiceInput>
+                  <shortDescription>separable or not separable</shortDescription>
+                  <choice name = "choice2" credit = "1">separable
+                  </choice>
+                <choice>not separable</choice>
+              </choiceInput>
+              </answer>
+              </p>
+
+              <div hide="not $g2Found">
+                <p>
+                  Write the equation in revised form, <m>g(y) \frac{dy}{dt} = h(t)</m>, to separate the variables.
+                </p>
+                <p>
+                  <mathInput minWidth="40" name="g2yEntered"/><m>\frac{dy}{dt} = </m><mathInput minWidth="40" name="g2tEntered"/> <answer>
+                    <award>
+                      <when>
+                        <derivative derivVariables="t">$g2yEntered</derivative> = 0 and <derivative derivVariables="y">$g2tEntered</derivative> = 0 and $g2tEntered/$g2yEntered=ty-y
+                        <!-- ($g2yEntered=$g2ya and $g2tEntered=$g2ta)  -->
+                      </when>
+                    </award></answer>
+                </p>
+              </div>
+            </li>
+
+            <li>
+              <p>
+                <m>\displaystyle \frac{dy}{dt} = t + 1</m>.
+
+              <answer name="a3">
+                <choiceInput>
+                  <shortDescription>separable or not separable</shortDescription>
+                  <choice name = "choice3" credit = "1">separable</choice>
+                  <choice>not separable</choice>
+              </choiceInput>
+              </answer>
+              </p>
+
+              <div hide="not $g3Found">
+                <p>
+                  Write the equation in revised form, <m>g(y) \frac{dy}{dt} = h(t)</m>, to separate the variables.
+                </p>
+                <p>
+                  <mathInput minWidth="40" name="g3yEntered"/><m>\frac{dy}{dt} = </m><mathInput minWidth="40" name="g3tEntered"/> <answer>
+                    <award>
+                      <when> ($g3yEntered=$g3ya and $g3tEntered=$g3ta)
+                      </when>
+                    </award></answer>
+                </p>
+              </div>
+            </li>
+
+            <li>
+              <p>
+                <m>\displaystyle \frac{dy}{dt} = t^2 - y^2</m>.
+
+              <answer name="a4">
+                <choiceInput>
+                  <shortDescription>separable or not separable</shortDescription>
+                  <choice>separable</choice>
+                  <choice name = "choice3" credit = "1">not separable</choice>
+              </choiceInput>
+              </answer>
+              </p>
+
+              <div hide="not $g4Found">
+                <p>
+                  The equation <m>\displaystyle \frac{dy}{dt} = t^2 - y^2</m> is not separable since there is no way to write <m>t^2 - y^2</m> as a product of one expression only involving <m>t</m> and another expression only involving <m>y</m>.
+                </p>
+              </div>
+            </li>
+          </ol>
+        </p>
+
+      </li>
+
+      <li>
+        <p>
+          Complete the following sentence to explain why any autonomous differential equation is guaranteed to be separable.
+        </p>
+        <p>
+          Given an autonomous differential equation of form <m>\displaystyle \frac{dy}{dt} = f(y)</m>, the equation will be separable because we can always rewrite it in the form
+        </p>
+        <p>
+          <answer><choiceInput>
+            <shortDescription>3 possible rearrangement of the differential equation</shortDescription>
+            <choice><m>\frac{dy}{dt} - f(y) = 0</m></choice>
+            <choice credit="1"><m>\frac{1}{f(y)} \frac{dy}{dt} = 1</m></choice>
+            <choice><m>f(y) \frac{dy}{dt} = 1</m></choice>
+          </choiceInput></answer>
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Complete the following sentence to explain why we include the term
+          <q><m>+C</m></q> in the expression
+          <me>
+            \int x \,dx =
+            \frac{x^2}{2} + C?
+          </me>
+        </p>
+        <p>
+          Because the derivative of a constant is <choiceInput inline name="c1">
+            <shortDescription>0, 1, or undefined</shortDescription>
+            <choice>?</choice>
+            <choice>0</choice>
+            <choice>1</choice>
+            <choice>undefined</choice>
+          </choiceInput>, any choice of that constant in the expression <m>\frac{x^2}{2} + C</m> will make that expression <choiceInput inline name="c2">
+            <shortDescription>derivative, antiderivative, or equal</shortDescription>
+            <choice>?</choice>
+            <choice>a derivative of</choice>
+            <choice>an antiderivative of</choice>
+            <choice>equal to</choice>
+          </choiceInput> the function <m>x</m>.
+        </p>
+        <p>
+          <answer><award><when>
+            $c1.selectedIndices=2 and $c2.selectedIndices=3
+          </when></award></answer>
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Suppose we know that a certain function <m>f</m> satisfies the equation
+          <me>
+            \int f'(x) \, dx = \int x \, dx.
+          </me>
+          State the most general formula you can find for the function <m>f(x)</m>; if an arbitary constant should be included, use <q><m>C</m></q>.
+        </p>
+        <p>
+          <answer name="fEntered"><label><m>f(x) = </m></label>$f</answer>
+        </p>
+      </li>
+    </ol>
+  </p>

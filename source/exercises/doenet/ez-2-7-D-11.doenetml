@@ -1,0 +1,176 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2026                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+ 
+<!-- this exercise is based on an earlier on in this section developed by Spencer Bagley and updated with considerable input from Chrissy Safranski -->
+
+<setup>
+  <selectFromSequence name="a" from="3" to="5" step="1"/>
+  <selectFromSequence name="b" from="3" to="5" step="1" exclude="$a"/>
+    <curve name="ellipse" variable="t">
+        ( $a*(sqrt(10)*cos(t)/5 - sqrt(6)*sin(t)/3), $b*(sqrt(10)*cos(t)/5 + sqrt(6)*sin(t)/3) )
+    </curve>
+    <point name="P" styleNumber="2" showCoordsWhenDragging="false">
+        <constrainTo>$ellipse</constrainTo>
+        <label>($P.x, $P.y)</label>
+    </point>
+    <number name="m">(-2/$a^2*$P.x-1/(2*$a*$b)*$P.y)/(2/$b^2*$P.y+1/(2*$a*$b)*$P.x)</number>
+</setup>
+<p>
+    In the figure below, there is a plot of the ellipse 
+  <me>
+    \frac{x^2}{<math simplify>$a^2</math>} + \frac{xy}{<math simplify>2*$a*$b</math>}+\frac{y^2}{<math simplify>$b^2</math>} = 1
+  </me> 
+  together with a moveable point that you can drag along the ellipse. 
+</p>
+<graph
+    fixAxes="true" showNavigation="false"
+    xmin="-6" xmax="6"
+    ymin="-6" ymax="6" >
+    <shortDescription>
+        An ellipse with a point that can be dragged along the curve.
+    </shortDescription>
+    <description>
+        The ellipse 
+  <me>
+    \frac{x^2}{$a^2} + \frac{xy}{<math simplify>2*$a*$b</math>}+\frac{y^2}{$b^2} = 1
+  </me> 
+  together with a moveable point that you can drag along the ellipse. 
+    </description>
+    $ellipse
+    $P
+    <line name="tanline" through="$P" slope="$m" styleNumber="2" lineStyle="dashed"/>
+
+    <group hide="!$showhoriz" styleNumber="5" fixed>
+      <point name="horizpoint1">($a/sqrt(15),-4*$b/$a)<constrainTo>$ellipse</constrainTo></point>
+      <point name="horizpoint2">(-$a/sqrt(15),4*$b/$a)<constrainTo>$ellipse</constrainTo></point>
+      <line through="$horizpoint1" slope="0" lineStyle="dashed"/>
+      <line through="$horizpoint2" slope="0" lineStyle="dashed"/>
+    </group>
+    <group hide="!$showvert" styleNumber="5" fixed>
+      <point name="vertpoint1">(4*$a/sqrt(15),-$b/sqrt(15))<constrainTo>$ellipse</constrainTo></point>
+      <point name="vertpoint2">(-4*$a/sqrt(15),$b/sqrt(15))<constrainTo>$ellipse</constrainTo></point>
+      <line through="$vertpoint1" slope="10000" lineStyle="dashed"/>
+      <line through="$vertpoint2" slope="10000" lineStyle="dashed"/>
+    </group>
+    
+  <!-- 
+    <lineSegment 
+        endpoints="$r-0.5*$rP $r+0.5*$rP"
+        styleNumber="2">
+    </lineSegment> 
+  -->
+    <label fixed
+        anchor="(1, -5)"
+        positionFromAnchor="right">Slope of tangent line = $m
+    </label>
+
+</graph>
+
+<p>
+  Drag the movable point to a location where the tangent line is approximately horizontal. <answer name="horiztangraph" disableAfterCorrect><award><when>abs($m) < 0.02</when></award></answer>
+    <booleanInput hide="!$horiztangraph.creditAchieved=1" name="showhoriz">
+      <label>Show points</label>
+    </booleanInput>
+</p>
+
+<p>
+  Drag the movable point to a location where the tangent line is approximately vertical. <answer name="verttangraph" disableAfterCorrect><award><when>abs($m) > 50</when></award></answer> 
+  <booleanInput hide="!$verttangraph.creditAchieved=1" name="showvert">
+      <label>Show points</label>
+    </booleanInput>
+</p>
+
+<p>
+  We are interested in finding the precise locations on the ellipse where the tangent line is either horizontal or vertical.  While we can estimate those from the graph, we need to use algebraic reasoning to achieve desired accuracy.
+</p>
+<p>
+  If we differentiate implicitly and find <m>\frac{dy}{dx}</m>, it turns out that 
+  <me>
+    \frac{dy}{dx}=\frac{ -\frac{2}{<math simplify>$a^2</math>}x - \frac{1}{<math simplify>2*$a*$b</math>}y }{  \frac{1}{<math simplify>2*$a*$b</math>}x + \frac{2}{<math simplify>$b^2</math>}y}
+  </me>
+</p>
+
+<p>
+    <ol marker="a">
+        <li>
+          <p>
+            To find a point on the ellipse where the tangent line is horizontal, the first condition that must hold is that <m>\frac{dy}{dx} = 0</m>.  Use the provided equation for <m>\frac{dy}{dx}</m> above to find an equation involving <m>x</m> and <m>y</m> that must hold if the tangent line is horizontal.
+          </p>
+          
+          <answer>
+            <mathInput name="xySlope0">
+                <label>The equation that must hold is</label>
+            </mathInput>
+            <award>
+                -2/$a^2*x-1/(2*$a*$b)*y = 0
+              <!-- i.e., y = -4*$b/$a x -->
+            </award>
+          </answer>
+
+          <p>
+            In addition to the equation you just found that makes that <m>\frac{dy}{dx} = 0</m>, for the point to lie on the ellipse, the point must also satisfy the equation of the ellipse: 
+  <me>
+    \frac{x^2}{<math simplify>$a^2</math>} + \frac{xy}{<math simplify>2*$a*$b</math>}+\frac{y^2}{<math simplify>$b^2</math>} = 1
+  </me>
+            Solve your most recent equation for <m>y</m> in terms of <m>x</m>, substitute the result into the equation for the ellipse, and thus find a value of <m>x</m> where the tangent line to the ellipse is horizontal.  Report your result to an accuracy of at least 4 decimal places.       
+          </p>
+          <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute>
+            <mathInput name="Slope0xValue">
+                <label>An <m>x</m>-value where the tangent line is horizontal is <m>x = </m></label>
+            </mathInput>
+            <award>
+                <when>
+                  $Slope0xValue = $a/sqrt(15) or $Slope0xValue = -$a/sqrt(15)
+                </when>
+            </award>
+          </answer>
+
+          
+        </li>
+        <li>
+          <p>
+            To find a point on the ellipse where the tangent line is vertical, the first condition that must hold is that <m>\frac{dy}{dx}</m> is undefined.  Use the provided equation for <m>\frac{dy}{dx}</m> above to find an equation involving <m>x</m> and <m>y</m> that must hold if the tangent line is vertical.
+          </p>
+          
+          <answer>
+            <mathInput name="xySlopeInf">
+                <label>The equation that must hold is</label>
+            </mathInput>
+            <award>
+                1/(2*$a*$b)*x+2/($b^2)*y = 0
+              <!-- i.e., y = -4*$b/$a x -->
+            </award>
+          </answer>
+
+          <p>
+            In addition to the equation you just found that makes that <m>\frac{dy}{dx}</m> undefined, for the point to lie on the ellipse, the point must also satisfy the equation of the ellipse: 
+  <me>
+    \frac{x^2}{<math simplify>$a^2</math>} + \frac{xy}{<math simplify>2*$a*$b</math>}+\frac{y^2}{<math simplify>$b^2</math>} = 1
+  </me> 
+            Solve your most recent equation for <m>y</m> in terms of <m>x</m>, substitute the result into the equation for the ellipse, and thus find a value of <m>x</m> where the tangent line to the ellipse is vertical.  Report your result to an accuracy of at least 4 decimal places.       
+          </p>
+          <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute>
+            <mathInput name="SlopeInfxValue">
+                <label>An <m>x</m>-value where the tangent line is vertical is <m>x = </m></label>
+            </mathInput>
+            <award>
+                <when>
+                  $SlopeInfxValue = 4*$a/sqrt(15) or $SlopeInfxValue = -4*$a/sqrt(15)
+                </when>
+            </award>
+          </answer>
+        </li>
+
+    </ol>
+</p>

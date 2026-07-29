@@ -1,0 +1,99 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+ 
+  <setup>
+  <selectFromSequence name = "k" from = "2" to = "5" step = "1"/>
+  <selectFromSequence name = "c" from = "2" to = "5" step = "1" exclude="$k"/>
+
+  <function name = "g1" variable="y">1/y</function>
+  <function name = "h1" variable="t">t^$k</function>
+
+  <function name = "G" variable="y">ln(abs(y))</function>
+  <function name = "H" variable="t">1/($k+1)t^($k+1) + C</function>
+  <function name = "soln" variable="t">-$c*e^(1/($k+1)t^($k+1))</function>
+
+    <boolean name="missingC">
+      $solnEntered != $soln and (<derivative variable="t">$solnEntered</derivative> = t^$k*$solnEntered)
+    </boolean>
+   
+</setup>
+
+<!-- 
+
+<div hide="not $g1Found">
+                <p>
+                  Write the equation in revised form, <m>g(y) \frac{dy}{dt} = h(t)</m>, to separate the variables.
+                </p>
+                <p>
+                  <mathInput name="g1yEntered" minWidth="40"/><m>\frac{dy}{dt} = </m><mathInput minWidth="40" name="g1tEntered"/> <answer>
+                    <award>
+                      <when>
+                        <derivative derivVariables="t">$g1yEntered</derivative> = 0 and <derivative derivVariables="y">$g1tEntered</derivative> = 0 and $g1tEntered/$g1yEntered=-3y
+                      </when>
+                    </award></answer>
+                </p>
+              </div>
+-->
+
+<p>
+  Consider the separable differential equation that's part of the following initial value problem:
+  <me>
+    \frac{dy}{dt} = t^$k y, \ \ y(0) = -$c
+  </me>
+  Complete the following steps to solve the IVP.
+</p>
+<p>
+  <ol marker="a.">
+    <li>
+      <p>  
+        First, separate the variables and fill in the blanks below to rewrite the equation in the form <m>g(y) \frac{dy}{dt} = h(t)</m>.
+      </p>  
+      <p>
+        <mathInput minWidth="40" name="gEntered"> <shortDescription>a function of y only</shortDescription> </mathInput><m>\frac{dy}{dt} = </m><mathInput minWidth="40" name="hEntered"><shortDescription>a function of t only</shortDescription> </mathInput> 
+        <answer>
+          <award>
+             <when> 
+                <derivative derivVariables="t">$gEntered</derivative> = 0 and <derivative derivVariables="y">$hEntered</derivative> = 0 and $hEntered/$gEntered=t^$k y
+             </when>
+          </award>
+        </answer> 
+      </p>
+    </li>
+    <li>
+      <p>
+        Next, integrate both sides with respect to <m>t</m>.  Write the next step that results without integral signs, and be sure to include the arbitrary constant <m>+C</m> on the right.
+      </p>  
+      
+      <p>
+        <mathInput minWidth="70" name="GEntered"><shortDescription>an antiderivative of the function of y only</shortDescription> </mathInput><m> = </m><mathInput minWidth="70" name="HEntered"><shortDescription>an antiderivative of the function of t only</shortDescription> </mathInput> <answer simplifyOnCompare symbolicEquality>
+                          <award>
+                            <when> ($GEntered=$G and $HEntered=$H) 
+                            </when>
+                          </award></answer> 
+      </p>
+    </li>
+    <li>
+      <p>
+        Finally, solve your most recent equation for <m>y</m> and find the value of the constant that makes the function the unique solution to the original initial value problem.
+      </p>  
+      
+      <p>
+        <answer simplifyOnCompare symbolicEquality name="solnEntered"><label><m>y(t) =</m></label>$soln</answer>
+      </p>
+      <feedback condition="$missingC">
+        You have the right structure of the solution to the differential equation, but not the correct constant that comes from the initial condition.
+      </feedback>
+    </li>
+  </ol>
+</p>

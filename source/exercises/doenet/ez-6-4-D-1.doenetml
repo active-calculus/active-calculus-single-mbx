@@ -1,0 +1,102 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="m" from="15" to="25" step="5"/>
+  <selectFromSequence name="r" from="0.25" to="0.75" step="0.25"/>
+  <selectFromSequence name="p" from="12" to="18" step="2"/>
+
+  <number name="a">9.81</number>
+  
+  <function name="M" variable="h">$m + $p*$r - $r*h</function>
+  <function name="f" variable="h">$a*($m + $p*$r - $r*h)</function>
+  
+  <function name="F" variable="h">$a*($m + $p*$r)*h - $a*$r/2*h^2</function>
+
+  <math name="work" simplify>$$F($p)-$$F(0)</math>
+  <math name="avgForce" simplify>1/($p)*($$F($p)-$$F(0))</math>
+</setup>  
+  
+    <p>
+      An object with a mass of <m>$m</m> kg is being lifted vertically from the ground to an elevated platform of height <m>$p</m> meters using a rope whose mass is <m>$r</m> kg per meter.  Assume that the rope is also <m>$p</m> meters long.
+    </p>
+
+    <p>
+      <ol marker="a.">
+        <li>
+          <p>
+            Find a formula for a function <m>M(h)</m> that represents the combined mass of the object and the rope when the object is <m>h</m> meters above the ground.
+          </p>
+          <p>
+            <m>M(h) = </m><mathInput name="massEntered"/> 
+            <answer><award><when>$massEntered=$M</when>
+            </award></answer>
+          </p>
+          <p>
+            Assume that the gravitational constant is <m>g = 9.81</m> N/kg.  Find a formula for a function <m>F(h)</m> that represents the force that must be exerted to move the object and the rope when the object is <m>h</m> meters above the ground.
+          </p>
+          <p>
+            <m>F(h) = </m><mathInput name="forceEntered"/> 
+            <answer><award><when>$forceEntered=$f</when>
+            </award></answer>
+          </p>
+        </li>
+        <li>
+          <p>
+            State a definite integral whose value is the total work to lift the object from the ground to the platform.
+          </p>
+          <p>
+            lower limit of integration: <m>a = </m> <answer name="lower">0</answer>
+          </p>
+          <p>
+            upper limit of integration: <m>b = </m> <answer name="upper">$p</answer>
+          </p>
+  
+          <p>
+            Integral expression for the total work, <m>W</m>: 
+          </p>
+          <p>
+            <m>W = \displaystyle\int_{$lower}^{$upper}</m><mathInput name="int1" minWidth="100" /><m>dh \, </m><answer><award><when>$int1 = $f</when></award></answer> 
+          </p> 
+          <p>
+            Evaluating the integral to an accuracy of at least <m>0.0001</m>, the total work, <m>W</m>, is 
+          </p>     
+          <p>
+            <m>W = </m><mathInput name="intVal" minWidth="40" /> <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><award><when>$work=$intVal </when></award></answer>, and the units on this quantity are <answer><choiceInput inline>
+              <choice>?</choice>
+              <choice credit="1">Newton-meters</choice>
+              <choice>meters</choice>
+              <choice>Newtons</choice>
+              <choice>kilograms</choice>
+              <choice>kilogram-meters</choice>
+            </choiceInput></answer>
+          </p>
+        </li>
+        <li>
+          <p>
+            Determine the average force, <m>F_{\text{AVG}}</m>, that is exerted on the rope and object being lifted from <m>h = 0</m> to <m>h = $p</m>.  Report your result to an accuracy of at least <m>0.0001</m>.
+          </p>
+          <p>
+            <m><m>F_{\text{AVG}}</m> = </m><mathInput name="intValue2" minWidth="40" /><answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute><award><when>$intValue2=$avgForce </when></award></answer>, and the units on this quantity are <answer><choiceInput inline>
+              <choice>?</choice>
+              <choice>Newton-meters</choice>
+              <choice>meters</choice>
+              <choice credit="1">Newtons</choice>
+              <choice>kilograms</choice>
+              <choice>kilogram-meters</choice>
+            </choiceInput></answer>
+          </p>          
+        </li>
+      </ol>
+    </p>

@@ -1,0 +1,98 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- this exercise was written by Chrissy Safranski as part of the PROTEUS grant-->
+
+<setup>
+  <selectFromSequence name="s" from="0.8" to="1.6" step="0.1"/>
+  <round name="tlength" numDecimals="3">50/$s</round>
+  <number name="tlap" displayDecimals="3">2*$tlength</number>
+  <number name="threelengths" displayDecimals="3">3*$tlength</number>
+  <number name="end" displayDecimals="3">4*$tlength</number>
+
+  <module name="values">
+    <choiceInput inline><shortDescription>possible values</shortDescription><choice><m>50</m></choice><choice><m>-50</m></choice><choice><m>0</m></choice><choice><m>100</m></choice><choice><m>-100</m></choice></choiceInput>
+  </module>
+
+  <module name="meaning">
+    <choiceInput inline><shortDescription>meaning of the integral</shortDescription><choice>distance traveled</choice><choice>change in position</choice></choiceInput>
+  </module>
+</setup>
+
+<p>
+        A swimmer is doing laps back and forth in a <m>50</m>-meter long pool. The following is a graph of the swimmer's velocity function if she maintains a constant speed of <m>$s</m> meters per second while swimming back and forth.
+          </p>
+          <graph xMin="-25" xMax="4*$tlength+2" yMin="-$s-2" yMax="$s+2" fixAxes size="small"><shortDescription>sketch of velocity function</shortDescription><description>The velocity is <m>$s</m> for the first length, from <m>t=0</m> to <m>t=$tlength</m> seconds. The velocity is <m>-$s</m> for the second length, from <m>t=$tlength</m> to <m>t=$tlap</m> seconds. The velocity is <m>$s</m> again for the third length, from <m>t=$tlap</m> to <m>t=$threelengths</m> seconds, and the velocity is <m>-$s</m> for the fourth length, from <m>t=$threelengths</m> to <m>t=$end</m> seconds. </description>
+            <yLabel>m/s</yLabel>
+            <xLabel>s</xLabel>
+            <piecewiseFunction name="v" symbolic="false">
+              <function name="f1" domain="[0,$tlength]">$s</function>
+              <function name="f2" domain="[$tlength, $tlap]">-$s</function>
+              <function name="f3" domain="[2*$tlength, 3*$tlength]">$s</function>
+              <function name="f4" domain="[3*$tlength, 4*$tlength]">-$s</function>
+            </piecewiseFunction>
+            <regionBetweenCurveXAxis function="$v" boundaryValues="0 $end"/>
+            <label anchor="(-15,$s)" fixed>$s</label>
+            <label anchor="(-15,-$s)" fixed>-$s</label>
+            <lineSegment endpoints="(-5,$s) (0,$s)" fixed styleNumber="5" lineWidth="4" fixed/>
+            <lineSegment endpoints="(-5,-$s) (0,-$s)" fixed styleNumber="5" lineWidth="4" fixed/>
+          </graph>
+    <p>
+      <ol marker="a.">
+        <!-- <li>
+          <p>
+              How long does it take her to swim one length of the pool? Round to three places after the decimal point, if needed.
+          </p>
+          <p>
+            <answer><shortDescription>time to swim one length of the pool</shortDescription>$tlength</answer>
+          </p>
+          <p>
+            How long does it take her to swim one full lap (back and forth)?
+          </p>
+          <p>
+            <answer><shortDescription>time to swim one full lap of the pool</shortDescription>$tlength*2</answer>
+          </p>
+        </li> -->
+        <li>
+          <p>
+            Complete the following sentences to explain why the swimmer's velocity keeps switching from positive to negative and back again.
+          </p>
+          <p>
+            The swimmer's velocity is <choiceInput inline name="c1"><shortDescription>sign of velocity</shortDescription><choice>positive</choice><choice>negative</choice><choice>zero</choice></choiceInput> when she is swimming away from the start towards the far wall, because the distance from her starting position is <choiceInput inline name="c2"><shortDescription>increasing or decreasing</shortDescription><choice>increasing.</choice><choice>decreasing.</choice><choice>staying the same.</choice></choiceInput> Her velocity switches to <choiceInput inline name="c3"><shortDescription>sign of velocity</shortDescription><choice>positive</choice><choice>negative</choice><choice>zero</choice></choiceInput> when she touches the far wall and begins to swim back to the start because the distance from her starting position is <choiceInput inline name="c4"><shortDescription>increasing or decreasing</shortDescription><choice>increasing.</choice><choice>decreasing.</choice><choice>staying the same.</choice></choiceInput>
+            <answer><award><when>$c1.selectedIndex=1 and $c2.selectedIndex=1 and $c3.selectedIndex=2 and $c4.selectedIndex=2</when></award></answer>
+          </p>
+          
+        </li>
+        <li sectionWideCheckWork colorAnswersSeparately>
+          
+          <p>
+            What is the area of one of the shaded rectangles?</p>
+          <p>
+            <answer name="valuepartb"><shortDescription>area of one rectangle</shortDescription>50</answer><answer name="unitspartb"><choiceInput inline><shortDescription>units</shortDescription><choice>seconds</choice><choice>meters per second</choice><choice credit="1">meters</choice><choice>square meters</choice></choiceInput></answer>
+          </p>
+          <feedback condition="($unitspartb.numSubmissions>1 and $unitspartb.creditAchieved!=1) or ($valuepartb.numSubmissions>1 and $valuepartb.creditAchieved!=1)"><conditionalContent condition="$unitspartb.creditAchieved!=1 and $unitspartb.numSubmissions>1">Note that the units on the <m>y</m>-axis are <m>m/s</m> and the units on the <m>x</m>-axis are <m>s</m>, and that area is height times width.</conditionalContent> <conditionalContent condition="$valuepartb.creditAchieved!=1 and $valuepartb.numSubmissions>1"> <p>Recall what the area under velocity means; you can answer this question without knowing the exact values on the <m>x</m>-axis.</p> </conditionalContent></feedback>
+        </li>
+        <li>
+          <p>
+              Note that it takes <me>\frac{50 \text{ meters}}{$s \ \frac{\text{meters}}{\text{second}}}=$tlength \text{ seconds}</me> to swim one length of the pool, and thus it takes <m>$tlap</m> seconds to swim a complete lap.
+          </p>
+          <p>
+            The quantity <m>\displaystyle\int_{t=0}^{$tlap} v(t)\ dt</m> is the <module copy="$meaning" name="cc1"/> from <m>t=0</m> to <m>t=$tlap</m>, and thus <m>\displaystyle\int_{t=0}^{$tlap} v(t)\ dt =</m><module copy="$values" name="cc2"/> meters because the swimmer completed a full lap, down the length of the pool and back to the start. Over the same time period, the swimmer's total <module copy="$meaning" name="cc3"/> was <module copy="$values" name="cc4"/> meters.
+          </p>
+          <p>
+            <answer><award><when>$cc1.selectedIndex=2 and $$cc2.selectedIndex=3 and $cc3.selectedIndex=1 and $$cc4.selectedIndex=4</when></award></answer>
+          </p>
+        </li>
+      </ol>
+    </p> 

@@ -1,0 +1,94 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name = "m1" from = "0.25" to = "0.75" step = "0.25"/>
+  <selectFromSequence name = "n1" from = "-2" to = "-1" step = "0.5"/>
+  <selectFromSequence name = "x1" from = "-2" to = "2" step = "1" exclude="0"/>
+
+  
+  <piecewiseFunction name="f" symbolic="false" styleNumber="1">
+    <function domain="(-infinity,infinity)">$m1*(x-$x1)</function>
+  </piecewiseFunction>
+
+  <piecewiseFunction name="fP" symbolic="false"  styleNumber="3">
+    <function domain="(-infinity,infinity)">$m1</function>
+  </piecewiseFunction>
+
+  <piecewiseFunction name="g" symbolic="false" styleNumber="2">
+    <function domain="(-infinity,infinity)">$n1*(x-$x1)</function>
+  </piecewiseFunction>
+
+  <piecewiseFunction name="gP" symbolic="false"  styleNumber="4">
+    <function domain="(-infinity,infinity)">$n1</function>
+  </piecewiseFunction>
+   
+</setup>
+
+<p>
+    Let <m>f</m> and <m>g</m> be the linear functions given by the graphs below.
+</p>
+      <graph xmin="-4" xmax="4" ymin="-4" ymax="4" size="medium" grid="true" showNavigation="false" fixAxes="true"> $f $g  
+          <label fixLocation anchor="($x1-1.25,$$f($x1-1.25)-0.25)"><m>f</m></label>
+          <label fixLocation anchor="($x1+1.25,$$g($x1+1.25)-0.25)"><m>g</m></label>
+      </graph>
+   
+<!-- 
+<p>If <m>a = $a</m>, and <m>h(x) = f(x) \cdot g(x)</m>, then
+<m> h'($a) = $$f($a) \cdot $$gP($a) + $$g($a) \cdot $$fP($a) </m>
+</p> 
+-->
+
+<!--
+<conditionalContent>
+  <case condition="$a = 1">
+    <p><m>f'($a)</m> is undefined, <m>p'($a)</m> is undefined, and <m>q'($a)</m> is undefined.</p>
+  </case>
+  <case condition="$a = -2">
+    <p><m>g'($a)</m> is undefined, <m>p'($a)</m> is undefined, and <m>q'($a)</m> is undefined.</p>
+  </case>
+</conditionalContent>
+--> 
+  <p>Let <m>h(x) = \frac{f(x)}{g(x)}</m>. </p>  
+
+<p>
+<ol marker="a.">
+
+  <li>
+    <p>Determine each of the following values:</p>
+    <p>
+      <m>f($x1) = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$f($x1)</answer> 
+    </p>
+    <p>
+      <m>f'($x1) = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$fP($x1)</answer> 
+    </p>
+    <p>
+      <m>g($x1) = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$g($x1)</answer> 
+    </p>
+    <p>
+      <m>g'($x1) = </m><answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$gP($x1)</answer> 
+    </p> 
+    <!--    <p><m>$$f($a)*$$gP($a) + $$g($a)*$$fP($a)  </m></p> -->
+  </li>
+
+  <li>
+    <p>Use L'Hopital's Rule to determine <m>\displaystyle \lim_{x \to $x1} h(x)</m>.</p>
+    <p>
+    <m> \displaystyle \lim_{x \to $x1} h(x) = </m> <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$fP($x1)/$$gP($x1) </answer> 
+      </p>
+ <!--     <p><m>$$f($b)*$$gP($b) + $$g($b)*$$fP($b)  </m></p>. -->
+  </li>
+  
+</ol>
+</p>

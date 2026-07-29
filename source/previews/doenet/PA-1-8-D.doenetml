@@ -1,0 +1,117 @@
+
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- a first Doenet version of this preview was written by Dimitrios Nerantzinis -->
+<!-- and Siddhi Wakdikar after the May 2024 Doenet workshop -->
+
+  <p>
+    Consider the function <m>y = g(x) = -x^2+3x+2</m>.
+  </p>
+
+  <p>
+    <ol marker="a.">
+      <li>
+        <p>
+          Use the limit definition of the derivative to compute a formula for <m>y = g'(x)</m>.
+        </p>
+        <p>
+          <m>g'(x) = </m><mathInput minWidth="75" name="a1"></mathInput>
+          <answer><award><when>$a1=-2x+3</when></award> </answer>
+        </p>  
+      </li>
+
+      <li>
+        <p>
+          Determine the slope, <m>m</m>, of the tangent line to
+          <m>y = g(x)</m> at the value <m>x = 2</m>.
+        </p>
+        <p>
+          <m>m = </m><mathInput name="a2"></mathInput>
+          <answer><award><when>$a2=-1</when></award> </answer>
+        </p>  
+      </li>
+
+      <li>
+        <p>
+          Compute <m>g(2)</m>.
+        </p>
+        <p>
+          <m>g(2) = </m><mathInput name="a3"></mathInput>
+          <answer><award><when>$a3=4</when></award> </answer>
+        </p>  
+      </li>
+
+      <li>
+        <p>
+          Find an equation for the tangent line to
+          <m>y = g(x)</m> at the point <m>(2,g(2))</m>.
+          Write your result in point-slope form.
+        </p>
+        <mathInput minWidth="100" name="a4"></mathInput>
+        <answer><award><when>$a4=(y−4=−1(x−2))</when></award> </answer>
+      </li>
+
+      <li>
+        <p>
+          In the provided figure, your task is to make the line through <m>A</m> and <m>B</m> the tangent line to <m>g</m> at the point <m>(2,g(2))</m>.  Drag point <m>A</m> so that it lies on the graph of <m>g</m> at the point of tangency, and then drag point <m>B</m> so that the line's slope matches the slope of the tangent line.  
+        </p>
+
+        <p>When you think you have the correct tangent line, check your work: 
+          <answer>
+            <award><when>
+              ($F,$TL.slope)=(<point>(2,4)</point>,-1)
+            </when></award>
+          </answer>
+        </p>  
+      </li>
+    </ol>
+  </p>
+
+<setup>
+  <function name = "g">-x^2+3x+2</function>
+  <function name = "tlp">−1(x−2)+4</function>
+</setup>
+
+<graph xmin="-2" xmax="6" ymin="-2" ymax="6" showNavigation="false" grid="true" fixAxes="true">
+
+  <point name = "F" styleNumber = '5'>
+    <label>A</label>
+    (1,5.5)
+    <constraints>
+      <attractToGrid dx="0.5" dy="0.5"/>
+      <attractTo>$g</attractTo>
+    </constraints>
+  </point>
+  <point name = "G" styleNumber = '5' >
+    <label>B</label>
+    (3,5.5)
+    <constraints>
+      <attractToGrid dx="0.5" dy="0.5"/>
+    </constraints>  
+  </point>
+  
+  <line name = "TL" through="$F $G" styleNumber = "2"/>
+  $g
+  <label anchor="(1,2.2)"><m>y = g(x)</m></label>
+  <setup>
+    <boolean name = 'cond'> $TL.slope = -1</boolean>
+  </setup>
+  
+</graph>
+
+<!-- testing
+<p><m>F = </m>$F</p>
+<p>slope = $TL.slope</p>
+-->

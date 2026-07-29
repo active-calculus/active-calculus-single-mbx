@@ -1,0 +1,83 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="c" from="3" to="7" step="2"/>
+
+  <number name="m">$c/8</number>
+  
+  <function name="f" styleNumber="1"> sqrt(x)</function>
+  <function name="g" styleNumber="2"> $m*x</function>
+  
+  <math name="intValue" simplify>1/6*1/$m^3 </math>
+
+</setup>  
+
+  <p>
+    Consider the functions given by
+    <me>f(x) = \sqrt{x}, \ g(x) = \frac{$c}{8} x</me>
+  </p>
+
+
+<!--
+<graph size="medium" xmin="-1" xmax="7" ymin="-4" ymax="4" showNavigation="false" fixAxes="true">
+  $f
+  $g
+</graph>  
+
+<p>
+  <m>x_1 = $x1, x_2 = $x2, y_1 = $y1, y_2 = $y2, </m>
+</p>  
+-->
+
+
+  <p> 
+    <ol marker="a.">
+      <li>
+        <p>
+          Plot <m>f</m> and <m>g</m> and use algebra to find the exact points of intersection between <m>f</m> and <m>g</m>.  State each intersection point as an ordered pair in the space below; if there is more than one, separate them with commas.  
+        </p>
+        <p><answer><label>the intersection points are:</label><mathList unordered>(0,0) (1/$m^2,1/$m)</mathList></answer></p>
+      </li>
+
+      <li>
+        <p>
+          Find an integral expression that represents the area between
+          <m>y = f(x)</m> and <m>y = g(x)</m> on the interval between their intersection points of <m>f</m> and <m>g</m>.  Once you identify the lower and upper limits of integration, those numbers will appear in the integral expression below.
+        </p>
+
+        <p>
+          lower limit of integration:  <answer name="a"><label><m>a = </m></label>0</answer>
+        </p>
+        <p>
+          upper limit of integration:  <answer name="b"><label><m>b = </m></label>1/$m^2</answer>
+        </p>
+
+        <p>
+          Integral expression for area, <m>A</m> between <m>y = f(x)</m> and the <m>y = g(x)</m>: 
+        </p>
+        <p>
+          <m>A = \displaystyle\int_{$a}^{$b}</m><mathInput name="int1" minWidth="100"><shortDescription>integrand</shortDescription></mathInput><answer forceSmallCheckWorkButton><label><m>dx \,</m></label><award><when>$int1 = $f - $g </when></award></answer> <!--, <m>$$f($h), $$g($h), $f - $g</m> -->
+        </p> 
+      </li>
+      <li>
+        <p>
+          Evaluate the integral to find the numerical value of the area, <m>A</m>, between <m>y = f(x)</m> and <m>y = g(x)</m>, on the interval between their intersection points, and report the value below, accurate to within <m>0.0001</m>. 
+        </p>
+        <p>
+          <m>A = </m><mathInput name="intVal" minWidth="40"><shortDescription>integral value</shortDescription></mathInput> <answer allowedErrorInNumbers="0.0001" allowedErrorIsAbsolute forceSmallCheckWorkButton><award><when>$intValue=$intVal </when></award></answer>
+        </p>  
+      </li>
+    </ol>
+  </p>

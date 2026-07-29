@@ -1,0 +1,120 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name="p" from="-0.5" to="0.5" step="0.25" exclude="0"/>
+  <selectFromSequence name="q" from="-1" to="1" step="0.5" exclude="0"/>
+  <selectFromSequence name="r" from="-0.5" to="0.5" step="0.25" exclude="$p $q $0"/>
+  
+  <function name="f">$p*x^2 + $q*x + $r</function>
+  <function name="fP">2*$p*x + $q</function>
+  <function name="fPP">2*$p</function>
+  <function name="T2">$b0 + $b1*x + $b2*x^2</function>
+  <function name="T2P">$b1 + 2*$b2*x</function>
+  <function name="T2PP">2*$b2</function>
+  <function name="T2Symb">b_0 + b_1*x + b_2*x^2</function>
+  <function name="T2PSymb">b_1 + 2*b_2*x</function>
+  <function name="T2PPSymb">2b_2</function>
+
+  <math name="a">0</math>
+  <math name="b0">$$f($a)</math>
+  <math name="b1">$$fP($a)</math>
+  <math name="b2">$$fPP($a)/2</math>
+</setup>
+
+<p>
+  Let <m>f(x)</m> be an unknown function and suppose that <m>T_2(x) = b_0 + b_1x + b_2x^2</m> is a quadratic approximation to <m>f(x)</m> that has the property that <m>f(x)</m> and <m>T_2(x)</m> have the same height, slope, and concavity at <m>x = 0</m>.  The figure shows a graph of <m>y = T_2(x)</m>.
+</p>
+
+<graph size="medium" xMin="-2" xMax="2" yMin="-2" yMax="2" showNavigation="false" fixAxes="True">
+  $f
+  <label anchor="(1.5, 1.5)"><m>y = T_2(x)</m></label>
+</graph>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        Determine the signs of <m>b_0</m>, <m>b_1</m>, and <m>b_2</m>.  
+      </p>    
+      <p>
+        <m>b_0</m> is <choiceInput name="const" inline>
+          <choice>?</choice>
+          <choice>negative</choice>
+          <choice>zero</choice>
+          <choice>positive</choice>
+        </choiceInput>
+      </p>
+      <p>
+        <m>b_1</m> is <choiceInput name="slope" inline>
+          <choice>?</choice>
+          <choice>negative</choice>
+          <choice>zero</choice>
+          <choice>positive</choice>
+        </choiceInput>
+      </p>
+      <p>
+        <m>b_2</m> is <choiceInput name="concav" inline>
+          <choice>?</choice>
+          <choice>negative</choice>
+          <choice>zero</choice>
+          <choice>positive</choice>
+        </choiceInput>
+      </p>
+      <p>
+        <answer><award><when>
+          ( ($b0 > 0 and $const.selectedIndices=4) or (0 > $b0 and $const.selectedIndices=2) )
+          and
+          ( ($b1 > 0 and $slope.selectedIndices=4) or (0 > $b1 and $slope.selectedIndices=2) )
+          and
+          ( ($b2 > 0 and $concav.selectedIndices=4) or (0 > $b2 and $concav.selectedIndices=2) )
+        </when></award></answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        Complete the following sentence to describe the behavior of <m>f(x)</m> near <m>x = 0</m>.  
+      </p>    
+      <p>
+        Near <m>x=0</m>, <m>f(x)</m> is <choiceInput name="fconst" inline>
+          <choice>?</choice>
+          <choice>negative</choice>
+          <choice>zero</choice>
+          <choice>positive</choice>
+        </choiceInput>, 
+        <m>f(x)</m> is <choiceInput name="fslope" inline>
+          <choice>?</choice>
+          <choice>decreasing</choice>
+          <choice>constant</choice>
+          <choice>increasing</choice>
+        </choiceInput>,
+        and <m>f(x)</m> is <choiceInput name="fconcav" inline>
+          <choice>?</choice>
+          <choice>concave down</choice>
+          <choice>linear</choice>
+          <choice>concave up</choice>
+        </choiceInput>
+      </p>
+      <p>
+        <answer><award><when>
+          ( ($b0 > 0 and $fconst.selectedIndices=4) or (0 > $b0 and $fconst.selectedIndices=2) )
+          and
+          ( ($b1 > 0 and $fslope.selectedIndices=4) or (0 > $b1 and $fslope.selectedIndices=2) )
+          and
+          ( ($b2 > 0 and $fconcav.selectedIndices=4) or (0 > $b2 and $fconcav.selectedIndices=2) )
+        </when></award></answer>
+      </p>
+    </li>
+  </ol>
+</p>

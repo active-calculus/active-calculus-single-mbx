@@ -1,0 +1,71 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+ <setup>
+  <selectFromSequence name = "k" from = "2" to = "5" step = "1"/>
+  <selectFromSequence name = "A" from = "2" to = "5" step = "1" exclude="$k"/>
+  <selectFromSequence name = "c" from = "2" to = "6" step = "1" exclude="$A $k"/>
+  <selectFromSequence name = "d" from = "2" to = "6" step = "1" exclude="$A $k $c"/>
+
+  <function name="C">($a)^($c*cos(x))</function>
+  <derivative name="CP">$C</derivative>
+
+  <function name="G">$c*cos(x)</function>
+  <derivative name="GP">$G</derivative>
+
+  <function name="F">($a)^x</function>
+  <derivative name="FP">$F</derivative>
+
+</setup>
+
+<p>
+  Consider the differential equation
+  <me>
+    \frac{dy}{dt} - $k y = -<math simplify>$k*$A</math>
+  </me>
+</p>
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        For each of the following functions, use substitution into the differential equation to determine whether the function is or is not a solution to <m>\frac{dy}{dt} - $k y = -<math simplify>$k*$A</math></m>.  Then, check all of the boxes that correspond to solutions.
+      </p>
+      <answer selectMultiple><choiceInput>
+        <choice><m>y = <math simplify>-$k*$A</math></m></choice>
+        <choice credit="1"><m>y = <math simplify>$A</math></m></choice>
+        <choice><m>y = <math simplify>-$A</math></m></choice>
+        <choice><m>y = $c e^{$k t}</m></choice>
+        <choice credit="1"><m>y = $c e^{$k t} + $A</m></choice>
+        <choice><m>y = $c e^{$k t} - $A</m></choice>
+        <choice credit="1"><m>y = $d e^{$k t} + $A</m></choice>
+        <choice><m>y = $d e^{$k t} - $A</m></choice>
+      </choiceInput>
+      </answer>
+    </li>
+    <li>
+      <p>
+        Determine the value(s) of <m>C</m> for which <m>y = C e^{$k t} + $A</m> is a solution to the initial value problem
+        <me>
+          \frac{dy}{dt} - $k y = -<math simplify>$k*$A</math>, \ \ y(0) = $d
+        </me>
+      </p>
+      <p>
+        If there is more than one such value of <m>C</m>, separate your answers with commas; if there are no values of <m>C</m>, enter <q>none</q>.
+      </p>
+      <p>
+        <m>C = </m> <mathInput name="IVPsolnConst" /><answer><award><when>$IVPsolnConst=($d-$A)</when></award></answer>
+      </p>
+    </li>
+  </ol>
+</p>

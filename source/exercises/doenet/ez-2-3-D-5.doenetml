@@ -1,0 +1,225 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+
+<setup>
+  <selectFromSequence name = "a" from = "3" to = "9" step = "1"/>
+  <selectFromSequence name = "b" from = "-5" to = "5" step = "1" />
+  <selectFromSequence name = "c" from = "2" to = "7" step = "1" exclude="0 1 $a $b"/>
+  <selectFromSequence name = "d" from = "2" to = "8" step = "2" exclude="$b $c"/>
+
+  <function name="R">(x^$a * cos(x))/($c)^x</function>
+  <derivative name="RP">$R</derivative>
+
+  <function name="T">x^$a * cos(x)</function>
+  <derivative name="TP">$T</derivative>
+
+  <function name="B">($c)^x</function>
+  <derivative name="BP">$B</derivative>
+
+  <function name="F">x^$a</function>
+  <derivative name="FP">$F</derivative>
+
+  <function name="S">(cos(x))/($c)^x</function>
+  <derivative name="SP">$S</derivative>  
+
+<setup>
+  <boolean name="correctQR">$bot=$B and $Dtop=$TP and $top=$T and $Dbot=$BP and $bot2=$B</boolean>
+</setup>  
+
+<setup>
+  <boolean name="correctPR">$first=$F and $Dfirst=$FP and $second=$S and $Dsecond=$SP</boolean>
+</setup>  
+
+<setup>
+  <boolean name="correctBOTH">$correctQR and $correctPR</boolean>
+</setup>    
+  
+</setup>
+
+<p>
+  Consider the function <m>R(x) = \displaystyle \frac{x^{$a}\cdot \cos(x)}{$c^x}</m>.
+</p>  
+
+<p>
+  One way to think about <m>R(x)</m> is as a quotient of two functions in which the numerator is itself a product of basic functions.  But an equivalent way is to write
+  <me>R(x) = \displaystyle x^{$a} \cdot \frac{\cos(x)}{$c^x}</me>
+and in this case view <m>R(x)</m> as a product of two functions, the second of which is a quotient of basic functions.  
+</p>  
+
+<p>
+  In this exercise, we find <m>R'(x)</m> in two different ways and verify that the results are equivalent.
+</p>
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>  
+        Since we are first viewing the algebraic structure of <m>R</m> as the quotient <m>R(x) = \displaystyle \frac{x^{$a}\cdot \cos(x)}{$c^x}</m>, to find <m>R'(x)</m> we need to use the quotient rule.  Let's say that <m>R(x) = \frac{T(x)}{B(x)}</m>, where <m>T(x)</m> is the top function in the quotient (the numerator) and <m>B(x)</m> is the bottom function (the denominator).
+      </p>  
+      
+      <p>
+        Fill in the following blanks to identify  <m>T(x)</m> and <m>B(x)</m> and their derivatives.
+      </p>  
+      
+      <tabular>
+        <row>
+          <cell><m>T(x)=</m><answer><award>$T</award></answer></cell>
+          <cell><m>T'(x)=</m><answer><award>$TP</award></answer></cell>
+        </row>  
+        <row>
+          <cell><m>B(x)=</m><answer><award>$B</award></answer></cell>
+          <cell><m>B'(x)=</m><answer><award>$BP</award></answer></cell>
+        </row>    
+      </tabular>  
+      
+      <p>
+      Now we can apply the quotient rule to find the derivative of <m>R(x) = \frac{$T}{$B}</m>. 
+      </p>
+      <p>
+        <m>R'(x) = (</m><answer name="bot"><award>$B</award></answer><m>\cdot</m><answer name="Dtop"><award>$TP</award></answer><m>-</m><answer name="top"><award>$T</award></answer><m>\cdot</m><answer name="Dbot"><award>$BP</award></answer><m>)/(</m> <answer name="bot2"><award>$B</award></answer><m>)^2</m>.
+      </p> 
+
+      <!--
+      <p>
+        CorrectQR=$correctQR
+      </p>  
+      -->
+      
+      <p>
+        <conditionalContent>
+          <case condition="$correctQR = false">
+            <p>
+              Once you have correctly completed this form of <m>R'(x)</m> by filling in all the blanks above, your overall result will display in the space below in an easier to read format:
+              <me>
+                R'(x) = 
+              </me>  
+            </p>
+          </case>
+          <case condition="$correctQR = true">
+            <p>
+              You have now correctly found that 
+              <me>
+                R'(x) = \frac{$bot ($Dtop) - $top ($Dbot)}{($bot)^2}
+              </me>  
+            </p>
+         </case>
+      </conditionalContent> 
+
+        
+      </p>  
+
+    </li>
+    <li>
+      <p>  
+        Next we are going to view the algebraic structure of <m>R</m> as the product <m>R(x) = \displaystyle x^{$a} \cdot \frac{\cos(x)}{$c^x}</m>, so to find <m>R'(x)</m> we need to use the product rule.  Let's say that <m>R(x) = F(x) \cdot S(x)</m>, where <m>F(x)</m> is the first function in the product and <m>S(x)</m> is the second function.
+      </p>  
+      
+      <p>
+        Fill in the following blanks to identify  <m>F(x)</m> and <m>S(x)</m> and their derivatives.
+      </p>  
+      
+      <tabular>
+        <row>
+          <cell><m>F(x)=</m><answer><award>$F</award></answer></cell>
+          <cell><m>F'(x)=</m><answer><award>$FP</award></answer></cell>
+        </row>  
+        <row>
+          <cell><m>S(x)=</m><answer><award>$S</award></answer></cell>
+          <cell><m>S'(x)=</m><answer><award>$SP</award></answer></cell>
+        </row>    
+      </tabular>  
+      
+      <p>
+      Now we can apply the product rule to find the derivative of <m>R(x) = $F \cdot $S</m>.  Do so using the ordering of the product rule that states <q><em>first times the derivative of the second, plus the second times the derivative of the first</em></q>:
+      </p>
+
+      <p>
+        <m>R'(x) = </m><answer name="first"><award>$F</award></answer><m>\cdot</m><answer name="Dsecond"><award>$SP</award></answer><m>+</m><answer name="second"><award>$S</award></answer><m>\cdot</m><answer name="Dfirst"><award>$FP</award></answer>.
+      </p> 
+      
+      <p>
+        <conditionalContent>
+          <case condition="$correctPR = false">
+            <p>
+              Once you have correctly completed this form of <m>R'(x)</m> by filling in all the blanks above, your overall result will display in the space below in an easier to read format:
+              <me>
+                R'(x) = 
+              </me>  
+            </p>
+          </case>
+          <case condition="$correctPR = true">
+            <p>
+              You have now correctly found that 
+              <me>
+                R'(x) = $first \left( $Dsecond \right) + $second ($Dfirst)
+              </me>  
+            </p>
+         </case>
+      </conditionalContent> 
+
+        
+      </p>  
+
+    </li>  
+    <li>
+      <p>
+        Finally, let's compare the two different forms of <m>R'(x)</m> that you've found in (a) and (b).
+      </p>  
+      <p>
+        <conditionalContent>
+          <case condition="$correctBOTH = false">
+            <p>
+              Once you have correctly completed both part (a) and part (b), your respective answers will appear below:
+            </p>
+            <p> From (a), 
+              <me>
+                R'(x) = 
+              </me>  
+            </p>
+            <p> From (b)
+              <me>
+                R'(x) = 
+              </me>  
+            </p>            
+          </case>
+          <case condition="$correctPR = true">
+            <p>
+              You have correctly found 
+            </p>  
+            <p> in part (a) that 
+              <me>
+                R'(x) = \frac{$bot ($Dtop) - $top ($Dbot)}{($bot)^2}
+              </me>  
+            </p>
+            <p> and in part (b) that              
+              <me>
+                R'(x) = $first \left( $Dsecond \right) + $second ($Dfirst)
+              </me>  
+            </p>
+            <p>
+              Even though these two expressions look different, they are in fact the exact same function.  One way this can be shown is by algebraically arranging each of them into identical expressions.
+              <!--
+              <answer><award>
+                \frac{$bot ($Dtop) - $top ($Dbot)}{($bot)^2} = $first \left( $Dsecond \right) + $second ($Dfirst)
+              </award></answer>
+              -->
+            </p>  
+         </case>
+      </conditionalContent> 
+        
+      </p>  
+    </li>  
+  </ol>  
+</p>  

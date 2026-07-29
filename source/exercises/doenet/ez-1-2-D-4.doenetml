@@ -1,0 +1,63 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- Author: Chrissy Safranski                                           -->
+
+
+<setup>
+  <selectFromSequence name="a" from="-10" to="10" exclude="0"/>
+  <selectFromSequence name="b" from="-10" to="10" exclude="0"/>
+  <number name="asq">$a^2</number>
+  <number name="a2">2*$a</number>
+  <number name="ans1">$a2/$b</number>
+  <math name="num1" >x^2-$asq</math>
+  <math name="denom1" expand>$b(x-$a)</math>
+
+  <selectFromSequence name="aa" from="2" to="5" />
+  <selectFromSequence name="bb" from="6" to="10" />
+
+  <number name="bMa">$bb - $aa</number>
+  <number name="ab">$aa*$bb</number>
+  <number name="result">$aa+$bb</number>
+  <math name="num2">x^2 + $bMa x - $ab</math>
+  <math name="denom2">x-$aa</math>
+
+  <selectFromSequence name="c" from="-3" to="3" exclude="$a"/>
+  <function name="partc">$num2/$denom1</function>
+</setup>
+
+<p>
+  Use algebra to evaluate the following limits exactly. If the limit does not exist, enter <em>DNE</em>.
+</p>
+
+<ol marker="a.">
+  <li>
+    <p sectionWideCheckWork colorAnswersSeparately>
+       <answer symbolicEquality simplifyOnCompare="normalizeOrder"><mathInput prefill="/" minWidth="20"><label><m>\displaystyle\lim_{x\to $a} \frac{$num1}{$denom1}= \lim_{x\to $a}</m></label><description>Factor the numerator and denominator, if applicable.</description></mathInput>((x+$a)(x-$a))/($b(x-$a))</answer><m>=</m><answer><shortDescription>Final answer to the limit</shortDescription>$ans1</answer>
+    </p>
+  </li>
+
+  <li>
+    <p>
+      <answer name="ans2"><label><m>\displaystyle\lim_{x\to $aa} \frac{$num2}{$denom2}=</m> </label>$result</answer>
+    </p>
+  </li>
+
+  <li>
+    <p>
+      <answer name="ans3"><label><m>\displaystyle\lim_{x\to $c} \frac{$num2}{$denom1}=</m></label>$$partc($c)</answer>
+    </p>
+    <feedback condition="$ans3.justSubmitted">Did you try evaluating the limit as <m>x\to $c</m> straightaway, without doing any algebra first?  Sometimes people factor when it's not necessary.</feedback>
+  </li>
+</ol>

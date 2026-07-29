@@ -1,0 +1,89 @@
+<setup>
+  <selectFromSequence name = "a" from = "3" to = "9" step = "1"/>
+  <selectFromSequence name = "b" from = "-5" to = "5" step = "1" exclude="-1 0 1"/>
+  <selectFromSequence name = "c" from = "-3" to = "3" step = "1" exclude="0 1"/>
+  <selectFromSequence name = "d" from = "2" to = "7" step = "1" exclude="$b $c"/>
+  <selectFromSequence name = "k" from = "2" to = "6" step = "1"/>
+  <math name="m">$a+1</math>
+    
+  <function name="f">$c*x^$a*ln(x)</function>
+  <derivative name="fP">$f</derivative>
+  
+  <function name="g"><math simplify>asin(x)/($a^x)</math></function>
+  <derivative name="gP">$g</derivative>
+
+  <function name="h">atan($k*x+1)</function>
+  <derivative name="hP">$h</derivative>
+
+  <function name="p">$m/(ln(x)+atan(x))</function>
+  <derivative name="pP">$p</derivative>
+
+  <function name="q">$b*asin(x^2 + $d)</function>
+  <derivative name="qP">$q</derivative>
+  
+</setup>
+
+<p>
+  For each of the following functions, use appropriate basic derivative rules along with the chain rule to find a formula for the function's derivative.  You need not algebraically simplify your derivative formulas.
+</p>  
+
+<p>
+  <ol marker="a.">
+    <li>
+      <p>
+        If <m>f(x) = $c x^$a \ln(x)</m>, then 
+      </p>
+      <p>
+        <answer>
+          <label>
+            <m>f'(x)=</m>
+          </label>
+          $fP
+        </answer>
+      </p>
+    </li>
+    <li>
+      <p>
+        If <m>g(x) = \frac{\arcsin(x)}{$a^x}</m>, then 
+      </p>
+      <p>  
+        <answer>
+          <label>
+            <m>g'(x)= </m>
+          </label>
+          $gP
+        </answer>
+      </p>
+    </li>
+
+<!-- cut next two parts for tedium; if restored later, reformat and add labels to match other parts 
+    
+    <li>
+      <p>
+        If <m>h(x)= \arctan($k x + 1)</m>, then <m>h'(x)= </m><answer>$hP</answer>.
+      </p>
+    </li>
+    <li>
+      <p>
+        If <m>p(x)= \displaystyle \frac{<math simplify>$m</math>}{\ln(x) + \arctan(x)}</m>, then <m>p'(x)= </m><answer>$pP</answer>.
+      </p>
+    </li>
+
+-->
+    
+    <li>
+      <p>
+        If <m>q(x)= $b \arcsin(x^2 + $d)</m>, then 
+      </p>
+      <p>
+        <answer>
+          <label>
+            <m>q'(x)= </m>
+          </label>
+          $qP
+        </answer>
+      </p>
+    </li>
+   
+  </ol>  
+</p>  

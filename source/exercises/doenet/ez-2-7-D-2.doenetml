@@ -1,0 +1,115 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<setup>
+  <selectFromSequence name = "a" from = "3" to = "8" step = "1"/>
+  <selectFromSequence name = "b" from = "2" to = "8" step = "1" exclude="$a"/>
+  <selectFromSequence name = "c" from = "2" to = "8" step = "1" exclude="$a $b"/>
+  <selectFromSequence name = "d" from = "2" to = "8" step = "1" exclude="$a $b $c"/>
+
+
+  <math name="Correct1">x^$a * $b * y^($b-1) * dy/dx + $a*x^($a-1) * y^$b</math>
+  <math name="Correct2">$c*x^($c-1)</math>
+  <math name="Correct3">$d*y^($d-1) * dy/dx </math>
+  <math name="Correct4">0</math>
+
+  <math name="FinalAns">(-$c*x^($c-1) - $a*x^($a-1)*y^$b)/(x^$a * $b * y^($b-1) + $d*y^($d-1))</math>
+
+  <boolean name="A1solved">$A1 = $Correct1</boolean>
+  <boolean name="A2solved">$A2 = $Correct2</boolean>
+  <boolean name="A3solved">$A3 = $Correct3</boolean>
+
+  <boolean name="Bsolved">$B1.creditAchieved and $B2.creditAchieved</boolean>
+</setup>
+
+<p>
+  In this exercise, we work through the steps to apply implicit differentiation to find <m>\frac{dy}{dx}</m> where <m>y</m> is given implicitly by the equation
+  <me>
+    x^$a y^$b + x^$c + y^$d = 0
+  </me>
+
+    <ol marker="a.">
+      <li>
+        <p>
+          First, we differentiate both sides with respect to <m>x</m>.  Applying the sum rule on the left, we have
+            <me>
+              \frac{d}{dx}\left[ x^$a y^$b \right] + \frac{d}{dx}\left[ x^$c \right] + \frac{d}{dx}\left[ y^$d \right] = 0.
+            </me>
+          Use appropriate derivative rules to state the derivative of each of the following expressions from the equation above; use <q><m>\frac{dy}{dx}</m></q> to represent the derivative of <m>y</m> with respect to <m>x</m>.
+        </p>
+        <p>
+          <m>\frac{d}{dx}\left[ x^$a y^$b \right]=</m><answer symbolicEquality simplifyOnCompare  name="A1">$Correct1</answer>
+        </p>
+        <p>
+          <m>\frac{d}{dx}\left[ x^$c \right]=</m><answer symbolicEquality simplifyOnCompare  name="A2">$Correct2</answer>
+        </p>
+        <p>
+          <m>\frac{d}{dx}\left[ y^$d \right]=</m><answer symbolicEquality simplifyOnCompare  name="A3">$Correct3</answer>
+        </p>
+
+        <!-- answer testing
+        <p>
+          $A1solved, $A2solved, $A3solved, $A4solved
+        </p>
+        -->
+
+
+
+      </li>
+
+      <li>
+        <p hide="$A1solved and $A2solved and $A3solved">
+          (<em>A prompt will appear here after you correctly respond to each portion of part a.</em>)
+        </p>
+        <div hide="not ($A1solved and $A2solved and $A3solved)">
+          <p>
+          Now that you have correctly differentiated, the next key step is to take the updated equation,
+          <me>  $A1 + $A2 + $A3 = 0,</me>
+          and <answer name="B1"><choiceInput inline>
+                <choice>?</choice>
+                <choice>solve for <m>y</m></choice>
+                <choice>solve for <m>x</m></choice>
+                <choice credit="1">solve for <m>\frac{dy}{dx}</m></choice>
+              </choiceInput></answer>.  To do so, the first step is to move all of the terms that don't involve <m>\frac{dy}{dx}</m> to the other side of the equation.  After we do that, which of the following equations results?
+          </p>
+          <p>
+            <answer name="B2">
+              <choiceInput>
+                <choice><m><math simplify>x^$a * $b*y^($b-1) dy/dx + $d*y^($d-1)*dy/dx </math> = <math simplify> $c*x^($c-1) + $a*x^($a-1)*y^$b</math></m></choice>
+                <choice credit="1"><m><math simplify>x^$a * $b*y^($b-1) dy/dx + $d*y^($d-1)*dy/dx </math> = <math simplify> -$c*x^($c-1) - $a*x^($a-1)*y^$b</math></m></choice>
+                <choice><m><math simplify>x^$a * $b*y^($b-1) dy/dx + $d*y^($d-1)*dy/dx </math> = <math simplify> $c*x^($c-1) - $a*x^($a-1)*y^$b</math></m></choice>
+                <choice><m><math simplify>x^$a * $b*y^($b-1) dy/dx + $d*y^($d-1)*dy/dx </math> = <math simplify> -$c*x^($c-1) + $a*x^($a-1)*y^$b</math></m></choice>
+              </choiceInput>
+            </answer>
+          </p>
+
+
+        </div>
+
+      </li>
+      <li>
+        <p hide="$Bsolved">
+          (<em>A prompt will appear here after you correctly respond to part b.</em>)
+        </p>
+        <p hide="not $Bsolved">
+          Finally, remove a factor of <m>\frac{dy}{dx}</m> from each term on the lefthand side and thus solve for <m>\frac{dy}{dx}</m>:
+        </p>
+        <p hide="not $Bsolved">
+          <m>\frac{dy}{dx}=</m><answer symbolicEquality simplifyOnCompare>$FinalAns</answer>
+        </p>
+      </li>
+
+
+    </ol>
+  </p>

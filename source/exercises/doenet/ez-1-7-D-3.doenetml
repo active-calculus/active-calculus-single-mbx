@@ -1,0 +1,104 @@
+<!-- **********************************************************************-->
+<!-- Copyright 2012-2025                                                   -->
+<!-- Matthew Boelkins                                                      -->
+<!--                                                                       -->
+<!-- This file is part of Active Calculus.                                 -->
+<!--                                                                       -->
+<!-- Permission is granted to copy, distribute and/or modify this document -->
+<!-- under the terms of the Creative Commons BY-SA license.  The work      -->
+<!-- may be used for free by any party so long as attribution is given to  -->
+<!-- the author(s), the work and its derivatives are used in the spirit of -->
+<!-- "share and share alike".  All trademarks are the registered marks of  -->
+<!-- their respective owners.                                              -->
+<!-- **********************************************************************-->
+
+<!-- this is a modified version of ez-1-2-D-2, which is due to:            -->
+<!-- Author: Christina Safranski                                           -->
+<!-- technical help: Virginia Mae                                          -->
+
+<setup>
+  <selectFromSequence name="m" from="-1" to="1" exclude="0" />
+  <selectFromSequence name="a" from="-1" to="1" numToSelect="1" />
+  <selectFromSequence name="b" from="-1" to="1" numToSelect="1" />
+
+<!--   <selectFromSequence name="c" from="1" to="4"/> -->
+  <selectFromSequence name="upordown" from="-1" to="1" exclude="0" />
+
+  <function name="line"> $m*x+$b</function>
+  <function name="line2">$m(x-$a)+$$line($a)+$upordown</function>
+
+  <math name="c">0</math>
+
+<!-- Virginia's note - the <select> below replaces the previous <select> which had assignNames. Now, we refer to the boolean of the first selected option as $graphSelect[1][2]. (first index is the first selection made of all the options, second index is the second component defined within that option) -->
+
+<select name="graphSelect" numToSelect="3">
+  <option>
+    <graph name="graph1" showNavigation="false" fixAxes="true" xmin="-2.5" xmax="2.5" ymin="-4" ymax="4">
+    <function> $line </function>
+  </graph>
+  <boolean>1</boolean>
+  </option>
+  <option>
+    <graph name="graph2" showNavigation="false" fixAxes="true" xmin="-2.5" xmax="2.5" ymin="-4" ymax="4">
+      <function domain="[-2.5,$a-$c)"> $line </function>
+      <function domain="[$a+$c,2.5)"> $line </function>
+      <endpoint open="true" draggable="false">($a, $$line($a))</endpoint>
+    </graph>
+    <boolean>1</boolean>
+  </option>
+  <option>
+    <graph name="graph3" showNavigation="false" fixAxes="true" xmin="-2.5" xmax="2.5" ymin="-4" ymax="4">
+      <function domain="[-2.5,$a-$c)"> $line </function>
+      <function domain="[$a+$c,2.5)"> $line </function>
+      <endpoint open="true" draggable="false">($a, $$line($a))</endpoint>
+      <endpoint draggable="false">($a, $$line($a)+$upordown)</endpoint>
+    </graph>
+    <boolean>1</boolean>
+  </option>
+  <option>
+    <graph name="graph4" showNavigation="false" fixAxes="true" xmin="-2.5" xmax="2.5" ymin="-4" ymax="4">
+      <function domain="[-2.5,$a-$c)"> $line </function>
+      <function domain="[$a+$c,2.5)"> $line2 </function>
+      <endpoint open="true" draggable="false">($a, $$line($a))</endpoint>
+      <endpoint draggable="false">($a, $$line($a)+$upordown)</endpoint>
+    </graph>
+    <boolean>0</boolean>
+  </option>
+ <option>
+    <graph name="graph5" showNavigation="false" fixAxes="true" xmin="-2.5" xmax="2.5" ymin="-4" ymax="4">
+      <function domain="[-2.5,$a-$c)"> $line2 </function>
+      <function domain="[$a+$c,2.5)"> $line2 </function>
+      <endpoint draggable="false">($a, $$line($a))</endpoint>
+      <endpoint open="true" draggable="false">($a, $$line($a)+$upordown)</endpoint>
+    </graph>
+    <boolean>0</boolean>
+  </option>
+</select>
+
+<mathList name="correctLabels">
+<repeatForSequence from="A" to="C" type="letters" name="correctMap" valueName="letter" indexName="i">
+    <conditionalContent>
+      <case condition="$graphSelect[$i][2]">$letter</case>
+      <else />
+    </conditionalContent>
+  </repeatForSequence>
+</mathList>
+
+<boolean name="checkLists" unorderedCompare="true">$correctLabels = $mi1</boolean>
+
+</setup>
+
+ <p>Enter the (capital) letters of all of the following graphs below which satisfy the property that <me>\lim_{x\to $a} f(x)= $$line($a).</me> Separate your list by commas if needed.
+ <answer>
+   <mathInput name="mi1" />
+    <award>
+      <when>$checkLists</when>
+    </award>
+  </answer>
+ </p>
+
+<sideBySide margins="1%">
+  <figure suppressFigureNameInCaption="true">$graphSelect[1][1]<caption>A</caption></figure>
+  <figure suppressFigureNameInCaption="true">$graphSelect[2][1]<caption>B</caption></figure>
+  <figure suppressFigureNameInCaption="true">$graphSelect[3][1]<caption>C</caption></figure>
+</sideBySide>
