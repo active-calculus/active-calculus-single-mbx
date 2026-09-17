@@ -12,7 +12,6 @@
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
 
-
 <setup>
 
   <selectFromSequence name="A" from="186" to="192" step="2"/>
@@ -38,21 +37,21 @@
         </row>
         <row>
           <cell><m>F(t)</m></cell>
-          <cell halign="center"><math displayDecimals="2">$$F(0)</math></cell>
-          <cell halign="center"><math displayDecimals="2">$$F(6)</math></cell>
-          <cell halign="center"><math displayDecimals="2">$$F(12)</math></cell>
-          <cell halign="center"><math displayDecimals="2">$$F(18)</math></cell>
-          <cell halign="center"><math displayDecimals="2">$$F(24)</math></cell>
-          <cell halign="center"><math displayDecimals="2">$$F(30)</math></cell>
+          <cell halign="center"><number displayDecimals="3" name="F0">$$F(0)</number></cell>
+          <cell halign="center"><number displayDecimals="3" name="F6">$$F(6)</number></cell>
+          <cell halign="center"><number displayDecimals="3" name="F12">$$F(12)</number></cell>
+          <cell halign="center"><number displayDecimals="3" name="F18">$$F(18)</number></cell>
+          <cell halign="center"><number displayDecimals="3" name="F24">$$F(24)</number></cell>
+          <cell halign="center"><number displayDecimals="3" name="F30">$$F(30)</number></cell>
         </row>
         <row>
           <cell><m>F'(t)</m></cell>
-          <cell halign="center"><math displayDecimals="2">$$FP(0)</math></cell>
-          <cell halign="center"><math displayDecimals="2">$$FP(6)</math></cell>
-          <cell halign="center"><math displayDecimals="2">$$FP(12)</math></cell>
-          <cell halign="center"><math displayDecimals="2">$$FP(18)</math></cell>
-          <cell halign="center"><math displayDecimals="2">$$FP(24)</math></cell>
-          <cell halign="center"><math displayDecimals="2">$$FP(30)</math></cell>
+          <cell halign="center"><number displayDecimals="3" name="FP0">$$FP(0)</number></cell>
+          <cell halign="center"><number displayDecimals="3" name="FP6">$$FP(6)</number></cell>
+          <cell halign="center"><number displayDecimals="3" name="FP12">$$FP(12)</number></cell>
+          <cell halign="center"><number displayDecimals="3" name="FP18">$$FP(18)</number></cell>
+          <cell halign="center"><number displayDecimals="3" name="FP24">$$FP(24)</number></cell>
+          <cell halign="center"><number displayDecimals="3" name="FP30">$$FP(30)</number></cell>
         </row>        
       </tabular>
 
@@ -60,62 +59,76 @@
   <ol marker="a.">
     <li>
       <setup>
-        <math simplify name="cd1">($$FP(12)-$$FP(0))/(12) </math>  
-        <math simplify name="cd2">($$FP(30)-$$FP(18))/(12) </math>  
-        <math simplify name="F6">$$F(6) </math>  
-        <math simplify name="F24">$$F(24) </math>
-        <math simplify name="FP6">$$FP(6) </math>  
-        <math simplify name="FP24">$$FP(24) </math> 
+        <math simplify name="cd1">($FP12-$FP0)/(12) </math>  
+        <math simplify name="cd2">($FP30-$FP18)/(12) </math>  
       </setup>  
       <p>
         Use a central difference to find the best estimate you can for <m>F''(6)</m>. 
       </p>
-      <p><m>F''(6) \approx</m><answer inline><mathInput name="ans1"/>
-          <award allowedErrorInNumbers="0.01"> 
-            <when>
-              $ans1 = $cd1
-            </when>
-          </award>
-        </answer></p>
+      <p>
+        <answer allowedErrorInNumbers="0.001" allowedErrorIsAbsolute name="firstAns">
+          <label><m>F''(6) \approx</m></label>
+          $cd1
+        </answer>
+      </p>
     </li>
     <li>
       <p>
         Similarly, use a central difference to find the best estimate you can for <m>F''(24)</m>. 
       </p>
-      <p><m>F''(24) \approx</m><answer inline><mathInput name="ans2"/>
-          <award allowedErrorInNumbers="0.01"> 
-            <when>
-              $ans2 = $cd2
-            </when>
-          </award>
-        </answer></p>
+      <p>
+        <answer allowedErrorInNumbers="0.001" allowedErrorIsAbsolute name="ans2">
+          <label><m>F''(24) \approx</m></label>
+          $cd2
+        </answer>
+      </p>
     </li>  
     <li>
       <p>
         Complete the following sentences to explain the meaning of select data in the table and the second derivative value you found in (a).
       </p>  
       <p>
-        After the coffee has been cooling for <m>6</m> minutes, its temperature is <answer><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$F6</award></answer> degrees Fahrenheit, and its temperature is changing at an instantaneous rate of approximately <answer><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$FP6</award></answer> degrees F per minute.  In addition, the rate at which the coffee's temperature is dropping is changing at an approximate rate of <answer><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$ans1</award></answer> (degrees F per minute) per minute.  This means that while the coffee's temperature is decreasing, the rate at which the temperature is decreasing is <answer><choiceInput inline> 
-      <choice credit = "0">?</choice>
-      <choice credit = "1">slowing down</choice>
-      <choice credit = "0">staying the same</choice>
-      <choice credit = "0">speeding up</choice>
-    </choiceInput></answer> since <m>F''(6)</m> is <answer><choiceInput inline> 
-      <choice credit = "0">?</choice>
-      <choice credit = "0">negative</choice>
-      <choice credit = "0">zero</choice>
-      <choice credit = "1">positive</choice>
-    </choiceInput></answer>.
+        After the coffee has been cooling for <m>6</m> minutes, its temperature is 
+        <answer><shortDescription>temperature</shortDescription><award allowedErrorInNumbers="0.001" allowedErrorIsAbsolute>$F6</award></answer> 
+        degrees Fahrenheit, and its temperature is changing at an instantaneous rate of approximately 
+        <answer><shortDescription>rate of change of temperature</shortDescription><award allowedErrorInNumbers="0.001" allowedErrorIsAbsolute>$FP6</award></answer> 
+        degrees F per minute.  In addition, the rate at which the coffee's temperature is dropping is 
+        changing at an approximate rate of 
+        <answer><shortDescription>rate of change of rate of change of temperature</shortDescription><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$cd1</award></answer> 
+        (degrees F per minute) per minute.  This means that while the coffee's temperature is 
+        decreasing, the rate at which the temperature is decreasing is 
+        <answer>
+          <shortDescription>slowing down, staying same, speeding up</shortDescription>
+          <choiceInput inline> 
+            <shortDescription>slowing down, staying same, speeding up</shortDescription>
+            <choice credit = "0">?</choice>
+            <choice credit = "1">slowing down</choice>
+            <choice credit = "0">staying the same</choice>
+            <choice credit = "0">speeding up</choice>
+          </choiceInput>
+        </answer> since <m>F''(6)</m> is 
+        <answer>
+          <shortDescription>negative, zero, positive</shortDescription>
+          <choiceInput inline> 
+            <shortDescription>negative, zero, positive</shortDescription>
+            <choice credit = "0">?</choice>
+            <choice credit = "0">negative</choice>
+            <choice credit = "0">zero</choice>
+            <choice credit = "1">positive</choice>
+          </choiceInput>
+        </answer>.
       </p>
     </li>
     <li>
       <p>
         Near the time when <m>t = 24</m>, based on the signs of <m>F'(24)</m> and <m>F''(24)</m>, we expect that the graph of <m>y = F(t)</m> is <answer><choiceInput inline> 
+          <shortDescription>decreasing, constant, increasing</shortDescription>
       <choice credit = "0">?</choice>
       <choice credit = "1">decreasing</choice>
       <choice credit = "0">constant</choice>
       <choice credit = "0">increasing</choice></choiceInput></answer>
         and <answer><choiceInput inline> 
+          <shortDescription>CCD, linear, CCU</shortDescription>
       <choice credit = "0">?</choice>
       <choice credit = "0">concave down</choice>
       <choice credit = "0">linear</choice>
