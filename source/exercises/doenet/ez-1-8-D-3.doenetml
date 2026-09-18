@@ -24,11 +24,14 @@
   </function>  
   <derivative name="CP">$C</derivative>
   <derivative name="CPP">$CP</derivative>
+
+  <number name="m" displayDigits="4">$$CP($t)</number>
+  <number name="absm" displayDigits="4">-$$CP($t)</number>
   
 </setup>  
 
 
-<p>The temperature, <m>C</m>, in degrees Celsius, of a hot cup of coffee placed on a kitchen counter is given by <m>C=f(t)</m>, where  <m>t</m> is in minutes since the coffee was put on the counter.  Suppose we know that <m>C($t) = $$C($t)</m>, <m>C'($t) = $$CP($t)</m>, and <m>C''($t) = $$CPP($t)</m>.
+<p>The temperature, <m>C</m>, in degrees Celsius, of a hot cup of coffee placed on a kitchen counter is given by <m>C=f(t)</m>, where  <m>t</m> is in minutes since the coffee was put on the counter.  Suppose we know that <m>C($t) = $$C($t)</m>, <m>C'($t) = $m</m>, and <m>C''($t) = $$CPP($t)</m>.
 </p>
 <p>
   <ol marker="a.">
@@ -46,7 +49,12 @@
             <choice>change in temperature</choice>
           </choiceInput>
         </answer>
-        is <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$C($t)</answer> degrees C.  In addition, the coffee's temperature is changing at an instantaneous rate of <answer  allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$CP($t)</answer> 
+        is <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$C($t)</answer> degrees C.  In addition, the coffee's temperature is changing at an instantaneous rate of 
+        <answer  
+          allowedErrorInNumbers="0.01" 
+          allowedErrorIsAbsolute>
+          $m <!-- which equals $$C($t) -->
+        </answer> 
         <answer> 
           <choiceInput inline>
             <choice>?</choice>
@@ -61,9 +69,19 @@
     <li>
       <p>We can find the local linearization to <m>C</m> at <m>a = $t</m>, which is
         <me>
-          L(t) = C($t) + C'($t)(t-$t) = $$C($t) - <math simplify>|$$CP($t)|</math>(t-$t).
+          L(t) = C($t) + C'($t)(t-$t) = $$C($t) - $absm (t-$t).
         </me>
-        Using the local linearization, we find that <m>f(<math simplify>$t + $tplus</math>) \approx L(<math simplify>$t + $tplus</math>) = </m><answer  allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>$$C($t) + $tplus*$$CP($t)</answer>.  Thus, if $tplus more minutes elapse after <m>t=$t</m>, we expect that the coffee's temperature will drop by about <answer  allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>-1*$tplus*$$CP($t)</answer> degrees C. 
+        Using the local linearization, we find that <m>f(<math simplify>$t + $tplus</math>) \approx L(<math simplify>$t + $tplus</math>) = </m>
+        <answer  
+          allowedErrorInNumbers="0.01" 
+          allowedErrorIsAbsolute>
+          $$C($t) + $tplus*$m
+        </answer>.  
+        Thus, if $tplus more minutes elapse after <m>t=$t</m>, we expect that the coffee's temperature will drop by about <answer  
+          allowedErrorInNumbers="0.01" 
+          allowedErrorIsAbsolute>
+          -1*$tplus*$m
+        </answer> degrees C.
       </p>
     </li>
     <li>
