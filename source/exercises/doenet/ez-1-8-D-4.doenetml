@@ -33,6 +33,11 @@
 
   <label fixed name="gLabel" anchor="(-3,$$g(-3)-0.25)"><m>y = g(x)</m></label>
   <label fixed name="LLabel" anchor="(-2,$$L(-2)+0.5)"><m>y = L(x)</m></label>
+  <number name="Ax">$A.x</number>
+  <number name="Ay">$A.y</number>
+  <number name="Bx">$B.x</number>
+  <number name="By">$B.y</number>
+  <number name="m">($By-$Ay)/($Bx-$Ax)</number>
 
 </setup>
 
@@ -40,20 +45,27 @@
 
 <!--  <p><m>a = $a</m>, <m>b = $b</m>, and <m>c = $c</m>, so <m>g(x) = $$g(x)</m> and <m>L(x) = $$L(x)</m>, plus <m>A = $A</m> and <m>B = $B</m></p> -->
 
-      <graph xmin="-4" xmax="4" ymin="-3" ymax="3" size="medium" grid="false" showNavigation="false" fixAxes="true" displayXAxis="false" displayYAxis="false"> $g $L $A $B $gLabel $LLabel
+      <graph xmin="-4" xmax="4" ymin="-3" ymax="3" size="medium" grid="false" showNavigation="false" fixAxes="true" displayXAxis="false" displayYAxis="false"> 
+        <shortDescription>A plot of a function, g, and its tangent line, L. </shortDescription>
+        <description>
+          The function <m>g</m> is decreasing and concave down and passes through the point <m>A = $A.coords</m>.  Its tangent line <m>L</m> passes through <m>A</m> as well as the point <m>B = $B.coords</m>.
+        </description>
+        $g $L $A $B $gLabel $LLabel
       </graph>
 
 
 <p>
-
   <ol marker="a.">
     <li>
       <p>
         State the formula for <m>L(x)</m>, the tangent line approximation to <m>g</m> at the point <m>($c,$$g($c))</m>.  Be sure to use all of the available accuracy in the given data.
       </p>
       <p>
-        <m>L(x)=</m><answer><award allowedErrorInNumbers="0.001" allowedErrorIsAbsolute> $$g($c) + $$gP($c)(x-$c)
-        </award></answer>.
+        <answer>
+          <label><m>L(x)=</m></label>
+          <award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> $$g($c) + $$gP($c)(x-$c)
+          </award>
+        </answer>.
       </p>
     </li>
     <li>
@@ -61,15 +73,21 @@
         Use the tangent line approximation to estimate the value of <m>g(<math simplify>$c+0.1*$a</math>)</m>.   Be sure to use all of the available accuracy in the given data.
       </p>  
       <p>
-        <m>g(<math simplify>$c+0.1*$a</math>) \approx</m><answer><award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> $$g($c) + $$gP($c)(0.1*$a)
-        </award></answer>.
+        <answer>
+          <label>
+            <m>g(<math simplify>$c+0.1*$a</math>) \approx</m> 
+          </label>
+          <award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> $$g($c) + $$gP($c)(0.1*$a)
+          </award>
+        </answer>.
       </p> 
     </li>
     <li>
       <p>
-        The estimated value of  <m>g(<math simplify>$c+0.25*$a</math>)</m> found in (b) is
+        The estimated value of  <m>g(<math simplify>$c+0.1*$a</math>)</m> found in (b) is
         <answer>
           <choiceInput name="overunder" inline>
+            <shortDescription>greater, less, equal</shortDescription>
             <choice>greater than</choice>
             <choice>less than</choice>
             <choice>equal to</choice>
@@ -82,9 +100,10 @@
               <when>$overunder.selectedIndices=2 and $$gPP($c) > 0
               </when>
             </award>
-          </answer> the true value of <m>g(<math simplify>$c+0.25*$a</math>)</m>. One reason this conclusion is true is the tangent line lies
+          </answer> the true value of <m>g(<math simplify>$c+0.1*$a</math>)</m>. One reason this conclusion is true is the tangent line lies
                <answer>
                       <choiceInput name="reason" inline>
+                        <shortDescription>below, above</shortDescription>
                         <choice>below</choice>
                         <choice>above</choice>
                       </choiceInput>
