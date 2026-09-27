@@ -55,7 +55,11 @@
         <p>
           where 
           <m>a = </m><mathInput minWidth="30" name="aEntered"><shortDescription>a value</shortDescription></mathInput> and <m>b = </m><mathInput minWidth="30" name="bEntered"><shortDescription>b value</shortDescription></mathInput>.
-          <answer><award><when>$aEntered=$y1 and $bEntered=$y2 and $dWhat = y and $integrandEntered=$integrand </when></award></answer>
+          <answer><award><when>$aEntered=$y1 and $bEntered=$y2 and $dWhat = y and 
+            <or>
+              <boolean>$integrandEntered=$integrand and $m > $n </boolean>
+              <boolean>$integrandEntered=-$integrand and $m < $n </boolean>
+            </or> </when></award></answer>
         </p>
       </li>
       <li>
@@ -63,9 +67,9 @@
           Finally, evaluate the integral exactly and report the resulting area, <m>A</m>, below.
         </p>
         <p>
-          <answer name="AEntered"><label><m>A = </m></label>
-            <award>$intValue</award>
-            <award credit="0" name="close" allowedErrorInNumbers=".011" allowedErrorIsAbsolute>$intValue</award>
+          <answer><mathInput name="AEntered"><label><m>A = </m></label></mathInput>
+            <award>abs($intValue)</award>
+            <award credit="0" name="close" allowedErrorInNumbers=".011" allowedErrorIsAbsolute>abs($intValue)</award>
           </answer>
         </p> 
         <!-- <feedback condition="$AEntered.creditAchieved!=1 and ($error < 0.011) and $AEntered.justSubmitted">
