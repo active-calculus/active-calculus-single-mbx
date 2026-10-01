@@ -11,10 +11,10 @@
 <!-- "share and share alike".  All trademarks are the registered marks of  -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
- 
+
 <setup>
-  <selectFromSequence name="k" from="9" to="12" step="1"/>  
-  <selectFromSequence name="b" from="1" to="2" step="1" exclude="$k"/>  
+  <selectFromSequence name="k" from="9" to="12" step="1"/>
+  <selectFromSequence name="b" from="1" to="2" step="1" exclude="$k"/>
 
   <math name="a" simplify>0</math>
   <number name="n">4</number>
@@ -32,74 +32,83 @@
   <math simplify name="exactInt">$$F($b) - $$F($a) </math>
 
 </setup>
-<!--
-<graph xmin="-5" xmax="$m+20" ymin="-2" ymax="24">
-  $c
-</graph>
--->
   <p>
-    Consider the definite integral 
+    Consider the definite integral
     <me>
       \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx
     </me>
-  </p> 
+  </p>
 
 <p>
   <ol marker="a.">
     <li>
       <p>
-        Determine the estimates <m>L_4</m>, <m>R_4</m>, <m>T_4</m>, and <m>M_4</m> for the given definite integral.  Enter each as a single decimal number, accurate to <m>0.000001</m>.  
+        Determine the estimates <m>L_4</m>, <m>R_4</m>, <m>T_4</m>, and <m>M_4</m> for the given definite integral.  Enter each as a single decimal number, accurate to <m>0.000001</m>.
       </p>
       <p>
-        <m> \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx \approx </m><answer symbolicEquality allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute name="L4entered"> 
+        <m> \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx \approx </m><answer symbolicEquality allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute name="L4entered">
           <label><m>\ L_4 = </m></label>
           $L4</answer>
       </p>
       <p>
-        <m> \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx \approx </m><answer symbolicEquality allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute name="R4entered"> 
+        <m> \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx \approx </m><answer symbolicEquality allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute name="R4entered">
           <label><m>\ R_4 = </m></label>
           $R4</answer>
       </p>
       <p>
-        <m> \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx \approx  </m><answer symbolicEquality allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute name="M4entered"> 
+        <m> \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx \approx  </m><answer symbolicEquality allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute name="M4entered">
           <label><m>\ M_4 = </m></label>
           $M4</answer>
       </p>
       <p>
-        <m> \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx \approx </m><answer symbolicEquality allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute forceSmallCheckWorkButton name="T4answer"> 
+        <m> \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx \approx </m><answer allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute forceSmallCheckWorkButton name="T4answer">
           <mathInput name="T4entered">
             <label><m>\ T_4 = </m></label>
           </mathInput>
-          <award><when>
-            $T4entered = $T4 or ($T4entered = <math>($L4entered + $R4entered)/2</math> and $L4entered.creditAchieved=1 and $R4entered.creditAchieved=1)
+          <award symbolicEquality><when>
+            $T4entered = <number>($L4entered + $R4entered)/2</number> and $L4entered.creditAchieved=1 and $R4entered.creditAchieved=1
           </when></award>
+          <award credit="0" name="needdecimal"><when>
+            $T4entered = <number>($L4entered + $R4entered)/2</number>
+            and $L4entered.creditAchieved=1 and $R4entered.creditAchieved=1
+          </when></award>
+          <award credit="0" name="trapformulaused">
+            $T4
+          </award>
         </answer>
       </p>
-    </li>  
+      <feedback condition="$needdecimal">Make sure you are entering a decimal, not a calculation.</feedback>
+      <feedback condition="$trapformulaused">Make sure you have <m>L_4</m> and <m>R_4</m> correct before attempting to enter <m>T_{4}</m>. You should be using <me>T_{4}=\frac{L_4+R_4}{2}.</me> </feedback>
+    </li>
     <li>
       <p>
         Find the estimate that results from using Simpson's Rule with <m>8</m> subintervals, again reporting your answer a single decimal number, accurate to <m>0.000001</m>.
       </p>
       <p>
-        <m> \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx \approx </m><answer symbolicEquality allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute> 
+        <m> \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx \approx </m><answer allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute>
           <mathInput name="S8entered">
             <label><m>\ S_{8} = </m>  </label>
           </mathInput>
           <!-- <extractMathOperator name="S8Operator">$S8entered</extractMathOperator> -->
-          <award>
+          <award symbolicEquality>
             <when>
-              ($S8entered = $S8 or $S8entered = $S8computed) 
-              <!-- and $S8Operator="" -->
+              $S8entered = <number>(2*$M4entered+$T4entered)/3</number>
+              and $T4answer.creditAchieved=1 and $M4entered.creditAchieved=1
             </when>
+          </award>
+          <award credit="0" name="Simpformulaused"><when>
+            $S8entered = $S8
+          </when>
           </award>
         </answer>
       </p>
+      <feedback condition="$Simpformulaused">Enter your answer as a decimal, and make sure you have <m>M_4</m> and <m>T_4</m> correct before attempting to enter <m>S_{8}</m>. You should be using <me>S_{8}=\frac{2M_4+T_4}{3}.</me></feedback>
     </li>
     <li>
       <p>
-        Use the Fundamental Theorem of Calculus to evaluate the integral 
+        Use the Fundamental Theorem of Calculus to evaluate the integral
         <me>
-          \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx 
+          \int_$a^{$b} \left($k - \frac{1}{2}x^3\right) \, dx
         </me>
         exactly; report your result below and choose the option that fits with your conclusion.
       </p>
@@ -127,8 +136,8 @@
           ($c1.selectedIndices=4 and $S8=$exactInt)
         </when></award></answer>
       </p>
-          
+
     </li>
 
-  </ol>  
+  </ol>
 </p>
