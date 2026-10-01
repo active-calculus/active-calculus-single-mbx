@@ -11,38 +11,33 @@
 <!-- "share and share alike".  All trademarks are the registered marks of  -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
- 
+
 <setup>
-  <selectFromSequence name="k" from="-2" to="2" step="4"/>  
-  <selectFromSequence name="a" from="-1" to="2" step="1"/>  
-  <selectFromSequence name="dx" from="0.5" to="0.75" step="0.25"/> 
- 
+  <selectFromSequence name="k" from="-2" to="2" step="4"/>
+  <selectFromSequence name="a" from="-1" to="2" step="1"/>
+  <selectFromSequence name="dx" from="0.5" to="0.75" step="0.25"/>
+
   <number name="n">4</number>
   <math name="b" simplify>$a + 4*$dx</math>
 
   <function name="f">3+$k*e^(-0.5*x)</function>
   <function name="F">3*x+$k*e^(-0.5*x)</function>
 
-  <number name="L4" displayDecimals="3">$dx * ($$f($a) + $$f($a+$dx) + $$f($a+2*$dx) + $$f($a+3*$dx) )</number>>
-  <number name="R4" displayDecimals="3">$dx * ($$f($a+$dx) + $$f($a+2*$dx) + $$f($a+3*$dx) + $$f($a+4*$dx) )</number>
-  <number name="M4" displayDecimals="3">$dx * ($$f($a+$dx/2) + $$f($a+3*$dx/2) + $$f($a+5*$dx/2) + $$f($a+7*$dx/2))</number>
+  <round name="L4" numDecimals="3">$dx * ($$f($a) + $$f($a+$dx) + $$f($a+2*$dx) + $$f($a+3*$dx) )</round>
+  <round numDecimals="3" name="R4">$dx * ($$f($a+$dx) + $$f($a+2*$dx) + $$f($a+3*$dx) + $$f($a+4*$dx) )</round>
+  <round name="M4" numDecimals="3">$dx * ($$f($a+$dx/2) + $$f($a+3*$dx/2) + $$f($a+5*$dx/2) + $$f($a+7*$dx/2))</round>
   <number name="T4" displayDecimals="3">($L4 + $R4)/2</number>
   <number name="S8" displayDecimals="3">(2*$M4 + $T4)/3</number>
   <math simplify name="exactInt">$$F($b) - $$F($a) </math>
 
 </setup>
-<!--
-<graph xmin="-5" xmax="$m+20" ymin="-2" ymax="24">
-  $c
-</graph>
--->
   <p>
-    Suppose we are interested in the definite integral 
+    Suppose we are interested in the definite integral
     <me>
       \int_{$a}^{$b} f(x) \, dx
     </me>
     for which we know the following information:
-  </p> 
+  </p>
   <p>
     <ul>
       <li>
@@ -64,15 +59,15 @@
         Use the given information to determine the estimates <m>T_4</m> and <m>S_{8}</m> for the given definite integral.  Enter each answer as a single decimal number, accurate to <m>0.001</m>.
       </p>
       <p>
-        <answer symbolicEquality allowedErrorInNumbers="0.002" allowedErrorIsAbsolute><label><m> \int_{$a}^{$b} f(x) \, dx \approx T_4 = </m></label>$T4</answer>
+        <answer symbolicEquality allowedErrorInNumbers="0.001" allowedErrorIsAbsolute><label><m> \int_{$a}^{$b} f(x) \, dx \approx T_4 = </m></label>$T4</answer>
       </p>
       <p>
-        <answer symbolicEquality allowedErrorInNumbers="0.002" allowedErrorIsAbsolute> <label><m> \int_{$a}^{$b} f(x) \, dx \approx S_8 = </m></label>$S8</answer>
+        <answer symbolicEquality allowedErrorInNumbers="0.001" allowedErrorIsAbsolute> <label><m> \int_{$a}^{$b} f(x) \, dx \approx S_8 = </m></label>$S8</answer>
       </p>
-    </li>  
+    </li>
     <li>
       <p>
-        Is <m>f</m> increasing or decreasing on <m>[$a,$b]</m>?  concave up or concave down?  Complete the following sentence to justify your conclusions. 
+        Is <m>f</m> increasing or decreasing on <m>[$a,$b]</m>?  concave up or concave down?  Complete the following sentence to justify your conclusions.
       </p>
       <p>
         The function <m>f</m> is <choiceInput name="c1" inline>
@@ -108,9 +103,6 @@
           (0 > $k  and $c1.selectedIndices=2 and $c2.selectedIndices=2 and $c3.selectedIndices=3 and $c4.selectedIndices=4)
         </when></award></answer>
       </p>
-          
-          
     </li>
-
-  </ol>  
+  </ol>
 </p>
