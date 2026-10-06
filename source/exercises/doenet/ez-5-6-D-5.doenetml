@@ -21,10 +21,10 @@
 
   <function name="v">$c*($a-x)^2</function>
 
-  <number name="L4">$dx * ($$v(0) + $$v($dx) + $$v(2*$dx) + $$v(3*$dx))</number>
-  <number name="R4">$dx * ($$v($dx) + $$v(2*$dx) + $$v(3*$dx) + $$v(4*$dx))</number>
+  <number name="L4">$dx * ($v0 + $v2 + $v4 + $v6)</number>
+  <number name="R4" displayDecimals="4">$dx * ($v2 + $v4 + $v6 + $v8)</number>
   <number name="T4">($L4 + $R4)/2</number>
-  <number name="M4">$dx * ($$v($a+$dx/2) + $$v($a+3*$dx/2) + $$v($a+5*$dx/2) + $$v($a+7*$dx/2))</number>
+  <number name="M4">$dx * ($v1 + $v3 + $v5 + $v7)</number>
   <number name="S8">(2*$M4 + $T4)/3</number>
 
 </setup>
@@ -44,11 +44,11 @@
         </row>
         <row halign="center">
           <cell><m>r(t)</m></cell>
-          <cell><m><number displayDecimals="2">$$v(0)</number></m></cell>
-          <cell><m><number displayDecimals="2">$$v($dx/2)</number></m></cell>
-          <cell><m><number displayDecimals="2">$$v(2*$dx/2)</number></m></cell>
-          <cell><m><number displayDecimals="2">$$v(3*$dx/2)</number></m></cell>
-          <cell><m><number displayDecimals="2">$$v(4*$dx/2)</number></m></cell>
+          <cell><m><round numDecimals="2" name="v0">$$v(0)</round></m></cell>
+          <cell><m><round numDecimals="2" name="v1">$$v($dx/2)</round></m></cell>
+          <cell><m><round numDecimals="2" name="v2">$$v(2*$dx/2)</round></m></cell>
+          <cell><m><round numDecimals="2" name="v3">$$v(3*$dx/2)</round></m></cell>
+          <cell><m><round numDecimals="2" name="v4">$$v(4*$dx/2)</round></m></cell>
         </row>
       </tabular>
 
@@ -63,10 +63,10 @@
         </row>
         <row halign="center">
           <cell><m>r(t)</m></cell>
-          <cell><m><number displayDecimals="2">$$v(5*$dx/2)</number></m></cell>
-          <cell><m><number displayDecimals="2">$$v(6*$dx/2)</number></m></cell>
-          <cell><m><number displayDecimals="2">$$v(7*$dx/2)</number></m></cell>
-          <cell><m><number displayDecimals="2">$$v(8*$dx/2)</number></m></cell>
+          <cell><m><round numDecimals="2" name="v5">$$v(5*$dx/2)</round></m></cell>
+          <cell><m><round numDecimals="2" name="v6">$$v(6*$dx/2)</round></m></cell>
+          <cell><m><round numDecimals="2" name="v7">$$v(7*$dx/2)</round></m></cell>
+          <cell><m><round numDecimals="2" name="v8">$$v(8*$dx/2)</round></m></cell>
           <cell><m><math simplify>0</math></m></cell>
         </row>
       </tabular>
@@ -100,13 +100,13 @@
         Compute the left and right Riemann sums on <m>[0,$a]</m> with <m>4</m> subintervals, as well as the Trapezoid Rule for <m>4</m> subintervals.  Report each answer a single decimal, accurate to <m>0.01</m>.
       </p>
       <p>
-        <answer symbolicEquality allowedErrorInNumbers="0.2" allowedErrorIsAbsolute> <label><m>L_4 = </m></label>$L4</answer>
+        <answer symbolicEquality allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> <label><m>L_4 = </m></label>$L4</answer>
       </p>
       <p>
-        <answer symbolicEquality allowedErrorInNumbers="0.2" allowedErrorIsAbsolute> <label><m>R_4 = </m></label>$R4</answer>
+        <answer symbolicEquality allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> <label><m>R_4 = </m></label>$R4</answer>
       </p>
       <p>
-        <answer symbolicEquality allowedErrorInNumbers="0.2" allowedErrorIsAbsolute> <label><m>T_4 = </m></label>$T4</answer>
+        <answer symbolicEquality allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> <label><m>T_4 = </m></label>$T4</answer>
       </p>
     </li>
     <li>
@@ -114,7 +114,7 @@
         Find the value of the midpoint Riemann sum on <m>[0,$a]</m> with <m>4</m> subintervals.  Report your answer a single decimal, accurate to <m>0.01</m>.
       </p>
       <p>
-        <answer symbolicEquality allowedErrorInNumbers="0.2" allowedErrorIsAbsolute> <label><m>M_4 = </m></label>$M4</answer>
+        <answer symbolicEquality allowedErrorInNumbers="0.01" allowedErrorIsAbsolute> <label><m>M_4 = </m></label>$M4</answer>
       </p>
     </li>
     <li>
@@ -122,7 +122,7 @@
         Finally, determine the value of the Simpson's Rule estimate for <m>\int_{0}^{$a} r(t) \, dt</m> with <m>8</m> subintervals.
       </p>
       <p>
-        <answer symbolicEquality name="enteredS8" allowedErrorInNumbers="0.2" allowedErrorIsAbsolute><label><m>S_8 = </m></label> $S8</answer>
+        <answer symbolicEquality name="enteredS8" allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>S_8 = </m></label> $S8</answer>
       </p>
     </li>
 
@@ -150,7 +150,7 @@
           <choice>liters</choice>
           <choice>liters per minute</choice>
           <choice>minutes</choice>
-        </choiceInput>.  This means that <m>\int_{0}^{$a} r(t) \, dt \approx</m><mathInput disabled><shortDescription>the already-entered value of S 8</shortDescription>$enteredS8</mathInput> estimates the <choiceInput inline name="c4">
+        </choiceInput>.  This means that <m>\int_{0}^{$a} r(t) \, dt \approx</m><mathInput disabled><shortDescription>the already-entered value of S 8</shortDescription><conditionalContent condition="$enteredS8.creditAchieved=1">$enteredS8</conditionalContent></mathInput> estimates the <choiceInput inline name="c4">
           <shortDescription>total volume, total time, or average rate</shortDescription>
           <choice>?</choice>
           <choice>total water (in liters) that drained from the tank on <m>[0, <math simplify>$a</math>]</m></choice>

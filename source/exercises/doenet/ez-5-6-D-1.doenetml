@@ -11,15 +11,14 @@
 <!-- "share and share alike".  All trademarks are the registered marks of  -->
 <!-- their respective owners.                                              -->
 <!-- **********************************************************************-->
- 
+
 <setup>
-  <selectFromSequence name="k" from="2" to="4" step="1"/>  
-  <selectFromSequence name="a" from="1" to="3" step="1" exclude="$k"/>  
- 
+  <selectFromSequence name="k" from="2" to="4" step="1"/>
+  <selectFromSequence name="a" from="1" to="3" step="1" exclude="$k"/>
+
   <number name="n">5</number>
   <math name="b" simplify>$a + 2*$n</math>
   <math name="dx" simplify>2</math>
-  <number name="S10computed" displayDecimals="7">($T5entered + 2*$M5entered)/3</number>
 
   <function name="f">$k/x</function>
 
@@ -30,18 +29,15 @@
   <number displayDecimals="6" name="S10">(2*$M5 + $T5)/3</number>>
   <math simplify name="exactInt">$k*ln($b) - $k*ln($a) </math>
 
+  <number name="S10computed" displayDecimals="7">(2*$M5entered+$T5entered)/3</number>
+
 </setup>
-<!--
-<graph xmin="-5" xmax="$m+20" ymin="-2" ymax="24">
-  $c
-</graph>
--->
   <p>
-    Consider the definite integral 
+    Consider the definite integral
     <me>
       \int_$a^{$b} \frac{$k}{x} \, dx
     </me>
-  </p> 
+  </p>
 
 <p>
   <ol marker="a.">
@@ -59,41 +55,56 @@
         <answer symbolicEquality allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute name="M5entered"><label><m> \int_$a^{$b} \frac{$k}{x} \, dx \approx M_5 = </m></label> $M5</answer>
       </p>
       <p>
-        <m> \int_$a^{$b} \frac{$k}{x} \, dx \approx T_5 = </m>
-        <answer allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute forceSmallCheckWorkButton> 
+
+        <answer name="T5ans" allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute forceSmallCheckWorkButton>
           <mathInput name="T5entered">
-            <shortDescription>T 5 value</shortDescription>
-          </mathInput>
-          <award><when>
-            $T5entered = $T5 or $T5entered = <math>($L5entered + $R5entered)/2</math>
+          <label><m> \int_$a^{$b} \frac{$k}{x} \, dx \approx T_5 = </m></label>
+            </mathInput>
+          <award symbolicEquality><when>
+            $T5entered = <number>($L5entered + $R5entered)/2</number>
+            and $L5entered.creditAchieved=1 and $R5entered.creditAchieved=1
           </when></award>
+          <award credit="0" name="needdecimal"><when>
+            $T5entered = <number>($L5entered + $R5entered)/2</number>
+            and $L5entered.creditAchieved=1 and $R5entered.creditAchieved=1
+          </when></award>
+          <award credit="0" name="trapformulaused">
+            $T5
+          </award>
         </answer>
       </p>
-    </li>  
+      <feedback condition="$needdecimal">Make sure you are entering a decimal, not a calculation.</feedback>
+      <feedback condition="$trapformulaused">Make sure you have <m>L_5</m> and <m>R_5</m> correct before attempting to enter <m>T_{5}</m>. You should be using <me>T_{5}=\frac{L_5+R_5}{2}.</me> </feedback>
+    </li>
     <li>
       <p>
         Find the estimate that results from using Simpson's Rule with <m>10</m> subintervals.  Report your result as a single decimal number, accurate to <m>0.000001</m>.
       </p>
       <p>
-        <m> \int_$a^{$b} \frac{$k}{x} \, dx \approx S_{10} = </m>
-        <answer symbolicEquality allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute> 
+        <answer allowedErrorInNumbers="0.000001" allowedErrorIsAbsolute>
           <mathInput name="S10entered">
-            <shortDescription>S 10 value</shortDescription>
+            <label><m> \int_$a^{$b} \frac{$k}{x} \, dx \approx S_{10} = </m></label>
           </mathInput>
-          <award>
+          <award symbolicEquality>
             <when>
-              $S10entered = $S10 or $S10entered = $S10computed
+              $S10entered = <number>(2*$M5entered+$T5entered)/3</number>
+              and $T5ans.creditAchieved=1 and $M5entered.creditAchieved=1
             </when>
+          </award>
+          <award credit="0" name="Simpformulaused"><when>
+            $S10entered = $S10
+          </when>
           </award>
         </answer>
       </p>
+      <feedback condition="$Simpformulaused">Enter your answer as a decimal, and make sure you have <m>M_5</m> and <m>T_5</m> correct before attempting to enter <m>S_{10}</m>. You should be using <me>S_{10}=\frac{2M_5+T_5}{3}.</me></feedback>
     </li>
     <li>
       <p>
-        The exact value of the integral turns out to be 
+        The exact value of the integral turns out to be
         <me>
-          \int_$a^{$b} \frac{$k}{x} \, dx = <math simplify>$k*ln($b) - $k*ln($a) 
-          </math>
+          \int_$a^{$b} \frac{$k}{x} \, dx = <math name="exact" simplify>$k*ln($b) - $k*ln($a)
+          </math>\approx<number displayDecimals="7">$exact</number>
         </me>
         Simpson's Rule therefore <choiceInput name="c1" inline>
           <shortDescription>under, over, or equal</shortDescription>
@@ -112,8 +123,8 @@
           ($c1.selectedIndices=4 and $S10=$exactInt)
         </when></award></answer>
       </p>
-          
+
     </li>
 
-  </ol>  
+  </ol>
 </p>
