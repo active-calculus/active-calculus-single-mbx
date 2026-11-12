@@ -15,7 +15,10 @@
  <setup>
   <selectFromSequence name = "r" from = "5" to = "15" step = "5" />
   <selectFromSequence name = "pm" from = "50000" to = "100000" step = "50000"/>
-  <selectFromSequence name = "A" from = "30000" to = "40000" step = "5000"/>
+  <!-- <selectFromSequence name = "A" from = "30000" to = "40000" step = "5000"/> -->
+  <selectFromSequence name = "multiplier" from = "3" to = "7" step = "1" />
+   <number name="A">$r*$multiplier*1000</number>
+   
 
   <math name="k" simplify>0.01*$r</math>
   <math name="eqSoln" simplify>$A/$k</math>
@@ -46,8 +49,8 @@
         Fill in the blanks below to state an initial value problem that the function <m>W(t)</m> satisfies.
       </p>  
       <p>
-        <m>\frac{dW}{dt} = </m><mathInput minWidth="100" name="deEntered"/>, <m>W(0) = </m><mathInput minWidth="75" name="W0Entered"/>
-        <answer simplifyOnCompare><award><when> 
+        <mathInput minWidth="100" name="deEntered"><label><m>\frac{dW}{dt} = </m></label></mathInput>, <mathInput minWidth="75" name="W0Entered"><label><m>W(0) = </m></label></mathInput>
+        <answer><award><when> 
           ($deEntered=$DE and $W0Entered=$W0) or ($deEntered=$DE1 and $W0Entered=$W0) or
           ($deEntered=$DE2 and $W0Entered=$W0) or ($deEntered=$DE3 and $W0Entered=$W0) 
         </when></award></answer> 
@@ -59,8 +62,8 @@
       </p>  
       
       <p>
-        <m>W(t) = </m><mathInput minWidth="70" name="WEntered"/>
-          <answer simplifyOnCompare><award><when> 
+        <mathInput minWidth="70" name="WEntered"><label><m>W(t) = </m></label></mathInput>
+          <answer><award><when> 
             $WEntered=$W 
           </when></award></answer> 
       </p>
@@ -71,7 +74,7 @@
       </p>  
       
       <p>
-        <m>t =</m><mathInput name="tEntered" minWidth="60"/> years <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute simplifyOnCompare><award><when>$tEntered=$tsoln</when></award></answer>
+        <mathInput name="tEntered" minWidth="60"><label><m>t =</m></label></mathInput>years <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute ><award><when>$tEntered=$tsoln</when></award></answer>
       </p>
     </li>
     <li>
@@ -79,13 +82,13 @@
         Now suppose instead that <m>W(0) = $W1</m>.  Update your solution to the corresponding IVP and state the result below.  In addition, determine how long it will take for the fish population to double from its initial value.  Report your answer to an accuracy of at least <m>0.01</m>.
       </p>
       <p>
-        <m>W(t) = </m><mathInput minWidth="70" name="W1Entered"/>
-          <answer simplifyOnCompare><award><when> 
+        <mathInput minWidth="70" name="W1Entered"><label><m>W(t) = </m></label></mathInput>
+          <answer ><award><when> 
             $W1Entered=$Wupdate 
           </when></award></answer> 
       </p>
       <p>
-        time for fish population to double is <m>t = </m><mathInput name="doubleEntered" minWidth="60"/> years <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute simplifyOnCompare><award><when>$doubleEntered=$tDouble</when></award></answer>
+        time for fish population to double is <mathInput name="doubleEntered" minWidth="60"><label><m>t = </m></label></mathInput>years <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when>$doubleEntered=$tDouble</when></award></answer>
       </p>
     </li>
     <li>
@@ -93,12 +96,12 @@
         Finally, state the equilibrium solution to the original differential equation and complete the sentence below to explain the role the equilibirum solution plays in the behavior of solutions for different initial values for <m>W(0)</m>. 
       </p>
       <p>
-        The equilibrium solution is <m>W = </m><mathInput name="a1" minWidth="50"/>.  If the initial value, <m>W(0)</m>, is less than the equilibrium solution, then the fish population will <choiceInput name="a2" inline>
+        The equilibrium solution is <mathInput name="a1" minWidth="50"><label><m>W = </m></label></mathInput>.  If the initial value, <m>W(0)</m>, is less than the equilibrium solution, then the fish population will <choiceInput name="a2" inline><shortDescription>behavior of the population</shortDescription>
           <choice>?</choice>
           <choice>stay constant</choice>
           <choice>increase without bound</choice>
           <choice>decrease and eventually go extinct</choice>
-        </choiceInput>, whereas if <m>W(0)</m> is greater than the equilibrium solution, then the fish population will <choiceInput name="a3" inline>
+        </choiceInput>, whereas if <m>W(0)</m> is greater than the equilibrium solution, then the fish population will <choiceInput name="a3" inline><shortDescription>behavior of the population</shortDescription>
           <choice>?</choice>
           <choice>stay constant</choice>
           <choice>increase without bound</choice>
