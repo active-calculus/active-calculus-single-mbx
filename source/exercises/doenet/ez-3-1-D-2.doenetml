@@ -15,7 +15,8 @@
 <setup>
   <selectFromSequence name="a" from = "300" to = "500" step = "50"/>
   <selectFromSequence name="b" from = "25" to = "45" step = "5"/>
-  <selectFromSequence name="c" from = "475" to = "625" step = "25" exclude="$a"/>
+  <selectFromSequence name="randomdist" from = "125" to = "175" step = "25" exclude="$a"/>
+  <number name="c">$a+$randomdist</number>
 
   <math name="correctAns1"> L^2 = $a^2 + h^2 </math>
   <math name="correctAns1a"> L^2 - $a^2 = h^2 </math> 
@@ -40,7 +41,7 @@
         Let <m>L</m> represent the distance from the laser finder to the rocket and <m>h</m> the height of the rocket.  Find an equation that relates <m>L</m> and <m>h</m>.
       </p>  
       <p>
-        An equation (not involving any square roots) that relates <m>L</m> and <m>h</m> is <mathInput name="ans1"/><answer symbolicEquality simplifyOnCompare ><award><when> $ans1=$correctAns1 or $ans1=$correctAns1a </when> </award></answer>.
+        <answer symbolicEquality simplifyOnCompare><mathInput name="ans1"><label>An equation (not involving any square roots) that relates <m>L</m> and <m>h</m> is </label></mathInput><award><when> $ans1=$correctAns1 or $ans1=$correctAns1a </when> </award></answer>.
       </p>  
     </li>
     <li>
@@ -51,15 +52,15 @@
         Differentiate with respect to <m>t</m> on both sides of the equation you found in (a) to find a new equation that relates <m>\frac{dL}{dt}</m> and <m>\frac{dh}{dt}</m>, along with possibly <m>L</m> and <m>h</m>.
       </p>
       <p>
-        An equation that relates <m>\frac{dL}{dt}</m> and <m>\frac{dh}{dt}</m> is <mathInput name="ans2"/><answer symbolicEquality simplifyOnCompare ><award><when> $ans2=$correctAns2 or $ans2=$correctAns2a </when> </award></answer>.
+        <answer symbolicEquality simplifyOnCompare ><mathInput name="ans2"><label>An equation that relates <m>\frac{dL}{dt}</m> and <m>\frac{dh}{dt}</m> is </label></mathInput><award><when> $ans2=$correctAns2 or $ans2=$correctAns2a </when> </award></answer>.
       </p>  
     </li>
     <li>
       <p>
         Use your work so far to determine the instantaneous rate at which the distance between the laser range finder and the rocket is changing at the instant the laser range finder reads <q>$c feet</q>
       </p>
-      <p>
-        <m>\left.\frac{dL}{dt}\right|_{L = $c} = </m> <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award> $correctAns3 </award></answer>, and the units on this quantity are <answer><choiceInput inline>
+      <p sectionWideCheckWork colorAnswersSeparately>
+        <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><label><m>\left.\frac{dL}{dt}\right|_{L = $c} = </m> </label><award> $correctAns3 </award></answer><answer><choiceInput inline><shortDescription>units on the quantity dL dt</shortDescription>
             <choice>?</choice>
             <choice>feet</choice>
             <choice credit="1">feet per second</choice>
