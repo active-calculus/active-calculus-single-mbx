@@ -13,6 +13,8 @@
 <!-- **********************************************************************-->
 
 <!-- this exercise was written by Jennifer Moorhouse as part of the PROTEUS grant -->
+<!-- lightly edited by Chrissy Safranski to address a user-reported issue with being able to add too many points -->
+
 
 <!--<exercises xmlns:xi="http://www.w3.org/2001/XInclude" component="proteus" xml:id="proteus-4-2">
 <title>PROTEUS exercises</title>
@@ -23,7 +25,7 @@
 <!-- Introduction -->
     <p>
       In several earlier examples
-      <!--<xref ref="PA-4-2">Section</xref>-->, we used a formula for a velocity function to choose the heights of rectangles. However, in most realistic scenarios, it is often the case that a formula is not given, and all we have is discrete data. For instance, here is 
+      <!--<xref ref="PA-4-2">Section</xref>-->, we used a formula for a velocity function to choose the heights of rectangles. However, in most realistic scenarios, it is often the case that a formula is not given, and all we have is discrete data. For instance, here is data
       from the first 12 seconds after ignition of the Saturn V rocket. </p>
 
 <setup>
@@ -38,10 +40,10 @@
 </setup>
 
       <sideBySide widths="47% 47%" valign="bottom" margins="2%">
-        <table xml:id="saturn-data">
-          <title>Data for the Saturn V rocket.</title>
+        <!-- <table xml:id="saturn-data">
+          <title>Data for the Saturn V rocket.</title> -->
           <tabular halign="center">
-            <row bottom="minor">
+            <row bottomBorder="minor">
               <cell>seconds, <m>t</m></cell>
               <cell>Velocity in m/s, <m>v(t)</m></cell>
             </row>
@@ -74,7 +76,7 @@
               <cell>31</cell>
             </row>
           </tabular>
-        </table>
+        <!-- </table> -->
 
 <stack>
 
@@ -88,47 +90,51 @@
     <point name="vert2">($delt,0) <constrainTo> $fix</constrainTo></point>
     <point name="vert3">(2*$delt,0) <constrainTo> $fix</constrainTo></point>    
     <collect name="collectPoints" componentType="point" from="$saturnAxesRiemann"/>
+    <mathList name="listofPoints">$collectPoints</mathList>
   </setup>
-
-$collectPoints  
   
-<figure xml:id="saturn-axes">
-     <caption>Axes for plotting.</caption>
-             <shortDescription>Axes for plotting.
-          </shortDescription>  
+<!-- <figure>
+     <caption>Axes for plotting.</caption>  -->
+
  
-<graph fixAxes width="300" aspectRatio="1/1" xmin='-1' xmax='14' ymin='-4' ymax='35' name="saturnAxesRiemann" grid="true"  displayXAxisTicks="true" displayXAxisTickLabels="true" displayYAxisTicks="true">
+<graph fixAxes width="300" aspectRatio="1/1" xmin='-1.5' xmax='14' ymin='-4' ymax='35' name="saturnAxesRiemann" grid="true"  displayXAxisTicks="true" displayXAxisTickLabels="true" displayYAxisTicks="true" >
   <shortDescription>Axes for plotting provided data and sketching rectangles</shortDescription>
   <xLabel><m>t</m></xLabel> <yLabel><m>v</m></yLabel>
-   <callAction 
+   <callAction hide="$listofPoints.numValues=7"
     actionName="addChildren" 
     target="$saturnAxesRiemann" 
-    anchor="(6,30)">
+    anchor="(7,32)">
       <point>(0,0) <constrainToGrid/> </point>
       <label>Add point</label>
   </callAction>
+  <!-- <callAction actionName="deleteChildren" target="$saturnAxesRiemann" number="1" anchor="(11,36)">
+  <label>Delete point</label>
+</callAction> -->
 
 
   <rectangle width="$delt" name="box1" vertices="$vert1  $snap1" filled hide="$DeltCorrect.creditAchieved!=1"/>
    <rectangle name="box2" vertices="$vert2 $snap2" filled hide="$DeltCorrect.creditAchieved!=1"/>
    <rectangle name="box3" vertices="$vert3 $snap3" filled hide="$DeltCorrect.creditAchieved!=1"/>
 </graph>
-</figure>
-  
+<!-- </figure> -->
+
+<answer><award><when matchPartial="true"> $collectPoints=$ListoPoints </when></award></answer> 
   </stack>
       </sideBySide>
 
+<p>
+  Coordinates of the points on the graph: $collectPoints
+</p>
 
-
-      
     
     <ol marker="a.">
       <li>
 <!--  Problem 1 -->
         <p>
-          Plot the given data from the table on the set of axes provided in the figure <!--<xref ref="saturn-axes">Figure</xref> --> with time on the horizontal axis and the velocity on the vertical axis.  Every time you click <q>Add point</q>, a new point will be added at the origin, which you can then drag to the desired location to align with data in the table.
+          Plot the given data from the table on the set of axes provided in the graph <!--<xref ref="saturn-axes">Figure</xref> --> with time on the horizontal axis and the velocity on the vertical axis, and hit "Check Work" above. 
         </p>
-        <answer><award><when matchPartial="true"> $collectPoints=$ListoPoints </when></award></answer> 
+        <aside><title>Instructions</title>Every time you click <q>Add point</q>, a new point will be added at the origin, which you can then drag to the desired location to align with data in the table. When you have the correct number of points, the Add Point button will disappear.</aside> 
+        
       </li>
       <li>
 
@@ -136,8 +142,8 @@ $collectPoints
         <p>
           Next, we are going to estimate the area under the velocity function <m>v(t)</m> on the time interval <m>[0,12]</m>.  We choose to use three rectangles, so <m>n = 3</m>.
         </p>
-        <p>
-          It follows that <answer name="DeltCorrect"><label><m> \Delta t = </m> </label> $delt </answer> sec. 
+        <p sectionWideCheckWork>
+          It follows that <answer name="DeltCorrect"><label><m> \Delta t = </m> </label> $delt </answer>sec. 
         </p>
         <p>
           Now that you have correctly identified <m>\Delta t</m>, notice that three rectangles with draggable heights have appeared on your graph.  Drag the heights so that the three rectangles form a consistent pattern (that is, either a Left, Right, or Middle Riemann sum), using the plotted data to provide the appropriate heights of each rectangle. 
@@ -170,11 +176,11 @@ $collectPoints
         <p>
           Use the heights you determined for each rectangle to determine the area of each rectangle, starting from the left to the right; include units in your answer. What does the area of each rectangle represent in the context of the rocket launch?
         </p>
-        <p> The area of the first rectangle is <answer><label><m>A_1= </m></label> $R1 </answer> and this area approximates the <answer name="dist" inline><shortDescription>area meaning</shortDescription> <choice credit="1"> distance travelled</choice> <choice>speed</choice> <choice>acceleration</choice></answer> in <answer name="units" inline><shortDescription>area units</shortDescription> <choice credit="1"> meters </choice> <choice><m>m/s</m></choice> <choice><m>m/s^2</m></choice></answer> of the Saturn V rocket from time <answer><label><m>t=</m></label>0</answer> to <answer><label><m>t=</m></label>4</answer></p> 
+        <p sectionWideCheckWork colorAnswersSeparately> The area of the first rectangle is <answer><label><m>A_1= </m></label> $R1 </answer> and this area approximates the <answer name="dist" inline><shortDescription>area meaning</shortDescription> <choice credit="1"> distance traveled</choice> <choice>speed</choice> <choice>acceleration</choice></answer> in <answer name="units" inline><shortDescription>area units</shortDescription> <choice credit="1"> meters </choice> <choice><m>m/s</m></choice> <choice><m>m/s^2</m></choice></answer> of the Saturn V rocket from time <answer><label><m>t=</m></label>0</answer> to <answer><label><m>t=</m></label>4</answer></p> 
         
-        <p> The area of the second rectangle is <answer><label><m>A_2= </m> </label> $R2 </answer> and this area approximates the $dist in $units of the Saturn V rocket from time <answer><label><m>t=</m></label>4</answer> to <answer><label><m>t=</m></label>8</answer></p>  
+        <p sectionWideCheckWork colorAnswersSeparately> The area of the second rectangle is <answer><label><m>A_2= </m> </label> $R2 </answer> and this area approximates the $dist in $units of the Saturn V rocket from time <answer><label><m>t=</m></label>4</answer> to <answer><label><m>t=</m></label>8</answer></p>  
         
-        <p> The area of the third rectangle is <answer><label><m> </m> </label> $R3 </answer>  and this area approximates the $dist in $units of the Saturn V rocket from time <answer><label><m>t=</m></label>8</answer> to <answer><label><m>t=</m></label>12</answer></p> 
+        <p sectionWideCheckWork colorAnswersSeparately> The area of the third rectangle is <answer><label><m> A_3=</m> </label> $R3 </answer>  and this area approximates the $dist in $units of the Saturn V rocket from time <answer><label><m>t=</m></label>8</answer> to <answer><label><m>t=</m></label>12</answer></p> 
       </li>
       <li>
 
@@ -182,7 +188,7 @@ $collectPoints
         <p>
           Add up the areas of each of the three rectangles to produce an estimate for the <em>total</em> area under the velocity function <m>v(t)</m> on the interval <m>[0,12]</m>. Give your answer as a single number with units. What does this value represent in the context of the rocket launch?
         </p>
-        <p>The total area of the three rectangles is <answer><label><m>A = </m></label>$TotR </answer> and this area is an approximation of 
+        <p sectionWideCheckWork colorAnswersSeparately>The total area of the three rectangles is <answer><label><m>A = </m></label>$TotR </answer> and this area is an approximation of 
           <answer inline><shortDescription>area meaning</shortDescription><choice credit="1"> distance travelled</choice> <choice>speed</choice>  <choice>acceleration</choice></answer> 
           in <answer inline><shortDescription>area units</shortDescription> <choice credit="1"> meters </choice> <choice><m>m/s</m></choice> <choice><m>m/s^2</m></choice></answer> 
           of the Saturn V rocket from time <answer><label><m>t=</m></label>0</answer> 
@@ -202,7 +208,7 @@ $collectPoints
 </setup> 
         
         <graph fixAxes width="300" aspectRatio="1/1" xmin='-1' xmax='14' ymin='-4' ymax='35' name="saturnAxesRiemann" grid="true"  displayXAxisTicks="true" displayXAxisTickLabels="true" displayYAxisTicks="true"><shortDescription>Copy of axes for graphing, containing points and draggable rectangles.</shortDescription>
-  <xLabel><m>t</m></xLabel> <yLabel><m>v</m></yLabel> $collectPoints 
+  <xLabel><m>t</m></xLabel> <yLabel><m>v</m></yLabel> <pointList fixed>$collectPoints</pointList> 
    <rectangle width="$delt" name="box1b" vertices="$vert1  $snapb1" filled/>
    <rectangle name="box2b" vertices="$vert2 $snapb2" filled/>
    <rectangle name="box3b" vertices="$vert3 $snapb3" filled/>
@@ -225,6 +231,7 @@ $collectPoints
 <setup>
   <number name="TotRb"> $delt*($box1b.height+$box2b.height+$box3b.height)</number>   
 </setup>  
-        <answer><label>the approximate distance travelled is</label> $TotRb </answer>
+        <p sectionWideCheckWork>
+        <answer><label>The approximate distance travelled is</label> $TotRb </answer> meters</p>
       </li>
     </ol>
