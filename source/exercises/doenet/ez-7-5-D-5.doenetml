@@ -25,12 +25,22 @@
 
   <function name = "A" variable="t">-$M/$k + ($M + $M/$k)*e^($k*t)</function>
   <math name = "ret">$$A(45)</math> 
+  <math name = "retrounded">$$studentA(45)</math> 
+  
   <math name = "inv">$M*(46)</math> 
   <math name="R0"><round numDigits="1">$ret</round></math>
 
   <math name = "DE2">$retK*R - k</math>
   <math name = "DE3">$retK*R(t) - k</math>
   <math name = "eqSol">k/$retK</math>
+
+  <function name="studentA" variable="t">$AEntered</function>
+  <derivative name="derivstudentA" variable="t">$studentA</derivative>
+  <derivative name="derivA" variable="t">$A</derivative>
+   <!-- these will be used because Doenet doesn't currently handle error on function answers very well. -->
+
+  <number name="invEntNumber">$invEntered</number>
+   
    
 </setup>
 
@@ -47,8 +57,8 @@
         Fill in the blanks below to state an initial value problem that the function <m>A(t)</m> satisfies.
       </p>  
       <p>
-        <m>\frac{dA}{dt} = </m><mathInput minWidth="75" name="deEntered"/>, <m>A(0) = </m><mathInput minWidth="40" name="A0Entered"/>
-        <answer simplifyOnCompare><award><when> 
+        <mathInput minWidth="75" name="deEntered" forAnswer="$Adiffeq"><label><m>\frac{dA}{dt} = </m></label></mathInput>, <mathInput minWidth="40" name="A0Entered" forAnswer="$Adiffeq"><label><m>A(0) = </m></label></mathInput>
+        <answer name="Adiffeq"><award><when> 
           ($deEntered=$DE and $A0Entered=$A0) or ($deEntered=$DE1 and $A0Entered=$A0) 
         </when></award></answer>
       </p>
@@ -59,21 +69,55 @@
       </p>  
       
       <p>
-        <m>A(t) = </m><mathInput minWidth="70" name="AEntered"/>
-          <answer simplifyOnCompare allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><award><when> ($AEntered=$A) 
-          </when></award></answer>
+          <answer name="Asolved"><mathInput minWidth="70" name="AEntered"><label><m>A(t) = </m></label></mathInput>
+            <award>
+              $A
+              <!-- exact answer -->
+            </award>
+            <award name="studentArounded" allowedErrorInNumbers=".01" allowedErrorIsAbsolute>
+              <when>
+                $$studentA(0)=$$A(0) and $$derivstudentA(0)= $$derivA(0)
+              </when>
+              <!-- Doenet doesn't handle error with function answers very well.  This award checks that the constant is within .01 of the exact constant, and that the coefficient of the exponential is within .01 of the exact coefficient. -->
+            </award>
+          </answer>
       </p>
     </li>
     <li>
       <p>
-        How much total money did the person invest? (<alert>Note</alert> be sure to include their initial investment along with their annual ones.)
+        How much total money did the person invest, including the initial investment and all the annual ones?
         How much money will be in the account when the person investing turns 65? 
       </p>  
       <p>
-        total invested: $<mathInput name="invEntered" minWidth="60"/>  <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute simplifyOnCompare><award><when>$invEntered=$inv</when></award></answer>
-      </p>      
+        total invested:
+      </p>
+      <p sectionWideCheckWork>
+        $<answer name="invAnswer" allowedErrorInNumbers="0.01" allowedErrorIsAbsolute><mathInput name="invEntered" minWidth="60"><shortDescription>total invested</shortDescription></mathInput>$inv</answer><m>=</m> $<mathInput disabled><shortDescription>previously entered amount invested displayed as a number</shortDescription><number>$invEntered</number></mathInput>
+      </p>  
       <p>
-        total retirement holdings: $<mathInput name="retEntered" minWidth="60"/>  <answer allowedErrorInNumbers="0.01" allowedErrorIsAbsolute simplifyOnCompare><award><when>$retEntered=$ret</when></award></answer>
+        total retirement holdings:
+      </p>
+      <p sectionWideCheckWork>
+        <!-- How close is close enough?  This currently allows some small amount of rounding and error as described in each award below.  But the numbers are in the hundreds of thousands and perhaps more leniency would be good. -->
+        $<answer><mathInput name="retEntered" minWidth="60"><shortDescription>total retirement holdings</shortDescription></mathInput>
+          <award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
+            $ret
+            <!-- exact answer, with .01 error allowance in either direction. -->
+          </award> 
+          <award allowedErrorInNumbers="0.01" allowedErrorIsAbsolute>
+            <when>$studentArounded and $retEntered=$retrounded</when>
+            <!-- allows student to use an expression for A(t) that was called correct and .01 error allowed -->
+          </award> 
+          <award>
+            <round>$ret</round>
+            <!-- allows student to use the exact amount rounded to the nearest dollar -->
+          </award>
+          <award>
+            <when>$studentArounded and $retEntered=<round>$retrounded</round></when>
+            <!-- allows student to use an answer that was called correct for A(t) and then round to the nearest dollar -->
+          </award>
+          <!-- This is missing lots of possibilities, even though it probably takes care of the most common things students might do.  Is being within .1 close enough?  1? 5 or 10?  The numbers involved are very large. On the other hand, students have to do something wrong to get other possibilities, or round to 1 decimal place, and that's not how we train them especially with a financial problem. -->
+        </answer><m>=</m> $<mathInput disabled><shortDescription>previously entered amount retirement holdings displayed as a number</shortDescription><number>$retEntered</number></mathInput>
       </p>
     </li>
     <li>
@@ -84,8 +128,8 @@
         Fill in the blanks below to state an initial value problem that the function <m>R(t)</m> satisfies.  Your answer will involve the arbitrary constant <m>k</m>.
       </p>  
       <p>
-        <m>\frac{dR}{dt} = </m><mathInput minWidth="75" name="de2Entered"/>, <m>R(0) = </m><mathInput minWidth="40" name="R0Entered"/>
-        <answer simplifyOnCompare><award><when> 
+        <mathInput minWidth="75" name="de2Entered" forAnswer="$Rdiffeq"><label><m>\frac{dR}{dt} = </m></label></mathInput>, <mathInput minWidth="40" name="R0Entered" forAnswer="$Rdiffeq"><label><m>R(0) = </m></label></mathInput>
+        <answer name="Rdiffeq"><award><when> 
           ($de2Entered=$DE2 and $R0Entered=$R0) or ($de2Entered=$DE3 and $R0Entered=$R0) 
         </when></award></answer>
       </p>
@@ -95,19 +139,27 @@
         What is the equilibrium solution to the differential equation you stated in (d)?  Your answer will involve the arbitrary constant <m>k</m>.
       </p>
       <p>
-        <m>R = </m><mathInput minWidth="75" name="eqEntered"/> <answer><award><when>$eqEntered=$eqSol</when></award></answer>
+        <answer name="eqEntered"><label><m>R = </m></label>$eqSol</answer>
       </p>
       <p>
         How much interest income does the initial retirement nest egg of $<m>$R0</m> earn at the stated interest rate?
       </p>
       <p>
-        annual interest earned: <mathInput minWidth="75" name="intEntered"/> <answer><award><when>$intEntered=$retK*$R0</when></award></answer>
+        annual interest earned:
+      </p>
+      <p sectionWideCheckWork>
+        <answer><mathInput minWidth="75" name="intEntered"><shortDescription>annual interest earned</shortdescription></mathInput>
+          <award><when>$intEntered=$retK*$R0</when></award></answer><m>=</m> $<mathInput disabled><shortDescription>previously entered annual interest earned displayed as a number</shortDescription><number>$intEntered</number></mathInput>
       </p>
       <p>
         Finally, what is the largest value the person can choose for <m>k</m> to ensure that they don't eventually deplete their retirement savings to $<m>0</m>?
       </p>
       <p>
-        maximum annual withdrawal: <mathInput minWidth="75" name="wEntered"/> <answer><award><when>$wEntered=$retK*$R0</when></award></answer>
+        maximum annual withdrawal: 
+      </p>
+      <p sectionWideCheckWork>
+        <answer><mathInput minWidth="75" name="wEntered"><shortDescription>maximum annual withdrawal</shortdescription></mathInput>
+          <award><when>$wEntered=$retK*$R0</when></award></answer><m>=</m> $<mathInput disabled><shortDescription>previously entered maximum annual withdrawal displayed as a number</shortDescription><number>$wEntered</number></mathInput>
       </p>
     </li>
   </ol>
